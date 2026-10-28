@@ -19,6 +19,8 @@ on:
       - "context/**"
       - "app/**"
       - "pipeline/**"
+      - "scripts/make_site.py"
+      - ".github/workflows/radar.yml"
 
 permissions:
   contents: write
@@ -77,9 +79,75 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Controleert de gedeployde site: elke controle is een eigen stap, zodat je per onderdeel ziet of hij slaagt.
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      BASE: ${{ needs.deploy.outputs.page_url }}
+    steps:
+      - name: Wachten tot de nieuwe versie online staat
+        run: |
+          want="${GITHUB_SHA:0:8}"
+          for i in $(seq 1 30); do
+            build=$(curl -fsS "${BASE}index.html?nocache=$i" | grep -o 'name="build" content="[^"]*"' | cut -d'"' -f4 || true)
+            echo "poging $i: build=$build"
+            case "$build" in "$want"*) exit 0;; esac
+            sleep 10
+          done
+          echo "Nieuwe versie niet gevonden"; exit 1
+
+      - name: "Controle: manifest bereikbaar en geldig"
+        run: |
+          curl -fsS -D headers.txt "${BASE}manifest.webmanifest" -o manifest.json
+          grep -i '^content-type:' headers.txt
+          python3 - <<'PY'
+          import json
+          m = json.load(open("manifest.json"))
+          assert m["name"] == "Data & AI Radar", m["name"]
+          assert m["short_name"], "short_name ontbreekt"
+          assert m["start_url"] == "./" and m["scope"] == "./", (m["start_url"], m["scope"])
+          assert m["display"] == "standalone", m["display"]
+          sizes = {i["sizes"] for i in m["icons"]}
+          assert {"192x192", "512x512"} <= sizes, sizes
+          print("manifest ok:", m["name"], "/", m["short_name"])
+          PY
+
+      - name: "Controle: iconen 192 en 512 zijn geldige PNG's"
+        run: |
+          for f in icon-192.png icon-512.png icon-maskable-512.png; do curl -fsS "${BASE}icons/$f" -o "$f"; done
+          python3 - <<'PY'
+          import struct
+          for f, size in [("icon-192.png", 192), ("icon-512.png", 512), ("icon-maskable-512.png", 512)]:
+              b = open(f, "rb").read()
+              assert b[:8] == b"\x89PNG\r\n\x1a\n", f + " is geen PNG"
+              w, h = struct.unpack(">II", b[16:24])
+              assert (w, h) == (size, size), (f, w, h)
+              print(f, w, "x", h, "ok")
+          PY
+
+      - name: "Controle: service worker bereikbaar en actueel"
+        run: |
+          curl -fsS -D headers.txt "${BASE}sw.js" -o sw.js
+          grep -iE '^content-type: .*javascript' headers.txt
+          grep -q "const BUILD = \"${GITHUB_SHA:0:8}" sw.js && echo "sw.js hoort bij deze deployment"
+
+      - name: "Controle: HTML verwijst naar manifest en registreert de service worker"
+        run: |
+          curl -fsS "${BASE}" -o index.html
+          grep -q '<link rel="manifest" href="manifest.webmanifest">' index.html
+          grep -q 'register("sw.js", { scope: "./" })' index.html
+          grep -q '<title>Data &amp; AI Radar</title>' index.html
+          echo "html ok"
+
+      - name: "Controle: feed bereikbaar"
+        run: curl -fsS "${BASE}feed.json" | python3 -c "import json,sys; f=json.load(sys.stdin); print(f['mode'], len(f['articles']), 'artikelen')"
