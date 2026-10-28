@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T20:53:48.285863Z",
+ "generated_at": "2026-10-28T21:19:01.713525Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -47,18 +47,16 @@
    ]
   },
   {
-   "id": "a99668f67edb",
-   "title": "Editing files in Unity Catalog volumes is now generally available",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#editing-files-in-unity-catalog-volumes-is-now-generally-available",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-27T00:00:00Z",
-   "excerpt": "You can now edit files in Unity Catalog volumes directly in the workspace file editor, without downloading and uploading them again. Open a file from Catalog Explorer or from the schema browser in a notebook or the SQL editor. See Edit files in a volume .",
-   "preliminary_score": 80,
+   "id": "e355f3b1aafd",
+   "title": "dbt v1.13.0b1",
+   "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
+   "source_id": "dbt_core_releases",
+   "source_name": "dbt-core releases (GitHub)",
+   "published_at": "2026-10-14T07:41:52Z",
+   "excerpt": "dbt-core 1.13.0-b1 - October 14, 2026 Breaking Changes Flags introduced in 1.9 and 1.10 defaults to true ( #12713 ) Features Make MAXIMUM_SEED_SIZE_MIB configurable ( #7117 , #7124 ) Bundle the dbt-state plugin (>=2.18,<3.0) as an install dependency of dbt-core. The plugin is opt-in: PluginManager skips auto-discovery unless the user passes --manage-state on the CLI, sets DBT_ENGINE_MANAGE_STATE=true, or sets manage_state to true in the flags block of dbt_project.yml (equivalently in the config block of profiles.yml). Discovery filters disabled modules before importlib.import_module is called, so the default opt-in-off state incurs no import cost. ( #13014 ) Add --use-v2-parser to delegate parsing to the fusion parser, load its manifest.json into a runtime Manifest, and bypass dbt-core's parser. Configurable via --v2-parser / DBT_ENGINE_V2_PARSER (defaults to dbt-core-experimental-parser parse ) or the flags: section of dbt_project.yml . ( #13029 ) Add support for user settings with flags reading writing ( #13031 ) Add dbt login command ( #13032 ) Tolerate dbt Fusion-specific warn_error_options names instead of erroring, emitting a note that they are ignored because they are specif",
+   "preliminary_score": 77,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs",
-    "sql_spark_sql"
+    "dbt_analytics_engineering"
    ]
   },
   {
@@ -92,6 +90,108 @@
    ]
   },
   {
+   "id": "0b4ae9670355",
+   "title": "How to Repoint dbt ETL Pipelines to Databricks",
+   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-06T18:53:48Z",
+   "excerpt": "More teams are running their dbt transformations on Databricks Lakehouse: an open...",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "4fdc49511e68",
+   "title": "v2.0.0-dev.41-test-pypi",
+   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
+   "source_id": "dbt_core_releases",
+   "source_name": "dbt-core releases (GitHub)",
+   "published_at": "2026-09-23T14:17:54Z",
+   "excerpt": "2.0.0-dev.41 Released September 23, 2026 Features [Lake Compute] Read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, declaration-aware validation, and dbt debug attach parity. Existing fs catalogs.yml entries continue to use type: unity . Existing local Unity attach options in config.lakecompute must move to config.duckdb ; Lake Compute access is read-only and Unity model writes are unsupported. Fixes Fix modules.re functions silently dropping keyword arguments (flags=, maxsplit=, count=) ( #15508 ) Emit only changed columns in Databricks column-tag alter diffs ( #16246 ) Emit only changed keys in Databricks relation-tag SET TAGS diffs ( #16248 ) Implement TableRepr methods index_of_value_in_column and count_occurrences_of_value_in_column to fix Fusion panic in dbt_utils.get_query_results_as_dict() Copy config.group onto the top-level group for source and singular tests, matching dbt-core ( #15930 ) Make insert_gateway_label idempotent so gateway host resolution no-ops when the label is already present, instead of relying on a caller-side guard Set tags on operation nodes so on-run-start/on-run-end hooks are discoverable when running dbt-cor",
+   "preliminary_score": 73,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "3e1818ad92ea",
+   "title": "Modern Power BI architecture choices for reporting on Azure Databricks: A performance benchmark for Power BI storage modes",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Modern-Power-BI-architecture-choices-for-reporting-on-Azure/ba-p/5364286",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-09-03T11:30:43Z",
+   "excerpt": "Many enterprise Power BI semantic models use Azure Databricks as a data source. When building these models, developers and architects face an early and consequential decision: which storage mode to use. Cost, security, and ease of development and tuning all factor in — but report performance is probably the most important of them, because reports that are slow to load are one of the most common causes of end-user dissatisfaction. In practice, that decision is often made on intuition rather than evidence. To help change that, we've published a new white paper, Modern Power BI Architecture Choices for Reporting on Azure Databricks , benchmarking four ways of serving the same Delta tables to a Power BI report: Direct Lake on OneLake — over Delta tables in a Fabric lakehouse or warehouse Direct Lake on mirrored Unity Catalog tables — shortcuts, no copy DirectQuery — on a Databricks SQL warehouse Composite Model on Databricks — DirectQuery combined with Import-mode aggregations Figure: The four Power BI storage modes benchmarked to evaluate their impact on report performance and scalability. What the results suggest: there's no universal winner — but there are clear patterns. Direct Lak",
+   "preliminary_score": 68,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "a99668f67edb",
+   "title": "Editing files in Unity Catalog volumes is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#editing-files-in-unity-catalog-volumes-is-now-generally-available",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-27T00:00:00Z",
+   "excerpt": "You can now edit files in Unity Catalog volumes directly in the workspace file editor, without downloading and uploading them again. Open a file from Catalog Explorer or from the schema browser in a notebook or the SQL editor. See Edit files in a volume .",
+   "preliminary_score": 80,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "b9c31921875e",
+   "title": "External writes to managed Delta tables are now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-13T00:00:00Z",
+   "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables.",
+   "preliminary_score": 71,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "2f474ddb6a96",
+   "title": "What makes a catalog open? Unity Catalog Advances the Open Lakehouse",
+   "url": "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-19T21:20:00Z",
+   "excerpt": "While almost every platform now supports open formats, what makes a catalog truly...",
+   "preliminary_score": 70,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "9a1a77aea3de",
+   "title": "Running open-Jev in SQL on Databricks",
+   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-09-24T16:55:01Z",
+   "excerpt": "Over the weekend, “System One” decision models such as Jev have launched, which are...",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "f51c801481de",
    "title": "QuickBooks connector is available in Beta",
    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
@@ -116,104 +216,6 @@
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "412d4b1345c3",
-   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
-   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T19:06:00Z",
-   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines.",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "fea9136ea071",
-   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
-   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:51:00Z",
-   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models.",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ]
-  },
-  {
-   "id": "9bcb10a95345",
-   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
-   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:38:00Z",
-   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics.",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ]
-  },
-  {
-   "id": "28418ea3b8c0",
-   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:01:00Z",
-   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table.",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "0b4ae9670355",
-   "title": "How to Repoint dbt ETL Pipelines to Databricks",
-   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-06T18:53:48Z",
-   "excerpt": "More teams are running their dbt transformations on Databricks Lakehouse: an open...",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "134e8ad85381",
-   "title": "PayPal connector is available in Beta",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#paypal-connector-is-available-in-beta",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-24T00:00:00Z",
-   "excerpt": "The managed PayPal connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest payments data such as transactions, disputes, invoices, balances, catalog products, and billing plans from PayPal into Azure Databricks. The connector uses OAuth client credentials and supports incremental ingestion.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "4fdc49511e68",
-   "title": "v2.0.0-dev.41-test-pypi",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
-   "source_id": "dbt_core_releases",
-   "source_name": "dbt-core releases (GitHub)",
-   "published_at": "2026-09-23T14:17:54Z",
-   "excerpt": "2.0.0-dev.41 Released September 23, 2026 Features [Lake Compute] Read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, declaration-aware validation, and dbt debug attach parity. Existing fs catalogs.yml entries continue to use type: unity . Existing local Unity attach options in config.lakecompute must move to config.duckdb ; Lake Compute access is read-only and Unity model writes are unsupported. Fixes Fix modules.re functions silently dropping keyword arguments (flags=, maxsplit=, count=) ( #15508 ) Emit only changed columns in Databricks column-tag alter diffs ( #16246 ) Emit only changed keys in Databricks relation-tag SET TAGS diffs ( #16248 ) Implement TableRepr methods index_of_value_in_column and count_occurrences_of_value_in_column to fix Fusion panic in dbt_utils.get_query_results_as_dict() Copy config.group onto the top-level group for source and singular tests, matching dbt-core ( #15930 ) Make insert_gateway_label idempotent so gateway host resolution no-ops when the label is already present, instead of relying on a caller-side guard Set tags on operation nodes so on-run-start/on-run-end hooks are discoverable when running dbt-cor",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
    ]
   }
  ]
