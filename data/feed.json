@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-28T20:32:30.900772Z",
+ "generated_at": "2026-10-28T20:38:19.893679Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
- "last_successful_update": "2026-10-28T20:32:30.900772Z",
+ "last_successful_update": "2026-10-28T20:38:19.893679Z",
  "groups": [
   {
    "id": "dbt",
@@ -137,20 +137,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-28T20:32:30.948792Z"
-  },
-  {
-   "id": "dbt_release_notes",
-   "name": "dbt release notes",
-   "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes",
-   "type": "official_docs",
-   "trust_level": "high",
-   "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:32:31.384309Z"
+   "checked_at": "2026-10-28T20:38:19.915562Z"
   },
   {
    "id": "dbt_core_releases",
@@ -163,7 +150,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-28T20:32:31.384329Z"
+   "checked_at": "2026-10-28T20:38:20.105366Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -176,7 +163,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-28T20:32:31.812448Z"
+   "checked_at": "2026-10-28T20:38:20.737119Z"
   },
   {
    "id": "databricks_blog",
@@ -189,7 +176,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-28T20:32:32.105282Z"
+   "checked_at": "2026-10-28T20:38:21.068083Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -202,33 +189,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-28T20:32:32.256698Z"
-  },
-  {
-   "id": "anthropic_engineering",
-   "name": "Anthropic Engineering",
-   "url": "https://www.anthropic.com/engineering",
-   "type": "vendor_blog",
-   "trust_level": "medium",
-   "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:32:32.505535Z"
-  },
-  {
-   "id": "openai_developer_blog",
-   "name": "OpenAI Developer Blog",
-   "url": "https://developers.openai.com/blog",
-   "type": "vendor_blog",
-   "trust_level": "medium",
-   "priority": 4,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:32:32.505553Z"
+   "checked_at": "2026-10-28T20:38:21.202922Z"
   },
   {
    "id": "github_blog",
@@ -241,7 +202,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-28T20:32:32.505556Z"
+   "checked_at": "2026-10-28T20:38:21.447169Z"
   },
   {
    "id": "azure_blog",
@@ -254,7 +215,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-28T20:32:32.551908Z"
+   "checked_at": "2026-10-28T20:38:21.710946Z"
   },
   {
    "id": "powerbi_blog",
@@ -267,7 +228,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-28T20:32:32.651266Z"
+   "checked_at": "2026-10-28T20:38:22.115802Z"
   },
   {
    "id": "huggingface_blog",
@@ -280,20 +241,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-28T20:32:35.279431Z"
-  },
-  {
-   "id": "thoughtworks_radar",
-   "name": "Thoughtworks Technology Radar",
-   "url": "https://www.thoughtworks.com/radar",
-   "type": "independent_news",
-   "trust_level": "medium",
-   "priority": 3,
-   "fetch_method": "manual",
-   "status": "skipped",
-   "items": 0,
-   "message": "Handmatige bron; wordt niet automatisch opgehaald.",
-   "checked_at": "2026-10-28T20:32:35.339002Z"
+   "checked_at": "2026-10-28T20:38:23.340166Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -306,20 +254,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-28T20:32:35.339019Z"
-  },
-  {
-   "id": "joe_reis",
-   "name": "Joe Reis",
-   "url": "https://joereis.substack.com/",
-   "type": "expert_blog",
-   "trust_level": "medium",
-   "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:32:35.549000Z"
+   "checked_at": "2026-10-28T20:38:23.563072Z"
   },
   {
    "id": "simon_whiteley",
@@ -332,20 +267,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-28T20:32:35.549018Z"
-  },
-  {
-   "id": "madison_mae",
-   "name": "Madison Mae (Learn Analytics Engineering)",
-   "url": "https://learnanalyticsengineering.substack.com/",
-   "type": "expert_blog",
-   "trust_level": "medium",
-   "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:32:35.732499Z"
+   "checked_at": "2026-10-28T20:38:23.752429Z"
   },
   {
    "id": "hamel_husain",
@@ -358,7 +280,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-28T20:32:35.732516Z"
+   "checked_at": "2026-10-28T20:38:23.985716Z"
   },
   {
    "id": "chip_huyen",
@@ -371,7 +293,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-28T20:32:35.902766Z"
+   "checked_at": "2026-10-28T20:38:24.255812Z"
   },
   {
    "id": "simon_willison",
@@ -384,7 +306,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-28T20:32:37.111687Z"
+   "checked_at": "2026-10-28T20:38:24.819005Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -397,7 +319,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-28T20:32:37.744597Z"
+   "checked_at": "2026-10-28T20:38:25.208526Z"
   }
  ],
  "daily_top": [
@@ -2194,13 +2116,13 @@
  ],
  "quality_report": {
   "fetched_items": 260,
-  "unique_after_dedupe": 223,
+  "unique_after_dedupe": 218,
   "merged_duplicates": 6,
   "shown": 51,
   "decisions": {
    "included": 51,
    "below_threshold": 63,
-   "no_topic": 108,
+   "no_topic": 103,
    "excluded": 1
   },
   "processing": {
@@ -2737,7 +2659,8 @@
   ],
   "topics_without_source": [
    "ai_in_healthcare",
-   "ai_research_data"
+   "ai_research_data",
+   "general_ai_trends"
   ]
  }
 }
