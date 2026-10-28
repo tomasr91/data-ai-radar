@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T20:24:31.087622Z",
+ "generated_at": "2026-10-28T20:32:30.900772Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -59,6 +59,36 @@
     "databricks_data_engineering",
     "metadata_lineage_catalogs",
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "c3d989d7d52d",
+   "title": "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Databricks-ADBC-connector-for-Power-BI-and-Microsoft-Fabric/ba-p/5369591",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-10-15T17:00:00Z",
+   "excerpt": "This release is part of the broader ODBC-to-ADBC transition for Power Query connectors described in the Transition from ODBC to ADBC drivers in Power BI and Microsoft Fabric documentation. What’s new Existing connections in your semantic models, dataflows, and paginated reports continue to work unchanged — the migration path is currently opt-in per connection, per workspace, or per tenant. Highlights: Improved security - ADBC drivers incorporate security enhancements, such as memory safety and garbage collection. No changes to existing behavior - This transition moves away from the embedded ODBC drivers that ship with Power BI. It does not change behavior for the ODBC connector when you use a separately installed ODBC driver. Efficient large dataset support - ADBC provides a set of standard interfaces for interacting with Arrow data, which is especially efficient at fetching large datasets with minimal overhead and no serialization or copying. Supported authentication - Databricks ADBC supports OAuth (user), OAuth (M2M / Client Credentials), and Microsoft Entra ID. Connectors covered by this release Connector Previous driver New driver (GA) Databricks Simba Spark ODBC Databricks AD",
+   "preliminary_score": 75,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "8ee1a94ef044",
+   "title": "Power BI September 2026 Feature Summary",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-September-2026-Feature-Summary/ba-p/5325831",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-10-15T21:06:46Z",
+   "excerpt": "As the Power BI, Microsoft Fabric, data, and analytics community gathers in Barcelona for the European Microsoft Fabric + SQL Community Conference, this month is packed with news. From new Copilot and AI experiences to reporting, modeling, data connectivity, developer enhancements, and mobile updates, we're sharing the latest innovations designed to help you build, analyze, and act on your data more effectively. Whether you're joining us in person or following along from afar, this roundup is your guide to everything new across Power BI this month. Table of Contents General Deprecation of Old File Picker experience in Power BI Desktop Copilot and AI Power BI Agentic Experiences (Generally Available) Microsoft 365 Copilot is coming to Power BI (Preview) Power BI data answers in Microsoft Copilot Chat (Generally Available) Fabric IQ Plugin in Microsoft 365 Copilot Cowork (Generally Available) Build Fabric Apps more easily in GitHub Copilot App (Preview) Enhanced Report Consumption Copilot with Fabric IQ New control for Copilot access to semantic models Remote Power BI Authoring MCP Server (Preview) Reporting New Report Ribbon on the web (Preview) Live Visual Sharing in Outlook on the",
+   "preliminary_score": 75,
+   "preliminary_topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "sql_spark_sql",
+    "powerbi_semantic_models"
    ]
   },
   {
@@ -184,32 +214,6 @@
     "dbt_analytics_engineering",
     "databricks_data_engineering",
     "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "54cdadbfe115",
-   "title": "DataFrame caching on serverless compute is now in Public Preview",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/serverless#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "f499e9381da5",
-   "title": "DataFrame caching on serverless compute is now in Public Preview",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "databricks_data_engineering"
    ]
   }
  ]

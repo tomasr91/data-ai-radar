@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-28T20:24:31.087622Z",
+ "generated_at": "2026-10-28T20:32:30.900772Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
- "last_successful_update": "2026-10-28T20:24:31.087622Z",
+ "last_successful_update": "2026-10-28T20:32:30.900772Z",
  "groups": [
   {
    "id": "dbt",
@@ -137,7 +137,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-28T20:24:31.112955Z"
+   "checked_at": "2026-10-28T20:32:30.948792Z"
   },
   {
    "id": "dbt_release_notes",
@@ -150,7 +150,7 @@
    "status": "not_supported",
    "items": 0,
    "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:31.330816Z"
+   "checked_at": "2026-10-28T20:32:31.384309Z"
   },
   {
    "id": "dbt_core_releases",
@@ -163,7 +163,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-28T20:24:31.330844Z"
+   "checked_at": "2026-10-28T20:32:31.384329Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -176,7 +176,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-28T20:24:32.022576Z"
+   "checked_at": "2026-10-28T20:32:31.812448Z"
   },
   {
    "id": "databricks_blog",
@@ -189,7 +189,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-28T20:24:32.523933Z"
+   "checked_at": "2026-10-28T20:32:32.105282Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -202,7 +202,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-28T20:24:32.697886Z"
+   "checked_at": "2026-10-28T20:32:32.256698Z"
   },
   {
    "id": "anthropic_engineering",
@@ -215,7 +215,7 @@
    "status": "not_supported",
    "items": 0,
    "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:32.815117Z"
+   "checked_at": "2026-10-28T20:32:32.505535Z"
   },
   {
    "id": "openai_developer_blog",
@@ -228,7 +228,7 @@
    "status": "not_supported",
    "items": 0,
    "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:32.815138Z"
+   "checked_at": "2026-10-28T20:32:32.505553Z"
   },
   {
    "id": "github_blog",
@@ -237,11 +237,11 @@
    "type": "vendor_blog",
    "trust_level": "medium",
    "priority": 4,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:32.815141Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://github.blog/feed/",
+   "checked_at": "2026-10-28T20:32:32.505556Z"
   },
   {
    "id": "azure_blog",
@@ -254,7 +254,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-28T20:24:32.815144Z"
+   "checked_at": "2026-10-28T20:32:32.551908Z"
   },
   {
    "id": "powerbi_blog",
@@ -263,11 +263,11 @@
    "type": "vendor_blog",
    "trust_level": "medium",
    "priority": 3,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.208489Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
+   "checked_at": "2026-10-28T20:32:32.651266Z"
   },
   {
    "id": "huggingface_blog",
@@ -276,11 +276,11 @@
    "type": "vendor_blog",
    "trust_level": "medium",
    "priority": 3,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.208511Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 30,
+   "message": "30 items via https://huggingface.co/blog/feed.xml",
+   "checked_at": "2026-10-28T20:32:35.279431Z"
   },
   {
    "id": "thoughtworks_radar",
@@ -293,7 +293,7 @@
    "status": "skipped",
    "items": 0,
    "message": "Handmatige bron; wordt niet automatisch opgehaald.",
-   "checked_at": "2026-10-28T20:24:34.208515Z"
+   "checked_at": "2026-10-28T20:32:35.339002Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -306,7 +306,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-28T20:24:34.208517Z"
+   "checked_at": "2026-10-28T20:32:35.339019Z"
   },
   {
    "id": "joe_reis",
@@ -319,20 +319,20 @@
    "status": "not_supported",
    "items": 0,
    "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.426791Z"
+   "checked_at": "2026-10-28T20:32:35.549000Z"
   },
   {
    "id": "simon_whiteley",
-   "name": "Simon Whiteley",
+   "name": "Advancing Analytics (o.a. Simon Whiteley)",
    "url": "https://www.advancinganalytics.co.uk/blog/author/simon-whiteley",
    "type": "expert_blog",
    "trust_level": "medium",
    "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.426814Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
+   "checked_at": "2026-10-28T20:32:35.549018Z"
   },
   {
    "id": "madison_mae",
@@ -345,7 +345,7 @@
    "status": "not_supported",
    "items": 0,
    "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.426817Z"
+   "checked_at": "2026-10-28T20:32:35.732499Z"
   },
   {
    "id": "hamel_husain",
@@ -354,11 +354,11 @@
    "type": "expert_blog",
    "trust_level": "medium",
    "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.426819Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://hamel.dev/index.xml",
+   "checked_at": "2026-10-28T20:32:35.732516Z"
   },
   {
    "id": "chip_huyen",
@@ -367,11 +367,11 @@
    "type": "expert_blog",
    "trust_level": "medium",
    "priority": 5,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.426822Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://huyenchip.com/feed.xml",
+   "checked_at": "2026-10-28T20:32:35.902766Z"
   },
   {
    "id": "simon_willison",
@@ -384,7 +384,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-28T20:24:34.426824Z"
+   "checked_at": "2026-10-28T20:32:37.111687Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -393,11 +393,11 @@
    "type": "technical_article",
    "trust_level": "medium",
    "priority": 4,
-   "fetch_method": "html",
-   "status": "not_supported",
-   "items": 0,
-   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
-   "checked_at": "2026-10-28T20:24:34.552881Z"
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
+   "checked_at": "2026-10-28T20:32:37.744597Z"
   }
  ],
  "daily_top": [
@@ -1518,6 +1518,62 @@
    ]
   },
   {
+   "id": "c3d989d7d52d",
+   "title": "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Databricks-ADBC-connector-for-Power-BI-and-Microsoft-Fabric/ba-p/5369591",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-10-15T17:00:00Z",
+   "fetched_at": "2026-10-28T20:32:32.651266Z",
+   "topics": [
+    "databricks_data_engineering",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 75,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.52,
+    "source": 0.51,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "This release is part of the broader ODBC-to-ADBC transition for Power Query connectors described in the Transition from ODBC to ADBC drivers in Power BI and Microsoft Fabric documentation. What’s new Existing connections in your semantic models, dataflows, and paginated reports continue to work unchanged — the migration path is currently opt-in per connection, per workspace, or per tenant. Highlights: Improved security - ADBC drivers incorporate security enhancements, such as memory safety and garbage collection. No changes to existing behavior - This transition moves away from the embedded ODBC drivers that ship with Power BI. It does not change behavior for the ODBC connector when you use a separately installed ODBC driver. Efficient large dataset support - ADBC provides a set of standard interfaces for interacting with Arrow data, which is especially efficient at fetching large datasets with minimal overhead and no serialization or copying. Supported authentication - Databricks ADBC supports OAuth (user), OAuth (M2M / Client Credentials), and Microsoft Entra ID. Connectors covered by this release Connector Previous driver New driver (GA) Databricks Simba Spark ODBC Databricks AD"
+  },
+  {
+   "id": "8ee1a94ef044",
+   "title": "Power BI September 2026 Feature Summary",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-September-2026-Feature-Summary/ba-p/5325831",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-10-15T21:06:46Z",
+   "fetched_at": "2026-10-28T20:32:32.651266Z",
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 75,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.53,
+    "source": 0.51,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "As the Power BI, Microsoft Fabric, data, and analytics community gathers in Barcelona for the European Microsoft Fabric + SQL Community Conference, this month is packed with news. From new Copilot and AI experiences to reporting, modeling, data connectivity, developer enhancements, and mobile updates, we're sharing the latest innovations designed to help you build, analyze, and act on your data more effectively. Whether you're joining us in person or following along from afar, this roundup is your guide to everything new across Power BI this month. Table of Contents General Deprecation of Old File Picker experience in Power BI Desktop Copilot and AI Power BI Agentic Experiences (Generally Available) Microsoft 365 Copilot is coming to Power BI (Preview) Power BI data answers in Microsoft Copilot Chat (Generally Available) Fabric IQ Plugin in Microsoft 365 Copilot Cowork (Generally Available) Build Fabric Apps more easily in GitHub Copilot App (Preview) Enhanced Report Consumption Copilot with Fabric IQ New control for Copilot access to semantic models Remote Power BI Authoring MCP Server (Preview) Reporting New Report Ribbon on the web (Preview) Live Visual Sharing in Outlook on the"
+  },
+  {
    "id": "0b4ae9670355",
    "title": "How to Repoint dbt ETL Pipelines to Databricks",
    "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
@@ -1950,6 +2006,115 @@
    "excerpt": "While almost every platform now supports open formats, what makes a catalog truly..."
   },
   {
+   "id": "d8725372cba4",
+   "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-10-26T18:44:50Z",
+   "fetched_at": "2026-10-28T20:32:32.651266Z",
+   "topics": [
+    "ai_agents_rag",
+    "metadata_lineage_catalogs",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "agents",
+    "kwaliteit",
+    "overig"
+   ],
+   "relevance_score": 70,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.9,
+    "source": 0.51,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "If you haven't already, check out FabCon and SQLCon 2026 in Barcelona: Building the data foundation for Microsoft Copilot and Agents for a complete look at all of our FabCon Europe announcements across Fabric and Microsoft Databases. Advancing an open, interoperable semantic foundation for AI-powered analytics Today, Microsoft is pleased to affirm our commitment to Apache Ossie (incubating) , a community-led effort to establish a vendor-neutral standard for exchanging semantic metadata across analytics, AI, and BI platforms. This has been a close collaboration with Snowflake, who helped found Ossie . We have heard loud and clear that customers want to enable platform-agnostic agentic experiences. Shared semantic context must be defined once and reused across platforms, enabling agentic consumption at scale, maximizing the reach of AI-powered analytics, and empowering users to leverage the best agent for the job. Power BI semantic models are key enablers of AI-powered analysis, providing humans and AI agents with governed semantic context to answer data questions quickly and confidently. Power BI semantic models have more than 38 million monthly active users and are adopted by 94% o"
+  },
+  {
+   "id": "3e1818ad92ea",
+   "title": "Modern Power BI architecture choices for reporting on Azure Databricks: A performance benchmark for Power BI storage modes",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Modern-Power-BI-architecture-choices-for-reporting-on-Azure/ba-p/5364286",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-09-03T11:30:43Z",
+   "fetched_at": "2026-10-28T20:32:32.651266Z",
+   "topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit",
+    "overig"
+   ],
+   "relevance_score": 68,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.06,
+    "source": 0.51,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Many enterprise Power BI semantic models use Azure Databricks as a data source. When building these models, developers and architects face an early and consequential decision: which storage mode to use. Cost, security, and ease of development and tuning all factor in — but report performance is probably the most important of them, because reports that are slow to load are one of the most common causes of end-user dissatisfaction. In practice, that decision is often made on intuition rather than evidence. To help change that, we've published a new white paper, Modern Power BI Architecture Choices for Reporting on Azure Databricks , benchmarking four ways of serving the same Delta tables to a Power BI report: Direct Lake on OneLake — over Delta tables in a Fabric lakehouse or warehouse Direct Lake on mirrored Unity Catalog tables — shortcuts, no copy DirectQuery — on a Databricks SQL warehouse Composite Model on Databricks — DirectQuery combined with Import-mode aggregations Figure: The four Power BI storage modes benchmarked to evaluate their impact on report performance and scalability. What the results suggest: there's no universal winner — but there are clear patterns. Direct Lak"
+  },
+  {
+   "id": "bd10959c5f52",
+   "title": "What Databricks is doing with Genie for Business Users",
+   "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
+   "source_id": "simon_whiteley",
+   "published_at": "2026-10-08T11:11:40Z",
+   "fetched_at": "2026-10-28T20:32:35.549018Z",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "databricks",
+    "ai_context"
+   ],
+   "relevance_score": 65,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.36,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "I n a little o ver two years, Genie has gone from a Public Preview feature for asking questions of your data in plain English, to the main way Databricks wants business users to work with the platform. September's releases show where it's going next: the Excel Add-in and the Genie One MCP server both went GA, and at the end of the month Databricks bought Row Zero, a spreadsheet company, to build into Genie."
+  },
+  {
+   "id": "55dcf1697838",
+   "title": "Power BI October 2026 Feature Summary",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-October-2026-Feature-Summary/ba-p/5374650",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-10-15T21:25:10Z",
+   "fetched_at": "2026-10-28T20:32:32.651266Z",
+   "topics": [
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 64,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.53,
+    "source": 0.51,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Last month, we shared a packed September update alongside the European Microsoft Fabric + SQL Community Conference. Even so, the Power BI team has continued delivering new capabilities, and we didn't want to wait another month to share them. This update includes enhancements across Copilot and AI, reporting, and semantic models, helping users create richer reports, streamline workflows, and get more value from their data. Table of Contents Copilot and AI Create Power BI reports with custom visuals using skills for Fabric (Generally Available) Reporting Gantt chart (Preview) List slicer with dropdown option (Preview) Chart plot area background color (Generally Available) Auto-expand hierarchy axis with field parameter support (Generally Available) Personal bookmarks keep column widths (Generally Available) Semantic models More accurate surge protection with semantic models That’s a wrap! Copilot and AI Create Power BI reports with custom visuals using skills for Fabric (Generally Available) The Power BI Report Authoring skill now extends natural-language report authoring to custom visuals, helping teams create reports that meet specialized business and design requirements with less "
+  },
+  {
    "id": "9a1a77aea3de",
    "title": "Running open-Jev in SQL on Databricks",
    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -2028,35 +2193,38 @@
   }
  ],
  "quality_report": {
-  "fetched_items": 140,
-  "unique_after_dedupe": 157,
+  "fetched_items": 260,
+  "unique_after_dedupe": 223,
   "merged_duplicates": 6,
-  "shown": 45,
+  "shown": 51,
   "decisions": {
-   "included": 45,
-   "below_threshold": 47,
-   "no_topic": 64,
+   "included": 51,
+   "below_threshold": 63,
+   "no_topic": 108,
    "excluded": 1
   },
   "processing": {
    "enriched": 21,
-   "raw": 24
+   "raw": 30
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 7,
+   "ai_context": 8,
    "dbt": 11,
-   "databricks": 23,
+   "databricks": 27,
    "zorg": 1,
    "architectuur": 2,
-   "kwaliteit": 1
+   "kwaliteit": 1,
+   "agents": 1
   },
   "per_source": {
    "dbt_labs_blog": 9,
    "databricks_blog": 4,
    "azure_databricks_release_notes": 26,
+   "powerbi_blog": 5,
    "databricks_engineering_blog": 5,
-   "dbt_core_releases": 1
+   "dbt_core_releases": 1,
+   "simon_whiteley": 1
   },
   "date_flags": [
    {
@@ -2078,7 +2246,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 71
+   "skipped_no_key": 93
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -2093,6 +2261,22 @@
     "excluded_by": [
      "funding_acquisitions"
     ]
+   },
+   {
+    "title": "dbt_context_engineering: modeling the context your AI agents read",
+    "source_id": "dbt_developer_blog",
+    "url": "https://docs.getdbt.com/blog/dbt-context-engineering",
+    "relevance_score": 60,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt v2.0 is GA",
+    "source_id": "dbt_developer_blog",
+    "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+    "relevance_score": 60,
+    "decision": "below_threshold",
+    "excluded_by": []
    },
    {
     "title": "QuickBooks connector is available in Beta",
@@ -2343,6 +2527,14 @@
     "excluded_by": []
    },
    {
+    "title": "After the Standing Ovation: The Topology of Productionising Built-On Databricks",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/after-the-standing-ovation-the-topology-of-productionising-built-on-databricks",
+    "relevance_score": 54,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "With great context comes great autonomy",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
@@ -2415,9 +2607,49 @@
     "excluded_by": []
    },
    {
+    "title": "Power BI’s next chapter: The evolution of business intelligence",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-s-next-chapter-The-evolution-of-business-intelligence/ba-p/5369131",
+    "relevance_score": 49,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
+    "source_id": "dbt_developer_blog",
+    "url": "https://docs.getdbt.com/blog/wizard-agent-harness",
+    "relevance_score": 48,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Rethinking Data Curation in the age of Databricks Genie Ontology",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/data-curation-genie-ontology",
+    "relevance_score": 47,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Welcome Muse Spark Open: open-weight frontier multimodal mixture-of-experts model from Meta",
+    "source_id": "huggingface_blog",
+    "url": "https://huggingface.co/blog/meta-muse-spark-open",
+    "relevance_score": 47,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+    "relevance_score": 46,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Databricks Genie ZeroOps: Your Self-Healing Agent?",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/genie-zeroops-your-self-healing-agent",
     "relevance_score": 46,
     "decision": "below_threshold",
     "excluded_by": []
@@ -2463,6 +2695,22 @@
     "excluded_by": []
    },
    {
+    "title": "What's the difference between dbt and dbt OSS?",
+    "source_id": "dbt_developer_blog",
+    "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+    "relevance_score": 43,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+    "source_id": "huggingface_blog",
+    "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+    "relevance_score": 43,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "Set Budgets and Alerts for Cloud Data Warehouse Costs",
     "source_id": "databricks_engineering_blog",
     "url": "https://www.databricks.com/blog/set-budgets-and-alerts-cloud-data-warehouse-costs",
@@ -2471,99 +2719,19 @@
     "excluded_by": []
    },
    {
-    "title": "Serverless GPU in clean rooms will soon be on by default for accounts where it's turned off",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#serverless-gpu-in-clean-rooms-will-soon-be-on-by-default-for-accounts-where-its-turned-off",
-    "relevance_score": 31,
-    "decision": "no_topic",
+    "title": "Manage semantic model settings in context with the default settings pane (Preview)",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Manage-semantic-model-settings-in-context-with-the-default/ba-p/5366792",
+    "relevance_score": 40,
+    "decision": "below_threshold",
     "excluded_by": []
    },
    {
-    "title": "Serverless GPU for clean room notebooks is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#serverless-gpu-for-clean-room-notebooks-is-now-generally-available",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "OpenAI GPT-6.1 Terra is now available on Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#openai-gpt-61-terra-is-now-available-on-unity-gateway",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Unity Gateway Usage Dashboard v1.0",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#unity-gateway-usage-dashboard-v10",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Unity Gateway Usage Dashboard v1.0",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#unity-gateway-usage-dashboard-v10",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "OpenAI GPT-6.1 Terra is now available on Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#openai-gpt-61-terra-is-now-available-on-unity-gateway",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Account-level security features are now available by default at GA",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#account-level-security-features-are-now-available-by-default-at-ga",
-    "relevance_score": 30,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "How Guitar Center rebuilt its data platform on trust",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/guitar-center-data-pltform-trust-costs",
-    "relevance_score": 30,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Voice Agents are here. Context turns them into real customer value.",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/voice-agents-are-here-context-turns-them-real-customer-value",
-    "relevance_score": 30,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "The media industry is becoming a prediction economy",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/media-industry-becoming-prediction-economy",
-    "relevance_score": 29,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Serverless job environments from pyproject.toml (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#serverless-job-environments-from-pyprojecttoml-beta",
-    "relevance_score": 28,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "GitHub Octoverse 2026",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/28/github-octoverse-2026/",
-    "relevance_score": 28,
-    "decision": "no_topic",
+    "title": "AI Agents Expose What Your Data Platform Never Captured",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/ai-agents-expose-what-your-data-platform-never-captured",
+    "relevance_score": 39,
+    "decision": "below_threshold",
     "excluded_by": []
    }
   ],
