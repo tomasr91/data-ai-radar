@@ -134,6 +134,16 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .block p { margin: 0; max-width: 64ch; }
 .block ul { margin: 6px 0 0; padding-left: 1.2em; max-width: 64ch; }
 .callout { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
+.orig { margin: -6px 0 18px; font-size: 0.8rem; color: var(--muted); font-family: var(--f-meta); overflow-wrap: anywhere; }
+.story p { font-family: var(--f-read); font-size: 1.06rem; line-height: 1.72; margin: 0 0 1.05em; max-width: 64ch; }
+.story p:first-child { font-size: 1.14rem; }
+.try { margin-top: 26px; background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; }
+.try h2 { margin: 0 0 6px; font-size: 1rem; color: var(--accent); }
+.try p { margin: 0; font-family: var(--f-read); font-size: 1rem; line-height: 1.65; }
+.facts { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 16px; }
+.facts summary { cursor: pointer; font-weight: 650; display: flex; align-items: center; gap: 8px; list-style-position: inside; }
+.facts ul { margin: 10px 0 2px; padding-left: 1.2em; }
+.facts li { font-family: var(--f-read); font-size: 0.95rem; line-height: 1.6; }
 .source { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; }
 .source dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.86rem; }
 .source dt { color: var(--muted); font-family: var(--f-meta); font-size: 0.74rem; padding-top: 2px; }
@@ -307,7 +317,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.group !== "all" && !(a.groups || []).includes(state.group)) return false;
     if (!inPeriod(a)) return false;
     if (state.q) {
-      const hay = norm([a.title, a.summary, a.excerpt, source(a.source_id).name, ...(a.topics || []).map((t) => state.feed.topics[t]?.name)].join(" "));
+      const hay = norm([a.headline, a.title, a.summary, a.excerpt, source(a.source_id).name, ...(a.topics || []).map((t) => state.feed.topics[t]?.name)].join(" "));
       if (!norm(state.q).split(/\s+/).every((w) => hay.includes(w))) return false;
     }
     return true;
@@ -338,9 +348,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ? `<p class="sum">${esc(a.summary)}</p><p class="why"><b>Voor jou:</b> ${esc(firstSentence(a.personal_relevance))}</p>`
       : `<p class="raw">Nog niet uitgelegd. ${a.excerpt ? "Korte beschrijving (Engels): " + esc(a.excerpt) : "Open het artikel voor de link naar de bron."}</p>`;
     const status = enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`;
-    return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.title)}">
+    return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
       <div class="meta"><span class="src">${esc(s.name)}</span><span>${esc(fmtDate(a.published_at))}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${status}</div>
-      <h3>${esc(a.title)}</h3>
+      <h3>${esc(a.headline || a.title)}</h3>
       ${body}
       <div class="foot"><div class="tags">${(a.groups || []).slice(0, 2).map((g) => `<span class="tag">${esc(groupLabel(g))}</span>`).join("")}</div>${bars(a.relevance_score)}</div>
     </article>`;
@@ -354,7 +364,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (showTop && f.daily_top?.length) {
       const top = f.daily_top.map((id) => state.byId.get(id)).filter(Boolean);
       html += `<h2 class="sec"><span>Belangrijkst</span><span>${top.length} van ${f.articles.length}</span></h2><ol class="top5">${top.map((a, i) => `
-        <li><button type="button" data-id="${esc(a.id)}"><span class="rank">${i + 1}</span><span><span class="t">${esc(a.title)}</span><span class="m">${esc(source(a.source_id).name)} · ${esc(groupLabel(a.groups?.[0]))}</span></span>${bars(a.relevance_score)}</button></li>`).join("")}</ol>`;
+        <li><button type="button" data-id="${esc(a.id)}"><span class="rank">${i + 1}</span><span><span class="t">${esc(a.headline || a.title)}</span><span class="m">${esc(source(a.source_id).name)} · ${esc(groupLabel(a.groups?.[0]))}</span></span>${bars(a.relevance_score)}</button></li>`).join("")}</ol>`;
     }
     const heading = state.group === "all" ? "Alle artikelen" : groupLabel(state.group);
     html += `<h2 class="sec"><span>${esc(heading)}</span><span>${list.length} artikel${list.length === 1 ? "" : "en"}</span></h2>`;
@@ -396,8 +406,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       </div></div>
       <article class="full wrap">
         <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
+        ${a.format_version === 2 ? `
+        <h1>${esc(a.headline)}</h1>
+        <p class="orig">Origineel: ${esc(a.title)}</p>
+        ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
+        <div class="story">${(a.story || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>
+        ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
+        ${a.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
+        ${a.key_facts?.length ? `<details class="facts"><summary>Bronfeiten <span class="kind bron">Uit de bron</span></summary><ul>${a.key_facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>` : ""}
+        ` : `
         <h1>${esc(a.title)}</h1>
-        ${enriched ? `<p class="lead">${esc(a.summary)}</p>` : `<div class="callout"><p style="margin:0">Dit artikel is nog niet door AI uitgelegd. Er was geen API-sleutel of het artikel viel buiten de verwerkingslimiet.${a.excerpt ? ` Korte beschrijving (Engels, samengevat bij ophalen): <em>${esc(a.excerpt)}</em>` : ""}</p></div>`}
+        ${enriched ? `<p class="lead">${esc(a.summary)}</p>` : `<div class="callout"><p style="margin:0">Claude heeft dit artikel nog niet uitgelegd. Dat gebeurt meestal de volgende ochtend.${a.excerpt ? ` Korte beschrijving (Engels): <em>${esc(a.excerpt)}</em>` : ""}</p></div>`}
         ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
         ${block("Wat is er nieuw?", "bron", a.what_is_new)}
         ${block("Eenvoudig uitgelegd", "uitleg", a.simple_explanation)}
@@ -406,6 +425,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${block("Wat kun je ermee?", "idee", a.practical_application)}
         ${block("Probeer dit", "idee", a.experiment)}
         ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
+        `}
         <section class="block"><h2>Bron</h2><div class="source">
           <dl>
             <dt>Titel</dt><dd>${esc(a.title)}</dd>

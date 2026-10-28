@@ -43,14 +43,32 @@ def load_cached(article_id: str):
 
 
 def validate(data: dict, topic_ids: set) -> list:
-    """Geeft een lijst problemen; leeg = geldig."""
+    """Geeft een lijst problemen; leeg = geldig.
+
+    Twee formaten:
+      1 = losse secties (what_is_new, simple_explanation, ...), het oorspronkelijke formaat
+      2 = Nederlandse kop + doorlopend verhaal + bronfeiten (format_version: 2)
+    """
     problems = []
-    for f in ["summary", "what_is_new", "personal_relevance"]:
-        if not isinstance(data.get(f), str) or not data[f].strip():
-            problems.append(f"veld '{f}' ontbreekt")
-    for f in TEXT_FIELDS:
-        if f in data and data[f] is not None and not isinstance(data[f], str):
-            problems.append(f"veld '{f}' moet tekst zijn")
+    if data.get("format_version") == 2:
+        for f in ["headline", "summary", "personal_relevance", "experiment"]:
+            if not isinstance(data.get(f), str) or not data[f].strip():
+                problems.append(f"veld '{f}' ontbreekt")
+        if isinstance(data.get("headline"), str) and len(data["headline"]) > 90:
+            problems.append("headline is langer dan 90 tekens")
+        story = data.get("story")
+        if not isinstance(story, list) or not 2 <= len(story) <= 6 or not all(isinstance(x, str) and x.strip() for x in story):
+            problems.append("story moet een lijst van 2 tot 6 alinea's zijn")
+        facts = data.get("key_facts")
+        if not isinstance(facts, list) or not facts or not all(isinstance(x, str) and x.strip() for x in facts):
+            problems.append("key_facts moet een niet-lege lijst met feiten uit de bron zijn")
+    else:
+        for f in ["summary", "what_is_new", "personal_relevance"]:
+            if not isinstance(data.get(f), str) or not data[f].strip():
+                problems.append(f"veld '{f}' ontbreekt")
+        for f in TEXT_FIELDS:
+            if f in data and data[f] is not None and not isinstance(data[f], str):
+                problems.append(f"veld '{f}' moet tekst zijn")
     if data.get("availability_status") not in STATUSES:
         problems.append(f"ongeldige availability_status '{data.get('availability_status')}'")
     if not isinstance(data.get("limitations", []), list):
@@ -67,7 +85,8 @@ def validate(data: dict, topic_ids: set) -> list:
 
 def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
-                            "quality", "development_key", "exceptional", "date_note"]:
+                            "quality", "development_key", "exceptional", "date_note",
+                            "format_version", "headline", "story", "key_facts"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"

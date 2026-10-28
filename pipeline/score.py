@@ -76,7 +76,7 @@ def score_article(article: dict, config, now=None) -> dict:
     now = now or datetime.now(timezone.utc)
     topics = config.topics
     sc = config.scoring
-    text = f"{article['title']} {article.get('excerpt', '')} {article.get('summary', '')}"
+    text = f"{article['title']} {article.get('headline', '')} {article.get('excerpt', '')} {article.get('summary', '')}"
 
     excluded = match_keywords(text, config.excluded_topics)
     # Verrijkte artikelen hebben door AI gekozen onderwerpen; anders trefwoorden.

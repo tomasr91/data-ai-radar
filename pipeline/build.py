@@ -64,6 +64,7 @@ def _iso(dt):
 
 def reading_minutes(article):
     words = sum(len((article.get(f) or "").split()) for f in TEXT_FIELDS)
+    words += sum(len(x.split()) for x in article.get("story", []) + article.get("key_facts", []))
     words += sum(len(x.split()) for x in article.get("limitations", []))
     return max(1, math.ceil(words / 200)) if words else None
 
@@ -212,7 +213,8 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "what_is_new", "simple_explanation", "practical_example", "personal_relevance",
                  "practical_application", "experiment", "limitations", "availability_status",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
-                 "processing_status", "processed_by", "reading_minutes", "also_reported_by", "excerpt"]
+                 "processing_status", "processed_by", "reading_minutes", "also_reported_by", "excerpt",
+                 "format_version", "headline", "story", "key_facts"]
 
 
 def _public(a):

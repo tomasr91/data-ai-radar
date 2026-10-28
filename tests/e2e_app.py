@@ -101,8 +101,12 @@ with sync_playwright() as p:
     page.click(f'.card[data-id="{enriched["id"]}"]')
     page.wait_for_selector("#reader:not([hidden]) article.full")
     reader = page.locator("#reader").inner_text()
-    check("4. artikel opent", enriched["title"] in reader)
-    check("5. uitleg zichtbaar", all(s in reader for s in ["Wat is er nieuw?", "Eenvoudig uitgelegd", "Waarom is dit relevant voor jou?", "Wat kun je ermee?"]))
+    check("4. artikel opent", (enriched.get("headline") or enriched["title"]) in reader)
+    if enriched.get("format_version") == 2:
+        check("5. uitleg zichtbaar (nieuwe stijl)", enriched["story"][0][:40] in reader and "Probeer dit" in reader and "Bronfeiten" in reader
+              and enriched["title"] in reader)
+    else:
+        check("5. uitleg zichtbaar", all(s in reader for s in ["Wat is er nieuw?", "Eenvoudig uitgelegd", "Waarom is dit relevant voor jou?", "Wat kun je ermee?"]))
     check("5. bronvermelding met datum", "Gepubliceerd" in reader and "Opgehaald" in reader)
     hrefs = page.eval_on_selector_all("#reader a.btn", "els => els.map(e => [e.href, e.target, e.rel])")
     check("6. link naar origineel klopt en opent in nieuw tabblad", any(h[0] == enriched["url"] and h[1] == "_blank" for h in hrefs), str(hrefs))
@@ -116,7 +120,7 @@ with sync_playwright() as p:
     if raw:
         page.goto(url + "#a-" + raw["id"])
         page.wait_for_selector("#reader:not([hidden])")
-        check("   onverwerkt artikel is herkenbaar en heeft bronlink", "nog niet door AI uitgelegd" in page.locator("#reader").inner_text())
+        check("   onverwerkt artikel is herkenbaar en heeft bronlink", "nog niet uitgelegd" in page.locator("#reader").inner_text())
 
     # 7. Feedcontrole toont mislukte bronnen
     page.goto(url + "#feedcontrole")
