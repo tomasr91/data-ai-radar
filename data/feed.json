@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-28T20:12:07.621528Z",
- "mode": "snapshot",
- "mode_note": "Momentopname: echte artikelen, eenmalig opgehaald op 28 oktober 2026. Niet automatisch ververst. Korte beschrijvingen bij onverwerkte artikelen zijn bij het ophalen samengevat, niet letterlijk overgenomen.",
- "last_successful_update": "2026-10-28T19:40:00Z",
+ "generated_at": "2026-10-28T20:21:52.394625Z",
+ "mode": "live",
+ "mode_note": "Alle feeds zijn opgehaald.",
+ "last_successful_update": "2026-10-28T20:21:52.394625Z",
  "groups": [
   {
    "id": "dbt",
@@ -135,9 +135,9 @@
    "priority": 5,
    "fetch_method": "rss",
    "status": "ok",
-   "items": 29,
-   "message": "Releasepagina oktober 2026 gelezen; selectie van 29 van 85 items (veel connectoren en modelupdates weggelaten). Link per item wijst naar de officiële documentatie.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "items": 30,
+   "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
+   "checked_at": "2026-10-28T20:21:52.418970Z"
   },
   {
    "id": "dbt_release_notes",
@@ -147,10 +147,10 @@
    "trust_level": "high",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:52.729163Z"
   },
   {
    "id": "dbt_core_releases",
@@ -160,10 +160,10 @@
    "trust_level": "high",
    "priority": 4,
    "fetch_method": "github_releases",
-   "status": "not_fetched",
-   "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
+   "checked_at": "2026-10-28T20:21:52.729187Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -174,9 +174,9 @@
    "priority": 5,
    "fetch_method": "rss",
    "status": "ok",
-   "items": 12,
-   "message": "RSS-feed gelezen (12 items).",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "items": 25,
+   "message": "25 items via https://www.getdbt.com/blog/feed.xml",
+   "checked_at": "2026-10-28T20:21:53.503248Z"
   },
   {
    "id": "databricks_blog",
@@ -188,8 +188,8 @@
    "fetch_method": "rss",
    "status": "ok",
    "items": 10,
-   "message": "RSS-feed gelezen via databricks.com/de/feed (10 items, Engelstalig).",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "10 items via https://www.databricks.com/feed",
+   "checked_at": "2026-10-28T20:21:53.970186Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -199,10 +199,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "rss",
-   "status": "failed",
-   "items": 0,
-   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
+   "checked_at": "2026-10-28T20:21:54.094217Z"
   },
   {
    "id": "anthropic_engineering",
@@ -212,10 +212,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.247629Z"
   },
   {
    "id": "openai_developer_blog",
@@ -225,10 +225,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.247651Z"
   },
   {
    "id": "github_blog",
@@ -238,10 +238,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.247654Z"
   },
   {
    "id": "azure_blog",
@@ -251,10 +251,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "rss",
-   "status": "failed",
-   "items": 0,
-   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
+   "checked_at": "2026-10-28T20:21:54.247657Z"
   },
   {
    "id": "powerbi_blog",
@@ -264,10 +264,10 @@
    "trust_level": "medium",
    "priority": 3,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.523695Z"
   },
   {
    "id": "huggingface_blog",
@@ -277,10 +277,10 @@
    "trust_level": "medium",
    "priority": 3,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.523716Z"
   },
   {
    "id": "thoughtworks_radar",
@@ -290,10 +290,10 @@
    "trust_level": "medium",
    "priority": 3,
    "fetch_method": "manual",
-   "status": "not_fetched",
+   "status": "skipped",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Handmatige bron; wordt niet automatisch opgehaald.",
+   "checked_at": "2026-10-28T20:21:54.523719Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -303,10 +303,10 @@
    "trust_level": "medium",
    "priority": 3,
    "fetch_method": "rss",
-   "status": "failed",
-   "items": 0,
-   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://www.dataengineeringweekly.com/feed",
+   "checked_at": "2026-10-28T20:21:54.523722Z"
   },
   {
    "id": "joe_reis",
@@ -316,10 +316,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "ok",
-   "items": 5,
-   "message": "Recente posts via publicatieoverzicht; alleen relatieve datums, dus publicatiedatum onbekend.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "status": "not_supported",
+   "items": 0,
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.725502Z"
   },
   {
    "id": "simon_whiteley",
@@ -329,10 +329,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.725523Z"
   },
   {
    "id": "madison_mae",
@@ -342,10 +342,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.725526Z"
   },
   {
    "id": "hamel_husain",
@@ -355,10 +355,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.725528Z"
   },
   {
    "id": "chip_huyen",
@@ -368,10 +368,10 @@
    "trust_level": "medium",
    "priority": 5,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:54.725530Z"
   },
   {
    "id": "simon_willison",
@@ -382,9 +382,9 @@
    "priority": 4,
    "fetch_method": "atom",
    "status": "ok",
-   "items": 9,
-   "message": "Recente posts via feedoverzicht; datum uit de URL.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "items": 15,
+   "message": "15 items via https://simonwillison.net/atom/entries/",
+   "checked_at": "2026-10-28T20:21:54.725532Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -394,10 +394,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "html",
-   "status": "not_fetched",
+   "status": "not_supported",
    "items": 0,
-   "message": "Niet opgenomen in deze momentopname.",
-   "checked_at": "2026-10-28T19:40:00Z"
+   "message": "Geen feed bekend; pagina's verwerken zit niet in versie 1.",
+   "checked_at": "2026-10-28T20:21:55.414464Z"
   }
  ],
  "daily_top": [
@@ -544,7 +544,16 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-   "reading_minutes": 2
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+     "published_at": "2026-10-27T18:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ]
   },
   {
    "id": "d2e9b967064a",
@@ -631,7 +640,16 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-   "reading_minutes": 2
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+     "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+     "published_at": "2026-10-23T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ]
   },
   {
    "id": "059023edac5d",
@@ -1042,6 +1060,87 @@
    "reading_minutes": 2
   },
   {
+   "id": "ab89ef23d182",
+   "title": "Default OAuth apps for external AI agents are now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-27T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "databricks",
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.91,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "ChatGPT, Codex, Claude, Claude Code, and Cursor can now connect to Azure Databricks MCP servers, including the Genie One MCP server, using default OAuth client IDs. An account admin doesn't need to create an OAuth app. See Default OAuth client IDs ."
+  },
+  {
+   "id": "af716fbffd91",
+   "title": "AI Functions Unity Catalog permissions is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-27T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "databricks",
+    "ai_context",
+    "kwaliteit"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.91,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "AI Functions Unity Catalog permissions is now generally available . Metastore admins can use Unity Catalog permissions on the system.ai schema to control which task-specific AI Functions users in your organization can run. Contact your Databricks account team to enable this feature. See AI Functions Unity Catalog permissions ."
+  },
+  {
+   "id": "ab0dac727fdb",
+   "title": "Improved Lakeflow Performance Observability will soon be available by default for workspaces with the compliance security profile enabled",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#improved-lakeflow-performance-observability-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.87,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Starting on or after November 25, 2026, Improved Lakeflow Performance Observability will be available by default for eligible workspaces with the compliance security profile enabled. Lakeflow Jobs now show query performance metrics and insights at the job level for supported tasks. You can view job-level data volume metrics and use the Optimize button to open Genie Code to help improve queries with performance insights. Query profiling is supported for serverless compute, SQL Warehouses and Lakeflow Pipelines. See View query performance metrics for serverless jobs ."
+  },
+  {
    "id": "90ba3c46bbce",
    "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
    "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
@@ -1082,7 +1181,16 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-   "reading_minutes": 2
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+     "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+     "published_at": "2026-10-27T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ]
   },
   {
    "id": "60e7e131218f",
@@ -1325,6 +1433,33 @@
    "reading_minutes": 2
   },
   {
+   "id": "a99668f67edb",
+   "title": "Editing files in Unity Catalog volumes is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#editing-files-in-unity-catalog-volumes-is-now-generally-available",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-27T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 0.9,
+    "recency": 0.91,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "You can now edit files in Unity Catalog volumes directly in the workspace file editor, without downloading and uploading them again. Open a file from Catalog Explorer or from the schema browser in a notebook or the SQL editor. See Edit files in a volume ."
+  },
+  {
    "id": "40a0b2ec587e",
    "title": "Data Classification adds 50 new classes and support for 16 more countries and regions",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
@@ -1381,6 +1516,82 @@
      "reason": "zelfde ontwikkeling"
     }
    ]
+  },
+  {
+   "id": "0b4ae9670355",
+   "title": "How to Repoint dbt ETL Pipelines to Databricks",
+   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T18:53:48Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.34,
+    "source": 0.68,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "More teams are running their dbt transformations on Databricks Lakehouse: an open..."
+  },
+  {
+   "id": "f51c801481de",
+   "title": "QuickBooks connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.87,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "The managed QuickBooks connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest accounting data such as accounts, customers, vendors, items, invoices, bills, payments, and journal entries from QuickBooks Online into Azure Databricks. The connector uses OAuth user authorization and supports incremental ingestion with delete capture."
+  },
+  {
+   "id": "28418ea3b8c0",
+   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:01:00Z",
+   "fetched_at": "2026-10-28T20:21:53.503248Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "dbt",
+    "agents"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table."
   },
   {
    "id": "9bcb10a95345",
@@ -1487,6 +1698,206 @@
    "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens."
   },
   {
+   "id": "4fdc49511e68",
+   "title": "v2.0.0-dev.41-test-pypi",
+   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
+   "source_id": "dbt_core_releases",
+   "published_at": "2026-09-23T14:17:54Z",
+   "fetched_at": "2026-10-28T20:21:52.729187Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "dbt",
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.17,
+    "source": 0.8,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "2.0.0-dev.41 Released September 23, 2026 Features [Lake Compute] Read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, declaration-aware validation, and dbt debug attach parity. Existing fs catalogs.yml entries continue to use type: unity . Existing local Unity attach options in config.lakecompute must move to config.duckdb ; Lake Compute access is read-only and Unity model writes are unsupported. Fixes Fix modules.re functions silently dropping keyword arguments (flags=, maxsplit=, count=) ( #15508 ) Emit only changed columns in Databricks column-tag alter diffs ( #16246 ) Emit only changed keys in Databricks relation-tag SET TAGS diffs ( #16248 ) Implement TableRepr methods index_of_value_in_column and count_occurrences_of_value_in_column to fix Fusion panic in dbt_utils.get_query_results_as_dict() Copy config.group onto the top-level group for source and singular tests, matching dbt-core ( #15930 ) Make insert_gateway_label idempotent so gateway host resolution no-ops when the label is already present, instead of relying on a caller-side guard Set tags on operation nodes so on-run-start/on-run-end hooks are discoverable when running dbt-cor"
+  },
+  {
+   "id": "134e8ad85381",
+   "title": "PayPal connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#paypal-connector-is-available-in-beta",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-24T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.79,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "The managed PayPal connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest payments data such as transactions, disputes, invoices, balances, catalog products, and billing plans from PayPal into Azure Databricks. The connector uses OAuth client credentials and supports incremental ingestion."
+  },
+  {
+   "id": "f80dbb005bac",
+   "title": "Genie One enhancements",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.71,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of its response. See Navigate a long conversation . Upload skills (Public Preview) : You can now click Upload skills to upload your existing skill files and folders to your skills folder in the workspace. See Upload a skill . Snippets from external tool queries (Public Preview) : Genie Ontology now also extracts snippets from queries that external tools , such as dbt, run on Azure Databricks. These runs appear in query history alongside queries that you run in Azure Databricks. See Genie Ontology . Remembered sign-in email in the Genie mobile app (Public Preview) : The Genie mobile app now remembers the email address of the last user who signed in and prefills it at the next sign-in. See Use Genie on mobile ."
+  },
+  {
+   "id": "b4ac51ac1d12",
+   "title": "Microsoft Entra ID connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.71,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "The managed Microsoft Entra ID connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest Microsoft Entra ID users, groups, applications, service principals, directory roles, identity configuration, and audit and sign-in logs into Azure Databricks. The connector uses OAuth machine-to-machine authentication and supports incremental ingestion for audit and sign-in logs."
+  },
+  {
+   "id": "54cdadbfe115",
+   "title": "DataFrame caching on serverless compute is now in Public Preview",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/serverless#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.75,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute ."
+  },
+  {
+   "id": "f499e9381da5",
+   "title": "DataFrame caching on serverless compute is now in Public Preview",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.75,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute ."
+  },
+  {
+   "id": "7d1204c5d7d6",
+   "title": "Genie agentic capabilities are now processed in South Korea",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#genie-agentic-capabilities-are-now-processed-in-south-korea",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "databricks",
+    "agents"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.75,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Genie Code agentic capabilities, Genie Agents Agent mode, and chat in Genie One now process data within South Korea for workspaces in South Korea regions, without cross-Geo processing . For where each AI assistive feature processes data, see Databricks Designated Services ."
+  },
+  {
+   "id": "287dee9c1ac9",
+   "title": "Box Audit Logs managed ingestion connector (Beta)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#box-audit-logs-managed-ingestion-connector-beta",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 72,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.75,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "The Box Audit Logs connector in Lakeflow Connect is now available in Beta. Use the connector to ingest enterprise audit events from Box into Azure Databricks. See Box Audit Logs connector ."
+  },
+  {
    "id": "b9c31921875e",
    "title": "External writes to managed Delta tables are now generally available",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
@@ -1511,55 +1922,178 @@
    "decision": "included",
    "processing_status": "raw",
    "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables."
+  },
+  {
+   "id": "2f474ddb6a96",
+   "title": "What makes a catalog open? Unity Catalog Advances the Open Lakehouse",
+   "url": "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-19T21:20:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 70,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.64,
+    "source": 0.68,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "While almost every platform now supports open formats, what makes a catalog truly..."
+  },
+  {
+   "id": "9a1a77aea3de",
+   "title": "Running open-Jev in SQL on Databricks",
+   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-09-24T16:55:01Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 63,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.18,
+    "source": 0.68,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Over the weekend, “System One” decision models such as Jev have launched, which are..."
+  },
+  {
+   "id": "4255764d89d9",
+   "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
+   "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-05T20:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "databricks",
+    "agents"
+   ],
+   "relevance_score": 63,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.32,
+    "source": 0.68,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Vector search originated as a serving problem. The classical use case is a chatbot..."
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 63,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.33,
+    "source": 0.68,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "AbstractIFCO runs one of the world's largest reusable packaging pools with hundreds of millions of crates and pallets..."
   }
  ],
  "quality_report": {
-  "fetched_items": 65,
-  "unique_after_dedupe": 63,
-  "merged_duplicates": 2,
-  "shown": 26,
+  "fetched_items": 140,
+  "unique_after_dedupe": 157,
+  "merged_duplicates": 6,
+  "shown": 45,
   "decisions": {
-   "included": 26,
-   "below_threshold": 17,
-   "no_topic": 20
+   "included": 45,
+   "below_threshold": 47,
+   "no_topic": 64,
+   "excluded": 1
   },
   "processing": {
    "enriched": 21,
-   "raw": 5
+   "raw": 24
   },
   "without_date": 0,
   "per_group": {
    "ai_context": 7,
-   "dbt": 6,
-   "databricks": 9,
+   "dbt": 11,
+   "databricks": 23,
    "zorg": 1,
    "architectuur": 2,
    "kwaliteit": 1
   },
   "per_source": {
-   "dbt_labs_blog": 8,
+   "dbt_labs_blog": 9,
    "databricks_blog": 4,
-   "azure_databricks_release_notes": 14
+   "azure_databricks_release_notes": 26,
+   "databricks_engineering_blog": 5,
+   "dbt_core_releases": 1
   },
   "date_flags": [
    {
+    "source_id": "azure_databricks_release_notes",
+    "items": 7,
+    "from": "2026-10-21T00:00:00Z",
+    "to": "2026-10-21T00:00:00Z",
+    "message": "7 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+   },
+   {
     "source_id": "dbt_labs_blog",
-    "items": 12,
-    "from": "2026-10-27T18:20:00Z",
+    "items": 25,
+    "from": "2026-10-27T17:31:00Z",
     "to": "2026-10-27T20:10:00Z",
-    "message": "12 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+    "message": "25 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
    }
   ],
   "enrichment": {
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 22
+   "skipped_no_key": 71
   },
   "queue_size": 15,
   "invalid_enrichment": [],
   "threshold": 60,
   "not_shown": [
+   {
+    "title": "Google Analytics Aggregated connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#google-analytics-aggregated-connector-is-available-in-beta",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "funding_acquisitions"
+    ]
+   },
    {
     "title": "QuickBooks connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
@@ -1572,6 +2106,30 @@
     "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
+    "relevance_score": 58,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Databricks Runtime 19: October 26, 2026",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/runtime/19#databricks-runtime-19-october-26-2026",
+    "relevance_score": 58,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Improved Lakeflow Performance Observability is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#improved-lakeflow-performance-observability-is-now-generally-available",
+    "relevance_score": 58,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#files-api-30-for-unity-catalog-volumes-is-now-in-beta",
     "relevance_score": 58,
     "decision": "below_threshold",
     "excluded_by": []
@@ -1641,6 +2199,78 @@
     "excluded_by": []
    },
    {
+    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Charts worth stealing: the design calls BI should ship",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt without the warehouse (or the bill): DuckDB end to end",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "DataFrame caching on serverless compute is now in Public Preview",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/dataframe-cache",
@@ -1673,10 +2303,58 @@
     "excluded_by": []
    },
    {
+    "title": "Shared Serverless for Asset Bundles (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#shared-serverless-for-asset-bundles-beta",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Genie Code tasks in Lakeflow Jobs are available by default for workspaces with the compliance security profile enabled starting in November 2026",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#genie-code-tasks-in-lakeflow-jobs-are-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled-starting-in-november-2026",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "Real-time energy trading and analytics on Databricks",
     "source_id": "databricks_blog",
     "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
     "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "With great context comes great autonomy",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
+    "relevance_score": 52,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
+    "relevance_score": 52,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -1689,11 +2367,179 @@
     "excluded_by": []
    },
    {
+    "title": "v2.0.8",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.8",
+    "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt v1.13.0b1",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
+    "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt v1.12.6",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.12.6",
+    "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt v1.11.16",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.11.16",
+    "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Genie Ontology snippets will soon be generally available and enabled by default",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#genie-ontology-snippets-will-soon-be-generally-available-and-enabled-by-default",
+    "relevance_score": 49,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How our AI Research team uses AI Runtime",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/how-our-ai-research-team-uses-ai-runtime",
+    "relevance_score": 49,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+    "relevance_score": 46,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "Donating Agent Skills to the Agentic AI Foundation",
     "source_id": "simon_willison",
     "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
     "relevance_score": 46,
     "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How Databricks rolls out frontier models to 12,000 employees on Day 1",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1",
+    "relevance_score": 45,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Dashboard enhancements",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#dashboard-enhancements",
+    "relevance_score": 44,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "v2.0.2",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.2",
+    "relevance_score": 44,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How I built agent-based security reviews on Databricks",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/how-i-built-agent-based-security-reviews-databricks",
+    "relevance_score": 44,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Set Budgets and Alerts for Cloud Data Warehouse Costs",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/set-budgets-and-alerts-cloud-data-warehouse-costs",
+    "relevance_score": 41,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Serverless GPU in clean rooms will soon be on by default for accounts where it's turned off",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#serverless-gpu-in-clean-rooms-will-soon-be-on-by-default-for-accounts-where-its-turned-off",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Serverless GPU for clean room notebooks is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#serverless-gpu-for-clean-room-notebooks-is-now-generally-available",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "OpenAI GPT-6.1 Terra is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#openai-gpt-61-terra-is-now-available-on-unity-gateway",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Unity Gateway Usage Dashboard v1.0",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#unity-gateway-usage-dashboard-v10",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Unity Gateway Usage Dashboard v1.0",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#unity-gateway-usage-dashboard-v10",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "OpenAI GPT-6.1 Terra is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#openai-gpt-61-terra-is-now-available-on-unity-gateway",
+    "relevance_score": 31,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Account-level security features are now available by default at GA",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#account-level-security-features-are-now-available-by-default-at-ga",
+    "relevance_score": 30,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "How Guitar Center rebuilt its data platform on trust",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/guitar-center-data-pltform-trust-costs",
+    "relevance_score": 30,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Voice Agents are here. Context turns them into real customer value.",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/voice-agents-are-here-context-turns-them-real-customer-value",
+    "relevance_score": 30,
+    "decision": "no_topic",
     "excluded_by": []
    },
    {
@@ -1705,154 +2551,18 @@
     "excluded_by": []
    },
    {
+    "title": "Serverless job environments from pyproject.toml (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#serverless-job-environments-from-pyprojecttoml-beta",
+    "relevance_score": 28,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
     "title": "GitHub Octoverse 2026",
     "source_id": "simon_willison",
     "url": "https://simonwillison.net/2026/Oct/28/github-octoverse-2026/",
     "relevance_score": 28,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "The October inflection point for vibe game development",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/28/vibe-game-development/",
-    "relevance_score": 28,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Game Boy Color on My Conference Badge",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/27/game-boy-color-on-my-conference-badge/",
-    "relevance_score": 27,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "GPT-6.1 Terra",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/26/gpt-61-terra/",
-    "relevance_score": 27,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "DeepSeek V4.1 Flash is scheduled for retirement",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/machine-learning/retired-models-policy#retired",
-    "relevance_score": 26,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Introducing Kimi K3.1 Pro",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
-    "relevance_score": 25,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Unity Gateway Skills API and developer tools are available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/ai-gateway/skill-reference",
-    "relevance_score": 24,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Knowledge Assistant and Supervisor Agent are now legacy",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/legacy/",
-    "relevance_score": 24,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/20/battledrones/",
-    "relevance_score": 23,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "My obituary for programming",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/",
-    "relevance_score": 23,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "`ai_parse_document` now extracts chart data as JSON",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
-    "relevance_score": 22,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "sparqlite: SPARQL 1.1 inside SQLite, written in Rust",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Oct/16/sqlite-sparql-rust/",
-    "relevance_score": 22,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Standard `ai_extract` now delivers higher-quality extraction",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract",
-    "relevance_score": 21,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Cross-engine attribute-based access controls (ABAC) is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/cross-engine-abac",
-    "relevance_score": 21,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Summit Snooze Button: Practical Data Summit is Postponed",
-    "source_id": "joe_reis",
-    "url": "https://joereis.substack.com/p/summit-snooze-button-practical-data",
-    "relevance_score": 20,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "The Ghost of Watson Past: Why Enterprise AI Hype Still Eats Startups Alive",
-    "source_id": "joe_reis",
-    "url": "https://joereis.substack.com/p/the-ghost-of-watson-past-why-enterprise",
-    "relevance_score": 20,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "Build a Career That Looks Like You",
-    "source_id": "joe_reis",
-    "url": "https://joereis.substack.com/p/build-a-career-that-looks-like-you",
-    "relevance_score": 20,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "The Practical Data Summit site is live!",
-    "source_id": "joe_reis",
-    "url": "https://joereis.substack.com/p/the-practical-data-summit-site-is",
-    "relevance_score": 20,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "The Pendulums of Data",
-    "source_id": "joe_reis",
-    "url": "https://joereis.substack.com/p/the-pendulums-of-data",
-    "relevance_score": 20,
     "decision": "no_topic",
     "excluded_by": []
    }
