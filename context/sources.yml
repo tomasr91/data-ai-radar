@@ -61,7 +61,7 @@ sources:
     trust_level: high
     language: en
     fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Belangrijk voor breaking changes. Feed niet gecontroleerd."}
+    verification: {status: verified, checked_on: "2026-10-28", note: "Belangrijk voor breaking changes. Geen eigen feed gevonden; de docs-site verwijst alleen naar de feed van de developer blog."}
 
   - id: dbt_core_releases
     name: dbt-core releases (GitHub)
@@ -144,15 +144,15 @@ sources:
   - id: github_blog
     name: GitHub Blog
     url: https://github.blog/
-    feed_url: null
+    feed_url: https://github.blog/feed/
     type: vendor_blog
     topics: [cicd_data_deployment, new_ai_models_tools]
     priority: 4
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Ook coding agents. CI/CD draait op Azure DevOps, dus GitHub Actions-nieuws is minder direct toepasbaar. Feed niet gecontroleerd; voor productwijzigingen bestaat ook https://github.blog/changelog/."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Ook coding agents; CI/CD draait op Azure DevOps."}
 
   - id: azure_blog
     name: Microsoft Azure Blog
@@ -170,28 +170,28 @@ sources:
   - id: powerbi_blog
     name: Microsoft Power BI Blog
     url: https://powerbi.microsoft.com/en-us/blog/
-    feed_url: null
+    feed_url: https://powerbi.microsoft.com/en-us/blog/feed
     type: vendor_blog
     topics: [powerbi_semantic_models]
     priority: 3
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Maandelijkse feature summaries. Feed niet gecontroleerd."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Maandelijkse feature summaries."}
 
   - id: huggingface_blog
     name: Hugging Face Blog
     url: https://huggingface.co/blog
-    feed_url: null
+    feed_url: https://huggingface.co/blog/feed.xml
     type: vendor_blog
     topics: [open_source_ai, ai_agents_rag]
     priority: 3
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: user_supplied, checked_on: null, note: "Ook modellen en embeddings. Adres en feed niet zelf teruggevonden."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026)."}
 
   # ===== Technologie-radars en onafhankelijk nieuws =====
 
@@ -237,17 +237,17 @@ sources:
     verification: {status: verified, checked_on: "2026-10-28", note: "Substack; feed niet gecontroleerd."}
 
   - id: simon_whiteley
-    name: Simon Whiteley
+    name: Advancing Analytics (o.a. Simon Whiteley)
     url: https://www.advancinganalytics.co.uk/blog/author/simon-whiteley
-    feed_url: null
+    feed_url: https://www.advancinganalytics.co.uk/blog/rss.xml
     type: expert_blog
     topics: [databricks_data_engineering, sql_spark_sql, ai_agents_rag]
     priority: 5
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: user_supplied, checked_on: null, note: "Auteur en bedrijf (Advancing Analytics) gevonden; de auteurspagina zelf niet teruggevonden."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Dit is de bedrijfsblog van Advancing Analytics: ook artikelen van andere auteurs."}
 
   - id: madison_mae
     name: Madison Mae (Learn Analytics Engineering)
@@ -265,28 +265,28 @@ sources:
   - id: hamel_husain
     name: Hamel Husain
     url: https://hamel.dev/blog/
-    feed_url: null
+    feed_url: https://hamel.dev/index.xml
     type: expert_blog
     topics: [ai_agents_rag, ai_context_engineering]
     priority: 5
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: user_supplied, checked_on: null, note: "Vooral AI-evaluatie. Domein hamel.dev bevestigd; pad /blog/ niet."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Vooral AI-evaluatie."}
 
   - id: chip_huyen
     name: Chip Huyen
     url: https://huyenchip.com/blog/
-    feed_url: null
+    feed_url: https://huyenchip.com/feed.xml
     type: expert_blog
     topics: [ai_agents_rag, ai_context_engineering, open_source_ai]
     priority: 5
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: user_supplied, checked_on: null, note: "Ook ML-systemen. Domein huyenchip.com bevestigd; pad /blog/ niet."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Publiceert zelden; laatste item januari 2025."}
 
   - id: simon_willison
     name: Simon Willison
@@ -304,12 +304,12 @@ sources:
   - id: dbt_developer_blog
     name: dbt Developer Blog
     url: https://docs.getdbt.com/blog
-    feed_url: null
+    feed_url: https://docs.getdbt.com/blog/rss.xml
     type: technical_article
     topics: [dbt_analytics_engineering, data_architecture_modeling, cicd_data_deployment]
     priority: 4
     enabled: true
     trust_level: medium
     language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Feed niet gecontroleerd."}
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026)."}
