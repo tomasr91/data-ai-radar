@@ -113,6 +113,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
 
     # Laag 2: normaliseren, verrijking uit cache, ontdubbelen
     items = update_archive(result.items, now) if provider_name == "feeds" else result.items
+    # Alleen artikelen van bronnen die (nog) in sources.yml staan en aan staan
+    active = {s["id"] for s in conf.source_list if s.get("enabled")}
+    items = [i for i in items if i.get("source_id") in active]
     invalid_cache = []
     arts = []
     for raw in items:

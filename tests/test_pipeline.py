@@ -271,6 +271,14 @@ class TestBuild(unittest.TestCase):
         queue = json.loads((cfg.DATA / "to_enrich.json").read_text())
         self.assertEqual(queue["items"], [], "overgeslagen artikel komt niet terug")
 
+    def test_removed_source_disappears_from_feed(self):
+        items = [raw("dbt_labs_blog", "dbt tests for data quality and lineage", "https://example.org/1",
+                     excerpt="dbt tests, data lineage, semantic layer"),
+                 raw("verwijderde_bron", "dbt tests and data lineage elsewhere", "https://example.org/2",
+                     excerpt="dbt tests, data lineage, semantic layer")]
+        feed = build_mod.build("feeds", self.out, provider_fn=self._provider(items), now=NOW)
+        self.assertEqual({a["source_id"] for a in feed["articles"]}, {"dbt_labs_blog"})
+
     def test_failed_fetch_keeps_previous_feed(self):
         self.out.write_text(json.dumps({"mode": "live", "articles": [{"id": "x"}], "sources": []}))
         failing = lambda c: ProviderResult(items=[], source_results=[], mode="failed", note="offline")

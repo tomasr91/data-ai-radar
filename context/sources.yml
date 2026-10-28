@@ -50,19 +50,6 @@ sources:
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Azure bevestigd als gebruikte cloud."}
 
-  - id: dbt_release_notes
-    name: dbt release notes
-    url: https://docs.getdbt.com/docs/dbt-versions/release-notes
-    feed_url: null
-    type: official_docs
-    topics: [dbt_analytics_engineering, cicd_data_deployment]
-    priority: 5
-    enabled: true
-    trust_level: high
-    language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Belangrijk voor breaking changes. Geen eigen feed gevonden; de docs-site verwijst alleen naar de feed van de developer blog."}
-
   - id: dbt_core_releases
     name: dbt-core releases (GitHub)
     url: https://github.com/dbt-labs/dbt-core/releases
@@ -114,32 +101,6 @@ sources:
     language: en
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Overlapt met databricks_blog; deduplicatie op URL nodig."}
-
-  - id: anthropic_engineering
-    name: Anthropic Engineering
-    url: https://www.anthropic.com/engineering
-    feed_url: null
-    type: vendor_blog
-    topics: [ai_context_engineering, ai_agents_rag]
-    priority: 5
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Geen feed gevonden."}
-
-  - id: openai_developer_blog
-    name: OpenAI Developer Blog
-    url: https://developers.openai.com/blog
-    feed_url: null
-    type: vendor_blog
-    topics: [ai_agents_rag, ai_context_engineering, new_ai_models_tools]
-    priority: 4
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Ook over evaluaties. Feed niet gecontroleerd."}
 
   - id: github_blog
     name: GitHub Blog
@@ -195,19 +156,6 @@ sources:
 
   # ===== Technologie-radars en onafhankelijk nieuws =====
 
-  - id: thoughtworks_radar
-    name: Thoughtworks Technology Radar
-    url: https://www.thoughtworks.com/radar
-    feed_url: null
-    type: independent_news
-    topics: [data_architecture_modeling, ai_agents_rag, general_ai_trends]
-    priority: 3
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: manual
-    verification: {status: user_supplied, checked_on: null, note: "Radarsectie op thoughtworks.com bestaat; exacte pagina niet teruggevonden. Verschijnt ongeveer twee keer per jaar, dus handmatig volgen."}
-
   - id: data_engineering_weekly
     name: Data Engineering Weekly
     url: https://www.dataengineeringweekly.com
@@ -223,19 +171,6 @@ sources:
 
   # ===== Vakmensen: duiding, praktijkervaring en ideeën =====
 
-  - id: joe_reis
-    name: Joe Reis
-    url: https://joereis.substack.com/
-    feed_url: null
-    type: expert_blog
-    topics: [data_architecture_modeling, databricks_data_engineering, ai_on_data_platform]
-    priority: 5
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Substack; feed niet gecontroleerd."}
-
   - id: simon_whiteley
     name: Advancing Analytics (o.a. Simon Whiteley)
     url: https://www.advancinganalytics.co.uk/blog/author/simon-whiteley
@@ -248,19 +183,6 @@ sources:
     language: en
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Dit is de bedrijfsblog van Advancing Analytics: ook artikelen van andere auteurs."}
-
-  - id: madison_mae
-    name: Madison Mae (Learn Analytics Engineering)
-    url: https://learnanalyticsengineering.substack.com/
-    feed_url: null
-    type: expert_blog
-    topics: [dbt_analytics_engineering, sql_spark_sql, data_architecture_modeling]
-    priority: 5
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: html
-    verification: {status: verified, checked_on: "2026-10-28", note: "Substack; feed niet gecontroleerd."}
 
   - id: hamel_husain
     name: Hamel Husain
