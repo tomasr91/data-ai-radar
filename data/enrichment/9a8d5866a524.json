@@ -1,0 +1,36 @@
+{
+  "summary": "Databricks heeft geheugenpipelines voor AI-agents in bèta. Een taalmodel haalt blijvende feiten, voorkeuren en besluiten uit gesprekken en slaat die op.",
+  "what_is_new": "Sinds 12 oktober 2026 zijn agent memory pipelines in bèta. Een geheugenpipeline koppelt een opslag van gesprekken aan een geheugenopslag. Een LLM haalt blijvende feiten, voorkeuren en besluiten uit gesprekken, op aanvraag of ongeveer elke 24 uur.",
+  "simple_explanation": "Een agent vergeet normaal alles zodra het gesprek klaar is. Deze pipeline werkt als een secretaris die na afloop de notulen doorleest en de belangrijke afspraken in een schrift zet, zodat de agent ze de volgende keer weer weet.",
+  "practical_example": "Een data-assistent voor collega's onthoudt dat Financiën met 'omzet' altijd het bedrag zonder btw bedoelt.",
+  "personal_relevance": "Geheugen is een vorm van context, dus dit hoort bij je AI-contextlaag. Maar in de zorg is een systeem dat zelf dingen uit gesprekken opslaat ook een privacyvraag: wat wordt onthouden en wie ziet dat?",
+  "practical_application": "Nuttig om te begrijpen hoe context in de tijd kan groeien. Maak eerst afspraken over wat bewaard mag worden voordat je het met echte gesprekken gebruikt.",
+  "experiment": "Voer een paar gesprekken met verzonnen, niet-gevoelige vragen over je datamodel en bekijk welke 'feiten' de pipeline opslaat. Klopt het, en zou je dit willen bewaren?",
+  "limitations": [
+    "Bèta.",
+    "Een taalmodel bepaalt wat 'blijvend' is; dat kan fout gaan of te veel opslaan.",
+    "Gesprekken kunnen persoonsgegevens bevatten. Dat vraagt een privacyafweging."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Agent memory pipelines",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "data_governance_privacy"
+  ],
+  "quality": {
+    "depth": 0.45,
+    "practicality": 0.5,
+    "novelty": 0.75
+  },
+  "article_id": "9a8d5866a524",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

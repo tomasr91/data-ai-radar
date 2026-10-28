@@ -1,0 +1,36 @@
+{
+  "summary": "Databricks laat zien hoe je de nauwkeurigheid van documentextractie stap voor stap meet en verbetert. De kern: prompts en schema's versioneren en elke wijziging toetsen tegen een vaste set door mensen gecontroleerde antwoorden.",
+  "what_is_new": "Het team haalde ongeveer 40 velden uit order-pdf's met tientallen lay-outs, met ai_extract. Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate, en getoetst op een vaste testset met een vooraf gemeten ruisniveau. Alles samen gaf 32% minder fouten. Een verbetering op één veld kon elders schade doen: een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal.",
+  "simple_explanation": "Zonder meten weet je niet of een aanpassing helpt. Het is als koken voor een jury: je verandert één ingrediënt en laat dezelfde jury dezelfde gerechten opnieuw proeven. Pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
+  "practical_example": "Je laat AI velden uit pdf-formulieren halen, zoals datum, afdeling en soort aanvraag. Je houdt 50 formulieren met door een mens gecontroleerde antwoorden apart, en elke promptwijziging moet daarop beter scoren voordat hij live gaat.",
+  "personal_relevance": "Dit is evaluatie (evals) in de praktijk, met functies binnen Databricks die met werkdata mogen. Het principe 'vaste testset, eerst meten' geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag.",
+  "practical_application": "Leg voor elke AI-toepassing een kleine vaste testset aan, en meet elke wijziging daartegen.",
+  "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
+  "limitations": [
+    "Resultaten uit één project.",
+    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
+    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "ai_extract (documentatie)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "data_quality_observability",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.75,
+    "novelty": 0.7
+  },
+  "article_id": "e7bf67f656d3",
+  "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

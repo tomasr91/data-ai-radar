@@ -1,0 +1,31 @@
+{
+  "summary": "Databricks liet AI-agents dezelfde pipelines bouwen in twee stijlen: declaratief en procedureel. De declaratieve versies kostten veel minder rekentijd en code, maar meer tokens. Stille logische fouten kwamen in beide stijlen ongeveer even vaak voor.",
+  "what_is_new": "In 528 builds (22 taken x 12 datasets x 2 aanpakken, met Opus 4.8) was de gemeten clustertijd bij Spark Declarative Pipelines ongeveer 34x lager (17 tegen 596 executor-seconden), en de code ongeveer half zo lang (mediaan 64 tegen 131 regels). Declaratief gebruikte ongeveer 2,3x meer LLM-tokens. Stille logische fouten: 32,2% declaratief, 27,7% procedureel. Een dry run vangt structurele fouten vooraf af, maar geen logische fouten.",
+  "simple_explanation": "Procedureel is een recept stap voor stap: pak de pan, doe er olie in, bak de ui. Declaratief is zeggen wat je wilt eten, en de keuken bepaalt de volgorde. Voor een AI is het tweede minder werk om op te schrijven, en de keuken kan vooraf controleren of alle ingrediënten er zijn.",
+  "practical_example": "Een agent schrijft een Gold-tabel als @dp.materialized_view, in plaats van zelf te lezen, te koppelen en weg te schrijven. Spark bepaalt de volgorde en controleert vooraf of alle kolommen bestaan.",
+  "personal_relevance": "dbt is ook declaratief: je beschrijft modellen, dbt bepaalt de volgorde. De les geldt dus ook voor jou: laat AI liever declaratieve code schrijven, en blijf testen, want bijna een derde van de builds had stille logische fouten.",
+  "practical_application": "Laat je AI dbt-modellen genereren, houd de modellen dan klein en declaratief, en laat je dbt-tests het werk doen dat de dry run hier doet.",
+  "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
+  "limitations": [
+    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
+    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
+    "Meer tokens betekent hogere AI-kosten per build."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [],
+  "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "data_architecture_modeling"
+  ],
+  "quality": {
+    "depth": 0.85,
+    "practicality": 0.75,
+    "novelty": 0.8
+  },
+  "article_id": "450468c3f304",
+  "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

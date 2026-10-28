@@ -1,0 +1,36 @@
+{
+  "summary": "Unity Catalog kan beheerde tags nu automatisch doorgeven aan tabellen die van een getagde tabel zijn afgeleid. Het gebruikt daarvoor de herkomst van data (lineage). De functie is in bèta.",
+  "what_is_new": "Sinds 12 oktober 2026 is governed tag propagation in bèta. Zet je het aan voor een beheerde tag, dan past Unity Catalog die tag via lineage toe op afgeleide tabellen en views, bij ondersteunde bewerkingen zoals CREATE TABLE AS SELECT en MERGE.",
+  "simple_explanation": "Je plakt een sticker 'breekbaar' op een doos. Pak je de spullen over in een nieuwe doos, dan ben je de sticker meestal kwijt. Tag-propagatie plakt de sticker automatisch op de nieuwe doos, omdat het systeem weet waar de spullen vandaan komen.",
+  "practical_example": "Je tagt een Bronze-tabel als 'bevat persoonsgegevens'. Een Silver-tabel die via MERGE uit die tabel wordt gevuld, krijgt dezelfde tag zonder dat iemand eraan hoeft te denken.",
+  "personal_relevance": "In de zorg wil je dat gevoeligheidslabels meereizen van Bronze naar Gold. Dit sluit direct aan op je project rond metadata en lineage, en op privacy en toegangsrechten.",
+  "practical_application": "Gebruik propagatie voor één gevoeligheidstag, zodat toegangsregels en maskering in Silver en Gold niet vergeten worden.",
+  "experiment": "Maak in een testschema een tabel met synthetische data, zet propagatie aan voor een beheerde tag en bouw er met dbt een afgeleid model op. Kijk of de tag verschijnt, en bij welke dbt-materialisaties wel en niet.",
+  "limitations": [
+    "Bèta: het gedrag kan nog veranderen. Niet zomaar in productie gebruiken.",
+    "Werkt alleen bij ondersteunde bewerkingen. Of elke dbt-materialisatie (views, incrementele modellen) wordt gedekt, moet je testen.",
+    "Automatisch doorgeven kan ook te veel taggen. Controleer of een afgeleide tabel echt nog gevoelige kolommen bevat."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Governed tag propagation",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation"
+    }
+  ],
+  "topics": [
+    "metadata_lineage_catalogs",
+    "data_governance_privacy",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.85,
+    "novelty": 0.85
+  },
+  "article_id": "5c55fd31fe97",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

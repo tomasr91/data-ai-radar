@@ -1,0 +1,36 @@
+{
+  "summary": "Genie Code CLI is een AI-codeerhulp in de terminal voor data- en AI-werk op Databricks. Hij zoekt zelf data op en kan assets bouwen en uitrollen. Dit is in bèta.",
+  "what_is_new": "Sinds 6 oktober 2026 is Genie Code CLI in bèta: een codeeragent in de terminal voor data- en AI-werk. Hij gebruikt de Databricks CLI om data te ontdekken en assets te bouwen en uit te rollen. Modeltoegang loopt via Unity Gateway.",
+  "simple_explanation": "Een assistent die naast je in de terminal zit. Je vraagt 'maak een pipeline die deze tabel opschoont', en hij zoekt zelf uit welke tabellen er zijn, schrijft code en kan die uitrollen. Omdat het via Unity Gateway gaat, gelden dezelfde rechten en regels als voor andere AI in je workspace.",
+  "practical_example": "Je vraagt de CLI om alle Silver-tabellen zonder beschrijving te zoeken en voor elk een conceptbeschrijving te maken op basis van de kolommen.",
+  "personal_relevance": "Je eigen generatorscripts maken het skelet van dbt-modellen. Een agent die binnen Databricks de catalogus leest, kan daar beschrijvingen en tests aan toevoegen. En omdat het AI binnen Databricks is, mag het met werkdata.",
+  "practical_application": "Gebruik hem als hulp bij documentatie en verkennen, niet als vervanging van je dbt-ontwikkelstraat.",
+  "experiment": "Laat de CLI voor vijf Silver-tabellen conceptbeschrijvingen maken. Beoordeel ze zelf: hoeveel zou je zonder aanpassing in je dbt-YAML zetten?",
+  "limitations": [
+    "Bèta.",
+    "Hij bouwt Databricks-assets. Of hij goed samenwerkt met een dbt-project in Azure DevOps, staat er niet bij.",
+    "Een agent die mag uitrollen heeft rechten nodig. Houd hem buiten productie."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Genie Code CLI",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.45,
+    "practicality": 0.75,
+    "novelty": 0.7
+  },
+  "article_id": "fb2b82785032",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

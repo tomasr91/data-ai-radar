@@ -1,0 +1,35 @@
+{
+  "summary": "Metric views in Unity Catalog ondersteunen nu vensterberekeningen, zoals voortschrijdende gemiddelden en lopende totalen. Dit is algemeen beschikbaar.",
+  "what_is_new": "Sinds 6 oktober 2026 zijn window measures in metric views GA. Ze definiëren rollende, cumulatieve of semi-additieve aggregaties, zoals voortschrijdende gemiddelden en lopende totalen.",
+  "simple_explanation": "In een metric view leg je één keer vast hoe je een getal berekent, zodat iedereen hetzelfde antwoord krijgt. Een vensterberekening kijkt naar een stukje tijd, zoals 'het gemiddelde van de laatste 7 dagen'. Semi-additief betekent: je mag het niet zomaar optellen over tijd, zoals een voorraad op één moment.",
+  "practical_example": "Bedbezetting per afdeling is semi-additief: de bezetting van maandag en dinsdag optellen zegt niets. Met een window measure leg je vast dat je per periode bijvoorbeeld het gemiddelde of de laatste stand neemt.",
+  "personal_relevance": "Zulke lastige maatstaven staan nu vaak in DAX in Power BI. Leg je ze vast in de catalogus, dan kunnen ook AI-toepassingen en andere tools dezelfde definitie gebruiken. Eenduidige definities zijn precies de context die AI nodig heeft.",
+  "practical_application": "Kies één maatstaf die nu alleen in een Power BI-model bestaat en leg hem vast als metric view.",
+  "experiment": "Bouw een metric view met een voortschrijdend 7-dagengemiddelde op een openbare of synthetische dataset, en vergelijk de uitkomst met dezelfde berekening in DAX.",
+  "limitations": [
+    "Definities op twee plekken (DAX en metric views) kunnen uit elkaar lopen. Kies per maatstaf één bron.",
+    "Hoe Power BI metric views direct gebruikt, staat niet in deze release note."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Window measures in metric views",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures"
+    }
+  ],
+  "topics": [
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "powerbi_semantic_models"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.8,
+    "novelty": 0.65
+  },
+  "article_id": "60e7e131218f",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

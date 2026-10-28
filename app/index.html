@@ -1,0 +1,503 @@
+<title>Data &amp; AI Radar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: één leeskolom van max. 680px, kleverige kop met filters, artikel opent als volledig scherm. */
+:root {
+  --bg: #f3f4f1;
+  --surface: #ffffff;
+  --ink: #161b22;
+  --muted: #5b6370;
+  --line: #dfe2e6;
+  --accent: #2b45c2;
+  --accent-soft: #e6eafb;
+  --signal: #b8700c;
+  --signal-off: #d9dde3;
+  --ok: #1f7a4d; --ok-soft: #e3f3ea;
+  --warn: #9a6200; --warn-soft: #fbf0d9;
+  --bad: #b3261e; --bad-soft: #fbe5e3;
+  --info: #3f4a5a; --info-soft: #eceef2;
+  --f-display: "Bricolage Grotesque", "Segoe UI", Roboto, system-ui, sans-serif;
+  --f-read: "Literata", Georgia, "Times New Roman", serif;
+  --f-meta: "IBM Plex Mono", ui-monospace, "Roboto Mono", monospace;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1217; --surface: #171b22; --ink: #e7eaf0; --muted: #9aa3b2; --line: #2a303a;
+    --accent: #9badff; --accent-soft: #232b4a; --signal: #f0b04a; --signal-off: #333a46;
+    --ok: #6fd3a0; --ok-soft: #173326; --warn: #f0c060; --warn-soft: #3a2f16;
+    --bad: #ff9a90; --bad-soft: #3d1d1b; --info: #c3cad6; --info-soft: #252b35;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1217; --surface: #171b22; --ink: #e7eaf0; --muted: #9aa3b2; --line: #2a303a;
+  --accent: #9badff; --accent-soft: #232b4a; --signal: #f0b04a; --signal-off: #333a46;
+  --ok: #6fd3a0; --ok-soft: #173326; --warn: #f0c060; --warn-soft: #3a2f16;
+  --bad: #ff9a90; --bad-soft: #3d1d1b; --info: #c3cad6; --info-soft: #252b35;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-display); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Kop */
+header.top { background: var(--bg); }
+.filters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: 8px; }
+.brand { display: flex; align-items: center; gap: 12px; padding-block: 14px 10px; }
+.mark { width: 34px; height: 34px; flex: none; }
+.brand h1 { margin: 0; font-size: 1.32rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.1; }
+.brand p { margin: 2px 0 0; font-size: 0.82rem; color: var(--muted); }
+.brand .grow { flex: 1; min-width: 0; }
+.icon-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; cursor: pointer; flex: none; }
+.icon-btn svg { width: 19px; height: 19px; }
+.search { display: flex; gap: 8px; padding-bottom: 10px; }
+.search input { flex: 1; min-width: 0; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 0 14px; font: inherit; font-size: 1rem; }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; scroll-padding-inline: 16px; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 0.88rem; font-weight: 500; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.chip .n { font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .7; }
+.controls { display: flex; gap: 8px; justify-content: space-between; padding-bottom: 10px; flex-wrap: wrap; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; padding: 6px 11px; font-size: 0.8rem; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
+
+/* Status van de feed */
+.status { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 6px; padding: 12px 14px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); font-size: 0.86rem; color: var(--muted); }
+.status strong { color: var(--ink); font-weight: 650; }
+.status .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex: none; }
+.status a { white-space: nowrap; }
+
+/* Lijsten */
+main { padding-bottom: 64px; }
+h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin: 26px 0 10px; display: flex; justify-content: space-between; gap: 8px; }
+.top5 { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.top5 li + li { border-top: 1px solid var(--line); }
+.top5 button { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: start; width: 100%; text-align: left; background: none; border: 0; padding: 13px 14px; cursor: pointer; }
+.top5 .rank { font-family: var(--f-meta); font-size: 0.8rem; color: var(--signal); padding-top: 2px; }
+.top5 .t { display: block; font-weight: 650; font-size: 0.98rem; line-height: 1.3; text-wrap: balance; }
+.top5 .m { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+.cards { display: grid; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 15px 15px 13px; cursor: pointer; display: grid; gap: 8px; min-width: 0; }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); align-items: center; }
+.meta .src { color: var(--ink); font-weight: 500; }
+.card h3 { margin: 0; font-size: 1.12rem; line-height: 1.28; font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: anywhere; }
+.card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
+.card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.card .why b { color: var(--accent); font-weight: 650; }
+.card .raw { margin: 0; font-size: 0.84rem; color: var(--muted); font-style: italic; font-family: var(--f-read); }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 0.74rem; padding: 3px 8px; border-radius: 6px; background: var(--info-soft); color: var(--info); }
+.pill { font-family: var(--f-meta); font-size: 0.68rem; padding: 2px 7px; border-radius: 999px; text-transform: lowercase; }
+.pill.beschikbaar { background: var(--ok-soft); color: var(--ok); }
+.pill.preview, .pill.experimenteel { background: var(--warn-soft); color: var(--warn); }
+.pill.aangekondigd, .pill.onbekend { background: var(--info-soft); color: var(--info); }
+.pill.rawp { background: var(--info-soft); color: var(--muted); }
+.signal { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); }
+.bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
+.bars i { width: 4px; border-radius: 1px; background: var(--signal-off); }
+.bars i:nth-child(1) { height: 5px; } .bars i:nth-child(2) { height: 7px; } .bars i:nth-child(3) { height: 9px; } .bars i:nth-child(4) { height: 11px; } .bars i:nth-child(5) { height: 14px; }
+.bars i.on { background: var(--signal); }
+.empty { text-align: center; padding: 40px 20px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: var(--r); }
+.empty h3 { color: var(--ink); margin: 0 0 6px; font-size: 1.05rem; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--accent); background: var(--accent); color: var(--bg); font-weight: 650; text-decoration: none; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.skel { height: 132px; border-radius: var(--r); background: linear-gradient(90deg, var(--surface), var(--line), var(--surface)); background-size: 200% 100%; animation: sh 1.4s infinite linear; border: 1px solid var(--line); }
+@keyframes sh { to { background-position: -200% 0; } }
+
+/* Artikelweergave */
+.reader { position: fixed; inset: 0; z-index: 40; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.reader .bar { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.reader .bar .wrap { display: flex; align-items: center; gap: 10px; padding-block: 10px; }
+.reader .bar .crumb { font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+article.full { padding-block: 22px 60px; }
+article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; letter-spacing: -0.02em; font-weight: 750; margin: 10px 0 14px; text-wrap: balance; overflow-wrap: anywhere; }
+.lead { font-family: var(--f-read); font-size: 1.1rem; line-height: 1.6; margin: 0 0 8px; }
+.block { margin-top: 26px; }
+.block h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 650; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.kind { font-family: var(--f-meta); font-size: 0.66rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 6px; border-radius: 5px; }
+.kind.bron { background: var(--ok-soft); color: var(--ok); }
+.kind.uitleg { background: var(--accent-soft); color: var(--accent); }
+.kind.idee { background: var(--warn-soft); color: var(--warn); }
+.block p, .block li { font-family: var(--f-read); font-size: 1.02rem; line-height: 1.68; }
+.block p { margin: 0; max-width: 64ch; }
+.block ul { margin: 6px 0 0; padding-left: 1.2em; max-width: 64ch; }
+.callout { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
+.source { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; }
+.source dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.86rem; }
+.source dt { color: var(--muted); font-family: var(--f-meta); font-size: 0.74rem; padding-top: 2px; }
+.source dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.note { font-size: 0.84rem; color: var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 10px 12px; }
+.score-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+.score-table td { padding: 6px 0; border-top: 1px solid var(--line); }
+.score-table td:last-child { text-align: right; font-family: var(--f-meta); }
+.meter { height: 6px; border-radius: 3px; background: var(--signal-off); overflow: hidden; width: 90px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+.meter > span { display: block; height: 100%; background: var(--signal); }
+
+/* Feedcontrole */
+.report h1 { font-size: 1.6rem; margin: 12px 0 6px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 14px 0; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.stat b { display: block; font-size: 1.5rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 0.78rem; color: var(--muted); }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.tbl table { border-collapse: collapse; width: 100%; font-size: 0.82rem; min-width: 520px; }
+.tbl th, .tbl td { text-align: left; padding: 9px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+.tbl th { border-top: 0; font-family: var(--f-meta); font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.st { font-family: var(--f-meta); font-size: 0.7rem; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+.st.ok { background: var(--ok-soft); color: var(--ok); }
+.st.failed { background: var(--bad-soft); color: var(--bad); }
+.st.not_supported, .st.skipped, .st.not_fetched { background: var(--info-soft); color: var(--info); }
+.report p { max-width: 64ch; }
+@media (prefers-reduced-motion: reduce) { .skel { animation: none; } * { scroll-behavior: auto !important; } }
+@media (min-width: 760px) { .card { padding: 18px 20px 16px; } .brand { padding-top: 20px; } }
+</style>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 34 34" aria-hidden="true">
+        <circle cx="17" cy="17" r="15.5" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="10" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+        <path d="M17 17 L17 1.5 A15.5 15.5 0 0 1 30.4 9.2 Z" fill="var(--accent)" opacity=".18"/>
+        <line x1="17" y1="17" x2="30.4" y2="9.2" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="24" cy="11.5" r="2.4" fill="var(--signal)"/>
+        <circle cx="11" cy="22" r="1.6" fill="var(--muted)"/>
+      </svg>
+      <div class="grow">
+        <h1>Data &amp; AI Radar</h1>
+        <p>De ontwikkelingen die ertoe doen voor jouw data- en AI-werk.</p>
+      </div>
+      <button class="icon-btn" id="btn-report" type="button" aria-label="Feedcontrole openen" title="Feedcontrole">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg>
+      </button>
+    </div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Zoek in titels en samenvattingen" aria-label="Zoeken" autocomplete="off">
+    </div>
+  </div>
+</header>
+<div class="filters">
+  <div class="wrap">
+    <div class="chips" id="chips" role="toolbar" aria-label="Filter op onderwerp"></div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Periode" id="seg-period">
+        <button type="button" data-v="week">Week</button><button type="button" data-v="month">Maand</button><button type="button" data-v="all">Alles</button>
+      </div>
+      <div class="seg" role="group" aria-label="Sortering" id="seg-sort">
+        <button type="button" data-v="score">Relevant</button><button type="button" data-v="date">Nieuwste</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="status" id="status"><span class="dot" style="background:var(--muted)"></span><span>Feed laden…</span></div>
+  <div id="content"><div class="cards"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div>
+</main>
+
+<div class="reader" id="reader" hidden></div>
+
+<script>
+(() => {
+  /* ---- Bron van artikeldata ----
+     De app leest alleen feed.json (gemaakt door de pipeline). Komen artikelen later
+     uit een GitHub-repository, dan maakt de pipeline nog steeds dit bestand en
+     verandert hier niets. */
+  const FEED_URL = "feed.json";
+  const SUPPORTED_SCHEMA = 1;
+
+  const state = { feed: null, group: "all", period: "all", sort: "score", q: "", byId: new Map(), scrollY: 0 };
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("radar:" + k); return v ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem("radar:" + k, v); } catch {} },
+  };
+
+  const TZ = "Europe/Amsterdam";
+  const dateOnly = (iso) => /T00:00:00(\.000)?Z$/.test(iso);
+  function fmtDate(iso) {
+    if (!iso) return "datum onbekend";
+    const d = new Date(iso);
+    return d.toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric", timeZone: dateOnly(iso) ? "UTC" : TZ });
+  }
+  function fmtDateTime(iso) {
+    if (!iso) return "onbekend";
+    return new Date(iso).toLocaleString("nl-NL", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: TZ });
+  }
+  const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  const TYPE_LABEL = { official_docs: "Officieel", vendor_blog: "Leverancier", expert_blog: "Vakmens", technical_article: "Technisch", independent_news: "Onafhankelijk" };
+  const STATUS_LABEL = { beschikbaar: "beschikbaar", preview: "preview", aangekondigd: "aangekondigd", experimenteel: "experimenteel", onbekend: "status onbekend" };
+  const SRC_STATUS = { ok: "werkt", failed: "mislukt", not_supported: "niet ondersteund", skipped: "handmatig", not_fetched: "niet opgehaald" };
+  const MODE = {
+    live: { label: "Live", color: "var(--ok)", text: "Alle feeds zijn opgehaald." },
+    partial: { label: "Gedeeltelijk live", color: "var(--warn)", text: "Niet alle bronnen konden worden opgehaald." },
+    snapshot: { label: "Momentopname", color: "var(--warn)", text: "" },
+    demo: { label: "Demonstratiedata", color: "var(--bad)", text: "Geen echt nieuws: alleen om de app te testen." },
+    stale: { label: "Verouderd", color: "var(--bad)", text: "Ophalen mislukt; je ziet de vorige feed." },
+  };
+
+  const source = (id) => state.feed.sources.find((s) => s.id === id) || { name: id, type: "" };
+  const groupLabel = (id) => (state.feed.groups.find((g) => g.id === id) || { label: id }).label;
+  const firstSentence = (t) => (String(t || "").match(/^.*?[.!?](\s|$)/) || [t])[0].trim();
+
+  function bars(score) {
+    const n = Math.max(1, Math.min(5, Math.ceil((score || 0) / 20)));
+    return `<span class="signal" title="Relevantie ${score} van 100"><span class="bars" aria-hidden="true">${[1,2,3,4,5].map((i) => `<i class="${i <= n ? "on" : ""}"></i>`).join("")}</span>${score}</span>`;
+  }
+
+  /* ---- Laden ---- */
+  async function load() {
+    try {
+      const res = await fetch(FEED_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`het bestand gaf status ${res.status}`);
+      const feed = await res.json();
+      if (feed.schema_version !== SUPPORTED_SCHEMA) throw new Error(`onbekende feedversie ${feed.schema_version}`);
+      if (!Array.isArray(feed.articles)) throw new Error("het bestand bevat geen artikellijst");
+      state.feed = feed;
+      feed.articles.forEach((a) => state.byId.set(a.id, a));
+      state.group = store.get("group", "all");
+      if (state.group !== "all" && !feed.groups.some((g) => g.id === state.group)) state.group = "all";
+      state.period = store.get("period", "all");
+      state.sort = store.get("sort", "score");
+      renderStatus();
+      renderChips();
+      renderSeg();
+      route();
+    } catch (e) {
+      $("#status").innerHTML = `<span class="dot" style="background:var(--bad)"></span><span><strong>De feed kon niet worden geladen.</strong> ${esc(e.message)}. Controleer of feed.json naast de app staat.</span>`;
+      $("#content").innerHTML = `<div class="empty"><h3>Geen artikelen beschikbaar</h3><p>De app vindt geen leesbare feed. Probeer het opnieuw.</p><button class="btn" type="button" id="retry">Opnieuw laden</button></div>`;
+      $("#retry").onclick = () => location.reload();
+    }
+  }
+
+  function renderStatus() {
+    const f = state.feed, m = MODE[f.mode] || MODE.partial;
+    const ok = f.sources.filter((s) => s.status === "ok").length;
+    const text = f.mode === "snapshot"
+      ? `Echte artikelen, eenmalig opgehaald uit ${ok} bronnen. Wordt niet automatisch ververst.`
+      : `${m.text} ${ok} van ${f.sources.length} bronnen leverden artikelen.`;
+    $("#status").innerHTML = `<span class="dot" style="background:${m.color}"></span>
+      <span><strong>${esc(m.label)}</strong> · bijgewerkt ${esc(fmtDateTime(f.last_successful_update))}<br>${esc(text)} <a href="#feedcontrole">Feedcontrole</a></span>`;
+  }
+
+  /* ---- Filters ---- */
+  function inPeriod(a) {
+    if (state.period === "all") return true;
+    if (!a.published_at) return false;
+    const ref = Date.parse(state.feed.last_successful_update || state.feed.generated_at);
+    const days = state.period === "week" ? 7 : 31;
+    return ref - Date.parse(a.published_at) <= days * 864e5;
+  }
+  function matches(a) {
+    if (state.group !== "all" && !(a.groups || []).includes(state.group)) return false;
+    if (!inPeriod(a)) return false;
+    if (state.q) {
+      const hay = norm([a.title, a.summary, a.excerpt, source(a.source_id).name, ...(a.topics || []).map((t) => state.feed.topics[t]?.name)].join(" "));
+      if (!norm(state.q).split(/\s+/).every((w) => hay.includes(w))) return false;
+    }
+    return true;
+  }
+  function sorted(list) {
+    const l = [...list];
+    if (state.sort === "date") l.sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+    else l.sort((a, b) => b.relevance_score - a.relevance_score || (b.published_at || "").localeCompare(a.published_at || ""));
+    return l;
+  }
+
+  function renderChips() {
+    const f = state.feed;
+    const count = (g) => f.articles.filter((a) => g === "all" || (a.groups || []).includes(g)).length;
+    const items = [{ id: "all", label: "Alles" }, ...f.groups];
+    $("#chips").innerHTML = items.map((g) => `<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${state.group === g.id}">${esc(g.label)} <span class="n">${count(g.id)}</span></button>`).join("");
+  }
+  function renderSeg() {
+    document.querySelectorAll("#seg-period button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.period));
+    document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
+  }
+
+  /* ---- Lijst ---- */
+  function card(a) {
+    const s = source(a.source_id);
+    const enriched = a.processing_status === "enriched";
+    const body = enriched
+      ? `<p class="sum">${esc(a.summary)}</p><p class="why"><b>Voor jou:</b> ${esc(firstSentence(a.personal_relevance))}</p>`
+      : `<p class="raw">Nog niet uitgelegd. ${a.excerpt ? "Korte beschrijving (Engels): " + esc(a.excerpt) : "Open het artikel voor de link naar de bron."}</p>`;
+    const status = enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`;
+    return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.title)}">
+      <div class="meta"><span class="src">${esc(s.name)}</span><span>${esc(fmtDate(a.published_at))}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${status}</div>
+      <h3>${esc(a.title)}</h3>
+      ${body}
+      <div class="foot"><div class="tags">${(a.groups || []).slice(0, 2).map((g) => `<span class="tag">${esc(groupLabel(g))}</span>`).join("")}</div>${bars(a.relevance_score)}</div>
+    </article>`;
+  }
+
+  function renderList() {
+    const f = state.feed;
+    const list = sorted(f.articles.filter(matches));
+    let html = "";
+    const showTop = state.group === "all" && !state.q && state.period === "all" && state.sort === "score";
+    if (showTop && f.daily_top?.length) {
+      const top = f.daily_top.map((id) => state.byId.get(id)).filter(Boolean);
+      html += `<h2 class="sec"><span>Belangrijkst</span><span>${top.length} van ${f.articles.length}</span></h2><ol class="top5">${top.map((a, i) => `
+        <li><button type="button" data-id="${esc(a.id)}"><span class="rank">${i + 1}</span><span><span class="t">${esc(a.title)}</span><span class="m">${esc(source(a.source_id).name)} · ${esc(groupLabel(a.groups?.[0]))}</span></span>${bars(a.relevance_score)}</button></li>`).join("")}</ol>`;
+    }
+    const heading = state.group === "all" ? "Alle artikelen" : groupLabel(state.group);
+    html += `<h2 class="sec"><span>${esc(heading)}</span><span>${list.length} artikel${list.length === 1 ? "" : "en"}</span></h2>`;
+    if (!list.length) {
+      const missing = f.quality_report?.topics_without_source || [];
+      const groupMissing = state.group !== "all" && missing.some((t) => f.topics[t]?.group === state.group);
+      html += `<div class="empty"><h3>Geen artikelen gevonden</h3><p>${groupMissing
+        ? "Voor dit onderwerp is nog geen bron ingesteld in sources.yml. Voeg een bron toe om hier nieuws te krijgen."
+        : state.period !== "all" ? "Er zijn geen artikelen in deze periode. Kies 'Alles' om ook oudere artikelen en artikelen zonder datum te zien."
+        : "Pas je zoekterm of filter aan."}</p>${state.q || state.period !== "all" || state.group !== "all" ? `<button class="btn ghost" type="button" id="reset">Filters wissen</button>` : ""}</div>`;
+    } else {
+      html += `<div class="cards">${list.map(card).join("")}</div>`;
+    }
+    $("#content").innerHTML = html;
+    const r = $("#reset");
+    if (r) r.onclick = () => { state.q = ""; $("#q").value = ""; setGroup("all"); state.period = "all"; store.set("period", "all"); renderSeg(); renderList(); };
+  }
+
+  /* ---- Artikel ---- */
+  function block(title, kind, text) {
+    if (!text) return "";
+    const kinds = { bron: "Uit de bron", uitleg: "Uitleg", idee: "Idee" };
+    return `<section class="block"><h2>${esc(title)}${kind ? ` <span class="kind ${kind}">${kinds[kind]}</span>` : ""}</h2><p>${esc(text)}</p></section>`;
+  }
+  function renderArticle(a) {
+    const s = source(a.source_id);
+    const enriched = a.processing_status === "enriched";
+    const parts = a.score_parts || {};
+    const partRows = [["Past bij je onderwerpen", parts.topic, "55%"], ["Inhoudelijke kwaliteit", parts.quality, "20%"], ["Actualiteit", parts.recency, "15%"], ["Bron", parts.source, "10%"]]
+      .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("");
+    const topics = (a.topics || []).map((t) => state.feed.topics[t]?.name).filter(Boolean);
+    const docs = (a.official_docs || []).map((d) => `<li><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.label)}</a></li>`).join("");
+    const also = (a.also_reported_by || []).map((o) => `<li><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a> <span style="color:var(--muted)">(${esc(source(o.source_id).name)}, ${esc(o.reason)})</span></li>`).join("");
+    const html = `
+      <div class="bar"><div class="wrap">
+        <button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+        <span class="crumb">${esc(s.name)} · ${esc(fmtDate(a.published_at))}</span>
+        <a class="btn ghost" style="height:36px;padding:0 12px;font-size:.84rem" href="${esc(a.url)}" target="_blank" rel="noopener">Origineel ↗</a>
+      </div></div>
+      <article class="full wrap">
+        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
+        <h1>${esc(a.title)}</h1>
+        ${enriched ? `<p class="lead">${esc(a.summary)}</p>` : `<div class="callout"><p style="margin:0">Dit artikel is nog niet door AI uitgelegd. Er was geen API-sleutel of het artikel viel buiten de verwerkingslimiet.${a.excerpt ? ` Korte beschrijving (Engels, samengevat bij ophalen): <em>${esc(a.excerpt)}</em>` : ""}</p></div>`}
+        ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
+        ${block("Wat is er nieuw?", "bron", a.what_is_new)}
+        ${block("Eenvoudig uitgelegd", "uitleg", a.simple_explanation)}
+        ${block("Een voorbeeld", "uitleg", a.practical_example)}
+        ${block("Waarom is dit relevant voor jou?", "uitleg", a.personal_relevance)}
+        ${block("Wat kun je ermee?", "idee", a.practical_application)}
+        ${block("Probeer dit", "idee", a.experiment)}
+        ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
+        <section class="block"><h2>Bron</h2><div class="source">
+          <dl>
+            <dt>Titel</dt><dd>${esc(a.title)}</dd>
+            <dt>Website</dt><dd>${esc(s.name)} · ${esc(host(a.url))}</dd>
+            <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
+            <dt>Opgehaald</dt><dd>${esc(fmtDateTime(a.fetched_at))}</dd>
+            ${topics.length ? `<dt>Onderwerpen</dt><dd>${esc(topics.join(", "))}</dd>` : ""}
+            ${enriched ? `<dt>Uitgelegd door</dt><dd>${esc(a.processed_by || "")}</dd>` : ""}
+          </dl>
+          <div><a class="btn" href="${esc(a.url)}" target="_blank" rel="noopener">Lees het originele artikel ↗</a></div>
+          ${docs ? `<div><strong style="font-size:.86rem">Officiële documentatie</strong><ul style="margin:6px 0 0;padding-left:1.2em;font-size:.88rem">${docs}</ul></div>` : ""}
+          ${also ? `<div><strong style="font-size:.86rem">Ook gemeld</strong><ul style="margin:6px 0 0;padding-left:1.2em;font-size:.88rem">${also}</ul></div>` : ""}
+        </div></section>
+        <section class="block"><h2>Waarom deze score?</h2><div class="source"><table class="score-table">${partRows}</table>
+          <p style="font-size:.8rem;color:var(--muted);margin:0">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : ""}.</p></div></section>
+      </article>`;
+    openReader(html);
+  }
+
+  /* ---- Feedcontrole ---- */
+  function renderReport() {
+    const f = state.feed, q = f.quality_report || {};
+    const enr = q.enrichment || {};
+    const srcRows = f.sources.map((s) => `<tr><td><strong>${esc(s.name)}</strong><br><span style="color:var(--muted)">${esc(TYPE_LABEL[s.type] || s.type)} · ${esc(s.fetch_method)}</span></td><td><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span></td><td style="font-variant-numeric:tabular-nums">${s.items ?? 0}</td><td>${esc(s.message || "")}</td></tr>`).join("");
+    const dec = { included: "getoond", included_exceptional: "getoond (uitzondering)", below_threshold: "onder de drempel", no_topic: "geen passend onderwerp", excluded: "uitgesloten onderwerp" };
+    const hidden = (q.not_shown || []).map((x) => `<tr><td><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><br><span style="color:var(--muted)">${esc(source(x.source_id).name)}</span></td><td>${esc(dec[x.decision] || x.decision)}${x.excluded_by?.length ? ` (${esc(x.excluded_by.join(", "))})` : ""}</td><td style="font-variant-numeric:tabular-nums">${x.relevance_score}</td></tr>`).join("");
+    const flags = (q.date_flags || []).map((d) => `<li><strong>${esc(source(d.source_id).name)}:</strong> ${esc(d.message)}</li>`).join("");
+    const noSrc = (q.topics_without_source || []).map((t) => f.topics[t]?.name || t);
+    const perGroup = Object.entries(q.per_group || {}).map(([g, n]) => `${esc(groupLabel(g))}: ${n}`).join(" · ");
+    openReader(`
+      <div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Feedcontrole</span></div></div>
+      <div class="wrap report" style="padding-block:18px 60px">
+        <h1>Feedcontrole</h1>
+        <p style="color:var(--muted)">Hier zie je of de feed goede, actuele artikelen oplevert: welke bronnen werken, wat er is weggefilterd en waarom.</p>
+        <div class="status" style="margin:12px 0"><span class="dot" style="background:${(MODE[f.mode] || MODE.partial).color}"></span><span><strong>${esc((MODE[f.mode] || {}).label || f.mode)}</strong><br>${esc(f.mode_note || "")}</span></div>
+        <div class="stats">
+          <div class="stat"><b>${q.fetched_items ?? 0}</b><span>opgehaald</span></div>
+          <div class="stat"><b>${q.merged_duplicates ?? 0}</b><span>dubbel samengevoegd</span></div>
+          <div class="stat"><b>${q.shown ?? 0}</b><span>in de feed (drempel ${q.threshold ?? "?"})</span></div>
+          <div class="stat"><b>${q.processing?.enriched ?? 0}</b><span>uitgelegd door AI</span></div>
+          <div class="stat"><b>${q.without_date ?? 0}</b><span>zonder publicatiedatum</span></div>
+        </div>
+        <section class="block"><h2>Verdeling over onderwerpen</h2><p style="font-size:.92rem">${perGroup || "–"}</p></section>
+        ${noSrc.length ? `<section class="block"><h2>Onderwerpen zonder bron</h2><p style="font-size:.92rem">${esc(noSrc.join(", "))}. Hierover kan de feed alleen toevallig iets vinden.</p></section>` : ""}
+        ${flags ? `<section class="block"><h2>Datums om te controleren</h2><ul>${flags}</ul></section>` : ""}
+        <section class="block"><h2>AI-verwerking</h2><p style="font-size:.92rem">${enr.api_key_present ? `${enr.processed} nieuwe artikelen verwerkt${enr.failed?.length ? `, ${enr.failed.length} mislukt` : ""}.` : `Geen API-sleutel ingesteld: ${enr.skipped_no_key ?? 0} artikelen bleven onverwerkt. Bestaande uitleg wordt hergebruikt.`}</p></section>
+        <section class="block"><h2>Bronnen</h2><div class="tbl"><table><thead><tr><th>Bron</th><th>Status</th><th>Items</th><th>Toelichting</th></tr></thead><tbody>${srcRows}</tbody></table></div></section>
+        <section class="block"><h2>Niet getoond</h2><div class="tbl"><table><thead><tr><th>Artikel</th><th>Reden</th><th>Score</th></tr></thead><tbody>${hidden || `<tr><td colspan="3">Niets weggefilterd.</td></tr>`}</tbody></table></div></section>
+      </div>`);
+  }
+
+  /* ---- Navigatie (#a-<id> en #feedcontrole) ---- */
+  function openReader(html) {
+    const r = $("#reader");
+    const wasHidden = r.hidden;
+    if (wasHidden) state.scrollY = window.scrollY;
+    r.innerHTML = html;
+    r.hidden = false;
+    r.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+    $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
+    $("#back", r).focus({ preventScroll: true });
+  }
+  function closeReader() {
+    const r = $("#reader");
+    if (r.hidden) return;
+    r.hidden = true; r.innerHTML = "";
+    document.body.style.overflow = "";
+    window.scrollTo(0, state.scrollY);
+  }
+  function route() {
+    if (!state.feed) return;
+    const h = location.hash.slice(1);
+    if (h.startsWith("a-") && state.byId.has(h.slice(2))) { renderArticle(state.byId.get(h.slice(2))); return; }
+    if (h === "feedcontrole") { renderReport(); return; }
+    closeReader();
+    renderList();
+  }
+  function open(id) { state.cameFromList = true; location.hash = "a-" + id; }
+  function setGroup(g) { state.group = g; store.set("group", g); renderChips(); }
+
+  /* ---- Events ---- */
+  window.addEventListener("hashchange", route);
+  $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id]"); if (el) open(el.dataset.id); });
+  $("#content").addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) { e.preventDefault(); open(e.target.dataset.id); } });
+  $("#chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (!b) return; setGroup(b.dataset.g); renderList(); b.scrollIntoView({ inline: "nearest", block: "nearest" }); });
+  $("#seg-period").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.period = b.dataset.v; store.set("period", state.period); renderSeg(); renderList(); });
+  $("#seg-sort").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.sort = b.dataset.v; store.set("sort", state.sort); renderSeg(); renderList(); });
+  let t; $("#q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); renderList(); }, 120); });
+  $("#btn-report").addEventListener("click", () => { state.cameFromList = true; location.hash = "feedcontrole"; });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden) location.hash = ""; });
+
+  load();
+})();
+</script>

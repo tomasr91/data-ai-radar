@@ -1,0 +1,1865 @@
+{
+ "schema_version": 1,
+ "generated_at": "2026-10-28T20:12:07.621528Z",
+ "mode": "snapshot",
+ "mode_note": "Momentopname: echte artikelen, eenmalig opgehaald op 28 oktober 2026. Niet automatisch ververst. Korte beschrijvingen bij onverwerkte artikelen zijn bij het ophalen samengevat, niet letterlijk overgenomen.",
+ "last_successful_update": "2026-10-28T19:40:00Z",
+ "groups": [
+  {
+   "id": "dbt",
+   "label": "dbt & analytics engineering"
+  },
+  {
+   "id": "databricks",
+   "label": "Databricks & data-engineering"
+  },
+  {
+   "id": "ai_context",
+   "label": "AI & context engineering"
+  },
+  {
+   "id": "architectuur",
+   "label": "Data-architectuur & modellering"
+  },
+  {
+   "id": "agents",
+   "label": "AI-agents & RAG"
+  },
+  {
+   "id": "kwaliteit",
+   "label": "Datakwaliteit & governance"
+  },
+  {
+   "id": "zorg",
+   "label": "AI in de zorg"
+  },
+  {
+   "id": "overig",
+   "label": "Overige relevante onderwerpen"
+  }
+ ],
+ "topics": {
+  "dbt_analytics_engineering": {
+   "name": "dbt en analytics engineering",
+   "priority": 5,
+   "group": "dbt"
+  },
+  "databricks_data_engineering": {
+   "name": "Databricks en data engineering",
+   "priority": 5,
+   "group": "databricks"
+  },
+  "ai_on_data_platform": {
+   "name": "AI op het dataplatform",
+   "priority": 5,
+   "group": "ai_context"
+  },
+  "ai_context_engineering": {
+   "name": "AI-context engineering",
+   "priority": 5,
+   "group": "ai_context"
+  },
+  "data_architecture_modeling": {
+   "name": "Data-architectuur en datamodellering",
+   "priority": 5,
+   "group": "architectuur"
+  },
+  "ai_agents_rag": {
+   "name": "AI-agents en RAG",
+   "priority": 4,
+   "group": "agents"
+  },
+  "data_quality_observability": {
+   "name": "Datakwaliteit en observability",
+   "priority": 4,
+   "group": "kwaliteit"
+  },
+  "metadata_lineage_catalogs": {
+   "name": "Metadata, lineage en catalogi",
+   "priority": 4,
+   "group": "kwaliteit"
+  },
+  "cicd_data_deployment": {
+   "name": "GitHub, CI/CD en data deployment",
+   "priority": 4,
+   "group": "overig"
+  },
+  "sql_spark_sql": {
+   "name": "SQL en Spark SQL",
+   "priority": 4,
+   "group": "databricks"
+  },
+  "data_governance_privacy": {
+   "name": "Data governance en privacy",
+   "priority": 4,
+   "group": "kwaliteit"
+  },
+  "ai_in_healthcare": {
+   "name": "AI in de zorg",
+   "priority": 4,
+   "group": "zorg"
+  },
+  "ai_research_data": {
+   "name": "AI en onderzoeksdata",
+   "priority": 3,
+   "group": "zorg"
+  },
+  "powerbi_semantic_models": {
+   "name": "Power BI en semantische modellen",
+   "priority": 3,
+   "group": "overig"
+  },
+  "open_source_ai": {
+   "name": "Open-source AI-modellen en frameworks",
+   "priority": 3,
+   "group": "overig"
+  },
+  "new_ai_models_tools": {
+   "name": "Nieuwe AI-modellen en algemene AI-tools",
+   "priority": 2,
+   "group": "overig"
+  },
+  "general_ai_trends": {
+   "name": "Algemene AI-trends en technologienieuws",
+   "priority": 1,
+   "group": "overig"
+  }
+ },
+ "sources": [
+  {
+   "id": "azure_databricks_release_notes",
+   "name": "Azure Databricks release notes",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/",
+   "type": "official_docs",
+   "trust_level": "high",
+   "priority": 5,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 29,
+   "message": "Releasepagina oktober 2026 gelezen; selectie van 29 van 85 items (veel connectoren en modelupdates weggelaten). Link per item wijst naar de officiële documentatie.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "dbt_release_notes",
+   "name": "dbt release notes",
+   "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes",
+   "type": "official_docs",
+   "trust_level": "high",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "dbt_core_releases",
+   "name": "dbt-core releases (GitHub)",
+   "url": "https://github.com/dbt-labs/dbt-core/releases",
+   "type": "official_docs",
+   "trust_level": "high",
+   "priority": 4,
+   "fetch_method": "github_releases",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "dbt_labs_blog",
+   "name": "dbt Labs Blog",
+   "url": "https://www.getdbt.com/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 12,
+   "message": "RSS-feed gelezen (12 items).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "databricks_blog",
+   "name": "Databricks Blog",
+   "url": "https://www.databricks.com/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 10,
+   "message": "RSS-feed gelezen via databricks.com/de/feed (10 items, Engelstalig).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "databricks_engineering_blog",
+   "name": "Databricks Engineering Blog",
+   "url": "https://www.databricks.com/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "rss",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "anthropic_engineering",
+   "name": "Anthropic Engineering",
+   "url": "https://www.anthropic.com/engineering",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "openai_developer_blog",
+   "name": "OpenAI Developer Blog",
+   "url": "https://developers.openai.com/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "github_blog",
+   "name": "GitHub Blog",
+   "url": "https://github.blog/",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "azure_blog",
+   "name": "Microsoft Azure Blog",
+   "url": "https://azure.microsoft.com/en-us/blog/",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "rss",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "powerbi_blog",
+   "name": "Microsoft Power BI Blog",
+   "url": "https://powerbi.microsoft.com/en-us/blog/",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "huggingface_blog",
+   "name": "Hugging Face Blog",
+   "url": "https://huggingface.co/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "thoughtworks_radar",
+   "name": "Thoughtworks Technology Radar",
+   "url": "https://www.thoughtworks.com/radar",
+   "type": "independent_news",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "manual",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "data_engineering_weekly",
+   "name": "Data Engineering Weekly",
+   "url": "https://www.dataengineeringweekly.com",
+   "type": "independent_news",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "rss",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "joe_reis",
+   "name": "Joe Reis",
+   "url": "https://joereis.substack.com/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "ok",
+   "items": 5,
+   "message": "Recente posts via publicatieoverzicht; alleen relatieve datums, dus publicatiedatum onbekend.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "simon_whiteley",
+   "name": "Simon Whiteley",
+   "url": "https://www.advancinganalytics.co.uk/blog/author/simon-whiteley",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "madison_mae",
+   "name": "Madison Mae (Learn Analytics Engineering)",
+   "url": "https://learnanalyticsengineering.substack.com/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "hamel_husain",
+   "name": "Hamel Husain",
+   "url": "https://hamel.dev/blog/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "chip_huyen",
+   "name": "Chip Huyen",
+   "url": "https://huyenchip.com/blog/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 5,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "simon_willison",
+   "name": "Simon Willison",
+   "url": "https://simonwillison.net/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "atom",
+   "status": "ok",
+   "items": 9,
+   "message": "Recente posts via feedoverzicht; datum uit de URL.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "id": "dbt_developer_blog",
+   "name": "dbt Developer Blog",
+   "url": "https://docs.getdbt.com/blog",
+   "type": "technical_article",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "html",
+   "status": "not_fetched",
+   "items": 0,
+   "message": "Niet opgenomen in deze momentopname.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  }
+ ],
+ "daily_top": [
+  "4dcd7af26dab",
+  "069e6a8001ed",
+  "d2e9b967064a",
+  "450468c3f304",
+  "059023edac5d"
+ ],
+ "articles": [
+  {
+   "id": "4dcd7af26dab",
+   "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
+   "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:41:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Een AI-agent schreef zelf een omzetquery en zat er 3,5 miljoen dollar naast. AWS laat zien hoe je dat voorkomt: de agent kiest uit vastgelegde maatstaven in de dbt Semantic Layer in plaats van zelf SQL te schrijven.",
+   "what_is_new": "De query van de agent gaf 14,86 miljoen dollar omzet; de echte omzet was 11,36 miljoen (30,8% te hoog). Oorzaken: een bedrag vóór korting en retouren, een niet-gekoppelde retourtabel, meegetelde geannuleerde orders en testaccounts. De oplossing heeft twee lagen via MCP: de dbt MCP Server laat de agent alleen gecertificeerde metrics gebruiken, waarbij MetricFlow de SQL schrijft, en een Redshift MCP Server staat alleen leesquery's toe. Elk antwoord vermeldt de metric, de SQL, het bronmodel, dbt-testresultaten en een query-ID.",
+   "simple_explanation": "Laat je een slimme stagiair zelf de omzet uitrekenen, dan pakt hij misschien de verkeerde kolom. Geef je hem een rekenmachine met alleen goedgekeurde knoppen, dan kan die fout niet meer. De semantic layer is die rekenmachine: de definitie van 'omzet' staat er één keer goed in.",
+   "practical_example": "'Aantal opnames' lijkt simpel, maar telt een overplaatsing als nieuwe opname? Ligt die regel vast in een metric, dan krijgt een agent altijd dezelfde, juiste telling.",
+   "personal_relevance": "Dit is de kern van betrouwbare data voor AI: definities vastleggen, in plaats van een AI zelf SQL te laten schrijven op je tabellen. Op Databricks kunnen metric views dezelfde rol spelen als de dbt Semantic Layer.",
+   "practical_application": "Leg je vijf belangrijkste kerncijfers vast als metric (in dbt of als metric view) voordat een AI-assistent er vragen over mag beantwoorden.",
+   "experiment": "Stel een AI twee keer dezelfde vraag over een kerncijfer: één keer met alleen het tabelschema, één keer met de metricdefinitie erbij (alleen definities, geen data). Vergelijk de SQL die eruit komt.",
+   "limitations": [
+    "Het voorbeeld draait op Redshift met de dbt Semantic Layer van het dbt-platform; niet alles werkt hetzelfde met dbt Core.",
+    "Werkt alleen voor vragen binnen de vastgelegde metrics.",
+    "De genoemde benchmark- en Gartner-cijfers zijn context uit de talk en niet apart gecontroleerd."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_agents_rag",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 94,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.8
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "069e6a8001ed",
+   "title": "What Okta learned governing context for AI agents at scale",
+   "url": "https://www.getdbt.com/blog/okta-ai-agent-context-governance",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:01:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Okta legt de context voor AI-agents vast in dbt, in plaats van in losse instellingen in de warehouse. Zo wordt elke wijziging een pull request, met review en geschiedenis.",
+   "what_is_new": "Okta zag drie problemen bij hun eerste AI-agents: context versnipperd over Snowflake en dbt, geen controleerbare geschiedenis, en alle instructies in één groot blok. Ze bouwden een kader met drie lagen in dbt: een 'agent'-blok in de YAML van modellen en kolommen (veilig gebruik, wat te vermijden, automatische filters), Markdown-bestanden met bedrijfsbrede feiten en routeringsregels, en semantische views volgens de semantic layer van dbt. De context gaat naar een open metadatastandaard (Agents Schema), die Claude via MCP leest. Meetresultaten worden niet genoemd.",
+   "simple_explanation": "Een AI-agent is zo goed als het spiekbriefje dat je hem geeft. Okta had die briefjes eerst los in verschillende systemen staan. Nu staan ze naast de datamodellen zelf, in dbt. Verandert een model, dan zie je meteen of het spiekbriefje ook moet veranderen.",
+   "practical_example": "In de YAML van een model staat onder 'agent': 'niet gebruiken voor omzet per maand, gebruik daarvoor fct_omzet_maand'. Een agent die de tabel tegenkomt, leest die waarschuwing mee.",
+   "personal_relevance": "Dit is bijna precies je project voor een AI-contextlaag op dbt en Databricks, alleen dan op Snowflake. Je generatorscripts maken al metadata-YAML; een vast blok met agent-context past in die stroom.",
+   "practical_application": "Voeg aan je dbt-YAML een vast blok toe met 'waarvoor wel' en 'waarvoor niet', en laat je generatorscripts daar een leeg sjabloon voor maken.",
+   "experiment": "Schrijf voor drie Gold-modellen zo'n agent-blok. Geef alleen die definities (geen data) plus een vraag aan een AI, en vergelijk het antwoord met en zonder het blok.",
+   "limitations": [
+    "Okta noemt geen meetbare resultaten; het effect is niet met cijfers onderbouwd.",
+    "Van Agents Schema en de gebruikte dbt-functies is geen beschikbaarheidsstatus genoemd.",
+    "Gebouwd op Snowflake Cortex; de vertaling naar Databricks moet je zelf maken."
+   ],
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "kwaliteit",
+    "agents"
+   ],
+   "relevance_score": 94,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.8
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "e7bf67f656d3",
+   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks laat zien hoe je de nauwkeurigheid van documentextractie stap voor stap meet en verbetert. De kern: prompts en schema's versioneren en elke wijziging toetsen tegen een vaste set door mensen gecontroleerde antwoorden.",
+   "what_is_new": "Het team haalde ongeveer 40 velden uit order-pdf's met tientallen lay-outs, met ai_extract. Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate, en getoetst op een vaste testset met een vooraf gemeten ruisniveau. Alles samen gaf 32% minder fouten. Een verbetering op één veld kon elders schade doen: een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal.",
+   "simple_explanation": "Zonder meten weet je niet of een aanpassing helpt. Het is als koken voor een jury: je verandert één ingrediënt en laat dezelfde jury dezelfde gerechten opnieuw proeven. Pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
+   "practical_example": "Je laat AI velden uit pdf-formulieren halen, zoals datum, afdeling en soort aanvraag. Je houdt 50 formulieren met door een mens gecontroleerde antwoorden apart, en elke promptwijziging moet daarop beter scoren voordat hij live gaat.",
+   "personal_relevance": "Dit is evaluatie (evals) in de praktijk, met functies binnen Databricks die met werkdata mogen. Het principe 'vaste testset, eerst meten' geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag.",
+   "practical_application": "Leg voor elke AI-toepassing een kleine vaste testset aan, en meet elke wijziging daartegen.",
+   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
+   "limitations": [
+    "Resultaten uit één project.",
+    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
+    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "ai_extract (documentatie)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_quality_observability",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit",
+    "agents"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.75
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "d2e9b967064a",
+   "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
+   "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:20:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Ecolab zette honderden ingewikkelde Snowflake-tabellen met hulp van een AI-migratieagent om naar dbt. Elk model werd automatisch vergeleken met productiedata. Het resultaat was ongeveer zes keer minder code.",
+   "what_is_new": "Ecolab migreerde een basismodel van meer dan 400 dimensies en feiten, gevoed door meer dan 3.000 bronsystemen, naar meer dan 40 dbt-projecten met dbt Mesh. De agent bracht lineage en code in kaart, vertaalde de logica en controleerde elk model met data diffing tegen productie. Onverklaarde verschillen gingen terug tot ze waren opgelost. Eén grote dimensie ging van 409 naar 170 modellen; in totaal werd het ongeveer 6x minder code en 4x minder dataverbindingen. In vier weken werden ongeveer 90 tabellen goedgekeurd.",
+   "simple_explanation": "Data diffing betekent: je draait de oude en de nieuwe berekening en vergelijkt de uitkomst rij voor rij. Zijn ze gelijk, dan klopt de vertaling. De agent moest elk verschil verklaren, zoals een leerling die bij een rekenfout moet laten zien waar het misging.",
+   "practical_example": "Een oud SQL Server-model en het nieuwe dbt-model geven allebei hetzelfde aantal rijen, maar in een paar rijen verschilt een datum. Een diff-rapport laat precies die rijen zien, zodat je weet waar je moet zoeken.",
+   "personal_relevance": "Je migratie zit in de laatste fase. De aanpak 'bewijs elk model met een vergelijking op de data' kun je ook zonder AI-agent gebruiken om de laatste modellen af te tekenen.",
+   "practical_application": "Leg voor de laatste gemigreerde modellen een vaste vergelijking vast: aantallen, totalen en een steekproef van rijen tussen oud en nieuw.",
+   "experiment": "Schrijf één herbruikbare query of dbt-test die tellingen en totalen van een SQL Server-tabel en het Databricks-model vergelijkt, en draai hem op drie modellen.",
+   "limitations": [
+    "Verslag van een talk, met cijfers van Ecolab en Datafold zelf.",
+    "In het begin werd alles nog met de hand gecontroleerd; menselijke review bleef een knelpunt.",
+    "Het overzetten van de rapportages viel buiten deze fase."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_on_data_platform",
+    "data_quality_observability",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context",
+    "kwaliteit",
+    "databricks"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.78
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "450468c3f304",
+   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-23T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks liet AI-agents dezelfde pipelines bouwen in twee stijlen: declaratief en procedureel. De declaratieve versies kostten veel minder rekentijd en code, maar meer tokens. Stille logische fouten kwamen in beide stijlen ongeveer even vaak voor.",
+   "what_is_new": "In 528 builds (22 taken x 12 datasets x 2 aanpakken, met Opus 4.8) was de gemeten clustertijd bij Spark Declarative Pipelines ongeveer 34x lager (17 tegen 596 executor-seconden), en de code ongeveer half zo lang (mediaan 64 tegen 131 regels). Declaratief gebruikte ongeveer 2,3x meer LLM-tokens. Stille logische fouten: 32,2% declaratief, 27,7% procedureel. Een dry run vangt structurele fouten vooraf af, maar geen logische fouten.",
+   "simple_explanation": "Procedureel is een recept stap voor stap: pak de pan, doe er olie in, bak de ui. Declaratief is zeggen wat je wilt eten, en de keuken bepaalt de volgorde. Voor een AI is het tweede minder werk om op te schrijven, en de keuken kan vooraf controleren of alle ingrediënten er zijn.",
+   "practical_example": "Een agent schrijft een Gold-tabel als @dp.materialized_view, in plaats van zelf te lezen, te koppelen en weg te schrijven. Spark bepaalt de volgorde en controleert vooraf of alle kolommen bestaan.",
+   "personal_relevance": "dbt is ook declaratief: je beschrijft modellen, dbt bepaalt de volgorde. De les geldt dus ook voor jou: laat AI liever declaratieve code schrijven, en blijf testen, want bijna een derde van de builds had stille logische fouten.",
+   "practical_application": "Laat je AI dbt-modellen genereren, houd de modellen dan klein en declaratief, en laat je dbt-tests het werk doen dat de dry run hier doet.",
+   "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
+   "limitations": [
+    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
+    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
+    "Meer tokens betekent hogere AI-kosten per build."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "data_architecture_modeling"
+   ],
+   "groups": [
+    "databricks",
+    "ai_context",
+    "architectuur"
+   ],
+   "relevance_score": 91,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.78,
+    "source": 0.85,
+    "quality": 0.8
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "059023edac5d",
+   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
+   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:02:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets was veranderd. Dat scheelde ongeveer 30% rekenkosten en maakte runs ongeveer 35% sneller.",
+   "what_is_new": "dbt State laat dbt modellen overslaan of hergebruiken als er stroomopwaarts niets veranderd is (state-aware orchestratie). Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13. Over de hele migratie meldt Virgin Media O2 ongeveer 30% lagere rekenkosten en 35% snellere runs. Ze gebruikten dbt v2, een herschreven dbt-engine in Rust. Het artikel zegt niet of dbt State ook in dbt Core werkt.",
+   "simple_explanation": "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Met dbt State kijkt dbt eerst welke kamers vies zijn en maakt alleen die schoon.",
+   "practical_example": "In je nachtelijke run zijn alleen de AFAS-bronnen veranderd. dbt bouwt dan alleen de modellen die daarvan afhangen en laat de HiX-modellen staan.",
+   "personal_relevance": "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou bereikbaar is, hangt af van waar je runs draaien. Op Databricks is minder rekenen ook direct minder kosten.",
+   "practical_application": "Zoek uit welke jobs op het dbt-platform draaien en of state-aware orchestratie daar beschikbaar is.",
+   "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
+   "limitations": [
+    "Gemeten op BigQuery, niet op Databricks.",
+    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
+    "Sommige packages werkten nog niet met dbt v2."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 91,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.65
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "a633145ad94c",
+   "title": "Improved Lakeflow Performance Observability is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Lakeflow Jobs tonen nu prestatiecijfers per query, voor de hele job in één overzicht. Met de knop Optimize vraag je Genie Code om hulp bij een trage query.",
+   "what_is_new": "Sinds 26 oktober 2026 is de verbeterde Lakeflow Performance Observability GA. Lakeflow Jobs tonen querymetrieken en inzichten op jobniveau voor ondersteunde taken; de knop Optimize opent Genie Code om queries te helpen verbeteren.",
+   "simple_explanation": "Eerst moest je per stap zoeken waarom een job traag was. Nu zie je in één overzicht welke query de meeste tijd kost, zoals een routeplanner die laat zien op welk stuk weg de file staat.",
+   "practical_example": "Je nachtelijke job duurt opeens twintig minuten langer. In het overzicht zie je dat één incrementeel Silver-model de oorzaak is.",
+   "personal_relevance": "Na een migratie draait niet alles meteen optimaal. Dit helpt de trage plekken in je nieuwe Databricks-omgeving te vinden zonder eigen monitoring te bouwen.",
+   "practical_application": "Kijk na een week draaien naar de vijf zwaarste queries in je belangrijkste job.",
+   "experiment": "Open het overzicht van je grootste job, kies de traagste query en vergelijk het voorstel van Optimize met je eigen analyse.",
+   "limitations": [
+    "Alleen voor ondersteunde taaktypen. Controleer of dbt-taken in jouw opzet worden gedekt.",
+    "Voorstellen van AI moet je zelf beoordelen voordat je ze overneemt."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Prestaties van jobs analyseren",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.87,
+    "source": 1.0,
+    "quality": 0.57
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 1
+  },
+  {
+   "id": "560fbec0053e",
+   "title": "Building live intelligence: Databricks AI Search supports Streaming Tables, Materialized Views, and Managed tables using Iceberg",
+   "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-26T18:03:59Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "AI Search van Databricks kan zoekindexen nu direct bouwen op streaming tables, materialized views en Iceberg-tabellen. Een tussenstap met een extra Delta-tabel en een eigen synchronisatie is dan niet meer nodig.",
+   "what_is_new": "AI Search ondersteunt naast Delta-tabellen drie nieuwe bronnen: streaming tables (nieuwe records worden geïndexeerd zodra ze binnenkomen), materialized views (wijzigingen worden incrementeel doorgegeven) en managed Iceberg-tabellen (v3 en hoger). Je maakt de index zoals een bestaande Delta Sync-index. De beschikbaarheidsstatus wordt niet genoemd.",
+   "simple_explanation": "Een zoekindex is het register achterin een boek. Bij RAG (een AI die eerst opzoekt en dan antwoordt) moet dat register actueel zijn. Databricks houdt het register nu automatisch bij als de onderliggende tabel verandert, zonder dat je zelf een kopie hoeft te onderhouden.",
+   "practical_example": "Een materialized view met de beschrijvingen van al je dbt-modellen voedt direct een zoekindex. Een assistent kan dan zoeken op 'waar vind ik de opnameduur?'.",
+   "personal_relevance": "Voor een AI-contextlaag kun je metadata als bron gebruiken. Dit maakt het makkelijker om zo'n zoekbare index actueel te houden, zonder extra pijplijn.",
+   "practical_application": "Pas relevant als je echt zoeken op betekenis nodig hebt. Voor een kleine contextlaag zijn goede beschrijvingen en zoekwoorden vaak genoeg.",
+   "experiment": "Maak een materialized view met naam en beschrijving van 50 dbt-modellen, bouw er een index op en test vijf zoekvragen in gewone taal.",
+   "limitations": [
+    "Of het GA of preview is, staat niet in het artikel.",
+    "Streaming tables kunnen alleen rijen toevoegen (append-only).",
+    "Een zoekindex kost rekenkracht; voor kleine hoeveelheden is het vaak niet nodig."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_context_engineering",
+    "databricks_data_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "agents"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.85,
+    "quality": 0.6
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "ed6e08f04c9d",
+   "title": "The agentic code converter is generally available for SQL conversion",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-15T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks heeft een AI-hulpmiddel dat SQL uit andere systemen, waaronder T-SQL van SQL Server, omzet naar Databricks SQL. Het controleert de uitkomst zelf en herstelt fouten. Het is nu algemeen beschikbaar.",
+   "what_is_new": "Sinds 15 oktober 2026 is de agentic code converter algemeen beschikbaar (GA) voor SQL-conversie. Hij werkt met Genie Code, vertaalt SQL uit onder meer T-SQL, Snowflake en BigQuery naar Databricks SQL, valideert de uitkomst, herstelt fouten en schrijft het resultaat naar een map in de workspace.",
+   "simple_explanation": "Zie het als een vertaler die niet alleen vertaalt, maar ook controleert of de zin klopt. Bij een gewoon vertaalhulpje moet je elke fout zelf vinden. Deze agent (een AI die zelf stappen zet) probeert de vertaalde SQL, ziet wat misgaat en past het aan voordat jij het krijgt.",
+   "practical_example": "Een T-SQL-query met TOP en ISNULL moet in Databricks SQL LIMIT en coalesce gebruiken. De converter doet die vertaling en controleert daarna of de nieuwe query zonder fouten draait.",
+   "personal_relevance": "Je migratie van SQL Server naar Databricks is bijna klaar. Juist het laatste stuk, de lastige restjes T-SQL, is waar zo'n hulpmiddel tijd kan schelen. Het is een AI-functie binnen Databricks, en die mag je met werkdata gebruiken.",
+   "practical_application": "Laat de converter de overgebleven T-SQL-objecten omzetten en vergelijk het resultaat met jouw handmatige of door de generatorscripts gemaakte versie.",
+   "experiment": "Kies drie T-SQL-queries die je al handmatig hebt gemigreerd. Laat de converter ze opnieuw omzetten en vergelijk de uitkomst rij voor rij met je bestaande Silver-modellen. Zo zie je in een middag hoe betrouwbaar hij is op jouw code.",
+   "limitations": [
+    "Valideren betekent hier: de SQL draait zonder fouten. Dat zegt niet dat de logica klopt, dus vergelijk altijd de uitkomsten.",
+    "Het resultaat is Databricks SQL in de workspace, geen dbt-model. Omzetten naar je dbt-conventies blijft eigen werk.",
+    "Kosten en limieten van Genie Code staan niet in de release note."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Agentic code converter (documentatie)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks",
+    "ai_context"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.5,
+    "source": 1.0,
+    "quality": 0.78
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "4dc6799e527b",
+   "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-21T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Unity Gateway kan aanroepen van MCP-tools en hun antwoorden controleren op jailbreak- en promptinjectiepogingen. Dit is in bèta.",
+   "what_is_new": "Sinds 21 oktober 2026 kan Unity Gateway in bèta MCP-toolaanroepen en hun resultaten screenen op jailbreak- en promptinjectiepogingen. De jailbreak-guardrail werkt op invoer, uitvoer of beide.",
+   "simple_explanation": "MCP (Model Context Protocol) is een standaardstekker waarmee een AI-agent tools gebruikt, zoals een database bevragen. Een promptinjectie is een verstopt bevel in data, bijvoorbeeld een tekst in een tabel met 'negeer je regels'. Deze controle is een poortwachter die zulke bevelen probeert te onderscheppen.",
+   "practical_example": "Een agent leest vrije tekst uit een tabel en daarin staat een verborgen opdracht om alle data te exporteren. De guardrail op de uitvoer van de tool herkent dat patroon en blokkeert de aanroep.",
+   "personal_relevance": "Bouw je een AI-contextlaag waarbij agents via MCP je data bevragen, dan is dit een van de veiligheidslagen die je nodig hebt, zeker met zorgdata.",
+   "practical_application": "Maak screening van MCP-aanroepen een vaste voorwaarde voordat een agent bij echte tabellen mag.",
+   "experiment": "Zet de guardrail aan op een testagent en stuur een paar bekende, onschuldige injectievoorbeelden mee in synthetische data. Kijk wat hij tegenhoudt en wat niet.",
+   "limitations": [
+    "Bèta.",
+    "Geen guardrail vangt alles. Combineer met minimale rechten: alleen-lezen en beperkte tabellen.",
+    "De release note zegt niets over extra vertraging of kosten."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Service policies (ingebouwd beleid)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.68,
+    "source": 1.0,
+    "quality": 0.65
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "5c55fd31fe97",
+   "title": "Governed tag propagation is in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-12T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Unity Catalog kan beheerde tags nu automatisch doorgeven aan tabellen die van een getagde tabel zijn afgeleid. Het gebruikt daarvoor de herkomst van data (lineage). De functie is in bèta.",
+   "what_is_new": "Sinds 12 oktober 2026 is governed tag propagation in bèta. Zet je het aan voor een beheerde tag, dan past Unity Catalog die tag via lineage toe op afgeleide tabellen en views, bij ondersteunde bewerkingen zoals CREATE TABLE AS SELECT en MERGE.",
+   "simple_explanation": "Je plakt een sticker 'breekbaar' op een doos. Pak je de spullen over in een nieuwe doos, dan ben je de sticker meestal kwijt. Tag-propagatie plakt de sticker automatisch op de nieuwe doos, omdat het systeem weet waar de spullen vandaan komen.",
+   "practical_example": "Je tagt een Bronze-tabel als 'bevat persoonsgegevens'. Een Silver-tabel die via MERGE uit die tabel wordt gevuld, krijgt dezelfde tag zonder dat iemand eraan hoeft te denken.",
+   "personal_relevance": "In de zorg wil je dat gevoeligheidslabels meereizen van Bronze naar Gold. Dit sluit direct aan op je project rond metadata en lineage, en op privacy en toegangsrechten.",
+   "practical_application": "Gebruik propagatie voor één gevoeligheidstag, zodat toegangsregels en maskering in Silver en Gold niet vergeten worden.",
+   "experiment": "Maak in een testschema een tabel met synthetische data, zet propagatie aan voor een beheerde tag en bouw er met dbt een afgeleid model op. Kijk of de tag verschijnt, en bij welke dbt-materialisaties wel en niet.",
+   "limitations": [
+    "Bèta: het gedrag kan nog veranderen. Niet zomaar in productie gebruiken.",
+    "Werkt alleen bij ondersteunde bewerkingen. Of elke dbt-materialisatie (views, incrementele modellen) wordt gedekt, moet je testen.",
+    "Automatisch doorgeven kan ook te veel taggen. Controleer of een afgeleide tabel echt nog gevoelige kolommen bevat."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Governed tag propagation",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 87,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 1.0,
+    "quality": 0.77
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "75948c736b0e",
+   "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-14T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks ondersteunt nu transacties over meerdere SQL-statements en tabellen tegelijk: alles lukt, of niets. Dit werkt voor managed Delta Lake- en Iceberg-tabellen.",
+   "what_is_new": "Sinds 14 oktober 2026 kunnen meerdere SQL-statements over managed Delta Lake- of managed Iceberg-tabellen als één atomaire transactie draaien, met BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;. De tabellen moeten catalog commits ingeschakeld hebben.",
+   "simple_explanation": "Een transactie werkt als geld overmaken: het geld moet van de ene rekening af én op de andere bij. Gaat halverwege iets mis, dan wordt alles teruggedraaid. Dat kan nu over meerdere tabellen tegelijk.",
+   "practical_example": "Je werkt een feitentabel en een bijbehorende controletabel bij. Mislukt de tweede stap, dan wordt ook de eerste teruggedraaid, zodat rapporten nooit half bijgewerkte data zien.",
+   "personal_relevance": "In SQL Server was dit gewoon. Bij de overstap naar Databricks moest je er soms omheen werken. Nu kun je dat gedrag terugkrijgen waar het echt nodig is.",
+   "practical_application": "Gebruik transacties voor de paar plekken waar tabellen samen kloppend moeten blijven.",
+   "experiment": "Zet catalog commits aan op twee testtabellen, schrijf een transactie die halverwege bewust faalt en controleer dat geen van beide tabellen is veranderd.",
+   "limitations": [
+    "Alleen voor managed tabellen met catalog commits ingeschakeld.",
+    "Hoe dit samengaat met dbt staat niet in de release note. dbt bouwt modellen normaal los van elkaar."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Transacties",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_architecture_modeling",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks",
+    "architectuur"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.48,
+    "source": 1.0,
+    "quality": 0.67
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "da6d7a6a6ac5",
+   "title": "ADBC driver for Power BI is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-15T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "De ADBC-driver voor de Databricks-connector in Power BI is algemeen beschikbaar. Nieuwe verbindingen gebruiken hem standaard.",
+   "what_is_new": "Sinds 15 oktober 2026 is de ADBC-driver voor de Azure Databricks-connector in Power BI GA. Het is de standaarddriver voor nieuwe verbindingen in Power BI Desktop en de Power BI-service.",
+   "simple_explanation": "Een driver (stuurprogramma) is de tolk tussen Power BI en Databricks. ADBC (Arrow Database Connectivity) is ontworpen om data per kolom in grote blokken door te geven in plaats van rij voor rij. Vergelijk het met een hele krat tegelijk overgeven in plaats van elke fles los.",
+   "practical_example": "Je ververst elke nacht een semantisch model dat een grote Gold-feitentabel uit Databricks importeert. Maak je die verbinding opnieuw aan, dan loopt hij via ADBC in plaats van de oudere driver.",
+   "personal_relevance": "Je rapporteert met Power BI in Fabric op Databricks-data. Nieuwe verbindingen krijgen deze driver automatisch, dus oude en nieuwe modellen kunnen straks via verschillende drivers lopen.",
+   "practical_application": "Controleer bij je eerstvolgende nieuwe of gewijzigde verbinding welke driver wordt gebruikt, en meet of verversen sneller of stabieler wordt.",
+   "experiment": "Maak een kopie van één semantisch model met een flinke import. Ververs het met de oude en met de nieuwe driver en noteer de duur en eventuele fouten.",
+   "limitations": [
+    "De release note noemt geen prestatiecijfers; snelheidswinst moet je zelf meten.",
+    "Bestaande verbindingen veranderen niet vanzelf. Houd bij welke modellen welke driver gebruiken.",
+    "Controleer of jouw Fabric-scenario, bijvoorbeeld met een gateway, dezelfde driver gebruikt."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "ADBC-driver voor Power BI",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.5,
+    "source": 1.0,
+    "quality": 0.68
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "7e793b41d90f",
+   "title": "Filter data per end user with OAuth custom identity claims",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-19T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Met één technisch account kun je nu data per eindgebruiker filteren. Databricks leest daarvoor een extra kenmerk in het OAuth-token.",
+   "what_is_new": "Sinds 19 oktober 2026 kun je een eigen identity claim toevoegen aan het OAuth-token van een service-principal. Rijen kun je op die claim filteren in een dynamische view of een ABAC-beleid, zodat één service-principal veel eindgebruikers kan bedienen.",
+   "simple_explanation": "Een service-principal is een account voor een programma in plaats van een mens. Vaak ziet zo'n account alles. Nu kan het programma meegeven namens wie het vraagt, als een briefje 'dit is voor afdeling X', en Databricks laat dan alleen de rijen van afdeling X zien.",
+   "practical_example": "Een interne app vraagt namens een teamleider gegevens op. Via de claim ziet die alleen de cijfers van de eigen afdeling, terwijl de app maar één technisch account gebruikt.",
+   "personal_relevance": "Beveiliging per afdeling of locatie komt in de zorg veel voor. Zo leg je zo'n regel één keer vast in Unity Catalog, in plaats van in elke app of elk rapport.",
+   "practical_application": "Handig zodra je een app of AI-assistent bouwt die namens verschillende medewerkers vragen stelt.",
+   "experiment": "Maak een dynamische view op synthetische data die filtert op een claim, en test met twee tokens met verschillende claimwaarden.",
+   "limitations": [
+    "De release note noemt geen beschikbaarheidsstatus.",
+    "De app moet de claim betrouwbaar zetten. Een fout in de app is een datalek.",
+    "Vraagt kennis van OAuth en ABAC; overleg met beheer en security."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "OAuth custom identity claims",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.61,
+    "source": 1.0,
+    "quality": 0.58
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "90ba3c46bbce",
+   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks heeft een open-source verzameling 'skills' voor zorg en life sciences gepubliceerd: domeinkennis die je aan een AI-codeerhulp kunt meegeven. Een van de skills helpt bij het onherkenbaar maken van patiëntgegevens.",
+   "what_is_new": "Vital Skills is een open-source bibliotheek met Agent Skills van Databricks-engineers voor zorg en life sciences, bedoeld voor Genie Code. Er zijn onder meer klinische skills (cohort-builder, rwe-cohortstudy, semantic-builder, phi-deidentifier volgens HIPAA Safe Harbor) en bio-informatica-skills. Je installeert ze in Genie Code, Genie One of Genie Code CLI en deelt ze via Unity Gateway. In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100). FHIR, OMOP en HL7 worden niet genoemd.",
+   "simple_explanation": "Een skill is een handleiding die een AI erbij pakt als hij een bepaalde klus moet doen. Zoals een nieuwe collega een werkinstructie krijgt voor 'hoe bouwen we hier een groep patiënten voor onderzoek'. De AI wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
+   "practical_example": "Een onderzoeker vraagt om een groep patiënten ouder dan 65 met een bepaalde diagnose. Met de cohort-builder-skill volgt de AI een vaste werkwijze, in plaats van zelf iets te bedenken.",
+   "personal_relevance": "Een van de weinige concrete AI-in-de-zorg-ontwikkelingen op jouw platform, en het raakt ook onderzoeksdata. Let op: HIPAA is Amerikaans. In Nederland gelden de AVG en zorgspecifieke regels, dus een Amerikaanse methode om data onherkenbaar te maken is niet automatisch genoeg.",
+   "practical_application": "Gebruik de skills als voorbeeld van hoe je domeinkennis vastlegt voor AI. Het principe kun je toepassen op je eigen datamodel, zonder de zorgskills zelf te gebruiken.",
+   "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
+   "limitations": [
+    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
+    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
+    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
+   ],
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_in_healthcare",
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_research_data"
+   ],
+   "groups": [
+    "zorg",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 0.9,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.65
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "60e7e131218f",
+   "title": "Metric view window measures are generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-06T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Metric views in Unity Catalog ondersteunen nu vensterberekeningen, zoals voortschrijdende gemiddelden en lopende totalen. Dit is algemeen beschikbaar.",
+   "what_is_new": "Sinds 6 oktober 2026 zijn window measures in metric views GA. Ze definiëren rollende, cumulatieve of semi-additieve aggregaties, zoals voortschrijdende gemiddelden en lopende totalen.",
+   "simple_explanation": "In een metric view leg je één keer vast hoe je een getal berekent, zodat iedereen hetzelfde antwoord krijgt. Een vensterberekening kijkt naar een stukje tijd, zoals 'het gemiddelde van de laatste 7 dagen'. Semi-additief betekent: je mag het niet zomaar optellen over tijd, zoals een voorraad op één moment.",
+   "practical_example": "Bedbezetting per afdeling is semi-additief: de bezetting van maandag en dinsdag optellen zegt niets. Met een window measure leg je vast dat je per periode bijvoorbeeld het gemiddelde of de laatste stand neemt.",
+   "personal_relevance": "Zulke lastige maatstaven staan nu vaak in DAX in Power BI. Leg je ze vast in de catalogus, dan kunnen ook AI-toepassingen en andere tools dezelfde definitie gebruiken. Eenduidige definities zijn precies de context die AI nodig heeft.",
+   "practical_application": "Kies één maatstaf die nu alleen in een Power BI-model bestaat en leg hem vast als metric view.",
+   "experiment": "Bouw een metric view met een voortschrijdend 7-dagengemiddelde op een openbare of synthetische dataset, en vergelijk de uitkomst met dezelfde berekening in DAX.",
+   "limitations": [
+    "Definities op twee plekken (DAX en metric views) kunnen uit elkaar lopen. Kies per maatstaf één bron.",
+    "Hoe Power BI metric views direct gebruikt, staat niet in deze release note."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Window measures in metric views",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures"
+    }
+   ],
+   "topics": [
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "architectuur",
+    "ai_context",
+    "overig"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.32,
+    "source": 1.0,
+    "quality": 0.68
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "fb2b82785032",
+   "title": "Genie Code CLI is in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-06T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Genie Code CLI is een AI-codeerhulp in de terminal voor data- en AI-werk op Databricks. Hij zoekt zelf data op en kan assets bouwen en uitrollen. Dit is in bèta.",
+   "what_is_new": "Sinds 6 oktober 2026 is Genie Code CLI in bèta: een codeeragent in de terminal voor data- en AI-werk. Hij gebruikt de Databricks CLI om data te ontdekken en assets te bouwen en uit te rollen. Modeltoegang loopt via Unity Gateway.",
+   "simple_explanation": "Een assistent die naast je in de terminal zit. Je vraagt 'maak een pipeline die deze tabel opschoont', en hij zoekt zelf uit welke tabellen er zijn, schrijft code en kan die uitrollen. Omdat het via Unity Gateway gaat, gelden dezelfde rechten en regels als voor andere AI in je workspace.",
+   "practical_example": "Je vraagt de CLI om alle Silver-tabellen zonder beschrijving te zoeken en voor elk een conceptbeschrijving te maken op basis van de kolommen.",
+   "personal_relevance": "Je eigen generatorscripts maken het skelet van dbt-modellen. Een agent die binnen Databricks de catalogus leest, kan daar beschrijvingen en tests aan toevoegen. En omdat het AI binnen Databricks is, mag het met werkdata.",
+   "practical_application": "Gebruik hem als hulp bij documentatie en verkennen, niet als vervanging van je dbt-ontwikkelstraat.",
+   "experiment": "Laat de CLI voor vijf Silver-tabellen conceptbeschrijvingen maken. Beoordeel ze zelf: hoeveel zou je zonder aanpassing in je dbt-YAML zetten?",
+   "limitations": [
+    "Bèta.",
+    "Hij bouwt Databricks-assets. Of hij goed samenwerkt met een dbt-project in Azure DevOps, staat er niet bij.",
+    "Een agent die mag uitrollen heeft rechten nodig. Houd hem buiten productie."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Genie Code CLI",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "agents"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.32,
+    "source": 1.0,
+    "quality": 0.63
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "2a2c115e6c0c",
+   "title": "The Discover page and domains are now GA",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-08T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Met de Discover-pagina vind je data zonder de mappenstructuur van de catalogus te kennen. Met domeinen orden je tabellen, dashboards en Genie Agents per bedrijfsonderdeel. Beide zijn nu algemeen beschikbaar.",
+   "what_is_new": "Sinds 8 oktober 2026 zijn de Discover-pagina en domeinen GA. Discover is een samengestelde manier om assets te vinden zonder de cataloguslagen te kennen. Domeinen en subdomeinen ordenen assets zoals tabellen, dashboards en Genie Agents per bedrijfsgebied.",
+   "simple_explanation": "Een catalogus werkt als een archiefkast met laden en mappen: wie de kast niet kent, vindt niets. Discover is meer een etalage. Je ziet de belangrijkste spullen per afdeling, ook als je niet weet in welke la ze liggen.",
+   "practical_example": "Een collega van Financiën zoekt 'personeelsverloop'. Via het domein HR vindt ze direct het Gold-model en het dashboard, zonder te weten in welk schema het staat.",
+   "personal_relevance": "Dit raakt je project rond vindbaarheid van data. Domeinen kunnen een brug zijn tussen je technische indeling in Bronze, Silver en Gold en de manier waarop collega's over data denken.",
+   "practical_application": "Richt één domein in, bijvoorbeeld rond één afdeling, en koppel daar alleen je Gold-modellen aan.",
+   "experiment": "Maak een testdomein met drie Gold-tabellen en vraag een collega om zonder uitleg iets te zoeken. Noteer waar die vastloopt.",
+   "limitations": [
+    "Vindbaarheid staat of valt met goede beschrijvingen. Zonder dbt-documentatie in Unity Catalog levert Discover weinig op.",
+    "Domeinen zijn extra beheer: iemand moet bepalen wat waar hoort."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Discover-pagina",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page"
+    },
+    {
+     "label": "Domeinen",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/domains"
+    }
+   ],
+   "topics": [
+    "data_architecture_modeling",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "architectuur",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.36,
+    "source": 1.0,
+    "quality": 0.62
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "e5ea330db00d",
+   "title": "Azure DevOps connector is available in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-08T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Er is een nieuwe connector die gegevens uit Azure DevOps naar Databricks haalt: projecten, repositories, werkitems, builds en releases. Dit is in bèta.",
+   "what_is_new": "Sinds 8 oktober 2026 is een Azure DevOps-connector voor Lakeflow Connect in bèta. Hij haalt project-, repository-, werkitem-, build-, release- en identiteitsgegevens op, logt in met een Microsoft Entra-service-principal en laadt commits incrementeel.",
+   "simple_explanation": "Een connector is een kant-en-klare pijpleiding: je hoeft zelf geen code te schrijven om gegevens op te halen. Met deze pijpleiding wordt de geschiedenis van je eigen ontwikkelwerk zelf data.",
+   "practical_example": "Je laadt de builds en releases van je dbt-project en maakt een overzicht van hoe vaak een uitrol mislukt en hoe lang het duurt van commit tot productie.",
+   "personal_relevance": "Je CI/CD draait op Azure DevOps. Zo kun je de kwaliteit van je eigen ontwikkelproces meten met je eigen stack: een goed oefenproject zonder gevoelige zorgdata.",
+   "practical_application": "Een klein Gold-model met doorlooptijd en faalpercentage van uitrols, als begin van datakwaliteit over je eigen werkproces.",
+   "experiment": "Koppel de connector aan één testproject en maak een tabel met het aantal builds per week en het percentage mislukte builds.",
+   "limitations": [
+    "Bèta.",
+    "Een service-principal met leesrechten op Azure DevOps vraagt afstemming met beheer.",
+    "Bevat identiteitsgegevens van collega's; ga daar zorgvuldig mee om."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Azure DevOps-connector",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "cicd_data_deployment",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "databricks",
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.36,
+    "source": 1.0,
+    "quality": 0.62
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 1
+  },
+  {
+   "id": "9a8d5866a524",
+   "title": "Agent memory pipelines are in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-12T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks heeft geheugenpipelines voor AI-agents in bèta. Een taalmodel haalt blijvende feiten, voorkeuren en besluiten uit gesprekken en slaat die op.",
+   "what_is_new": "Sinds 12 oktober 2026 zijn agent memory pipelines in bèta. Een geheugenpipeline koppelt een opslag van gesprekken aan een geheugenopslag. Een LLM haalt blijvende feiten, voorkeuren en besluiten uit gesprekken, op aanvraag of ongeveer elke 24 uur.",
+   "simple_explanation": "Een agent vergeet normaal alles zodra het gesprek klaar is. Deze pipeline werkt als een secretaris die na afloop de notulen doorleest en de belangrijke afspraken in een schrift zet, zodat de agent ze de volgende keer weer weet.",
+   "practical_example": "Een data-assistent voor collega's onthoudt dat Financiën met 'omzet' altijd het bedrag zonder btw bedoelt.",
+   "personal_relevance": "Geheugen is een vorm van context, dus dit hoort bij je AI-contextlaag. Maar in de zorg is een systeem dat zelf dingen uit gesprekken opslaat ook een privacyvraag: wat wordt onthouden en wie ziet dat?",
+   "practical_application": "Nuttig om te begrijpen hoe context in de tijd kan groeien. Maak eerst afspraken over wat bewaard mag worden voordat je het met echte gesprekken gebruikt.",
+   "experiment": "Voer een paar gesprekken met verzonnen, niet-gevoelige vragen over je datamodel en bekijk welke 'feiten' de pipeline opslaat. Klopt het, en zou je dit willen bewaren?",
+   "limitations": [
+    "Bèta.",
+    "Een taalmodel bepaalt wat 'blijvend' is; dat kan fout gaan of te veel opslaan.",
+    "Gesprekken kunnen persoonsgegevens bevatten. Dat vraagt een privacyafweging."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Agent memory pipelines",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 1.0,
+    "quality": 0.57
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2
+  },
+  {
+   "id": "40a0b2ec587e",
+   "title": "Data Classification adds 50 new classes and support for 16 more countries and regions",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-15T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Data Classification in Unity Catalog herkent 50 nieuwe soorten gevoelige gegevens en meer landen. Tegelijk is de API voor deze functie algemeen beschikbaar geworden.",
+   "what_is_new": "Op 15 oktober 2026 kreeg Data Classification 50 nieuwe klassen gevoelige data, waaronder betaalkaartgegevens, persoons- en medewerkergegevens en geheimen in software, plus regionale klassen voor meer landen en regio's. Regionale tags zijn alleen in bepaalde regio's beschikbaar. Op 14 oktober werd de Data Classification API met Terraform-resource GA; de configuratie voor automatisch taggen (auto_tag_configs) is nog Public Preview.",
+   "simple_explanation": "Data Classification is een speurhond die je tabellen doorsnuffelt en meldt: hier staan waarschijnlijk namen, e-mailadressen of rekeningnummers. Hij kent nu meer soorten geuren. Met de API kun je hem vanuit code aansturen in plaats van alleen via het scherm.",
+   "practical_example": "Na het laden van een nieuwe AFAS-tabel in Bronze laat je de classificatie draaien. Die markeert bijvoorbeeld een kolom met IBAN-nummers en een kolom met personeelsnummers als gevoelig.",
+   "personal_relevance": "Voor een zorginstelling is weten waar persoonsgegevens zitten de basis van governance. Met de API kun je classificatie opnemen in je uitrol via Azure DevOps in plaats van het handmatig te regelen.",
+   "practical_application": "Gebruik classificatie als controle bij nieuwe bronnen: elke nieuwe Bronze-tabel wordt gescand voordat hij naar Silver gaat.",
+   "experiment": "Laat de classificatie los op een testtabel met verzonnen gegevens (namen, nummers die op een BSN lijken, IBAN). Kijk welke kolommen hij herkent en welke hij mist.",
+   "limitations": [
+    "De release note noemt niet welke landen precies zijn toegevoegd. Controleer of Nederlandse gegevenstypen worden herkend.",
+    "Automatisch taggen is nog preview; de API zelf is GA.",
+    "Classificatie is een inschatting, geen garantie."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Data Classification",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags"
+    },
+    {
+     "label": "Data Classification API",
+     "url": "https://docs.databricks.com/api/workspace/dataclassification"
+    }
+   ],
+   "topics": [
+    "data_governance_privacy",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "kwaliteit"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.5,
+    "source": 1.0,
+    "quality": 0.7
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "azure_databricks_release_notes",
+     "title": "Data Classification API is now generally available",
+     "url": "https://docs.databricks.com/api/workspace/dataclassification",
+     "published_at": "2026-10-14T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ]
+  },
+  {
+   "id": "9bcb10a95345",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:38:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics."
+  },
+  {
+   "id": "fea9136ea071",
+   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:51:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models."
+  },
+  {
+   "id": "412d4b1345c3",
+   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
+   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T19:06:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines."
+  },
+  {
+   "id": "965a6e80a937",
+   "title": "How Ramp's internal AI agents crossed a million sessions",
+   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:10:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "dbt",
+    "agents"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens."
+  },
+  {
+   "id": "b9c31921875e",
+   "title": "External writes to managed Delta tables are now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-13T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 71,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.46,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables."
+  }
+ ],
+ "quality_report": {
+  "fetched_items": 65,
+  "unique_after_dedupe": 63,
+  "merged_duplicates": 2,
+  "shown": 26,
+  "decisions": {
+   "included": 26,
+   "below_threshold": 17,
+   "no_topic": 20
+  },
+  "processing": {
+   "enriched": 21,
+   "raw": 5
+  },
+  "without_date": 0,
+  "per_group": {
+   "ai_context": 7,
+   "dbt": 6,
+   "databricks": 9,
+   "zorg": 1,
+   "architectuur": 2,
+   "kwaliteit": 1
+  },
+  "per_source": {
+   "dbt_labs_blog": 8,
+   "databricks_blog": 4,
+   "azure_databricks_release_notes": 14
+  },
+  "date_flags": [
+   {
+    "source_id": "dbt_labs_blog",
+    "items": 12,
+    "from": "2026-10-27T18:20:00Z",
+    "to": "2026-10-27T20:10:00Z",
+    "message": "12 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+   }
+  ],
+  "enrichment": {
+   "api_key_present": false,
+   "processed": 0,
+   "failed": [],
+   "skipped_no_key": 22
+  },
+  "queue_size": 15,
+  "invalid_enrichment": [],
+  "threshold": 60,
+  "not_shown": [
+   {
+    "title": "QuickBooks connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/quickbooks",
+    "relevance_score": 58,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
+    "relevance_score": 58,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Unlocking Investment Insights Without Migrating Your Data: Lakehouse Federation",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "BigQuery to Databricks: A Strategic Framework",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Unify your productivity and AI data with Lakeflow Connect",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How to teach with Databricks Free Edition",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
+    "relevance_score": 57,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "DataFrame caching on serverless compute is now in Public Preview",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/dataframe-cache",
+    "relevance_score": 56,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Shared Serverless for Asset Bundles (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Lakeflow pipelines system tables are now generally available (GA)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Genie Code tasks in Lakeflow Jobs are now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Real-time energy trading and analytics on Databricks",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
+    "relevance_score": 55,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Azure Databricks integration for Microsoft Copilot Studio is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio",
+    "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Donating Agent Skills to the Agentic AI Foundation",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+    "relevance_score": 46,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "The media industry is becoming a prediction economy",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/media-industry-becoming-prediction-economy",
+    "relevance_score": 29,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "GitHub Octoverse 2026",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/28/github-octoverse-2026/",
+    "relevance_score": 28,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "The October inflection point for vibe game development",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/28/vibe-game-development/",
+    "relevance_score": 28,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Game Boy Color on My Conference Badge",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/27/game-boy-color-on-my-conference-badge/",
+    "relevance_score": 27,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "GPT-6.1 Terra",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/26/gpt-61-terra/",
+    "relevance_score": 27,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "DeepSeek V4.1 Flash is scheduled for retirement",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/machine-learning/retired-models-policy#retired",
+    "relevance_score": 26,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Introducing Kimi K3.1 Pro",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+    "relevance_score": 25,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Unity Gateway Skills API and developer tools are available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/ai-gateway/skill-reference",
+    "relevance_score": 24,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Knowledge Assistant and Supervisor Agent are now legacy",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/legacy/",
+    "relevance_score": 24,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/20/battledrones/",
+    "relevance_score": 23,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "My obituary for programming",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/",
+    "relevance_score": 23,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "`ai_parse_document` now extracts chart data as JSON",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
+    "relevance_score": 22,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "sparqlite: SPARQL 1.1 inside SQLite, written in Rust",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/16/sqlite-sparql-rust/",
+    "relevance_score": 22,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Standard `ai_extract` now delivers higher-quality extraction",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract",
+    "relevance_score": 21,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Cross-engine attribute-based access controls (ABAC) is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/cross-engine-abac",
+    "relevance_score": 21,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Summit Snooze Button: Practical Data Summit is Postponed",
+    "source_id": "joe_reis",
+    "url": "https://joereis.substack.com/p/summit-snooze-button-practical-data",
+    "relevance_score": 20,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "The Ghost of Watson Past: Why Enterprise AI Hype Still Eats Startups Alive",
+    "source_id": "joe_reis",
+    "url": "https://joereis.substack.com/p/the-ghost-of-watson-past-why-enterprise",
+    "relevance_score": 20,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "Build a Career That Looks Like You",
+    "source_id": "joe_reis",
+    "url": "https://joereis.substack.com/p/build-a-career-that-looks-like-you",
+    "relevance_score": 20,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "The Practical Data Summit site is live!",
+    "source_id": "joe_reis",
+    "url": "https://joereis.substack.com/p/the-practical-data-summit-site-is",
+    "relevance_score": 20,
+    "decision": "no_topic",
+    "excluded_by": []
+   },
+   {
+    "title": "The Pendulums of Data",
+    "source_id": "joe_reis",
+    "url": "https://joereis.substack.com/p/the-pendulums-of-data",
+    "relevance_score": 20,
+    "decision": "no_topic",
+    "excluded_by": []
+   }
+  ],
+  "topics_without_source": [
+   "ai_in_healthcare",
+   "ai_research_data"
+  ]
+ }
+}

@@ -1,0 +1,36 @@
+{
+  "summary": "Databricks heeft een AI-hulpmiddel dat SQL uit andere systemen, waaronder T-SQL van SQL Server, omzet naar Databricks SQL. Het controleert de uitkomst zelf en herstelt fouten. Het is nu algemeen beschikbaar.",
+  "what_is_new": "Sinds 15 oktober 2026 is de agentic code converter algemeen beschikbaar (GA) voor SQL-conversie. Hij werkt met Genie Code, vertaalt SQL uit onder meer T-SQL, Snowflake en BigQuery naar Databricks SQL, valideert de uitkomst, herstelt fouten en schrijft het resultaat naar een map in de workspace.",
+  "simple_explanation": "Zie het als een vertaler die niet alleen vertaalt, maar ook controleert of de zin klopt. Bij een gewoon vertaalhulpje moet je elke fout zelf vinden. Deze agent (een AI die zelf stappen zet) probeert de vertaalde SQL, ziet wat misgaat en past het aan voordat jij het krijgt.",
+  "practical_example": "Een T-SQL-query met TOP en ISNULL moet in Databricks SQL LIMIT en coalesce gebruiken. De converter doet die vertaling en controleert daarna of de nieuwe query zonder fouten draait.",
+  "personal_relevance": "Je migratie van SQL Server naar Databricks is bijna klaar. Juist het laatste stuk, de lastige restjes T-SQL, is waar zo'n hulpmiddel tijd kan schelen. Het is een AI-functie binnen Databricks, en die mag je met werkdata gebruiken.",
+  "practical_application": "Laat de converter de overgebleven T-SQL-objecten omzetten en vergelijk het resultaat met jouw handmatige of door de generatorscripts gemaakte versie.",
+  "experiment": "Kies drie T-SQL-queries die je al handmatig hebt gemigreerd. Laat de converter ze opnieuw omzetten en vergelijk de uitkomst rij voor rij met je bestaande Silver-modellen. Zo zie je in een middag hoe betrouwbaar hij is op jouw code.",
+  "limitations": [
+    "Valideren betekent hier: de SQL draait zonder fouten. Dat zegt niet dat de logica klopt, dus vergelijk altijd de uitkomsten.",
+    "Het resultaat is Databricks SQL in de workspace, geen dbt-model. Omzetten naar je dbt-conventies blijft eigen werk.",
+    "Kosten en limieten van Genie Code staan niet in de release note."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Agentic code converter (documentatie)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter"
+    }
+  ],
+  "topics": [
+    "sql_spark_sql",
+    "databricks_data_engineering",
+    "ai_on_data_platform"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.95,
+    "novelty": 0.8
+  },
+  "article_id": "ed6e08f04c9d",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

@@ -1,0 +1,34 @@
+{
+  "summary": "Lakeflow Jobs tonen nu prestatiecijfers per query, voor de hele job in één overzicht. Met de knop Optimize vraag je Genie Code om hulp bij een trage query.",
+  "what_is_new": "Sinds 26 oktober 2026 is de verbeterde Lakeflow Performance Observability GA. Lakeflow Jobs tonen querymetrieken en inzichten op jobniveau voor ondersteunde taken; de knop Optimize opent Genie Code om queries te helpen verbeteren.",
+  "simple_explanation": "Eerst moest je per stap zoeken waarom een job traag was. Nu zie je in één overzicht welke query de meeste tijd kost, zoals een routeplanner die laat zien op welk stuk weg de file staat.",
+  "practical_example": "Je nachtelijke job duurt opeens twintig minuten langer. In het overzicht zie je dat één incrementeel Silver-model de oorzaak is.",
+  "personal_relevance": "Na een migratie draait niet alles meteen optimaal. Dit helpt de trage plekken in je nieuwe Databricks-omgeving te vinden zonder eigen monitoring te bouwen.",
+  "practical_application": "Kijk na een week draaien naar de vijf zwaarste queries in je belangrijkste job.",
+  "experiment": "Open het overzicht van je grootste job, kies de traagste query en vergelijk het voorstel van Optimize met je eigen analyse.",
+  "limitations": [
+    "Alleen voor ondersteunde taaktypen. Controleer of dbt-taken in jouw opzet worden gedekt.",
+    "Voorstellen van AI moet je zelf beoordelen voordat je ze overneemt."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Prestaties van jobs analyseren",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics"
+    }
+  ],
+  "topics": [
+    "data_quality_observability",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.4,
+    "practicality": 0.7,
+    "novelty": 0.6
+  },
+  "article_id": "a633145ad94c",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

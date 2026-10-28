@@ -1,0 +1,33 @@
+{
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+  "summary": "Ecolab zette honderden ingewikkelde Snowflake-tabellen met hulp van een AI-migratieagent om naar dbt. Elk model werd automatisch vergeleken met productiedata. Het resultaat was ongeveer zes keer minder code.",
+  "what_is_new": "Ecolab migreerde een basismodel van meer dan 400 dimensies en feiten, gevoed door meer dan 3.000 bronsystemen, naar meer dan 40 dbt-projecten met dbt Mesh. De agent bracht lineage en code in kaart, vertaalde de logica en controleerde elk model met data diffing tegen productie. Onverklaarde verschillen gingen terug tot ze waren opgelost. Eén grote dimensie ging van 409 naar 170 modellen; in totaal werd het ongeveer 6x minder code en 4x minder dataverbindingen. In vier weken werden ongeveer 90 tabellen goedgekeurd.",
+  "simple_explanation": "Data diffing betekent: je draait de oude en de nieuwe berekening en vergelijkt de uitkomst rij voor rij. Zijn ze gelijk, dan klopt de vertaling. De agent moest elk verschil verklaren, zoals een leerling die bij een rekenfout moet laten zien waar het misging.",
+  "practical_example": "Een oud SQL Server-model en het nieuwe dbt-model geven allebei hetzelfde aantal rijen, maar in een paar rijen verschilt een datum. Een diff-rapport laat precies die rijen zien, zodat je weet waar je moet zoeken.",
+  "personal_relevance": "Je migratie zit in de laatste fase. De aanpak 'bewijs elk model met een vergelijking op de data' kun je ook zonder AI-agent gebruiken om de laatste modellen af te tekenen.",
+  "practical_application": "Leg voor de laatste gemigreerde modellen een vaste vergelijking vast: aantallen, totalen en een steekproef van rijen tussen oud en nieuw.",
+  "experiment": "Schrijf één herbruikbare query of dbt-test die tellingen en totalen van een SQL Server-tabel en het Databricks-model vergelijkt, en draai hem op drie modellen.",
+  "limitations": [
+    "Verslag van een talk, met cijfers van Ecolab en Datafold zelf.",
+    "In het begin werd alles nog met de hand gecontroleerd; menselijke review bleef een knelpunt.",
+    "Het overzetten van de rapportages viel buiten deze fase."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "dbt_analytics_engineering",
+    "data_quality_observability",
+    "ai_on_data_platform",
+    "sql_spark_sql"
+  ],
+  "quality": {
+    "depth": 0.75,
+    "practicality": 0.9,
+    "novelty": 0.7
+  },
+  "article_id": "d2e9b967064a",
+  "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

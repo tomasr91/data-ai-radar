@@ -1,0 +1,31 @@
+{
+  "summary": "AI Search van Databricks kan zoekindexen nu direct bouwen op streaming tables, materialized views en Iceberg-tabellen. Een tussenstap met een extra Delta-tabel en een eigen synchronisatie is dan niet meer nodig.",
+  "what_is_new": "AI Search ondersteunt naast Delta-tabellen drie nieuwe bronnen: streaming tables (nieuwe records worden geïndexeerd zodra ze binnenkomen), materialized views (wijzigingen worden incrementeel doorgegeven) en managed Iceberg-tabellen (v3 en hoger). Je maakt de index zoals een bestaande Delta Sync-index. De beschikbaarheidsstatus wordt niet genoemd.",
+  "simple_explanation": "Een zoekindex is het register achterin een boek. Bij RAG (een AI die eerst opzoekt en dan antwoordt) moet dat register actueel zijn. Databricks houdt het register nu automatisch bij als de onderliggende tabel verandert, zonder dat je zelf een kopie hoeft te onderhouden.",
+  "practical_example": "Een materialized view met de beschrijvingen van al je dbt-modellen voedt direct een zoekindex. Een assistent kan dan zoeken op 'waar vind ik de opnameduur?'.",
+  "personal_relevance": "Voor een AI-contextlaag kun je metadata als bron gebruiken. Dit maakt het makkelijker om zo'n zoekbare index actueel te houden, zonder extra pijplijn.",
+  "practical_application": "Pas relevant als je echt zoeken op betekenis nodig hebt. Voor een kleine contextlaag zijn goede beschrijvingen en zoekwoorden vaak genoeg.",
+  "experiment": "Maak een materialized view met naam en beschrijving van 50 dbt-modellen, bouw er een index op en test vijf zoekvragen in gewone taal.",
+  "limitations": [
+    "Of het GA of preview is, staat niet in het artikel.",
+    "Streaming tables kunnen alleen rijen toevoegen (append-only).",
+    "Een zoekindex kost rekenkracht; voor kleine hoeveelheden is het vaak niet nodig."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.55,
+    "practicality": 0.6,
+    "novelty": 0.65
+  },
+  "article_id": "560fbec0053e",
+  "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

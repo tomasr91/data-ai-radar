@@ -1,0 +1,33 @@
+{
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+  "summary": "Okta legt de context voor AI-agents vast in dbt, in plaats van in losse instellingen in de warehouse. Zo wordt elke wijziging een pull request, met review en geschiedenis.",
+  "what_is_new": "Okta zag drie problemen bij hun eerste AI-agents: context versnipperd over Snowflake en dbt, geen controleerbare geschiedenis, en alle instructies in één groot blok. Ze bouwden een kader met drie lagen in dbt: een 'agent'-blok in de YAML van modellen en kolommen (veilig gebruik, wat te vermijden, automatische filters), Markdown-bestanden met bedrijfsbrede feiten en routeringsregels, en semantische views volgens de semantic layer van dbt. De context gaat naar een open metadatastandaard (Agents Schema), die Claude via MCP leest. Meetresultaten worden niet genoemd.",
+  "simple_explanation": "Een AI-agent is zo goed als het spiekbriefje dat je hem geeft. Okta had die briefjes eerst los in verschillende systemen staan. Nu staan ze naast de datamodellen zelf, in dbt. Verandert een model, dan zie je meteen of het spiekbriefje ook moet veranderen.",
+  "practical_example": "In de YAML van een model staat onder 'agent': 'niet gebruiken voor omzet per maand, gebruik daarvoor fct_omzet_maand'. Een agent die de tabel tegenkomt, leest die waarschuwing mee.",
+  "personal_relevance": "Dit is bijna precies je project voor een AI-contextlaag op dbt en Databricks, alleen dan op Snowflake. Je generatorscripts maken al metadata-YAML; een vast blok met agent-context past in die stroom.",
+  "practical_application": "Voeg aan je dbt-YAML een vast blok toe met 'waarvoor wel' en 'waarvoor niet', en laat je generatorscripts daar een leeg sjabloon voor maken.",
+  "experiment": "Schrijf voor drie Gold-modellen zo'n agent-blok. Geef alleen die definities (geen data) plus een vraag aan een AI, en vergelijk het antwoord met en zonder het blok.",
+  "limitations": [
+    "Okta noemt geen meetbare resultaten; het effect is niet met cijfers onderbouwd.",
+    "Van Agents Schema en de gebruikte dbt-functies is geen beschikbaarheidsstatus genoemd.",
+    "Gebouwd op Snowflake Cortex; de vertaling naar Databricks moet je zelf maken."
+  ],
+  "availability_status": "experimenteel",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.9,
+    "novelty": 0.8
+  },
+  "article_id": "069e6a8001ed",
+  "url": "https://www.getdbt.com/blog/okta-ai-agent-context-governance",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

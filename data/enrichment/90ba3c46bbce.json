@@ -1,0 +1,32 @@
+{
+  "summary": "Databricks heeft een open-source verzameling 'skills' voor zorg en life sciences gepubliceerd: domeinkennis die je aan een AI-codeerhulp kunt meegeven. Een van de skills helpt bij het onherkenbaar maken van patiëntgegevens.",
+  "what_is_new": "Vital Skills is een open-source bibliotheek met Agent Skills van Databricks-engineers voor zorg en life sciences, bedoeld voor Genie Code. Er zijn onder meer klinische skills (cohort-builder, rwe-cohortstudy, semantic-builder, phi-deidentifier volgens HIPAA Safe Harbor) en bio-informatica-skills. Je installeert ze in Genie Code, Genie One of Genie Code CLI en deelt ze via Unity Gateway. In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100). FHIR, OMOP en HL7 worden niet genoemd.",
+  "simple_explanation": "Een skill is een handleiding die een AI erbij pakt als hij een bepaalde klus moet doen. Zoals een nieuwe collega een werkinstructie krijgt voor 'hoe bouwen we hier een groep patiënten voor onderzoek'. De AI wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
+  "practical_example": "Een onderzoeker vraagt om een groep patiënten ouder dan 65 met een bepaalde diagnose. Met de cohort-builder-skill volgt de AI een vaste werkwijze, in plaats van zelf iets te bedenken.",
+  "personal_relevance": "Een van de weinige concrete AI-in-de-zorg-ontwikkelingen op jouw platform, en het raakt ook onderzoeksdata. Let op: HIPAA is Amerikaans. In Nederland gelden de AVG en zorgspecifieke regels, dus een Amerikaanse methode om data onherkenbaar te maken is niet automatisch genoeg.",
+  "practical_application": "Gebruik de skills als voorbeeld van hoe je domeinkennis vastlegt voor AI. Het principe kun je toepassen op je eigen datamodel, zonder de zorgskills zelf te gebruiken.",
+  "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
+  "limitations": [
+    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
+    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
+    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
+  ],
+  "availability_status": "experimenteel",
+  "official_docs": [],
+  "topics": [
+    "ai_in_healthcare",
+    "ai_research_data",
+    "ai_agents_rag",
+    "data_governance_privacy"
+  ],
+  "quality": {
+    "depth": 0.55,
+    "practicality": 0.6,
+    "novelty": 0.8
+  },
+  "article_id": "90ba3c46bbce",
+  "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

@@ -1,0 +1,207 @@
+{
+ "generated_at": "2026-10-28T20:12:07.621528Z",
+ "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
+ "items": [
+  {
+   "id": "965a6e80a937",
+   "title": "How Ramp's internal AI agents crossed a million sessions",
+   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T20:10:00Z",
+   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens.",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "412d4b1345c3",
+   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
+   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T19:06:00Z",
+   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines.",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "fea9136ea071",
+   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:51:00Z",
+   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models.",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ]
+  },
+  {
+   "id": "9bcb10a95345",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:38:00Z",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics.",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ]
+  },
+  {
+   "id": "b9c31921875e",
+   "title": "External writes to managed Delta tables are now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-13T00:00:00Z",
+   "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables.",
+   "preliminary_score": 71,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "a4cf86509926",
+   "title": "QuickBooks connector is available in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/quickbooks",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "excerpt": "Managed Lakeflow Connect connector for QuickBooks Online accounting data.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "f3d7731bb72d",
+   "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "Multipart uploads and conditional operations for Unity Catalog volumes.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "72a32ce7fcf7",
+   "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
+   "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T20:03:00Z",
+   "excerpt": "Obie rebuilt on dbt and Apache Iceberg, shrinking a monthly process from more than 25 hours to about 2.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "54955e6fc7a6",
+   "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
+   "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:47:00Z",
+   "excerpt": "Twilio consolidated components into one ClickHouse pipeline governed by dbt and GitOps.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "ceb4b784fbab",
+   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:44:00Z",
+   "excerpt": "KOHO argues AI self-serve analytics depends on a well-governed dbt foundation.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "b73822c39490",
+   "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
+   "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:34:00Z",
+   "excerpt": "Most dbt models are not on the critical path; that slack can save Snowflake credits.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "75fb2bbe55ff",
+   "title": "Unlocking Investment Insights Without Migrating Your Data: Lakehouse Federation",
+   "url": "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "excerpt": "Lakehouse Federation lets teams query data where it lives.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "98b1463d26ab",
+   "title": "BigQuery to Databricks: A Strategic Framework",
+   "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-27T11:07:53Z",
+   "excerpt": "Migrating from BigQuery to Databricks as a strategic evolution.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "eabc838b21d8",
+   "title": "Unify your productivity and AI data with Lakeflow Connect",
+   "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-26T23:20:12Z",
+   "excerpt": "Managed connectors for productivity and AI data in Lakeflow Connect.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "8d626e71d0f3",
+   "title": "How to teach with Databricks Free Edition",
+   "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-26T19:40:00Z",
+   "excerpt": "Educators can run a data or AI course on Databricks Free Edition.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  }
+ ]
+}

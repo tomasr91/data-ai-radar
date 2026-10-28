@@ -1,0 +1,221 @@
+# Data & AI Radar — interesses
+# Pas prioriteiten, onderwerpen en zoektermen hier aan; er is geen codewijziging nodig.
+# Prioriteit = hoe zwaar een onderwerp meetelt bij de selectie, niet hoe belangrijk het in het algemeen is.
+
+schema_version: 1
+updated: "2026-10-28"
+
+priority_levels:
+  5:
+    label: kernonderwerp
+    description: Direct relevant voor mijn dagelijkse werk en projecten
+    target_share: [0.30, 0.35]
+  4:
+    label: zeer relevant
+    description: Belangrijke technische ontwikkelingen die ik actief wil volgen
+    target_share: [0.25, 0.30]
+  3:
+    label: interessant
+    description: Nuttige verbreding of mogelijke toepassing
+    target_share: [0.20, 0.25]
+  2:
+    label: verkennend
+    description: Af en toe interessant, maar geen hoofdonderwerp
+    target_share: [0.05, 0.15]
+  1:
+    label: alleen uitzonderlijk
+    description: Alleen tonen bij uitzonderlijk relevante ontwikkelingen
+    target_share: [0.00, 0.05]
+
+# Startwaarden voor de selectie; vrij aan te passen.
+scoring:
+  target_share_is_guideline: true      # richtwaarden, geen harde quota
+  related_topic_weight: 0.5            # een gerelateerd onderwerp telt voor de helft mee
+  min_relevance_score: 0.6             # onder deze drempel geen plek in de feed, ook niet bij prioriteit 5 (0.5 liet ook losse productvermeldingen door)
+  max_items_per_topic_per_feed: 3      # houdt de feed gevarieerd
+  other_factors: [recency, trust_level, novelty, diversity]
+  exceptional_override:
+    enabled: true
+    applies_to_priorities: [1, 2]
+    rule: >-
+      Een artikel mag de feed in, ook bij prioriteit 1 of 2, als het een grote,
+      bevestigde wijziging is in een tool uit tech-stack.md of directe gevolgen
+      heeft voor een project in projects.md. De reden wordt bij het artikel vermeld.
+
+# Filtergroepen in de app. Elk onderwerp hoort bij één groep (feed_group).
+feed_groups:
+  - {id: dbt, label: "dbt & analytics engineering"}
+  - {id: databricks, label: "Databricks & data-engineering"}
+  - {id: ai_context, label: "AI & context engineering"}
+  - {id: architectuur, label: "Data-architectuur & modellering"}
+  - {id: agents, label: "AI-agents & RAG"}
+  - {id: kwaliteit, label: "Datakwaliteit & governance"}
+  - {id: zorg, label: "AI in de zorg"}
+  - {id: overig, label: "Overige relevante onderwerpen"}
+
+# Harde uitsluitingen: artikelen die hier hoofdzakelijk over gaan komen nooit in de feed,
+# ook niet via de uitzonderingsregel.
+excluded_topics:
+  - id: funding_acquisitions
+    name: Funding- en overnamenieuws
+    keywords: [funding round, raises, Series A, Series B, acquisition, acquires, valuation, IPO]
+  - id: generative_media
+    name: AI voor beeld, video en muziek
+    keywords: [image generation, text-to-image, video generation, text-to-video, AI music, diffusion model art]
+  - id: crypto_blockchain
+    name: Crypto en blockchain
+    keywords: [crypto, cryptocurrency, blockchain, web3, NFT, bitcoin]
+
+topics:
+  - id: dbt_analytics_engineering
+    name: dbt en analytics engineering
+    description: Modellering, transformaties, tests, documentatie en deployment met dbt.
+    feed_group: dbt
+    enabled: true
+    priority: 5
+    keywords: [dbt, dbt Core, dbt Fusion, dbt tests, data contracts, dbt semantic layer, analytics engineering, dbt-databricks]
+    related_topics: [data_architecture_modeling, cicd_data_deployment, data_quality_observability]
+
+  - id: databricks_data_engineering
+    name: Databricks en data engineering
+    description: Het Databricks-platform, Spark, Delta Lake, pipelines en cloudontwikkeling.
+    feed_group: databricks
+    enabled: true
+    priority: 5
+    keywords: [Databricks, Delta Lake, Unity Catalog, Lakeflow, serverless compute, Databricks Asset Bundles, Spark, lakehouse]
+    related_topics: [sql_spark_sql, ai_on_data_platform, metadata_lineage_catalogs]
+
+  - id: ai_on_data_platform
+    name: AI op het dataplatform
+    description: AI toepassen op bestaande data en pipelines, binnen het eigen platform.
+    feed_group: ai_context
+    enabled: true
+    priority: 5
+    keywords: [AI functions, ai_query, model serving, LLM in SQL, AI-assisted data engineering, Databricks AI, dbt AI]
+    related_topics: [ai_context_engineering, databricks_data_engineering, ai_agents_rag]
+
+  - id: ai_context_engineering
+    name: AI-context engineering
+    description: Data, metadata en definities zo verrijken en aanbieden dat AI er betrouwbaar mee werkt.
+    feed_group: ai_context
+    enabled: true
+    priority: 5
+    keywords: [context engineering, semantic layer, metadata for AI, MCP, Model Context Protocol, AI-ready data, knowledge graph]
+    related_topics: [ai_agents_rag, metadata_lineage_catalogs, ai_on_data_platform]
+
+  - id: data_architecture_modeling
+    name: Data-architectuur en datamodellering
+    description: Ontwerp van betrouwbare, herbruikbare datamodellen en lagen.
+    feed_group: architectuur
+    enabled: true
+    priority: 5
+    keywords: [data architecture, data modeling, medallion architecture, dimensional modeling, data vault, lakehouse architecture, data mesh]
+    related_topics: [dbt_analytics_engineering, databricks_data_engineering, powerbi_semantic_models]
+
+  - id: ai_agents_rag
+    name: AI-agents en RAG
+    description: Agents en retrieval-toepassingen voor automatisering en het ontsluiten van kennis.
+    feed_group: agents
+    enabled: true
+    priority: 4
+    keywords: [AI agents, agentic, RAG, retrieval augmented generation, vector search, agent evaluation, tool use]
+    related_topics: [ai_context_engineering, ai_on_data_platform, open_source_ai]
+
+  - id: data_quality_observability
+    name: Datakwaliteit en observability
+    description: Problemen eerder detecteren en de betrouwbaarheid van data verhogen.
+    feed_group: kwaliteit
+    enabled: true
+    priority: 4
+    keywords: [data quality, data observability, data tests, anomaly detection, data monitoring, freshness, Lakehouse Monitoring]
+    related_topics: [dbt_analytics_engineering, metadata_lineage_catalogs]
+
+  - id: metadata_lineage_catalogs
+    name: Metadata, lineage en catalogi
+    description: Data vindbaar en begrijpelijk maken voor mensen en AI.
+    feed_group: kwaliteit
+    enabled: true
+    priority: 4
+    keywords: [data catalog, data lineage, column lineage, metadata, Unity Catalog, data discovery, tagging]
+    related_topics: [data_governance_privacy, ai_context_engineering, data_quality_observability]
+
+  - id: cicd_data_deployment
+    name: GitHub, CI/CD en data deployment
+    description: Automatisering, versiebeheer en uitrol van dataoplossingen.
+    feed_group: overig
+    enabled: true
+    priority: 4
+    keywords: [Azure DevOps, Azure Pipelines, CI/CD, slim CI, DataOps, deployment, pull request review, infrastructure as code]
+    related_topics: [dbt_analytics_engineering, databricks_data_engineering]
+
+  - id: sql_spark_sql
+    name: SQL en Spark SQL
+    description: Praktische SQL voor transformaties en verwerking, inclusief dialectverschillen.
+    feed_group: databricks
+    enabled: true
+    priority: 4
+    keywords: [SQL, Spark SQL, T-SQL, SQL Server, query optimization, SQL dialect, window functions]
+    related_topics: [databricks_data_engineering, dbt_analytics_engineering]
+
+  - id: data_governance_privacy
+    name: Data governance en privacy
+    description: Verantwoord gebruik van data, met nadruk op privacy en toegang in de zorg.
+    feed_group: kwaliteit
+    enabled: true
+    priority: 4
+    keywords: [data governance, privacy, AVG, GDPR, access control, data classification, pseudonymization, EU AI Act]
+    related_topics: [metadata_lineage_catalogs, ai_in_healthcare, ai_research_data]
+
+  - id: ai_in_healthcare
+    name: AI in de zorg
+    description: Toepassingen en beperkingen van AI binnen een zorginstelling.
+    feed_group: zorg
+    enabled: true
+    priority: 4
+    keywords: [AI in healthcare, zorg AI, clinical AI, healthcare data platform, medical AI regulation, responsible AI healthcare]
+    related_topics: [data_governance_privacy, ai_research_data]
+
+  - id: ai_research_data
+    name: AI en onderzoeksdata
+    description: AI voor onderzoek en kennisontsluiting met onderzoeksdata.
+    feed_group: zorg
+    enabled: true
+    priority: 3
+    keywords: [research data, FAIR data, research data management, synthetic data, cohort selection, trusted research environment]
+    related_topics: [ai_in_healthcare, data_governance_privacy, ai_agents_rag]
+
+  - id: powerbi_semantic_models
+    name: Power BI en semantische modellen
+    description: Aansluiting op BI, rapportages en AI op bedrijfsdata.
+    feed_group: overig
+    enabled: true
+    priority: 3
+    keywords: [Power BI, semantic model, DAX, Copilot Power BI, Microsoft Fabric, metrics layer]
+    related_topics: [data_architecture_modeling, ai_context_engineering]
+
+  - id: open_source_ai
+    name: Open-source AI-modellen en frameworks
+    description: Nieuwe mogelijkheden om zelf AI-toepassingen te bouwen.
+    feed_group: overig
+    enabled: true
+    priority: 3
+    keywords: [open source LLM, open weights, LangChain, LlamaIndex, Hugging Face, agent framework, local LLM]
+    related_topics: [ai_agents_rag, new_ai_models_tools]
+
+  - id: new_ai_models_tools
+    name: Nieuwe AI-modellen en algemene AI-tools
+    description: Alleen volgen bij een concrete toepassing of impact op mijn werk.
+    feed_group: overig
+    enabled: true
+    priority: 2
+    keywords: [new model release, LLM release, AI coding assistant, AI tool launch]
+    related_topics: [open_source_ai, ai_agents_rag]
+
+  - id: general_ai_trends
+    name: Algemene AI-trends en technologienieuws
+    description: Hype en generiek nieuws vermijden; alleen uitzonderlijke ontwikkelingen.
+    feed_group: overig
+    enabled: true
+    priority: 1
+    keywords: [AI trends, AI industry, AI regulation news, tech news]
+    related_topics: [new_ai_models_tools]

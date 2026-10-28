@@ -1,0 +1,315 @@
+# Data & AI Radar — nieuwsbronnen
+# verification.status:
+#   verified       = adres zelf teruggevonden in een officiële of betrouwbare vermelding
+#   user_supplied  = door mij opgegeven, (nog) niet onafhankelijk teruggevonden; mag aan staan
+#   to_verify      = placeholder; staat uit tot het adres is bevestigd
+
+schema_version: 2
+updated: "2026-10-28"
+
+definitions:
+  type:
+    official_docs: Officiële productdocumentatie en release notes (primaire bron voor productwijzigingen)
+    vendor_blog: Blog of engineeringblog van een leverancier
+    expert_blog: Vakmensen — duiding, praktijkervaring en ideeën
+    technical_article: Technische artikelen en tutorials
+    independent_news: Onafhankelijke nieuwsbronnen, nieuwsbrieven en technologie-radars (extra context)
+  trust_level:
+    high: Primaire bron of bewezen betrouwbaar; feiten mogen zonder tweede bron worden overgenomen
+    medium: Betrouwbaar, maar interpretatie of commercieel belang; claims over productfuncties checken bij de primaire bron
+    low: Alleen als signaal; nooit als enige bron voor een feit
+  priority:
+    description: >-
+      Hoe zwaar een bron meetelt bij de selectie (1-5). Staat los van trust_level:
+      een expertblog kan hoge prioriteit hebben, maar productclaims blijven te checken
+      bij een officiële bron. De onderwerp-prioriteit uit interests.yml blijft leidend.
+  fetch_method:
+    rss: RSS-feed uitlezen (feed_url)
+    atom: Atom-feed uitlezen (feed_url)
+    html: Pagina ophalen en nieuwe items herkennen
+    github_releases: Releases van een GitHub-repository volgen
+    manual: Handmatig toevoegen, niet automatisch ophalen
+  verification_status:
+    verified: Adres zelf teruggevonden op checked_on
+    user_supplied: Door mij opgegeven; nog niet onafhankelijk teruggevonden
+    to_verify: Placeholder; niet gebruiken voordat het is bevestigd
+
+sources:
+  # ===== Officiële bronnen: wat is nieuw en wat is daadwerkelijk beschikbaar? =====
+
+  - id: azure_databricks_release_notes
+    name: Azure Databricks release notes
+    url: https://learn.microsoft.com/en-us/azure/databricks/release-notes/
+    feed_url: https://learn.microsoft.com/en-us/azure/databricks/feed.xml
+    type: official_docs
+    topics: [databricks_data_engineering, sql_spark_sql, ai_on_data_platform, metadata_lineage_catalogs]
+    priority: 5
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Azure bevestigd als gebruikte cloud."}
+
+  - id: dbt_release_notes
+    name: dbt release notes
+    url: https://docs.getdbt.com/docs/dbt-versions/release-notes
+    feed_url: null
+    type: official_docs
+    topics: [dbt_analytics_engineering, cicd_data_deployment]
+    priority: 5
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Belangrijk voor breaking changes. Feed niet gecontroleerd."}
+
+  - id: dbt_core_releases
+    name: dbt-core releases (GitHub)
+    url: https://github.com/dbt-labs/dbt-core/releases
+    feed_url: null
+    type: official_docs
+    topics: [dbt_analytics_engineering]
+    priority: 4
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: github_releases
+    verification: {status: verified, checked_on: "2026-10-28", note: null}
+
+  - id: dbt_labs_blog
+    name: dbt Labs Blog
+    url: https://www.getdbt.com/blog
+    feed_url: https://www.getdbt.com/blog/feed.xml
+    type: vendor_blog
+    topics: [dbt_analytics_engineering, ai_context_engineering, ai_on_data_platform, data_quality_observability]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Ook als dbt_blog opgegeven; samengevoegd."}
+
+  - id: databricks_blog
+    name: Databricks Blog
+    url: https://www.databricks.com/blog
+    feed_url: https://www.databricks.com/feed
+    type: vendor_blog
+    topics: [databricks_data_engineering, ai_on_data_platform, ai_agents_rag, data_architecture_modeling]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Bevat ook klantverhalen en marketing; productclaims checken bij release notes."}
+
+  - id: databricks_engineering_blog
+    name: Databricks Engineering Blog
+    url: https://www.databricks.com/blog
+    feed_url: https://www.databricks.com/blog/category/engineering/feed.xml
+    type: vendor_blog
+    topics: [databricks_data_engineering, sql_spark_sql, data_architecture_modeling]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Overlapt met databricks_blog; deduplicatie op URL nodig."}
+
+  - id: anthropic_engineering
+    name: Anthropic Engineering
+    url: https://www.anthropic.com/engineering
+    feed_url: null
+    type: vendor_blog
+    topics: [ai_context_engineering, ai_agents_rag]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Geen feed gevonden."}
+
+  - id: openai_developer_blog
+    name: OpenAI Developer Blog
+    url: https://developers.openai.com/blog
+    feed_url: null
+    type: vendor_blog
+    topics: [ai_agents_rag, ai_context_engineering, new_ai_models_tools]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Ook over evaluaties. Feed niet gecontroleerd."}
+
+  - id: github_blog
+    name: GitHub Blog
+    url: https://github.blog/
+    feed_url: null
+    type: vendor_blog
+    topics: [cicd_data_deployment, new_ai_models_tools]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Ook coding agents. CI/CD draait op Azure DevOps, dus GitHub Actions-nieuws is minder direct toepasbaar. Feed niet gecontroleerd; voor productwijzigingen bestaat ook https://github.blog/changelog/."}
+
+  - id: azure_blog
+    name: Microsoft Azure Blog
+    url: https://azure.microsoft.com/en-us/blog/
+    feed_url: https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/
+    type: vendor_blog
+    topics: [databricks_data_engineering, data_governance_privacy]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Feed gefilterd op Azure Databricks om ruis te beperken; feed bevestigd via een feeddirectory. Bredere Azure-onderwerpen (cloud, security) vallen hier dus buiten."}
+
+  - id: powerbi_blog
+    name: Microsoft Power BI Blog
+    url: https://powerbi.microsoft.com/en-us/blog/
+    feed_url: null
+    type: vendor_blog
+    topics: [powerbi_semantic_models]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Maandelijkse feature summaries. Feed niet gecontroleerd."}
+
+  - id: huggingface_blog
+    name: Hugging Face Blog
+    url: https://huggingface.co/blog
+    feed_url: null
+    type: vendor_blog
+    topics: [open_source_ai, ai_agents_rag]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: user_supplied, checked_on: null, note: "Ook modellen en embeddings. Adres en feed niet zelf teruggevonden."}
+
+  # ===== Technologie-radars en onafhankelijk nieuws =====
+
+  - id: thoughtworks_radar
+    name: Thoughtworks Technology Radar
+    url: https://www.thoughtworks.com/radar
+    feed_url: null
+    type: independent_news
+    topics: [data_architecture_modeling, ai_agents_rag, general_ai_trends]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: manual
+    verification: {status: user_supplied, checked_on: null, note: "Radarsectie op thoughtworks.com bestaat; exacte pagina niet teruggevonden. Verschijnt ongeveer twee keer per jaar, dus handmatig volgen."}
+
+  - id: data_engineering_weekly
+    name: Data Engineering Weekly
+    url: https://www.dataengineeringweekly.com
+    feed_url: https://www.dataengineeringweekly.com/feed
+    type: independent_news
+    topics: [databricks_data_engineering, data_architecture_modeling, data_quality_observability, metadata_lineage_catalogs]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-28", note: "Verzamelnieuwsbrief; haal feiten uit de originele bron."}
+
+  # ===== Vakmensen: duiding, praktijkervaring en ideeën =====
+
+  - id: joe_reis
+    name: Joe Reis
+    url: https://joereis.substack.com/
+    feed_url: null
+    type: expert_blog
+    topics: [data_architecture_modeling, databricks_data_engineering, ai_on_data_platform]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Substack; feed niet gecontroleerd."}
+
+  - id: simon_whiteley
+    name: Simon Whiteley
+    url: https://www.advancinganalytics.co.uk/blog/author/simon-whiteley
+    feed_url: null
+    type: expert_blog
+    topics: [databricks_data_engineering, sql_spark_sql, ai_agents_rag]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: user_supplied, checked_on: null, note: "Auteur en bedrijf (Advancing Analytics) gevonden; de auteurspagina zelf niet teruggevonden."}
+
+  - id: madison_mae
+    name: Madison Mae (Learn Analytics Engineering)
+    url: https://learnanalyticsengineering.substack.com/
+    feed_url: null
+    type: expert_blog
+    topics: [dbt_analytics_engineering, sql_spark_sql, data_architecture_modeling]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Substack; feed niet gecontroleerd."}
+
+  - id: hamel_husain
+    name: Hamel Husain
+    url: https://hamel.dev/blog/
+    feed_url: null
+    type: expert_blog
+    topics: [ai_agents_rag, ai_context_engineering]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: user_supplied, checked_on: null, note: "Vooral AI-evaluatie. Domein hamel.dev bevestigd; pad /blog/ niet."}
+
+  - id: chip_huyen
+    name: Chip Huyen
+    url: https://huyenchip.com/blog/
+    feed_url: null
+    type: expert_blog
+    topics: [ai_agents_rag, ai_context_engineering, open_source_ai]
+    priority: 5
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: user_supplied, checked_on: null, note: "Ook ML-systemen. Domein huyenchip.com bevestigd; pad /blog/ niet."}
+
+  - id: simon_willison
+    name: Simon Willison
+    url: https://simonwillison.net/
+    feed_url: https://simonwillison.net/atom/entries/
+    type: expert_blog
+    topics: [ai_agents_rag, ai_context_engineering, open_source_ai, new_ai_models_tools]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: atom
+    verification: {status: verified, checked_on: "2026-10-28", note: "Alleen lange artikelen; alles via https://simonwillison.net/atom/everything/ (veel volume)."}
+
+  - id: dbt_developer_blog
+    name: dbt Developer Blog
+    url: https://docs.getdbt.com/blog
+    feed_url: null
+    type: technical_article
+    topics: [dbt_analytics_engineering, data_architecture_modeling, cicd_data_deployment]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: html
+    verification: {status: verified, checked_on: "2026-10-28", note: "Feed niet gecontroleerd."}

@@ -1,0 +1,33 @@
+{
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+  "summary": "Een AI-agent schreef zelf een omzetquery en zat er 3,5 miljoen dollar naast. AWS laat zien hoe je dat voorkomt: de agent kiest uit vastgelegde maatstaven in de dbt Semantic Layer in plaats van zelf SQL te schrijven.",
+  "what_is_new": "De query van de agent gaf 14,86 miljoen dollar omzet; de echte omzet was 11,36 miljoen (30,8% te hoog). Oorzaken: een bedrag vóór korting en retouren, een niet-gekoppelde retourtabel, meegetelde geannuleerde orders en testaccounts. De oplossing heeft twee lagen via MCP: de dbt MCP Server laat de agent alleen gecertificeerde metrics gebruiken, waarbij MetricFlow de SQL schrijft, en een Redshift MCP Server staat alleen leesquery's toe. Elk antwoord vermeldt de metric, de SQL, het bronmodel, dbt-testresultaten en een query-ID.",
+  "simple_explanation": "Laat je een slimme stagiair zelf de omzet uitrekenen, dan pakt hij misschien de verkeerde kolom. Geef je hem een rekenmachine met alleen goedgekeurde knoppen, dan kan die fout niet meer. De semantic layer is die rekenmachine: de definitie van 'omzet' staat er één keer goed in.",
+  "practical_example": "'Aantal opnames' lijkt simpel, maar telt een overplaatsing als nieuwe opname? Ligt die regel vast in een metric, dan krijgt een agent altijd dezelfde, juiste telling.",
+  "personal_relevance": "Dit is de kern van betrouwbare data voor AI: definities vastleggen, in plaats van een AI zelf SQL te laten schrijven op je tabellen. Op Databricks kunnen metric views dezelfde rol spelen als de dbt Semantic Layer.",
+  "practical_application": "Leg je vijf belangrijkste kerncijfers vast als metric (in dbt of als metric view) voordat een AI-assistent er vragen over mag beantwoorden.",
+  "experiment": "Stel een AI twee keer dezelfde vraag over een kerncijfer: één keer met alleen het tabelschema, één keer met de metricdefinitie erbij (alleen definities, geen data). Vergelijk de SQL die eruit komt.",
+  "limitations": [
+    "Het voorbeeld draait op Redshift met de dbt Semantic Layer van het dbt-platform; niet alles werkt hetzelfde met dbt Core.",
+    "Werkt alleen voor vragen binnen de vastgelegde metrics.",
+    "De genoemde benchmark- en Gartner-cijfers zijn context uit de talk en niet apart gecontroleerd."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_agents_rag",
+    "data_quality_observability"
+  ],
+  "quality": {
+    "depth": 0.75,
+    "practicality": 0.9,
+    "novelty": 0.75
+  },
+  "article_id": "4dcd7af26dab",
+  "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

@@ -1,0 +1,85 @@
+# Data & AI Radar: ophalen, feed bouwen en de app publiceren op GitHub Pages.
+#
+# Loopt:
+#  - elke ochtend (ophalen van nieuwe artikelen; daarna maakt Claude de uitleg)
+#  - als Claude nieuwe uitleg pusht (data/enrichment/**), of als context/app/pipeline verandert
+#  - handmatig via "Run workflow"
+# Commits van deze workflow zelf starten de workflow niet opnieuw (GitHub-regel voor GITHUB_TOKEN).
+
+name: Radar bijwerken
+
+on:
+  schedule:
+    - cron: "30 4 * * *"   # 05:30 Nederlandse wintertijd (06:30 zomertijd)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/enrichment/**"
+      - "context/**"
+      - "app/**"
+      - "pipeline/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installeren
+        run: pip install -r requirements.txt
+
+      - name: Context en uitleg controleren
+        run: |
+          python scripts/validate_context.py
+          python scripts/validate_enrichment.py
+
+      - name: Tests
+        run: python -m unittest discover -s tests -t .
+
+      - name: Artikelen ophalen en feed bouwen
+        # --max-enrich 0: de uitleg maakt Claude via de geplande taak, niet de API
+        run: python -m pipeline.build --provider feeds --max-enrich 0
+
+      - name: Feed, archief en werklijst opslaan
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add data/feed.json data/archive.json data/to_enrich.json
+          if git diff --cached --quiet; then
+            echo "Geen wijzigingen."
+          else
+            git commit -m "Feed bijgewerkt $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Site maken
+        run: python scripts/make_site.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

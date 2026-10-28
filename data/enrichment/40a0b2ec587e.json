@@ -1,0 +1,40 @@
+{
+  "summary": "Data Classification in Unity Catalog herkent 50 nieuwe soorten gevoelige gegevens en meer landen. Tegelijk is de API voor deze functie algemeen beschikbaar geworden.",
+  "what_is_new": "Op 15 oktober 2026 kreeg Data Classification 50 nieuwe klassen gevoelige data, waaronder betaalkaartgegevens, persoons- en medewerkergegevens en geheimen in software, plus regionale klassen voor meer landen en regio's. Regionale tags zijn alleen in bepaalde regio's beschikbaar. Op 14 oktober werd de Data Classification API met Terraform-resource GA; de configuratie voor automatisch taggen (auto_tag_configs) is nog Public Preview.",
+  "simple_explanation": "Data Classification is een speurhond die je tabellen doorsnuffelt en meldt: hier staan waarschijnlijk namen, e-mailadressen of rekeningnummers. Hij kent nu meer soorten geuren. Met de API kun je hem vanuit code aansturen in plaats van alleen via het scherm.",
+  "practical_example": "Na het laden van een nieuwe AFAS-tabel in Bronze laat je de classificatie draaien. Die markeert bijvoorbeeld een kolom met IBAN-nummers en een kolom met personeelsnummers als gevoelig.",
+  "personal_relevance": "Voor een zorginstelling is weten waar persoonsgegevens zitten de basis van governance. Met de API kun je classificatie opnemen in je uitrol via Azure DevOps in plaats van het handmatig te regelen.",
+  "practical_application": "Gebruik classificatie als controle bij nieuwe bronnen: elke nieuwe Bronze-tabel wordt gescand voordat hij naar Silver gaat.",
+  "experiment": "Laat de classificatie los op een testtabel met verzonnen gegevens (namen, nummers die op een BSN lijken, IBAN). Kijk welke kolommen hij herkent en welke hij mist.",
+  "limitations": [
+    "De release note noemt niet welke landen precies zijn toegevoegd. Controleer of Nederlandse gegevenstypen worden herkend.",
+    "Automatisch taggen is nog preview; de API zelf is GA.",
+    "Classificatie is een inschatting, geen garantie."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Data Classification",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags"
+    },
+    {
+      "label": "Data Classification API",
+      "url": "https://docs.databricks.com/api/workspace/dataclassification"
+    }
+  ],
+  "topics": [
+    "data_governance_privacy",
+    "metadata_lineage_catalogs"
+  ],
+  "quality": {
+    "depth": 0.55,
+    "practicality": 0.85,
+    "novelty": 0.7
+  },
+  "development_key": "uc-data-classification-okt-2026",
+  "article_id": "40a0b2ec587e",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}

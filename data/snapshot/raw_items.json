@@ -1,0 +1,587 @@
+{
+ "captured_at": "2026-10-28T19:40:00Z",
+ "captured_by": "Claude (webtool in de bouwsessie)",
+ "note": "Momentopname: echte artikelen, eenmalig opgehaald op 28 oktober 2026. Niet automatisch ververst. Korte beschrijvingen bij onverwerkte artikelen zijn bij het ophalen samengevat, niet letterlijk overgenomen.",
+ "source_results": [
+  {
+   "source_id": "dbt_labs_blog",
+   "status": "ok",
+   "items": 12,
+   "message": "RSS-feed gelezen (12 items).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "databricks_blog",
+   "status": "ok",
+   "items": 10,
+   "message": "RSS-feed gelezen via databricks.com/de/feed (10 items, Engelstalig).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "status": "ok",
+   "items": 29,
+   "message": "Releasepagina oktober 2026 gelezen; selectie van 29 van 85 items (veel connectoren en modelupdates weggelaten). Link per item wijst naar de officiële documentatie.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "simon_willison",
+   "status": "ok",
+   "items": 9,
+   "message": "Recente posts via feedoverzicht; datum uit de URL.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "joe_reis",
+   "status": "ok",
+   "items": 5,
+   "message": "Recente posts via publicatieoverzicht; alleen relatieve datums, dus publicatiedatum onbekend.",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "databricks_engineering_blog",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "data_engineering_weekly",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  },
+  {
+   "source_id": "azure_blog",
+   "status": "failed",
+   "items": 0,
+   "message": "Feed niet bereikbaar vanuit de bouwomgeving (netwerkbeleid).",
+   "checked_at": "2026-10-28T19:40:00Z"
+  }
+ ],
+ "items": [
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How Ramp's internal AI agents crossed a million sessions",
+   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+   "published_raw": "Tue, 27 Oct 2026 20:10:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
+   "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
+   "published_raw": "Tue, 27 Oct 2026 20:03:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Obie rebuilt on dbt and Apache Iceberg, shrinking a monthly process from more than 25 hours to about 2."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
+   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
+   "published_raw": "Tue, 27 Oct 2026 20:02:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Virgin Media O2 lowered dbt compute spend after adopting dbt v2 and dbt State."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "What Okta learned governing context for AI agents at scale",
+   "url": "https://www.getdbt.com/blog/okta-ai-agent-context-governance",
+   "published_raw": "Tue, 27 Oct 2026 20:01:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Okta reworked how it governs the context given to AI agents, using dbt as source of truth."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
+   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+   "published_raw": "Tue, 27 Oct 2026 19:06:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+   "published_raw": "Tue, 27 Oct 2026 18:51:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
+   "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
+   "published_raw": "Tue, 27 Oct 2026 18:47:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Twilio consolidated components into one ClickHouse pipeline governed by dbt and GitOps."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+   "published_raw": "Tue, 27 Oct 2026 18:44:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "KOHO argues AI self-serve analytics depends on a well-governed dbt foundation."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
+   "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
+   "published_raw": "Tue, 27 Oct 2026 18:41:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "An AI-generated revenue query went wrong; business context in the semantic layer prevents such errors."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "published_raw": "Tue, 27 Oct 2026 18:38:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
+   "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
+   "published_raw": "Tue, 27 Oct 2026 18:34:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Most dbt models are not on the critical path; that slack can save Snowflake credits."
+  },
+  {
+   "source_id": "dbt_labs_blog",
+   "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
+   "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
+   "published_raw": "Tue, 27 Oct 2026 18:20:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Ecolab and Datafold used an AI migration agent to convert legacy Snowflake logic into documented dbt models."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+   "published_raw": "Tue, 27 Oct 2026 19:00:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Open-source agent skills for healthcare and life sciences for Genie Code on a governed platform."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Unlocking Investment Insights Without Migrating Your Data: Lakehouse Federation",
+   "url": "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation",
+   "published_raw": "Tue, 27 Oct 2026 18:00:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Lakehouse Federation lets teams query data where it lives."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+   "published_raw": "Tue, 27 Oct 2026 18:00:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Measurable accuracy gains for document extraction using ai_extract and MLflow Prompt Registry."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "BigQuery to Databricks: A Strategic Framework",
+   "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework",
+   "published_raw": "Tue, 27 Oct 2026 11:07:53 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Migrating from BigQuery to Databricks as a strategic evolution."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Unify your productivity and AI data with Lakeflow Connect",
+   "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+   "published_raw": "Mon, 26 Oct 2026 23:20:12 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Managed connectors for productivity and AI data in Lakeflow Connect."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "How to teach with Databricks Free Edition",
+   "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
+   "published_raw": "Mon, 26 Oct 2026 19:40:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Educators can run a data or AI course on Databricks Free Edition."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Building live intelligence: Databricks AI Search supports Streaming Tables, Materialized Views, and Managed tables using Iceberg",
+   "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
+   "published_raw": "Mon, 26 Oct 2026 18:03:59 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "AI Search natively supports streaming tables, materialized views and Iceberg managed tables."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "The media industry is becoming a prediction economy",
+   "url": "https://www.databricks.com/blog/media-industry-becoming-prediction-economy",
+   "published_raw": "Mon, 26 Oct 2026 13:36:46 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Media and advertising shift from attention metrics toward prediction."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+   "published_raw": "Fri, 23 Oct 2026 19:00:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "AI agents write a growing share of pipelines; declarative pipelines suit that use."
+  },
+  {
+   "source_id": "databricks_blog",
+   "title": "Real-time energy trading and analytics on Databricks",
+   "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
+   "published_raw": "Fri, 23 Oct 2026 19:00:00 GMT",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "What energy trading desks need for real-time analytics."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "QuickBooks connector is available in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/quickbooks",
+   "published_raw": "2026-10-26",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Managed Lakeflow Connect connector for QuickBooks Online accounting data."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Improved Lakeflow Performance Observability is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics",
+   "published_raw": "2026-10-26",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Lakeflow Jobs show query performance metrics; Optimize button opens Genie Code."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "DataFrame caching on serverless compute is now in Public Preview",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/dataframe-cache",
+   "published_raw": "2026-10-23",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "df.cache() and df.persist() on serverless compute."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
+   "published_raw": "2026-10-23",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Multipart uploads and conditional operations for Unity Catalog volumes."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Shared Serverless for Asset Bundles (Beta)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
+   "published_raw": "2026-10-22",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Notebooks and files in a bundle share serverless compute and environment."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
+   "published_raw": "2026-10-21",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Unity Gateway screens MCP tool calls and results for jailbreak and prompt injection."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Lakeflow pipelines system tables are now generally available (GA)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs",
+   "published_raw": "2026-10-21",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "System tables record pipelines and pipeline updates."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Genie Code tasks in Lakeflow Jobs are now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code",
+   "published_raw": "2026-10-21",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "A job task runs a Genie Code prompt autonomously."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Filter data per end user with OAuth custom identity claims",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims",
+   "published_raw": "2026-10-19",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Custom identity claims in service principal OAuth tokens for row filtering."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "DeepSeek V4.1 Flash is scheduled for retirement",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/machine-learning/retired-models-policy#retired",
+   "published_raw": "2026-10-19",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Model retirement on November 19, 2026."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "ADBC driver for Power BI is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc",
+   "published_raw": "2026-10-15",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "ADBC driver is GA and default for new Power BI connections."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Data Classification adds 50 new classes and support for 16 more countries and regions",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
+   "published_raw": "2026-10-15",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "50 new sensitive data classes and regional classes.",
+   "development_key": "uc-data-classification-okt-2026"
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "The agentic code converter is generally available for SQL conversion",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
+   "published_raw": "2026-10-15",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Converts T-SQL, Snowflake and BigQuery SQL into Databricks SQL, with validation."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
+   "published_raw": "2026-10-14",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Multi-statement atomic transactions across managed tables."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "External writes to managed Delta tables are now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
+   "published_raw": "2026-10-13",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Unity Gateway Skills API and developer tools are available in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/ai-gateway/skill-reference",
+   "published_raw": "2026-10-12",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "REST API, CLI and SDK support for skills."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Governed tag propagation is in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+   "published_raw": "2026-10-12",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Unity Catalog uses lineage to propagate governed tags to derived tables."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Agent memory pipelines are in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+   "published_raw": "2026-10-12",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "An LLM distills durable facts from conversations into a memory store."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Knowledge Assistant and Supervisor Agent are now legacy",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/legacy/",
+   "published_raw": "2026-10-12",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Agent Bricks CLI and Genie Agents are recommended instead."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "The Discover page and domains are now GA",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page",
+   "published_raw": "2026-10-08",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Curated browsing of assets; domains organize assets by business area."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Azure DevOps connector is available in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
+   "published_raw": "2026-10-08",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Ingests project, repository, work item, build and release data from Azure DevOps."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Azure Databricks integration for Microsoft Copilot Studio is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio",
+   "published_raw": "2026-10-07",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Genie Agents as tools or Databricks data as knowledge source in Copilot Studio."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Metric view window measures are generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
+   "published_raw": "2026-10-06",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Rolling, cumulative and semiadditive aggregations in metric views."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Genie Code CLI is in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
+   "published_raw": "2026-10-06",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Terminal coding agent for data and AI work using the Databricks CLI."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "`ai_parse_document` now extracts chart data as JSON",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
+   "published_raw": "2026-10-05",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Chart values extracted as structured JSON."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "`ai_parse_document` now extracts chart data",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
+   "published_raw": "2026-10-02",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Chart data as structured JSON; more detailed figure descriptions."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Standard `ai_extract` now delivers higher-quality extraction",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract",
+   "published_raw": "2026-10-02",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "New model checkpoint, 2.3x faster, better quality at no extra cost."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Cross-engine attribute-based access controls (ABAC) is now generally available",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/cross-engine-abac",
+   "published_raw": "2026-10-01",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "External engines read managed tables with ABAC policies enforced."
+  },
+  {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Data Classification API is now generally available",
+   "url": "https://docs.databricks.com/api/workspace/dataclassification",
+   "published_raw": "2026-10-14",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": "Data Classification API and Terraform resource are GA; auto-tagging configuration in Public Preview.",
+   "development_key": "uc-data-classification-okt-2026"
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "GitHub Octoverse 2026",
+   "url": "https://simonwillison.net/2026/Oct/28/github-octoverse-2026/",
+   "published_raw": "2026-10-28",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "The October inflection point for vibe game development",
+   "url": "https://simonwillison.net/2026/Oct/28/vibe-game-development/",
+   "published_raw": "2026-10-28",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "Game Boy Color on My Conference Badge",
+   "url": "https://simonwillison.net/2026/Oct/27/game-boy-color-on-my-conference-badge/",
+   "published_raw": "2026-10-27",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "GPT-6.1 Terra",
+   "url": "https://simonwillison.net/2026/Oct/26/gpt-61-terra/",
+   "published_raw": "2026-10-26",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "Introducing Kimi K3.1 Pro",
+   "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+   "published_raw": "2026-10-23",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "Donating Agent Skills to the Agentic AI Foundation",
+   "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+   "published_raw": "2026-10-22",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "sparqlite: SPARQL 1.1 inside SQLite, written in Rust",
+   "url": "https://simonwillison.net/2026/Oct/16/sqlite-sparql-rust/",
+   "published_raw": "2026-10-16",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
+   "url": "https://simonwillison.net/2026/Oct/20/battledrones/",
+   "published_raw": "2026-10-20",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "simon_willison",
+   "title": "My obituary for programming",
+   "url": "https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/",
+   "published_raw": "2026-10-19",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "joe_reis",
+   "title": "Summit Snooze Button: Practical Data Summit is Postponed",
+   "url": "https://joereis.substack.com/p/summit-snooze-button-practical-data",
+   "published_raw": null,
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "joe_reis",
+   "title": "The Ghost of Watson Past: Why Enterprise AI Hype Still Eats Startups Alive",
+   "url": "https://joereis.substack.com/p/the-ghost-of-watson-past-why-enterprise",
+   "published_raw": null,
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "joe_reis",
+   "title": "Build a Career That Looks Like You",
+   "url": "https://joereis.substack.com/p/build-a-career-that-looks-like-you",
+   "published_raw": null,
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "joe_reis",
+   "title": "The Practical Data Summit site is live!",
+   "url": "https://joereis.substack.com/p/the-practical-data-summit-site-is",
+   "published_raw": null,
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  },
+  {
+   "source_id": "joe_reis",
+   "title": "The Pendulums of Data",
+   "url": "https://joereis.substack.com/p/the-pendulums-of-data",
+   "published_raw": null,
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "excerpt": ""
+  }
+ ]
+}

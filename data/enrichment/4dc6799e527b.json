@@ -1,0 +1,36 @@
+{
+  "summary": "Unity Gateway kan aanroepen van MCP-tools en hun antwoorden controleren op jailbreak- en promptinjectiepogingen. Dit is in bèta.",
+  "what_is_new": "Sinds 21 oktober 2026 kan Unity Gateway in bèta MCP-toolaanroepen en hun resultaten screenen op jailbreak- en promptinjectiepogingen. De jailbreak-guardrail werkt op invoer, uitvoer of beide.",
+  "simple_explanation": "MCP (Model Context Protocol) is een standaardstekker waarmee een AI-agent tools gebruikt, zoals een database bevragen. Een promptinjectie is een verstopt bevel in data, bijvoorbeeld een tekst in een tabel met 'negeer je regels'. Deze controle is een poortwachter die zulke bevelen probeert te onderscheppen.",
+  "practical_example": "Een agent leest vrije tekst uit een tabel en daarin staat een verborgen opdracht om alle data te exporteren. De guardrail op de uitvoer van de tool herkent dat patroon en blokkeert de aanroep.",
+  "personal_relevance": "Bouw je een AI-contextlaag waarbij agents via MCP je data bevragen, dan is dit een van de veiligheidslagen die je nodig hebt, zeker met zorgdata.",
+  "practical_application": "Maak screening van MCP-aanroepen een vaste voorwaarde voordat een agent bij echte tabellen mag.",
+  "experiment": "Zet de guardrail aan op een testagent en stuur een paar bekende, onschuldige injectievoorbeelden mee in synthetische data. Kijk wat hij tegenhoudt en wat niet.",
+  "limitations": [
+    "Bèta.",
+    "Geen guardrail vangt alles. Combineer met minimale rechten: alleen-lezen en beperkte tabellen.",
+    "De release note zegt niets over extra vertraging of kosten."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Service policies (ingebouwd beleid)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_context_engineering"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.7,
+    "novelty": 0.75
+  },
+  "article_id": "4dc6799e527b",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T20:30:00Z",
+  "prompt_version": "handmatig-2026-10-28.1"
+}
