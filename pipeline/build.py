@@ -147,7 +147,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
 
     # Werklijst voor Claude: beste onverwerkte artikelen die nog niet zijn overgeslagen
     skip = skipped_ids()
-    queue = [a for a in sorted(arts, key=lambda a: -a["relevance_score"])
+    # Volgorde: eerst hoe goed het onderwerp past, dan de totaalscore. Zo krijgt Claude ook oudere
+    # artikelen over een kernonderwerp te zien; Claude beoordeelt daarna of ze de feed in mogen.
+    queue = [a for a in sorted(arts, key=lambda a: (-a["score_parts"]["topic"], -a["relevance_score"]))
              if a["processing_status"] != "enriched" and a["id"] not in skip
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({

@@ -156,6 +156,12 @@ class TestScoring(unittest.TestCase):
         self.assertEqual(a["topics"][0], "dbt_analytics_engineering")
         self.assertNotEqual(a["decision"], "included")
 
+    def test_spelling_variants_match(self):
+        a = self._scored("dbt_context_engineering: modeling the context your AI agents read",
+                         "dbt-context-engineering is a new package that helps you create AI ready data")
+        self.assertIn("ai_context_engineering", a["topics"])
+        self.assertEqual(a["decision"], "included")
+
     def test_exceptional_override_only_for_low_priority(self):
         low = self._scored("AI industry news", exceptional=True)
         self.assertEqual(low["decision"], "included_exceptional")

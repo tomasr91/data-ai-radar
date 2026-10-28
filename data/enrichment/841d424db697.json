@@ -1,0 +1,53 @@
+{
+  "format_version": 2,
+  "article_id": "841d424db697",
+  "url": "https://docs.getdbt.com/blog/dbt-context-engineering",
+  "headline": "dbt krijgt een pakket om tekst klaar te maken voor AI",
+  "summary": "Met het nieuwe dbt-pakket dbt_context_engineering bouw je met gewone dbt-modellen een zoekbare kennisbank uit tekst. Elk antwoord verwijst naar de bron.",
+  "story": [
+    "dbt Labs heeft een nieuw open-source pakket uitgebracht: dbt_context_engineering. Het helpt je om tekst in je warehouse zo klaar te zetten dat AI-agents er betrouwbaar mee kunnen werken. Denk aan e-mails, gespreksverslagen of handleidingen. Het is een eerste versie, 0.1.0.",
+    "Het werkt met gewone dbt-modellen. Een macro knipt lange teksten in hapklare stukken, zonder zinnen te breken. Een volgende macro zet die stukken om in getallen die betekenis vastleggen (embeddings). Daarna kun je op betekenis zoeken, en elk resultaat wijst terug naar de rij waar het vandaan komt. Zo kan een agent altijd zeggen waar zijn antwoord op gebaseerd is.",
+    "Wat het extra interessant maakt, is dat alles binnen je dbt-project blijft. Prompts staan versiebeheerd in je repo. Elke AI-aanroep heeft een kostenplafond en een logboek. En er zijn tests die controleren of antwoorden echt op de bron steunen, zonder dat het tokens kost.",
+    "Let wel op wat het níet is. Het pakket werkt met tekst die al in je warehouse staat, niet met je dbt-documentatie of metadata. Voor je AI-contextlaag is het vooral een voorbeeld van hoe je zoiets netjes in dbt organiseert. En in de zorg is vrije tekst vaak juist de gevoeligste data, dus begin met openbare of verzonnen teksten."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 16 september 2026 door een architect van dbt Labs.",
+    "Open-source pakket dbt-labs/dbt_context_engineering, eerste release v0.1.0.",
+    "Macro's voor opknippen (chunking), AI-aanroepen (embedding, classificatie, extractie, generatie), zoeken zonder aparte vectorindex en een kennisbank over meerdere bronnen.",
+    "Prompts en uitvoerschema's staan versiebeheerd in de repo; elke AI-aanroep heeft een kostenplafond en een logboek.",
+    "Tests voor grounding en nauwkeurigheid draaien zonder warehouse-queries of tokenkosten.",
+    "Het artikel noemt Snowflake, Databricks en BigQuery, maar geeft geen duidelijke lijst van ondersteunde adapters.",
+    "Zoeken op betekenis is het meest beproefde patroon; generatie en extractie zijn minder bewezen, deels nog in bèta."
+  ],
+  "personal_relevance": "Het laat zien hoe je AI-context netjes binnen dbt organiseert, met versiebeheer, kostenplafond en tests.",
+  "experiment": "Installeer het pakket in een testproject op Databricks en bouw de drie modellen voor zoeken op betekenis. Gebruik een paar openbare teksten, bijvoorbeeld handleidingen van je eigen dataplatform. Kijk of de zoekresultaten kloppen en of de bronverwijzing werkt.",
+  "limitations": [
+    "Eerste versie (0.1.0): alleen zoeken op betekenis is goed beproefd.",
+    "Of Databricks volledig wordt ondersteund, staat niet duidelijk in het artikel; dat moet je testen.",
+    "Vrije tekst in de zorg bevat vaak persoonsgegevens. Gebruik bij experimenten alleen openbare of verzonnen tekst."
+  ],
+  "availability_status": "experimenteel",
+  "official_docs": [
+    {
+      "label": "dbt_context_engineering op GitHub",
+      "url": "https://github.com/dbt-labs/dbt-context-engineering"
+    }
+  ],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_agents_rag",
+    "ai_on_data_platform"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.85,
+    "novelty": 0.8
+  },
+  "development_key": "dbt-context-engineering-package",
+  "date_note": "Gepubliceerd op 16 september; kwam pas binnen toen de dbt Developer Blog op 28 oktober als bron werd toegevoegd.",
+  "exceptional": false,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:25:00Z",
+  "prompt_version": "stijl-v2"
+}

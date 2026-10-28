@@ -35,8 +35,14 @@ def match_certainty(n_hits: int) -> float:
     return 0.5 if n_hits <= 1 else 0.8 if n_hits == 2 else 1.0
 
 
+def _norm(text: str) -> str:
+    """'dbt_context_engineering', 'dbt-context-engineering' en 'dbt context engineering'
+    worden hetzelfde, zodat schrijfwijzen elkaar niet mislopen."""
+    return re.sub(r"\s+", " ", re.sub(r"[_\-/]+", " ", text.lower())).strip()
+
+
 def _pattern(keyword: str):
-    return re.compile(r"(?<![\w-])" + re.escape(keyword.lower()) + r"(?![\w-])")
+    return re.compile(r"(?<!\w)" + re.escape(_norm(keyword)) + r"(?!\w)")
 
 
 def match_keywords(text: str, entries: list) -> list:
@@ -45,7 +51,7 @@ def match_keywords(text: str, entries: list) -> list:
 
 def keyword_hits(text: str, entries: list) -> dict:
     """{onderwerp-id: set van geraakte trefwoorden}"""
-    text = text.lower()
+    text = _norm(text)
     hits = {}
     for entry in entries:
         found = {k.lower() for k in entry.get("keywords", []) if _pattern(k).search(text)}
