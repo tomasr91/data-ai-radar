@@ -1,16 +1,6 @@
 {
-  "summary": "De ADBC-driver voor de Databricks-connector in Power BI is algemeen beschikbaar. Nieuwe verbindingen gebruiken hem standaard.",
-  "what_is_new": "Sinds 15 oktober 2026 is de ADBC-driver voor de Azure Databricks-connector in Power BI GA. Het is de standaarddriver voor nieuwe verbindingen in Power BI Desktop en de Power BI-service.",
-  "simple_explanation": "Een driver (stuurprogramma) is de tolk tussen Power BI en Databricks. ADBC (Arrow Database Connectivity) is ontworpen om data per kolom in grote blokken door te geven in plaats van rij voor rij. Vergelijk het met een hele krat tegelijk overgeven in plaats van elke fles los.",
-  "practical_example": "Je ververst elke nacht een semantisch model dat een grote Gold-feitentabel uit Databricks importeert. Maak je die verbinding opnieuw aan, dan loopt hij via ADBC in plaats van de oudere driver.",
-  "personal_relevance": "Je rapporteert met Power BI in Fabric op Databricks-data. Nieuwe verbindingen krijgen deze driver automatisch, dus oude en nieuwe modellen kunnen straks via verschillende drivers lopen.",
-  "practical_application": "Controleer bij je eerstvolgende nieuwe of gewijzigde verbinding welke driver wordt gebruikt, en meet of verversen sneller of stabieler wordt.",
-  "experiment": "Maak een kopie van één semantisch model met een flinke import. Ververs het met de oude en met de nieuwe driver en noteer de duur en eventuele fouten.",
-  "limitations": [
-    "De release note noemt geen prestatiecijfers; snelheidswinst moet je zelf meten.",
-    "Bestaande verbindingen veranderen niet vanzelf. Houd bij welke modellen welke driver gebruiken.",
-    "Controleer of jouw Fabric-scenario, bijvoorbeeld met een gateway, dezelfde driver gebruikt."
-  ],
+  "article_id": "da6d7a6a6ac5",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc",
   "availability_status": "beschikbaar",
   "official_docs": [
     {
@@ -27,9 +17,26 @@
     "practicality": 0.85,
     "novelty": 0.7
   },
-  "article_id": "da6d7a6a6ac5",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "De release note noemt geen prestatiecijfers; snelheidswinst moet je zelf meten.",
+    "Bestaande verbindingen veranderen niet vanzelf. Houd bij welke modellen welke driver gebruiken.",
+    "Controleer of jouw Fabric-scenario, bijvoorbeeld met een gateway, dezelfde driver gebruikt."
+  ],
+  "experiment": "Maak een kopie van één semantisch model met een flinke import. Ververs het met de oude en de nieuwe driver en noteer de duur en eventuele fouten.",
+  "headline": "Power BI praat voortaan via een nieuwe driver met Databricks",
+  "summary": "Nieuwe verbindingen tussen Power BI en Databricks gebruiken standaard de ADBC-driver. Wat het oplevert, moet je zelf meten.",
+  "story": [
+    "Power BI en Databricks hebben een tolk nodig om met elkaar te praten: een driver (stuurprogramma). Sinds half oktober is er een nieuwe tolk algemeen beschikbaar, de ADBC-driver. Elke nieuwe verbinding in Power BI Desktop en de Power BI-service gebruikt hem standaard.",
+    "ADBC is gemaakt om data per kolom in grote blokken door te geven, in plaats van rij voor rij. Vergelijk het met een hele krat tegelijk overgeven in plaats van elke fles los. De release note noemt zelf geen snelheidscijfers.",
+    "Voor jou betekent dit vooral: let op het verschil tussen oud en nieuw. Bestaande semantische modellen houden hun oude verbinding. Maak je een verbinding opnieuw aan, dan krijgt die de nieuwe driver. Zo kunnen je modellen straks via verschillende drivers lopen."
+  ],
+  "key_facts": [
+    "De ADBC-driver voor de Azure Databricks-connector in Power BI is algemeen beschikbaar (GA) sinds 15 oktober 2026.",
+    "Het is de standaarddriver voor nieuwe verbindingen in Power BI Desktop en de Power BI-service."
+  ],
+  "personal_relevance": "Je rapporteert met Power BI op Databricks, en nieuwe verbindingen veranderen nu van driver.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

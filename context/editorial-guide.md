@@ -1,7 +1,7 @@
 ---
 id: editorial-guide
 type: context
-schema_version: 1
+schema_version: 2
 updated: 2026-10-28
 ---
 
@@ -11,31 +11,34 @@ Dit bestand bepaalt **hoe** de AI nieuws verwerkt en presenteert. **Wat** releva
 
 ## 1. Schrijfstijl
 
-- Eenvoudig, natuurlijk Nederlands — alsof je het uitlegt aan een slimme twaalfjarige.
-- Korte alinea's (2–4 zinnen) en concrete voorbeelden.
-- Leg een moeilijke term direct uit, één keer, met een vergelijking uit het dagelijks leven.
+- Eenvoudig, natuurlijk Nederlands, alsof je het uitlegt aan een slimme twaalfjarige.
+- **Korte zinnen**: gemiddeld 12 tot 15 woorden, nooit meer dan 25. Eén gedachte per zin.
+- **Korte alinea's** van 2 tot 4 zinnen, één gedachte per alinea. Begin elke alinea met een zin die aansluit op de vorige.
+- **Actief en concreet**: wie doet wat. Liever "Databricks heeft een hulpmiddel gemaakt" dan "Er is een hulpmiddel beschikbaar gemaakt".
+- **Hooguit één productnaam per zin**, en niet meer cijfers dan nodig. Rond cijfers af in het verhaal (14,9 miljoen); de precieze cijfers staan bij de bronfeiten.
+- Leg een moeilijke term één keer uit, met een vergelijking uit het dagelijks leven, op de plek waar hij voor het eerst voorkomt.
 - Begrippen die in `profile.md` §2 als bekend staan, leg je **niet** uit. Eenvoudige taal is iets anders dan basisuitleg.
-- Geen marketingtaal ("revolutionair", "game changer"), geen overdreven claims.
-- Gebruik Nederlandse woorden waar die gangbaar zijn. Zet de Engelse vakterm **bij het eerste gebruik** tussen haakjes, bijv. "herkomst van data (lineage)"; daarna mag je één van beide gebruiken.
+- Gebruik Nederlandse woorden waar die gangbaar zijn. Zet de Engelse vakterm **bij het eerste gebruik** tussen haakjes, bijv. "herkomst van data (lineage)".
 - Productnamen blijven zoals ze zijn (dbt, Unity Catalog, Azure DevOps).
+- Geen marketingtaal ("revolutionair", "game changer"), geen overdreven claims, geen opsommingen in het verhaal.
 
-## 2. Structuur van een artikel
+## 2. Opbouw van een artikel
 
-1. **Titel** — kort, met de kern erin.
-2. **Samenvatting** — maximaal drie zinnen.
-3. **Wat is er nieuw?** — feitelijk, met status (zie §3).
-4. **Uitleg** — in eenvoudige taal.
-5. **Voorbeeld** — herkenbaar, liefst uit een dataplatform zoals het mijne.
-6. **Waarom relevant voor mijn stack?** — koppel aan `tech-stack.md` en waar mogelijk een project uit `projects.md`.
-7. **Wat kan ik ermee?** — praktische toepassing.
-8. **Experiment of PoC** — één concreet, klein idee met een duidelijke eerste stap.
-9. **Beperkingen en aandachtspunten** — risico's, kosten, volwassenheid, zorgcontext.
-10. **Bron** — naam, publicatiedatum, link. Plus beschikbaarheidsdatum als die afwijkt.
+Een artikel is **één doorlopend verhaal**, geen formulier met losse vakjes.
 
-**Lengte past zich aan:**
-- *Kort* (kleine release of fix): stap 1–3, 6 en 10.
-- *Middel* (standaard): alle stappen, compact.
-- *Lang* (nieuw concept of grote wijziging): alle stappen, met een extra kopje **Verdieping** voor technische details.
+1. **Kop** (`headline`): Nederlands, hooguit ongeveer 70 tekens. Zegt wat het betekent, niet wat het product heet. Bijv. *"Laat AI geen omzet uitrekenen zonder vaste definities"*. De originele titel toont de app er klein onder.
+2. **Samenvatting** (`summary`): één of twee zinnen voor de kaart in de lijst.
+3. **Verhaal** (`story`): 3 tot 5 alinea's met deze lijn:
+   - *Wat gebeurde er?* Begin met de kern, het liefst concreet of verrassend.
+   - *Hoe werkt het?* Uitleg met een vergelijking of voorbeeld, verweven in de tekst.
+   - *Wat betekent het voor mij?* Koppel aan stack of project, alleen als dat iets toevoegt.
+   - Eventueel een slotalinea met een belangrijke kanttekening.
+4. **Probeer dit** (`experiment`): één klein experiment van hooguit een middag.
+5. **Let op** (`limitations`): 1 tot 3 korte zinnen over beperkingen, risico's of onzekerheid.
+6. **Bronfeiten** (`key_facts`): 3 tot 6 korte feiten uit de bron, met precieze cijfers, datums en status.
+7. **Bron**: naam, publicatiedatum en link toont de app automatisch.
+
+**Lengte past zich aan:** een kleine release krijgt 3 alinea's, een diepgaand praktijkverhaal 4 of 5. Liever kort en helder dan volledig.
 
 ### Dagelijks overzicht
 De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
@@ -46,10 +49,7 @@ De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 ## 3. Betrouwbaarheid
 
 - **Verzin niets**: geen feiten, functies, bronnen of citaten die niet in de bron staan.
-- **Markeer de herkomst** van uitspraken:
-  - `Bron:` — staat zo in het originele artikel.
-  - `Interpretatie:` — jouw uitleg of conclusie uit de bron.
-  - `Suggestie:` — jouw eigen idee voor toepassing (altijd bij stap 7 en 8).
+- **Herkomst blijft herleidbaar**: alles wat als feit in het verhaal staat, staat ook in `key_facts` en komt uit de bron. Interpretaties en suggesties formuleer je herkenbaar als zodanig ("dat betekent dat...", "je zou kunnen..."). Het experiment is altijd een suggestie.
 - **Geef de status** van een functie:
   - `beschikbaar` (algemeen beschikbaar)
   - `preview` (publiek of beperkt)

@@ -1,16 +1,6 @@
 {
-  "summary": "Er is een nieuwe connector die gegevens uit Azure DevOps naar Databricks haalt: projecten, repositories, werkitems, builds en releases. Dit is in bèta.",
-  "what_is_new": "Sinds 8 oktober 2026 is een Azure DevOps-connector voor Lakeflow Connect in bèta. Hij haalt project-, repository-, werkitem-, build-, release- en identiteitsgegevens op, logt in met een Microsoft Entra-service-principal en laadt commits incrementeel.",
-  "simple_explanation": "Een connector is een kant-en-klare pijpleiding: je hoeft zelf geen code te schrijven om gegevens op te halen. Met deze pijpleiding wordt de geschiedenis van je eigen ontwikkelwerk zelf data.",
-  "practical_example": "Je laadt de builds en releases van je dbt-project en maakt een overzicht van hoe vaak een uitrol mislukt en hoe lang het duurt van commit tot productie.",
-  "personal_relevance": "Je CI/CD draait op Azure DevOps. Zo kun je de kwaliteit van je eigen ontwikkelproces meten met je eigen stack: een goed oefenproject zonder gevoelige zorgdata.",
-  "practical_application": "Een klein Gold-model met doorlooptijd en faalpercentage van uitrols, als begin van datakwaliteit over je eigen werkproces.",
-  "experiment": "Koppel de connector aan één testproject en maak een tabel met het aantal builds per week en het percentage mislukte builds.",
-  "limitations": [
-    "Bèta.",
-    "Een service-principal met leesrechten op Azure DevOps vraagt afstemming met beheer.",
-    "Bevat identiteitsgegevens van collega's; ga daar zorgvuldig mee om."
-  ],
+  "article_id": "e5ea330db00d",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
   "availability_status": "preview",
   "official_docs": [
     {
@@ -28,9 +18,27 @@
     "practicality": 0.75,
     "novelty": 0.7
   },
-  "article_id": "e5ea330db00d",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "Bèta.",
+    "Een service-principal met leesrechten op Azure DevOps vraagt afstemming met beheer.",
+    "Bevat identiteitsgegevens van collega's; ga daar zorgvuldig mee om."
+  ],
+  "experiment": "Koppel de connector aan één testproject en maak een tabel met het aantal builds per week en het percentage mislukte builds.",
+  "headline": "Je eigen ontwikkelwerk in Azure DevOps wordt nu data",
+  "summary": "Een nieuwe connector haalt projecten, builds en releases uit Azure DevOps naar Databricks. Dit is in bèta.",
+  "story": [
+    "Lakeflow Connect heeft een nieuwe kant-en-klare pijpleiding: een connector voor Azure DevOps. Hij haalt projecten, repositories, werkitems, builds en releases naar Databricks. Je hoeft er zelf geen code voor te schrijven. Sinds begin oktober is hij in bèta.",
+    "Jouw CI/CD draait op Azure DevOps. Daarmee wordt de geschiedenis van je eigen ontwikkelwerk zelf data. Je kunt bijvoorbeeld zien hoe vaak een uitrol van je dbt-project mislukt. Of hoe lang het duurt van een commit tot productie.",
+    "Het is een mooi oefenproject, want er zit geen zorgdata in. Wel gegevens van collega's, zoals wie wat heeft gedaan. Ga daar zorgvuldig mee om."
+  ],
+  "key_facts": [
+    "De Azure DevOps-connector voor Lakeflow Connect is in bèta sinds 8 oktober 2026.",
+    "Hij haalt project-, repository-, werkitem-, build-, release- en identiteitsgegevens op.",
+    "Hij logt in met een Microsoft Entra-service-principal en laadt commits incrementeel."
+  ],
+  "personal_relevance": "Hiermee meet je de kwaliteit van je eigen ontwikkelproces, met je eigen stack.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

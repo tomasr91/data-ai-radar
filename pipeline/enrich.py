@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 from .config import CONTEXT, DATA
 
 CACHE = DATA / "enrichment"
-PROMPT_VERSION = "2026-10-28.1"
+PROMPT_VERSION = "2026-10-28.2"
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 
@@ -111,11 +111,11 @@ Brontekst (uit feed, mogelijk ingekort):
 {article.get('excerpt') or '(geen tekst in de feed)'}
 
 ### Antwoord
-Geef uitsluitend JSON met deze velden:
-summary (max 3 zinnen), what_is_new (alleen feiten uit de bron), simple_explanation,
-practical_example, personal_relevance, practical_application, experiment (past binnen een middag,
-nooit met patiëntgegevens), limitations (lijst korte zinnen), availability_status
-(beschikbaar|preview|aangekondigd|experimenteel|onbekend), official_docs (lijst {{label,url}}
+Schrijf volgens formaat 2 uit de redactiegids. Geef uitsluitend JSON met deze velden:
+format_version (2), headline (Nederlandse kop, max. ~70 tekens), summary (1-2 zinnen),
+story (lijst van 3-5 korte alinea's), key_facts (lijst feiten uit de bron), personal_relevance (1 zin),
+experiment (past binnen een middag, nooit met patiëntgegevens), limitations (lijst korte zinnen),
+availability_status (beschikbaar|preview|aangekondigd|experimenteel|onbekend), official_docs (lijst {{label,url}}
 alleen met URL's uit de brontekst), topics (subset van {topic_ids}),
 quality {{depth, practicality, novelty}} (0..1), development_key (korte sleutel voor de ontwikkeling),
 exceptional (true alleen bij een grote, bevestigde wijziging in de eigen stack)."""

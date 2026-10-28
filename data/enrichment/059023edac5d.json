@@ -1,17 +1,6 @@
 {
-  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
-  "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets was veranderd. Dat scheelde ongeveer 30% rekenkosten en maakte runs ongeveer 35% sneller.",
-  "what_is_new": "dbt State laat dbt modellen overslaan of hergebruiken als er stroomopwaarts niets veranderd is (state-aware orchestratie). Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13. Over de hele migratie meldt Virgin Media O2 ongeveer 30% lagere rekenkosten en 35% snellere runs. Ze gebruikten dbt v2, een herschreven dbt-engine in Rust. Het artikel zegt niet of dbt State ook in dbt Core werkt.",
-  "simple_explanation": "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Met dbt State kijkt dbt eerst welke kamers vies zijn en maakt alleen die schoon.",
-  "practical_example": "In je nachtelijke run zijn alleen de AFAS-bronnen veranderd. dbt bouwt dan alleen de modellen die daarvan afhangen en laat de HiX-modellen staan.",
-  "personal_relevance": "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou bereikbaar is, hangt af van waar je runs draaien. Op Databricks is minder rekenen ook direct minder kosten.",
-  "practical_application": "Zoek uit welke jobs op het dbt-platform draaien en of state-aware orchestratie daar beschikbaar is.",
-  "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
-  "limitations": [
-    "Gemeten op BigQuery, niet op Databricks.",
-    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
-    "Sommige packages werkten nog niet met dbt v2."
-  ],
+  "article_id": "059023edac5d",
+  "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
   "availability_status": "onbekend",
   "official_docs": [],
   "topics": [
@@ -23,9 +12,29 @@
     "practicality": 0.7,
     "novelty": 0.65
   },
-  "article_id": "059023edac5d",
-  "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+  "limitations": [
+    "Gemeten op BigQuery, niet op Databricks.",
+    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
+    "Sommige packages werkten nog niet met dbt v2."
+  ],
+  "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
+  "headline": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
+  "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets veranderd was. Dat scheelde ongeveer 30 procent rekenkosten.",
+  "story": [
+    "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Zo werkt een gewone dbt-run: elk model wordt opnieuw gebouwd. Met dbt State kijkt dbt eerst welke modellen nieuwe brondata hebben, en bouwt alleen die.",
+    "Virgin Media O2 deed dat en bespaarde ongeveer 30 procent aan rekenkosten. Runs werden ongeveer 35 procent sneller. Ze gebruikten daarvoor dbt v2, een nieuw herschreven versie van dbt.",
+    "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou haalbaar is, hangt af van waar je runs draaien. Het artikel zegt niet of dbt State ook in dbt Core werkt. En de cijfers komen van BigQuery, niet van Databricks."
+  ],
+  "key_facts": [
+    "Verslag van een talk op dbt Summit 2026.",
+    "Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13.",
+    "Over de hele migratie: ongeveer 30% lagere rekenkosten en 35% snellere runs.",
+    "Ze gebruikten dbt v2, een herschreven dbt-engine in Rust."
+  ],
+  "personal_relevance": "Minder rekenen betekent op Databricks direct lagere kosten.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

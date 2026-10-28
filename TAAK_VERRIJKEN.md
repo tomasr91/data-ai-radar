@@ -18,9 +18,10 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
 ## Regels
 
 - **Verzin niets.** Gebruik alleen wat in het artikel staat. Staat iets er niet in, laat het veld dan leeg (`""`) in plaats van te raden.
-- `what_is_new` bevat **alleen feiten uit de bron**: wat, sinds wanneer, welke status, welke cijfers.
-- `simple_explanation`, `practical_example` en `personal_relevance` zijn jouw uitleg. Verbind ze met het profiel, de stack en de projecten, maar alleen als dat iets toevoegt. Herhaal niet bij elk artikel hetzelfde (bijvoorbeeld steeds de migratie).
-- `practical_application` en `experiment` zijn suggesties. Een experiment past binnen een middag en gebruikt **nooit patiëntgegevens of werkdata**, alleen synthetische of openbare data. Externe AI (zoals Claude zelf) alleen zonder werkdata. AI binnen Databricks mag wel met werkdata.
+- Schrijf volgens **formaat 2** uit de redactiegids (§1 en §2): een Nederlandse kop, een doorlopend verhaal van 3 tot 5 korte alinea's, en de feiten apart in `key_facts`.
+- `key_facts` bevat **alleen feiten uit de bron**: wat, sinds wanneer, welke status, welke cijfers. Elk feit dat in het verhaal staat, staat ook hier.
+- Verbind het verhaal met het profiel, de stack en de projecten alleen als dat iets toevoegt. Herhaal niet bij elk artikel hetzelfde (bijvoorbeeld steeds de migratie).
+- `experiment` is een suggestie. Een experiment past binnen een middag en gebruikt **nooit patiëntgegevens of werkdata**, alleen synthetische of openbare data. Externe AI (zoals Claude zelf) alleen zonder werkdata. AI binnen Databricks mag wel met werkdata.
 - `availability_status`: `beschikbaar` (GA), `preview` (Beta/Public Preview), `aangekondigd`, `experimenteel` of `onbekend`. Zegt het artikel het niet, dan `onbekend`.
 - `official_docs`: alleen links die in het artikel staan of die je op de officiële documentatiesite hebt geopend. Nooit zelf een URL opbouwen.
 - `topics`: alleen id's uit `interests.yml`, de best passende eerst. Kies er 1 tot 4.
@@ -38,14 +39,18 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
 
 ```json
 {
+  "format_version": 2,
   "article_id": "<id uit de werklijst>",
   "url": "<url uit de werklijst>",
-  "summary": "Max. drie zinnen.",
-  "what_is_new": "Alleen feiten uit de bron.",
-  "simple_explanation": "Uitleg met een vergelijking uit het dagelijks leven.",
-  "practical_example": "Een herkenbaar voorbeeld.",
-  "personal_relevance": "Waarom dit telt voor deze stack en projecten.",
-  "practical_application": "Wat je ermee kunt.",
+  "headline": "Nederlandse kop, hooguit ongeveer 70 tekens",
+  "summary": "Eén of twee zinnen voor de kaart in de lijst.",
+  "story": [
+    "Alinea 1: wat gebeurde er.",
+    "Alinea 2: hoe werkt het, met een vergelijking.",
+    "Alinea 3: wat betekent het voor deze stack of dit project."
+  ],
+  "key_facts": ["Feit uit de bron met precieze cijfers of datum.", "..."],
+  "personal_relevance": "Eén zin: waarom dit telt voor mij.",
   "experiment": "Een klein experiment van hooguit een middag, zonder werk- of patiëntdata.",
   "limitations": ["Korte zin", "Korte zin"],
   "availability_status": "beschikbaar | preview | aangekondigd | experimenteel | onbekend",
@@ -57,8 +62,8 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
   "exceptional": false,
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-29T06:20:00Z",
-  "prompt_version": "taak-v1"
+  "prompt_version": "taak-v2"
 }
 ```
 
-Voorbeelden van goede uitleg staan al in `data/enrichment/`. Kijk er één of twee na voordat je begint.
+Voorbeelden van goede uitleg staan al in `data/enrichment/` (bestanden met `"format_version": 2`). Kijk er één of twee na voordat je begint.

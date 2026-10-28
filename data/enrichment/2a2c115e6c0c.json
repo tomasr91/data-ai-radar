@@ -1,15 +1,6 @@
 {
-  "summary": "Met de Discover-pagina vind je data zonder de mappenstructuur van de catalogus te kennen. Met domeinen orden je tabellen, dashboards en Genie Agents per bedrijfsonderdeel. Beide zijn nu algemeen beschikbaar.",
-  "what_is_new": "Sinds 8 oktober 2026 zijn de Discover-pagina en domeinen GA. Discover is een samengestelde manier om assets te vinden zonder de cataloguslagen te kennen. Domeinen en subdomeinen ordenen assets zoals tabellen, dashboards en Genie Agents per bedrijfsgebied.",
-  "simple_explanation": "Een catalogus werkt als een archiefkast met laden en mappen: wie de kast niet kent, vindt niets. Discover is meer een etalage. Je ziet de belangrijkste spullen per afdeling, ook als je niet weet in welke la ze liggen.",
-  "practical_example": "Een collega van Financiën zoekt 'personeelsverloop'. Via het domein HR vindt ze direct het Gold-model en het dashboard, zonder te weten in welk schema het staat.",
-  "personal_relevance": "Dit raakt je project rond vindbaarheid van data. Domeinen kunnen een brug zijn tussen je technische indeling in Bronze, Silver en Gold en de manier waarop collega's over data denken.",
-  "practical_application": "Richt één domein in, bijvoorbeeld rond één afdeling, en koppel daar alleen je Gold-modellen aan.",
-  "experiment": "Maak een testdomein met drie Gold-tabellen en vraag een collega om zonder uitleg iets te zoeken. Noteer waar die vastloopt.",
-  "limitations": [
-    "Vindbaarheid staat of valt met goede beschrijvingen. Zonder dbt-documentatie in Unity Catalog levert Discover weinig op.",
-    "Domeinen zijn extra beheer: iemand moet bepalen wat waar hoort."
-  ],
+  "article_id": "2a2c115e6c0c",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page",
   "availability_status": "beschikbaar",
   "official_docs": [
     {
@@ -30,9 +21,25 @@
     "practicality": 0.75,
     "novelty": 0.65
   },
-  "article_id": "2a2c115e6c0c",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "Vindbaarheid staat of valt met goede beschrijvingen. Zonder dbt-documentatie in Unity Catalog levert Discover weinig op.",
+    "Domeinen zijn extra beheer: iemand moet bepalen wat waar hoort."
+  ],
+  "experiment": "Maak een testdomein met drie Gold-tabellen en vraag een collega om zonder uitleg iets te zoeken. Noteer waar die vastloopt.",
+  "headline": "Collega's vinden data nu zonder de catalogus te kennen",
+  "summary": "Databricks heeft een Discover-pagina en domeinen. Daarmee zoek je data per afdeling in plaats van per map.",
+  "story": [
+    "Een catalogus in Databricks werkt als een archiefkast met laden en mappen. Wie de indeling niet kent, vindt niets. Daarom heeft Databricks nu een Discover-pagina, en die is algemeen beschikbaar. Het is meer een etalage: je ziet de belangrijkste tabellen, dashboards en Genie Agents per onderwerp.",
+    "De ordening gebeurt met domeinen. Een domein hoort bij een bedrijfsonderdeel, zoals HR of Financiën. Een collega die 'personeelsverloop' zoekt, vindt via het domein HR direct het juiste Gold-model en dashboard.",
+    "Dit sluit aan op je project rond vindbaarheid van data. Domeinen kunnen de brug zijn tussen jouw technische indeling in Bronze, Silver en Gold en de manier waarop collega's over data denken. Maar een etalage is pas goed als de spullen een label hebben. Zonder goede beschrijvingen uit dbt levert Discover weinig op."
+  ],
+  "key_facts": [
+    "De Discover-pagina en domeinen zijn algemeen beschikbaar (GA) sinds 8 oktober 2026.",
+    "Domeinen en subdomeinen ordenen tabellen, dashboards en Genie Agents per bedrijfsgebied."
+  ],
+  "personal_relevance": "Dit raakt direct je project rond vindbaarheid van data.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

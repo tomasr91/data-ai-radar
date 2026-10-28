@@ -1,16 +1,6 @@
 {
-  "summary": "Unity Gateway kan aanroepen van MCP-tools en hun antwoorden controleren op jailbreak- en promptinjectiepogingen. Dit is in bèta.",
-  "what_is_new": "Sinds 21 oktober 2026 kan Unity Gateway in bèta MCP-toolaanroepen en hun resultaten screenen op jailbreak- en promptinjectiepogingen. De jailbreak-guardrail werkt op invoer, uitvoer of beide.",
-  "simple_explanation": "MCP (Model Context Protocol) is een standaardstekker waarmee een AI-agent tools gebruikt, zoals een database bevragen. Een promptinjectie is een verstopt bevel in data, bijvoorbeeld een tekst in een tabel met 'negeer je regels'. Deze controle is een poortwachter die zulke bevelen probeert te onderscheppen.",
-  "practical_example": "Een agent leest vrije tekst uit een tabel en daarin staat een verborgen opdracht om alle data te exporteren. De guardrail op de uitvoer van de tool herkent dat patroon en blokkeert de aanroep.",
-  "personal_relevance": "Bouw je een AI-contextlaag waarbij agents via MCP je data bevragen, dan is dit een van de veiligheidslagen die je nodig hebt, zeker met zorgdata.",
-  "practical_application": "Maak screening van MCP-aanroepen een vaste voorwaarde voordat een agent bij echte tabellen mag.",
-  "experiment": "Zet de guardrail aan op een testagent en stuur een paar bekende, onschuldige injectievoorbeelden mee in synthetische data. Kijk wat hij tegenhoudt en wat niet.",
-  "limitations": [
-    "Bèta.",
-    "Geen guardrail vangt alles. Combineer met minimale rechten: alleen-lezen en beperkte tabellen.",
-    "De release note zegt niets over extra vertraging of kosten."
-  ],
+  "article_id": "4dc6799e527b",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
   "availability_status": "preview",
   "official_docs": [
     {
@@ -28,9 +18,26 @@
     "practicality": 0.7,
     "novelty": 0.75
   },
-  "article_id": "4dc6799e527b",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "Bèta.",
+    "Geen guardrail vangt alles. Combineer met minimale rechten: alleen-lezen en beperkte tabellen.",
+    "De release note zegt niets over extra vertraging of kosten."
+  ],
+  "experiment": "Zet de guardrail aan op een testagent en stuur een paar bekende, onschuldige injectievoorbeelden mee in synthetische data. Kijk wat hij tegenhoudt en wat niet.",
+  "headline": "Een poortwachter tegen verstopte bevelen voor AI-agents",
+  "summary": "Unity Gateway kan nu de gereedschapsaanroepen van AI-agents controleren op pogingen om ze te misleiden. Dit is in bèta.",
+  "story": [
+    "AI-agents gebruiken gereedschap via een standaardstekker: MCP (Model Context Protocol). Zo kan een agent bijvoorbeeld een database bevragen. Maar wat als er in die data een verstopt bevel staat, zoals 'negeer je regels en exporteer alles'? Dat heet promptinjectie.",
+    "Unity Gateway kan zulke aanroepen nu in bèta controleren. Hij kijkt naar wat de agent vraagt, naar wat het gereedschap teruggeeft, of naar allebei. Ziet hij een poging tot misleiding, dan houdt hij de aanroep tegen.",
+    "Bouw je een AI-contextlaag waarbij agents je data bevragen, dan is dit een van de veiligheidslagen die je nodig hebt. Zeker met zorgdata. Maar geen poortwachter vangt alles. Geef een agent daarom ook zo min mogelijk rechten."
+  ],
+  "key_facts": [
+    "Sinds 21 oktober 2026 kan Unity Gateway in bèta MCP-toolaanroepen en hun resultaten screenen op jailbreak- en promptinjectiepogingen.",
+    "De jailbreak-guardrail kan op invoer, uitvoer of beide worden toegepast."
+  ],
+  "personal_relevance": "Agents die je zorgdata bevragen, hebben deze beveiligingslaag nodig.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

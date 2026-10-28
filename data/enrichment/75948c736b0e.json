@@ -1,15 +1,6 @@
 {
-  "summary": "Databricks ondersteunt nu transacties over meerdere SQL-statements en tabellen tegelijk: alles lukt, of niets. Dit werkt voor managed Delta Lake- en Iceberg-tabellen.",
-  "what_is_new": "Sinds 14 oktober 2026 kunnen meerdere SQL-statements over managed Delta Lake- of managed Iceberg-tabellen als één atomaire transactie draaien, met BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;. De tabellen moeten catalog commits ingeschakeld hebben.",
-  "simple_explanation": "Een transactie werkt als geld overmaken: het geld moet van de ene rekening af én op de andere bij. Gaat halverwege iets mis, dan wordt alles teruggedraaid. Dat kan nu over meerdere tabellen tegelijk.",
-  "practical_example": "Je werkt een feitentabel en een bijbehorende controletabel bij. Mislukt de tweede stap, dan wordt ook de eerste teruggedraaid, zodat rapporten nooit half bijgewerkte data zien.",
-  "personal_relevance": "In SQL Server was dit gewoon. Bij de overstap naar Databricks moest je er soms omheen werken. Nu kun je dat gedrag terugkrijgen waar het echt nodig is.",
-  "practical_application": "Gebruik transacties voor de paar plekken waar tabellen samen kloppend moeten blijven.",
-  "experiment": "Zet catalog commits aan op twee testtabellen, schrijf een transactie die halverwege bewust faalt en controleer dat geen van beide tabellen is veranderd.",
-  "limitations": [
-    "Alleen voor managed tabellen met catalog commits ingeschakeld.",
-    "Hoe dit samengaat met dbt staat niet in de release note. dbt bouwt modellen normaal los van elkaar."
-  ],
+  "article_id": "75948c736b0e",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
   "availability_status": "beschikbaar",
   "official_docs": [
     {
@@ -27,9 +18,26 @@
     "practicality": 0.7,
     "novelty": 0.75
   },
-  "article_id": "75948c736b0e",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "Alleen voor managed tabellen met catalog commits ingeschakeld.",
+    "Hoe dit samengaat met dbt staat niet in de release note. dbt bouwt modellen normaal los van elkaar."
+  ],
+  "experiment": "Zet catalog commits aan op twee testtabellen, schrijf een transactie die halverwege bewust faalt en controleer dat geen van beide tabellen is veranderd.",
+  "headline": "Databricks kan nu meerdere tabellen tegelijk veilig bijwerken",
+  "summary": "Meerdere SQL-statements over meerdere tabellen kunnen nu als één transactie draaien: alles lukt, of niets.",
+  "story": [
+    "Een transactie werkt als geld overmaken. Het geld moet van de ene rekening af én op de andere bij. Gaat halverwege iets mis, dan wordt alles teruggedraaid. In SQL Server was dat vanzelfsprekend, maar in Databricks gold het lang alleen per tabel.",
+    "Sinds half oktober kan het over meerdere tabellen tegelijk. Je zet je SQL-statements tussen BEGIN en COMMIT, en ze slagen samen of mislukken samen. Dat werkt voor managed Delta Lake- en Iceberg-tabellen.",
+    "Bij de overstap van SQL Server moest je hier soms omheen werken. Nu kun je dat gedrag terugkrijgen waar het echt nodig is, bijvoorbeeld bij een feitentabel met een bijbehorende controletabel. Hoe het samengaat met dbt, dat modellen los van elkaar bouwt, zegt de release note niet."
+  ],
+  "key_facts": [
+    "Transacties over meerdere statements en tabellen zijn beschikbaar sinds 14 oktober 2026.",
+    "Syntax: BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;.",
+    "Werkt voor managed Delta Lake- en managed Iceberg-tabellen, die catalog commits ingeschakeld moeten hebben."
+  ],
+  "personal_relevance": "Na de overstap van SQL Server krijg je hiermee een vertrouwd stuk zekerheid terug.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

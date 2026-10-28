@@ -1,16 +1,6 @@
 {
-  "summary": "Data Classification in Unity Catalog herkent 50 nieuwe soorten gevoelige gegevens en meer landen. Tegelijk is de API voor deze functie algemeen beschikbaar geworden.",
-  "what_is_new": "Op 15 oktober 2026 kreeg Data Classification 50 nieuwe klassen gevoelige data, waaronder betaalkaartgegevens, persoons- en medewerkergegevens en geheimen in software, plus regionale klassen voor meer landen en regio's. Regionale tags zijn alleen in bepaalde regio's beschikbaar. Op 14 oktober werd de Data Classification API met Terraform-resource GA; de configuratie voor automatisch taggen (auto_tag_configs) is nog Public Preview.",
-  "simple_explanation": "Data Classification is een speurhond die je tabellen doorsnuffelt en meldt: hier staan waarschijnlijk namen, e-mailadressen of rekeningnummers. Hij kent nu meer soorten geuren. Met de API kun je hem vanuit code aansturen in plaats van alleen via het scherm.",
-  "practical_example": "Na het laden van een nieuwe AFAS-tabel in Bronze laat je de classificatie draaien. Die markeert bijvoorbeeld een kolom met IBAN-nummers en een kolom met personeelsnummers als gevoelig.",
-  "personal_relevance": "Voor een zorginstelling is weten waar persoonsgegevens zitten de basis van governance. Met de API kun je classificatie opnemen in je uitrol via Azure DevOps in plaats van het handmatig te regelen.",
-  "practical_application": "Gebruik classificatie als controle bij nieuwe bronnen: elke nieuwe Bronze-tabel wordt gescand voordat hij naar Silver gaat.",
-  "experiment": "Laat de classificatie los op een testtabel met verzonnen gegevens (namen, nummers die op een BSN lijken, IBAN). Kijk welke kolommen hij herkent en welke hij mist.",
-  "limitations": [
-    "De release note noemt niet welke landen precies zijn toegevoegd. Controleer of Nederlandse gegevenstypen worden herkend.",
-    "Automatisch taggen is nog preview; de API zelf is GA.",
-    "Classificatie is een inschatting, geen garantie."
-  ],
+  "article_id": "40a0b2ec587e",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
   "availability_status": "beschikbaar",
   "official_docs": [
     {
@@ -32,9 +22,29 @@
     "novelty": 0.7
   },
   "development_key": "uc-data-classification-okt-2026",
-  "article_id": "40a0b2ec587e",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "De release note noemt niet welke landen precies zijn toegevoegd. Controleer of Nederlandse gegevenstypen worden herkend.",
+    "Automatisch taggen is nog preview; de API zelf is GA.",
+    "Classificatie is een inschatting, geen garantie."
+  ],
+  "experiment": "Laat de classificatie los op een testtabel met verzonnen gegevens (namen, nummers die op een BSN lijken, IBAN). Kijk welke kolommen hij herkent en welke hij mist.",
+  "headline": "Unity Catalog herkent meer soorten gevoelige gegevens",
+  "summary": "Data Classification vindt nu 50 extra soorten gevoelige data. En je kunt het voortaan vanuit code aansturen.",
+  "story": [
+    "Data Classification in Unity Catalog werkt als een speurhond. Hij snuffelt je tabellen door en meldt waar waarschijnlijk namen, e-mailadressen of rekeningnummers staan. Sinds half oktober kent hij 50 nieuwe soorten, waaronder betaalkaartgegevens, persoonsgegevens van medewerkers en geheimen in code.",
+    "Tegelijk werd de bijbehorende API algemeen beschikbaar. Daarmee kun je de classificatie vanuit code starten en instellen, in plaats van alleen via het scherm. Automatisch taggen via die API is nog wel in preview.",
+    "Voor een zorginstelling is weten waar persoonsgegevens zitten de basis van alle governance. Met de API kun je classificatie opnemen in je uitrol via Azure DevOps. Elke nieuwe Bronze-tabel wordt dan gescand voordat hij doorgaat naar Silver.",
+    "Of Nederlandse gegevenstypen worden herkend, zegt de release note niet. Er staat alleen dat er meer landen en regio's bij zijn gekomen."
+  ],
+  "key_facts": [
+    "Op 15 oktober 2026 kreeg Data Classification 50 nieuwe klassen gevoelige data en regionale klassen voor meer landen en regio's.",
+    "Regionale tags zijn alleen in bepaalde regio's beschikbaar.",
+    "De Data Classification API en de Terraform-resource zijn algemeen beschikbaar sinds 14 oktober 2026.",
+    "De configuratie voor automatisch taggen (auto_tag_configs) is nog Public Preview."
+  ],
+  "personal_relevance": "Weten waar persoonsgegevens zitten is de basis voor governance in de zorg.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

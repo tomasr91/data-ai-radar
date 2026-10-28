@@ -1,16 +1,6 @@
 {
-  "summary": "AI Search van Databricks kan zoekindexen nu direct bouwen op streaming tables, materialized views en Iceberg-tabellen. Een tussenstap met een extra Delta-tabel en een eigen synchronisatie is dan niet meer nodig.",
-  "what_is_new": "AI Search ondersteunt naast Delta-tabellen drie nieuwe bronnen: streaming tables (nieuwe records worden geïndexeerd zodra ze binnenkomen), materialized views (wijzigingen worden incrementeel doorgegeven) en managed Iceberg-tabellen (v3 en hoger). Je maakt de index zoals een bestaande Delta Sync-index. De beschikbaarheidsstatus wordt niet genoemd.",
-  "simple_explanation": "Een zoekindex is het register achterin een boek. Bij RAG (een AI die eerst opzoekt en dan antwoordt) moet dat register actueel zijn. Databricks houdt het register nu automatisch bij als de onderliggende tabel verandert, zonder dat je zelf een kopie hoeft te onderhouden.",
-  "practical_example": "Een materialized view met de beschrijvingen van al je dbt-modellen voedt direct een zoekindex. Een assistent kan dan zoeken op 'waar vind ik de opnameduur?'.",
-  "personal_relevance": "Voor een AI-contextlaag kun je metadata als bron gebruiken. Dit maakt het makkelijker om zo'n zoekbare index actueel te houden, zonder extra pijplijn.",
-  "practical_application": "Pas relevant als je echt zoeken op betekenis nodig hebt. Voor een kleine contextlaag zijn goede beschrijvingen en zoekwoorden vaak genoeg.",
-  "experiment": "Maak een materialized view met naam en beschrijving van 50 dbt-modellen, bouw er een index op en test vijf zoekvragen in gewone taal.",
-  "limitations": [
-    "Of het GA of preview is, staat niet in het artikel.",
-    "Streaming tables kunnen alleen rijen toevoegen (append-only).",
-    "Een zoekindex kost rekenkracht; voor kleine hoeveelheden is het vaak niet nodig."
-  ],
+  "article_id": "560fbec0053e",
+  "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
   "availability_status": "onbekend",
   "official_docs": [],
   "topics": [
@@ -23,9 +13,27 @@
     "practicality": 0.6,
     "novelty": 0.65
   },
-  "article_id": "560fbec0053e",
-  "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "Of het GA of preview is, staat niet in het artikel.",
+    "Streaming tables kunnen alleen rijen toevoegen (append-only).",
+    "Een zoekindex kost rekenkracht; voor kleine hoeveelheden is het vaak niet nodig."
+  ],
+  "experiment": "Maak een materialized view met naam en beschrijving van 50 dbt-modellen, bouw er een index op en test vijf zoekvragen in gewone taal.",
+  "headline": "Zoekindexen voor AI blijven nu vanzelf actueel",
+  "summary": "AI Search van Databricks kan een zoekindex direct bouwen op meer soorten tabellen. Een extra kopie bijhouden is niet meer nodig.",
+  "story": [
+    "Een AI die eerst opzoekt en dan antwoordt (RAG) heeft een zoekindex nodig. Zie het als het register achterin een boek. Dat register moet actueel zijn, anders vindt de AI oude informatie.",
+    "AI Search van Databricks kan zo'n register nu direct bouwen op streaming tables, materialized views en Iceberg-tabellen. Verandert de onderliggende tabel, dan wordt het register vanzelf bijgewerkt. Je hoeft geen extra kopie meer bij te houden.",
+    "Voor een AI-contextlaag kun je bijvoorbeeld de beschrijvingen van al je dbt-modellen in zo'n index zetten. Een assistent kan dan zoeken op 'waar vind ik de opnameduur?'. Maar voor een kleine contextlaag is zoeken op betekenis vaak niet nodig. Goede beschrijvingen en gewone zoekwoorden komen al ver."
+  ],
+  "key_facts": [
+    "Databricks-blog van 26 oktober 2026.",
+    "AI Search ondersteunt naast Delta-tabellen nu streaming tables, materialized views en managed Iceberg-tabellen (v3 en hoger).",
+    "Het artikel noemt geen beschikbaarheidsstatus."
+  ],
+  "personal_relevance": "Handig zodra je contextlaag zoeken op betekenis nodig heeft, niet eerder.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }

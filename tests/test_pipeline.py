@@ -306,7 +306,9 @@ class TestPublishedFeed(unittest.TestCase):
             self.assertTrue(set(a["groups"]) <= group_ids)
             self.assertIn("fetched_at", a)
             if a["processing_status"] == "enriched":
-                for k in ["summary", "what_is_new", "personal_relevance", "availability_status"]:
+                needed = (["headline", "summary", "story", "key_facts", "availability_status"] if a.get("format_version") == 2
+                          else ["summary", "what_is_new", "personal_relevance", "availability_status"])
+                for k in needed:
                     self.assertIn(k, a, f"{a['title']}: {k}")
         self.assertTrue(set(f["daily_top"]) <= set(ids))
         self.assertLessEqual(len(f["daily_top"]), 5)

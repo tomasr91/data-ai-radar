@@ -1,16 +1,6 @@
 {
-  "summary": "Met één technisch account kun je nu data per eindgebruiker filteren. Databricks leest daarvoor een extra kenmerk in het OAuth-token.",
-  "what_is_new": "Sinds 19 oktober 2026 kun je een eigen identity claim toevoegen aan het OAuth-token van een service-principal. Rijen kun je op die claim filteren in een dynamische view of een ABAC-beleid, zodat één service-principal veel eindgebruikers kan bedienen.",
-  "simple_explanation": "Een service-principal is een account voor een programma in plaats van een mens. Vaak ziet zo'n account alles. Nu kan het programma meegeven namens wie het vraagt, als een briefje 'dit is voor afdeling X', en Databricks laat dan alleen de rijen van afdeling X zien.",
-  "practical_example": "Een interne app vraagt namens een teamleider gegevens op. Via de claim ziet die alleen de cijfers van de eigen afdeling, terwijl de app maar één technisch account gebruikt.",
-  "personal_relevance": "Beveiliging per afdeling of locatie komt in de zorg veel voor. Zo leg je zo'n regel één keer vast in Unity Catalog, in plaats van in elke app of elk rapport.",
-  "practical_application": "Handig zodra je een app of AI-assistent bouwt die namens verschillende medewerkers vragen stelt.",
-  "experiment": "Maak een dynamische view op synthetische data die filtert op een claim, en test met twee tokens met verschillende claimwaarden.",
-  "limitations": [
-    "De release note noemt geen beschikbaarheidsstatus.",
-    "De app moet de claim betrouwbaar zetten. Een fout in de app is een datalek.",
-    "Vraagt kennis van OAuth en ABAC; overleg met beheer en security."
-  ],
+  "article_id": "7e793b41d90f",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims",
   "availability_status": "onbekend",
   "official_docs": [
     {
@@ -27,9 +17,27 @@
     "practicality": 0.6,
     "novelty": 0.65
   },
-  "article_id": "7e793b41d90f",
-  "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims",
-  "processed_by": "Claude (Opus 5.5) in de bouwsessie, op basis van de volledige brontekst",
-  "processed_at": "2026-10-28T20:30:00Z",
-  "prompt_version": "handmatig-2026-10-28.1"
+  "limitations": [
+    "De release note noemt geen beschikbaarheidsstatus.",
+    "De app moet de claim betrouwbaar zetten. Een fout in de app is een datalek.",
+    "Vraagt kennis van OAuth en ABAC; overleg met beheer en security."
+  ],
+  "experiment": "Maak een dynamische view op synthetische data die filtert op een claim, en test met twee tokens met verschillende claimwaarden.",
+  "headline": "Eén technisch account, toch per gebruiker andere data",
+  "summary": "Een app kan nu namens verschillende medewerkers data opvragen, terwijl Databricks per medewerker filtert.",
+  "story": [
+    "Een service-principal is een account voor een programma in plaats van een mens. Vaak ziet zo'n account alles. Dat is lastig als een interne app voor veel verschillende medewerkers werkt.",
+    "Sinds half oktober kan de app een extra kenmerk meesturen: namens wie hij vraagt. Zie het als een briefje met 'dit is voor afdeling X'. Databricks leest dat briefje en laat dan alleen de rijen van afdeling X zien. De regel daarvoor leg je één keer vast in Unity Catalog.",
+    "Beveiliging per afdeling of locatie komt in de zorg veel voor. Dit wordt interessant zodra je een app of AI-assistent bouwt voor verschillende medewerkers. Let wel op: de app moet dat briefje betrouwbaar invullen. Een fout daarin is meteen een datalek."
+  ],
+  "key_facts": [
+    "Sinds 19 oktober 2026 kan een eigen identity claim worden toegevoegd aan het OAuth-token van een service-principal.",
+    "Rijen kun je op die claim filteren in een dynamische view of een ABAC-beleid.",
+    "De release note noemt geen beschikbaarheidsstatus."
+  ],
+  "personal_relevance": "Rijbeveiliging per afdeling leg je zo één keer vast, in plaats van in elke app.",
+  "format_version": 2,
+  "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+  "processed_at": "2026-10-28T21:00:00Z",
+  "prompt_version": "stijl-v2"
 }
