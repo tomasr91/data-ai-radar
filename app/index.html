@@ -94,7 +94,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .cards { margin-top: 14px; display: grid; gap: 12px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 15px 15px 13px; cursor: pointer; display: grid; gap: 8px; min-width: 0; }
 .card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
-.meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); align-items: center; }
+.meta { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-meta); font-size: 0.76rem; color: var(--muted); align-items: center; }
 .meta .src { color: var(--ink); font-weight: 500; }
 .card h3 { margin: 0; font-size: 1.12rem; line-height: 1.28; font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: anywhere; }
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
@@ -293,7 +293,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed, m = MODE[f.mode] || MODE.partial;
     const ok = f.sources.filter((s) => s.status === "ok").length;
     const fine = f.mode === "live" && ok === f.sources.length;
-    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span>Laatste nieuwe artikelen <strong>${esc(fmtDateTime(f.last_article_added_at || f.last_successful_update || f.generated_at))}</strong>`;
+    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span>Nieuwe artikelen <strong>${esc(fmtDateTime(f.last_article_added_at || f.last_successful_update || f.generated_at))}</strong>`;
     const st = $("#status");
     st.hidden = fine;
     if (!fine) {
@@ -333,16 +333,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   /* ---- Lijst ---- */
   function card(a) {
     const s = source(a.source_id);
-    const enriched = a.processing_status === "enriched";
-    const body = enriched
-      ? `<p class="sum">${esc(a.summary)}</p><p class="why"><b>Voor jou:</b> ${esc(firstSentence(a.personal_relevance))}</p>`
-      : `<p class="raw">Nog niet uitgelegd. ${a.excerpt ? "Korte beschrijving (Engels): " + esc(a.excerpt) : "Open het artikel voor de link naar de bron."}</p>`;
-    const status = !enriched ? `<span class="pill rawp">onverwerkt</span>` : "";
+    const body = a.processing_status === "enriched" ? a.summary : a.excerpt;
     return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
-      <div class="meta"><span class="src">${esc(s.name)}</span><span>${esc(fmtDate(a.published_at))}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${status}</div>
+      <div class="meta"><span class="src">${esc(s.name)}</span>${bars(a.relevance_score)}</div>
       <h3>${esc(a.headline || a.title)}</h3>
-      ${body}
-      <div class="foot">${bars(a.relevance_score)}</div>
+      ${body ? `<p class="sum">${esc(body)}</p>` : ""}
     </article>`;
   }
 
