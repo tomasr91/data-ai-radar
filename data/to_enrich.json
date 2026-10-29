@@ -1,77 +1,7 @@
 {
- "generated_at": "2026-10-29T07:35:38.032730Z",
+ "generated_at": "2026-10-29T07:41:31.390132Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "b9c31921875e",
-   "title": "External writes to managed Delta tables are now generally available",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-13T00:00:00Z",
-   "excerpt": "External Spark clients can write to Unity Catalog managed Delta tables.",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "2f474ddb6a96",
-   "title": "What makes a catalog open? Unity Catalog Advances the Open Lakehouse",
-   "url": "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-19T21:20:00Z",
-   "excerpt": "While almost every platform now supports open formats, what makes a catalog truly...",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "9a1a77aea3de",
-   "title": "Running open-Jev in SQL on Databricks",
-   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-09-24T16:55:01Z",
-   "excerpt": "Over the weekend, “System One” decision models such as Jev have launched, which are...",
-   "preliminary_score": 63,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "965a6e80a937",
-   "title": "How Ramp's internal AI agents crossed a million sessions",
-   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T20:10:00Z",
-   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "412d4b1345c3",
-   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
-   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T19:06:00Z",
-   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "sql_spark_sql"
-   ]
-  },
   {
    "id": "fea9136ea071",
    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
@@ -206,6 +136,74 @@
    "preliminary_score": 67,
    "preliminary_topics": [
     "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "bd10959c5f52",
+   "title": "What Databricks is doing with Genie for Business Users",
+   "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
+   "source_id": "simon_whiteley",
+   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
+   "published_at": "2026-10-08T11:11:40Z",
+   "excerpt": "I n a little o ver two years, Genie has gone from a Public Preview feature for asking questions of your data in plain English, to the main way Databricks wants business users to work with the platform. September's releases show where it's going next: the Excel Add-in and the Genie One MCP server both went GA, and at the end of the month Databricks bought Row Zero, a spreadsheet company, to build into Genie.",
+   "preliminary_score": 65,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "ai_context_engineering"
+   ]
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "excerpt": "AbstractIFCO runs one of the world's largest reusable packaging pools with hundreds of millions of crates and pallets...",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "4255764d89d9",
+   "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
+   "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-05T20:00:00Z",
+   "excerpt": "Vector search originated as a serving problem. The classical use case is a chatbot...",
+   "preliminary_score": 62,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "cf9a742f2530",
+   "title": "The Problem With Approximate Distinct Counts In Power BI – And How To Solve It",
+   "url": "https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/",
+   "source_id": "chris_webb",
+   "source_name": "Chris Webb's BI Blog",
+   "published_at": "2026-10-04T15:02:08Z",
+   "excerpt": "As you’ve probably seen in the blog post for the September 2026 release of Power BI, Import mode and Direct Lake mode semantic models now support the ApproximateDistinctCount() DAX function. I tested its performance on a Direct Lake semantic model with a 1.4 billion row fact table based on the NYC Taxi sample data and … Continue reading The Problem With Approximate Distinct Counts In Power BI – And How To Solve It →",
+   "preliminary_score": 62,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "68a2bf1c5563",
+   "title": "What's the difference between dbt and dbt OSS?",
+   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+   "source_id": "dbt_developer_blog",
+   "source_name": "dbt Developer Blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "excerpt": "The free distribution of dbt v2 is our default recommendation over dbt OSS: it has more capabilities, and its license permits the same real-world use cases for free, without ever paying or talking to dbt Labs.",
+   "preliminary_score": 60,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
    ]
   }
  ]
