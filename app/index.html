@@ -100,7 +100,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent); font-weight: 650; }
-.card .card-date { margin: 0; text-align: right; font-family: var(--f-meta); font-size: 0.66rem; color: var(--muted); }
+.card .card-date { font-family: var(--f-meta); font-size: 0.66rem; font-weight: 400; color: var(--muted); margin-right: 8px; }
 .card .raw { margin: 0; font-size: 0.84rem; color: var(--muted); font-style: italic; font-family: var(--f-read); }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -350,10 +350,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const s = source(a.source_id);
     const body = a.processing_status === "enriched" ? a.summary : a.excerpt;
     return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
-      <div class="meta"><span class="src">${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score)}</div>
+      <div class="meta"><span class="src">${addedAt(a) ? `<span class="card-date">${esc(shortDate(addedAt(a)))}</span>` : ""}${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score)}</div>
       <h3>${esc(a.headline || a.title)}</h3>
       ${body ? `<p class="sum">${esc(body)}</p>` : ""}
-      ${addedAt(a) ? `<p class="card-date">${esc(shortDate(addedAt(a)))}</p>` : ""}
     </article>`;
   }
 
