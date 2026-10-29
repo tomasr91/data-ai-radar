@@ -6,38 +6,27 @@
 <style>
 /* Layout: één leeskolom van max. 680px, kleverige kop met filters, artikel opent als volledig scherm. */
 :root {
-  --bg: #f3f4f1;
-  --surface: #ffffff;
-  --ink: #161b22;
-  --muted: #5b6370;
-  --line: #dfe2e6;
-  --accent: #2b45c2;
-  --accent-soft: #e6eafb;
-  --signal: #b8700c;
-  --signal-off: #d9dde3;
-  --ok: #1f7a4d; --ok-soft: #e3f3ea;
-  --warn: #9a6200; --warn-soft: #fbf0d9;
-  --bad: #b3261e; --bad-soft: #fbe5e3;
-  --info: #3f4a5a; --info-soft: #eceef2;
+  /* Eén donker thema, dag en nacht. Blauw = primaire kleur (links, knoppen),
+     oranje = secundaire kleur (accenten, labels; dezelfde kleur als de relevantie). */
+  --bg: #0f1217;
+  --surface: #171b22;
+  --ink: #e7eaf0;
+  --muted: #9aa3b2;
+  --line: #2a303a;
+  --accent: #9badff;
+  --accent-soft: #232b4a;
+  --accent2: #f0b04a;
+  --accent2-soft: #3a2c14;
+  --signal: #f0b04a;
+  --signal-off: #333a46;
+  --ok: #6fd3a0; --ok-soft: #173326;
+  --warn: #f0c060; --warn-soft: #3a2f16;
+  --bad: #ff9a90; --bad-soft: #3d1d1b;
+  --info: #c3cad6; --info-soft: #252b35;
   --f-display: "Bricolage Grotesque", "Segoe UI", Roboto, system-ui, sans-serif;
   --f-read: "Literata", Georgia, "Times New Roman", serif;
   --f-meta: "IBM Plex Mono", ui-monospace, "Roboto Mono", monospace;
   --r: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1217; --surface: #171b22; --ink: #e7eaf0; --muted: #9aa3b2; --line: #2a303a;
-    --accent: #9badff; --accent-soft: #232b4a; --signal: #f0b04a; --signal-off: #333a46;
-    --ok: #6fd3a0; --ok-soft: #173326; --warn: #f0c060; --warn-soft: #3a2f16;
-    --bad: #ff9a90; --bad-soft: #3d1d1b; --info: #c3cad6; --info-soft: #252b35;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f1217; --surface: #171b22; --ink: #e7eaf0; --muted: #9aa3b2; --line: #2a303a;
-  --accent: #9badff; --accent-soft: #232b4a; --signal: #f0b04a; --signal-off: #333a46;
-  --ok: #6fd3a0; --ok-soft: #173326; --warn: #f0c060; --warn-soft: #3a2f16;
-  --bad: #ff9a90; --bad-soft: #3d1d1b; --info: #c3cad6; --info-soft: #252b35;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -59,7 +48,7 @@ header.top { background: var(--bg); }
 .brand p strong { color: var(--ink); font-weight: 600; }
 .views { display: flex; gap: 22px; margin: 0 2px 8px; }
 .views button { border: 0; background: none; padding: 6px 0; font: inherit; font-size: 1rem; font-weight: 650; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
-.views button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.views button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent2); }
 .tabs[hidden] { display: none !important; }
 .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 8px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
 .tabs button { border: 0; background: none; height: 38px; border-radius: 9px; font-size: 0.95rem; cursor: pointer; color: var(--muted); }
@@ -97,15 +86,15 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .top5 .m { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
 .cards { margin-top: 14px; display: grid; gap: 12px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 15px 15px 13px; cursor: pointer; display: grid; gap: 8px; min-width: 0; }
-.card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.card:hover { border-color: color-mix(in srgb, var(--accent2) 45%, var(--line)); }
 .meta { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-meta); font-size: 0.76rem; color: var(--muted); align-items: center; }
 .meta .src { color: var(--ink); font-weight: 500; }
 .card h3 { margin: 0; font-size: 1.12rem; line-height: 1.28; font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: anywhere; }
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
-.card .why b { color: var(--accent); font-weight: 650; }
+.card .why b { color: var(--accent2); font-weight: 650; }
 a.card.opt { text-decoration: none; color: inherit; }
-article.card.opt.chosen { cursor: default; border-color: var(--accent); }
+article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .pick-note b { color: var(--ink); font-weight: 650; }
 .card .card-date { font-family: var(--f-meta); font-size: 0.66rem; font-weight: 400; color: var(--muted); margin-right: 8px; }
@@ -118,7 +107,7 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent); }
 .pill.preview, .pill.experimenteel { background: var(--warn-soft); color: var(--warn); }
 .pill.aangekondigd, .pill.onbekend { background: var(--info-soft); color: var(--info); }
 .pill.rawp { background: var(--info-soft); color: var(--muted); }
-.pill.opinie { background: var(--accent-soft); color: var(--accent); }
+.pill.opinie { background: var(--accent2-soft); color: var(--accent2); }
 .signal { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); }
 .bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
 .bars i { width: 4px; border-radius: 1px; background: var(--signal-off); }
@@ -152,8 +141,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .orig { margin: -6px 0 18px; font-size: 0.8rem; color: var(--muted); font-family: var(--f-meta); overflow-wrap: anywhere; }
 .story p { font-family: var(--f-read); font-size: 1.06rem; line-height: 1.72; margin: 0 0 1.05em; max-width: 64ch; }
 .story p:first-child { font-size: 1.14rem; }
-.try { margin-top: 26px; background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; }
-.try h2 { margin: 0 0 6px; font-size: 1rem; color: var(--accent); }
+.try { margin-top: 26px; background: var(--accent2-soft); border-radius: var(--r); padding: 16px 18px; }
+.try h2 { margin: 0 0 6px; font-size: 1rem; color: var(--accent2); }
 .try p { margin: 0; font-family: var(--f-read); font-size: 1rem; line-height: 1.65; }
 .source { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; }
 .source dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.86rem; }
@@ -170,7 +159,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .score-dlg h2 { margin: 0 0 10px; font-size: 1rem; }
 .score-dlg .score-note { font-size: .8rem; color: var(--muted); margin: 10px 0 12px; }
 .score-dlg form { display: flex; justify-content: flex-end; margin: 0; }
-.pill.verdieping { background: var(--accent-soft); color: var(--accent); }
+.pill.verdieping { background: var(--accent2-soft); color: var(--accent2); }
 .dd-sec h2 { font-size: 1.15rem; margin: 30px 0 8px; font-weight: 650; }
 .reading { margin: 6px 0 0; padding-left: 1.2em; max-width: 64ch; }
 .reading li { font-size: 0.95rem; line-height: 1.55; margin-bottom: 8px; }

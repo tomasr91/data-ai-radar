@@ -42,13 +42,12 @@ HEAD = """<!doctype html>
 {title}
 <meta name="description" content="De ontwikkelingen die ertoe doen voor jouw data- en AI-werk, uitgelegd in eenvoudig Nederlands.">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1217" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0f1217">
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AI Radar">
-<style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+<style>:root{{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 </head>
 <body>
 """
