@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-29T10:40:45.707999Z",
+ "generated_at": "2026-10-29T10:59:44.113419Z",
  "mode": "partial",
- "mode_note": "16 van 18 feeds opgehaald; zie bronstatus.",
+ "mode_note": "17 van 19 feeds opgehaald; zie bronstatus.",
  "last_article_added_at": "2026-10-29T07:40:54Z",
- "last_successful_update": "2026-10-29T10:40:45.707999Z",
+ "last_successful_update": "2026-10-29T10:59:44.113419Z",
  "groups": [
   {
    "id": "dbt",
@@ -25,6 +25,10 @@
   {
    "id": "agents",
    "label": "AI-agents & RAG"
+  },
+  {
+   "id": "claude",
+   "label": "Claude & AI-ondersteunde ontwikkeling"
   },
   {
    "id": "kwaliteit",
@@ -67,8 +71,18 @@
   },
   "ai_agents_rag": {
    "name": "AI-agents en RAG",
+   "priority": 5,
+   "group": "agents"
+  },
+  "ai_evaluation_observability": {
+   "name": "Evaluatie en observability van AI",
    "priority": 4,
    "group": "agents"
+  },
+  "claude_ai_development": {
+   "name": "Claude en AI-ondersteunde ontwikkeling",
+   "priority": 4,
+   "group": "claude"
   },
   "data_quality_observability": {
    "name": "Datakwaliteit en observability",
@@ -97,12 +111,12 @@
   },
   "ai_in_healthcare": {
    "name": "AI in de zorg",
-   "priority": 4,
+   "priority": 1,
    "group": "zorg"
   },
   "ai_research_data": {
    "name": "AI en onderzoeksdata",
-   "priority": 3,
+   "priority": 1,
    "group": "zorg"
   },
   "powerbi_semantic_models": {
@@ -110,14 +124,9 @@
    "priority": 4,
    "group": "overig"
   },
-  "open_source_ai": {
-   "name": "Open-source AI-modellen en frameworks",
+  "open_source_tools": {
+   "name": "Nieuwe open-sourceprojecten en tools",
    "priority": 3,
-   "group": "overig"
-  },
-  "new_ai_models_tools": {
-   "name": "Nieuwe AI-modellen en algemene AI-tools",
-   "priority": 2,
    "group": "overig"
   },
   "general_ai_trends": {
@@ -138,7 +147,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-29T10:40:45.731603Z"
+   "checked_at": "2026-10-29T10:59:44.167511Z"
   },
   {
    "id": "dbt_core_releases",
@@ -151,7 +160,20 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-29T10:40:45.980303Z"
+   "checked_at": "2026-10-29T10:59:44.388500Z"
+  },
+  {
+   "id": "claude_code_releases",
+   "name": "Claude Code releases (GitHub)",
+   "url": "https://github.com/anthropics/claude-code/releases",
+   "type": "official_docs",
+   "trust_level": "high",
+   "priority": 4,
+   "fetch_method": "github_releases",
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
+   "checked_at": "2026-10-29T10:59:44.882544Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -164,7 +186,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-29T10:40:46.706458Z"
+   "checked_at": "2026-10-29T10:59:45.071639Z"
   },
   {
    "id": "databricks_blog",
@@ -177,7 +199,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-29T10:40:47.120091Z"
+   "checked_at": "2026-10-29T10:59:45.394502Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -190,7 +212,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-29T10:40:47.225259Z"
+   "checked_at": "2026-10-29T10:59:45.479174Z"
   },
   {
    "id": "github_blog",
@@ -203,7 +225,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-29T10:40:47.352448Z"
+   "checked_at": "2026-10-29T10:59:45.582429Z"
   },
   {
    "id": "azure_blog",
@@ -216,7 +238,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-29T10:40:47.482675Z"
+   "checked_at": "2026-10-29T10:59:45.660036Z"
   },
   {
    "id": "powerbi_blog",
@@ -229,7 +251,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-29T10:40:48.948291Z"
+   "checked_at": "2026-10-29T10:59:45.949721Z"
   },
   {
    "id": "huggingface_blog",
@@ -242,7 +264,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-29T10:40:49.661570Z"
+   "checked_at": "2026-10-29T10:59:46.956049Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -255,7 +277,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-29T10:40:49.798178Z"
+   "checked_at": "2026-10-29T10:59:47.047523Z"
   },
   {
    "id": "simon_whiteley",
@@ -268,7 +290,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-29T10:40:50.017055Z"
+   "checked_at": "2026-10-29T10:59:47.174987Z"
   },
   {
    "id": "hamel_husain",
@@ -281,7 +303,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-29T10:40:50.195470Z"
+   "checked_at": "2026-10-29T10:59:47.327459Z"
   },
   {
    "id": "chip_huyen",
@@ -294,7 +316,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-29T10:40:50.446705Z"
+   "checked_at": "2026-10-29T10:59:47.635113Z"
   },
   {
    "id": "simon_willison",
@@ -307,7 +329,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-29T10:40:50.943035Z"
+   "checked_at": "2026-10-29T10:59:47.817135Z"
   },
   {
    "id": "benn_stancil",
@@ -320,7 +342,7 @@
    "status": "failed",
    "items": 0,
    "message": "HTTP 403 bij https://benn.substack.com/feed",
-   "checked_at": "2026-10-29T10:40:51.067681Z"
+   "checked_at": "2026-10-29T10:59:47.946964Z"
   },
   {
    "id": "chris_webb",
@@ -333,7 +355,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-10-29T10:40:51.199598Z"
+   "checked_at": "2026-10-29T10:59:47.991441Z"
   },
   {
    "id": "joe_reis",
@@ -346,7 +368,7 @@
    "status": "failed",
    "items": 0,
    "message": "HTTP 403 bij https://practicaldatamodeling.substack.com/feed",
-   "checked_at": "2026-10-29T10:40:51.680685Z"
+   "checked_at": "2026-10-29T10:59:48.130291Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -359,7 +381,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-29T10:40:51.788334Z"
+   "checked_at": "2026-10-29T10:59:48.170185Z"
   }
  ],
  "daily_top": [
@@ -367,7 +389,7 @@
   "4dcd7af26dab",
   "069e6a8001ed",
   "450468c3f304",
-  "059023edac5d"
+  "90ba3c46bbce"
  ],
  "articles": [
   {
@@ -505,14 +527,14 @@
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
-    "metadata_lineage_catalogs",
-    "ai_agents_rag"
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
    ],
    "groups": [
     "ai_context",
     "dbt",
-    "kwaliteit",
-    "agents"
+    "agents",
+    "kwaliteit"
    ],
    "relevance_score": 93,
    "score_parts": {
@@ -566,13 +588,13 @@
    ],
    "topics": [
     "ai_on_data_platform",
-    "data_quality_observability",
-    "ai_agents_rag"
+    "ai_agents_rag",
+    "data_quality_observability"
    ],
    "groups": [
     "ai_context",
-    "kwaliteit",
-    "agents"
+    "agents",
+    "kwaliteit"
    ],
    "relevance_score": 92,
    "score_parts": {
@@ -740,6 +762,70 @@
    ]
   },
   {
+   "id": "90ba3c46bbce",
+   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Een open-source set werkinstructies leert AI-assistenten hoe het in de zorg hoort. Gericht op Amerikaanse regels.",
+   "personal_relevance": "Een concreet voorbeeld van AI in de zorg op jouw platform, met een duidelijke kanttekening over regels.",
+   "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
+   "limitations": [
+    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
+    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
+    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
+   ],
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_in_healthcare",
+    "ai_research_data"
+   ],
+   "groups": [
+    "agents",
+    "kwaliteit",
+    "zorg"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.92,
+    "source": 0.85,
+    "quality": 0.65
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+     "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+     "published_at": "2026-10-27T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Databricks geeft AI-assistenten zorgkennis mee",
+   "story": [
+    "Een nieuwe collega krijgt werkinstructies, bijvoorbeeld voor het samenstellen van een patiëntgroep voor onderzoek. Databricks doet nu hetzelfde voor AI-assistenten. Engineers van Databricks maakten een open-source set 'skills' voor de zorg, Vital Skills.",
+    "Er zijn skills voor onder meer het samenstellen van patiëntgroepen (cohorten) en voor het onherkenbaar maken van patiëntgegevens. Een AI-assistent pakt de juiste instructie erbij als hij zo'n klus krijgt. Hij wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
+    "Dit is een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform. Let wel op: de skills volgen de Amerikaanse regels (HIPAA). In Nederland gelden de AVG en zorgspecifieke regels. Een Amerikaanse methode om data onherkenbaar te maken is hier dus niet automatisch genoeg.",
+    "De winst is volgens Databricks' eigen tests klein. Het meest waardevol is het idee zelf: domeinkennis vastleggen zodat een AI hem kan gebruiken."
+   ],
+   "key_facts": [
+    "Vital Skills is een open-source bibliotheek met Agent Skills voor zorg en life sciences, bedoeld voor Genie Code.",
+    "Klinische skills zijn onder meer cohort-builder, rwe-cohortstudy, semantic-builder en phi-deidentifier (HIPAA Safe Harbor).",
+    "Skills zijn te installeren in Genie Code, Genie One of Genie Code CLI en te delen via Unity Gateway.",
+    "In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100).",
+    "FHIR, OMOP en HL7 worden niet genoemd."
+   ]
+  },
+  {
    "id": "059023edac5d",
    "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
    "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
@@ -861,19 +947,19 @@
    ],
    "availability_status": "onbekend",
    "topics": [
+    "ai_agents_rag",
     "ai_context_engineering",
-    "databricks_data_engineering",
-    "ai_agents_rag"
+    "databricks_data_engineering"
    ],
    "groups": [
+    "agents",
     "ai_context",
-    "databricks",
-    "agents"
+    "databricks"
    ],
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.85,
     "quality": 0.6
    },
@@ -919,13 +1005,13 @@
     }
    ],
    "topics": [
-    "databricks_data_engineering",
     "ai_agents_rag",
+    "databricks_data_engineering",
     "data_governance_privacy"
    ],
    "groups": [
-    "databricks",
     "agents",
+    "databricks",
     "kwaliteit"
    ],
    "relevance_score": 89,
@@ -1102,13 +1188,13 @@
     }
    ],
    "topics": [
-    "ai_context_engineering",
     "ai_agents_rag",
+    "ai_context_engineering",
     "data_governance_privacy"
    ],
    "groups": [
-    "ai_context",
     "agents",
+    "ai_context",
     "kwaliteit"
    ],
    "relevance_score": 88,
@@ -1357,70 +1443,6 @@
    ]
   },
   {
-   "id": "90ba3c46bbce",
-   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
-   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-27T19:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Een open-source set werkinstructies leert AI-assistenten hoe het in de zorg hoort. Gericht op Amerikaanse regels.",
-   "personal_relevance": "Een concreet voorbeeld van AI in de zorg op jouw platform, met een duidelijke kanttekening over regels.",
-   "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
-   "limitations": [
-    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
-    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
-    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
-   ],
-   "availability_status": "experimenteel",
-   "topics": [
-    "ai_in_healthcare",
-    "ai_agents_rag",
-    "data_governance_privacy",
-    "ai_research_data"
-   ],
-   "groups": [
-    "zorg",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 0.9,
-    "recency": 0.92,
-    "source": 0.85,
-    "quality": 0.65
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
-     "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
-     "published_at": "2026-10-27T19:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Databricks geeft AI-assistenten zorgkennis mee",
-   "story": [
-    "Een nieuwe collega krijgt werkinstructies, bijvoorbeeld voor het samenstellen van een patiëntgroep voor onderzoek. Databricks doet nu hetzelfde voor AI-assistenten. Engineers van Databricks maakten een open-source set 'skills' voor de zorg, Vital Skills.",
-    "Er zijn skills voor onder meer het samenstellen van patiëntgroepen (cohorten) en voor het onherkenbaar maken van patiëntgegevens. Een AI-assistent pakt de juiste instructie erbij als hij zo'n klus krijgt. Hij wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
-    "Dit is een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform. Let wel op: de skills volgen de Amerikaanse regels (HIPAA). In Nederland gelden de AVG en zorgspecifieke regels. Een Amerikaanse methode om data onherkenbaar te maken is hier dus niet automatisch genoeg.",
-    "De winst is volgens Databricks' eigen tests klein. Het meest waardevol is het idee zelf: domeinkennis vastleggen zodat een AI hem kan gebruiken."
-   ],
-   "key_facts": [
-    "Vital Skills is een open-source bibliotheek met Agent Skills voor zorg en life sciences, bedoeld voor Genie Code.",
-    "Klinische skills zijn onder meer cohort-builder, rwe-cohortstudy, semantic-builder en phi-deidentifier (HIPAA Safe Harbor).",
-    "Skills zijn te installeren in Genie Code, Genie One of Genie Code CLI en te delen via Unity Gateway.",
-    "In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100).",
-    "FHIR, OMOP en HL7 worden niet genoemd."
-   ]
-  },
-  {
    "id": "b9c31921875e",
    "title": "External writes to managed Delta tables are now generally available",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
@@ -1616,13 +1638,13 @@
     }
    ],
    "topics": [
-    "ai_context_engineering",
     "ai_agents_rag",
+    "ai_context_engineering",
     "data_governance_privacy"
    ],
    "groups": [
-    "ai_context",
     "agents",
+    "ai_context",
     "kwaliteit"
    ],
    "relevance_score": 83,
@@ -1798,8 +1820,8 @@
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
-    "ai_on_data_platform",
-    "ai_agents_rag"
+    "ai_agents_rag",
+    "ai_on_data_platform"
    ],
    "groups": [
     "ai_context",
@@ -2073,7 +2095,7 @@
    "topics": [
     "ai_on_data_platform",
     "databricks_data_engineering",
-    "open_source_ai"
+    "open_source_tools"
    ],
    "groups": [
     "ai_context",
@@ -2217,15 +2239,15 @@
   }
  ],
  "quality_report": {
-  "fetched_items": 270,
-  "unique_after_dedupe": 235,
+  "fetched_items": 280,
+  "unique_after_dedupe": 245,
   "merged_duplicates": 6,
   "shown": 29,
   "decisions": {
-   "included": 50,
-   "excluded": 19,
-   "below_threshold": 60,
-   "no_topic": 106
+   "included": 60,
+   "excluded": 29,
+   "below_threshold": 65,
+   "no_topic": 91
   },
   "processing": {
    "enriched": 29
@@ -2233,9 +2255,9 @@
   "without_date": 0,
   "per_group": {
    "dbt": 5,
-   "ai_context": 11,
-   "databricks": 9,
-   "zorg": 1,
+   "ai_context": 8,
+   "databricks": 8,
+   "agents": 5,
    "architectuur": 2,
    "kwaliteit": 1
   },
@@ -2267,7 +2289,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 81
+   "skipped_no_key": 96
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -2283,6 +2305,14 @@
     "excluded_by": []
    },
    {
+    "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
+    "relevance_score": 84,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Azure DevOps connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
@@ -2293,9 +2323,57 @@
     ]
    },
    {
+    "title": "v2.1.311",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
+    "relevance_score": 83,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.309",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.309",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "Editing files in Unity Catalog volumes is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#editing-files-in-unity-catalog-volumes-is-now-generally-available",
+    "relevance_score": 80,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "v2.1.307",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.305",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.305",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
     "relevance_score": 80,
     "decision": "included",
     "excluded_by": []
@@ -2311,9 +2389,27 @@
     ]
    },
    {
+    "title": "dbt v1.11.16",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.11.16",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "Databricks SQL version 2026.43 is rolling out in Current",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/sql/release-notes/2026#databricks-sql-version-202643-is-rolling-out-in-current",
+    "relevance_score": 76,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "What Databricks is doing with Genie for Business Users",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
     "relevance_score": 76,
     "decision": "included",
     "excluded_by": []
@@ -2347,6 +2443,22 @@
     ]
    },
    {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 74,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 74,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "v2.0.0-dev.41-test-pypi",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
@@ -2368,6 +2480,14 @@
     "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+    "relevance_score": 73,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
     "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
@@ -2461,6 +2581,16 @@
     ]
    },
    {
+    "title": "v2.1.306",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.306",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "Genie One enhancements",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
@@ -2479,6 +2609,24 @@
     ]
    },
    {
+    "title": "Donating Agent Skills to the Agentic AI Foundation",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+    "relevance_score": 71,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "v2.1.310",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
+    "relevance_score": 70,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "What makes a catalog open? Unity Catalog Advances the Open Lakehouse",
     "source_id": "databricks_engineering_blog",
     "url": "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse",
@@ -2487,12 +2635,14 @@
     "excluded_by": []
    },
    {
-    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
-    "relevance_score": 69,
-    "decision": "included",
-    "excluded_by": []
+    "title": "v2.1.304",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
+    "relevance_score": 68,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
    },
    {
     "title": "Modern Power BI architecture choices for reporting on Azure Databricks: A performance benchmark for Power BI storage modes",
@@ -2511,22 +2661,14 @@
     "excluded_by": []
    },
    {
-    "title": "dbt v1.11.16",
-    "source_id": "dbt_core_releases",
-    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.11.16",
-    "relevance_score": 66,
+    "title": "v2.1.312",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.312",
+    "relevance_score": 64,
     "decision": "excluded",
     "excluded_by": [
      "minor_builds"
     ]
-   },
-   {
-    "title": "What Databricks is doing with Genie for Business Users",
-    "source_id": "simon_whiteley",
-    "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
-    "relevance_score": 65,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Power BI October 2026 Feature Summary",
@@ -2539,9 +2681,25 @@
     ]
    },
    {
+    "title": "Claude’s new auto eval tool",
+    "source_id": "hamel_husain",
+    "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
+    "relevance_score": 63,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
     "source_id": "databricks_engineering_blog",
     "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+    "relevance_score": 63,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Claude Haiku 5.5",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
     "relevance_score": 63,
     "decision": "included",
     "excluded_by": []
@@ -2573,10 +2731,52 @@
     ]
    },
    {
+    "title": "v2.0.2",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.2",
+    "relevance_score": 61,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
+    "relevance_score": 61,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "2026 in LLMs (so far)",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+    "relevance_score": 61,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/",
+    "relevance_score": 60,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "What's the difference between dbt and dbt OSS?",
     "source_id": "dbt_developer_blog",
     "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
     "relevance_score": 60,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Some thoughts on the Navier–Stokes Millennium Prize Problem",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
+    "relevance_score": 59,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2617,168 +2817,6 @@
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#upcoming-end-of-life-for-the-genie-one-mcp-beta-endpoint",
     "relevance_score": 58,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "QuickBooks connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/quickbooks",
-    "relevance_score": 57,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
-    "title": "Databricks Runtime 19: October 26, 2026",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/runtime/19#databricks-runtime-19-october-26-2026",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Improved Lakeflow Performance Observability is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#improved-lakeflow-performance-observability-is-now-generally-available",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Unlocking Investment Insights Without Migrating Your Data: Lakehouse Federation",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "BigQuery to Databricks: A Strategic Framework",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Charts worth stealing: the design calls BI should ship",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Unify your productivity and AI data with Lakeflow Connect",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
-    "relevance_score": 56,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How to teach with Databricks Free Edition",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
-    "relevance_score": 56,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "DataFrame caching on serverless compute is now in Public Preview",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/dataframe-cache",
-    "relevance_score": 55,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Shared Serverless for Asset Bundles (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
-    "relevance_score": 55,
     "decision": "below_threshold",
     "excluded_by": []
    }
