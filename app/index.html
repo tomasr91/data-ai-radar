@@ -378,7 +378,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("");
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
     const added = a.processed_at || a.fetched_at;
-    const published = a.published_at ? fmtDate(a.published_at) : "onbekend";
     const inApp = added ? fmtDate(added) : "onbekend";
     const html = `
       <div class="bar"><div class="wrap">
@@ -387,7 +386,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <a class="btn ghost" style="height:36px;padding:0 12px;font-size:.84rem" href="${esc(a.url)}" target="_blank" rel="noopener">Origineel ↗</a>
       </div></div>
       <article class="full wrap">
-        <div class="meta top"><span class="src">${esc(s.name)}</span><span>Gepubliceerd ${esc(published)}</span><span>In de app sinds ${esc(inApp)}</span><button type="button" class="score-btn" id="score-btn" aria-haspopup="dialog" aria-label="Relevantie ${a.relevance_score} van 100, toon uitleg">${bars(a.relevance_score)}<span class="info" aria-hidden="true">i</span></button></div>
+        <div class="meta top"><span class="src">${esc(s.name)}</span><button type="button" class="score-btn" id="score-btn" aria-haspopup="dialog" aria-label="Relevantie ${a.relevance_score} van 100, toon uitleg">${bars(a.relevance_score)}<span class="info" aria-hidden="true">i</span></button></div>
         ${a.format_version === 2 ? `
         <h1>${esc(a.headline)}</h1>
         <p class="orig">Origineel: ${esc(a.title)}</p>
