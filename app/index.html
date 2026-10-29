@@ -104,22 +104,9 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent); font-weight: 650; }
-.card.lead h3 { font-size: 1.3rem; }
-.tomorrow { margin-top: 12px; border: 1px solid var(--line); border-radius: var(--r); background: transparent; font-size: 0.9rem; }
-.tomorrow > summary, div.tomorrow { display: flex; align-items: baseline; gap: 10px; padding: 12px 14px; cursor: pointer; list-style: none; min-height: 44px; }
-.tomorrow > summary::-webkit-details-marker { display: none; }
-.tomorrow > summary::after { content: "›"; margin-left: auto; color: var(--muted); transition: transform .15s; }
-.tomorrow[open] > summary::after { transform: rotate(90deg); }
-div.tomorrow { cursor: default; }
-.tomorrow .lbl { font-family: var(--f-meta); font-size: 0.68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); flex: none; }
-.tomorrow .t { color: var(--ink); font-weight: 600; min-width: 0; }
-.tomorrow .m { color: var(--muted); font-size: 0.8rem; flex: none; }
-.optlist { list-style: none; margin: 0; padding: 0 6px 4px; border-top: 1px solid var(--line); }
-.optlist a { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; padding: 11px 8px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); min-height: 44px; }
-.optlist li:last-child a { border-bottom: 0; }
-.optlist .t { font-weight: 550; }
-.optlist .m { color: var(--muted); font-size: 0.74rem; font-family: var(--f-meta); flex: none; }
-.pick-note { margin: 0; padding: 4px 14px 12px; font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
+a.card.opt { text-decoration: none; color: inherit; }
+article.card.opt.chosen { cursor: default; border-color: var(--accent); }
+.pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .pick-note b { color: var(--ink); font-weight: 650; }
 .card .card-date { font-family: var(--f-meta); font-size: 0.66rem; font-weight: 400; color: var(--muted); margin-right: 8px; }
 .card .raw { margin: 0; font-size: 0.84rem; color: var(--muted); font-style: italic; font-family: var(--f-read); }
@@ -242,6 +229,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
       <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button>
     </div>
+    <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
+      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button>
+    </div>
   </div>
 </div>
 
@@ -261,7 +251,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const FEED_URL = "feed.json";
   const SUPPORTED_SCHEMA = 1;
 
-  const state = { feed: null, view: "actueel", ddById: new Map(), group: "all", period: "all", sort: "score", q: "", byId: new Map(), scrollY: 0 };
+  const state = { feed: null, view: "actueel", ddTab: "alle", ddById: new Map(), group: "all", period: "all", sort: "score", q: "", byId: new Map(), scrollY: 0 };
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const store = {
@@ -315,6 +305,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       (feed.deepdives || []).forEach((d) => state.ddById.set(d.id, d));
       state.sort = store.get("sort", "score");
       state.view = store.get("view", "actueel") === "verdieping" ? "verdieping" : "actueel";
+      state.ddTab = store.get("ddTab", "alle") === "morgen" ? "morgen" : "alle";
       renderStatus();
       renderSeg();
       route();
@@ -371,6 +362,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
     document.querySelectorAll("#seg-view button").forEach((b) => b.setAttribute("aria-selected", b.dataset.v === state.view));
     $("#seg-sort").hidden = state.view === "verdieping";
+    $("#seg-dd").hidden = state.view !== "verdieping";
+    document.querySelectorAll("#seg-dd button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.ddTab));
   }
 
   /* ---- Lijst ---- */
@@ -389,9 +382,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     </article>`;
   }
 
-  function ddCard(d, lead) {
-    return `<article class="card${lead ? " lead" : ""}" data-dd="${esc(d.id)}" tabindex="0" role="link" aria-label="${esc(d.headline)}">
-      <div class="meta"><span class="src"><span class="card-date">${esc(shortDate(d.written_at))}</span>${lead ? "Nieuwste verdieping" : "Verdieping"}</span><span>${d.reading_minutes} min lezen</span></div>
+  function ddCard(d) {
+    return `<article class="card" data-dd="${esc(d.id)}" tabindex="0" role="link" aria-label="${esc(d.headline)}">
+      <div class="meta"><span class="src"><span class="card-date">${esc(shortDate(d.written_at))}</span>Verdieping</span><span>${d.reading_minutes} min lezen</span></div>
       <h3>${esc(d.headline)}</h3>
       <p class="sum">${esc(d.summary)}</p>
     </article>`;
@@ -406,25 +399,25 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const body = `Gekozen in de Data & AI Radar.\n\n**${o.title}**\n\n${o.question}\n\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent("Verdieping: " + o.id)}&body=${encodeURIComponent(body)}`;
   }
-  function optRow(o) {
-    return `<li><a href="${esc(issueUrl(o))}" target="_blank" rel="noopener" data-opt="${esc(o.id)}">
-      <span class="t">${esc(o.title)}</span><span class="m">${esc(AREA_LABEL[o.area] || "")}</span></a></li>`;
+  function optCard(o, chosen) {
+    const inner = `<div class="meta"><span class="src">${esc(AREA_LABEL[o.area] || "Verdieping")}</span>${chosen ? `<span class="pill verdieping">morgen</span>` : ""}</div>
+      <h3>${esc(o.title)}</h3>
+      ${o.question ? `<p class="sum">${esc(o.question)}</p>` : ""}
+      ${o.why && !chosen ? `<p class="why">${esc(o.why)}</p>` : ""}`;
+    return chosen ? `<article class="card opt chosen" data-opt="${esc(o.id)}">${inner}</article>`
+      : `<a class="card opt" href="${esc(issueUrl(o))}" target="_blank" rel="noopener" data-opt="${esc(o.id)}">${inner}</a>`;
   }
   function renderPicker() {
     const o = state.feed.deepdive_options;
     const chosen = state.chosen || [];
     const known = new Map((o?.options || []).map((x) => [x.id, x]));
     if (chosen.length) {
-      // Er is gekozen: één rustige regel met wat er morgen komt.
-      const titles = chosen.map((id) => esc((known.get(id) || {}).title || id));
-      return `<div class="tomorrow chosen" data-opt="${esc(chosen[0])}"><span class="lbl">Morgen</span><span class="t">${titles[0]}</span>${titles.length > 1 ? `<span class="m">en daarna nog ${titles.length - 1}</span>` : ""}</div>`;
+      // Er is gekozen: alleen die keuze, als de verdieping van morgen.
+      return `<p class="pick-note">Claude schrijft deze morgenochtend. Daarna krijg je hier weer 5 nieuwe keuzes.</p>
+        <div class="cards">${chosen.map((id) => optCard(known.get(id) || { id, title: id }, true)).join("")}</div>`;
     }
-    if (!o?.options?.length) return "";
-    return `<details class="tomorrow" id="pick"${store.get("pickOpen", "0") === "1" ? " open" : ""}>
-      <summary><span class="lbl">Morgen</span><span class="t">Kies je volgende verdieping</span><span class="m">${o.options.length} onderwerpen</span></summary>
-      <ul class="optlist">${o.options.map(optRow).join("")}</ul>
-      <p class="pick-note">GitHub opent; tik daar op <b>Create</b>. Morgenochtend staat hij hierboven.</p>
-    </details>`;
+    if (!o?.options?.length) return `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>`;
+    return `<p class="pick-note">Kies het onderwerp voor morgen. GitHub opent; tik daar op <b>Create</b>.</p><div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>`;
   }
   let chosenAt = 0;
   async function loadChosen(force) {
@@ -440,18 +433,15 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (ids.join() !== (state.chosen || []).join()) { state.chosen = ids; if (state.view === "verdieping" && $("#reader").hidden) renderList(); }
     } catch { /* offline of GitHub niet bereikbaar: keuzes blijven gewoon zichtbaar */ }
   }
-  document.addEventListener("toggle", (e) => { if (e.target.id === "pick") store.set("pickOpen", e.target.open ? "1" : "0"); }, true);
   document.addEventListener("visibilitychange", () => { if (!document.hidden && state.feed && state.view === "verdieping") loadChosen(true); });
 
   function renderList() {
     const f = state.feed;
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
-      const [latest, ...older] = dds;
-      $("#content").innerHTML = (latest ? `<div class="cards">${ddCard(latest, true)}</div>`
-          : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies hieronder een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`)
-        + renderPicker()
-        + (older.length ? `<h2 class="sec"><span>Eerder</span><span>${older.length}</span></h2><div class="cards">${older.map((d) => ddCard(d)).join("")}</div>` : "");
+      $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
+        : dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
+        : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
       return;
     }
@@ -621,6 +611,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id],[data-dd]"); if (el) openCard(el); });
   $("#content").addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) { e.preventDefault(); openCard(e.target); } });
   $("#seg-view").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.v; store.set("view", state.view); renderSeg(); renderList(); window.scrollTo(0, 0); });
+  $("#seg-dd").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.ddTab = b.dataset.v; store.set("ddTab", state.ddTab); renderSeg(); renderList(); window.scrollTo(0, 0); });
   $("#seg-sort").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.sort = b.dataset.v; store.set("sort", state.sort); renderSeg(); renderList(); });
   $("#btn-report").addEventListener("click", () => { state.cameFromList = true; location.hash = "feedcontrole"; });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden && !document.querySelector("dialog[open]")) location.hash = ""; });

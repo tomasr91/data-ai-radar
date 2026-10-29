@@ -130,20 +130,22 @@ with sync_playwright() as p:
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
-    check("12. nieuwste verdieping staat bovenaan", (not dds) or page.locator("#content .card").first.get_attribute("data-dd") == dds[0]["id"])
-    check("   keuzes zijn ingeklapt", page.locator("details#pick").count() == 1 and not page.locator(".optlist").is_visible())
-    page.click("details#pick summary")
-    check("   uitklappen toont vijf keuzes", page.locator(".optlist a").count() == 5)
-    href = page.locator(".optlist a").first.get_attribute("href")
+    check("12. subtabjes Verdiepingen en Morgen", page.locator("#seg-dd button").all_inner_texts() == ["Verdiepingen", "Morgen"] and page.locator("#seg-dd").is_visible())
+    ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
+    check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
+    check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)
+    page.click('#seg-dd button[data-v="morgen"]')
+    check("   tabje Morgen toont vijf keuzes", page.locator("a.card.opt").count() == 5 and page.locator(".card[data-dd]").count() == 0)
+    href = page.locator("a.card.opt").first.get_attribute("href")
     check("   keuze opent een GitHub-issue met de juiste titel",
           href.startswith("https://github.com/tomasr91/data-ai-radar/issues/new?title=") and f"Verdieping%3A%20{opts[0]['id']}" in href, href[:120])
     # Terug uit GitHub: de eigenaar heeft nu gekozen
     GH["issues"] = FAKE_ISSUES
     page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
-    page.wait_for_selector(".tomorrow.chosen", timeout=3000)
-    check("   na kiezen één regel 'Morgen' met de keuze van de eigenaar",
-          page.locator(".optlist").count() == 0 and page.locator(".tomorrow.chosen").get_attribute("data-opt") == opts[1]["id"]
-          and opts[1]["title"] in page.locator(".tomorrow.chosen").inner_text())
+    page.wait_for_selector(".card.opt.chosen", timeout=3000)
+    chosen = page.eval_on_selector_all(".card.opt", "els => els.map(e => e.dataset.opt)")
+    check("   na kiezen alleen de keuze van de eigenaar", chosen == [opts[1]["id"]], str(chosen))
+    page.click('#seg-dd button[data-v="alle"]')
     check("   sorteerknoppen verborgen bij Verdieping", not page.locator("#seg-sort").is_visible())
     if dds:
         page.locator(".card[data-dd]").first.click()
@@ -182,7 +184,7 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
     sw = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
     check("8. geen horizontaal scrollen op 412px", sw <= 0, f"{sw}px te breed")
-    small = page.eval_on_selector_all(".tabs button, .icon-btn", "els => els.filter(e => e.getBoundingClientRect().height < 28).length")
+    small = page.eval_on_selector_all(".tabs button, .icon-btn", "els => els.filter(e => e.offsetParent !== null && e.getBoundingClientRect().height < 28).length")
     check("8. knoppen groot genoeg voor aanraken", small == 0)
     page.emulate_media(color_scheme="dark")
     if SHOTS:
