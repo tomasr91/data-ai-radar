@@ -293,7 +293,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed, m = MODE[f.mode] || MODE.partial;
     const ok = f.sources.filter((s) => s.status === "ok").length;
     const fine = f.mode === "live" && ok === f.sources.length;
-    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span>Laatst bijgewerkt <strong>${esc(fmtDateTime(f.last_successful_update || f.generated_at))}</strong>`;
+    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span>Laatste nieuwe artikelen <strong>${esc(fmtDateTime(f.last_article_added_at || f.last_successful_update || f.generated_at))}</strong>`;
     const st = $("#status");
     st.hidden = fine;
     if (!fine) {

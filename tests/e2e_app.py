@@ -65,7 +65,7 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
     check("1. app opent en toont artikelen", page.locator(".card").count() == len(arts), f"{page.locator('.card').count()} kaarten")
     upd = page.locator("#upd").inner_text()
-    check("2. laatste update met datum en tijd zichtbaar", "Laatst bijgewerkt" in upd and re.search(r"\d{4}.*\d{2}:\d{2}", upd) is not None, upd)
+    check("2. laatste update met datum en tijd zichtbaar", "Laatste nieuwe artikelen" in upd and re.search(r"\d{4}.*\d{2}:\d{2}", upd) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
     check("   precies twee filters: Relevant en Nieuw", page.locator("#seg-sort button").all_inner_texts() == ["Relevant", "Nieuw"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
