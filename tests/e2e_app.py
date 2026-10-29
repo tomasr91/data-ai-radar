@@ -99,7 +99,8 @@ with sync_playwright() as p:
     page.wait_for_selector("#reader", state="hidden")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
 
-    raw = next((a for a in arts if a["processing_status"] == "raw"), None)
+    check("   onverwerkte artikelen staan niet in de app", all(a["processing_status"] == "enriched" for a in arts))
+    raw = None
     if raw:
         page.goto(url + "#a-" + raw["id"])
         page.wait_for_selector("#reader:not([hidden])")

@@ -238,6 +238,14 @@ class TestBuild(unittest.TestCase):
         cfg.DATA, enrich.CACHE = self._data, self._cache
         self.tmp.cleanup()
 
+    def _explain(self, item):
+        """Zet een geldige uitleg (formaat 2) klaar, zoals de geplande Claude-taak dat doet."""
+        data = json.loads((self._data / "enrichment" / "841d424db697.json").read_text(encoding="utf-8"))
+        aid = normalize(item)["id"]
+        enrich.CACHE.mkdir(parents=True, exist_ok=True)
+        (enrich.CACHE / f"{aid}.json").write_text(json.dumps(data), encoding="utf-8")
+        return aid
+
     def _provider(self, items, mode="partial"):
         return lambda c: ProviderResult(items=items, source_results=[{"source_id": "dbt_labs_blog", "status": "ok", "items": len(items), "message": "", "checked_at": F}], mode=mode)
 
@@ -247,14 +255,18 @@ class TestBuild(unittest.TestCase):
                  raw("databricks_blog", "dbt tests for data quality and lineage!", "https://example.org/1?utm_source=rss",
                      excerpt="dbt tests, data lineage, semantic layer")]
         feed = build_mod.build("feeds", self.out, provider_fn=self._provider(items), now=NOW)
-        self.assertEqual(len(feed["articles"]), 1, "dubbel artikel één keer getoond")
+        self.assertEqual(feed["articles"], [], "niet uitgelegd = niet in de app")
         self.assertEqual(feed["quality_report"]["merged_duplicates"], 1)
-        self.assertEqual(feed["articles"][0]["processing_status"], "raw")
+        self._explain(items[0])
+        feed = build_mod.build("feeds", self.out, provider_fn=self._provider(items), now=NOW)
+        self.assertEqual(len(feed["articles"]), 1, "dubbel artikel één keer getoond")
+        self.assertEqual(feed["articles"][0]["processing_status"], "enriched")
         self.assertTrue(list((cfg.DATA / "raw").glob("*.json")), "ruwe laag wordt bewaard")
 
     def test_archive_keeps_articles_that_left_the_feed(self):
         item = raw("dbt_labs_blog", "dbt tests for data quality and lineage", "https://example.org/1",
                    excerpt="dbt tests, data lineage, semantic layer")
+        self._explain(item)
         build_mod.build("feeds", self.out, provider_fn=self._provider([item]), now=NOW)
         feed = build_mod.build("feeds", self.out, provider_fn=self._provider([]), now=NOW)
         self.assertEqual(len(feed["articles"]), 1, "artikel blijft staan als de bronfeed het niet meer toont")
@@ -266,7 +278,7 @@ class TestBuild(unittest.TestCase):
         enrich.CACHE.mkdir(parents=True)
         (enrich.CACHE / f"{aid}.json").write_text(json.dumps({"summary": "half bestand"}))
         feed = build_mod.build("feeds", self.out, provider_fn=self._provider([item]), now=NOW)
-        self.assertEqual(feed["articles"][0]["processing_status"], "raw")
+        self.assertEqual(feed["articles"], [], "ongeldige uitleg telt niet: artikel blijft verborgen")
         self.assertEqual(feed["quality_report"]["invalid_enrichment"][0]["id"], aid)
         queue = json.loads((cfg.DATA / "to_enrich.json").read_text())
         self.assertEqual([i["id"] for i in queue["items"]], [aid], "onverwerkt artikel staat op de werklijst")
@@ -282,6 +294,8 @@ class TestBuild(unittest.TestCase):
                      excerpt="dbt tests, data lineage, semantic layer"),
                  raw("verwijderde_bron", "dbt tests and data lineage elsewhere", "https://example.org/2",
                      excerpt="dbt tests, data lineage, semantic layer")]
+        for it in items:
+            self._explain(it)
         feed = build_mod.build("feeds", self.out, provider_fn=self._provider(items), now=NOW)
         self.assertEqual({a["source_id"] for a in feed["articles"]}, {"dbt_labs_blog"})
 

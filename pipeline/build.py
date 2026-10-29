@@ -167,7 +167,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         a["reading_minutes"] = reading_minutes(a) if a["processing_status"] == "enriched" else None
         a.pop("canonical_url", None)
 
-    shown = sorted([a for a in arts if a["decision"] in ("included", "included_exceptional")],
+    # Alleen artikelen die Claude heeft uitgelegd komen in de app; de rest wacht op de werklijst.
+    shown = sorted([a for a in arts if a["decision"] in ("included", "included_exceptional")
+                    and a["processing_status"] == "enriched"],
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))
     hidden = [a for a in arts if a not in shown]
 
