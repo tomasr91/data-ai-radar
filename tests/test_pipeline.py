@@ -259,6 +259,30 @@ class TestExclusions(unittest.TestCase):
         self.assertEqual(excluded_by("dbt v1.13.0b1", text, conf.excluded_topics), [])
 
 
+class TestWeeklyDigest(unittest.TestCase):
+    """Claude Code: losse patchreleases eruit, één overzicht per afgeronde week erin."""
+
+    def test_one_digest_per_completed_week(self):
+        from pipeline.digest import weekly_digests
+        conf = cfg.load()
+        rel = lambda v, d: {"source_id": "claude_code_releases", "title": v, "fetched_at": F,
+                            "url": f"https://github.com/anthropics/claude-code/releases/tag/{v}",
+                            "published_raw": d, "excerpt": "<ul><li>Added something</li></ul>"}
+        items = [rel("v2.1.310", "2026-10-23T23:39:00Z"), rel("v2.1.304", "2026-10-19T21:34:39Z"),
+                 rel("v2.1.311", "2026-10-26T21:51:23Z")]  # week 44 loopt nog: geen overzicht
+        now = datetime(2026, 10, 29, 12, tzinfo=timezone.utc)
+        out = weekly_digests(items, conf, now)
+        self.assertEqual(len(out), 1)
+        d = out[0]
+        self.assertIn("week 43", d["title"])
+        self.assertIn("v2.1.304 t/m v2.1.310", d["title"])
+        self.assertEqual(excluded_by(d["title"], d["title"], conf.excluded_topics), [])
+        self.assertTrue(all(excluded_by(i["title"], i["title"], conf.excluded_topics) for i in items))
+        a = score_article(normalize(d) | {"processing_status": "raw"}, conf, now)
+        self.assertIn("claude_ai_development", a["topics"])
+        self.assertGreaterEqual(a["relevance_score"], build_mod.QUEUE_MIN_SCORE)
+
+
 class TestBuild(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

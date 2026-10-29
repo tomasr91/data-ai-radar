@@ -17,6 +17,17 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
 7. **Opslaan.** `git add data/enrichment data/deepdives`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef), `git pull --rebase`, `git push`.
 8. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, en of er een verdieping is geschreven.
 
+## Weekoverzicht Claude Code
+
+Artikelen met een titel als "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)" zijn weekoverzichten die de pipeline zelf maakt. De `excerpt` noemt de links naar de release notes.
+
+- Open **elke** release-link uit de `excerpt` (of `CHANGELOG.md` in github.com/anthropics/claude-code) en lees alle wijzigingen van die week.
+- Kies alleen wat T moet weten: nieuwe functies, gewijzigd gedrag, en dingen die je werkwijze met Claude Code veranderen (skills, hooks, subagents, MCP, contextbeheer, permissies). Laat bugfixes en kleine verbeteringen weg.
+- Kop: de belangrijkste verandering, niet "Weekoverzicht". Het verhaal behandelt de 2 tot 4 belangrijkste wijzigingen. `key_facts` noemt per wijziging de versie.
+- Waar het past: één zin over wat je ermee kunt bij dbt- of data-engineeringwerk.
+- Alleen bugfixes en kleine verbeteringen die week? Dan overslaan met reden "alleen kleine wijzigingen".
+- `availability_status`: `beschikbaar`, tenzij de release notes iets als preview of experimenteel noemen.
+
 ## Niet uitleggen (overslaan met reden)
 
 De radar toont alleen **must-knows**. Sla deze artikelen over:

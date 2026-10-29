@@ -19,6 +19,7 @@ from datetime import datetime, timedelta, timezone
 from . import config as cfg
 from .dedupe import dedupe
 from . import deepdives as deepdives_mod
+from .digest import weekly_digests
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -119,6 +120,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Alleen artikelen van bronnen die (nog) in sources.yml staan en aan staan
     active = {s["id"] for s in conf.source_list if s.get("enabled")}
     items = [i for i in items if i.get("source_id") in active]
+    # Weekoverzicht voor bronnen met veel kleine releases (zie digest.py)
+    items = items + weekly_digests(items, conf, now)
     invalid_cache = []
     arts = []
     for raw in items:

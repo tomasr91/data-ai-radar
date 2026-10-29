@@ -74,8 +74,11 @@ sources:
     trust_level: high
     language: en
     fetch_method: github_releases
-    # Patchreleases (v2.0.31) vallen weg via minor_builds in interests.yml; alleen grotere releases blijven over.
-    verification: {status: verified, checked_on: "2026-10-29", note: "Werkt (Actions-run 29-10-2026, 10 items). Claude Code brengt alles uit als patchrelease (v2.1.3xx); die vallen weg via minor_builds, dus deze bron levert voorlopig niets op."}
+    # Claude Code brengt alles uit als patchrelease (v2.1.3xx). Losse patches vallen weg via
+    # minor_builds; de pipeline maakt per afgeronde week één overzichtsartikel (pipeline/digest.py).
+    weekly_digest:
+      title: "Claude Code: wat is er nieuw in week {week} ({versions})"
+    verification: {status: verified, checked_on: "2026-10-29", note: "Werkt (Actions-run 29-10-2026, 10 items). Losse patches eruit, weekoverzicht erin."}
 
   - id: dbt_labs_blog
     name: dbt Labs Blog
