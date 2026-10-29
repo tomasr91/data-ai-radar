@@ -1,7 +1,33 @@
 {
- "generated_at": "2026-10-29T11:12:01.333708Z",
+ "generated_at": "2026-10-29T11:13:03.162542Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "72dc169275f9",
+   "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
+   "source_id": "claude_code_releases",
+   "source_name": "Claude Code releases (GitHub)",
+   "published_at": "2026-10-25T23:59:59Z",
+   "excerpt": "Weekoverzicht van 7 releases (v2.1.304 t/m v2.1.310). Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.304, https://github.com/anthropics/claude-code/releases/tag/v2.1.305, https://github.com/anthropics/claude-code/releases/tag/v2.1.306, https://github.com/anthropics/claude-code/releases/tag/v2.1.307, https://github.com/anthropics/claude-code/releases/tag/v2.1.308, https://github.com/anthropics/claude-code/releases/tag/v2.1.309, https://github.com/anthropics/claude-code/releases/tag/v2.1.310. v2.1.304: What's changed Added a transcript line when a plugin that runs first skips one of your mod's hooks, naming the event and the plugin Added decider: \"person\" to a · v2.1.305: What's changed Added sandbox.allowNestedUserNamespaces so sandboxed commands on Linux can create user namespaces (Chromium, rootless podman); this lets them get · v2.1.306: What's changed Fixed claude -p inside cloud sessions reporting \"Not logged in\" when started without the session's environment variables Fixed an API error being · v2.1.307: What's changed Added /claude-api api-version to move Claude API code to API version 2026-10-21 Added the claude_code.safety_event OpenTelemetry eve",
+   "preliminary_score": 72,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "47711d1f5096",
+   "title": "Claude Code: wat is er nieuw in week 42 (v2.1.303)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W42",
+   "source_id": "claude_code_releases",
+   "source_name": "Claude Code releases (GitHub)",
+   "published_at": "2026-10-18T23:59:59Z",
+   "excerpt": "Weekoverzicht van 1 releases (v2.1.303). Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.303. v2.1.303: What's changed Bug fixes and reliability improvements",
+   "preliminary_score": 59,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
   {
    "id": "65ee2a7efc92",
    "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
@@ -186,33 +212,6 @@
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "ai_context_engineering"
-   ]
-  },
-  {
-   "id": "28418ea3b8c0",
-   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:01:00Z",
-   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "f5757f520b3e",
-   "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
-   "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:50:00Z",
-   "excerpt": "Columnar co-founder Matt Topol shares the type-system challenges of building production ADBC drivers, now used by dbt v2.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
    ]
   }
  ]
