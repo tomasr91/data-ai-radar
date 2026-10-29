@@ -68,7 +68,7 @@ with sync_playwright() as p:
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" in upd and re.search(r"\d{4}.*\d{2}:\d{2}", upd) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
-    check("   precies twee filters: Relevant en Nieuw", page.locator("#seg-sort button").all_inner_texts() == ["Relevant", "Nieuw"])
+    check("   precies twee filters: Nieuw en Relevant", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Relevant"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     check("10. geen dubbele artikelen in de lijst", len(ids) == len(set(ids)))
     if SHOTS:

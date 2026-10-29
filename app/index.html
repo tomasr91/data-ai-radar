@@ -100,6 +100,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent); font-weight: 650; }
+.card .card-date { margin: 0; text-align: right; font-family: var(--f-meta); font-size: 0.66rem; color: var(--muted); }
 .card .raw { margin: 0; font-size: 0.84rem; color: var(--muted); font-style: italic; font-family: var(--f-read); }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -210,7 +211,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 <div class="filters">
   <div class="wrap">
     <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
-      <button type="button" data-v="score">Relevant</button><button type="button" data-v="date">Nieuw</button>
+      <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button>
     </div>
   </div>
 </div>
@@ -340,6 +341,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   /* ---- Lijst ---- */
+  // Datum waarop het artikel in de app kwam (uitgelegd, anders opgehaald), kort als 29-10.
+  const addedAt = (a) => a.processed_at || a.fetched_at || a.published_at;
+  const shortDate = (iso) => new Date(iso).toLocaleDateString("nl-NL", { day: "2-digit", month: "2-digit", timeZone: TZ });
   function card(a) {
     const s = source(a.source_id);
     const body = a.processing_status === "enriched" ? a.summary : a.excerpt;
@@ -347,6 +351,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <div class="meta"><span class="src">${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score)}</div>
       <h3>${esc(a.headline || a.title)}</h3>
       ${body ? `<p class="sum">${esc(body)}</p>` : ""}
+      ${addedAt(a) ? `<p class="card-date">${esc(shortDate(addedAt(a)))}</p>` : ""}
     </article>`;
   }
 
