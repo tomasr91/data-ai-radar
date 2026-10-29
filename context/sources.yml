@@ -253,19 +253,6 @@ sources:
     fetch_method: atom
     verification: {status: verified, checked_on: "2026-10-28", note: "Alleen lange artikelen; alles via https://simonwillison.net/atom/everything/ (veel volume)."}
 
-  - id: benn_stancil
-    name: Benn Stancil (benn.substack)
-    url: https://benn.substack.com/
-    feed_url: https://benn.substack.com/feed
-    type: expert_blog
-    topics: [dbt_analytics_engineering, data_architecture_modeling, ai_on_data_platform, general_ai_trends]
-    priority: 4
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: rss
-    verification: {status: verified, checked_on: "2026-10-29", note: "Wekelijkse opinie over data en technologie; oprichter van Mode. Feed is het standaard Substack-adres, nog niet zelf geopend. Schrijft soms ook over cultuur, sport en politiek: die stukken overslaan."}
-
   - id: chris_webb
     name: Chris Webb's BI Blog
     url: https://blog.crossjoin.co.uk/
@@ -278,19 +265,6 @@ sources:
     language: en
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-29", note: "Feed staat op de About-pagina. Chris Webb werkt bij Microsoft (Fabric); meningen zijn volgens hem zijn eigen. Veel posts: alleen must-knows en onderbouwde meningen."}
-
-  - id: joe_reis
-    name: Joe Reis — Practical Data Modeling
-    url: https://practicaldatamodeling.substack.com/
-    feed_url: https://practicaldatamodeling.substack.com/feed
-    type: expert_blog
-    topics: [data_architecture_modeling, data_quality_observability]
-    priority: 3
-    enabled: true
-    trust_level: medium
-    language: en
-    fetch_method: rss
-    verification: {status: verified, checked_on: "2026-10-29", note: "Co-auteur van Fundamentals of Data Engineering. Een deel van de stukken zit achter een betaalmuur: die worden overgeslagen. Feed is het standaard Substack-adres, nog niet zelf geopend."}
 
   - id: dbt_developer_blog
     name: dbt Developer Blog
