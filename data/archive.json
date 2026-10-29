@@ -1922,14 +1922,6 @@
    "fetched_at": "2026-10-29T07:35:42.423513Z",
    "excerpt": "In case you haven&#8217;t already seen the blog post on the Power BI blog or the discussion on LinkedIn, we at Microsoft published a new white paper last week to help you decide which storage mode to use when you&#8217;re using Power BI to create semantic models and reports on data stored in Azure Databricks. &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks</span> <span class=\"meta-nav\">&#8594;</span></a>"
   },
-  "chris_webb:be67b31e4814": {
-   "source_id": "chris_webb",
-   "title": "Referencing Images And Other Files In Power BI Reports Using OneLake URLs",
-   "url": "https://blog.crossjoin.co.uk/2026/08/30/referencing-images-and-other-files-in-power-bi-reports-using-onelake-urls/",
-   "published_raw": "Sun, 30 Aug 2026 17:24:52 +0000",
-   "fetched_at": "2026-10-29T07:35:42.423513Z",
-   "excerpt": "Several years ago I wrote a very popular blog post about how to store images for your reports inside your Power BI semantic model. It solved the problem of how you could use display images (for example of products) inside your reports without making those images available via a public URL or personal OneDrive Embed &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/08/30/referencing-images-and-other-files-in-power-bi-reports-using-onelake-urls/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Referencing Images And Other Files In Power BI Reports Using OneLake URLs</span> <span class=\"meta-nav\">&#8594;</span></a>"
-  },
   "claude_code_releases:3fa83c67bd72": {
    "source_id": "claude_code_releases",
    "title": "v2.1.312",
@@ -2297,8 +2289,48 @@
    "published_raw": "Thu, 29 Oct 2026 16:22:04 GMT",
    "fetched_at": "2026-10-29T16:25:30.379577Z",
    "excerpt": "Managed Deep Agents now runs a browser for your agent, with tools tuned for context-efficient browser use and a handoff so you can sign in yourself."
+  },
+  "azure_databricks_release_notes:037d11f0fa27": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "View personal and shared spend limits with the ug CLI",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#view-personal-and-shared-spend-limits-with-the-ug-cli",
+   "published_raw": "Wed, 28 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-29T18:39:40.265304Z",
+   "excerpt": "<p><code>ug usage</code> now shows up to five personal and shared spend limits, starting with the highest percentage used. Run <code>ug usage --all</code> to see all applicable limits. See <a href=\"/azure/databricks/ai-gateway/coding-agent-ug-cli#check-your-usage\">Check your usage</a>.</p>"
+  },
+  "azure_databricks_release_notes:81a6e6525f43": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "View personal and shared spend limits with the ug CLI",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#view-personal-and-shared-spend-limits-with-the-ug-cli",
+   "published_raw": "Wed, 28 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-29T18:39:40.265304Z",
+   "excerpt": "<p><code>ug usage</code> now shows up to five personal and shared spend limits, starting with the highest percentage used. Run <code>ug usage --all</code> to see all applicable limits. See <a href=\"/azure/databricks/ai-gateway/coding-agent-ug-cli#check-your-usage\">Check your usage</a>.</p>"
+  },
+  "azure_databricks_release_notes:2bb024ebd74f": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Check budget usage with the Spend Status API",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#check-budget-usage-with-the-spend-status-api",
+   "published_raw": "Mon, 26 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-29T18:39:40.265304Z",
+   "excerpt": "<p>Use the Spend Status API to check your usage against Unity Gateway budget limits. Retrieve a single budget's spend status or list statuses across budgets. See <a href=\"https://docs.databricks.com/api/budgets/v1/budget-spend-status#get-budget-spend-status\">Budget Spend Status API</a>.</p>"
+  },
+  "azure_databricks_release_notes:45dd5784ed45": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Check budget usage with the Spend Status API",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#check-budget-usage-with-the-spend-status-api",
+   "published_raw": "Mon, 26 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-29T18:39:40.265304Z",
+   "excerpt": "<p>Use the Spend Status API to check your usage against Unity Gateway budget limits. Retrieve a single budget's spend status or list statuses across budgets. See <a href=\"https://docs.databricks.com/api/budgets/v1/budget-spend-status#get-budget-spend-status\">Budget Spend Status API</a>.</p>"
+  },
+  "langchain_blog:add6ed1db267": {
+   "source_id": "langchain_blog",
+   "title": "Managed Deep Agents v0.10: Browser Use and Async Subagents",
+   "url": "https://www.langchain.com/blog/managed-deep-agents-browser-use-and-asynchronous-subagents",
+   "published_raw": "Thu, 29 Oct 2026 17:03:39 GMT",
+   "fetched_at": "2026-10-29T18:39:43.274321Z",
+   "excerpt": "Managed Deep Agents v0.10 adds browser use, so agents can work on sites with no API and hand you the window to sign in, and async subagents for background work."
   }
  },
- "updated_at": "2026-10-29T16:25:25.833717Z",
+ "updated_at": "2026-10-29T18:39:40.208347Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
