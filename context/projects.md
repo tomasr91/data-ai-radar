@@ -2,7 +2,7 @@
 id: projects
 type: context
 schema_version: 1
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Projecten en projectthema's
@@ -17,7 +17,7 @@ Dit bestand bevat **tijdelijke context**: projecten veranderen, profiel en stack
 - **Verwijderen:** verwijder het blok volledig.
 
 **Statuswaarden:** `idee` · `actief` · `gepauzeerd` · `afgerond` · `gearchiveerd`.
-**Stand 2026-10-28:** alle vijf projecten zijn bevestigd als `actief`.
+**Stand 2026-10-29:** vier projecten zijn `actief`; `migratie-moderne-dataplatformen` is `gepauzeerd` en wordt door de radar genegeerd.
 
 ---
 
@@ -66,7 +66,7 @@ Dit bestand bevat **tijdelijke context**: projecten veranderen, profiel en stack
 
 ### migratie-moderne-dataplatformen
 - **Naam:** Migratie en ontwikkeling van moderne dataplatformen
-- **Status:** actief — de migratie van het dbt-project van SQL Server naar Databricks is bijna klaar
+- **Status:** gepauzeerd — tijdelijk niet volgen (op verzoek, 2026-10-29)
 - **Bijgewerkt:** 2026-10-28
 - **Doel:** Het platform toekomstbestendig maken: schaalbaar, beheersbaar en klaar voor AI.
 - **Technologieën:** dbt, Databricks, Spark SQL, SQL Server, GitHub

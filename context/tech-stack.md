@@ -2,7 +2,7 @@
 id: tech-stack
 type: context
 schema_version: 1
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Technische stack
@@ -43,10 +43,9 @@ Elke categorie verwijst naar een `id` in `interests.yml`.
 
 - **Bekend:**
   - `[bekend]` SQL Server is onderdeel van de omgeving.
-  - `[bekend]` De migratie van het dbt-project van SQL Server/T-SQL naar Databricks/Spark SQL is bijna klaar (zie `projects.md`).
-- **Ontwikkelingen om te volgen:** SQL-dialectvertaling, migratiepatronen, modelleringspatronen (dimensioneel, Data Vault, wide tables) in een lakehouse.
-- **Toepassingen:** AI-ondersteunde SQL-vertaling en -review, consistente modelconventies afdwingen.
-- **Ontbreekt:** `[aanvullen]` welke rol SQL Server na de migratie houdt · modelleringsmethode per laag.
+- **Ontwikkelingen om te volgen:** modelleringspatronen (dimensioneel, Data Vault, wide tables) in een lakehouse.
+- **Toepassingen:** AI-ondersteunde SQL-review, consistente modelconventies afdwingen.
+- **Ontbreekt:** `[aanvullen]` modelleringsmethode per laag.
 
 ## 4. Bronze-, Silver- en Gold-architectuur
 `interest: data_architecture_modeling`
