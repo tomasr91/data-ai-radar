@@ -146,15 +146,21 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .try { margin-top: 26px; background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; }
 .try h2 { margin: 0 0 6px; font-size: 1rem; color: var(--accent); }
 .try p { margin: 0; font-family: var(--f-read); font-size: 1rem; line-height: 1.65; }
-.facts { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 16px; }
-.facts summary { cursor: pointer; font-weight: 650; display: flex; align-items: center; gap: 8px; list-style-position: inside; }
-.facts ul { margin: 10px 0 2px; padding-left: 1.2em; }
-.facts li { font-family: var(--f-read); font-size: 0.95rem; line-height: 1.6; }
 .source { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; }
 .source dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.86rem; }
 .source dt { color: var(--muted); font-family: var(--f-meta); font-size: 0.74rem; padding-top: 2px; }
 .source dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .note { font-size: 0.84rem; color: var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 10px 12px; }
+.meta.top { flex-wrap: wrap; justify-content: flex-start; gap: 6px 14px; }
+.meta.top .score-btn { margin-left: auto; }
+.score-btn { display: inline-flex; align-items: center; gap: 6px; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; cursor: pointer; }
+.score-btn:hover, .score-btn:focus-visible { border-color: var(--accent); }
+.score-btn .info { display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 0.66rem; font-weight: 700; font-style: italic; }
+.score-dlg { width: min(420px, calc(100vw - 32px)); border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); padding: 18px; box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+.score-dlg::backdrop { background: rgba(0,0,0,.35); }
+.score-dlg h2 { margin: 0 0 10px; font-size: 1rem; }
+.score-dlg .score-note { font-size: .8rem; color: var(--muted); margin: 10px 0 12px; }
+.score-dlg form { display: flex; justify-content: flex-end; margin: 0; }
 .score-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
 .score-table td { padding: 6px 0; border-top: 1px solid var(--line); }
 .score-table td:last-child { text-align: right; font-family: var(--f-meta); }
@@ -248,7 +254,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
   const TYPE_LABEL = { official_docs: "Officieel", vendor_blog: "Leverancier", expert_blog: "Vakmens", technical_article: "Technisch", independent_news: "Onafhankelijk" };
-  const STATUS_LABEL = { beschikbaar: "beschikbaar", preview: "preview", aangekondigd: "aangekondigd", experimenteel: "experimenteel", onbekend: "status onbekend" };
   const SRC_STATUS = { ok: "werkt", failed: "mislukt", not_supported: "niet ondersteund", skipped: "handmatig", not_fetched: "niet opgehaald" };
   const MODE = {
     live: { label: "Live", color: "var(--ok)", text: "Alle feeds zijn opgehaald." },
@@ -371,17 +376,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const parts = a.score_parts || {};
     const partRows = [["Past bij je onderwerpen", parts.topic, "55%"], ["Inhoudelijke kwaliteit", parts.quality, "20%"], ["Actualiteit", parts.recency, "15%"], ["Bron", parts.source, "10%"]]
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("");
-    const topics = (a.topics || []).map((t) => state.feed.topics[t]?.name).filter(Boolean);
-    const docs = (a.official_docs || []).map((d) => `<li><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.label)}</a></li>`).join("");
-    const also = (a.also_reported_by || []).map((o) => `<li><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a> <span style="color:var(--muted)">(${esc(source(o.source_id).name)}, ${esc(o.reason)})</span></li>`).join("");
+    // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
+    const added = a.processed_at || a.fetched_at;
+    const published = a.published_at ? fmtDate(a.published_at) : "onbekend";
+    const inApp = added ? fmtDate(added) : "onbekend";
     const html = `
       <div class="bar"><div class="wrap">
         <button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
-        <span class="crumb">${esc(s.name)} · ${esc(a.published_at ? fmtDate(a.published_at) : (a.fetched_at ? `opgehaald ${fmtDate(a.fetched_at)}` : fmtDate(null)))}</span>
+        <span class="crumb"></span>
         <a class="btn ghost" style="height:36px;padding:0 12px;font-size:.84rem" href="${esc(a.url)}" target="_blank" rel="noopener">Origineel ↗</a>
       </div></div>
       <article class="full wrap">
-        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${a.published_at && a.fetched_at && fmtDate(a.fetched_at) !== fmtDate(a.published_at) ? `<span>opgehaald ${esc(fmtDate(a.fetched_at))}</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
+        <div class="meta top"><span class="src">${esc(s.name)}</span><span>Gepubliceerd ${esc(published)}</span><span>In de app sinds ${esc(inApp)}</span><button type="button" class="score-btn" id="score-btn" aria-haspopup="dialog" aria-label="Relevantie ${a.relevance_score} van 100, toon uitleg">${bars(a.relevance_score)}<span class="info" aria-hidden="true">i</span></button></div>
         ${a.format_version === 2 ? `
         <h1>${esc(a.headline)}</h1>
         <p class="orig">Origineel: ${esc(a.title)}</p>
@@ -390,7 +396,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <div class="story">${(a.story || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>
         ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
         ${a.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
-        ${a.key_facts?.length ? `<details class="facts"><summary>${a.article_type === "opinie" ? "Kernpunten van de auteur" : "Bronfeiten"} <span class="kind bron">Uit de bron</span></summary><ul>${a.key_facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>` : ""}
         ` : `
         <h1>${esc(a.title)}</h1>
         ${enriched ? `<p class="lead">${esc(a.summary)}</p>` : `<div class="callout"><p style="margin:0">Claude heeft dit artikel nog niet uitgelegd. Dat gebeurt meestal de volgende ochtend.${a.excerpt ? ` Korte beschrijving (Engels): <em>${esc(a.excerpt)}</em>` : ""}</p></div>`}
@@ -403,21 +408,16 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${block("Probeer dit", "idee", a.experiment)}
         ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         `}
-        <section class="block"><h2>Bron</h2><div class="source">
-          <dl>
-            <dt>Titel</dt><dd>${esc(a.title)}</dd>
-            <dt>Website</dt><dd>${esc(s.name)} · ${esc(host(a.url))}</dd>
-            <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
-            <dt>Opgehaald</dt><dd>${esc(fmtDateTime(a.fetched_at))}</dd>
-            ${topics.length ? `<dt>Onderwerpen</dt><dd>${esc(topics.join(", "))}</dd>` : ""}
-            ${enriched ? `<dt>Uitgelegd door</dt><dd>${esc(a.processed_by || "")}</dd>` : ""}
-          </dl>
-          <div><a class="btn" href="${esc(a.url)}" target="_blank" rel="noopener">Lees het originele artikel ↗</a></div>
-          ${docs ? `<div><strong style="font-size:.86rem">Officiële documentatie</strong><ul style="margin:6px 0 0;padding-left:1.2em;font-size:.88rem">${docs}</ul></div>` : ""}
-          ${also ? `<div><strong style="font-size:.86rem">Ook gemeld</strong><ul style="margin:6px 0 0;padding-left:1.2em;font-size:.88rem">${also}</ul></div>` : ""}
-        </div></section>
-        <section class="block"><h2>Waarom deze score?</h2><div class="source"><table class="score-table">${partRows}</table>
-          <p style="font-size:.8rem;color:var(--muted);margin:0">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : ""}.</p></div></section>
+        <section class="block"><h2>Bron</h2><div class="source"><dl>
+          <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
+          <dt>In de app sinds</dt><dd>${esc(inApp)}</dd>
+        </dl></div></section>
+        <dialog class="score-dlg" id="score-dlg" aria-labelledby="score-dlg-h">
+          <h2 id="score-dlg-h">Waarom deze score?</h2>
+          <table class="score-table">${partRows}</table>
+          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : ""}.</p>
+          <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
+        </dialog>
       </article>`;
     openReader(html);
   }
@@ -465,6 +465,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.body.style.overflow = "hidden";
     $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
     $("#back", r).focus({ preventScroll: true });
+    const dlg = $("#score-dlg", r), btn = $("#score-btn", r);
+    if (dlg && btn) {
+      btn.onclick = () => dlg.showModal();
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+    }
   }
   function closeReader() {
     const r = $("#reader");
@@ -489,7 +494,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   $("#content").addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) { e.preventDefault(); open(e.target.dataset.id); } });
   $("#seg-sort").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.sort = b.dataset.v; store.set("sort", state.sort); renderSeg(); renderList(); });
   $("#btn-report").addEventListener("click", () => { state.cameFromList = true; location.hash = "feedcontrole"; });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden) location.hash = ""; });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden && !document.querySelector("dialog[open]")) location.hash = ""; });
 
   load();
 })();

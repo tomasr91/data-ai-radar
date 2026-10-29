@@ -91,11 +91,17 @@ with sync_playwright() as p:
     reader = page.locator("#reader").inner_text()
     check("4. artikel opent", (enriched.get("headline") or enriched["title"]) in reader)
     if enriched.get("format_version") == 2:
-        check("5. uitleg zichtbaar (nieuwe stijl)", enriched["story"][0][:40] in reader and "Probeer dit" in reader and "Bronfeiten" in reader
-              and enriched["title"] in reader)
+        check("5. uitleg zichtbaar (nieuwe stijl), zonder bronfeiten", enriched["story"][0][:40] in reader and "Probeer dit" in reader
+              and "Bronfeiten" not in reader and enriched["title"] in reader)
     else:
         check("5. uitleg zichtbaar", all(s in reader for s in ["Wat is er nieuw?", "Eenvoudig uitgelegd", "Waarom is dit relevant voor jou?", "Wat kun je ermee?"]))
-    check("5. bronvermelding met datum", "Gepubliceerd" in reader and "Opgehaald" in reader)
+    check("5. bron toont alleen publicatiedatum en datum in de app", "Gepubliceerd" in reader and "In de app sinds" in reader
+          and "Opgehaald" not in reader and "Uitgelegd door" not in reader)
+    check("5. scoreuitleg standaard verborgen", not page.locator("#score-dlg").is_visible())
+    page.click("#score-btn")
+    check("5. knop toont scoreuitleg in een venster", page.locator("#score-dlg").is_visible() and "Waarom deze score?" in page.locator("#score-dlg").inner_text())
+    page.keyboard.press("Escape")
+    check("5. Escape sluit eerst het venster, niet het artikel", not page.locator("#score-dlg").is_visible() and page.locator("#reader").is_visible())
     hrefs = page.eval_on_selector_all("#reader a.btn", "els => els.map(e => [e.href, e.target, e.rel])")
     check("6. link naar origineel klopt en opent in nieuw tabblad", any(h[0] == enriched["url"] and h[1] == "_blank" for h in hrefs), str(hrefs))
     if SHOTS:
