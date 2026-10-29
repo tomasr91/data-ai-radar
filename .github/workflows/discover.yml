@@ -6,6 +6,11 @@ name: Feeds zoeken
 
 on:
   workflow_dispatch:
+    inputs:
+      urls:
+        description: "Extra adressen om te controleren (spatie-gescheiden)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -21,6 +26,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Feeds zoeken en controleren
         run: python scripts/discover_feeds.py
+        env:
+          DISCOVER_URLS: ${{ inputs.urls }}
       - name: Resultaat opslaan
         run: |
           git config user.name "radar-bot"

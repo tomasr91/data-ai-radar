@@ -8,6 +8,7 @@ Werkwijze per bron:
 Resultaat: data/feed_discovery.json en (op GitHub) een samenvatting bij de run.
 sources.yml wordt NIET automatisch aangepast; dat gebeurt na beoordeling.
 Gebruik: python scripts/discover_feeds.py
+Extra adressen (nog niet in sources.yml) controleren: zet DISCOVER_URLS="url1 url2".
 """
 import json
 import os
@@ -60,7 +61,9 @@ def try_feed(url: str):
 def main():
     conf = load()
     report = {"checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"), "sources": []}
-    for src in conf.source_list:
+    extra = [{"id": "extra:" + u, "url": u, "enabled": True, "feed_url": None, "fetch_method": "manual"}
+             for u in os.environ.get("DISCOVER_URLS", "").split()]
+    for src in conf.source_list + extra:
         if not src.get("enabled") or src.get("feed_url") or src["fetch_method"] in ("rss", "atom", "github_releases"):
             continue
         entry = {"id": src["id"], "url": src["url"], "found": None, "page": None, "tried": 0}
