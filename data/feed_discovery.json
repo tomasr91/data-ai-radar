@@ -1,186 +1,53 @@
 {
- "checked_at": "2026-10-28T20:31:04.429492Z",
+ "checked_at": "2026-10-29T11:07:42.718722Z",
  "sources": [
   {
-   "id": "dbt_release_notes",
-   "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes",
+   "id": "extra:https://www.langchain.com/blog",
+   "url": "https://www.langchain.com/blog",
    "found": {
-    "feed_url": "https://docs.getdbt.com/blog/rss.xml",
-    "items": 20,
-    "latest": "2026-10-14T00:00:00Z",
-    "sample_titles": [
-     "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
-     "dbt_context_engineering: modeling the context your AI agents read",
-     "What's the difference between dbt and dbt OSS?"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 17
-  },
-  {
-   "id": "anthropic_engineering",
-   "url": "https://www.anthropic.com/engineering",
-   "found": null,
-   "page": "ok",
-   "tried": 18
-  },
-  {
-   "id": "openai_developer_blog",
-   "url": "https://developers.openai.com/blog",
-   "found": {
-    "feed_url": "https://developers.openai.com/rss.xml",
+    "feed_url": "https://www.langchain.com/blog/rss.xml",
     "items": 30,
-    "latest": "2026-05-05T00:00:00Z",
+    "latest": "2026-10-28T21:40:23Z",
     "sample_titles": [
-     "OpenAI Developers plugin",
-     "Docs MCP",
-     "Realtime and audio guide"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 1
-  },
-  {
-   "id": "github_blog",
-   "url": "https://github.blog/",
-   "found": {
-    "feed_url": "https://github.blog/feed/",
-    "items": 10,
-    "latest": "2026-10-28T16:09:28Z",
-    "sample_titles": [
-     "GitHub Universe 2026: Evolving every layer of the stack",
-     "Octoverse: Commits, pushes, reach new highs in 2026 as developers build with agents",
-     "How bug bounty sharpens one researcher’s security skills"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 1
-  },
-  {
-   "id": "powerbi_blog",
-   "url": "https://powerbi.microsoft.com/en-us/blog/",
-   "found": {
-    "feed_url": "https://powerbi.microsoft.com/en-us/blog/feed",
-    "items": 20,
-    "latest": "2026-10-26T18:44:50Z",
-    "sample_titles": [
-     "Power BI October 2026 Feature Summary",
-     "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
-     "Microsoft & Snowflake’s Commitment to Apache Ossie"
-    ],
-    "method": "rss"
-   },
-   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
-   "tried": 1
-  },
-  {
-   "id": "huggingface_blog",
-   "url": "https://huggingface.co/blog",
-   "found": {
-    "feed_url": "https://huggingface.co/blog/feed.xml",
-    "items": 30,
-    "latest": "2026-10-28T14:58:17Z",
-    "sample_titles": [
-     "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
-     "Build specialized multimodal models with LFM3",
-     "Can we trust LLMs to judge whether a research idea is novel?"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 1
-  },
-  {
-   "id": "thoughtworks_radar",
-   "url": "https://www.thoughtworks.com/radar",
-   "found": null,
-   "page": "ok",
-   "tried": 18
-  },
-  {
-   "id": "joe_reis",
-   "url": "https://joereis.substack.com/",
-   "found": null,
-   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
-   "tried": 9
-  },
-  {
-   "id": "simon_whiteley",
-   "url": "https://www.advancinganalytics.co.uk/blog/author/simon-whiteley",
-   "found": {
-    "feed_url": "https://www.advancinganalytics.co.uk/blog/rss.xml",
-    "items": 10,
-    "latest": "2026-10-27T14:03:52Z",
-    "sample_titles": [
-     "Push or Pull? What Bad Design Reveals About Our Data Platforms",
-     "After the Standing Ovation: The Topology of Productionising Built-On Databricks",
-     "The Biggest Barrier to Better Public Services isn't AI. It's the Missing Data Foundation."
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 1
-  },
-  {
-   "id": "madison_mae",
-   "url": "https://learnanalyticsengineering.substack.com/",
-   "found": null,
-   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
-   "tried": 9
-  },
-  {
-   "id": "hamel_husain",
-   "url": "https://hamel.dev/blog/",
-   "found": {
-    "feed_url": "https://hamel.dev/index.xml",
-    "items": 20,
-    "latest": "2026-10-20T07:00:00Z",
-    "sample_titles": [
-     "How To Use Decision Models for Evals",
-     "Claude’s new auto eval tool",
-     "AI Evals: Everything You Need to Know"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 15
-  },
-  {
-   "id": "chip_huyen",
-   "url": "https://huyenchip.com/blog/",
-   "found": {
-    "feed_url": "https://huyenchip.com/feed.xml",
-    "items": 10,
-    "latest": "2025-01-16T00:00:00Z",
-    "sample_titles": [
-     "Common pitfalls when building generative AI applications",
-     "Agents",
-     "Building A Generative AI Platform"
-    ],
-    "method": "rss"
-   },
-   "page": "ok",
-   "tried": 1
-  },
-  {
-   "id": "dbt_developer_blog",
-   "url": "https://docs.getdbt.com/blog",
-   "found": {
-    "feed_url": "https://docs.getdbt.com/blog/rss.xml",
-    "items": 20,
-    "latest": "2026-10-14T00:00:00Z",
-    "sample_titles": [
-     "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
-     "dbt_context_engineering: modeling the context your AI agents read",
-     "What's the difference between dbt and dbt OSS?"
+     "How We Built LangChain’s Paid Media Agent",
+     "How We Built Our Design Agent",
+     "The Art of Loop Engineering"
     ],
     "method": "rss"
    },
    "page": "ok",
    "tried": 4
+  },
+  {
+   "id": "extra:https://blog.langchain.com/",
+   "url": "https://blog.langchain.com/",
+   "found": {
+    "feed_url": "https://blog.langchain.com/rss.xml",
+    "items": 30,
+    "latest": "2026-10-28T21:40:23Z",
+    "sample_titles": [
+     "How We Built LangChain’s Paid Media Agent",
+     "How We Built Our Design Agent",
+     "The Art of Loop Engineering"
+    ],
+    "method": "rss"
+   },
+   "page": "ok",
+   "tried": 4
+  },
+  {
+   "id": "extra:https://www.anthropic.com/news",
+   "url": "https://www.anthropic.com/news",
+   "found": null,
+   "page": "ok",
+   "tried": 18
+  },
+  {
+   "id": "extra:https://www.anthropic.com/engineering",
+   "url": "https://www.anthropic.com/engineering",
+   "found": null,
+   "page": "ok",
+   "tried": 18
   }
  ]
 }
