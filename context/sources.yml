@@ -63,6 +63,20 @@ sources:
     fetch_method: github_releases
     verification: {status: verified, checked_on: "2026-10-28", note: null}
 
+  - id: claude_code_releases
+    name: Claude Code releases (GitHub)
+    url: https://github.com/anthropics/claude-code/releases
+    feed_url: null
+    type: official_docs
+    topics: [claude_ai_development]
+    priority: 4
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: github_releases
+    # Patchreleases (v2.0.31) vallen weg via minor_builds in interests.yml; alleen grotere releases blijven over.
+    verification: {status: user_supplied, checked_on: "2026-10-29", note: "Toegevoegd 29-10-2026 als vervanging voor Anthropic News/Engineering (geen feed). Werking blijkt uit de eerstvolgende Actions-run."}
+
   - id: dbt_labs_blog
     name: dbt Labs Blog
     url: https://www.getdbt.com/blog
@@ -107,7 +121,7 @@ sources:
     url: https://github.blog/
     feed_url: https://github.blog/feed/
     type: vendor_blog
-    topics: [cicd_data_deployment, new_ai_models_tools]
+    topics: [cicd_data_deployment, open_source_tools]
     priority: 4
     enabled: true
     trust_level: medium
@@ -146,7 +160,7 @@ sources:
     url: https://huggingface.co/blog
     feed_url: https://huggingface.co/blog/feed.xml
     type: vendor_blog
-    topics: [open_source_ai, ai_agents_rag]
+    topics: [open_source_tools, ai_agents_rag]
     priority: 3
     enabled: true
     trust_level: medium
@@ -202,7 +216,7 @@ sources:
     url: https://huyenchip.com/blog/
     feed_url: https://huyenchip.com/feed.xml
     type: expert_blog
-    topics: [ai_agents_rag, ai_context_engineering, open_source_ai]
+    topics: [ai_agents_rag, ai_context_engineering, ai_evaluation_observability]
     priority: 5
     enabled: true
     trust_level: medium
@@ -215,7 +229,7 @@ sources:
     url: https://simonwillison.net/
     feed_url: https://simonwillison.net/atom/entries/
     type: expert_blog
-    topics: [ai_agents_rag, ai_context_engineering, open_source_ai, new_ai_models_tools]
+    topics: [claude_ai_development, ai_agents_rag, ai_context_engineering, open_source_tools]
     priority: 4
     enabled: true
     trust_level: medium

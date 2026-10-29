@@ -36,6 +36,12 @@ Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of 
 - Schrijf volgens **formaat 2** uit de redactiegids (§1 en §2): een Nederlandse kop, een doorlopend verhaal van 3 tot 5 korte alinea's, en de feiten apart in `key_facts`.
 - `key_facts` bevat **alleen feiten uit de bron**: wat, sinds wanneer, welke status, welke cijfers. Elk feit dat in het verhaal staat, staat ook hier.
 - Verbind het verhaal met het profiel, de stack en de projecten alleen als dat iets toevoegt. Herhaal niet bij elk artikel hetzelfde (bijvoorbeeld steeds hetzelfde project).
+- **Centrale vraag bij elk artikel:** wat is er nieuw, waarom is het interessant, **hoe werkt het**, en welke mogelijkheden biedt het? Het verhaal legt altijd uit hoe het werkt, niet alleen dát het bestaat. Het doel is bijblijven én leren.
+- **Concreet boven concept.** Staan er code, een repository, een benchmark of een reproduceerbaar experiment in het artikel, benoem dat dan en zet de link in `official_docs`.
+- **Agents:** maak duidelijk welke taak de agent uitvoert, welke informatie hij nodig heeft en hoe gecontroleerd wordt of het resultaat klopt.
+- **Claude en AI-ondersteunde ontwikkeling:** alleen Claude en het eigen ecosysteem (Claude Code, skills, hooks, subagents, MCP). Nieuwe modellen of tools van andere aanbieders alleen als het uitzonderlijk is (`general_ai_trends`). Laat waar het kan zien hoe je Claude inzet bij dbt, data engineering of context engineering.
+- **Repositories en open source:** beoordeel of het echt iets nieuws toevoegt. Werkende code, goede uitleg en een duidelijke toepassing: ja. Een bestaand concept opnieuw verpakt: overslaan.
+- **Marketingclaims** zijn geen bewezen mogelijkheden. Zeg het als iets alleen beweerd wordt.
 - **Klantverhaal?** Noem in het verhaal en in `key_facts` welke tools ze gebruiken en wat ze ermee bouwden. Begin met de toepassing, niet met het bedrijf.
 - `experiment` is een suggestie. Een experiment past binnen een middag en gebruikt **nooit patiëntgegevens of werkdata**, alleen synthetische of openbare data. Externe AI (zoals Claude zelf) alleen zonder werkdata. AI binnen Databricks mag wel met werkdata.
 - `availability_status`: `beschikbaar` (GA), `preview` (Beta/Public Preview), `aangekondigd`, `experimenteel` of `onbekend`. Zegt het artikel het niet, dan `onbekend`.

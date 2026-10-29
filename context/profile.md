@@ -2,7 +2,7 @@
 id: profile
 type: context
 schema_version: 1
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Profiel
@@ -27,14 +27,25 @@ Dit bestand beschrijft wie ik ben, wat ik al weet en hoe de Data & AI Radar uitl
 - `[bekend]` Werkende kennis van Databricks en Spark SQL; diepere Spark-internals mogen kort worden uitgelegd.
 
 ### Waar ik mij verder in wil ontwikkelen
+Vooral: hoe moderne data-engineeringtechnieken en AI elkaar versterken.
+- `[bekend]` Context engineering.
+- `[bekend]` AI-agents en toolgebruik (o.a. MCP).
+- `[bekend]` RAG: embeddings, chunking en retrieval.
+- `[bekend]` Metadata en lineage als context voor AI.
+- `[bekend]` Kennisrepresentatie en knowledge graphs.
+- `[bekend]` Evaluatie, tracing en observability van AI-systemen.
+- `[bekend]` AI-ondersteunde softwareontwikkeling met Claude en Claude Code.
 - `[bekend]` Data-architectuur, datakwaliteit, lineage, metadata, governance en automatisering.
-- `[bekend]` AI op het dataplatform, context engineering, AI-agents en RAG.
 - `[bekend]` Betrouwbare data beschikbaar maken voor AI.
+
+Nieuwe begrippen mogen geïntroduceerd worden, maar zonder onnodig bij de basis te beginnen.
 - `[aanvullen]` Welke van deze onderwerpen het meest urgent zijn de komende 6–12 maanden.
 
 ## 3. Wat ik met de app wil bereiken
 
-- Bijblijven zonder alles zelf te hoeven lezen.
+- **Op de hoogte blijven**: weten welke nieuwe technologieën, releases, tools en toepassingen relevant zijn, zonder alles zelf te hoeven lezen.
+- **Blijven leren**: begrijpen hoe nieuwe concepten werken, welke mogelijkheden ze bieden en hoe ze aansluiten op wat ik al weet.
+- Ook nieuwe technieken, onverwachte toepassingen en minder bekende projecten ontdekken die bij mijn interesses passen.
 - Per ontwikkeling snappen: **wat is nieuw, waarom telt het voor mij, wat kan ik ermee**.
 - Ideeën opdoen voor concrete experimenten en proof of concepts in mijn eigen omgeving.
 - Mijn kennis verbreden buiten wat ik dagelijks doe, zonder basisuitleg over wat ik al ken.
@@ -58,6 +69,15 @@ Dit bestand beschrijft wie ik ben, wat ik al weet en hoe de Data & AI Radar uitl
 - Herhaling van oud nieuws in een nieuw jasje.
 
 De harde uitsluitingen staan als `excluded_topics` in `interests.yml`.
+
+**Richtverdeling** (flexibel, geen quota; details in `interests.yml` → `interest_areas`):
+
+| Interessegebied | Richtpercentage |
+|---|---|
+| dbt, data engineering en data-architectuur | 30% |
+| Context engineering en AI-agents | 30% |
+| Claude en AI-ondersteunde ontwikkeling | 20% |
+| Nieuwe technologieën en architectuurpatronen | 20% |
 
 ## 5. Hoe de AI mijn kennisniveau gebruikt
 

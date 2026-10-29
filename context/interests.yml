@@ -42,6 +42,27 @@ scoring:
       bevestigde wijziging is in een tool uit tech-stack.md of directe gevolgen
       heeft voor een project in projects.md. De reden wordt bij het artikel vermeld.
 
+# Richtverdeling over de vier interessegebieden (uit mijn profiel van 29-10-2026).
+# Flexibele richtwaarden, geen quota. Een artikel kan meerdere onderwerpen raken, maar
+# verschijnt maar één keer in de feed.
+interest_areas:
+  - id: data_engineering
+    label: dbt, data engineering en data-architectuur
+    target_share: 0.30
+    topics: [dbt_analytics_engineering, databricks_data_engineering, data_architecture_modeling, sql_spark_sql, cicd_data_deployment, data_quality_observability, metadata_lineage_catalogs, data_governance_privacy, powerbi_semantic_models]
+  - id: context_agents
+    label: Context engineering en AI-agents
+    target_share: 0.30
+    topics: [ai_context_engineering, ai_agents_rag, ai_on_data_platform, ai_evaluation_observability]
+  - id: claude
+    label: Claude en AI-ondersteunde ontwikkeling
+    target_share: 0.20
+    topics: [claude_ai_development]
+  - id: new_tech
+    label: Nieuwe technologieën en architectuurpatronen
+    target_share: 0.20
+    topics: [open_source_tools, general_ai_trends, ai_in_healthcare, ai_research_data]
+
 # Filtergroepen in de app. Elk onderwerp hoort bij één groep (feed_group).
 feed_groups:
   - {id: dbt, label: "dbt & analytics engineering"}
@@ -49,6 +70,7 @@ feed_groups:
   - {id: ai_context, label: "AI & context engineering"}
   - {id: architectuur, label: "Data-architectuur & modellering"}
   - {id: agents, label: "AI-agents & RAG"}
+  - {id: claude, label: "Claude & AI-ondersteunde ontwikkeling"}
   - {id: kwaliteit, label: "Datakwaliteit & governance"}
   - {id: zorg, label: "AI in de zorg"}
   - {id: overig, label: "Overige relevante onderwerpen"}
@@ -96,11 +118,14 @@ excluded_topics:
 topics:
   - id: dbt_analytics_engineering
     name: dbt en analytics engineering
-    description: Modellering, transformaties, tests, documentatie en deployment met dbt.
+    description: >-
+      Modellering, transformaties, tests, contracts, documentatie en deployment met dbt.
+      Extra aandacht voor dbt als kennisbron voor AI (metadata, docs, lineage), AI-agents
+      die dbt-modellen onderzoeken of aanpassen, en open-sourceprojecten rond dbt.
     feed_group: dbt
     enabled: true
     priority: 5
-    keywords: [dbt, dbt Core, dbt Fusion, dbt tests, data contracts, dbt semantic layer, analytics engineering, dbt-databricks, dbt v2, dbt 2.0]
+    keywords: [dbt, dbt Core, dbt Fusion, dbt tests, data contracts, dbt semantic layer, analytics engineering, dbt-databricks, dbt v2, dbt 2.0, dbt MCP, dbt docs, dbt lineage, dbt artifacts, manifest.json, model contracts, stale data]
     related_topics: [data_architecture_modeling, cicd_data_deployment, data_quality_observability]
 
   - id: databricks_data_engineering
@@ -123,12 +148,17 @@ topics:
 
   - id: ai_context_engineering
     name: AI-context engineering
-    description: Data, metadata en definities zo verrijken en aanbieden dat AI er betrouwbaar mee werkt.
+    description: >-
+      De juiste informatie voor AI, op het juiste moment en in de juiste vorm. Kernonderwerp.
+      Context uit repositories, code, documentatie en metadata; embeddings, chunking,
+      retrieval en reranking; contextvensters en contextcompressie; knowledge graphs;
+      actualiteit en kwaliteit van context. Extra aandacht: hoe een AI een groot
+      dbt-project of dataplatform echt begrijpt. Liefst met concrete implementaties.
     feed_group: ai_context
     enabled: true
     priority: 5
-    keywords: [context engineering, semantic layer, metadata for AI, MCP, Model Context Protocol, AI-ready data, knowledge graph]
-    related_topics: [ai_agents_rag, metadata_lineage_catalogs, ai_on_data_platform]
+    keywords: [context engineering, semantic layer, metadata for AI, MCP, Model Context Protocol, AI-ready data, knowledge graph, embeddings, chunking, reranking, context window, context compression, codebase context, repository context, GraphRAG, prompt engineering]
+    related_topics: [ai_agents_rag, metadata_lineage_catalogs, ai_on_data_platform, claude_ai_development]
 
   - id: data_architecture_modeling
     name: Data-architectuur en datamodellering
@@ -141,12 +171,40 @@ topics:
 
   - id: ai_agents_rag
     name: AI-agents en RAG
-    description: Agents en retrieval-toepassingen voor automatisering en het ontsluiten van kennis.
+    description: >-
+      Agents die zelf informatie verzamelen, tools gebruiken en meerstapstaken uitvoeren.
+      Agentarchitecturen, MCP, geheugen, foutafhandeling en menselijke goedkeuring, agents
+      die SQL schrijven of datamodellen onderzoeken, plus beveiligingsrisico's en kosten.
+      Voorkeur voor voorbeelden die laten zien welke taak de agent doet, welke informatie
+      hij nodig heeft en hoe gecontroleerd wordt of het klopt.
+    feed_group: agents
+    enabled: true
+    priority: 5
+    keywords: [AI agents, agentic, RAG, retrieval augmented generation, vector search, tool use, tool calling, MCP server, multi-agent, agent memory, human in the loop, text-to-SQL, prompt injection]
+    related_topics: [ai_context_engineering, ai_on_data_platform, ai_evaluation_observability, claude_ai_development]
+
+  - id: ai_evaluation_observability
+    name: Evaluatie en observability van AI
+    description: Meten of een AI-systeem goed werkt; evals, tracing, monitoring en betrouwbaarheid.
     feed_group: agents
     enabled: true
     priority: 4
-    keywords: [AI agents, agentic, RAG, retrieval augmented generation, vector search, agent evaluation, tool use]
-    related_topics: [ai_context_engineering, ai_on_data_platform, open_source_ai]
+    keywords: [evals, LLM evaluation, agent evaluation, tracing, LLM observability, MLflow tracing, LLM as a judge, guardrails, hallucination]
+    related_topics: [ai_agents_rag, data_quality_observability]
+
+  - id: claude_ai_development
+    name: Claude en AI-ondersteunde ontwikkeling
+    description: >-
+      Alleen Claude en het eigen ecosysteem; andere LLM-aanbieders zijn geen eigen
+      interessegebied. Nieuwe Claude-modellen, Claude Code en agentic coding, skills,
+      hooks, subagents en projectinstructies, werken met grote repositories, codereview en
+      refactoring, en Claude praktisch inzetten bij dbt, data engineering en context
+      engineering. Ook werkwijzen, niet alleen nieuwe functies.
+    feed_group: claude
+    enabled: true
+    priority: 4
+    keywords: [Claude, Claude Code, Anthropic, Claude Sonnet, Claude Opus, Claude Haiku, agentic coding, CLAUDE.md, subagents, Agent Skills, hooks, Claude Agent SDK]
+    related_topics: [ai_agents_rag, ai_context_engineering, cicd_data_deployment]
 
   - id: data_quality_observability
     name: Datakwaliteit en observability
@@ -195,19 +253,19 @@ topics:
 
   - id: ai_in_healthcare
     name: AI in de zorg
-    description: Toepassingen en beperkingen van AI binnen een zorginstelling.
+    description: Toepassingen en beperkingen van AI binnen een zorginstelling. Alleen bij uitzonderlijk relevant nieuws.
     feed_group: zorg
     enabled: true
-    priority: 4
+    priority: 1
     keywords: [AI in healthcare, zorg AI, clinical AI, healthcare data platform, medical AI regulation, responsible AI healthcare]
     related_topics: [data_governance_privacy, ai_research_data]
 
   - id: ai_research_data
     name: AI en onderzoeksdata
-    description: AI voor onderzoek en kennisontsluiting met onderzoeksdata.
+    description: AI voor onderzoek en kennisontsluiting met onderzoeksdata. Alleen bij uitzonderlijk relevant nieuws.
     feed_group: zorg
     enabled: true
-    priority: 3
+    priority: 1
     keywords: [research data, FAIR data, research data management, synthetic data, cohort selection, trusted research environment]
     related_topics: [ai_in_healthcare, data_governance_privacy, ai_agents_rag]
 
@@ -223,29 +281,26 @@ topics:
     keywords: [Power BI, semantic model, DAX, Copilot Power BI, Microsoft Fabric, metrics layer, Direct Lake, Power BI Databricks]
     related_topics: [data_architecture_modeling, ai_context_engineering]
 
-  - id: open_source_ai
-    name: Open-source AI-modellen en frameworks
-    description: Nieuwe mogelijkheden om zelf AI-toepassingen te bouwen.
+  - id: open_source_tools
+    name: Nieuwe open-sourceprojecten en tools
+    description: >-
+      Repositories en tools die iets nieuws toevoegen: context engineering, metadata en
+      lineage, datakwaliteit, MCP en agents, retrieval en kennisrepresentatie,
+      code-intelligentie, evaluatie, en slimme automatisering van data-engineering.
+      Werkende code met een duidelijke toepassing weegt zwaarder dan een herverpakt concept.
     feed_group: overig
     enabled: true
     priority: 3
-    keywords: [open source LLM, open weights, LangChain, LlamaIndex, Hugging Face, agent framework, local LLM]
-    related_topics: [ai_agents_rag, new_ai_models_tools]
-
-  - id: new_ai_models_tools
-    name: Nieuwe AI-modellen en algemene AI-tools
-    description: Alleen volgen bij een concrete toepassing of impact op mijn werk.
-    feed_group: overig
-    enabled: true
-    priority: 2
-    keywords: [new model release, LLM release, AI coding assistant, AI tool launch]
-    related_topics: [open_source_ai, ai_agents_rag]
+    keywords: [open source, open-source, GitHub repository, open-source tool, code intelligence, repository analysis, Hugging Face, LangChain, LlamaIndex, agent framework]
+    related_topics: [ai_context_engineering, ai_agents_rag, metadata_lineage_catalogs]
 
   - id: general_ai_trends
     name: Algemene AI-trends en technologienieuws
-    description: Hype en generiek nieuws vermijden; alleen uitzonderlijke ontwikkelingen.
+    description: >-
+      Hype en generiek nieuws vermijden; alleen uitzonderlijke ontwikkelingen. Nieuwe modellen
+      van andere aanbieders dan Anthropic vallen hieronder.
     feed_group: overig
     enabled: true
     priority: 1
-    keywords: [AI trends, AI industry, AI regulation news, tech news]
-    related_topics: [new_ai_models_tools]
+    keywords: [AI trends, AI industry, AI regulation news, tech news, new model release, LLM release, GPT, Gemini]
+    related_topics: [claude_ai_development]

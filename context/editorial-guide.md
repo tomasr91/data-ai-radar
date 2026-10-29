@@ -22,6 +22,8 @@ Dit bestand bepaalt **hoe** de AI nieuws verwerkt en presenteert. **Wat** releva
 - Productnamen blijven zoals ze zijn (dbt, Unity Catalog, Azure DevOps).
 - Geen marketingtaal ("revolutionair", "game changer"), geen overdreven claims, geen opsommingen in het verhaal.
 
+**Centrale vraag:** wat is er nieuw, waarom is het interessant, hoe werkt het en welke mogelijkheden biedt het? Leg altijd uit *hoe* iets werkt. Concrete implementaties en codevoorbeelden gaan voor op alleen het concept.
+
 ## 2. Opbouw van een artikel
 
 Een artikel is **één doorlopend verhaal**, geen formulier met losse vakjes.
