@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-28T21:24:36.389770Z",
+ "generated_at": "2026-10-29T05:42:50.052039Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
- "last_successful_update": "2026-10-28T21:24:36.389770Z",
+ "last_successful_update": "2026-10-29T05:42:50.052039Z",
  "groups": [
   {
    "id": "dbt",
@@ -137,7 +137,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-28T21:24:36.431513Z"
+   "checked_at": "2026-10-29T05:42:50.087898Z"
   },
   {
    "id": "dbt_core_releases",
@@ -150,7 +150,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-28T21:24:36.805622Z"
+   "checked_at": "2026-10-29T05:42:50.589424Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -163,7 +163,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-28T21:24:37.381308Z"
+   "checked_at": "2026-10-29T05:42:51.266549Z"
   },
   {
    "id": "databricks_blog",
@@ -176,7 +176,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-28T21:24:37.706477Z"
+   "checked_at": "2026-10-29T05:42:51.859960Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -189,7 +189,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-28T21:24:37.822363Z"
+   "checked_at": "2026-10-29T05:42:51.984082Z"
   },
   {
    "id": "github_blog",
@@ -202,7 +202,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-28T21:24:37.910288Z"
+   "checked_at": "2026-10-29T05:42:52.078645Z"
   },
   {
    "id": "azure_blog",
@@ -215,7 +215,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-28T21:24:38.195019Z"
+   "checked_at": "2026-10-29T05:42:52.161649Z"
   },
   {
    "id": "powerbi_blog",
@@ -228,7 +228,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-28T21:24:38.473568Z"
+   "checked_at": "2026-10-29T05:42:52.466044Z"
   },
   {
    "id": "huggingface_blog",
@@ -241,7 +241,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-28T21:24:41.226539Z"
+   "checked_at": "2026-10-29T05:42:53.270634Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -254,7 +254,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-28T21:24:41.430538Z"
+   "checked_at": "2026-10-29T05:42:53.457228Z"
   },
   {
    "id": "simon_whiteley",
@@ -267,7 +267,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-28T21:24:41.832330Z"
+   "checked_at": "2026-10-29T05:42:53.673866Z"
   },
   {
    "id": "hamel_husain",
@@ -280,7 +280,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-28T21:24:42.115094Z"
+   "checked_at": "2026-10-29T05:42:53.882572Z"
   },
   {
    "id": "chip_huyen",
@@ -293,7 +293,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-28T21:24:42.451618Z"
+   "checked_at": "2026-10-29T05:42:54.297519Z"
   },
   {
    "id": "simon_willison",
@@ -306,7 +306,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-28T21:24:43.864301Z"
+   "checked_at": "2026-10-29T05:42:54.789281Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -319,17 +319,73 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-28T21:24:44.836072Z"
+   "checked_at": "2026-10-29T05:42:54.935389Z"
   }
  ],
  "daily_top": [
+  "d2e9b967064a",
   "4dcd7af26dab",
   "069e6a8001ed",
-  "d2e9b967064a",
   "450468c3f304",
   "059023edac5d"
  ],
  "articles": [
+  {
+   "id": "d2e9b967064a",
+   "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
+   "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:20:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Ecolab zette met een AI-agent honderden oude tabellen om naar dbt. Elk nieuw model moest dezelfde data opleveren als het oude.",
+   "personal_relevance": "Elk gemigreerd model bewijzen met een datavergelijking past precies bij je laatste migratiefase.",
+   "experiment": "Schrijf één herbruikbare query of dbt-test die tellingen en totalen van een SQL Server-tabel en het Databricks-model vergelijkt, en draai hem op drie modellen.",
+   "limitations": [
+    "Verslag van een talk, met cijfers van Ecolab en Datafold zelf.",
+    "In het begin werd alles nog met de hand gecontroleerd; menselijke review bleef een knelpunt.",
+    "Het overzetten van de rapportages viel buiten deze fase."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_on_data_platform",
+    "data_quality_observability",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context",
+    "kwaliteit",
+    "databricks"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.93,
+    "source": 0.85,
+    "quality": 0.78
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Hoe Ecolab elke gemigreerde tabel met data bewees",
+   "story": [
+    "Ecolab had een groot, oud datamodel in Snowflake: meer dan 400 tabellen vol ingewikkelde logica. Met hulp van een AI-agent zetten ze het om naar dbt. Het resultaat was ongeveer zes keer minder code.",
+    "De agent vertaalde niet alleen. Hij vergeleek elk nieuw model rij voor rij met de oude uitkomst in productie. Dat heet data diffing. Vond hij een verschil, dan moest hij het verklaren of oplossen, net als een leerling die laat zien waar zijn rekenfout zit.",
+    "Juist dat bewijs maakte het verschil. De eigenaren van de data vertrouwden de nieuwe modellen pas toen ze de vergelijking zagen. Toch bleef menselijke controle een knelpunt: in het begin werd alles met de hand nagekeken.",
+    "Jouw migratie zit in de laatste fase. De les werkt ook zonder AI: laat elk gemigreerd model met een vaste vergelijking zien dat het hetzelfde oplevert als vroeger."
+   ],
+   "key_facts": [
+    "Verslag van een talk van Ecolab en Datafold op dbt Summit 2026.",
+    "Ecolab migreerde een basismodel van meer dan 400 dimensies en feiten, gevoed door meer dan 3.000 bronsystemen, naar meer dan 40 dbt-projecten met dbt Mesh.",
+    "Eén grote dimensie ging van 409 naar 170 modellen.",
+    "In totaal ongeveer 6x minder code en 4x minder dataverbindingen.",
+    "In vier weken werden ongeveer 90 tabellen goedgekeurd."
+   ]
+  },
   {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
@@ -359,10 +415,10 @@
     "agents",
     "kwaliteit"
    ],
-   "relevance_score": 94,
+   "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.8
    },
@@ -416,10 +472,10 @@
     "kwaliteit",
     "agents"
    ],
-   "relevance_score": 94,
+   "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.8
    },
@@ -475,10 +531,10 @@
     "kwaliteit",
     "agents"
    ],
-   "relevance_score": 93,
+   "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.75
    },
@@ -511,62 +567,6 @@
    ]
   },
   {
-   "id": "d2e9b967064a",
-   "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
-   "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:20:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Ecolab zette met een AI-agent honderden oude tabellen om naar dbt. Elk nieuw model moest dezelfde data opleveren als het oude.",
-   "personal_relevance": "Elk gemigreerd model bewijzen met een datavergelijking past precies bij je laatste migratiefase.",
-   "experiment": "Schrijf één herbruikbare query of dbt-test die tellingen en totalen van een SQL Server-tabel en het Databricks-model vergelijkt, en draai hem op drie modellen.",
-   "limitations": [
-    "Verslag van een talk, met cijfers van Ecolab en Datafold zelf.",
-    "In het begin werd alles nog met de hand gecontroleerd; menselijke review bleef een knelpunt.",
-    "Het overzetten van de rapportages viel buiten deze fase."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_on_data_platform",
-    "data_quality_observability",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "dbt",
-    "ai_context",
-    "kwaliteit",
-    "databricks"
-   ],
-   "relevance_score": 93,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.78
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Hoe Ecolab elke gemigreerde tabel met data bewees",
-   "story": [
-    "Ecolab had een groot, oud datamodel in Snowflake: meer dan 400 tabellen vol ingewikkelde logica. Met hulp van een AI-agent zetten ze het om naar dbt. Het resultaat was ongeveer zes keer minder code.",
-    "De agent vertaalde niet alleen. Hij vergeleek elk nieuw model rij voor rij met de oude uitkomst in productie. Dat heet data diffing. Vond hij een verschil, dan moest hij het verklaren of oplossen, net als een leerling die laat zien waar zijn rekenfout zit.",
-    "Juist dat bewijs maakte het verschil. De eigenaren van de data vertrouwden de nieuwe modellen pas toen ze de vergelijking zagen. Toch bleef menselijke controle een knelpunt: in het begin werd alles met de hand nagekeken.",
-    "Jouw migratie zit in de laatste fase. De les werkt ook zonder AI: laat elk gemigreerd model met een vaste vergelijking zien dat het hetzelfde oplevert als vroeger."
-   ],
-   "key_facts": [
-    "Verslag van een talk van Ecolab en Datafold op dbt Summit 2026.",
-    "Ecolab migreerde een basismodel van meer dan 400 dimensies en feiten, gevoed door meer dan 3.000 bronsystemen, naar meer dan 40 dbt-projecten met dbt Mesh.",
-    "Eén grote dimensie ging van 409 naar 170 modellen.",
-    "In totaal ongeveer 6x minder code en 4x minder dataverbindingen.",
-    "In vier weken werden ongeveer 90 tabellen goedgekeurd."
-   ]
-  },
-  {
    "id": "450468c3f304",
    "title": "Built for Agents: The Case for Spark Declarative Pipelines",
    "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
@@ -595,7 +595,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.76,
     "source": 0.85,
     "quality": 0.8
    },
@@ -653,10 +653,10 @@
     "dbt",
     "overig"
    ],
-   "relevance_score": 91,
+   "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.65
    },
@@ -710,7 +710,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.85,
     "source": 1.0,
     "quality": 0.57
    },
@@ -760,7 +760,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.88,
     "source": 0.85,
     "quality": 0.6
    },
@@ -814,7 +814,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 1.0,
     "quality": 0.78
    },
@@ -872,7 +872,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.68,
+    "recency": 0.67,
     "source": 1.0,
     "quality": 0.65
    },
@@ -949,60 +949,6 @@
    ]
   },
   {
-   "id": "75948c736b0e",
-   "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-14T00:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Meerdere SQL-statements over meerdere tabellen kunnen nu als één transactie draaien: alles lukt, of niets.",
-   "personal_relevance": "Na de overstap van SQL Server krijg je hiermee een vertrouwd stuk zekerheid terug.",
-   "experiment": "Zet catalog commits aan op twee testtabellen, schrijf een transactie die halverwege bewust faalt en controleer dat geen van beide tabellen is veranderd.",
-   "limitations": [
-    "Alleen voor managed tabellen met catalog commits ingeschakeld.",
-    "Hoe dit samengaat met dbt staat niet in de release note. dbt bouwt modellen normaal los van elkaar."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Transacties",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_architecture_modeling",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks",
-    "architectuur"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.48,
-    "source": 1.0,
-    "quality": 0.67
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Databricks kan nu meerdere tabellen tegelijk veilig bijwerken",
-   "story": [
-    "Een transactie werkt als geld overmaken. Het geld moet van de ene rekening af én op de andere bij. Gaat halverwege iets mis, dan wordt alles teruggedraaid. In SQL Server was dat vanzelfsprekend, maar in Databricks gold het lang alleen per tabel.",
-    "Sinds half oktober kan het over meerdere tabellen tegelijk. Je zet je SQL-statements tussen BEGIN en COMMIT, en ze slagen samen of mislukken samen. Dat werkt voor managed Delta Lake- en Iceberg-tabellen.",
-    "Bij de overstap van SQL Server moest je hier soms omheen werken. Nu kun je dat gedrag terugkrijgen waar het echt nodig is, bijvoorbeeld bij een feitentabel met een bijbehorende controletabel. Hoe het samengaat met dbt, dat modellen los van elkaar bouwt, zegt de release note niet."
-   ],
-   "key_facts": [
-    "Transacties over meerdere statements en tabellen zijn beschikbaar sinds 14 oktober 2026.",
-    "Syntax: BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;.",
-    "Werkt voor managed Delta Lake- en managed Iceberg-tabellen, die catalog commits ingeschakeld moeten hebben."
-   ]
-  },
-  {
    "id": "da6d7a6a6ac5",
    "title": "ADBC driver for Power BI is now generally available",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc",
@@ -1035,7 +981,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 1.0,
     "quality": 0.68
    },
@@ -1088,7 +1034,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 1.0,
     "quality": 0.58
    },
@@ -1110,6 +1056,85 @@
    ]
   },
   {
+   "id": "75948c736b0e",
+   "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-14T00:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Meerdere SQL-statements over meerdere tabellen kunnen nu als één transactie draaien: alles lukt, of niets.",
+   "personal_relevance": "Na de overstap van SQL Server krijg je hiermee een vertrouwd stuk zekerheid terug.",
+   "experiment": "Zet catalog commits aan op twee testtabellen, schrijf een transactie die halverwege bewust faalt en controleer dat geen van beide tabellen is veranderd.",
+   "limitations": [
+    "Alleen voor managed tabellen met catalog commits ingeschakeld.",
+    "Hoe dit samengaat met dbt staat niet in de release note. dbt bouwt modellen normaal los van elkaar."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Transacties",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_architecture_modeling",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks",
+    "architectuur"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.47,
+    "source": 1.0,
+    "quality": 0.67
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Databricks kan nu meerdere tabellen tegelijk veilig bijwerken",
+   "story": [
+    "Een transactie werkt als geld overmaken. Het geld moet van de ene rekening af én op de andere bij. Gaat halverwege iets mis, dan wordt alles teruggedraaid. In SQL Server was dat vanzelfsprekend, maar in Databricks gold het lang alleen per tabel.",
+    "Sinds half oktober kan het over meerdere tabellen tegelijk. Je zet je SQL-statements tussen BEGIN en COMMIT, en ze slagen samen of mislukken samen. Dat werkt voor managed Delta Lake- en Iceberg-tabellen.",
+    "Bij de overstap van SQL Server moest je hier soms omheen werken. Nu kun je dat gedrag terugkrijgen waar het echt nodig is, bijvoorbeeld bij een feitentabel met een bijbehorende controletabel. Hoe het samengaat met dbt, dat modellen los van elkaar bouwt, zegt de release note niet."
+   ],
+   "key_facts": [
+    "Transacties over meerdere statements en tabellen zijn beschikbaar sinds 14 oktober 2026.",
+    "Syntax: BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;.",
+    "Werkt voor managed Delta Lake- en managed Iceberg-tabellen, die catalog commits ingeschakeld moeten hebben."
+   ]
+  },
+  {
+   "id": "ab0dac727fdb",
+   "title": "Improved Lakeflow Performance Observability will soon be available by default for workspaces with the compliance security profile enabled",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#improved-lakeflow-performance-observability-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.85,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Starting on or after November 25, 2026, Improved Lakeflow Performance Observability will be available by default for eligible workspaces with the compliance security profile enabled. Lakeflow Jobs now show query performance metrics and insights at the job level for supported tasks. You can view job-level data volume metrics and use the Optimize button to open Genie Code to help improve queries with performance insights. Query profiling is supported for serverless compute, SQL Warehouses and Lakeflow Pipelines. See View query performance metrics for serverless jobs ."
+  },
+  {
    "id": "ab89ef23d182",
    "title": "Default OAuth apps for external AI agents are now generally available",
    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
@@ -1126,10 +1151,10 @@
     "ai_context",
     "agents"
    ],
-   "relevance_score": 86,
+   "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 1.0,
     "quality": 0.35
    },
@@ -1154,41 +1179,16 @@
     "ai_context",
     "kwaliteit"
    ],
-   "relevance_score": 86,
+   "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 1.0,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
    "excerpt": "AI Functions Unity Catalog permissions is now generally available . Metastore admins can use Unity Catalog permissions on the system.ai schema to control which task-specific AI Functions users in your organization can run. Contact your Databricks account team to enable this feature. See AI Functions Unity Catalog permissions ."
-  },
-  {
-   "id": "ab0dac727fdb",
-   "title": "Improved Lakeflow Performance Observability will soon be available by default for workspaces with the compliance security profile enabled",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#improved-lakeflow-performance-observability-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-26T00:00:00Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.87,
-    "source": 1.0,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "Starting on or after November 25, 2026, Improved Lakeflow Performance Observability will be available by default for eligible workspaces with the compliance security profile enabled. Lakeflow Jobs now show query performance metrics and insights at the job level for supported tasks. You can view job-level data volume metrics and use the Optimize button to open Genie Code to help improve queries with performance insights. Query profiling is supported for serverless compute, SQL Warehouses and Lakeflow Pipelines. See View query performance metrics for serverless jobs ."
   },
   {
    "id": "90ba3c46bbce",
@@ -1220,7 +1220,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 0.9,
-    "recency": 0.95,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.65
    },
@@ -1343,7 +1343,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.36,
+    "recency": 0.35,
     "source": 1.0,
     "quality": 0.62
    },
@@ -1398,7 +1398,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.36,
+    "recency": 0.35,
     "source": 1.0,
     "quality": 0.62
    },
@@ -1613,7 +1613,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 0.9,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 1.0,
     "quality": 0.35
    },
@@ -1657,7 +1657,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 1.0,
     "quality": 0.7
    },
@@ -1705,13 +1705,38 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.8,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
    "excerpt": "dbt-core 1.13.0-b1 - October 14, 2026 Breaking Changes Flags introduced in 1.9 and 1.10 defaults to true ( #12713 ) Features Make MAXIMUM_SEED_SIZE_MIB configurable ( #7117 , #7124 ) Bundle the dbt-state plugin (>=2.18,<3.0) as an install dependency of dbt-core. The plugin is opt-in: PluginManager skips auto-discovery unless the user passes --manage-state on the CLI, sets DBT_ENGINE_MANAGE_STATE=true, or sets manage_state to true in the flags block of dbt_project.yml (equivalently in the config block of profiles.yml). Discovery filters disabled modules before importlib.import_module is called, so the default opt-in-off state incurs no import cost. ( #13014 ) Add --use-v2-parser to delegate parsing to the fusion parser, load its manifest.json into a runtime Manifest, and bypass dbt-core's parser. Configurable via --v2-parser / DBT_ENGINE_V2_PARSER (defaults to dbt-core-experimental-parser parse ) or the flags: section of dbt_project.yml . ( #13029 ) Add support for user settings with flags reading writing ( #13031 ) Add dbt login command ( #13032 ) Tolerate dbt Fusion-specific warn_error_options names instead of erroring, emitting a note that they are ignored because they are specif"
+  },
+  {
+   "id": "e779a38cc549",
+   "title": "Databricks SQL version 2026.43 is rolling out in Current",
+   "url": "https://learn.microsoft.com/azure/databricks/sql/release-notes/2026#databricks-sql-version-202643-is-rolling-out-in-current",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-26T00:00:00Z",
+   "fetched_at": "2026-10-29T05:42:50.087898Z",
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 77,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.85,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Databricks SQL version 2026.43 is rolling out to the Current channel. See features in 2026.43 ."
   },
   {
    "id": "c3d989d7d52d",
@@ -1731,7 +1756,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.52,
+    "recency": 0.51,
     "source": 0.51,
     "quality": 0.35
    },
@@ -1761,7 +1786,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 0.51,
     "quality": 0.35
    },
@@ -1811,143 +1836,13 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.87,
+    "recency": 0.85,
     "source": 1.0,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
    "excerpt": "The managed QuickBooks connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest accounting data such as accounts, customers, vendors, items, invoices, bills, payments, and journal entries from QuickBooks Online into Azure Databricks. The connector uses OAuth user authorization and supports incremental ingestion with delete capture."
-  },
-  {
-   "id": "28418ea3b8c0",
-   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:01:00Z",
-   "fetched_at": "2026-10-28T20:21:53.503248Z",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "dbt",
-    "agents"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table."
-  },
-  {
-   "id": "9bcb10a95345",
-   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
-   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:38:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "dbt",
-    "ai_context"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics."
-  },
-  {
-   "id": "fea9136ea071",
-   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
-   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:51:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "dbt",
-    "ai_context"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models."
-  },
-  {
-   "id": "412d4b1345c3",
-   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
-   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T19:06:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "topics": [
-    "dbt_analytics_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "dbt",
-    "databricks"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines."
-  },
-  {
-   "id": "965a6e80a937",
-   "title": "How Ramp's internal AI agents crossed a million sessions",
-   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T20:10:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "dbt",
-    "agents"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.95,
-    "source": 0.85,
-    "quality": 0.35
-   },
-   "decision": "included",
-   "processing_status": "raw",
-   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens."
   },
   {
    "id": "4fdc49511e68",
@@ -1993,7 +1888,7 @@
    "relevance_score": 73,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 1.0,
     "quality": 0.35
    },
@@ -2002,54 +1897,134 @@
    "excerpt": "The managed PayPal connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest payments data such as transactions, disputes, invoices, balances, catalog products, and billing plans from PayPal into Azure Databricks. The connector uses OAuth client credentials and supports incremental ingestion."
   },
   {
-   "id": "f80dbb005bac",
-   "title": "Genie One enhancements",
-   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-22T00:00:00Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "id": "28418ea3b8c0",
+   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:01:00Z",
+   "fetched_at": "2026-10-28T20:21:53.503248Z",
    "topics": [
     "dbt_analytics_engineering",
-    "databricks_data_engineering"
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "dbt",
+    "agents"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.93,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table."
+  },
+  {
+   "id": "9bcb10a95345",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:38:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.93,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics."
+  },
+  {
+   "id": "fea9136ea071",
+   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:51:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "ai_context"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.93,
+    "source": 0.85,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models."
+  },
+  {
+   "id": "412d4b1345c3",
+   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
+   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T19:06:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "sql_spark_sql"
    ],
    "groups": [
     "dbt",
     "databricks"
    ],
-   "relevance_score": 72,
+   "relevance_score": 73,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.71,
-    "source": 1.0,
+    "recency": 0.93,
+    "source": 0.85,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
-   "excerpt": "Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of its response. See Navigate a long conversation . Upload skills (Public Preview) : You can now click Upload skills to upload your existing skill files and folders to your skills folder in the workspace. See Upload a skill . Snippets from external tool queries (Public Preview) : Genie Ontology now also extracts snippets from queries that external tools , such as dbt, run on Azure Databricks. These runs appear in query history alongside queries that you run in Azure Databricks. See Genie Ontology . Remembered sign-in email in the Genie mobile app (Public Preview) : The Genie mobile app now remembers the email address of the last user who signed in and prefills it at the next sign-in. See Use Genie on mobile ."
+   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines."
   },
   {
-   "id": "b4ac51ac1d12",
-   "title": "Microsoft Entra ID connector is available in Beta",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-22T00:00:00Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "id": "965a6e80a937",
+   "title": "How Ramp's internal AI agents crossed a million sessions",
+   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:10:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
    "topics": [
-    "databricks_data_engineering"
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
    ],
    "groups": [
-    "databricks"
+    "dbt",
+    "agents"
    ],
-   "relevance_score": 72,
+   "relevance_score": 73,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.71,
-    "source": 1.0,
+    "recency": 0.93,
+    "source": 0.85,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
-   "excerpt": "The managed Microsoft Entra ID connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest Microsoft Entra ID users, groups, applications, service principals, directory roles, identity configuration, and audit and sign-in logs into Azure Databricks. The connector uses OAuth machine-to-machine authentication and supports incremental ingestion for audit and sign-in logs."
+   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens."
   },
   {
    "id": "54cdadbfe115",
@@ -2067,7 +2042,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.75,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.35
    },
@@ -2091,7 +2066,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.75,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.35
    },
@@ -2117,7 +2092,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.75,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.35
    },
@@ -2141,13 +2116,63 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.75,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.35
    },
    "decision": "included",
    "processing_status": "raw",
    "excerpt": "The Box Audit Logs connector in Lakeflow Connect is now available in Beta. Use the connector to ingest enterprise audit events from Box into Azure Databricks. See Box Audit Logs connector ."
+  },
+  {
+   "id": "f80dbb005bac",
+   "title": "Genie One enhancements",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 71,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.7,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of its response. See Navigate a long conversation . Upload skills (Public Preview) : You can now click Upload skills to upload your existing skill files and folders to your skills folder in the workspace. See Upload a skill . Snippets from external tool queries (Public Preview) : Genie Ontology now also extracts snippets from queries that external tools , such as dbt, run on Azure Databricks. These runs appear in query history alongside queries that you run in Azure Databricks. See Genie Ontology . Remembered sign-in email in the Genie mobile app (Public Preview) : The Genie mobile app now remembers the email address of the last user who signed in and prefills it at the next sign-in. See Use Genie on mobile ."
+  },
+  {
+   "id": "b4ac51ac1d12",
+   "title": "Microsoft Entra ID connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 71,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.7,
+    "source": 1.0,
+    "quality": 0.35
+   },
+   "decision": "included",
+   "processing_status": "raw",
+   "excerpt": "The managed Microsoft Entra ID connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest Microsoft Entra ID users, groups, applications, service principals, directory roles, identity configuration, and audit and sign-in logs into Azure Databricks. The connector uses OAuth machine-to-machine authentication and supports incremental ingestion for audit and sign-in logs."
   },
   {
    "id": "b9c31921875e",
@@ -2164,10 +2189,10 @@
     "databricks",
     "kwaliteit"
    ],
-   "relevance_score": 71,
+   "relevance_score": 70,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 1.0,
     "quality": 0.35
    },
@@ -2193,7 +2218,7 @@
    "relevance_score": 70,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.68,
     "quality": 0.35
    },
@@ -2218,10 +2243,10 @@
     "kwaliteit",
     "overig"
    ],
-   "relevance_score": 70,
+   "relevance_score": 69,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.35
    },
@@ -2274,7 +2299,7 @@
    "relevance_score": 66,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.8,
     "quality": 0.35
    },
@@ -2298,7 +2323,7 @@
    "relevance_score": 66,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.8,
     "quality": 0.35
    },
@@ -2350,7 +2375,7 @@
    "relevance_score": 64,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 0.51,
     "quality": 0.35
    },
@@ -2401,7 +2426,7 @@
    "relevance_score": 63,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.68,
     "quality": 0.35
    },
@@ -2462,24 +2487,24 @@
  ],
  "quality_report": {
   "fetched_items": 260,
-  "unique_after_dedupe": 218,
+  "unique_after_dedupe": 221,
   "merged_duplicates": 6,
-  "shown": 56,
+  "shown": 57,
   "decisions": {
-   "included": 56,
-   "below_threshold": 59,
-   "no_topic": 102,
+   "included": 57,
+   "below_threshold": 60,
+   "no_topic": 103,
    "excluded": 1
   },
   "processing": {
    "enriched": 22,
-   "raw": 34
+   "raw": 35
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 9,
    "dbt": 15,
-   "databricks": 27,
+   "ai_context": 9,
+   "databricks": 28,
    "zorg": 1,
    "architectuur": 2,
    "kwaliteit": 1,
@@ -2488,7 +2513,7 @@
   "per_source": {
    "dbt_labs_blog": 9,
    "databricks_blog": 4,
-   "azure_databricks_release_notes": 26,
+   "azure_databricks_release_notes": 27,
    "dbt_developer_blog": 1,
    "dbt_core_releases": 5,
    "powerbi_blog": 5,
@@ -2515,7 +2540,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 93
+   "skipped_no_key": 95
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -2536,6 +2561,14 @@
     "source_id": "dbt_developer_blog",
     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
     "relevance_score": 60,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Upcoming end of life for the Genie One MCP Beta endpoint",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#upcoming-end-of-life-for-the-genie-one-mcp-beta-endpoint",
+    "relevance_score": 59,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2628,22 +2661,6 @@
     "excluded_by": []
    },
    {
-    "title": "Unify your productivity and AI data with Lakeflow Connect",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "How to teach with Databricks Free Edition",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
-    "relevance_score": 57,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
     "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
@@ -2724,25 +2741,25 @@
     "excluded_by": []
    },
    {
+    "title": "Unify your productivity and AI data with Lakeflow Connect",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+    "relevance_score": 56,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "How to teach with Databricks Free Edition",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
+    "relevance_score": 56,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "Shared Serverless for Asset Bundles (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
-    "relevance_score": 55,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Lakeflow pipelines system tables are now generally available (GA)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs",
-    "relevance_score": 55,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Genie Code tasks in Lakeflow Jobs are now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code",
     "relevance_score": 55,
     "decision": "below_threshold",
     "excluded_by": []
@@ -2756,10 +2773,26 @@
     "excluded_by": []
    },
    {
+    "title": "Lakeflow pipelines system tables are now generally available (GA)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs",
+    "relevance_score": 54,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Genie Code tasks in Lakeflow Jobs are now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code",
+    "relevance_score": 54,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
     "title": "Genie Code tasks in Lakeflow Jobs are available by default for workspaces with the compliance security profile enabled starting in November 2026",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#genie-code-tasks-in-lakeflow-jobs-are-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled-starting-in-november-2026",
-    "relevance_score": 55,
+    "relevance_score": 54,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2767,7 +2800,7 @@
     "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
-    "relevance_score": 55,
+    "relevance_score": 54,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2775,7 +2808,7 @@
     "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
-    "relevance_score": 55,
+    "relevance_score": 54,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2783,7 +2816,7 @@
     "title": "Real-time energy trading and analytics on Databricks",
     "source_id": "databricks_blog",
     "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
-    "relevance_score": 55,
+    "relevance_score": 54,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2796,14 +2829,6 @@
     "excluded_by": []
    },
    {
-    "title": "With great context comes great autonomy",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
-    "relevance_score": 52,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
     "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
     "source_id": "databricks_engineering_blog",
     "url": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
@@ -2812,10 +2837,10 @@
     "excluded_by": []
    },
    {
-    "title": "Azure Databricks integration for Microsoft Copilot Studio is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio",
-    "relevance_score": 50,
+    "title": "With great context comes great autonomy",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
+    "relevance_score": 51,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2824,6 +2849,14 @@
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.8",
     "relevance_score": 50,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Azure Databricks integration for Microsoft Copilot Studio is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio",
+    "relevance_score": 49,
     "decision": "below_threshold",
     "excluded_by": []
    },
@@ -2991,14 +3024,6 @@
     "title": "Serverless GPU for clean room notebooks is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#serverless-gpu-for-clean-room-notebooks-is-now-generally-available",
-    "relevance_score": 31,
-    "decision": "no_topic",
-    "excluded_by": []
-   },
-   {
-    "title": "OpenAI GPT-6.1 Terra is now available on Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#openai-gpt-61-terra-is-now-available-on-unity-gateway",
     "relevance_score": 31,
     "decision": "no_topic",
     "excluded_by": []
