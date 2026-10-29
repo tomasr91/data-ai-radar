@@ -173,7 +173,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))
     hidden = [a for a in arts if a not in shown]
 
-    fetched = [a["fetched_at"] for a in shown if a.get("fetched_at")]
+    # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).
+    fetched = [a.get("processed_at") or a["fetched_at"] for a in shown if a.get("processed_at") or a.get("fetched_at")]
     feed = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": _iso(now),
