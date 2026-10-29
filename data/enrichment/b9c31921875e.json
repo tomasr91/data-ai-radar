@@ -1,0 +1,51 @@
+{
+  "format_version": 2,
+  "article_id": "b9c31921875e",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
+  "headline": "Ook Spark buiten Databricks mag nu in je managed tabellen schrijven",
+  "summary": "Externe Spark- en DuckDB-clients kunnen via de Unity REST API managed Delta-tabellen maken en vullen. De tabel moet dan catalog commits aan hebben.",
+  "story": [
+    "Tot nu toe konden programma's buiten Databricks managed tabellen in Unity Catalog alleen lezen. Sinds half oktober mogen ze er ook in schrijven, en zelfs nieuwe managed tabellen maken. Dat gaat via de Unity REST API, met je werkruimte-URL als adres.",
+    "Er is wel één voorwaarde: de tabel moet catalog commits aan hebben. Dan houdt Unity Catalog zelf bij welke wijziging de laatste is, en niet alleen de bestanden in opslag. Vergelijk het met een kassa die elke verkoop registreert: wie ook afrekent, er is maar één telling.",
+    "Unity Catalog blijft ook de baas over de rechten. Een externe client heeft EXTERNAL USE SCHEMA nodig, plus MODIFY op de tabel om te schrijven. Onderhoud zoals OPTIMIZE en VACUUM mag een externe client niet doen, en ook geen kolommen hernoemen.",
+    "Voor jou is dit vooral iets om te weten, niet om meteen te gebruiken. Het wordt interessant als er straks een tool buiten Databricks rechtstreeks naar Bronze moet schrijven. Voor zorgdata is het ook een nieuwe deur naar binnen. Bespreek dus met je beheerder wie EXTERNAL USE SCHEMA krijgt."
+  ],
+  "key_facts": [
+    "Externe schrijfacties naar managed Delta-tabellen zijn algemeen beschikbaar (GA) sinds 13 oktober 2026.",
+    "Alleen voor managed Delta-tabellen met catalog commits; zonder catalog commits kan een externe client niet schrijven.",
+    "Ondersteunde clients: Apache Spark en DuckDB; Flink, StreamNative en Starburst zijn in bèta.",
+    "Rechten: EXTERNAL USE SCHEMA op het schema, MODIFY voor schrijven en CREATE voor nieuwe tabellen; de metastore moet external data access aan hebben.",
+    "Spark-vereisten: Apache Spark 4.0 of 4.1, Delta Spark 4.3.0 of hoger en unitycatalog-spark 0.5.0 of hoger.",
+    "Externe clients mogen geen OPTIMIZE, VACUUM of ANALYZE draaien, geen kolommen hernoemen en geen tabeleigenschappen of features aanpassen."
+  ],
+  "personal_relevance": "Het opent een extra schrijfroute naar Unity Catalog, dus het raakt je governance meer dan je dagelijkse dbt-werk.",
+  "experiment": "Maak in een proefcatalogus met verzonnen data een managed tabel met catalog commits. Schrijf er vanaf je laptop met lokale Spark een paar rijen in en kijk in de tabelgeschiedenis hoe die schrijfactie zichtbaar is.",
+  "limitations": [
+    "Alleen voor tabellen met catalog commits; bestaande tabellen omzetten vraagt Databricks Runtime 18.0 of hoger.",
+    "Tabellen met rijfilters of kolommaskers lezen vraagt een aparte ABAC-configuratie.",
+    "De documentatiepagina zelf noemt geen GA-status; die komt uit de release notes."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Databricks-tabellen benaderen vanuit Delta-clients",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_governance_privacy",
+    "metadata_lineage_catalogs"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.5,
+    "novelty": 0.6
+  },
+  "development_key": "uc-external-writes-managed-delta-okt-2026",
+  "date_note": "De pagina is documentatie, laatst bijgewerkt op 23 oktober 2026. De GA-datum van 13 oktober komt uit de Databricks release notes.",
+  "exceptional": false,
+  "processed_by": "Claude (handmatige run op verzoek)",
+  "processed_at": "2026-10-29T07:40:54Z",
+  "prompt_version": "taak-v2"
+}

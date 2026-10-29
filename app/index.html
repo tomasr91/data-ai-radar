@@ -374,11 +374,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const html = `
       <div class="bar"><div class="wrap">
         <button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
-        <span class="crumb">${esc(s.name)} · ${esc(fmtDate(a.published_at))}</span>
+        <span class="crumb">${esc(s.name)} · ${esc(a.published_at ? fmtDate(a.published_at) : (a.fetched_at ? `opgehaald ${fmtDate(a.fetched_at)}` : fmtDate(null)))}</span>
         <a class="btn ghost" style="height:36px;padding:0 12px;font-size:.84rem" href="${esc(a.url)}" target="_blank" rel="noopener">Origineel ↗</a>
       </div></div>
       <article class="full wrap">
-        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
+        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${a.published_at && a.fetched_at && fmtDate(a.fetched_at) !== fmtDate(a.published_at) ? `<span>opgehaald ${esc(fmtDate(a.fetched_at))}</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
         ${a.format_version === 2 ? `
         <h1>${esc(a.headline)}</h1>
         <p class="orig">Origineel: ${esc(a.title)}</p>

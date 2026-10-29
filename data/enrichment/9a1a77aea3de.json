@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "9a1a77aea3de",
+  "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+  "headline": "Een klein open beslismodel draaien vanuit SQL op Databricks",
+  "summary": "Databricks laat zien hoe je een open beslismodel op een eigen GPU-endpoint zet en het met ai_query vanuit SQL aanroept. Het model kiest uit vaste opties, zoals goed of slecht.",
+  "story": [
+    "Databricks beschrijft een nieuw soort model: een beslismodel dat niet vrij tekst schrijft, maar kiest uit een vaste lijst opties. Het geeft daarbij per optie een kans. Zulke modellen zijn volgens Databricks snel en goedkoop, en dus bruikbaar op grote tabellen.",
+    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev. Een notebook downloadt het model en zet het op een serverless GPU-endpoint. Daarna roep je het vanuit SQL aan met ai_query. Dat werkt nu ook voor modellen met een eigen aanroepformaat. Je krijgt kolommen terug met de gekozen klasse en de kansen.",
+    "Het lijkt op een dbt-test met accepted_values, maar dan voor vrije tekst: het antwoord valt altijd in een vaste lijst. In het artikel classificeren ze hotelrecensies als goed of slecht.",
+    "Voor jou is dit interessant omdat het model binnen Databricks draait. Dan mag het in principe ook op werkdata, binnen de toegangsrechten. Het artikel geeft wel geen cijfers over nauwkeurigheid of kosten, en de SQL zelf staat er niet in."
+  ],
+  "key_facts": [
+    "Blog van Databricks van 24 september 2026.",
+    "Beslismodellen kiezen uit een vaste set opties en geven per optie een kans.",
+    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev; een notebook zet het op een GPU Model Serving-endpoint via AI Runtime en Express Deployments.",
+    "ai_query ondersteunt eigen model-API's, dus het model is vanuit SQL en vanuit Lakeflow-jobs aan te roepen.",
+    "Het voorbeeld classificeert hotelrecensies als goed of slecht.",
+    "Het artikel noemt geen cijfers over nauwkeurigheid, kosten of snelheid."
+  ],
+  "personal_relevance": "Een goedkope manier om vrije tekst in Silver te labelen zonder dat de data Databricks verlaat.",
+  "experiment": "Draai het notebook uit het artikel in een proefwerkruimte en classificeer twintig zelfverzonnen recensies met ai_query. Vergelijk de uitkomst met je eigen oordeel.",
+  "limitations": [
+    "Geen cijfers over nauwkeurigheid, kosten of snelheid.",
+    "De modelnamen in het artikel zijn niet consequent gespeld; controleer het model en de licentie op GitHub.",
+    "Er is een GPU-endpoint nodig; dat kost geld zolang het aanstaat."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Notebook: SemIf-beslismodellen serveren",
+      "url": "https://docs.databricks.com/aws/en/notebooks/source/machine-learning/serve-semif-decision-models.html"
+    },
+    {
+      "label": "ai_query",
+      "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "open_source_ai",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.6,
+    "novelty": 0.6
+  },
+  "development_key": "open-jev-beslismodellen-databricks",
+  "date_note": "Gepubliceerd op 24 september 2026; ruim een maand voor deze verwerking.",
+  "exceptional": false,
+  "processed_by": "Claude (handmatige run op verzoek)",
+  "processed_at": "2026-10-29T07:40:54Z",
+  "prompt_version": "taak-v2"
+}

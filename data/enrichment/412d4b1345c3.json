@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "412d4b1345c3",
+  "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+  "headline": "AI in je dbt-model: stuur alleen nieuwe rijen naar het taalmodel",
+  "summary": "Een talk over AI-functies van BigQuery in dbt laat zien hoe je een taalmodel direct in een SQL-model gebruikt. De patronen voor kosten en tests werken ook buiten BigQuery.",
+  "story": [
+    "Op dbt Summit liet Google zien hoe je een taalmodel (LLM) direct vanuit een SELECT aanroept, binnen een gewoon dbt-model. Je hebt dan geen aparte Python-dienst nodig. De AI-stap staat gewoon tussen je andere transformaties, met tests en incrementele logica.",
+    "De belangrijkste les gaat over kosten. Draai een AI-model nooit met een volledige rebuild (full refresh), want dan gaat elke rij opnieuw naar het model. Maak het model incrementeel, zodat alleen nieuwe rijen worden verwerkt. Het is als een vertaalbureau: je laat alleen de nieuwe brieven vertalen, niet elke keer het hele archief.",
+    "De tweede les gaat over betrouwbaarheid. Laat het model antwoorden in een vast formaat (structured output). Daarna kun je gewone dbt-tests als not_null en accepted_values gebruiken. Zo vang je rare antwoorden al in staging, voordat ze in een mart komen.",
+    "De functies zelf zijn van BigQuery, dus die neem je niet over. Maar de patronen passen ook bij AI-functies in Databricks SQL op je Silver-laag. Het artikel geeft wel geen code en geen cijfers."
+  ],
+  "key_facts": [
+    "Verslag van een talk van Alicia Williams (Google Cloud) op dbt Summit 2026.",
+    "Besproken BigQuery-functies: AI.GENERATE met output_schema, AI.IF, AI.CLASSIFY, AI.SCORE, AI.AGG en AI.COUNT_TOKENS.",
+    "Advies: AI-functies nooit in een full refresh; gebruik een incrementeel model met de AI-logica in een is_incremental()-blok.",
+    "Kostenbeheersing: tokens vooraf schatten, dagelijkse tokenlimieten per project en gebruiker, en max_error_ratio om een query af te breken bij te veel fouten.",
+    "Combineer output_schema met dbt-tests zoals not_null en accepted_values, in staging- of intermediate-lagen.",
+    "Het artikel bevat geen code en geen cijfers over kosten of snelheid."
+  ],
+  "personal_relevance": "De patronen voor kosten en tests passen direct op AI-functies in je eigen dbt-modellen op Databricks.",
+  "experiment": "Bouw met verzonnen klachtteksten een klein incrementeel dbt-model dat een AI-functie in Databricks aanroept. Voeg een accepted_values-test op de uitkomst toe en kijk of een tweede run alleen de nieuwe rijen verwerkt.",
+  "limitations": [
+    "Alle functies en instellingen zijn van BigQuery; de Databricks-varianten moet je zelf opzoeken.",
+    "Geen code en geen cijfers, alleen een beschrijving van de aanpak.",
+    "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Incrementele modellen in dbt",
+      "url": "https://docs.getdbt.com/docs/build/incremental-models-overview"
+    },
+    {
+      "label": "Datatests in dbt",
+      "url": "https://docs.getdbt.com/docs/build/data-tests"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "dbt_analytics_engineering",
+    "data_quality_observability"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.7,
+    "novelty": 0.5
+  },
+  "development_key": "ai-functies-in-dbt-modellen",
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026.",
+  "exceptional": false,
+  "processed_by": "Claude (handmatige run op verzoek)",
+  "processed_at": "2026-10-29T07:40:54Z",
+  "prompt_version": "taak-v2"
+}
