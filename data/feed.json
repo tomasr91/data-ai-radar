@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-29T11:02:13.182088Z",
+ "generated_at": "2026-10-29T11:08:37.196866Z",
  "mode": "partial",
- "mode_note": "17 van 19 feeds opgehaald; zie bronstatus.",
+ "mode_note": "18 van 20 feeds opgehaald; zie bronstatus.",
  "last_article_added_at": "2026-10-29T07:40:54Z",
- "last_successful_update": "2026-10-29T11:02:13.182088Z",
+ "last_successful_update": "2026-10-29T11:08:37.196866Z",
  "groups": [
   {
    "id": "dbt",
@@ -147,7 +147,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-29T11:02:13.228250Z"
+   "checked_at": "2026-10-29T11:08:37.251230Z"
   },
   {
    "id": "dbt_core_releases",
@@ -160,7 +160,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-29T11:02:13.473474Z"
+   "checked_at": "2026-10-29T11:08:39.490108Z"
   },
   {
    "id": "claude_code_releases",
@@ -173,7 +173,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-10-29T11:02:14.339277Z"
+   "checked_at": "2026-10-29T11:08:40.185423Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -186,7 +186,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-29T11:02:14.851616Z"
+   "checked_at": "2026-10-29T11:08:40.636116Z"
   },
   {
    "id": "databricks_blog",
@@ -199,7 +199,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-29T11:02:15.160880Z"
+   "checked_at": "2026-10-29T11:08:41.036173Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -212,7 +212,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-29T11:02:15.267399Z"
+   "checked_at": "2026-10-29T11:08:41.343576Z"
   },
   {
    "id": "github_blog",
@@ -225,7 +225,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-29T11:02:15.373811Z"
+   "checked_at": "2026-10-29T11:08:41.542171Z"
   },
   {
    "id": "azure_blog",
@@ -238,7 +238,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-29T11:02:15.750573Z"
+   "checked_at": "2026-10-29T11:08:41.889693Z"
   },
   {
    "id": "powerbi_blog",
@@ -251,7 +251,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-29T11:02:15.885487Z"
+   "checked_at": "2026-10-29T11:08:42.122762Z"
   },
   {
    "id": "huggingface_blog",
@@ -264,7 +264,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-29T11:02:16.717604Z"
+   "checked_at": "2026-10-29T11:08:43.096153Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -277,7 +277,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-29T11:02:17.012959Z"
+   "checked_at": "2026-10-29T11:08:43.331778Z"
   },
   {
    "id": "simon_whiteley",
@@ -290,7 +290,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-29T11:02:17.249477Z"
+   "checked_at": "2026-10-29T11:08:43.657543Z"
   },
   {
    "id": "hamel_husain",
@@ -303,7 +303,20 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-29T11:02:17.856133Z"
+   "checked_at": "2026-10-29T11:08:43.873207Z"
+  },
+  {
+   "id": "langchain_blog",
+   "name": "LangChain Blog",
+   "url": "https://www.langchain.com/blog",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 30,
+   "message": "30 items via https://www.langchain.com/blog/rss.xml",
+   "checked_at": "2026-10-29T11:08:44.075994Z"
   },
   {
    "id": "chip_huyen",
@@ -316,7 +329,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-29T11:02:18.044220Z"
+   "checked_at": "2026-10-29T11:08:44.298943Z"
   },
   {
    "id": "simon_willison",
@@ -329,7 +342,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-29T11:02:18.534863Z"
+   "checked_at": "2026-10-29T11:08:44.674302Z"
   },
   {
    "id": "benn_stancil",
@@ -342,7 +355,7 @@
    "status": "failed",
    "items": 0,
    "message": "HTTP 403 bij https://benn.substack.com/feed",
-   "checked_at": "2026-10-29T11:02:18.650739Z"
+   "checked_at": "2026-10-29T11:08:44.847617Z"
   },
   {
    "id": "chris_webb",
@@ -355,7 +368,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-10-29T11:02:18.734622Z"
+   "checked_at": "2026-10-29T11:08:45.148522Z"
   },
   {
    "id": "joe_reis",
@@ -368,7 +381,7 @@
    "status": "failed",
    "items": 0,
    "message": "HTTP 403 bij https://practicaldatamodeling.substack.com/feed",
-   "checked_at": "2026-10-29T11:02:19.081098Z"
+   "checked_at": "2026-10-29T11:08:45.581868Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -381,7 +394,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-29T11:02:19.138013Z"
+   "checked_at": "2026-10-29T11:08:45.694841Z"
   }
  ],
  "daily_top": [
@@ -2239,15 +2252,15 @@
   }
  ],
  "quality_report": {
-  "fetched_items": 280,
-  "unique_after_dedupe": 245,
+  "fetched_items": 310,
+  "unique_after_dedupe": 275,
   "merged_duplicates": 6,
   "shown": 29,
   "decisions": {
-   "included": 60,
+   "included": 66,
    "excluded": 29,
-   "below_threshold": 65,
-   "no_topic": 91
+   "below_threshold": 79,
+   "no_topic": 101
   },
   "processing": {
    "enriched": 29
@@ -2283,13 +2296,20 @@
     "from": "2026-10-27T17:31:00Z",
     "to": "2026-10-27T20:10:00Z",
     "message": "25 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+   },
+   {
+    "source_id": "langchain_blog",
+    "items": 8,
+    "from": "2026-10-13T19:56:07Z",
+    "to": "2026-10-13T19:56:07Z",
+    "message": "8 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
    }
   ],
   "enrichment": {
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 96
+   "skipped_no_key": 116
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -2333,6 +2353,22 @@
     ]
    },
    {
+    "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+    "relevance_score": 82,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+    "relevance_score": 82,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "v2.1.309",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.309",
@@ -2374,6 +2410,14 @@
     "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
+    "relevance_score": 80,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
     "relevance_score": 80,
     "decision": "included",
     "excluded_by": []
@@ -2661,6 +2705,14 @@
     "excluded_by": []
    },
    {
+    "title": "Open Models have crossed a threshold",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/open-models-have-crossed-a-threshold",
+    "relevance_score": 66,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "v2.1.312",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.312",
@@ -2700,6 +2752,22 @@
     "title": "Claude Haiku 5.5",
     "source_id": "simon_willison",
     "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
+    "relevance_score": 63,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "MCP in LangChain: Stateless Protocol, Elicitation, and More!",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more",
+    "relevance_score": 63,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Deep Agents Deploy: an open alternative to Claude Managed Agents",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/deep-agents-deploy-an-open-alternative-to-claude-managed-agents",
     "relevance_score": 63,
     "decision": "included",
     "excluded_by": []
@@ -2769,54 +2837,6 @@
     "source_id": "dbt_developer_blog",
     "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
     "relevance_score": 60,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Some thoughts on the Navier–Stokes Millennium Prize Problem",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
-    "relevance_score": 59,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks",
-    "source_id": "chris_webb",
-    "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
-    "relevance_score": 59,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Power BI’s next chapter: The evolution of business intelligence",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-s-next-chapter-The-evolution-of-business-intelligence/ba-p/5369131",
-    "relevance_score": 59,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
-    "relevance_score": 58,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#files-api-30-for-unity-catalog-volumes-is-now-in-beta",
-    "relevance_score": 58,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Upcoming end of life for the Genie One MCP Beta endpoint",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#upcoming-end-of-life-for-the-genie-one-mcp-beta-endpoint",
-    "relevance_score": 58,
     "decision": "below_threshold",
     "excluded_by": []
    }

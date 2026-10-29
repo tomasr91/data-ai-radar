@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T11:02:13.182088Z",
+ "generated_at": "2026-10-29T11:08:37.196866Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -17,6 +17,34 @@
    ]
   },
   {
+   "id": "ea59c0428e23",
+   "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
+   "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-28T18:06:04Z",
+   "excerpt": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused.",
+   "preliminary_score": 82,
+   "preliminary_topics": [
+    "ai_context_engineering",
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "5352c33d33f8",
+   "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+   "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-28T17:28:42Z",
+   "excerpt": "LangChain used OpenWiki, its open-source wiki compiler, and an evidence graph to build a persistent memory layer that preserves knowledge for agents to reuse across tasks. Learn how.",
+   "preliminary_score": 82,
+   "preliminary_topics": [
+    "ai_agents_rag",
+    "open_source_tools"
+   ]
+  },
+  {
    "id": "d8725372cba4",
    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
@@ -29,6 +57,22 @@
     "ai_agents_rag",
     "metadata_lineage_catalogs",
     "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "471f6b1cbb07",
+   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-26T15:32:16Z",
+   "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
+   "preliminary_score": 80,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "open_source_tools"
    ]
   },
   {
@@ -86,6 +130,20 @@
    "preliminary_topics": [
     "ai_agents_rag",
     "claude_ai_development"
+   ]
+  },
+  {
+   "id": "e711a10e6f60",
+   "title": "Open Models have crossed a threshold",
+   "url": "https://www.langchain.com/blog/open-models-have-crossed-a-threshold",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-13T19:56:07Z",
+   "excerpt": "Open models like GLM-5 and MiniMax M2.7 now match closed frontier models on core agent tasks — file operations, tool use, and instruction following — at a fraction of the cost and latency. Here's what our evals show and how to start using them in Deep Agents.",
+   "preliminary_score": 66,
+   "preliminary_topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability"
    ]
   },
   {
@@ -155,59 +213,6 @@
    "preliminary_score": 73,
    "preliminary_topics": [
     "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "6f34ae51d61c",
-   "title": "dbt without the warehouse (or the bill): DuckDB end to end",
-   "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:36:00Z",
-   "excerpt": "dbt v2 ships with a built-in DuckDB adapter, so connecting dbt to a local, offline warehouse takes only a small profile change.",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "54cdadbfe115",
-   "title": "DataFrame caching on serverless compute is now in Public Preview",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/serverless#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "f499e9381da5",
-   "title": "DataFrame caching on serverless compute is now in Public Preview",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "f80dbb005bac",
-   "title": "Genie One enhancements",
-   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of its response. See Navigate a long conversation . Upload skills (Public Preview) : You can now click Upload skills to upload your existing skill files and folders to your skills folder in the workspace. See Upload a skill . Snippets from external tool queries (Public Preview) : Genie Ontology now also extracts snippets from queries that external tools , such as dbt, run on Azure Databricks. These runs appear in query history alongside queries that you run in Azure Databricks. See Genie Ontology . Remembered sign-in email in the Genie mobile app (Public Preview) : The Genie mobile app now remembers the email address of the last user who signed in and prefills it at the next sign-in. See Use Genie on mobile .",
-   "preliminary_score": 71,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering"
    ]
   }
  ]

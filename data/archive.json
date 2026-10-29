@@ -2009,8 +2009,248 @@
    "published_raw": "2026-10-18T22:26:54Z",
    "fetched_at": "2026-10-29T10:59:44.882544Z",
    "excerpt": "<h2>What's changed</h2>\n<ul>\n<li>Bug fixes and reliability improvements</li>\n</ul>"
+  },
+  "langchain_blog:49daca0e1c3d": {
+   "source_id": "langchain_blog",
+   "title": "How We Built LangChain’s Paid Media Agent",
+   "url": "https://www.langchain.com/blog/paid-media-agent",
+   "published_raw": "Wed, 28 Oct 2026 21:40:23 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "How LangChain built a paid media agent to analyze campaign performance, optimize ads, propose changes, and turn marketing data into action."
+  },
+  "langchain_blog:a117d6b1bb54": {
+   "source_id": "langchain_blog",
+   "title": "How We Built Our Design Agent",
+   "url": "https://www.langchain.com/blog/design-agent",
+   "published_raw": "Wed, 28 Oct 2026 21:31:31 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "How LangChain built Content Studio, an open-source design agent in Slack that makes on-brand videos, graphics and decks, and the harness that powers it."
+  },
+  "langchain_blog:927bcccbe2c8": {
+   "source_id": "langchain_blog",
+   "title": "The Art of Loop Engineering",
+   "url": "https://www.langchain.com/blog/the-art-of-loop-engineering",
+   "published_raw": "Wed, 28 Oct 2026 21:01:46 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Agents automate real-world work, but reliable performance requires more than a good model, it requires a carefully designed harness built for specific tasks. This post explores the core agent loop, how stacking and extending loops builds more effective agents, and how to instrument each level with LangChain primitives."
+  },
+  "langchain_blog:ea59c0428e23": {
+   "source_id": "langchain_blog",
+   "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
+   "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+   "published_raw": "Wed, 28 Oct 2026 18:06:04 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused."
+  },
+  "langchain_blog:0ef362fe3fe6": {
+   "source_id": "langchain_blog",
+   "title": "How to Build Proactive, Always-On Agents with the Schedules SDK in Managed Deep Agents",
+   "url": "https://www.langchain.com/blog/proactive-agents",
+   "published_raw": "Wed, 28 Oct 2026 17:28:42 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Most proactive agents run on a simple cron. Learn what scheduled runs unlock, from memory to smart triage, and how to add them to Managed Deep Agents."
+  },
+  "langchain_blog:5352c33d33f8": {
+   "source_id": "langchain_blog",
+   "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+   "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+   "published_raw": "Wed, 28 Oct 2026 17:28:42 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "LangChain used OpenWiki, its open-source wiki compiler, and an evidence graph to build a persistent memory layer that preserves knowledge for agents to reuse across tasks. Learn how."
+  },
+  "langchain_blog:90e982fde937": {
+   "source_id": "langchain_blog",
+   "title": "The five components of building a \"company harness\"",
+   "url": "https://www.langchain.com/blog/components-building-company-harness",
+   "published_raw": "Mon, 26 Oct 2026 15:32:16 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Learn how LangChain built internal agents across marketing, sales, and engineering, and how they have completely changed how those teams work."
+  },
+  "langchain_blog:471f6b1cbb07": {
+   "source_id": "langchain_blog",
+   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+   "published_raw": "Mon, 26 Oct 2026 15:32:16 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in."
+  },
+  "langchain_blog:4e358a87a317": {
+   "source_id": "langchain_blog",
+   "title": "LangSmith LLM Gateway: Runtime Controls for Agents",
+   "url": "https://www.langchain.com/blog/langsmith-llm-gateway-runtime-controls-for-production-agents",
+   "published_raw": "Thu, 22 Oct 2026 13:28:39 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "LangSmith LLM Gateway is in public beta: spend caps, rate limits, model fallbacks and PII redaction for production agents, without provider lock-in."
+  },
+  "langchain_blog:00017a806f11": {
+   "source_id": "langchain_blog",
+   "title": "How Numan Built an Eval-First AI Health Coach with LangGraph and LangSmith",
+   "url": "https://www.langchain.com/blog/how-numan-built-an-eval-first-ai-health-coach-with-langgraph-and-langsmith",
+   "published_raw": "Mon, 19 Oct 2026 16:44:34 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "How Numan built Nu, an AI health coach, on LangGraph and LangSmith with per-category evals, simulated conversations, and safety gates on a regulatory line."
+  },
+  "langchain_blog:73aa724fd247": {
+   "source_id": "langchain_blog",
+   "title": "October 2026 LangChain Newsletter: Everything we shipped at Interrupt NYC & London",
+   "url": "https://www.langchain.com/blog/october-2026-langchain-newsletter",
+   "published_raw": "Thu, 15 Oct 2026 17:02:58 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "What we shipped at Interrupt NYC and London: LangSmith AI Search, Engine v2, Trajectories, Custom Apps, Fine-Tuning, and Managed Deep Agents v0.9."
+  },
+  "langchain_blog:8fee1fc7abb7": {
+   "source_id": "langchain_blog",
+   "title": "The Most Common Questions About Agent Evals, Answered",
+   "url": "https://www.langchain.com/blog/common-questions-about-agent-evals",
+   "published_raw": "Thu, 15 Oct 2026 09:18:55 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Where to start with agent evals, offline vs online evals, evaluator types, LLM judges, benchmarks with Harbor, multi-turn evals, and keeping costs down."
+  },
+  "langchain_blog:9548d62329c5": {
+   "source_id": "langchain_blog",
+   "title": "How Orange Business Built Live Intelligence with LangChain and LangSmith",
+   "url": "https://www.langchain.com/blog/how-orange-business-built-live-intelligence-on-langchain-and-langsmith",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Learn how Orange Business used LangChain and LangSmith to build Live Intelligence, a governed AI platform for agents, evals, observability, and production scale."
+  },
+  "langchain_blog:eef8571c7c20": {
+   "source_id": "langchain_blog",
+   "title": "MCP in LangChain: Stateless Protocol, Elicitation, and More!",
+   "url": "https://www.langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "MCP support now lives in langchain.mcp, built on FastMCP for the 2026-07-28 spec, with elicitation handled as a LangGraph interrupt and tool lists cached."
+  },
+  "langchain_blog:8e9e916be156": {
+   "source_id": "langchain_blog",
+   "title": "How We Made Our Docs Test Themselves",
+   "url": "https://www.langchain.com/blog/our-docs-test-themselves",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Stale code samples are a docs problem nobody prioritizes. Here's how we used the Deep Agents CLI to automate migrating inline code into testable, CI-ready examples"
+  },
+  "langchain_blog:83ea6232a3bf": {
+   "source_id": "langchain_blog",
+   "title": "Deep Agents Deploy: an open alternative to Claude Managed Agents",
+   "url": "https://www.langchain.com/blog/deep-agents-deploy-an-open-alternative-to-claude-managed-agents",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Today we’re launching Deep Agents deploy in beta. Deep Agents deploy is the fastest way to deploy a model agnostic, open source agent harness in a production ready way."
+  },
+  "langchain_blog:e711a10e6f60": {
+   "source_id": "langchain_blog",
+   "title": "Open Models have crossed a threshold",
+   "url": "https://www.langchain.com/blog/open-models-have-crossed-a-threshold",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Open models like GLM-5 and MiniMax M2.7 now match closed frontier models on core agent tasks — file operations, tool use, and instruction following — at a fraction of the cost and latency. Here's what our evals show and how to start using them in Deep Agents."
+  },
+  "langchain_blog:0babd9ef3d92": {
+   "source_id": "langchain_blog",
+   "title": "Context Management for Deep Agents",
+   "url": "https://www.langchain.com/blog/context-management-for-deepagents",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Learn how Deep Agents SDK manages context for long-running AI tasks through offloading, summarization, and filesystem abstraction to prevent context rot."
+  },
+  "langchain_blog:4cc09a1d9883": {
+   "source_id": "langchain_blog",
+   "title": "Improving Deep Agents with harness engineering",
+   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Harness engineering improved LangChain's coding agent from Top 30 to Top 5 on Terminal Bench using self-verification, tracing, and context optimization."
+  },
+  "langchain_blog:68011bfb652b": {
+   "source_id": "langchain_blog",
+   "title": "Open SWE: An Open-Source Framework for Internal Coding Agents",
+   "url": "https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents",
+   "published_raw": "Tue, 13 Oct 2026 19:56:07 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Built on Deep Agents and LangGraph, Open SWE provides the core architectural components for internal coding agents."
+  },
+  "langchain_blog:4637c34776c2": {
+   "source_id": "langchain_blog",
+   "title": "Building Long-Running Agents with ScaleDown and Deep Agents",
+   "url": "https://www.langchain.com/blog/building-long-running-agents-with-scaledown-and-deep-agents",
+   "published_raw": "Tue, 13 Oct 2026 14:01:24 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Use ScaleDown's constrained decoding models with LangChain and Deep Agents to summarize history, compress tool results, and extract data faster and cheaper."
+  },
+  "langchain_blog:1547b0f0d3d3": {
+   "source_id": "langchain_blog",
+   "title": "Search agent traces by behavior with AI Search in LangSmith",
+   "url": "https://www.langchain.com/blog/agent-traces-ai-search-langsmith",
+   "published_raw": "Tue, 13 Oct 2026 14:01:24 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "AI Search in LangSmith is a new way to query traces using natural language. Describe the behavior you're looking for, and LangSmith returns the traces where it happened."
+  },
+  "langchain_blog:0a25c4b9ac0a": {
+   "source_id": "langchain_blog",
+   "title": "How to build great out-of-the-box user experiences with Managed Deep Agents",
+   "url": "https://www.langchain.com/blog/slack-sdk-managed-deep-agents",
+   "published_raw": "Fri, 09 Oct 2026 19:34:01 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Managed Deep Agents includes a new API for managing reactions for your distributed agents, and a system to dynamically assign emoji responses with your instrument of choice. Learn more."
+  },
+  "langchain_blog:9bff310e5f0a": {
+   "source_id": "langchain_blog",
+   "title": "How to Build a Model Router in the Harness",
+   "url": "https://www.langchain.com/blog/how-to-build-a-model-router-in-the-harness",
+   "published_raw": "Fri, 09 Oct 2026 19:34:01 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "How we built a model router into Open SWE's harness that cut median cost per coding task by 64% with no measurable drop in quality, and how to build your own."
+  },
+  "langchain_blog:23a8bca94f2e": {
+   "source_id": "langchain_blog",
+   "title": "How Snyk Turned an Internal Support Agent into a Customer Feature",
+   "url": "https://www.langchain.com/blog/how-snyk-turned-an-internal-support-agent-into-a-customer-feature",
+   "published_raw": "Fri, 09 Oct 2026 10:29:19 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Discover how Snyk transformed an internal support agent into Snyk Assist, a customer-facing AI feature powered by LangChain, LangGraph, and LangSmith."
+  },
+  "langchain_blog:7bcae5a3e940": {
+   "source_id": "langchain_blog",
+   "title": "Agents that can pay: building Restock with Stripe's Link and Managed Deep Agents",
+   "url": "https://www.langchain.com/blog/agents-that-can-pay-with-stripe-link",
+   "published_raw": "Thu, 08 Oct 2026 17:37:00 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Build an agent that pays for real purchases. Restock runs in Slack on Managed Deep Agents and pays with Stripe's Link over the Machine Payments Protocol."
+  },
+  "langchain_blog:396c91c776df": {
+   "source_id": "langchain_blog",
+   "title": "Revamping Skills in Deep Agents",
+   "url": "https://www.langchain.com/blog/revamping-skills-in-deep-agents",
+   "published_raw": "Thu, 08 Oct 2026 11:05:30 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Deep Agents now lets you bind tools to skills, pin skills at runtime, and reload skills mid-thread, so agents with expansive skill repositories stay context-efficient and effective."
+  },
+  "langchain_blog:46d73a9d0c3e": {
+   "source_id": "langchain_blog",
+   "title": "Introducing LangSmith Fine-Tuning",
+   "url": "https://www.langchain.com/blog/langsmith-fine-tuning",
+   "published_raw": "Thu, 08 Oct 2026 11:05:30 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "LangChain introduces LangSmith Fine-Tuning and SmithTune, a CLI built for post-training models. Train specialized models without building data pipelines by hand."
+  },
+  "langchain_blog:ef92f87a19b1": {
+   "source_id": "langchain_blog",
+   "title": "Managed Deep Agents delivers a better user experience for agents in production",
+   "url": "https://www.langchain.com/blog/langsmith-managed-deep-agents-whats-new",
+   "published_raw": "Thu, 08 Oct 2026 11:05:30 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "Managed Deep Agents is the simplest way to build, deploy, and run agents in production. The 0.8 release adds support for user-owned credentials, user-level memory, HTTP channels, file transfer in Slack and a pre-built tool for web search."
+  },
+  "langchain_blog:aab102247bf5": {
+   "source_id": "langchain_blog",
+   "title": "What's New in Managed Deep Agents: schedules, per-run configuration, and Slack reactions",
+   "url": "https://www.langchain.com/blog/managed-deep-agents-schedules-per-run-configuration-slack",
+   "published_raw": "Wed, 07 Oct 2026 18:10:34 GMT",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "excerpt": "LangChain just released new capabilities in Managed Deep Agents. Agents can now schedule follow-ups, reconfigure themselves on every run, and react to Slack messages."
   }
  },
- "updated_at": "2026-10-29T11:02:13.182088Z",
+ "updated_at": "2026-10-29T11:08:37.196866Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
