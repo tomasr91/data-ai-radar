@@ -1,0 +1,57 @@
+{
+  "format_version": 2,
+  "article_id": "e355f3b1aafd",
+  "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
+  "headline": "dbt 1.13 bèta zet oude vlaggen aan en brengt dbt State naar v1",
+  "summary": "De eerste bèta van dbt 1.13 zet vlaggen uit 1.9 en 1.10 standaard aan. Ook zit dbt State er nu in, en je kunt de nieuwe v2-parser proberen.",
+  "story": [
+    "dbt Labs heeft op 14 oktober de eerste bèta van dbt 1.13 uitgebracht. De belangrijkste wijziging is een breuk: vlaggen die in 1.9 en 1.10 zijn ingevoerd, staan nu standaard aan. Gedrag waar je tot nu toe zelf voor koos, wordt dus de norm.",
+    "Daarnaast zit dbt State nu standaard in dbt 1.13. Daarmee slaat dbt modellen over waarvan logica en data niet zijn veranderd. Je zet het zelf aan met --manage-state. Het is alsof je alleen de kamers schoonmaakt waar iemand is geweest.",
+    "Een derde nieuwtje is de optie --use-v2-parser. Daarmee laat dbt 1.13 het inlezen van je project over aan de parser van dbt v2. Zo kun je proeven aan de nieuwe engine, zonder meteen helemaal over te stappen.",
+    "Voor jouw project is vooral de breuk belangrijk. Draai je dbt Core met eigen generatorscripts, test dan of de nieuwe standaardvlaggen iets veranderen. Er staat ook een fix in voor valse waarschuwingen bij Databricks-instellingen."
+  ],
+  "key_facts": [
+    "dbt v1.13.0b1 (dbt-core 1.13.0-b1) is een bèta (pre-release) van 14 oktober 2026.",
+    "Breuk: vlaggen uit 1.9 en 1.10 staan nu standaard op true.",
+    "De dbt-state-plugin is meegebundeld en werkt opt-in via --manage-state, DBT_ENGINE_MANAGE_STATE of manage_state in de configuratie.",
+    "Nieuwe optie --use-v2-parser laat de v2-parser het project inlezen.",
+    "Nieuw: een dbt login-commando en een instelbare limiet voor seed-grootte (MAXIMUM_SEED_SIZE_MIB).",
+    "Fix: Databricks-adapterinstellingen geven geen valse deprecation-waarschuwingen meer."
+  ],
+  "personal_relevance": "Je gebruikt dbt Core, en de nieuwe standaardvlaggen kunnen gedrag van je project veranderen.",
+  "experiment": "Installeer dbt 1.13.0b1 in een losse virtuele omgeving en draai dbt parse en dbt compile op een kopie van je project. Vergelijk de waarschuwingen en de gecompileerde SQL met je huidige versie.",
+  "limitations": [
+    "Dit is een bèta; gebruik hem niet in productie.",
+    "De release noemt niet welke vlaggen precies omgaan; dat moet je in de changelog nazoeken.",
+    "Het artikel zegt niet hoeveel dbt State oplevert op Databricks."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Release dbt v1.13.0b1",
+      "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1"
+    },
+    {
+      "label": "Upgraden naar v1.13",
+      "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.13"
+    },
+    {
+      "label": "dbt State",
+      "url": "https://docs.getdbt.com/docs/deploy/dbt-state-about"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.7,
+    "novelty": 0.5
+  },
+  "development_key": "dbt-v1-13-beta-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-29T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

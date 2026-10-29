@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "af716fbffd91",
+  "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
+  "headline": "Bepaal zelf wie welke AI-functie in SQL mag gebruiken",
+  "summary": "Met Unity Catalog-rechten op het schema system.ai bepaalt een beheerder welke AI-functies gebruikers mogen aanroepen. Zo maak je een lijst van toegestane functies.",
+  "story": [
+    "Databricks heeft een slot gezet op de ingebouwde AI-functies in SQL. Een metastore-beheerder bepaalt nu met gewone Unity Catalog-rechten welke taakgerichte AI-functies (task-specific AI Functions) iemand mag gebruiken. Volgens de release note is dit sinds 27 oktober algemeen beschikbaar.",
+    "Standaard heeft iedereen het recht EXECUTE op het schema system.ai. Dan staan alle AI-functies open. Haal je dat recht weg, dan werkt geen enkele AI-functie meer. Daarna geef je per functie weer toegang. Het lijkt op een gastenlijst bij een feest: eerst gaat de deur dicht, dan zet je per naam wie erin mag.",
+    "In een zorginstelling is dat precies wat je wilt. Je kunt bijvoorbeeld een samenvattingsfunctie alleen openzetten voor een groep die met gepseudonimiseerde data werkt. Zo past AI op Silver-data binnen dezelfde rechtenstructuur als je tabellen.",
+    "Let wel op ai_query. Die functie roept een model rechtstreeks aan en valt hier niet onder. Daarvoor gelden aparte rechten op de modellen zelf."
+  ],
+  "key_facts": [
+    "Volgens de release note algemeen beschikbaar (GA) sinds 27 oktober 2026.",
+    "Metastore-beheerders regelen toegang met Unity Catalog-rechten op het schema system.ai en op losse AI-functies.",
+    "Standaard hebben alle gebruikers EXECUTE op system.ai; weghalen blokkeert alle AI-functies tot je per functie weer toegang geeft.",
+    "Het accountteam van Databricks moet de functie eerst aanzetten.",
+    "Vereist Databricks Runtime 17.3 LTS of hoger.",
+    "ai_query valt hier niet onder; daarvoor gelden Unity Catalog-rechten op foundation models."
+  ],
+  "personal_relevance": "Hiermee kun je AI-functies op zorgdata alleen openzetten voor wie dat mag, met de rechten die je al kent.",
+  "experiment": "Bekijk in Catalog Explorer onder system > ai > functions welke AI-functies er zijn en wie nu EXECUTE heeft. Schrijf op welke twee of drie functies je als eerste zou toestaan, en voor welke groep.",
+  "limitations": [
+    "Het accountteam van Databricks moet de functie eerst voor je account aanzetten.",
+    "De Azure-documentatiepagina noemde de functie bij het lezen nog Public Preview, de release note zegt GA.",
+    "ai_query valt erbuiten en heeft aparte rechten nodig."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "AI Functions Unity Catalog permissions (Azure Databricks)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/large-language-models/ai-functions-uc-permissions"
+    },
+    {
+      "label": "Rechten op foundation models (voor ai_query)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/machine-learning/foundation-model-apis/model-uc-permissions"
+    }
+  ],
+  "topics": [
+    "data_governance_privacy",
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.8,
+    "novelty": 0.6
+  },
+  "development_key": "ai-functions-uc-permissions-okt-2026",
+  "date_note": "Release note gelezen in de Databricks-versie (AWS, zelfde item van 27 oktober 2026); de Azure-documentatiepagina noemde de functie nog Public Preview.",
+  "exceptional": false,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-29T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

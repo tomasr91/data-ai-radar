@@ -1,0 +1,59 @@
+{
+  "format_version": 2,
+  "article_id": "0b4ae9670355",
+  "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
+  "headline": "Een dbt-project overzetten naar Databricks in zeven stappen",
+  "summary": "Databricks laat stap voor stap zien hoe je een bestaand dbt-project naar Databricks verhuist. De kern: andere adapter, dialectfouten oplossen en per model uitkomsten vergelijken.",
+  "story": [
+    "Databricks heeft een handleiding geschreven om een dbt-project van een ander datawarehouse naar Databricks te verhuizen. Het idee is simpel: je herschrijft geen modellen of tests. Je wisselt de adapter, past de bronnen aan en lost de verschillen in SQL-dialect op.",
+    "Het voorbeeld gaat over één feitentabel. Bij het eerste compileren gaven drie functies een fout, zoals DIV0 en REGEXP_SUBSTR. Die vervangen ze door een Databricks-variant of door een macro uit dbt_utils. Het is als een recept vertalen: de stappen blijven hetzelfde, alleen sommige ingrediënten heten anders.",
+    "Het nuttigste deel gaat over controleren. Met het package dbt-audit-helper vergelijken ze de uitkomst van het oude en nieuwe warehouse, rij voor rij. Ze herhalen dat tot de match 100 procent is. Daarna draait dbt als taak in Lakeflow Jobs.",
+    "Je migratie is al bijna klaar, dus de basis ken je. Maar de controlestap met audit-helper en het afsluitende stappenplan zijn handig als checklist voor de laatste modellen. Denk vooral aan incrementele modellen en snapshots: daarvoor waarschuwen de auteurs apart."
+  ],
+  "key_facts": [
+    "Handleiding op het Databricks-blog van 6 oktober 2026.",
+    "Stappen: dbt-databricks installeren, sources aanpassen naar catalog.schema.table, compileren, draaien, rij voor rij valideren met dbt-audit-helper, uitrollen met Lakeflow Jobs en daarna overschakelen.",
+    "In het voorbeeld gaven drie functies een fout: REGEXP_SUBSTR (wordt regexp_extract), DIV0 (wordt dbt_utils.safe_divide) en object_construct (wordt named_struct).",
+    "Incrementele modellen en snapshots vragen een aparte aanpak; historische snapshotdata moet je los migreren.",
+    "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
+    "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
+  ],
+  "personal_relevance": "Een bruikbare checklist voor de laatste stap van je eigen migratie van SQL Server naar Databricks.",
+  "experiment": "Kies één model dat al op beide platforms draait. Vergelijk de uitkomsten met dbt-audit-helper en kijk of de match 100 procent is.",
+  "limitations": [
+    "Het voorbeeld is sterk vereenvoudigd: één model uit twee bronnen.",
+    "Het gaat niet specifiek over T-SQL of SQL Server; je dialectfouten kunnen anders zijn.",
+    "Databricks schreef dit zelf; Lakebridge en Genie Code zijn eigen producten."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "dbt-databricks adapter",
+      "url": "https://github.com/databricks/dbt-databricks"
+    },
+    {
+      "label": "dbt in Lakeflow Jobs",
+      "url": "https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows"
+    },
+    {
+      "label": "Lakebridge",
+      "url": "https://www.databricks.com/solutions/migration/lakebridge"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "sql_spark_sql"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.8,
+    "novelty": 0.3
+  },
+  "development_key": "dbt-migratie-naar-databricks",
+  "date_note": "",
+  "exceptional": false,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-29T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

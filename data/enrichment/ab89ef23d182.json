@@ -1,0 +1,50 @@
+{
+  "format_version": 2,
+  "article_id": "ab89ef23d182",
+  "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
+  "headline": "Claude en Cursor kunnen nu zonder extra instellingen bij Databricks",
+  "summary": "Externe AI-agents zoals Claude, ChatGPT en Cursor koppelen nu met kant-en-klare OAuth-apps aan de MCP-servers van Databricks. Een beheerder hoeft daar niets meer voor aan te maken.",
+  "story": [
+    "Databricks maakt het een stuk makkelijker om externe AI-agents aan je werkruimte te koppelen. Sinds 27 oktober hebben Claude, Claude Code, ChatGPT, Codex en Cursor elk een standaard OAuth-app. Daarmee praten ze met de MCP-servers van Databricks, ook met de Genie One MCP-server.",
+    "Tot nu toe moest een accountbeheerder eerst zelf zo'n OAuth-app aanmaken. Vergelijk het met een toegangspas: vroeger maakte de receptie voor elke bezoeker een eigen pas, nu ligt er een standaardpas klaar per bekende bezoeker. De gebruiker logt in en Unity Catalog controleert bij elke aanroep van een tool (tool call) gewoon de bestaande rechten.",
+    "Voor jou zit het belang vooral aan de beheerkant. Externe AI mag bij jullie alleen zonder werkdata worden gebruikt. Met deze standaardapps kan een collega straks met een paar klikken Claude of ChatGPT aan echte data koppelen. Een accountbeheerder kan de apps wel aan- of uitzetten voor het hele account.",
+    "Dat maakt het een goed moment om dit met je beheerder te bespreken. Staan de apps aan, dan is het vooral een beleidsvraag wie er gebruik van mag maken. Voor je eigen AI-contextlaag laat het wel zien hoe Databricks MCP als standaardroute naar data ziet."
+  ],
+  "key_facts": [
+    "Algemeen beschikbaar (GA) sinds 27 oktober 2026.",
+    "Standaard OAuth-apps voor Claude, Claude Code, ChatGPT, Codex en Cursor.",
+    "Ze werken met de MCP-servers van Databricks, waaronder de Genie One MCP-server.",
+    "Een accountbeheerder hoeft geen OAuth-app meer aan te maken; hij kan de apps wel aan- of uitzetten voor het account.",
+    "Unity Catalog past bij elke tool call de bestaande datarechten toe; er is geen client secret nodig."
+  ],
+  "personal_relevance": "Hiermee kan iedereen in de organisatie makkelijk externe AI aan Databricks koppelen, terwijl dat bij jullie alleen zonder werkdata mag.",
+  "experiment": "Koppel in een eigen proefwerkruimte met alleen openbare voorbeelddata Claude via de standaard OAuth-app aan een MCP-server. Kijk welke tools en tabellen de agent ziet en wat Unity Catalog tegenhoudt.",
+  "limitations": [
+    "Gebruik dit nooit op een werkruimte met werk- of patiëntdata: externe AI mag alleen zonder werkdata.",
+    "De release note zegt niets over welke rechten (scopes) de apps precies krijgen.",
+    "De gelezen tekst komt van de Databricks-documentatie (AWS-versie); de Azure-pagina was niet te openen."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Standaard OAuth-apps voor AI-agents (Databricks-docs, AWS-versie)",
+      "url": "https://docs.databricks.com/aws/en/partner-connect/ai-agents#default-oauth-apps"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.4,
+    "practicality": 0.6,
+    "novelty": 0.6
+  },
+  "development_key": "databricks-default-oauth-ai-agents-okt-2026",
+  "date_note": "Tekst gelezen in de Databricks release notes (AWS-versie, zelfde item van 27 oktober 2026); de Azure-pagina was niet te openen.",
+  "exceptional": false,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-29T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

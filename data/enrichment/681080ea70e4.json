@@ -1,0 +1,59 @@
+{
+  "format_version": 2,
+  "article_id": "681080ea70e4",
+  "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+  "headline": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
+  "summary": "De herschreven dbt-engine (eerder Fusion) is algemeen beschikbaar als dbt v2. Hij controleert SQL al vóór het draaien en is veel sneller.",
+  "story": [
+    "dbt Labs heeft op 16 september dbt v2 algemeen beschikbaar gemaakt. Het is de engine die eerder Fusion heette, helemaal herschreven in Rust. Het grootste verschil: dbt begrijpt nu de SQL die het maakt.",
+    "Daarvoor bootst dbt v2 je warehouse lokaal na en maakt het een logisch plan van elke query. Lukt dat niet, dan klopt de query niet, nog voordat er iets draait. Het is als een spellingscontrole voor SQL. dbt ziet zelfs dat het weghalen van een kolom vier modellen verderop breekt.",
+    "Daarnaast is v2 veel sneller. Een project dat 20 minuten nodig had om in te lezen, doet dat nu in minder dan een minuut. De metadata (artefacten) kan dbt als Parquet wegschrijven, wat bestanden ruim tien keer kleiner maakt. Er is ook een nieuwe dbt docs en een dbt Information Schema om je project mee te bevragen.",
+    "Voor jou raakt dit bijna alles. De herkomst per kolom (column-level lineage) en het Information Schema passen goed bij je AI-contextlaag en metadataproject. Maar het artikel zegt niets over de Databricks-adapter, licenties of het verschil tussen Core en het platform. Dat moet je eerst uitzoeken voordat je overstapt."
+  ],
+  "key_facts": [
+    "dbt v2 (de dbt Fusion-engine) is algemeen beschikbaar (GA) sinds 16 september 2026.",
+    "Volledig herschreven als Rust-programma, met ADBC voor datatransport.",
+    "Een lokale SQL-compiler bootst het warehouse na en vindt fouten voordat er iets draait; er zijn modi baseline (standaard) en strict.",
+    "Benchmark met 10.000 nodes: compileren van 70 seconden (dbt 1.12.0) naar 17 seconden; grote projecten lezen in minder dan 1 minuut in in plaats van tot 20 minuten.",
+    "Artefacten kunnen als Parquet worden geschreven, volgens het artikel meer dan 10 keer kleiner dan JSON.",
+    "Nieuw: dbt Information Schema, nieuwe dbt docs op basis van DuckDB WASM, en dbt State via --manage-state."
+  ],
+  "personal_relevance": "Kolom-lineage en een bevraagbaar Information Schema zijn precies de bouwstenen voor je AI-contextlaag op dbt.",
+  "experiment": "Installeer dbt v2 in een losse omgeving en draai dbt compile op een kopie van je project in baseline-modus. Noteer welke fouten of waarschuwingen v2 vindt die v1 niet gaf.",
+  "limitations": [
+    "Het artikel zegt niets over de Databricks-adapter, licenties of welke functies alleen in het dbt-platform zitten.",
+    "Er staat geen migratiestappenplan in; gebruik daarvoor de upgradegids.",
+    "De snelheidscijfers komen van dbt Labs zelf."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Upgraden naar v2",
+      "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v2"
+    },
+    {
+      "label": "dbt Information Schema",
+      "url": "https://docs.getdbt.com/docs/build/dbt-information-schema"
+    },
+    {
+      "label": "Static analysis",
+      "url": "https://docs.getdbt.com/reference/resource-configs/static-analysis"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs",
+    "ai_context_engineering"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.8,
+    "novelty": 0.8
+  },
+  "development_key": "dbt-v2-ga-sep-2026",
+  "date_note": "Gepubliceerd op 16 september 2026; dat is ruim zes weken voor deze verwerking.",
+  "exceptional": true,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-29T06:45:00Z",
+  "prompt_version": "taak-v2"
+}
