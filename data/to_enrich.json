@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T05:50:08.833759Z",
+ "generated_at": "2026-10-29T06:01:09.122661Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -74,22 +74,6 @@
    ]
   },
   {
-   "id": "8ee1a94ef044",
-   "title": "Power BI September 2026 Feature Summary",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-September-2026-Feature-Summary/ba-p/5325831",
-   "source_id": "powerbi_blog",
-   "source_name": "Microsoft Power BI Blog",
-   "published_at": "2026-10-15T21:06:46Z",
-   "excerpt": "As the Power BI, Microsoft Fabric, data, and analytics community gathers in Barcelona for the European Microsoft Fabric + SQL Community Conference, this month is packed with news. From new Copilot and AI experiences to reporting, modeling, data connectivity, developer enhancements, and mobile updates, we're sharing the latest innovations designed to help you build, analyze, and act on your data more effectively. Whether you're joining us in person or following along from afar, this roundup is your guide to everything new across Power BI this month. Table of Contents General Deprecation of Old File Picker experience in Power BI Desktop Copilot and AI Power BI Agentic Experiences (Generally Available) Microsoft 365 Copilot is coming to Power BI (Preview) Power BI data answers in Microsoft Copilot Chat (Generally Available) Fabric IQ Plugin in Microsoft 365 Copilot Cowork (Generally Available) Build Fabric Apps more easily in GitHub Copilot App (Preview) Enhanced Report Consumption Copilot with Fabric IQ New control for Copilot access to semantic models Remote Power BI Authoring MCP Server (Preview) Reporting New Report Ribbon on the web (Preview) Live Visual Sharing in Outlook on the",
-   "preliminary_score": 75,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "sql_spark_sql",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
    "id": "0b4ae9670355",
    "title": "How to Repoint dbt ETL Pipelines to Databricks",
    "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
@@ -104,18 +88,16 @@
    ]
   },
   {
-   "id": "4fdc49511e68",
-   "title": "v2.0.0-dev.41-test-pypi",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
-   "source_id": "dbt_core_releases",
-   "source_name": "dbt-core releases (GitHub)",
-   "published_at": "2026-09-23T14:17:54Z",
-   "excerpt": "2.0.0-dev.41 Released September 23, 2026 Features [Lake Compute] Read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, declaration-aware validation, and dbt debug attach parity. Existing fs catalogs.yml entries continue to use type: unity . Existing local Unity attach options in config.lakecompute must move to config.duckdb ; Lake Compute access is read-only and Unity model writes are unsupported. Fixes Fix modules.re functions silently dropping keyword arguments (flags=, maxsplit=, count=) ( #15508 ) Emit only changed columns in Databricks column-tag alter diffs ( #16246 ) Emit only changed keys in Databricks relation-tag SET TAGS diffs ( #16248 ) Implement TableRepr methods index_of_value_in_column and count_occurrences_of_value_in_column to fix Fusion panic in dbt_utils.get_query_results_as_dict() Copy config.group onto the top-level group for source and singular tests, matching dbt-core ( #15930 ) Make insert_gateway_label idempotent so gateway host resolution no-ops when the label is already present, instead of relying on a caller-side guard Set tags on operation nodes so on-run-start/on-run-end hooks are discoverable when running dbt-cor",
-   "preliminary_score": 73,
+   "id": "681080ea70e4",
+   "title": "dbt v2.0 is GA",
+   "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+   "source_id": "dbt_developer_blog",
+   "source_name": "dbt Developer Blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "excerpt": "The dbt Fusion engine is entering General Availability with a new name: dbt. This complete rewrite lays the foundations for the next decade of progress.",
+   "preliminary_score": 71,
    "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
+    "dbt_analytics_engineering"
    ]
   },
   {
@@ -206,16 +188,31 @@
    ]
   },
   {
-   "id": "f51c801481de",
-   "title": "QuickBooks connector is available in Beta",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-26T00:00:00Z",
-   "excerpt": "The managed QuickBooks connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest accounting data such as accounts, customers, vendors, items, invoices, bills, payments, and journal entries from QuickBooks Online into Azure Databricks. The connector uses OAuth user authorization and supports incremental ingestion with delete capture.",
-   "preliminary_score": 74,
+   "id": "965a6e80a937",
+   "title": "How Ramp's internal AI agents crossed a million sessions",
+   "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T20:10:00Z",
+   "excerpt": "Ramp describes the agents, sandboxes, and dashboards it built for internal AI, through an analytics engineering lens.",
+   "preliminary_score": 73,
    "preliminary_topics": [
-    "databricks_data_engineering"
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "412d4b1345c3",
+   "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
+   "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T19:06:00Z",
+   "excerpt": "Google Cloud shows BigQuery AI SQL functions inside dbt pipelines.",
+   "preliminary_score": 73,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "sql_spark_sql"
    ]
   }
  ]
