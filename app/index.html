@@ -120,6 +120,12 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .q-opts button.wrong { border-color: var(--bad); background: var(--bad-soft); color: var(--bad); opacity: 1; }
 .q-exp { margin: 8px 0 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 .q-exp b { color: var(--ink); }
+.ask-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.ask-chips button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 0 12px; height: 36px; font-size: 0.84rem; cursor: pointer; }
+.ask-form { display: grid; gap: 8px; }
+.ask-form textarea { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; resize: vertical; min-height: 48px; }
+.ask-form .btn { justify-self: start; }
+.ask { font-family: var(--f-display); }
 a.card.opt { text-decoration: none; color: inherit; }
 article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
@@ -569,6 +575,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${d.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(d.experiment)}</p></section>` : ""}
         ${d.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${d.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         ${quizBlock(d)}
+        ${askBlock("verdieping")}
         ${reading ? `<section class="block"><h2>Verder lezen</h2><ul class="reading">${reading}</ul></section>` : ""}
         <section class="block"><h2>Bron</h2><div class="source"><dl>
           <dt>Geschreven op</dt><dd>${esc(fmtDate(d.written_at))}</dd>
@@ -584,6 +591,51 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const kinds = { bron: "Uit de bron", uitleg: "Uitleg", idee: "Idee" };
     return `<section class="block"><h2>${esc(title)}${kind ? ` <span class="kind ${kind}">${kinds[kind]}</span>` : ""}</h2><p>${esc(text)}</p></section>`;
   }
+  /* ---- Vraag het Claude ----
+     Opent claude.ai (of de Claude-app) met een ingevuld bericht: kern van het stuk, bronlink,
+     korte context over de stack, en jouw vraag. claude.ai/new?q= vult de vraag in; de URL blijft
+     kort genoeg (< ~6000 tekens) door de uitleg in te korten. Geen sleutels in de app. */
+  const ASK_ME = "Over mij: analytics engineer bij een zorgorganisatie. Stack: Azure Databricks (Unity Catalog), dbt, Azure DevOps, Power BI. Externe AI gebruik ik nooit met werk- of patiëntdata.";
+  const ASK_CHIPS = ["Leg dit eenvoudiger uit", "Hoe pas ik dit toe in mijn stack?", "Wat zijn de risico's of nadelen?", "Geef een concreet voorbeeld"];
+  function askPrompt(ctx, question) {
+    const head = `Ik lees in mijn Data & AI Radar ${ctx.kind} en heb een vraag.\n\n${ctx.kind === "dit artikel" ? "Artikel" : "Verdieping"}: ${ctx.title}${ctx.meta ? ` (${ctx.meta})` : ""}${ctx.url ? `\nBron: ${ctx.url}` : ""}\nSamenvatting: ${ctx.summary || ""}`;
+    const tail = `\n\n${ASK_ME}\n\nMijn vraag: ${question}\n\nAntwoord in eenvoudig Nederlands, kort en concreet.${ctx.url ? " Lees zo nodig de bron." : ""}`;
+    let body = ctx.body || "";
+    const room = 1800 - head.length - tail.length;   // 1800 tekens ≈ 6000 na URL-codering
+    if (body.length > room) body = room > 200 ? body.slice(0, room).replace(/\s+\S*$/, "") + " …" : "";
+    return head + (body ? `\nUitleg uit de radar: ${body}` : "") + tail;
+  }
+  const askUrl = (ctx, q) => `https://claude.ai/new?q=${encodeURIComponent(askPrompt(ctx, q))}`;
+  function askBlock(kind) {
+    return `<section class="block ask" id="ask" data-kind="${kind}"><h2>Vraag het Claude</h2>
+      <div class="ask-chips">${ASK_CHIPS.map((c) => `<button type="button" data-ask="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+      <form class="ask-form" id="ask-form"><textarea id="ask-q" rows="2" placeholder="Of stel je eigen vraag…" aria-label="Je vraag over dit stuk"></textarea>
+      <button class="btn" type="submit">Vraag Claude ↗</button></form>
+      <p class="fb-note">Opent een nieuw gesprek in Claude met de kern van dit stuk erbij.</p></section>`;
+  }
+  function askContext() {
+    const h = location.hash.slice(1);
+    if (h.startsWith("a-")) {
+      const a = state.byId.get(h.slice(2)); if (!a) return null;
+      return { kind: "dit artikel", title: a.headline || a.title, meta: `${source(a.source_id).name}, ${fmtDate(a.published_at)}`, url: a.url,
+        summary: a.summary, body: (a.story || [a.simple_explanation, a.personal_relevance].filter(Boolean)).join(" ") };
+    }
+    if (h.startsWith("v-")) {
+      const d = state.ddById.get(h.slice(2)); if (!d) return null;
+      return { kind: "deze verdieping", title: d.headline, meta: `geschreven ${fmtDate(d.written_at)}`, url: "",
+        summary: d.summary, body: (d.sections || []).map((x) => `${x.heading}: ${x.paragraphs.join(" ")}`).join(" ") };
+    }
+    return null;
+  }
+  function askOpen(q) {
+    const ctx = askContext(); if (!ctx || !q.trim()) return;
+    window.open(askUrl(ctx, q.trim()), "_blank", "noopener");
+  }
+  function askClick(e) {
+    const chip = e.target.closest("[data-ask]");
+    if (chip) askOpen(chip.dataset.ask);
+  }
+
   function fbBlock(a) {
     const mine = fb.get(a.id);
     const reasons = mine ? (mine.v === 1 ? FB_UP : FB_DOWN) : null;
@@ -659,6 +711,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${block("Probeer dit", "idee", a.experiment)}
         ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         `}
+        ${askBlock("artikel")}
         <section class="block fb" id="fb" data-id="${esc(a.id)}">${fbBlock(a)}</section>
         <section class="block"><h2>Bron</h2><div class="source"><dl>
           <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
@@ -730,7 +783,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.body.style.overflow = "hidden";
     $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
     $("#back", r).focus({ preventScroll: true });
-    r.onclick = (e) => { fbClick(e); quizClick(e); };
+    r.onclick = (e) => { fbClick(e); quizClick(e); askClick(e); };
+    const af = $("#ask-form", r);
+    if (af) af.onsubmit = (e) => { e.preventDefault(); askOpen($("#ask-q", r).value); };
     const dlg = $("#score-dlg", r), btn = $("#score-btn", r);
     if (dlg && btn) {
       btn.onclick = () => dlg.showModal();

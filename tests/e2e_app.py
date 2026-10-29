@@ -135,6 +135,19 @@ with sync_playwright() as p:
     check("6. link naar origineel klopt en opent in nieuw tabblad", any(h[0] == enriched["url"] and h[1] == "_blank" for h in hrefs), str(hrefs))
     if SHOTS:
         page.screenshot(path=str(SHOTS / "2-artikel.png"))
+    # 16. Vraag het Claude
+    page.evaluate("window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }")
+    check("16. Vraag het Claude met snelle vragen", page.locator("#ask [data-ask]").count() == 4)
+    page.locator("#ask [data-ask]").first.click()
+    page.fill("#ask-q", "Werkt dit ook met Unity Catalog?")
+    page.click("#ask-form button[type=submit]")
+    opened = [u for u in page.evaluate("window.__opened") if isinstance(u, str)]
+    from urllib.parse import unquote as _uq
+    ok = len(opened) == 2 and all(u.startswith("https://claude.ai/new?q=") and len(u) < 7000 for u in opened)
+    txt = _uq(opened[-1]) if opened else ""
+    check("   opent Claude met artikel, bron en jouw vraag", ok and (enriched.get("headline") or enriched["title"]) in txt
+          and enriched["url"] in txt and "Werkt dit ook met Unity Catalog?" in txt, f"{len(opened)} geopend, {max(map(len, opened)) if opened else 0} tekens")
+
     # 14. Duimpje
     check("14. duimpjes onderaan het artikel", page.locator("#fb [data-vote]").count() == 2)
     page.click('#fb [data-vote="-1"]')
