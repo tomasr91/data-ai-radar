@@ -130,18 +130,20 @@ with sync_playwright() as p:
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
-    check("12. vijf keuzes voor morgen", page.locator("a.card.opt").count() == 5)
-    href = page.locator("a.card.opt").first.get_attribute("href")
+    check("12. nieuwste verdieping staat bovenaan", (not dds) or page.locator("#content .card").first.get_attribute("data-dd") == dds[0]["id"])
+    check("   keuzes zijn ingeklapt", page.locator("details#pick").count() == 1 and not page.locator(".optlist").is_visible())
+    page.click("details#pick summary")
+    check("   uitklappen toont vijf keuzes", page.locator(".optlist a").count() == 5)
+    href = page.locator(".optlist a").first.get_attribute("href")
     check("   keuze opent een GitHub-issue met de juiste titel",
           href.startswith("https://github.com/tomasr91/data-ai-radar/issues/new?title=") and f"Verdieping%3A%20{opts[0]['id']}" in href, href[:120])
     # Terug uit GitHub: de eigenaar heeft nu gekozen
     GH["issues"] = FAKE_ISSUES
     page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
-    page.wait_for_selector(".card.opt.chosen", timeout=3000)
-    chosen = page.eval_on_selector_all(".card.opt", "els => els.map(e => e.dataset.opt)")
-    check("   na kiezen alleen de keuze van de eigenaar zichtbaar", chosen == [opts[1]["id"]], str(chosen))
-    check("   kop 'Verdieping voor morgen' met de gekozen titel",
-          "verdieping voor morgen" in page.locator("#content").inner_text().lower() and opts[1]["title"] in page.locator(".card.opt.chosen").inner_text())
+    page.wait_for_selector(".tomorrow.chosen", timeout=3000)
+    check("   na kiezen één regel 'Morgen' met de keuze van de eigenaar",
+          page.locator(".optlist").count() == 0 and page.locator(".tomorrow.chosen").get_attribute("data-opt") == opts[1]["id"]
+          and opts[1]["title"] in page.locator(".tomorrow.chosen").inner_text())
     check("   sorteerknoppen verborgen bij Verdieping", not page.locator("#seg-sort").is_visible())
     if dds:
         page.locator(".card[data-dd]").first.click()
