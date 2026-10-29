@@ -75,7 +75,7 @@ sources:
     language: en
     fetch_method: github_releases
     # Patchreleases (v2.0.31) vallen weg via minor_builds in interests.yml; alleen grotere releases blijven over.
-    verification: {status: user_supplied, checked_on: "2026-10-29", note: "Toegevoegd 29-10-2026 als vervanging voor Anthropic News/Engineering (geen feed). Werking blijkt uit de eerstvolgende Actions-run."}
+    verification: {status: verified, checked_on: "2026-10-29", note: "Werkt (Actions-run 29-10-2026, 10 items). Claude Code brengt alles uit als patchrelease (v2.1.3xx); die vallen weg via minor_builds, dus deze bron levert voorlopig niets op."}
 
   - id: dbt_labs_blog
     name: dbt Labs Blog
@@ -210,6 +210,19 @@ sources:
     language: en
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Vooral AI-evaluatie."}
+
+  - id: langchain_blog
+    name: LangChain Blog
+    url: https://www.langchain.com/blog
+    feed_url: https://www.langchain.com/blog/rss.xml
+    type: vendor_blog
+    topics: [ai_agents_rag, ai_context_engineering, ai_evaluation_observability, open_source_tools]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-10-29", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 29-10-2026): 30 items, laatste 28-10-2026. Leverancier van LangChain/LangSmith: productclaims controleren."}
 
   - id: chip_huyen
     name: Chip Huyen
