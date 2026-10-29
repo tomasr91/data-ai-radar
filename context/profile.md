@@ -47,6 +47,7 @@ Dit bestand beschrijft wie ik ben, wat ik al weet en hoe de Data & AI Radar uitl
 - Patronen en architectuurkeuzes die herbruikbaar zijn.
 - Ontwikkelingen rond AI + data die direct toepasbaar zijn op een dbt/Databricks-platform.
 - Zorg- en privacy-relevante ontwikkelingen rond data en AI.
+- `[bekend]` Onderbouwde meningen van erkende vakmensen over het vakgebied, ook zonder nieuwe functie of release.
 
 **Niet:**
 - Hype en algemene "AI verandert alles"-stukken.

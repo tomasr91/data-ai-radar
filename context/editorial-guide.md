@@ -40,6 +40,18 @@ Een artikel is **één doorlopend verhaal**, geen formulier met losse vakjes.
 
 **Lengte past zich aan:** een kleine release krijgt 3 alinea's, een diepgaand praktijkverhaal 4 of 5. Liever kort en helder dan volledig.
 
+### Opiniestukken (`article_type: "opinie"`)
+Een onderbouwde mening van een **erkende vakpersoon** is welkom, ook zonder nieuwe functie of release.
+
+- **Erkend** betekent: een bron in `sources.yml` met type `expert_blog`, of een auteur met een aantoonbare staat van dienst in het vak (bijv. oprichter of maintainer van een tool uit de stack, auteur van een vakboek, of iemand die bij een leverancier aan het product werkt). Anonieme stukken, gastblogs om een product te verkopen en algemene "AI verandert alles"-stukken vallen hier niet onder.
+- De mening moet over het vakgebied gaan en **onderbouwd** zijn: met argumenten, ervaring of voorbeelden. Een losse stelling zonder uitleg is niet genoeg.
+- **Kop**: geef de mening weer, met de naam erbij, bijv. *"Stancil: de semantische laag lost het AI-probleem niet op"*.
+- **Verhaal** (3 tot 5 alinea's): *Wat vindt de auteur?* · *Waarom? Zijn belangrijkste argumenten* · *Wat betekent dat voor mij, en waar ben je het mee eens of niet?* · eventueel *het tegengeluid of de zwakke plek in het argument*.
+- Schrijf de mening altijd toe aan de auteur ("Stancil vindt…", "volgens Reis…"). Presenteer een mening nooit als feit.
+- **Bronfeiten** (`key_facts`) worden hier **de kernpunten van de auteur**: zijn stellingen en argumenten, toegeschreven en zo dicht mogelijk bij de tekst. Feiten die hij noemt, zoals cijfers, alleen als hij ze zelf geeft.
+- **Let op** (`limitations`): noem belangen (werkt de auteur bij een leverancier?) en wat het stuk niet onderbouwt.
+- `availability_status` is meestal `onbekend`; `practicality` en `novelty` gaan over de bruikbaarheid en frisheid van het idee.
+
 ### Dagelijks overzicht
 De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 - Bovenaan maximaal 5 artikelen, gesorteerd op relevantiescore; per artikel titel + samenvatting + link naar het volledige artikel.
@@ -86,6 +98,6 @@ De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 - **Klantverhalen** alleen als ze concreet maken welke tools er gebruikt worden en wat de toepassing is. Het verhaal begint dan bij de toepassing, niet bij het bedrijf.
 - **Power BI en Fabric**: alleen grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen.
 - **dbt-releases**: grote en kleine releases en bèta's wel; patches en dev-builds niet.
-- Artikelen zonder technische inhoud of praktische toepassing.
+- Artikelen zonder technische inhoud of praktische toepassing. Uitzondering: onderbouwde opinies van erkende vakmensen (zie §2, Opiniestukken).
 - Personeelsnieuws, tenzij het directe gevolgen heeft voor een tool uit mijn stack.
 - Herhalingen van eerder getoonde ontwikkelingen zonder nieuwe informatie.

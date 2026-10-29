@@ -109,6 +109,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .pill.preview, .pill.experimenteel { background: var(--warn-soft); color: var(--warn); }
 .pill.aangekondigd, .pill.onbekend { background: var(--info-soft); color: var(--info); }
 .pill.rawp { background: var(--info-soft); color: var(--muted); }
+.pill.opinie { background: var(--accent-soft); color: var(--accent); }
 .signal { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); }
 .bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
 .bars i { width: 4px; border-radius: 1px; background: var(--signal-off); }
@@ -335,7 +336,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const s = source(a.source_id);
     const body = a.processing_status === "enriched" ? a.summary : a.excerpt;
     return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
-      <div class="meta"><span class="src">${esc(s.name)}</span>${bars(a.relevance_score)}</div>
+      <div class="meta"><span class="src">${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score)}</div>
       <h3>${esc(a.headline || a.title)}</h3>
       ${body ? `<p class="sum">${esc(body)}</p>` : ""}
     </article>`;
@@ -377,15 +378,16 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <a class="btn ghost" style="height:36px;padding:0 12px;font-size:.84rem" href="${esc(a.url)}" target="_blank" rel="noopener">Origineel ↗</a>
       </div></div>
       <article class="full wrap">
-        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
+        <div class="meta"><span class="src">${esc(TYPE_LABEL[s.type] || "")}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`}${bars(a.relevance_score)}</div>
         ${a.format_version === 2 ? `
         <h1>${esc(a.headline)}</h1>
         <p class="orig">Origineel: ${esc(a.title)}</p>
+        ${a.article_type === "opinie" && a.author ? `<div class="note" style="margin-top:14px">Dit is een mening van ${esc(a.author)}.</div>` : ""}
         ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
         <div class="story">${(a.story || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>
         ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
         ${a.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
-        ${a.key_facts?.length ? `<details class="facts"><summary>Bronfeiten <span class="kind bron">Uit de bron</span></summary><ul>${a.key_facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>` : ""}
+        ${a.key_facts?.length ? `<details class="facts"><summary>${a.article_type === "opinie" ? "Kernpunten van de auteur" : "Bronfeiten"} <span class="kind bron">Uit de bron</span></summary><ul>${a.key_facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>` : ""}
         ` : `
         <h1>${esc(a.title)}</h1>
         ${enriched ? `<p class="lead">${esc(a.summary)}</p>` : `<div class="callout"><p style="margin:0">Claude heeft dit artikel nog niet uitgelegd. Dat gebeurt meestal de volgende ochtend.${a.excerpt ? ` Korte beschrijving (Engels): <em>${esc(a.excerpt)}</em>` : ""}</p></div>`}

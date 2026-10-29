@@ -25,6 +25,8 @@ De radar toont alleen **must-knows**. Sla deze artikelen over:
 - **Klantverhalen zonder concrete aanpak**: het artikel moet noemen **welke tools** ze gebruiken en **wat de toepassing** is (wat bouwden ze, hoe werkt het). Alleen resultaten, citaten of marketing: overslaan.
 - **Power BI en Fabric**: alleen grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen. De rest overslaan.
 
+**Opiniestukken mogen wel**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Sla over met reden: een opinie van een niet-erkende auteur, een stuk zonder onderbouwing, een verkooppraatje, of een stuk buiten het vakgebied (bijv. over sport of politiek).
+
 Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee, overslaan.
 
 ## Regels
@@ -44,6 +46,7 @@ Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of 
   - `novelty`: 0,2 = herhaling van iets ouds · 0,8+ = echt nieuw
 - `development_key`: een korte sleutel voor de ontwikkeling (bijv. `uc-data-classification-okt-2026`). Gebruik dezelfde sleutel als een ander artikel over dezelfde ontwikkeling gaat. De pipeline groepeert ze dan.
 - `date_note`: vul in als de datum twijfelachtig is (bijv. alleen 'laatst bewerkt', of een herpublicatie).
+- `article_type`: `nieuws` (standaard, mag je weglaten) of `opinie`. Bij `opinie` is `author` verplicht: naam plus waarom erkend, bijv. `"Benn Stancil, oprichter van Mode"`. Schrijf de mening altijd toe aan de auteur en zet in `key_facts` zijn kernpunten.
 - `exceptional: true` alleen bij een grote, bevestigde wijziging in een tool uit de eigen stack.
 - Schrijf in eenvoudig Nederlands. Zet de Engelse vakterm bij het eerste gebruik tussen haakjes. Geen marketingtaal.
 - Wijzig nooit iets in `context/`, `app/` of `pipeline/`. Deze taak schrijft alleen in `data/enrichment/`.
@@ -73,6 +76,8 @@ Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of 
   "development_key": "korte-sleutel",
   "date_note": "",
   "exceptional": false,
+  "article_type": "nieuws | opinie",
+  "author": "Alleen bij opinie: naam, en waarom erkend",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-29T06:20:00Z",
   "prompt_version": "taak-v2"

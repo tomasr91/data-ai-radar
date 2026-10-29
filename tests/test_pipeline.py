@@ -210,6 +210,16 @@ class TestEnrichment(unittest.TestCase):
         self.assertEqual(arts[2]["processing_status"], "enriched")
         self.assertTrue((enrich.CACHE / f"{arts[2]['id']}.json").exists(), "verrijking wordt gecachet")
 
+    def test_opinion_needs_author(self):
+        base = {"format_version": 2, "headline": "Kop", "summary": "s", "personal_relevance": "r",
+                "experiment": "e", "story": ["a", "b", "c"], "key_facts": ["Auteur stelt X."],
+                "availability_status": "onbekend", "limitations": [], "topics": ["dbt_analytics_engineering"],
+                "quality": {"depth": 0.5, "practicality": 0.5, "novelty": 0.5}}
+        self.assertEqual(enrich.validate(base, self.topics), [])
+        self.assertTrue(enrich.validate({**base, "article_type": "opinie"}, self.topics))
+        self.assertEqual(enrich.validate({**base, "article_type": "opinie", "author": "Benn Stancil, oprichter van Mode"}, self.topics), [])
+        self.assertTrue(enrich.validate({**base, "article_type": "column"}, self.topics))
+
     def test_cache_is_reused(self):
         calls = []
 

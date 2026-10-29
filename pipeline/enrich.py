@@ -26,6 +26,7 @@ DEFAULT_MODEL = "claude-sonnet-5-5"
 TEXT_FIELDS = ["summary", "what_is_new", "simple_explanation", "practical_example",
                "personal_relevance", "practical_application", "experiment"]
 STATUSES = {"beschikbaar", "preview", "aangekondigd", "experimenteel", "onbekend"}
+ARTICLE_TYPES = {"nieuws", "opinie"}
 
 
 def context_hash() -> str:
@@ -69,6 +70,11 @@ def validate(data: dict, topic_ids: set) -> list:
         for f in TEXT_FIELDS:
             if f in data and data[f] is not None and not isinstance(data[f], str):
                 problems.append(f"veld '{f}' moet tekst zijn")
+    kind = data.get("article_type", "nieuws")
+    if kind not in ARTICLE_TYPES:
+        problems.append(f"ongeldig article_type '{kind}' (nieuws of opinie)")
+    elif kind == "opinie" and not (isinstance(data.get("author"), str) and data["author"].strip()):
+        problems.append("bij article_type 'opinie' is 'author' verplicht")
     if data.get("availability_status") not in STATUSES:
         problems.append(f"ongeldige availability_status '{data.get('availability_status')}'")
     if not isinstance(data.get("limitations", []), list):
@@ -86,7 +92,7 @@ def validate(data: dict, topic_ids: set) -> list:
 def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
-                            "format_version", "headline", "story", "key_facts"]:
+                            "format_version", "headline", "story", "key_facts", "article_type", "author"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"
