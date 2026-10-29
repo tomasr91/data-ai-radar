@@ -3,6 +3,7 @@
 Draaien: python tests/e2e_app.py   (vereist: pip install playwright && playwright install chromium)
 Gebruikt data/feed.json; zet een kopie naast de app en start een lokale server.
 """
+import re
 import functools
 import http.server
 import json
@@ -63,37 +64,19 @@ with sync_playwright() as p:
     page.goto(url)
     page.wait_for_selector(".card")
     check("1. app opent en toont artikelen", page.locator(".card").count() == len(arts), f"{page.locator('.card').count()} kaarten")
-    status = page.locator("#status").inner_text()
-    check("2. status maakt modus zichtbaar", "Momentopname" in status if feed["mode"] == "snapshot" else feed["mode"] in status.lower(), status)
+    upd = page.locator("#upd").inner_text()
+    check("2. laatste update met datum en tijd zichtbaar", "Laatst bijgewerkt" in upd and re.search(r"\d{4}.*\d{2}:\d{2}", upd) is not None, upd)
+    check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
+    check("   precies twee filters: Relevant en Nieuw", page.locator("#seg-sort button").all_inner_texts() == ["Relevant", "Nieuw"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     check("10. geen dubbele artikelen in de lijst", len(ids) == len(set(ids)))
-    check("    'Belangrijkst' toont max. 5", page.locator(".top5 li").count() == min(5, len(feed["daily_top"])))
     if SHOTS:
         page.screenshot(path=str(SHOTS / "1-feed.png"))
 
-    # 3. Filteren op onderwerp
-    for g in feed["groups"]:
-        page.click(f'.chip[data-g="{g["id"]}"]')
-        expected = sum(1 for a in arts if g["id"] in a["groups"])
-        n = page.locator(".card").count()
-        ok = n == expected and (expected > 0 or page.locator(".empty").count() == 1)
-        check(f"3. filter '{g['label']}'", ok, f"{n} getoond, {expected} verwacht")
-    page.click('.chip[data-g="all"]')
-
-    # Zoeken en periode
-    page.fill("#q", "Okta")
-    page.wait_for_timeout(300)
-    check("   zoeken op 'Okta'", page.locator(".card").count() == 1)
-    page.fill("#q", "")
-    page.wait_for_timeout(300)
-    page.click('#seg-period button[data-v="week"]')
-    week = page.locator(".card").count()
-    check("   periodefilter 'Week' sluit artikelen zonder datum uit", 0 < week <= len(arts))
-    page.click('#seg-period button[data-v="all"]')
     page.click('#seg-sort button[data-v="date"]')
     dates = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     by = {a["id"]: a.get("published_at") or "" for a in arts}
-    check("   sorteren op nieuwste", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
+    check("   filter Nieuw sorteert op datum", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
     page.click('#seg-sort button[data-v="score"]')
 
     # 4-6. Artikel openen, uitleg, bron en link
@@ -137,7 +120,7 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
     sw = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
     check("8. geen horizontaal scrollen op 412px", sw <= 0, f"{sw}px te breed")
-    small = page.eval_on_selector_all(".chip, .seg button, .icon-btn", "els => els.filter(e => e.getBoundingClientRect().height < 28).length")
+    small = page.eval_on_selector_all(".tabs button, .icon-btn", "els => els.filter(e => e.getBoundingClientRect().height < 28).length")
     check("8. knoppen groot genoeg voor aanraken", small == 0)
     page.emulate_media(color_scheme="dark")
     if SHOTS:

@@ -54,7 +54,12 @@ header.top { background: var(--bg); }
 .brand { display: flex; align-items: center; gap: 12px; padding-block: 14px 10px; }
 .mark { width: 34px; height: 34px; flex: none; }
 .brand h1 { margin: 0; font-size: 1.32rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.1; }
-.brand p { margin: 2px 0 0; font-size: 0.82rem; color: var(--muted); }
+.brand p { margin: 3px 0 0; font-size: 0.82rem; color: var(--muted); }
+.brand p .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.brand p strong { color: var(--ink); font-weight: 600; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 8px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.tabs button { border: 0; background: none; height: 38px; border-radius: 9px; font-size: 0.95rem; cursor: pointer; color: var(--muted); }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 650; }
 .brand .grow { flex: 1; min-width: 0; }
 .icon-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; cursor: pointer; flex: none; }
 .icon-btn svg { width: 19px; height: 19px; }
@@ -86,7 +91,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .top5 .rank { font-family: var(--f-meta); font-size: 0.8rem; color: var(--signal); padding-top: 2px; }
 .top5 .t { display: block; font-weight: 650; font-size: 0.98rem; line-height: 1.3; text-wrap: balance; }
 .top5 .m { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
-.cards { display: grid; gap: 12px; }
+.cards { margin-top: 14px; display: grid; gap: 12px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 15px 15px 13px; cursor: pointer; display: grid; gap: 8px; min-width: 0; }
 .card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
 .meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); align-items: center; }
@@ -187,33 +192,24 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       </svg>
       <div class="grow">
         <h1>Data &amp; AI Radar</h1>
-        <p>De ontwikkelingen die ertoe doen voor jouw data- en AI-werk.</p>
+        <p class="upd" id="upd">Feed laden…</p>
       </div>
       <button class="icon-btn" id="btn-report" type="button" aria-label="Feedcontrole openen" title="Feedcontrole">
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg>
       </button>
     </div>
-    <div class="search">
-      <input id="q" type="search" placeholder="Zoek in titels en samenvattingen" aria-label="Zoeken" autocomplete="off">
-    </div>
   </div>
 </header>
 <div class="filters">
   <div class="wrap">
-    <div class="chips" id="chips" role="toolbar" aria-label="Filter op onderwerp"></div>
-    <div class="controls">
-      <div class="seg" role="group" aria-label="Periode" id="seg-period">
-        <button type="button" data-v="week">Week</button><button type="button" data-v="month">Maand</button><button type="button" data-v="all">Alles</button>
-      </div>
-      <div class="seg" role="group" aria-label="Sortering" id="seg-sort">
-        <button type="button" data-v="score">Relevant</button><button type="button" data-v="date">Nieuwste</button>
-      </div>
+    <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
+      <button type="button" data-v="score">Relevant</button><button type="button" data-v="date">Nieuw</button>
     </div>
   </div>
 </div>
 
 <main class="wrap" id="main">
-  <div class="status" id="status"><span class="dot" style="background:var(--muted)"></span><span>Feed laden…</span></div>
+  <div class="status" id="status" hidden></div>
   <div id="content"><div class="cards"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div>
 </main>
 
@@ -280,15 +276,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (!Array.isArray(feed.articles)) throw new Error("het bestand bevat geen artikellijst");
       state.feed = feed;
       feed.articles.forEach((a) => state.byId.set(a.id, a));
-      state.group = store.get("group", "all");
-      if (state.group !== "all" && !feed.groups.some((g) => g.id === state.group)) state.group = "all";
-      state.period = store.get("period", "all");
       state.sort = store.get("sort", "score");
       renderStatus();
-      renderChips();
       renderSeg();
       route();
     } catch (e) {
+      $("#upd").textContent = "Niet geladen";
+      $("#status").hidden = false;
       $("#status").innerHTML = `<span class="dot" style="background:var(--bad)"></span><span><strong>De feed kon niet worden geladen.</strong> ${esc(e.message)}. Controleer of feed.json naast de app staat.</span>`;
       $("#content").innerHTML = `<div class="empty"><h3>Geen artikelen beschikbaar</h3><p>De app vindt geen leesbare feed. Probeer het opnieuw.</p><button class="btn" type="button" id="retry">Opnieuw laden</button></div>`;
       $("#retry").onclick = () => location.reload();
@@ -298,11 +292,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function renderStatus() {
     const f = state.feed, m = MODE[f.mode] || MODE.partial;
     const ok = f.sources.filter((s) => s.status === "ok").length;
-    const text = f.mode === "snapshot"
-      ? `Echte artikelen, eenmalig opgehaald uit ${ok} bronnen. Wordt niet automatisch ververst.`
-      : `${m.text} ${ok} van ${f.sources.length} bronnen leverden artikelen.`;
-    $("#status").innerHTML = `<span class="dot" style="background:${m.color}"></span>
-      <span><strong>${esc(m.label)}</strong> · bijgewerkt ${esc(fmtDateTime(f.last_successful_update))}<br>${esc(text)} <a href="#feedcontrole">Feedcontrole</a></span>`;
+    const fine = f.mode === "live" && ok === f.sources.length;
+    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span>Laatst bijgewerkt <strong>${esc(fmtDateTime(f.last_successful_update || f.generated_at))}</strong>`;
+    const st = $("#status");
+    st.hidden = fine;
+    if (!fine) {
+      const text = f.mode === "snapshot" ? `Momentopname uit ${ok} bronnen; wordt niet automatisch ververst.` : `${m.text} ${ok} van ${f.sources.length} bronnen leverden artikelen.`;
+      st.innerHTML = `<span class="dot" style="background:${m.color}"></span><span><strong>${esc(m.label)}</strong><br>${esc(text)} <a href="#feedcontrole">Feedcontrole</a></span>`;
+    }
   }
 
   /* ---- Filters ---- */
@@ -329,14 +326,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return l;
   }
 
-  function renderChips() {
-    const f = state.feed;
-    const count = (g) => f.articles.filter((a) => g === "all" || (a.groups || []).includes(g)).length;
-    const items = [{ id: "all", label: "Alles" }, ...f.groups];
-    $("#chips").innerHTML = items.map((g) => `<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${state.group === g.id}">${esc(g.label)} <span class="n">${count(g.id)}</span></button>`).join("");
-  }
   function renderSeg() {
-    document.querySelectorAll("#seg-period button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.period));
     document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
   }
 
@@ -347,12 +337,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const body = enriched
       ? `<p class="sum">${esc(a.summary)}</p><p class="why"><b>Voor jou:</b> ${esc(firstSentence(a.personal_relevance))}</p>`
       : `<p class="raw">Nog niet uitgelegd. ${a.excerpt ? "Korte beschrijving (Engels): " + esc(a.excerpt) : "Open het artikel voor de link naar de bron."}</p>`;
-    const status = enriched ? `<span class="pill ${esc(a.availability_status)}">${esc(STATUS_LABEL[a.availability_status] || "")}</span>` : `<span class="pill rawp">onverwerkt</span>`;
+    const status = !enriched ? `<span class="pill rawp">onverwerkt</span>` : "";
     return `<article class="card" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
       <div class="meta"><span class="src">${esc(s.name)}</span><span>${esc(fmtDate(a.published_at))}</span>${a.reading_minutes ? `<span>${a.reading_minutes} min lezen</span>` : ""}${status}</div>
       <h3>${esc(a.headline || a.title)}</h3>
       ${body}
-      <div class="foot"><div class="tags">${(a.groups || []).slice(0, 2).map((g) => `<span class="tag">${esc(groupLabel(g))}</span>`).join("")}</div>${bars(a.relevance_score)}</div>
+      <div class="foot">${bars(a.relevance_score)}</div>
     </article>`;
   }
 
@@ -360,27 +350,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed;
     const list = sorted(f.articles.filter(matches));
     let html = "";
-    const showTop = state.group === "all" && !state.q && state.period === "all" && state.sort === "score";
-    if (showTop && f.daily_top?.length) {
-      const top = f.daily_top.map((id) => state.byId.get(id)).filter(Boolean);
-      html += `<h2 class="sec"><span>Belangrijkst</span><span>${top.length} van ${f.articles.length}</span></h2><ol class="top5">${top.map((a, i) => `
-        <li><button type="button" data-id="${esc(a.id)}"><span class="rank">${i + 1}</span><span><span class="t">${esc(a.headline || a.title)}</span><span class="m">${esc(source(a.source_id).name)} · ${esc(groupLabel(a.groups?.[0]))}</span></span>${bars(a.relevance_score)}</button></li>`).join("")}</ol>`;
-    }
-    const heading = state.group === "all" ? "Alle artikelen" : groupLabel(state.group);
-    html += `<h2 class="sec"><span>${esc(heading)}</span><span>${list.length} artikel${list.length === 1 ? "" : "en"}</span></h2>`;
     if (!list.length) {
       const missing = f.quality_report?.topics_without_source || [];
       const groupMissing = state.group !== "all" && missing.some((t) => f.topics[t]?.group === state.group);
-      html += `<div class="empty"><h3>Geen artikelen gevonden</h3><p>${groupMissing
-        ? "Voor dit onderwerp is nog geen bron ingesteld in sources.yml. Voeg een bron toe om hier nieuws te krijgen."
-        : state.period !== "all" ? "Er zijn geen artikelen in deze periode. Kies 'Alles' om ook oudere artikelen en artikelen zonder datum te zien."
-        : "Pas je zoekterm of filter aan."}</p>${state.q || state.period !== "all" || state.group !== "all" ? `<button class="btn ghost" type="button" id="reset">Filters wissen</button>` : ""}</div>`;
+      html += `<div class="empty"><h3>Nog geen artikelen</h3><p>Er zijn nu geen artikelen om te tonen. Kom later terug.</p></div>`;
     } else {
       html += `<div class="cards">${list.map(card).join("")}</div>`;
     }
     $("#content").innerHTML = html;
-    const r = $("#reset");
-    if (r) r.onclick = () => { state.q = ""; $("#q").value = ""; setGroup("all"); state.period = "all"; store.set("period", "all"); renderSeg(); renderList(); };
   }
 
   /* ---- Artikel ---- */
@@ -505,16 +482,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     renderList();
   }
   function open(id) { state.cameFromList = true; location.hash = "a-" + id; }
-  function setGroup(g) { state.group = g; store.set("group", g); renderChips(); }
 
   /* ---- Events ---- */
   window.addEventListener("hashchange", route);
   $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id]"); if (el) open(el.dataset.id); });
   $("#content").addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) { e.preventDefault(); open(e.target.dataset.id); } });
-  $("#chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (!b) return; setGroup(b.dataset.g); renderList(); b.scrollIntoView({ inline: "nearest", block: "nearest" }); });
-  $("#seg-period").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.period = b.dataset.v; store.set("period", state.period); renderSeg(); renderList(); });
   $("#seg-sort").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.sort = b.dataset.v; store.set("sort", state.sort); renderSeg(); renderList(); });
-  let t; $("#q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); renderList(); }, 120); });
   $("#btn-report").addEventListener("click", () => { state.cameFromList = true; location.hash = "feedcontrole"; });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden) location.hash = ""; });
 
