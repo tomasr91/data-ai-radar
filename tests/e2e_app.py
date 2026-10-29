@@ -57,6 +57,12 @@ feed["deepdive_options"], _ = _dd.load_options(set(_cfg.load().topics))
 feed["repo"] = "tomasr91/data-ai-radar"
 opts = feed["deepdive_options"]["options"]
 # Nagebootste GitHub-API: de eigenaar koos de tweede keuze; een vreemde koos de eerste (telt niet).
+# Nagebootste trend: drie artikelen uit minstens twee bronnen
+_tr, _srcs = [], set()
+for _a in arts:
+    if len(_tr) < 3 and (len(_tr) < 2 or _a["source_id"] not in _srcs or len(_srcs) > 1):
+        _tr.append(_a["id"]); _srcs.add(_a["source_id"])
+feed["trends"] = [{"id": "test-trend", "title": "Testtrend", "summary": "Drie artikelen over hetzelfde.", "topics": [], "article_ids": _tr, "generated_at": "2026-10-29T06:00:00Z"}]
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -83,7 +89,7 @@ with sync_playwright() as p:
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" in upd and re.search(r"\d{4}.*\d{2}:\d{2}", upd) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
-    check("   precies twee filters: Nieuw en Relevant", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Relevant"])
+    check("   filters Nieuw, Relevant en Trends", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Relevant", "Trends"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     check("10. geen dubbele artikelen in de lijst", len(ids) == len(set(ids)))
     if SHOTS:
@@ -97,6 +103,14 @@ with sync_playwright() as p:
         return datetime.fromisoformat(iso.replace("Z", "+00:00")).timestamp() if iso else 0
     by = {a["id"]: added(a) for a in arts}
     check("   filter Nieuw sorteert op toegevoegd aan de radar", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
+    page.click('#seg-sort button[data-v="trends"]')
+    check("13. Trends toont de trend met zijn artikelen", page.locator(".trend").count() == 1 and page.locator(".trend-list button").count() == len(_tr)
+          and "Testtrend" in page.locator(".trend").inner_text())
+    page.locator(".trend-list button").first.click()
+    page.wait_for_selector("#reader:not([hidden]) article.full")
+    check("   artikel uit een trend opent", page.locator("#reader").is_visible())
+    page.click("#back")
+    page.wait_for_selector("#reader", state="hidden")
     page.click('#seg-sort button[data-v="score"]')
 
     # 4-6. Artikel openen, uitleg, bron en link
@@ -121,8 +135,27 @@ with sync_playwright() as p:
     check("6. link naar origineel klopt en opent in nieuw tabblad", any(h[0] == enriched["url"] and h[1] == "_blank" for h in hrefs), str(hrefs))
     if SHOTS:
         page.screenshot(path=str(SHOTS / "2-artikel.png"))
+    # 14. Duimpje
+    check("14. duimpjes onderaan het artikel", page.locator("#fb [data-vote]").count() == 2)
+    page.click('#fb [data-vote="-1"]')
+    page.click('#fb [data-reason="te_basic"]')
+    check("   reden te kiezen na duim omlaag", page.locator('#fb [data-reason="te_basic"][aria-pressed="true"]').count() == 1)
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
+    check("   artikel met duim omlaag verdwijnt uit de lijst", page.locator(f'.card[data-id="{enriched["id"]}"]').count() == 0
+          and page.locator(".card[data-id]").count() == len(arts) - 1)
+    sh = page.locator("#fb-send").get_attribute("href") or ""
+    from urllib.parse import unquote
+    body = unquote(sh)
+    check("   versturen maakt een feedback-issue met de stem als JSON",
+          "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic"' in body, body[-160:])
+    page.route("https://github.com/**", lambda r: r.abort())
+    page.click("#fb-send")
+    page.wait_for_timeout(500)
+    check("   na versturen verdwijnt de knop", page.locator("#fb-send").count() == 0)
+    page.evaluate("localStorage.removeItem('radar:fb')")
+    page.evaluate("location.reload()")
+    page.wait_for_selector(".card")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
 
     # 11. Tabblad Verdieping
@@ -153,11 +186,30 @@ with sync_playwright() as p:
         text = page.locator("#reader").inner_text()
         first = sorted(dds, key=lambda d: d["written_at"], reverse=True)[0]
         check("   verdieping opent met onderdelen en Verder lezen", first["headline"] in text and first["sections"][0]["heading"] in text and "Verder lezen" in text)
+        if first.get("quiz"):
+            q0 = first["quiz"][0]
+            wrong = next(i for i in range(len(q0["options"])) if i != q0["answer"])
+            check("15. Test jezelf met controlevragen", page.locator(".quiz .q").count() == len(first["quiz"]))
+            page.locator(".quiz .q").first.locator(f'[data-opt-i="{wrong}"]').click()
+            exp = page.locator(".quiz .q").first.inner_text()
+            check("   fout antwoord: uitleg en 'komt over een week terug'", "Niet goed" in exp and "week terug" in exp)
+            # een week later: vraag staat klaar als herhaling
+            page.evaluate("""() => { const d = JSON.parse(localStorage.getItem('radar:quiz')); for (const k in d) d[k].due = '2000-01-01T00:00:00Z'; localStorage.setItem('radar:quiz', JSON.stringify(d)); }""")
         if SHOTS:
             page.screenshot(path=str(SHOTS / "3-verdieping.png"))
         page.click("#back")
         page.wait_for_selector("#reader", state="hidden")
         check("   terug naar de verdiepingen", page.locator(".card[data-dd]").count() == len(dds))
+        if first.get("quiz"):
+            page.click('#seg-view button[data-v="actueel"]'); page.click('#seg-view button[data-v="verdieping"]')
+            check("   herhaling klaar bij Verdiepingen", "1 vraag om te herhalen" in page.locator("#content").inner_text())
+            page.click('a[href="#herhaling"]')
+            page.wait_for_selector("#reader:not([hidden]) .quiz .q")
+            page.locator(".quiz .q").first.locator(f'[data-opt-i="{q0["answer"]}"]').click()
+            check("   goed in de herhaling: klaar", "Goed." in page.locator(".quiz .q").first.inner_text()
+                  and page.evaluate("JSON.parse(localStorage.getItem('radar:quiz'))[Object.keys(JSON.parse(localStorage.getItem('radar:quiz')))[0]].ok") is True)
+            page.click("#back")
+            page.wait_for_selector("#reader", state="hidden")
     page.click('#seg-view button[data-v="actueel"]')
     page.wait_for_timeout(100)
     check("   terug naar Actueel", page.locator(".card[data-id]").count() == len(arts))

@@ -38,6 +38,8 @@ data/
   enrichment/skipped/        ← artikelen die Claude niet kon lezen, met reden
   deepdives/<id>.json        ← verdiepingen (tabblad Verdieping), één per dag als je er een kiest
   deepdive_options.json      ← de 5 keuzes voor morgen (Claude maakt ze elke ochtend)
+  trends.json                ← "Dit speelt nu": hooguit 3 trends (Claude, elke ochtend)
+  feedback.json              ← jouw duimpjes uit de app (GitHub Actions verwerkt ze)
   feed.json                  ← klaar voor de app; het enige bestand dat de app leest
 app/
   index.html                 ← de mobiele app (leest feed.json ernaast)

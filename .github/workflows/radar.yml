@@ -3,6 +3,7 @@
 # Loopt:
 #  - elke ochtend (ophalen van nieuwe artikelen; daarna maakt Claude de uitleg)
 #  - als Claude nieuwe uitleg pusht (data/enrichment/**), of als context/app/pipeline verandert
+#  - als je in de app duimpjes verstuurt (issue "Feedback: ..."): direct verwerken
 #  - handmatig via "Run workflow"
 # Commits van deze workflow zelf starten de workflow niet opnieuw (GitHub-regel voor GITHUB_TOKEN).
 
@@ -18,14 +19,18 @@ on:
       - "data/enrichment/**"
       - "data/deepdives/**"
       - "data/deepdive_options.json"
+      - "data/trends.json"
       - "context/**"
       - "app/**"
       - "pipeline/**"
       - "scripts/make_site.py"
       - ".github/workflows/radar.yml"
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
+  issues: write
   pages: write
   id-token: write
 
@@ -35,6 +40,8 @@ concurrency:
 
 jobs:
   build:
+    # Bij issues alleen voor feedback (keuzes voor verdiepingen verwerkt de Claude-taak).
+    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'Feedback:')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,6 +61,11 @@ jobs:
       - name: Tests
         run: python -m unittest discover -s tests -t .
 
+      - name: Feedback verwerken (duimpjes uit de app)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/collect_feedback.py
+
       - name: Artikelen ophalen en feed bouwen
         # --max-enrich 0: de uitleg maakt Claude via de geplande taak, niet de API
         run: python -m pipeline.build --provider feeds --max-enrich 0
@@ -63,6 +75,7 @@ jobs:
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
           git add data/feed.json data/archive.json data/to_enrich.json
+          [ -f data/feedback.json ] && git add data/feedback.json
           if git diff --cached --quiet; then
             echo "Geen wijzigingen."
           else

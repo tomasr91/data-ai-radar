@@ -320,6 +320,52 @@ class TestDeepdiveChoice(unittest.TestCase):
             self.assertIn("onderwerp-3", deepdives.known_options(path))
 
 
+class TestFeedback(unittest.TestCase):
+    """Duimpjes: issue lezen, voorkeuren berekenen, score bijsturen, duim omlaag = weg."""
+
+    def test_parse_and_owner_only(self):
+        sys.path.insert(0, str(cfg.ROOT / "scripts"))
+        import collect_feedback as cf
+        body = 'Tekst\n\n```json\n{"votes":[{"id":"841d424db697","v":-1,"r":"te_basic"},{"id":"xyz","v":1},{"id":"aaaaaaaaaaaa","v":1,"r":"onzin"}]}\n```'
+        self.assertEqual(cf.parse_votes(body), [{"id": "841d424db697", "v": -1, "r": "te_basic"}, {"id": "aaaaaaaaaaaa", "v": 1, "r": None}])
+        issues = [{"number": 1, "title": "Feedback: 2 beoordelingen", "user": {"login": "tomasr91"}},
+                  {"number": 2, "title": "Feedback: 1", "user": {"login": "vreemde"}},
+                  {"number": 3, "title": "Verdieping: x", "user": {"login": "tomasr91"}}]
+        self.assertEqual([i["number"] for i in cf.owner_issues(issues, "tomasr91")], [1])
+
+    def test_preferences_and_score(self):
+        from pipeline import feedback
+        data = {"votes": {f"{i:012x}": {"v": -1, "at": "2026-10-28T00:00:00Z", "topics": ["powerbi_semantic_models"], "source_id": "powerbi_blog"} for i in range(3)}}
+        prefs = feedback.preferences(data, NOW)
+        self.assertLess(prefs["topics"]["powerbi_semantic_models"], -0.5)
+        conf = cfg.load()
+        a = normalize(raw("powerbi_blog", "Power BI semantic model DAX Microsoft Fabric news", "https://example.org/pbi"))
+        a["processing_status"] = "raw"
+        plain = score_article(dict(a), conf, NOW)["relevance_score"]
+        tuned = score_article(dict(a), conf, NOW, prefs, data["votes"])
+        self.assertLess(tuned["relevance_score"], plain)
+        self.assertLessEqual(plain - tuned["relevance_score"], 8)
+        down = score_article(dict(a), conf, NOW, prefs, {a["id"]: {"v": -1}})
+        self.assertEqual(down["decision"], "hidden_by_feedback")
+
+
+class TestTrends(unittest.TestCase):
+    def test_only_trends_with_enough_articles_and_sources(self):
+        from pipeline import trends
+        shown = [{"id": f"a{i}", "source_id": "s1" if i < 3 else "s2"} for i in range(5)]
+        data = {"generated_at": "2026-10-29T06:00:00Z", "trends": [
+            {"id": "goed", "title": "T", "summary": "S", "article_ids": ["a0", "a1", "a3"]},
+            {"id": "een-bron", "title": "T", "summary": "S", "article_ids": ["a0", "a1", "a2"]},
+            {"id": "verdwenen", "title": "T", "summary": "S", "article_ids": ["a0", "a3", "weg"]}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "trends.json"
+            path.write_text(json.dumps(data))
+            out, problems = trends.load(set(), shown, path)
+        self.assertEqual(problems, [])
+        self.assertEqual([t["id"] for t in out], ["goed"])
+        self.assertTrue(trends.validate({"generated_at": "x", "trends": [{"id": "a", "title": "t", "summary": "s", "article_ids": ["1"]}]}, set()))
+
+
 class TestBuild(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

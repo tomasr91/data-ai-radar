@@ -50,7 +50,7 @@ header.top { background: var(--bg); }
 .views button { border: 0; background: none; padding: 6px 0; font: inherit; font-size: 1rem; font-weight: 650; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
 .views button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent2); }
 .tabs[hidden] { display: none !important; }
-.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 8px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.tabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; margin-bottom: 8px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
 .tabs button { border: 0; background: none; height: 38px; border-radius: 9px; font-size: 0.95rem; cursor: pointer; color: var(--muted); }
 .tabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 650; }
 .brand .grow { flex: 1; min-width: 0; }
@@ -93,6 +93,33 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent2); font-weight: 650; }
+.fb-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.fb-btns button, .fb-reasons button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 0 14px; height: 40px; font-size: 0.9rem; cursor: pointer; }
+.fb-btns button[aria-pressed="true"] { border-color: var(--accent2); background: var(--accent2-soft); color: var(--accent2); font-weight: 650; }
+.fb-reasons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.fb-reasons button { height: 34px; font-size: 0.82rem; color: var(--muted); }
+.fb-reasons button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+.fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
+.fb-send { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 14px; min-height: 44px; border-radius: var(--r); border: 1px solid var(--accent2); background: var(--accent2-soft); color: var(--ink); text-decoration: none; font-size: 0.9rem; }
+.fb-send b { color: var(--accent2); }
+.trend { cursor: default; margin-top: 14px; }
+.trend .meta .src { color: var(--accent2); }
+.trend-list { list-style: none; margin: 4px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.trend-list button { display: grid; gap: 2px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 10px 0; cursor: pointer; color: var(--ink); min-height: 44px; }
+.trend-list li:last-child button { border-bottom: 0; }
+.trend-list .t { font-weight: 550; font-size: 0.95rem; }
+.trend-list .m { color: var(--muted); font-size: 0.74rem; font-family: var(--f-meta); }
+.quiz, .fb { font-family: var(--f-display); }
+.q-list { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 18px; }
+.q-from { margin: 0 0 4px; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
+.q-text { margin: 0 0 8px; font-weight: 600; line-height: 1.4; }
+.q-opts { display: grid; gap: 6px; }
+.q-opts button { text-align: left; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 10px; padding: 10px 12px; min-height: 44px; font-size: 0.92rem; cursor: pointer; line-height: 1.35; }
+.q-opts button:disabled { cursor: default; opacity: .7; }
+.q-opts button.right { border-color: var(--ok); background: var(--ok-soft); color: var(--ok); opacity: 1; }
+.q-opts button.wrong { border-color: var(--bad); background: var(--bad-soft); color: var(--bad); opacity: 1; }
+.q-exp { margin: 8px 0 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+.q-exp b { color: var(--ink); }
 a.card.opt { text-decoration: none; color: inherit; }
 article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
@@ -216,7 +243,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <button type="button" role="tab" data-v="actueel">Actueel</button><button type="button" role="tab" data-v="verdieping">Verdieping</button>
     </div>
     <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
-      <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button>
+      <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button><button type="button" data-v="trends">Trends</button>
     </div>
     <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
       <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button>
@@ -248,6 +275,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     set(k, v) { try { localStorage.setItem("radar:" + k, v); } catch {} },
   };
 
+  /* ---- Duimpjes ----
+     Bewaard op dit toestel (radar:fb). Versturen = één GitHub-issue "Feedback: ..." met een
+     JSON-blok; GitHub Actions verwerkt het direct (scripts/collect_feedback.py). */
+  const FB_UP = { meer_hiervan: "Meer hiervan" };
+  const FB_DOWN = { te_basic: "Te basic", niet_mijn_stack: "Niet mijn stack", oud_nieuws: "Oud nieuws", te_vaag: "Te vaag", geen_interesse: "Interesseert me niet" };
+  const fb = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:fb") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:fb", JSON.stringify(d)); } catch {} },
+    get(id) { return this.all()[id]; },
+    set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
+    pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
+  };
   const TZ = "Europe/Amsterdam";
   const dateOnly = (iso) => /T00:00:00(\.000)?Z$/.test(iso);
   function fmtDate(iso) {
@@ -329,6 +368,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return ref - Date.parse(a.published_at) <= days * 864e5;
   }
   function matches(a) {
+    if (fb.get(a.id)?.v === -1) return false;   // duim omlaag: weg uit je lijst
     if (state.group !== "all" && !(a.groups || []).includes(state.group)) return false;
     if (!inPeriod(a)) return false;
     if (state.q) {
@@ -424,16 +464,33 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   document.addEventListener("visibilitychange", () => { if (!document.hidden && state.feed && state.view === "verdieping") loadChosen(true); });
 
+  /* ---- Trends: "Dit speelt nu" (data/trends.json, geschreven door de Claude-taak) ---- */
+  function renderTrends() {
+    const ts = state.feed.trends || [];
+    if (!ts.length) return `<div class="empty" style="margin-top:14px"><h3>Nu geen trends</h3><p>Een trend verschijnt als minstens drie artikelen uit verschillende bronnen over dezelfde ontwikkeling gaan. Claude kijkt daar elke ochtend naar.</p></div>`;
+    return `<p class="pick-note">Waar meerdere bronnen nu tegelijk over schrijven.</p>` + ts.map((t) => {
+      const arts = t.article_ids.map((id) => state.byId.get(id)).filter((a) => a && fb.get(a.id)?.v !== -1);
+      const srcs = new Set(arts.map((a) => a.source_id)).size;
+      return `<section class="trend card" data-trend="${esc(t.id)}">
+        <div class="meta"><span class="src">Dit speelt nu</span><span>${arts.length} artikelen · ${srcs} bronnen</span></div>
+        <h3>${esc(t.title)}</h3>
+        <p class="sum">${esc(t.summary)}</p>
+        <ul class="trend-list">${arts.map((a) => `<li><button type="button" data-id="${esc(a.id)}"><span class="t">${esc(a.headline || a.title)}</span><span class="m">${esc(source(a.source_id).name)}</span></button></li>`).join("")}</ul>
+      </section>`;
+    }).join("");
+  }
+
   function renderList() {
     const f = state.feed;
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
       $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
-        : dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
+        : dds.length ? reviewBar() + `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
       return;
     }
+    if (state.sort === "trends") { $("#content").innerHTML = renderTrends(); return; }
     const list = sorted(f.articles.filter(matches));
     let html = "";
     if (!list.length) {
@@ -441,9 +498,58 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const groupMissing = state.group !== "all" && missing.some((t) => f.topics[t]?.group === state.group);
       html += `<div class="empty"><h3>Nog geen artikelen</h3><p>Er zijn nu geen artikelen om te tonen. Kom later terug.</p></div>`;
     } else {
-      html += `<div class="cards">${list.map(card).join("")}</div>`;
+      html += fbSendBar() + `<div class="cards">${list.map(card).join("")}</div>`;
     }
     $("#content").innerHTML = html;
+  }
+
+  /* ---- Controlevragen ----
+     Antwoorden bewaard op dit toestel (radar:quiz). Fout = na 7 dagen terug als herhaling. */
+  const quiz = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:quiz") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:quiz", JSON.stringify(d)); } catch {} },
+    due() {
+      const now = Date.now(), d = this.all();
+      return Object.entries(d).filter(([, v]) => !v.ok && Date.parse(v.due) <= now).map(([k]) => k);
+    },
+  };
+  const qLookup = (key) => { const [dd, i] = key.split(":"); const d = state.ddById.get(dd); return d?.quiz?.[Number(i)] ? { d, q: d.quiz[Number(i)] } : null; };
+  function qItem(key, review) {
+    const hit = qLookup(key); if (!hit) return "";
+    const { d, q } = hit, rec = quiz.all()[key];
+    const answered = rec && (!review || rec.review);
+    return `<li class="q" data-q="${esc(key)}" data-review="${review ? 1 : 0}">
+      ${review ? `<p class="q-from">${esc(d.headline)}</p>` : ""}
+      <p class="q-text">${esc(q.question)}</p>
+      <div class="q-opts">${q.options.map((o, i) => `<button type="button" data-opt-i="${i}" ${answered ? "disabled" : ""}
+        class="${answered && i === q.answer ? "right" : ""}${answered && rec.pick === i && i !== q.answer ? " wrong" : ""}">${esc(o)}</button>`).join("")}</div>
+      ${answered ? `<p class="q-exp"><b>${rec.pick === q.answer ? "Goed." : "Niet goed."}</b> ${esc(q.explanation)}${rec.pick !== q.answer ? " Deze vraag komt over een week terug." : ""}</p>` : ""}
+    </li>`;
+  }
+  function quizBlock(d) {
+    if (!d.quiz?.length) return "";
+    return `<section class="block quiz"><h2>Test jezelf</h2><ol class="q-list">${d.quiz.map((_, i) => qItem(`${d.id}:${i}`)).join("")}</ol></section>`;
+  }
+  function quizClick(e) {
+    const b = e.target.closest("[data-opt-i]"); if (!b || b.disabled) return;
+    const li = b.closest(".q"), key = li.dataset.q, review = li.dataset.review === "1";
+    const hit = qLookup(key); if (!hit) return;
+    const pick = Number(b.dataset.optI), ok = pick === hit.q.answer, d = quiz.all();
+    d[key] = { ok: ok || (d[key]?.ok && !review), pick, at: new Date().toISOString(), due: new Date(Date.now() + 7 * 864e5).toISOString(), review };
+    if (review && ok) d[key].ok = true;
+    quiz.save(d);
+    li.outerHTML = qItem(key, review);
+  }
+  function reviewBar() {
+    const n = quiz.due().filter(qLookup).length;
+    return n ? `<a class="fb-send" href="#herhaling"><span>${n} vraag${n === 1 ? "" : "en"} om te herhalen</span><b>Herhalen ›</b></a>` : "";
+  }
+  function renderReview() {
+    const keys = quiz.due().filter(qLookup);
+    openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Herhaling</span></div></div>
+      <article class="full wrap"><h1>Herhaling</h1>
+      ${keys.length ? `<p class="lead">Deze vragen had je een week geleden niet goed. Lukt het nu?</p><section class="block quiz"><ol class="q-list">${keys.map((k) => { const d = quiz.all(); delete d[k].review; quiz.save(d); return qItem(k, true); }).join("")}</ol></section>`
+        : `<p class="lead">Niets te herhalen. Goed bezig.</p>`}</article>`);
   }
 
   /* ---- Verdieping ---- */
@@ -462,6 +568,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${(d.sections || []).map((s) => `<section class="dd-sec"><h2>${esc(s.heading)}</h2><div class="story">${s.paragraphs.map((p) => `<p>${esc(p)}</p>`).join("")}</div></section>`).join("")}
         ${d.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(d.experiment)}</p></section>` : ""}
         ${d.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${d.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
+        ${quizBlock(d)}
         ${reading ? `<section class="block"><h2>Verder lezen</h2><ul class="reading">${reading}</ul></section>` : ""}
         <section class="block"><h2>Bron</h2><div class="source"><dl>
           <dt>Geschreven op</dt><dd>${esc(fmtDate(d.written_at))}</dd>
@@ -477,12 +584,50 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const kinds = { bron: "Uit de bron", uitleg: "Uitleg", idee: "Idee" };
     return `<section class="block"><h2>${esc(title)}${kind ? ` <span class="kind ${kind}">${kinds[kind]}</span>` : ""}</h2><p>${esc(text)}</p></section>`;
   }
+  function fbBlock(a) {
+    const mine = fb.get(a.id);
+    const reasons = mine ? (mine.v === 1 ? FB_UP : FB_DOWN) : null;
+    return `<h2>Wat vond je hiervan?</h2>
+      <div class="fb-btns">
+        <button type="button" data-vote="1" aria-pressed="${mine?.v === 1}">👍 Nuttig</button>
+        <button type="button" data-vote="-1" aria-pressed="${mine?.v === -1}">👎 Niet voor mij</button>
+      </div>
+      ${reasons ? `<div class="fb-reasons">${Object.entries(reasons).map(([k, l]) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${l}</button>`).join("")}</div>
+      <p class="fb-note">${mine.v === -1 ? "Dit artikel verdwijnt uit je lijst. " : ""}${mine.sent ? "Verstuurd." : "Wordt meegestuurd met je volgende feedback (knop bovenaan Actueel)."}</p>` : ""}`;
+  }
+  function fbClick(e) {
+    const box = e.target.closest("#fb"); if (!box) return;
+    const id = box.dataset.id, a = state.byId.get(id), cur = fb.get(id);
+    const vb = e.target.closest("[data-vote]"), rb = e.target.closest("[data-reason]");
+    if (vb) {
+      const v = Number(vb.dataset.vote);
+      fb.set(id, cur?.v === v ? null : { v, r: null, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false });
+    } else if (rb && cur) {
+      fb.set(id, { ...cur, r: cur.r === rb.dataset.reason ? null : rb.dataset.reason, sent: false });
+    } else return;
+    box.innerHTML = fbBlock(a || { id });
+  }
+  function fbIssueUrl(items) {
+    const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
+    const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`).join("\n");
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })) });
+    const body = `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
+    const title = `Feedback: ${items.length} beoordeling${items.length === 1 ? "" : "en"}`;
+    return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  }
+  function fbSendBar() {
+    const items = fb.pending();
+    if (!items.length) return "";
+    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items))}" target="_blank" rel="noopener"><span>${items.length} beoordeling${items.length === 1 ? "" : "en"} klaar</span><b>Versturen ›</b></a>`;
+  }
+
   function renderArticle(a) {
     const s = source(a.source_id);
     const enriched = a.processing_status === "enriched";
     const parts = a.score_parts || {};
     const partRows = [["Past bij je onderwerpen", parts.topic, "55%"], ["Inhoudelijke kwaliteit", parts.quality, "20%"], ["Actualiteit", parts.recency, "15%"], ["Bron", parts.source, "10%"]]
-      .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("");
+      .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("")
+      + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±8)</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * 8)} punten</td></tr>` : "");
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
     const added = a.processed_at || a.fetched_at;
     const inApp = added ? fmtDate(added) : "onbekend";
@@ -514,6 +659,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${block("Probeer dit", "idee", a.experiment)}
         ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         `}
+        <section class="block fb" id="fb" data-id="${esc(a.id)}">${fbBlock(a)}</section>
         <section class="block"><h2>Bron</h2><div class="source"><dl>
           <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
           <dt>In de app sinds</dt><dd>${esc(inApp)}</dd>
@@ -529,6 +675,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   /* ---- Feedcontrole ---- */
+  function fbLearned() {
+    const f = state.feed.feedback;
+    if (!f?.votes) return `<section class="block"><h2>Wat de radar van je feedback leerde</h2><p style="font-size:.92rem">Nog geen duimpjes verwerkt. Geef onderaan een artikel een 👍 of 👎 en verstuur ze vanaf Actueel.</p></section>`;
+    const row = (name, v) => `<li>${v > 0 ? "▲" : "▼"} ${esc(name)} <span style="color:var(--muted)">(${v > 0 ? "+" : ""}${Math.round(v * 8)} punten)</span></li>`;
+    const topics = Object.entries(f.topics || {}).sort((a, b) => b[1] - a[1]).map(([t, v]) => row(state.feed.topics[t]?.name || t, v));
+    const srcs = Object.entries(f.sources || {}).sort((a, b) => b[1] - a[1]).map(([sid, v]) => row(source(sid).name, v));
+    return `<section class="block"><h2>Wat de radar van je feedback leerde</h2>
+      <p style="font-size:.92rem">${f.votes} beoordeling${f.votes === 1 ? "" : "en"} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag.</p>
+      ${topics.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Onderwerpen</h3><ul>${topics.join("")}</ul>` : ""}
+      ${srcs.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Bronnen</h3><ul>${srcs.join("")}</ul>` : ""}
+    </section>`;
+  }
   function renderReport() {
     const f = state.feed, q = f.quality_report || {};
     const enr = q.enrichment || {};
@@ -551,6 +709,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <div class="stat"><b>${q.processing?.enriched ?? 0}</b><span>uitgelegd door AI</span></div>
           <div class="stat"><b>${q.without_date ?? 0}</b><span>zonder publicatiedatum</span></div>
         </div>
+        ${fbLearned()}
         <section class="block"><h2>Verdeling over onderwerpen</h2><p style="font-size:.92rem">${perGroup || "–"}</p></section>
         ${noSrc.length ? `<section class="block"><h2>Onderwerpen zonder bron</h2><p style="font-size:.92rem">${esc(noSrc.join(", "))}. Hierover kan de feed alleen toevallig iets vinden.</p></section>` : ""}
         ${flags ? `<section class="block"><h2>Datums om te controleren</h2><ul>${flags}</ul></section>` : ""}
@@ -571,6 +730,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.body.style.overflow = "hidden";
     $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
     $("#back", r).focus({ preventScroll: true });
+    r.onclick = (e) => { fbClick(e); quizClick(e); };
     const dlg = $("#score-dlg", r), btn = $("#score-btn", r);
     if (dlg && btn) {
       btn.onclick = () => dlg.showModal();
@@ -588,6 +748,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (!state.feed) return;
     const h = location.hash.slice(1);
     if (h.startsWith("a-") && state.byId.has(h.slice(2))) { renderArticle(state.byId.get(h.slice(2))); return; }
+    if (h === "herhaling") { renderReview(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
     if (h === "feedcontrole") { renderReport(); return; }
     closeReader();
@@ -596,6 +757,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 
   /* ---- Events ---- */
   window.addEventListener("hashchange", route);
+  $("#content").addEventListener("click", (e) => {
+    if (!e.target.closest("#fb-send")) return;
+    const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
+    setTimeout(renderList, 300);
+  }, true);
   const openCard = (el) => { state.cameFromList = true; location.hash = el.dataset.dd ? "v-" + el.dataset.dd : "a-" + el.dataset.id; };
   $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id],[data-dd]"); if (el) openCard(el); });
   $("#content").addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) { e.preventDefault(); openCard(e.target); } });

@@ -24,7 +24,7 @@ OPTIONS = DATA / "deepdive_options.json"
 OPTION_FIELDS = ["id", "title", "question", "why", "topics"]
 ID_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 FIELDS = ["id", "plan_id", "headline", "summary", "sections", "experiment", "limitations",
-          "further_reading", "currency_check", "topics", "written_at", "processed_by"]
+          "further_reading", "currency_check", "topics", "written_at", "processed_by", "quiz"]
 
 
 def load_plan(path=PLAN) -> dict:
@@ -66,6 +66,21 @@ def validate(data: dict, topic_ids: set, plan_ids: set) -> list:
         for r in reading:
             if not (isinstance(r, dict) and str(r.get("url", "")).startswith("https://") and r.get("label")):
                 p.append(f"further_reading-item zonder label of https-link: {r}")
+    quiz = data.get("quiz")
+    if quiz is None and data.get("prompt_version", "") >= "verdieping-v2":
+        p.append("quiz ontbreekt (verplicht vanaf verdieping-v2)")
+    if quiz is not None:
+        if not isinstance(quiz, list) or not 2 <= len(quiz) <= 5:
+            p.append("quiz moet 2 tot 5 vragen hebben")
+        else:
+            for i, q in enumerate(quiz):
+                opts = q.get("options") if isinstance(q, dict) else None
+                ok = (isinstance(q, dict) and isinstance(q.get("question"), str) and q["question"].strip()
+                      and isinstance(opts, list) and 2 <= len(opts) <= 4 and all(isinstance(o, str) and o.strip() for o in opts)
+                      and isinstance(q.get("answer"), int) and 0 <= q["answer"] < len(opts)
+                      and isinstance(q.get("explanation"), str) and q["explanation"].strip())
+                if not ok:
+                    p.append(f"quiz[{i}] moet question, 2 tot 4 options, een geldig answer (index) en explanation hebben")
     if not isinstance(data.get("limitations", []), list):
         p.append("limitations moet een lijst zijn")
     unknown = [t for t in data.get("topics", []) if t not in topic_ids]

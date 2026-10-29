@@ -16,10 +16,11 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
    - `SCHRIJVEN: <id> (issue #n)`: schrijf één verdieping over die keuze volgens het hoofdstuk **Verdiepingen** hieronder. Onthoud het issuenummer.
    - `AL GESCHREVEN` of `ONBEKENDE KEUZE`: schrijf niets voor dat issue; noem het in de melding. Bij `AL GESCHREVEN` mag je het issue sluiten met `Closes #n` in de commit.
    - `GEEN KEUZE` of `ONBEKEND`: vandaag geen verdieping.
-6. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
-7. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-8. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
-9. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, en de titels van de 5 nieuwe keuzes.
+6. **Trends.** Werk `data/trends.json` bij volgens **Trends** hieronder (mag een lege lijst zijn).
+7. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
+8. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
+9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
+10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
 
@@ -44,6 +45,35 @@ De radar toont alleen **must-knows**. Sla deze artikelen over:
 **Opiniestukken mogen wel**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Sla over met reden: een opinie van een niet-erkende auteur, een stuk zonder onderbouwing, een verkooppraatje, of een stuk buiten het vakgebied (bijv. over sport of politiek).
 
 Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee, overslaan.
+
+## Trends
+
+Een trend is een ontwikkeling of techniek waar nu meerdere bronnen tegelijk over schrijven, bijvoorbeeld "geheugen voor AI-agents" of "metric views als bron voor AI". Geen breed onderwerp als "AI-agents" of "Databricks".
+
+- Kijk naar de uitgelegde artikelen in `data/feed.json` van de **laatste 21 dagen**.
+- Een trend heeft **minstens 3 artikelen uit minstens 2 bronnen**. Hooguit **3 trends**; liever geen trend dan een geforceerde.
+- `title`: hooguit 80 tekens, zegt wat er speelt. `summary`: 2 of 3 korte zinnen: wat is de gemeenschappelijke lijn, en waarom komt het nu op. Alleen wat in de artikelen staat.
+- Een trend van gisteren die nog klopt, houd je met hetzelfde `id` en vul je aan.
+
+```json
+{
+  "format_version": 1,
+  "generated_at": "2026-10-30T06:20:00Z",
+  "trends": [
+    {"id": "geheugen-voor-agents", "title": "...", "summary": "...", "article_ids": ["<id>", "<id>", "<id>"], "topics": ["ai_agents_rag"]}
+  ]
+}
+```
+
+## Feedback van T
+
+`data/feedback.json` bevat T's duimpjes per artikel (`v`: 1 of -1) met soms een reden: `te_basic`, `niet_mijn_stack`, `oud_nieuws`, `te_vaag`, `geen_interesse` of `meer_hiervan`. De pipeline stuurt de score er al op bij. Gebruik het daarnaast zelf:
+
+- Lees vóór het uitleggen de stemmen van de laatste 30 dagen. Kijk naar het soort artikel, niet alleen het onderwerp.
+- Veel `te_basic`: wees strenger bij `depth` en sla aankondigingen zonder inhoud vaker over. Leg minder basis uit.
+- `niet_mijn_stack` of `geen_interesse`: sla vergelijkbare artikelen vaker over (met die reden in het `skipped`-bestand).
+- `te_vaag`: maak het verhaal concreter (hoe werkt het, met een voorbeeld) of sla het over als de bron zelf vaag is.
+- `meer_hiervan`: geef zulke artikelen voorrang, en neem het onderwerp mee bij de verdiepingskeuzes.
 
 ## Regels
 
@@ -120,6 +150,7 @@ Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf j
   - het nieuws van de afgelopen dagen (`data/feed.json` en de werklijst): wat roept een "hoe werkt dat eigenlijk?"-vraag op;
   - de interessegebieden en hun richtverdeling in `context/interests.yml` (`interest_areas`) en de leerdoelen in `context/profile.md` §2;
   - de ideeënlijst in `context/verdieping.yml` (onderwerpen en regels).
+- **Trends:** is er een trend in `data/trends.json`, maak dan van minstens één trend een keuze (`why` noemt de trend).
 - **Spreiding:** de 5 keuzes komen uit minstens 3 verschillende interessegebieden. Volg ongeveer de verdeling 30/30/20/20; zet het gebied in `area`.
 - **Vers:** niet iets waar al een verdieping over is (`data/deepdives/`), en niet dezelfde 5 als gisteren. Een keuze die gisteren niet is gekozen mag terugkomen, maar hooguit 2 per dag.
 - **Afwisseling in soort:** bijvoorbeeld één uitleg van een concept, één vergelijking van aanpakken, één praktische bouwsteen voor de eigen stack, één onderwerp uit het nieuws.
@@ -162,6 +193,7 @@ Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf j
 - Leg begrippen die in `profile.md` §2 als bekend staan niet uit.
 - `experiment`: een proef van hooguit een middag, alleen met openbare of verzonnen data. Externe AI alleen zonder werkdata.
 - `limitations`: 2 tot 4 korte zinnen over beperkingen, kosten of risico's, met aandacht voor zorgdata waar dat speelt.
+- `quiz`: **3 controlevragen** over de kern van het stuk, zodat T merkt of het is blijven hangen. Per vraag 3 of 4 antwoorden, precies één goed (`answer` is de index, vanaf 0), en een `explanation` van 1 of 2 zinnen. Vraag naar begrip (waarom, wanneer kies je wat), niet naar losse namen of getallen. De foute antwoorden zijn geloofwaardig, maar volgens het stuk echt fout. Zet het goede antwoord niet steeds op dezelfde plek.
 
 ### Formaat van `data/deepdives/<id>.json`
 
@@ -179,11 +211,12 @@ Gebruik de `id` van de gekozen keuze als bestandsnaam, `id` en `plan_id`.
   "experiment": "Een proef van hooguit een middag, zonder werk- of patiëntdata.",
   "limitations": ["Korte zin"],
   "further_reading": [{"label": "Titel (auteur of organisatie, maand jaar)", "url": "https://...", "note": "Waarom lezen."}],
+  "quiz": [{"question": "Vraag?", "options": ["A", "B", "C"], "answer": 1, "explanation": "Waarom B klopt."}],
   "currency_check": "Gecontroleerd op <datum>: ...",
   "topics": ["<1 tot 4 id's uit interests.yml>"],
   "written_at": "2026-10-29T06:30:00Z",
   "processed_by": "Claude (geplande taak)",
-  "prompt_version": "verdieping-v1"
+  "prompt_version": "verdieping-v2"
 }
 ```
 

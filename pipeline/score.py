@@ -89,7 +89,8 @@ def topic_score(topic_ids: list, topics: dict, related_weight: float, certainty:
     return min(1.0, base + related_weight * 0.1 * len(related))
 
 
-def score_article(article: dict, config, now=None) -> dict:
+def score_article(article: dict, config, now=None, prefs=None, votes=None) -> dict:
+    """prefs/votes: jouw duimpjes (zie feedback.py). Zonder feedback werkt alles als voorheen."""
     now = now or datetime.now(timezone.utc)
     topics = config.topics
     sc = config.scoring
@@ -115,12 +116,21 @@ def score_article(article: dict, config, now=None) -> dict:
         "quality": (q["depth"] + q["practicality"] + q["novelty"]) / 3 if q else RAW_QUALITY,
     }
     total = sum(WEIGHTS[k] * v for k, v in parts.items())
+    if prefs:
+        from .feedback import WEIGHT as FB_WEIGHT, article_factor
+        fb = article_factor({"topics": topic_ids, "source_id": article["source_id"]}, prefs)
+        if fb:
+            parts["feedback"] = fb
+            total = min(1.0, max(0.0, total + FB_WEIGHT * fb))
+    my_vote = (votes or {}).get(article.get("id"), {}).get("v")
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})
     threshold = sc.get("min_relevance_score", 0.5)
     if excluded:
         decision = "excluded"
+    elif my_vote == -1:
+        decision = "hidden_by_feedback"   # jij gaf een duim omlaag
     elif not topic_ids:
         decision = "no_topic"
     elif total >= threshold:

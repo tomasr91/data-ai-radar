@@ -66,6 +66,18 @@ def main(argv):
                 print(f"FOUT deepdive_options.json: {pr}")
             if opts:
                 print(f"{len(opts['options'])} keuzes voor morgen gecontroleerd")
+        from pipeline import trends as trends_mod
+        if trends_mod.PATH.exists():
+            try:
+                tdata = json.loads(trends_mod.PATH.read_text(encoding="utf-8"))
+                tproblems = trends_mod.validate(tdata, topics)
+            except json.JSONDecodeError as e:
+                tdata, tproblems = {}, [f"geen geldige JSON ({e})"]
+            for pr in tproblems:
+                bad += 1
+                print(f"FOUT trends.json: {pr}")
+            if not tproblems:
+                print(f"{len(tdata.get('trends', []))} trends gecontroleerd")
     print(f"{len(files)} uitlegbestanden gecontroleerd, {bad} fout")
     return 1 if bad else 0
 

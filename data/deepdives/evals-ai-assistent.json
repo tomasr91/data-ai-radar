@@ -101,5 +101,38 @@
   ],
   "written_at": "2026-10-29T10:38:51Z",
   "processed_by": "Claude (handmatige run op verzoek)",
-  "prompt_version": "verdieping-v1"
+  "prompt_version": "verdieping-v1",
+  "quiz": [
+    {
+      "question": "Waar beginnen Hamel Husain en Shreya Shankar mee als ze een AI-assistent willen evalueren?",
+      "options": [
+        "Eerst beoordelingsregels opstellen, daarna testen",
+        "Echte gesprekken (traces) doorlezen en opschrijven wat er misging",
+        "Meteen een AI-beoordelaar laten scoren",
+        "Algemene maten zoals ROUGE berekenen"
+      ],
+      "answer": 1,
+      "explanation": "Ze beginnen met foutanalyse: traces lezen, per trace de eerste fout noteren en die notities groeperen tot foutsoorten. Regels bedenken ze pas nadat ze voorbeelden hebben gezien."
+    },
+    {
+      "question": "Een assistent geeft in 75 procent van de keren een goed antwoord. Welke maat telt voor collega's die de vraag één keer stellen en op het antwoord vertrouwen?",
+      "options": [
+        "Pass@k: minstens één keer goed in k pogingen",
+        "Pass^k: alle k keer goed",
+        "De gemiddelde score op een schaal van 1 tot 5"
+      ],
+      "answer": 1,
+      "explanation": "Pass^k laat zien hoe betrouwbaar hij is. Bij 75 procent is drie keer achter elkaar goed maar ongeveer 42 procent. Pass@k zegt alleen dat hij het kán."
+    },
+    {
+      "question": "Wat is de vuistregel voor het kiezen van beoordelaars (graders)?",
+      "options": [
+        "Altijd een mens, want die is het betrouwbaarst",
+        "Altijd een AI-beoordelaar, want die is het snelst",
+        "Code waar het kan, een AI-beoordelaar waar het moet, en mensen om die AI-beoordelaar te controleren"
+      ],
+      "answer": 2,
+      "explanation": "Code is snel, goedkoop en altijd hetzelfde. Een AI-beoordelaar gebruik je waar een oordeel nodig is, maar je toetst hem eerst tegen je eigen labels: hoeveel echte fouten vangt hij en hoeveel goede antwoorden laat hij door."
+    }
+  ]
 }

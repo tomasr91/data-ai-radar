@@ -21,6 +21,8 @@ from . import config as cfg
 from .dedupe import dedupe
 from . import deepdives as deepdives_mod
 from .digest import weekly_digests
+from . import feedback as feedback_mod
+from . import trends as trends_mod
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -146,14 +148,18 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     sources_by_id = {s["id"]: s for s in conf.source_list}
     arts, merged = dedupe(arts, sources_by_id)
 
-    # Laag 3: scoren, nieuwe artikelen verrijken (best scorende eerst), opnieuw scoren
+    # Laag 3: scoren, nieuwe artikelen verrijken (best scorende eerst), opnieuw scoren.
+    # Jouw duimpjes (data/feedback.json) wegen mee; een duim omlaag haalt het artikel weg.
+    fb_data = feedback_mod.load()
+    fb_prefs = feedback_mod.preferences(fb_data, now)
+    fb_votes = fb_data["votes"]
     for a in arts:
-        score_article(a, conf, now)
+        score_article(a, conf, now, fb_prefs, fb_votes)
     candidates = sorted([a for a in arts if a["decision"] not in ("excluded", "no_topic")],
                         key=lambda a: -a["relevance_score"])
     enrich_report = enrich_new(candidates, set(conf.topics), max_enrich)
     for a in arts:
-        score_article(a, conf, now)
+        score_article(a, conf, now, fb_prefs, fb_votes)
 
     # Werklijst voor Claude: beste onverwerkte artikelen die nog niet zijn overgeslagen
     skip = skipped_ids()
@@ -188,6 +194,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     fetched = [a.get("processed_at") or a["fetched_at"] for a in shown if a.get("processed_at") or a.get("fetched_at")]
     deepdives, invalid_deepdives = deepdives_mod.load_all(set(conf.topics))
     dd_options, invalid_options = deepdives_mod.load_options(set(conf.topics))
+    trends, invalid_trends = trends_mod.load(set(conf.topics), shown)
     feed = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": _iso(now),
@@ -203,6 +210,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "articles": [_public(a) for a in shown],
         "deepdives": deepdives,
         "deepdive_options": dd_options,
+        "trends": trends,
+        "feedback": {**fb_prefs, "updated_at": fb_data.get("updated_at")},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
             "fetched_items": len(result.items),
@@ -220,6 +229,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "invalid_enrichment": invalid_cache,
             "invalid_deepdives": invalid_deepdives,
             "invalid_deepdive_options": invalid_options,
+            "invalid_trends": invalid_trends,
             "threshold": round(conf.scoring.get("min_relevance_score", 0.5) * 100),
             "not_shown": [{"title": a["title"], "source_id": a["source_id"], "url": a["url"],
                            "relevance_score": a["relevance_score"], "decision": a["decision"],
