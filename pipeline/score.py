@@ -19,7 +19,7 @@ kwaliteit    gemiddelde van diepgang, toepasbaarheid en nieuwheid uit de
 Regels uit interests.yml:
 - min_relevance_score: onder de drempel geen plek in de feed, ook niet bij prioriteit 5
 - exceptional_override: bij prioriteit 1-2 mag een uitzonderlijk artikel toch door
-- excluded_topics: altijd eruit, ook via de uitzonderingsregel
+- excluded_topics: altijd eruit, ook via de uitzonderingsregel (trefwoorden of title_patterns)
 """
 import math
 import re
@@ -47,6 +47,17 @@ def _pattern(keyword: str):
 
 def match_keywords(text: str, entries: list) -> list:
     return list(keyword_hits(text, entries))
+
+
+def excluded_by(title: str, text: str, entries: list) -> list:
+    """Uitsluiting op trefwoorden (hele tekst) of op titelpatronen (reguliere expressies,
+    hoofdletterongevoelig). Titelpatronen vangen vormen als 'v1.12.6' of
+    'X connector is available in Beta' die met losse trefwoorden niet te pakken zijn."""
+    hits = set(match_keywords(text, entries))
+    for entry in entries:
+        if any(re.search(p, title or "", re.I) for p in entry.get("title_patterns", [])):
+            hits.add(entry["id"])
+    return [e["id"] for e in entries if e["id"] in hits]
 
 
 def keyword_hits(text: str, entries: list) -> dict:
@@ -84,7 +95,7 @@ def score_article(article: dict, config, now=None) -> dict:
     sc = config.scoring
     text = f"{article['title']} {article.get('headline', '')} {article.get('excerpt', '')} {article.get('summary', '')}"
 
-    excluded = match_keywords(text, config.excluded_topics)
+    excluded = excluded_by(article["title"], text, config.excluded_topics)
     # Verrijkte artikelen hebben door AI gekozen onderwerpen; anders trefwoorden.
     if article.get("processing_status") == "enriched" and article.get("topics"):
         topic_ids, certainty = list(article["topics"]), 1.0

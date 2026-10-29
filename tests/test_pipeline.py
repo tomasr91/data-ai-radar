@@ -12,7 +12,7 @@ from pipeline import enrich
 from pipeline.dedupe import dedupe
 from pipeline.normalize import canonical_url, normalize, parse_date
 from pipeline.providers import ProviderResult, feeds
-from pipeline.score import score_article
+from pipeline.score import excluded_by, score_article
 
 NOW = datetime(2026, 10, 28, 20, 0, tzinfo=timezone.utc)
 F = "2026-10-28T19:00:00Z"
@@ -224,6 +224,29 @@ class TestEnrichment(unittest.TestCase):
         enrich.attach(b, cached)
         enrich.enrich_new([b], self.topics, 5, api_key="k", caller=caller)
         self.assertEqual(len(calls), 1)
+
+
+class TestExclusions(unittest.TestCase):
+    """Regels uit interests.yml: geen connectoren, geen patches/dev-builds, geen maandoverzichten."""
+
+    def test_title_patterns(self):
+        conf = cfg.load()
+        cases = {
+            "QuickBooks connector is available in Beta": True,
+            "Box Audit Logs managed ingestion connector (Beta)": True,
+            "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)": False,
+            "dbt v1.12.6": True, "v2.0.3": True, "v2.0.0-dev.41-test-pypi": True,
+            "dbt v1.13.0b1": False, "dbt v2.0 is GA": False, "dbt v1.13.0": False,
+            "Power BI October 2026 Feature Summary": True,
+            "Genie agentic capabilities are now processed in South Korea": True,
+        }
+        for title, expected in cases.items():
+            self.assertEqual(bool(excluded_by(title, title, conf.excluded_topics)), expected, title)
+
+    def test_technical_words_are_not_funding_news(self):
+        conf = cfg.load()
+        text = "dbt v1.13.0b1 raises an error on duplicate keys; data acquisition pipelines"
+        self.assertEqual(excluded_by("dbt v1.13.0b1", text, conf.excluded_topics), [])
 
 
 class TestBuild(unittest.TestCase):

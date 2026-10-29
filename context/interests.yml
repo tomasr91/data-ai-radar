@@ -3,7 +3,7 @@
 # Prioriteit = hoe zwaar een onderwerp meetelt bij de selectie, niet hoe belangrijk het in het algemeen is.
 
 schema_version: 1
-updated: "2026-10-28"
+updated: "2026-10-29"
 
 priority_levels:
   5:
@@ -55,16 +55,43 @@ feed_groups:
 
 # Harde uitsluitingen: artikelen die hier hoofdzakelijk over gaan komen nooit in de feed,
 # ook niet via de uitzonderingsregel.
+# keywords zoeken in de hele tekst; title_patterns zijn reguliere expressies op de titel
+# (hoofdletterongevoelig).
 excluded_topics:
   - id: funding_acquisitions
     name: Funding- en overnamenieuws
-    keywords: [funding round, raises, Series A, Series B, acquisition, acquires, valuation, IPO]
+    # Geen losse woorden als "raises" of "acquisition": die staan ook in technische teksten
+    # ("raises an error", "data acquisition").
+    keywords: [funding round, raises funding, raised funding, Series A, Series B, Series C, announces acquisition, to acquire, acquires, valuation, IPO]
   - id: generative_media
     name: AI voor beeld, video en muziek
     keywords: [image generation, text-to-image, video generation, text-to-video, AI music, diffusion model art]
   - id: crypto_blockchain
     name: Crypto en blockchain
     keywords: [crypto, cryptocurrency, blockchain, web3, NFT, bitcoin]
+  - id: connector_releases
+    name: Nieuwe connectoren voor bronsystemen
+    # bijv. "QuickBooks connector is available in Beta", "Box Audit Logs managed ingestion connector (Beta)".
+    # Niet geraakt: drivers zoals "Databricks ADBC connector for Power BI".
+    keywords: [managed ingestion connector, ingestion connector]
+    title_patterns:
+      - '\bconnector (is )?(now )?(available|generally available|in beta|in public preview)\b'
+      - '\bconnector \((beta|public preview|preview|ga|generally available)\)'
+  - id: minor_builds
+    name: Dev-builds en patchreleases
+    # Wel tonen: grote en kleine releases (dbt v2.0, v1.13) en bèta's (v1.13.0b1).
+    # Niet tonen: patches (v1.12.6, v2.0.3) en dev- of testbuilds (v2.0.0-dev.41-test-pypi).
+    title_patterns:
+      - '^(dbt )?v?\d+\.\d+\.[1-9]\d*$'
+      - '[-.]dev\.?\d|test-pypi|nightly'
+  - id: mini_updates
+    name: Kleine updates en verzameloverzichten
+    # Maandoverzichten met veel kleine functies en uitrol naar extra regio's.
+    title_patterns:
+      - 'feature summary'
+      - "what's new in .*(january|february|march|april|may|june|july|august|september|october|november|december)"
+      - '\bnow processed in\b'
+      - '\bavailable in (more|new|additional) regions\b'
 
 topics:
   - id: dbt_analytics_engineering
@@ -73,7 +100,7 @@ topics:
     feed_group: dbt
     enabled: true
     priority: 5
-    keywords: [dbt, dbt Core, dbt Fusion, dbt tests, data contracts, dbt semantic layer, analytics engineering, dbt-databricks]
+    keywords: [dbt, dbt Core, dbt Fusion, dbt tests, data contracts, dbt semantic layer, analytics engineering, dbt-databricks, dbt v2, dbt 2.0]
     related_topics: [data_architecture_modeling, cicd_data_deployment, data_quality_observability]
 
   - id: databricks_data_engineering
@@ -186,11 +213,14 @@ topics:
 
   - id: powerbi_semantic_models
     name: Power BI en semantische modellen
-    description: Aansluiting op BI, rapportages en AI op bedrijfsdata.
+    description: >-
+      Aansluiting op BI, rapportages en AI op bedrijfsdata. Alleen de must-knows: grote
+      functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks,
+      en functies die stoppen. Geen kleine updates of maandoverzichten.
     feed_group: overig
     enabled: true
-    priority: 3
-    keywords: [Power BI, semantic model, DAX, Copilot Power BI, Microsoft Fabric, metrics layer]
+    priority: 4
+    keywords: [Power BI, semantic model, DAX, Copilot Power BI, Microsoft Fabric, metrics layer, Direct Lake, Power BI Databricks]
     related_topics: [data_architecture_modeling, ai_context_engineering]
 
   - id: open_source_ai

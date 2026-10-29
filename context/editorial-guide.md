@@ -2,7 +2,7 @@
 id: editorial-guide
 type: context
 schema_version: 2
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Redactiegids
@@ -81,7 +81,11 @@ De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 
 ## 6. Wat níet in de feed hoort
 
-- Alles uit `excluded_topics` in `interests.yml` (funding en overnames, AI voor beeld/video/muziek, crypto en blockchain). Ook niet via de uitzonderingsregel.
+- Alles uit `excluded_topics` in `interests.yml` (funding en overnames, AI voor beeld/video/muziek, crypto en blockchain, nieuwe connectoren, patches en dev-builds, maandoverzichten). Ook niet via de uitzonderingsregel.
+- **Alleen must-knows.** Geen kleine updates: losse kleine functies, UI-aanpassingen, uitrol naar extra regio's of verzameloverzichten.
+- **Klantverhalen** alleen als ze concreet maken welke tools er gebruikt worden en wat de toepassing is. Het verhaal begint dan bij de toepassing, niet bij het bedrijf.
+- **Power BI en Fabric**: alleen grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen.
+- **dbt-releases**: grote en kleine releases en bèta's wel; patches en dev-builds niet.
 - Artikelen zonder technische inhoud of praktische toepassing.
 - Personeelsnieuws, tenzij het directe gevolgen heeft voor een tool uit mijn stack.
 - Herhalingen van eerder getoonde ontwikkelingen zonder nieuwe informatie.
