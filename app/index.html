@@ -105,6 +105,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent); font-weight: 650; }
 a.card.opt { text-decoration: none; color: inherit; }
+article.card.opt.chosen { cursor: default; }
 .card.opt.chosen { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
 .pick-note { margin: -2px 0 12px; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .pick-note b { color: var(--ink); font-weight: 650; }
@@ -404,13 +405,22 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function renderPicker() {
     const o = state.feed.deepdive_options;
-    if (!o?.options?.length) return "";
-    const known = new Map(o.options.map((x) => [x.id, x.title]));
     const chosen = state.chosen || [];
-    const note = chosen.length
-      ? `<p class="pick-note"><b>Gekozen:</b> ${chosen.map((id) => esc(known.get(id) || id)).join(", ").replace(/([^.?!])$/, "$1.")} Claude schrijft ${chosen.length > 1 ? "één per ochtend, de eerste" : "hem"} morgenochtend.</p>`
-      : `<p class="pick-note">Tik op een onderwerp. GitHub opent; tik daar op <b>Create</b>. Morgenochtend staat de verdieping hieronder.</p>`;
-    return `<h2 class="sec"><span>Kies je verdieping voor morgen</span></h2>${note}<div class="cards">${o.options.map(optCard).join("")}</div>`;
+    const known = new Map((o?.options || []).map((x) => [x.id, x]));
+    if (chosen.length) {
+      // Er is gekozen: alleen die keuze tonen, als de verdieping van morgen.
+      const cards = chosen.map((id) => {
+        const x = known.get(id) || { id, title: id };
+        return `<article class="card opt chosen" data-opt="${esc(id)}">
+          <div class="meta"><span class="src">${esc(AREA_LABEL[x.area] || "Verdieping")}</span><span class="pill verdieping">morgen</span></div>
+          <h3>${esc(x.title)}</h3>
+          ${x.question ? `<p class="sum">${esc(x.question)}</p>` : ""}
+        </article>`;
+      });
+      return `<h2 class="sec"><span>Verdieping voor morgen</span></h2><p class="pick-note">Claude schrijft deze morgenochtend. Daarna krijg je weer 5 nieuwe keuzes.</p><div class="cards">${cards.join("")}</div>`;
+    }
+    if (!o?.options?.length) return "";
+    return `<h2 class="sec"><span>Kies je verdieping voor morgen</span></h2><p class="pick-note">Tik op een onderwerp. GitHub opent; tik daar op <b>Create</b>. Morgenochtend staat de verdieping hieronder.</p><div class="cards">${o.options.map(optCard).join("")}</div>`;
   }
   let chosenAt = 0;
   async function loadChosen(force) {

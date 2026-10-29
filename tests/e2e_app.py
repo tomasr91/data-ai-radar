@@ -57,6 +57,7 @@ feed["deepdive_options"], _ = _dd.load_options(set(_cfg.load().topics))
 feed["repo"] = "tomasr91/data-ai-radar"
 opts = feed["deepdive_options"]["options"]
 # Nagebootste GitHub-API: de eigenaar koos de tweede keuze; een vreemde koos de eerste (telt niet).
+GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
     {"number": 8, "title": f"Verdieping: {opts[0]['id']}", "user": {"login": "iemand-anders"}},
@@ -73,7 +74,7 @@ with sync_playwright() as p:
     page.on("console", lambda m: m.type == "error" and "fonts.g" not in m.text and "Failed to load resource" not in m.text and errors.append(m.text))
     page.route("**/fonts.googleapis.com/**", lambda r: r.abort())
     page.route("**/fonts.gstatic.com/**", lambda r: r.abort())
-    page.route("https://api.github.com/**", lambda r: r.fulfill(status=200, content_type="application/json", body=FAKE_ISSUES, headers={"Access-Control-Allow-Origin": "*"}))
+    page.route("https://api.github.com/**", lambda r: r.fulfill(status=200, content_type="application/json", body=GH["issues"], headers={"Access-Control-Allow-Origin": "*"}))
 
     # 1-2. App opent en laadt artikelen
     page.goto(url)
@@ -133,10 +134,14 @@ with sync_playwright() as p:
     href = page.locator("a.card.opt").first.get_attribute("href")
     check("   keuze opent een GitHub-issue met de juiste titel",
           href.startswith("https://github.com/tomasr91/data-ai-radar/issues/new?title=") and f"Verdieping%3A%20{opts[0]['id']}" in href, href[:120])
-    page.wait_for_selector("a.card.opt.chosen", timeout=3000)
-    chosen = page.eval_on_selector_all("a.card.opt.chosen", "els => els.map(e => e.dataset.opt)")
-    check("   alleen de keuze van de eigenaar telt als gekozen", chosen == [opts[1]["id"]], str(chosen))
-    check("   melding noemt de gekozen titel", opts[1]["title"] in page.locator(".pick-note").inner_text())
+    # Terug uit GitHub: de eigenaar heeft nu gekozen
+    GH["issues"] = FAKE_ISSUES
+    page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
+    page.wait_for_selector(".card.opt.chosen", timeout=3000)
+    chosen = page.eval_on_selector_all(".card.opt", "els => els.map(e => e.dataset.opt)")
+    check("   na kiezen alleen de keuze van de eigenaar zichtbaar", chosen == [opts[1]["id"]], str(chosen))
+    check("   kop 'Verdieping voor morgen' met de gekozen titel",
+          "verdieping voor morgen" in page.locator("#content").inner_text().lower() and opts[1]["title"] in page.locator(".card.opt.chosen").inner_text())
     check("   sorteerknoppen verborgen bij Verdieping", not page.locator("#seg-sort").is_visible())
     if dds:
         page.locator(".card[data-dd]").first.click()
