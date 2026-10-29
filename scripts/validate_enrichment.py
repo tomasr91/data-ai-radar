@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 from pipeline.config import load  # noqa: E402
 from pipeline.enrich import CACHE, validate  # noqa: E402
 from pipeline.normalize import article_id  # noqa: E402
+from pipeline import deepdives  # noqa: E402
 
 META = ["article_id", "url", "processed_by", "processed_at"]
 
@@ -52,6 +53,12 @@ def main(argv):
         except json.JSONDecodeError:
             bad += 1
             print(f"FOUT skipped/{f.name}: geen geldige JSON")
+    if not argv:
+        good, wrong = deepdives.load_all(topics)
+        for w in wrong:
+            bad += 1
+            print(f"FOUT deepdives/{w['file']}: " + "; ".join(w["problems"]))
+        print(f"{len(good) + len(wrong)} verdiepingen gecontroleerd")
     print(f"{len(files)} uitlegbestanden gecontroleerd, {bad} fout")
     return 1 if bad else 0
 

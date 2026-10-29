@@ -16,6 +16,7 @@ on:
     branches: [main]
     paths:
       - "data/enrichment/**"
+      - "data/deepdives/**"
       - "context/**"
       - "app/**"
       - "pipeline/**"

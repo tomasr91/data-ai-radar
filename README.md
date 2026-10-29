@@ -18,6 +18,7 @@ context/
   tech-stack.md              ← technologie per categorie (redelijk stabiel)
   projects.md                ← projecten en projectthema's (tijdelijk)
   interests.yml              ← onderwerpen, prioriteiten, scoringsregels
+  verdieping.yml             ← onderwerpen voor verdiepingen, in volgorde
   sources.yml                ← nieuwsbronnen en hun betrouwbaarheid
   editorial-guide.md         ← schrijfstijl, artikelstructuur, betrouwbaarheid
 scripts/
@@ -35,6 +36,7 @@ data/
   archive.json               ← alle opgehaalde artikelen (60 dagen), zodat ze niet verdwijnen uit de feed
   to_enrich.json             ← werklijst voor Claude: welke artikelen nog uitleg nodig hebben
   enrichment/skipped/        ← artikelen die Claude niet kon lezen, met reden
+  deepdives/<id>.json        ← verdiepingen (tabblad Verdieping), ongeveer twee per week
   feed.json                  ← klaar voor de app; het enige bestand dat de app leest
 app/
   index.html                 ← de mobiele app (leest feed.json ernaast)
@@ -70,7 +72,7 @@ python -m http.server -d app 8000          # bekijk op http://localhost:8000
 Zo werkt het elke ochtend:
 
 1. **05:30 – GitHub Actions** (`.github/workflows/radar.yml`) haalt de feeds op, voegt nieuwe artikelen toe aan `data/archive.json` en bouwt `data/feed.json`. Onverwerkte artikelen die de moeite waard lijken, komen op de werklijst `data/to_enrich.json`. De app op GitHub Pages wordt bijgewerkt.
-2. **Daarna – de geplande Claude-taak** voert `TAAK_VERRIJKEN.md` uit: leest elk artikel op de werklijst volledig, schrijft de uitleg naar `data/enrichment/<id>.json`, controleert die met `scripts/validate_enrichment.py` en pusht.
+2. **Daarna – de geplande Claude-taak** voert `TAAK_VERRIJKEN.md` uit: leest elk artikel op de werklijst volledig, schrijft de uitleg naar `data/enrichment/<id>.json`, schrijft ongeveer twee keer per week een verdieping naar `data/deepdives/<id>.json` (onderwerp via `scripts/next_deepdive.py`), controleert die met `scripts/validate_enrichment.py` en pusht.
 3. **Na die push** draait de workflow opnieuw. De nieuwe uitleg komt in de feed, en de app is bijgewerkt.
 
 Een fout uitlegbestand komt nooit in de app: de pipeline negeert het en meldt het in de feedcontrole. Een artikel dat Claude niet kan lezen, komt in `data/enrichment/skipped/` en niet terug op de werklijst.
@@ -83,7 +85,7 @@ Een fout uitlegbestand komt nooit in de app: de pipeline negeert het en meldt he
 4. **Actions → Radar bijwerken → Run workflow** voor de eerste run. Daarna staat de app op `https://<gebruiker>.github.io/<repo>/`.
 5. Laat Claude de geplande taak aanmaken (bijv. dagelijks om 07:10) met deze opdracht:
 
-> Voeg de GitHub-repository `<gebruiker>/<repo>` toe met push-toegang en clone hem. Voer daarna de taak uit die beschreven staat in `TAAK_VERRIJKEN.md` in die repository, van stap 1 tot en met 7. Wijzig niets buiten `data/enrichment/`.
+> Voeg de GitHub-repository `<gebruiker>/<repo>` toe met push-toegang en clone hem. Voer daarna de taak uit die beschreven staat in `TAAK_VERRIJKEN.md` in die repository, van stap 1 tot en met 8. Wijzig niets buiten `data/enrichment/` en `data/deepdives/`.
 
 ### Bron van artikelen vervangen
 

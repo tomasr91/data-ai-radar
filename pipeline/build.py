@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, timezone
 
 from . import config as cfg
 from .dedupe import dedupe
+from . import deepdives as deepdives_mod
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -109,6 +110,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         prev["mode"], prev["mode_note"] = "stale", "Ophalen mislukt; dit is de vorige feed. " + result.note
         prev["sources"] = _source_view(conf, result.source_results)
         prev["generated_at"] = _iso(now)
+        prev["deepdives"], _ = deepdives_mod.load_all(set(conf.topics))
         out_path.write_text(json.dumps(prev, ensure_ascii=False, indent=1), encoding="utf-8")
         return prev
 
@@ -175,6 +177,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
 
     # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).
     fetched = [a.get("processed_at") or a["fetched_at"] for a in shown if a.get("processed_at") or a.get("fetched_at")]
+    deepdives, invalid_deepdives = deepdives_mod.load_all(set(conf.topics))
     feed = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": _iso(now),
@@ -188,6 +191,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "sources": _source_view(conf, result.source_results),
         "daily_top": daily_top(shown, size=5, per_group=min(2, conf.scoring.get("max_items_per_topic_per_feed", 3))),
         "articles": [_public(a) for a in shown],
+        "deepdives": deepdives,
         "quality_report": {
             "fetched_items": len(result.items),
             "unique_after_dedupe": len(arts),
@@ -202,6 +206,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "enrichment": enrich_report,
             "queue_size": len(queue),
             "invalid_enrichment": invalid_cache,
+            "invalid_deepdives": invalid_deepdives,
             "threshold": round(conf.scoring.get("min_relevance_score", 0.5) * 100),
             "not_shown": [{"title": a["title"], "source_id": a["source_id"], "url": a["url"],
                            "relevance_score": a["relevance_score"], "decision": a["decision"],

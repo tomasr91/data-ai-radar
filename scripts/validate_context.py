@@ -88,6 +88,23 @@ for s in src_list:
     if s.get("fetch_method") in ("rss", "atom") and not s.get("feed_url"):
         errors.append(f"source '{sid}': {s['fetch_method']} zonder feed_url")
 
+plan_path = CTX / "verdieping.yml"
+plan_topics = []
+if plan_path.exists():
+    plan = yaml.safe_load(plan_path.read_text(encoding="utf-8")) or {}
+    plan_topics = plan.get("topics", [])
+    check_unique(plan_topics, "verdieping")
+    for t in plan_topics:
+        pid = t.get("id")
+        for f in ["id", "title", "question", "topics", "enabled"]:
+            if f not in t:
+                errors.append(f"verdieping '{pid}': veld '{f}' ontbreekt")
+        for tp in t.get("topics", []):
+            if tp not in topic_ids:
+                errors.append(f"verdieping '{pid}': onbekend topic '{tp}'")
+    if not any(t.get("enabled") for t in plan_topics):
+        warnings.append("verdieping.yml heeft geen ingeschakelde onderwerpen")
+
 covered = {tp for s in src_list if s.get("enabled") for tp in s.get("topics", [])}
 for t in topics:
     if t.get("enabled") and t["priority"] >= 3 and t["id"] not in covered:
@@ -97,5 +114,5 @@ for w in warnings:
     print("WAARSCHUWING:", w)
 for e in errors:
     print("FOUT:", e)
-print(f"\n{len(topics)} onderwerpen, {len(src_list)} bronnen, {len(errors)} fouten, {len(warnings)} waarschuwingen")
+print(f"\n{len(topics)} onderwerpen, {len(src_list)} bronnen, {len(plan_topics)} verdiepingsonderwerpen, {len(errors)} fouten, {len(warnings)} waarschuwingen")
 sys.exit(1 if errors else 0)

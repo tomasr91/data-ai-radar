@@ -1,20 +1,21 @@
-# Taak voor Claude: artikelen uitleggen
+# Taak voor Claude: artikelen uitleggen en verdiepingen schrijven
 
-Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de nieuwe artikelen heeft opgehaald. Jij (Claude) schrijft per artikel de uitleg die de app toont. Daarna bouwt GitHub Actions de feed opnieuw en zet de app online.
+Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de nieuwe artikelen heeft opgehaald. Jij (Claude) schrijft per artikel de uitleg die de app toont (tabblad **Actueel**), en ongeveer twee keer per week een verdieping (tabblad **Verdieping**). Daarna bouwt GitHub Actions de feed opnieuw en zet de app online.
 
 ## Stappen
 
 1. **Bijwerken.** `git pull` op `main`, daarna `pip install -r requirements.txt`.
 2. **Context lezen.** Lees `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend voor stijl en structuur.
-3. **Werklijst lezen.** Open `data/to_enrich.json`. Is `items` leeg, stop dan en meld "Niets te verwerken".
+3. **Werklijst lezen.** Open `data/to_enrich.json`. Is `items` leeg, sla stap 4 over en meld "Niets te verwerken" voor de artikelen.
 4. **Per artikel** (in volgorde, **maximaal 15 per run**):
    1. Open de `url` en lees het **volledige artikel**. Werk nooit alleen op de titel of de `excerpt`.
    2. Is de pagina niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf dan `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door naar het volgende artikel.
    3. Valt het artikel onder **"Niet uitleggen"** hieronder? Schrijf dan ook een `skipped`-bestand, met als `reason` welke regel het is, en ga door.
    4. Schrijf anders `data/enrichment/<id>.json` volgens het formaat hieronder. Gebruik precies de `id` uit de werklijst als bestandsnaam en als `article_id`.
-5. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-6. **Opslaan.** `git add data/enrichment`, commit met `Uitleg: <aantal> artikelen`, `git pull --rebase`, `git push`.
-7. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom.
+5. **Verdieping.** Draai `python scripts/next_deepdive.py`. Zegt het `SCHRIJVEN: <id>`, schrijf dan één verdieping over dat onderwerp volgens het hoofdstuk **Verdiepingen** hieronder. Anders sla je deze stap over.
+6. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
+7. **Opslaan.** `git add data/enrichment data/deepdives`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef), `git pull --rebase`, `git push`.
+8. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, en of er een verdieping is geschreven.
 
 ## Niet uitleggen (overslaan met reden)
 
@@ -85,3 +86,53 @@ Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of 
 ```
 
 Voorbeelden van goede uitleg staan al in `data/enrichment/` (bestanden met `"format_version": 2`). Kijk er één of twee na voordat je begint.
+
+## Verdiepingen
+
+Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. Het onderwerp komt uit `context/verdieping.yml` (het script kiest het bovenste open onderwerp). Lees de `question` en `angle` van dat onderwerp: die bepalen waar het stuk over gaat.
+
+### Actualiteit (belangrijkste regel)
+
+- Schrijf alleen over technieken, werkwijzen en tools die **nu** de gangbare of aanbevolen aanpak zijn. Geen verouderde technieken, tools of productnamen.
+- Zoek eerst recente bronnen (bij voorkeur van de laatste twaalf maanden). Een oudere bron mag alleen voor een basisidee dat nog steeds klopt, en altijd naast een recente bron.
+- Controleer elke product- of functienaam in de **actuele officiële documentatie** (Azure Databricks, dbt, Microsoft). Is iets hernoemd of vervangen, gebruik dan de nieuwe naam en aanpak.
+- Schrijf in `currency_check` kort hoe je dat gecontroleerd hebt: op welke datum, uit welke periode de bronnen komen, en wat je bewust níet hebt opgenomen omdat het verouderd is.
+
+### Bronnen en betrouwbaarheid
+
+- Lees 2 tot 5 goede bronnen volledig: officiële documentatie, erkende vakmensen (zie redactiegids, Opiniestukken), of degelijke technische artikelen. Geen marketing.
+- Verzin niets. Elk feit, getal en elke naam komt uit een bron die je hebt gelezen. Meningen schrijf je toe ("volgens Husain…").
+- Zet de gelezen bronnen in `further_reading`, met per bron in één zin waarom hij het lezen waard is. Alleen links die je zelf hebt geopend.
+
+### Opbouw
+
+- Schrijf volgens de redactiegids (§1: eenvoudig Nederlands, korte zinnen, Engelse term tussen haakjes bij eerste gebruik, één vergelijking per nieuw begrip).
+- 5 tot 7 onderdelen (`sections`), elk met een korte kop en 2 tot 4 alinea's. Samen 6 tot 10 minuten lezen. Een logische lijn is: waarom bestaat dit · hoe werkt het · wat zijn de keuzes en valkuilen · waar zijn experts het oneens · hoe ziet het eruit in de eigen stack · wat betekent het voor een lopend project.
+- Leg begrippen die in `profile.md` §2 als bekend staan niet uit.
+- `experiment`: een proef van hooguit een middag, alleen met openbare of verzonnen data. Externe AI alleen zonder werkdata.
+- `limitations`: 2 tot 4 korte zinnen over beperkingen, kosten of risico's, met aandacht voor zorgdata waar dat speelt.
+
+### Formaat van `data/deepdives/<id>.json`
+
+Gebruik de `id` uit `verdieping.yml` als bestandsnaam, `id` en `plan_id`.
+
+```json
+{
+  "format_version": 1,
+  "id": "<id uit verdieping.yml>",
+  "plan_id": "<id uit verdieping.yml>",
+  "headline": "Nederlandse kop, hooguit ongeveer 70 tekens",
+  "summary": "Twee of drie zinnen voor de kaart en de opening.",
+  "sections": [{"heading": "Korte kop", "paragraphs": ["Alinea.", "Alinea."]}],
+  "experiment": "Een proef van hooguit een middag, zonder werk- of patiëntdata.",
+  "limitations": ["Korte zin"],
+  "further_reading": [{"label": "Titel (auteur of organisatie, maand jaar)", "url": "https://...", "note": "Waarom lezen."}],
+  "currency_check": "Gecontroleerd op <datum>: ...",
+  "topics": ["<1 tot 4 id's uit interests.yml>"],
+  "written_at": "2026-10-29T06:30:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v1"
+}
+```
+
+Een voorbeeld staat in `data/deepdives/evals-ai-assistent.json`.

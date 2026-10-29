@@ -340,6 +340,40 @@ class TestBuild(unittest.TestCase):
         self.assertEqual(feed["articles"], [{"id": "x"}])
 
 
+class TestDeepdives(unittest.TestCase):
+    def setUp(self):
+        self.topics = set(cfg.load().topics)
+        self.plan = {"topics": [{"id": "a", "enabled": True}, {"id": "b", "enabled": True}]}
+        self.good = {"id": "a", "plan_id": "a", "headline": "Kop", "summary": "s", "experiment": "e",
+                     "currency_check": "Gecontroleerd.", "written_at": "2026-10-29T06:00:00Z", "processed_by": "Claude",
+                     "sections": [{"heading": f"H{i}", "paragraphs": ["p"]} for i in range(3)],
+                     "further_reading": [{"label": "x", "url": "https://example.org/1"}, {"label": "y", "url": "https://example.org/2"}],
+                     "limitations": [], "topics": ["dbt_analytics_engineering"]}
+
+    def test_valid_and_invalid(self):
+        from pipeline import deepdives
+        self.assertEqual(deepdives.validate(self.good, self.topics, {"a", "b"}), [])
+        self.assertTrue(deepdives.validate({**self.good, "plan_id": "z"}, self.topics, {"a", "b"}))
+        self.assertTrue(deepdives.validate({**self.good, "sections": self.good["sections"][:2]}, self.topics, {"a", "b"}))
+        self.assertTrue(deepdives.validate({**self.good, "further_reading": [{"label": "x", "url": "http://x"}] * 2}, self.topics, {"a", "b"}))
+        self.assertTrue(deepdives.validate({**self.good, "currency_check": ""}, self.topics, {"a", "b"}))
+
+    def test_next_topic_skips_done(self):
+        from pipeline import deepdives
+        with tempfile.TemporaryDirectory() as tmp:
+            old = deepdives.DIR
+            deepdives.DIR = Path(tmp)
+            try:
+                self.assertEqual(deepdives.next_topic(self.plan)["id"], "a")
+                (Path(tmp) / "a.json").write_text(json.dumps(self.good))
+                self.assertEqual(deepdives.next_topic(self.plan)["id"], "b")
+                good, bad = deepdives.load_all(self.topics, self.plan)
+                self.assertEqual([d["id"] for d in good], ["a"])
+                self.assertEqual(bad, [])
+            finally:
+                deepdives.DIR = old
+
+
 class TestPublishedFeed(unittest.TestCase):
     """Controleert het feed.json dat de app leest."""
 

@@ -48,6 +48,11 @@ def check(name, cond, detail=""):
 
 feed = json.loads((ROOT / "data" / "feed.json").read_text(encoding="utf-8"))
 arts = feed["articles"]
+# Verdiepingen uit de repo gebruiken, ook als feed.json nog niet opnieuw is gebouwd.
+sys.path.insert(0, str(ROOT))
+from pipeline import config as _cfg, deepdives as _dd  # noqa: E402
+feed["deepdives"], _ = _dd.load_all(set(_cfg.load().topics))
+dds = feed["deepdives"]
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
@@ -109,6 +114,27 @@ with sync_playwright() as p:
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
+
+    # 11. Tabblad Verdieping
+    check("11. tabbladen Actueel en Verdieping", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping"])
+    page.click('#seg-view button[data-v="verdieping"]')
+    page.wait_for_timeout(100)
+    check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
+    check("   sorteerknoppen verborgen bij Verdieping", not page.locator("#seg-sort").is_visible())
+    if dds:
+        page.locator(".card[data-dd]").first.click()
+        page.wait_for_selector("#reader:not([hidden]) article.dd")
+        text = page.locator("#reader").inner_text()
+        first = sorted(dds, key=lambda d: d["written_at"], reverse=True)[0]
+        check("   verdieping opent met onderdelen en Verder lezen", first["headline"] in text and first["sections"][0]["heading"] in text and "Verder lezen" in text)
+        if SHOTS:
+            page.screenshot(path=str(SHOTS / "3-verdieping.png"))
+        page.click("#back")
+        page.wait_for_selector("#reader", state="hidden")
+        check("   terug naar de verdiepingen", page.locator(".card[data-dd]").count() == len(dds))
+    page.click('#seg-view button[data-v="actueel"]')
+    page.wait_for_timeout(100)
+    check("   terug naar Actueel", page.locator(".card[data-id]").count() == len(arts))
 
     check("   onverwerkte artikelen staan niet in de app", all(a["processing_status"] == "enriched" for a in arts))
     raw = None

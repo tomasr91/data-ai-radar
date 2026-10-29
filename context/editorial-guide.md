@@ -52,6 +52,9 @@ Een onderbouwde mening van een **erkende vakpersoon** is welkom, ook zonder nieu
 - **Let op** (`limitations`): noem belangen (werkt de auteur bij een leverancier?) en wat het stuk niet onderbouwt.
 - `availability_status` is meestal `onbekend`; `practicality` en `novelty` gaan over de bruikbaarheid en frisheid van het idee.
 
+### Verdiepingen
+Naast het nieuws (tabblad *Actueel*) schrijft de radar ongeveer twee keer per week een **verdieping** (tabblad *Verdieping*): een langer stuk over een onderwerp uit `verdieping.yml`. Dezelfde schrijfstijl, maar met ruimte voor uitleg. Harde regel: **alleen wat nu actueel is**, geen verouderde technieken of tools. Details staan in `TAAK_VERRIJKEN.md`, hoofdstuk Verdiepingen.
+
 ### Dagelijks overzicht
 De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 - Bovenaan maximaal 5 artikelen, gesorteerd op relevantiescore; per artikel titel + samenvatting + link naar het volledige artikel.

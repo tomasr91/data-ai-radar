@@ -1,0 +1,100 @@
+# Data & AI Radar — onderwerpen voor verdiepingen
+#
+# Een verdieping is een langer stuk (8 tot 10 minuten lezen) over een onderwerp dat ik
+# nog minder goed ken. Claude schrijft er ongeveer twee per week, in de volgorde hieronder.
+#
+# Zo beheer je dit bestand:
+# - Toevoegen: kopieer een blok, kies een unieke id (kleine letters, koppeltekens).
+# - Volgorde: het bovenste open onderwerp komt als eerste aan de beurt.
+# - Overslaan: zet enabled op false.
+# - Klaar: hoef je niet bij te houden. Een onderwerp is klaar zodra er een bestand
+#   data/deepdives/<id>.json bestaat met deze plan_id.
+#
+# Velden:
+#   id          unieke sleutel
+#   title       werktitel (Claude kiest zelf de definitieve kop)
+#   question    de vraag die de verdieping moet beantwoorden
+#   angle       invalshoek: waar moet het op ingaan, wat mag eruit
+#   topics      onderwerp-id's uit interests.yml (1 tot 3)
+#   enabled     true/false
+
+schema_version: 1
+updated: "2026-10-29"
+
+rules:
+  - Alleen technieken en werkwijzen die nu (op de schrijfdatum) de gangbare of aanbevolen aanpak zijn.
+  - Geen verouderde technieken, tools of productnamen. Twijfel? Controleer bij de actuele officiële documentatie.
+  - Een oudere bron mag alleen voor een basisidee dat nog steeds klopt, en dan altijd naast een recente bron.
+  - Koppel aan de eigen stack (dbt, Databricks, Unity Catalog, Power BI) en aan de lopende projecten.
+  - Nooit patiënt- of werkdata in voorbeelden of experimenten.
+
+topics:
+  - id: evals-ai-assistent
+    title: Meten of je AI-assistent goed antwoordt (evaluatie, evals)
+    question: Hoe toets je of een AI-assistent of agent op je data betrouwbare antwoorden geeft, voordat collega's hem gebruiken?
+    angle: Foutanalyse, testsets, LLM-als-beoordelaar, en hoe dat er op Databricks uitziet. Praktisch voor de AI-contextlaag.
+    topics: [ai_agents_rag, ai_context_engineering, data_quality_observability]
+    enabled: true
+
+  - id: semantische-laag-als-ai-context
+    title: De semantische laag als geheugen voor AI
+    question: Waarom geven vaste definities van maatstaven (metrics) betere AI-antwoorden dan losse tabellen, en waar leg je ze vast?
+    angle: dbt semantic layer, metric views in Unity Catalog en semantische modellen in Power BI naast elkaar; wanneer kies je wat.
+    topics: [ai_context_engineering, dbt_analytics_engineering, powerbi_semantic_models]
+    enabled: true
+
+  - id: mcp-voor-data
+    title: MCP - hoe AI-tools veilig bij je data komen
+    question: Wat is het Model Context Protocol, hoe werkt een MCP-server voor data, en waar zitten de risico's?
+    angle: Begrippen, beveiliging en rechten, MCP-servers van dbt en Databricks. Let op de regel over externe AI en werkdata.
+    topics: [ai_agents_rag, data_governance_privacy]
+    enabled: true
+
+  - id: datacontracten
+    title: Datacontracten tussen bron en model
+    question: Wat zijn datacontracten, welk probleem lossen ze op en hoe pas je ze toe met dbt?
+    angle: Verschil met dbt model contracts en tests; hoe je afspraken maakt met eigenaren van bronsystemen.
+    topics: [data_quality_observability, dbt_analytics_engineering, data_architecture_modeling]
+    enabled: true
+
+  - id: kolom-lineage-impactanalyse
+    title: Kolom-lineage gebruiken voor impactanalyse
+    question: Hoe zie je vooraf wat er breekt als je een kolom wijzigt, en hoe gebruik je lineage als context voor AI?
+    angle: Lineage in Unity Catalog en in dbt; wat het wel en niet ziet.
+    topics: [metadata_lineage_catalogs, ai_context_engineering]
+    enabled: true
+
+  - id: rag-op-documentatie
+    title: Zoeken in eigen documentatie met RAG
+    question: Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne documentatie, en waar gaat het meestal mis?
+    angle: Opknippen (chunking), hybride zoeken, herrangschikken en evaluatie; wanneer RAG niet de juiste keuze is.
+    topics: [ai_agents_rag, ai_research_data]
+    enabled: true
+
+  - id: datakwaliteit-monitoren
+    title: Datakwaliteit bewaken zonder alles met de hand te testen
+    question: Hoe vind je kwaliteitsproblemen die je niet met een vaste test had voorzien?
+    angle: Monitoring en afwijkingsdetectie naast dbt-tests; wat Databricks hier zelf voor biedt.
+    topics: [data_quality_observability, databricks_data_engineering]
+    enabled: true
+
+  - id: toegang-op-attributen
+    title: Toegang regelen met tags en attributen (ABAC)
+    question: Hoe regel je toegang tot gevoelige kolommen op basis van classificatie in plaats van per tabel?
+    angle: Tags, classificatie en ABAC in Unity Catalog; toepassing op zorgdata zonder echte data te gebruiken.
+    topics: [data_governance_privacy, metadata_lineage_catalogs, ai_in_healthcare]
+    enabled: true
+
+  - id: synthetische-data-voor-experimenten
+    title: Synthetische data om veilig te experimenteren
+    question: Hoe maak je realistische nepdata om AI-ideeën te testen zonder patiëntgegevens?
+    angle: Technieken, valkuilen (lekken van echte gegevens), en wanneer het genoeg is voor een proef.
+    topics: [data_governance_privacy, ai_in_healthcare, ai_research_data]
+    enabled: true
+
+  - id: open-tabelformaten
+    title: Delta, Iceberg en het open lakehouse
+    question: Wat is het verschil tussen Delta en Iceberg, en waarom maakt de catalogus steeds meer uit dan het formaat?
+    angle: Begrippen en de huidige stand; wat het betekent voor Unity Catalog en voor koppelingen met Fabric.
+    topics: [data_architecture_modeling, databricks_data_engineering, metadata_lineage_catalogs]
+    enabled: true
