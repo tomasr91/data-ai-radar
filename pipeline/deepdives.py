@@ -1,11 +1,17 @@
 """Verdiepingen: langere stukken over een onderwerp, los van de nieuwsfeed.
 
-- Plan: context/verdieping.yml (onderwerpen in volgorde; Claude pakt het bovenste open onderwerp).
-- Inhoud: data/deepdives/<id>.json, geschreven door Claude (geplande taak).
-- De pipeline zet geldige verdiepingen in feed.json onder "deepdives".
+Werkwijze (dagelijks):
+1. De Claude-taak zet elke ochtend 5 keuzes klaar in data/deepdive_options.json.
+2. T kiest in de app één keuze. De app opent dan een GitHub-issue "Verdieping: <id>".
+3. De volgende ochtend schrijft de Claude-taak die verdieping (data/deepdives/<id>.json),
+   sluit het issue via de commit ("Closes #n") en zet 5 nieuwe keuzes klaar.
+
+- Ideeënlijst en regels: context/verdieping.yml.
+- De pipeline zet geldige verdiepingen en de huidige keuzes in feed.json.
 """
 import json
 import math
+import re
 from datetime import datetime
 
 import yaml
@@ -14,6 +20,9 @@ from .config import CONTEXT, DATA
 
 DIR = DATA / "deepdives"
 PLAN = CONTEXT / "verdieping.yml"
+OPTIONS = DATA / "deepdive_options.json"
+OPTION_FIELDS = ["id", "title", "question", "why", "topics"]
+ID_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 FIELDS = ["id", "plan_id", "headline", "summary", "sections", "experiment", "limitations",
           "further_reading", "currency_check", "topics", "written_at", "processed_by"]
 
@@ -37,7 +46,7 @@ def validate(data: dict, topic_ids: set, plan_ids: set) -> list:
         if not isinstance(data.get(f), str) or not data[f].strip():
             p.append(f"veld '{f}' ontbreekt")
     if data.get("plan_id") and data["plan_id"] not in plan_ids:
-        p.append(f"plan_id '{data['plan_id']}' staat niet in verdieping.yml")
+        p.append(f"plan_id '{data['plan_id']}' staat niet in verdieping.yml of in de keuzes")
     if isinstance(data.get("headline"), str) and len(data["headline"]) > 90:
         p.append("headline is langer dan 90 tekens")
     secs = data.get("sections")
@@ -78,7 +87,7 @@ def reading_minutes(d: dict) -> int:
 def load_all(topic_ids: set, plan: dict = None) -> tuple:
     """(geldige verdiepingen voor de feed, nieuwste eerst; lijst met fouten)"""
     plan = plan or load_plan()
-    plan_ids = {t["id"] for t in plan.get("topics", [])}
+    plan_ids = {t["id"] for t in plan.get("topics", [])} | set(known_options())
     good, bad = [], []
     for f in sorted(DIR.glob("*.json")) if DIR.exists() else []:
         try:
@@ -109,3 +118,76 @@ def next_topic(plan: dict = None):
         except json.JSONDecodeError:
             pass
     return next((t for t in plan.get("topics", []) if t.get("enabled", True) and t["id"] not in done), None)
+
+
+# ---- Dagelijkse keuzes ----
+
+def written_plan_ids() -> set:
+    done = set()
+    for f in DIR.glob("*.json") if DIR.exists() else []:
+        try:
+            done.add(json.loads(f.read_text(encoding="utf-8")).get("plan_id"))
+        except json.JSONDecodeError:
+            pass
+    return done
+
+
+def _read_options(path=None) -> dict:
+    path = path or OPTIONS
+    try:
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    except json.JSONDecodeError:
+        return {}
+
+
+def known_options(path=None) -> dict:
+    """Alle keuzes die ooit zijn aangeboden (huidige + geschiedenis), op id."""
+    data = _read_options(path)
+    out = {}
+    for o in data.get("history", []) + data.get("options", []):
+        if isinstance(o, dict) and o.get("id"):
+            out[o["id"]] = o
+    return out
+
+
+def validate_options(data: dict, topic_ids: set, done: set) -> list:
+    p = []
+    opts = data.get("options")
+    if not isinstance(opts, list) or len(opts) != 5:
+        return ["options moet precies 5 keuzes hebben"]
+    seen = set()
+    for i, o in enumerate(opts):
+        if not isinstance(o, dict):
+            p.append(f"options[{i}] is geen object")
+            continue
+        for f in OPTION_FIELDS:
+            if not o.get(f):
+                p.append(f"options[{i}]: veld '{f}' ontbreekt")
+        oid = o.get("id", "")
+        if oid and not ID_RE.match(oid):
+            p.append(f"options[{i}]: id '{oid}' mag alleen kleine letters, cijfers en koppeltekens bevatten")
+        if oid in seen:
+            p.append(f"options[{i}]: id '{oid}' komt dubbel voor")
+        if oid in done:
+            p.append(f"options[{i}]: over '{oid}' is al een verdieping geschreven")
+        seen.add(oid)
+        if len(o.get("title", "")) > 80:
+            p.append(f"options[{i}]: title is langer dan 80 tekens")
+        unknown = [t for t in o.get("topics", []) if t not in topic_ids]
+        if unknown:
+            p.append(f"options[{i}]: onbekende topics {unknown}")
+    if not _iso_ok(data.get("generated_at", "")):
+        p.append("generated_at is geen ISO-datum")
+    return p
+
+
+def load_options(topic_ids: set, path=None) -> tuple:
+    """(keuzes voor de app of None, lijst met problemen)"""
+    data = _read_options(path)
+    if not data:
+        return None, []
+    problems = validate_options(data, topic_ids, written_plan_ids())
+    if problems:
+        return None, problems
+    return {"generated_at": data["generated_at"],
+            "options": [{k: o[k] for k in OPTION_FIELDS + ["area"] if k in o} for o in data["options"]]}, []

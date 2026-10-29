@@ -59,6 +59,13 @@ def main(argv):
             bad += 1
             print(f"FOUT deepdives/{w['file']}: " + "; ".join(w["problems"]))
         print(f"{len(good) + len(wrong)} verdiepingen gecontroleerd")
+        if deepdives.OPTIONS.exists():
+            opts, problems = deepdives.load_options(topics)
+            for pr in problems:
+                bad += 1
+                print(f"FOUT deepdive_options.json: {pr}")
+            if opts:
+                print(f"{len(opts['options'])} keuzes voor morgen gecontroleerd")
     print(f"{len(files)} uitlegbestanden gecontroleerd, {bad} fout")
     return 1 if bad else 0
 

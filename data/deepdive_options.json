@@ -1,0 +1,65 @@
+{
+ "format_version": 1,
+ "generated_at": "2026-10-29T11:40:00Z",
+ "options": [
+  {
+   "id": "semantische-laag-als-ai-context",
+   "title": "De semantische laag als geheugen voor AI",
+   "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en waar leg je ze vast: dbt, metric views in Unity Catalog of Power BI?",
+   "why": "Deze week zat een AI-agent bij AWS 3,5 miljoen dollar naast zonder vaste definities, en metric views in Databricks kregen window measures.",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "powerbi_semantic_models"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "geheugen-voor-ai-agents",
+   "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
+   "question": "Hoe onthoudt een AI-agent iets tussen taken zonder zijn contextvenster vol te stoppen, en welke soorten geheugen zijn er?",
+   "why": "Databricks bracht agent memory pipelines uit in Beta, en LangChain schreef deze week drie stukken over geheugen en context.",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "claude-code-skills-hooks-subagents",
+   "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
+   "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
+   "why": "Agent Skills worden ondergebracht bij de Agentic AI Foundation, zo schreef Simon Willison deze week.",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "datacontracten",
+   "title": "Datacontracten tussen bron en model",
+   "question": "Wat zijn datacontracten, welk probleem lossen ze op, en hoe verschillen ze van model contracts en tests in dbt?",
+   "why": "Past bij de migratie: vaste afspraken voorkomen dat een wijziging in een bronsysteem stilletjes je modellen breekt.",
+   "topics": [
+    "data_quality_observability",
+    "dbt_analytics_engineering",
+    "data_architecture_modeling"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "open-tabelformaten",
+   "title": "Delta, Iceberg en het open lakehouse",
+   "question": "Wat is het verschil tussen Delta en Iceberg, en waarom maakt de catalogus steeds meer uit dan het formaat?",
+   "why": "Databricks ondersteunt nu transacties over Delta- én Iceberg-tabellen, en schreef over wat een catalogus 'open' maakt.",
+   "topics": [
+    "databricks_data_engineering",
+    "data_architecture_modeling",
+    "metadata_lineage_catalogs"
+   ],
+   "area": "new_tech"
+  }
+ ],
+ "history": []
+}

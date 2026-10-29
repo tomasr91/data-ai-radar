@@ -12,10 +12,14 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
    2. Is de pagina niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf dan `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door naar het volgende artikel.
    3. Valt het artikel onder **"Niet uitleggen"** hieronder? Schrijf dan ook een `skipped`-bestand, met als `reason` welke regel het is, en ga door.
    4. Schrijf anders `data/enrichment/<id>.json` volgens het formaat hieronder. Gebruik precies de `id` uit de werklijst als bestandsnaam en als `article_id`.
-5. **Verdieping.** Draai `python scripts/next_deepdive.py`. Zegt het `SCHRIJVEN: <id>`, schrijf dan één verdieping over dat onderwerp volgens het hoofdstuk **Verdiepingen** hieronder. Anders sla je deze stap over.
-6. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-7. **Opslaan.** `git add data/enrichment data/deepdives`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef), `git pull --rebase`, `git push`.
-8. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, en of er een verdieping is geschreven.
+5. **Verdieping.** Draai `python scripts/next_deepdive.py`.
+   - `SCHRIJVEN: <id> (issue #n)`: schrijf één verdieping over die keuze volgens het hoofdstuk **Verdiepingen** hieronder. Onthoud het issuenummer.
+   - `AL GESCHREVEN` of `ONBEKENDE KEUZE`: schrijf niets voor dat issue; noem het in de melding. Bij `AL GESCHREVEN` mag je het issue sluiten met `Closes #n` in de commit.
+   - `GEEN KEUZE` of `ONBEKEND`: vandaag geen verdieping.
+6. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
+7. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
+8. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
+9. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
 
@@ -106,7 +110,37 @@ Voorbeelden van goede uitleg staan al in `data/enrichment/` (bestanden met `"for
 
 ## Verdiepingen
 
-Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. Het onderwerp komt uit `context/verdieping.yml` (het script kiest het bovenste open onderwerp). Lees de `question` en `angle` van dat onderwerp: die bepalen waar het stuk over gaat.
+Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. T kiest het onderwerp zelf in de app, uit de 5 keuzes van gisteren. Het script geeft de gekozen keuze terug: de `question` en `why` bepalen waar het stuk over gaat.
+
+### Dagelijkse keuzes
+
+Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf je de volgende ochtend.
+
+- **Waar komen ze vandaan?** Combineer:
+  - het nieuws van de afgelopen dagen (`data/feed.json` en de werklijst): wat roept een "hoe werkt dat eigenlijk?"-vraag op;
+  - de interessegebieden en hun richtverdeling in `context/interests.yml` (`interest_areas`) en de leerdoelen in `context/profile.md` §2;
+  - de ideeënlijst in `context/verdieping.yml` (onderwerpen en regels).
+- **Spreiding:** de 5 keuzes komen uit minstens 3 verschillende interessegebieden. Volg ongeveer de verdeling 30/30/20/20; zet het gebied in `area`.
+- **Vers:** niet iets waar al een verdieping over is (`data/deepdives/`), en niet dezelfde 5 als gisteren. Een keuze die gisteren niet is gekozen mag terugkomen, maar hooguit 2 per dag.
+- **Afwisseling in soort:** bijvoorbeeld één uitleg van een concept, één vergelijking van aanpakken, één praktische bouwsteen voor de eigen stack, één onderwerp uit het nieuws.
+- **Per keuze:**
+  - `id`: korte sleutel, kleine letters en koppeltekens (bijv. `reranking-bij-rag`). Wordt later de bestandsnaam.
+  - `title`: hooguit 80 tekens, Nederlands, zegt waar het over gaat.
+  - `question`: de vraag die de verdieping beantwoordt.
+  - `why`: één zin waarom dit nu interessant is (bijv. een artikel van deze week, of een lopend project).
+  - `topics`: 1 tot 3 id's uit `interests.yml`. `area`: id uit `interest_areas`.
+- **Bestand:** verplaats de keuzes van gisteren naar `history` (bewaar hooguit de laatste 60) en zet de nieuwe in `options`:
+
+```json
+{
+  "format_version": 1,
+  "generated_at": "2026-10-30T06:20:00Z",
+  "options": [
+    {"id": "reranking-bij-rag", "title": "...", "question": "...", "why": "...", "topics": ["ai_context_engineering"], "area": "context_agents"}
+  ],
+  "history": []
+}
+```
 
 ### Actualiteit (belangrijkste regel)
 
@@ -131,13 +165,14 @@ Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent.
 
 ### Formaat van `data/deepdives/<id>.json`
 
-Gebruik de `id` uit `verdieping.yml` als bestandsnaam, `id` en `plan_id`.
+Gebruik de `id` van de gekozen keuze als bestandsnaam, `id` en `plan_id`.
 
 ```json
 {
   "format_version": 1,
-  "id": "<id uit verdieping.yml>",
-  "plan_id": "<id uit verdieping.yml>",
+  "id": "<id van de gekozen keuze>",
+  "plan_id": "<id van de gekozen keuze>",
+  "request_issue": 12,
   "headline": "Nederlandse kop, hooguit ongeveer 70 tekens",
   "summary": "Twee of drie zinnen voor de kaart en de opening.",
   "sections": [{"heading": "Korte kop", "paragraphs": ["Alinea.", "Alinea."]}],

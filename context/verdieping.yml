@@ -1,14 +1,16 @@
 # Data & AI Radar — onderwerpen voor verdiepingen
 #
 # Een verdieping is een langer stuk (8 tot 10 minuten lezen) over een onderwerp dat ik
-# nog minder goed ken. Claude schrijft er ongeveer twee per week, in de volgorde hieronder.
+# nog minder goed ken.
+#
+# Werkwijze: elke ochtend zet Claude 5 keuzes klaar in de app (tabblad Verdieping). Ik kies
+# er één; die schrijft Claude de volgende ochtend. Dit bestand is de ideeënlijst waar Claude
+# uit put, naast het nieuws van die week. De regels hieronder gelden voor elke verdieping.
 #
 # Zo beheer je dit bestand:
 # - Toevoegen: kopieer een blok, kies een unieke id (kleine letters, koppeltekens).
-# - Volgorde: het bovenste open onderwerp komt als eerste aan de beurt.
-# - Overslaan: zet enabled op false.
-# - Klaar: hoef je niet bij te houden. Een onderwerp is klaar zodra er een bestand
-#   data/deepdives/<id>.json bestaat met deze plan_id.
+# - Hoger op de lijst = vaker als keuze aangeboden.
+# - Niet meer aanbieden: zet enabled op false.
 #
 # Velden:
 #   id          unieke sleutel

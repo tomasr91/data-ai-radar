@@ -12,6 +12,7 @@ Lagen:
 import argparse
 import json
 import math
+import os
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
@@ -27,6 +28,7 @@ from .providers import feeds, snapshot
 from .score import daily_top, score_article
 
 SCHEMA_VERSION = 1
+DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
 PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
 QUEUE_MAX = 15         # max. aantal artikelen op de werklijst voor Claude
@@ -112,6 +114,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         prev["sources"] = _source_view(conf, result.source_results)
         prev["generated_at"] = _iso(now)
         prev["deepdives"], _ = deepdives_mod.load_all(set(conf.topics))
+        prev["deepdive_options"], _ = deepdives_mod.load_options(set(conf.topics))
         out_path.write_text(json.dumps(prev, ensure_ascii=False, indent=1), encoding="utf-8")
         return prev
 
@@ -184,6 +187,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).
     fetched = [a.get("processed_at") or a["fetched_at"] for a in shown if a.get("processed_at") or a.get("fetched_at")]
     deepdives, invalid_deepdives = deepdives_mod.load_all(set(conf.topics))
+    dd_options, invalid_options = deepdives_mod.load_options(set(conf.topics))
     feed = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": _iso(now),
@@ -198,6 +202,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "daily_top": daily_top(shown, size=5, per_group=min(2, conf.scoring.get("max_items_per_topic_per_feed", 3))),
         "articles": [_public(a) for a in shown],
         "deepdives": deepdives,
+        "deepdive_options": dd_options,
+        "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
             "fetched_items": len(result.items),
             "unique_after_dedupe": len(arts),
@@ -213,6 +219,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "queue_size": len(queue),
             "invalid_enrichment": invalid_cache,
             "invalid_deepdives": invalid_deepdives,
+            "invalid_deepdive_options": invalid_options,
             "threshold": round(conf.scoring.get("min_relevance_score", 0.5) * 100),
             "not_shown": [{"title": a["title"], "source_id": a["source_id"], "url": a["url"],
                            "relevance_score": a["relevance_score"], "decision": a["decision"],

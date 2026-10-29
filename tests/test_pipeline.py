@@ -1,5 +1,6 @@
 """Tests voor de pipeline. Draaien: python -m unittest discover -s tests -v"""
 import json
+import sys
 import tempfile
 import unittest
 import urllib.error
@@ -281,6 +282,42 @@ class TestWeeklyDigest(unittest.TestCase):
         a = score_article(normalize(d) | {"processing_status": "raw"}, conf, now)
         self.assertIn("claude_ai_development", a["topics"])
         self.assertGreaterEqual(a["relevance_score"], build_mod.QUEUE_MIN_SCORE)
+
+
+class TestDeepdiveChoice(unittest.TestCase):
+    """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
+
+    def _opts(self):
+        o = lambda i: {"id": f"onderwerp-{i}", "title": f"Titel {i}", "question": "Vraag?", "why": "Omdat.",
+                       "topics": ["ai_context_engineering"], "area": "context_agents"}
+        return {"format_version": 1, "generated_at": "2026-10-29T06:00:00Z", "options": [o(i) for i in range(5)], "history": []}
+
+    def test_validate_options(self):
+        from pipeline import deepdives
+        topics = set(cfg.load().topics)
+        good = self._opts()
+        self.assertEqual(deepdives.validate_options(good, topics, set()), [])
+        self.assertTrue(deepdives.validate_options({**good, "options": good["options"][:4]}, topics, set()))
+        self.assertTrue(deepdives.validate_options(good, topics, {"onderwerp-2"}), "al geschreven mag niet terugkomen")
+        bad = self._opts(); bad["options"][0]["id"] = "Met Spaties"
+        self.assertTrue(deepdives.validate_options(bad, topics, set()))
+
+    def test_only_owner_issues_count(self):
+        sys.path.insert(0, str(cfg.ROOT / "scripts"))
+        import next_deepdive
+        issues = [{"number": 5, "title": "Verdieping: b-onderwerp", "user": {"login": "TomasR91"}},
+                  {"number": 3, "title": "Verdieping: a-onderwerp", "user": {"login": "tomasr91"}},
+                  {"number": 4, "title": "Verdieping: c-onderwerp", "user": {"login": "vreemde"}},
+                  {"number": 6, "title": "Iets anders", "user": {"login": "tomasr91"}},
+                  {"number": 9, "title": "Verdieping: d", "user": {"login": "tomasr91"}, "pull_request": {}}]
+        self.assertEqual(next_deepdive.choices(issues, "tomasr91"), [(3, "a-onderwerp"), (5, "b-onderwerp")])
+
+    def test_chosen_option_is_valid_plan_id(self):
+        from pipeline import deepdives
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "opts.json"
+            path.write_text(json.dumps(self._opts()))
+            self.assertIn("onderwerp-3", deepdives.known_options(path))
 
 
 class TestBuild(unittest.TestCase):

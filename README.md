@@ -18,7 +18,7 @@ context/
   tech-stack.md              ← technologie per categorie (redelijk stabiel)
   projects.md                ← projecten en projectthema's (tijdelijk)
   interests.yml              ← onderwerpen, prioriteiten, scoringsregels
-  verdieping.yml             ← onderwerpen voor verdiepingen, in volgorde
+  verdieping.yml             ← ideeën en regels voor verdiepingen
   sources.yml                ← nieuwsbronnen en hun betrouwbaarheid
   editorial-guide.md         ← schrijfstijl, artikelstructuur, betrouwbaarheid
 scripts/
@@ -36,7 +36,8 @@ data/
   archive.json               ← alle opgehaalde artikelen (60 dagen), zodat ze niet verdwijnen uit de feed
   to_enrich.json             ← werklijst voor Claude: welke artikelen nog uitleg nodig hebben
   enrichment/skipped/        ← artikelen die Claude niet kon lezen, met reden
-  deepdives/<id>.json        ← verdiepingen (tabblad Verdieping), ongeveer twee per week
+  deepdives/<id>.json        ← verdiepingen (tabblad Verdieping), één per dag als je er een kiest
+  deepdive_options.json      ← de 5 keuzes voor morgen (Claude maakt ze elke ochtend)
   feed.json                  ← klaar voor de app; het enige bestand dat de app leest
 app/
   index.html                 ← de mobiele app (leest feed.json ernaast)

@@ -53,6 +53,14 @@ sys.path.insert(0, str(ROOT))
 from pipeline import config as _cfg, deepdives as _dd  # noqa: E402
 feed["deepdives"], _ = _dd.load_all(set(_cfg.load().topics))
 dds = feed["deepdives"]
+feed["deepdive_options"], _ = _dd.load_options(set(_cfg.load().topics))
+feed["repo"] = "tomasr91/data-ai-radar"
+opts = feed["deepdive_options"]["options"]
+# Nagebootste GitHub-API: de eigenaar koos de tweede keuze; een vreemde koos de eerste (telt niet).
+FAKE_ISSUES = json.dumps([
+    {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
+    {"number": 8, "title": f"Verdieping: {opts[0]['id']}", "user": {"login": "iemand-anders"}},
+])
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
@@ -65,6 +73,7 @@ with sync_playwright() as p:
     page.on("console", lambda m: m.type == "error" and "fonts.g" not in m.text and "Failed to load resource" not in m.text and errors.append(m.text))
     page.route("**/fonts.googleapis.com/**", lambda r: r.abort())
     page.route("**/fonts.gstatic.com/**", lambda r: r.abort())
+    page.route("https://api.github.com/**", lambda r: r.fulfill(status=200, content_type="application/json", body=FAKE_ISSUES, headers={"Access-Control-Allow-Origin": "*"}))
 
     # 1-2. App opent en laadt artikelen
     page.goto(url)
@@ -120,6 +129,14 @@ with sync_playwright() as p:
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
+    check("12. vijf keuzes voor morgen", page.locator("a.card.opt").count() == 5)
+    href = page.locator("a.card.opt").first.get_attribute("href")
+    check("   keuze opent een GitHub-issue met de juiste titel",
+          href.startswith("https://github.com/tomasr91/data-ai-radar/issues/new?title=") and f"Verdieping%3A%20{opts[0]['id']}" in href, href[:120])
+    page.wait_for_selector("a.card.opt.chosen", timeout=3000)
+    chosen = page.eval_on_selector_all("a.card.opt.chosen", "els => els.map(e => e.dataset.opt)")
+    check("   alleen de keuze van de eigenaar telt als gekozen", chosen == [opts[1]["id"]], str(chosen))
+    check("   melding noemt de gekozen titel", opts[1]["title"] in page.locator(".pick-note").inner_text())
     check("   sorteerknoppen verborgen bij Verdieping", not page.locator("#seg-sort").is_visible())
     if dds:
         page.locator(".card[data-dd]").first.click()

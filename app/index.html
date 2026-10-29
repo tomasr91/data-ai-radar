@@ -104,6 +104,10 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .card .sum { margin: 0; font-family: var(--f-read); font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
 .card .why { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .card .why b { color: var(--accent); font-weight: 650; }
+a.card.opt { text-decoration: none; color: inherit; }
+.card.opt.chosen { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.pick-note { margin: -2px 0 12px; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.pick-note b { color: var(--ink); font-weight: 650; }
 .card .card-date { font-family: var(--f-meta); font-size: 0.66rem; font-weight: 400; color: var(--muted); margin-right: 8px; }
 .card .raw { margin: 0; font-size: 0.84rem; color: var(--muted); font-style: italic; font-family: var(--f-read); }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
@@ -379,12 +383,60 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <p class="sum">${esc(d.summary)}</p>
     </article>`;
   }
+  /* ---- Keuzes voor de verdieping van morgen ----
+     De app is een statische site en kan zelf niets in de repository zetten. Een keuze wordt
+     daarom een GitHub-issue "Verdieping: <id>" dat je met één tik aanmaakt. De Claude-taak
+     leest dat de volgende ochtend (scripts/next_deepdive.py). Alleen issues van de eigenaar tellen. */
+  const AREA_LABEL = { data_engineering: "Data engineering", context_agents: "Context & agents", claude: "Claude", new_tech: "Nieuwe technologie" };
+  const repo = () => state.feed.repo || "tomasr91/data-ai-radar";
+  function issueUrl(o) {
+    const body = `Gekozen in de Data & AI Radar.\n\n**${o.title}**\n\n${o.question}\n\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
+    return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent("Verdieping: " + o.id)}&body=${encodeURIComponent(body)}`;
+  }
+  function optCard(o) {
+    const chosen = (state.chosen || []).includes(o.id);
+    return `<a class="card opt${chosen ? " chosen" : ""}" href="${esc(issueUrl(o))}" target="_blank" rel="noopener" data-opt="${esc(o.id)}">
+      <div class="meta"><span class="src">${esc(AREA_LABEL[o.area] || "Verdieping")}</span>${chosen ? `<span class="pill verdieping">gekozen</span>` : ""}</div>
+      <h3>${esc(o.title)}</h3>
+      <p class="sum">${esc(o.question)}</p>
+      ${o.why ? `<p class="why">${esc(o.why)}</p>` : ""}
+    </a>`;
+  }
+  function renderPicker() {
+    const o = state.feed.deepdive_options;
+    if (!o?.options?.length) return "";
+    const known = new Map(o.options.map((x) => [x.id, x.title]));
+    const chosen = state.chosen || [];
+    const note = chosen.length
+      ? `<p class="pick-note"><b>Gekozen:</b> ${chosen.map((id) => esc(known.get(id) || id)).join(", ").replace(/([^.?!])$/, "$1.")} Claude schrijft ${chosen.length > 1 ? "één per ochtend, de eerste" : "hem"} morgenochtend.</p>`
+      : `<p class="pick-note">Tik op een onderwerp. GitHub opent; tik daar op <b>Create</b>. Morgenochtend staat de verdieping hieronder.</p>`;
+    return `<h2 class="sec"><span>Kies je verdieping voor morgen</span></h2>${note}<div class="cards">${o.options.map(optCard).join("")}</div>`;
+  }
+  let chosenAt = 0;
+  async function loadChosen(force) {
+    if (!force && Date.now() - chosenAt < 60e3) return;
+    chosenAt = Date.now();
+    try {
+      const owner = repo().split("/")[0].toLowerCase();
+      const res = await fetch(`https://api.github.com/repos/${repo()}/issues?state=open&per_page=50`, { headers: { Accept: "application/vnd.github+json" } });
+      if (!res.ok) return;
+      const ids = (await res.json())
+        .filter((i) => !i.pull_request && (i.user?.login || "").toLowerCase() === owner)
+        .map((i) => (String(i.title).match(/^\s*Verdieping:\s*([a-z0-9-]+)\s*$/i) || [])[1]).filter(Boolean).map((x) => x.toLowerCase());
+      if (ids.join() !== (state.chosen || []).join()) { state.chosen = ids; if (state.view === "verdieping" && $("#reader").hidden) renderList(); }
+    } catch { /* offline of GitHub niet bereikbaar: keuzes blijven gewoon zichtbaar */ }
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && state.feed && state.view === "verdieping") loadChosen(true); });
+
   function renderList() {
     const f = state.feed;
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
-      $("#content").innerHTML = dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
-        : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Claude schrijft er ongeveer twee per week. Kom later terug.</p></div>`;
+      $("#content").innerHTML = renderPicker()
+        + `<h2 class="sec"><span>Geschreven</span><span>${dds.length}</span></h2>`
+        + (dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
+          : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies hierboven een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`);
+      loadChosen();
       return;
     }
     const list = sorted(f.articles.filter(matches));
