@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T18:39:40.208347Z",
+ "generated_at": "2026-10-29T19:08:11.407797Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -36,7 +36,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T17:54:00Z",
    "excerpt": "dbt Charts is a plain YAML language for building dashboards that version and deploy alongside your dbt models.",
-   "preliminary_score": 84,
+   "preliminary_score": 87,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "open_source_tools"
@@ -50,10 +50,26 @@
    "source_name": "LangChain Blog",
    "published_at": "2026-10-28T18:06:04Z",
    "excerpt": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused.",
-   "preliminary_score": 81,
+   "preliminary_score": 84,
    "preliminary_topics": [
     "ai_context_engineering",
     "claude_ai_development"
+   ]
+  },
+  {
+   "id": "471f6b1cbb07",
+   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-26T15:32:16Z",
+   "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
+   "preliminary_score": 82,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "open_source_tools"
    ]
   },
   {
@@ -86,22 +102,6 @@
    ]
   },
   {
-   "id": "471f6b1cbb07",
-   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
-   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-26T15:32:16Z",
-   "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
-   "preliminary_score": 80,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "open_source_tools"
-   ]
-  },
-  {
    "id": "bd10959c5f52",
    "title": "What Databricks is doing with Genie for Business Users",
    "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
@@ -109,7 +109,7 @@
    "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
    "published_at": "2026-10-08T11:11:40Z",
    "excerpt": "I n a little o ver two years, Genie has gone from a Public Preview feature for asking questions of your data in plain English, to the main way Databricks wants business users to work with the platform. September's releases show where it's going next: the Excel Add-in and the Genie One MCP server both went GA, and at the end of the month Databricks bought Row Zero, a spreadsheet company, to build into Genie.",
-   "preliminary_score": 76,
+   "preliminary_score": 78,
    "preliminary_topics": [
     "databricks_data_engineering",
     "ai_context_engineering",
@@ -124,7 +124,7 @@
    "source_name": "Azure Databricks release notes",
    "published_at": "2026-10-21T00:00:00Z",
    "excerpt": "You can now screen MCP tool calls and their results in Unity Gateway for jailbreak and prompt injection attempts. Apply the Jailbreak guardrail on input, output, or both. See Attach a built-in policy .",
-   "preliminary_score": 73,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "ai_context_engineering",
     "ai_agents_rag"
@@ -138,7 +138,7 @@
    "source_name": "Azure Databricks release notes",
    "published_at": "2026-10-21T00:00:00Z",
    "excerpt": "You can now screen MCP tool calls and their results in Unity Gateway for jailbreak and prompt injection attempts. Apply the Jailbreak guardrail on input, output, or both. See Attach a built-in policy .",
-   "preliminary_score": 73,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "ai_context_engineering",
     "ai_agents_rag"
@@ -173,19 +173,6 @@
    ]
   },
   {
-   "id": "23d3cd62d490",
-   "title": "Smarter cost controls for serverless",
-   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-10-29T15:00:00Z",
-   "excerpt": "At Databricks, our serverless compute usage has grown more than 3x in the past year,...",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
    "id": "fea9136ea071",
    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
    "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
@@ -193,7 +180,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:51:00Z",
    "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models.",
-   "preliminary_score": 73,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "ai_context_engineering"
@@ -207,10 +194,24 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:44:00Z",
    "excerpt": "KOHO argues AI self-serve analytics depends on a well-governed dbt foundation.",
-   "preliminary_score": 73,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "claude_ai_development"
+   ]
+  },
+  {
+   "id": "9bcb10a95345",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:38:00Z",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics.",
+   "preliminary_score": 76,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
    ]
   }
  ]
