@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-29T06:44:14.774272Z",
- "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "generated_at": "2026-10-29T07:35:38.032730Z",
+ "mode": "partial",
+ "mode_note": "16 van 18 feeds opgehaald; zie bronstatus.",
  "last_article_added_at": "2026-10-28T20:32:37.744597Z",
- "last_successful_update": "2026-10-29T06:44:14.774272Z",
+ "last_successful_update": "2026-10-29T07:35:38.032730Z",
  "groups": [
   {
    "id": "dbt",
@@ -138,7 +138,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-29T06:44:14.817382Z"
+   "checked_at": "2026-10-29T07:35:38.054867Z"
   },
   {
    "id": "dbt_core_releases",
@@ -151,7 +151,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-29T06:44:14.900325Z"
+   "checked_at": "2026-10-29T07:35:38.341523Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -164,7 +164,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-29T06:44:15.748608Z"
+   "checked_at": "2026-10-29T07:35:39.038865Z"
   },
   {
    "id": "databricks_blog",
@@ -177,7 +177,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-29T06:44:16.234825Z"
+   "checked_at": "2026-10-29T07:35:39.373752Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -190,7 +190,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-29T06:44:16.314034Z"
+   "checked_at": "2026-10-29T07:35:39.482491Z"
   },
   {
    "id": "github_blog",
@@ -203,7 +203,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-29T06:44:16.604781Z"
+   "checked_at": "2026-10-29T07:35:39.644813Z"
   },
   {
    "id": "azure_blog",
@@ -216,7 +216,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-10-29T06:44:16.686721Z"
+   "checked_at": "2026-10-29T07:35:39.810612Z"
   },
   {
    "id": "powerbi_blog",
@@ -229,7 +229,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-29T06:44:16.875002Z"
+   "checked_at": "2026-10-29T07:35:40.114451Z"
   },
   {
    "id": "huggingface_blog",
@@ -242,7 +242,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-29T06:44:17.705728Z"
+   "checked_at": "2026-10-29T07:35:40.851936Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -255,7 +255,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-29T06:44:17.859977Z"
+   "checked_at": "2026-10-29T07:35:41.021542Z"
   },
   {
    "id": "simon_whiteley",
@@ -268,7 +268,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-29T06:44:18.044845Z"
+   "checked_at": "2026-10-29T07:35:41.246729Z"
   },
   {
    "id": "hamel_husain",
@@ -281,7 +281,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-29T06:44:18.195517Z"
+   "checked_at": "2026-10-29T07:35:41.411397Z"
   },
   {
    "id": "chip_huyen",
@@ -294,7 +294,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-29T06:44:18.470270Z"
+   "checked_at": "2026-10-29T07:35:41.609895Z"
   },
   {
    "id": "simon_willison",
@@ -307,7 +307,46 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-29T06:44:19.021624Z"
+   "checked_at": "2026-10-29T07:35:41.949046Z"
+  },
+  {
+   "id": "benn_stancil",
+   "name": "Benn Stancil (benn.substack)",
+   "url": "https://benn.substack.com/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "rss",
+   "status": "failed",
+   "items": 0,
+   "message": "HTTP 403 bij https://benn.substack.com/feed",
+   "checked_at": "2026-10-29T07:35:42.333294Z"
+  },
+  {
+   "id": "chris_webb",
+   "name": "Chris Webb's BI Blog",
+   "url": "https://blog.crossjoin.co.uk/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 4,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://blog.crossjoin.co.uk/feed/",
+   "checked_at": "2026-10-29T07:35:42.423513Z"
+  },
+  {
+   "id": "joe_reis",
+   "name": "Joe Reis — Practical Data Modeling",
+   "url": "https://practicaldatamodeling.substack.com/",
+   "type": "expert_blog",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "rss",
+   "status": "failed",
+   "items": 0,
+   "message": "HTTP 403 bij https://practicaldatamodeling.substack.com/feed",
+   "checked_at": "2026-10-29T07:35:42.753283Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -320,7 +359,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-29T06:44:19.134768Z"
+   "checked_at": "2026-10-29T07:35:42.847386Z"
   }
  ],
  "daily_top": [
@@ -1052,7 +1091,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.43,
+    "recency": 0.42,
     "source": 1.0,
     "quality": 0.77
    },
@@ -1443,7 +1482,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.43,
+    "recency": 0.42,
     "source": 1.0,
     "quality": 0.57
    },
@@ -1853,15 +1892,15 @@
   }
  ],
  "quality_report": {
-  "fetched_items": 260,
-  "unique_after_dedupe": 221,
+  "fetched_items": 270,
+  "unique_after_dedupe": 235,
   "merged_duplicates": 6,
   "shown": 26,
   "decisions": {
-   "included": 48,
+   "included": 50,
    "excluded": 19,
-   "below_threshold": 54,
-   "no_topic": 100
+   "below_threshold": 60,
+   "no_topic": 106
   },
   "processing": {
    "enriched": 26
@@ -1903,7 +1942,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 76
+   "skipped_no_key": 84
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -1936,14 +1975,6 @@
     "excluded_by": []
    },
    {
-    "title": "Databricks SQL version 2026.43 is rolling out in Current",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/sql/release-notes/2026#databricks-sql-version-202643-is-rolling-out-in-current",
-    "relevance_score": 77,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "dbt v1.12.6",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.12.6",
@@ -1952,6 +1983,14 @@
     "excluded_by": [
      "minor_builds"
     ]
+   },
+   {
+    "title": "Databricks SQL version 2026.43 is rolling out in Current",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/sql/release-notes/2026#databricks-sql-version-202643-is-rolling-out-in-current",
+    "relevance_score": 76,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
@@ -2154,6 +2193,14 @@
     "excluded_by": []
    },
    {
+    "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
+    "source_id": "chris_webb",
+    "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
+    "relevance_score": 67,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "dbt v1.11.16",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.11.16",
@@ -2206,6 +2253,14 @@
     "excluded_by": []
    },
    {
+    "title": "The Problem With Approximate Distinct Counts In Power BI – And How To Solve It",
+    "source_id": "chris_webb",
+    "url": "https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/",
+    "relevance_score": 62,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "v2.0.3",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.3",
@@ -2227,6 +2282,14 @@
     "title": "Upcoming end of life for the Genie One MCP Beta endpoint",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#upcoming-end-of-life-for-the-genie-one-mcp-beta-endpoint",
+    "relevance_score": 59,
+    "decision": "below_threshold",
+    "excluded_by": []
+   },
+   {
+    "title": "Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks",
+    "source_id": "chris_webb",
+    "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
     "relevance_score": 59,
     "decision": "below_threshold",
     "excluded_by": []
@@ -2392,36 +2455,11 @@
     "relevance_score": 56,
     "decision": "below_threshold",
     "excluded_by": []
-   },
-   {
-    "title": "How to teach with Databricks Free Edition",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
-    "relevance_score": 56,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "DataFrame caching on serverless compute is now in Public Preview",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/dataframe-cache",
-    "relevance_score": 55,
-    "decision": "below_threshold",
-    "excluded_by": []
-   },
-   {
-    "title": "Shared Serverless for Asset Bundles (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
-    "relevance_score": 55,
-    "decision": "below_threshold",
-    "excluded_by": []
    }
   ],
   "topics_without_source": [
    "ai_in_healthcare",
-   "ai_research_data",
-   "general_ai_trends"
+   "ai_research_data"
   ]
  }
 }

@@ -1857,8 +1857,80 @@
    "published_raw": "Thu, 29 Oct 2026 00:29:00 GMT",
    "fetched_at": "2026-10-29T05:42:51.859960Z",
    "excerpt": "Connecting an industry built on disconnected dataConstruction runs on data that rarely sits in one place..."
+  },
+  "chris_webb:6d9c7a20bd5a": {
+   "source_id": "chris_webb",
+   "title": "Simple Report Bursting With Fabric Dataflows Gen2",
+   "url": "https://blog.crossjoin.co.uk/2026/10/25/simple-report-bursting-with-fabric-dataflows-gen2/",
+   "published_raw": "Sun, 25 Oct 2026 16:37:51 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "When the new Send Email action was announced for Fabric Dataflows Gen2 &#8211; which allows you to send an email from a dataflow when it refreshes &#8211; I was curious to know if you could use it to send multiple emails to multiple different people, and therefore do report bursting or something like it. There &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/10/25/simple-report-bursting-with-fabric-dataflows-gen2/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Simple Report Bursting With Fabric Dataflows Gen2</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:390bdecb1bec": {
+   "source_id": "chris_webb",
+   "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
+   "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
+   "published_raw": "Sun, 18 Oct 2026 13:29:24 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "The September release of Power BI saw the introduction of a powerful new feature: full text indexing, which makes searching and filtering on text columns much faster and enables the use of the new TextContains() and TextSimilarity() DAX functions. You need to enable it on a per-column basis and when you do that you have &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:5fb7f5c82d5d": {
+   "source_id": "chris_webb",
+   "title": "ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount",
+   "url": "https://blog.crossjoin.co.uk/2026/10/11/approximatedistinctcount-in-power-bi-is-sometimes-slower-than-distinctcount/",
+   "published_raw": "Sun, 11 Oct 2026 06:01:02 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "As a follow-on from last week&#8217;s post about the new ApproximateDistinctCount function in DAX, I want to share something I found out from my recent testing for this function: ApproximateDistinctCount is sometimes slower than DistinctCount. This sounds counter-intuitive, right? After all ApproximateDistinctCount is a performance optimisation for the sometimes slow, expensive DistinctCount function. But it &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/10/11/approximatedistinctcount-in-power-bi-is-sometimes-slower-than-distinctcount/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:cf9a742f2530": {
+   "source_id": "chris_webb",
+   "title": "The Problem With Approximate Distinct Counts In Power BI – And How To Solve It",
+   "url": "https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/",
+   "published_raw": "Sun, 04 Oct 2026 15:02:08 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "As you&#8217;ve probably seen in the blog post for the September 2026 release of Power BI, Import mode and Direct Lake mode semantic models now support the ApproximateDistinctCount() DAX function. I tested its performance on a Direct Lake semantic model with a 1.4 billion row fact table based on the NYC Taxi sample data and &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">The Problem With Approximate Distinct Counts In Power BI &#8211; And How To Solve It</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:e3e53bdeb97c": {
+   "source_id": "chris_webb",
+   "title": "Improvements To Power Query Integration In Power BI Report Builder",
+   "url": "https://blog.crossjoin.co.uk/2026/09/27/improvements-to-power-query-integration-in-power-bi-report-builder/",
+   "published_raw": "Sun, 27 Sep 2026 17:49:52 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "There are some nice improvements to Power Query integration in the latest version of Power BI Report Builder that, while they are documented, didn&#8217;t get an official blog post but which I think deserve to be highlighted. First of all the &#8220;Get Data&#8221; button has been renamed &#8220;Power Query&#8221;: Secondly, and most importantly, there&#8217;s a &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/09/27/improvements-to-power-query-integration-in-power-bi-report-builder/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Improvements To Power Query Integration In Power BI Report Builder</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:4a2b51f4d173": {
+   "source_id": "chris_webb",
+   "title": "Find Unused Objects In Power BI Semantic Models With Semantic Link Labs",
+   "url": "https://blog.crossjoin.co.uk/2026/09/20/find-unused-objects-in-power-bi-semantic-models-with-semantic-link-labs/",
+   "published_raw": "Sun, 20 Sep 2026 16:59:18 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "A few weeks ago I wrote about how Semantic Link Labs now has tools with interactive UIs and showed how you could use this to view lineage and so Vertipaq-Analyzer-stuff in a notebook. I didn&#8217;t show what I think is the coolest new feature though: the ability to find the tables, columns and measures in &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/09/20/find-unused-objects-in-power-bi-semantic-models-with-semantic-link-labs/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Find Unused Objects In Power BI Semantic Models With Semantic Link Labs</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:e97274331120": {
+   "source_id": "chris_webb",
+   "title": "Find What Changed And When In Your Power BI Semantic Model",
+   "url": "https://blog.crossjoin.co.uk/2026/09/13/find-what-changed-and-when-in-your-power-bi-semantic-model/",
+   "published_raw": "Sun, 13 Sep 2026 10:03:39 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "Here&#8217;s a situation I&#8217;ve found myself in many times. You&#8217;re called to help someone whose Power BI report is suddenly very slow. You ask whether any changes were made to the semantic model around the time performance got worse and the answer is no, absolutely not. You then spend anything from a few hours to &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/09/13/find-what-changed-and-when-in-your-power-bi-semantic-model/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Find What Changed And When In Your Power BI Semantic Model</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:aa144f4ecccc": {
+   "source_id": "chris_webb",
+   "title": "Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks",
+   "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
+   "published_raw": "Sun, 06 Sep 2026 20:32:03 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "In case you haven&#8217;t already seen the blog post on the Power BI blog or the discussion on LinkedIn, we at Microsoft published a new white paper last week to help you decide which storage mode to use when you&#8217;re using Power BI to create semantic models and reports on data stored in Azure Databricks. &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "chris_webb:be67b31e4814": {
+   "source_id": "chris_webb",
+   "title": "Referencing Images And Other Files In Power BI Reports Using OneLake URLs",
+   "url": "https://blog.crossjoin.co.uk/2026/08/30/referencing-images-and-other-files-in-power-bi-reports-using-onelake-urls/",
+   "published_raw": "Sun, 30 Aug 2026 17:24:52 +0000",
+   "fetched_at": "2026-10-29T07:35:42.423513Z",
+   "excerpt": "Several years ago I wrote a very popular blog post about how to store images for your reports inside your Power BI semantic model. It solved the problem of how you could use display images (for example of products) inside your reports without making those images available via a public URL or personal OneDrive Embed &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/08/30/referencing-images-and-other-files-in-power-bi-reports-using-onelake-urls/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Referencing Images And Other Files In Power BI Reports Using OneLake URLs</span> <span class=\"meta-nav\">&#8594;</span></a>"
   }
  },
- "updated_at": "2026-10-29T06:44:14.774272Z",
+ "updated_at": "2026-10-29T07:35:38.032730Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T06:44:14.774272Z",
+ "generated_at": "2026-10-29T07:35:38.032730Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -196,17 +196,16 @@
    ]
   },
   {
-   "id": "bd10959c5f52",
-   "title": "What Databricks is doing with Genie for Business Users",
-   "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
-   "source_id": "simon_whiteley",
-   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
-   "published_at": "2026-10-08T11:11:40Z",
-   "excerpt": "I n a little o ver two years, Genie has gone from a Public Preview feature for asking questions of your data in plain English, to the main way Databricks wants business users to work with the platform. September's releases show where it's going next: the Excel Add-in and the Genie One MCP server both went GA, and at the end of the month Databricks bought Row Zero, a spreadsheet company, to build into Genie.",
-   "preliminary_score": 65,
+   "id": "390bdecb1bec",
+   "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
+   "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
+   "source_id": "chris_webb",
+   "source_name": "Chris Webb's BI Blog",
+   "published_at": "2026-10-18T13:29:24Z",
+   "excerpt": "The September release of Power BI saw the introduction of a powerful new feature: full text indexing, which makes searching and filtering on text columns much faster and enables the use of the new TextContains() and TextSimilarity() DAX functions. You need to enable it on a per-column basis and when you do that you have … Continue reading Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI →",
+   "preliminary_score": 67,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "ai_context_engineering"
+    "powerbi_semantic_models"
    ]
   }
  ]
