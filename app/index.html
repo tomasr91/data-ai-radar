@@ -322,7 +322,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function sorted(list) {
     const l = [...list];
-    if (state.sort === "date") l.sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+    // "Nieuw" = nieuw in de radar: wanneer Claude het uitlegde, anders wanneer het werd opgehaald.
+    const t = (iso) => (iso ? Date.parse(iso) || 0 : 0);
+    const added = (a) => t(a.processed_at) || t(a.fetched_at) || t(a.published_at);
+    if (state.sort === "date") l.sort((a, b) => added(b) - added(a) || t(b.published_at) - t(a.published_at));
     else l.sort((a, b) => b.relevance_score - a.relevance_score || (b.published_at || "").localeCompare(a.published_at || ""));
     return l;
   }

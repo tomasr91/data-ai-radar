@@ -11,6 +11,7 @@ import shutil
 import sys
 import tempfile
 import threading
+from datetime import datetime
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -75,8 +76,12 @@ with sync_playwright() as p:
 
     page.click('#seg-sort button[data-v="date"]')
     dates = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
-    by = {a["id"]: a.get("published_at") or "" for a in arts}
-    check("   filter Nieuw sorteert op datum", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
+    # Nieuw = nieuw in de radar: moment van uitleg, anders van ophalen, anders publicatie.
+    def added(a):
+        iso = a.get("processed_at") or a.get("fetched_at") or a.get("published_at")
+        return datetime.fromisoformat(iso.replace("Z", "+00:00")).timestamp() if iso else 0
+    by = {a["id"]: added(a) for a in arts}
+    check("   filter Nieuw sorteert op toegevoegd aan de radar", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
     page.click('#seg-sort button[data-v="score"]')
 
     # 4-6. Artikel openen, uitleg, bron en link
