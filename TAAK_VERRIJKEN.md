@@ -7,7 +7,7 @@ Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de 
 1. **Bijwerken.** `git pull` op `main`, daarna `pip install -r requirements.txt`.
 2. **Context lezen.** Lees `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend voor stijl en structuur.
 3. **Werklijst lezen.** Open `data/to_enrich.json`. Is `items` leeg, stop dan en meld "Niets te verwerken".
-4. **Per artikel** (in volgorde, **maximaal 10 per run**):
+4. **Per artikel** (in volgorde, **maximaal 15 per run**):
    1. Open de `url` en lees het **volledige artikel**. Werk nooit alleen op de titel of de `excerpt`.
    2. Is de pagina niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf dan `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door naar het volgende artikel.
    3. Valt het artikel onder **"Niet uitleggen"** hieronder? Schrijf dan ook een `skipped`-bestand, met als `reason` welke regel het is, en ga door.
