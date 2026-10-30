@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T19:08:11.407797Z",
+ "generated_at": "2026-10-30T06:06:01.400627Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -36,7 +36,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T17:54:00Z",
    "excerpt": "dbt Charts is a plain YAML language for building dashboards that version and deploy alongside your dbt models.",
-   "preliminary_score": 87,
+   "preliminary_score": 89,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "open_source_tools"
@@ -64,7 +64,7 @@
    "source_name": "LangChain Blog",
    "published_at": "2026-10-26T15:32:16Z",
    "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
-   "preliminary_score": 82,
+   "preliminary_score": 84,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "ai_context_engineering",
@@ -173,20 +173,6 @@
    ]
   },
   {
-   "id": "fea9136ea071",
-   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
-   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:51:00Z",
-   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models.",
-   "preliminary_score": 76,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ]
-  },
-  {
    "id": "ceb4b784fbab",
    "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
    "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
@@ -194,24 +180,37 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:44:00Z",
    "excerpt": "KOHO argues AI self-serve analytics depends on a well-governed dbt foundation.",
-   "preliminary_score": 76,
+   "preliminary_score": 78,
    "preliminary_topics": [
     "dbt_analytics_engineering",
     "claude_ai_development"
    ]
   },
   {
-   "id": "9bcb10a95345",
-   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
-   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "id": "28418ea3b8c0",
+   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
    "source_id": "dbt_labs_blog",
    "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:38:00Z",
-   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics.",
-   "preliminary_score": 76,
+   "published_at": "2026-10-27T18:01:00Z",
+   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table.",
+   "preliminary_score": 78,
    "preliminary_topics": [
     "dbt_analytics_engineering",
-    "ai_context_engineering"
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "f5757f520b3e",
+   "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
+   "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:50:00Z",
+   "excerpt": "Columnar co-founder Matt Topol shares the type-system challenges of building production ADBC drivers, now used by dbt v2.",
+   "preliminary_score": 78,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
    ]
   }
  ]
