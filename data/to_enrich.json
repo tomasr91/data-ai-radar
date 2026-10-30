@@ -1,216 +1,208 @@
 {
- "generated_at": "2026-10-30T06:06:01.400627Z",
+ "generated_at": "2026-10-30T06:38:12.262606Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
-   "id": "72dc169275f9",
-   "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
-   "source_id": "claude_code_releases",
-   "source_name": "Claude Code releases (GitHub)",
-   "published_at": "2026-10-25T23:59:59Z",
-   "excerpt": "Weekoverzicht van 7 releases (v2.1.304 t/m v2.1.310). Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.304, https://github.com/anthropics/claude-code/releases/tag/v2.1.305, https://github.com/anthropics/claude-code/releases/tag/v2.1.306, https://github.com/anthropics/claude-code/releases/tag/v2.1.307, https://github.com/anthropics/claude-code/releases/tag/v2.1.308, https://github.com/anthropics/claude-code/releases/tag/v2.1.309, https://github.com/anthropics/claude-code/releases/tag/v2.1.310. v2.1.304: What's changed Added a transcript line when a plugin that runs first skips one of your mod's hooks, naming the event and the plugin Added decider: \"person\" to a · v2.1.305: What's changed Added sandbox.allowNestedUserNamespaces so sandboxed commands on Linux can create user namespaces (Chromium, rootless podman); this lets them get · v2.1.306: What's changed Fixed claude -p inside cloud sessions reporting \"Not logged in\" when started without the session's environment variables Fixed an API error being · v2.1.307: What's changed Added /claude-api api-version to move Claude API code to API version 2026-10-21 Added the claude_code.safety_event OpenTelemetry eve",
-   "preliminary_score": 71,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "47711d1f5096",
-   "title": "Claude Code: wat is er nieuw in week 42 (v2.1.303)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W42",
-   "source_id": "claude_code_releases",
-   "source_name": "Claude Code releases (GitHub)",
-   "published_at": "2026-10-18T23:59:59Z",
-   "excerpt": "Weekoverzicht van 1 releases (v2.1.303). Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.303. v2.1.303: What's changed Bug fixes and reliability improvements",
-   "preliminary_score": 59,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "65ee2a7efc92",
-   "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
-   "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
+   "id": "6f34ae51d61c",
+   "title": "dbt without the warehouse (or the bill): DuckDB end to end",
+   "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
    "source_id": "dbt_labs_blog",
    "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:54:00Z",
-   "excerpt": "dbt Charts is a plain YAML language for building dashboards that version and deploy alongside your dbt models.",
-   "preliminary_score": 89,
+   "published_at": "2026-10-27T17:36:00Z",
+   "excerpt": "dbt v2 ships with a built-in DuckDB adapter, so connecting dbt to a local, offline warehouse takes only a small profile change.",
+   "preliminary_score": 78,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "f80dbb005bac",
+   "title": "Genie One enhancements",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of its response. See Navigate a long conversation . Upload skills (Public Preview) : You can now click Upload skills to upload your existing skill files and folders to your skills folder in the workspace. See Upload a skill . Snippets from external tool queries (Public Preview) : Genie Ontology now also extracts snippets from queries that external tools , such as dbt, run on Azure Databricks. These runs appear in query history alongside queries that you run in Azure Databricks. See Genie Ontology . Remembered sign-in email in the Genie mobile app (Public Preview) : The Genie mobile app now remembers the email address of the last user who signed in and prefills it at the next sign-in. See Use Genie on mobile .",
+   "preliminary_score": 77,
    "preliminary_topics": [
     "dbt_analytics_engineering",
-    "open_source_tools"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "ea59c0428e23",
-   "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
-   "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-28T18:06:04Z",
-   "excerpt": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused.",
-   "preliminary_score": 84,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "471f6b1cbb07",
-   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
-   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-26T15:32:16Z",
-   "excerpt": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
-   "preliminary_score": 84,
+   "id": "fea9136ea071",
+   "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+   "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:51:00Z",
+   "excerpt": "Sigma keeps its semantic layer as version-controlled code across thousands of dbt models.",
+   "preliminary_score": 77,
    "preliminary_topics": [
     "dbt_analytics_engineering",
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "open_source_tools"
+    "ai_context_engineering"
    ]
   },
   {
-   "id": "5352c33d33f8",
-   "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-   "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-28T17:28:42Z",
-   "excerpt": "LangChain used OpenWiki, its open-source wiki compiler, and an evidence graph to build a persistent memory layer that preserves knowledge for agents to reuse across tasks. Learn how.",
-   "preliminary_score": 81,
+   "id": "9bcb10a95345",
+   "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+   "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:38:00Z",
+   "excerpt": "DoorDash used a dbt-defined semantic layer to scale merchant analytics.",
+   "preliminary_score": 77,
    "preliminary_topics": [
-    "ai_agents_rag",
-    "open_source_tools"
+    "dbt_analytics_engineering",
+    "ai_context_engineering"
    ]
   },
   {
-   "id": "d8725372cba4",
-   "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
-   "source_id": "powerbi_blog",
-   "source_name": "Microsoft Power BI Blog",
-   "published_at": "2026-10-26T18:44:50Z",
-   "excerpt": "If you haven't already, check out FabCon and SQLCon 2026 in Barcelona: Building the data foundation for Microsoft Copilot and Agents for a complete look at all of our FabCon Europe announcements across Fabric and Microsoft Databases. Advancing an open, interoperable semantic foundation for AI-powered analytics Today, Microsoft is pleased to affirm our commitment to Apache Ossie (incubating) , a community-led effort to establish a vendor-neutral standard for exchanging semantic metadata across analytics, AI, and BI platforms. This has been a close collaboration with Snowflake, who helped found Ossie . We have heard loud and clear that customers want to enable platform-agnostic agentic experiences. Shared semantic context must be defined once and reused across platforms, enabling agentic consumption at scale, maximizing the reach of AI-powered analytics, and empowering users to leverage the best agent for the job. Power BI semantic models are key enablers of AI-powered analysis, providing humans and AI agents with governed semantic context to answer data questions quickly and confidently. Power BI semantic models have more than 38 million monthly active users and are adopted by 94% o",
-   "preliminary_score": 80,
+   "id": "23d3cd62d490",
+   "title": "Smarter cost controls for serverless",
+   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-29T15:00:00Z",
+   "excerpt": "At Databricks, our serverless compute usage has grown more than 3x in the past year,...",
+   "preliminary_score": 74,
    "preliminary_topics": [
-    "ai_agents_rag",
-    "metadata_lineage_catalogs",
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "903131b53f30",
+   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-29T22:30:04Z",
+   "excerpt": "We introduced Real-Time Mode (RTM) last year which enabled customers to build low-latency, operational use cases...",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "54cdadbfe115",
+   "title": "DataFrame caching on serverless compute is now in Public Preview",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/serverless#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
+   "preliminary_score": 71,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "f499e9381da5",
+   "title": "DataFrame caching on serverless compute is now in Public Preview",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your session. Caching requires serverless environment version 5 or above, Databricks Connect for Python 18.1.8 or above, or Databricks Connect for Scala 18.1.5 or above. The preview is enabled by default for most workspaces. Workspace admins can disable it from the Previews page. See Cache DataFrames on serverless compute .",
+   "preliminary_score": 71,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "excerpt": "AbstractIFCO runs one of the world's largest reusable packaging pools with hundreds of millions of crates and pallets...",
+   "preliminary_score": 69,
+   "preliminary_topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "390bdecb1bec",
+   "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
+   "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
+   "source_id": "chris_webb",
+   "source_name": "Chris Webb's BI Blog",
+   "published_at": "2026-10-18T13:29:24Z",
+   "excerpt": "The September release of Power BI saw the introduction of a powerful new feature: full text indexing, which makes searching and filtering on text columns much faster and enables the use of the new TextContains() and TextSimilarity() DAX functions. You need to enable it on a per-column basis and when you do that you have … Continue reading Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI →",
+   "preliminary_score": 66,
+   "preliminary_topics": [
     "powerbi_semantic_models"
    ]
   },
   {
-   "id": "bd10959c5f52",
-   "title": "What Databricks is doing with Genie for Business Users",
-   "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
-   "source_id": "simon_whiteley",
-   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
-   "published_at": "2026-10-08T11:11:40Z",
-   "excerpt": "I n a little o ver two years, Genie has gone from a Public Preview feature for asking questions of your data in plain English, to the main way Databricks wants business users to work with the platform. September's releases show where it's going next: the Excel Add-in and the Genie One MCP server both went GA, and at the end of the month Databricks bought Row Zero, a spreadsheet company, to build into Genie.",
-   "preliminary_score": 78,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "a7faf0d295a1",
-   "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-21T00:00:00Z",
-   "excerpt": "You can now screen MCP tool calls and their results in Unity Gateway for jailbreak and prompt injection attempts. Apply the Jailbreak guardrail on input, output, or both. See Attach a built-in policy .",
-   "preliminary_score": 76,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "ef76cb6fb086",
-   "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
-   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-21T00:00:00Z",
-   "excerpt": "You can now screen MCP tool calls and their results in Unity Gateway for jailbreak and prompt injection attempts. Apply the Jailbreak guardrail on input, output, or both. See Attach a built-in policy .",
-   "preliminary_score": 76,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "f29afd156725",
-   "title": "Donating Agent Skills to the Agentic AI Foundation",
-   "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "",
-   "preliminary_score": 71,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "e711a10e6f60",
-   "title": "Open Models have crossed a threshold",
-   "url": "https://www.langchain.com/blog/open-models-have-crossed-a-threshold",
+   "id": "eef8571c7c20",
+   "title": "MCP in LangChain: Stateless Protocol, Elicitation, and More!",
+   "url": "https://www.langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more",
    "source_id": "langchain_blog",
    "source_name": "LangChain Blog",
    "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "Open models like GLM-5 and MiniMax M2.7 now match closed frontier models on core agent tasks — file operations, tool use, and instruction following — at a fraction of the cost and latency. Here's what our evals show and how to start using them in Deep Agents.",
-   "preliminary_score": 66,
+   "excerpt": "MCP support now lives in langchain.mcp, built on FastMCP for the 2026-07-28 spec, with elicitation handled as a LangGraph interrupt and tool lists cached.",
+   "preliminary_score": 65,
    "preliminary_topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability"
+    "ai_context_engineering",
+    "open_source_tools"
    ]
   },
   {
-   "id": "ceb4b784fbab",
-   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
-   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:44:00Z",
-   "excerpt": "KOHO argues AI self-serve analytics depends on a well-governed dbt foundation.",
-   "preliminary_score": 78,
+   "id": "68a2bf1c5563",
+   "title": "What's the difference between dbt and dbt OSS?",
+   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+   "source_id": "dbt_developer_blog",
+   "source_name": "dbt Developer Blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "excerpt": "The free distribution of dbt v2 is our default recommendation over dbt OSS: it has more capabilities, and its license permits the same real-world use cases for free, without ever paying or talking to dbt Labs.",
+   "preliminary_score": 64,
    "preliminary_topics": [
-    "dbt_analytics_engineering",
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "77544766b84c",
+   "title": "Claude’s new auto eval tool",
+   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
+   "source_id": "hamel_husain",
+   "source_name": "Hamel Husain",
+   "published_at": "2026-09-30T07:00:00Z",
+   "excerpt": "Anthropic released new eval tooling for Claude Code . Their claude-api plugin now includes a new build_eval and hill-climb command that helps you build evals, check the graders, and improve your application against them. I usually don’t review eval tools because software changes so often that reviews have a short shelf life. But a first-party tool from Anthropic is likely to influence how people approach evals, so I wanted to try it and share what I found. Isaac Flath and I livestreamed ourselves using it on conversation traces from an apartment leasing assistant. Here’s what we found: The bad 1. It pushes you to create an eval before looking at data Claude started by suggesting several potential failures, then asked us to pick one straight away to turn into an eval. It gave us the below menu of options, with call-transfer rules as the recommended choice. We hadn’t yet reviewed the conversations ourselves, so it was hard to know if this was a real failure or worth prioritizing. Despite this, we went ahead with the recommended choice, because we figured that’s what typical users would do. I believe you should be looking at data first to inform your understanding and prioritize which",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "ai_evaluation_observability",
     "claude_ai_development"
    ]
   },
   {
-   "id": "28418ea3b8c0",
-   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:01:00Z",
-   "excerpt": "Under Armour turned Snowflake AI agents into dbt models, giving every agent the same review and CI process as every table.",
-   "preliminary_score": 78,
+   "id": "a343c9786e70",
+   "title": "Claude Haiku 5.5",
+   "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
+   "source_id": "simon_willison",
+   "source_name": "Simon Willison",
+   "published_at": "2026-10-07T20:56:21Z",
+   "excerpt": "As previously promised , here's Anthropic's new fast, low cost model: Introducing Claude Haiku 5.5 . The previous Haiku, 4.5, was very much showing its age. It came out almost a year ago , and was priced at $1/million input and $5/million output - relatively expensive even back then, and a full 10x the price of OpenAI's GPT-6 Luna , released last month. The new Haiku exactly matches the price of GPT-6 Luna - $0.10/$0.50 - up to 100,000 tokens. Beyond 100,000 tokens the price increases 5x to $0.50/$2.50. Luna itself has a price increase at 272,000 tokens but only to $0.20/$0.75. Haiku 5.5 also uses a new, less generous tokenizer. My Claude Token Counter tool shows that the same long prompt uses around 1.25x as many tokens with Haiku 5.5 compared to Haiku 4.5, so there's a hidden price increase there. If your workloads fit in 100,000 tokens, Haiku is the same price as Luna and reports higher benchmark scores. Above 100,000 tokens, Luna looks like a much better deal. The most recent release of llm-anthropic finally fixed it so I don't need to ship a new version of that plugin for every new model. I tested the new model like this: llm install -U llm-anthropic llm anthropic refresh llm ",
+   "preliminary_score": 63,
    "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag"
+    "claude_ai_development",
+    "general_ai_trends"
    ]
   },
   {
-   "id": "f5757f520b3e",
-   "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
-   "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:50:00Z",
-   "excerpt": "Columnar co-founder Matt Topol shares the type-system challenges of building production ADBC drivers, now used by dbt v2.",
-   "preliminary_score": 78,
+   "id": "83ea6232a3bf",
+   "title": "Deep Agents Deploy: an open alternative to Claude Managed Agents",
+   "url": "https://www.langchain.com/blog/deep-agents-deploy-an-open-alternative-to-claude-managed-agents",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-13T19:56:07Z",
+   "excerpt": "Today we’re launching Deep Agents deploy in beta. Deep Agents deploy is the fastest way to deploy a model agnostic, open source agent harness in a production ready way.",
+   "preliminary_score": 63,
    "preliminary_topics": [
-    "dbt_analytics_engineering"
+    "claude_ai_development",
+    "open_source_tools"
    ]
   }
  ]
