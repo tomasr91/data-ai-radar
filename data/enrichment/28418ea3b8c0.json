@@ -1,0 +1,47 @@
+{
+  "format_version": 2,
+  "article_id": "28418ea3b8c0",
+  "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+  "headline": "Under Armour zet AI-agents live zoals een dbt-tabel",
+  "summary": "Under Armour beheert zijn Snowflake-agents als dbt-modellen, met eigen materializations. Zo gaan agents door dezelfde pull requests, CI en omgevingen als tabellen.",
+  "story": [
+    "Under Armour had drie AI-agents in Snowflake, met de hand gebouwd in de webinterface. Er was geen versiebeheer, review of test. Toen een kolom verdween, gaf een agent foute antwoorden en merkte het team dat pas via gebruikers. Nu worden agents uitgerold zoals elke dbt-tabel.",
+    "Het team schreef eigen materializations voor een agent en een zoekdienst. Zo'n materialization is het recept dat dbt gebruikt om een object te bouwen. Bestaat de agent al, dan wordt hij aangepast in plaats van vervangen. Anders verdwijnen gespreksgeschiedenis en gebruikscijfers. Omdat agents ref() gebruiken, staan ze in de lineage, net als tabellen.",
+    "In CI laat dbt ls --select daily_sales_semv+ zien welke agents een wijziging raakt. dbt build --select state:modified+ bouwt alleen wat veranderd is. Een post-hook regelt de rechten per omgeving en registreert de agent in productie in Snowflake CoWork.",
+    "Dit draait op Snowflake, niet op Databricks. Het patroon is wel overdraagbaar: behandel een agent en zijn semantische laag als een downstream-model van je Gold-laag. Dan breekt een kolomwijziging je CI, niet het antwoord van een gebruiker."
+  ],
+  "key_facts": [
+    "Drie agents: commerciële verkoop en consumenteninzichten (Cortex Analyst) en productkennis (Cortex Search over honderden PowerPoints).",
+    "Eigen materializations agent en cortex_search_service, plus een materialization van Snowflake Labs voor semantic views.",
+    "Bestaande agents worden aangepast (alter), niet vervangen, om geschiedenis en gebruiksdata te bewaren.",
+    "Na vijf maanden: meer dan 30 Cortex-objecten via dbt, drie domeinen en drie omgevingen; terugdraaien is een git revert.",
+    "Ongeveer 3.000 beheerde dataproducten voor ongeveer 950 dagelijkse gebruikers.",
+    "Het artikel bevat geen code; verslag van een sessie op dbt Summit 2026."
+  ],
+  "personal_relevance": "Laat zien hoe je AI-objecten onder dezelfde CI/CD en lineage brengt als je dbt-modellen.",
+  "experiment": "Schrijf in een oefenproject een eenvoudige custom materialization die een view plus een COMMENT aanmaakt, en controleer met dbt ls --select model+ wat er downstream hangt.",
+  "limitations": [
+    "Alleen Snowflake; voor Databricks bestaat dit niet kant-en-klaar.",
+    "Geen code of repository in het artikel.",
+    "Overzetten van met de hand gebouwde objecten blijft handwerk."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "cicd_data_deployment",
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.65,
+    "practicality": 0.5,
+    "novelty": 0.7
+  },
+  "development_key": "agents-als-dbt-materialization-okt-2026",
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

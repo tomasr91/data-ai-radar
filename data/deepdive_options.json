@@ -1,7 +1,67 @@
 {
  "format_version": 1,
- "generated_at": "2026-10-29T11:40:00Z",
+ "generated_at": "2026-10-30T07:30:00Z",
  "options": [
+  {
+   "id": "geheugen-voor-ai-agents",
+   "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
+   "question": "Welke soorten geheugen heeft een AI-agent (werkgeheugen, samenvattingen, blijvend geheugen), hoe werken ze, en wanneer kies je een bestand, een vectorstore of een geheugenpipeline zoals in Databricks?",
+   "why": "Trend 'Agents houden hun venster leeg': LangChain schreef deze week twee stukken over geheugen en retrieval, en Databricks test geheugenpipelines.",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "agents-uitrollen-als-code",
+   "title": "Een AI-agent uitrollen zoals een dbt-model: versiebeheer, CI en lineage",
+   "question": "Hoe breng je AI-agents en hun semantische definities onder dezelfde pull requests, tests en omgevingen als je dbt-modellen, en hoe kan dat op Databricks?",
+   "why": "Under Armour beheert zijn Snowflake-agents nu als dbt-modellen; een kolomwijziging breekt dan de CI in plaats van het antwoord aan een gebruiker.",
+   "topics": [
+    "cicd_data_deployment",
+    "ai_agents_rag",
+    "dbt_analytics_engineering"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "kolom-lineage-impactanalyse",
+   "title": "Kolom-lineage gebruiken voor impactanalyse",
+   "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
+   "why": "Bij KOHO en Under Armour bleek lineage de basis om AI veilig op dbt-modellen te laten draaien.",
+   "topics": [
+    "metadata_lineage_catalogs",
+    "ai_context_engineering",
+    "dbt_analytics_engineering"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "claude-code-veilig-op-dataprojecten",
+   "title": "Claude Code veilig laten werken: permissies, sandbox en auto mode",
+   "question": "Hoe bepaal je wat Claude Code zelf mag doen in een dataproject, hoe werken permissieregels, de sandbox en auto mode samen, en hoe houd je werkdata buiten bereik?",
+   "why": "Claude Code kreeg in week 43 een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie.",
+   "topics": [
+    "claude_ai_development",
+    "data_governance_privacy"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "arrow-en-adbc",
+   "title": "Arrow en ADBC: waarom data in kolommen sneller tussen tools reist",
+   "question": "Wat is Apache Arrow, hoe verschilt ADBC van ODBC en JDBC, en wat merk je ervan in dbt v2, Databricks en Power BI?",
+   "why": "dbt v2 en Power BI gebruiken ADBC, en Columnar vertelde deze week welke typeproblemen dat oplevert.",
+   "topics": [
+    "open_source_tools",
+    "sql_spark_sql",
+    "dbt_analytics_engineering"
+   ],
+   "area": "new_tech"
+  }
+ ],
+ "history": [
   {
    "id": "semantische-laag-als-ai-context",
    "title": "De semantische laag als geheugen voor AI",
@@ -60,6 +120,5 @@
    ],
    "area": "new_tech"
   }
- ],
- "history": []
+ ]
 }

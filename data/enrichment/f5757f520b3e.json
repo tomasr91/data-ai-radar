@@ -1,0 +1,46 @@
+{
+  "format_version": 2,
+  "article_id": "f5757f520b3e",
+  "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
+  "headline": "Waarom de nieuwe verbinding onder dbt v2 lastiger is dan hij lijkt",
+  "summary": "dbt v2 praat met databases via ADBC, dat data in kolomvorm doorgeeft. Matt Topol van Columnar vertelt welke typeproblemen je daarbij tegenkomt.",
+  "story": [
+    "dbt v2 gebruikt ADBC (Arrow Database Connectivity) als laag om met databases te praten. ADBC geeft data door in kolomvorm, in het Apache Arrow-formaat. Oudere standaarden als ODBC en JDBC sturen data rij voor rij. Volgens Matt Topol, medeoprichter van Columnar, is dat rij-voor-rij-verkeer nu vaak de echte vertraging.",
+    "Vergelijk het met verhuizen: per doos sjouwen tegenover de hele kast in één keer. Databricks en Snowflake geven al Arrow terug, dus daar past het goed. Postgres, Trino en SQL Server geven rijen of JSON, en dan moet de driver zelf omzetten.",
+    "Het lastige zit in de types. Een driver moet zijn typekeuze maken voordat hij data ziet. Decimalen verschillen sterk: SQL Server kan 38 cijfers, Postgres meer dan 1.000. Snowflake bewaart per rij een tijdzone, waarvoor Arrow een nieuw type moest maken. Voor Spark moet een driver drie soorten verbindingen ondersteunen.",
+    "Voor jou gaat dit vooral meetellen bij de overstap naar dbt v2. Topol geeft drie adviezen: test je schema's vroeg, zet driverversies vast, en weet altijd welke versie draait. Ook Power BI heeft ADBC overgenomen."
+  ],
+  "key_facts": [
+    "dbt v2 gebruikt ADBC als kernlaag voor zijn adapters.",
+    "Ook Power BI, Apache Airflow en dltHub gebruiken ADBC; er zijn drivers van leveranciers voor onder meer Snowflake, BigQuery, Databricks en ClickHouse.",
+    "Maximale decimale precisie: SQL Server 38, MySQL/MariaDB 65, ClickHouse 76, Postgres meer dan 1.000 cijfers; BigQuery geeft altijd decimal128(38,9).",
+    "De Spark-driver moet Hive/Thrift, Apache Livy en Spark Connect ondersteunen.",
+    "Driver manifests en connection profiles (profile://naam) zijn TOML-bestanden, zodat inloggegevens buiten de code blijven.",
+    "Nog open: geen volledig synchrone API, ongelijke typeondersteuning; een nieuwe specversie krijgt o.a. meerdere resultsets."
+  ],
+  "personal_relevance": "Je draait dbt op Databricks en SQL Server zit in je omgeving; typeverschillen kunnen opduiken bij de overstap naar dbt v2.",
+  "experiment": "Installeer de ADBC-driver voor DuckDB of SQLite en lees met Python een tabel met grote decimalen en tijdzones. Kijk welke Arrow-types je terugkrijgt.",
+  "limitations": [
+    "Het artikel geeft geen voorbeelden specifiek voor Databricks.",
+    "Verslag van een sessie op dbt Summit 2026, niet de volledige talk."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [],
+  "topics": [
+    "dbt_analytics_engineering",
+    "open_source_tools",
+    "sql_spark_sql"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.45,
+    "novelty": 0.6
+  },
+  "development_key": "adbc-dbt-v2-okt-2026",
+  "date_note": "Verslag van een sessie op dbt Summit 2026; pagina gedateerd 27 oktober 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

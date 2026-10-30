@@ -1,20 +1,37 @@
 {
  "format_version": 1,
- "generated_at": "2026-10-29T16:30:00Z",
+ "generated_at": "2026-10-30T07:30:00Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "dbt Labs, AWS, Okta en Databricks leggen de kennis die een AI-agent nodig heeft vast naast de data: vaste definities van maatstaven, beschrijvingen bij de dbt-modellen en zoekbare tekst. De gedachte erachter: een agent die uit goedgekeurde definities kiest, rekent minder vaak mis.",
+   "summary": "dbt Labs-klanten als Okta, KOHO en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde definities, beschrijvingen bij dbt-modellen en alleen gecertificeerde marts. Databricks houdt zoekindexen voor AI nu vanzelf actueel op de tabellen zelf. De gedachte: een agent die uit beheerde bronnen kiest, rekent minder vaak mis.",
    "article_ids": [
     "4dcd7af26dab",
     "069e6a8001ed",
-    "841d424db697",
-    "60e7e131218f"
+    "ceb4b784fbab",
+    "560fbec0053e"
    ],
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering"
+   ]
+  },
+  {
+   "id": "geheugen-en-context-voor-agents",
+   "title": "Agents houden hun venster leeg: geheugen, skills en subagents",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, zoekwerk gaat naar subagents en blijvend geheugen komt in een apart bestand of een geheugenpipeline. Agent Skills kreeg deze maand een neutrale beheerder.",
+   "article_ids": [
+    "ea59c0428e23",
+    "471f6b1cbb07",
+    "9a8d5866a524",
+    "f29afd156725",
+    "72dc169275f9"
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
    ]
   }
  ]

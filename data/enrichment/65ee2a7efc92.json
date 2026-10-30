@@ -1,0 +1,52 @@
+{
+  "format_version": 2,
+  "article_id": "65ee2a7efc92",
+  "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
+  "headline": "dbt Labs maakt dashboards van YAML-bestanden naast je modellen",
+  "summary": "dbt Charts is een open-source taal om dashboards in YAML te schrijven. Ze staan in je dbt-project en gaan mee door dezelfde git-branch, tests en deploys.",
+  "story": [
+    "dbt Labs heeft op dbt Summit 2026 dbt Charts gelanceerd. Het is een eenvoudige taal in YAML om dashboards te bouwen. De dashboards staan in een map charts, naast de map met je modellen.",
+    "Het idee lijkt op Markdown, maar dan voor dashboards. Je beschrijft variabelen, queries, grafieken en rijen voor de opmaak. Hernoem je een kolom in een model, dan pas je het dashboard aan in dezelfde branch. Het gaat dan door dezelfde tests en deploys als de rest van het project.",
+    "dbt Labs noemt twee redenen. AI-tools maken nu dashboards in steeds een andere mix van JavaScript, Python en CSS, en dat is lastig te controleren. Gewone BI-tools zijn op klikken gebouwd, waardoor een AI-agent er weinig aan kan veranderen. Een vaste, eenvoudige taal is voor een agent makkelijker te lezen en te schrijven.",
+    "Lokaal draai je het met een CLI die dct heet. De betaalde site dbtcharts.com voegt rechten, delen, een visuele editor en een AI-chat toe. Jij werkt met Power BI, dus dit vervangt niets. Het is wel een interessant voorbeeld van 'dashboards als code' die een agent kan onderhouden."
+  ],
+  "key_facts": [
+    "Gelanceerd op de maandag van dbt Summit 2026, door Dave Fowler (general manager) en RJ Andrews (ontwerper).",
+    "YAML-taal met variabelen, queries, charts en rows; dashboards staan in een map charts naast de map models.",
+    "Lokaal te gebruiken via de CLI dct.",
+    "dbtcharts.com voegt rechten, delen, een visuele editor, versiegeschiedenis en een AI-chat toe.",
+    "Open source onder Apache 2.0, dezelfde licentie als dbt.",
+    "Standaardontwerp met directe labels in plaats van legenda's en tabellen uitgelijnd op de decimale komma."
+  ],
+  "personal_relevance": "Laat zien hoe rapportages net als dbt-modellen in git, review en CI kunnen meedraaien.",
+  "experiment": "Bouw met dct een klein dashboard op de openbare jaffle_shop-data en laat Claude een grafiek toevoegen door alleen het YAML-bestand aan te passen.",
+  "limitations": [
+    "Het artikel noemt geen status (bèta of GA) en geen link naar de code.",
+    "Niet duidelijk hoe het samenwerkt met de semantische laag van dbt.",
+    "Concurreert niet met Power BI in jouw omgeving; vooral interessant als idee."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "dbt Charts",
+      "url": "https://www.getdbt.com/product/dbtcharts"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "open_source_tools",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.4,
+    "novelty": 0.75
+  },
+  "development_key": "dbt-charts-okt-2026",
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

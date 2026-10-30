@@ -1,0 +1,52 @@
+{
+  "format_version": 2,
+  "article_id": "f29afd156725",
+  "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+  "headline": "Agent Skills krijgt een neutraal thuis bij de Linux Foundation",
+  "summary": "Anthropic geeft de Agent Skills-standaard aan de Agentic AI Foundation, waar ook MCP al zit. Simon Willison had dat in december 2025 al voorspeld.",
+  "story": [
+    "Anthropic schenkt de standaard voor Agent Skills aan de Agentic AI Foundation (AAIF). Die stichting valt onder de Linux Foundation. Anthropic richtte haar vorig jaar op met Block en OpenAI, en gaf er eerder al MCP aan. Simon Willison meldt het op zijn blog en had het in december 2025 al voorspeld.",
+    "Een skill is een map met een SKILL.md-bestand met instructies, die een agent pas laadt als hij hem nodig heeft. Volgens Anthropic gebruiken al meer dan 70 agentplatforms dit formaat, waaronder Cursor, GitHub Copilot en VS Code. Een neutrale eigenaar is als een gemeenschappelijke stekkernorm: niemand is eigenaar van het stopcontact.",
+    "Voor jou verandert er nu niets aan hoe skills werken in Claude Code. Het betekent wel dat een skill die je schrijft, bijvoorbeeld voor dbt-conventies, ook in andere tools blijft werken. Op de roadmap staan versies, een formeel voorstelproces en beveiligingsrichtlijnen voor wie skills schrijft of installeert."
+  ],
+  "key_facts": [
+    "Aangekondigd op 22 oktober 2026; de AAIF valt onder de Linux Foundation.",
+    "Gedoneerd: de standaard, naam en logo, de GitHub-organisatie en het domein agentskills.io.",
+    "Volgens Anthropic: meer dan 70 platforms gebruiken Agent Skills, 1 miljoen skills gepubliceerd, bijna 280 miljoen installaties.",
+    "Onderhouders van Anthropic, Google, OpenAI en anderen, als individu; David Soria Parra en Mahesh Murag zijn Lead Maintainers.",
+    "Willison voorspelde de overstap in december 2025."
+  ],
+  "personal_relevance": "Skills die je voor Claude Code schrijft, worden zo een investering die niet aan één leverancier vastzit.",
+  "experiment": "Lees de specificatie op agentskills.io en schrijf één skill met de naamgevingsregels van een openbaar dbt-voorbeeldproject. Test hem in Claude Code.",
+  "limitations": [
+    "De gebruikscijfers komen van Anthropic zelf.",
+    "Het gaat om bestuur van de standaard; er zijn geen nieuwe functies."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Aankondiging Anthropic",
+      "url": "https://anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+    },
+    {
+      "label": "Agent Skills-specificatie",
+      "url": "https://agentskills.io"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.35,
+    "practicality": 0.4,
+    "novelty": 0.6
+  },
+  "development_key": "agent-skills-aaif-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

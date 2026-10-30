@@ -1,0 +1,50 @@
+{
+  "format_version": 2,
+  "article_id": "72dc169275f9",
+  "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
+  "headline": "Claude Code leert je omgeving kennen voor de automatische modus",
+  "summary": "In week 43 kreeg Claude Code een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie. Ook gedragen skills zich anders na het samenvatten van een gesprek.",
+  "story": [
+    "Claude Code kreeg in week 43 zeven releases, met vooral veel reparaties. Drie veranderingen raken hoe je ermee werkt. De belangrijkste is /auto-mode-setup: een begeleide setup die je project en je recente sessies leest. Zo leert de automatische modus (auto mode) jouw omgeving kennen.",
+    "Auto mode laat Claude zelf beslissen welke acties veilig zijn, met een veiligheidscontrole ertussen. Vergelijk het met een nieuwe collega die eerst je werkplek rondgeleid krijgt. Wie weet waar de belangrijke mappen en commando's zitten, hoeft minder vaak te vragen. De setup werkt nu ook via Bedrock, Vertex en Foundry, en zonder telemetrie.",
+    "De tweede verandering gaat over toezicht. Sinds v2.1.307 stuurt Claude Code een OpenTelemetry-event (claude_code.safety_event) voor elke toolaanroep die werd tegengehouden of teruggestuurd. Dat gebeurt door een permissieregel, auto mode, een hook of de sandbox. Je ziet dan in je eigen monitoring hoe vaak Claude tegen een grens aanloopt.",
+    "De derde verandering raakt skills. Na het samenvatten van een lang gesprek (compaction) krijgt Claude de lijst met skills opnieuw. /reload-skills stuurt alleen nog nieuwe of gewijzigde skills. Een skill in een dbt-project blijft dus ook in lange sessies vindbaar. Let ook op: sed -i loopt sinds v2.1.309 als gewoon Bash-commando en wordt niet meer teruggedraaid door /rewind."
+  ],
+  "key_facts": [
+    "v2.1.304 (19 oktober): /auto-mode-setup leest je project en recente sessies om auto mode je omgeving te leren; ook op Bedrock, Vertex, Foundry, Claude apps gateway en zonder telemetrie.",
+    "v2.1.304: na compaction krijgt Claude de skilllijst opnieuw; /reload-skills stuurt alleen nieuwe of gewijzigde skills.",
+    "v2.1.304: de skills van één bron mogen per sessie hooguit 1.024 hooks en 16.384 matcher-tekens registreren.",
+    "v2.1.307 (21 oktober): nieuw OpenTelemetry-event claude_code.safety_event voor elke toolaanroep die een permissieregel, auto mode, een veiligheidscheck, een hook of de sandbox tegenhield, liet vragen of terugstuurde.",
+    "v2.1.309 (22 oktober): sed -i krijgt de gewone Bash-prompt in plaats van een bewerkingsvoorbeeld en wordt niet meer hersteld door /rewind.",
+    "v2.1.310 (23 oktober): de Monitor-tool werkt nu ook op Bedrock, Vertex en Foundry."
+  ],
+  "personal_relevance": "Als je Claude Code steeds meer zelfstandig laat werken, wil je weten waar het tegen grenzen aanloopt.",
+  "experiment": "Draai /auto-mode-setup in een openbaar oefenproject met dbt (bijv. jaffle_shop) en vergelijk daarna hoe vaak Claude nog om toestemming vraagt.",
+  "limitations": [
+    "De release notes van v2.1.304 en v2.1.309 waren op de overzichtspagina ingekort; niet elk detail is gelezen.",
+    "De meeste wijzigingen deze week zijn reparaties."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Claude Code releases",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.6,
+    "novelty": 0.5
+  },
+  "development_key": "claude-code-week-43-2026",
+  "date_note": "Weekoverzicht van releases tussen 19 en 23 oktober 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

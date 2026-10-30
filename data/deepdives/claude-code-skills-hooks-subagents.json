@@ -1,0 +1,145 @@
+{
+  "format_version": 1,
+  "id": "claude-code-skills-hooks-subagents",
+  "plan_id": "claude-code-skills-hooks-subagents",
+  "request_issue": 1,
+  "headline": "Skills, hooks en subagents: welke uitbreiding van Claude Code kies je?",
+  "summary": "Claude Code kun je op drie manieren uitbreiden met eigen werkwijzen. Een skill is kennis die Claude laadt als hij die nodig heeft, een hook is een script dat altijd draait, en een subagent is een hulpje met een eigen werkruimte. Dit stuk legt uit hoe ze werken, wanneer je welke kiest en hoe dat eruitziet in een dbt-project.",
+  "sections": [
+    {
+      "heading": "Waarom er meer is dan CLAUDE.md",
+      "paragraphs": [
+        "De eerste stap met Claude Code is meestal een CLAUDE.md-bestand. Daarin zet je regels die Claude bij elke sessie moet kennen, zoals je bouwcommando's en naamgeving. Dat bestand wordt bij elk verzoek volledig meegestuurd. De documentatie raadt daarom aan het onder de 200 regels te houden.",
+        "Maar niet alles hoort er altijd in. Een checklist voor een nieuw bronze-model heb je maar af en toe nodig. En een regel als 'wijzig nooit profiles.yml' wil je niet alleen vragen, maar afdwingen. Daarvoor zijn skills, hooks en subagents.",
+        "De documentatie geeft een handige vuistregel per signaal. Doet Claude iets twee keer fout, zet het dan in CLAUDE.md. Plak je dezelfde werkwijze voor de derde keer in de chat, maak er een skill van. Wil je dat iets elke keer gebeurt zonder te vragen, schrijf een hook. En vult een zijtaak je gesprek met uitvoer die je niet meer nodig hebt, gebruik dan een subagent."
+      ]
+    },
+    {
+      "heading": "Skills: kennis die pas laadt als het nodig is",
+      "paragraphs": [
+        "Een skill is een map met een SKILL.md-bestand: bovenin een paar regels instellingen (frontmatter), daaronder instructies in Markdown. Vergelijk het met een map handleidingen op de plank. Claude ziet alleen de ruggen met titels, en pakt een handleiding pas als de klus erom vraagt. Dat heet geleidelijk onthullen (progressive disclosure).",
+        "Concreet: van elke skill staan alleen de naam en de beschrijving (description) altijd in de context. Pas als Claude de skill relevant vindt, of als je zelf /naam typt, laadt de volledige tekst. Extra bestanden in de map, zoals voorbeelden of scripts, laden alleen als de skill ernaar verwijst en Claude ze nodig heeft. Een skill mag ook een commando vooraf laten draaien, waarvan de uitvoer in de tekst komt.",
+        "Met de frontmatter stuur je het gedrag. disable-model-invocation: true betekent dat alleen jij de skill kunt starten, handig voor alles met bijwerkingen. allowed-tools geeft voor die beurt vooraf toestemming voor bepaalde commando's. Met context: fork draait de skill in een aparte subagent. Losse commando's in .claude/commands/ werken nog, maar zijn opgegaan in skills.",
+        "Skills volgen de open standaard Agent Skills. Een skill die je voor Claude Code schrijft, werkt daardoor in principe ook in andere tools die de standaard ondersteunen."
+      ]
+    },
+    {
+      "heading": "Hooks: scripts die altijd draaien",
+      "paragraphs": [
+        "Een hook is een stuk automatisering dat Claude Code zelf start bij een vast moment. Denk aan een rookmelder: die gaat af bij rook, ongeacht wat je er zelf van vindt. Momenten (events) zijn bijvoorbeeld PreToolUse vlak voor een toolaanroep, PostToolUse erna, en SessionStart bij het begin van een sessie.",
+        "Je zet hooks in een settings.json, per gebruiker of per project. Een matcher bepaalt welke tool de hook raakt, bijvoorbeeld Edit|Write of Bash. De hook kan een shellcommando zijn, maar ook een HTTP-aanroep, een MCP-tool, een korte vraag aan een model, of een subagent (die laatste is experimenteel). Een commando-hook krijgt de details van de aanroep als JSON binnen.",
+        "Het belangrijkste detail is de exitcode. Exitcode 2 blokkeert de actie, en de foutmelding gaat als reden naar Claude. Exitcode 1 blokkeert níet: de actie gaat gewoon door. Dat is volgens de documentatie een veelgemaakte fout. Een hook kan ook JSON teruggeven, bijvoorbeeld permissionDecision: deny met een reden.",
+        "Hooks kosten geen context, tenzij ze uitvoer teruggeven. Ze voeren wel code uit met jouw rechten. Controleer dus de hooks in een repository voordat je die vertrouwt. Voor beleid raadt de documentatie onFailure: block aan, want een hook die vastloopt laat de actie anders standaard door."
+      ]
+    },
+    {
+      "heading": "Subagents: een hulpje met een eigen werkruimte",
+      "paragraphs": [
+        "Een subagent is een aparte Claude met een eigen contextvenster, eigen instructies en eigen tools. Hij krijgt een opdracht, werkt die af en geeft alleen een samenvatting terug. Vergelijk het met een collega die een stapel dossiers doorleest en je één A4'tje geeft. Jouw bureau blijft leeg.",
+        "Claude Code heeft er een paar ingebouwd. Explore zoekt alleen-lezend door code, Plan doet onderzoek in de planmodus, en general-purpose mag alles. Eigen subagents zet je als Markdown-bestand in .claude/agents/. Verplicht zijn alleen name en description. Met tools beperk je wat hij mag, met model kies je bijvoorbeeld een goedkoper model, en met skills laad je skills vooraf in.",
+        "Een gewone subagent begint blanco. Hij ziet je gesprek niet, ook niet de bestanden die Claude al las. Hij krijgt wel CLAUDE.md, tenzij je dat uitzet. Daarom moet de opdracht die Claude meegeeft volledig zijn. Een fork is de uitzondering: die neemt het gesprek tot nu toe wel mee.",
+        "Subagents gebruiken wel je eigen verbruikslimiet. En ze kunnen geen vragen aan jou stellen. Kies ze dus voor zelfstandige klussen met veel tussenuitvoer, niet voor werk waarbij je steeds wilt bijsturen."
+      ]
+    },
+    {
+      "heading": "Kiezen, combineren en de valkuilen",
+      "paragraphs": [
+        "Het kernverschil zit in wie beslist. Bij een skill beslist Claude hoe hij de instructies toepast, dus de uitkomst kan wisselen. Bij een hook beslist niemand: hij draait gewoon. De documentatie zegt het scherp: 'wijzig nooit .env' in CLAUDE.md of een skill is een verzoek, geen garantie. Een PreToolUse-hook die het blokkeert, is handhaving.",
+        "Ze zijn ook te combineren. Een subagent kan skills vooraf laden, en een skill kan in een subagent draaien met context: fork. Een skill mag zelfs eigen hooks meebrengen die actief zijn zolang de skill loopt. Wil je dezelfde set in meer repositories, dan bundel je alles in een plugin.",
+        "De grootste valkuil bij skills is vindbaarheid. Claude kiest een skill op basis van de beschrijving. Is die vaag of overlapt hij met een andere, dan pakt Claude de verkeerde of geen. Zet het belangrijkste gebruik daarom vooraan in de beschrijving. Een tweede valkuil: de tekst van een skill blijft na het laden in het gesprek staan, dus schrijf blijvende instructies, geen eenmalige stappen."
+      ]
+    },
+    {
+      "heading": "Wat de praktijk met dbt laat zien",
+      "paragraphs": [
+        "dbt Labs bracht in februari 2026 een set skills uit voor dbt-werk, de dbt-agent-skills. Die leren een agent onder meer om eerst data te bekijken met dbt show voordat hij een model wijzigt. Ook moet hij echte waarden controleren voordat hij een accepted_values-test schrijft. Agents kopiëren anders voorbeeldlijsten uit de documentatie.",
+        "De gemeten winst was bescheiden. Op de benchmark ADE-bench ging de score van 56 naar 58,5 procent. Volgens dbt Labs zat de echte winst in taken die eerst nooit lukten, vooral stap-voor-stap werk aan een DAG. Ze zagen ook een keerzijde: een skill die hergebruik aanmoedigde, liet de agent een kolom met een fout hergebruiken. En het laden van skills noemden ze 'een beetje wisselvallig'.",
+        "Dat sluit aan bij de documentatie: een skill stuurt, maar garandeert niets. Gebruik skills voor kennis en werkwijze, en hooks voor wat echt moet. dbt Labs raadt ook aan eigen skills te schrijven voor je eigen conventies, omdat hun skills bewust maar half sturend zijn."
+      ]
+    },
+    {
+      "heading": "Hoe het eruit kan zien in jouw dbt-project",
+      "paragraphs": [
+        "Een mogelijke indeling, als suggestie. In CLAUDE.md staan de vaste regels: de lagen Bronze, Silver en Gold, je naamgeving en hoe je bouwt en test. Een skill nieuw-silver-model beschrijft stap voor stap hoe je een model plus YAML met beschrijvingen en tests maakt, in de stijl van je generatorscripts. Een skill met disable-model-invocation: true kan je releasechecklist zijn.",
+        "Daarnaast een paar hooks. Een PostToolUse-hook op Edit|Write kan na elke wijziging een lint-script of dbt parse draaien, zodat Claude zijn fouten meteen terugziet. Een PreToolUse-hook kan commando's blokkeren die data uit het warehouse halen, zoals dbt show. Dat past bij jouw regel dat externe AI niet met werkdata mag werken.",
+        "Een subagent past bij onderzoek, bijvoorbeeld een alleen-lezende reviewer met tools: Read, Grep, Glob. Die loopt een pull request langs en geeft alleen bevindingen terug. Laat Claude Code bij werkdata dus alleen aan code en metadata werken, en houd de query's binnen Databricks."
+      ]
+    }
+  ],
+  "experiment": "Clone het openbare jaffle_shop-project van dbt Labs. Schrijf één skill (bijv. een checklist voor een nieuw staging-model) en één PostToolUse-hook die na elke bewerking dbt parse draait en bij een fout met exitcode 2 stopt. Vraag Claude Code een nieuw model te maken en kijk of de skill vanzelf laadt en of de hook fouten terugmeldt. Gebruik alleen deze openbare voorbeelddata.",
+  "limitations": [
+    "Een skill is een verzoek aan het model; alleen hooks en permissies dwingen iets echt af.",
+    "Hooks draaien code met jouw rechten; een hook in een gedeelde repository moet je eerst controleren.",
+    "Subagents tellen mee voor je verbruik en kunnen samen nog veel context terugsturen.",
+    "Claude Code is externe AI: gebruik het op code en metadata, nooit op patiënt- of werkdata."
+  ],
+  "further_reading": [
+    {
+      "label": "Extend Claude Code (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "note": "Het beste overzicht: per uitbreiding wanneer je hem kiest, wat hij aan context kost en hoe ze samenwerken."
+    },
+    {
+      "label": "Skills (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/skills",
+      "note": "Alle frontmattervelden, waar skills staan en hoe het laden precies werkt."
+    },
+    {
+      "label": "Hooks reference (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "note": "Events, matchers, exitcodes en de beveiligingsadviezen, met voorbeeldscripts."
+    },
+    {
+      "label": "Subagents (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/subagents",
+      "note": "Ingebouwde subagents, alle velden, wat een subagent wel en niet ziet, en de limieten."
+    },
+    {
+      "label": "dbt Agent Skills (Joel Labes en Jason Ganz, dbt Labs, februari 2026)",
+      "url": "https://docs.getdbt.com/blog/dbt-agent-skills",
+      "note": "Skills voor dbt-werk met eerlijke metingen: wat ze opleveren en waar het misgaat."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Je wilt dat Claude Code nooit profiles.yml aanpast. Wat is volgens de documentatie de betrouwbaarste manier?",
+      "options": [
+        "Een regel in CLAUDE.md",
+        "Een skill die uitlegt waarom het bestand gevoelig is",
+        "Een PreToolUse-hook die bewerkingen van dat bestand blokkeert"
+      ],
+      "answer": 2,
+      "explanation": "Een instructie in CLAUDE.md of een skill is een verzoek dat het model kan negeren. Een hook draait altijd en kan de actie echt tegenhouden."
+    },
+    {
+      "question": "Waarom kost een skill met een lange handleiding weinig context zolang je hem niet gebruikt?",
+      "options": [
+        "Omdat alleen de naam en beschrijving altijd in de context staan; de rest laadt pas bij gebruik",
+        "Omdat skills in een aparte subagent draaien",
+        "Omdat Claude Code skills comprimeert",
+        "Omdat skills alleen laden als je ze zelf met /naam start"
+      ],
+      "answer": 0,
+      "explanation": "Dat is geleidelijk onthullen: de volledige tekst en extra bestanden laden pas als Claude de skill relevant vindt of jij hem start."
+    },
+    {
+      "question": "Je wilt een pull request laten nalopen door een hulpje dat veel bestanden leest. Wanneer is een subagent hier de betere keuze dan het hoofdgesprek?",
+      "options": [
+        "Als je tijdens de review vaak wilt bijsturen en vragen beantwoorden",
+        "Als de tussenuitvoer groot is en je alleen de bevindingen terug wilt",
+        "Als de reviewer je hele gesprek tot nu toe moet kennen"
+      ],
+      "answer": 1,
+      "explanation": "Een subagent werkt in een eigen contextvenster en geeft alleen een samenvatting terug. Hij kan geen vragen aan je stellen en ziet je gesprek niet, tenzij het een fork is."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 30 oktober 2026 in de actuele documentatie op code.claude.com (pagina's over uitbreidingen, skills, hooks en subagents; de subagent-pagina noemt versies tot rond v2.1.304). Daarnaast de dbt-agent-skills-blog van februari 2026. Bewust niet als aanrader opgenomen: losse commando's in .claude/commands/ (opgegaan in skills) en de oude docs.anthropic.com-adressen. Het hook-type agent staat vermeld als experimenteel.",
+  "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "dbt_analytics_engineering"
+  ],
+  "written_at": "2026-10-30T07:20:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}

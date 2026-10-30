@@ -1,0 +1,48 @@
+{
+  "format_version": 2,
+  "article_id": "ceb4b784fbab",
+  "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+  "headline": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
+  "summary": "Fintech KOHO bouwde KoDa: medewerkers stellen een vraag in Claude Code en krijgen antwoord uit gecertificeerde dbt-marts in Redshift, via een skill en een MCP-server.",
+  "story": [
+    "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
+    "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
+    "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
+    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata."
+  ],
+  "key_facts": [
+    "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
+    "Tools: Claude via Bedrock, Claude Code met de KoDa-skill, een Redshift-MCP-server, en dbt-marts in Redshift.",
+    "Ongeveer 1.400 dbt-modellen met tests en documentatie, zonder persoonsgegevens; de pipeline werd in 2022 opnieuw in dbt gebouwd.",
+    "Alleen leesrechten, alleen gecertificeerde mart-modellen, alleen analytische vragen.",
+    "Eval council van ongeveer 375 analistenvragen; ongeveer 11 commits van drie mensen in drie maanden voor contextbibliotheken en evaluatie.",
+    "Verslag van een sessie op dbt Summit 2026; geen cijfers over nauwkeurigheid of gebruik."
+  ],
+  "personal_relevance": "Precies het idee van een data-assistent op je Gold-laag, inclusief hoe je controleert of de antwoorden kloppen.",
+  "experiment": "Schrijf 20 testvragen met verwachte antwoorden voor de openbare jaffle_shop-marts en laat Claude ze beantwoorden via een SQL-tool. Tel hoeveel er kloppen.",
+  "limitations": [
+    "Geen cijfers over nauwkeurigheid, gebruik of kosten.",
+    "Bestuursrapportages worden nog steeds met de hand gecontroleerd.",
+    "Met werkdata alleen binnen Databricks na te bouwen, niet met externe AI."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_on_data_platform",
+    "dbt_analytics_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.75,
+    "novelty": 0.6
+  },
+  "development_key": "koho-koda-claude-dbt-okt-2026",
+  "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

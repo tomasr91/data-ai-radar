@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "article_id": "471f6b1cbb07",
+  "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+  "headline": "Laat een agent eerst zoeken, dan pas lezen",
+  "summary": "LangChain beschrijft hoe Deep Agents informatie ophaalt zonder zijn context te vullen: eerst grep en glob, betekenisgericht zoeken als het moet, en lezen uitbesteden aan subagents.",
+  "story": [
+    "Een agent kan niet alles tegelijk in zijn geheugen houden. Hij moet dus goed zoeken. LangChain noemt drie manieren waarop dat misgaat: onhandig zoeken, te grote resultaten, en verouderde of verkeerde informatie die er net zo betrouwbaar uitziet.",
+    "Deep Agents begint met de goedkoopste middelen. Met glob vindt hij bestanden op naam en met grep zoekt hij in de inhoud zonder hele bestanden te laden. read_file leest standaard 100 regels tegelijk. Pas als trefwoorden niet werken, zoekt hij op betekenis in een vectorstore. Vergelijk het met de index van een boek gebruiken voordat je het hele boek leest.",
+    "Het sterkste patroon heet 'retrieve, offload, delegate'. Een zoektool slaat elk resultaat op als bestand en geeft alleen de paden terug. Een subagent leest één bestand per keer en geeft de kernfeiten met de bron-URL terug. De hoofdagent ziet zo alleen conclusies en zoekt opnieuw als er iets ontbreekt.",
+    "Dit is anders dan klassieke RAG, die één keer zoekt en dan antwoordt. Hier beslist de agent zelf wanneer hij meer nodig heeft. Voor een assistent op dbt-documentatie is dit een bruikbaar recept: zoek eerst exact op modelnaam, en pas daarna op betekenis. Het stuk waarschuwt ook: opgehaalde tekst kan prompt-injectie bevatten, en geen prompt houdt dat helemaal tegen."
+  ],
+  "key_facts": [
+    "Ingebouwde tools: glob, grep (alleen letterlijke tekst), read_file (standaard 100 regels, met offset en limit), ls, write_file en edit_file.",
+    "Toolresultaten boven ongeveer 20.000 tokens gaan naar /large_tool_results/; de agent krijgt het pad en een kort voorproefje.",
+    "Voorbeeldpatroon: een zoektool search_news (k=4) slaat resultaten op als bestanden; subagent chunk-analyst leest één bestand per aanroep.",
+    "Retrieval-tools kunnen op een vectorstore, SQL-database, zoek-API of MCP-server draaien.",
+    "Advies: controleer of antwoorden de verwachte bronnen noemen en of de beweringen daarmee kloppen.",
+    "Geschreven door Jess Weng, gepubliceerd 23 oktober 2026."
+  ],
+  "personal_relevance": "Een concreet ontwerp voor een data-assistent die in dbt-documentatie zoekt zonder zijn context te verspillen.",
+  "experiment": "Zet de gegenereerde dbt-docs van jaffle_shop in een map en laat een Deep Agent een vraag beantwoorden. Tel hoeveel tokens hij gebruikt met en zonder de stap 'eerst grep'.",
+  "limitations": [
+    "Geschreven door de maker van het framework; geen metingen van de winst.",
+    "Prompt-injectie via opgehaalde tekst blijft een risico."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Deep Agents retrieval",
+      "url": "https://docs.langchain.com/oss/python/deepagents/retrieval"
+    },
+    {
+      "label": "Deep Agents tools",
+      "url": "https://docs.langchain.com/oss/python/deepagents/tools"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+  ],
+  "quality": {
+    "depth": 0.75,
+    "practicality": 0.65,
+    "novelty": 0.55
+  },
+  "development_key": "deepagents-retrieval-okt-2026",
+  "date_note": "De pagina noemt 23 oktober 2026; de feed gaf 26 oktober.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}

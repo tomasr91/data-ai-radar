@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "ea59c0428e23",
+  "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+  "headline": "Een agent onthoudt meer als hij minder in zijn hoofd houdt",
+  "summary": "LangChain legt uit hoe Deep Agents lange taken volhoudt: grote resultaten naar bestanden, oude berichten samenvatten, skills pas laden als nodig, en geheugen in een eigen bestand.",
+  "story": [
+    "Een agent die lang werkt, stapelt instructies, toolresultaten en bestanden op. Dan wordt hij slechter, omdat zijn contextvenster te vol raakt. LangChain noemt dat 'context rot'. In dit stuk laat het zien hoe zijn open-source harnas Deep Agents dat voorkomt.",
+    "De truc is: context weghalen zonder hem te verliezen. Een toolresultaat groter dan ongeveer 20.000 tokens gaat naar een bestand; de agent ziet alleen een kort voorproefje en het pad. Is het venster voor 85 procent vol, dan worden oude berichten samengevat. De volledige geschiedenis blijft in een bestand staan, dus details zijn terug te halen. Vergelijk het met een bureau dat je opruimt door dingen in een la te leggen, niet in de prullenbak.",
+    "Daarnaast laadt de agent skills pas als hij ze nodig heeft (progressive disclosure). Rommelig zoekwerk gaat naar een subagent met een eigen venster, die alleen het eindresultaat teruggeeft. Lange-termijngeheugen staat in een gewoon Markdown-bestand, zoals /memories/AGENTS.md, dat bij de start wordt ingelezen.",
+    "Dit zijn dezelfde bouwstenen als in Claude Code: CLAUDE.md, skills, subagents en compaction. Het stuk maakt goed duidelijk waarom ze er zijn. Omdat het geheugen een gewoon bestand is, kun je het ook met een ander model gebruiken."
+  ],
+  "key_facts": [
+    "Toolresultaten boven ongeveer 20.000 tokens gaan naar /large_tool_results/{tool_call_id}; gebruikersberichten boven 50.000 tokens naar /conversation_history/.",
+    "Standaard wordt samengevat bij 85% gebruik van het contextvenster; de volledige geschiedenis blijft in /conversation_history/{session_id}.md.",
+    "Skills zijn mappen met een SKILL.md; alleen naam en beschrijving staan standaard in de systeemprompt.",
+    "Lange-termijngeheugen staat in een Markdown-bestand (voorbeeld /memories/AGENTS.md) dat bij de start wordt geladen en bijgewerkt.",
+    "Deep Agents is open source; installatie met uv add deepagents.",
+    "Geschreven door Jess Weng (LangChain)."
+  ],
+  "personal_relevance": "Helpt je begrijpen waarom Claude Code en andere agents zo met context omgaan, en hoe je dat zelf ontwerpt.",
+  "experiment": "Installeer deepagents en laat een agent een openbare dataset (bijv. een grote CSV van data.overheid.nl) samenvatten. Kijk welke bestanden hij in /large_tool_results/ zet.",
+  "limitations": [
+    "Geschreven door de maker van het framework; er staan geen metingen in dat het beter werkt.",
+    "Samenvatten blijft verlies van detail in het actieve venster, ook al is de geschiedenis terug te halen."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Deep Agents",
+      "url": "https://www.langchain.com/deep-agents"
+    },
+    {
+      "label": "Context management for Deep Agents",
+      "url": "https://www.langchain.com/blog/context-management-for-deepagents"
+    }
+  ],
+  "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+  ],
+  "quality": {
+    "depth": 0.75,
+    "practicality": 0.6,
+    "novelty": 0.5
+  },
+  "development_key": "deepagents-context-geheugen-okt-2026",
+  "date_note": "De pagina noemt 14 oktober 2026 als publicatiedatum; de feed gaf 28 oktober.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-30T06:45:00Z",
+  "prompt_version": "taak-v2"
+}
