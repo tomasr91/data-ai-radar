@@ -861,7 +861,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <button type="button" data-vote="-1" aria-pressed="${mine?.v === -1}">👎 Niet voor mij</button>
       </div>
       ${reasons ? `<div class="fb-reasons">${Object.entries(reasons).map(([k, l]) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${l}</button>`).join("")}</div>
-      <p class="fb-note">${mine.v === -1 ? "Dit artikel verdwijnt uit je lijst. " : ""}${mine.sent ? "Verstuurd." : "Wordt meegestuurd met je volgende feedback (knop bovenaan Actueel)."}</p>` : ""}`;
+      ${mine.v === -1 ? `<p class="fb-note">Dit artikel verdwijnt uit je lijst.</p>` : ""}` : ""}`;
   }
   function fbClick(e) {
     const box = e.target.closest("#fb"); if (!box) return;
