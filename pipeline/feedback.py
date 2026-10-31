@@ -5,6 +5,9 @@
   60 dagen). Dat geeft een voorkeur tussen -1 en +1.
 - De voorkeur weegt mee in de relevantiescore: hooguit 8 punten erbij of eraf. Zo stuur je
   bij zonder dat één duimpje alles omgooit. Je ziet het per artikel bij "Jouw feedback".
+- Gewichten (T, 31-10-2026): 👍 telt 2 ("dit is echt interessant"), 👎 telt 1 de andere kant op,
+  gelezen (tot onderaan, minstens 15 seconden open) telt 0,5: een benadering. Heb je een
+  artikel ook beoordeeld, dan telt alleen je duim.
 """
 import json
 import math
