@@ -35,6 +35,7 @@ def site(feed_text=None):
     (d / "index.html").write_text('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' + page, encoding="utf-8")
     if feed_text is not None:
         (d / "feed.json").write_text(feed_text, encoding="utf-8")
+    shutil.copytree(ROOT / "app" / "leren", d / "leren")
     return d
 
 
@@ -172,7 +173,7 @@ with sync_playwright() as p:
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
 
     # 11. Tabblad Verdieping
-    check("11. tabbladen Actueel en Verdieping", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping"])
+    check("11. tabbladen Actueel, Verdieping en Leren", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren"])
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
@@ -233,6 +234,44 @@ with sync_playwright() as p:
         page.goto(url + "#a-" + raw["id"])
         page.wait_for_selector("#reader:not([hidden])")
         check("   onverwerkt artikel is herkenbaar en heeft bronlink", "nog niet uitgelegd" in page.locator("#reader").inner_text())
+
+    # 17. Leren: het Claude-examen in een venster
+    page.goto(url)
+    page.wait_for_selector(".card")
+    page.click('#seg-view button[data-v="leren"]')
+    page.wait_for_selector("#leren-frame")
+    fr = page.frame_locator("#leren-frame")
+    fr.locator(".cert").first.wait_for(timeout=15000)
+    certs = fr.locator(".cert").all_inner_texts()
+    check("17. Leren toont het Claude-examen met de certificeringen", "Associate" in certs[0] and any("Developer" in c for c in certs), str(certs))
+    fr.locator('[data-act="start"]').first.click()
+    fr.locator(".q .opt").first.wait_for(timeout=5000)
+    fr.locator(".q .opt").first.click()
+    fr.locator('[data-act="check"]').click()
+    fr.locator(".banner").first.wait_for(timeout=5000)
+    saved = page.evaluate("JSON.parse(localStorage.getItem('cca-academy-v2') || 'null')")
+    n = sum(c["total"]["n"] for c in saved["certs"].values()) if saved else 0
+    check("   vraag beantwoorden werkt en wordt bewaard", n == 1, str(n))
+    fr.locator('[data-act="report"]').first.click()
+    fr.locator("#reportBox").fill("Testmelding")
+    page.evaluate("() => { const w = document.getElementById('leren-frame').contentWindow; w.__o = []; w.open = (u) => { w.__o.push(u); return null; }; }")
+    fr.locator('[data-act="sendreport"]').first.click()
+    opened = page.evaluate("document.getElementById('leren-frame').contentWindow.__o")
+    check("   melding opent een GitHub-issue 'Examenmelding'", len(opened) == 1 and "issues/new?title=Examenmelding" in opened[0], str(opened)[:120])
+    page.evaluate("localStorage.removeItem('cca-academy-v2')")
+    page.reload(); page.wait_for_selector("#leren-frame")
+    check("   Actueel en Verdieping verborgen, filters weg", not page.locator("#main").is_visible() and not page.locator("#seg-sort").is_visible() and not page.locator("#seg-dd").is_visible())
+    bg = page.evaluate("getComputedStyle(document.getElementById('leren-frame').contentDocument.body).backgroundColor")
+    check("   examen in het donkere Radar-thema", bg == "rgb(15, 18, 23)", bg)
+    h = page.evaluate("document.getElementById('leren-frame').getBoundingClientRect().height")
+    check("   venster groeit mee met de inhoud", h > 500, str(h))
+    save = fr.locator(".save").inner_text()
+    check("   voortgang op dit toestel opgeslagen", "dit toestel" in save, save)
+    page.click('#seg-view button[data-v="actueel"]')
+    check("   terug naar Actueel werkt", page.locator(".card[data-id]").count() == len(arts) and page.locator("#leren").is_hidden())
+    page.click('#seg-view button[data-v="leren"]')
+    check("   examen blijft geladen bij terugkeren", page.locator("#leren-frame").count() == 1 and page.locator("#leren").is_visible())
+    page.click('#seg-view button[data-v="actueel"]')
 
     # 7. Feedcontrole toont mislukte bronnen
     page.goto(url + "#feedcontrole")

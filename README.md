@@ -72,6 +72,8 @@ python -m http.server -d app 8000          # bekijk op http://localhost:8000
 
 ## Draaien op GitHub (dagelijks, automatisch)
 
+Tabblad **Leren**: het Claude-examen (Claude Certification Academy) staat in `app/leren/` als eigen pagina en draait in de Radar in een venster. Onderhoud: zie `app/leren/ONDERHOUD.md`; controle: `node scripts/validate_leren.js`.
+
 Zo werkt het elke nacht:
 
 1. **02:47 – GitHub Actions** (`.github/workflows/radar.yml`) haalt de feeds op, voegt nieuwe artikelen toe aan `data/archive.json` en bouwt `data/feed.json`. Onverwerkte artikelen die de moeite waard lijken, komen op de werklijst `data/to_enrich.json`. De app op GitHub Pages wordt bijgewerkt.

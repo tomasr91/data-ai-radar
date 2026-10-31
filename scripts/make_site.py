@@ -78,6 +78,8 @@ def main():
     shutil.copy(ROOT / "data" / "feed.json", SITE / "feed.json")
     shutil.copy(PWA / "manifest.webmanifest", SITE / "manifest.webmanifest")
     shutil.copytree(PWA / "icons", SITE / "icons")
+    # Leren: het Claude-examen als eigen pagina (app/leren/), ongewijzigd meegekopieerd
+    shutil.copytree(ROOT / "app" / "leren", SITE / "leren", ignore=shutil.ignore_patterns("ONDERHOUD.md"))
     sw = (PWA / "sw.js").read_text(encoding="utf-8").replace("__BUILD__", build)
     (SITE / "sw.js").write_text(sw, encoding="utf-8")
     (SITE / ".nojekyll").write_text("")

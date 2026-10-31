@@ -54,10 +54,11 @@ jobs:
       - name: Installeren
         run: pip install -r requirements.txt
 
-      - name: Context en uitleg controleren
+      - name: Context, uitleg en examenvragen controleren
         run: |
           python scripts/validate_context.py
           python scripts/validate_enrichment.py
+          node scripts/validate_leren.js
 
       - name: Tests
         run: python -m unittest discover -s tests -t .
@@ -176,3 +177,8 @@ jobs:
             code=$(curl -s -o /dev/null -w "%{http_code}" -I "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@${v}/${f}")
             echo "$f -> $code"; [ "$code" = "200" ]
           done
+
+      - name: "Controle: Leren (Claude-examen) bereikbaar"
+        run: |
+          curl -fsS "${BASE}leren/index.html" | grep -q 'id="app"'
+          for f in js/core.js js/app.js content/registry.js; do curl -fsS -o /dev/null "${BASE}leren/$f" && echo "leren/$f ok"; done
