@@ -1,7 +1,63 @@
 {
- "generated_at": "2026-10-31T12:37:44.750957Z",
+ "generated_at": "2026-10-31T12:51:34.776152Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "98507a56847d",
+   "title": "Native XML file format support is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#native-xml-file-format-support-is-now-generally-available",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-29T00:00:00Z",
+   "excerpt": "Native XML file format support is now generally available. You can ingest, query, and parse XML files in batch or streaming workloads with Auto Loader, read_files , and COPY INTO , and use the from_xml and schema_of_xml SQL functions. See Read and write XML files .",
+   "preliminary_score": 88,
+   "preliminary_topics": [
+    "data_ingestion",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "2d914f785c48",
+   "title": "Shared Serverless for Asset Bundles (Beta)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "Notebooks and files in a bundle share serverless compute and environment.",
+   "preliminary_score": 84,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ]
+  },
+  {
+   "id": "9232d3b08479",
+   "title": "Shared Serverless for Asset Bundles (Beta)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#shared-serverless-for-asset-bundles-beta",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "With Shared Serverless for Asset Bundles, notebooks and files in the same bundle can share serverless compute and an environment defined in the bundle-root pyproject.toml file. Workspace admins can enable Project-Scoped Shared Compute on the Previews page . See Shared Serverless for Asset Bundles .",
+   "preliminary_score": 84,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ]
+  },
+  {
+   "id": "eabc838b21d8",
+   "title": "Unify your productivity and AI data with Lakeflow Connect",
+   "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-26T23:20:12Z",
+   "excerpt": "Managed connectors for productivity and AI data in Lakeflow Connect.",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "data_ingestion"
+   ]
+  },
   {
    "id": "5fb7f5c82d5d",
    "title": "ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount",
@@ -144,58 +200,6 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:34:00Z",
    "excerpt": "Most dbt models are not on the critical path; that slack can save Snowflake credits.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "a68aede0b61b",
-   "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
-   "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:16:00Z",
-   "excerpt": "Checkr gave its AI agent a structured dbt context layer, cutting a support-metric investigation from hours to minutes.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "3bc165cef8a8",
-   "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
-   "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:08:00Z",
-   "excerpt": "Sweetwater uses Datadog to catch broken dbt pipelines before dashboard users notice missing data.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "3d41fbc3100a",
-   "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
-   "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:03:00Z",
-   "excerpt": "Keep's one-person data team used dbt, Artie, and Snowflake to cut credit underwriting from one business day to under a minute.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "210070d43efc",
-   "title": "Charts worth stealing: the design calls BI should ship",
-   "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:58:00Z",
-   "excerpt": "RJ Andrews explains the design defaults behind dbt Charts, from consistent colors to the small choices that make charts work.",
    "preliminary_score": 62,
    "preliminary_topics": [
     "dbt_analytics_engineering"

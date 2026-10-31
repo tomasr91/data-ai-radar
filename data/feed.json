@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-31T12:37:44.750957Z",
- "mode": "partial",
- "mode_note": "17 van 18 feeds opgehaald; zie bronstatus.",
+ "generated_at": "2026-10-31T12:51:34.776152Z",
+ "mode": "live",
+ "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-10-31T09:55:00Z",
- "last_successful_update": "2026-10-31T12:37:44.750957Z",
+ "last_successful_update": "2026-10-31T12:51:34.776152Z",
  "groups": [
   {
    "id": "dbt",
@@ -95,9 +95,14 @@
    "group": "kwaliteit"
   },
   "cicd_data_deployment": {
-   "name": "GitHub, CI/CD en data deployment",
-   "priority": 4,
+   "name": "Release pipelines, bundles en uitrol",
+   "priority": 5,
    "group": "overig"
+  },
+  "data_ingestion": {
+   "name": "Data ingestion",
+   "priority": 5,
+   "group": "databricks"
   },
   "sql_spark_sql": {
    "name": "SQL en Spark SQL",
@@ -147,7 +152,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-10-31T12:37:44.804536Z"
+   "checked_at": "2026-10-31T12:51:34.830146Z"
   },
   {
    "id": "dbt_core_releases",
@@ -160,7 +165,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-10-31T12:37:45.086437Z"
+   "checked_at": "2026-10-31T12:51:35.039381Z"
   },
   {
    "id": "claude_code_releases",
@@ -173,7 +178,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-10-31T12:37:45.609423Z"
+   "checked_at": "2026-10-31T12:51:35.532497Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -186,7 +191,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-10-31T12:37:45.951127Z"
+   "checked_at": "2026-10-31T12:51:35.865633Z"
   },
   {
    "id": "databricks_blog",
@@ -199,7 +204,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-10-31T12:37:46.219817Z"
+   "checked_at": "2026-10-31T12:51:36.150483Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -212,7 +217,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-10-31T12:37:46.344697Z"
+   "checked_at": "2026-10-31T12:51:36.392596Z"
   },
   {
    "id": "github_blog",
@@ -225,7 +230,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-10-31T12:37:46.423043Z"
+   "checked_at": "2026-10-31T12:51:36.497457Z"
   },
   {
    "id": "azure_blog",
@@ -235,10 +240,10 @@
    "trust_level": "medium",
    "priority": 4,
    "fetch_method": "rss",
-   "status": "failed",
-   "items": 0,
-   "message": "Niet bereikbaar: The read operation timed out",
-   "checked_at": "2026-10-31T12:37:46.592439Z"
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
+   "checked_at": "2026-10-31T12:51:37.006816Z"
   },
   {
    "id": "powerbi_blog",
@@ -251,7 +256,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-10-31T12:38:06.684997Z"
+   "checked_at": "2026-10-31T12:51:37.099311Z"
   },
   {
    "id": "huggingface_blog",
@@ -264,7 +269,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-10-31T12:38:07.337570Z"
+   "checked_at": "2026-10-31T12:51:37.569113Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -277,7 +282,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-10-31T12:38:07.459439Z"
+   "checked_at": "2026-10-31T12:51:37.805980Z"
   },
   {
    "id": "simon_whiteley",
@@ -290,7 +295,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-10-31T12:38:07.583956Z"
+   "checked_at": "2026-10-31T12:51:38.015881Z"
   },
   {
    "id": "hamel_husain",
@@ -303,7 +308,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-10-31T12:38:07.672802Z"
+   "checked_at": "2026-10-31T12:51:38.177736Z"
   },
   {
    "id": "langchain_blog",
@@ -316,7 +321,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-10-31T12:38:07.780697Z"
+   "checked_at": "2026-10-31T12:51:38.455278Z"
   },
   {
    "id": "chip_huyen",
@@ -329,7 +334,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-10-31T12:38:07.881008Z"
+   "checked_at": "2026-10-31T12:51:38.561318Z"
   },
   {
    "id": "simon_willison",
@@ -342,7 +347,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-10-31T12:38:08.084846Z"
+   "checked_at": "2026-10-31T12:51:39.074008Z"
   },
   {
    "id": "chris_webb",
@@ -355,7 +360,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-10-31T12:38:08.174404Z"
+   "checked_at": "2026-10-31T12:51:39.189176Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -368,7 +373,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-10-31T12:38:08.479436Z"
+   "checked_at": "2026-10-31T12:51:39.534310Z"
   }
  ],
  "daily_top": [
@@ -907,64 +912,6 @@
    "article_type": "nieuws"
   },
   {
-   "id": "28418ea3b8c0",
-   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:01:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
-   "fetched_at": "2026-10-28T20:21:53.503248Z",
-   "summary": "Under Armour beheert zijn Snowflake-agents als dbt-modellen, met eigen materializations. Zo gaan agents door dezelfde pull requests, CI en omgevingen als tabellen.",
-   "personal_relevance": "Laat zien hoe je AI-objecten onder dezelfde CI/CD en lineage brengt als je dbt-modellen.",
-   "experiment": "Schrijf in een oefenproject een eenvoudige custom materialization die een view plus een COMMENT aanmaakt, en controleer met dbt ls --select model+ wat er downstream hangt.",
-   "limitations": [
-    "Alleen Snowflake; voor Databricks bestaat dit niet kant-en-klaar.",
-    "Geen code of repository in het artikel.",
-    "Overzetten van met de hand gebouwde objecten blijft handwerk."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_agents_rag",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "agents",
-    "overig"
-   ],
-   "relevance_score": 95,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.83,
-    "source": 0.85,
-    "quality": 0.62,
-    "feedback": 0.81
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-30T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Under Armour zet AI-agents live zoals een dbt-tabel",
-   "story": [
-    "Under Armour had drie AI-agents in Snowflake, met de hand gebouwd in de webinterface. Er was geen versiebeheer, review of test. Toen een kolom verdween, gaf een agent foute antwoorden en merkte het team dat pas via gebruikers. Nu worden agents uitgerold zoals elke dbt-tabel.",
-    "Het team schreef eigen materializations voor een agent en een zoekdienst. Zo'n materialization is het recept dat dbt gebruikt om een object te bouwen. Bestaat de agent al, dan wordt hij aangepast in plaats van vervangen. Anders verdwijnen gespreksgeschiedenis en gebruikscijfers. Omdat agents ref() gebruiken, staan ze in de lineage, net als tabellen.",
-    "In CI laat dbt ls --select daily_sales_semv+ zien welke agents een wijziging raakt. dbt build --select state:modified+ bouwt alleen wat veranderd is. Een post-hook regelt de rechten per omgeving en registreert de agent in productie in Snowflake CoWork.",
-    "Dit draait op Snowflake, niet op Databricks. Het patroon is wel overdraagbaar: behandel een agent en zijn semantische laag als een downstream-model van je Gold-laag. Dan breekt een kolomwijziging je CI, niet het antwoord van een gebruiker."
-   ],
-   "key_facts": [
-    "Drie agents: commerciële verkoop en consumenteninzichten (Cortex Analyst) en productkennis (Cortex Search over honderden PowerPoints).",
-    "Eigen materializations agent en cortex_search_service, plus een materialization van Snowflake Labs voor semantic views.",
-    "Bestaande agents worden aangepast (alter), niet vervangen, om geschiedenis en gebruiksdata te bewaren.",
-    "Na vijf maanden: meer dan 30 Cortex-objecten via dbt, drie domeinen en drie omgevingen; terugdraaien is een git revert.",
-    "Ongeveer 3.000 beheerde dataproducten voor ongeveer 950 dagelijkse gebruikers.",
-    "Het artikel bevat geen code; verslag van een sessie op dbt Summit 2026."
-   ],
-   "article_type": "nieuws"
-  },
-  {
    "id": "450468c3f304",
    "title": "Built for Agents: The Case for Spark Declarative Pipelines",
    "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
@@ -1218,6 +1165,64 @@
     "code": "default:\n  outputs:\n    dev:\n      type: duckdb\n  target: dev",
     "note": "Overgenomen uit de officiële dbt-documentatie (DuckDB setup, dbt v2). Met path: './my_project.duckdb' bewaar je de data in een bestand."
    }
+  },
+  {
+   "id": "28418ea3b8c0",
+   "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+   "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:01:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
+   "fetched_at": "2026-10-28T20:21:53.503248Z",
+   "summary": "Under Armour beheert zijn Snowflake-agents als dbt-modellen, met eigen materializations. Zo gaan agents door dezelfde pull requests, CI en omgevingen als tabellen.",
+   "personal_relevance": "Laat zien hoe je AI-objecten onder dezelfde CI/CD en lineage brengt als je dbt-modellen.",
+   "experiment": "Schrijf in een oefenproject een eenvoudige custom materialization die een view plus een COMMENT aanmaakt, en controleer met dbt ls --select model+ wat er downstream hangt.",
+   "limitations": [
+    "Alleen Snowflake; voor Databricks bestaat dit niet kant-en-klaar.",
+    "Geen code of repository in het artikel.",
+    "Overzetten van met de hand gebouwde objecten blijft handwerk."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "cicd_data_deployment",
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "overig",
+    "dbt",
+    "agents"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.83,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": 0.65
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Under Armour zet AI-agents live zoals een dbt-tabel",
+   "story": [
+    "Under Armour had drie AI-agents in Snowflake, met de hand gebouwd in de webinterface. Er was geen versiebeheer, review of test. Toen een kolom verdween, gaf een agent foute antwoorden en merkte het team dat pas via gebruikers. Nu worden agents uitgerold zoals elke dbt-tabel.",
+    "Het team schreef eigen materializations voor een agent en een zoekdienst. Zo'n materialization is het recept dat dbt gebruikt om een object te bouwen. Bestaat de agent al, dan wordt hij aangepast in plaats van vervangen. Anders verdwijnen gespreksgeschiedenis en gebruikscijfers. Omdat agents ref() gebruiken, staan ze in de lineage, net als tabellen.",
+    "In CI laat dbt ls --select daily_sales_semv+ zien welke agents een wijziging raakt. dbt build --select state:modified+ bouwt alleen wat veranderd is. Een post-hook regelt de rechten per omgeving en registreert de agent in productie in Snowflake CoWork.",
+    "Dit draait op Snowflake, niet op Databricks. Het patroon is wel overdraagbaar: behandel een agent en zijn semantische laag als een downstream-model van je Gold-laag. Dan breekt een kolomwijziging je CI, niet het antwoord van een gebruiker."
+   ],
+   "key_facts": [
+    "Drie agents: commerciële verkoop en consumenteninzichten (Cortex Analyst) en productkennis (Cortex Search over honderden PowerPoints).",
+    "Eigen materializations agent en cortex_search_service, plus een materialization van Snowflake Labs voor semantic views.",
+    "Bestaande agents worden aangepast (alter), niet vervangen, om geschiedenis en gebruiksdata te bewaren.",
+    "Na vijf maanden: meer dan 30 Cortex-objecten via dbt, drie domeinen en drie omgevingen; terugdraaien is een git revert.",
+    "Ongeveer 3.000 beheerde dataproducten voor ongeveer 950 dagelijkse gebruikers.",
+    "Het artikel bevat geen code; verslag van een sessie op dbt Summit 2026."
+   ],
+   "article_type": "nieuws"
   },
   {
    "id": "fea9136ea071",
@@ -1917,14 +1922,14 @@
    "topics": [
     "dbt_analytics_engineering",
     "databricks_data_engineering",
-    "data_quality_observability",
-    "cicd_data_deployment"
+    "cicd_data_deployment",
+    "data_quality_observability"
    ],
    "groups": [
     "dbt",
     "databricks",
-    "kwaliteit",
-    "overig"
+    "overig",
+    "kwaliteit"
    ],
    "relevance_score": 89,
    "score_parts": {
@@ -4114,24 +4119,25 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 300,
+  "fetched_items": 310,
   "unique_after_dedupe": 308,
   "merged_duplicates": 9,
   "shown": 48,
   "decisions": {
-   "included": 89,
+   "included": 93,
    "excluded": 33,
-   "below_threshold": 70,
-   "no_topic": 116
+   "below_threshold": 68,
+   "no_topic": 114
   },
   "processing": {
    "enriched": 48
   },
   "without_date": 0,
   "per_group": {
-   "dbt": 11,
+   "dbt": 10,
    "ai_context": 13,
    "databricks": 11,
+   "overig": 1,
    "agents": 8,
    "architectuur": 2,
    "kwaliteit": 1,
@@ -4177,7 +4183,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 111
+   "skipped_no_key": 113
   },
   "queue_size": 15,
   "invalid_enrichment": [],
@@ -4203,9 +4209,37 @@
     "excluded_by": []
    },
    {
+    "title": "Microsoft Graph Logs connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
+    "relevance_score": 88,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
     "title": "Claude Code auto mode for Anthropic and non-Anthropic models",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#claude-code-auto-mode-for-anthropic-and-non-anthropic-models",
+    "relevance_score": 88,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Xero connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
+    "relevance_score": 88,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "Native XML file format support is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#native-xml-file-format-support-is-now-generally-available",
     "relevance_score": 88,
     "decision": "included",
     "excluded_by": []
@@ -4229,10 +4263,86 @@
     "excluded_by": []
    },
    {
+    "title": "QuickBooks connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
+    "relevance_score": 86,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "v2.1.314",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
+    "relevance_score": 86,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "Azure DevOps connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
     "relevance_score": 85,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "PayPal connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#paypal-connector-is-available-in-beta",
+    "relevance_score": 85,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "Shared Serverless for Asset Bundles (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
+    "relevance_score": 84,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Google Analytics Aggregated connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#google-analytics-aggregated-connector-is-available-in-beta",
+    "relevance_score": 84,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "Box Audit Logs managed ingestion connector (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#box-audit-logs-managed-ingestion-connector-beta",
+    "relevance_score": 84,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
+    "title": "Shared Serverless for Asset Bundles (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#shared-serverless-for-asset-bundles-beta",
+    "relevance_score": 84,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Microsoft Entra ID connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
+    "relevance_score": 84,
     "decision": "excluded",
     "excluded_by": [
      "connector_releases"
@@ -4349,22 +4459,22 @@
     ]
    },
    {
+    "title": "QuickBooks connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/quickbooks",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases"
+    ]
+   },
+   {
     "title": "Databricks SQL version 2026.43 is rolling out in Current",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/sql/release-notes/2026#databricks-sql-version-202643-is-rolling-out-in-current",
     "relevance_score": 78,
     "decision": "included",
     "excluded_by": []
-   },
-   {
-    "title": "v2.1.314",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds"
-    ]
    },
    {
     "title": "How Ramp's internal AI agents crossed a million sessions",
@@ -4381,26 +4491,6 @@
     "relevance_score": 78,
     "decision": "included",
     "excluded_by": []
-   },
-   {
-    "title": "Microsoft Graph Logs connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
-    "title": "Xero connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
    },
    {
     "title": "Real-time mode in Lakeflow pipelines is now generally available",
@@ -4427,16 +4517,6 @@
     "excluded_by": []
    },
    {
-    "title": "QuickBooks connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
-    "relevance_score": 75,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
     "title": "Genie One enhancements",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
@@ -4455,16 +4535,6 @@
     ]
    },
    {
-    "title": "PayPal connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#paypal-connector-is-available-in-beta",
-    "relevance_score": 74,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
     "title": "v2.1.316",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
@@ -4473,6 +4543,14 @@
     "excluded_by": [
      "minor_builds"
     ]
+   },
+   {
+    "title": "Unify your productivity and AI data with Lakeflow Connect",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+    "relevance_score": 74,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
@@ -4499,16 +4577,6 @@
     "excluded_by": []
    },
    {
-    "title": "Google Analytics Aggregated connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#google-analytics-aggregated-connector-is-available-in-beta",
-    "relevance_score": 73,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
     "title": "Genie agentic capabilities are now processed in South Korea",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#genie-agentic-capabilities-are-now-processed-in-south-korea",
@@ -4516,26 +4584,6 @@
     "decision": "excluded",
     "excluded_by": [
      "mini_updates"
-    ]
-   },
-   {
-    "title": "Box Audit Logs managed ingestion connector (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#box-audit-logs-managed-ingestion-connector-beta",
-    "relevance_score": 73,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
-    ]
-   },
-   {
-    "title": "Microsoft Entra ID connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
-    "relevance_score": 73,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases"
     ]
    },
    {
@@ -4674,46 +4722,6 @@
     "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
-    "relevance_score": 62,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
-    "relevance_score": 62,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Charts worth stealing: the design calls BI should ship",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
-    "relevance_score": 62,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "With great context comes great autonomy",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
-    "relevance_score": 62,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
-    "relevance_score": 62,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "The Problem With Approximate Distinct Counts In Power BI – And How To Solve It",
-    "source_id": "chris_webb",
-    "url": "https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/",
     "relevance_score": 62,
     "decision": "included",
     "excluded_by": []
