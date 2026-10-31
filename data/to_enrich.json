@@ -1,210 +1,204 @@
 {
- "generated_at": "2026-10-31T09:07:26.713662Z",
+ "generated_at": "2026-10-31T09:17:41.275637Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
-   "id": "a704112d6f8a",
-   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
-   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-06T16:00:00Z",
-   "excerpt": "AbstractIFCO runs one of the world's largest reusable packaging pools with hundreds of millions of crates and pallets...",
-   "preliminary_score": 69,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "390bdecb1bec",
-   "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
-   "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
+   "id": "5fb7f5c82d5d",
+   "title": "ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount",
+   "url": "https://blog.crossjoin.co.uk/2026/10/11/approximatedistinctcount-in-power-bi-is-sometimes-slower-than-distinctcount/",
    "source_id": "chris_webb",
    "source_name": "Chris Webb's BI Blog",
-   "published_at": "2026-10-18T13:29:24Z",
-   "excerpt": "The September release of Power BI saw the introduction of a powerful new feature: full text indexing, which makes searching and filtering on text columns much faster and enables the use of the new TextContains() and TextSimilarity() DAX functions. You need to enable it on a per-column basis and when you do that you have … Continue reading Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI →",
-   "preliminary_score": 66,
+   "published_at": "2026-10-11T06:01:02Z",
+   "excerpt": "As a follow-on from last week’s post about the new ApproximateDistinctCount function in DAX, I want to share something I found out from my recent testing for this function: ApproximateDistinctCount is sometimes slower than DistinctCount. This sounds counter-intuitive, right? After all ApproximateDistinctCount is a performance optimisation for the sometimes slow, expensive DistinctCount function. But it … Continue reading ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount →",
+   "preliminary_score": 55,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
   },
   {
-   "id": "eef8571c7c20",
-   "title": "MCP in LangChain: Stateless Protocol, Elicitation, and More!",
-   "url": "https://www.langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more",
+   "id": "9548d62329c5",
+   "title": "How Orange Business Built Live Intelligence with LangChain and LangSmith",
+   "url": "https://www.langchain.com/blog/how-orange-business-built-live-intelligence-on-langchain-and-langsmith",
    "source_id": "langchain_blog",
    "source_name": "LangChain Blog",
    "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "MCP support now lives in langchain.mcp, built on FastMCP for the 2026-07-28 spec, with elicitation handled as a LangGraph interrupt and tool lists cached.",
-   "preliminary_score": 65,
+   "excerpt": "Learn how Orange Business used LangChain and LangSmith to build Live Intelligence, a governed AI platform for agents, evals, observability, and production scale.",
+   "preliminary_score": 54,
    "preliminary_topics": [
-    "ai_context_engineering",
+    "ai_evaluation_observability",
     "open_source_tools"
    ]
   },
   {
-   "id": "68a2bf1c5563",
-   "title": "What's the difference between dbt and dbt OSS?",
-   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
-   "source_id": "dbt_developer_blog",
-   "source_name": "dbt Developer Blog",
-   "published_at": "2026-09-16T00:00:00Z",
-   "excerpt": "The free distribution of dbt v2 is our default recommendation over dbt OSS: it has more capabilities, and its license permits the same real-world use cases for free, without ever paying or talking to dbt Labs.",
-   "preliminary_score": 64,
+   "id": "4cc09a1d9883",
+   "title": "Improving Deep Agents with harness engineering",
+   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-13T19:56:07Z",
+   "excerpt": "Harness engineering improved LangChain's coding agent from Top 30 to Top 5 on Terminal Bench using self-verification, tracing, and context optimization.",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "ai_evaluation_observability",
+    "open_source_tools"
+   ]
+  },
+  {
+   "id": "e97274331120",
+   "title": "Find What Changed And When In Your Power BI Semantic Model",
+   "url": "https://blog.crossjoin.co.uk/2026/09/13/find-what-changed-and-when-in-your-power-bi-semantic-model/",
+   "source_id": "chris_webb",
+   "source_name": "Chris Webb's BI Blog",
+   "published_at": "2026-09-13T10:03:39Z",
+   "excerpt": "Here’s a situation I’ve found myself in many times. You’re called to help someone whose Power BI report is suddenly very slow. You ask whether any changes were made to the semantic model around the time performance got worse and the answer is no, absolutely not. You then spend anything from a few hours to … Continue reading Find What Changed And When In Your Power BI Semantic Model →",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "604150cc8b51",
+   "title": "Manage semantic model settings in context with the default settings pane (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Manage-semantic-model-settings-in-context-with-the-default/ba-p/5366792",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-09-17T16:00:00Z",
+   "excerpt": "The semantic model settings pane is becoming the default way to configure semantic models in the Power BI service. The pane opens alongside your workspace, so you can review and change settings without leaving the current page. It provides the same settings as the full semantic model settings page while keeping the surrounding context visible. The classic settings page remains available during this transition, but it no longer opens first. This change builds on the settings pane preview and provides a more focused experience for managing semantic models. Why it matters The pane helps you stay in context while you manage a semantic model. It opens on the right side of the browser window and keeps your workspace visible. Settings are organized into expandable sections and tabs, including refresh, data access, performance, and OneDrive and SharePoint. You can use the search box at the top of the pane to find a setting across all sections and tabs. For example, enter \"re\" and select View refresh history to go directly to refresh history instead of opening sections one at a time. This organization is especially useful for semantic models with several connection, refresh, or performance ",
+   "preliminary_score": 49,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "a117d6b1bb54",
+   "title": "How We Built Our Design Agent",
+   "url": "https://www.langchain.com/blog/design-agent",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-10-28T21:31:31Z",
+   "excerpt": "How LangChain built Content Studio, an open-source design agent in Slack that makes on-brand videos, graphics and decks, and the harness that powers it.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "open_source_tools"
+   ]
+  },
+  {
+   "id": "f3d7731bb72d",
+   "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/files/files-api",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "Multipart uploads and conditional operations for Unity Catalog volumes.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "4426feca6060",
+   "title": "Files API 3.0 for Unity Catalog volumes is now in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#files-api-30-for-unity-catalog-volumes-is-now-in-beta",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "Files API 3.0 is in Beta and introduces two new capabilities: Multipart uploads: Upload files larger than 5000 MiB to Unity Catalog volumes. Conditional operations: Upload, download, and delete files based on their current version to prevent unintended changes. For more information, see Use the Files API with Unity Catalog volumes .",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "72a32ce7fcf7",
+   "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
+   "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T20:03:00Z",
+   "excerpt": "Obie rebuilt on dbt and Apache Iceberg, shrinking a monthly process from more than 25 hours to about 2.",
+   "preliminary_score": 62,
    "preliminary_topics": [
     "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "77544766b84c",
-   "title": "Claude’s new auto eval tool",
-   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
-   "source_id": "hamel_husain",
-   "source_name": "Hamel Husain",
-   "published_at": "2026-09-30T07:00:00Z",
-   "excerpt": "Anthropic released new eval tooling for Claude Code . Their claude-api plugin now includes a new build_eval and hill-climb command that helps you build evals, check the graders, and improve your application against them. I usually don’t review eval tools because software changes so often that reviews have a short shelf life. But a first-party tool from Anthropic is likely to influence how people approach evals, so I wanted to try it and share what I found. Isaac Flath and I livestreamed ourselves using it on conversation traces from an apartment leasing assistant. Here’s what we found: The bad 1. It pushes you to create an eval before looking at data Claude started by suggesting several potential failures, then asked us to pick one straight away to turn into an eval. It gave us the below menu of options, with call-transfer rules as the recommended choice. We hadn’t yet reviewed the conversations ourselves, so it was hard to know if this was a real failure or worth prioritizing. Despite this, we went ahead with the recommended choice, because we figured that’s what typical users would do. I believe you should be looking at data first to inform your understanding and prioritize which",
-   "preliminary_score": 63,
-   "preliminary_topics": [
-    "ai_evaluation_observability",
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "4255764d89d9",
-   "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
-   "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-05T20:00:00Z",
-   "excerpt": "Vector search originated as a serving problem. The classical use case is a chatbot...",
+   "id": "54955e6fc7a6",
+   "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
+   "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:47:00Z",
+   "excerpt": "Twilio consolidated components into one ClickHouse pipeline governed by dbt and GitOps.",
    "preliminary_score": 62,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "ai_agents_rag"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "a343c9786e70",
-   "title": "Claude Haiku 5.5",
-   "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-10-07T20:56:21Z",
-   "excerpt": "As previously promised , here's Anthropic's new fast, low cost model: Introducing Claude Haiku 5.5 . The previous Haiku, 4.5, was very much showing its age. It came out almost a year ago , and was priced at $1/million input and $5/million output - relatively expensive even back then, and a full 10x the price of OpenAI's GPT-6 Luna , released last month. The new Haiku exactly matches the price of GPT-6 Luna - $0.10/$0.50 - up to 100,000 tokens. Beyond 100,000 tokens the price increases 5x to $0.50/$2.50. Luna itself has a price increase at 272,000 tokens but only to $0.20/$0.75. Haiku 5.5 also uses a new, less generous tokenizer. My Claude Token Counter tool shows that the same long prompt uses around 1.25x as many tokens with Haiku 5.5 compared to Haiku 4.5, so there's a hidden price increase there. If your workloads fit in 100,000 tokens, Haiku is the same price as Luna and reports higher benchmark scores. Above 100,000 tokens, Luna looks like a much better deal. The most recent release of llm-anthropic finally fixed it so I don't need to ship a new version of that plugin for every new model. I tested the new model like this: llm install -U llm-anthropic llm anthropic refresh llm ",
+   "id": "b73822c39490",
+   "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
+   "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:34:00Z",
+   "excerpt": "Most dbt models are not on the critical path; that slack can save Snowflake credits.",
    "preliminary_score": 62,
    "preliminary_topics": [
-    "claude_ai_development",
-    "general_ai_trends"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "cf9a742f2530",
-   "title": "The Problem With Approximate Distinct Counts In Power BI – And How To Solve It",
-   "url": "https://blog.crossjoin.co.uk/2026/10/04/the-problem-with-approximate-distinct-counts-in-power-bi-and-how-to-solve-it/",
-   "source_id": "chris_webb",
-   "source_name": "Chris Webb's BI Blog",
-   "published_at": "2026-10-04T15:02:08Z",
-   "excerpt": "As you’ve probably seen in the blog post for the September 2026 release of Power BI, Import mode and Direct Lake mode semantic models now support the ApproximateDistinctCount() DAX function. I tested its performance on a Direct Lake semantic model with a 1.4 billion row fact table based on the NYC Taxi sample data and … Continue reading The Problem With Approximate Distinct Counts In Power BI – And How To Solve It →",
+   "id": "a68aede0b61b",
+   "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
+   "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:16:00Z",
+   "excerpt": "Checkr gave its AI agent a structured dbt context layer, cutting a support-metric investigation from hours to minutes.",
    "preliminary_score": 62,
    "preliminary_topics": [
-    "powerbi_semantic_models"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "83ea6232a3bf",
-   "title": "Deep Agents Deploy: an open alternative to Claude Managed Agents",
-   "url": "https://www.langchain.com/blog/deep-agents-deploy-an-open-alternative-to-claude-managed-agents",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "Today we’re launching Deep Agents deploy in beta. Deep Agents deploy is the fastest way to deploy a model agnostic, open source agent harness in a production ready way.",
+   "id": "3bc165cef8a8",
+   "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
+   "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:08:00Z",
+   "excerpt": "Sweetwater uses Datadog to catch broken dbt pipelines before dashboard users notice missing data.",
    "preliminary_score": 62,
    "preliminary_topics": [
-    "claude_ai_development",
-    "open_source_tools"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "499b7b482586",
-   "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
-   "url": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-09-28T20:04:33Z",
-   "excerpt": "Traditional OLTP systems weren't built for the search demands of AI agents. They...",
-   "preliminary_score": 61,
+   "id": "3d41fbc3100a",
+   "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
+   "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:03:00Z",
+   "excerpt": "Keep's one-person data team used dbt, Artie, and Snowflake to cut credit underwriting from one business day to under a minute.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "ai_agents_rag"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "193eb09a66e5",
-   "title": "2026 in LLMs (so far)",
-   "url": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-09-27T23:54:15Z",
-   "excerpt": "On Friday I gave the closing keynote at the WeAreDevelopers World Congress North America in San Jose. I tied together the key trends from the past year into a chronological exploration of everything that happened in 2026. The video is on YouTube ; here are my annotated slides and notes to accompany the talk. And as an annotated presentation : # I'm going to give a lightning tour of everything that has happened so far in 2026. The year isn't over yet! # For me, 2026 started a couple of months earlier in November 2025. # November saw the release of two important models: Claude Opus 4.5 and GPT-5.1. As is usually the case with new models, these were incremental improvements on the models that came before them. But every now and then when a model improves, it crosses an invisible line where something that didn't really work starts working. In this case, the thing that started working was their coding agents. Claude Code had been around since February 2025; Codex was a little younger. These two new models, when paired with their respective coding agent harnesses, improved from \"often make mistakes\" to \"reliable enough to use on a day-to-day basis\". # For a couple of years now I've been ",
-   "preliminary_score": 61,
+   "id": "210070d43efc",
+   "title": "Charts worth stealing: the design calls BI should ship",
+   "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:58:00Z",
+   "excerpt": "RJ Andrews explains the design defaults behind dbt Charts, from consistent colors to the small choices that make charts work.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "claude_ai_development",
-    "general_ai_trends"
-   ]
-  },
-  {
-   "id": "4a34b417a079",
-   "title": "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war",
-   "url": "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-09-22T23:46:41Z",
-   "excerpt": "Yesterday was Grok 4.7 ( pelicans ) and MiMo v2.6 Flash/Pro ( more pelicans ). Today Anthropic released Claude Opus 5.5 , and around an hour later OpenAI released GPT-6 Sol and GPT-6 Luna . It's going to take a while to get a good read on all of these new models, but here are my impressions so far. GPT-6 Sol and Luna are half the price of their GPT-5.6 equivalents GPT-5.6 Luna was already my favorite model for building applications against, because it combined excellent performance with being really cheap . Somehow GPT-6 Luna is half the price of that again - and GPT-6 Sol had a similar reduction compared to GPT-5.6 Sol. Here's what the pricing landscape looks like today: Model Input Cached input Output GPT-6 Luna $0.10/M $0.01/M $0.50/M GPT-5.6 Luna $0.20/M $0.02/M $1.20/M Grok 4.7 $2/M $0.50/M $6/M GPT-6 Sol $2/M $0.20/M $10/M GPT-5.6 Terra $2/M $0.20/M $12/M Claude Opus 5.5 $4/M $0.20/M $20/M GPT-5.6 Sol $4/M $0.40/M $20/M Claude Fable 5.1 $10/M $0.25/M $50/M GPT-6 Astra $10/M $1/M $50/M Note that GPT-5.6 has a scheduled 25% price increase for November, so GPT-6 is half the price of the promotional pricing for those models. (With GPT-5.6 Terra priced the same as GPT-6 Sol, any r",
-   "preliminary_score": 60,
-   "preliminary_topics": [
-    "claude_ai_development",
-    "general_ai_trends"
-   ]
-  },
-  {
-   "id": "048aa76fa30e",
-   "title": "Some thoughts on the Navier–Stokes Millennium Prize Problem",
-   "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-09-08T23:55:12Z",
-   "excerpt": "On the Navier–Stokes Millennium Prize Problem introduces an impressive result from OpenAI, who used an unreleased model to produce a resolution to the Navier–Stokes existence and smoothness problem , one of the seven Millennium Prize Problems that have been subject to a $1,000,000 prize since May 24th, 2000. The discovery is somewhat overshadowed by accusations of skulduggery from Tristan Buckmaster, an NYU mathematics professor who was collaborating on related problems with Levent Alpöge, an accomplished mathematician who currently works for Anthropic. Tristan's complaint accompanied a hastily published version of their own results. Here's the PDF describing what happened . The very short version is that Tristan and Levent worked on the problem for almost a year, making extensive use of Claude and Codex (mainly GPT-5.6 Sol), then had a breakthrough on August 15th. The mathematical rumour mill kicked into gear and Tristan and Levent heard that OpenAI had heard that Anthropic had resolved \"a major open problem\", so they reached out and learned that OpenAI had a team working on a related problem, with a similar approach. Quoting Tristan: I asked when the first prompt had been sent by",
-   "preliminary_score": 59,
-   "preliminary_topics": [
-    "claude_ai_development",
-    "general_ai_trends"
-   ]
-  },
-  {
-   "id": "aa144f4ecccc",
-   "title": "Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks",
-   "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
-   "source_id": "chris_webb",
-   "source_name": "Chris Webb's BI Blog",
-   "published_at": "2026-09-06T20:32:03Z",
-   "excerpt": "In case you haven’t already seen the blog post on the Power BI blog or the discussion on LinkedIn, we at Microsoft published a new white paper last week to help you decide which storage mode to use when you’re using Power BI to create semantic models and reports on data stored in Azure Databricks. … Continue reading Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks →",
-   "preliminary_score": 59,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "52701d7d8b2b",
-   "title": "Power BI’s next chapter: The evolution of business intelligence",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-s-next-chapter-The-evolution-of-business-intelligence/ba-p/5369131",
-   "source_id": "powerbi_blog",
-   "source_name": "Microsoft Power BI Blog",
-   "published_at": "2026-09-29T06:30:00Z",
-   "excerpt": "If you haven't already, check out FabCon and SQLCon 2026 in Barcelona: Building the data foundation for Microsoft Copilot and Agents for a complete look at all of our FabCon Europe announcements across Fabric and Microsoft Databases. More than a decade ago, I watched Power BI change the way users work, analyze and take action on their data. Since then, I have had the privilege of seeing it grow alongside our customers—from a tool for building reports into a platform used by millions of people to understand their businesses and make decisions every day. Now, Power BI is entering its next chapter. Introducing the next generation of report development We’re introducing a new app building experience in Power BI Desktop, powered by apps in Fabric , that enables users to create data applications using natural language. Starting from a trusted semantic model, users can generate, preview, edit, and publish purpose-built applications to Microsoft Fabric. These applications can accept inputs, write back data, preserve shared state, and support operational workflows, helping users move from insight to action. This experience will be available for Power BI Desktop users in the coming months. I",
-   "preliminary_score": 59,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
+    "dbt_analytics_engineering"
    ]
   }
  ]
