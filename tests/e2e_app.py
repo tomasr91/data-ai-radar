@@ -70,6 +70,12 @@ feed["weekly"] = {"week": "2026-W44", "generated_at": _dt.now(_tz.utc).isoformat
                   "intro": "Een week vol semantische lagen.", "focus": "Probeer een metric view.",
                   "highlights": [{"title": "Hoogtepunt een", "why": "Daarom.", "article_ids": [arts[0]["id"], arts[1]["id"]]},
                                  {"title": "Hoogtepunt twee", "why": "Ook daarom.", "article_ids": [arts[2]["id"]]}]}
+# Nagebootste begrippen in het eerste artikel met een verhaal, en de woordenlijst
+_ta = next(a for a in arts if a.get("story"))
+_tw = next(w.strip(".,:;()\"'") for w in " ".join(_ta["story"]).split() if len(w.strip(".,:;()\"'")) > 6)
+_ta["terms"] = [{"term": _tw, "explanation": "Testuitleg van het begrip."}]
+feed["glossary"] = [{"term": _tw, "explanation": "Testuitleg van het begrip.", "refs": [{"kind": "a", "id": _ta["id"], "title": _ta.get("headline") or _ta["title"]}]},
+                    {"term": "Zzz-begrip", "explanation": "Nog een.", "refs": [{"kind": "a", "id": _ta["id"], "title": "x"}]}]
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -202,12 +208,31 @@ with sync_playwright() as p:
     page.goto(url)
     page.wait_for_selector(".card")
 
+    # 18. Begrippen
+    page.goto(url + "#a-" + _ta["id"])
+    page.wait_for_selector("#reader .story")
+    check("18. begrip onderstreept in het verhaal", page.locator("#reader .story .term").count() == 1)
+    page.locator("#reader .story .term").click()
+    check("   tik toont de uitleg", page.locator("#term-sheet").is_visible() and "Testuitleg" in page.locator("#term-sheet").inner_text())
+    page.locator("#reader h1").click()
+    check("   tik ernaast sluit de uitleg", not page.locator("#term-sheet").is_visible())
+    page.locator("#reader .story .term").click()
+    page.click("#term-sheet a")
+    page.wait_for_selector(".gl-item")
+    check("   Alle begrippen opent de woordenlijst", page.locator(".gl-item").count() == 2 and not page.locator("#reader").is_visible()
+          and page.locator('#seg-dd button[aria-pressed="true"]').inner_text() == "Begrippen")
+    page.fill("#gl-q", "zzz")
+    check("   zoeken filtert de begrippen", page.locator(".gl-item:not([hidden])").count() == 1)
+    page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
+    page.goto(url)
+    page.wait_for_selector(".card")
+
     # 11. Tabblad Verdieping
     check("11. tabbladen Actueel, Verdieping en Leren", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren"])
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
-    check("12. subtabjes Verdiepingen en Morgen", page.locator("#seg-dd button").all_inner_texts() == ["Verdiepingen", "Morgen"] and page.locator("#seg-dd").is_visible())
+    check("12. subtabjes Verdiepingen en Morgen", page.locator("#seg-dd button").all_inner_texts() == ["Verdiepingen", "Morgen", "Begrippen"] and page.locator("#seg-dd").is_visible())
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)

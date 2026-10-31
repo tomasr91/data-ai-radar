@@ -24,6 +24,7 @@ from .digest import weekly_digests
 from . import feedback as feedback_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
+from .terms import glossary
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -223,6 +224,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "deepdive_options": dd_options,
         "trends": trends,
         "weekly": weekly,
+        "glossary": glossary(shown, deepdives),
         "feedback": {**fb_prefs, "updated_at": fb_data.get("updated_at")},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
@@ -263,7 +265,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase"]
+                 "showcase", "terms"]
 
 
 def _public(a):

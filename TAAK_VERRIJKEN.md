@@ -13,6 +13,7 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
    2. Is de pagina niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf dan `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door naar het volgende artikel.
    3. Valt het artikel onder **"Niet uitleggen"** hieronder? Schrijf dan ook een `skipped`-bestand, met als `reason` welke regel het is, en ga door.
    4. Schrijf anders `data/enrichment/<id>.json` volgens het formaat hieronder. Gebruik precies de `id` uit de werklijst als bestandsnaam en als `article_id`.
+4b. **Begrippen aanvullen.** Geef bestaande uitleg en verdiepingen zonder `terms` alsnog begrippen, volgens **Begrippen** hieronder (hooguit 15 per run).
 5. **Verdieping.** Draai `python scripts/next_deepdive.py`.
    - `SCHRIJVEN: <id> (issue #n)`: schrijf één verdieping over die keuze volgens het hoofdstuk **Verdiepingen** hieronder. Onthoud het issuenummer.
    - `AL GESCHREVEN` of `ONBEKENDE KEUZE`: schrijf niets voor dat issue; noem het in de melding. Bij `AL GESCHREVEN` mag je het issue sluiten met `Closes #n` in de commit.
@@ -22,7 +23,7 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
 7. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
 8. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
 9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
-10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, op zondag de 3 hoogtepunten van Jouw week, en de titels van de 5 nieuwe keuzes.
+10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, bij hoeveel stukken begrippen zijn aangevuld, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, op zondag de 3 hoogtepunten van Jouw week, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
 
@@ -61,6 +62,22 @@ T leert het best als hij het ziet. Lezen alleen blijft te abstract. Voeg daarom 
 ```
 
 Voorbeelden staan in `data/enrichment/60e7e131218f.json` en `data/deepdives/evals-ai-assistent.json`.
+
+## Begrippen: `terms`
+
+T heeft nog beginnersniveau in data-ingestion, bundels en release pipelines, en komt veel nieuwe termen tegen. Geef daarom bij elke uitleg (hooguit 5) en elke verdieping (hooguit 8) de begrippen die hij misschien nog niet kent. De app onderstreept ze in de tekst; tikken geeft de uitleg. Alle begrippen samen staan onder Verdieping > Begrippen.
+
+- **Welke:** vaktermen, afkortingen en productonderdelen met een eigen betekenis (bijv. Auto Loader, ADBC, MCP, asset bundle, CDC, idempotent, service principal). **Niet** wat T dagelijks gebruikt: SQL, dbt, Databricks, Power BI, Delta Lake, Unity Catalog, model, tabel.
+- **Letterlijk:** `term` staat precies zo in de tekst waarin de app onderstreept: bij artikelen in `story`, bij verdiepingen in `summary` of de alinea's van de secties. Anders keurt de controle het af. Kies de vorm die in de tekst staat.
+- **Uitleg:** één of twee korte zinnen (hooguit 240 tekens), eenvoudig Nederlands: wat het is en waarvoor je het gebruikt. Geen herhaling van het artikel.
+- **Zelfde uitleg:** staat het begrip al in `glossary` in `data/feed.json`, neem die uitleg over, tenzij hij niet klopt. Zo blijft de woordenlijst consistent.
+- Geen lastige begrippen in het stuk? Laat `terms` weg.
+
+```json
+"terms": [{"term": "Auto Loader", "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."}]
+```
+
+**Aanvullen (elke run, na de werklijst):** uitlegbestanden van artikelen die nu in de app staan (`articles` in `data/feed.json`) maar nog geen `terms` hebben: voeg ze toe, hooguit 15 per run, nieuwste eerst. Verander verder niets aan die bestanden. Hetzelfde voor verdiepingen zonder `terms`. Noem het aantal in de melding.
 
 ## Niet uitleggen (overslaan met reden)
 
@@ -186,6 +203,7 @@ Een kort overzicht dat T zondagochtend leest om de week af te sluiten. De app ze
   "exceptional": false,
   "article_type": "nieuws | opinie",
   "author": "Alleen bij opinie: naam, en waarom erkend",
+  "terms": [{"term": "Zoals in de tekst", "explanation": "Eén of twee korte zinnen."}],
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-29T06:20:00Z",
   "prompt_version": "taak-v2"
@@ -251,6 +269,7 @@ Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf j
 - `experiment`: een proef van hooguit een middag, alleen met openbare of verzonnen data. Externe AI alleen zonder werkdata.
 - `limitations`: 2 tot 4 korte zinnen over beperkingen, kosten of risico's, met aandacht voor zorgdata waar dat speelt.
 - `showcase`: volgens **Zien** hierboven, als het onderwerp zich ervoor leent.
+- `terms`: volgens **Begrippen** hierboven.
 - `quiz`: **3 controlevragen** over de kern van het stuk, zodat T merkt of het is blijven hangen. Per vraag 3 of 4 antwoorden, precies één goed (`answer` is de index, vanaf 0), en een `explanation` van 1 of 2 zinnen. Vraag naar begrip (waarom, wanneer kies je wat), niet naar losse namen of getallen. De foute antwoorden zijn geloofwaardig, maar volgens het stuk echt fout. Zet het goede antwoord niet steeds op dezelfde plek.
 
 ### Formaat van `data/deepdives/<id>.json`

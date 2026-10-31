@@ -354,6 +354,31 @@ class TestWeeklyAndReads(unittest.TestCase):
         self.assertEqual(cf.parse_reads(body), ["aaaaaaaaaaaa"])
 
 
+class TestTerms(unittest.TestCase):
+    """Begrippen: moeten letterlijk in de tekst staan; woordenlijst voegt samen."""
+
+    def test_validate_terms(self):
+        from pipeline.terms import validate_terms
+        text = "Auto Loader leest nieuwe bestanden. Met CDC zie je wijzigingen."
+        ok = [{"term": "Auto Loader", "explanation": "Leest nieuwe bestanden in."}, {"term": "cdc", "explanation": "Wijzigingen."}]
+        self.assertEqual(validate_terms(ok, text), [])
+        self.assertTrue(validate_terms([{"term": "Loader leest x", "explanation": "x"}], text))   # staat er niet
+        self.assertTrue(validate_terms([{"term": "Load", "explanation": "x"}], text))            # alleen als los woord
+        self.assertTrue(validate_terms(ok + ok, text))                                          # dubbel
+        self.assertTrue(validate_terms([{"term": "CDC", "explanation": "x" * 300}], text))       # te lang
+        self.assertEqual(validate_terms(None, text), [])
+
+    def test_glossary_merges_newest_first(self):
+        from pipeline.terms import glossary
+        arts = [{"id": "a1", "headline": "Oud", "processed_at": "2026-10-01T00:00:00Z", "terms": [{"term": "CDC", "explanation": "oud"}]},
+                {"id": "a2", "headline": "Nieuw", "processed_at": "2026-10-30T00:00:00Z", "terms": [{"term": "cdc", "explanation": "nieuw"}]}]
+        dds = [{"id": "d1", "headline": "Verdieping", "written_at": "2026-10-15T00:00:00Z", "terms": [{"term": "ADBC", "explanation": "driver"}]}]
+        g = glossary(arts, dds)
+        self.assertEqual([t["term"] for t in g], ["ADBC", "cdc"])
+        self.assertEqual(g[1]["explanation"], "nieuw")
+        self.assertEqual([r["id"] for r in g[1]["refs"]], ["a2", "a1"])
+
+
 class TestDeepdiveChoice(unittest.TestCase):
     """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
 
