@@ -46,7 +46,11 @@ jobs:
     if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'Feedback:')
     runs-on: ubuntu-latest
     steps:
+      # Altijd de nieuwste main: runs lopen na elkaar (concurrency), maar een run die in de wachtrij
+      # stond zou anders bouwen op een oude stand en botsen met de feed van de run ervoor.
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -83,8 +87,8 @@ jobs:
             echo "Geen wijzigingen."
           else
             git commit -m "Feed bijgewerkt $(date -u +%Y-%m-%dT%H:%MZ)"
-            git pull --rebase
-            git push
+            # Gegenereerde bestanden: bij een botsing wint deze (nieuwere) build. Twee pogingen.
+            for i in 1 2; do git pull --rebase -X theirs && git push && break; sleep 5; done
           fi
 
       - name: Site maken
