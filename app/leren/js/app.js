@@ -77,8 +77,8 @@
       <details class="more"><summary>Back-up van je voortgang</summary>
         <div class="card">
           <p class="small">${m === "account" ? "Je voortgang staat privé in je Claude-account en als kopie in deze browser." : m === "browser" ? "Je voortgang staat op dit toestel, in de Radar-app. Maak af en toe een export als back-up." : "Opslaan is hier niet mogelijk; maak een export voordat je de pagina sluit."}</p>
-          <div class="row"><button class="btn sm" data-act="export">${ui.exportOpen ? "Verberg export" : "Exporteer voortgang"}</button>${ui.exportOpen ? `<button class="btn sm" data-act="copy">Kopieer</button>${dl ? `<button class="btn sm" data-act="download">Opslaan als bestand</button>` : ""}` : ""}</div>
-          ${ui.exportOpen ? `<textarea class="input" id="exportBox" readonly>${esc(C.exportJSON())}</textarea>` : ""}
+          <div class="row"><button class="btn sm" data-act="download">Download back-up</button></div>
+          <p class="small muted">Zet een bestand in je downloads (academy-voortgang-&lt;datum&gt;.json). Terugzetten kan hieronder met "Kies bestand".</p>
           <label class="small" for="importBox">Importeer een eerdere export (vervangt je huidige voortgang)</label>
           <textarea class="input" id="importBox" placeholder="Plak hier je export…">${esc(ui.importText)}</textarea>
           <div class="row"><label class="btn sm" for="importFile">Kies bestand…</label><input type="file" id="importFile" accept=".json,application/json,text/plain" hidden><button class="btn sm" data-act="confirm" data-what="import" ${ui.importText.trim() ? "" : "disabled"}>Importeer</button>
@@ -277,7 +277,17 @@
     export: () => { ui.exportOpen = !ui.exportOpen; render(); },
     copy: () => { const box = document.getElementById("exportBox"); const fb = () => { if (box) { box.focus(); box.select(); } };
       try { navigator.clipboard.writeText(C.exportJSON()).then(() => flash("Gekopieerd."), fb); } catch (e) { fb(); } },
-    download: async () => { try { await C.store.downloads.save({ filename: "academy-voortgang-" + new Date().toISOString().slice(0, 10) + ".json", data: C.exportJSON() }); } catch (e) { flash("Opslaan als bestand lukte niet. Gebruik Kopieer."); } },
+    download: async () => {
+      const filename = "academy-voortgang-" + new Date().toISOString().slice(0, 10) + ".json";
+      try {
+        if (C.store.downloads) { await C.store.downloads.save({ filename, data: C.exportJSON() }); flash("Back-up opgeslagen."); return; }
+        // Radar (GitHub Pages): gewone browserdownload naar de map Downloads
+        const url = URL.createObjectURL(new Blob([C.exportJSON()], { type: "application/json" }));
+        const a = document.createElement("a"); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        flash("Back-up staat in je downloads.");
+      } catch (e) { flash("Downloaden lukte niet."); }
+    },
     confirm: el => { ui.confirm = el.dataset.what; ui.importMsg = null; render(); },
     cancel: () => { ui.confirm = null; render(); },
     doimport: () => { const r = C.importJSON(ui.importText); ui.confirm = null; ui.importMsg = r.ok ? { ok: true, text: "Voortgang geïmporteerd." } : { ok: false, text: r.msg }; if (r.ok) ui.importText = ""; render(); },

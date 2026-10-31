@@ -281,6 +281,12 @@ with sync_playwright() as p:
     q_top = fr.locator(".q").bounding_box()["y"]
     bar = page.evaluate("document.querySelector('.filters').getBoundingClientRect().bottom")
     check("   volgende vraag: vraagblok direct onder de tabbalk", 0 <= q_top - bar <= 20, f"vraag {q_top}, tabbalk {bar}")
+    for i in range(fr.locator(".q .opt").count()):
+        if fr.locator('[data-act="check"]').is_enabled():
+            break
+        fr.locator(".q .opt").nth(i).click()
+    fr.locator('[data-act="check"]').click()
+    fr.locator(".verdict-line").first.wait_for(timeout=5000)
     saved = page.evaluate("JSON.parse(localStorage.getItem('cca-academy-v2') || 'null')")
     n = sum(c["total"]["n"] for c in saved["certs"].values()) if saved else 0
     check("   vraag beantwoorden werkt en wordt bewaard", n >= 1, str(n))
@@ -290,6 +296,14 @@ with sync_playwright() as p:
     fr.locator('[data-act="sendreport"]').first.click()
     opened = page.evaluate("document.getElementById('leren-frame').contentWindow.__o")
     check("   melding opent een GitHub-issue 'Examenmelding'", len(opened) == 1 and "issues/new?title=Examenmelding" in opened[0], str(opened)[:120])
+    fr.locator('[data-act="home"]').first.click()
+    fr.locator("details.more summary").last.click()
+    with page.expect_download(timeout=5000) as dl:
+        fr.locator('[data-act="download"]').click()
+    d = dl.value
+    body = Path(d.path()).read_text(encoding="utf-8")
+    check("   Download back-up zet een bestand met je voortgang in je downloads",
+          d.suggested_filename.startswith("academy-voortgang-") and '"claude-certification-academy"' in body, d.suggested_filename)
     page.evaluate("localStorage.removeItem('cca-academy-v2')")
     page.reload(); page.wait_for_selector("#leren-frame")
     check("   Actueel en Verdieping verborgen, filters weg", not page.locator("#main").is_visible() and not page.locator("#seg-sort").is_visible() and not page.locator("#seg-dd").is_visible())
