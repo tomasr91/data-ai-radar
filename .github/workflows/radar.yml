@@ -166,3 +166,12 @@ jobs:
 
       - name: "Controle: feed bereikbaar"
         run: curl -fsS "${BASE}feed.json" | python3 -c "import json,sys; f=json.load(sys.stdin); print(f['mode'], len(f['articles']), 'artikelen')"
+
+      - name: "Controle: DuckDB voor 'Oefen het zelf' bereikbaar op jsdelivr"
+        run: |
+          v=$(curl -fsS "${BASE}" | grep -o 'DDB_VERSION = "[^"]*"' | cut -d'"' -f2)
+          echo "DuckDB-versie in de app: $v"
+          for f in "+esm" "dist/duckdb-browser-eh.worker.js" "dist/duckdb-eh.wasm" "dist/duckdb-browser-mvp.worker.js" "dist/duckdb-mvp.wasm"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -I "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@${v}/${f}")
+            echo "$f -> $code"; [ "$code" = "200" ]
+          done
