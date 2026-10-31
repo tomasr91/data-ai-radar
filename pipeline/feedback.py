@@ -17,6 +17,7 @@ REASONS = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interes
 HALF_LIFE_DAYS = 60
 WEIGHT = 0.08          # maximaal effect op de totaalscore (0-1)
 SATURATION = 3.0       # na ~3 netto stemmen is de voorkeur ongeveer 0,76
+READ_WEIGHT = 0.3      # gelezen = 0,3 van een duim omhoog
 
 
 def load(path=None) -> dict:
@@ -27,6 +28,7 @@ def load(path=None) -> dict:
         data = {}
     data.setdefault("format_version", 1)
     data.setdefault("votes", {})
+    data.setdefault("reads", {})
     return data
 
 
@@ -53,8 +55,18 @@ def preferences(data: dict, now=None) -> dict:
             topics[t] = topics.get(t, 0.0) + w
         if v.get("source_id"):
             sources[v["source_id"]] = sources.get(v["source_id"], 0.0) + w
+    votes = data.get("votes", {})
+    for aid, r in data.get("reads", {}).items():
+        if aid in votes:
+            continue
+        w = READ_WEIGHT * _age_weight(r.get("at", ""), now)
+        for t in r.get("topics", [])[:2]:
+            topics[t] = topics.get(t, 0.0) + w
+        if r.get("source_id"):
+            sources[r["source_id"]] = sources.get(r["source_id"], 0.0) + w
     squash = lambda d: {k: round(math.tanh(x / SATURATION), 2) for k, x in d.items() if abs(x) > 1e-9}
-    return {"topics": squash(topics), "sources": squash(sources), "votes": len(data.get("votes", {}))}
+    return {"topics": squash(topics), "sources": squash(sources), "votes": len(data.get("votes", {})),
+            "reads": len(data.get("reads", {}))}
 
 
 def article_factor(article: dict, prefs: dict) -> float:

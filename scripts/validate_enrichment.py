@@ -78,6 +78,17 @@ def main(argv):
                 print(f"FOUT trends.json: {pr}")
             if not tproblems:
                 print(f"{len(tdata.get('trends', []))} trends gecontroleerd")
+        from pipeline import weekly as weekly_mod
+        if weekly_mod.PATH.exists():
+            try:
+                wproblems = weekly_mod.validate(json.loads(weekly_mod.PATH.read_text(encoding="utf-8")))
+            except json.JSONDecodeError as e:
+                wproblems = [f"geen geldige JSON ({e})"]
+            for pr in wproblems:
+                bad += 1
+                print(f"FOUT weekly.json: {pr}")
+            if not wproblems:
+                print("weekoverzicht gecontroleerd")
     print(f"{len(files)} uitlegbestanden gecontroleerd, {bad} fout")
     return 1 if bad else 0
 

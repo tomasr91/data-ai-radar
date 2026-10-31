@@ -64,6 +64,12 @@ for _a in arts:
     if len(_tr) < 3 and (len(_tr) < 2 or _a["source_id"] not in _srcs or len(_srcs) > 1):
         _tr.append(_a["id"]); _srcs.add(_a["source_id"])
 feed["trends"] = [{"id": "test-trend", "title": "Testtrend", "summary": "Drie artikelen over hetzelfde.", "topics": [], "article_ids": _tr, "generated_at": "2026-10-29T06:00:00Z"}]
+# Nagebootst weekoverzicht (Jouw week)
+from datetime import datetime as _dt, timezone as _tz  # noqa: E402
+feed["weekly"] = {"week": "2026-W44", "generated_at": _dt.now(_tz.utc).isoformat().replace("+00:00", "Z"),
+                  "intro": "Een week vol semantische lagen.", "focus": "Probeer een metric view.",
+                  "highlights": [{"title": "Hoogtepunt een", "why": "Daarom.", "article_ids": [arts[0]["id"], arts[1]["id"]]},
+                                 {"title": "Hoogtepunt twee", "why": "Ook daarom.", "article_ids": [arts[2]["id"]]}]}
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -76,6 +82,7 @@ with sync_playwright() as p:
 
     srv, url = serve(site(json.dumps(feed)))
     page = browser.new_page(**phone)
+    page.add_init_script("window.__radarReadMs = 300")
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.on("console", lambda m: m.type == "error" and "fonts.g" not in m.text and "Failed to load resource" not in m.text and errors.append(m.text))
@@ -171,6 +178,29 @@ with sync_playwright() as p:
     page.evaluate("location.reload()")
     page.wait_for_selector(".card")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
+
+    # 17. Gelezen en Jouw week
+    check("17. Jouw week staat bovenaan Actueel", page.locator('a.fb-send[href="#week"]').count() == 1)
+    rid = arts[3]["id"]
+    page.evaluate("localStorage.removeItem('radar:read')")
+    page.goto(url + "#a-" + rid)
+    page.wait_for_selector("#reader .read-end", state="attached")
+    page.locator("#reader .read-end").scroll_into_view_if_needed()
+    page.wait_for_timeout(700)
+    check("   artikel tot onderaan gelezen telt als gelezen", page.evaluate(f"!!JSON.parse(localStorage.getItem('radar:read')||'{{}}')['a-{rid}']"))
+    page.goto(url + "#week")
+    page.wait_for_selector(".wk-list")
+    wk = page.locator("#reader").inner_text()
+    check("   Jouw week toont hoogtepunten, focus en leerweek", page.locator(".wk-list > li").count() == 2
+          and "Deze week proberen" in wk and "Jouw leerweek" in wk and "Gelezen: 1 artikel" in wk, wk[:200])
+    check("   hoogtepunt linkt naar zijn artikelen", page.locator(".wk-links a").count() == 3)
+    sh = unquote(page.locator("#reader #fb-send").get_attribute("href") or "")
+    check("   gelezen gaat mee met de feedback", f'"reads":["{rid}"]' in sh and "1 gelezen" in sh, sh[-120:])
+    page.click("#reader #fb-send")
+    page.wait_for_timeout(500)
+    check("   na versturen geen verstuurknop meer", page.locator("#reader #fb-send").count() == 0)
+    page.goto(url)
+    page.wait_for_selector(".card")
 
     # 11. Tabblad Verdieping
     check("11. tabbladen Actueel, Verdieping en Leren", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren"])

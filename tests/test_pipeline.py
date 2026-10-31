@@ -312,6 +312,45 @@ class TestAzureDigestAndSourceCap(unittest.TestCase):
         self.assertGreaterEqual(cfg.load().scoring.get("max_articles_per_source", 0), 5)
 
 
+class TestWeeklyAndReads(unittest.TestCase):
+    """Jouw week (zondag) en gelezen artikelen als licht signaal."""
+
+    def test_weekly_validates_and_drops_missing_links(self):
+        import tempfile
+        from pathlib import Path
+        from pipeline import weekly
+        good = {"week": "2026-W44", "generated_at": "2026-11-01T04:40:00Z", "intro": "Rustige week.",
+                "highlights": [{"title": "Metric views", "why": "Twee zinnen.", "article_ids": ["aaaaaaaaaaaa", "bbbbbbbbbbbb"]}]}
+        self.assertEqual(weekly.validate(good), [])
+        self.assertTrue(weekly.validate({**good, "week": "week 44"}))
+        self.assertTrue(weekly.validate({**good, "highlights": []}))
+        self.assertTrue(weekly.validate({**good, "highlights": good["highlights"] * 4}))
+        p = Path(tempfile.mkdtemp()) / "weekly.json"
+        p.write_text(json.dumps(good), encoding="utf-8")
+        out, problems = weekly.load([{"id": "aaaaaaaaaaaa"}], p)
+        self.assertEqual(problems, [])
+        self.assertEqual(out["highlights"][0]["article_ids"], ["aaaaaaaaaaaa"])
+
+    def test_reads_count_lightly_and_votes_win(self):
+        from pipeline import feedback
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        at = "2026-10-31T10:00:00Z"
+        data = {"votes": {}, "reads": {"aaaaaaaaaaaa": {"at": at, "topics": ["dbt_analytics_engineering"], "source_id": "dbt_labs_blog"}}}
+        light = feedback.preferences(data, now)["topics"]["dbt_analytics_engineering"]
+        data["votes"]["bbbbbbbbbbbb"] = {"v": 1, "at": at, "topics": ["dbt_analytics_engineering"], "source_id": "dbt_labs_blog"}
+        full = feedback.preferences({"votes": data["votes"], "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
+        self.assertTrue(0 < light < full)
+        # gelezen én duim omlaag: alleen de duim telt
+        data2 = {"votes": {"aaaaaaaaaaaa": {"v": -1, "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": data["reads"]}
+        self.assertLess(feedback.preferences(data2, now)["topics"]["dbt_analytics_engineering"], 0)
+
+    def test_parse_reads_from_issue(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import collect_feedback as cf
+        body = 'x\n```json\n{"votes": [], "reads": ["aaaaaaaaaaaa", "kapot", "aaaaaaaaaaaa"]}\n```'
+        self.assertEqual(cf.parse_reads(body), ["aaaaaaaaaaaa"])
+
+
 class TestDeepdiveChoice(unittest.TestCase):
     """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
 

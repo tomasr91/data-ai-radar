@@ -71,6 +71,7 @@ header.top { background: var(--bg); }
 
 /* Status van de feed */
 .status { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 6px; padding: 12px 14px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); font-size: 0.86rem; color: var(--muted); }
+.status[hidden] { display: none; }
 .status strong { color: var(--ink); font-weight: 650; }
 .status .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex: none; }
 .status a { white-space: nowrap; }
@@ -102,6 +103,14 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
 .fb-send { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 14px; min-height: 44px; border-radius: var(--r); border: 1px solid var(--accent2); background: var(--accent2-soft); color: var(--ink); text-decoration: none; font-size: 0.9rem; }
 .fb-send b { color: var(--accent2); }
+.wk-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 14px; }
+.wk-list li { border-left: 3px solid var(--accent2); padding: 2px 0 2px 12px; }
+.wk-list h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
+.wk-list p { margin: 0 0 4px; font-family: var(--f-read); line-height: 1.6; }
+.wk-links { display: flex; flex-direction: column; gap: 2px; font-size: 0.88rem; }
+.wk-links a, .wk-stats a { color: var(--accent2); }
+.wk-stats { list-style: none; padding: 0 !important; margin: 6px 0 0 !important; display: grid; gap: 6px; font-size: 0.95rem; }
+.wk-stats b { font-variant-numeric: tabular-nums; }
 .trend { cursor: default; margin-top: 14px; }
 .trend .meta .src { color: var(--accent2); }
 .trend-list { list-style: none; margin: 4px 0 0; padding: 0; border-top: 1px solid var(--line); }
@@ -307,6 +316,30 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
     pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
   };
+  /* ---- Gelezen ----
+     Een artikel of verdieping telt als gelezen als je tot onderaan scrolt en het minstens
+     15 seconden open had. Bewaard op dit toestel (radar:read). Gelezen artikelen gaan mee met
+     je feedback als licht positief signaal (0,3 van een duim omhoog). */
+  const READ_MS = window.__radarReadMs || 15000;   // __radarReadMs alleen voor de tests
+  const reads = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:read") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:read", JSON.stringify(d)); } catch {} },
+    mark(key) { const d = this.all(); if (d[key]) return; d[key] = { at: new Date().toISOString(), sent: false }; this.save(d); },
+    pendingArticles() { return Object.entries(this.all()).filter(([k, v]) => k.startsWith("a-") && !v.sent).map(([k]) => k.slice(2)); },
+    since(ms) { return Object.entries(this.all()).filter(([, v]) => Date.parse(v.at) >= ms).map(([k]) => k); },
+  };
+  let readTimer = null, readObs = null;
+  function trackRead(key) {
+    clearTimeout(readTimer); readObs?.disconnect();
+    const end = $("#reader .read-end"); if (!end || reads.all()[key]) return;
+    const t0 = Date.now();
+    readObs = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      readObs.disconnect();
+      readTimer = setTimeout(() => { if (location.hash === "#" + key) reads.mark(key); }, Math.max(0, READ_MS - (Date.now() - t0)));
+    });
+    readObs.observe(end);
+  }
   const TZ = "Europe/Amsterdam";
   const dateOnly = (iso) => /T00:00:00(\.000)?Z$/.test(iso);
   function fmtDate(iso) {
@@ -541,7 +574,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const groupMissing = state.group !== "all" && missing.some((t) => f.topics[t]?.group === state.group);
       html += `<div class="empty"><h3>Nog geen artikelen</h3><p>Er zijn nu geen artikelen om te tonen. Kom later terug.</p></div>`;
     } else {
-      html += fbSendBar() + `<div class="cards">${list.map(card).join("")}</div>`;
+      html += weekBar() + fbSendBar() + `<div class="cards">${list.map(card).join("")}</div>`;
     }
     $("#content").innerHTML = html;
   }
@@ -595,6 +628,64 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         : `<p class="lead">Niets te herhalen. Goed bezig.</p>`}</article>`);
   }
 
+  /* ---- Jouw week ----
+     Zondag schrijft Claude data/weekly.json (pipeline/weekly.py): de 3 belangrijkste ontwikkelingen.
+     De app zet erbij wat alleen op dit toestel staat (laatste 7 dagen): verdiepingen en of je ze las,
+     je controlevragen, herhalingen, het Claude-examen (Leren) en wat je las en beoordeelde. */
+  const WEEK_BAR_DAYS = 3;
+  function isoWeekRange(week) {
+    const [y, w] = week.split("-W").map(Number);
+    const jan4 = new Date(Date.UTC(y, 0, 4)), mon = new Date(jan4);
+    mon.setUTCDate(jan4.getUTCDate() - ((jan4.getUTCDay() + 6) % 7) + (w - 1) * 7);
+    const sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+    const f = (d) => d.toLocaleDateString("nl-NL", { day: "numeric", month: "short", timeZone: "UTC" });
+    return `${f(mon)} – ${f(sun)}`;
+  }
+  function weekBar() {
+    const w = state.feed.weekly;
+    if (!w || Date.now() - Date.parse(w.generated_at) > WEEK_BAR_DAYS * 864e5) return "";
+    return `<a class="fb-send" href="#week"><span>Jouw week ${esc(w.week.split("-W")[1].replace(/^0/, ""))} staat klaar</span><b>Bekijken ›</b></a>`;
+  }
+  function lerenWeek(since) {
+    try {
+      const st = JSON.parse(localStorage.getItem("cca-academy-v2") || "null");
+      if (!st?.certs) return null;
+      let practised = 0, mastered = 0;
+      Object.values(st.certs).forEach((c) => Object.values(c.q || {}).forEach((x) => {
+        if (x.last >= since) practised++;
+        if (x.b >= 2) mastered++;
+      }));
+      return { practised, mastered };
+    } catch { return null; }
+  }
+  function renderWeek() {
+    const w = state.feed.weekly, since = Date.now() - 7 * 864e5;
+    const read = new Set(reads.since(0));
+    const hl = w.highlights.map((h) => `<li><h3>${esc(h.title)}</h3><p>${esc(h.why)}</p>
+      ${h.article_ids.length ? `<div class="wk-links">${h.article_ids.map((id) => state.byId.get(id)).filter(Boolean)
+        .map((a) => `<a href="#a-${esc(a.id)}">${esc(a.headline || a.title)}${read.has("a-" + a.id) ? " ✓" : ""}</a>`).join("")}</div>` : ""}</li>`).join("");
+    const dds = (state.feed.deepdives || []).filter((d) => Date.parse(d.written_at) >= since);
+    const qs = Object.values(quiz.all()).filter((v) => Date.parse(v.at) >= since);
+    const qOk = qs.filter((v) => v.ok).length, due = quiz.due().filter(qLookup).length;
+    const lr = lerenWeek(since);
+    const readN = reads.since(since).filter((k) => k.startsWith("a-")).length;
+    const votesN = Object.values(fb.all()).filter((v) => Date.parse(v.at) >= since).length;
+    const stats = [
+      dds.length ? `<li>Verdiepingen: <b>${dds.filter((d) => read.has("v-" + d.id)).length} van ${dds.length}</b> gelezen${dds.filter((d) => !read.has("v-" + d.id)).map((d) => `<br><a href="#v-${esc(d.id)}">${esc(d.headline)}</a>`).join("")}</li>` : "",
+      qs.length ? `<li>Controlevragen: <b>${qOk} van ${qs.length}</b> goed</li>` : `<li>Controlevragen: nog geen beantwoord deze week</li>`,
+      due ? `<li><a href="#herhaling">${plural(due, "vraag", "vragen")} om te herhalen ›</a></li>` : "",
+      lr ? `<li>Claude-examen: <b>${lr.practised}</b> vragen geoefend, <b>${lr.mastered}</b> beheerst in totaal</li>` : "",
+      `<li>Gelezen: <b>${plural(readN, "artikel", "artikelen")}</b>${votesN ? `, ${plural(votesN, "duimpje", "duimpjes")} gegeven` : ""}</li>`,
+    ].join("");
+    openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">${esc(isoWeekRange(w.week))}</span></div></div>
+      <article class="full wrap"><h1>Jouw week ${esc(w.week.split("-W")[1].replace(/^0/, ""))}</h1>
+      <p class="lead">${esc(w.intro)}</p>
+      <section class="block"><h2>Wat er echt toe deed</h2><ol class="wk-list">${hl}</ol></section>
+      ${w.focus ? `<section class="try"><h2>Deze week proberen</h2><p>${esc(w.focus)}</p></section>` : ""}
+      <section class="block"><h2>Jouw leerweek</h2><ul class="wk-stats">${stats}</ul>${fbSendBar(true)}</section>
+      </article>`);
+  }
+
   /* ---- Verdieping ---- */
   function renderDeepdive(d) {
     const topics = (d.topics || []).map((t) => state.feed.topics[t]?.name).filter(Boolean);
@@ -613,6 +704,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${d.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(d.experiment)}</p></section>` : ""}
         ${d.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${d.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         ${quizBlock(d)}
+        <div class="read-end" aria-hidden="true"></div>
         ${askBlock("verdieping")}
         ${reading ? `<section class="block"><h2>Verder lezen</h2><ul class="reading">${reading}</ul></section>` : ""}
         <section class="block"><h2>Bron</h2><div class="source"><dl>
@@ -621,6 +713,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         </dl></div></section>
       </article>`;
     openReader(html);
+    trackRead("v-" + d.id);
   }
 
   /* ---- Artikel ---- */
@@ -714,18 +807,28 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     } else return;
     box.innerHTML = fbBlock(a || { id });
   }
-  function fbIssueUrl(items) {
+  const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
+  const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
+  function fbSummary(items, rd) {
+    return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : ""].filter(Boolean).join(", ");
+  }
+  function fbIssueUrl(items, rd = []) {
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
-    const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })) });
+    const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
+      .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : []).join("\n");
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })), reads: rd });
     const body = `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
-    const title = `Feedback: ${items.length} beoordeling${items.length === 1 ? "" : "en"}`;
+    const title = `Feedback: ${fbSummary(items, rd)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
-  function fbSendBar() {
-    const items = fb.pending();
-    if (!items.length) return "";
-    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items))}" target="_blank" rel="noopener"><span>${items.length} beoordeling${items.length === 1 ? "" : "en"} klaar</span><b>Versturen ›</b></a>`;
+  function fbSendBar(always) {
+    const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id));
+    if (!items.length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items, rd))}" target="_blank" rel="noopener"><span>${esc(fbSummary(items, rd))} klaar om te versturen</span><b>Versturen ›</b></a>`;
+  }
+  function markSent() {
+    const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
+    const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
   }
 
   function renderArticle(a) {
@@ -767,8 +870,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${block("Probeer dit", "idee", a.experiment)}
         ${a.limitations?.length ? `<section class="block"><h2>Beperkingen en aandachtspunten</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         `}
-        ${askBlock("artikel")}
         <section class="block fb" id="fb" data-id="${esc(a.id)}">${fbBlock(a)}</section>
+        <div class="read-end" aria-hidden="true"></div>
+        ${askBlock("artikel")}
         <section class="block"><h2>Bron</h2><div class="source"><dl>
           <dt>Gepubliceerd</dt><dd>${esc(a.published_at ? fmtDate(a.published_at) : "Onbekend: de bron gaf geen betrouwbare datum")}</dd>
           <dt>In de app sinds</dt><dd>${esc(inApp)}</dd>
@@ -781,17 +885,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         </dialog>
       </article>`;
     openReader(html);
+    trackRead("a-" + a.id);
   }
 
   /* ---- Feedcontrole ---- */
   function fbLearned() {
     const f = state.feed.feedback;
-    if (!f?.votes) return `<section class="block"><h2>Wat de radar van je feedback leerde</h2><p style="font-size:.92rem">Nog geen duimpjes verwerkt. Geef onderaan een artikel een 👍 of 👎 en verstuur ze vanaf Actueel.</p></section>`;
+    if (!f?.votes && !f?.reads) return `<section class="block"><h2>Wat de radar van je feedback leerde</h2><p style="font-size:.92rem">Nog geen duimpjes verwerkt. Geef onderaan een artikel een 👍 of 👎 en verstuur ze vanaf Actueel.</p></section>`;
     const row = (name, v) => `<li>${v > 0 ? "▲" : "▼"} ${esc(name)} <span style="color:var(--muted)">(${v > 0 ? "+" : ""}${Math.round(v * 8)} punten)</span></li>`;
     const topics = Object.entries(f.topics || {}).sort((a, b) => b[1] - a[1]).map(([t, v]) => row(state.feed.topics[t]?.name || t, v));
     const srcs = Object.entries(f.sources || {}).sort((a, b) => b[1] - a[1]).map(([sid, v]) => row(source(sid).name, v));
     return `<section class="block"><h2>Wat de radar van je feedback leerde</h2>
-      <p style="font-size:.92rem">${f.votes} beoordeling${f.votes === 1 ? "" : "en"} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag.</p>
+      <p style="font-size:.92rem">${f.votes || 0} beoordeling${f.votes === 1 ? "" : "en"}${f.reads ? ` en ${f.reads} gelezen artikel${f.reads === 1 ? "" : "en"}` : ""} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag.</p>
       ${topics.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Onderwerpen</h3><ul>${topics.join("")}</ul>` : ""}
       ${srcs.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Bronnen</h3><ul>${srcs.join("")}</ul>` : ""}
     </section>`;
@@ -839,7 +944,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.body.style.overflow = "hidden";
     $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
     $("#back", r).focus({ preventScroll: true });
-    r.onclick = (e) => { fbClick(e); quizClick(e); askClick(e); };
+    r.onclick = (e) => {
+      if (e.target.closest("#fb-send")) { markSent(); setTimeout(() => { if (location.hash === "#week") renderWeek(); }, 300); return; }
+      fbClick(e); quizClick(e); askClick(e);
+    };
     const af = $("#ask-form", r);
     if (af) af.onsubmit = (e) => { e.preventDefault(); askOpen($("#ask-q", r).value); };
     const dlg = $("#score-dlg", r), btn = $("#score-btn", r);
@@ -860,6 +968,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const h = location.hash.slice(1);
     if (h.startsWith("a-") && state.byId.has(h.slice(2))) { renderArticle(state.byId.get(h.slice(2))); return; }
     if (h === "herhaling") { renderReview(); return; }
+    if (h === "week" && state.feed.weekly) { renderWeek(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
     if (h === "feedcontrole") { renderReport(); return; }
     closeReader();
@@ -870,7 +979,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   window.addEventListener("hashchange", route);
   $("#content").addEventListener("click", (e) => {
     if (!e.target.closest("#fb-send")) return;
-    const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
+    markSent();
     setTimeout(renderList, 300);
   }, true);
   const openCard = (el) => { state.cameFromList = true; location.hash = el.dataset.dd ? "v-" + el.dataset.dd : "a-" + el.dataset.id; };

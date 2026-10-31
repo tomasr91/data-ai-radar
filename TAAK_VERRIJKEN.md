@@ -18,10 +18,11 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
    - `AL GESCHREVEN` of `ONBEKENDE KEUZE`: schrijf niets voor dat issue; noem het in de melding. Bij `AL GESCHREVEN` mag je het issue sluiten met `Closes #n` in de commit.
    - `GEEN KEUZE` of `ONBEKEND`: vandaag geen verdieping.
 6. **Trends.** Werk `data/trends.json` bij volgens **Trends** hieronder (mag een lege lijst zijn).
+6b. **Alleen op zondag (datum in Europe/Amsterdam): Jouw week.** Schrijf `data/weekly.json` volgens **Jouw week** hieronder, ná het uitleggen, zodat de artikelen van vannacht meetellen.
 7. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
 8. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json`, commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
-10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, en de titels van de 5 nieuwe keuzes.
+9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
+10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, op zondag de 3 hoogtepunten van Jouw week, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
 
@@ -93,9 +94,35 @@ Een trend is een ontwikkeling of techniek waar nu meerdere bronnen tegelijk over
 }
 ```
 
+## Jouw week (alleen op zondag)
+
+Een kort overzicht dat T zondagochtend leest om de week af te sluiten. De app zet er zelf zijn quizscores, herhaalvragen en Leren-voortgang bij; jij schrijft alleen de inhoud.
+
+- Kijk naar de uitgelegde artikelen in `data/feed.json` die de afgelopen 7 dagen in de app kwamen (`processed_at`), en naar de verdiepingen van die week.
+- Kies de **3 belangrijkste ontwikkelingen** voor T's werk (dbt, Databricks, Power BI, Claude, AI-agents): wat verandert er echt voor hem. Liever iets dat in meerdere artikelen terugkomt dan één losse melding. Minder dan 3 mag in een rustige week.
+- `title`: hooguit 90 tekens, de ontwikkeling zelf. `why`: 2 korte zinnen, wat het is en wat het voor T betekent. Alleen wat in de artikelen staat.
+- `article_ids`: 1 tot 3 artikelen waar het in staat.
+- `intro`: één zin over de week als geheel.
+- `focus` (optioneel): één concreet ding om deze week te doen of uit te proberen, met een link naar een artikel of verdieping als dat kan. Geen werk- of patiëntdata.
+- Eenvoudig Nederlands, zoals in de redactiegids.
+
+```json
+{
+  "week": "2026-W44",
+  "generated_at": "2026-11-01T04:40:00Z",
+  "intro": "...",
+  "highlights": [
+    {"title": "...", "why": "...", "article_ids": ["<id>", "<id>"]}
+  ],
+  "focus": "..."
+}
+```
+
+`week` is de ISO-week van de zondag zelf (`date +%G-W%V`).
+
 ## Feedback van T
 
-`data/feedback.json` bevat T's duimpjes per artikel (`v`: 1 of -1) met soms een reden: `te_basic`, `niet_mijn_stack`, `oud_nieuws`, `te_vaag`, `geen_interesse` of `meer_hiervan`. De pipeline stuurt de score er al op bij. Gebruik het daarnaast zelf:
+`data/feedback.json` bevat onder `reads` de artikelen die T helemaal las (een licht positief signaal), en onder `votes` T's duimpjes per artikel (`v`: 1 of -1) met soms een reden: `te_basic`, `niet_mijn_stack`, `oud_nieuws`, `te_vaag`, `geen_interesse` of `meer_hiervan`. De pipeline stuurt de score er al op bij. Gebruik het daarnaast zelf:
 
 - Lees vóór het uitleggen de stemmen van de laatste 30 dagen. Kijk naar het soort artikel, niet alleen het onderwerp.
 - Veel `te_basic`: wees strenger bij `depth` en sla aankondigingen zonder inhoud vaker over. Leg minder basis uit.

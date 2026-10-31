@@ -57,6 +57,19 @@ def parse_votes(body: str) -> list:
     return out
 
 
+def parse_reads(body: str) -> list:
+    """Gelezen artikelen uit hetzelfde JSON-blok ("reads": [id, ...])."""
+    m = BLOCK_RE.search(body or "")
+    if not m:
+        return []
+    try:
+        data = json.loads(m.group(1))
+    except json.JSONDecodeError:
+        return []
+    reads = data.get("reads", [])
+    return list(dict.fromkeys(str(x) for x in reads if re.fullmatch(r"[0-9a-f]{12}", str(x)))) if isinstance(reads, list) else []
+
+
 def owner_issues(issues: list, owner: str) -> list:
     return [i for i in issues if "pull_request" not in i and TITLE_RE.match(i.get("title", ""))
             and (i.get("user") or {}).get("login", "").lower() == owner.lower()]
@@ -92,16 +105,26 @@ def main():
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
             }
+        reads = parse_reads(issue.get("body", ""))
+        for rid in reads:
+            a = articles.get(rid, {})
+            prev = store["reads"].get(rid, {})
+            store["reads"][rid] = {
+                "at": prev.get("at", now), "issue": issue["number"],
+                "title": a.get("headline") or a.get("title") or prev.get("title", ""),
+                "topics": a.get("topics") or prev.get("topics", []),
+                "source_id": a.get("source_id") or prev.get("source_id", ""),
+            }
         total += len(votes)
-        print(f"Feedback: issue #{issue['number']}: {len(votes)} beoordelingen")
+        print(f"Feedback: issue #{issue['number']}: {len(votes)} beoordelingen, {len(reads)} gelezen")
         if token:
-            msg = (f"Verwerkt: {len(votes)} beoordeling(en). De radar houdt er vanaf nu rekening mee."
-                   if votes else "Geen leesbare beoordelingen gevonden in dit issue.")
+            msg = (f"Verwerkt: {len(votes)} beoordeling(en) en {len(reads)} gelezen artikel(en). De radar houdt er vanaf nu rekening mee."
+                   if votes or reads else "Geen leesbare beoordelingen gevonden in dit issue.")
             _req(f"{API}/repos/{repo}/issues/{issue['number']}/comments", token, "POST", {"body": msg})
             _req(f"{API}/repos/{repo}/issues/{issue['number']}", token, "PATCH", {"state": "closed", "state_reason": "completed"})
     store["updated_at"] = now
     feedback.save(store)
-    print(f"Feedback: {total} beoordelingen verwerkt, {len(store['votes'])} in totaal.")
+    print(f"Feedback: {total} beoordelingen verwerkt, {len(store['votes'])} in totaal, {len(store['reads'])} gelezen.")
     return 0
 
 
