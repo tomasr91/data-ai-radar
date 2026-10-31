@@ -122,10 +122,11 @@
       const sel = cur.sel.includes(oi), right = q.a.includes(oi);
       if (cur.checked) {
         const cls = right && sel ? "right" : right ? "missed" : sel ? "wrong" : "";
-        const mk = right && sel ? "✓" : right ? "○" : sel ? "·" : "";
+        const mk = right && sel ? "✓" : right ? "○" : sel ? "✗" : "";
         const v = right && sel ? "Juist" : right ? "Juist antwoord" : sel ? "Jouw keuze" : "";
         const showWhy = right || sel || ui.allWhy;
-        return `<div class="opt ${cls}"><span class="mk">${mk}</span><span><span class="key">${LETTERS[pos]}</span>${q.o[oi]}</span>${showWhy ? `<span class="why">${v ? `<span class="verdict">${v}</span>` : ""}${/^Juist\.?$/.test(String(q.w[oi]).trim()) ? "" : q.w[oi]}</span>` : ""}</div>`;
+        // Radar: na controleren blijft het scherm gelijk; alleen goed/fout op de opties. De uitleg staat onder de knop.
+        return `<div class="opt ${cls}"><span class="mk">${mk}</span><span><span class="key">${LETTERS[pos]}</span>${q.o[oi]}</span></div>`;
       }
       const dis = !sel && multi && cur.sel.length >= need;
       return `<label class="opt ${sel ? "sel" : ""}"><input type="${multi ? "checkbox" : "radio"}" name="opt" data-opt="${oi}" ${sel ? "checked" : ""} ${dis ? "disabled" : ""}><span><span class="key">${LETTERS[pos]}</span>${q.o[oi]}</span></label>`;
@@ -140,23 +141,32 @@
       : cur.ok ? ["ok", "Goed."]
       : ["no", (partial ? "Bijna: kies precies alle juiste opties. " : "Nog niet. ") + "Deze vraag komt over een paar vragen terug."];
     const hiddenWhy = q.o.some((_, i) => !q.a.includes(i) && !cur.sel.includes(i));
+    const whyList = cur.checked ? cur.order.map((oi, pos) => {
+      const show = q.a.includes(oi) || cur.sel.includes(oi) || ui.allWhy;
+      const w = String(q.w[oi] || "").trim();
+      return show && w && !/^Juist\.?$/.test(w) ? `<li><span class="key">${LETTERS[pos]}</span> ${q.w[oi]}</li>` : "";
+    }).join("") : "";
     return `${head()}
       <div class="pbar"><button class="btn ghost" data-act="home">← Stoppen</button>${dots()}</div>
       ${ui.retry && ui.retry.i === 0 && !cur.checked ? `<div class="notice">Herkansing: de vragen uit deze ronde die nog niet lukten, nog één keer.</div>` : ""}
       <div class="q">
-        <div class="qmeta"><span>D${d.n} · ${esc(sb.nl || sb.en)}</span>${multi ? '<span class="pill multi">Meerdere antwoorden</span>' : ""}${cur.status === "new" ? '<span class="pill new">Nieuw</span>' : cur.status === "again" ? '<span class="pill again">Herhaling</span>' : ""}</div>
-        ${sec && cur.newSub && !cur.checked && !ui.explain ? `<div class="notice">Nieuw onderwerp. Wil je eerst de korte uitleg lezen?<div><button class="btn sm" data-act="explain">Lees uitleg</button></div></div>` : ""}
+        <div class="qmeta"><span>D${d.n} · ${esc(sb.nl || sb.en)}</span>${multi ? '<span class="pill multi">Meerdere antwoorden</span>' : ""}${cur.status === "new" ? '<span class="pill new">Nieuw</span>' : cur.status === "again" ? '<span class="pill again">Herhaling</span>' : ""}${sec && cur.newSub ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Nieuw onderwerp: lees de uitleg"}</button>` : ""}</div>
+
         ${ui.explain && sec && !cur.checked ? explainHtml : ""}
         <div class="qtext">${q.q}</div>
         <div class="instr">${multi ? `Kies ${need} antwoorden.` : "Kies één antwoord."}${!cur.checked && multi ? ` <span class="muted" style="font-weight:500">(${cur.sel.length}/${need})</span>` : ""}</div>
         <div class="opts" role="${multi ? "group" : "radiogroup"}">${opts}</div>
-        ${cur.checked ? `<div class="banner ${banner[0]}">${banner[1]}</div>
-          ${ui.curMs.map(m => `<div class="milestone">✓ Mijlpaal: ${msText(m)}</div>`).join("")}
-          <div class="lesson"><span class="eyebrow">Kernles</span><span>${esc(q.ex)}</span></div>` : ""}
         <div class="actions">
-          ${cur.checked ? `<div class="extras">${!ui.allWhy && hiddenWhy ? `<button class="linkbtn" data-act="allwhy">Uitleg bij alle opties</button>` : ""}${sec ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Uitleg over dit onderwerp"}</button>` : ""}<button class="linkbtn" data-act="report">Klopt deze vraag niet?</button></div><button class="btn primary" data-act="next">${nextLabel}</button>`
+          ${cur.checked ? `<span class="verdict-line ${banner[0]}">${cur.ok ? (cur.guess ? "✓ Goed gegokt" : "✓ Goed") : partial ? "✗ Bijna" : "✗ Fout"}</span><button class="btn primary" data-act="next">${nextLabel}</button>`
             : `<span class="hint"><kbd>1</kbd>–<kbd>${q.o.length}</kbd> kiezen · <kbd>G</kbd> gok · <kbd>Enter</kbd> controleren</span><div class="right-actions">${sec && !cur.newSub ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Uitleg"}</button>` : ""}<button class="btn guessbtn" data-act="guess" aria-pressed="${cur.guess}" title="Weet je het niet zeker? Dan telt een goed antwoord niet als beheerst.">Ik gok</button><button class="btn primary" data-act="check" ${cur.sel.length === need ? "" : "disabled"}>Controleer</button></div>`}
         </div>
+        ${cur.checked ? `<div class="after">
+          ${ui.curMs.map(m => `<div class="milestone">✓ Mijlpaal: ${msText(m)}</div>`).join("")}
+          ${banner[0] !== "ok" ? `<p class="small muted">${banner[1]}</p>` : ""}
+          <div class="lesson"><span class="eyebrow">Kernles</span><span>${esc(q.ex)}</span></div>
+          ${whyList ? `<ul class="whylist">${whyList}</ul>` : ""}
+          <div class="extras">${!ui.allWhy && hiddenWhy ? `<button class="linkbtn" data-act="allwhy">Uitleg bij alle opties</button>` : ""}${sec ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Uitleg over dit onderwerp"}</button>` : ""}<button class="linkbtn" data-act="report">Klopt deze vraag niet?</button></div>
+        </div>` : ""}
         ${ui.explain && sec && cur.checked ? explainHtml : ""}
         ${cur.checked && ui.reportOpen ? `<div class="explain"><label class="small" for="reportBox">Wat klopt er niet? Bijvoorbeeld een verouderd feit, een dubbelzinnige vraag of meer dan één goed antwoord.</label>
           <textarea class="input" id="reportBox" style="font-family:var(--display);font-size:0.9rem">${esc(ui.reportText)}</textarea>

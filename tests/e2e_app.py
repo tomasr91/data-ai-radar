@@ -246,9 +246,18 @@ with sync_playwright() as p:
     check("17. Leren toont alleen examens met vragen: Associate en Developer", certs == ["Associate", "Developer"], str(certs))
     fr.locator('[data-act="start"]').first.click()
     fr.locator(".q .opt").first.wait_for(timeout=5000)
-    fr.locator(".q .opt").first.click()
+    for i in range(fr.locator(".q .opt").count()):
+        if fr.locator('[data-act="check"]').is_enabled():
+            break
+        fr.locator(".q .opt").nth(i).click()
+    fr.locator('[data-act="check"]').scroll_into_view_if_needed()
+    y_check = fr.locator('[data-act="check"]').bounding_box()["y"]
+    scroll0 = page.evaluate("window.scrollY")
     fr.locator('[data-act="check"]').click()
-    fr.locator(".banner").first.wait_for(timeout=5000)
+    fr.locator(".verdict-line").first.wait_for(timeout=5000)
+    y_next = fr.locator('[data-act="next"]').bounding_box()["y"]
+    check("   na controleren verspringt het scherm niet: Volgende staat waar Controleer stond",
+          abs(y_next - y_check) < 4 and page.evaluate("window.scrollY") == scroll0, f"{y_check} -> {y_next}")
     saved = page.evaluate("JSON.parse(localStorage.getItem('cca-academy-v2') || 'null')")
     n = sum(c["total"]["n"] for c in saved["certs"].values()) if saved else 0
     check("   vraag beantwoorden werkt en wordt bewaard", n == 1, str(n))

@@ -221,7 +221,16 @@ details.pick[open] > summary { margin-bottom: 10px; color: var(--ink); }
 }
 html, body { background: var(--bg); }
 .save.browser i { background: var(--good); }
-.cert[aria-pressed="true"] { background: var(--ink); color: var(--bg); box-shadow: none; }   /* op dit toestel bewaren is hier de bedoeling, geen waarschuwing */
+.cert[aria-pressed="true"] { background: var(--ink); color: var(--bg); box-shadow: none; }
+/* Na controleren: uitslag naast de knop, uitleg pas eronder (scherm verspringt niet) */
+.verdict-line { font-weight: 700; font-size: 1rem; }
+.verdict-line.ok { color: var(--good); }
+.verdict-line.no { color: var(--miss); }
+.verdict-line.guess { color: var(--flag); }
+.after { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; }
+.after .lesson { border-top: 0; padding-top: 0; }
+.whylist { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: 0.88rem; color: var(--muted); }
+.whylist .key { font-family: var(--mono); color: var(--ink); }   /* op dit toestel bewaren is hier de bedoeling, geen waarschuwing */
 /* In de Radar staat de app in een venster onder de Radar-kop: minder ruimte boven en onder. */
 .wrap { padding-block: 14px 40px; }
 
