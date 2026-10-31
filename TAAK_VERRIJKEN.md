@@ -5,6 +5,7 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
 ## Stappen
 
 1. **Bijwerken.** `git pull` op `main`, daarna `pip install -r requirements.txt`.
+   - **Vers ophalen afdwingen.** De geplande GitHub-run start soms uren te laat of niet. Kijk naar `generated_at` in `data/feed.json`. Is die niet van vandaag (UTC), schrijf dan de datum van vandaag (`date -u +%F`) in `data/run-request`, commit alleen dat bestand ("Ophalen aangevraagd <datum>") en push. Die push start "Radar bijwerken" direct. Wacht daarna tot `data/feed.json` van vandaag is: elke 30 seconden `git pull`, hooguit 10 minuten. Lukt het niet binnen 10 minuten, ga dan door met de werklijst die er is en meld dat.
 2. **Context lezen.** Lees `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend voor stijl en structuur.
 3. **Werklijst lezen.** Open `data/to_enrich.json`. Is `items` leeg, sla stap 4 over en meld "Niets te verwerken" voor de artikelen.
 4. **Per artikel** (in volgorde, **maximaal 15 per run**):
