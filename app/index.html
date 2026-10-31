@@ -126,6 +126,24 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .ask-form textarea { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; resize: vertical; min-height: 48px; }
 .ask-form .btn { justify-self: start; }
 .ask { font-family: var(--f-display); }
+.show, .ex, .show p, .ex p { font-family: var(--f-display); }
+.ex-sql { white-space: pre; overflow-x: auto; }
+.show-cap { margin: 0 0 10px; font-size: 0.95rem; line-height: 1.5; }
+.show-arrow { margin: 10px 0 6px; font-family: var(--f-meta); font-size: 0.7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent2); }
+pre.code { margin: 0; padding: 12px 14px; background: #0b0e12; border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; font-family: var(--f-meta); font-size: 0.8rem; line-height: 1.55; color: #d6dbe4; white-space: pre; }
+.res-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+table.res { border-collapse: collapse; width: 100%; font-family: var(--f-meta); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+table.res th, table.res td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.res th { color: var(--muted); font-weight: 500; background: var(--surface); }
+table.res tr:last-child td { border-bottom: 0; }
+.ex-data { margin: 0 0 10px; font-size: 0.86rem; color: var(--muted); }
+.ex-data summary { cursor: pointer; min-height: 32px; }
+.ex-data pre { margin-top: 6px; }
+.ex-sql { width: 100%; min-height: 150px; border: 1px solid var(--line); background: #0b0e12; color: #d6dbe4; border-radius: 10px; padding: 12px 14px; font-family: var(--f-meta); font-size: 0.84rem; line-height: 1.55; resize: vertical; }
+.ex-btns { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.ex-msg { margin: 8px 0; font-size: 0.9rem; line-height: 1.5; }
+.ex-msg.ok { color: var(--ok); }
+.ex-msg.no { color: var(--warn); }
 a.card.opt { text-decoration: none; color: inherit; }
 article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
@@ -572,6 +590,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <h1>${esc(d.headline)}</h1>
         <p class="lead">${esc(d.summary)}</p>
         ${(d.sections || []).map((s) => `<section class="dd-sec"><h2>${esc(s.heading)}</h2><div class="story">${s.paragraphs.map((p) => `<p>${esc(p)}</p>`).join("")}</div></section>`).join("")}
+        ${showcaseBlock(d.showcase)}
+        ${exerciseBlock(d.exercise)}
         ${d.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(d.experiment)}</p></section>` : ""}
         ${d.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${d.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         ${quizBlock(d)}
@@ -591,6 +611,119 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const kinds = { bron: "Uit de bron", uitleg: "Uitleg", idee: "Idee" };
     return `<section class="block"><h2>${esc(title)}${kind ? ` <span class="kind ${kind}">${kinds[kind]}</span>` : ""}</h2><p>${esc(text)}</p></section>`;
   }
+  /* ---- Zien en doen ----
+     showcase: klein stukje echte code met resultaat ("Zo ziet het eruit").
+     exercise: SQL-oefening die in de browser draait met DuckDB (pas geladen als je hem start,
+     ~7 MB). De uitkomst wordt vergeleken met die van de oplossing. */
+  function resultTable(cols, rows) {
+    return `<div class="res-wrap"><table class="res"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
+      <tbody>${rows.map((r) => `<tr>${r.map((v) => `<td>${esc(v === null ? "NULL" : v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+  function showcaseBlock(sc) {
+    if (!sc?.code) return "";
+    return `<section class="block show"><h2>Zo ziet het eruit</h2>
+      <p class="show-cap">${esc(sc.caption)}</p>
+      <pre class="code" data-lang="${esc(sc.language || "")}"><code>${esc(sc.code)}</code></pre>
+      ${sc.result?.columns ? `<p class="show-arrow">Resultaat</p>${resultTable(sc.result.columns, sc.result.rows)}` : ""}
+      ${sc.note ? `<p class="fb-note">${esc(sc.note)}</p>` : ""}</section>`;
+  }
+  function exerciseBlock(ex) {
+    if (!ex?.solution_sql) return "";
+    return `<section class="block ex" id="ex"><h2>Oefen het zelf</h2>
+      <p class="show-cap"><b>${esc(ex.title)}</b><br>${esc(ex.task)}</p>
+      <details class="ex-data"><summary>Bekijk de oefendata</summary><pre class="code"><code>${esc(ex.setup_sql)}</code></pre></details>
+      <textarea class="ex-sql" id="ex-sql" wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off" rows="8" aria-label="Jouw SQL">${esc(ex.starter_sql)}</textarea>
+      <div class="ex-btns"><button class="btn" type="button" data-ex="run">Uitvoeren</button>
+        ${ex.hint ? `<button class="btn ghost" type="button" data-ex="hint">Hint</button>` : ""}
+        <button class="btn ghost" type="button" data-ex="solution">Oplossing</button></div>
+      <div id="ex-out" aria-live="polite"></div>
+      <p class="fb-note">Draait in je browser met DuckDB. Dat lijkt sterk op Spark SQL; kleine verschillen in functienamen zijn mogelijk.</p></section>`;
+  }
+  const DDB_VERSION = "1.32.0";
+  let ddbPromise = null;
+  function duckdb() {
+    if (!ddbPromise) ddbPromise = (async () => {
+      const mod = window.RADAR_DUCKDB_MODULE || `https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@${DDB_VERSION}/+esm`;
+      const base = window.RADAR_DUCKDB_DIST || `https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@${DDB_VERSION}/dist/`;
+      const d = await import(mod);
+      const b = await d.selectBundle({
+        mvp: { mainModule: base + "duckdb-mvp.wasm", mainWorker: base + "duckdb-browser-mvp.worker.js" },
+        eh: { mainModule: base + "duckdb-eh.wasm", mainWorker: base + "duckdb-browser-eh.worker.js" },
+      });
+      const url = URL.createObjectURL(new Blob([`importScripts("${b.mainWorker}");`], { type: "text/javascript" }));
+      const db = new d.AsyncDuckDB(new d.ConsoleLogger(d.LogLevel.WARNING), new Worker(url));
+      await db.instantiate(b.mainModule, b.pthreadWorker);
+      URL.revokeObjectURL(url);
+      return db;
+    })().catch((e) => { ddbPromise = null; throw e; });
+    return ddbPromise;
+  }
+  const cell = (v) => {
+    if (v === null || v === undefined) return null;
+    if (typeof v === "bigint") return Number(v);
+    if (typeof v === "number") return Number.isInteger(v) ? v : Math.round(v * 100) / 100;
+    if (v instanceof Date) return v.toISOString().slice(0, 10);
+    if (typeof v === "object" && typeof v.toString === "function") return String(v);
+    return v;
+  };
+  async function runSql(setup, sql) {
+    const db = await duckdb(), con = await db.connect();
+    const schema = "oefen_" + Math.random().toString(36).slice(2, 10);   // elke run een schone lei
+    try {
+      await con.query(`CREATE SCHEMA ${schema}; SET schema = '${schema}';`);
+      await con.query(setup);
+      const t = await con.query(sql);
+      const fields = t.schema.fields, cols = fields.map((f) => f.name);
+      const kind = fields.map((f) => { const ty = String(f.type); return ty.startsWith("Date") ? "date" : ty.startsWith("Timestamp") ? "ts" : ""; });
+      const asTime = (v, k) => {
+        if (v === null || v === undefined || !k) return cell(v);
+        const iso = new Date(typeof v === "bigint" ? Number(v) : v).toISOString();
+        return k === "date" ? iso.slice(0, 10) : iso.slice(0, 16).replace("T", " ");
+      };
+      const rows = t.toArray().map((r) => { const o = r.toJSON(); return cols.map((c, i) => asTime(o[c], kind[i])); });
+      return { cols, rows };
+    } finally {
+      try { await con.query(`SET schema = 'main'; DROP SCHEMA IF EXISTS ${schema} CASCADE;`); } catch {}
+      await con.close();
+    }
+  }
+  const same = (a, b, ordered) => {
+    if (a.cols.length !== b.cols.length || a.rows.length !== b.rows.length) return false;
+    const key = (r) => JSON.stringify(r.map((v) => (typeof v === "number" ? Math.round(v * 100) / 100 : v)));
+    const ka = a.rows.map(key), kb = b.rows.map(key);
+    if (!ordered) { ka.sort(); kb.sort(); }
+    return ka.every((k, i) => k === kb[i]);
+  };
+  function currentExercise() {
+    const h = location.hash.slice(1);
+    return (h.startsWith("a-") ? state.byId.get(h.slice(2)) : h.startsWith("v-") ? state.ddById.get(h.slice(2)) : null)?.exercise;
+  }
+  async function exClick(e) {
+    const b = e.target.closest("[data-ex]"); if (!b) return;
+    const ex = currentExercise(), out = $("#ex-out"); if (!ex || !out) return;
+    const act = b.dataset.ex;
+    if (act === "hint") { out.innerHTML = `<p class="ex-msg">💡 ${esc(ex.hint)}</p>`; return; }
+    if (act === "solution") {
+      $("#ex-sql").value = ex.solution_sql;
+      out.innerHTML = `<p class="ex-msg">Dit is de oplossing. Druk op Uitvoeren om de uitkomst te zien.</p><p class="ex-msg">${esc(ex.explanation)}</p>`;
+      return;
+    }
+    out.innerHTML = `<p class="ex-msg">${ddbPromise ? "Bezig…" : "DuckDB laden (eenmalig, ongeveer 7 MB)…"}</p>`;
+    b.disabled = true;
+    try {
+      const mine = await runSql(ex.setup_sql, $("#ex-sql").value);
+      const goal = await runSql(ex.setup_sql, ex.solution_sql);
+      const ok = same(mine, goal, ex.ordered);
+      out.innerHTML = `<p class="ex-msg ${ok ? "ok" : "no"}">${ok ? "✅ Klopt! " + esc(ex.explanation)
+        : mine.rows.length === goal.rows.length && mine.cols.length === goal.cols.length
+          ? "Bijna: het aantal rijen en kolommen klopt, maar de waarden nog niet. Vergelijk je uitkomst hieronder met wat de opdracht vraagt."
+          : `Nog niet. Je kreeg ${mine.rows.length} rij${mine.rows.length === 1 ? "" : "en"} en ${mine.cols.length} kolom${mine.cols.length === 1 ? "" : "men"}; verwacht: ${goal.rows.length} rij${goal.rows.length === 1 ? "" : "en"} en ${goal.cols.length} kolom${goal.cols.length === 1 ? "" : "men"}.`}</p>
+        ${mine.rows.length ? resultTable(mine.cols, mine.rows.slice(0, 50)) : `<p class="ex-msg">Geen rijen.</p>`}`;
+    } catch (err) {
+      out.innerHTML = `<p class="ex-msg no">${ddbPromise ? "Fout in je SQL" : "DuckDB kon niet laden (ben je online?)"}: ${esc(String(err.message || err).split("\n")[0])}</p>`;
+    } finally { b.disabled = false; }
+  }
+
   /* ---- Vraag het Claude ----
      Opent claude.ai (of de Claude-app) met een ingevuld bericht: kern van het stuk, bronlink,
      korte context over de stack, en jouw vraag. claude.ai/new?q= vult de vraag in; de URL blijft
@@ -697,6 +830,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${a.article_type === "opinie" && a.author ? `<div class="note" style="margin-top:14px">Dit is een mening van ${esc(a.author)}.</div>` : ""}
         ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
         <div class="story">${(a.story || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>
+        ${showcaseBlock(a.showcase)}
+        ${exerciseBlock(a.exercise)}
         ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
         ${a.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}
         ` : `
@@ -783,7 +918,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.body.style.overflow = "hidden";
     $("#back", r).onclick = () => { history.length > 1 && state.cameFromList ? history.back() : (location.hash = ""); };
     $("#back", r).focus({ preventScroll: true });
-    r.onclick = (e) => { fbClick(e); quizClick(e); askClick(e); };
+    r.onclick = (e) => { fbClick(e); quizClick(e); askClick(e); exClick(e); };
     const af = $("#ask-form", r);
     if (af) af.onsubmit = (e) => { e.preventDefault(); askOpen($("#ask-q", r).value); };
     const dlg = $("#score-dlg", r), btn = $("#score-btn", r);

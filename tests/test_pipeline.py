@@ -366,6 +366,29 @@ class TestTrends(unittest.TestCase):
         self.assertTrue(trends.validate({"generated_at": "x", "trends": [{"id": "a", "title": "t", "summary": "s", "article_ids": ["1"]}]}, set()))
 
 
+class TestPractice(unittest.TestCase):
+    """'Zo ziet het eruit' en 'Oefen het zelf': vorm controleren en de oefening echt draaien."""
+
+    def test_showcase(self):
+        from pipeline.practice import validate_showcase
+        good = {"caption": "c", "language": "sql", "code": "SELECT 1", "note": "n", "result": {"columns": ["a"], "rows": [[1]]}}
+        self.assertEqual(validate_showcase(good), [])
+        self.assertTrue(validate_showcase({**good, "language": "cobol"}))
+        self.assertTrue(validate_showcase({**good, "result": {"columns": ["a", "b"], "rows": [[1]]}}))
+
+    def test_exercise_runs(self):
+        from pipeline.practice import validate_exercise
+        ex = {"title": "t", "task": "t", "setup_sql": "CREATE TABLE x (a INT); INSERT INTO x VALUES (1), (2);",
+              "starter_sql": "SELECT * FROM x", "solution_sql": "SELECT SUM(a) AS s FROM x", "explanation": "e"}
+        try:
+            import duckdb  # noqa: F401
+        except ImportError:
+            self.skipTest("duckdb niet geinstalleerd")
+        self.assertEqual(validate_exercise(ex), [])
+        self.assertTrue(validate_exercise({**ex, "solution_sql": "SELECT * FROM bestaat_niet"}))
+        self.assertTrue(validate_exercise({**ex, "solution_sql": "SELECT * FROM x WHERE a > 5"}), "lege uitkomst is geen goede oefening")
+
+
 class TestBuild(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

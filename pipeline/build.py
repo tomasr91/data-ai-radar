@@ -249,7 +249,8 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "practical_application", "experiment", "limitations", "availability_status",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
-                 "format_version", "headline", "story", "key_facts", "article_type", "author"]
+                 "format_version", "headline", "story", "key_facts", "article_type", "author",
+                 "showcase", "exercise"]
 
 
 def _public(a):

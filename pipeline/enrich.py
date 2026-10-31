@@ -82,6 +82,8 @@ def validate(data: dict, topic_ids: set) -> list:
     unknown = [t for t in data.get("topics", []) if t not in topic_ids]
     if unknown:
         problems.append(f"onbekende topics {unknown}")
+    from .practice import validate_exercise, validate_showcase
+    problems += validate_showcase(data.get("showcase")) + validate_exercise(data.get("exercise"))
     q = data.get("quality", {})
     for k in ["depth", "practicality", "novelty"]:
         if not isinstance(q.get(k), (int, float)) or not 0 <= q[k] <= 1:
@@ -92,7 +94,8 @@ def validate(data: dict, topic_ids: set) -> list:
 def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
-                            "format_version", "headline", "story", "key_facts", "article_type", "author"]:
+                            "format_version", "headline", "story", "key_facts", "article_type", "author",
+              "showcase", "exercise"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"

@@ -38,5 +38,50 @@
   "format_version": 2,
   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
   "processed_at": "2026-10-28T21:00:00Z",
-  "prompt_version": "stijl-v2"
+  "prompt_version": "stijl-v2",
+  "showcase": {
+    "caption": "Zo werkt een voortschrijdend 7-dagengemiddelde in gewone SQL, op verzonnen bestellingen per dag. In een metric view leg je zo'n berekening één keer vast, zodat elk rapport en elke AI-assistent hetzelfde getal krijgt.",
+    "language": "sql",
+    "code": "SELECT\n  dag,\n  aantal,\n  ROUND(AVG(aantal) OVER (\n    ORDER BY dag\n    ROWS BETWEEN 6 PRECEDING AND CURRENT ROW\n  ), 1) AS gemiddelde_7_dagen\nFROM bestellingen\nORDER BY dag;",
+    "result": {
+      "columns": [
+        "dag",
+        "aantal",
+        "gemiddelde_7_dagen"
+      ],
+      "rows": [
+        [
+          "2026-10-07",
+          141,
+          98.9
+        ],
+        [
+          "2026-10-08",
+          150,
+          103.1
+        ],
+        [
+          "2026-10-09",
+          132,
+          102.7
+        ],
+        [
+          "2026-10-10",
+          95,
+          103.4
+        ]
+      ]
+    },
+    "note": "Nagebouwd voorbeeld met verzonnen data; alleen de laatste 4 rijen staan hier. De notatie in een metric view zelf (YAML) staat in de officiële documentatie bij het artikel."
+  },
+  "exercise": {
+    "title": "Een getal dat je niet mag optellen",
+    "task": "Een voorraadstand is semi-additief: de stand van maandag plus die van dinsdag zegt niets. Geef per week en per artikel de laatste stand van die week. De startquery telt de standen op; dat is precies de fout die je wilt voorkomen.",
+    "setup_sql": "CREATE TABLE voorraad (dag DATE, artikel VARCHAR, stand INTEGER);\nINSERT INTO voorraad VALUES\n ('2026-10-05','handschoenen',500), ('2026-10-06','handschoenen',460), ('2026-10-09','handschoenen',380),\n ('2026-10-05','mondkapjes',300),   ('2026-10-07','mondkapjes',260),   ('2026-10-11','mondkapjes',410),\n ('2026-10-12','handschoenen',600), ('2026-10-14','handschoenen',540),\n ('2026-10-13','mondkapjes',390),   ('2026-10-16','mondkapjes',350);",
+    "starter_sql": "SELECT\n  CAST(DATE_TRUNC('week', dag) AS DATE) AS week,\n  artikel,\n  SUM(stand) AS stand   -- fout: standen optellen\nFROM voorraad\nGROUP BY 1, 2\nORDER BY 1, 2;",
+    "solution_sql": "SELECT week, artikel, stand AS laatste_stand\nFROM (\n  SELECT\n    CAST(DATE_TRUNC('week', dag) AS DATE) AS week,\n    artikel,\n    stand,\n    ROW_NUMBER() OVER (\n      PARTITION BY DATE_TRUNC('week', dag), artikel\n      ORDER BY dag DESC\n    ) AS nr\n  FROM voorraad\n) t\nWHERE nr = 1\nORDER BY week, artikel;",
+    "hint": "Nummer de rijen per week en artikel, nieuwste dag eerst (ROW_NUMBER met PARTITION BY en ORDER BY dag DESC), en houd alleen nummer 1 over.",
+    "explanation": "Met ROW_NUMBER pak je per week en artikel de rij van de laatste dag. Dat is wat een semi-additieve maatstaf in een metric view voor je regelt: over tijd neem je de laatste stand, niet de som.",
+    "ordered": false
+  }
 }
