@@ -94,7 +94,7 @@
     const prev = C.cs().q[q.id];
     ui.cur = { qid: q.id, order: C.shuffle(q.o.map((_, i) => i)), sel: [], checked: false, ok: null, guess: false,
       status: !prev ? "new" : C.inLearning(prev) || prev.g ? "again" : "", newSub: C.stats(null, { kind: "sub", id: q.s }).seen === 0 };
-    ui.reportOpen = false; ui.reportDone = null; ui.reportText = ""; ui.explain = false; ui.allWhy = false; ui.curMs = [];
+    ui.reportOpen = false; ui.reportDone = null; ui.reportText = ""; ui.explain = false; ui.explainAbove = false; ui.allWhy = false; ui.curMs = [];
   }
   function newQuestion() {
     if (ui.retry) { setCurrent(C.qmap(cert())[ui.retry.queue[ui.retry.i]]); return; }
@@ -132,7 +132,9 @@
       return `<label class="opt ${sel ? "sel" : ""}"><input type="${multi ? "checkbox" : "radio"}" name="opt" data-opt="${oi}" ${sel ? "checked" : ""} ${dis ? "disabled" : ""}><span><span class="key">${LETTERS[pos]}</span>${q.o[oi]}</span></label>`;
     }).join("");
     const mod = c.modules && c.modules[d.id], sec = mod && mod.sections.find(x => x.sub === q.s);
-    const explainHtml = sec ? `<div class="explain${cur.checked ? "" : " pre"}"><div class="spread"><span class="eyebrow">Uitleg · ${esc(sec.title)}</span>${cur.checked ? "" : `<button class="linkbtn" data-act="explain">Verberg</button>`}</div><div class="prose">${sec.body}</div></div>` : "";
+    // Radar: uitleg die vóór het antwoorden is geopend, blijft na controleren boven de vraag staan (scherm verspringt niet).
+    const above = ui.explain && sec && (!cur.checked || ui.explainAbove);
+    const explainHtml = sec ? `<div class="explain${above ? " pre" : ""}"><div class="spread"><span class="eyebrow">Uitleg · ${esc(sec.title)}</span>${above ? `<button class="linkbtn" data-act="explain">Verberg</button>` : ""}</div><div class="prose">${sec.body}</div></div>` : "";
     const lastOfRound = !ui.retry && ui.round.length >= ROUND, lastOfRetry = ui.retry && ui.retry.i >= ui.retry.queue.length - 1;
     const retryN = lastOfRound ? retryList().length : 0;
     const nextLabel = lastOfRound ? (retryN ? `Herkansing (${retryN}) →` : "Bekijk ronde →") : lastOfRetry ? "Bekijk ronde →" : "Volgende vraag →";
@@ -152,7 +154,7 @@
       <div class="q">
         <div class="qmeta"><span>D${d.n} · ${esc(sb.nl || sb.en)}</span>${multi ? '<span class="pill multi">Meerdere antwoorden</span>' : ""}${cur.status === "new" ? '<span class="pill new">Nieuw</span>' : cur.status === "again" ? '<span class="pill again">Herhaling</span>' : ""}${sec && cur.newSub ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Nieuw onderwerp: lees de uitleg"}</button>` : ""}</div>
 
-        ${ui.explain && sec && !cur.checked ? explainHtml : ""}
+        ${above ? explainHtml : ""}
         <div class="qtext">${q.q}</div>
         <div class="instr">${multi ? `Kies ${need} antwoorden.` : "Kies één antwoord."}${!cur.checked && multi ? ` <span class="muted" style="font-weight:500">(${cur.sel.length}/${need})</span>` : ""}</div>
         <div class="opts" role="${multi ? "group" : "radiogroup"}">${opts}</div>
@@ -167,7 +169,7 @@
           ${whyList ? `<ul class="whylist">${whyList}</ul>` : ""}
           <div class="extras">${!ui.allWhy && hiddenWhy ? `<button class="linkbtn" data-act="allwhy">Uitleg bij alle opties</button>` : ""}${sec ? `<button class="linkbtn" data-act="explain">${ui.explain ? "Verberg uitleg" : "Uitleg over dit onderwerp"}</button>` : ""}<button class="linkbtn" data-act="report">Klopt deze vraag niet?</button></div>
         </div>` : ""}
-        ${ui.explain && sec && cur.checked ? explainHtml : ""}
+        ${ui.explain && sec && cur.checked && !above ? explainHtml : ""}
         ${cur.checked && ui.reportOpen ? `<div class="explain"><label class="small" for="reportBox">Wat klopt er niet? Bijvoorbeeld een verouderd feit, een dubbelzinnige vraag of meer dan één goed antwoord.</label>
           <textarea class="input" id="reportBox" style="font-family:var(--display);font-size:0.9rem">${esc(ui.reportText)}</textarea>
           <div class="row"><button class="btn sm" data-act="sendreport" ${ui.reportText.trim() ? "" : "disabled"}>Verstuur melding</button><button class="btn sm ghost" data-act="report">Annuleer</button></div></div>` : ""}
@@ -245,7 +247,7 @@
     check, next, nextround: nextRound,
     guess: () => { if (ui.cur && !ui.cur.checked) { ui.cur.guess = !ui.cur.guess; render(); } },
     allwhy: () => { ui.allWhy = true; render(); },
-    explain: () => { ui.explain = !ui.explain; render(); if (ui.explain) { const ex = document.querySelector(".explain"); if (ex && ui.cur && ui.cur.checked) ex.scrollIntoView({ block: "nearest" }); } },
+    explain: () => { ui.explain = !ui.explain; if (!(ui.cur && ui.cur.checked)) ui.explainAbove = ui.explain; render(); if (ui.explain) { const ex = document.querySelector(".explain"); if (ex && ui.cur && ui.cur.checked) ex.scrollIntoView({ block: "nearest" }); } },
     report: () => { ui.reportOpen = !ui.reportOpen; ui.reportDone = null; render(); if (ui.reportOpen) { const b = document.getElementById("reportBox"); if (b) b.focus(); } },
     sendreport: async () => {
       const q = C.qmap(cert())[ui.cur.qid]; const text = ui.reportText; const where = await C.report(null, q, text);

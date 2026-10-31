@@ -258,9 +258,25 @@ with sync_playwright() as p:
     y_next = fr.locator('[data-act="next"]').bounding_box()["y"]
     check("   na controleren verspringt het scherm niet: Volgende staat waar Controleer stond",
           abs(y_next - y_check) < 4 and page.evaluate("window.scrollY") == scroll0, f"{y_check} -> {y_next}")
+    # Met de uitleg open vóór het antwoorden: na controleren mag het scherm ook niet verspringen
+    fr.locator('[data-act="next"]').click()
+    fr.locator(".q .opt").first.wait_for(timeout=5000)
+    if fr.locator('.q [data-act="explain"]').count():
+        fr.locator('.q [data-act="explain"]').first.click()
+        fr.locator(".explain.pre").wait_for(timeout=3000)
+        for i in range(fr.locator(".q .opt").count()):
+            if fr.locator('[data-act="check"]').is_enabled():
+                break
+            fr.locator(".q .opt").nth(i).click()
+        fr.locator('[data-act="check"]').scroll_into_view_if_needed()
+        yq, yc = fr.locator(".qtext").bounding_box()["y"], fr.locator('[data-act="check"]').bounding_box()["y"]
+        fr.locator('[data-act="check"]').click()
+        fr.locator(".verdict-line").first.wait_for(timeout=5000)
+        yq2, yn = fr.locator(".qtext").bounding_box()["y"], fr.locator('[data-act="next"]').bounding_box()["y"]
+        check("   met uitleg open: na controleren blijft alles staan", abs(yq2 - yq) < 4 and abs(yn - yc) < 4, f"vraag {yq}->{yq2}, knop {yc}->{yn}")
     saved = page.evaluate("JSON.parse(localStorage.getItem('cca-academy-v2') || 'null')")
     n = sum(c["total"]["n"] for c in saved["certs"].values()) if saved else 0
-    check("   vraag beantwoorden werkt en wordt bewaard", n == 1, str(n))
+    check("   vraag beantwoorden werkt en wordt bewaard", n >= 1, str(n))
     fr.locator('[data-act="report"]').first.click()
     fr.locator("#reportBox").fill("Testmelding")
     page.evaluate("() => { const w = document.getElementById('leren-frame').contentWindow; w.__o = []; w.open = (u) => { w.__o.push(u); return null; }; }")
