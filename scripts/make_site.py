@@ -47,7 +47,7 @@ HEAD = """<!doctype html>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AI Radar">
-<style>:root{{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+<style>:root{{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}html,body{{background:#0f1217;color:#e7eaf0}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 </head>
 <body>
 """
