@@ -1,0 +1,82 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "72a32ce7fcf7",
+  "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
+  "headline": "Twee data-engineers bouwen opnieuw op dbt v2 en Iceberg, met dbt State",
+  "summary": "Verzekeraar Obie zette vier repositories om naar één dbt-project op een Iceberg-lakehouse. Met dbt State bouwen ze vaker zonder meer te betalen; de maandafsluiting ging van ruim 25 naar ongeveer 2 uur.",
+  "story": [
+    "De maandafsluiting voor de omzetafdeling van Obie duurde ruim 25 uur. Nu is dat ongeveer 2 uur. Het team bestaat uit twee data-engineers. Hun oude opzet had dezelfde logica in vier repositories en vier soorten planning, van crontabs tot Snowflake-taken. Pipelines draaiden één keer per dag.",
+    "Ze kozen voor opnieuw beginnen in plaats van repareren. Alles staat nu in één dbt v2-project in één repository. De data ligt in een lakehouse op Apache Iceberg; Snowflake vindt nieuwe tabellen vanzelf via gekoppelde catalogi. Ongeveer 10 procent van het project draait op Lake Compute, zodat ze per taak kunnen kiezen tussen snelheid en kosten.",
+    "dbt State houdt bij wat er sinds de vorige run veranderd is en bouwt alleen dat opnieuw. Zo konden ze vaker per dag bouwen zonder de rekening te laten stijgen. Ze rekenden zelf na dat de extra kosten van dbt State opwogen tegen de bespaarde rekentijd. Ze melden ongeveer 40 procent besparing.",
+    "De bruikbaarste les gaat over de klok. Een kolom als is_actief vergelijkt een einddatum met vandaag. Zet je daarvoor evaluate_volatile_sql aan, dan klopt de waarde, maar wordt het model elke run helemaal opnieuw gebouwd. Hun oplossing: de klok-kolommen in een view zetten, zodat de rest van het model hergebruikt kan worden.",
+    "Elk model heeft bij hen een YAML-bestand met kolombeschrijvingen, gemaakt met de tool dbt-osmosis. Een eigen Slack-bot gebruikt die documentatie bij mislukte pipelines en komt volgens het team ongeveer 75 procent van de weg naar een oplossing. Alle cijfers komen van het team zelf; het artikel is een samenvatting van een praatje op dbt Summit."
+  ],
+  "key_facts": [
+    "Verslag van een dbt Summit 2026-sessie door Tyson Doberneck en Matthew Karan, de twee senior data-engineers van Obie Insurance; laatst bewerkt op 27 oktober 2026.",
+    "Stack: één dbt v2-project in een monorepo, Apache Iceberg-lakehouse, Snowflake catalog-linked databases, ongeveer 10% van het project op Lake Compute, dbt State.",
+    "Les: evaluate_volatile_sql op modellen met klok-logica dwingt elke run een volledige rebuild af; oplossing was klok-kolommen in een view zonder state-blok.",
+    "Documentatie: YAML met kolombeschrijvingen per model, gegenereerd met dbt-osmosis; een interne Slack-bot komt zo ongeveer 75% van de weg naar een fix bij pipelinefouten.",
+    "Zelf gerapporteerd: 99% geslaagde productiebuilds, ongeveer 40% kostenbesparing door hergebruik via dbt State, maandafsluiting van ruim 25 uur naar ongeveer 2 uur."
+  ],
+  "personal_relevance": "Laat zien hoe je met dbt State vaker kunt bouwen, en welke modellen daarbij toch steeds volledig herbouwen.",
+  "experiment": "Zoek in je eigen dbt-project (alleen de code, zonder data) naar modellen die current_date of now() gebruiken. Schets hoe je die klok-kolommen naar een aparte view zou verplaatsen.",
+  "limitations": [
+    "De cijfers zijn zelf gerapporteerd, zonder uitleg hoe ze gemeten zijn.",
+    "Het artikel komt van dbt Labs, dat dbt State en Lake Compute verkoopt.",
+    "De opzet draait op Snowflake en Iceberg; de les over klok-kolommen geldt ook op Databricks, de rest niet één op één."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "dbt_analytics_engineering",
+    "data_architecture_modeling",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.65,
+    "practicality": 0.7,
+    "novelty": 0.55
+  },
+  "development_key": "dbt-state-praktijk-okt-2026",
+  "showcase": {
+    "caption": "Zo houd je 'vandaag' uit je model: de tabel bevat alleen vaste gegevens, en een view rekent pas bij het lezen uit welke polis nog actief is.",
+    "language": "sql",
+    "code": "-- polissen: gewoon model, zonder 'vandaag' erin\n-- Alleen de view rekent met de klok:\nCREATE VIEW polissen_actueel AS\nSELECT\n  polis_id,\n  einddatum,\n  einddatum >= DATE '2026-10-31' AS is_actief\n  -- in het echt: CURRENT_DATE\nFROM polissen;\n\nSELECT * FROM polissen_actueel ORDER BY polis_id;",
+    "result": {
+      "columns": [
+        "polis_id",
+        "einddatum",
+        "is_actief"
+      ],
+      "rows": [
+        [
+          "P-001",
+          "2027-02-28",
+          true
+        ],
+        [
+          "P-002",
+          "2026-06-14",
+          false
+        ],
+        [
+          "P-003",
+          "2026-10-31",
+          true
+        ],
+        [
+          "P-004",
+          "2027-08-31",
+          true
+        ]
+      ]
+    },
+    "note": "Verzonnen data, echt uitgevoerd in DuckDB met een vaste datum (31-10-2026) in plaats van CURRENT_DATE. Zo werkt het idee in gewone SQL; de dbt State-instelling evaluate_volatile_sql staat in de documentatie van dbt."
+  }
+}

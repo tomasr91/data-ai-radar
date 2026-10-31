@@ -1,183 +1,243 @@
 {
-  "format_version": 1,
-  "generated_at": "2026-10-31T09:45:00Z",
-  "options": [
-    {
-      "id": "joins-in-de-semantische-laag",
-      "title": "Joins in de semantische laag: vaste joins, relaties en dubbeltellingen",
-      "question": "Wanneer leg je een join vast in een metric view, wanneer als relatie, en hoe voorkom je dat een AI-assistent of BI-tool getallen dubbel telt?",
-      "why": "Trend 'Metric views en de semantische laag worden code': Databricks kan sinds deze week relaties tussen metric views vastleggen, met de verhouding erbij.",
-      "topics": [
-        "data_architecture_modeling",
-        "ai_context_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "dbt-lokaal-testen-met-duckdb",
-      "title": "dbt lokaal testen met DuckDB naast Databricks: wat kan wel en wat niet",
-      "question": "Hoe gebruik je de ingebouwde DuckDB-adapter van dbt v2 om modellen, macro's en tests snel lokaal te proberen, en waar wijkt dat af van Databricks?",
-      "why": "dbt v2 heeft nu een ingebouwde DuckDB-adapter, wat lokaal oefenen en testen zonder warehouse-kosten mogelijk maakt.",
-      "topics": [
-        "dbt_analytics_engineering",
-        "cicd_data_deployment",
-        "sql_spark_sql"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "teamafspraken-voor-claude-bij-dbt",
-      "title": "Wat Claude écht helpt bij dbt-werk: teamafspraken in CLAUDE.md en skills",
-      "question": "Welke instructies, skills en controles maken Claude Code betrouwbaar in een dbt-project, nu de modellen dbt zelf al kennen?",
-      "why": "Een proef van dbt Labs liet deze week zien dat skills over dbt weinig toevoegen, maar dat werkwijze en teamafspraken het verschil maken.",
-      "topics": [
-        "claude_ai_development",
-        "dbt_analytics_engineering"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "mcp-voor-data",
-      "title": "MCP: hoe AI-tools veilig bij je data komen",
-      "question": "Wat is het Model Context Protocol, hoe werkt een MCP-server voor data op Databricks en dbt, en waar zitten de risico's voor rechten en gevoelige data?",
-      "why": "Databricks beheert MCP-servers nu via Unity Gateway en als resource in bundels, en Claude kan zonder extra instellingen bij Databricks.",
-      "topics": [
-        "ai_agents_rag",
-        "data_governance_privacy",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "synthetische-data-voor-ai-proeven",
-      "title": "Synthetische data maken voor AI-proeven in de zorg",
-      "question": "Hoe maak je verzonnen data die realistisch genoeg is om AI-toepassingen op te testen, zonder dat er iets van echte patiënten in terechtkomt?",
-      "why": "Elk experiment in de radar vraagt om verzonnen of openbare data, en het project AI in de zorg heeft een veilige proeftuin nodig.",
-      "topics": [
-        "ai_in_healthcare",
-        "data_governance_privacy",
-        "ai_research_data"
-      ],
-      "area": "new_tech"
-    }
-  ],
-  "history": [
-    {
-      "id": "semantische-laag-als-ai-context",
-      "title": "De semantische laag als geheugen voor AI",
-      "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en waar leg je ze vast: dbt, metric views in Unity Catalog of Power BI?",
-      "why": "Deze week zat een AI-agent bij AWS 3,5 miljoen dollar naast zonder vaste definities, en metric views in Databricks kregen window measures.",
-      "topics": [
-        "ai_context_engineering",
-        "dbt_analytics_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "geheugen-voor-ai-agents",
-      "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
-      "question": "Hoe onthoudt een AI-agent iets tussen taken zonder zijn contextvenster vol te stoppen, en welke soorten geheugen zijn er?",
-      "why": "Databricks bracht agent memory pipelines uit in Beta, en LangChain schreef deze week drie stukken over geheugen en context.",
-      "topics": [
-        "ai_agents_rag",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "claude-code-skills-hooks-subagents",
-      "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
-      "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
-      "why": "Agent Skills worden ondergebracht bij de Agentic AI Foundation, zo schreef Simon Willison deze week.",
-      "topics": [
-        "claude_ai_development",
-        "ai_agents_rag"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "datacontracten",
-      "title": "Datacontracten tussen bron en model",
-      "question": "Wat zijn datacontracten, welk probleem lossen ze op, en hoe verschillen ze van model contracts en tests in dbt?",
-      "why": "Past bij de migratie: vaste afspraken voorkomen dat een wijziging in een bronsysteem stilletjes je modellen breekt.",
-      "topics": [
-        "data_quality_observability",
-        "dbt_analytics_engineering",
-        "data_architecture_modeling"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "open-tabelformaten",
-      "title": "Delta, Iceberg en het open lakehouse",
-      "question": "Wat is het verschil tussen Delta en Iceberg, en waarom maakt de catalogus steeds meer uit dan het formaat?",
-      "why": "Databricks ondersteunt nu transacties over Delta- én Iceberg-tabellen, en schreef over wat een catalogus 'open' maakt.",
-      "topics": [
-        "databricks_data_engineering",
-        "data_architecture_modeling",
-        "metadata_lineage_catalogs"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "geheugen-voor-ai-agents",
-      "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
-      "question": "Welke soorten geheugen heeft een AI-agent (werkgeheugen, samenvattingen, blijvend geheugen), hoe werken ze, en wanneer kies je een bestand, een vectorstore of een geheugenpipeline zoals in Databricks?",
-      "why": "Trend 'Agents houden hun venster leeg': LangChain schreef deze week twee stukken over geheugen en retrieval, en Databricks test geheugenpipelines.",
-      "topics": [
-        "ai_agents_rag",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "agents-uitrollen-als-code",
-      "title": "Een AI-agent uitrollen zoals een dbt-model: versiebeheer, CI en lineage",
-      "question": "Hoe breng je AI-agents en hun semantische definities onder dezelfde pull requests, tests en omgevingen als je dbt-modellen, en hoe kan dat op Databricks?",
-      "why": "Under Armour beheert zijn Snowflake-agents nu als dbt-modellen; een kolomwijziging breekt dan de CI in plaats van het antwoord aan een gebruiker.",
-      "topics": [
-        "cicd_data_deployment",
-        "ai_agents_rag",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "kolom-lineage-impactanalyse",
-      "title": "Kolom-lineage gebruiken voor impactanalyse",
-      "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
-      "why": "Bij KOHO en Under Armour bleek lineage de basis om AI veilig op dbt-modellen te laten draaien.",
-      "topics": [
-        "metadata_lineage_catalogs",
-        "ai_context_engineering",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "claude-code-veilig-op-dataprojecten",
-      "title": "Claude Code veilig laten werken: permissies, sandbox en auto mode",
-      "question": "Hoe bepaal je wat Claude Code zelf mag doen in een dataproject, hoe werken permissieregels, de sandbox en auto mode samen, en hoe houd je werkdata buiten bereik?",
-      "why": "Claude Code kreeg in week 43 een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie.",
-      "topics": [
-        "claude_ai_development",
-        "data_governance_privacy"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "arrow-en-adbc",
-      "title": "Arrow en ADBC: waarom data in kolommen sneller tussen tools reist",
-      "question": "Wat is Apache Arrow, hoe verschilt ADBC van ODBC en JDBC, en wat merk je ervan in dbt v2, Databricks en Power BI?",
-      "why": "dbt v2 en Power BI gebruiken ADBC, en Columnar vertelde deze week welke typeproblemen dat oplevert.",
-      "topics": [
-        "open_source_tools",
-        "sql_spark_sql",
-        "dbt_analytics_engineering"
-      ],
-      "area": "new_tech"
-    }
-  ]
+ "format_version": 1,
+ "generated_at": "2026-10-31T16:45:00Z",
+ "options": [
+  {
+   "id": "asset-bundles-basis",
+   "title": "Bundles: je Databricks-project als code uitrollen, vanaf de basis",
+   "question": "Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?",
+   "why": "Deze week kregen bundles een gedeelde Python-omgeving via pyproject.toml, en de documentatie noemt ze nu Declarative Automation Bundles; tijd voor de basis.",
+   "topics": [
+    "cicd_data_deployment",
+    "databricks_data_engineering"
+   ],
+   "area": "data_engineering",
+   "level": "beginner"
+  },
+  {
+   "id": "ai-context-per-kolom",
+   "title": "Welke context heeft een AI-agent per kolom nodig, en waar leg je die vast?",
+   "question": "Welke soorten context (beschrijving, synoniemen, voorbeeldwaarden, regels, voorbeeldquery's) helpen een AI-agent echt, en zet je die in dbt, Unity Catalog, metric views of de BI-tool?",
+   "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': Checkr legt per veld vijf soorten context vast en Databricks zet begin november Genie Ontology standaard aan.",
+   "topics": [
+    "ai_context_engineering",
+    "metadata_lineage_catalogs",
+    "dbt_analytics_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "claude-code-in-ci-voor-dbt",
+   "title": "Claude Code in je pipeline: automatische review van dbt-pull-requests",
+   "question": "Hoe zet je Claude Code zonder scherm (claude -p) in een CI-pipeline om dbt-wijzigingen te reviewen, en hoe houd je dat veilig en controleerbaar?",
+   "why": "De proef van dbt Labs en de harness-les van LangChain laten zien dat controles het verschil maken; een review-stap in CI is de volgende bouwsteen.",
+   "topics": [
+    "claude_ai_development",
+    "cicd_data_deployment",
+    "dbt_analytics_engineering"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "transacties-over-tabellen",
+   "title": "Meerdere tabellen in één keer bijwerken: transacties in Databricks",
+   "question": "Wanneer heb je een transactie over meerdere tabellen nodig, hoe werkt BEGIN ATOMIC in Databricks, en wat betekent dat voor dbt-modellen en pipelines?",
+   "why": "Transacties voor managed Delta- en Iceberg-tabellen zijn sinds half oktober algemeen beschikbaar.",
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql",
+    "data_architecture_modeling"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "synthetische-data-voor-ai-proeven",
+   "title": "Synthetische data maken voor AI-proeven in de zorg",
+   "question": "Hoe maak je verzonnen data die realistisch genoeg is om AI-toepassingen op te testen, zonder dat er iets van echte patiënten in terechtkomt?",
+   "why": "Elk experiment in de radar vraagt om verzonnen of openbare data, en het project AI in de zorg heeft een veilige proeftuin nodig.",
+   "topics": [
+    "ai_in_healthcare",
+    "data_governance_privacy",
+    "ai_research_data"
+   ],
+   "area": "new_tech"
+  }
+ ],
+ "history": [
+  {
+   "id": "semantische-laag-als-ai-context",
+   "title": "De semantische laag als geheugen voor AI",
+   "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en waar leg je ze vast: dbt, metric views in Unity Catalog of Power BI?",
+   "why": "Deze week zat een AI-agent bij AWS 3,5 miljoen dollar naast zonder vaste definities, en metric views in Databricks kregen window measures.",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "powerbi_semantic_models"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "geheugen-voor-ai-agents",
+   "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
+   "question": "Hoe onthoudt een AI-agent iets tussen taken zonder zijn contextvenster vol te stoppen, en welke soorten geheugen zijn er?",
+   "why": "Databricks bracht agent memory pipelines uit in Beta, en LangChain schreef deze week drie stukken over geheugen en context.",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "claude-code-skills-hooks-subagents",
+   "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
+   "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
+   "why": "Agent Skills worden ondergebracht bij de Agentic AI Foundation, zo schreef Simon Willison deze week.",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "datacontracten",
+   "title": "Datacontracten tussen bron en model",
+   "question": "Wat zijn datacontracten, welk probleem lossen ze op, en hoe verschillen ze van model contracts en tests in dbt?",
+   "why": "Past bij de migratie: vaste afspraken voorkomen dat een wijziging in een bronsysteem stilletjes je modellen breekt.",
+   "topics": [
+    "data_quality_observability",
+    "dbt_analytics_engineering",
+    "data_architecture_modeling"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "open-tabelformaten",
+   "title": "Delta, Iceberg en het open lakehouse",
+   "question": "Wat is het verschil tussen Delta en Iceberg, en waarom maakt de catalogus steeds meer uit dan het formaat?",
+   "why": "Databricks ondersteunt nu transacties over Delta- én Iceberg-tabellen, en schreef over wat een catalogus 'open' maakt.",
+   "topics": [
+    "databricks_data_engineering",
+    "data_architecture_modeling",
+    "metadata_lineage_catalogs"
+   ],
+   "area": "new_tech"
+  },
+  {
+   "id": "geheugen-voor-ai-agents",
+   "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
+   "question": "Welke soorten geheugen heeft een AI-agent (werkgeheugen, samenvattingen, blijvend geheugen), hoe werken ze, en wanneer kies je een bestand, een vectorstore of een geheugenpipeline zoals in Databricks?",
+   "why": "Trend 'Agents houden hun venster leeg': LangChain schreef deze week twee stukken over geheugen en retrieval, en Databricks test geheugenpipelines.",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "agents-uitrollen-als-code",
+   "title": "Een AI-agent uitrollen zoals een dbt-model: versiebeheer, CI en lineage",
+   "question": "Hoe breng je AI-agents en hun semantische definities onder dezelfde pull requests, tests en omgevingen als je dbt-modellen, en hoe kan dat op Databricks?",
+   "why": "Under Armour beheert zijn Snowflake-agents nu als dbt-modellen; een kolomwijziging breekt dan de CI in plaats van het antwoord aan een gebruiker.",
+   "topics": [
+    "cicd_data_deployment",
+    "ai_agents_rag",
+    "dbt_analytics_engineering"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "kolom-lineage-impactanalyse",
+   "title": "Kolom-lineage gebruiken voor impactanalyse",
+   "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
+   "why": "Bij KOHO en Under Armour bleek lineage de basis om AI veilig op dbt-modellen te laten draaien.",
+   "topics": [
+    "metadata_lineage_catalogs",
+    "ai_context_engineering",
+    "dbt_analytics_engineering"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "claude-code-veilig-op-dataprojecten",
+   "title": "Claude Code veilig laten werken: permissies, sandbox en auto mode",
+   "question": "Hoe bepaal je wat Claude Code zelf mag doen in een dataproject, hoe werken permissieregels, de sandbox en auto mode samen, en hoe houd je werkdata buiten bereik?",
+   "why": "Claude Code kreeg in week 43 een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie.",
+   "topics": [
+    "claude_ai_development",
+    "data_governance_privacy"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "arrow-en-adbc",
+   "title": "Arrow en ADBC: waarom data in kolommen sneller tussen tools reist",
+   "question": "Wat is Apache Arrow, hoe verschilt ADBC van ODBC en JDBC, en wat merk je ervan in dbt v2, Databricks en Power BI?",
+   "why": "dbt v2 en Power BI gebruiken ADBC, en Columnar vertelde deze week welke typeproblemen dat oplevert.",
+   "topics": [
+    "open_source_tools",
+    "sql_spark_sql",
+    "dbt_analytics_engineering"
+   ],
+   "area": "new_tech"
+  },
+  {
+   "id": "joins-in-de-semantische-laag",
+   "title": "Joins in de semantische laag: vaste joins, relaties en dubbeltellingen",
+   "question": "Wanneer leg je een join vast in een metric view, wanneer als relatie, en hoe voorkom je dat een AI-assistent of BI-tool getallen dubbel telt?",
+   "why": "Trend 'Metric views en de semantische laag worden code': Databricks kan sinds deze week relaties tussen metric views vastleggen, met de verhouding erbij.",
+   "topics": [
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "powerbi_semantic_models"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "dbt-lokaal-testen-met-duckdb",
+   "title": "dbt lokaal testen met DuckDB naast Databricks: wat kan wel en wat niet",
+   "question": "Hoe gebruik je de ingebouwde DuckDB-adapter van dbt v2 om modellen, macro's en tests snel lokaal te proberen, en waar wijkt dat af van Databricks?",
+   "why": "dbt v2 heeft nu een ingebouwde DuckDB-adapter, wat lokaal oefenen en testen zonder warehouse-kosten mogelijk maakt.",
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment",
+    "sql_spark_sql"
+   ],
+   "area": "data_engineering"
+  },
+  {
+   "id": "teamafspraken-voor-claude-bij-dbt",
+   "title": "Wat Claude écht helpt bij dbt-werk: teamafspraken in CLAUDE.md en skills",
+   "question": "Welke instructies, skills en controles maken Claude Code betrouwbaar in een dbt-project, nu de modellen dbt zelf al kennen?",
+   "why": "Een proef van dbt Labs liet deze week zien dat skills over dbt weinig toevoegen, maar dat werkwijze en teamafspraken het verschil maken.",
+   "topics": [
+    "claude_ai_development",
+    "dbt_analytics_engineering"
+   ],
+   "area": "claude"
+  },
+  {
+   "id": "mcp-voor-data",
+   "title": "MCP: hoe AI-tools veilig bij je data komen",
+   "question": "Wat is het Model Context Protocol, hoe werkt een MCP-server voor data op Databricks en dbt, en waar zitten de risico's voor rechten en gevoelige data?",
+   "why": "Databricks beheert MCP-servers nu via Unity Gateway en als resource in bundels, en Claude kan zonder extra instellingen bij Databricks.",
+   "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_context_engineering"
+   ],
+   "area": "context_agents"
+  },
+  {
+   "id": "synthetische-data-voor-ai-proeven",
+   "title": "Synthetische data maken voor AI-proeven in de zorg",
+   "question": "Hoe maak je verzonnen data die realistisch genoeg is om AI-toepassingen op te testen, zonder dat er iets van echte patiënten in terechtkomt?",
+   "why": "Elk experiment in de radar vraagt om verzonnen of openbare data, en het project AI in de zorg heeft een veilige proeftuin nodig.",
+   "topics": [
+    "ai_in_healthcare",
+    "data_governance_privacy",
+    "ai_research_data"
+   ],
+   "area": "new_tech"
+  }
+ ]
 }

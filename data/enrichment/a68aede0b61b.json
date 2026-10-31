@@ -1,0 +1,49 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "a68aede0b61b",
+  "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
+  "headline": "Geef een AI-agent per veld synoniemen, voorbeeldwaarden en regels",
+  "summary": "Checkr gaf zijn AI-agent naast dbt-modellen en een semantische laag een aparte laag met zakelijke betekenis. Die laag groeit via een vaste lus van evals, voorstellen en review.",
+  "story": [
+    "Een operations-manager bij Checkr vroeg welke wachtrijen de reactietijd onder de 90 procent duwden. De AI-agent vond de slechte week, splitste naar wachtrij en kanaal, en sloot de verdachte grote wachtrij uit. Volgens hem kostte dat minuten in plaats van uren. Eerst ging dat mis: een agent die rechtstreeks via MCP op Snowflake keek, gaf op dezelfde vraag steeds andere, foute antwoorden.",
+    "Het team onderscheidt drie lagen. Het warehouse is de voorraadkast. De semantische laag legt vast welke joins en berekeningen kloppen. De derde laag is AI-context: wat betekent iets voor het bedrijf. Die slaan de meeste teams over, zegt staff analytics engineer Sarah Fischbach.",
+    "Die context staat bij Checkr in de BI-tool Omni, in vijf vaste velden per veld of model. Synoniemen koppelen bedrijfstaal aan veldnamen. Voorbeeldwaarden helpen de agent goede filters te maken. Daarnaast zijn er veldbeschrijvingen (vaak al in dbt), vrije aanwijzingen voor uitzonderingen en kant-en-klare voorbeeldquery's. Het idee: haal die kennis uit wat er al is, zoals Confluence en vergaderverslagen.",
+    "Onderhoud loopt via een lus. Een gouden set echte vragen met de juiste query draait tegen Omni. Een agent met Claude groepeert de fouten. Een tweede skill zoekt bedrijfskennis op en stelt een fix voor, een derde draait de mislukte evals opnieuw. Een vakexpert keurt de wijziging goed.",
+    "Een waarschuwing uit de zaal: een ander team voegde overal context toe zonder concrete fout. Hun agent werd trager, verbruikte ongeveer twee keer zoveel tokens en werd niet nauwkeuriger. Het advies: voeg alleen context toe waar een eval aantoonbaar faalt."
+  ],
+  "key_facts": [
+    "Verslag van een dbt Summit 2026-sessie met Sarah Fischbach (Checkr) en Chris Merrick (CTO van Omni); laatst bewerkt op 27 oktober 2026.",
+    "Checkr heeft meer dan 6.000 dbt-modellen in Snowflake; een klein centraal team ondersteunt ongeveer 50 analisten.",
+    "Vijf contextvelden in Omni: synoniemen, voorbeeldwaarden, veldbeschrijvingen, vrije gedragsaanwijzingen en voorbeeldquery's.",
+    "Onderhoudslus: gouden eval-set, een Claude-agent die fouten clustert, een skill die een fix voorstelt uit een vectoropslag met bedrijfskennis, een skill die de evals opnieuw draait, en review door een vakexpert.",
+    "Een team van OutSchool zag na breed toevoegen van context een tragere agent, ongeveer verdubbelde tokenkosten en geen betere nauwkeurigheid.",
+    "Het artikel noemt geen nauwkeurigheidscijfers; 'uren naar minuten' is de ervaring van één gebruiker."
+  ],
+  "personal_relevance": "Dit is een concreet ontwerp voor je AI-contextlaag: welke velden je per kolom vastlegt, en hoe je met evals bepaalt waar context nodig is.",
+  "experiment": "Neem één openbaar of verzonnen datamodel en schrijf voor drie kolommen de vijf contextvelden uit. Stel vijf testvragen op en kijk met en zonder die context of Claude de juiste query schrijft.",
+  "limitations": [
+    "Geen gemeten resultaten: de winst rust op één anekdote.",
+    "De context staat in Omni, niet in dbt of Unity Catalog; het artikel zegt niet hoe dbt-metadata daarheen gaat.",
+    "Bij zorgdata horen voorbeeldwaarden nooit echte persoonsgegevens te zijn."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_evaluation_observability",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.8,
+    "novelty": 0.65
+  },
+  "development_key": "ai-context-velden-checkr-okt-2026"
+}

@@ -1,0 +1,91 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "Het artikel zelf is gedateerd 17 februari 2026; de feed toont 13 oktober 2026, vermoedelijk een herpublicatie.",
+  "article_id": "4cc09a1d9883",
+  "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+  "headline": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5",
+  "summary": "LangChain verbeterde zijn codeeragent op Terminal Bench 2.0 van 52,8 naar 66,5 procent zonder het model te wisselen. Alleen de systeemprompt, de tools en haken rond de agent veranderden.",
+  "story": [
+    "LangChain liet zijn codeeragent deepagents-cli dezelfde 89 taken van Terminal Bench 2.0 doen, steeds met hetzelfde model. Alleen de omgeving rond het model veranderde: de testomgeving (harness). De score ging van 52,8 naar 66,5 procent. Op de ranglijst klom de agent van net buiten de top 30 naar de top 5.",
+    "De belangrijkste fout was herkenbaar: de agent schreef een oplossing, las hem nog eens, vond hem goed en stopte. De oplossing was een vaste werkwijze in vier stappen: plannen, bouwen met tests, controleren tegen de opdracht, en herstellen. Een extra haak (middleware) houdt de agent vlak voor het stoppen tegen en vraagt om een controle. Dat lijkt op een Stop-hook in Claude Code.",
+    "Andere ingrepen: bij de start brengt een haak de mappen en beschikbare tools in kaart. De agent krijgt te horen dat programmatische tests zijn werk beoordelen. Een teller per bestand grijpt in als de agent hetzelfde bestand steeds opnieuw bewerkt, een 'rondje' van soms meer dan tien bijna gelijke wijzigingen. En de agent denkt het diepst bij plannen en controleren, minder bij het bouwen.",
+    "Hoe vonden ze die fouten? Elke stap van elke run staat in LangSmith als trace. Een eigen skill haalt die traces op, laat parallelle agents de fouten analyseren en vat de voorstellen samen. Dat is dezelfde foutanalyse als bij evals, maar dan op het gedrag van een agent.",
+    "Voor jou geldt de les ook buiten LangChain. Geef een agent een controle die hij zelf kan draaien, zoals dbt build of een test. Vertel hem hoe het werk beoordeeld wordt, en kijk in de logs waar hij vastloopt voordat je aan de prompt gaat sleutelen."
+  ],
+  "key_facts": [
+    "Auteur: Vivek Trivedy (LangChain); het artikel is gedateerd 17 februari 2026.",
+    "Benchmark: Terminal Bench 2.0 (89 taken); agent: deepagents-cli; model: gpt-5.2-codex, steeds hetzelfde.",
+    "Score van 52,8% naar 66,5% (+13,7 punten); van net buiten de top 30 naar de top 5.",
+    "Ingrepen: werkwijze met zelfcontrole, PreCompletionChecklistMiddleware, LocalContextMiddleware, tijdswaarschuwingen, LoopDetectionMiddleware en meer redeneertijd bij plannen en controleren.",
+    "Alleen op het hoogste redeneerniveau (xhigh) scoorde de agent 53,9%, vooral door time-outs; op high 63,6%.",
+    "Een testrun met Claude Opus 4.6 op een eerdere versie van de harness haalde 59,6%."
+  ],
+  "personal_relevance": "De lessen (zelfcontrole afdwingen, omgeving meegeven, traces lezen) passen direct op hoe je Claude Code bij dbt-werk inzet.",
+  "experiment": "Zet in een testproject een Stop-hook in Claude Code die dbt build op DuckDB draait met verzonnen data, en vergelijk een paar taken met en zonder die hook.",
+  "limitations": [
+    "Het artikel is van februari 2026; nieuwere modellen hebben sommige hulpmiddelen volgens de auteurs straks niet meer nodig.",
+    "Het gaat om één benchmark en één model; de auteurs waarschuwen zelf voor overfitting op de taken.",
+    "LangChain verkoopt LangSmith, het hulpmiddel dat in het verhaal centraal staat."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "deepagents-cli (GitHub)",
+      "url": "https://github.com/langchain-ai/deepagents/tree/main/libs/code"
+    },
+    {
+      "label": "Terminal Bench 2.0 leaderboard",
+      "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+    },
+    {
+      "label": "LangChain middleware",
+      "url": "https://docs.langchain.com/oss/python/langchain/middleware/overview#the-agent-loop"
+    }
+  ],
+  "topics": [
+    "ai_evaluation_observability",
+    "ai_agents_rag",
+    "claude_ai_development"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.65,
+    "novelty": 0.5
+  },
+  "development_key": "harness-engineering-deepagents",
+  "showcase": {
+    "caption": "Zo vind je een 'rondje' in de stappen van een agent: tel per bestand hoe vaak de agent het bewerkte. Vaak hetzelfde bestand aanpassen is een teken dat hij vastzit.",
+    "language": "sql",
+    "code": "SELECT\n  doel AS bestand,\n  COUNT(*) AS bewerkingen,\n  COUNT(*) >= 4 AS mogelijk_rondje\nFROM stappen\nWHERE tool = 'Edit'\nGROUP BY doel\nORDER BY bewerkingen DESC;",
+    "result": {
+      "columns": [
+        "bestand",
+        "bewerkingen",
+        "mogelijk_rondje"
+      ],
+      "rows": [
+        [
+          "src/parser.py",
+          5,
+          true
+        ],
+        [
+          "tests/test_parser.py",
+          1,
+          false
+        ],
+        [
+          "README.md",
+          1,
+          false
+        ]
+      ]
+    },
+    "note": "Verzonnen trace van 12 stappen, echt uitgevoerd in DuckDB. Zo werkt het idee van LoopDetectionMiddleware in gewone SQL; LangChain doet het tijdens de run met een haak rond de toolaanroepen."
+  }
+}

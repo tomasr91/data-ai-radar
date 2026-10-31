@@ -1,0 +1,71 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "94b4924597e5",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
+  "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
+  "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
+  "story": [
+    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
+    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
+    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
+    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
+  ],
+  "key_facts": [
+    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
+    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
+    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
+    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
+    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
+    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
+    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
+  ],
+  "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
+  "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
+  "limitations": [
+    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
+    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
+  ],
+  "availability_status": "aangekondigd",
+  "official_docs": [
+    {
+      "label": "Azure Databricks release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+      "label": "What's coming? (Genie Ontology)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
+    },
+    {
+      "label": "Genie Code task for jobs",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
+    },
+    {
+      "label": "Shared Serverless voor Git-mappen en bundels",
+      "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.75,
+    "novelty": 0.7
+  },
+  "development_key": "azure-databricks-week-43-2026",
+  "showcase": {
+    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
+    "language": "text",
+    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
+    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
+  }
+}

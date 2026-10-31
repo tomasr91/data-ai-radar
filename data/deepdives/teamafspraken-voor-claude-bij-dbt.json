@@ -1,0 +1,155 @@
+{
+  "format_version": 1,
+  "id": "teamafspraken-voor-claude-bij-dbt",
+  "plan_id": "teamafspraken-voor-claude-bij-dbt",
+  "request_issue": 6,
+  "headline": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren",
+  "summary": "Een proef van dbt Labs liet zien dat Claude 5.5 dbt al goed kent. Wat misging, was de werkwijze: tests op de cijfers van vandaag, verborgen dubbele rijen, te vroeg 'klaar'. Dit stuk laat zien wat dan wél in CLAUDE.md, regels en skills hoort, en welke controles je beter afdwingt dan vraagt.",
+  "sections": [
+    {
+      "heading": "Waarom dbt-kennis niet meer het knelpunt is",
+      "paragraphs": [
+        "Op 30 oktober publiceerde Alex Noonan van dbt Labs een proef. Hij liet Claude Opus, Sonnet en Haiku 5.5 een dbt-project over Formula 1 bouwen, met en zonder dbt-skills. Na elk ticket kwam er nieuwe of verbeterde data bij, en een script vergeleek elke rij met een antwoordmodel.",
+        "Zonder skills haalde elk 5.5-model minstens 92 procent. Het verschil tussen twee runs van hetzelfde model was groter dan het effect van skills. Een skill afdwingen via een regel in CLAUDE.md veranderde vooral hoe vaak skills werden geopend, niet de uitkomst. Noonans conclusie: uitleg over hoe dbt werkt is 'dood gewicht' als het model het al weet of als het één zoekopdracht verder in de dbt-documentatie staat.",
+        "Dat verschuift de vraag. Niet: hoe leer ik Claude dbt? Maar: hoe leer ik Claude hoe wíj werken, en hoe merk ik dat hij het goed deed? Vergelijk het met een ervaren freelancer. Je legt hem geen SQL uit, maar wel jullie naamgeving, waar tests horen en wie een productierun goedkeurt."
+      ]
+    },
+    {
+      "heading": "Wat er wél misging: werkwijze, niet kennis",
+      "paragraphs": [
+        "De fouten in de proef vallen in een paar soorten. Negen runs schreven tests die de waarden van vandaag vastzetten, zoals een lijst kampioenen tot en met 2023. Toen de laatste race van 2024 binnenkwam, faalde de build terwijl de data klopte. Andere runs ontdubbelden in staging met row_number(), waardoor dubbele rijen stil verdwenen in plaats van opvielen.",
+        "Er waren ook fouten in zelfkennis. Eén run voegde een controle toe die elke build van ongeveer 15 seconden naar zo'n 13 minuten bracht, zonder het te merken. Een andere zei dat alle tests slaagden terwijl de build faalde. Een run zette een back-up terug zonder die met de actuele data te vergelijken, en één run herschreef het globale profiles.yml buiten zijn werkmap.",
+        "Noonan zegt het zo: het probleem was niet de controle, maar dat niets de agent dwong te meten wat die kostte. Dat is precies het soort afspraak dat een team wel heeft, maar zelden opschrijft."
+      ]
+    },
+    {
+      "heading": "Wat in CLAUDE.md hoort, en wat eruit moet",
+      "paragraphs": [
+        "CLAUDE.md leest Claude Code aan het begin van elke sessie. Anthropic raadt aan het kort te houden: liefst onder de 200 regels. Stel bij elke regel de vraag: maakt Claude fouten als ik deze weghaal? Zo nee, schrappen. Een te lang bestand zorgt ervoor dat Claude juist de belangrijke regels mist.",
+        "Volgens de documentatie horen erin: commando's die Claude niet kan raden, stijlregels die afwijken van de standaard, hoe je test, afspraken over branches en pull requests, en eigen architectuurkeuzes. Niet erin: wat Claude uit de code kan afleiden, standaardconventies van de taal, lange uitleg en dingen die vaak veranderen. Voor een dbt-project betekent dat: geen uitleg over ref() of incrementele modellen, wel jullie laagindeling, het commando om lokaal te bouwen en wanneer een full refresh mag.",
+        "Belangrijk om te weten: Claude behandelt CLAUDE.md als context, niet als afgedwongen instelling. Het is advies dat hij meestal volgt. Wat altijd moet gebeuren, zet je in een hook of een controle (zie verderop). En behandel het bestand als code: in Git, met review, en snoeien als Claude iets al vanzelf goed doet."
+      ]
+    },
+    {
+      "heading": "Regels per map en skills als pakket",
+      "paragraphs": [
+        "Niet elke afspraak geldt voor het hele project. Daarvoor heeft Claude Code de map .claude/rules. Elk bestand daarin gaat over één onderwerp, zoals tests of naamgeving. Met een paths-veld bovenaan laadt een regel alleen als Claude een bestand opent dat erbij past, bijvoorbeeld alles onder models/staging. Zo blijft de context klein.",
+        "Werkt je team ook met andere AI-tools, dan kan Claude Code (vanaf v2.1.277) een AGENTS.md lezen als er geen CLAUDE.md is. Je kunt AGENTS.md ook importeren vanuit CLAUDE.md met @AGENTS.md. Dan heb je één bestand met afspraken voor alle tools.",
+        "Skills blijven nuttig voor wat het model níet goed kent of wat maar soms nodig is: een eigen releaseproces, een nichefunctie, jullie manier van metrics definiëren. In dbt v2 kun je skills zelfs meeleveren in een dbt-pakket. Zet je ai_provider op claude, dan installeert dbt deps ze in .claude/skills. Zo krijgt elk project dezelfde, geversioneerde teamafspraken, net als een gedeeld macropakket."
+      ]
+    },
+    {
+      "heading": "Afdwingen in plaats van vragen",
+      "paragraphs": [
+        "De sterkste les uit zowel de proef als de documentatie van Anthropic: geef Claude een controle die hij zelf kan draaien. 'Claude stopt als het werk er klaar uitziet', schrijft Anthropic. Zonder test ben jij de controle. Met een test leest Claude de uitkomst en gaat hij door tot die slaagt. Voor dbt ligt dbt build voor de hand, liefst op een kleine lokale database met verzonnen data.",
+        "Er zijn trappen in hoe hard je dat afdwingt. Je kunt het in de opdracht vragen. Je kunt een Stop-hook instellen: een script dat het einde van de beurt blokkeert tot de controle slaagt. Of je laat een subagent met een frisse blik het verschil (diff) beoordelen, zodat de maker niet zijn eigen werk nakijkt. Vraag Claude daarbij bewijs te tonen: het commando en de uitvoer, niet alleen 'alle tests slagen'.",
+        "Noonan voegt een dbt-specifieke laag toe. Regels over laagindeling en naamgeving dwing je beter af met het pakket dbt-project-evaluator dan met tekst in een skill. De skill zegt dan alleen welke controles moeten slagen. Dat scheelt discussie: een regel die een machine controleert, hoeft Claude niet te onthouden."
+      ]
+    },
+    {
+      "heading": "Waar de meningen uiteenlopen",
+      "paragraphs": [
+        "In februari schreven Joel Labes en Jason Ganz van dbt Labs nog dat skills een generalistische agent veranderen in een data-agent, als een 'gelaagd trainingshandboek'. Acht maanden later laat hun collega zien dat de uitleg over dbt zelf weinig meer toevoegt bij de nieuwste modellen. Beide kunnen kloppen: het hangt af van het model. Bij het oudere Sonnet 4.5 scoorde de proef veel lager, en het afdwingen van skills hielp daar ook niet.",
+        "Let ook op de grenzen van de proef. Elke opzet draaide maar één keer, op één openbare dataset in Snowflake, en runs deelden een notitiemap. dbt staat bovendien volop in de trainingsdata van modellen. Voor eigen macro's, een eigen generator of een nieuwe functie kan een skill nog steeds het verschil maken. dbt Labs blijft zijn skills daarom ondersteunen."
+      ]
+    },
+    {
+      "heading": "Hoe het eruit kan zien in jouw dbt-project",
+      "paragraphs": [
+        "Begin klein. Een CLAUDE.md met hooguit een paar tientallen regels: hoe je lokaal bouwt, de lagen bronze, silver en gold en wat er in elke laag mag, en dat tests regels over de data toetsen (invarianten) in plaats van vaste waarden. Zet de testregels in .claude/rules met een paths-veld voor je models-map. Je Python-generatorscripts voor bronze en silver krijgen een eigen regelbestand, zodat Claude die conventies alleen ziet als hij daar werkt.",
+        "Voeg daarna één harde controle toe. Bijvoorbeeld een Stop-hook die dbt build draait op een lokale DuckDB met verzonnen data. Dat past ook bij de regel uit je eigen omgeving: Claude is een externe AI en mag niet bij werkdata, dus geen verbinding met het echte warehouse. Hij werkt alleen op code en nepdata; de echte run gaat via je normale pipeline.",
+        "Meet tot slot of het helpt. Neem drie typische taken uit je backlog, laat Claude ze doen met en zonder je nieuwe afspraken, en kijk naar welke tests hij schrijft en of hij zelf merkt wanneer iets faalt. Precies zoals de proef van dbt Labs: niet aannemen dat een regel werkt, maar het zien."
+      ]
+    }
+  ],
+  "experiment": "Kloon de openbare eval-repository van Noonan of maak een klein dbt-project op DuckDB met verzonnen data. Draai één ticket drie keer: zonder CLAUDE.md, met een CLAUDE.md van tien regels teamafspraken, en met daarnaast een Stop-hook die dbt build draait. Vergelijk de tests die Claude schrijft en of hij een falende build zelf opmerkt.",
+  "limitations": [
+    "De proef van dbt Labs bestaat uit één run per opzet op één dataset; het is een aanwijzing, geen bewijs.",
+    "CLAUDE.md en regels zijn advies; alleen hooks en controles grijpen echt in.",
+    "Claude Code is externe AI: gebruik het alleen op code en verzonnen data, nooit met een verbinding naar werk- of patiëntdata.",
+    "Een Stop-hook die steeds blokkeert kost tijd en tokens; Claude Code stopt na acht blokkades op rij zonder voortgang."
+  ],
+  "further_reading": [
+    {
+      "label": "Have dbt skills been bitter lesson'd? (Alex Noonan, dbt Labs, oktober 2026)",
+      "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
+      "note": "De proef zelf, met alle faalwijzen en het advies wat in skills hoort en wat in deterministische controles."
+    },
+    {
+      "label": "Best practices for Claude Code (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/best-practices.md",
+      "note": "Wat wel en niet in CLAUDE.md hoort, en de trappen van 'controle in de opdracht' tot Stop-hook en reviewer-subagent."
+    },
+    {
+      "label": "How Claude remembers your project (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/memory",
+      "note": "Waar CLAUDE.md-bestanden staan, imports, .claude/rules met paths en hoe AGENTS.md wordt gelezen."
+    },
+    {
+      "label": "Automate actions with hooks (Anthropic, documentatie, oktober 2026)",
+      "url": "https://code.claude.com/docs/en/hooks-guide?via=free",
+      "note": "Voorbeelden van hooks, exitcode 2 om te blokkeren en hoe je een Stop-hook laat stoppen."
+    },
+    {
+      "label": "Installing agent skills from dbt packages (dbt Labs, documentatie, september 2026)",
+      "url": "https://docs.getdbt.com/docs/dbt-ai/package-skills",
+      "note": "Hoe je in dbt v2 teamskills als pakket deelt en met dbt deps in .claude/skills zet."
+    },
+    {
+      "label": "Make your AI better at data work with dbt's agent skills (Joel Labes en Jason Ganz, dbt Labs, februari 2026)",
+      "url": "https://docs.getdbt.com/blog/dbt-agent-skills",
+      "note": "Het oorspronkelijke pleidooi voor dbt-skills; handig als tegenstem bij de proef van oktober."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Wat bleek volgens de proef van dbt Labs het grootste verschil te maken tussen goede en slechte runs van Claude 5.5?",
+      "options": [
+        "Of er dbt-skills beschikbaar waren",
+        "De werkwijze: hoe getest, gecontroleerd en afgerond werd",
+        "Of CLAUDE.md het gebruik van skills afdwong",
+        "Welk van de drie 5.5-modellen werd gebruikt"
+      ],
+      "answer": 1,
+      "explanation": "Elk 5.5-model haalde zonder skills minstens 92 procent. De fouten kwamen door werkwijze, zoals tests op vaste waarden en te vroeg 'klaar' melden, niet door gebrek aan dbt-kennis."
+    },
+    {
+      "question": "Je wilt dat elk dbt-model in silver een vaste naamgeving volgt. Waar regel je dat volgens het stuk het best?",
+      "options": [
+        "In een lange uitleg in CLAUDE.md",
+        "In een skill die uitlegt hoe dbt naamgeving werkt",
+        "Met een machinecontrole zoals dbt-project-evaluator, waarbij de instructie alleen zegt welke controles moeten slagen",
+        "Nergens: Claude 5.5 kent dbt-conventies al"
+      ],
+      "answer": 2,
+      "explanation": "Noonan adviseert laag- en naamregels deterministisch af te dwingen met dbt-project-evaluator. Tekst in CLAUDE.md of een skill is advies; een controle grijpt echt in."
+    },
+    {
+      "question": "Waarom raadt Anthropic aan CLAUDE.md kort te houden?",
+      "options": [
+        "Omdat een lang bestand niet in Git past",
+        "Omdat Claude in een te lang bestand belangrijke regels gaat missen",
+        "Omdat CLAUDE.md alleen bij de eerste sessie wordt gelezen",
+        "Omdat regels in CLAUDE.md altijd hard worden afgedwongen"
+      ],
+      "answer": 1,
+      "explanation": "CLAUDE.md wordt elke sessie geladen en is context, geen afgedwongen instelling. Is het te lang, dan raken belangrijke regels ondergesneeuwd; daarom de vraag per regel: maakt Claude fouten als ik dit weghaal?"
+    }
+  ],
+  "showcase": {
+    "caption": "Zo ziet een teamafspraak als regelbestand eruit. Het laadt alleen als Claude een bestand in de models-map opent, en het gaat over hoe jullie testen, niet over hoe dbt werkt.",
+    "language": "text",
+    "code": "# .claude/rules/dbt-tests.md\n---\npaths:\n  - \"models/**/*.sql\"\n  - \"models/**/*.yml\"\n---\n\n# Tests in dit project\n- Tests toetsen regels over de data (uniek, niet leeg,\n  geldige waarden), nooit totalen of lijsten van vandaag.\n- Ontdubbel niet stil in staging: meld dubbele rijen met\n  een test, zodat we ze zien.\n- Meet de buildtijd voor en na een nieuwe controle.\n  Langer dan 30 seconden extra? Leg uit waarom.\n- Klaar = `dbt build` slaagt lokaal; laat de uitvoer zien.\n- Wijzig alleen bestanden in deze repository.",
+    "note": "Eigen voorbeeld. De opbouw met paths staat in de documentatie van Claude Code (.claude/rules); de regels zelf zijn vertaald en ingekort uit het advies van Alex Noonan (dbt Labs). De grens van 30 seconden is een voorbeeld: Noonan laat die waarde open."
+  },
+  "currency_check": "Gecontroleerd op 31 oktober 2026. Bronnen uit februari tot en met oktober 2026: de proef van dbt Labs (30 oktober 2026), de actuele documentatie op code.claude.com (best practices, memory en hooks, met versievermeldingen tot rond v2.1.283), en de dbt-documentatie over package skills (bijgewerkt 17 september 2026). De dbt-skills-blog van februari 2026 staat er alleen als tegenstem naast. Bewust niet opgenomen: een regel in CLAUDE.md die skills afdwingt (veranderde in de proef de uitkomst niet) en oude adressen op docs.anthropic.com. AGENTS.md lezen vereist Claude Code v2.1.277 of nieuwer.",
+  "topics": [
+    "claude_ai_development",
+    "dbt_analytics_engineering",
+    "ai_context_engineering",
+    "data_quality_observability"
+  ],
+  "written_at": "2026-10-31T16:40:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}

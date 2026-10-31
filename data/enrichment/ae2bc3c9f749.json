@@ -1,0 +1,82 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "ae2bc3c9f749",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W42",
+  "headline": "Databricks werkt nu meerdere tabellen in één keer bij, of helemaal niet",
+  "summary": "Week 42 bij Azure Databricks: transacties over meerdere tabellen zijn algemeen beschikbaar, Power BI gebruikt standaard de ADBC-driver, en twee agent-producten worden legacy.",
+  "story": [
+    "Eerst een actiepunt: Knowledge Assistant en Supervisor Agent zijn sinds 12 oktober legacy. Bouw je agents in code, dan raadt Databricks de Agent Bricks CLI aan. Zonder code gebruik je Genie Agents. Begin dus geen nieuwe proef meer met de oude twee.",
+    "De grootste verandering: transacties over meerdere SQL-statements en tabellen zijn sinds 14 oktober algemeen beschikbaar (GA). Vergelijk het met een overboeking: geld gaat van de ene rekening af en komt op de andere bij, of er gebeurt niets. Zo werk je nu bijvoorbeeld een feitentabel en een logtabel samen bij. Het werkt voor managed Delta- en Iceberg-tabellen met catalog commits aan.",
+    "Power BI praat sinds 15 oktober standaard via de ADBC-driver met Databricks, voor nieuwe verbindingen in Desktop en de service. ADBC haalt data op in kolomvorm (Arrow), in plaats van rij voor rij. Bestaande verbindingen blijven zoals ze zijn; test zelf of een overstap sneller is.",
+    "Voor governance zijn er twee stappen. Governed tags kunnen in bèta via lineage meereizen naar afgeleide tabellen en views. Een tabel die je uit een gevoelige bron maakt, krijgt dan dezelfde tag. Daarnaast is de Data Classification API GA, met 50 nieuwe klassen gevoelige data. Verder in deze week: Genie Migrate (eerder agentic code converter) voor SQL-omzetting is GA, en geheugenpipelines voor agents zijn in bèta."
+  ],
+  "key_facts": [
+    "Knowledge Assistant en Supervisor Agent zijn legacy sinds 12 oktober 2026; aanbevolen: Agent Bricks CLI (code) of Genie Agents (zonder code).",
+    "Transacties voor managed Delta Lake- en Iceberg-tabellen: GA sinds 14 oktober 2026, met BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT; en catalog commits op de betrokken tabellen.",
+    "ADBC-driver voor de Power BI-connector: GA sinds 15 oktober 2026 en standaard voor nieuwe verbindingen in Power BI Desktop en de Power BI-service.",
+    "Governed tag propagation via lineage: bèta sinds 12 oktober 2026.",
+    "Data Classification API en Terraform-resource: GA sinds 14 oktober 2026; auto_tag_configs blijft Public Preview. Op 15 oktober kwamen er 50 nieuwe klassen en 16 landen en regio's bij.",
+    "Genie Migrate voor SQL-omzetting (T-SQL, Snowflake, Oracle en andere dialecten): GA sinds 15 oktober 2026; agent memory pipelines: bèta sinds 12 oktober 2026."
+  ],
+  "personal_relevance": "Transacties en meereizende tags maken je gold-laag veiliger, en de ADBC-driver raakt elke Power BI-verbinding met Databricks.",
+  "experiment": "Maak twee managed testtabellen met catalog commits op verzonnen data. Schrijf een transactie die in beide schrijft, laat de tweede stap bewust falen en controleer dat de eerste tabel onveranderd is.",
+  "limitations": [
+    "Transacties werken alleen op managed tabellen met catalog commits; externe tabellen vallen erbuiten.",
+    "Tag propagation is nog bèta: controleer welke bewerkingen de tag meenemen voordat je erop vertrouwt voor zorgdata."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Azure Databricks release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+      "label": "Transactions",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/"
+    },
+    {
+      "label": "Configure ADBC or ODBC driver for Power BI",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc"
+    },
+    {
+      "label": "Legacy agent offerings",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/legacy/"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_governance_privacy",
+    "powerbi_semantic_models",
+    "sql_spark_sql"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.8,
+    "novelty": 0.65
+  },
+  "development_key": "azure-databricks-week-42-2026",
+  "showcase": {
+    "caption": "Zo werkt het idee van een transactie: twee wijzigingen horen bij elkaar. Gaat er iets mis, dan draai je alles terug en is er niets veranderd.",
+    "language": "sql",
+    "code": "BEGIN TRANSACTION;\nINSERT INTO mutaties VALUES ('pleisters', -30);\nUPDATE voorraad SET aantal = aantal - 30\n  WHERE artikel = 'pleisters';\nROLLBACK;  -- er ging iets mis: alles terug\n\nSELECT\n  (SELECT aantal FROM voorraad\n    WHERE artikel = 'pleisters') AS voorraad_pleisters,\n  (SELECT COUNT(*) FROM mutaties) AS aantal_mutaties;",
+    "result": {
+      "columns": [
+        "voorraad_pleisters",
+        "aantal_mutaties"
+      ],
+      "rows": [
+        [
+          100,
+          0
+        ]
+      ]
+    },
+    "note": "Verzonnen data, echt uitgevoerd in DuckDB. In Databricks is de notatie BEGIN ATOMIC ... END; of BEGIN TRANSACTION; ... COMMIT;, op managed tabellen met catalog commits."
+  }
+}

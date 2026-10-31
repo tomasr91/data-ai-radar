@@ -1,0 +1,114 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "382e049710f1",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W41",
+  "headline": "Metric views rekenen over tijd, en collega's zoeken data per domein",
+  "summary": "Week 41 bij Azure Databricks: window measures in metric views, de Discover-pagina met domeinen en de koppeling met Copilot Studio zijn algemeen beschikbaar.",
+  "story": [
+    "Metric views kunnen sinds 6 oktober rekenen over een stukje tijd, en dat is algemeen beschikbaar (GA). Denk aan een lopend totaal of het gemiddelde van de laatste dagen. Ook getallen die je niet zomaar optelt over tijd, zoals een bezetting, kun je goed vastleggen (semi-additief). Zulke maatstaven staan nu vaak in DAX; in de catalogus kan elk rapport en elke AI-assistent dezelfde definitie gebruiken.",
+    "Op 8 oktober werd de Discover-pagina met domeinen GA. Discover is een etalage: collega's bladeren door data zonder de indeling van catalogus en schema te kennen. Met domeinen en subdomeinen orden je tabellen, dashboards en Genie Agents per bedrijfsgebied, bijvoorbeeld 'Zorg' en 'Financiën'.",
+    "Sinds 7 oktober is ook de koppeling met Microsoft Copilot Studio GA. Je gebruikt een Genie Agent als tool, of Databricks-data als kennisbron voor een eigen agent. Verder kwam Genie Code CLI in bèta: een codeeragent in de terminal die via de Databricks CLI werkt. En de Azure DevOps-connector (bèta) laadt projecten, werkitems en builds als data in."
+  ],
+  "key_facts": [
+    "Window measures in metric views (rollend, cumulatief en semi-additief): GA sinds 6 oktober 2026.",
+    "Discover-pagina en domeinen: GA sinds 8 oktober 2026; domeinen en subdomeinen ordenen tabellen, dashboards, notebooks en Genie Agents per bedrijfsgebied.",
+    "Azure Databricks-integratie met Microsoft Copilot Studio: GA sinds 7 oktober 2026; Genie Agents als tool of data als kennisbron.",
+    "Genie Code CLI: bèta sinds 6 oktober 2026, met modeltoegang via Unity Gateway.",
+    "Azure DevOps-connector in Lakeflow Connect: bèta sinds 8 oktober 2026."
+  ],
+  "personal_relevance": "Maatstaven en domeinen in de catalogus zijn precies de vaste context die je AI-contextlaag nodig heeft.",
+  "experiment": "Leg op openbare data een metric view vast met een lopend totaal, zet hem in een testdomein op de Discover-pagina, en vergelijk de uitkomst met dezelfde maatstaf in DAX.",
+  "limitations": [
+    "Een maatstaf in DAX én in een metric view kan uit elkaar lopen; kies per maatstaf één bron.",
+    "Copilot Studio is een externe Microsoft-dienst; controleer eerst of werkdata daar naartoe mag."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Azure Databricks release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+      "label": "Window measures in metric views",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques"
+    },
+    {
+      "label": "Discover page",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page"
+    },
+    {
+      "label": "Use Azure Databricks data in Microsoft Copilot Studio",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio"
+    }
+  ],
+  "topics": [
+    "data_architecture_modeling",
+    "metadata_lineage_catalogs",
+    "ai_context_engineering",
+    "powerbi_semantic_models"
+  ],
+  "quality": {
+    "depth": 0.55,
+    "practicality": 0.8,
+    "novelty": 0.6
+  },
+  "development_key": "azure-databricks-week-41-2026",
+  "showcase": {
+    "caption": "Zo rekent een maatstaf over tijd: een lopend totaal en een gemiddelde over drie dagen, op verzonnen opnames per dag. In een metric view leg je zo'n berekening één keer vast.",
+    "language": "sql",
+    "code": "SELECT\n  dag,\n  aantal,\n  SUM(aantal) OVER (ORDER BY dag) AS lopend_totaal,\n  ROUND(AVG(aantal) OVER (\n    ORDER BY dag\n    ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n  ), 1) AS gemiddelde_3_dagen\nFROM opnames\nORDER BY dag;",
+    "result": {
+      "columns": [
+        "dag",
+        "aantal",
+        "lopend_totaal",
+        "gemiddelde_3_dagen"
+      ],
+      "rows": [
+        [
+          "2026-10-01",
+          12,
+          12,
+          12.0
+        ],
+        [
+          "2026-10-02",
+          9,
+          21,
+          10.5
+        ],
+        [
+          "2026-10-03",
+          15,
+          36,
+          12.0
+        ],
+        [
+          "2026-10-04",
+          7,
+          43,
+          10.3
+        ],
+        [
+          "2026-10-05",
+          11,
+          54,
+          11.0
+        ],
+        [
+          "2026-10-06",
+          14,
+          68,
+          10.7
+        ]
+      ]
+    },
+    "note": "Verzonnen data, echt uitgevoerd in DuckDB. Zo werkt het idee in gewone SQL; de notatie in een metric view (YAML) staat in de documentatie over window measures."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T16:20:00Z",
+  "prompt_version": "taak-v2",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "date_note": "",
+  "article_id": "25057022b0aa",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W40",
+  "headline": "Toegangsregels uit Unity Catalog gelden nu ook voor andere engines",
+  "summary": "Week 40 bij Azure Databricks: ABAC-regels blijven gelden als een externe engine je tabellen leest, en twee AI-functies in SQL worden beter.",
+  "story": [
+    "Sinds 1 oktober is cross-engine ABAC algemeen beschikbaar (GA). ABAC betekent toegang op basis van kenmerken (attribute-based access control): een regel als 'kolommen met tag BSN altijd maskeren'. Tot nu toe golden zulke regels vooral binnen Databricks. Nu kunnen ondersteunde externe engines managed tabellen lezen terwijl de regels, rijfilters en kolommaskers blijven werken. Serverless compute van Databricks dwingt ze af, als een portier die vóór de deur controleert.",
+    "Twee AI-functies in SQL zijn beter geworden. ai_parse_document haalt nu ook de getallen uit grafieken in documenten, als JSON met reeksen, legenda en assen. Zoekfuncties en agents kunnen die waarden dan in een antwoord gebruiken. De standaardmodus van ai_extract gebruikt een nieuw model dat 2,3 keer sneller is, met betere kwaliteit en zonder extra kosten.",
+    "Voor jou telt vooral de eerste. Als data later ook via een andere engine gelezen wordt, hoef je de toegangsregels voor gevoelige kolommen niet op twee plekken te beheren."
+  ],
+  "key_facts": [
+    "Cross-engine ABAC: GA sinds 1 oktober 2026; ondersteunde externe engines lezen Unity Catalog managed tabellen met ABAC-beleid, rijfilters en kolommaskers, afgedwongen door serverless compute van Azure Databricks.",
+    "ai_parse_document: sinds 2 en 5 oktober 2026 staan grafiekwaarden als gestructureerde JSON in de uitvoer, met reeksen, legenda's en assen.",
+    "Standaardmodus van ai_extract: nieuw modelcheckpoint, 2,3 keer sneller, betere kwaliteit, zonder extra kosten (2 oktober 2026)."
+  ],
+  "personal_relevance": "Toegangsregels die met de data meereizen naar andere engines, maken governance van zorgdata eenvoudiger.",
+  "experiment": "Zet op een testtabel met verzonnen persoonsgegevens een ABAC-kolommasker via een tag, en lees de tabel daarna vanaf een externe Spark-client. Controleer dat de kolom gemaskeerd blijft.",
+  "limitations": [
+    "De release note noemt niet welke engines precies ondersteund worden; check de lijst in de documentatie.",
+    "Het afdwingen loopt via serverless compute van Databricks; dat kan extra kosten geven."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Azure Databricks release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+      "label": "Cross-engine attribute-based access controls (ABAC)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/cross-engine-abac"
+    },
+    {
+      "label": "ai_parse_document function",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document"
+    }
+  ],
+  "topics": [
+    "data_governance_privacy",
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.45,
+    "practicality": 0.65,
+    "novelty": 0.55
+  },
+  "development_key": "azure-databricks-week-40-2026"
+}

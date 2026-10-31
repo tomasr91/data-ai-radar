@@ -1,54 +1,27 @@
 {
  "format_version": 1,
- "generated_at": "2026-10-31T10:00:00Z",
+ "generated_at": "2026-10-31T16:45:00Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "dbt Labs-klanten als Okta, KOHO en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde definities, beschrijvingen bij dbt-modellen en alleen gecertificeerde marts. Databricks houdt zoekindexen voor AI nu vanzelf actueel op de tabellen zelf. De gedachte: een agent die uit beheerde bronnen kiest, rekent minder vaak mis.",
-   "article_ids": [
-    "4dcd7af26dab",
-    "069e6a8001ed",
-    "ceb4b784fbab",
-    "560fbec0053e"
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "dbt_analytics_engineering"
-   ]
+   "summary": "Okta, KOHO, Checkr en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. Databricks houdt zoekindexen voor AI vanzelf actueel en zet begin november Genie Ontology standaard aan, dat zelf context haalt uit metric views en dashboards. De gedachte: een agent die uit beheerde bronnen kiest, rekent minder vaak mis.",
+   "article_ids": ["4dcd7af26dab", "069e6a8001ed", "ceb4b784fbab", "a68aede0b61b", "560fbec0053e", "94b4924597e5"],
+   "topics": ["ai_context_engineering", "dbt_analytics_engineering", "metadata_lineage_catalogs"]
   },
   {
    "id": "geheugen-en-context-voor-agents",
    "title": "Agents houden hun venster leeg: geheugen, skills en subagents",
    "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, zoekwerk gaat naar subagents en blijvend geheugen komt in een apart bestand of een geheugenpipeline. Agent Skills kreeg deze maand een neutrale beheerder.",
-   "article_ids": [
-    "ea59c0428e23",
-    "471f6b1cbb07",
-    "9a8d5866a524",
-    "f29afd156725",
-    "72dc169275f9"
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "claude_ai_development"
-   ]
+   "article_ids": ["ea59c0428e23", "471f6b1cbb07", "ae2bc3c9f749", "f29afd156725", "72dc169275f9"],
+   "topics": ["ai_context_engineering", "ai_agents_rag", "claude_ai_development"]
   },
   {
-   "id": "semantische-laag-als-code",
-   "title": "Metric views en de semantische laag worden code die ook agents voedt",
-   "summary": "Metric views in Unity Catalog kunnen nu rekenen over tijd en vastleggen hoe ze aan elkaar koppelen, zodat AI-assistenten de goede join kiezen. Sigma en Under Armour zetten hun semantische laag en agents als code in dbt, met lineage en review. De gedachte: definities die BI en AI delen, horen in versiebeheer en in de catalogus.",
-   "article_ids": [
-    "60e7e131218f",
-    "ab3aa67e0549",
-    "fea9136ea071",
-    "28418ea3b8c0"
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "data_architecture_modeling",
-    "dbt_analytics_engineering"
-   ]
+   "id": "agents-verbeteren-door-te-meten",
+   "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
+   "summary": "dbt Labs zag dat Claude 5.5 dbt al kent en dat fouten uit de werkwijze komen. LangChain verbeterde een codeeragent alleen met zelfcontrole en traces, Ecolab liet elke gemigreerde tabel met data bewijzen, en Databricks verbetert AI-extractie pas na meten op een vaste testset. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "article_ids": ["c63f36899b14", "4cc09a1d9883", "d2e9b967064a", "e7bf67f656d3"],
+   "topics": ["ai_evaluation_observability", "claude_ai_development", "data_quality_observability"]
   }
  ]
 }
