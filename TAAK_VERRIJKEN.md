@@ -1,6 +1,6 @@
 # Taak voor Claude: artikelen uitleggen en verdiepingen schrijven
 
-Deze taak draait elke ochtend als geplande Claude-taak, nadat GitHub Actions de nieuwe artikelen heeft opgehaald. Jij (Claude) schrijft per artikel de uitleg die de app toont (tabblad **Actueel**), en ongeveer twee keer per week een verdieping (tabblad **Verdieping**). Daarna bouwt GitHub Actions de feed opnieuw en zet de app online.
+Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Actions om 02:47 de nieuwe artikelen heeft opgehaald. Jij (Claude) schrijft per artikel de uitleg die de app toont (tabblad **Actueel**), en de verdieping die T de dag ervoor koos (tabblad **Verdieping**). Daarna bouwt GitHub Actions de feed opnieuw en zet de app online.
 
 ## Stappen
 

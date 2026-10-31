@@ -1,7 +1,7 @@
 # Data & AI Radar: ophalen, feed bouwen en de app publiceren op GitHub Pages.
 #
 # Loopt:
-#  - elke ochtend (ophalen van nieuwe artikelen; daarna maakt Claude de uitleg)
+#  - elke nacht (ophalen van nieuwe artikelen; daarna maakt Claude om 04:12 de uitleg)
 #  - als Claude nieuwe uitleg pusht (data/enrichment/**), of als context/app/pipeline verandert
 #  - als je in de app duimpjes verstuurt (issue "Feedback: ..."): direct verwerken
 #  - handmatig via "Run workflow"
@@ -11,7 +11,7 @@ name: Radar bijwerken
 
 on:
   schedule:
-    - cron: "30 4 * * *"   # 05:30 Nederlandse wintertijd (06:30 zomertijd)
+    - cron: "47 1 * * *"   # 02:47 Nederlandse wintertijd (03:47 zomertijd); de Claude-taak volgt om 04:12
   workflow_dispatch:
   push:
     branches: [main]
