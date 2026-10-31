@@ -1,4 +1,8 @@
-"""Tekent de app-iconen (radarbeeld) als PNG in app/pwa/icons/.
+"""Tekent de app-iconen (radar, variant B 'Signaal') als PNG in app/pwa/icons/.
+
+Ontwerp (31-10-2026): zwarte achtergrond van de app, twee lichte ringen, een volle oranje
+zwaai (de accentkleur van de Radar) en een witte stip als 'gevonden signaal'.
+Het logo in de kop van de app (app/index.html, svg.mark) is hetzelfde ontwerp.
 
 Gebruik: pip install pillow && python scripts/make_icons.py
 De iconen staan in de repo; dit script is alleen nodig om ze opnieuw te maken.
@@ -9,60 +13,50 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 OUT = Path(__file__).resolve().parent.parent / "app" / "pwa" / "icons"
-BG = (43, 69, 194)        # accentblauw uit de app (--accent)
-FG = (255, 255, 255)
-SIGNAL = (240, 176, 74)   # signaalgeel (--signal, donker thema)
-SS = 4                    # supersampling voor gladde randen
+BG = (15, 18, 23)          # --bg
+RING = (196, 203, 214)     # lichte ring
+RING2 = (128, 137, 152)    # binnenring
+SWEEP = (240, 176, 74)     # --accent2 (oranje)
+DOT = (231, 234, 240)      # --ink
+SS = 4                     # supersampling voor gladde randen
 
 
-def radar(size: int, content: float, rounded: bool) -> Image.Image:
+def radar(size: int, content: float) -> Image.Image:
     """content = deel van het vlak dat de radar vult (maskable: binnen de veilige zone)."""
     S = size * SS
-    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    img = Image.new("RGBA", (S, S), BG + (255,))
+    c, r = S / 2, S * content / 2
+    w = max(2, int(S * (0.045 if size >= 64 else 0.06)))
+
+    def layer(draw_fn):
+        l = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+        draw_fn(ImageDraw.Draw(l))
+        img.alpha_composite(l)
+
+    layer(lambda d: d.pieslice([c - r, c - r, c + r, c + r], -90, -20, fill=SWEEP))
+    layer(lambda d: d.ellipse([c - r, c - r, c + r, c + r], outline=RING, width=w))
+    if size >= 48:  # op heel klein formaat alleen de buitenring
+        ri = r * 0.55
+        layer(lambda d: d.ellipse([c - ri, c - ri, c + ri, c + ri], outline=RING2, width=w))
     d = ImageDraw.Draw(img)
-    if rounded:
-        d.rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.22), fill=BG)
-    else:
-        d.rectangle([0, 0, S, S], fill=BG)
-    c = S / 2
-    r = S * content / 2
-    w = max(2, int(S * 0.028))
-    # zwaai (sector) van 12 uur naar ~2 uur
-    sweep = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    ImageDraw.Draw(sweep).pieslice([c - r, c - r, c + r, c + r], start=-90, end=-30, fill=(255, 255, 255, 70))
-    img.alpha_composite(sweep)
-    for f, a in [(1.0, 150), (0.64, 110), (0.3, 90)]:
-        rr = r * f
-        ring = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-        ImageDraw.Draw(ring).ellipse([c - rr, c - rr, c + rr, c + rr], outline=(255, 255, 255, a), width=w)
-        img.alpha_composite(ring)
-    ang = math.radians(-30)
-    d = ImageDraw.Draw(img)
-    d.line([c, c, c + r * 0.9 * math.cos(ang), c + r * 0.9 * math.sin(ang)], fill=FG, width=int(w * 1.6))
-    d.ellipse([c - w * 1.6, c - w * 1.6, c + w * 1.6, c + w * 1.6], fill=FG)
-    # signaal (geel) en een zwakkere blip
-    bx, by = c + r * 0.55 * math.cos(math.radians(-55)), c + r * 0.55 * math.sin(math.radians(-55))
-    br = r * 0.13
-    d.ellipse([bx - br, by - br, bx + br, by + br], fill=SIGNAL)
-    sx, sy = c + r * 0.45 * math.cos(math.radians(140)), c + r * 0.45 * math.sin(math.radians(140))
-    sr = r * 0.07
-    d.ellipse([sx - sr, sy - sr, sx + sr, sy + sr], fill=(255, 255, 255, 170))
-    return img.resize((size, size), Image.LANCZOS)
+    a = math.radians(-55)
+    bx, by, br = c + r * 0.72 * math.cos(a), c + r * 0.72 * math.sin(a), r * 0.14
+    d.ellipse([bx - br, by - br, bx + br, by + br], fill=DOT)
+    d.ellipse([c - w * 1.1, c - w * 1.1, c + w * 1.1, c + w * 1.1], fill=DOT)
+    return img.resize((size, size), Image.LANCZOS).convert("RGB")
 
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     targets = {
-        "icon-192.png": (192, 0.76, False),
-        "icon-512.png": (512, 0.76, False),
-        "icon-maskable-512.png": (512, 0.56, False),   # binnen de veilige zone (cirkel van 80%)
-        "apple-touch-icon.png": (180, 0.72, False),
-        "favicon-32.png": (32, 0.86, True),
+        "icon-192.png": (192, 0.80),
+        "icon-512.png": (512, 0.80),
+        "icon-maskable-512.png": (512, 0.62),   # binnen de veilige zone (cirkel van 80%)
+        "apple-touch-icon.png": (180, 0.76),
+        "favicon-32.png": (32, 0.92),
     }
-    for name, (size, content, rounded) in targets.items():
-        im = radar(size, content, rounded)
-        if not rounded:
-            im = im.convert("RGB")  # volledig dekkend: geen transparante randen op Android
+    for name, (size, content) in targets.items():
+        im = radar(size, content)
         im.save(OUT / name, optimize=True)
         print(name, im.size)
 
