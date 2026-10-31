@@ -2345,8 +2345,224 @@
    "published_raw": "Thu, 29 Oct 2026 22:30:04 GMT",
    "fetched_at": "2026-10-30T06:06:02.911565Z",
    "excerpt": "We introduced Real-Time Mode (RTM) last year which enabled customers to build low-latency, operational use cases..."
+  },
+  "azure_databricks_release_notes:d78cae9e1b1b": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Managed warehouse for MLflow (Beta)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#managed-warehouse-for-mlflow-beta",
+   "published_raw": "Mon, 02 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>With managed warehouse, users can view traces stored in Unity Catalog in the MLflow UI without selecting a SQL warehouse. MLflow runs trace queries on a SQL warehouse that it creates in your workspace when your workspace supports it, and on serverless compute otherwise. Workspace admins can enable <strong>Managed Warehouse for MLflow</strong> on the <a href=\"/azure/databricks/admin/workspace-settings/manage-previews\"><strong>Previews</strong> page</a>. See <a href=\"/azure/databricks/mlflow3/genai/tracing/managed-warehouse\">Managed warehouse for MLflow traces</a>.</p>"
+  },
+  "azure_databricks_release_notes:bc9182a62df4": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Track Unity Gateway skill usage with audit logs and the usage dashboard",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#track-unity-gateway-skill-usage-with-audit-logs-and-the-usage-dashboard",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>You can now track usage of Unity Gateway Skills, which are in <a href=\"/azure/databricks/release-notes/release-types\">Beta</a>. <a href=\"/azure/databricks/admin/account-settings/audit-logs#ai-gateway-skills\">Audit logs</a> record skill list, load, and file fetch events under the <code>aiGatewaySkills</code> service. The <strong>Skills</strong> tab of the <a href=\"/azure/databricks/ai-gateway/usage-tracking#view-usage-dashboard\">usage dashboard</a> shows downloads, loads, and activity by user.</p>"
+  },
+  "azure_databricks_release_notes:b2bb814d8114": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Claude Code auto mode for Anthropic and non-Anthropic models",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#claude-code-auto-mode-for-anthropic-and-non-anthropic-models",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Claude Code auto mode is now supported for both Anthropic and non-Anthropic models hosted by Azure Databricks. Auto mode reviews tool calls to reduce routine permission prompts. See <a href=\"/azure/databricks/ai-gateway/coding-agent-claude#auto-mode\">Auto mode</a>.</p>"
+  },
+  "azure_databricks_release_notes:22e82fe01dde": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Track Unity Gateway skill usage with audit logs and the usage dashboard",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#track-unity-gateway-skill-usage-with-audit-logs-and-the-usage-dashboard",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>You can now track usage of Unity Gateway Skills, which are in <a href=\"/azure/databricks/release-notes/release-types\">Beta</a>. <a href=\"/azure/databricks/admin/account-settings/audit-logs#ai-gateway-skills\">Audit logs</a> record skill list, load, and file fetch events under the <code>aiGatewaySkills</code> service. The <strong>Skills</strong> tab of the <a href=\"/azure/databricks/ai-gateway/usage-tracking#view-usage-dashboard\">usage dashboard</a> shows downloads, loads, and activity by user.</p>"
+  },
+  "azure_databricks_release_notes:c2d5b4200a41": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Microsoft Graph Logs connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>The managed <a href=\"/azure/databricks/ingestion/lakeflow-connect/microsoft-graph-logs\">Microsoft Graph Logs connector</a> is now available in Beta in Databricks Lakeflow Connect.</p>\n<p>Use the connector to ingest security alerts from Microsoft Defender XDR, Microsoft Sentinel, and other Microsoft security products into Azure Databricks. The connector uses OAuth machine-to-machine authentication with a Microsoft Entra ID application and supports incremental ingestion.</p>"
+  },
+  "azure_databricks_release_notes:ab3aa67e0549": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Relationships between metric views (Beta)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#relationships-between-metric-views-beta",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Relationships between Unity Catalog metric views are in <a href=\"/azure/databricks/release-notes/release-types\">Beta</a>. Use <code>ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP</code> to record how a source metric view joins to a target metric view, including the cardinality and the join condition, so that AI assistants and BI tools choose the right join path. Relationships require Databricks Runtime 19 and above, or a SQL warehouse. See <a href=\"/azure/databricks/uc-semantics/metric-views/relationships\">Relationships between metric views</a>.</p>"
+  },
+  "azure_databricks_release_notes:c9531583aef5": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Moonshot AI Kimi K2.7 is retired",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#moonshot-ai-kimi-k27-is-retired",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Moonshot AI Kimi K2.7 was retired on October 30, 2026. Kimi K3 is the recommended replacement. See <a href=\"/azure/databricks/machine-learning/retired-models-policy#retired\">Deprecated and retired models</a> for migration guidance.</p>"
+  },
+  "azure_databricks_release_notes:8fad7cf0f083": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Thinking Machine Labs Inkling is retired",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#thinking-machine-labs-inkling-is-retired",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Thinking Machine Labs Inkling was retired on October 30, 2026. GLM 5.3 or Kimi K3 is the recommended replacement. See <a href=\"/azure/databricks/machine-learning/retired-models-policy#retired\">Deprecated and retired models</a> for migration guidance.</p>"
+  },
+  "azure_databricks_release_notes:d8487cf65a03": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Claude Code auto mode for Anthropic and non-Anthropic models",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#claude-code-auto-mode-for-anthropic-and-non-anthropic-models",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Claude Code auto mode is now supported for both Anthropic and non-Anthropic models hosted by Azure Databricks. Auto mode reviews tool calls to reduce routine permission prompts. See <a href=\"/azure/databricks/ai-gateway/coding-agent-claude#auto-mode\">Auto mode</a>.</p>"
+  },
+  "azure_databricks_release_notes:65fae25b9be1": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Azure West US 2, South Central US, and Australia Southeast now have dedicated regional control planes",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#azure-west-us-2-south-central-us-and-australia-southeast-now-have-dedicated-regional-control-planes",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Azure West US 2, South Central US, and Australia Southeast now each have a dedicated regional control plane. Before this release, West US 2 and South Central US workspaces used the West US-based control plane, and Australia Southeast workspaces used the Australia East-based control plane. New workspaces created in these regions use the regional control plane and require firewall allowlist entries for the new secure cluster connectivity (SCC) relay tunnel, Control Plane NAT IPs, Metastore, and Event Hubs endpoint. Australia Southeast adds a new Log Blob storage value. South Central US also adds an East US Artifact Blob storage secondary alongside the existing North Central US value. All South Central US workspaces should allowlist both. Existing workspaces continue to use their current control plane unless they migrate to the regional control plane. See <a href=\"/azure/databricks/resources/ip-domain-region\">IP addresses and domains for Azure Databricks services and assets</a>.</p>"
+  },
+  "azure_databricks_release_notes:83ae7c1cc334": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Genie Agents enhancements and bug fixes",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-agents-enhancements-and-bug-fixes",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<ul>\n<li><strong>Guided agent creation</strong>: A guided experience now walks you through creating an effective Genie Agent. See <a href=\"/azure/databricks/genie-agents/set-up#build-with-genie-code\">Set up an agent with Genie Code</a>.</li>\n<li><strong>Faster file retrieval (Beta)</strong>: Genie Agents now retrieve files faster when answering questions. See <a href=\"/azure/databricks/genie-agents/volumes#content-search\">How content search works</a>.</li>\n<li><strong>Content search details hidden from viewers (Beta)</strong>: The context panel no longer shows technical content search details, such as the number of files indexed, to users with CAN VIEW or CAN RUN permission on a Genie Agent. See <a href=\"/azure/databricks/genie-agents/volumes#content-search\">How content search works</a>.</li>\n<li><strong>Volume file links in embedded agents</strong>: Links to volume files in an embedded Genie Agent now open the file instead of redirecting users to the workspace. See <a href=\"/azure/databricks/genie-agents/embed\">Embed a Genie Agent in an external app</a>.</li>\n</ul>"
+  },
+  "azure_databricks_release_notes:9801fdd5f7a1": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Dashboard relationships are now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#dashboard-relationships-are-now-generally-available",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Dashboard relationships, which let you build complex multi-fact data models scoped to an AI/BI dashboard, are now generally available. See <a href=\"/azure/databricks/dashboards/manage/data-modeling/dashboard-relationships\">Dashboard relationships</a> and <a href=\"/azure/databricks/dashboards/manage/data-modeling/dashboard-relationships/create-relationships\">Create dashboard relationships</a>.</p>"
+  },
+  "azure_databricks_release_notes:5e4c6d5021fd": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Dashboard bug fixes",
+   "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#dashboard-bug-fixes",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<ul>\n<li><strong>Single-field filter default</strong>: Changing the field on a single-field filter now clears the previous field's default value. The filter falls back to <strong>All</strong>, or to <strong>None</strong> when <strong>All</strong> isn't allowed.</li>\n<li><strong>Widget-level filter refresh</strong>: The values in widget-level filters now refresh when a dataset changes, without a browser refresh. See <a href=\"/azure/databricks/dashboards/manage/filters/field-filters\">Filter on fields</a>.</li>\n<li><strong>Custom theme scope</strong>: Custom themes no longer color the <strong>View queries</strong> dialog, widget context menus, or data reference popovers, matching the behavior of built-in themes.</li>\n<li><strong>Funnel chart fields</strong>: Fields now carry over when you change a chart to or from a funnel chart. See <a href=\"/azure/databricks/dashboards/manage/visualizations/types#funnel\">Funnel chart</a>.</li>\n<li><strong>Tabbed editor popover height</strong>: Tabbed editor popovers now keep their opening height instead of growing.</li>\n</ul>"
+  },
+  "azure_databricks_release_notes:c61d00f71f74": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Xero connector is available in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>The managed <a href=\"/azure/databricks/ingestion/lakeflow-connect/xero\">Xero connector</a> is now available in <a href=\"/azure/databricks/release-notes/release-types\">Beta</a> in Databricks Lakeflow Connect. Workspace admins can enable it from the <strong>Previews</strong> page.</p>\n<p>Use the connector to ingest accounting data such as invoices, payments, and contacts from Xero into Azure Databricks. The connector uses OAuth user authorization, ingests transaction tables such as invoices and payments incrementally, and removes deleted records for supported tables.</p>"
+  },
+  "azure_databricks_release_notes:f50b3f17fb76": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Simba JDBC Driver (Legacy) 2.8.6 is available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#simba-jdbc-driver-legacy-286-is-available",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Simba JDBC Driver (Legacy) 2.8.6 prevents pending Cloud Fetch downloads from delaying the last connection from closing. It also updates <code>lz4-java</code>, Jackson, and <code>libthrift</code>. Download it from the <a href=\"https://www.databricks.com/spark/jdbc-drivers-archive\">JDBC drivers archive</a> under <strong>All JDBC Driver Versions (Simba)</strong>.</p>"
+  },
+  "azure_databricks_release_notes:f9a93c37da54": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Choose a billing workspace for private endpoint charges (Public Preview)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#choose-a-billing-workspace-for-private-endpoint-charges-public-preview",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>You can now choose which workspace is billed for the hourly charges of Private Link endpoints and private network gateways in a network connectivity configuration (NCC). See <a href=\"/azure/databricks/security/network/serverless-network-security#billing-workspace\">Choose a billing workspace for private endpoint charges</a>.</p>"
+  },
+  "azure_databricks_release_notes:98507a56847d": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Native XML file format support is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#native-xml-file-format-support-is-now-generally-available",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Native XML file format support is now generally available. You can ingest, query, and parse XML files in batch or streaming workloads with Auto Loader, <code>read_files</code>, and <code>COPY INTO</code>, and use the <code>from_xml</code> and <code>schema_of_xml</code> SQL functions. See <a href=\"/azure/databricks/query/formats/xml\">Read and write XML files</a>.</p>"
+  },
+  "azure_databricks_release_notes:cc23664c92f0": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Real-time mode in Lakeflow pipelines is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#real-time-mode-in-lakeflow-pipelines-is-now-generally-available",
+   "published_raw": "Thu, 29 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Real-time mode in Lakeflow pipelines is now generally available on classic compute and serverless compute. Use it for operational workloads that need end-to-end latency as low as five milliseconds, such as fraud detection. See <a href=\"/azure/databricks/ldp/real-time\">Use real-time mode in Lakeflow pipelines</a>.</p>"
+  },
+  "azure_databricks_release_notes:b79e575c213a": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Unpaginated requests to some Unity Catalog REST API operations will soon be rejected",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#unpaginated-requests-to-some-unity-catalog-rest-api-operations-will-soon-be-rejected",
+   "published_raw": "Wed, 28 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>Azure Databricks will soon start rejecting unpaginated requests to some Unity Catalog REST API operations, such as list catalogs, list schemas, and list tables, with HTTP <code>400</code> responses. Prior to this, unpaginated requests to these operations are subject to progressively stricter rate limits and will receive HTTP <code>429</code> responses, potentially causing jobs to run more slowly due to retries, or fail if the client does not handle these errors. The paginated forms of these operations remain available.</p>\n<p>If you call these operations directly, update your clients to set <code>max_results=0</code> and follow with <code>next_page_token</code> until all pages are retrieved. If you use a Databricks SDK or the Databricks CLI, upgrade to a current release, which uses these fields by default.</p>\n<p>For the full list of affected operations and update instructions, see <a href=\"/azure/databricks/data-governance/unity-catalog/paginate-legacy-list-apis\">Paginate Unity Catalog REST API operations</a>.</p>"
+  },
+  "azure_databricks_release_notes:2b2f6cc0d952": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Multiple real-time flows per serverless pipeline and source stage adaptive repartitioning are in Beta",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#multiple-real-time-flows-per-serverless-pipeline-and-source-stage-adaptive-repartitioning-are-in-beta",
+   "published_raw": "Wed, 28 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:28.495864Z",
+   "excerpt": "<p>On serverless pipelines that use the preview channel, you can run multiple real-time mode flows in one pipeline without the flows competing for task slots. Source stage adaptive repartitioning automatically adjusts the number of tasks that read from each Kafka or Kinesis source to match its traffic, so you don't need to set <code>maxPartitions</code> or <code>shardsPerTask</code>. Both capabilities are in <a href=\"/azure/databricks/release-notes/release-types\">Beta</a>. See <a href=\"/azure/databricks/ldp/real-time#serverless-pipelines-on-the-preview-channel\">Serverless pipelines on the preview channel</a>.</p>"
+  },
+  "claude_code_releases:1ac62f843edf": {
+   "source_id": "claude_code_releases",
+   "title": "v2.1.316",
+   "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
+   "published_raw": "2026-10-31T01:01:35Z",
+   "fetched_at": "2026-10-31T08:25:29.080612Z",
+   "excerpt": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>CLAUDE_CODE_DISABLE_ULTRATHINK</code>, which turns the <code>ultrathink</code> keyword off</li>\n<li>Added pooled group budgets to the Claude apps gateway: one monthly budget that a group's members share, on top of each member's own limit, set with <code>pooled_budget</code> on the spend limits admin API</li>\n<li>Added <code>CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP</code> to keep system cross-certificates that certify each other in a loop, for servers whose private CA needs one</li>\n<li>Added <code>CLAUDE_CODE_SUBAGENT_EFFORT</code> to set the effort level subagents run at when nothing else names one, instead of inheriting the session's</li>\n<li>Added <code>managed.policy_mode: layered</code> to the Claude apps gateway: every policy that matches a developer applies, each merged over the ones listed below it, not only the first</li>\n<li>Added <code>guardrail.input_tagging</code> on Claude apps gateway Bedrock upstreams, which wraps prompts in the input tags that an Amazon Bedrock guardrail's prompt attacks filter needs; <code>all_messages_and_system</code> also tags the system prompt</li>\n<li>Deprecated fast mode for Opus 4.8 as of October 30, 2026; it will be removed on November 30, 2026. After removal, fast mode requests on Opus 4.8 return an error and do not fall back to standard Opus 4.8. Migrate to Opus 5.5 to keep the speedup</li>\n<li>Fixed shell commands being left running on macOS and Linux when Claude Code exits by itself, for example when credentials are refused or a cloud session is archived</li>\n<li>Fixed bash aliases with line breaks in their value (except in Git Bash), and functions whose names start with a dash, being garbled or lost in the Bash tool's shell</li>\n<li>Fixed bash scripts started from the Bash tool stopping after their first command when <code>SHELLOPTS</code> is exported</li>\n<li>Fixed PowerShell hooks not blocking on exit code 2 when the command begins with a type cast, <code>param</code>, <code>using</code> or an attribute</li>\n<li>Fixed some network requests hanging when a compressed response was cut off or corrupted</li>\n<li>Fixed <code>sonnet</code>, <code>opus</code> and <code>haiku</code> on Vertex AI and Amazon Bedrock showing an error mid-session instead of switching to an older model when the newest is not yet available to the account or region</li>\n<li>Fixed the Claude apps gateway not checking every model a request names against <code>availableModels</code>, <code>deniedModels</code> and <code>models</code>; a request that names a blocked model now gets a 400 naming the field</li>\n<li>Fixed <code>claude auth login</code> refusing to run where managed settings require a Claude apps gateway; in a terminal it now shows the gateway sign-in</li>\n<li>Fixed <code>--restricted</code> sessions uploading files from outside the working directories when a Read allow rule covered them</li>\n<li>Fixed prompts containing invisible characters needing a second Enter to send; plain prompts now send cleaned on the first Enter, and commands still wait for review</li>\n<li>Fixed sub-agents that inherited a parent sub-agent's model moving to the main model when a background job or message woke them</li>\n<li>Fixed a managed <code>autoMode.allow</code> list without <code>\"$defaults\"</code> getting the built-in exceptions back from a host app's <code>--settings</code>, a first rule added in <code>/permissions</code>, or <code>/auto-mode-setup</code></li>\n<li>Fixed cloud sessions and cloud scheduled tasks not being marked as failed when auto mode stopped a turn because the server returned no safety verdict</li>\n<li>Fixed <code>claude -p</code> text output sometimes not saying why auto mode stopped a turn when a background agent was still running</li>\n<li>Fixed <code>CLAUDE_CODE_AUTO_MODE_SERVER=1</code> being ignored in sessions started by a host application (such as Claude Desktop) behind a proxy or LLM gateway with experimental betas turned off</li>\n<li>Fixed plugin MCP <code>headersHelper</code> scripts receiving a corrupted <code>CLAUDE_PLUGIN_ROOT</code> and server URL when a credential-named environment variable was set to a switch value such as <code>1</code></li>\n<li>Fixed the SDK <code>register_repo_root</code> control request not loading the CLAUDE.md of a directory outside the working directory (with <code>CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1</code>)</li>\n<li>Fixed the Artifact tool showing <code>?</code> for artifact database access rules at the <code>self</code> level, and not quoting those rules back when it refuses a republish that would drop them</li>\n<li>Fixed <code>/model &lt;id&gt;</code> not warning when the model isn't recognized by this version and auto-compact will assume a 200K context window</li>\n<li>Fixed the \"hold space to speak\" hint using up its three showings in one session, and showing an empty key when push-to-talk is unbound</li>\n<li>Fixed Grep and Glob never returning when the search process is killed at the timeout but does not exit, seen on Windows</li>\n<li>Fixed a rare case where resuming a conversation did not restore its plan, when <code>/clear</code> or <code>/resume</code> had been run while part of that conversation was still being saved</li>\n<li>Fixed first-run setup dropping words from the security notes and the terminal-setup explanation in narrow terminals</li>\n<li>Fixed the Enterprise survey card taking a typed 1 or 0 after a short pause; a typed answer now needs Enter</li>\n<li>Self-hosted runner: Fixed a message sent while Claude was working being answered after a Stop, once the session's process had been replaced</li>\n<li>Self-hosted runner: Fixed an MCP server's on/off switch sometimes being lost when a session moved to a new machine</li>\n<li>Windows: Fixed the Bash tool losing your aliases and functions in Git Bash when the rc file sets errexit and pipefail and only winpty aliases, or none, are defined</li>\n<li>Improved <code>/code-review</code> started from the Code tab in Claude Desktop or on the web: cloud and <code>claude remote-control</code> sessions now show the findings card, not a plain-text list</li>\n<li>Improved <code>/diff</code> on large repositories: each refresh usually runs one fewer full-repository git command, and refreshes are spaced out when git is slow</li>\n<li>Improved the messages shown when <code>/ultrareview</code>, a cloud session or a cloud agent finds no GitHub remote: they now say to create a repository at <a href=\"https://github.com/new\">https://github.com/new</a>, and <code>/ultrareview</code> no longer suggests a <code>gh</code> command that <code>gh</code> rejects</li>\n<li>Improved SSL certificate errors to name the likely causes, among them a server that leaves out an intermediate certificate, and the fix for each</li>\n<li>Changed auto mode so that an <code>autoMode.allow</code> list without <code>\"$defaults\"</code> no longer removes the built-in rule on scheduled-task prompts</li>\n<li>Changed server-managed settings for Team and Enterprise logins: settings fetched from Anthropic's API now apply without an approval prompt, and a stored copy that doesn't verify is refused</li>\n<li>[VSCode] Added sign-in to a Claude apps gateway from the chat panel, with no terminal needed</li>\n<li>[VSCode] Changed <code>ultrathink</code> to run its turn at <code>xhigh</code> effort and show in a rainbow in the chat box, as in the terminal</li>\n<li>[VSCode] Fixed the missing Effort slider, Ultracode switch and model name when the model setting has the <code>[1m]</code> tag, such as <code>opus[1m]</code></li>\n<li>[VSCode] Fixed saved <code>/btw</code> side-question history being deleted too early while a settings file has errors</li>\n<li>[VSCode] Fixed a conversation coming back in Auto mode after a reload or restart when its plan was approved with \"Yes, and manually approve edits\"</li>\n<li>[Cloud sessions] Added a form card to cloud sessions, so you can fill in or decline a form an MCP server asks for instead of the request being canceled without you seeing it</li>\n<li>[Cloud sessions] Added a \"Catching up…\" line that shows while a cloud or Remote Control session you switch back to is still bringing its messages up to date</li>\n<li>[Cloud sessions] Changed network secrets so Enterprise members can add and delete them on their own cloud environments, instead of only viewing them</li>\n<li>[Cloud sessions] Improved the Changes pane for cloud sessions: the note about what the list leaves out is now a badge beside the branch name, not a row above the diff</li>\n<li>[Cloud sessions] Fixed file search in a cloud session's Files pane showing folders as ../.. paths after Claude changed directory; results now show their path from the project's root</li>\n<li>[Claude Tag] Fixed Claude refusing to edit or append to a canvas it made in a Slack channel, from that channel, once the canvas was also shared to another channel or a DM</li>\n<li>[Claude Tag] Fixed untagged replies going unanswered in a Slack Connect thread when both organizations have installed Claude and Slack delivered the reply to the other organization's app</li>\n<li>[Claude Tag] Fixed a cloud scheduled task's live status checklist in Slack staying half-done; a run can now edit the top-level messages it posted during that run</li>\n<li>[Claude Tag] Changed a Slack channel's Respond automatically switch to a \"How Claude participates\" choice on the channel's Configure page and in Claude Tag admin settings</li>\n<li>[Code Review] Added a findings-by-severity card to the Code Review analytics page, showing the period's total findings, a daily chart stacked by severity, and each severity's count</li>\n</ul>"
+  },
+  "databricks_blog:b12079c3ebfc": {
+   "source_id": "databricks_blog",
+   "title": "Databricks and SAP unleash end-to-end data & AI capabilities to level up enterprise AI transformation",
+   "url": "https://www.databricks.com/blog/databricks-and-sap-unleash-end-end-data-ai-capabilities-level-enterprise-ai-transformation",
+   "published_raw": "Fri, 30 Oct 2026 21:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:29.461920Z",
+   "excerpt": "Today's AI models are more capable than ever. What they still lack is the business..."
+  },
+  "databricks_blog:50bc99c088c0": {
+   "source_id": "databricks_blog",
+   "title": "Wealth Management Client Onboarding Needs More Than AI",
+   "url": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai",
+   "published_raw": "Fri, 30 Oct 2026 19:40:00 GMT",
+   "fetched_at": "2026-10-31T08:25:29.461920Z",
+   "excerpt": "Wealth Management client onboarding can stall even when every system has done its job. The document is collected..."
+  },
+  "databricks_blog:d96d25ae4910": {
+   "source_id": "databricks_blog",
+   "title": "Deliberate decisions and enterprise AI value",
+   "url": "https://www.databricks.com/blog/deliberate-decisions-and-enterprise-ai-value",
+   "published_raw": "Fri, 30 Oct 2026 19:30:00 GMT",
+   "fetched_at": "2026-10-31T08:25:29.461920Z",
+   "excerpt": "AI progress is moving quickly. Expectations are rising, experimentation is spreading..."
+  },
+  "databricks_engineering_blog:50bc99c088c0": {
+   "source_id": "databricks_engineering_blog",
+   "title": "Wealth Management Client Onboarding Needs More Than AI",
+   "url": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai",
+   "published_raw": "Fri, 30 Oct 2026 19:40:00 GMT",
+   "fetched_at": "2026-10-31T08:25:29.591238Z",
+   "excerpt": "Wealth Management client onboarding can stall even when every system has done its job. The document is collected..."
+  },
+  "huggingface_blog:b2263e9f8412": {
+   "source_id": "huggingface_blog",
+   "title": "nemotron-halloween",
+   "url": "https://huggingface.co/blog/nvidia/nemotron-halloween",
+   "published_raw": "Fri, 30 Oct 2026 17:57:24 GMT",
+   "fetched_at": "2026-10-31T08:25:30.675220Z",
+   "excerpt": ""
+  },
+  "dbt_developer_blog:c63f36899b14": {
+   "source_id": "dbt_developer_blog",
+   "title": "Have dbt skills been bitter lesson’d?",
+   "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
+   "published_raw": "Fri, 30 Oct 2026 00:00:00 GMT",
+   "fetched_at": "2026-10-31T08:25:31.511161Z",
+   "excerpt": "Models have improved a lot since we shipped dbt agent skills, so I ran Claude Opus, Sonnet, and Haiku 5.5, and then Sonnet 4.5, through a Formula 1 dbt project with and without them. The 5.5 models already knew dbt, run-to-run noise was bigger than any skills effect, and what separated good runs from bad ones was process."
   }
  },
- "updated_at": "2026-10-30T14:26:10.173039Z",
+ "updated_at": "2026-10-31T08:25:28.442389Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
