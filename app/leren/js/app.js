@@ -53,9 +53,9 @@
       if (ui.ready) C.newMilestones(); // legt bij de eerste keer al behaalde mijlpalen stil vast
       const all = C.stats(null, { kind: "all" }), pr = C.progress(), r = pr.pct, last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
       body = `<div class="card start">
-          <div class="ready"><span class="big pct-m">${pct(r)}</span><span>beheerst</span></div>
-          <button class="meter-btn" data-act="legend" aria-expanded="${!!ui.legend}" aria-label="Toon wat de kleuren betekenen">${meter(pr)}</button>
-          ${ui.legend ? legend(pr) : ""}
+          <div class="ready"><span class="big">${pct(r)}</span><span>van de stof zit erin</span></div>
+          ${meter(pr)}
+          ${legend(pr)}
           ${last ? `<p class="small ms-line">✓ ${msText(last)}</p>` : ""}
           <button class="btn primary wide" data-act="start" data-kind="weak">${all.seen ? "Verder oefenen" : "Begin met oefenen"}</button>
         </div>
@@ -262,7 +262,6 @@
 
   const H = {
     cert: el => setCert(el.dataset.id),
-    legend: () => { ui.legend = !ui.legend; render(); },
     home: () => { ui.view = "home"; render(); toTop(); },
     start: el => start(el.dataset.kind, el.dataset.id),
     toggle: el => { ui.open[el.dataset.id] = !ui.open[el.dataset.id]; render(); },
