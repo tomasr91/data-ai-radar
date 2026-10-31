@@ -209,7 +209,7 @@
   function start(kind, id) {
     ui.scope = kind === "all" || kind === "weak" || kind === "hard" ? { kind } : { kind, id };
     ui.recent = []; resetRound();
-    newQuestion(); ui.view = "practice"; render(); toTop(".q");
+    newQuestion(); ui.view = "practice"; render(); toTop(".pbar");
   }
   /* Radar: het examen staat in een venster zonder eigen scrollbalk; de Radar-pagina scrolt.
      Zet het gevraagde blok (bijv. de vraag) zo hoog mogelijk, direct onder de vaste tabbladen van de Radar. */
@@ -243,16 +243,16 @@
   function next() {
     if (ui.retry) {
       if (ui.retry.i >= ui.retry.queue.length - 1) return showRound();
-      ui.retry.i++; newQuestion(); render(); toTop(".q"); return;
+      ui.retry.i++; newQuestion(); render(); toTop(".pbar"); return;
     }
     if (ui.round.length >= ROUND) {
       const list = retryList();
-      if (list.length) { ui.retry = { queue: C.shuffle(list), i: 0, res: [] }; newQuestion(); render(); toTop(".q"); return; }
+      if (list.length) { ui.retry = { queue: C.shuffle(list), i: 0, res: [] }; newQuestion(); render(); toTop(".pbar"); return; }
       return showRound();
     }
-    newQuestion(); render(); toTop(".q");
+    newQuestion(); render(); toTop(".pbar");
   }
-  function nextRound() { resetRound(); ui.view = "practice"; newQuestion(); render(); toTop(".q"); }
+  function nextRound() { resetRound(); ui.view = "practice"; newQuestion(); render(); toTop(".pbar"); }
   function flash(text) {
     let t = document.getElementById("toast");
     if (!t) { t = document.createElement("div"); t.id = "toast"; t.setAttribute("role", "status"); t.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-size:0.9rem;z-index:40;max-width:calc(100% - 32px)"; document.body.appendChild(t); }

@@ -278,9 +278,9 @@ with sync_playwright() as p:
     fr.locator('[data-act="next"]').click()
     fr.locator(".q .opt").first.wait_for(timeout=5000)
     page.wait_for_timeout(200)
-    q_top = fr.locator(".q").bounding_box()["y"]
+    q_top = fr.locator(".pbar").bounding_box()["y"]
     bar = page.evaluate("document.querySelector('.filters').getBoundingClientRect().bottom")
-    check("   volgende vraag: vraagblok direct onder de tabbalk", 0 <= q_top - bar <= 20, f"vraag {q_top}, tabbalk {bar}")
+    check("   volgende vraag: voortgangsbolletjes en vraag direct onder de tabbalk", 0 <= q_top - bar <= 20 and fr.locator(".dots").is_visible(), f"bolletjes {q_top}, tabbalk {bar}")
     for i in range(fr.locator(".q .opt").count()):
         if fr.locator('[data-act="check"]').is_enabled():
             break
