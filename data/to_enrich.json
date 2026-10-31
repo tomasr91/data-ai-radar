@@ -1,219 +1,200 @@
 {
- "generated_at": "2026-10-31T15:49:11.873731Z",
+ "generated_at": "2026-10-31T16:03:53.660446Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "excerpt": "Weekoverzicht van 18 release notes. DataFrame caching on serverless compute is now in Public Preview: DataFrame caching on serverless compute is now in Public Preview . You can cache a DataFrame with df.cache() or df.persist() on serverless compute to reuse an expensive result for the rest of your ses · Shared Serverless for Asset Bundles (Beta): With Shared Serverless for Asset Bundles, notebooks and files in the same bundle can share serverless compute and an environment defined in the bundle-root pyproject.toml file. Workspace admins can en · Screen MCP tool calls and results for jailbreaks (Beta): You can now screen MCP tool calls and their results in Unity Gateway for jailbreak and prompt injection attempts. Apply the Jailbreak guardrail on input, output, or both. See Attach a built-in policy · Lakeflow pipelines system tables are now generally available (GA): System tables record pipelines and pipeline updates. · Genie Code tasks in Lakeflow Jobs are now generally available: A job task runs a Genie Code prompt autonomously. · Filter data per end user with OAuth custom identity claims: Custom identity claims in service principal OAuth tokens for row filtering. · PayPal connector is available in Beta: The managed PayPal connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest payments data such as transactions, disputes, invoices, balances, catalog products, an · Google Analytics Aggregated connector is available in Beta: The managed Google Analytics Aggregated connector is now available in Lakeflow Connect in Beta . Workspace admins can control access to this feature from the Previews page. Use the connector to ingest · Genie agentic capabilities are now processed in South Korea: Genie Code agentic capabilities, Genie Agents Agent mode, and chat in Genie One now process data within South Korea for workspaces in South Korea regions, without cross-Geo processing . For where each · Box Audit Logs managed ingestion connector (Beta): The Box Audit Logs connector in Lakeflow Connect is now available in Beta. Use the connector to ingest enterprise audit events from Box into Azure Databricks. See Box Audit Logs connector . · Genie One enhancements: Conversation outline : Use the conversation outline along the left edge of Genie One conversations to jump between your messages. Hover over a tick in the outline to preview a message and the start of · Dashboard enhancements: Private bookmarks : Dashboard viewers can now save filter combinations as private bookmarks to return to later. Private bookmarks are visible only to the user who creates them. See Save a private book · Serverless job environments from pyproject.toml (Beta): Serverless notebook and Python script tasks can use a pyproject.toml file to configure their job environment. Configure the project environment in the Jobs UI, the Jobs API, or a bundle. Workspace adm · Microsoft Entra ID connector is available in Beta: The managed Microsoft Entra ID connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest Microsoft Entra ID users, groups, applications, service principals, direct · Genie Ontology snippets will soon be generally available and enabled by default: In early November 2026, Genie Ontology snippets will be generally available and enabled by default. Genie Ontology automatically extracts and maintains business context from your existing assets and u · Files API 3.0 for Unity Catalog volumes is now in Beta: Files API 3.0 is in Beta and introduces two new capabilities: Multipart uploads: Upload files larger than 5000 MiB to Unity Catalog volumes. Conditional operations: Upload, download, and delete files · DeepSeek V4.1 Flash is scheduled for retirement: Model retirement on November 19, 2026. · Genie Code tasks in Lakeflow Jobs are available by default for workspaces with the compliance security profile enabled starting in November 2026: Starting in November 2026, Genie Code tasks in Lakeflow Jobs are available by default for workspaces with the compliance security profile enabled. A Genie Code task runs your prompt autonomously as pa. Release notes: https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october, https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs, https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code, https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims, https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026, https://learn.microsoft.com/azure/databricks/release-notes/whats-coming, https://learn.microsoft.com/en-us/azure/databricks/machine-learning/retired-models-policy",
-   "preliminary_score": 87,
+   "id": "3bc165cef8a8",
+   "title": "How Sweetwater catches broken dbt pipelines before anyone notices, with Datadog",
+   "url": "https://www.getdbt.com/blog/sweetwater-dbt-pipeline-monitoring-datadog",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:08:00Z",
+   "excerpt": "Sweetwater uses Datadog to catch broken dbt pipelines before dashboard users notice missing data.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "cicd_data_deployment",
-    "data_ingestion",
-    "metadata_lineage_catalogs"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "ae2bc3c9f749",
-   "title": "Azure Databricks: wat is er nieuw in week 42",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W42",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-18T23:59:59Z",
-   "excerpt": "Weekoverzicht van 10 release notes. ADBC driver for Power BI is now generally available: ADBC driver is GA and default for new Power BI connections. · The agentic code converter is generally available for SQL conversion: Converts T-SQL, Snowflake and BigQuery SQL into Databricks SQL, with validation. · Transactions support both managed Delta Lake and Apache Iceberg tables: Multi-statement atomic transactions across managed tables. · External writes to managed Delta tables are now generally available: External Spark clients can write to Unity Catalog managed Delta tables. · Unity Gateway Skills API and developer tools are available in Beta: REST API, CLI and SDK support for skills. · Governed tag propagation is in Beta: Unity Catalog uses lineage to propagate governed tags to derived tables. · Agent memory pipelines are in Beta: An LLM distills durable facts from conversations into a memory store. · Knowledge Assistant and Supervisor Agent are now legacy: Agent Bricks CLI and Genie Agents are recommended instead. · Data Classification API is now generally available: Data Classification API and Terraform resource are GA; auto-tagging configuration in Public Preview. · Data Classification adds 50 new classes and support for 16 more countries and regions: 50 new sensitive data classes and regional classes.. Release notes: https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/adbc, https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter, https://learn.microsoft.com/en-us/azure/databricks/transactions/, https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest, https://learn.microsoft.com/en-us/azure/databricks/ai-gateway/skill-reference, https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation, https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines, https://learn.microsoft.com/en-us/azure/databricks/agents/legacy/, https://docs.databricks.com/api/workspace/dataclassification, https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
-   "preliminary_score": 84,
+   "id": "3d41fbc3100a",
+   "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
+   "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:03:00Z",
+   "excerpt": "Keep's one-person data team used dbt, Artie, and Snowflake to cut credit underwriting from one business day to under a minute.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "cicd_data_deployment",
-    "metadata_lineage_catalogs",
-    "sql_spark_sql",
-    "data_governance_privacy",
-    "powerbi_semantic_models"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "382e049710f1",
-   "title": "Azure Databricks: wat is er nieuw in week 41",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W41",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-11T23:59:59Z",
-   "excerpt": "Weekoverzicht van 5 release notes. The Discover page and domains are now GA: Curated browsing of assets; domains organize assets by business area. · Azure DevOps connector is available in Beta: Ingests project, repository, work item, build and release data from Azure DevOps. · Azure Databricks integration for Microsoft Copilot Studio is now generally available: Genie Agents as tools or Databricks data as knowledge source in Copilot Studio. · Metric view window measures are generally available: Rolling, cumulative and semiadditive aggregations in metric views. · Genie Code CLI is in Beta: Terminal coding agent for data and AI work using the Databricks CLI.. Release notes: https://learn.microsoft.com/en-us/azure/databricks/discover/discover-page, https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops, https://learn.microsoft.com/en-us/azure/databricks/integrations/msft-power-platform/copilot-studio, https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques, https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
-   "preliminary_score": 80,
+   "id": "210070d43efc",
+   "title": "Charts worth stealing: the design calls BI should ship",
+   "url": "https://www.getdbt.com/blog/bi-dashboard-chart-design-inspiration",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:58:00Z",
+   "excerpt": "RJ Andrews explains the design defaults behind dbt Charts, from consistent colors to the small choices that make charts work.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "cicd_data_deployment",
-    "data_ingestion"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "25057022b0aa",
-   "title": "Azure Databricks: wat is er nieuw in week 40",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W40",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-10-04T23:59:59Z",
-   "excerpt": "Weekoverzicht van 3 release notes. `ai_parse_document` now extracts chart data: Chart data as structured JSON; more detailed figure descriptions. · Standard `ai_extract` now delivers higher-quality extraction: New model checkpoint, 2.3x faster, better quality at no extra cost. · Cross-engine attribute-based access controls (ABAC) is now generally available: External engines read managed tables with ABAC policies enforced.. Release notes: https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document, https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract, https://learn.microsoft.com/en-us/azure/databricks/external-access/cross-engine-abac",
-   "preliminary_score": 70,
+   "id": "357fa5943f26",
+   "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
+   "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:31:00Z",
+   "excerpt": "Changes across Snowflake, dbt, and DuckDB made Apache Iceberg simple enough for a small team to set up in an afternoon.",
+   "preliminary_score": 62,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
+    "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "eabc838b21d8",
-   "title": "Unify your productivity and AI data with Lakeflow Connect",
-   "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
+   "id": "67b79f31be0e",
+   "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
+   "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:46:00Z",
+   "excerpt": "Why conversational analytics stalls and the data fundamentals that make it reliable.",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "ai_context_engineering"
+   ]
+  },
+  {
+   "id": "29e95692607d",
+   "title": "With great context comes great autonomy",
+   "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:43:00Z",
+   "excerpt": "AI agents need governed context, not just more data, to be trusted.",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "b12079c3ebfc",
+   "title": "Databricks and SAP unleash end-to-end data & AI capabilities to level up enterprise AI transformation",
+   "url": "https://www.databricks.com/blog/databricks-and-sap-unleash-end-end-data-ai-capabilities-level-enterprise-ai-transformation",
    "source_id": "databricks_blog",
    "source_name": "Databricks Blog",
-   "published_at": "2026-10-26T23:20:12Z",
-   "excerpt": "Managed connectors for productivity and AI data in Lakeflow Connect.",
-   "preliminary_score": 74,
+   "published_at": "2026-10-30T21:00:00Z",
+   "excerpt": "Today's AI models are more capable than ever. What they still lack is the business...",
+   "preliminary_score": 57,
    "preliminary_topics": [
-    "databricks_data_engineering",
-    "data_ingestion"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "5fb7f5c82d5d",
-   "title": "ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount",
-   "url": "https://blog.crossjoin.co.uk/2026/10/11/approximatedistinctcount-in-power-bi-is-sometimes-slower-than-distinctcount/",
-   "source_id": "chris_webb",
-   "source_name": "Chris Webb's BI Blog",
-   "published_at": "2026-10-11T06:01:02Z",
-   "excerpt": "As a follow-on from last week’s post about the new ApproximateDistinctCount function in DAX, I want to share something I found out from my recent testing for this function: ApproximateDistinctCount is sometimes slower than DistinctCount. This sounds counter-intuitive, right? After all ApproximateDistinctCount is a performance optimisation for the sometimes slow, expensive DistinctCount function. But it … Continue reading ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount →",
-   "preliminary_score": 54,
+   "id": "75fb2bbe55ff",
+   "title": "Unlocking Investment Insights Without Migrating Your Data: Lakehouse Federation",
+   "url": "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "excerpt": "Lakehouse Federation lets teams query data where it lives.",
+   "preliminary_score": 55,
    "preliminary_topics": [
-    "powerbi_semantic_models"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "9548d62329c5",
-   "title": "How Orange Business Built Live Intelligence with LangChain and LangSmith",
-   "url": "https://www.langchain.com/blog/how-orange-business-built-live-intelligence-on-langchain-and-langsmith",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "Learn how Orange Business used LangChain and LangSmith to build Live Intelligence, a governed AI platform for agents, evals, observability, and production scale.",
-   "preliminary_score": 54,
+   "id": "98b1463d26ab",
+   "title": "BigQuery to Databricks: A Strategic Framework",
+   "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-27T11:07:53Z",
+   "excerpt": "Migrating from BigQuery to Databricks as a strategic evolution.",
+   "preliminary_score": 55,
    "preliminary_topics": [
-    "ai_evaluation_observability",
-    "open_source_tools"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "4cc09a1d9883",
-   "title": "Improving Deep Agents with harness engineering",
-   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "Harness engineering improved LangChain's coding agent from Top 30 to Top 5 on Terminal Bench using self-verification, tracing, and context optimization.",
-   "preliminary_score": 54,
+   "id": "8d626e71d0f3",
+   "title": "How to teach with Databricks Free Edition",
+   "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-26T19:40:00Z",
+   "excerpt": "Educators can run a data or AI course on Databricks Free Edition.",
+   "preliminary_score": 55,
    "preliminary_topics": [
-    "ai_evaluation_observability",
-    "open_source_tools"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "e97274331120",
-   "title": "Find What Changed And When In Your Power BI Semantic Model",
-   "url": "https://blog.crossjoin.co.uk/2026/09/13/find-what-changed-and-when-in-your-power-bi-semantic-model/",
-   "source_id": "chris_webb",
-   "source_name": "Chris Webb's BI Blog",
-   "published_at": "2026-09-13T10:03:39Z",
-   "excerpt": "Here’s a situation I’ve found myself in many times. You’re called to help someone whose Power BI report is suddenly very slow. You ask whether any changes were made to the semantic model around the time performance got worse and the answer is no, absolutely not. You then spend anything from a few hours to … Continue reading Find What Changed And When In Your Power BI Semantic Model →",
-   "preliminary_score": 50,
+   "id": "832c744c699c",
+   "title": "Real-time energy trading and analytics on Databricks",
+   "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-10-23T19:00:00Z",
+   "excerpt": "What energy trading desks need for real-time analytics.",
+   "preliminary_score": 53,
    "preliminary_topics": [
-    "powerbi_semantic_models"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "604150cc8b51",
-   "title": "Manage semantic model settings in context with the default settings pane (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Manage-semantic-model-settings-in-context-with-the-default/ba-p/5366792",
-   "source_id": "powerbi_blog",
-   "source_name": "Microsoft Power BI Blog",
-   "published_at": "2026-09-17T16:00:00Z",
-   "excerpt": "The semantic model settings pane is becoming the default way to configure semantic models in the Power BI service. The pane opens alongside your workspace, so you can review and change settings without leaving the current page. It provides the same settings as the full semantic model settings page while keeping the surrounding context visible. The classic settings page remains available during this transition, but it no longer opens first. This change builds on the settings pane preview and provides a more focused experience for managing semantic models. Why it matters The pane helps you stay in context while you manage a semantic model. It opens on the right side of the browser window and keeps your workspace visible. Settings are organized into expandable sections and tabs, including refresh, data access, performance, and OneDrive and SharePoint. You can use the search box at the top of the pane to find a setting across all sections and tabs. For example, enter \"re\" and select View refresh history to go directly to refresh history instead of opening sections one at a time. This organization is especially useful for semantic models with several connection, refresh, or performance ",
-   "preliminary_score": 49,
+   "id": "0dea9ab335ef",
+   "title": "After the Standing Ovation: The Topology of Productionising Built-On Databricks",
+   "url": "https://www.advancinganalytics.co.uk/blog/after-the-standing-ovation-the-topology-of-productionising-built-on-databricks",
+   "source_id": "simon_whiteley",
+   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
+   "published_at": "2026-10-23T10:36:31Z",
+   "excerpt": "A while ago I wrote about a Built-On Databricks prototype : a multi-tenant analytics product with Databricks doing the heavy lifting underneath and deliberately hidden from view. What I hadn't expected was how much of the persuading the prototype did on its own. Showing it to a room tends to end with people nodding, and once or twice with something not far off a standing ovation.",
+   "preliminary_score": 53,
    "preliminary_topics": [
-    "powerbi_semantic_models"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "a117d6b1bb54",
-   "title": "How We Built Our Design Agent",
-   "url": "https://www.langchain.com/blog/design-agent",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-28T21:31:31Z",
-   "excerpt": "How LangChain built Content Studio, an open-source design agent in Slack that makes on-brand videos, graphics and decks, and the harness that powers it.",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "72a32ce7fcf7",
-   "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
-   "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T20:03:00Z",
-   "excerpt": "Obie rebuilt on dbt and Apache Iceberg, shrinking a monthly process from more than 25 hours to about 2.",
-   "preliminary_score": 62,
+   "id": "c33e4a9941ba",
+   "title": "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
+   "url": "https://docs.getdbt.com/blog/wizard-agent-harness",
+   "source_id": "dbt_developer_blog",
+   "source_name": "dbt Developer Blog",
+   "published_at": "2026-10-14T00:00:00Z",
+   "excerpt": "Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft.",
+   "preliminary_score": 52,
    "preliminary_topics": [
     "dbt_analytics_engineering"
    ]
   },
   {
-   "id": "54955e6fc7a6",
-   "title": "ClickHouse + dbt: Building a GitOps workflow at Twilio",
-   "url": "https://www.getdbt.com/blog/twilio-clickhouse-dbt-gitops-workflow",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:47:00Z",
-   "excerpt": "Twilio consolidated components into one ClickHouse pipeline governed by dbt and GitOps.",
-   "preliminary_score": 62,
+   "id": "e16b305207e9",
+   "title": "How our AI Research team uses AI Runtime",
+   "url": "https://www.databricks.com/blog/how-our-ai-research-team-uses-ai-runtime",
+   "source_id": "databricks_engineering_blog",
+   "source_name": "Databricks Engineering Blog",
+   "published_at": "2026-10-15T21:37:44Z",
+   "excerpt": "At Databricks, we continuously develop and evaluate new AI research techniques to...",
+   "preliminary_score": 48,
    "preliminary_topics": [
-    "dbt_analytics_engineering"
+    "databricks_data_engineering"
    ]
   },
   {
-   "id": "b73822c39490",
-   "title": "Why most of your dbt models aren't in a hurry, and what that's worth in Snowflake credits",
-   "url": "https://www.getdbt.com/blog/dbt-state-snowflake-warehouse-compute-savings",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:34:00Z",
-   "excerpt": "Most dbt models are not on the critical path; that slack can save Snowflake credits.",
-   "preliminary_score": 62,
+   "id": "984223f109f3",
+   "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "source_id": "huggingface_blog",
+   "source_name": "Hugging Face Blog",
+   "published_at": "2026-09-29T13:07:00Z",
+   "excerpt": "",
+   "preliminary_score": 47,
    "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "a68aede0b61b",
-   "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
-   "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:16:00Z",
-   "excerpt": "Checkr gave its AI agent a structured dbt context layer, cutting a support-metric investigation from hours to minutes.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
+    "ai_context_engineering"
    ]
   }
  ]
