@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T16:03:53.660446Z",
+ "generated_at": "2026-10-31T17:44:17.522214Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -10,7 +10,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:08:00Z",
    "excerpt": "Sweetwater uses Datadog to catch broken dbt pipelines before dashboard users notice missing data.",
-   "preliminary_score": 62,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "dbt_analytics_engineering"
    ]
@@ -23,7 +23,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:03:00Z",
    "excerpt": "Keep's one-person data team used dbt, Artie, and Snowflake to cut credit underwriting from one business day to under a minute.",
-   "preliminary_score": 62,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "dbt_analytics_engineering"
    ]
@@ -36,20 +36,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T17:58:00Z",
    "excerpt": "RJ Andrews explains the design defaults behind dbt Charts, from consistent colors to the small choices that make charts work.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "dbt_analytics_engineering"
-   ]
-  },
-  {
-   "id": "357fa5943f26",
-   "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
-   "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T17:31:00Z",
-   "excerpt": "Changes across Snowflake, dbt, and DuckDB made Apache Iceberg simple enough for a small team to set up in an afternoon.",
-   "preliminary_score": 62,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "dbt_analytics_engineering"
    ]
@@ -62,7 +49,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T17:46:00Z",
    "excerpt": "Why conversational analytics stalls and the data fundamentals that make it reliable.",
-   "preliminary_score": 61,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "ai_context_engineering"
    ]
@@ -75,9 +62,22 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T17:43:00Z",
    "excerpt": "AI agents need governed context, not just more data, to be trusted.",
-   "preliminary_score": 61,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "357fa5943f26",
+   "title": "Apache Iceberg on Snowflake got a lot simpler in 2026, and dbt's new catalog config is what makes it click",
+   "url": "https://www.getdbt.com/blog/apache-iceberg-snowflake-dbt-catalog-configuration",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T17:31:00Z",
+   "excerpt": "Changes across Snowflake, dbt, and DuckDB made Apache Iceberg simple enough for a small team to set up in an afternoon.",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
    ]
   },
   {
@@ -133,6 +133,19 @@
    ]
   },
   {
+   "id": "c33e4a9941ba",
+   "title": "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
+   "url": "https://docs.getdbt.com/blog/wizard-agent-harness",
+   "source_id": "dbt_developer_blog",
+   "source_name": "dbt Developer Blog",
+   "published_at": "2026-10-14T00:00:00Z",
+   "excerpt": "Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft.",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "dbt_analytics_engineering"
+   ]
+  },
+  {
    "id": "832c744c699c",
    "title": "Real-time energy trading and analytics on Databricks",
    "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks",
@@ -159,16 +172,16 @@
    ]
   },
   {
-   "id": "c33e4a9941ba",
-   "title": "Inside the dbt Wizard harness: building an agent that thinks in DAGs",
-   "url": "https://docs.getdbt.com/blog/wizard-agent-harness",
-   "source_id": "dbt_developer_blog",
-   "source_name": "dbt Developer Blog",
-   "published_at": "2026-10-14T00:00:00Z",
-   "excerpt": "Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft.",
-   "preliminary_score": 52,
+   "id": "984223f109f3",
+   "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "source_id": "huggingface_blog",
+   "source_name": "Hugging Face Blog",
+   "published_at": "2026-09-29T13:07:00Z",
+   "excerpt": "",
+   "preliminary_score": 50,
    "preliminary_topics": [
-    "dbt_analytics_engineering"
+    "ai_context_engineering"
    ]
   },
   {
@@ -182,19 +195,6 @@
    "preliminary_score": 48,
    "preliminary_topics": [
     "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "984223f109f3",
-   "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
-   "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
-   "source_id": "huggingface_blog",
-   "source_name": "Hugging Face Blog",
-   "published_at": "2026-09-29T13:07:00Z",
-   "excerpt": "",
-   "preliminary_score": 47,
-   "preliminary_topics": [
-    "ai_context_engineering"
    ]
   }
  ]
