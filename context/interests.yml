@@ -49,7 +49,7 @@ interest_areas:
   - id: data_engineering
     label: dbt, data engineering en data-architectuur
     target_share: 0.30
-    topics: [dbt_analytics_engineering, databricks_data_engineering, data_architecture_modeling, sql_spark_sql, cicd_data_deployment, data_quality_observability, metadata_lineage_catalogs, data_governance_privacy, powerbi_semantic_models]
+    topics: [dbt_analytics_engineering, databricks_data_engineering, data_ingestion, data_architecture_modeling, sql_spark_sql, cicd_data_deployment, data_quality_observability, metadata_lineage_catalogs, data_governance_privacy, powerbi_semantic_models]
   - id: context_agents
     label: Context engineering en AI-agents
     target_share: 0.30
@@ -135,7 +135,7 @@ topics:
     enabled: true
     priority: 5
     keywords: [Databricks, Delta Lake, Unity Catalog, Lakeflow, serverless compute, Databricks Asset Bundles, Spark, lakehouse]
-    related_topics: [sql_spark_sql, ai_on_data_platform, metadata_lineage_catalogs]
+    related_topics: [sql_spark_sql, data_ingestion, ai_on_data_platform, metadata_lineage_catalogs]
 
   - id: ai_on_data_platform
     name: AI op het dataplatform
@@ -225,13 +225,31 @@ topics:
     related_topics: [data_governance_privacy, ai_context_engineering, data_quality_observability]
 
   - id: cicd_data_deployment
-    name: GitHub, CI/CD en data deployment
-    description: Automatisering, versiebeheer en uitrol van dataoplossingen.
+    name: Release pipelines, bundles en uitrol
+    description: >-
+      Hoe je data- en dbt-werk veilig van ontwikkeling naar productie brengt: release
+      pipelines in Azure DevOps (stages, omgevingen, goedkeuringen), Databricks Asset
+      Bundles (een project als code uitrollen naar dev/test/prod), slim CI voor dbt en
+      versiebeheer. Kennisniveau nog beginner: uitleg mag bij de basis beginnen.
     feed_group: overig
     enabled: true
-    priority: 4
-    keywords: [Azure DevOps, Azure Pipelines, CI/CD, slim CI, DataOps, deployment, pull request review, infrastructure as code]
-    related_topics: [dbt_analytics_engineering, databricks_data_engineering]
+    priority: 5
+    keywords: [Azure DevOps, Azure Pipelines, release pipeline, deployment pipeline, CI/CD, slim CI, DataOps, deployment, Databricks Asset Bundles, asset bundles, bundles, databricks.yml, environments, pull request review, infrastructure as code, Terraform]
+    related_topics: [dbt_analytics_engineering, databricks_data_engineering, data_ingestion]
+
+  - id: data_ingestion
+    name: Data ingestion
+    description: >-
+      Hoe data uit bronsystemen in het dataplatform komt: batch en streaming, incrementeel
+      laden, change data capture (CDC), Auto Loader, Lakeflow Connect en declaratieve
+      pipelines, schema-wijzigingen en de bronze-laag. Kennisniveau nog beginner: uitleg
+      mag bij de basis beginnen. Losse nieuwe connectoren blijven uitgesloten
+      (excluded_topics); het gaat om hoe ingestion werkt.
+    feed_group: databricks
+    enabled: true
+    priority: 5
+    keywords: [data ingestion, ingestion, ingest, Auto Loader, Lakeflow Connect, Lakeflow Declarative Pipelines, declarative pipelines, change data capture, CDC, incremental load, incremental ingestion, COPY INTO, streaming tables, schema evolution, bronze layer]
+    related_topics: [databricks_data_engineering, cicd_data_deployment, data_quality_observability]
 
   - id: sql_spark_sql
     name: SQL en Spark SQL

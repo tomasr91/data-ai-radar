@@ -168,7 +168,7 @@ Voorbeelden van goede uitleg staan al in `data/enrichment/` (bestanden met `"for
 
 ## Verdiepingen
 
-Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. T kiest het onderwerp zelf in de app, uit de 5 keuzes van gisteren. Het script geeft de gekozen keuze terug: de `question` en `why` bepalen waar het stuk over gaat.
+Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. Heeft het onderwerp `level: beginner` (of gaat het over ingestion, release pipelines of bundles, zie `context/profile.md` §2), begin dan bij de basis: wat is het, waarom bestaat het, een vergelijking uit het dagelijks leven, en dan pas de details en de eigen stack. T kiest het onderwerp zelf in de app, uit de 5 keuzes van gisteren. Het script geeft de gekozen keuze terug: de `question` en `why` bepalen waar het stuk over gaat.
 
 ### Dagelijkse keuzes
 
@@ -179,6 +179,7 @@ Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf j
   - de interessegebieden en hun richtverdeling in `context/interests.yml` (`interest_areas`) en de leerdoelen in `context/profile.md` §2;
   - de ideeënlijst in `context/verdieping.yml` (onderwerpen en regels).
 - **Trends:** is er een trend in `data/trends.json`, maak dan van minstens één trend een keuze (`why` noemt de trend).
+- **Basiskennis:** staan er in `context/verdieping.yml` open onderwerpen met `level: beginner` (nog geen verdieping over geschreven), neem er dan elke dag minstens één als keuze op, met hetzelfde `id`. Zo komt T's ontbrekende basiskennis (ingestion, release pipelines, bundles) regelmatig langs.
 - **Spreiding:** de 5 keuzes komen uit minstens 3 verschillende interessegebieden. Volg ongeveer de verdeling 30/30/20/20; zet het gebied in `area`.
 - **Vers:** niet iets waar al een verdieping over is (`data/deepdives/`), en niet dezelfde 5 als gisteren. Een keuze die gisteren niet is gekozen mag terugkomen, maar hooguit 2 per dag.
 - **Afwisseling in soort:** bijvoorbeeld één uitleg van een concept, één vergelijking van aanpakken, één praktische bouwsteen voor de eigen stack, één onderwerp uit het nieuws.

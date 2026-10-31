@@ -42,7 +42,7 @@ sources:
     url: https://learn.microsoft.com/en-us/azure/databricks/release-notes/
     feed_url: https://learn.microsoft.com/en-us/azure/databricks/feed.xml
     type: official_docs
-    topics: [databricks_data_engineering, sql_spark_sql, ai_on_data_platform, metadata_lineage_catalogs]
+    topics: [databricks_data_engineering, sql_spark_sql, ai_on_data_platform, metadata_lineage_catalogs, data_ingestion]
     priority: 5
     enabled: true
     trust_level: high
@@ -98,7 +98,7 @@ sources:
     url: https://www.databricks.com/blog
     feed_url: https://www.databricks.com/feed
     type: vendor_blog
-    topics: [databricks_data_engineering, ai_on_data_platform, ai_agents_rag, data_architecture_modeling]
+    topics: [databricks_data_engineering, ai_on_data_platform, ai_agents_rag, data_architecture_modeling, data_ingestion]
     priority: 5
     enabled: true
     trust_level: medium
@@ -111,7 +111,7 @@ sources:
     url: https://www.databricks.com/blog
     feed_url: https://www.databricks.com/blog/category/engineering/feed.xml
     type: vendor_blog
-    topics: [databricks_data_engineering, sql_spark_sql, data_architecture_modeling]
+    topics: [databricks_data_engineering, sql_spark_sql, data_architecture_modeling, data_ingestion]
     priority: 4
     enabled: true
     trust_level: medium
@@ -178,7 +178,7 @@ sources:
     url: https://www.dataengineeringweekly.com
     feed_url: https://www.dataengineeringweekly.com/feed
     type: independent_news
-    topics: [databricks_data_engineering, data_architecture_modeling, data_quality_observability, metadata_lineage_catalogs]
+    topics: [databricks_data_engineering, data_architecture_modeling, data_quality_observability, metadata_lineage_catalogs, data_ingestion]
     priority: 3
     enabled: true
     trust_level: medium
@@ -193,7 +193,7 @@ sources:
     url: https://www.advancinganalytics.co.uk/blog/author/simon-whiteley
     feed_url: https://www.advancinganalytics.co.uk/blog/rss.xml
     type: expert_blog
-    topics: [databricks_data_engineering, sql_spark_sql, ai_agents_rag]
+    topics: [databricks_data_engineering, sql_spark_sql, ai_agents_rag, data_ingestion]
     priority: 5
     enabled: true
     trust_level: medium

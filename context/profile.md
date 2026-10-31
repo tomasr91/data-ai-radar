@@ -2,7 +2,7 @@
 id: profile
 type: context
 schema_version: 1
-updated: 2026-10-29
+updated: 2026-10-31
 ---
 
 # Profiel
@@ -21,7 +21,7 @@ Dit bestand beschrijft wie ik ben, wat ik al weet en hoe de Data & AI Radar uitl
 ## 2. Kennisniveau
 
 ### Wat ik al goed ken — niet opnieuw uitleggen
-- `[bekend]` Dagelijks gebruik van dbt, SQL, Power BI, semantische modellen, GitHub en CI/CD.
+- `[bekend]` Dagelijks gebruik van dbt, SQL, Power BI, semantische modellen en Git.
 - `[bekend]` Medaillonarchitectuur (Bronze/Silver/Gold).
 - `[bekend]` Gevorderd niveau in dimensioneel modelleren, SQL en dbt-basisbegrippen (models, tests, sources, macros).
 - `[bekend]` Werkende kennis van Databricks en Spark SQL; diepere Spark-internals mogen kort worden uitgelegd.
@@ -39,6 +39,12 @@ Vooral: hoe moderne data-engineeringtechnieken en AI elkaar versterken.
 - `[bekend]` Betrouwbare data beschikbaar maken voor AI.
 
 Nieuwe begrippen mogen geïntroduceerd worden, maar zonder onnodig bij de basis te beginnen.
+
+### Nog beginnersniveau — wel bij de basis beginnen
+Hier heb ik nog weinig kennis. Leg de basis uit, met een vergelijking en een klein voorbeeld, en bouw rustig op.
+- `[bekend]` **Data ingestion**: hoe data uit bronsystemen in het platform komt (batch/streaming, incrementeel laden, CDC, Auto Loader, Lakeflow).
+- `[bekend]` **Release pipelines**: van ontwikkeling naar productie in Azure DevOps (stages, omgevingen, goedkeuringen).
+- `[bekend]` **Databricks Asset Bundles**: een Databricks-project als code beschrijven en uitrollen.
 - `[aanvullen]` Welke van deze onderwerpen het meest urgent zijn de komende 6–12 maanden.
 
 ## 3. Wat ik met de app wil bereiken

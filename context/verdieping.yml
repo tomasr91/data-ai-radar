@@ -29,8 +29,42 @@ rules:
   - Een oudere bron mag alleen voor een basisidee dat nog steeds klopt, en dan altijd naast een recente bron.
   - Koppel aan de eigen stack (dbt, Databricks, Unity Catalog, Power BI) en aan de lopende projecten.
   - Nooit patiënt- of werkdata in voorbeelden of experimenten.
+  - Onderwerpen met level beginner beginnen bij de basis (wat is het, waarom bestaat het, een vergelijking uit het dagelijks leven) en bouwen rustig op.
 
 topics:
+  # Toegevoegd 31-10-2026: ontbrekende basiskennis (beginner). Hoog op de lijst, dus vaak als keuze.
+  - id: ingestion-basis
+    title: Hoe komt data eigenlijk in Databricks? De basis van ingestion
+    question: Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming)?
+    angle: Beginnersniveau. Begrippen eerst (full load, incrementeel, CDC, schema-wijziging), dan de Databricks-opties (Auto Loader, Lakeflow Connect, declaratieve pipelines, COPY INTO) en wanneer je wat kiest. Oefening met een kleine incrementele load in SQL.
+    topics: [data_ingestion, databricks_data_engineering]
+    level: beginner
+    enabled: true
+
+  - id: release-pipeline-basis
+    title: Van ontwikkeling naar productie - een release pipeline uitgelegd
+    question: Wat is een release pipeline, welke stappen zitten erin, en hoe ziet dat eruit voor een dbt- en Databricks-project in Azure DevOps?
+    angle: Beginnersniveau. Build versus release, omgevingen (dev/test/prod), stages, goedkeuringen, variabelen en geheimen. Een klein YAML-voorbeeld van Azure Pipelines, regel voor regel uitgelegd.
+    topics: [cicd_data_deployment, dbt_analytics_engineering]
+    level: beginner
+    enabled: true
+
+  - id: asset-bundles-basis
+    title: Databricks Asset Bundles - je project als code uitrollen
+    question: Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?
+    angle: Beginnersniveau. Waarom 'als code', de onderdelen van databricks.yml (resources, targets, variabelen), validate/deploy/run, en hoe een bundle in een release pipeline past. Controleer de actuele naam en syntax in de documentatie.
+    topics: [cicd_data_deployment, databricks_data_engineering]
+    level: beginner
+    enabled: true
+
+  - id: cdc-en-incrementeel-laden
+    title: Alleen de wijzigingen ophalen - incrementeel laden en CDC
+    question: Hoe laad je alleen wat er veranderd is, en hoe ga je om met updates en verwijderingen uit de bron?
+    angle: Beginnersniveau. Watermark/tijdstempel, change data feed, MERGE, verwijderingen, en hoe dbt incrementele modellen hierop aansluiten. Oefening met MERGE in SQL.
+    topics: [data_ingestion, dbt_analytics_engineering]
+    level: beginner
+    enabled: true
+
   - id: evals-ai-assistent
     title: Meten of je AI-assistent goed antwoordt (evaluatie, evals)
     question: Hoe toets je of een AI-assistent of agent op je data betrouwbare antwoorden geeft, voordat collega's hem gebruiken?
