@@ -72,7 +72,9 @@ def normalize(raw: dict) -> dict:
         "published_at": parse_date(raw.get("published_raw")),
         "published_raw": raw.get("published_raw"),
         "fetched_at": raw["fetched_at"],
-        "excerpt": clean_text(raw.get("excerpt", "")),
+        # Een weekoverzicht (digest.py) bundelt veel items: daarom een langere samenvatting.
+        "excerpt": clean_text(raw.get("excerpt", ""), 6000 if raw.get("is_digest") else 1200),
         "also_reported_by": [],
         **({"development_key": raw["development_key"]} if raw.get("development_key") else {}),
+        **({"is_digest": True} if raw.get("is_digest") else {}),
     }

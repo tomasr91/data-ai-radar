@@ -284,6 +284,34 @@ class TestWeeklyDigest(unittest.TestCase):
         self.assertGreaterEqual(a["relevance_score"], build_mod.QUEUE_MIN_SCORE)
 
 
+class TestAzureDigestAndSourceCap(unittest.TestCase):
+    """Azure release notes: losse notes eruit, één weekoverzicht erin; maximum per bron."""
+
+    def test_azure_notes_become_weekly_digest(self):
+        from pipeline.digest import weekly_digests
+        conf = cfg.load()
+        note = lambda t, d, u: {"source_id": "azure_databricks_release_notes", "title": t, "fetched_at": F,
+                                "url": f"https://learn.microsoft.com/en-us/azure/databricks/release-notes/{u}",
+                                "published_raw": d, "excerpt": "Lakeflow Spark Declarative Pipelines Unity Catalog"}
+        items = [note("Multiple flows per pipeline are in beta", "Wed, 21 Oct 2026 00:00:00 GMT", "product#a"),
+                 note("Multiple flows per pipeline are in beta", "Wed, 21 Oct 2026 00:00:00 GMT", "platform#a"),
+                 note("Unity Catalog API change", "Thu, 22 Oct 2026 00:00:00 GMT", "product#b")]
+        now = datetime(2026, 10, 29, 12, tzinfo=timezone.utc)
+        out = weekly_digests(items, conf, now)
+        self.assertEqual(len(out), 1)
+        d = out[0]
+        self.assertEqual(d["title"], "Azure Databricks: wat is er nieuw in week 43")
+        self.assertIn("2 release notes", d["excerpt"])      # dubbele note telt één keer
+        dig = score_article(normalize(d) | {"processing_status": "raw"}, conf, now)
+        self.assertNotIn("weekoverzicht", dig["excluded_by"])
+        loose = score_article(normalize(items[2]) | {"processing_status": "raw"}, conf, now)
+        self.assertEqual(loose["decision"], "excluded")
+        self.assertIn("weekoverzicht", loose["excluded_by"])
+
+    def test_cap_is_configured(self):
+        self.assertGreaterEqual(cfg.load().scoring.get("max_articles_per_source", 0), 5)
+
+
 class TestDeepdiveChoice(unittest.TestCase):
     """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
 

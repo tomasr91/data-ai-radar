@@ -96,7 +96,14 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     sc = config.scoring
     text = f"{article['title']} {article.get('headline', '')} {article.get('excerpt', '')} {article.get('summary', '')}"
 
-    excluded = excluded_by(article["title"], text, config.excluded_topics)
+    # Een weekoverzicht bundelt veel losse items; één connector-melding erin mag het hele
+    # overzicht niet uitsluiten. Daarom alleen op de titel controleren.
+    excluded = excluded_by(article["title"], article["title"] if article.get("is_digest") else text,
+                           config.excluded_topics)
+    src = config.source(article["source_id"])
+    # Bron met weekoverzicht (digest.py): alleen het overzicht telt, de losse items niet.
+    if src.get("weekly_digest") and not article.get("is_digest"):
+        excluded = list(excluded) + ["weekoverzicht"]
     # Verrijkte artikelen hebben door AI gekozen onderwerpen; anders trefwoorden.
     if article.get("processing_status") == "enriched" and article.get("topics"):
         topic_ids, certainty = list(article["topics"]), 1.0
@@ -107,7 +114,6 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     topic_ids = [t for t in topic_ids if t in topics]
     topic_ids.sort(key=lambda t: -topics[t]["priority"])
 
-    src = config.source(article["source_id"])
     q = article.get("quality")
     parts = {
         "topic": topic_score(topic_ids, topics, sc.get("related_topic_weight", 0.5), certainty),

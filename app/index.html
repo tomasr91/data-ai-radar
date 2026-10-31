@@ -800,7 +800,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed, q = f.quality_report || {};
     const enr = q.enrichment || {};
     const srcRows = f.sources.map((s) => `<tr><td><strong>${esc(s.name)}</strong><br><span style="color:var(--muted)">${esc(TYPE_LABEL[s.type] || s.type)} · ${esc(s.fetch_method)}</span></td><td><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span></td><td style="font-variant-numeric:tabular-nums">${s.items ?? 0}</td><td>${esc(s.message || "")}</td></tr>`).join("");
-    const dec = { included: "getoond", included_exceptional: "getoond (uitzondering)", below_threshold: "onder de drempel", no_topic: "geen passend onderwerp", excluded: "uitgesloten onderwerp" };
+    const dec = { included: "getoond", included_exceptional: "getoond (uitzondering)", below_threshold: "onder de drempel", no_topic: "geen passend onderwerp", excluded: "uitgesloten onderwerp", hidden_by_feedback: "duim omlaag", source_cap: "maximum per bron" };
     const hidden = (q.not_shown || []).map((x) => `<tr><td><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><br><span style="color:var(--muted)">${esc(source(x.source_id).name)}</span></td><td>${esc(dec[x.decision] || x.decision)}${x.excluded_by?.length ? ` (${esc(x.excluded_by.join(", "))})` : ""}</td><td style="font-variant-numeric:tabular-nums">${x.relevance_score}</td></tr>`).join("");
     const flags = (q.date_flags || []).map((d) => `<li><strong>${esc(source(d.source_id).name)}:</strong> ${esc(d.message)}</li>`).join("");
     const noSrc = (q.topics_without_source || []).map((t) => f.topics[t]?.name || t);

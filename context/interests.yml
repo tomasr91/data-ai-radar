@@ -33,6 +33,7 @@ scoring:
   related_topic_weight: 0.5            # een gerelateerd onderwerp telt voor de helft mee
   min_relevance_score: 0.6             # onder deze drempel geen plek in de feed, ook niet bij prioriteit 5 (0.5 liet ook losse productvermeldingen door)
   max_items_per_topic_per_feed: 3      # houdt de feed gevarieerd
+  max_articles_per_source: 8           # hooguit zoveel artikelen per bron in de app (hoogste scores blijven)
   other_factors: [recency, trust_level, novelty, diversity]
   exceptional_override:
     enabled: true

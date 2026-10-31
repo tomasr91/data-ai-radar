@@ -48,6 +48,12 @@ sources:
     trust_level: high
     language: en
     fetch_method: rss
+    # Tientallen losse notes per week: die vallen weg; de pipeline maakt per afgeronde week
+    # één overzichtsartikel met de belangrijkste wijzigingen (pipeline/digest.py).
+    weekly_digest:
+      title: "Azure Databricks: wat is er nieuw in week {week}"
+      unit: release notes
+      list_versions: false
     verification: {status: verified, checked_on: "2026-10-28", note: "Azure bevestigd als gebruikte cloud."}
 
   - id: dbt_core_releases

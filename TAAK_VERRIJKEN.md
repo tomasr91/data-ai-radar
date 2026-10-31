@@ -34,6 +34,16 @@ Artikelen met een titel als "Claude Code: wat is er nieuw in week 43 (v2.1.304 t
 - Alleen bugfixes en kleine verbeteringen die week? Dan overslaan met reden "alleen kleine wijzigingen".
 - `availability_status`: `beschikbaar`, tenzij de release notes iets als preview of experimenteel noemen.
 
+## Weekoverzicht Azure Databricks
+
+Azure Databricks publiceert tientallen losse release notes per week. Die komen niet meer los in de app; de pipeline maakt per afgeronde week één artikel "Azure Databricks: wat is er nieuw in week 43". De `excerpt` noemt elke note met een stukje tekst en de links.
+
+- Lees de notes in de `excerpt` en open de links van de notes die ertoe lijken te doen.
+- Kies wat T moet weten voor zijn werk: wat algemeen beschikbaar wordt (GA) of standaard aangaat, wat gaat verdwijnen of anders werkt (end of life, wijzigingen in gedrag of API's), en nieuwe functies voor Lakeflow/pipelines, Unity Catalog, SQL, bundels, jobs en AI op het dataplatform. Laat losse modelnamen, prijs- en regio-meldingen en kleine UI-dingen weg.
+- Kop: de belangrijkste verandering. Het verhaal behandelt de 3 tot 5 belangrijkste wijzigingen, met bij elke wijziging of het preview, bèta of GA is. `key_facts` noemt per wijziging de status en datum.
+- Zit er iets bij dat T zelf iets moet doen (iets wordt uitgezet, een API-gedrag verandert)? Zet dat bovenaan.
+- `availability_status`: de status van de belangrijkste wijziging.
+
 ## Zien: `showcase`
 
 T leert het best als hij het ziet. Lezen alleen blijft te abstract. Voeg daarom waar het past dit blok toe (bij artikelen én verdiepingen):

@@ -188,6 +188,15 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     shown = sorted([a for a in arts if a["decision"] in ("included", "included_exceptional")
                     and a["processing_status"] == "enriched"],
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))
+    # Maximum per bron: zo kan één bron de feed niet vullen. De hoogste scores blijven staan.
+    cap = conf.scoring.get("max_articles_per_source")
+    if cap:
+        per_src = Counter()
+        for a in shown:
+            per_src[a["source_id"]] += 1
+            if per_src[a["source_id"]] > cap:
+                a["decision"] = "source_cap"
+        shown = [a for a in shown if a["decision"] != "source_cap"]
     hidden = [a for a in arts if a not in shown]
 
     # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).
