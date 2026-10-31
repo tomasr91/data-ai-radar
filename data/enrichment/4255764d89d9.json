@@ -1,0 +1,83 @@
+{
+  "format_version": 2,
+  "article_id": "4255764d89d9",
+  "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
+  "headline": "Databricks zoekt vectoren nu met een gewone SQL-join",
+  "summary": "Met NEAREST BY zoek je in Databricks SQL voor elke rij de dichtstbijzijnde rijen op vectorgelijkenis. Dat is bedoeld voor grote batches, zoals ontdubbelen of records aan elkaar koppelen.",
+  "story": [
+    "Vectorzoeken kende je vooral van chatbots: één vraag, snel een paar antwoorden. Databricks heeft het nu ook als SQL-join, NEAREST BY. Voor elke rij in de ene tabel krijg je de k rijen uit een andere tabel die er het meest op lijken. Het werkt vanaf Databricks Runtime 18 LTS en in Databricks SQL.",
+    "Je schrijft een join met APPROX of EXACT, het aantal resultaten, en BY SIMILARITY of BY DISTANCE met een functie als vector_cosine_similarity. Met EXACT krijg je gegarandeerd de echte top-k. Met APPROX mag de optimizer een index gebruiken. Die index is een Delta-tabel met clusters; bestanden die er na de laatste verversing bij kwamen, worden gewoon doorzocht. Een verouderde index is dan trager, maar niet minder goed.",
+    "Het is gebouwd voor veel rijen tegelijk, niet voor één snelle vraag. Volgens Databricks ontdubbelde een self-join van 10 miljoen records in minuten. Denk aan semantisch ontdubbelen, classificeren of het koppelen van records die net anders gespeld zijn (entity resolution).",
+    "Voor jouw platform kan dit een stap in de Silver-laag worden: dubbele of bijna-dubbele records vinden met embeddings, direct in SQL. Let wel: de blog en de documentatie noemen geen status als preview of algemeen beschikbaar."
+  ],
+  "key_facts": [
+    "Databricks Engineering Blog, 5 oktober 2026 (bijgewerkt 9 oktober).",
+    "Syntax: {INNER | LEFT [OUTER]} JOIN doel {APPROX | EXACT} NEAREST [n] BY {DISTANCE | SIMILARITY} expressie; n tussen 1 en 100.000, standaard 1.",
+    "Werkt in Databricks SQL en Databricks Runtime 18 LTS en hoger.",
+    "Nieuwe vectorfuncties: vector_inner_product, vector_cosine_similarity, vector_l2_distance, vector_norm, vector_normalize, vector_sum en vector_avg.",
+    "De vectorindex is een IVF-index in een liquid-clustered Delta-tabel; met EXACT verandert een index de uitkomst niet.",
+    "Databricks meldt: een self-join van 10 miljoen records voor ontdubbelen in minuten; 1 miljoen vragen tegen 1 miljard vectoren in minuten."
+  ],
+  "personal_relevance": "Ontdubbelen en records koppelen is dagelijks Silver-werk; dit brengt embeddings daarvoor gewoon in SQL.",
+  "experiment": "Maak in een testwerkruimte een tabel met verzonnen productnamen in een paar spellingen, bereken embeddings met een AI-functie en zoek met EXACT NEAREST 3 BY SIMILARITY welke namen bij elkaar horen.",
+  "limitations": [
+    "Status (preview of GA) staat niet in de blog of de documentatie.",
+    "Bedoeld voor batches; voor één snelle vraag is het niet ontworpen.",
+    "De prestatiecijfers komen van Databricks zelf."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "NEAREST BY clause",
+      "url": "https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-nearest-by"
+    },
+    {
+      "label": "vector_search function",
+      "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_search"
+    }
+  ],
+  "topics": [
+    "sql_spark_sql",
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.75,
+    "practicality": 0.65,
+    "novelty": 0.8
+  },
+  "development_key": "nearest-by-join-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "showcase": {
+    "caption": "Zoek voor één vraagvector de drie producten die er het meest op lijken.",
+    "language": "sql",
+    "code": "SELECT t.product_id, t.name\nFROM (SELECT ARRAY(1.0f, 0.0f, 0.0f) AS embedding) q\nINNER JOIN products t\n  APPROX NEAREST 3 BY SIMILARITY vector_cosine_similarity(q.embedding, t.embedding);",
+    "result": {
+      "columns": [
+        "product_id",
+        "name"
+      ],
+      "rows": [
+        [
+          "P1",
+          "Trail running shoes"
+        ],
+        [
+          "P2",
+          "Hiking boots"
+        ],
+        [
+          "P5",
+          "Running shoes"
+        ]
+      ]
+    },
+    "note": "Voorbeeld en uitkomst overgenomen uit de officiële documentatie (NEAREST BY clause); niet zelf gedraaid, dit werkt alleen in Databricks."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}

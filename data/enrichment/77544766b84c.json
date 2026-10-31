@@ -1,0 +1,47 @@
+{
+  "format_version": 2,
+  "article_id": "77544766b84c",
+  "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
+  "headline": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen",
+  "summary": "Anthropic gaf Claude Code twee commando's om evals te bouwen en je toepassing ertegen te verbeteren. Evals-expert Hamel Husain testte ze: sterk in fouten vinden, maar het slaat de foutanalyse over.",
+  "story": [
+    "Anthropic voegde aan de claude-api-plugin voor Claude Code twee commando's toe. build_eval stelt mogelijke fouten voor, helpt je er één te kiezen, maakt een beoordelaar en controleert die. hill-climb gebruikt die evals daarna om je toepassing te verbeteren. Hamel Husain, die veel ontwikkelaars evals heeft geleerd, testte het met Isaac Flath op gesprekken van een verhuurassistent.",
+    "Zijn belangrijkste kritiek: de tool begint te vroeg met toetsen. Claude vroeg meteen welke fout ze wilden aanpakken, terwijl ze de data nog niet hadden bekeken. Volgens Husain hoort eerst foutanalyse (error analysis) te komen: zelf gesprekken lezen en noteren wat misgaat. De beoordelaar die Claude maakte, toetste ook vier dingen tegelijk, deels met een taalmodel en deels met code. Husain wil liever één beoordelaar per fout.",
+    "Er is ook lof. Zonder hulp vond de tool problemen die andere automatische aanpakken misten, zoals een gemiste overdracht naar een mens en opmaakfouten. Husain noemt het de sterkste eenmalige foutzoeker die hij heeft gezien. Toch wacht hij nog met gebruiken. Labels nakijken in Markdown in de chat vond hij onwerkbaar; ze bouwden er een webapp voor.",
+    "Voor een eigen data-assistent is de les praktisch. Laat Claude gerust fouten voorstellen, maar kijk eerst zelf naar de data voordat je een beoordelaar vastlegt. En vraag altijd naar de prompt of code van een beoordelaar, in plaats van op een uitleg te vertrouwen."
+  ],
+  "key_facts": [
+    "Hamel Husain publiceerde zijn bespreking op 30 september 2026.",
+    "De claude-api-plugin voor Claude Code heeft de commando's build_eval (fouten voorstellen, beoordelaar maken en controleren) en hill-climb (de toepassing verbeteren tegen de evals).",
+    "Volgens Husain dringt de tool aan op evals vóór foutanalyse, en mengt de eerste beoordelaar vier controles (LLM-beoordelaar en code).",
+    "Volgens Husain vond de tool zonder hulp problemen die andere auto-eval-aanpakken misten, zoals overdracht naar een mens, opmaak en spraakproblemen.",
+    "Husain wacht nog met gebruiken; de maker van de plugin wil de feedback verwerken."
+  ],
+  "personal_relevance": "Je wilt een data-assistent betrouwbaar maken; dit laat zien wat je Claude kunt laten doen bij evals en wat je zelf moet blijven doen.",
+  "experiment": "Draai build_eval op een kleine set verzonnen gesprekken met een vraag-en-antwoordassistent over een openbare dataset. Lees eerst zelf twintig gesprekken en vergelijk jouw foutenlijst met die van Claude.",
+  "limitations": [
+    "Eén test door één expert, tijdens een livestream.",
+    "Husain heeft zelf eval-skills en cursussen; hij vergelijkt met zijn eigen aanpak.",
+    "Externe AI zoals Claude alleen gebruiken op verzonnen gesprekken, nooit op werkdata."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_evaluation_observability",
+    "claude_ai_development",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.65,
+    "practicality": 0.7,
+    "novelty": 0.7
+  },
+  "development_key": "claude-api-plugin-evals-sep-2026",
+  "date_note": "Gepubliceerd op 30 september 2026; de radar ziet hem pas nu.",
+  "exceptional": false,
+  "article_type": "opinie",
+  "author": "Hamel Husain, consultant en docent over AI-evaluatie (met Shreya Shankar)",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}

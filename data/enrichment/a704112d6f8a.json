@@ -1,0 +1,63 @@
+{
+  "format_version": 2,
+  "article_id": "a704112d6f8a",
+  "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+  "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
+  "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
+  "story": [
+    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
+    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
+    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar."
+  ],
+  "key_facts": [
+    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
+    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
+    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
+    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
+    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
+    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
+  ],
+  "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
+  "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
+  "limitations": [
+    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
+    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
+    "databricks-dbt-factory is een open-source project, geen product van Databricks."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "databricks-dbt-factory (GitHub)",
+      "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.85,
+    "practicality": 0.85,
+    "novelty": 0.65
+  },
+  "development_key": "ifco-dbt-databricks-schaal-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "exercise": {
+    "title": "Mis geen late scans",
+    "task": "Na de vorige run (zie watermark) moet je alleen de kratten opnieuw doorrekenen die nieuwe data kregen. De startquery filtert op het moment van de scan en mist zo scans die laat binnenkwamen. Geef de juiste lijst asset_id's.",
+    "setup_sql": "CREATE TABLE scans (asset_id VARCHAR, event_time TIMESTAMP, ingested_at TIMESTAMP);\nINSERT INTO scans VALUES\n ('krat-01','2026-10-20 08:00','2026-10-20 09:00'),\n ('krat-02','2026-10-20 10:00','2026-10-20 11:00'),\n ('krat-03','2026-10-21 07:30','2026-10-21 08:00'),\n ('krat-01','2026-10-22 06:00','2026-10-22 06:30'),\n ('pallet-07','2026-10-22 09:00','2026-10-22 09:15'),\n ('krat-02','2026-10-14 12:00','2026-10-22 10:00'),\n ('pallet-09','2026-10-03 16:00','2026-10-22 11:00'),\n ('krat-04','2026-10-22 12:00','2026-10-22 12:05');\nCREATE TABLE watermark (laatst_verwerkt TIMESTAMP);\nINSERT INTO watermark VALUES ('2026-10-21 23:59');",
+    "starter_sql": "SELECT DISTINCT s.asset_id\nFROM scans s\nCROSS JOIN watermark w\nWHERE s.event_time > w.laatst_verwerkt\nORDER BY s.asset_id;",
+    "solution_sql": "SELECT DISTINCT s.asset_id\nFROM scans s\nCROSS JOIN watermark w\nWHERE s.ingested_at > w.laatst_verwerkt\nORDER BY s.asset_id;",
+    "hint": "Vraag je af wat 'nieuw voor mij' betekent: wanneer is de rij bij jou binnengekomen?",
+    "explanation": "Een late scan heeft een oude event_time maar een nieuwe ingested_at. Wie op event_time filtert, slaat krat-02 en pallet-09 over, en hun KPI's blijven fout. Filter je op binnenkomsttijd, dan vind je elke krat met nieuwe data. Dat is de kern van de aanpak van IFCO.",
+    "ordered": false
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}

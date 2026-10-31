@@ -1,0 +1,48 @@
+{
+  "format_version": 2,
+  "article_id": "a343c9786e70",
+  "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
+  "headline": "Claude Haiku 5.5: een tiende van de prijs, maar let op lange prompts",
+  "summary": "Anthropic bracht Claude Haiku 5.5 uit, een snel en goedkoop model. Tot 100.000 tokens kost het een tiende van Haiku 4.5, daarboven vijf keer zoveel als dat lage tarief.",
+  "story": [
+    "Anthropic heeft Claude Haiku 5.5 uitgebracht, de opvolger van Haiku 4.5. Simon Willison zet de details op een rij. Tot 100.000 tokens kost het 0,10 dollar per miljoen tokens invoer en 0,50 dollar uitvoer. Haiku 4.5 kostte 1 en 5 dollar. Boven de 100.000 tokens gaat de prijs vijf keer omhoog.",
+    "Er zit wel een addertje onder het gras. Volgens Willison gebruikt dezelfde lange tekst bij Haiku 5.5 ongeveer 1,25 keer zoveel tokens. De rekeneenheid is dus kleiner geworden, wat de echte prijs iets verhoogt. Haiku 5.5 denkt ook altijd na voor het antwoordt (reasoning). Dat kun je niet uitzetten, alleen instellen van low tot max; standaard is medium.",
+    "Waar is een goedkoop, snel model handig? Bij veel kleine taken, zoals korte beschrijvingen voorstellen of tekst classificeren. Als je Claude via de API gebruikt, mag dat alleen zonder werkdata. Voor werkdata kijk je naar modellen binnen Databricks."
+  ],
+  "key_facts": [
+    "Claude Haiku 5.5 is aangekondigd op 7 oktober 2026.",
+    "Prijs tot 100.000 tokens: 0,10 dollar invoer en 0,50 dollar uitvoer per miljoen tokens; daarboven 0,50 en 2,50 dollar. Haiku 4.5 kostte 1 en 5 dollar.",
+    "Volgens Willison telt de nieuwe tokenizer dezelfde lange prompt als ongeveer 1,25 keer zoveel tokens als bij Haiku 4.5.",
+    "Reasoning kan niet uit; niveaus low, medium (standaard), high, xhigh en max.",
+    "Tegelijk zijn de prijzen voor cache-reads bij Sonnet 5.5 gehalveerd, en krijgen Max- en Team-abonnees maandelijks API-tegoed."
+  ],
+  "personal_relevance": "Een goedkoop Claude-model maakt kleine hulpjes rond je dbt-scripts goedkoper, zolang er geen werkdata in gaat.",
+  "experiment": "Laat Haiku 5.5 en Sonnet 5.5 voor twintig modellen uit een openbaar oefenproject (bijv. jaffle_shop) een beschrijving voorstellen, op low en medium. Vergelijk kwaliteit, snelheid en kosten.",
+  "limitations": [
+    "Willison noemt geen grootte van het contextvenster en geen beschikbaarheid via cloudplatforms.",
+    "Het is een bespreking door Willison; de cijfers komen uit de aankondiging en zijn eigen proef."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Introducing Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "general_ai_trends"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.5,
+    "novelty": 0.6
+  },
+  "development_key": "claude-haiku-5-5-okt-2026",
+  "date_note": "Aangekondigd op 7 oktober 2026; de radar ziet het pas nu.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}

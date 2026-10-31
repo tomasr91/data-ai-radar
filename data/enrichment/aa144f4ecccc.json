@@ -1,0 +1,50 @@
+{
+  "format_version": 2,
+  "article_id": "aa144f4ecccc",
+  "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
+  "headline": "Power BI op Databricks: Direct Lake is vaak het snelst, maar test zelf",
+  "summary": "Een witboek in opdracht van Microsoft vergelijkt hoe je Power BI het best op Databricks-data laat rapporteren. Direct Lake op OneLake was in de meeste tests het snelst; bij grote volumes won een samengesteld model.",
+  "story": [
+    "Microsoft liet een witboek schrijven over één vraag: welke opslagmodus (storage mode) kies je in Power BI als je data in Azure Databricks staat? Chris Webb van het Power BI-team wijst erop. Schrijver is Liping Huang, die bij zowel Microsoft als Databricks heeft gewerkt. Het stuk gaat alleen over snelheid, niet over kosten of governance.",
+    "Twee opzetten komen er goed uit. Direct Lake op OneLake was in de meeste tests het snelst. Daarbij leest Power BI de Delta-bestanden direct, zonder alles eerst te importeren. Bij grote datavolumes won een samengesteld model (composite model). Daarin blijft de feitentabel via DirectQuery in Databricks, staan dimensies in Dual-modus en zijn samenvattingen geïmporteerd. Het lijkt op een winkel met de populairste spullen vooraan en de rest in het magazijn.",
+    "Het belangrijkste advies is om zelf te testen, want de uitkomst hangt af van jouw data, modellen en rapporten. In de reacties wijst een lezer op de kosten. Data synchroon houden tussen Databricks en OneLake is niet gratis. Webb antwoordt dat prijzen per klant zo verschillen dat er geen vaste conclusie te trekken was."
+  ],
+  "key_facts": [
+    "Chris Webb (Microsoft) schreef op 6 september 2026 over een nieuw witboek van Microsoft over Power BI-opslagmodi voor Azure Databricks.",
+    "Auteur van het witboek: Liping Huang, onafhankelijk expert met ervaring bij Microsoft en Databricks.",
+    "Direct Lake op OneLake presteerde het best in de meeste tests; een samengesteld model (DirectQuery-feiten, Dual-dimensies, geïmporteerde aggregaties) was het best bij grotere volumes.",
+    "Het witboek gaat over prestaties; kosten en governance vallen erbuiten.",
+    "Volgens een lezer raadt het witboek gespiegelde Unity Catalog-tabellen met shortcuts aan; Webb zegt niet dat hij dat bevestigt."
+  ],
+  "personal_relevance": "Je semantische modellen in Fabric lezen Databricks-data; dit helpt je de opslagmodus per model onderbouwd te kiezen.",
+  "experiment": "Bouw op een openbare dataset in een testomgeving hetzelfde kleine rapport twee keer: één keer met DirectQuery naar Databricks en één keer met Direct Lake. Meet met Performance Analyzer de laadtijd van drie visuals.",
+  "limitations": [
+    "Kosten en governance zitten niet in het witboek, terwijl die bij data in twee platforms zwaar wegen.",
+    "Het is een stuk in opdracht van Microsoft; Webb werkt zelf bij Microsoft.",
+    "Webb geeft in zijn post geen meetcijfers; die staan in het witboek zelf."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Modern Power BI architecture choices for reporting on Azure Databricks (witboek)",
+      "url": "https://community.fabric.microsoft.com/blog/fbc_pbiupdatesblog/modern-power-bi-architecture-choices-for-reporting-on-azure-databricks-a-perform/5364286"
+    }
+  ],
+  "topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "data_architecture_modeling"
+  ],
+  "quality": {
+    "depth": 0.55,
+    "practicality": 0.8,
+    "novelty": 0.55
+  },
+  "development_key": "powerbi-storage-mode-databricks-sep-2026",
+  "date_note": "Gepubliceerd op 6 september 2026; de radar ziet hem pas nu.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}

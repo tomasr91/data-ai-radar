@@ -1,0 +1,65 @@
+{
+  "format_version": 2,
+  "article_id": "68a2bf1c5563",
+  "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+  "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
+  "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
+  "story": [
+    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
+    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
+    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
+    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ."
+  ],
+  "key_facts": [
+    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
+    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
+    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
+    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
+    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
+    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
+  ],
+  "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
+  "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
+  "limitations": [
+    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
+    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
+    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "dbt licensing",
+      "url": "https://docs.getdbt.com/docs/dbt-licensing"
+    },
+    {
+      "label": "Licensing FAQ",
+      "url": "https://www.getdbt.com/licenses-faq"
+    },
+    {
+      "label": "dbt-autofix",
+      "url": "https://github.com/dbt-labs/dbt-autofix"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.8,
+    "novelty": 0.5
+  },
+  "development_key": "dbt-v2-ga-sep-2026",
+  "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "showcase": {
+    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
+    "language": "bash",
+    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
+    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:55:00Z",
+  "prompt_version": "taak-v2"
+}
