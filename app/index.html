@@ -103,7 +103,8 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
 .fb-send { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 14px; min-height: 44px; border-radius: var(--r); border: 1px solid var(--accent2); background: var(--accent2-soft); color: var(--ink); text-decoration: none; font-size: 0.9rem; }
 .fb-send b { color: var(--accent2); }
-.term { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-decoration: underline dotted var(--accent2); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.term { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-decoration: underline dotted var(--muted); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.term.new { color: var(--accent2); text-decoration-color: var(--accent2); }   /* nog niet bekeken */
 .term-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--surface); border-top: 2px solid var(--accent2); padding: 16px 20px calc(18px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 30px rgba(0,0,0,.45); }
 .term-sheet[hidden] { display: none; }
 .term-sheet .wrap { position: relative; }
@@ -648,6 +649,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
      Claude zet bij een stuk `terms` (pipeline/terms.py). De eerste keer dat een begrip in de tekst
      staat wordt het onderstreept; tik erop voor de uitleg. Alle begrippen: Verdieping > Begrippen. */
   const reEsc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // Begrippen die je al eens aantikte: niet meer oranje, alleen nog gestippeld (radar:terms).
+  const termsSeen = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:terms") || "{}"); } catch { return {}; } },
+    has(t) { return !!this.all()[t.trim().toLowerCase()]; },
+    add(t) { const d = this.all(); d[t.trim().toLowerCase()] = new Date().toISOString(); try { localStorage.setItem("radar:terms", JSON.stringify(d)); } catch {} },
+  };
   function termMarker(terms) {
     const todo = (terms || []).filter((t) => t?.term).sort((a, b) => b.term.length - a.term.length)
       .map((t) => ({ t, re: new RegExp(`(?<![\\p{L}\\p{N}_])${reEsc(esc(t.term.trim()))}(?![\\p{L}\\p{N}_])`, "iu") }));
@@ -660,7 +667,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         const before = h.slice(0, m.index);
         if (before.lastIndexOf("<") > before.lastIndexOf(">")) continue;   // niet binnen een tag
         if ((before.match(/<button/g) || []).length !== (before.match(/<\/button>/g) || []).length) continue;   // niet binnen een ander begrip
-        h = before + `<button type="button" class="term" data-term="${esc(x.t.term)}" data-exp="${esc(x.t.explanation)}">${m[0]}</button>` + h.slice(m.index + m[0].length);
+        h = before + `<button type="button" class="term${termsSeen.has(x.t.term) ? "" : " new"}" data-term="${esc(x.t.term)}" data-exp="${esc(x.t.explanation)}">${m[0]}</button>` + h.slice(m.index + m[0].length);
         done.add(x);
       }
       return h;
@@ -673,6 +680,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (!b) { if (!e.target.closest("#term-sheet")) sheet.hidden = true; return false; }
     sheet.innerHTML = `<div class="wrap"><button type="button" class="x" aria-label="Sluiten">×</button><h3>${esc(b.dataset.term)}</h3><p>${esc(b.dataset.exp)}</p><a href="#begrippen">Alle begrippen ›</a></div>`;
     sheet.hidden = false;
+    termsSeen.add(b.dataset.term);
+    document.querySelectorAll(".term.new").forEach((el) => { if (el.dataset.term.toLowerCase() === b.dataset.term.toLowerCase()) el.classList.remove("new"); });
     return true;
   }
   const termSheet = `<div class="term-sheet" id="term-sheet" role="dialog" aria-label="Uitleg begrip" hidden></div>`;
