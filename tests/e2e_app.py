@@ -274,6 +274,13 @@ with sync_playwright() as p:
         fr.locator(".verdict-line").first.wait_for(timeout=5000)
         yq2, yn = fr.locator(".qtext").bounding_box()["y"], fr.locator('[data-act="next"]').bounding_box()["y"]
         check("   met uitleg open: na controleren blijft alles staan", abs(yq2 - yq) < 4 and abs(yn - yc) < 4, f"vraag {yq}->{yq2}, knop {yc}->{yn}")
+    # Volgende vraag: het vraagblok staat zo hoog mogelijk, direct onder de vaste tabbalk
+    fr.locator('[data-act="next"]').click()
+    fr.locator(".q .opt").first.wait_for(timeout=5000)
+    page.wait_for_timeout(200)
+    q_top = fr.locator(".q").bounding_box()["y"]
+    bar = page.evaluate("document.querySelector('.filters').getBoundingClientRect().bottom")
+    check("   volgende vraag: vraagblok direct onder de tabbalk", 0 <= q_top - bar <= 20, f"vraag {q_top}, tabbalk {bar}")
     saved = page.evaluate("JSON.parse(localStorage.getItem('cca-academy-v2') || 'null')")
     n = sum(c["total"]["n"] for c in saved["certs"].values()) if saved else 0
     check("   vraag beantwoorden werkt en wordt bewaard", n >= 1, str(n))

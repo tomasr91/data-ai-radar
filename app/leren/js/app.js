@@ -199,13 +199,29 @@
   function setCert(id) {
     C.state.activeCert = id; C.save(); ui.view = "home"; ui.confirm = null; ui.importMsg = null;
     try { history.replaceState(null, "", "#" + id); } catch (e) {}
-    render(); window.scrollTo(0, 0);
+    render(); toTop();
   }
   function resetRound() { ui.round = []; ui.retry = null; ui.retryDone = null; ui.roundMs = []; }
   function start(kind, id) {
     ui.scope = kind === "all" || kind === "weak" || kind === "hard" ? { kind } : { kind, id };
     ui.recent = []; resetRound();
-    newQuestion(); ui.view = "practice"; render(); window.scrollTo(0, 0);
+    newQuestion(); ui.view = "practice"; render(); toTop(".q");
+  }
+  /* Radar: het examen staat in een venster zonder eigen scrollbalk; de Radar-pagina scrolt.
+     Zet het gevraagde blok (bijv. de vraag) zo hoog mogelijk, direct onder de vaste tabbladen van de Radar. */
+  function toTop(sel) {
+    const el = sel ? document.querySelector(sel) : null;
+    try {
+      if (window.parent !== window && window.frameElement) {
+        const pdoc = window.parent.document, sticky = pdoc.querySelector(".filters");
+        // Hoogte van de vaste tabbalk plus waar hij blijft plakken (veilige zone bovenaan het scherm)
+        const off = sticky ? sticky.getBoundingClientRect().height + (parseFloat(window.parent.getComputedStyle(sticky).top) || 0) : 0;
+        const y = window.frameElement.getBoundingClientRect().top + window.parent.scrollY + (el ? el.getBoundingClientRect().top : 0) - off - 10;
+        window.parent.scrollTo(0, Math.max(0, y));
+        return;
+      }
+    } catch (e) { /* ander domein: val terug op gewoon scrollen */ }
+    if (el) el.scrollIntoView({ block: "start" }); else window.scrollTo(0, 0);
   }
   function check() {
     const cur = ui.cur; if (!cur || cur.checked) return;
@@ -218,21 +234,21 @@
   }
   function showRound() {
     if (ui.retry) ui.retryDone = { n: ui.retry.queue.length, ok: ui.retry.res.filter(Boolean).length };
-    ui.retry = null; ui.view = "round"; ui.cur = null; render(); window.scrollTo(0, 0);
+    ui.retry = null; ui.view = "round"; ui.cur = null; render(); toTop();
   }
   function next() {
     if (ui.retry) {
       if (ui.retry.i >= ui.retry.queue.length - 1) return showRound();
-      ui.retry.i++; newQuestion(); render(); window.scrollTo(0, 0); return;
+      ui.retry.i++; newQuestion(); render(); toTop(".q"); return;
     }
     if (ui.round.length >= ROUND) {
       const list = retryList();
-      if (list.length) { ui.retry = { queue: C.shuffle(list), i: 0, res: [] }; newQuestion(); render(); window.scrollTo(0, 0); return; }
+      if (list.length) { ui.retry = { queue: C.shuffle(list), i: 0, res: [] }; newQuestion(); render(); toTop(".q"); return; }
       return showRound();
     }
-    newQuestion(); render(); window.scrollTo(0, 0);
+    newQuestion(); render(); toTop(".q");
   }
-  function nextRound() { resetRound(); ui.view = "practice"; newQuestion(); render(); window.scrollTo(0, 0); }
+  function nextRound() { resetRound(); ui.view = "practice"; newQuestion(); render(); toTop(".q"); }
   function flash(text) {
     let t = document.getElementById("toast");
     if (!t) { t = document.createElement("div"); t.id = "toast"; t.setAttribute("role", "status"); t.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-size:0.9rem;z-index:40;max-width:calc(100% - 32px)"; document.body.appendChild(t); }
@@ -241,7 +257,7 @@
 
   const H = {
     cert: el => setCert(el.dataset.id),
-    home: () => { ui.view = "home"; render(); window.scrollTo(0, 0); },
+    home: () => { ui.view = "home"; render(); toTop(); },
     start: el => start(el.dataset.kind, el.dataset.id),
     toggle: el => { ui.open[el.dataset.id] = !ui.open[el.dataset.id]; render(); },
     check, next, nextround: nextRound,
