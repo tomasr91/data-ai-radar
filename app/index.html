@@ -411,6 +411,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
     document.querySelectorAll("#seg-view button").forEach((b) => b.setAttribute("aria-selected", b.dataset.v === state.view));
     $("#seg-sort").hidden = state.view !== "actueel";
+    $("#upd").hidden = state.view !== "actueel";   // "Nieuwe artikelen <datum>" hoort alleen bij Actueel
     $("#seg-dd").hidden = state.view !== "verdieping";
     document.querySelectorAll("#seg-dd button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.ddTab));
   }

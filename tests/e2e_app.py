@@ -306,6 +306,7 @@ with sync_playwright() as p:
           d.suggested_filename.startswith("academy-voortgang-") and '"claude-certification-academy"' in body, d.suggested_filename)
     page.evaluate("localStorage.removeItem('cca-academy-v2')")
     page.reload(); page.wait_for_selector("#leren-frame")
+    check("   regel 'Nieuwe artikelen' alleen bij Actueel", not page.locator("#upd").is_visible())
     check("   Actueel en Verdieping verborgen, filters weg", not page.locator("#main").is_visible() and not page.locator("#seg-sort").is_visible() and not page.locator("#seg-dd").is_visible())
     bg = page.evaluate("getComputedStyle(document.getElementById('leren-frame').contentDocument.body).backgroundColor")
     check("   examen in het donkere Radar-thema", bg == "rgb(15, 18, 23)", bg)
