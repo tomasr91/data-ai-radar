@@ -36,7 +36,7 @@ topics:
   - id: ingestion-basis
     title: Hoe komt data eigenlijk in Databricks? De basis van ingestion
     question: Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming)?
-    angle: Beginnersniveau. Begrippen eerst (full load, incrementeel, CDC, schema-wijziging), dan de Databricks-opties (Auto Loader, Lakeflow Connect, declaratieve pipelines, COPY INTO) en wanneer je wat kiest. Oefening met een kleine incrementele load in SQL.
+    angle: Beginnersniveau. Begrippen eerst (full load, incrementeel, CDC, schema-wijziging), dan de Databricks-opties (Auto Loader, Lakeflow Connect, declaratieve pipelines, COPY INTO) en wanneer je wat kiest. Voorbeeld van een kleine incrementele load in SQL.
     topics: [data_ingestion, databricks_data_engineering]
     level: beginner
     enabled: true
@@ -60,7 +60,7 @@ topics:
   - id: cdc-en-incrementeel-laden
     title: Alleen de wijzigingen ophalen - incrementeel laden en CDC
     question: Hoe laad je alleen wat er veranderd is, en hoe ga je om met updates en verwijderingen uit de bron?
-    angle: Beginnersniveau. Watermark/tijdstempel, change data feed, MERGE, verwijderingen, en hoe dbt incrementele modellen hierop aansluiten. Oefening met MERGE in SQL.
+    angle: Beginnersniveau. Watermark/tijdstempel, change data feed, MERGE, verwijderingen, en hoe dbt incrementele modellen hierop aansluiten. Voorbeeld met MERGE in SQL.
     topics: [data_ingestion, dbt_analytics_engineering]
     level: beginner
     enabled: true

@@ -47,16 +47,6 @@
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws",
-  "exercise": {
-    "title": "Mis geen late scans",
-    "task": "Na de vorige run (zie watermark) moet je alleen de kratten opnieuw doorrekenen die nieuwe data kregen. De startquery filtert op het moment van de scan en mist zo scans die laat binnenkwamen. Geef de juiste lijst asset_id's.",
-    "setup_sql": "CREATE TABLE scans (asset_id VARCHAR, event_time TIMESTAMP, ingested_at TIMESTAMP);\nINSERT INTO scans VALUES\n ('krat-01','2026-10-20 08:00','2026-10-20 09:00'),\n ('krat-02','2026-10-20 10:00','2026-10-20 11:00'),\n ('krat-03','2026-10-21 07:30','2026-10-21 08:00'),\n ('krat-01','2026-10-22 06:00','2026-10-22 06:30'),\n ('pallet-07','2026-10-22 09:00','2026-10-22 09:15'),\n ('krat-02','2026-10-14 12:00','2026-10-22 10:00'),\n ('pallet-09','2026-10-03 16:00','2026-10-22 11:00'),\n ('krat-04','2026-10-22 12:00','2026-10-22 12:05');\nCREATE TABLE watermark (laatst_verwerkt TIMESTAMP);\nINSERT INTO watermark VALUES ('2026-10-21 23:59');",
-    "starter_sql": "SELECT DISTINCT s.asset_id\nFROM scans s\nCROSS JOIN watermark w\nWHERE s.event_time > w.laatst_verwerkt\nORDER BY s.asset_id;",
-    "solution_sql": "SELECT DISTINCT s.asset_id\nFROM scans s\nCROSS JOIN watermark w\nWHERE s.ingested_at > w.laatst_verwerkt\nORDER BY s.asset_id;",
-    "hint": "Vraag je af wat 'nieuw voor mij' betekent: wanneer is de rij bij jou binnengekomen?",
-    "explanation": "Een late scan heeft een oude event_time maar een nieuwe ingested_at. Wie op event_time filtert, slaat krat-02 en pallet-09 over, en hun KPI's blijven fout. Filter je op binnenkomsttijd, dan vind je elke krat met nieuwe data. Dat is de kern van de aanpak van IFCO.",
-    "ordered": false
-  },
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:55:00Z",
   "prompt_version": "taak-v2"

@@ -147,16 +147,6 @@
     "code": "{{ config(materialized='metric_view') }}\n\nversion: 1.1\nsource: \"{{ ref('source_orders') }}\"\nfilter: status = 'completed'\ndimensions:\n  - name: order_date\n    expr: order_date\n  - name: status\n    expr: status\n    synonyms: [state, order_state]\nmeasures:\n  - name: total_orders\n    expr: count(1)\n  - name: total_revenue\n    expr: sum(revenue)\n    synonyms: [revenue, sales]",
     "note": "Overgenomen uit de dbt-documentatie (Databricks configurations, metric views). Het bestand heet daar order_metrics.sql. Niet zelf gedraaid: dit werkt alleen op Databricks."
   },
-  "exercise": {
-    "title": "Welke agents raakt jouw wijziging?",
-    "task": "De tabel lineage bevat de afhankelijkheden in een project, van ouder naar kind. Je gaat int_bestellingen wijzigen. Geef alles wat er direct of indirect van afhangt, met de soort, zoals dbt ls --select int_bestellingen+ dat zou doen. De startquery kijkt maar één stap ver.",
-    "setup_sql": "CREATE TABLE lineage (ouder VARCHAR, kind VARCHAR, soort_kind VARCHAR);\nINSERT INTO lineage VALUES\n ('stg_bestellingen','int_bestellingen','model'),\n ('int_bestellingen','fct_verkoop','model'),\n ('fct_verkoop','verkoop_mv','metric_view'),\n ('verkoop_mv','verkoop_agent','agent'),\n ('fct_verkoop','verkoop_dashboard','dashboard'),\n ('stg_klanten','dim_klant','model'),\n ('dim_klant','verkoop_mv','metric_view'),\n ('dim_klant','klant_agent','agent'),\n ('int_bestellingen','fct_retouren','model'),\n ('fct_retouren','retour_agent','agent'),\n ('stg_voorraad','fct_voorraad','model'),\n ('fct_voorraad','voorraad_agent','agent');",
-    "starter_sql": "SELECT kind AS geraakt, soort_kind\nFROM lineage\nWHERE ouder = 'int_bestellingen'\nORDER BY geraakt;",
-    "solution_sql": "WITH RECURSIVE downstream AS (\n  SELECT kind, soort_kind\n  FROM lineage\n  WHERE ouder = 'int_bestellingen'\n  UNION ALL\n  SELECT l.kind, l.soort_kind\n  FROM lineage l\n  JOIN downstream d ON l.ouder = d.kind\n)\nSELECT DISTINCT kind AS geraakt, soort_kind\nFROM downstream\nORDER BY geraakt;",
-    "hint": "Gebruik WITH RECURSIVE: begin bij de directe kinderen van int_bestellingen en zoek telkens de kinderen van wat je al gevonden hebt. Gebruik UNION ALL en zet DISTINCT in de laatste SELECT.",
-    "explanation": "De recursieve query loopt de lineage af tot er niets meer bij komt. Zo zie je dat de wijziging ook verkoop_agent en retour_agent raakt, via de metric view en fct_retouren. Dat is precies waarom je een agent in de lineage wilt: dan vind je hem vóór de uitrol, niet achteraf. Databricks SQL ondersteunt WITH RECURSIVE vanaf Runtime 17.0, alleen met UNION ALL.",
-    "ordered": false
-  },
   "currency_check": "Gecontroleerd op 31 oktober 2026. Bronnen uit juli tot en met oktober 2026: het Under Armour-verslag en de proef van dbt Labs (oktober 2026), de dbt-documentatie over metric views, en Microsoft Learn over bundels, agents (pagina bijgewerkt 13 oktober 2026), Agent Bricks CLI (Beta) en deployment jobs (bijgewerkt juli 2026). De naam Declarative Automation Bundles gebruikt, niet meer Databricks Asset Bundles. Agents op Databricks Apps via Agent Runtime gebruikt; agents op Model Serving en de legacy agent server bewust niet beschreven, omdat de documentatie die legacy noemt.",
   "topics": [
     "cicd_data_deployment",

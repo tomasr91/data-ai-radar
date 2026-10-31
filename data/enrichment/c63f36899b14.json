@@ -53,16 +53,6 @@
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws",
-  "exercise": {
-    "title": "Meld dubbele rijen in plaats van ze te verstoppen",
-    "task": "In de tabel uitslagen hoort per race elke positie maar één keer voor te komen. De startquery ontdubbelt met ROW_NUMBER en laat zo het probleem verdwijnen. Schrijf een query die juist toont welke race en positie de regel breken, met het aantal rijen.",
-    "setup_sql": "CREATE TABLE uitslagen (race_id INTEGER, coureur VARCHAR, positie INTEGER, punten INTEGER);\nINSERT INTO uitslagen VALUES\n (1,'Ada',1,25),(1,'Bas',2,18),(1,'Cem',3,15),\n (2,'Bas',1,25),(2,'Ada',2,18),(2,'Cem',3,15),\n (2,'Bas',1,25),\n (3,'Cem',1,25),(3,'Ada',2,18),(3,'Dirk',2,18),(3,'Bas',3,15);",
-    "starter_sql": "SELECT race_id, coureur, positie, punten\nFROM (\n  SELECT *, ROW_NUMBER() OVER (PARTITION BY race_id, coureur ORDER BY positie) AS rn\n  FROM uitslagen\n) t\nWHERE rn = 1\nORDER BY race_id, positie;",
-    "solution_sql": "SELECT race_id, positie, COUNT(*) AS aantal_rijen\nFROM uitslagen\nGROUP BY race_id, positie\nHAVING COUNT(*) > 1\nORDER BY race_id, positie;",
-    "hint": "Toets de regel zelf: groepeer op race_id en positie en houd alleen groepen over met meer dan één rij.",
-    "explanation": "De oplossing toetst een invariant: per race en positie precies één rij. Die regel blijft kloppen als er nieuwe races bijkomen, anders dan een test met vaste uitkomsten. De startquery verstopt de dubbele rij van race 2 en mist de gedeelde tweede plek in race 3. Dat is precies de fout uit de proef van dbt Labs.",
-    "ordered": false
-  },
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:20:00Z",
   "prompt_version": "taak-v2"

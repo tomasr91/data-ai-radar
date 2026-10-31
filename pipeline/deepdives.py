@@ -25,7 +25,7 @@ OPTION_FIELDS = ["id", "title", "question", "why", "topics"]
 ID_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 FIELDS = ["id", "plan_id", "headline", "summary", "sections", "experiment", "limitations",
           "further_reading", "currency_check", "topics", "written_at", "processed_by", "quiz",
-          "showcase", "exercise"]
+          "showcase"]
 
 
 def load_plan(path=PLAN) -> dict:
@@ -82,8 +82,8 @@ def validate(data: dict, topic_ids: set, plan_ids: set) -> list:
                       and isinstance(q.get("explanation"), str) and q["explanation"].strip())
                 if not ok:
                     p.append(f"quiz[{i}] moet question, 2 tot 4 options, een geldig answer (index) en explanation hebben")
-    from .practice import validate_exercise, validate_showcase
-    p += validate_showcase(data.get("showcase")) + validate_exercise(data.get("exercise"))
+    from .practice import validate_showcase
+    p += validate_showcase(data.get("showcase"))
     if not isinstance(data.get("limitations", []), list):
         p.append("limitations moet een lijst zijn")
     unknown = [t for t in data.get("topics", []) if t not in topic_ids]

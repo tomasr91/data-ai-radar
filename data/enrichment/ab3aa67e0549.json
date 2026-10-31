@@ -57,16 +57,6 @@
     "code": "ALTER VIEW main.sales.orders_mv ADD CONSTRAINT orders_customer\n  MANY TO ONE RELATIONSHIP TO main.sales.customers_mv\n  USING (customer_id);\n\nSELECT table_schema, table_name, constraint_name\nFROM main.information_schema.table_constraints\nWHERE constraint_type = 'RELATIONSHIP';",
     "note": "Overgenomen uit de officiële documentatie (Relationships between metric views). Niet zelf gedraaid: dit werkt alleen in Databricks."
   },
-  "exercise": {
-    "title": "Tel een klantgetal niet dubbel",
-    "task": "Geef per segment het totale budget van de klanten en de totale omzet. De startquery koppelt eerst alle bestellingen en telt dan het budget op. Daardoor telt een klant met drie bestellingen drie keer mee.",
-    "setup_sql": "CREATE TABLE klanten (klant_id INTEGER, segment VARCHAR, budget INTEGER);\nCREATE TABLE bestellingen (bestel_id INTEGER, klant_id INTEGER, bedrag INTEGER);\nINSERT INTO klanten VALUES (1,'zakelijk',1000),(2,'zakelijk',500),(3,'particulier',200),(4,'particulier',300);\nINSERT INTO bestellingen VALUES (10,1,120),(11,1,80),(12,1,200),(13,2,50),(14,3,40),(15,3,60),(16,4,30);",
-    "starter_sql": "SELECT k.segment,\n       SUM(k.budget)  AS totaal_budget,\n       SUM(b.bedrag)  AS totaal_omzet\nFROM klanten k\nJOIN bestellingen b ON b.klant_id = k.klant_id\nGROUP BY k.segment\nORDER BY k.segment;",
-    "solution_sql": "WITH omzet_per_klant AS (\n  SELECT klant_id, SUM(bedrag) AS omzet\n  FROM bestellingen\n  GROUP BY klant_id\n)\nSELECT k.segment,\n       SUM(k.budget) AS totaal_budget,\n       SUM(COALESCE(o.omzet, 0)) AS totaal_omzet\nFROM klanten k\nLEFT JOIN omzet_per_klant o ON o.klant_id = k.klant_id\nGROUP BY k.segment\nORDER BY k.segment;",
-    "hint": "Bestellingen hangen MANY TO ONE aan klanten. Tel eerst de omzet per klant op, en koppel pas daarna.",
-    "explanation": "Door eerst per klant te aggregeren heeft elke klant weer één rij, en wordt het budget één keer geteld. Dat is waarom een relatie de verhouding vastlegt: een tool die weet dat het MANY TO ONE is, weet ook dat getallen van de één-kant niet over de veel-kant opgeteld mogen worden. De LEFT JOIN houdt klanten zonder bestellingen mee.",
-    "ordered": false
-  },
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:20:00Z",
   "prompt_version": "taak-v2"

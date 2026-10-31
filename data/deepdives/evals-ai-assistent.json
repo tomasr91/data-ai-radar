@@ -174,15 +174,5 @@
       ]
     },
     "note": "Verzonnen testresultaten, alleen om het idee te laten zien. In Databricks staan zulke uitkomsten bij een MLflow-evaluatie; hier staan ze in een gewone tabel."
-  },
-  "exercise": {
-    "title": "Hoe betrouwbaar is de assistent echt?",
-    "task": "Bereken voor de hele testset twee percentages: bij hoeveel procent van de vragen was de assistent minstens één keer goed (pass@3), en bij hoeveel procent alle drie de keren (pass^3)?",
-    "setup_sql": "CREATE TABLE pogingen (vraag VARCHAR, poging INTEGER, goed BOOLEAN);\nINSERT INTO pogingen VALUES\n ('Hoeveel actieve medewerkers per afdeling?', 1, true),  ('Hoeveel actieve medewerkers per afdeling?', 2, true),  ('Hoeveel actieve medewerkers per afdeling?', 3, true),\n ('Welke tabel bevat de opnamedatum?',         1, true),  ('Welke tabel bevat de opnamedatum?',         2, false), ('Welke tabel bevat de opnamedatum?',         3, true),\n ('Wat is de definitie van ligduur?',          1, false), ('Wat is de definitie van ligduur?',          2, false), ('Wat is de definitie van ligduur?',          3, false),\n ('Wie is eigenaar van het model omzet?',      1, true),  ('Wie is eigenaar van het model omzet?',      2, true),  ('Wie is eigenaar van het model omzet?',      3, false);",
-    "starter_sql": "SELECT\n  vraag,\n  COUNT(*) FILTER (WHERE goed) AS aantal_goed\nFROM pogingen\nGROUP BY vraag;",
-    "solution_sql": "SELECT\n  ROUND(100.0 * AVG(CASE WHEN aantal_goed >= 1 THEN 1 ELSE 0 END)) AS pass_at_3_pct,\n  ROUND(100.0 * AVG(CASE WHEN aantal_goed = 3 THEN 1 ELSE 0 END)) AS pass_hoog_3_pct\nFROM (\n  SELECT vraag, COUNT(*) FILTER (WHERE goed) AS aantal_goed\n  FROM pogingen\n  GROUP BY vraag\n) per_vraag;",
-    "hint": "Tel eerst per vraag hoe vaak hij goed was (dat doet de startquery al). Zet dat in een subquery en neem daarover het gemiddelde van 'minstens 1 goed' en van '3 keer goed'.",
-    "explanation": "pass@3 is 75 procent, pass^3 maar 25 procent. Een collega die één keer vraagt, heeft aan de tweede maat meer: die laat zien hoe vaak je op het antwoord kunt vertrouwen.",
-    "ordered": false
   }
 }

@@ -34,9 +34,9 @@ Artikelen met een titel als "Claude Code: wat is er nieuw in week 43 (v2.1.304 t
 - Alleen bugfixes en kleine verbeteringen die week? Dan overslaan met reden "alleen kleine wijzigingen".
 - `availability_status`: `beschikbaar`, tenzij de release notes iets als preview of experimenteel noemen.
 
-## Zien en doen: `showcase` en `exercise`
+## Zien: `showcase`
 
-T leert het best door het te zien en te doen. Lezen alleen blijft te abstract. Voeg daarom waar het past twee blokken toe (bij artikelen én verdiepingen):
+T leert het best als hij het ziet. Lezen alleen blijft te abstract. Voeg daarom waar het past dit blok toe (bij artikelen én verdiepingen):
 
 **`showcase` – "Zo ziet het eruit"**: een klein stukje echte code (SQL, dbt-YAML, Python, een commando) met, als het kan, het resultaat eronder.
 - Gebruik het als het artikel over iets gaat dat je in code of configuratie doet. Bij puur nieuws of een mening laat je het weg.
@@ -44,19 +44,9 @@ T leert het best door het te zien en te doen. Lezen alleen blijft te abstract. V
 - Bij een SQL-voorbeeld met resultaat: draai het echt in DuckDB (`python -c "import duckdb; ..."`) op een klein verzonnen dataset en neem de echte uitkomst over (hooguit 12 rijen). Geen werk- of patiëntdata.
 - Hooguit ongeveer 25 regels code. `note` zegt waar het vandaan komt of wat is nagebouwd.
 
-**`exercise` – "Oefen het zelf"**: een korte SQL-opdracht die T op zijn telefoon in de browser doet (DuckDB).
-- Alleen bij onderwerpen waar SQL-oefenen iets leert: modelleren, maatstaven, datakwaliteit, ontdubbelen, historie, evaluatie, lineage-achtige vragen. Bij verdiepingen bijna altijd, bij artikelen ongeveer één op de drie.
-- `setup_sql`: maak een of twee kleine tabellen met hooguit 20 verzonnen rijen. Neutrale voorbeelden (bestellingen, voorraad, testvragen), geen patiënt- of werkdata.
-- `starter_sql`: draait wel, maar geeft nog niet het goede antwoord. Liefst de typische fout (bijv. optellen wat je niet mag optellen).
-- `solution_sql`: het goede antwoord, hooguit 50 rijen. Gebruik SQL die ook in Spark SQL werkt (window functions, CASE, CAST, DATE_TRUNC). Vermijd functies die alleen DuckDB kent.
-- `task` (wat moet T doen, 1 tot 3 zinnen), `hint`, `explanation` (waarom de oplossing klopt en wat het je leert), `title`.
-- `python scripts/validate_enrichment.py` draait elke oefening echt in DuckDB. Een oefening die faalt of niets teruggeeft, wordt geweigerd.
-
 ```json
 "showcase": {"caption": "Wat je ziet, in één of twee zinnen.", "language": "sql", "code": "SELECT ...",
-             "result": {"columns": ["kolom"], "rows": [["waarde"]]}, "note": "Verzonnen data; ..."},
-"exercise": {"title": "...", "task": "...", "setup_sql": "CREATE TABLE ...; INSERT INTO ... VALUES ...;",
-             "starter_sql": "SELECT ...", "solution_sql": "SELECT ...", "hint": "...", "explanation": "...", "ordered": false}
+             "result": {"columns": ["kolom"], "rows": [["waarde"]]}, "note": "Verzonnen data; ..."}
 ```
 
 Voorbeelden staan in `data/enrichment/60e7e131218f.json` en `data/deepdives/evals-ai-assistent.json`.
@@ -222,7 +212,7 @@ Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf j
 - Leg begrippen die in `profile.md` §2 als bekend staan niet uit.
 - `experiment`: een proef van hooguit een middag, alleen met openbare of verzonnen data. Externe AI alleen zonder werkdata.
 - `limitations`: 2 tot 4 korte zinnen over beperkingen, kosten of risico's, met aandacht voor zorgdata waar dat speelt.
-- `showcase` en `exercise`: volgens **Zien en doen** hierboven; bij een verdieping zo goed als altijd een oefening.
+- `showcase`: volgens **Zien** hierboven, als het onderwerp zich ervoor leent.
 - `quiz`: **3 controlevragen** over de kern van het stuk, zodat T merkt of het is blijven hangen. Per vraag 3 of 4 antwoorden, precies één goed (`answer` is de index, vanaf 0), en een `explanation` van 1 of 2 zinnen. Vraag naar begrip (waarom, wanneer kies je wat), niet naar losse namen of getallen. De foute antwoorden zijn geloofwaardig, maar volgens het stuk echt fout. Zet het goede antwoord niet steeds op dezelfde plek.
 
 ### Formaat van `data/deepdives/<id>.json`
