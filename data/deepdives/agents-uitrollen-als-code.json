@@ -1,0 +1,170 @@
+{
+  "format_version": 1,
+  "id": "agents-uitrollen-als-code",
+  "plan_id": "agents-uitrollen-als-code",
+  "request_issue": 5,
+  "headline": "Een AI-agent uitrollen zoals een dbt-model",
+  "summary": "Een agent die je met de hand in een webscherm bouwt, breekt zonder dat iemand het merkt. Behandel hem daarom als code: in git, met review, tests en omgevingen, en met een plek in de lineage. Zo ziet dat eruit met dbt en op Databricks.",
+  "sections": [
+    {
+      "heading": "Waarom een agent niet in een webscherm hoort",
+      "paragraphs": [
+        "Under Armour had drie AI-agents in Snowflake, met de hand gebouwd in de webinterface. Er was geen versiebeheer, geen pull request en geen test. Toen een kolom in een brontabel verdween, gaf een agent foute antwoorden. Het team merkte dat pas toen gebruikers erover klaagden.",
+        "Hun conclusie was simpel: een agent moet live gaan op dezelfde manier als een tabel. Een agent hangt net zo goed van je Gold-laag af als een dashboard. Alleen zie je zijn afhankelijkheden nergens, zolang hij buiten je project leeft.",
+        "Vergelijk het met een recept dat alleen in het hoofd van de kok zit. Zolang hij er is, gaat het goed. Verandert de leverancier een ingrediënt, dan weet niemand welk gerecht daardoor mislukt. Een agent als code is het opgeschreven recept, met een lijst van ingrediënten."
+      ]
+    },
+    {
+      "heading": "Wat er precies in versiebeheer moet",
+      "paragraphs": [
+        "Een agent bestaat uit meer dan een prompt. Er is de semantische laag waarop hij rekent: definities van maatstaven, synoniemen en voorbeeldvragen. Er is de agent zelf: instructies, het model, en de tools die hij mag gebruiken. En er zijn de rechten: wat mag hij lezen, in welke omgeving.",
+        "Al die onderdelen kunnen veranderen, en elk kan het antwoord breken. Daarom horen ze allemaal in git. Een vierde onderdeel vergeet men vaak: de testset met vragen en goede antwoorden. Zonder die set weet je na een wijziging niet of de agent nog klopt.",
+        "Sigma doet dit al op grote schaal, volgens een verslag van dbt Labs. Het bedrijf schrijft zijn semantische laag als code in een dbt-project met 2.883 modellen. Pakketten maken daar BI-modellen, semantic views en agents van. In de modelinstructies staan ook regels voor AI, zoals beperkingen op persoonsgegevens."
+      ]
+    },
+    {
+      "heading": "Het patroon van Under Armour in dbt",
+      "paragraphs": [
+        "Het team van Under Armour schreef eigen materializations: recepten waarmee dbt een object bouwt. Er kwam er een voor een agent en een voor een zoekdienst. Omdat de agent ref() gebruikt naar zijn tabellen, staat hij gewoon in de dbt-lineage.",
+        "Twee keuzes zijn de moeite waard om over te nemen. Ten eerste past de materialization een bestaande agent aan in plaats van hem te vervangen. Vervangen zou de gespreksgeschiedenis en de gebruikscijfers wissen. Ten tweede regelt een post-hook de rechten per omgeving. Ontbreekt de rol, dan faalt de build.",
+        "In CI kijkt het team eerst wat een wijziging raakt, met dbt ls --select daily_sales_semv+. Daarna bouwt dbt build --select state:modified+ alleen wat veranderd is. Een kolom die verdwijnt, breekt zo de CI en niet het antwoord aan een gebruiker. Na vijf maanden liepen meer dan 30 objecten via dbt, in drie omgevingen. Terugdraaien is een git revert."
+      ]
+    },
+    {
+      "heading": "Zo kan het op Databricks",
+      "paragraphs": [
+        "Op Databricks verdeel je het werk over twee gereedschappen. De semantische laag beheer je met dbt. De dbt-adapter voor Databricks kent een materialization metric_view. Het model bevat dan de YAML van een metric view, met ref() naar je Gold-tabel. Zo komt de metric view in de dbt-lineage, met synoniemen en tags erbij.",
+        "Let op hoe dbt die view bijwerkt. Standaard bouwt het hem opnieuw met CREATE OR REPLACE VIEW. Met view_update_via_alter op true past dbt hem ter plekke aan, en slaat het de stap over als er niets veranderde. Dat lijkt op de keuze van Under Armour om niet te vervangen maar aan te passen.",
+        "De rest beheer je met Declarative Automation Bundles, de nieuwe naam van Databricks Asset Bundles. Een bundel beschrijft resources als bestanden in git, met doelen (targets) zoals dev en prod. In de lijst met resources staan onder meer apps, genie_spaces, model_serving_endpoints, vector_search_indexes en mcp_services. Een Genie-ruimte of een app kan dus mee in dezelfde pull request.",
+        "Voor een agent in code is er de Agent Bricks CLI, nu in Beta. Die maakt een project met een agent.toml, waarin staat welke geheugenopslag, sessies, tracing en tools de agent krijgt. Met agentbricks deploy komt de agent op Databricks Apps. Agents op Model Serving heten in de documentatie nu legacy. De CLI-documentatie zegt nog niets over meerdere omgevingen of CI; daar moet je zelf een weg in vinden."
+      ]
+    },
+    {
+      "heading": "Testen voordat het live gaat",
+      "paragraphs": [
+        "Voor een agent heb je twee soorten tests nodig. De eerste soort ken je al: dbt-tests op de modellen en de metric view eronder. Klopt de data niet, dan klopt het antwoord ook niet. De tweede soort toetst de agent zelf, met een testset van vragen.",
+        "Daarvoor gebruik je op Databricks mlflow.genai.evaluate. Je geeft een testset uit Unity Catalog, de functie die de agent aanroept, en een lijst beoordelaars (scorers). Daarna draai je dezelfde set op de nieuwe versie en vergelijk je de uitkomsten. Het voorbeeld in de documentatie laat zien waarom dat telt: de nieuwe versie werd op de meeste punten beter, maar zakte op gefundeerdheid (groundedness) van 0,86 naar 0,57.",
+        "Een tweede les komt uit de proef van dbt Labs met Claude. Agents schreven daar tests die het antwoord van vandaag vastzetten, en die faalden bij correcte nieuwe data. Toets daarom regels die altijd moeten gelden, zoals 'omzet is nooit negatief', en niet de uitkomst van deze week.",
+        "Voor modellen in Unity Catalog bestaan ook deployment jobs, in Public Preview. Die draaien bij elke nieuwe versie een evaluatie, wachten op een goedkeuring en rollen dan uit. De documentatie bevestigt niet dat dit al voor agents op Apps werkt. Het idee van een goedkeuringsstap is wel bruikbaar."
+      ]
+    },
+    {
+      "heading": "Valkuilen en open vragen",
+      "paragraphs": [
+        "De grootste valkuil is volgorde. Je semantische laag rol je met dbt uit, de agent met een bundel of de Agent Bricks CLI. Breekt een metric view, dan moet de agent niet al naar productie zijn gegaan. Je CI moet dus eerst dbt bouwen en testen, en pas daarna de agent.",
+        "Een tweede valkuil zit in de rechten. De Agent Bricks CLI geeft de agent alleen toegang tot wat in agent.toml staat. Tabellen achter een Genie-agent moet je volgens de documentatie zelf toekennen. En tags die dbt via ALTER op Databricks zet, haalt dbt er niet meer af.",
+        "Ook Under Armour is niet klaar. Objecten die analisten in de webinterface bouwden, zetten ze nog met de hand om naar dbt. Wijzigingsverzoeken en een vast releasemoment blijven bewust handwerk. Voor zorgdata is dat een voordeel: een menselijke goedkeuring hoort daar bij."
+      ]
+    },
+    {
+      "heading": "Wat het betekent voor de AI-contextlaag",
+      "paragraphs": [
+        "Voor je project rond een AI-contextlaag op dbt en Databricks is dit een goede volgorde. Begin met de metric views als dbt-modellen, met synoniemen en beschrijvingen. Dan staat de kennis waar een assistent op leunt al in git en in de lineage. Een Genie-ruimte of agent komt er pas daarna bij, in dezelfde repository.",
+        "Leg naast elke agent een kleine testset in Unity Catalog, met vragen die collega's echt stellen. Draai die na elke wijziging in de semantische laag. Zo merk je een gebroken definitie in een pull request, niet bij een collega die een verkeerd getal krijgt."
+      ]
+    }
+  ],
+  "experiment": "Maak in een oefenproject (bijv. jaffle_shop op een testwerkruimte, met openbare of verzonnen data) een dbt-model met materialized='metric_view' en synoniemen. Laat dbt ls --select <model>+ zien wat ervan afhangt, verander daarna een kolomnaam in de Gold-tabel en kijk of dbt build het breekt voordat iets anders het merkt.",
+  "limitations": [
+    "De Agent Bricks CLI is Beta en de deployment jobs zijn Public Preview; namen en gedrag kunnen nog veranderen.",
+    "Het patroon van Under Armour draait op Snowflake; hun materializations bestaan niet voor Databricks.",
+    "Twee uitrolgereedschappen (dbt en bundels) betekent dat je zelf de volgorde in CI moet regelen.",
+    "Bij zorgdata: een agent op Databricks mag werkdata gebruiken binnen de rechten, maar testsets die naar externe AI gaan mogen geen werkdata bevatten."
+  ],
+  "further_reading": [
+    {
+      "label": "Ship AI agents like tables: dbt materializations for Snowflake CoWork (dbt Labs, oktober 2026)",
+      "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+      "note": "Het praktijkverhaal van Under Armour, met de CI-commando's en de keuze om aan te passen in plaats van te vervangen."
+    },
+    {
+      "label": "Databricks configurations: metric views (dbt-documentatie)",
+      "url": "https://docs.getdbt.com/reference/resource-configs/databricks-configs",
+      "note": "Hoe je een Unity Catalog metric view als dbt-model schrijft, inclusief view_update_via_alter en tags."
+    },
+    {
+      "label": "Declarative Automation Bundles resources (Microsoft Learn)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/resources",
+      "note": "Welke Databricks-objecten, zoals apps en Genie-ruimtes, je als code kunt uitrollen."
+    },
+    {
+      "label": "Deploy agents on Azure Databricks (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/deploy/",
+      "note": "De huidige opbouw: framework, agent server en Agent Runtime op Databricks Apps."
+    },
+    {
+      "label": "Agent Bricks CLI (Microsoft Learn)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/custom-agents/agent-bricks-cli",
+      "note": "De commando's en agent.toml voor een agent in code."
+    },
+    {
+      "label": "Evaluate and improve an agent (Microsoft Learn)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/mlflow3/genai/eval-monitor/evaluate-app",
+      "note": "Een testset in Unity Catalog en twee versies vergelijken met mlflow.genai.evaluate."
+    },
+    {
+      "label": "Have dbt skills been bitter lesson'd? (Alex Noonan, dbt Labs, oktober 2026)",
+      "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
+      "note": "Waarom tests op regels beter werken dan tests die de uitkomst van vandaag vastzetten."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Waarom past de materialization van Under Armour een bestaande agent aan in plaats van hem te vervangen?",
+      "options": [
+        "Omdat vervangen langzamer is dan aanpassen",
+        "Omdat vervangen de gespreksgeschiedenis en gebruikscijfers zou wissen",
+        "Omdat Snowflake geen CREATE OR REPLACE kent voor agents"
+      ],
+      "answer": 1,
+      "explanation": "Een agent heeft geschiedenis en gebruiksdata die je wilt houden. Vervangen gooit die weg, aanpassen niet."
+    },
+    {
+      "question": "Je semantische laag rol je met dbt uit en de agent met een bundel. Wat moet je CI dan in elk geval doen?",
+      "options": [
+        "Eerst de agent uitrollen, zodat gebruikers niet wachten",
+        "Beide tegelijk uitrollen en daarna testen",
+        "Eerst dbt bouwen en testen, en pas daarna de agent uitrollen",
+        "Alleen de agent testen, want dbt-tests zeggen niets over antwoorden"
+      ],
+      "answer": 2,
+      "explanation": "De agent leunt op de semantische laag. Breekt die, dan wil je niet dat de agent al in productie staat."
+    },
+    {
+      "question": "Welke test op een agent of model blijft het langst bruikbaar?",
+      "options": [
+        "Een test die controleert dat een regel altijd geldt, zoals 'omzet is nooit negatief'",
+        "Een test die de lijst met uitkomsten van deze week vastzet",
+        "Een test die alleen controleert of de agent antwoordt"
+      ],
+      "answer": 0,
+      "explanation": "Een regel die altijd moet gelden, klopt ook bij nieuwe data. Een vastgezette uitkomst faalt zodra er correcte nieuwe data binnenkomt."
+    }
+  ],
+  "showcase": {
+    "caption": "Een metric view als dbt-model. Door ref() staat hij in de lineage, en synoniemen helpen een AI-assistent de vraag te begrijpen.",
+    "language": "yaml",
+    "code": "{{ config(materialized='metric_view') }}\n\nversion: 1.1\nsource: \"{{ ref('source_orders') }}\"\nfilter: status = 'completed'\ndimensions:\n  - name: order_date\n    expr: order_date\n  - name: status\n    expr: status\n    synonyms: [state, order_state]\nmeasures:\n  - name: total_orders\n    expr: count(1)\n  - name: total_revenue\n    expr: sum(revenue)\n    synonyms: [revenue, sales]",
+    "note": "Overgenomen uit de dbt-documentatie (Databricks configurations, metric views). Het bestand heet daar order_metrics.sql. Niet zelf gedraaid: dit werkt alleen op Databricks."
+  },
+  "exercise": {
+    "title": "Welke agents raakt jouw wijziging?",
+    "task": "De tabel lineage bevat de afhankelijkheden in een project, van ouder naar kind. Je gaat int_bestellingen wijzigen. Geef alles wat er direct of indirect van afhangt, met de soort, zoals dbt ls --select int_bestellingen+ dat zou doen. De startquery kijkt maar één stap ver.",
+    "setup_sql": "CREATE TABLE lineage (ouder VARCHAR, kind VARCHAR, soort_kind VARCHAR);\nINSERT INTO lineage VALUES\n ('stg_bestellingen','int_bestellingen','model'),\n ('int_bestellingen','fct_verkoop','model'),\n ('fct_verkoop','verkoop_mv','metric_view'),\n ('verkoop_mv','verkoop_agent','agent'),\n ('fct_verkoop','verkoop_dashboard','dashboard'),\n ('stg_klanten','dim_klant','model'),\n ('dim_klant','verkoop_mv','metric_view'),\n ('dim_klant','klant_agent','agent'),\n ('int_bestellingen','fct_retouren','model'),\n ('fct_retouren','retour_agent','agent'),\n ('stg_voorraad','fct_voorraad','model'),\n ('fct_voorraad','voorraad_agent','agent');",
+    "starter_sql": "SELECT kind AS geraakt, soort_kind\nFROM lineage\nWHERE ouder = 'int_bestellingen'\nORDER BY geraakt;",
+    "solution_sql": "WITH RECURSIVE downstream AS (\n  SELECT kind, soort_kind\n  FROM lineage\n  WHERE ouder = 'int_bestellingen'\n  UNION ALL\n  SELECT l.kind, l.soort_kind\n  FROM lineage l\n  JOIN downstream d ON l.ouder = d.kind\n)\nSELECT DISTINCT kind AS geraakt, soort_kind\nFROM downstream\nORDER BY geraakt;",
+    "hint": "Gebruik WITH RECURSIVE: begin bij de directe kinderen van int_bestellingen en zoek telkens de kinderen van wat je al gevonden hebt. Gebruik UNION ALL en zet DISTINCT in de laatste SELECT.",
+    "explanation": "De recursieve query loopt de lineage af tot er niets meer bij komt. Zo zie je dat de wijziging ook verkoop_agent en retour_agent raakt, via de metric view en fct_retouren. Dat is precies waarom je een agent in de lineage wilt: dan vind je hem vóór de uitrol, niet achteraf. Databricks SQL ondersteunt WITH RECURSIVE vanaf Runtime 17.0, alleen met UNION ALL.",
+    "ordered": false
+  },
+  "currency_check": "Gecontroleerd op 31 oktober 2026. Bronnen uit juli tot en met oktober 2026: het Under Armour-verslag en de proef van dbt Labs (oktober 2026), de dbt-documentatie over metric views, en Microsoft Learn over bundels, agents (pagina bijgewerkt 13 oktober 2026), Agent Bricks CLI (Beta) en deployment jobs (bijgewerkt juli 2026). De naam Declarative Automation Bundles gebruikt, niet meer Databricks Asset Bundles. Agents op Databricks Apps via Agent Runtime gebruikt; agents op Model Serving en de legacy agent server bewust niet beschreven, omdat de documentatie die legacy noemt.",
+  "topics": [
+    "cicd_data_deployment",
+    "ai_agents_rag",
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs"
+  ],
+  "written_at": "2026-10-31T09:40:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}

@@ -1,0 +1,59 @@
+{
+  "format_version": 2,
+  "article_id": "23d3cd62d490",
+  "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
+  "headline": "Serverless kosten per team: tags, budgetten en een plafond per job",
+  "summary": "Databricks geeft serverless compute objecten die je kunt taggen, afschermen en begrenzen. Kosten zie je per tag terug in system.billing.usage, en een job krijgt een maximale grootte.",
+  "story": [
+    "Bij serverless compute start je geen cluster meer. Daardoor was het lastig te zien wie wat kost, en om te begrenzen. Databricks werkt dat nu bij met serverless compute-objecten. Er is een standaardobject voor notebooks en Databricks Connect, en één voor jobs en pipelines.",
+    "Zo'n object werkt als een kostenplaats met een slot erop. Je zet er één keer een tag op, en elke DBU die erop draait, draagt die tag mee naar de facturatie. Met de rechten Can Use en Can Manage bepaal je wie het mag gebruiken. Haal je 'All Users' weg en zet je er een groep op, dan zien anderen serverless grijs in hun notebook.",
+    "Daarnaast kun je de snelheid van uitgeven begrenzen (rate limits). Dat doe je met maten S, M, L en XL; voor notebooks en jobs is dat een plafond voor het opschalen. In system.billing.usage zie je de kosten per gebruiker, product en tag. Budgetten in de accountconsole mailen je als een drempel wordt overschreden.",
+    "Voor nachtelijke dbt-runs op serverless kan dit helpen om per laag of per team te zien wat het kost. Let op de status: tags en rate limits zijn Beta, en gedeelde budgetten voor interactief werk komen nog."
+  ],
+  "key_facts": [
+    "Blog van Databricks, 29 oktober 2026: het serverless-gebruik bij Databricks groeide het afgelopen jaar meer dan drie keer.",
+    "Serverless compute-tags (Beta): één tag op een serverless compute-object, en elke DBU draagt die tag mee naar de facturatie.",
+    "Serverless Compute Access Controls (algemeen beschikbaar): rechten Can Use en Can Manage; elke gebruiker begint met Can Use.",
+    "Rate limits (Beta, via de preview-instellingen): maten S, M, L en XL; voor notebooks en jobs een plafond voor autoscaling.",
+    "system.billing.usage splitst serverless DBU's uit per gebruiker, product en tag; budgetten met e-mailwaarschuwing zijn algemeen beschikbaar.",
+    "Gedeelde budgetten voor interactief werk, met een maximum per sessie, komen binnenkort."
+  ],
+  "personal_relevance": "Als je dbt of notebooks op serverless draait, zie je hiermee per team of laag wat het kost en kun je uitschieters begrenzen.",
+  "experiment": "Schrijf een query op system.billing.usage in een oefen- of testwerkruimte die de serverless kosten van de afgelopen 30 dagen per tag en per product optelt, en zet er een SQL-alert op.",
+  "limitations": [
+    "Tags en rate limits zijn Beta.",
+    "De blog bevat geen configuratievoorbeelden; de details staan in de documentatie.",
+    "Een te laag plafond maakt nachtelijke runs trager; meet eerst wat ze nu gebruiken."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Manage serverless compute (Azure)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/manage-serverless-compute"
+    },
+    {
+      "label": "Serverless billing system tables (Azure)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/serverless-billing"
+    },
+    {
+      "label": "Budgets (Azure)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/budgets"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_governance_privacy"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.7,
+    "novelty": 0.6
+  },
+  "development_key": "serverless-cost-controls-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:20:00Z",
+  "prompt_version": "taak-v2"
+}

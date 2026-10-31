@@ -1,0 +1,73 @@
+{
+  "format_version": 2,
+  "article_id": "ab3aa67e0549",
+  "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#relationships-between-metric-views-beta",
+  "headline": "Metric views leggen nu vast hoe ze aan elkaar koppelen",
+  "summary": "In Unity Catalog kun je nu vastleggen hoe twee metric views samenhangen: welke kolommen, en hoeveel rijen aan elke kant. AI-assistenten en BI-tools kiezen dan de goede koppeling.",
+  "story": [
+    "Een AI-assistent die twee metric views combineert, moet raden hoe ze samenhangen. Hij kijkt dan naar kolomnamen. Sinds 30 oktober kun je dat in Unity Catalog vastleggen als relatie (relationship), in Beta. Je zegt welke metric view naar welke andere wijst, op welke kolommen, en met welke verhouding (cardinality).",
+    "Het werkt met één SQL-opdracht: ALTER VIEW met ADD CONSTRAINT ... RELATIONSHIP. Je schrijft bijvoorbeeld dat bestellingen MANY TO ONE aan klanten hangen, via customer_id. Vergelijk het met een wegwijzer: de route ligt niet vast, maar elke reiziger weet welke weg past. Een vaste join in de YAML van een metric view draait bij elke query; een relatie is alleen metadata die een tool mag gebruiken.",
+    "De verhouding is het belangrijke deel. Wie een getal per klant over een veel-kant optelt, telt het dubbel. Met MANY TO ONE weet een tool dat dit gevaar bestaat. Een relatie hoeft ook geen primaire sleutel aan de andere kant te hebben, anders dan een foreign key. Je ziet relaties terug in DESCRIBE TABLE EXTENDED en in information_schema.table_constraints.",
+    "Voor een AI-contextlaag op Databricks is dit precies het soort kennis dat nu vaak in hoofden of in Power BI-modellen zit. Let wel op: Databricks controleert niet of de opgegeven verhouding klopt. Een foute relatie stuurt een assistent dus met overtuiging de verkeerde kant op."
+  ],
+  "key_facts": [
+    "Relaties tussen Unity Catalog metric views zijn in Beta sinds 30 oktober 2026.",
+    "Syntax: ALTER VIEW <bron> ADD [CONSTRAINT naam] {MANY|ONE} TO {MANY|ONE} RELATIONSHIP TO <doel> [AS alias] {ON voorwaarde | USING (kolommen)}.",
+    "Vereist Databricks Runtime 19 of hoger, of een SQL warehouse; bron en doel moeten allebei Unity Catalog metric views zijn.",
+    "Relaties worden niet afgedwongen, niet tegen de opgegeven cardinaliteit gecontroleerd en niet gebruikt voor query-optimalisatie.",
+    "Limieten: 50 uitgaande relaties per bron en 100 inkomende per doel; alleen via SQL, niet via REST API of SDK's.",
+    "Genie Code kan bij het bouwen van dashboards relaties uit Unity Catalog overnemen, en dashboardrelaties na goedkeuring terugschrijven naar Unity Catalog."
+  ],
+  "personal_relevance": "Hoe tabellen samenhangen is kerncontext voor een AI-assistent op je data; dit legt het vast op één plek in de catalogus.",
+  "experiment": "Maak in een oefenschema twee metric views op verzonnen bestellingen en klanten, leg een MANY TO ONE-relatie vast en stel Genie een vraag die beide nodig heeft. Kijk welke join hij kiest.",
+  "limitations": [
+    "Beta: syntax en gedrag kunnen nog veranderen.",
+    "Een hernoemde metric view werkt de ON-voorwaarde niet bij; je moet de relatie opnieuw aanmaken.",
+    "Het doel toont geen inkomende relaties; je moet elke bron apart bekijken."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Relationships between metric views",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/relationships"
+    },
+    {
+      "label": "Release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    }
+  ],
+  "topics": [
+    "ai_context_engineering",
+    "metadata_lineage_catalogs",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.8,
+    "novelty": 0.75
+  },
+  "development_key": "uc-metric-view-relationships-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "showcase": {
+    "caption": "Zo leg je vast dat elke bestelling bij precies één klant hoort, en zo vraag je alle relaties in een catalogus op.",
+    "language": "sql",
+    "code": "ALTER VIEW main.sales.orders_mv ADD CONSTRAINT orders_customer\n  MANY TO ONE RELATIONSHIP TO main.sales.customers_mv\n  USING (customer_id);\n\nSELECT table_schema, table_name, constraint_name\nFROM main.information_schema.table_constraints\nWHERE constraint_type = 'RELATIONSHIP';",
+    "note": "Overgenomen uit de officiële documentatie (Relationships between metric views). Niet zelf gedraaid: dit werkt alleen in Databricks."
+  },
+  "exercise": {
+    "title": "Tel een klantgetal niet dubbel",
+    "task": "Geef per segment het totale budget van de klanten en de totale omzet. De startquery koppelt eerst alle bestellingen en telt dan het budget op. Daardoor telt een klant met drie bestellingen drie keer mee.",
+    "setup_sql": "CREATE TABLE klanten (klant_id INTEGER, segment VARCHAR, budget INTEGER);\nCREATE TABLE bestellingen (bestel_id INTEGER, klant_id INTEGER, bedrag INTEGER);\nINSERT INTO klanten VALUES (1,'zakelijk',1000),(2,'zakelijk',500),(3,'particulier',200),(4,'particulier',300);\nINSERT INTO bestellingen VALUES (10,1,120),(11,1,80),(12,1,200),(13,2,50),(14,3,40),(15,3,60),(16,4,30);",
+    "starter_sql": "SELECT k.segment,\n       SUM(k.budget)  AS totaal_budget,\n       SUM(b.bedrag)  AS totaal_omzet\nFROM klanten k\nJOIN bestellingen b ON b.klant_id = k.klant_id\nGROUP BY k.segment\nORDER BY k.segment;",
+    "solution_sql": "WITH omzet_per_klant AS (\n  SELECT klant_id, SUM(bedrag) AS omzet\n  FROM bestellingen\n  GROUP BY klant_id\n)\nSELECT k.segment,\n       SUM(k.budget) AS totaal_budget,\n       SUM(COALESCE(o.omzet, 0)) AS totaal_omzet\nFROM klanten k\nLEFT JOIN omzet_per_klant o ON o.klant_id = k.klant_id\nGROUP BY k.segment\nORDER BY k.segment;",
+    "hint": "Bestellingen hangen MANY TO ONE aan klanten. Tel eerst de omzet per klant op, en koppel pas daarna.",
+    "explanation": "Door eerst per klant te aggregeren heeft elke klant weer één rij, en wordt het budget één keer geteld. Dat is waarom een relatie de verhouding vastlegt: een tool die weet dat het MANY TO ONE is, weet ook dat getallen van de één-kant niet over de veel-kant opgeteld mogen worden. De LEFT JOIN houdt klanten zonder bestellingen mee.",
+    "ordered": false
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:20:00Z",
+  "prompt_version": "taak-v2"
+}

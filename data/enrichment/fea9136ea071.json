@@ -1,0 +1,47 @@
+{
+  "format_version": 2,
+  "article_id": "fea9136ea071",
+  "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+  "headline": "Sigma bouwt zijn semantische laag als dbt-code, voor BI en agents tegelijk",
+  "summary": "Sigma schrijft zijn semantische laag in SQL en Jinja in een dbt-project. Pakketten maken daar Sigma-datamodellen, Snowflake semantic views en Cortex-agents van, als gewone dbt-nodes.",
+  "story": [
+    "Sigma legt zijn bedrijfsdefinities één keer vast, in een dbt-project. Uit die ene bron maakt het drie dingen: datamodellen voor de eigen BI-tool, semantic views in Snowflake en Cortex-agents. Dat vertelde Matt Senick, lead data platform engineer bij Sigma, op dbt Summit. Het project telt 2.883 dbt-modellen.",
+    "Het werkt als een vertaalmachine met één brontekst. De semantische objecten staan in SQL en Jinja, niet in YAML, en zijn per bedrijfsonderdeel opgesplitst. Drie dbt-pakketten zetten ze om: dbt-sigma-data-model, dbt-semantic-view en dbt-cortex-agent. dbt ziet de uitkomsten als gewone nodes, dus ze vallen onder dezelfde builds en dezelfde lineage.",
+    "Dagster draait 63 jobs over zes regio's. Elke run haalt het dbt-manifest uit S3, draait een state-aware dbt build, synchroniseert de Sigma-modellen via de API en zet het manifest terug. In de modelinstructies staan ook regels voor AI, zoals beperkingen op persoonsgegevens, plus synoniemen en geverifieerde queries.",
+    "Het idee past bij een AI-contextlaag op dbt: definities, gebruiksregels en voorbeeldvragen naast de modellen, in versiebeheer. Het verslag blijft wel dun. Het toont geen code en zegt niets over CI, tests of hoe wijzigingen worden gecontroleerd."
+  ],
+  "key_facts": [
+    "Verslag door dbt Labs van een dbt Summit 2026-sessie van Matt Senick, lead data platform engineer bij Sigma Computing.",
+    "De semantische laag staat als SQL en Jinja in een dbt-project, opgesplitst per bedrijfsonderdeel (sales, marketing, customer success, product).",
+    "Pakketten: dbt-sigma-data-model (Sigma-datamodellen), dbt-semantic-view (Snowflake semantic views) en dbt-cortex-agent (Cortex-agents); de uitkomsten zijn gewone dbt-nodes.",
+    "Dagster draait 63 jobs over 2.883 dbt-modellen in 6 dataregio's, met een state-aware dbt build op basis van een manifest in S3.",
+    "Modelinstructies bevatten regels voor AI (beperkingen op PII, SQL-opmaak), synoniemen en geverifieerde queries.",
+    "Senick noemde Open Semantic Interchange als initiatief om tussen semantische formaten te vertalen; dat is nog geen af product."
+  ],
+  "personal_relevance": "Het laat zien hoe je één set definities in dbt zowel aan BI als aan AI-agents voert, en wat er dan naast de modellen moet staan.",
+  "experiment": "Schrijf voor twee modellen in een openbaar oefenproject (bijv. jaffle_shop) synoniemen, gebruiksregels en twee geverifieerde voorbeeldvragen in de YAML-meta, en vraag Claude om met alleen die context SQL te schrijven.",
+  "limitations": [
+    "Het is een verslag door dbt Labs; er staan geen code, tests of resultaten in.",
+    "De pakketten mikken op Sigma en Snowflake; voor Databricks en Power BI moet je zelf een vertaling bedenken."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "data_architecture_modeling",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.55,
+    "novelty": 0.55
+  },
+  "development_key": "semantische-laag-als-dbt-code-okt-2026",
+  "date_note": "De pagina toont alleen 'Last edited on Oct 27, 2026'.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:20:00Z",
+  "prompt_version": "taak-v2"
+}

@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "903131b53f30",
+  "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+  "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
+  "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
+  "story": [
+    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
+    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
+    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
+    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
+  ],
+  "key_facts": [
+    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
+    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
+    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
+    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
+    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
+    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
+  ],
+  "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
+  "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
+  "limitations": [
+    "De snelheidscijfers zijn claims van Databricks zelf.",
+    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
+    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Use real-time mode in Lakeflow pipelines",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
+    },
+    {
+      "label": "Release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.35,
+    "novelty": 0.5
+  },
+  "development_key": "lakeflow-real-time-mode-ga-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:20:00Z",
+  "prompt_version": "taak-v2"
+}

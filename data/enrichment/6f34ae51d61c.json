@@ -1,0 +1,61 @@
+{
+  "format_version": 2,
+  "article_id": "6f34ae51d61c",
+  "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
+  "headline": "dbt v2 draait zonder warehouse op je laptop, met DuckDB ingebouwd",
+  "summary": "dbt v2 heeft een ingebouwde DuckDB-adapter. Met één regel in je profiel bouw je een dbt-project lokaal en offline, zonder warehouse-kosten.",
+  "story": [
+    "dbt v2 heeft een DuckDB-adapter ingebouwd. Je hoeft geen apart pakket meer te installeren. Op dbt Summit liet DuckDB-medeoprichter Hannes Mühleisen het zien. Hij haalde zijn laptop van internet en draaide een dbt build op ongeveer 10 GB aan Wikipedia-bestanden. Na zo'n drie seconden was het klaar.",
+    "DuckDB is een database die binnen je eigen programma draait, zoals SQLite, maar dan voor analyses. In je profiel zet je type: duckdb en eventueel een pad naar een bestand. Laat je het pad weg, dan krijg je een database in het geheugen die na de run verdwijnt. Die is handig om te testen. DuckDB leest CSV, Parquet en Iceberg ook direct, zonder eerst te laden.",
+    "Voor jou is dit vooral een oefen- en testplek. Je kunt een macro of een nieuw model uitproberen op verzonnen data, zonder Databricks-compute te starten. Let wel op de verschillen: DuckDB-SQL is niet hetzelfde als Spark SQL, dus wat lokaal werkt, moet je op Databricks nog controleren.",
+    "De documentatie noemt ook beperkingen. De ingebouwde driver kan geen DuckDB-extensies laden, zoals httpfs of parquet; daarvoor installeer je de driver apart. En nog niet alles uit de oude dbt-duckdb-adapter voor dbt v1 werkt al in v2."
+  ],
+  "key_facts": [
+    "dbt v2 bevat een ingebouwde DuckDB-adapter; het profiel heeft alleen type: duckdb nodig.",
+    "Zonder path draait dbt op een DuckDB-database in het geheugen; alle data verdwijnt na de run.",
+    "Demo op dbt Summit 2026 door Hannes Mühleisen (medeoprichter DuckDB): een offline dbt build op ongeveer 10 GB gecomprimeerde CSV's in ongeveer drie seconden.",
+    "Volgens de documentatie laadt de ingebouwde driver geen DuckDB-extensies; daarvoor installeer je de driver met dbc.",
+    "Volgens de documentatie werken nog niet alle functies van dbt-duckdb voor dbt v1 in v2.",
+    "De blogpagina toont alleen 'Last edited on Oct 27, 2026'."
+  ],
+  "personal_relevance": "Een gratis lokale dbt-omgeving maakt kleine experimenten met macro's en AI-gegenereerde modellen veel goedkoper.",
+  "experiment": "Maak een klein dbt v2-project met alleen type: duckdb in het profiel, laad een openbare CSV als seed en laat Claude een staging-model en tests voorstellen. Draai alles offline.",
+  "limitations": [
+    "DuckDB-SQL wijkt af van Spark SQL; lokaal groen betekent niet automatisch groen op Databricks.",
+    "Het blogstuk is een verslag van een conferentiesessie en noemt zelf geen beperkingen; die komen uit de documentatie."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "DuckDB setup (dbt v2)",
+      "url": "https://docs.getdbt.com/docs/local/connect-data-platform/duckdb-setup"
+    },
+    {
+      "label": "Supported data platforms",
+      "url": "https://docs.getdbt.com/docs/supported-data-platforms"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "open_source_tools",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.7,
+    "novelty": 0.55
+  },
+  "development_key": "dbt-v2-duckdb-adapter-okt-2026",
+  "date_note": "De pagina toont alleen 'Last edited on Oct 27, 2026'; een oorspronkelijke publicatiedatum ontbreekt.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "showcase": {
+    "caption": "Het kleinste profiel: alleen type duckdb. Zonder path draait dbt op een database in het geheugen die na de run verdwijnt.",
+    "language": "yaml",
+    "code": "default:\n  outputs:\n    dev:\n      type: duckdb\n  target: dev",
+    "note": "Overgenomen uit de officiële dbt-documentatie (DuckDB setup, dbt v2). Met path: './my_project.duckdb' bewaar je de data in een bestand."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-10-31T09:20:00Z",
+  "prompt_version": "taak-v2"
+}
