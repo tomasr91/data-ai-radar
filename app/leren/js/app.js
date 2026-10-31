@@ -31,11 +31,10 @@
 
   /* ---------------- kop ---------------- */
   function head() {
-    const m = C.store.mode;
-    const saveTxt = m === "account" ? "Opgeslagen in je account" : m === "browser" ? "Opgeslagen op dit toestel" : "Niet opgeslagen";
-    return `<div class="top"><div class="brand"><div class="mark" aria-hidden="true">CA</div><b>Claude Certification Academy</b></div>
-      <span class="save ${m}" title="${m === "account" ? "Je voortgang staat privé in je Claude-account." : "Maak via 'Voortgang en back-up' een export als je je voortgang wilt bewaren."}"><i></i>${C.store.error && m === "account" ? "Opslaan mislukt, opnieuw proberen…" : saveTxt}</span></div>
-      <nav class="certs" aria-label="Certificering">${A.order.map(id => { const c = A.certs[id]; return `<button class="cert" data-act="cert" data-id="${id}" aria-pressed="${id === C.state.activeCert}">${SHORT[id] || c.short}${c.questions.length ? "" : '<small>binnenkort</small>'}</button>`; }).join("")}</nav>`;
+    // In de Radar: alleen de keuze van de certificering (zonder titel, opslagmelding of nog lege certificeringen).
+    const ids = A.order.filter(id => A.certs[id].questions.length);
+    if (ids.length && !ids.includes(C.state.activeCert)) C.state.activeCert = ids[0];
+    return ids.length > 1 ? `<nav class="certs" aria-label="Certificering">${ids.map(id => { const c = A.certs[id]; return `<button class="cert" data-act="cert" data-id="${id}" aria-pressed="${id === C.state.activeCert}">${SHORT[id] || c.short}</button>`; }).join("")}</nav>` : "";
   }
 
   /* ---------------- startscherm ---------------- */
@@ -50,11 +49,10 @@
       if (ui.ready) C.newMilestones(); // legt bij de eerste keer al behaalde mijlpalen stil vast
       const r = C.readiness(), all = C.stats(null, { kind: "all" }), last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
       body = `<div class="card start">
-          <div class="ready"><span class="big">${pct(r)}</span><span>van de examenstof beheerst<br><span class="small muted">gewogen naar de verdeling van het examen</span></span></div>
+          <div class="ready"><span class="big">${pct(r)}</span><span>van de examenstof beheerst</span></div>
           ${meter(r, all.total ? all.seen / all.total : 0, pct(r) + " van de examenstof beheerst")}
           ${last ? `<p class="small ms-line">✓ ${msText(last)}</p>` : ""}
           <button class="btn primary wide" data-act="start" data-kind="weak">${all.seen ? "Verder oefenen" : "Begin met oefenen"}</button>
-          <p class="small muted center">Rondes van 10 vragen. De app kiest vanzelf wat je het meest oplevert${learning ? `; ${learning === 1 ? "de vraag die nog niet lukte komt" : `de ${learning} vragen die nog niet lukten komen`} als eerste terug` : ""}.</p>
         </div>
         <details class="pick" ${ui.pickOpen ? "open" : ""}><summary>Kies zelf wat je oefent</summary>
           <div class="card"><div class="topics">
@@ -69,7 +67,6 @@
           </div></div></details>`;
     }
     return `${head()}
-      <div class="hero"><h1>${esc(c.name)}</h1><p class="small muted">${esc(facts)}</p></div>
       ${body}
       ${foot(c)}`;
   }
@@ -77,11 +74,7 @@
     const m = C.store.mode, dl = !!C.store.downloads;
     const src = (c.sources || [])[0];
     return `<div class="foot">
-      <p>Gebaseerd op de officiële examengids${c.guideVersion ? " v" + esc(c.guideVersion) : ""}${src ? ` (<a href="${esc(src.url)}" target="_blank" rel="noopener">openen</a>)` : ""}. ${c.questions.length ? c.questions.length + " originele oefenvragen" + (c.verifiedOn ? ", gecontroleerd op " + esc(c.verifiedOn) : "") + ". Geen echte examenvragen." : ""}</p>
-      ${c.questions.length ? `<details class="more"><summary>Hoe werkt het herhalen?</summary><div class="small how">
-        <p>Een vraag die nog niet lukt (of die je gokte) komt terug na een paar andere vragen, nog eens in de herkansing aan het eind van de ronde, en in de volgende ronde. Pas als je hem twee keer op rij goed hebt, wacht hij een dag. Vragen die je vaker fout had, komen daarna sneller terug dan andere.</p>
-        <p>Beheerste vragen komen terug na 1, 3, 7, 16 en 35 dagen. Twijfel je? Kies "Ik gok" vóór je controleert; dan telt een goed antwoord niet als beheerst.</p></div></details>` : ""}
-      <details class="more"><summary>Voortgang en back-up</summary>
+      <details class="more"><summary>Back-up van je voortgang</summary>
         <div class="card">
           <p class="small">${m === "account" ? "Je voortgang staat privé in je Claude-account en als kopie in deze browser." : m === "browser" ? "Je voortgang staat op dit toestel, in de Radar-app. Maak af en toe een export als back-up." : "Opslaan is hier niet mogelijk; maak een export voordat je de pagina sluit."}</p>
           <div class="row"><button class="btn sm" data-act="export">${ui.exportOpen ? "Verberg export" : "Exporteer voortgang"}</button>${ui.exportOpen ? `<button class="btn sm" data-act="copy">Kopieer</button>${dl ? `<button class="btn sm" data-act="download">Opslaan als bestand</button>` : ""}` : ""}</div>
