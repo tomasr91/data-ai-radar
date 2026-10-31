@@ -14,8 +14,12 @@
     open: {}, confirm: null, importText: "", importMsg: null, exportOpen: false, reportOpen: false, reportText: "", reportDone: null, explain: false };
 
   const cert = () => C.cert();
-  const meter = (done, seen, label) => `<div class="meter" role="img" aria-label="${esc(label)}"><span class="m" style="width:${done * 100}%"></span><span class="s" style="width:${Math.max(0, seen - done) * 100}%"></span></div>`;
-  const statMeter = s => meter(s.total ? s.mastered / s.total : 0, s.total ? s.seen / s.total : 0, s.mastered + " van " + s.total + " beheerst");
+  // Balk met drie kleuren, van sterk (links) naar zwak: zit erin · nog herhalen · nog oefenen; de rest is nieuw.
+  const w = (n, t) => (t ? (n / t) * 100 : 0).toFixed(2) + "%";
+  const meter = (p, label) => `<div class="meter" role="img" aria-label="${esc(label || legendText(p))}"><span class="m" style="width:${w(p.mastered, p.total)}"></span><span class="r" style="width:${w(p.repeat, p.total)}"></span><span class="p" style="width:${w(p.practise, p.total)}"></span></div>`;
+  const legendText = p => `${p.mastered} zit erin, ${p.repeat} nog herhalen, ${p.practise} nog oefenen, ${p.unseen} nieuw`;
+  const legend = p => `<p class="legend"><span><i class="m"></i>${p.mastered} zit erin</span><span><i class="r"></i>${p.repeat} nog herhalen</span><span><i class="p"></i>${p.practise} nog oefenen</span><span><i></i>${p.unseen} nieuw</span></p>`;
+  const statMeter = s => meter(s);
   const scopeLabel = sc => {
     const c = cert();
     if (!sc || sc.kind === "all") return "Alle onderwerpen";
@@ -47,10 +51,11 @@
         <div class="card"><div class="topics">${c.domains.map(d => `<div class="topic"><div class="trow"><span class="n">D${d.n}</span><span class="nm"><b>${esc(d.name)}</b><span>${d.subs.length} onderwerpen</span></span><span class="cnt">${fmtW(d.weight)}</span></div></div>`).join("")}</div></div>`;
     } else {
       if (ui.ready) C.newMilestones(); // legt bij de eerste keer al behaalde mijlpalen stil vast
-      const r = C.readiness(), all = C.stats(null, { kind: "all" }), last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
+      const all = C.stats(null, { kind: "all" }), pr = C.progress(), r = pr.pct, last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
       body = `<div class="card start">
-          <div class="ready"><span class="big">${pct(r)}</span><span>van de examenstof beheerst</span></div>
-          ${meter(r, all.total ? all.seen / all.total : 0, pct(r) + " van de examenstof beheerst")}
+          <div class="ready"><span class="big">${pct(r)}</span><span>van de stof zit erin</span></div>
+          ${meter(pr)}
+          ${legend(pr)}
           ${last ? `<p class="small ms-line">✓ ${msText(last)}</p>` : ""}
           <button class="btn primary wide" data-act="start" data-kind="weak">${all.seen ? "Verder oefenen" : "Begin met oefenen"}</button>
         </div>
@@ -58,10 +63,10 @@
           <div class="card"><div class="topics">
             <button class="srow top-row" data-act="start" data-kind="all"><span><b>Alle onderwerpen gemengd</b><br><span class="small muted">volgens de examenweging</span></span><span class="cnt">${all.mastered}/${all.total}</span></button>
             ${hard ? `<button class="srow top-row" data-act="start" data-kind="hard"><span><b>Lastige vragen</b><br><span class="small muted">vaker fout, gegokt of nog in de leerfase</span></span><span class="cnt">${hard}</span></button>` : ""}
-            ${c.domains.map(d => { const s = C.stats(null, { kind: "domain", id: d.id }); const open = ui.open[d.id];
+            ${c.domains.map(d => { const s = C.stats(null, { kind: "domain", id: d.id }), sp = C.progress(null, { kind: "domain", id: d.id }); const open = ui.open[d.id];
               return `<div class="topic"><div class="trow"><span class="n">D${d.n}</span>
                 <button class="nm" data-act="start" data-kind="domain" data-id="${d.id}"><b>${esc(d.name)}</b><span>${esc(d.nl || "")} · weging ${fmtW(d.weight)}</span></button>
-                <span class="cnt">${s.mastered}/${s.total}</span>${statMeter(s)}
+                <span class="cnt">${s.mastered}/${s.total}</span>${statMeter(sp)}
                 <button class="toggle" data-act="toggle" data-id="${d.id}" aria-expanded="${!!open}">${open ? "▾ Verberg subonderwerpen" : "▸ " + d.subs.length + " subonderwerpen"}</button></div>
                 ${open ? `<div class="subs">${d.subs.map(sb => { const x = C.stats(null, { kind: "sub", id: sb.id }); return `<button class="srow" data-act="start" data-kind="sub" data-id="${sb.id}"><span>${esc(sb.nl || sb.en)}</span><span class="cnt">${x.mastered}/${x.total}</span></button>`; }).join("")}</div>` : ""}</div>`; }).join("")}
           </div></div></details>`;
@@ -180,7 +185,7 @@
   /* ---------------- einde van een ronde ---------------- */
   function vRound() {
     const c = cert(), items = ui.round, ok = items.filter(x => x.ok && !x.guess).length;
-    const rt = ui.retryDone, learning = learningCount(), r = C.readiness();
+    const rt = ui.retryDone, learning = learningCount(), r = C.progress().pct;
     const missed = [], seen = new Set(); items.forEach(x => { if ((!x.ok || x.guess) && !seen.has(x.qid)) { seen.add(x.qid); missed.push(x.qid); } });
     return `${head()}
       <div class="pbar"><button class="btn ghost" data-act="home">← Startscherm</button><span class="where">${esc(scopeLabel(ui.scope))}</span></div>
@@ -188,7 +193,7 @@
         <span class="eyebrow">Ronde klaar</span>
         <div class="ready"><span class="big">${ok} van ${items.length}</span><span>meteen goed${rt ? `<br><span class="small muted">herkansing: ${rt.ok} van ${rt.n} goed</span>` : ""}</span></div>
         ${ui.roundMs.length ? `<div class="mslist">${ui.roundMs.map(m => `<div class="milestone">✓ ${msText(m)}</div>`).join("")}</div>` : ""}
-        <p class="small">Je beheerst nu ${pct(r)} van de examenstof.${learning ? ` ${learning === 1 ? "Eén vraag komt" : learning + " vragen komen"} vanzelf nog terug tot ${learning === 1 ? "hij goed zit" : "ze goed zitten"}.` : ""}</p>
+        <p class="small">Er zit nu ${pct(r)} van de stof in.${learning ? ` ${learning === 1 ? "Eén vraag komt" : learning + " vragen komen"} vanzelf nog terug tot ${learning === 1 ? "hij goed zit" : "ze goed zitten"}.` : ""}</p>
         ${missed.length ? `<details class="more"><summary>Kernlessen van deze ronde (${missed.length})</summary><div class="rlist">${missed.map(id => { const q = C.qmap(c)[id]; return `<div class="ritem"><div class="qt">${q.q}</div>${q.a.map(i => `<div class="ans">${q.o[i]}</div>`).join("")}<div class="small muted">${esc(q.ex)}</div></div>`; }).join("")}</div></details>` : ""}
         <div class="row"><button class="btn primary" data-act="nextround">Volgende ronde →</button><button class="btn" data-act="home">Klaar voor nu</button></div>
       </div>`;

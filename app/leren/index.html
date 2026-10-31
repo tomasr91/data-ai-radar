@@ -223,6 +223,22 @@ html, body { background: var(--bg); }
 .save.browser i { background: var(--good); }
 .cert[aria-pressed="true"] { background: var(--ink); color: var(--bg); box-shadow: none; }
 /* Na controleren: uitslag naast de knop, uitleg pas eronder (scherm verspringt niet) */
+/* Voortgangsbalk: groen = zit erin, geel = nog herhalen, oranje = nog oefenen, leeg = nieuw */
+:root { --bar-m: #6fd3a0; --bar-r: #e9d46b; --bar-p: #f08a4b; }
+.meter { height: 8px; }
+.meter .m { background: var(--bar-m); }
+.meter .r { background: var(--bar-r); }
+.meter .p { background: var(--bar-p); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; font-size: 0.8rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 9px; height: 9px; border-radius: 2px; background: var(--sunk); border: 1px solid var(--line); display: inline-block; }
+.legend i.m { background: var(--bar-m); border-color: var(--bar-m); }
+.legend i.r { background: var(--bar-r); border-color: var(--bar-r); }
+.legend i.p { background: var(--bar-p); border-color: var(--bar-p); }
+/* "Kies zelf wat je oefent" en "Back-up van je voortgang": zelfde letter, kleur en plek */
+details.pick > summary, .foot details.more > summary { font-family: var(--display); font-weight: 600; font-size: 0.92rem; color: var(--muted); padding: 4px 2px; cursor: pointer; }
+details.pick[open] > summary, .foot details.more[open] > summary { color: var(--ink); margin-bottom: 10px; }
+.foot { font-size: 0.92rem; }
 .verdict-line { font-weight: 700; font-size: 1rem; }
 .verdict-line.ok { color: var(--good); }
 .verdict-line.no { color: var(--miss); }

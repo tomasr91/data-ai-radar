@@ -107,6 +107,20 @@
     return { total: qs.length, seen, mastered, wrong, due, unseen: qs.length - seen };
   }
 
+  /* ---------------- voortgang voor de balk ----------------
+     Per vraag één van vier toestanden (Radar, 31-10-2026):
+     zit erin = beheerst (bak 2+) · nog herhalen = laatst goed, nog niet beheerst ·
+     nog oefenen = laatst fout of gegokt · nieuw = nog niet gehad.
+     Het percentage is 'zit erin' gedeeld door alle vragen: geen halve punten. */
+  function progress(certId, scope) {
+    const c = cert(certId), st = cs(certId), qs = pool(c, scope, st);
+    const out = { total: qs.length, mastered: 0, repeat: 0, practise: 0, unseen: 0 };
+    qs.forEach(q => { const x = st.q[q.id];
+      if (!x || !x.n) out.unseen++; else if (x.b >= MASTERED) out.mastered++; else if (x.ok) out.repeat++; else out.practise++; });
+    out.pct = out.total ? out.mastered / out.total : 0;
+    return out;
+  }
+
   /* ---------------- beheersing en prioriteit ----------------
      Beheersing per vraag: beheerst = 1, gezien en laatst goed = 0,5, fout/gegokt/nieuw = 0.
      Prioriteit = examenweging × wat er nog te leren valt. Hoogste prioriteit = meeste winst op het examen. */
@@ -141,7 +155,7 @@
       d.subs.forEach(s => { const sq = dq.filter(q => q.s === s.id); if (sq.length && sq.every(q => st.q[q.id] && st.q[q.id].b >= MASTERED)) out.push({ key: "sub:" + s.id, kind: "sub", sub: s, domain: d }); });
       if (dq.every(q => st.q[q.id] && st.q[q.id].b >= MASTERED)) out.push({ key: "dom:" + d.id, kind: "dom", domain: d });
     });
-    const r = readiness(certId) * 100;
+    const r = progress(certId).pct * 100;   // zelfde getal als op het startscherm
     READY_STEPS.forEach(p => { if (r >= p) out.push({ key: "ready:" + p, kind: "ready", pct: p }); });
     return out;
   }
@@ -261,5 +275,5 @@
   }
 
   A.core = { get state() { return state; }, cs, cert, qmap, subMap, domOf, pool, stats, next, answer, isCorrect, report, reportUrl, shuffle,
-    store, init, save, exportJSON, importJSON, resetCert, mastery, readiness, priorities, newMilestones, lastMilestone, hardCount, inLearning, constants: { INTERVAL_DAYS, MASTERED } };
+    store, init, save, exportJSON, importJSON, resetCert, mastery, readiness, progress, priorities, newMilestones, lastMilestone, hardCount, inLearning, constants: { INTERVAL_DAYS, MASTERED } };
 })();
