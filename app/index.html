@@ -319,7 +319,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   /* ---- Gelezen ----
      Een artikel of verdieping telt als gelezen als je tot onderaan scrolt en het minstens
      15 seconden open had. Bewaard op dit toestel (radar:read). Gelezen artikelen gaan mee met
-     je feedback als licht signaal (0,3; een duim omhoog telt 2). */
+     je feedback als licht signaal (0,5; een duim omhoog telt 2). */
   const READ_MS = window.__radarReadMs || 15000;   // __radarReadMs alleen voor de tests
   const reads = {
     all() { try { return JSON.parse(localStorage.getItem("radar:read") || "{}"); } catch { return {}; } },

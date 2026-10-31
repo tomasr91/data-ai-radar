@@ -18,7 +18,7 @@ HALF_LIFE_DAYS = 60
 WEIGHT = 0.08          # maximaal effect op de totaalscore (0-1)
 SATURATION = 3.0       # na ~3 netto stemmen is de voorkeur ongeveer 0,76
 UP_WEIGHT = 2.0        # duim omhoog telt dubbel
-READ_WEIGHT = 0.3      # gelezen: een benadering, telt licht
+READ_WEIGHT = 0.5      # gelezen: een benadering, telt licht (T, 31-10-2026: 0,5 tegen 2 voor een duim)
 
 
 def load(path=None) -> dict:
