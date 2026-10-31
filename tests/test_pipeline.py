@@ -340,6 +340,9 @@ class TestWeeklyAndReads(unittest.TestCase):
         data["votes"]["bbbbbbbbbbbb"] = {"v": 1, "at": at, "topics": ["dbt_analytics_engineering"], "source_id": "dbt_labs_blog"}
         full = feedback.preferences({"votes": data["votes"], "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
         self.assertTrue(0 < light < full)
+        # duim omhoog telt dubbel zo zwaar als duim omlaag
+        down = feedback.preferences({"votes": {"cccccccccccc": {"v": -1, "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
+        self.assertGreater(full, -down)
         # gelezen én duim omlaag: alleen de duim telt
         data2 = {"votes": {"aaaaaaaaaaaa": {"v": -1, "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": data["reads"]}
         self.assertLess(feedback.preferences(data2, now)["topics"]["dbt_analytics_engineering"], 0)

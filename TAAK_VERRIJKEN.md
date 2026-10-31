@@ -124,6 +124,7 @@ Een kort overzicht dat T zondagochtend leest om de week af te sluiten. De app ze
 
 `data/feedback.json` bevat onder `reads` de artikelen die T helemaal las (een licht positief signaal), en onder `votes` T's duimpjes per artikel (`v`: 1 of -1) met soms een reden: `te_basic`, `niet_mijn_stack`, `oud_nieuws`, `te_vaag`, `geen_interesse` of `meer_hiervan`. De pipeline stuurt de score er al op bij. Gebruik het daarnaast zelf:
 
+- Weeg ze zoals T ze bedoelt: een duim omhoog is een sterk signaal ("dit is echt interessant", telt dubbel in de score). Gelezen is maar een benadering; trek daar zelf geen conclusies uit als er duimpjes zijn die iets anders zeggen.
 - Lees vóór het uitleggen de stemmen van de laatste 30 dagen. Kijk naar het soort artikel, niet alleen het onderwerp.
 - Veel `te_basic`: wees strenger bij `depth` en sla aankondigingen zonder inhoud vaker over. Leg minder basis uit.
 - `niet_mijn_stack` of `geen_interesse`: sla vergelijkbare artikelen vaker over (met die reden in het `skipped`-bestand).

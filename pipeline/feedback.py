@@ -17,7 +17,8 @@ REASONS = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interes
 HALF_LIFE_DAYS = 60
 WEIGHT = 0.08          # maximaal effect op de totaalscore (0-1)
 SATURATION = 3.0       # na ~3 netto stemmen is de voorkeur ongeveer 0,76
-READ_WEIGHT = 0.3      # gelezen = 0,3 van een duim omhoog
+UP_WEIGHT = 2.0        # duim omhoog telt dubbel
+READ_WEIGHT = 0.3      # gelezen: een benadering, telt licht
 
 
 def load(path=None) -> dict:
@@ -50,7 +51,7 @@ def preferences(data: dict, now=None) -> dict:
     now = now or datetime.now(timezone.utc)
     topics, sources = {}, {}
     for v in data.get("votes", {}).values():
-        w = v.get("v", 0) * _age_weight(v.get("at", ""), now)
+        w = v.get("v", 0) * (UP_WEIGHT if v.get("v", 0) > 0 else 1.0) * _age_weight(v.get("at", ""), now)
         for t in v.get("topics", [])[:2]:  # de twee belangrijkste onderwerpen van het artikel
             topics[t] = topics.get(t, 0.0) + w
         if v.get("source_id"):
