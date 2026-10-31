@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T10:34:53.280270Z",
+ "generated_at": "2026-10-31T12:31:17.334837Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -10,7 +10,7 @@
    "source_name": "Chris Webb's BI Blog",
    "published_at": "2026-10-11T06:01:02Z",
    "excerpt": "As a follow-on from last week’s post about the new ApproximateDistinctCount function in DAX, I want to share something I found out from my recent testing for this function: ApproximateDistinctCount is sometimes slower than DistinctCount. This sounds counter-intuitive, right? After all ApproximateDistinctCount is a performance optimisation for the sometimes slow, expensive DistinctCount function. But it … Continue reading ApproximateDistinctCount In Power BI Is Sometimes Slower Than DistinctCount →",
-   "preliminary_score": 55,
+   "preliminary_score": 54,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
@@ -90,7 +90,7 @@
    "source_name": "Azure Databricks release notes",
    "published_at": "2026-10-23T00:00:00Z",
    "excerpt": "Multipart uploads and conditional operations for Unity Catalog volumes.",
-   "preliminary_score": 57,
+   "preliminary_score": 60,
    "preliminary_topics": [
     "databricks_data_engineering",
     "metadata_lineage_catalogs"
@@ -104,7 +104,7 @@
    "source_name": "Azure Databricks release notes",
    "published_at": "2026-10-23T00:00:00Z",
    "excerpt": "Files API 3.0 is in Beta and introduces two new capabilities: Multipart uploads: Upload files larger than 5000 MiB to Unity Catalog volumes. Conditional operations: Upload, download, and delete files based on their current version to prevent unintended changes. For more information, see Use the Files API with Unity Catalog volumes .",
-   "preliminary_score": 57,
+   "preliminary_score": 60,
    "preliminary_topics": [
     "databricks_data_engineering",
     "metadata_lineage_catalogs"
