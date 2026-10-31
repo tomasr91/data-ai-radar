@@ -53,9 +53,8 @@
       if (ui.ready) C.newMilestones(); // legt bij de eerste keer al behaalde mijlpalen stil vast
       const all = C.stats(null, { kind: "all" }), pr = C.progress(), r = pr.pct, last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
       body = `<div class="card start">
-          <div class="ready"><span class="big">${pct(r)}</span><span>van de stof zit erin</span></div>
+          <div class="ready"><span class="big">${pct(r)}</span></div>
           ${meter(pr)}
-          ${legend(pr)}
           ${last ? `<p class="small ms-line">✓ ${msText(last)}</p>` : ""}
           <button class="btn primary wide" data-act="start" data-kind="weak">${all.seen ? "Verder oefenen" : "Begin met oefenen"}</button>
         </div>
