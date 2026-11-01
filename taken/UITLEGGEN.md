@@ -85,7 +85,7 @@ Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of 
 
 ## Feedback van T
 
-`data/feedback.json` bevat onder `reads` de artikelen die T helemaal las (een licht positief signaal), en onder `votes` T's duimpjes per artikel (`v`: 1 of -1) met soms een reden. De pipeline stuurt de score er al op bij (relatief: wat T vaker dan gemiddeld 👍 geeft gaat omhoog). Gebruik het daarnaast zelf:
+`data/feedback.json` bevat onder `reads` de artikelen die T helemaal las (een licht positief signaal), en onder `votes` T's duimpjes per artikel (`v`: 1 of -1) met soms een reden. De pipeline stuurt de score er al op bij: 👍 en gelezen duwen het onderwerp omhoog; alleen een 👎 met reden `geen_interesse` of `niet_mijn_stack` duwt het onderwerp omlaag. Een 👎 zonder reden of om de kwaliteit gaat over dát artikel, niet over het onderwerp: blijf zulke onderwerpen gewoon uitleggen. Gebruik het daarnaast zelf:
 
 - Weeg ze zoals T ze bedoelt: een duim omhoog is een sterk signaal ("dit is echt interessant", telt dubbel in de score). Gelezen is maar een benadering; trek daar zelf geen conclusies uit als er duimpjes zijn die iets anders zeggen.
 - Lees vóór het uitleggen de stemmen van de laatste 30 dagen. Kijk naar het soort artikel, niet alleen het onderwerp.

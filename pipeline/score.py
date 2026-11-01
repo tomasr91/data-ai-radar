@@ -128,10 +128,9 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     total = sum(WEIGHTS[k] * v for k, v in parts.items())
     if prefs and (prefs.get("topics") or prefs.get("sources")):
         from .feedback import WEIGHT as FB_WEIGHT, article_factor
-        # Relatief: ten opzichte van het gemiddelde artikel (offset, zie build.py). Wat je vaker dan
-        # gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag.
+        # Absoluut (T, 1-11-2026): 👍 duwt omhoog, alleen een echte 👎 op het onderwerp omlaag, niets doen is neutraal.
         f = article_factor({"topics": topic_ids, "source_id": article["source_id"], "soort": article.get("soort")}, prefs)
-        fb = round(f - prefs.get("offset", 0.0), 2) if f is not None else 0
+        fb = round(f - prefs.get("offset", 0.0), 2) if f is not None else 0   # offset is 0 (zie build.py)
         if fb < 0 and any(topics[t].get("follow") for t in topic_ids[:2]):
             fb = 0   # 'Altijd volgen': feedback mag dit onderwerp alleen omhoog duwen
         if fb:

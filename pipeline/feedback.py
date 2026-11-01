@@ -1,11 +1,12 @@
 """Jouw duimpjes (data/feedback.json) en wat de radar ervan leert.
 
-- 👎 op een artikel: dat artikel verdwijnt uit de app.
-- Per onderwerp en per bron telt de radar je stemmen op (recente zwaarder, halveert elke
-  60 dagen). Dat geeft een voorkeur tussen -1 en +1.
-- De voorkeur weegt mee in de relevantiescore, relatief: vergeleken met het gemiddelde artikel
-  in de app (offset). Wat je vaker dan gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag;
-  hooguit 15 punten erbij of eraf (T, 1-11-2026). Je ziet het per artikel bij "Jouw feedback".
+- Per onderwerp, bron en soort artikel telt de radar je stemmen op (recente zwaarder, halveert
+  elke 60 dagen). Dat geeft een voorkeur tussen -1 en +1.
+- De voorkeur weegt mee in de relevantiescore, hooguit 15 punten erbij of eraf. Niet relatief
+  (T, 1-11-2026, avond): 👍 en gelezen duwen omhoog; niets doen is neutraal. Alleen een 👎 met
+  reden "geen interesse" of "niet mijn stack" verlaagt het onderwerp en de bron. Een 👎 zonder
+  reden of om de kwaliteit (te basic, te vaag, oud nieuws) gaat over dat artikel: telt alleen
+  tegen de soort artikel, en Claude ziet het in taste.json.
 - Gewichten (T, 31-10-2026): 👍 telt 2 ("dit is echt interessant"), 👎 telt 1 de andere kant op,
   gelezen (tot onderaan, minstens 15 seconden open) telt 0,5: een benadering. Heb je een
   artikel ook beoordeeld, dan telt alleen je duim.
@@ -23,6 +24,7 @@ REASONS = REASONS_DOWN | REASONS_UP
 # 👎 om de kwaliteit van dít artikel: telt niet tegen het onderwerp of de bron, alleen tegen de soort
 # (en Claude ziet het in taste.json). Alleen geen_interesse / niet_mijn_stack / zonder reden verlagen het onderwerp.
 QUALITY_DOWN = {"te_basic", "te_vaag", "oud_nieuws"}
+TOPIC_DOWN = {"geen_interesse", "niet_mijn_stack"}   # alleen deze 👎-redenen gaan over het onderwerp
 HALF_LIFE_DAYS = 60
 WEIGHT = 0.15          # maximaal effect op de totaalscore (0-1): 15 punten
 SATURATION = 6.0       # na ~6 netto stemmen is de voorkeur ongeveer 0,76; zo blijft verschil zichtbaar tussen veel en weinig duimen (was 3)
@@ -61,7 +63,7 @@ def preferences(data: dict, now=None) -> dict:
     topics, sources, kinds = {}, {}, {}
     for v in data.get("votes", {}).values():
         w = v.get("v", 0) * (UP_WEIGHT if v.get("v", 0) > 0 else 1.0) * _age_weight(v.get("at", ""), now)
-        if not (w < 0 and v.get("r") in QUALITY_DOWN):
+        if w > 0 or v.get("r") in TOPIC_DOWN:
             for t in v.get("topics", [])[:2]:  # de twee belangrijkste onderwerpen van het artikel
                 topics[t] = topics.get(t, 0.0) + w
             if v.get("source_id"):

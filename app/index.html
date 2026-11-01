@@ -118,6 +118,8 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-btns button, .fb-reasons button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 0 14px; height: 40px; font-size: 0.9rem; cursor: pointer; }
 .fb-btns button[aria-pressed="true"] { border-color: var(--accent2); background: var(--accent2-soft); color: var(--accent2); font-weight: 650; }
 .fb-reasons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.fb-group { align-items: center; margin-top: 8px; }
+.fb-group .lbl { flex-basis: 100%; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
 .fb-reasons button { height: 34px; font-size: 0.82rem; color: var(--muted); }
 .fb-reasons button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
 .fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
@@ -483,6 +485,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
      JSON-blok; GitHub Actions verwerkt het direct (scripts/collect_feedback.py). */
   const FB_UP = { praktisch: "Praktisch toepasbaar", goed_uitgelegd: "Goed uitgelegd", nieuw_voor_mij: "Nieuw voor mij", mijn_stack: "Past bij mijn stack", meer_hiervan: "Meer hiervan" };
   const fbPoints = () => Math.round((state.feed?.feedback?.weight || 0.15) * 100);   // maximaal effect in punten
+  // 👎 standaard over het artikel; alleen de onderwerp-redenen verlagen het onderwerp en de bron (pipeline/feedback.py)
+  const FB_DOWN_ARTICLE = ["te_basic", "te_vaag", "oud_nieuws"], FB_DOWN_TOPIC = ["geen_interesse", "niet_mijn_stack"];
   const FB_DOWN = { te_basic: "Te basic", niet_mijn_stack: "Niet mijn stack", oud_nieuws: "Oud nieuws", te_vaag: "Te vaag", geen_interesse: "Interesseert me niet" };
   const fb = {
     all() { try { return JSON.parse(localStorage.getItem("radar:fb") || "{}"); } catch { return {}; } },
@@ -1385,7 +1389,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <button type="button" data-vote="1" aria-pressed="${mine?.v === 1}" aria-label="Nuttig" title="Nuttig">👍</button>
         <button type="button" data-vote="-1" aria-pressed="${mine?.v === -1}" aria-label="Niet voor mij" title="Niet voor mij">👎</button>
       </div>
-      ${reasons ? `<div class="fb-reasons">${Object.entries(reasons).map(([k, l]) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${l}</button>`).join("")}</div>` : ""}`;
+      ${!reasons ? "" : mine.v === 1 ? `<div class="fb-reasons">${rbtns(FB_UP, Object.keys(FB_UP), mine)}</div>`
+        : `<div class="fb-reasons fb-group"><span class="lbl">Dit artikel</span>${rbtns(FB_DOWN, FB_DOWN_ARTICLE, mine)}</div>
+           <div class="fb-reasons fb-group"><span class="lbl">Dit onderwerp</span>${rbtns(FB_DOWN, FB_DOWN_TOPIC, mine)}</div>`}`;
+  }
+  function rbtns(map, keys, mine) {
+    return keys.map((k) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${map[k]}</button>`).join("");
   }
   function fbClick(e) {
     const box = e.target.closest("#fb"); if (!box) return;
@@ -1465,8 +1474,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const by = [...(a.topics || []).slice(0, 2).map((t) => lean.get("t:" + t)), lean.get("s:" + a.source_id)]
       .filter((x) => x && Math.sign(x.pts) === Math.sign(pts)).map((x) => `<b>${esc(x.name)}</b>`);
     const list = by.length > 1 ? by.slice(0, -1).join(", ") + " en " + by[by.length - 1] : by[0];
-    return pts > 0 ? `${pts} punten hoger: je waardeert ${list || "dit soort artikelen"} meer dan gemiddeld.`
-      : `${-pts} punten lager: je waardeert ${list || "dit soort artikelen"} minder dan gemiddeld.`;
+    return pts > 0 ? `${pts} punten hoger door je duimen omhoog en wat je las over ${list || "dit soort artikelen"}.`
+      : `${-pts} punten lager: je gaf aan dat ${list || "dit soort artikelen"} je minder interesseert.`;
   }
   // Mijn interesses: wat je feedback deze week veranderde
   function fbEffectBlock() {

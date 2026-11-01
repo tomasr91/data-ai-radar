@@ -221,6 +221,8 @@ with sync_playwright() as p:
     page.click('#fb [data-vote="-1"]')
     page.click('#fb [data-reason="te_basic"]')
     check("   reden te kiezen na duim omlaag", page.locator('#fb [data-reason="te_basic"][aria-pressed="true"]').count() == 1)
+    check("   redenen bij duim omlaag in twee groepen: dit artikel en dit onderwerp", page.locator("#fb .fb-group").count() == 2
+          and "Dit onderwerp" in page.locator("#fb").inner_text() and page.locator('#fb .fb-group:last-child [data-reason="geen_interesse"]').count() == 1)
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
     check("   artikel met duim omlaag blijft in de lijst", page.locator(f'.card[data-id="{enriched["id"]}"]').count() == 1

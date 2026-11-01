@@ -342,10 +342,10 @@ class TestWeeklyAndReads(unittest.TestCase):
         full = feedback.preferences({"votes": data["votes"], "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
         self.assertTrue(0 < light < full)
         # duim omhoog telt dubbel zo zwaar als duim omlaag
-        down = feedback.preferences({"votes": {"cccccccccccc": {"v": -1, "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
+        down = feedback.preferences({"votes": {"cccccccccccc": {"v": -1, "r": "geen_interesse", "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": {}}, now)["topics"]["dbt_analytics_engineering"]
         self.assertGreater(full, -down)
         # gelezen én duim omlaag: alleen de duim telt
-        data2 = {"votes": {"aaaaaaaaaaaa": {"v": -1, "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": data["reads"]}
+        data2 = {"votes": {"aaaaaaaaaaaa": {"v": -1, "r": "niet_mijn_stack", "at": at, "topics": ["dbt_analytics_engineering"]}}, "reads": data["reads"]}
         self.assertLess(feedback.preferences(data2, now)["topics"]["dbt_analytics_engineering"], 0)
 
     def test_parse_reads_from_issue(self):
@@ -595,7 +595,7 @@ class TestFeedback(unittest.TestCase):
 
     def test_preferences_and_score(self):
         from pipeline import feedback
-        data = {"votes": {f"{i:012x}": {"v": -1, "at": "2026-10-28T00:00:00Z", "topics": ["powerbi_semantic_models"], "source_id": "powerbi_blog"} for i in range(3)}}
+        data = {"votes": {f"{i:012x}": {"v": -1, "r": "geen_interesse", "at": "2026-10-28T00:00:00Z", "topics": ["powerbi_semantic_models"], "source_id": "powerbi_blog"} for i in range(3)}}
         prefs = feedback.preferences(data, NOW)
         self.assertLess(prefs["topics"]["powerbi_semantic_models"], -0.4)
         conf = cfg.load()
@@ -669,6 +669,7 @@ class TestRelevantNotFun(unittest.TestCase):
         self.assertNotIn("data_governance_privacy", q["topics"])
         self.assertNotIn("s", q["sources"])
         self.assertLess(q["kinds"]["aankondiging"], 0)
+        self.assertNotIn("data_governance_privacy", feedback.preferences({"votes": {"a": vote(None)}}, now)["topics"])   # 👎 zonder reden: over het artikel
         g = feedback.preferences({"votes": {"a": vote("geen_interesse")}}, now)
         self.assertLess(g["topics"]["data_governance_privacy"], 0)
 

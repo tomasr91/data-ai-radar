@@ -319,11 +319,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     fb_votes = fb_data["votes"]
     for a in arts:
         score_article(a, conf, now, fb_prefs, fb_votes)
-    # Relatief maken: het gemiddelde artikel dat in aanmerking komt is het nulpunt.
-    pool = [a for a in arts if a["decision"] not in ("excluded", "no_topic") and a["processing_status"] == "enriched"]
-    fb_prefs["offset"] = feedback_mod.mean_factor(pool, fb_prefs)
-    for a in arts:
-        score_article(a, conf, now, fb_prefs, fb_votes)
+    # Niet meer relatief (T, 1-11-2026): minder vaak 👍 mag een onderwerp niet omlaag duwen. offset blijft 0.
+    fb_prefs["offset"] = 0.0
     candidates = sorted([a for a in arts if a["decision"] not in ("excluded", "no_topic")],
                         key=lambda a: -a["relevance_score"])
     enrich_report = enrich_new(candidates, set(conf.topics), max_enrich)
