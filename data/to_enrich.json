@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T13:47:40.180294Z",
+ "generated_at": "2026-11-01T13:54:42.471231Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -10,7 +10,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-23T00:00:00Z",
    "excerpt": "Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exist in products like Claude Code and Claude Managed Agents. On top of those, we added new protections for working across your accounts and acting on your behalf.",
-   "preliminary_score": 61,
+   "preliminary_score": 62,
    "preliminary_topics": [
     "claude_ai_development",
     "data_governance_privacy"
@@ -24,7 +24,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-26T17:22:43Z",
    "excerpt": "The Fabric Notebook Toolkit (Preview) helps developers shorten the feedback loop between writing code and validating it with live notebook results. It connects coding agents to Microsoft Fabric notebooks through a command-line interface (CLI) that runs in the terminal alongside tools such as Claude Code, GitHub Copilot CLI, and Codex. An agent can inspect the current code, run one cell, review its output, make a targeted change, and run it again without resubmitting the entire notebook—much as a human programmer working interactively. Figure: Animated GIF A coding agent uses FNTK from the terminal to interact with a Microsoft Fabric notebook. From code suggestions to notebook execution A coding agent can help write a transformation, but a proposed change is not the same as a working result. When execution happens elsewhere, developers must move code into a notebook, run it, and bring the results or errors back to the agent. FNTK connects those steps so the agent can work with a running Fabric notebook and its execution results instead of relying only on code shared in the conversation. Interactive development and debugging are the central use cases. You can ask an agent to inspect ",
-   "preliminary_score": 55,
+   "preliminary_score": 56,
    "preliminary_topics": [
     "claude_ai_development",
     "powerbi_semantic_models"
@@ -51,7 +51,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-22T00:00:00Z",
    "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
-   "preliminary_score": 43,
+   "preliminary_score": 44,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -64,7 +64,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-22T00:00:00Z",
    "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
-   "preliminary_score": 43,
+   "preliminary_score": 44,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -130,7 +130,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T17:48:58Z",
    "excerpt": "Coauthor: Shehab Amin Microsoft OneLake gives every Microsoft Fabric tenant a single, unified data lake built on open formats. One copy of data, many engines: that is the promise, and it is what makes OneLake such a strong foundation for analytics and AI alike. This post looks at how Sail , the open-source distributed compute framework, and LakeSail Cloud , the managed platform for running Sail in production, connect natively to OneLake, and what that unlocks for teams running Spark and Python workloads on Fabric. Sail is a drop-in replacement for Apache Spark, rebuilt from the ground up in Rust, with Rust-native support for Delta Lake and Apache Iceberg out of the box. That makes it a natural fit for OneLake, where lakehouse tables are stored in exactly these open formats. Point Sail at a Fabric lakehouse and it reads and writes the same tables the rest of Fabric uses, with no data copies, no extra connectors to install, and no changes to existing Spark code. One engine for data and AI Sail implements the Spark Connect protocol, the gRPC interface that decouples Spark clients from the engine that executes their plans. Existing Spark SQL and DataFrame code targeting Spark 3.5 or 4.",
-   "preliminary_score": 78,
+   "preliminary_score": 79,
    "preliminary_topics": [
     "databricks_data_engineering",
     "sql_spark_sql",
@@ -174,7 +174,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-28T19:47:19Z",
    "excerpt": "The Govern experience in the OneLake catalog is now generally available, providing centralized governance capabilities for tenants, domains, capacities, workspaces, tags, and policies in Microsoft Fabric. Govern Skills are also now available in the Skills for Fabric collection, giving AI agents the knowledge they need to help admins and data owners audit, investigate, and remediate governance issues at scale. Both were announced at FabCon Europe 2026. Together, they help you monitor, manage, and act on your data estate from one place, whether you work in the Fabric portal or with an AI agent. Why it matters As AI makes it easier for more people to build with data, data estates grow in size and complexity. More workspaces, items, and access requests create more decisions about ownership, organization, and protection. Centralized, proactive governance helps admins support new projects without turning every decision into a manual review or losing visibility into how data is used. Governance can't rely on periodic, manual audits anymore. It needs to be proactive, centralized, and able to scale with the estate. Capabilities with Govern experience and Govern Skills: Manage governance in ",
-   "preliminary_score": 70,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "ai_agents_rag",
     "powerbi_semantic_models"
