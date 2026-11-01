@@ -584,8 +584,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
      leest dat de volgende ochtend (scripts/next_deepdive.py). Alleen issues van de eigenaar tellen. */
   const AREA_LABEL = { eigen: "Jouw lijst", data_engineering: "Data engineering", context_agents: "Context & agents", claude: "Claude", new_tech: "Nieuwe technologie" };
   const repo = () => state.feed.repo || "tomasr91/data-ai-radar";
+  // Bovenaan elk issue: een link terug naar de app. Na "Create" toont GitHub het issue; één tik en je bent terug.
+  const backLink = (hash = "") => `**[↩ Terug naar de Data & AI Radar](${location.origin}${location.pathname}${hash ? "#" + hash : ""})**\n\n`;
   function issueUrl(o) {
-    const body = `Gekozen in de Data & AI Radar.\n\n**${o.title}**\n\n${o.question}\n\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
+    const body = backLink() + `Gekozen in de Data & AI Radar.\n\n**${o.title}**\n\n${o.question}\n\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent("Verdieping: " + o.id)}&body=${encodeURIComponent(body)}`;
   }
   function optCard(o, chosen) {
@@ -779,7 +781,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function laterIssueUrl(x) {
     const from = x.from ? `${x.from.title} (${location.origin}${location.pathname}#${x.from.key})` : "";
-    const body = `Eigen onderwerp uit Jouw lijst in de Data & AI Radar.\n\nOnderwerp: ${x.title}\n${x.note ? `Notitie: ${x.note.replace(/\s+/g, " ")}\n` : ""}${from ? `Gezien in: ${from}\n` : ""}\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
+    const body = backLink("lijst") + `Eigen onderwerp uit Jouw lijst in de Data & AI Radar.\n\nOnderwerp: ${x.title}\n${x.note ? `Notitie: ${x.note.replace(/\s+/g, " ")}\n` : ""}${from ? `Gezien in: ${from}\n` : ""}\nClaude schrijft deze verdieping bij de volgende ochtendrun en sluit dit issue daarna.`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent("Verdieping: " + x.id)}&body=${encodeURIComponent(body)}`;
   }
   function renderLater(canChoose) {
@@ -839,7 +841,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const block = JSON.stringify({ answers: Object.entries(d.answers).map(([id, a]) => ({ id, a })),
       changes: Object.entries(d.changes).map(([topic, c]) => ({ topic, c })), note: d.note.trim() });
     const n = intPending(d);
-    const body = `Aanpassingen aan mijn interesses uit de Data & AI Radar. Claude verwerkt dit bij de volgende nachtrun en sluit dit issue daarna.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
+    const body = backLink("interesses") + `Aanpassingen aan mijn interesses uit de Data & AI Radar. Claude verwerkt dit bij de volgende nachtrun en sluit dit issue daarna.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(`Interesses: ${n} wijziging${n === 1 ? "" : "en"}`)}&body=${encodeURIComponent(body)}`;
   }
   function intSendBar() {
@@ -1148,7 +1150,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : []).join("\n");
     const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })), reads: rd });
-    const body = `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
+    const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }

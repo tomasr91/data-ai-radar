@@ -268,7 +268,8 @@
   const REPO = "tomasr91/data-ai-radar";
   function reportUrl(q, text) {
     const c = cert();
-    const body = "Melding uit het Claude-examen in de Data & AI Radar. De maandcontrole verwerkt dit en sluit het issue.\n\n"
+    const back = new URL("../", location.href).href;   // de Radar zelf (Leren draait in leren/)
+    const body = "**[↩ Terug naar de Data & AI Radar](" + back + ")**\n\n" + "Melding uit het Claude-examen in de Data & AI Radar. De maandcontrole verwerkt dit en sluit het issue.\n\n"
       + "**Certificering:** " + c.code + " (" + c.id + ")\n**Vraag:** " + q.id + " (" + q.s + ")\n**Examengids:** " + (c.guideVersion || "-") + "\n\n"
       + "> " + String(q.q).slice(0, 600) + "\n\n**Wat klopt er niet:**\n" + String(text).slice(0, 2000);
     return "https://github.com/" + REPO + "/issues/new?title=" + encodeURIComponent("Examenmelding: " + c.id + " " + q.id) + "&body=" + encodeURIComponent(body);

@@ -190,6 +190,7 @@ with sync_playwright() as p:
     sh = page.locator("#fb-send").get_attribute("href") or ""
     from urllib.parse import unquote
     body = unquote(sh)
+    check("   issue begint met een link terug naar de app", "[↩ Terug naar de Data & AI Radar](http://127.0.0.1" in body)
     check("   versturen maakt een feedback-issue met de stem als JSON",
           "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic"' in body, body[-160:])
     page.route("https://github.com/**", lambda r: r.abort())
