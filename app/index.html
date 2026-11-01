@@ -131,6 +131,13 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .near li span { display: block; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
 .all-src summary { cursor: pointer; font-weight: 650; }
 .all-src ul { list-style: none; padding: 0 !important; margin: 10px 0 0 !important; display: grid; gap: 6px; font-size: 0.9rem; }
+.bk-list { list-style: none; padding: 0 !important; margin: 4px 0 14px !important; display: grid; gap: 6px; font-size: 0.92rem; }
+.bk-list li { font-family: var(--f-display); display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.bk-list b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.bk-confirm { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.bk-confirm .row { display: flex; gap: 8px; }
+.bk-confirm .small { font-size: 0.84rem; color: var(--muted); }
+.bk-msg { margin: 12px 0 0; font-size: 0.9rem; } .bk-msg.ok { color: var(--ok); } .bk-msg.bad { color: var(--bad); }
 .wk-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 14px; }
 .wk-list li { border-left: 3px solid var(--accent2); padding: 2px 0 2px 12px; }
 .wk-list h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
@@ -384,6 +391,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   <div class="wrap">
     <a role="menuitem" href="#interesses"><span>Mijn interesses<i class="menu-dot" id="menu-dot" hidden></i></span><small>Wat de radar voor je kiest, en voorstellen van Claude</small></a>
     <a role="menuitem" href="#begrippen"><span>Begrippen</span><small>Alle uitgelegde termen, met zoeken</small></a>
+    <a role="menuitem" href="#backup"><span>Back-up</span><small>Alles van dit toestel bewaren of terugzetten</small></a>
     <a role="menuitem" href="#feedcontrole"><span>Status</span><small>Werkt alles, en wat net niet in je feed kwam</small></a>
   </div>
 </div>
@@ -965,6 +973,71 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return true;
   }
 
+  /* ---- Back-up ----
+     Alles wat alleen op dit toestel staat in één bestand: de Radar (radar:*) en het examen (cca-academy-v2).
+     Wat je al verstuurde (duimpjes, keuzes, interesses) staat ook op GitHub. Terugzetten vervangt wat er nu staat.
+     Een oude back-up uit Leren (academy-voortgang-*.json) kan ook worden teruggezet. */
+  const BK_APP = "data-ai-radar-backup";
+  const bkKeys = () => Object.keys(localStorage).filter((k) => k.startsWith("radar:") || k === "cca-academy-v2");
+  function bkSummary(get) {
+    const j = (k, d) => { try { return JSON.parse(get(k) || "null") ?? d; } catch { return d; } };
+    const leren = j("cca-academy-v2", null), q = Object.values(leren?.certs || {}).reduce((n, c) => n + Object.keys(c.q || {}).length, 0);
+    const rows = [
+      ["Voortgang bij Leren", q ? `${q} vragen geoefend` : "nog niets"],
+      ["Controlevragen en herhaling", `${Object.keys(j("radar:quiz", {})).length} antwoorden`],
+      ["Later-lijst", `${j("radar:later", []).length} onderwerpen`],
+      ["Gelezen en duimpjes", `${Object.keys(j("radar:read", {})).length} gelezen, ${Object.keys(j("radar:fb", {})).length} duimpjes`],
+      ["Bekeken begrippen", `${Object.keys(j("radar:terms", {})).length}`],
+    ];
+    return `<ul class="bk-list">${rows.map(([a, b]) => `<li><span>${esc(a)}</span><b>${esc(b)}</b></li>`).join("")}</ul>`;
+  }
+  let bkPending = null;   // gekozen bestand, nog niet teruggezet
+  function renderBackup(msg) {
+    const p = bkPending;
+    openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Back-up</span></div></div>
+      <article class="full wrap"><h1>Back-up</h1>
+      <p class="lead">Alles wat alleen op deze telefoon staat, in één bestand.</p>
+      <section class="block"><h2>Nu op dit toestel</h2>${bkSummary((k) => localStorage.getItem(k))}
+        <button type="button" class="btn" id="bk-save">Bewaren in Downloads</button></section>
+      <section class="block"><h2>Terugzetten</h2>
+        <label class="btn ghost" for="bk-file">Kies een back-upbestand…</label><input type="file" id="bk-file" accept=".json,application/json" hidden>
+        ${p ? `<div class="bk-confirm"><p>Back-up van <b>${esc(fmtDateTime(p.at))}</b>:</p>${bkSummary((k) => p.data[k])}
+          <p class="small">Dit vervangt wat er nu op dit toestel staat.</p>
+          <div class="row"><button type="button" class="btn" id="bk-restore">Terugzetten</button><button type="button" class="btn ghost" id="bk-cancel">Annuleren</button></div></div>` : ""}
+        ${msg ? `<p class="bk-msg ${msg.ok ? "ok" : "bad"}">${esc(msg.text)}</p>` : ""}</section>
+      </article>`);
+    $("#bk-save").onclick = () => {
+      const data = Object.fromEntries(bkKeys().map((k) => [k, localStorage.getItem(k)]));
+      const blob = new Blob([JSON.stringify({ app: BK_APP, version: 1, exportedAt: new Date().toISOString(), data }, null, 1)], { type: "application/json" });
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `radar-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      renderBackup({ ok: true, text: "Back-up staat in je Downloads." });
+    };
+    $("#bk-file").onchange = async (e) => {
+      const file = e.target.files?.[0]; if (!file) return;
+      try {
+        const o = JSON.parse(await file.text());
+        if (o?.app === BK_APP && o.data && typeof o.data === "object") {
+          const data = Object.fromEntries(Object.entries(o.data).filter(([k, v]) => (k.startsWith("radar:") || k === "cca-academy-v2") && typeof v === "string"));
+          bkPending = { at: o.exportedAt, data };
+        } else if (o?.app === "claude-certification-academy" && o.state?.v === 2) {
+          bkPending = { at: o.exportedAt, data: { "cca-academy-v2": JSON.stringify(o.state) } };   // oude back-up uit Leren
+        } else throw new Error();
+        renderBackup();
+      } catch { bkPending = null; renderBackup({ ok: false, text: "Dit is geen back-up van de Radar." }); }
+    };
+    if (p) {
+      $("#bk-cancel").onclick = () => { bkPending = null; renderBackup(); };
+      $("#bk-restore").onclick = () => {
+        // Alleen sleutels uit de back-up vervangen; bij een volledige Radar-back-up eerst de oude radar-gegevens weg.
+        if (Object.keys(p.data).some((k) => k.startsWith("radar:"))) bkKeys().forEach((k) => localStorage.removeItem(k));
+        Object.entries(p.data).forEach(([k, v]) => { try { localStorage.setItem(k, v); } catch {} });
+        bkPending = null;
+        location.hash = ""; location.reload();
+      };
+    }
+  }
+
   /* ---- Begrippen ----
      Claude zet bij een stuk `terms` (pipeline/terms.py). De eerste keer dat een begrip in de tekst
      staat wordt het onderstreept; tik erop voor de uitleg. Alle begrippen: menu (tandwiel) > Begrippen. */
@@ -1363,6 +1436,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     }
     if (h === "begrippen") { renderGlossaryPage(); return; }
     if (h === "interesses") { renderInterests(); return; }
+    if (h === "backup") { renderBackup(); return; }
     if (h === "week" && state.feed.weekly) { renderWeek(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
     if (h === "feedcontrole") { renderReport(); return; }

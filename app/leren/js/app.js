@@ -74,24 +74,9 @@
       ${body}
       ${foot(c)}`;
   }
-  function foot(c) {
-    const m = C.store.mode, dl = !!C.store.downloads;
-    const src = (c.sources || [])[0];
-    return `<div class="foot">
-      <details class="more"><summary>Back-up van je voortgang</summary>
-        <div class="card">
-          <p class="small">${m === "account" ? "Je voortgang staat privé in je Claude-account en als kopie in deze browser." : m === "browser" ? "Je voortgang staat op dit toestel, in de Radar-app. Maak af en toe een export als back-up." : "Opslaan is hier niet mogelijk; maak een export voordat je de pagina sluit."}</p>
-          <div class="row"><button class="btn sm" data-act="download">Download back-up</button></div>
-          <p class="small muted">Zet een bestand in je downloads (academy-voortgang-&lt;datum&gt;.json). Terugzetten kan hieronder met "Kies bestand".</p>
-          <label class="small" for="importBox">Importeer een eerdere export (vervangt je huidige voortgang)</label>
-          <textarea class="input" id="importBox" placeholder="Plak hier je export…">${esc(ui.importText)}</textarea>
-          <div class="row"><label class="btn sm" for="importFile">Kies bestand…</label><input type="file" id="importFile" accept=".json,application/json,text/plain" hidden><button class="btn sm" data-act="confirm" data-what="import" ${ui.importText.trim() ? "" : "disabled"}>Importeer</button>
-            ${c.questions.length ? `<button class="btn sm danger" data-act="confirm" data-what="reset">Wis voortgang ${esc(SHORT[c.id] || "")}</button>` : ""}</div>
-          ${ui.confirm === "import" ? `<div class="confirm"><b>Je huidige voortgang wordt vervangen.</b><div class="row"><button class="btn sm danger" data-act="doimport">Vervang</button><button class="btn sm" data-act="cancel">Annuleer</button></div></div>` : ""}
-          ${ui.confirm === "reset" ? `<div class="confirm"><b>Alle voortgang voor ${esc(c.short)} wissen? Dit kan niet ongedaan worden gemaakt.</b><div class="row"><button class="btn sm danger" data-act="doreset">Wis</button><button class="btn sm" data-act="cancel">Annuleer</button></div></div>` : ""}
-          ${ui.importMsg ? `<div class="notice ${ui.importMsg.ok ? "good" : "bad"}">${esc(ui.importMsg.text)}</div>` : ""}
-        </div></details></div>`;
-  }
+  // Back-up staat sinds 1-11-2026 in de Radar zelf (tandwiel > Back-up), samen met de rest van je gegevens.
+  function foot() { return ""; }
+
 
   /* ---------------- oefenen ---------------- */
   function setCurrent(q) {
