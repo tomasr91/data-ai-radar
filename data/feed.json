@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T10:45:54.346828Z",
+ "generated_at": "2026-11-01T11:05:54.756740Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-01T03:45:00Z",
- "last_successful_update": "2026-11-01T10:45:54.346828Z",
+ "last_successful_update": "2026-11-01T11:05:54.756740Z",
  "groups": [
   {
    "id": "dbt",
@@ -154,7 +154,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-01T10:45:54.386116Z"
+   "checked_at": "2026-11-01T11:05:54.816667Z"
   },
   {
    "id": "dbt_core_releases",
@@ -167,7 +167,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-01T10:45:54.879827Z"
+   "checked_at": "2026-11-01T11:05:54.991729Z"
   },
   {
    "id": "claude_code_releases",
@@ -180,7 +180,33 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-01T10:45:55.556403Z"
+   "checked_at": "2026-11-01T11:05:55.347040Z"
+  },
+  {
+   "id": "anthropic_engineering",
+   "name": "Anthropic Engineering",
+   "url": "https://www.anthropic.com/engineering",
+   "type": "official_docs",
+   "trust_level": "high",
+   "priority": 5,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 27,
+   "message": "27 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+   "checked_at": "2026-11-01T11:05:55.555331Z"
+  },
+  {
+   "id": "claude_blog",
+   "name": "Claude Blog",
+   "url": "https://claude.com/resources/articles",
+   "type": "vendor_blog",
+   "trust_level": "medium",
+   "priority": 3,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 30,
+   "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
+   "checked_at": "2026-11-01T11:05:55.569159Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -193,7 +219,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-01T10:45:56.060475Z"
+   "checked_at": "2026-11-01T11:05:55.619194Z"
   },
   {
    "id": "databricks_blog",
@@ -206,7 +232,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-01T10:45:56.413207Z"
+   "checked_at": "2026-11-01T11:05:55.808552Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -219,7 +245,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-01T10:45:56.640753Z"
+   "checked_at": "2026-11-01T11:05:55.940023Z"
   },
   {
    "id": "github_blog",
@@ -232,7 +258,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-11-01T10:45:56.812069Z"
+   "checked_at": "2026-11-01T11:05:55.980781Z"
   },
   {
    "id": "azure_blog",
@@ -245,7 +271,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-01T10:45:56.992036Z"
+   "checked_at": "2026-11-01T11:05:56.011324Z"
   },
   {
    "id": "powerbi_blog",
@@ -258,7 +284,33 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-01T10:45:57.456648Z"
+   "checked_at": "2026-11-01T11:05:56.166286Z"
+  },
+  {
+   "id": "fabric_blog",
+   "name": "Microsoft Fabric Blog",
+   "url": "https://blog.fabric.microsoft.com/en-us/blog/",
+   "type": "vendor_blog",
+   "trust_level": "high",
+   "priority": 3,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 20,
+   "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
+   "checked_at": "2026-11-01T11:05:56.917007Z"
+  },
+  {
+   "id": "sqlbi",
+   "name": "SQLBI",
+   "url": "https://www.sqlbi.com/articles/",
+   "type": "expert_blog",
+   "trust_level": "high",
+   "priority": 4,
+   "fetch_method": "rss",
+   "status": "ok",
+   "items": 30,
+   "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
+   "checked_at": "2026-11-01T11:05:57.559020Z"
   },
   {
    "id": "huggingface_blog",
@@ -271,7 +323,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-01T10:45:58.253133Z"
+   "checked_at": "2026-11-01T11:05:57.725016Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -284,7 +336,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-01T10:45:58.450574Z"
+   "checked_at": "2026-11-01T11:05:57.837282Z"
   },
   {
    "id": "simon_whiteley",
@@ -297,7 +349,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-01T10:45:58.707626Z"
+   "checked_at": "2026-11-01T11:05:57.950466Z"
   },
   {
    "id": "hamel_husain",
@@ -310,7 +362,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-01T10:45:59.043758Z"
+   "checked_at": "2026-11-01T11:05:58.102598Z"
   },
   {
    "id": "langchain_blog",
@@ -323,7 +375,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-01T10:45:59.279694Z"
+   "checked_at": "2026-11-01T11:05:58.185560Z"
   },
   {
    "id": "chip_huyen",
@@ -336,7 +388,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-01T10:45:59.484398Z"
+   "checked_at": "2026-11-01T11:05:58.237261Z"
   },
   {
    "id": "simon_willison",
@@ -349,7 +401,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-01T10:45:59.736053Z"
+   "checked_at": "2026-11-01T11:05:58.325634Z"
   },
   {
    "id": "chris_webb",
@@ -362,7 +414,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-01T10:45:59.907674Z"
+   "checked_at": "2026-11-01T11:05:58.391396Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -375,7 +427,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-01T10:46:00.348473Z"
+   "checked_at": "2026-11-01T11:05:58.501120Z"
   }
  ],
  "daily_top": [
@@ -3887,6 +3939,15 @@
    "processed_by": "Claude (geplande taak)",
    "processed_at": "2026-10-31T09:55:00Z",
    "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "claude_blog",
+     "title": "Claude Haiku 5.5",
+     "url": "https://www.anthropic.com/claude-haiku-5-5",
+     "published_at": "2026-10-07T00:00:00Z",
+     "reason": "vrijwel gelijke titel"
+    }
+   ],
    "format_version": 2,
    "headline": "Claude Haiku 5.5: een tiende van de prijs, maar let op lange prompts",
    "story": [
@@ -5662,15 +5723,15 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 310,
-  "unique_after_dedupe": 314,
-  "merged_duplicates": 9,
+  "fetched_items": 417,
+  "unique_after_dedupe": 377,
+  "merged_duplicates": 11,
   "shown": 45,
   "decisions": {
    "excluded": 106,
-   "included": 55,
-   "below_threshold": 63,
-   "no_topic": 89,
+   "included": 63,
+   "below_threshold": 113,
+   "no_topic": 94,
    "area_minimum": 1
   },
   "processing": {
@@ -5721,15 +5782,22 @@
     "from": "2026-10-13T19:56:07Z",
     "to": "2026-10-13T19:56:07Z",
     "message": "8 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+   },
+   {
+    "source_id": "claude_blog",
+    "items": 5,
+    "from": "2026-10-06T00:00:00Z",
+    "to": "2026-10-06T00:00:00Z",
+    "message": "5 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
    }
   ],
   "enrichment": {
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 74
+   "skipped_no_key": 132
   },
-  "queue_size": 5,
+  "queue_size": 15,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -5942,6 +6010,14 @@
      "minor_builds",
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
+    "relevance_score": 81,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "Filter data per end user with OAuth custom identity claims",
@@ -6216,10 +6292,26 @@
     ]
    },
    {
+    "title": "Bringing Rust-native Spark compatibility to Microsoft OneLake with Sail and LakeSail",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
+    "relevance_score": 73,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "What Databricks is doing with Genie for Business Users",
     "source_id": "simon_whiteley",
     "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
     "relevance_score": 73,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Claude Security now scans continuously and tracks fixes",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+    "relevance_score": 72,
     "decision": "included",
     "excluded_by": []
    },
@@ -6242,6 +6334,14 @@
     "excluded_by": [
      "minor_builds"
     ]
+   },
+   {
+    "title": "Uber's CISO on building an insider threat program for AI",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/uber-s-ciso-on-building-an-insider-threat-program-for-ai",
+    "relevance_score": 71,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "QuickBooks connector is available in Beta",
@@ -6275,6 +6375,14 @@
     ]
    },
    {
+    "title": "Build clearer, more expressive Real-Time Dashboards with new design and KPI capabilities (Generally Available)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-clearer-more-expressive-Real-Time-Dashboards-with-new/ba-p/5377578",
+    "relevance_score": 69,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Genie One enhancements",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
@@ -6285,57 +6393,10 @@
     ]
    },
    {
-    "title": "Genie agentic capabilities are now processed in South Korea",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#genie-agentic-capabilities-are-now-processed-in-south-korea",
-    "relevance_score": 67,
-    "decision": "excluded",
-    "excluded_by": [
-     "mini_updates",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "MCP in LangChain: Stateless Protocol, Elicitation, and More!",
-    "source_id": "langchain_blog",
-    "url": "https://www.langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more",
-    "relevance_score": 67,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "DataFrame caching on serverless compute is now in Public Preview",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/serverless#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-    "relevance_score": 66,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "DataFrame caching on serverless compute is now in Public Preview",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#dataframe-caching-on-serverless-compute-is-now-in-public-preview",
-    "relevance_score": 66,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Unify your productivity and AI data with Lakeflow Connect",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect",
-    "relevance_score": 66,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Databricks ADBC connector for Power BI and Microsoft Fabric (Generally Available)",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Databricks-ADBC-connector-for-Power-BI-and-Microsoft-Fabric/ba-p/5369591",
-    "relevance_score": 66,
+    "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-your-Microsoft-Fabric-data-estate-from-one-place-with-the/ba-p/5377369",
+    "relevance_score": 68,
     "decision": "included",
     "excluded_by": []
    }
