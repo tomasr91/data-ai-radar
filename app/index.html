@@ -196,8 +196,7 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pill.aangekondigd, .pill.onbekend { background: var(--info-soft); color: var(--info); }
 .pill.rawp { background: var(--info-soft); color: var(--muted); }
 .pill.opinie { background: var(--accent2-soft); color: var(--accent2); }
-.lamp { display: inline-flex; width: 9px; height: 11px; color: var(--accent2); opacity: .9; margin-right: -2px; }
-.lamp svg { width: 100%; height: 100%; }
+.lamp { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); margin-right: 1px; }
 .signal { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); }
 .bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
 .bars i { width: 4px; border-radius: 1px; background: var(--signal-off); }
@@ -405,11 +404,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const groupLabel = (id) => (state.feed.groups.find((g) => g.id === id) || { label: id }).label;
   const firstSentence = (t) => (String(t || "").match(/^.*?[.!?](\s|$)/) || [t])[0].trim();
 
-  // Lampje: het artikel gaat vooral over iets dat je nog aan het leren bent
+  // Oranje puntje: het artikel gaat vooral over iets dat je nog aan het leren bent
   // (pipeline/score.py zet a.learning; learning: true in interests.yml).
   function lamp(a) {
     const t = a?.learning;
-    return t ? `<span class="lamp" title="Leeronderwerp: ${esc(t)}" aria-label="Leeronderwerp: ${esc(t)}" role="img"><svg viewBox="0 0 9 12" fill="currentColor" aria-hidden="true"><path d="M4.5 0A4.5 4.5 0 0 0 1.9 8.2V9.2h5.2V8.2A4.5 4.5 0 0 0 4.5 0Z"/><rect x="2.4" y="10" width="4.2" height="1.4" rx=".7"/></svg></span>` : "";
+    return t ? `<span class="lamp" title="Leeronderwerp: ${esc(t)}" aria-label="Leeronderwerp: ${esc(t)}" role="img"></span>` : "";
   }
   function bars(score, a) {
     const n = Math.max(1, Math.min(5, Math.ceil((score || 0) / 20)));
