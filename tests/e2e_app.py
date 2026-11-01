@@ -369,17 +369,26 @@ with sync_playwright() as p:
     page.wait_for_selector("#reader .int-topic")
     txt = page.locator("#reader").inner_text()
     check("   pagina toont voorstellen, onderwerpen per gebied, uitsluitingen en logboek", page.locator(".int-sugg").count() == 2
-          and page.locator(".int-topic").count() == len(feed["interests"]["topics"]) and "Wat je niet wilt zien" in txt and "Test-wijziging" in txt
+          and page.locator(".int-topic").count() == len(feed["interests"]["topics"]) and "Wat je niet wilt zien" in txt and "Test-wijziging" in (page.locator("#reader").text_content() or "") and "Recent aangepast" in txt
           and "30%" in txt)
     eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
-    check("   blok Wat je feedback deed: erbij, eruit en sterkste voorkeur", "1 erbij en 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
+    check("   blok Wat de radar over je leerde: erbij en eruit", "Wat de radar over je leerde" in eff and "1</b> erbij" not in eff and "1 erbij, 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
           and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)
     check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "1 van de 1 beoordeelde" in eff)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
+    check("   onderwerpen ingeklapt: geen knoppen tot je een onderwerp opent", page.locator(".int-topic [data-int-chg]").count() == 0
+          and page.locator(".int-topic .row1[data-int-open]").count() == len(feed["interests"]["topics"]))
+    page.click('.int-topic[data-topic="open_source_tools"] [data-int-open]')
+    check("   tik opent één onderwerp met beschrijving en knoppen", page.locator(".int-topic.open").count() == 1
+          and page.locator('.int-topic[data-topic="open_source_tools"] .ds').count() == 1)
     page.click('.int-topic[data-topic="open_source_tools"] [data-int-chg="minder"]')
+    page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-open]')
+    check("   ander onderwerp openen sluit het vorige; wijziging blijft zichtbaar", page.locator(".int-topic.open").count() == 1
+          and "Vannacht" in page.locator('.int-topic[data-topic="open_source_tools"]').inner_text())
     page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-learn]')
     check("   lampje aanzetten markeert het onderwerp als leeronderwerp", page.locator('.int-topic[data-topic="sql_spark_sql"] .row1 .int-lamp').count() == 1
           and "wordt leeronderwerp" in page.locator('.int-topic[data-topic="sql_spark_sql"]').inner_text())
+    page.click('.int-topic[data-topic="data_governance_privacy"] [data-int-open]')
     page.click('.int-topic[data-topic="data_governance_privacy"] [data-int-follow]')
     check("   altijd volgen aanzetten markeert het onderwerp en zegt wat er gebeurt", page.locator('.int-topic[data-topic="data_governance_privacy"] .row1 .int-pin').count() == 1
           and "altijd volgen" in page.locator('.int-topic[data-topic="data_governance_privacy"]').inner_text())

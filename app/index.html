@@ -291,13 +291,20 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .learn-btn[aria-pressed="true"] .int-lamp { color: #f5d547; }
 .int-plan { margin: 6px 0 0; font-size: 0.84rem; color: var(--accent2); }
 .int-plan b { font-weight: 650; }
-.int-topic { border-top: 1px solid var(--line); padding: 10px 0; }
-.int-topic .row1 { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.int-topic { border-top: 1px solid var(--line); padding: 0; }
+.int-topic .row1 { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 46px; padding: 8px 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.int-topic .row1 .nm { flex: 0 1 auto; }
+.int-topic .row1 .chev { flex: none; color: var(--muted); font-size: 1.1rem; line-height: 1; transition: transform .15s; }
+.int-topic.open .row1 .chev { transform: rotate(90deg); }
+.int-topic .row1 .eff { margin: 0 0 0 auto; }
+.int-topic .row1 .eff + .lvl-pill { margin-left: 0; }
+.int-more { padding: 0 0 10px; }
+.int-topic > .int-plan { margin: -4px 0 10px; }
 .int-topic .nm { font-weight: 650; }
 .int-topic .lvl { font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
-.int-topic .eff { margin: 4px 0 0; font-family: var(--f-meta); font-size: 0.72rem; color: var(--ok); }
+.int-topic .eff { font-family: var(--f-meta); font-size: 0.72rem; color: var(--ok); }
 .int-topic .eff.neg { color: var(--muted); }
-.int-topic .ds { margin: 3px 0 0; font-size: 0.84rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.int-topic .ds { margin: 0; font-size: 0.84rem; color: var(--muted); line-height: 1.45; }
 .int-topic .fb-reasons, .int-sugg .fb-reasons { margin-top: 8px; }
 .int-topic .fb-reasons button { height: 28px; padding: 0 11px; font-size: 0.76rem; }
 .int-lamp { display: inline-block; width: 8px; height: 10px; color: #f5d547; }
@@ -995,16 +1002,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       : chg ? `Vannacht: van <b>${esc(LEVEL[p])}</b> naar <b>${esc(to[chg])}</b>.` : "",
       t.id in d.learn ? (d.learn[t.id] ? "Vannacht: wordt leeronderwerp (geel lampje op de kaarten)." : "Vannacht: geen leeronderwerp meer.") : "",
       t.id in d.follow ? (d.follow[t.id] ? "Vannacht: altijd volgen. Je feedback duwt het niet meer omlaag en er staat elke week minstens één artikel over in je feed." : "Vannacht: niet meer altijd volgen.") : ""].filter(Boolean).join("<br>");
-    return `<div class="int-topic" data-topic="${esc(t.id)}">
-      <div class="row1"><span class="nm">${esc(t.name)}</span>${learnNow ? INT_LAMP : ""}${followNow ? INT_PIN : ""}<span class="lvl-pill lvl-${p}">${esc(LEVEL[p] || "")}</span></div>
-      <p class="ds">${esc(t.description)}</p>
-      ${e ? `<p class="eff${e < 0 ? " neg" : ""}">Je duimpjes: ${e > 0 ? "+" : "−"}${Math.abs(e)} punten per artikel</p>` : ""}
-      <div class="fb-reasons">${to.belangrijker ? btn("belangrijker", `▲ Naar ${to.belangrijker}`) : ""}${to.minder ? btn("minder", `▼ Naar ${to.minder}`) : ""}${btn("weg", "Uitzetten")}<button type="button" class="learn-btn" data-int-learn aria-pressed="${learnNow}" title="${learnNow ? "Leeronderwerp: tik om uit te zetten" : "Markeer als leeronderwerp"}">${INT_LAMP}${learnNow ? "Leeronderwerp" : "Leren"}</button><button type="button" class="follow-btn" data-int-follow aria-pressed="${followNow}" title="${followNow ? "Altijd volgen: tik om uit te zetten" : "Altijd volgen, ook als je het minder leuk vindt"}">${INT_PIN}${followNow ? "Altijd volgen" : "Volgen"}</button></div>
+    const open = intOpen === t.id;
+    return `<div class="int-topic${open ? " open" : ""}" data-topic="${esc(t.id)}">
+      <button type="button" class="row1" data-int-open aria-expanded="${open}"><span class="nm">${esc(t.name)}</span>${learnNow ? INT_LAMP : ""}${followNow ? INT_PIN : ""}
+        ${e ? `<span class="eff${e < 0 ? " neg" : ""}">${e > 0 ? "+" : "−"}${Math.abs(e)}</span>` : ""}<span class="lvl-pill lvl-${p}">${esc(LEVEL[p] || "")}</span><span class="chev" aria-hidden="true">›</span></button>
+      ${open ? `<div class="int-more"><p class="ds">${esc(t.description)}</p>
+      <div class="fb-reasons">${to.belangrijker ? btn("belangrijker", `▲ Naar ${to.belangrijker}`) : ""}${to.minder ? btn("minder", `▼ Naar ${to.minder}`) : ""}${btn("weg", "Uitzetten")}<button type="button" class="learn-btn" data-int-learn aria-pressed="${learnNow}">${INT_LAMP}${learnNow ? "Leeronderwerp" : "Leren"}</button><button type="button" class="follow-btn" data-int-follow aria-pressed="${followNow}">${INT_PIN}${followNow ? "Altijd volgen" : "Volgen"}</button></div></div>` : ""}
       ${plan ? `<p class="int-plan">${plan}</p>` : ""}</div>`;
   }
+  let intOpen = null;   // welk onderwerp op Mijn interesses is opengeklapt (één tegelijk)
   function renderInterests() {
     const f = state.feed, I = f.interests || { areas: [], topics: [], excluded: [] }, d = intStore.get();
-    const fbf = f.feedback || {}, W = fbPoints();
     const topicName = new Map(I.topics.map((t) => [t.id, t.name]));
     const sugg = (f.interest_suggestions || []).map((x) => {
       const ans = d.answers[x.id], sent = d.sentAnswers[x.id];
@@ -1022,14 +1030,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const log = (f.interest_log || []).map((x) => `<li><time>${esc(fmtDate(x.at))}</time>${esc(x.text)}</li>`).join("");
     openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Mijn interesses</span></div></div>
       <article class="full wrap"><h1>Mijn interesses</h1>
-      <p class="lead">Waar de radar voor je op let. Tik aan wat anders moet en verstuur het; Claude past het vannacht aan.</p>
       <div id="int-send-wrap">${intSendBar()}</div>
-      ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2><p class="pick-note">Elke zondag nieuw, op basis van je duimpjes, wat je leest en het nieuws.</p>${sugg}</section>` : ""}
+      ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2>${sugg}</section>` : ""}
+      <section class="int-sec"><h2>Jouw onderwerpen</h2>${areas}</section>
       ${fbEffectBlock()}
-      <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">In vier gebieden, met hoeveel van je feed elk gebied ongeveer krijgt.</p>${areas}</section>
-      <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
       <section class="int-sec"><h2>In je eigen woorden</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Bijv. meer over Fabric, minder over AI-onderzoek">${esc(d.note)}</textarea></section>
-      ${log ? `<section class="int-sec"><h2>Recent aangepast</h2><ul class="int-log">${log}</ul></section>` : ""}
+      <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
+      ${log ? `<section class="int-sec int-excl"><details><summary>Recent aangepast</summary><ul class="int-log">${log}</ul></details></section>` : ""}
       </article>`);
     const note = $("#int-note");
     if (note) note.oninput = () => { const x = intStore.get(); x.note = note.value; intStore.save(x); $("#int-send-wrap").innerHTML = intSendBar(); };
@@ -1048,6 +1055,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       intStore.save(d);
       if (t) row.outerHTML = intTopicRow(t, d);
       $("#int-send-wrap").innerHTML = intSendBar();
+      return true;
+    }
+    const ob = e.target.closest("[data-int-open]");
+    if (ob) {
+      const d = intStore.get(), id = ob.closest("[data-topic]").dataset.topic, prev = intOpen;
+      intOpen = prev === id ? null : id;
+      const topics = state.feed.interests?.topics || [];
+      for (const tid of new Set([prev, id].filter(Boolean))) {
+        const row = document.querySelector(`.int-topic[data-topic="${tid}"]`), t = topics.find((x) => x.id === tid);
+        if (row && t) row.outerHTML = intTopicRow(t, d);
+      }
       return true;
     }
     const fbtn = e.target.closest("[data-int-follow]");
@@ -1479,22 +1497,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   // Mijn interesses: wat je feedback deze week veranderde
   function fbEffectBlock() {
-    const e = state.feed.feedback?.effect, W = fbPoints();
-    const arts = state.feed.articles.map((a) => Math.round((a.score_parts?.feedback || 0) * W));
-    const up = arts.filter((p) => p >= 5).length, down = arts.filter((p) => p <= -5).length;
+    const e = state.feed.feedback?.effect;
     const lean = fbLean().filter((x) => x.pts).sort((x, y) => y.pts - x.pts);
-    const top = [...lean.filter((x) => x.pts > 0).slice(0, 3), ...lean.filter((x) => x.pts < 0).slice(-3)];
-    if (!e && !lean.length) return "";
-    const pt = (n) => `${n > 0 ? "+" : "−"}${Math.abs(n)}`;
     const learned = fbLearned(lean);
+    const pt = (n) => `${n > 0 ? "+" : "−"}${Math.abs(n)}`;
     const row = (x, href, ext) => `<li${x.delta < 0 ? ' class="neg"' : ""}><a href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${esc(x.title)}</a><span class="d">${pt(x.delta)}</span></li>`;
     const lifted = e?.lifted || [], dropped = e?.dropped || [];
-    return `<section class="int-sec fb-eff"><h2>Wat je feedback deed</h2>
+    if (!learned.length && !lifted.length && !dropped.length) return "";
+    return `<section class="int-sec fb-eff"><h2>Wat de radar over je leerde</h2>
       ${learned.length ? `<p class="learned">${learned.join(" ")}</p>` : ""}
-      <p class="sum">Afgelopen ${e?.days || 7} dagen: <b>${lifted.length}</b> erbij en <b>${dropped.length}</b> eruit door je feedback. In je lijst nu ${up} hoger en ${down} lager (5 punten of meer).</p>
+      ${lifted.length || dropped.length ? `<p class="sum">Afgelopen ${e?.days || 7} dagen door je feedback: <b>${lifted.length}</b> erbij, <b>${dropped.length}</b> eruit.</p>` : ""}
       ${lifted.length ? `<h3>Erbij</h3><ul class="eff-list">${lifted.map((x) => row(x, "#a-" + x.id)).join("")}</ul>` : ""}
       ${dropped.length ? `<h3>Eruit</h3><ul class="eff-list">${dropped.map((x) => row(x, x.url, true)).join("")}</ul>` : ""}
-      ${top.length ? `<h3>Sterkst</h3><ul class="eff-lean">${top.map((x) => `<li class="${x.pts < 0 ? "neg" : ""}"><span>${esc(x.name)}</span><span class="d">${pt(x.pts)}</span></li>`).join("")}</ul>` : ""}
     </section>`;
   }
   function renderArticle(a) {
