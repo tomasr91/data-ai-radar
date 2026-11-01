@@ -123,6 +123,9 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
 .fb-send { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 14px; min-height: 44px; border-radius: var(--r); border: 1px solid var(--accent2); background: var(--accent2-soft); color: var(--ink); text-decoration: none; font-size: 0.9rem; }
 .fb-send b { color: var(--accent2); }
+.fb-float { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 25; margin: 0; width: max-content; max-width: calc(100% - 32px); min-height: 44px; padding: 0 6px 0 16px; gap: 12px; border-radius: 999px; border: 1px solid var(--line); background: #222833; box-shadow: 0 8px 24px rgba(0,0,0,.5); font-size: 0.86rem; color: var(--muted); white-space: nowrap; }
+.fb-float b { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--accent2); color: #1a1205; font-weight: 600; }
+.cards.has-float { padding-bottom: 72px; }
 .term { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-decoration: underline dotted var(--muted); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .term.new { color: var(--accent2); text-decoration-color: var(--accent2); }   /* nog niet bekeken */
 .term-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--surface); border-top: 2px solid var(--accent2); padding: 16px 20px calc(18px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 30px rgba(0,0,0,.45); }
@@ -780,7 +783,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
       const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
       const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
-      html += weekBar() + fbSendBar() + `<div class="cards">${cards}</div>`;
+      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
     }
     $("#content").innerHTML = html;
   }
@@ -941,7 +944,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 
   function intSendBar() {
     const n = intPending(intStore.get());
-    return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je bovenaan Actueel</span><b>Naar Actueel ›</b></a>` : "";
+    return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je op Actueel</span><b>Naar Actueel ›</b></a>` : "";
   }
   const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
   // Effect van je duimpjes op artikelen over dit onderwerp (relatief, in punten)
@@ -1377,7 +1380,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
     if (!items.length && !ni && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
-    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items, rd))}" target="_blank" rel="noopener"><span>${esc(fbSummary(items, rd, ni))} klaar om te versturen</span><b>Versturen ›</b></a>`;
+    const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
+    if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
+    return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
   }
   function markSent() {
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
