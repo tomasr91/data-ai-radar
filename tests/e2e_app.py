@@ -76,6 +76,12 @@ _tw = next(w.strip(".,:;()\"'") for w in " ".join(_ta["story"]).split() if len(w
 _ta["terms"] = [{"term": _tw, "explanation": "Testuitleg van het begrip."}]
 feed["glossary"] = [{"term": _tw, "explanation": "Testuitleg van het begrip.", "refs": [{"kind": "a", "id": _ta["id"], "title": _ta.get("headline") or _ta["title"]}]},
                     {"term": "Zzz-begrip", "explanation": "Nog een.", "refs": [{"kind": "a", "id": _ta["id"], "title": "x"}]}]
+# Lampje: leeronderwerpen (de pipeline zet "learning" per artikel)
+for _a in arts[:2]:
+    _a["learning"] = "Data ingestion"
+for _a in arts[2:]:
+    _a.pop("learning", None)
+_learn = [a["id"] for a in arts[:2]]
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -184,6 +190,11 @@ with sync_playwright() as p:
     page.evaluate("location.reload()")
     page.wait_for_selector(".card")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
+
+    # 20. Lampje bij leeronderwerpen
+    lamps = page.locator(".card .lamp").count()
+    check("20. lampje alleen op kaarten over leeronderwerpen", lamps == len(_learn)
+          and all(page.locator(f'.card[data-id="{i}"] .signal .lamp').count() == 1 for i in _learn), f"{lamps} vs {len(_learn)}")
 
     # 17. Gelezen en Jouw week
     check("17. Jouw week staat bovenaan Actueel", page.locator('a.fb-send[href="#week"]').count() == 1)

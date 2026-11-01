@@ -112,6 +112,8 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         topic_ids = list(hits)
         certainty = match_certainty(len(set().union(*hits.values())) if hits else 0)
     topic_ids = [t for t in topic_ids if t in topics]
+    # De eerste twee in Claudes volgorde = waar het artikel vooral over gaat (vóór sorteren op prioriteit).
+    main_topics = topic_ids[:2]
     topic_ids.sort(key=lambda t: -topics[t]["priority"])
 
     q = article.get("quality")
@@ -151,6 +153,8 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     article["relevance_score"] = round(total * 100)
     article["score_parts"] = {k: round(v, 2) for k, v in parts.items()}
     article["decision"] = decision
+    # Lampje in de app: gaat vooral over iets dat T nog aan het leren is (learning: true in interests.yml)
+    article["learning"] = next((topics[t]["name"] for t in main_topics if topics[t].get("learning")), None)
     article["excluded_by"] = excluded
     return article
 

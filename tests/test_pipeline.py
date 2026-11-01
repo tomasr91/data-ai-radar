@@ -401,6 +401,22 @@ class TestOwnTopic(unittest.TestCase):
         self.assertTrue(any("plan_id" in p for p in probs))
 
 
+class TestLearningLamp(unittest.TestCase):
+    """Lampje: alleen als een leeronderwerp bij de eerste twee onderwerpen (Claudes volgorde) hoort."""
+
+    def test_learning_from_main_topics(self):
+        conf = cfg.load()
+        learn = [t for t, v in conf.topics.items() if v.get("learning")]
+        self.assertIn("data_ingestion", learn)
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        base = {"id": "aaaaaaaaaaaa", "title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-10-31T00:00:00Z",
+                "processing_status": "enriched", "quality": {"depth": .8, "practicality": .8, "novelty": .8}}
+        a = score_article(dict(base, topics=["data_ingestion", "dbt_analytics_engineering"]), conf, now)
+        self.assertEqual(a["learning"], conf.topics["data_ingestion"]["name"])
+        b = score_article(dict(base, topics=["dbt_analytics_engineering", "ai_agents_rag", "data_ingestion"]), conf, now)
+        self.assertIsNone(b["learning"])
+
+
 class TestDeepdiveChoice(unittest.TestCase):
     """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
 

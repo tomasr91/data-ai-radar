@@ -215,7 +215,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "last_article_added_at": max(fetched) if fetched else None,
         "last_successful_update": result.extra.get("captured_at") if result.mode == "snapshot" else _iso(now),
         "groups": conf.feed_groups,
-        "topics": {t["id"]: {"name": t["name"], "priority": t["priority"], "group": t.get("feed_group", "overig")}
+        "topics": {t["id"]: {"name": t["name"], "priority": t["priority"], "group": t.get("feed_group", "overig"),
+                             **({"learning": True} if t.get("learning") else {})}
                    for t in conf.interests["topics"]},
         "sources": _source_view(conf, result.source_results),
         "daily_top": daily_top(shown, size=5, per_group=min(2, conf.scoring.get("max_items_per_topic_per_feed", 3))),
@@ -265,7 +266,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms"]
+                 "showcase", "terms", "learning"]
 
 
 def _public(a):
