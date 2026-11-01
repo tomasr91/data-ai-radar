@@ -119,7 +119,7 @@ with sync_playwright() as p:
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" not in upd and re.search(r"\d{1,2} \w+.*\d{2}:\d{2}", upd, re.S) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
-    check("   filters Nieuw, Relevant en Trends", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Relevant", "Trends"])
+    check("   filters Nieuw en Trends (Relevant is weg)", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Trends"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     check("10. geen dubbele artikelen in de lijst", len(ids) == len(set(ids)))
     if SHOTS:
@@ -141,7 +141,7 @@ with sync_playwright() as p:
     check("   artikel uit een trend opent", page.locator("#reader").is_visible())
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
-    page.click('#seg-sort button[data-v="score"]')
+    page.click('#seg-sort button[data-v="date"]')
 
     # 4-6. Artikel openen, uitleg, bron en link
     enriched = next(a for a in arts if a["processing_status"] == "enriched")
@@ -209,6 +209,15 @@ with sync_playwright() as p:
 
     # 17. Gelezen en Jouw week
     check("17. Jouw week staat bovenaan Actueel", page.locator('a.fb-send[href="#week"]').count() == 1)
+    page.click("#week-bar .week-x")
+    page.wait_for_timeout(400)
+    check("   × veegt Jouw week weg", page.locator("#week-bar").count() == 0 and page.url.endswith("index.html"))
+    page.evaluate("location.reload()")
+    page.wait_for_selector(".card")
+    check("   en blijft weg na opnieuw openen", page.locator("#week-bar").count() == 0)
+    page.evaluate("localStorage.removeItem('radar:weekGone')")
+    page.evaluate("location.reload()")
+    page.wait_for_selector("#week-bar")
     rid = arts[3]["id"]
     page.evaluate("localStorage.removeItem('radar:read')")
     page.goto(url + "#a-" + rid)

@@ -122,6 +122,10 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .gl-item dd { margin: 0; font-family: var(--f-read); line-height: 1.6; }
 .gl-refs { display: block; margin-top: 6px; font-family: var(--f-meta); font-size: 0.78rem; color: var(--muted); }
 .gl-refs a { color: var(--muted); }
+.week-bar { position: relative; touch-action: pan-y; transition: transform .2s, opacity .2s; }
+.week-bar .fb-send { padding-right: 44px; }
+.week-x { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
+.week-bar.gone { opacity: 0; }
 .wk-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 14px; }
 .wk-list li { border-left: 3px solid var(--accent2); padding: 2px 0 2px 12px; }
 .wk-list h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
@@ -348,7 +352,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <button type="button" role="tab" data-v="actueel">Actueel</button><button type="button" role="tab" data-v="verdieping">Verdieping</button><button type="button" role="tab" data-v="leren">Leren</button>
     </div>
     <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
-      <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button><button type="button" data-v="trends">Trends</button>
+      <button type="button" data-v="date">Nieuw</button><button type="button" data-v="trends">Trends</button>
     </div>
     <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
       <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button><button type="button" data-v="later">Later</button>
@@ -382,7 +386,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const FEED_URL = "feed.json";
   const SUPPORTED_SCHEMA = 1;
 
-  const state = { feed: null, view: "actueel", ddTab: "alle", ddById: new Map(), group: "all", period: "all", sort: "score", q: "", byId: new Map(), scrollY: 0 };
+  const state = { feed: null, view: "actueel", ddTab: "alle", ddById: new Map(), group: "all", period: "all", sort: "date", q: "", byId: new Map(), scrollY: 0 };
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const store = {
@@ -477,7 +481,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       state.feed = feed;
       feed.articles.forEach((a) => state.byId.set(a.id, a));
       (feed.deepdives || []).forEach((d) => state.ddById.set(d.id, d));
-      state.sort = store.get("sort", "score");
+      state.sort = store.get("sort", "date") === "trends" ? "trends" : "date";   // tabje Relevant is weg (1-11-2026)
       state.view = ["verdieping", "leren"].includes(store.get("view", "actueel")) ? store.get("view", "actueel") : "actueel";
       state.ddTab = ["morgen", "later"].includes(store.get("ddTab", "alle")) ? store.get("ddTab", "alle") : "alle";
       renderStatus();
@@ -964,7 +968,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
      Zondag schrijft Claude data/weekly.json (pipeline/weekly.py): de 3 belangrijkste ontwikkelingen.
      De app zet erbij wat alleen op dit toestel staat (laatste 7 dagen): verdiepingen en of je ze las,
      je controlevragen, herhalingen, het Claude-examen (Leren) en wat je las en beoordeelde. */
-  const WEEK_BAR_DAYS = 3;
+  // De balk blijft staan tot je hem zelf wegveegt (of op × tikt); per week onthouden (radar:weekGone).
   function isoWeekRange(week) {
     const [y, w] = week.split("-W").map(Number);
     const jan4 = new Date(Date.UTC(y, 0, 4)), mon = new Date(jan4);
@@ -975,8 +979,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function weekBar() {
     const w = state.feed.weekly;
-    if (!w || Date.now() - Date.parse(w.generated_at) > WEEK_BAR_DAYS * 864e5) return "";
-    return `<a class="fb-send" href="#week"><span>Jouw week ${esc(w.week.split("-W")[1].replace(/^0/, ""))} staat klaar</span><b>Bekijken ›</b></a>`;
+    if (!w || store.get("weekGone", "") === w.week) return "";
+    return `<div class="week-bar" id="week-bar" data-week="${esc(w.week)}"><a class="fb-send" href="#week"><span>Jouw week ${esc(w.week.split("-W")[1].replace(/^0/, ""))} staat klaar</span><b>Bekijken ›</b></a><button type="button" class="week-x" aria-label="Jouw week wegvegen">×</button></div>`;
   }
   function lerenWeek(since) {
     try {
@@ -1338,6 +1342,37 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const pick = e.target.closest("[data-later-pick]");
     if (pick) { state.chosen = [...(state.chosen || []), pick.dataset.laterPick]; setTimeout(renderList, 300); }
   });
+  // Jouw week wegvegen (opzij schuiven) of op × tikken
+  function weekGone(bar, dir) {
+    store.set("weekGone", bar.dataset.week);
+    bar.style.transform = `translateX(${dir * 110}%)`; bar.classList.add("gone");
+    setTimeout(() => bar.remove(), 220);
+  }
+  let swipe = null;
+  $("#content").addEventListener("touchstart", (e) => {
+    const bar = e.target.closest("#week-bar"); if (!bar) return;
+    swipe = { bar, x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, moved: false };
+  }, { passive: true });
+  $("#content").addEventListener("touchmove", (e) => {
+    if (!swipe) return;
+    swipe.dx = e.touches[0].clientX - swipe.x;
+    if (Math.abs(swipe.dx) > 10 && Math.abs(swipe.dx) > Math.abs(e.touches[0].clientY - swipe.y)) {
+      swipe.moved = true; swipe.bar.style.transition = "none";
+      swipe.bar.style.transform = `translateX(${swipe.dx}px)`; swipe.bar.style.opacity = String(1 - Math.min(Math.abs(swipe.dx) / 300, .7));
+    }
+  }, { passive: true });
+  $("#content").addEventListener("touchend", () => {
+    if (!swipe) return;
+    const { bar, dx, moved } = swipe; swipe = null;
+    bar.style.transition = "";
+    if (moved && Math.abs(dx) > 90) { weekGone(bar, Math.sign(dx)); bar.dataset.swiped = "1"; }
+    else { bar.style.transform = ""; bar.style.opacity = ""; if (moved) bar.dataset.swiped = "1"; }
+  });
+  $("#content").addEventListener("click", (e) => {
+    const bar = e.target.closest("#week-bar"); if (!bar) return;
+    if (bar.dataset.swiped) { e.preventDefault(); e.stopPropagation(); delete bar.dataset.swiped; return; }   // na vegen niet ook openen
+    if (e.target.closest(".week-x")) { e.preventDefault(); e.stopPropagation(); weekGone(bar, 1); }
+  }, true);
   $("#content").addEventListener("input", (e) => {
     if (e.target.id !== "gl-q") return;
     const q = e.target.value.trim().toLowerCase();
