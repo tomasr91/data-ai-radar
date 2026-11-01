@@ -515,6 +515,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       renderStatus();
       renderSeg();
       updateMenuDot();
+      keepStorage();
       route();
     } catch (e) {
       $("#upd").textContent = "Niet geladen";
@@ -970,6 +971,25 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return true;
   }
 
+  /* ---- Blijvende opslag ----
+     Vraag Chrome om de opslag van de Radar als blijvend te markeren: dan ruimt Chrome die niet zelf op
+     als de telefoon vol raakt. Zelf browsergegevens wissen blijft alles weghalen; daarvoor is de back-up.
+     Chrome beslist zelf (geen pop-up); bij een geïnstalleerde app wordt het meestal toegestaan. */
+  let storagePersisted = null;
+  async function keepStorage() {
+    try {
+      if (!navigator.storage?.persist) return;
+      storagePersisted = (await navigator.storage.persisted()) || (await navigator.storage.persist());
+    } catch { storagePersisted = null; }
+    showPersist();
+  }
+  function showPersist() {
+    const el = $("#bk-persist"); if (!el) return;
+    el.className = "bk-msg" + (storagePersisted ? " ok" : "");
+    el.textContent = storagePersisted === true ? "✓ Blijvende opslag: Chrome ruimt je gegevens niet zelf op."
+      : storagePersisted === false ? "Chrome heeft de opslag nog niet als blijvend gemarkeerd. Installeer de Radar als app, dan gebeurt dat meestal vanzelf." : "";
+  }
+
   /* ---- Back-up ----
      Alles wat alleen op dit toestel staat in één bestand: de Radar (radar:*) en het examen (cca-academy-v2).
      Wat je al verstuurde (duimpjes, keuzes, interesses) staat ook op GitHub. Terugzetten vervangt wat er nu staat.
@@ -994,6 +1014,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Back-up</span></div></div>
       <article class="full wrap"><h1>Back-up</h1>
       <p class="lead">Alles wat alleen op deze telefoon staat, in één bestand.</p>
+      <p class="bk-msg" id="bk-persist"></p>
       <section class="block"><h2>Nu op dit toestel</h2>${bkSummary((k) => localStorage.getItem(k))}
         <button type="button" class="btn" id="bk-save">Bewaren in Downloads</button></section>
       <section class="block"><h2>Terugzetten</h2>
@@ -1003,6 +1024,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <div class="row"><button type="button" class="btn" id="bk-restore">Terugzetten</button><button type="button" class="btn ghost" id="bk-cancel">Annuleren</button></div></div>` : ""}
         ${msg ? `<p class="bk-msg ${msg.ok ? "ok" : "bad"}">${esc(msg.text)}</p>` : ""}</section>
       </article>`);
+    showPersist();
     $("#bk-save").onclick = () => {
       const data = Object.fromEntries(bkKeys().map((k) => [k, localStorage.getItem(k)]));
       const blob = new Blob([JSON.stringify({ app: BK_APP, version: 1, exportedAt: new Date().toISOString(), data }, null, 1)], { type: "application/json" });

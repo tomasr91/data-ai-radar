@@ -474,6 +474,8 @@ with sync_playwright() as p:
     page.wait_for_selector("#bk-save")
     check("   back-up toont wat er op dit toestel staat", "1 onderwerpen" in page.locator("#reader .bk-list").inner_text()
           and "vragen geoefend" in page.locator("#reader .bk-list").inner_text())
+    page.wait_for_function("document.getElementById('bk-persist').textContent.length > 0", timeout=3000)
+    check("   back-up laat zien of de opslag blijvend is", "blijvend" in page.locator("#bk-persist").inner_text())
     with page.expect_download(timeout=5000) as dl:
         page.click("#bk-save")
     d = dl.value
