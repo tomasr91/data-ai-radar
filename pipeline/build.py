@@ -25,6 +25,7 @@ from . import feedback as feedback_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
 from .terms import glossary
+from . import interests as interests_mod
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -214,6 +215,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     dd_options, invalid_options = deepdives_mod.load_options(set(conf.topics))
     trends, invalid_trends = trends_mod.load(set(conf.topics), shown)
     weekly, invalid_weekly = weekly_mod.load(shown)
+    int_suggestions, invalid_suggestions = interests_mod.load_suggestions(set(conf.topics))
     feed = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": _iso(now),
@@ -233,6 +235,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "trends": trends,
         "weekly": weekly,
         "glossary": glossary(shown, deepdives),
+        "interests": interests_mod.view(conf),
+        "interest_suggestions": int_suggestions,
+        "interest_log": interests_mod.load_log(),
         "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at")},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
@@ -253,6 +258,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "invalid_deepdive_options": invalid_options,
             "invalid_trends": invalid_trends,
             "invalid_weekly": invalid_weekly,
+            "invalid_interest_suggestions": invalid_suggestions,
             "threshold": round(conf.scoring.get("min_relevance_score", 0.5) * 100),
             "not_shown": [{"title": a["title"], "source_id": a["source_id"], "url": a["url"],
                            "relevance_score": a["relevance_score"], "decision": a["decision"],

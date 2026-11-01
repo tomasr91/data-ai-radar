@@ -78,6 +78,17 @@ def main(argv):
                 print(f"FOUT trends.json: {pr}")
             if not tproblems:
                 print(f"{len(tdata.get('trends', []))} trends gecontroleerd")
+        from pipeline import interests as interests_mod
+        if interests_mod.SUGGESTIONS.exists():
+            try:
+                sproblems = interests_mod.validate_suggestions(json.loads(interests_mod.SUGGESTIONS.read_text(encoding="utf-8")), topics)
+            except json.JSONDecodeError as e:
+                sproblems = [f"geen geldige JSON ({e})"]
+            for pr in sproblems:
+                bad += 1
+                print(f"FOUT interest_suggestions.json: {pr}")
+            if not sproblems:
+                print("voorstellen voor interesses gecontroleerd")
         from pipeline import weekly as weekly_mod
         if weekly_mod.PATH.exists():
             try:

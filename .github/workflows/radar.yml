@@ -21,6 +21,8 @@ on:
       - "data/deepdive_options.json"
       - "data/trends.json"
       - "data/weekly.json"
+      - "data/interest_suggestions.json"
+      - "data/interest_log.json"
       - "data/run-request"     # de Claude-taak vraagt hiermee om vers ophalen (GitHub-klok is soms uren te laat)
       - "context/**"
       - "app/**"

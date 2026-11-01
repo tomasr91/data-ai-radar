@@ -23,9 +23,11 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
    - `GEEN KEUZE` of `ONBEKEND`: vandaag geen verdieping.
 6. **Trends.** Werk `data/trends.json` bij volgens **Trends** hieronder (mag een lege lijst zijn).
 6b. **Alleen op zondag (datum in Europe/Amsterdam): Jouw week.** Schrijf `data/weekly.json` volgens **Jouw week** hieronder, ná het uitleggen, zodat de artikelen van vannacht meetellen.
+6c. **Interesses aanpassen.** Draai `python scripts/interest_requests.py` en verwerk elk `VERWERKEN`-issue volgens **Mijn interesses** hieronder. Bij `NIET NU`, `GEEN VERZOEKEN` of `ONBEKEND`: niets aan `context/interests.yml` veranderen.
+6d. **Alleen op zondag: voorstellen.** Schrijf `data/interest_suggestions.json` met hooguit 3 voorstellen, volgens **Mijn interesses** hieronder.
 7. **Nieuwe keuzes.** Maak in de nachtrun (niet bij `NIET NU`) **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
 8. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` per geschreven verdieping). Zet voor elke geschreven verdieping `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
+9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json` en `data/interest_suggestions.json`; na stap 6c ook `context/interests.yml` en `data/interest_log.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` per geschreven verdieping). Zet voor elke geschreven verdieping `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
 10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, bij hoeveel stukken begrippen zijn aangevuld, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, op zondag de 3 hoogtepunten van Jouw week, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
@@ -139,6 +141,40 @@ Een kort overzicht dat T zondagochtend leest om de week af te sluiten. De app ze
 ```
 
 `week` is de ISO-week van de zondag zelf (`date +%G-W%V`).
+
+## Mijn interesses
+
+T ziet in de app (tandwiel > Mijn interesses) zijn onderwerpen uit `context/interests.yml`, jouw voorstellen en een logboek. Wat hij wil veranderen komt als issue "Interesses: ..." binnen; `scripts/interest_requests.py` zet het om in een lijst. Je mag hiervoor **alleen** `context/interests.yml`, `data/interest_suggestions.json` en `data/interest_log.json` aanpassen; nooit het profiel, de bronnen of andere contextbestanden.
+
+**Verzoeken verwerken (stap 6c)**
+- `onderwerp <id>: belangrijker` → `priority` één omhoog (hooguit 5). `minder` → één omlaag (minstens 1). `weg` → `enabled: false` (het onderwerp blijft staan, zodat het terug kan).
+- `voorstel <id>: JA` → voer het voorstel uit. Bij `nieuw`: voeg een onderwerp toe onder `topics` met een `id` in snake_case, `name`, `description` (2 of 3 zinnen), een bestaande `feed_group`, `enabled: true`, `priority: 3` (tenzij het voorstel iets anders zegt), 5 tot 15 specifieke `keywords` (geen losse woorden die ook in andere teksten staan) en `related_topics`; zet het `id` ook bij het passende gebied in `interest_areas`. Bij `belangrijker`/`minder`/`weg`: zoals hierboven.
+- `voorstel <id>: NEE` → niets veranderen.
+- Haal elk beantwoord voorstel (ja of nee) uit `data/interest_suggestions.json`.
+- `in eigen woorden`: vertaal het naar concrete aanpassingen in `interests.yml` (prioriteit, zoekwoorden, omschrijving, `excluded_topics`). Is het onduidelijk of valt het buiten `interests.yml` (bijv. een nieuwe bron), verander dan niets en schrijf dat in het logboek.
+- Zet `updated:` bovenin `interests.yml` op de datum van vandaag.
+- Draai `python scripts/validate_context.py`. Bij een fout: herstel het, of zet `interests.yml` terug en meld het.
+- Schrijf per wijziging één regel bovenaan `data/interest_log.json` (nieuwste eerst), in gewoon Nederlands:
+  `{"changes": [{"at": "2026-11-02T04:40:00Z", "text": "Power BI en semantische modellen: van 'regelmatig' naar 'belangrijk' (jouw verzoek)."}, ...]}`
+  Ook een afgewezen voorstel krijgt een regel ("Voorstel 'Data contracts' niet overgenomen (jouw nee)."), zodat je het niet snel opnieuw voorstelt.
+- Zet `Closes #<n>` voor elk verwerkt issue in de commitboodschap.
+
+**Voorstellen doen (stap 6d, alleen op zondag)**
+- Hooguit 3, en vervang de vorige (onbeantwoorde) voorstellen. Liever geen voorstel dan een zwak voorstel; een lege lijst mag.
+- Soorten (`kind`): `nieuw` (een onderwerp dat er nog niet is), `belangrijker`, `minder` of `weg` (een bestaand onderwerp, met `topic`).
+- Baseer je op: T's duimpjes, redenen en gelezen artikelen (`data/feedback.json`, laatste 4 weken); onderwerpen die vaak in het nieuws of in de werklijst zitten maar niet goed in `interests.yml` passen; overgeslagen artikelen; de leerdoelen in `context/profile.md`.
+- `why`: één zin met het concrete bewijs ("kwam deze maand in 5 artikelen terug; 2 daarvan gaf je een 👍"). Verzin geen cijfers.
+- Stel niets voor wat T in de laatste 8 weken heeft afgewezen (zie `data/interest_log.json`).
+
+```json
+{
+  "generated_at": "2026-11-08T04:40:00Z",
+  "suggestions": [
+    {"id": "data-contracts", "kind": "nieuw", "name": "Data contracts", "description": "...", "why": "..."},
+    {"id": "powerbi-belangrijker", "kind": "belangrijker", "topic": "powerbi_semantic_models", "why": "..."}
+  ]
+}
+```
 
 ## Feedback van T
 

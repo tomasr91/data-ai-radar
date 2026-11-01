@@ -202,6 +202,38 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .menu-sheet a { display: flex; flex-direction: column; gap: 2px; padding: 12px 4px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 .menu-sheet a:last-child { border-bottom: 0; }
 .menu-sheet a span { font-weight: 650; }
+#btn-menu { position: relative; }
+#btn-menu.has-dot::after, .menu-dot { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); }
+#btn-menu.has-dot::after { position: absolute; top: 6px; right: 6px; box-shadow: 0 0 0 2px var(--surface); }
+.menu-dot { margin-left: 8px; vertical-align: 2px; }
+.menu-dot[hidden] { display: none; }
+/* Mijn interesses */
+.int-sec { margin-top: 26px; }
+.int-sec > h2 { font-size: 1.1rem; margin: 0 0 4px; }
+.int-sec > .pick-note { margin: 0 0 10px; }
+.int-sugg { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent2); border-radius: var(--r); padding: 12px 14px; margin-top: 10px; }
+.int-sugg .kind { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
+.int-sugg h3 { margin: 2px 0 4px; font-size: 1.02rem; }
+.int-sugg p { margin: 0 0 4px; font-family: var(--f-read); line-height: 1.55; }
+.int-sugg .why { color: var(--muted); font-family: inherit; font-size: 0.88rem; }
+.int-area { margin-top: 18px; }
+.int-area h3 { font-size: 0.95rem; margin: 0 0 6px; color: var(--muted); font-weight: 650; }
+.int-area h3 b { color: var(--ink); }
+.int-topic { border-top: 1px solid var(--line); padding: 10px 0; }
+.int-topic .row1 { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.int-topic .nm { font-weight: 650; }
+.int-topic .lvl { font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
+.int-topic .eff { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
+.int-topic .eff.neg { color: var(--muted); }
+.int-topic .ds { margin: 3px 0 0; font-size: 0.84rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.int-topic .fb-reasons, .int-sugg .fb-reasons { margin-top: 8px; }
+.int-topic .fb-reasons button { height: 28px; padding: 0 11px; font-size: 0.76rem; }
+.int-lamp { display: inline-block; width: 8px; height: 10px; color: #f5d547; }
+.int-note { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; resize: vertical; min-height: 70px; }
+.int-excl summary { cursor: pointer; font-weight: 650; }
+.int-excl ul { margin: 8px 0 0; color: var(--muted); }
+.int-log { list-style: none; padding: 0 !important; margin: 6px 0 0 !important; display: grid; gap: 6px; font-size: 0.9rem; }
+.int-log time { font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); margin-right: 8px; }
 .menu-sheet a small { color: var(--muted); font-size: 0.82rem; }
 .lamp { position: absolute; right: 13px; bottom: 8px; width: 10px; height: 13px; color: #f5d547; display: block; }
 .lamp svg { width: 100%; height: 100%; display: block; }
@@ -326,6 +358,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 
 <div class="menu-sheet" id="menu-sheet" role="menu" aria-label="Menu" hidden>
   <div class="wrap">
+    <a role="menuitem" href="#interesses"><span>Mijn interesses<i class="menu-dot" id="menu-dot" hidden></i></span><small>Wat de radar voor je kiest, en voorstellen van Claude</small></a>
     <a role="menuitem" href="#begrippen"><span>Begrippen</span><small>Alle uitgelegde termen, met zoeken</small></a>
     <a role="menuitem" href="#feedcontrole"><span>Feedcontrole</span><small>Bronnen, wat er is opgehaald en wat niet</small></a>
   </div>
@@ -449,6 +482,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       state.ddTab = ["morgen", "later"].includes(store.get("ddTab", "alle")) ? store.get("ddTab", "alle") : "alle";
       renderStatus();
       renderSeg();
+      updateMenuDot();
       route();
     } catch (e) {
       $("#upd").textContent = "Niet geladen";
@@ -771,6 +805,102 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function renderLaterTab() {
     if (!later.all().length) return `<div class="empty" style="margin-top:14px"><h3>Nog niets bewaard</h3><p>Tik onder een artikel of verdieping op <b>＋ Later bekijken</b> om iets op deze lijst te zetten.</p></div>`;
     return renderLater(true);
+  }
+
+  /* ---- Mijn interesses ----
+     Wat de radar als interessant ziet (feed.interests, uit interests.yml), Claudes voorstellen
+     (feed.interest_suggestions, elke zondag) en het logboek. Je reacties blijven op dit toestel
+     (radar:int) tot je ze verstuurt als issue "Interesses: ..."; Claude verwerkt ze 's nachts. */
+  const LEVEL = { 5: "kern", 4: "belangrijk", 3: "regelmatig", 2: "af en toe", 1: "alleen groot nieuws" };
+  const KIND = { nieuw: "Nieuw onderwerp", belangrijker: "Belangrijker maken", minder: "Minder belangrijk maken", weg: "Weghalen" };
+  const CHG = { belangrijker: "Belangrijker", minder: "Minder", weg: "Weg" };
+  const intStore = {
+    get() { try { return Object.assign({ answers: {}, changes: {}, note: "", sentAnswers: {} }, JSON.parse(localStorage.getItem("radar:int") || "{}")); } catch { return { answers: {}, changes: {}, note: "", sentAnswers: {} }; } },
+    save(d) { try { localStorage.setItem("radar:int", JSON.stringify(d)); } catch {} },
+  };
+  function openSuggestions() {
+    const d = intStore.get();
+    return (state.feed?.interest_suggestions || []).filter((x) => !d.answers[x.id] && !d.sentAnswers[x.id]);
+  }
+  function updateMenuDot() {
+    const n = openSuggestions().length;
+    $("#btn-menu")?.classList.toggle("has-dot", n > 0);
+    const md = $("#menu-dot"); if (md) md.hidden = !n;
+  }
+  function intPending(d) { return Object.keys(d.answers).length + Object.keys(d.changes).length + (d.note.trim() ? 1 : 0); }
+  function intIssueUrl(d) {
+    const topics = new Map((state.feed.interests?.topics || []).map((t) => [t.id, t.name]));
+    const sugg = new Map((state.feed.interest_suggestions || []).map((x) => [x.id, x]));
+    const lines = [
+      ...Object.entries(d.answers).map(([id, a]) => `- Voorstel "${sugg.get(id)?.name || topics.get(sugg.get(id)?.topic) || id}" (${(KIND[sugg.get(id)?.kind] || "").toLowerCase()}): ${a}`),
+      ...Object.entries(d.changes).map(([t, c]) => `- ${topics.get(t) || t}: ${c}`),
+      ...(d.note.trim() ? [`- In mijn eigen woorden: ${d.note.trim().replace(/\s+/g, " ")}`] : []),
+    ].join("\n");
+    const block = JSON.stringify({ answers: Object.entries(d.answers).map(([id, a]) => ({ id, a })),
+      changes: Object.entries(d.changes).map(([topic, c]) => ({ topic, c })), note: d.note.trim() });
+    const n = intPending(d);
+    const body = `Aanpassingen aan mijn interesses uit de Data & AI Radar. Claude verwerkt dit bij de volgende nachtrun en sluit dit issue daarna.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
+    return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(`Interesses: ${n} wijziging${n === 1 ? "" : "en"}`)}&body=${encodeURIComponent(body)}`;
+  }
+  function intSendBar() {
+    const d = intStore.get(), n = intPending(d);
+    return n ? `<a class="fb-send" id="int-send" href="${esc(intIssueUrl(d))}" target="_blank" rel="noopener"><span>${n} wijziging${n === 1 ? "" : "en"} klaar om te versturen</span><b>Versturen ›</b></a>` : "";
+  }
+  function renderInterests() {
+    const f = state.feed, I = f.interests || { areas: [], topics: [], excluded: [] }, d = intStore.get();
+    const fbf = f.feedback || {}, W = fbPoints();
+    const eff = (t) => { const v = fbf.topics?.[t]; if (v == null) return ""; const p = Math.round((v - (fbf.offset || 0)) * W);
+      return p ? `<span class="eff${p < 0 ? " neg" : ""}">${p > 0 ? "▲ +" : "▼ "}${p} door je feedback</span>` : ""; };
+    const topicName = new Map(I.topics.map((t) => [t.id, t.name]));
+    const sugg = (f.interest_suggestions || []).map((x) => {
+      const ans = d.answers[x.id], sent = d.sentAnswers[x.id];
+      return `<div class="int-sugg" data-sugg="${esc(x.id)}"><span class="kind">${esc(KIND[x.kind] || x.kind)}</span>
+        <h3>${esc(x.name || topicName.get(x.topic) || x.topic)}</h3>${x.description ? `<p>${esc(x.description)}</p>` : ""}
+        <p class="why">${esc(x.why)}</p>
+        ${sent ? `<p class="why">Verstuurd: ${esc(sent)}. Claude verwerkt het vannacht.</p>`
+          : `<div class="fb-reasons">${["ja", "nee"].map((a) => `<button type="button" data-int-ans="${a}" aria-pressed="${ans === a}">${a === "ja" ? "Ja, doen" : "Nee"}</button>`).join("")}</div>`}</div>`;
+    }).join("");
+    const lamp = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
+    const row = (t) => `<div class="int-topic" data-topic="${esc(t.id)}"><div class="row1"><span class="nm">${esc(t.name)}</span>${t.learning ? lamp : ""}<span class="lvl">${esc(LEVEL[t.priority] || "")}</span>${eff(t.id)}</div>
+      <p class="ds">${esc(t.description)}</p>
+      <div class="fb-reasons">${Object.entries(CHG).map(([c, l]) => `<button type="button" data-int-chg="${c}" aria-pressed="${d.changes[t.id] === c}">${l}</button>`).join("")}</div></div>`;
+    const areas = [...I.areas, { id: "overig", name: "Overig", share: null }].map((a) => {
+      const ts = I.topics.filter((t) => t.area === a.id).sort((x, y) => y.priority - x.priority);
+      return ts.length ? `<div class="int-area"><h3><b>${esc(a.name)}</b>${a.share ? ` · ${Math.round(a.share * 100)}%` : ""}</h3>${ts.map(row).join("")}</div>` : "";
+    }).join("");
+    const log = (f.interest_log || []).map((x) => `<li><time>${esc(fmtDate(x.at))}</time>${esc(x.text)}</li>`).join("");
+    openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Mijn interesses</span></div></div>
+      <article class="full wrap"><h1>Mijn interesses</h1>
+      <p class="lead">Waar de radar voor je op let. Tik aan wat anders moet en verstuur het; Claude past het vannacht aan.</p>
+      <div id="int-send-wrap">${intSendBar()}</div>
+      ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2><p class="pick-note">Elke zondag nieuw, op basis van je duimpjes, wat je leest en het nieuws.</p>${sugg}</section>` : ""}
+      <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">Per gebied, met de richtverdeling. Belangrijker of minder schuift de prioriteit één stap.</p>${areas}</section>
+      <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
+      <section class="int-sec"><h2>In je eigen woorden</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Bijv. meer over Fabric, minder over AI-onderzoek">${esc(d.note)}</textarea></section>
+      ${log ? `<section class="int-sec"><h2>Recent aangepast</h2><ul class="int-log">${log}</ul></section>` : ""}
+      </article>`);
+    const note = $("#int-note");
+    if (note) note.oninput = () => { const x = intStore.get(); x.note = note.value; intStore.save(x); $("#int-send-wrap").innerHTML = intSendBar(); };
+  }
+  function intClick(e) {
+    if (e.target.closest("#int-send")) {
+      const d = intStore.get();
+      Object.assign(d.sentAnswers, d.answers);
+      intStore.save({ answers: {}, changes: {}, note: "", sentAnswers: d.sentAnswers });
+      setTimeout(() => { if (location.hash === "#interesses") renderInterests(); updateMenuDot(); }, 300);
+      return true;
+    }
+    const ab = e.target.closest("[data-int-ans]"), cb = e.target.closest("[data-int-chg]");
+    if (!ab && !cb) return false;
+    const d = intStore.get();
+    if (ab) { const id = ab.closest("[data-sugg]").dataset.sugg; d.answers[id] === ab.dataset.intAns ? delete d.answers[id] : (d.answers[id] = ab.dataset.intAns); }
+    if (cb) { const t = cb.closest("[data-topic]").dataset.topic; d.changes[t] === cb.dataset.intChg ? delete d.changes[t] : (d.changes[t] = cb.dataset.intChg); }
+    intStore.save(d);
+    const box = (ab || cb).parentElement, val = ab ? d.answers[ab.closest("[data-sugg]").dataset.sugg] : d.changes[cb.closest("[data-topic]").dataset.topic];
+    box.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String((b.dataset.intAns || b.dataset.intChg) === val)));
+    $("#int-send-wrap").innerHTML = intSendBar();
+    updateMenuDot();
+    return true;
   }
 
   /* ---- Begrippen ----
@@ -1153,6 +1283,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     r.onclick = (e) => {
       if (termClick(e)) return;
       if (laterClick(e)) return;
+      if (intClick(e)) return;
       if (e.target.closest("#fb-send")) { markSent(); setTimeout(() => { if (location.hash === "#week") renderWeek(); }, 300); return; }
       fbClick(e); quizClick(e); askClick(e);
     };
@@ -1181,6 +1312,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       renderSeg(); closeReader(); renderList(); window.scrollTo(0, 0); return;
     }
     if (h === "begrippen") { renderGlossaryPage(); return; }
+    if (h === "interesses") { renderInterests(); return; }
     if (h === "week" && state.feed.weekly) { renderWeek(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
     if (h === "feedcontrole") { renderReport(); return; }

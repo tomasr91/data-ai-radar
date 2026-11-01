@@ -400,6 +400,35 @@ class TestFeedbackRelative(unittest.TestCase):
         self.assertTrue({"praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack", "meer_hiervan"} <= feedback.REASONS)
 
 
+class TestInterests(unittest.TestCase):
+    """Mijn interesses: weergave, voorstellen en verzoeken uit issues."""
+
+    def test_view_and_suggestions(self):
+        from pipeline import interests
+        conf = cfg.load()
+        v = interests.view(conf)
+        self.assertEqual({a["id"] for a in v["areas"]}, {"data_engineering", "context_agents", "claude", "new_tech"})
+        self.assertTrue(all(t["area"] != "overig" for t in v["topics"]))
+        self.assertTrue(any(t.get("learning") for t in v["topics"]))
+        ok = {"generated_at": "2026-11-08T04:40:00Z", "suggestions": [
+            {"id": "data-contracts", "kind": "nieuw", "name": "Data contracts", "description": "x", "why": "y"},
+            {"id": "pbi", "kind": "belangrijker", "topic": "powerbi_semantic_models", "why": "y"}]}
+        self.assertEqual(interests.validate_suggestions(ok, set(conf.topics)), [])
+        bad = {"generated_at": "2026-11-08T04:40:00Z", "suggestions": [{"id": "x", "kind": "weg", "topic": "bestaat_niet", "why": "y"}] * 4}
+        self.assertTrue(interests.validate_suggestions(bad, set(conf.topics)))
+
+    def test_requests_only_owner(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import interest_requests as ir
+        body = 'x\n```json\n{"answers": [{"id": "data-contracts", "a": "ja"}, {"id": "x", "a": "misschien"}], "changes": [{"topic": "open_source_tools", "c": "minder"}, {"topic": "a", "c": "wissen"}], "note": "meer Fabric"}\n```'
+        issues = [{"number": 3, "title": "Interesses: 2 wijzigingen", "user": {"login": "tomasr91"}, "body": body},
+                  {"number": 4, "title": "Interesses: spam", "user": {"login": "iemand"}, "body": body}]
+        out = ir.requests(issues, "tomasr91")
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0][1], {"answers": [{"id": "data-contracts", "a": "ja"}],
+                                     "changes": [{"topic": "open_source_tools", "c": "minder"}], "note": "meer Fabric"})
+
+
 class TestOwnTopic(unittest.TestCase):
     """Jouw lijst: eigen onderwerp als verdieping (issue 'Verdieping: eigen-...')."""
 

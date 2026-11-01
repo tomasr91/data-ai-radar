@@ -85,6 +85,13 @@ for _a in arts[:2]:
 for _a in arts[2:]:
     _a.pop("learning", None)
 _learn = [a["id"] for a in arts[:2]]
+# Mijn interesses: uit interests.yml, met nagebootste voorstellen en logboek
+from pipeline import interests as _int  # noqa: E402
+feed["interests"] = _int.view(_cfg.load())
+feed["interest_suggestions"] = [
+    {"id": "data-contracts", "kind": "nieuw", "name": "Data contracts", "description": "Afspraken over vorm en kwaliteit van data tussen teams.", "why": "Kwam deze maand vaak terug.", "generated_at": "2026-11-01T04:00:00Z"},
+    {"id": "powerbi-omhoog", "kind": "belangrijker", "topic": "powerbi_semantic_models", "why": "Je leest Power BI-artikelen helemaal.", "generated_at": "2026-11-01T04:00:00Z"}]
+feed["interest_log"] = [{"at": "2026-10-31T04:30:00Z", "text": "Test-wijziging in het logboek."}]
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -242,8 +249,8 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
     check("   geen tabje Begrippen meer", "Begrippen" not in page.locator("#seg-dd").inner_text())
     page.click("#btn-menu")
-    check("   tandwiel opent menu met Begrippen en Feedcontrole", page.locator("#menu-sheet").is_visible()
-          and page.locator("#menu-sheet a").all_inner_texts()[0].startswith("Begrippen") and "Feedcontrole" in page.locator("#menu-sheet").inner_text())
+    check("   tandwiel opent menu met Mijn interesses, Begrippen en Feedcontrole", page.locator("#menu-sheet").is_visible()
+          and [t.split("\n")[0] for t in page.locator("#menu-sheet a").all_inner_texts()] == ["Mijn interesses", "Begrippen", "Feedcontrole"])
     page.click('#menu-sheet a[href="#begrippen"]')
     page.wait_for_selector("#reader .gl-item")
     check("   menu > Begrippen opent de woordenlijst, menu dicht", page.locator("#reader .gl-item").count() == 2 and not page.locator("#menu-sheet").is_visible())
@@ -276,6 +283,32 @@ with sync_playwright() as p:
     page.click("[data-later-done]")
     check("   Klaar haalt het van de lijst", page.locator(".later-item").count() == 0 and "Nog niets bewaard" in page.locator("#content").inner_text())
     page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
+    page.goto(url)
+    page.wait_for_selector(".card")
+
+    # 21. Mijn interesses
+    check("21. puntje op het tandwiel bij nieuwe voorstellen", "has-dot" in (page.locator("#btn-menu").get_attribute("class") or ""))
+    page.click("#btn-menu")
+    page.click('#menu-sheet a[href="#interesses"]')
+    page.wait_for_selector("#reader .int-topic")
+    txt = page.locator("#reader").inner_text()
+    check("   pagina toont voorstellen, onderwerpen per gebied, uitsluitingen en logboek", page.locator(".int-sugg").count() == 2
+          and page.locator(".int-topic").count() == len(feed["interests"]["topics"]) and "Wat je niet wilt zien" in txt and "Test-wijziging" in txt
+          and "30%" in txt)
+    page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
+    page.click('.int-topic[data-topic="open_source_tools"] [data-int-chg="minder"]')
+    page.fill("#int-note", "Meer over Fabric")
+    sh = unquote(page.locator("#int-send").get_attribute("href") or "")
+    check("   versturen maakt issue 'Interesses:' met ja, minder en eigen woorden", "title=Interesses: 3 wijzigingen" in sh
+          and '{"id":"data-contracts","a":"ja"}' in sh and '{"topic":"open_source_tools","c":"minder"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-200:])
+    page.click("#int-send")
+    page.wait_for_timeout(500)
+    check("   na versturen: niets meer klaar, voorstel op 'verstuurd'", page.locator("#int-send").count() == 0 and "Verstuurd: ja" in page.locator('.int-sugg[data-sugg="data-contracts"]').inner_text())
+    page.click('.int-sugg[data-sugg="powerbi-omhoog"] [data-int-ans="nee"]')
+    page.click("#back")
+    page.wait_for_selector("#reader", state="hidden")
+    check("   puntje weg als alle voorstellen beantwoord zijn", "has-dot" not in (page.locator("#btn-menu").get_attribute("class") or ""))
+    page.evaluate("localStorage.removeItem('radar:int')")
     page.goto(url)
     page.wait_for_selector(".card")
 
