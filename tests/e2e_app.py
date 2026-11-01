@@ -181,7 +181,8 @@ with sync_playwright() as p:
         page.screenshot(path=str(SHOTS / "2-artikel.png"))
     # 16. Vraag het Claude
     page.evaluate("window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }")
-    check("16. Vraag het Claude met snelle vragen", page.locator("#ask [data-ask]").count() == 4)
+    check("16. Vraag het Claude met snelle vragen (ingeklapt tot je erop tikt)", page.locator("#ask [data-ask]").count() == 4 and not page.locator("#ask").is_visible())
+    page.click("#ask-toggle")
     page.locator("#ask [data-ask]").first.click()
     page.fill("#ask-q", "Werkt dit ook met Unity Catalog?")
     page.click("#ask-form button[type=submit]")
