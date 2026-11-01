@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T15:01:18.217550Z",
+ "generated_at": "2026-11-01T15:30:01.467207Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -83,7 +83,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-13T00:00:00Z",
    "excerpt": "Uber's CISO, Philip Martin, on the importance of monitoring and observability for AI agents, and how Uber's open-source tooling works alongside Enterprise Frontier Safeguards.",
-   "preliminary_score": 72,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "ai_agents_rag",
     "open_source_tools"
@@ -97,10 +97,24 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-21T00:00:00Z",
    "excerpt": "Claude Security now keeps up with your repositories as code changes, tracks findings until they’re fixed, learns from the context your team adds, and connects to your tools through an API and MCP. Available in public beta for Claude Enterprise customers.",
-   "preliminary_score": 71,
+   "preliminary_score": 70,
    "preliminary_topics": [
     "ai_context_engineering",
     "claude_ai_development"
+   ]
+  },
+  {
+   "id": "392fd68ef936",
+   "title": "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Strengthening-data-security-with-workspace-level-private/ba-p/5377347",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T21:00:00Z",
+   "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
+   "preliminary_score": 70,
+   "preliminary_topics": [
+    "data_ingestion",
+    "powerbi_semantic_models"
    ]
   },
   {
@@ -196,20 +210,6 @@
    "preliminary_score": 67,
    "preliminary_topics": [
     "ai_agents_rag",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "e000e5cddc90",
-   "title": "Build clearer, more expressive Real-Time Dashboards with new design and KPI capabilities (Generally Available)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-clearer-more-expressive-Real-Time-Dashboards-with-new/ba-p/5377578",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-27T16:44:58Z",
-   "excerpt": "The new, generally available authoring capabilities in Microsoft Fabric Real-Time Dashboards help authors create dashboards that are easier to scan and act on. Design Tiles add structure and context, multi-KPI groups related measures from one query, and KPI styling makes status, scale, and targets easier to interpret. Together, these capabilities give viewers a clear path from context to metrics to investigation while reducing repetitive authoring work. Figure: Camp Nou Stadium Operations Center dashboard using Design Tiles, Multi-KPI, and styled KPIs. Give your dashboard a clear structure with Design Tiles A dashboard can contain accurate visuals and still make viewers work too hard to find what matters. As service health, deployment status, business metrics, and diagnostic details accumulate, Design Tiles provide the structure, and context viewers need to identify priorities and move quickly to the right information. Design Tiles provide three focused building blocks directly on the Real-Time Dashboard canvas: Title adds a dashboard heading or a short section label. Figure: Title tile in Editing mode, with the formatting toolbar. Text Box adds descriptions, operational guidance, ",
-   "preliminary_score": 64,
-   "preliminary_topics": [
-    "cicd_data_deployment",
     "powerbi_semantic_models"
    ]
   }
