@@ -46,7 +46,8 @@ def validate(data: dict, topic_ids: set, plan_ids: set) -> list:
     for f in ["id", "plan_id", "headline", "summary", "experiment", "currency_check", "written_at", "processed_by"]:
         if not isinstance(data.get(f), str) or not data[f].strip():
             p.append(f"veld '{f}' ontbreekt")
-    if data.get("plan_id") and data["plan_id"] not in plan_ids:
+    # "eigen-..." = een onderwerp uit T's eigen lijst ("Later bekijken" in de app), niet uit de keuzes.
+    if data.get("plan_id") and data["plan_id"] not in plan_ids and not str(data["plan_id"]).startswith("eigen-"):
         p.append(f"plan_id '{data['plan_id']}' staat niet in verdieping.yml of in de keuzes")
     if isinstance(data.get("headline"), str) and len(data["headline"]) > 90:
         p.append("headline is langer dan 90 tekens")

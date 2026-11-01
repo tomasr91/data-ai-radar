@@ -216,6 +216,14 @@ Voorbeelden van goede uitleg staan al in `data/enrichment/` (bestanden met `"for
 
 Een verdieping is een langer stuk over een onderwerp dat T nog minder goed kent. Heeft het onderwerp `level: beginner` (of gaat het over ingestion, release pipelines of bundles, zie `context/profile.md` §2), begin dan bij de basis: wat is het, waarom bestaat het, een vergelijking uit het dagelijks leven, en dan pas de details en de eigen stack. T kiest het onderwerp zelf in de app, uit de 5 keuzes van gisteren. Het script geeft de gekozen keuze terug: de `question` en `why` bepalen waar het stuk over gaat.
 
+### Eigen onderwerp (`eigen-...`)
+
+T kan in de app zelf iets op "Jouw lijst" zetten ("Later bekijken") en daar een verdieping van laten maken. Het script meldt dan `SCHRIJVEN: eigen-<slug>` met `"own": true`, de `title` (het onderwerp in T's woorden), soms een `question` (zijn notitie) en `seen_in` (waar hij het las).
+
+- Schrijf over precies dat onderwerp; de notitie zegt waar T benieuwd naar is. Ontbreekt die, beantwoord dan: wat is het, waarvoor gebruik je het, hoe pas je het toe in T's stack, en waar let je op.
+- Zoek het op in de actuele officiële documentatie en recente bronnen; verzin niets. Bestaat het onderwerp niet of kun je er niets betrouwbaars over vinden, schrijf dan niets en meld het.
+- `id` en `plan_id` zijn de `eigen-...`-sleutel uit het script; ook de bestandsnaam. Verder hetzelfde formaat (met quiz en begrippen).
+
 ### Dagelijkse keuzes
 
 Elke run zet je 5 nieuwe keuzes klaar. T kiest er in de app één; die schrijf je de volgende ochtend.

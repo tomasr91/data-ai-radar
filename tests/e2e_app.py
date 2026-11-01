@@ -229,6 +229,30 @@ with sync_playwright() as p:
     page.goto(url)
     page.wait_for_selector(".card")
 
+    # 19. Later bekijken en Jouw lijst
+    lid = arts[4]["id"]
+    page.goto(url + "#a-" + lid)
+    page.wait_for_selector('#later [data-later="open"]')
+    page.click('#later [data-later="open"]')
+    page.fill("#later-t", "dbt project evaluator")
+    page.fill("#later-n", "Past dit bij onze silver-laag?")
+    page.click('#later [data-later="save"]')
+    check("19. Later bekijken zet het op je lijst", "staat op je lijst" in page.locator("#later").inner_text())
+    page.click('#later a[href="#lijst"]')
+    page.wait_for_selector(".later-item")
+    item = page.locator(".later-item").inner_text()
+    check("   lijst staat op Morgen, boven de keuzes, met notitie en bron", "dbt project evaluator" in item and "silver-laag" in item and "Gezien in" in item
+          and page.locator('#seg-dd button[aria-pressed="true"]').inner_text() == "Morgen"
+          and page.evaluate("document.querySelector('.later-list').compareDocumentPosition(document.querySelector('.card.opt')) & 4") > 0)
+    href = unquote(page.locator("[data-later-pick]").get_attribute("href") or "")
+    check("   verdieping maken opent een issue 'Verdieping: eigen-...'", "title=Verdieping: eigen-dbt-project-evaluator" in href and "Onderwerp: dbt project evaluator" in href
+          and "Notitie: Past dit bij onze silver-laag?" in href, href[:160])
+    page.click("[data-later-done]")
+    check("   Klaar haalt het van de lijst", page.locator(".later-item").count() == 0)
+    page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
+    page.goto(url)
+    page.wait_for_selector(".card")
+
     # 11. Tabblad Verdieping
     check("11. tabbladen Actueel, Verdieping en Leren", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren"])
     page.click('#seg-view button[data-v="verdieping"]')

@@ -11,6 +11,9 @@ Werkwijze:
     SCHRIJVEN: <id> (issue #n)   + de gekozen keuze als JSON
     GEEN KEUZE                   T heeft niets gekozen; vandaag geen verdieping
     ONBEKEND                     GitHub niet bereikbaar; vandaag geen verdieping
+- Eigen onderwerp: T zette iets op "Jouw lijst" in de app en koos "Maak hier een verdieping van".
+  Het issue heet dan "Verdieping: eigen-<slug>" en de tekst bevat regels
+  "Onderwerp: ...", "Notitie: ..." en "Gezien in: ...". Uitvoer: SCHRIJVEN met own: true.
   Daarna altijd: maak 5 nieuwe keuzes (zie TAAK_VERRIJKEN.md).
 """
 import json
@@ -49,6 +52,17 @@ def open_issues(repo: str) -> list:
         return json.load(r)
 
 
+FIELD_RE = {"title": re.compile(r"^Onderwerp:\s*(.+)$", re.M), "note": re.compile(r"^Notitie:\s*(.+)$", re.M),
+            "seen_in": re.compile(r"^Gezien in:\s*(.+)$", re.M)}
+
+
+def own_topic(oid: str, body: str) -> dict:
+    """Keuze-object voor een eigen onderwerp, uit de issuetekst."""
+    f = {k: (r.search(body or "") or [None, ""])[1].strip() for k, r in FIELD_RE.items()}
+    title = f["title"] or oid.removeprefix("eigen-").replace("-", " ")
+    return {"id": oid, "title": title[:120], "question": f["note"][:500], "seen_in": f["seen_in"][:300], "own": True}
+
+
 def choices(issues: list, owner: str) -> list:
     """[(issue-nummer, keuze-id)] van de eigenaar, oudste eerst."""
     out = []
@@ -73,10 +87,15 @@ def main():
     known = deepdives.known_options()
     done = deepdives.written_plan_ids()
     picked = choices(issues, repo.split("/")[0])
+    bodies = {i["number"]: i.get("body") or "" for i in issues if "number" in i}
     for number, oid in picked:
         if oid in done:
             print(f"AL GESCHREVEN: '{oid}' (issue #{number}). Sluit dit issue; schrijf niets.")
             continue
+        if oid.startswith("eigen-"):
+            print(f"SCHRIJVEN: {oid} (issue #{number}) - eigen onderwerp van T")
+            print(json.dumps(own_topic(oid, bodies.get(number, "")), ensure_ascii=False, indent=2))
+            break
         if oid not in known:
             print(f"ONBEKENDE KEUZE: '{oid}' (issue #{number}) staat niet in de keuzes. Sla over en meld het.")
             continue

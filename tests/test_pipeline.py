@@ -379,6 +379,28 @@ class TestTerms(unittest.TestCase):
         self.assertEqual([r["id"] for r in g[1]["refs"]], ["a2", "a1"])
 
 
+class TestOwnTopic(unittest.TestCase):
+    """Jouw lijst: eigen onderwerp als verdieping (issue 'Verdieping: eigen-...')."""
+
+    def test_own_topic_from_issue(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import next_deepdive as nd
+        body = "Eigen onderwerp\n\nOnderwerp: dbt project evaluator\nNotitie: past dit bij silver?\nGezien in: Ecolab (https://x)\n"
+        o = nd.own_topic("eigen-dbt-project-evaluator", body)
+        self.assertEqual((o["title"], o["question"], o["own"]), ("dbt project evaluator", "past dit bij silver?", True))
+        self.assertEqual(nd.own_topic("eigen-iets-anders", "")["title"], "iets anders")
+        issues = [{"number": 4, "title": "Verdieping: eigen-dbt-project-evaluator", "user": {"login": "tomasr91"}},
+                  {"number": 5, "title": "Verdieping: eigen-spam", "user": {"login": "vreemde"}}]
+        self.assertEqual(nd.choices(issues, "tomasr91"), [(4, "eigen-dbt-project-evaluator")])
+
+    def test_own_plan_id_is_valid(self):
+        from pipeline import deepdives
+        probs = deepdives.validate({"plan_id": "eigen-dbt-project-evaluator"}, set(), set())
+        self.assertFalse(any("plan_id" in p for p in probs))
+        probs = deepdives.validate({"plan_id": "verzonnen"}, set(), set())
+        self.assertTrue(any("plan_id" in p for p in probs))
+
+
 class TestDeepdiveChoice(unittest.TestCase):
     """Dagelijkse keuzes: 5 geldige opties; alleen issues van de eigenaar tellen."""
 
