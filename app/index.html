@@ -113,10 +113,6 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .since-line { display: flex; align-items: center; gap: 10px; color: var(--muted); font-family: var(--f-meta); font-size: 0.72rem; margin: 6px 2px; }
 .since-line::before, .since-line::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 #seg-view button { position: relative; }
-.next-link { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 12px; margin: 22px 0 8px; padding: 14px 16px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
-.next-link span { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
-.next-link b { grid-column: 1; font-weight: 650; line-height: 1.3; }
-.next-link i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-style: normal; font-size: 1.5rem; color: var(--accent2); }
 .src-line { margin: 22px 0 0; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); line-height: 1.6; }
 .fb-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .fb-btns button, .fb-reasons button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 0 14px; height: 40px; font-size: 0.9rem; cursor: pointer; }
@@ -1262,7 +1258,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <section class="act-bar">${laterBlock("v-" + d.id, d.headline)}${askBlock("verdieping")}</section>
         ${reading ? `<section class="block"><h2>Verder lezen</h2><ul class="reading">${reading}</ul></section>` : ""}
         <p class="src-line">Geschreven op ${esc(fmtDate(d.written_at))}${d.currency_check ? ` · ${esc(d.currency_check)}` : ""}</p>
-        ${nextLink("v", d.id)}
       </article>`;
     openReader(html);
     trackRead("v-" + d.id);
@@ -1392,15 +1387,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     updateMenuDot();
   }
 
-  // "Volgende ›": het eerstvolgende ongelezen stuk in dezelfde volgorde als je lijst (anders gewoon het volgende)
-  function nextLink(kind, id) {
-    const list = kind === "a" ? sorted(state.feed.articles.filter(matches))
-      : [...(state.feed.deepdives || [])].sort((x, y) => Date.parse(y.written_at) - Date.parse(x.written_at));
-    const i = list.findIndex((x) => x.id === id); if (i < 0) return "";
-    const rest = [...list.slice(i + 1), ...list.slice(0, i)];
-    const nxt = rest.find((x) => !isRead(kind + "-" + x.id)) || list[i + 1];
-    return nxt ? `<a class="next-link" href="#${kind}-${esc(nxt.id)}"><span>Volgende</span><b>${esc(nxt.headline || nxt.title)}</b><i aria-hidden="true">›</i></a>` : "";
-  }
   function renderArticle(a) {
     const mark = termMarker(a.terms);
     const s = source(a.source_id);
@@ -1444,7 +1430,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <div class="read-end" aria-hidden="true"></div>
         <section class="act-bar"><div class="fb" id="fb" data-id="${esc(a.id)}">${fbBlock(a)}</div>${laterBlock("a-" + a.id, a.headline || a.title)}${askBlock("artikel")}</section>
         <p class="src-line">Gepubliceerd ${esc(a.published_at ? fmtDate(a.published_at) : "onbekend")} · In de app sinds ${esc(inApp)}</p>
-        ${nextLink("a", a.id)}
         <dialog class="score-dlg" id="score-dlg" aria-labelledby="score-dlg-h">
           <h2 id="score-dlg-h">Waarom deze score?</h2>
           <table class="score-table">${partRows}</table>
