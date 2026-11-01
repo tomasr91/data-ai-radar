@@ -22,7 +22,7 @@ REASONS_UP = {"meer_hiervan", "praktisch", "goed_uitgelegd", "nieuw_voor_mij", "
 REASONS = REASONS_DOWN | REASONS_UP
 HALF_LIFE_DAYS = 60
 WEIGHT = 0.15          # maximaal effect op de totaalscore (0-1): 15 punten
-SATURATION = 3.0       # na ~3 netto stemmen is de voorkeur ongeveer 0,76
+SATURATION = 6.0       # na ~6 netto stemmen is de voorkeur ongeveer 0,76; zo blijft verschil zichtbaar tussen veel en weinig duimen (was 3)
 UP_WEIGHT = 2.0        # duim omhoog telt dubbel
 READ_WEIGHT = 0.5      # gelezen: een benadering, telt licht (T, 31-10-2026: 0,5 tegen 2 voor een duim)
 
@@ -55,13 +55,15 @@ def _age_weight(at: str, now: datetime) -> float:
 def preferences(data: dict, now=None) -> dict:
     """{"topics": {id: -1..1}, "sources": {id: -1..1}, "votes": n}"""
     now = now or datetime.now(timezone.utc)
-    topics, sources = {}, {}
+    topics, sources, kinds = {}, {}, {}
     for v in data.get("votes", {}).values():
         w = v.get("v", 0) * (UP_WEIGHT if v.get("v", 0) > 0 else 1.0) * _age_weight(v.get("at", ""), now)
         for t in v.get("topics", [])[:2]:  # de twee belangrijkste onderwerpen van het artikel
             topics[t] = topics.get(t, 0.0) + w
         if v.get("source_id"):
             sources[v["source_id"]] = sources.get(v["source_id"], 0.0) + w
+        if v.get("soort"):   # soort artikel: praktisch, aankondiging, ... (zie enrich.SOORTEN)
+            kinds[v["soort"]] = kinds.get(v["soort"], 0.0) + w
     votes = data.get("votes", {})
     for aid, r in data.get("reads", {}).items():
         if aid in votes:
@@ -71,8 +73,10 @@ def preferences(data: dict, now=None) -> dict:
             topics[t] = topics.get(t, 0.0) + w
         if r.get("source_id"):
             sources[r["source_id"]] = sources.get(r["source_id"], 0.0) + w
+        if r.get("soort"):
+            kinds[r["soort"]] = kinds.get(r["soort"], 0.0) + w
     squash = lambda d: {k: round(math.tanh(x / SATURATION), 2) for k, x in d.items() if abs(x) > 1e-9}
-    return {"topics": squash(topics), "sources": squash(sources), "votes": len(data.get("votes", {})),
+    return {"topics": squash(topics), "sources": squash(sources), "kinds": squash(kinds), "votes": len(data.get("votes", {})),
             "reads": len(data.get("reads", {}))}
 
 
@@ -83,6 +87,8 @@ def article_factor(article: dict, prefs: dict) -> float:
     vals = [prefs["topics"][t] for t in article.get("topics", [])[:2] if t in prefs.get("topics", {})]
     if article.get("source_id") in prefs.get("sources", {}):
         vals.append(prefs["sources"][article["source_id"]])
+    if article.get("soort") in prefs.get("kinds", {}):
+        vals.append(prefs["kinds"][article["soort"]])
     return round(sum(vals) / len(vals), 2) if vals else None
 
 

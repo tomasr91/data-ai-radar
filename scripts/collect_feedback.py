@@ -117,6 +117,7 @@ def main():
                 "title": a.get("headline") or a.get("title") or prev.get("title", ""),
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
+                **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
             }
         reads = parse_reads(issue.get("body", ""))
         for rid in reads:
@@ -127,6 +128,7 @@ def main():
                 "title": a.get("headline") or a.get("title") or prev.get("title", ""),
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
+                **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
             }
         req = parse_interests(issue.get("body", ""))
         if req:

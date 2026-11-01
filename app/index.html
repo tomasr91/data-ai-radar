@@ -298,6 +298,8 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .int-excl summary { cursor: pointer; font-weight: 650; }
 .int-excl ul { margin: 8px 0 0; color: var(--muted); }
 .score-fb { margin: 10px 0 0; font-size: 0.86rem; line-height: 1.45; }
+.fb-eff .learned { margin: 0 0 8px; font-size: 0.92rem; line-height: 1.5; }
+.fb-eff .learned b { font-weight: 600; }
 .fb-eff .sum { margin: 0 0 6px; font-size: 0.9rem; color: var(--muted); }
 .fb-eff .sum b { color: var(--ink); }
 .fb-eff h3 { margin: 12px 0 4px; font-size: 0.78rem; font-family: var(--f-meta); color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
@@ -1414,7 +1416,25 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function fbLean() {
     const f = state.feed.feedback || {}, o = f.offset || 0, W = fbPoints(), tn = state.feed.topics || {};
     return [...Object.entries(f.topics || {}).map(([id, v]) => ({ key: "t:" + id, name: tn[id]?.name || id, pts: Math.round((v - o) * W) })),
-      ...Object.entries(f.sources || {}).map(([id, v]) => ({ key: "s:" + id, name: source(id).name, pts: Math.round((v - o) * W) }))];
+      ...Object.entries(f.sources || {}).map(([id, v]) => ({ key: "s:" + id, name: source(id).name, pts: Math.round((v - o) * W) })),
+      ...Object.entries(f.kinds || {}).map(([id, v]) => ({ key: "k:" + id, name: SOORT[id] || id, pts: Math.round((v - o) * W) }))];
+  }
+  const SOORT = { praktisch: "Praktische artikelen", aankondiging: "Aankondigingen", release: "Releasenotes", achtergrond: "Achtergrond en uitleg", praktijk: "Praktijkverhalen", mening: "Meningen" };
+  // Wat de radar over je leerde, in een paar zinnen
+  function fbLearned(lean) {
+    const lc = (s) => s.charAt(0).toLowerCase() + s.slice(1);
+    const and = (xs) => xs.length > 1 ? xs.slice(0, -1).join(", ") + " en " + xs[xs.length - 1] : xs[0];
+    const kinds = lean.filter((x) => x.key.startsWith("k:")), topics = lean.filter((x) => x.key.startsWith("t:")), srcs = lean.filter((x) => x.key.startsWith("s:"));
+    const out = [];
+    const kUp = kinds.filter((x) => x.pts > 0), kDown = kinds.filter((x) => x.pts < 0);
+    if (kUp.length) out.push(`Je waardeert <b>${esc(lc(kUp[0].name))}</b> het meest${kDown.length ? `, <b>${esc(lc(kDown[kDown.length - 1].name))}</b> het minst` : ""}.`);
+    const tUp = topics.filter((x) => x.pts > 0).slice(0, 2).map((x) => `<b>${esc(x.name)}</b>`);
+    if (tUp.length) out.push(`Sterkst bij ${and(tUp)}.`);
+    const down = [...topics, ...srcs].filter((x) => x.pts < 0).slice(-2).map((x) => `<b>${esc(x.name)}</b>`);
+    if (down.length) out.push(`Minder bij ${and(down)}.`);
+    const fits = state.feed.articles.filter((a) => a.fit), good = fits.filter((a) => a.fit.score >= 0.7).length;
+    if (fits.length) out.push(`Claude vond ${good} van de ${fits.length} beoordeelde artikelen in je lijst sterk passend.`);
+    return out;
   }
   // "Hoger door je 👍 op X" / "Lager door ... Y": welke onderwerpen en bron van dit artikel de feedback bepaalden
   function fbReason(a) {
@@ -1436,9 +1456,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const top = [...lean.filter((x) => x.pts > 0).slice(0, 3), ...lean.filter((x) => x.pts < 0).slice(-3)];
     if (!e && !lean.length) return "";
     const pt = (n) => `${n > 0 ? "+" : "−"}${Math.abs(n)}`;
+    const learned = fbLearned(lean);
     const row = (x, href, ext) => `<li${x.delta < 0 ? ' class="neg"' : ""}><a href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${esc(x.title)}</a><span class="d">${pt(x.delta)}</span></li>`;
     const lifted = e?.lifted || [], dropped = e?.dropped || [];
     return `<section class="int-sec fb-eff"><h2>Wat je feedback deed</h2>
+      ${learned.length ? `<p class="learned">${learned.join(" ")}</p>` : ""}
       <p class="sum">Afgelopen ${e?.days || 7} dagen: <b>${lifted.length}</b> erbij en <b>${dropped.length}</b> eruit door je feedback. In je lijst nu ${up} hoger en ${down} lager (5 punten of meer).</p>
       ${lifted.length ? `<h3>Erbij</h3><ul class="eff-list">${lifted.map((x) => row(x, "#a-" + x.id)).join("")}</ul>` : ""}
       ${dropped.length ? `<h3>Eruit</h3><ul class="eff-list">${dropped.map((x) => row(x, x.url, true)).join("")}</ul>` : ""}
@@ -1454,6 +1476,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("")
       + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±${fbPoints()})</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * fbPoints())} punten</td></tr>` : "");
     const fbWhy = fbReason(a);
+    const fitPts = parts.fit != null ? Math.round(parts.fit * 20) : null;
+    const fitRow = a.fit ? `<tr><td>Past bij jou <span style="color:var(--muted)">(Claude, max. ±10)</span></td><td>${fitPts > 0 ? "+" : ""}${fitPts} punten</td></tr>` : "";
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
     const added = a.processed_at || a.fetched_at;
     const inApp = added ? fmtDate(added) : "onbekend";
@@ -1491,8 +1515,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <p class="src-line">Gepubliceerd ${esc(a.published_at ? fmtDate(a.published_at) : "onbekend")} · In de app sinds ${esc(inApp)}</p>
         <dialog class="score-dlg" id="score-dlg" aria-labelledby="score-dlg-h">
           <h2 id="score-dlg-h">Waarom deze score?</h2>
-          <table class="score-table">${partRows}</table>
+          <table class="score-table">${partRows}${fitRow}</table>
           ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
+          ${a.fit?.why ? `<p class="score-fb">Claude: ${esc(a.fit.why)}</p>` : ""}
           <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
         </dialog>

@@ -169,6 +169,34 @@ def area_minimum(arts: list, shown: list, conf, now) -> list:
     return extra
 
 
+TASTE = cfg.DATA / "taste.json"
+TO_TAG = cfg.DATA / "to_tag.json"
+
+
+def write_taste(fb_data: dict, by_id: dict, now) -> None:
+    """data/taste.json: je recente duimpjes en gelezen artikelen, voor Claudes oordeel 'past bij jou' (fit)."""
+    def row(aid, x, extra):
+        a = by_id.get(aid, {})
+        return {"id": aid, "title": x.get("title") or a.get("headline") or a.get("title", ""), "source_id": x.get("source_id", ""),
+                "topics": x.get("topics", [])[:2], "soort": x.get("soort") or a.get("soort"), **extra}
+    votes = sorted(fb_data["votes"].items(), key=lambda kv: kv[1].get("at", ""), reverse=True)[:20]
+    reads = sorted([kv for kv in fb_data["reads"].items() if kv[0] not in fb_data["votes"]],
+                   key=lambda kv: kv[1].get("at", ""), reverse=True)[:10]
+    TASTE.write_text(json.dumps({
+        "generated_at": _iso(now),
+        "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
+        "votes": [row(k, x, {"v": x.get("v"), "r": x.get("r")}) for k, x in votes],
+        "reads": [row(k, x, {}) for k, x in reads],
+    }, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def write_to_tag(shown: list) -> None:
+    """data/to_tag.json: uitgelegde artikelen in de feed zonder soort of fit; Claude vult ze 's nachts aan."""
+    todo = [{"id": a["id"], "title": a.get("headline") or a["title"], "missing": [k for k in ("soort", "fit") if not a.get(k)]}
+            for a in shown if a["processing_status"] == "enriched" and (not a.get("soort") or not a.get("fit"))]
+    TO_TAG.write_text(json.dumps({"items": todo[:20]}, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 EFFECT_DAYS = 7
 INCLUDED = ("included", "included_exceptional")
 
@@ -180,7 +208,7 @@ def feedback_effect(arts: list, shown: list, conf, now) -> dict:
     cutoff = now - timedelta(days=EFFECT_DAYS)
     lifted, dropped = [], []
     for a in arts:
-        if a["processing_status"] != "enriched" or "feedback" not in a.get("score_parts", {}):
+        if a["processing_status"] != "enriched" or not ({"feedback", "fit"} & set(a.get("score_parts", {}))):
             continue
         try:
             at = datetime.fromisoformat(str(a.get("processed_at") or a.get("published_at")).replace("Z", "+00:00"))
@@ -188,7 +216,7 @@ def feedback_effect(arts: list, shown: list, conf, now) -> dict:
             continue
         if at < cutoff:
             continue
-        base = score_article({**a, "score_parts": {}}, conf, now)   # zelfde artikel, zonder feedback
+        base = score_article({**a, "score_parts": {}, "fit": None}, conf, now)   # zelfde artikel, zonder feedback en fit
         delta = a["relevance_score"] - base["relevance_score"]
         row = {"id": a["id"], "title": a.get("headline") or a["title"], "source_id": a["source_id"], "delta": delta}
         if a["id"] in shown_ids and a["decision"] in INCLUDED and base["decision"] not in INCLUDED:
@@ -254,7 +282,12 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Laag 3: scoren, nieuwe artikelen verrijken (best scorende eerst), opnieuw scoren.
     # Jouw duimpjes (data/feedback.json) wegen mee; een duim omlaag haalt het artikel weg.
     fb_data = feedback_mod.load()
+    by_id = {a["id"]: a for a in arts}
+    for x in list(fb_data["votes"].items()) + list(fb_data["reads"].items()):   # soort aanvullen (niet opgeslagen)
+        if not x[1].get("soort") and by_id.get(x[0], {}).get("soort"):
+            x[1]["soort"] = by_id[x[0]]["soort"]
     fb_prefs = feedback_mod.preferences(fb_data, now)
+    write_taste(fb_data, by_id, now)
     fb_votes = fb_data["votes"]
     for a in arts:
         score_article(a, conf, now, fb_prefs, fb_votes)
@@ -324,6 +357,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Ondergrens per gebied (interest_areas.min_articles): aanvullen met de best scorende uitgelegde
     # artikelen van de laatste 14 dagen uit dat gebied, ook net onder de drempel of boven het maximum per bron.
     shown += area_minimum(arts, shown, conf, now)
+    write_to_tag(shown)
     hidden = [a for a in arts if a not in shown]
 
     # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).
@@ -399,7 +433,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms", "learning"]
+                 "showcase", "terms", "learning", "soort", "fit"]
 
 
 def _public(a):

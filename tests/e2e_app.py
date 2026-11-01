@@ -96,7 +96,9 @@ feed["interest_log"] = [{"at": "2026-10-31T04:30:00Z", "text": "Test-wijziging i
 _en = next(a for a in arts if a["processing_status"] == "enriched")
 _t0 = (_en.get("topics") or ["dbt_analytics_engineering"])[0]
 _en.setdefault("score_parts", {})["feedback"] = 0.4
-feed["feedback"] = {**(feed.get("feedback") or {}), "topics": {_t0: 1.0}, "sources": {}, "offset": 0.6, "weight": 0.15,
+_en["score_parts"]["fit"] = 0.3
+_en["fit"] = {"score": 0.8, "why": "Fit-test: lijkt op je praktische dbt-stukken."}
+feed["feedback"] = {**(feed.get("feedback") or {}), "topics": {_t0: 1.0}, "sources": {}, "kinds": {"praktisch": 1.0, "aankondiging": -0.5}, "offset": 0.6, "weight": 0.15,
                     "effect": {"days": 7, "lifted": [{"id": _en["id"], "title": "Erbij-test", "source_id": _en["source_id"], "delta": 6}],
                                "dropped": [{"id": "zzzzzzzzzzzz", "title": "Eruit-test", "source_id": "sqlbi", "delta": -7, "url": "https://example.org/x"}]}}
 # Nagebootste taakverslagen van de nacht
@@ -191,7 +193,9 @@ with sync_playwright() as p:
     check("5. scoreuitleg standaard verborgen", not page.locator("#score-dlg").is_visible())
     page.click("#score-btn")
     check("5. knop toont scoreuitleg in een venster", page.locator("#score-dlg").is_visible() and "Waarom deze score?" in page.locator("#score-dlg").inner_text())
-    check("5. scoreuitleg zegt in gewone taal wat je feedback deed", "6 punten hoger" in page.locator("#score-dlg").inner_text())
+    _dlg = page.locator("#score-dlg").inner_text()
+    check("5. scoreuitleg zegt in gewone taal wat je feedback deed", "6 punten hoger" in _dlg)
+    check("5. scoreuitleg toont Claudes 'past bij jou' met reden", "Past bij jou" in _dlg and "+6 punten" in _dlg and "Fit-test" in _dlg)
     page.keyboard.press("Escape")
     check("5. Escape sluit eerst het venster, niet het artikel", not page.locator("#score-dlg").is_visible() and page.locator("#reader").is_visible())
     hrefs = page.eval_on_selector_all("#reader a.btn", "els => els.map(e => [e.href, e.target, e.rel])")
@@ -368,6 +372,7 @@ with sync_playwright() as p:
     eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
     check("   blok Wat je feedback deed: erbij, eruit en sterkste voorkeur", "1 erbij en 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
           and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)
+    check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "1 van de 1 beoordeelde" in eff)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
     page.click('.int-topic[data-topic="open_source_tools"] [data-int-chg="minder"]')
     page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-learn]')

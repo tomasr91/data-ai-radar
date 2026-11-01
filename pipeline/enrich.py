@@ -27,6 +27,8 @@ TEXT_FIELDS = ["summary", "what_is_new", "simple_explanation", "practical_exampl
                "personal_relevance", "practical_application", "experiment"]
 STATUSES = {"beschikbaar", "preview", "aangekondigd", "experimenteel", "onbekend"}
 ARTICLE_TYPES = {"nieuws", "opinie"}
+# Soort artikel: daar leert de radar van (welke soort T waardeert), naast onderwerp en bron
+SOORTEN = {"praktisch", "aankondiging", "release", "achtergrond", "praktijk", "mening"}
 
 
 def context_hash() -> str:
@@ -75,6 +77,9 @@ def validate(data: dict, topic_ids: set) -> list:
         problems.append(f"ongeldig article_type '{kind}' (nieuws of opinie)")
     elif kind == "opinie" and not (isinstance(data.get("author"), str) and data["author"].strip()):
         problems.append("bij article_type 'opinie' is 'author' verplicht")
+    if "soort" in data and data["soort"] not in SOORTEN:
+        problems.append(f"ongeldige soort '{data['soort']}' ({', '.join(sorted(SOORTEN))})")
+    problems += validate_fit(data.get("fit"))
     if data.get("availability_status") not in STATUSES:
         problems.append(f"ongeldige availability_status '{data.get('availability_status')}'")
     if not isinstance(data.get("limitations", []), list):
@@ -93,11 +98,22 @@ def validate(data: dict, topic_ids: set) -> list:
     return problems
 
 
+def validate_fit(fit) -> list:
+    """fit: Claudes oordeel hoe goed dit artikel bij T past, op basis van data/taste.json."""
+    if fit is None:
+        return []
+    if not isinstance(fit, dict) or not isinstance(fit.get("score"), (int, float)) or not 0 <= fit["score"] <= 1:
+        return ["fit.score moet tussen 0 en 1 liggen"]
+    if not isinstance(fit.get("why"), str) or not fit["why"].strip() or len(fit["why"]) > 200:
+        return ["fit.why moet een korte zin zijn (hooguit 200 tekens)"]
+    return []
+
+
 def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
                             "format_version", "headline", "story", "key_facts", "article_type", "author",
-              "showcase", "terms"]:
+              "showcase", "terms", "soort", "fit"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"

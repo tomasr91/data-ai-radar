@@ -31,6 +31,8 @@ WEIGHTS = {"topic": 0.55, "quality": 0.20, "recency": 0.15, "source": 0.10}
 RAW_QUALITY = 0.35
 
 
+FIT_WEIGHT = 0.10   # Claudes "past bij jou": hooguit 10 punten erbij of eraf
+
 def match_certainty(n_hits: int) -> float:
     return 0.5 if n_hits <= 1 else 0.8 if n_hits == 2 else 1.0
 
@@ -128,11 +130,16 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         from .feedback import WEIGHT as FB_WEIGHT, article_factor
         # Relatief: ten opzichte van het gemiddelde artikel (offset, zie build.py). Wat je vaker dan
         # gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag.
-        f = article_factor({"topics": topic_ids, "source_id": article["source_id"]}, prefs)
+        f = article_factor({"topics": topic_ids, "source_id": article["source_id"], "soort": article.get("soort")}, prefs)
         fb = round(f - prefs.get("offset", 0.0), 2) if f is not None else 0
         if fb:
             parts["feedback"] = fb
             total = min(1.0, max(0.0, total + FB_WEIGHT * fb))
+    # Claudes oordeel of dit artikel bij jou past (fit, 0-1, zie taken/UITLEGGEN.md): 0,5 is neutraal, max ±10 punten
+    fit = (article.get("fit") or {}).get("score")
+    if isinstance(fit, (int, float)):
+        parts["fit"] = round(fit - 0.5, 2)
+        total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})

@@ -597,7 +597,7 @@ class TestFeedback(unittest.TestCase):
         from pipeline import feedback
         data = {"votes": {f"{i:012x}": {"v": -1, "at": "2026-10-28T00:00:00Z", "topics": ["powerbi_semantic_models"], "source_id": "powerbi_blog"} for i in range(3)}}
         prefs = feedback.preferences(data, NOW)
-        self.assertLess(prefs["topics"]["powerbi_semantic_models"], -0.5)
+        self.assertLess(prefs["topics"]["powerbi_semantic_models"], -0.4)
         conf = cfg.load()
         a = normalize(raw("powerbi_blog", "Power BI semantic model DAX Microsoft Fabric news", "https://example.org/pbi"))
         a["processing_status"] = "raw"
@@ -630,6 +630,32 @@ class TestSkippedRetry(unittest.TestCase):
             self.assertEqual(build.skipped_ids(now), {"bbbbbbbbbbbb", "cccccccccccc"})   # kans blijft tot Claude opnieuw kijkt
             put("aaaaaaaaaaaa", "Bronpagina niet te lezen: weer fout", "2026-11-02T03:00:00Z")
             self.assertIn("aaaaaaaaaaaa", build.skipped_ids(datetime(2026, 11, 20, tzinfo=timezone.utc)))
+
+
+class TestTaste(unittest.TestCase):
+    """Leren van wat T goed vindt: soort artikel, Claudes 'past bij jou' (fit) en minder snel verzadigen."""
+
+    def test_fit_kind_and_validation(self):
+        from pipeline import feedback, enrich
+        conf = cfg.load()
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        base = {"id": "f1", "title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-10-31T00:00:00Z",
+                "processing_status": "enriched", "topics": ["dbt_analytics_engineering"], "quality": {"depth": .6, "practicality": .6, "novelty": .6}}
+        plain = score_article(dict(base), conf, now)["relevance_score"]
+        hi = score_article(dict(base, fit={"score": 1.0, "why": "Zoals je praktische dbt-stukken."}), conf, now)
+        lo = score_article(dict(base, fit={"score": 0.0, "why": "Aankondiging zonder inhoud."}), conf, now)
+        self.assertEqual(hi["relevance_score"] - plain, 10)
+        self.assertEqual(plain - lo["relevance_score"], 10)
+        data = {"votes": {"a": {"v": 1, "at": "2026-10-31T00:00:00Z", "topics": [], "source_id": "", "soort": "praktisch"},
+                          "b": {"v": -1, "at": "2026-10-31T00:00:00Z", "topics": [], "source_id": "", "soort": "aankondiging"}}}
+        prefs = feedback.preferences(data, now)
+        self.assertGreater(prefs["kinds"]["praktisch"], 0)
+        self.assertLess(prefs["kinds"]["aankondiging"], 0)
+        self.assertGreater(feedback.article_factor({"topics": [], "soort": "praktisch"}, prefs), 0)
+        self.assertLess(feedback.preferences({"votes": {str(i): {"v": 1, "at": "2026-10-31T00:00:00Z", "topics": ["t"]} for i in range(2)}}, now)["topics"]["t"], 0.7)
+        self.assertEqual(enrich.validate_fit({"score": 0.7, "why": "Past bij je dbt-werk."}), [])
+        self.assertTrue(enrich.validate_fit({"score": 1.4, "why": "x"}))
+        self.assertTrue(enrich.validate_fit({"score": 0.4, "why": ""}))
 
 
 class TestTrends(unittest.TestCase):

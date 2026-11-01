@@ -5,7 +5,7 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 ## Stappen
 
 1. **Vers ophalen afdwingen.** Kijk naar `generated_at` in `data/feed.json`. Is die niet van vandaag (UTC), schrijf dan de datum van vandaag (`date -u +%F`) in `data/run-request`, commit alleen dat bestand ("Ophalen aangevraagd <datum>") en push. Wacht daarna tot `data/feed.json` van vandaag is: elke 30 seconden `git pull`, hooguit 10 minuten. Lukt het niet, ga door met de werklijst die er is en zet dat in het taakverslag.
-2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**).
+2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
 4. **Per artikel** (in volgorde, **maximaal 15**):
    1. Open de `url` en lees het **volledige artikel**. Nooit alleen op titel of `excerpt`.
@@ -13,7 +13,8 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
    3. Valt het onder **Niet uitleggen**? Ook een `skipped`-bestand, met de regel als `reason`.
    4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder, met begrippen (`terms`) en waar het past een `showcase`.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
-5. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
+5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort` en/of `fit` (de rest niet aanraken). Hooguit 20, opslaan met commit `Soort en fit: <aantal> artikelen`.
+6. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
 
 ## Weekoverzicht Claude Code
 
@@ -102,6 +103,14 @@ Redenen bij 👍:
 - `mijn_stack` (past bij mijn stack): geef artikelen over T's eigen tools (`context/tech-stack.md`) voorrang en leg vaker de link naar zijn stack.
 - `meer_hiervan`: geef zulke artikelen voorrang, en neem het onderwerp mee bij de verdiepingskeuzes.
 
+## Past bij jou
+
+`data/taste.json` bevat T's laatste 20 duimpjes (met reden) en 10 gelezen artikelen, elk met titel, onderwerpen, bron en soort. Geef elk artikel dat je uitlegt een `fit`: hoe goed past het bij wat T daar waardeert?
+
+- `score` 0 tot 1: 0,5 = geen idee of neutraal, 0,8+ = lijkt sterk op zijn duimen omhoog, 0,2- = lijkt op zijn duimen omlaag. Telt hooguit 10 punten mee.
+- `why`: één korte zin met de vergelijking, bijv. "Praktisch dbt-stuk met code, zoals je incrementele-modellenartikel."
+- Kijk naar de inhoud en de soort, niet alleen het onderwerp: een aankondiging over dbt is niet hetzelfde als een praktische dbt-uitleg. Weinig duimen? Blijf dicht bij 0,5.
+
 ## Regels
 
 - **Verzin niets.** Gebruik alleen wat in het artikel staat. Staat iets er niet in, laat het veld dan leeg (`""`) in plaats van te raden.
@@ -126,6 +135,7 @@ Redenen bij 👍:
 - `development_key`: een korte sleutel voor de ontwikkeling (bijv. `uc-data-classification-okt-2026`). Gebruik dezelfde sleutel als een ander artikel over dezelfde ontwikkeling gaat. De pipeline groepeert ze dan.
 - `date_note`: vul in als de datum twijfelachtig is (bijv. alleen 'laatst bewerkt', of een herpublicatie).
 - `article_type`: `nieuws` (standaard, mag je weglaten) of `opinie`. Bij `opinie` is `author` verplicht: naam plus waarom erkend, bijv. `"Benn Stancil, oprichter van Mode"`. Schrijf de mening altijd toe aan de auteur en zet in `key_facts` zijn kernpunten.
+- `soort`: `praktisch` (hoe je iets doet, met stappen of code), `aankondiging` (nieuwe functie of product), `release` (versie- of releasenotes), `achtergrond` (uitleg van een concept of architectuur), `praktijk` (hoe een organisatie het deed) of `mening`. Kies de beste.
 - `exceptional: true` alleen bij een grote, bevestigde wijziging in een tool uit de eigen stack.
 - Schrijf in eenvoudig Nederlands. Zet de Engelse vakterm bij het eerste gebruik tussen haakjes. Geen marketingtaal.
 
@@ -155,6 +165,8 @@ Redenen bij 👍:
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws | opinie",
+  "soort": "praktisch | aankondiging | release | achtergrond | praktijk | mening",
+  "fit": {"score": 0.7, "why": "Eén korte zin: lijkt op welke duimen van T."},
   "author": "Alleen bij opinie: naam, en waarom erkend",
   "terms": [{"term": "Zoals in de tekst", "explanation": "Eén of twee korte zinnen."}],
   "processed_by": "Claude (geplande taak)",
