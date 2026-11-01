@@ -1304,7 +1304,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const head = failed ? `<strong>Ophalen mislukt.</strong> ${esc(f.mode_note || "")}`
       : stale ? `<strong>Vannacht niet bijgewerkt.</strong> Laatste nieuws van ${esc(run ? fmtDateTime(new Date(run.at).toISOString()) : "onbekend")}.`
       : `<strong>${bad.length ? `${plural(bad.length, "bron gaf", "bronnen gaven")} niets` : "Alles werkt."}</strong> Laatste nachtrun ${esc(fmtDateTime(new Date(run.at).toISOString()))}: ${plural(run.articles, "artikel", "artikelen")} uitgelegd${run.deepdives ? `, ${plural(run.deepdives, "verdieping", "verdiepingen")} geschreven` : ""}.`;
-    const why = { below_threshold: (x) => `score net te laag (${x.relevance_score})`, source_cap: () => `al ${f.quality_report?.max_per_source || 8} artikelen van deze bron` };
+    const why = { below_threshold: (x) => `score net te laag (${x.relevance_score})`, source_cap: () => `al ${f.quality_report?.max_per_source || 12} artikelen van deze bron` };
     const near = (q.not_shown || []).filter((x) => why[x.decision]).sort((a, b) => b.relevance_score - a.relevance_score).slice(0, 5);
     openReader(`
       <div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Status</span></div></div>
