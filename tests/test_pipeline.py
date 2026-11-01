@@ -310,6 +310,7 @@ class TestAzureDigestAndSourceCap(unittest.TestCase):
 
     def test_cap_is_configured(self):
         self.assertGreaterEqual(cfg.load().scoring.get("max_articles_per_source", 0), 5)
+        self.assertGreaterEqual(cfg.load().scoring.get("max_articles_per_source_per_day", 0), 2)
 
 
 class TestWeeklyAndReads(unittest.TestCase):

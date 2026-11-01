@@ -214,7 +214,11 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Gebieden onder hun ondergrens krijgen voorrang op de werklijst (na de weekoverzichten).
     have = Counter(area_of(a, conf) for a in arts if a["decision"] in ("included", "included_exceptional") and a["processing_status"] == "enriched")
     under = {x["id"] for x in conf.interests.get("interest_areas", []) if have[x["id"]] < (x.get("min_articles") or 0)}
-    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, area_of(a, conf) not in under, -a["score_parts"]["topic"], -a["relevance_score"]))
+    # Voorrang voor een gebied onder de ondergrens alleen bij een score boven de drempel: anders vult
+    # marketing van een bron in dat gebied (bijv. "nu ook op Google Cloud") de werklijst.
+    bar = conf.scoring.get("min_relevance_score", 0.6) * 100
+    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, not (area_of(a, conf) in under and a["relevance_score"] >= bar),
+                                                    -a["score_parts"]["topic"], -a["relevance_score"]))
              if a["processing_status"] != "enriched" and a["id"] not in skip
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({
@@ -237,14 +241,21 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
                     and a["processing_status"] == "enriched"],
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))
     # Maximum per bron: zo kan één bron de feed niet vullen. De hoogste scores blijven staan.
+    # Plus een maximum per bron per publicatiedag, zodat een golf posts rond een evenement de feed niet overneemt.
     cap = conf.scoring.get("max_articles_per_source")
-    if cap:
-        per_src = Counter()
+    day_cap = conf.scoring.get("max_articles_per_source_per_day")
+    if cap or day_cap:
+        per_src, per_day = Counter(), Counter()
         for a in shown:
             if fb_votes.get(a["id"], {}).get("v") == 1:
                 continue   # wat je 👍 gaf blijft altijd staan en telt niet mee voor het maximum
+            day = (a.get("published_at") or "")[:10]
+            if day_cap and per_day[(a["source_id"], day)] >= day_cap:
+                a["decision"] = "source_cap"
+                continue
             per_src[a["source_id"]] += 1
-            if per_src[a["source_id"]] > cap:
+            per_day[(a["source_id"], day)] += 1
+            if cap and per_src[a["source_id"]] > cap:
                 a["decision"] = "source_cap"
         shown = [a for a in shown if a["decision"] != "source_cap"]
     # Ondergrens per gebied (interest_areas.min_articles): aanvullen met de best scorende uitgelegde

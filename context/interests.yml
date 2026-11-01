@@ -34,6 +34,7 @@ scoring:
   min_relevance_score: 0.6             # onder deze drempel geen plek in de feed, ook niet bij prioriteit 5 (0.5 liet ook losse productvermeldingen door)
   max_items_per_topic_per_feed: 3      # houdt de feed gevarieerd
   max_articles_per_source: 12          # hooguit zoveel artikelen per bron in de app (hoogste scores blijven; T, 1-11-2026)
+  max_articles_per_source_per_day: 4   # hooguit zoveel per bron van dezelfde publicatiedag, tegen golven rond evenementen (T, 1-11-2026)
   other_factors: [recency, trust_level, novelty, diversity]
   exceptional_override:
     enabled: true

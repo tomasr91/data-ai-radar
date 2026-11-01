@@ -611,7 +611,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const added = (a) => t(a.processed_at) || t(a.fetched_at) || t(a.published_at);
     if (state.sort === "date") l.sort((a, b) => added(b) - added(a) || t(b.published_at) - t(a.published_at));
     else l.sort((a, b) => b.relevance_score - a.relevance_score || (b.published_at || "").localeCompare(a.published_at || ""));
-    return l;
+    // Nooit meer dan 2 kaarten van dezelfde bron achter elkaar; "Nieuw" en "Eerder" apart, zodat de scheidslijn klopt.
+    if (state.sort === "date") { const nw = l.filter(isNew); return spread(nw).concat(spread(l.filter((a) => !isNew(a)))); }
+    return spread(l);
+  }
+  function spread(list, max = 2) {
+    const rest = [...list], out = [];
+    while (rest.length) {
+      const run = out.length >= max && out.slice(-max).every((a) => a.source_id === out[out.length - 1].source_id) ? out[out.length - 1].source_id : null;
+      const i = run ? rest.findIndex((a) => a.source_id !== run) : 0;
+      out.push(rest.splice(i < 0 ? 0 : i, 1)[0]);
+    }
+    return out;
   }
 
   function renderSeg() {

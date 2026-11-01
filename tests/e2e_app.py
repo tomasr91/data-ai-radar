@@ -146,7 +146,18 @@ with sync_playwright() as p:
         iso = a.get("processed_at") or a.get("fetched_at") or a.get("published_at")
         return datetime.fromisoformat(iso.replace("Z", "+00:00")).timestamp() if iso else 0
     by = {a["id"]: added(a) for a in arts}
-    check("   filter Nieuw sorteert op toegevoegd aan de radar", [by[i] for i in dates] == sorted([by[i] for i in dates], reverse=True))
+    src = {a["id"]: a["source_id"] for a in arts}
+    def spread(lst, mx=2):   # zelfde regel als de app: nooit meer dan 2 van dezelfde bron achter elkaar
+        rest, out = list(lst), []
+        while rest:
+            run = src[out[-1]] if len(out) >= mx and all(src[x] == src[out[-1]] for x in out[-mx:]) else None
+            i = next((k for k, x in enumerate(rest) if src[x] != run), 0) if run else 0
+            out.append(rest.pop(i))
+        return out
+    check("   filter Nieuw sorteert op toegevoegd aan de radar", dates == spread(sorted(dates, key=lambda i: -by[i])))
+    from itertools import groupby
+    check("   nooit meer dan 2 kaarten van dezelfde bron achter elkaar", max(len(list(g)) for _, g in groupby(src[i] for i in dates)) <= 2
+          or len({src[i] for i in dates}) == 1)
     page.click('#seg-sort button[data-v="trends"]')
     check("13. Trends toont de trend met zijn artikelen", page.locator(".trend").count() == 1 and page.locator(".trend-list button").count() == len(_tr)
           and "Testtrend" in page.locator(".trend").inner_text())
