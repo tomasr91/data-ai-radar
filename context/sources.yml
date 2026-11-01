@@ -86,6 +86,36 @@ sources:
       title: "Claude Code: wat is er nieuw in week {week} ({versions})"
     verification: {status: verified, checked_on: "2026-10-29", note: "Werkt (Actions-run 29-10-2026, 10 items). Losse patches eruit, weekoverzicht erin."}
 
+  - id: anthropic_engineering
+    name: Anthropic Engineering
+    url: https://www.anthropic.com/engineering
+    # Anthropic heeft zelf geen feed (feedonderzoek 29-10-2026). Deze feed wordt dagelijks gemaakt door
+    # het open-sourceproject Olshansk/rss-feeds; de artikelen zelf staan op anthropic.com.
+    feed_url: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml
+    type: official_docs
+    topics: [claude_ai_development, ai_agents_rag, ai_evaluation_observability]
+    priority: 5
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-01", note: "Feed van derden, gecontroleerd op 1-11-2026: actueel, links naar anthropic.com. Weinig artikelen, veel diepgang."}
+
+  - id: claude_blog
+    name: Claude Blog
+    url: https://claude.com/resources/articles
+    feed_url: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml
+    type: vendor_blog
+    topics: [claude_ai_development]
+    # Veel productnieuws en klantverhalen voor andere branches (juridisch, financieel): die slaat
+    # Claude over. Wel: nieuwe functies in Claude, Claude Code, skills, MCP en agents.
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-01", note: "Feed van derden (Olshansk/rss-feeds), gecontroleerd op 1-11-2026: actueel, links naar claude.com."}
+
   - id: dbt_labs_blog
     name: dbt Labs Blog
     url: https://www.getdbt.com/blog
@@ -163,6 +193,34 @@ sources:
     language: en
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Maandelijkse feature summaries."}
+
+  - id: fabric_blog
+    name: Microsoft Fabric Blog
+    url: https://blog.fabric.microsoft.com/en-us/blog/
+    feed_url: https://blog.fabric.microsoft.com/en-us/blog/feed
+    type: vendor_blog
+    topics: [powerbi_semantic_models]
+    # Veel kleine (Preview-)functies; mini_updates en de score filteren. Alleen de must-knows.
+    priority: 3
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-01", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 1-11-2026), 20 items."}
+
+  - id: sqlbi
+    name: SQLBI
+    url: https://www.sqlbi.com/articles/
+    feed_url: https://feeds.feedburner.com/sqlbi_blog
+    type: expert_blog
+    topics: [powerbi_semantic_models]
+    # Marco Russo en Alberto Ferrari: dé experts voor DAX en semantische modellen.
+    priority: 4
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-01", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 1-11-2026), 30 items."}
 
   - id: huggingface_blog
     name: Hugging Face Blog
