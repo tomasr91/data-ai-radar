@@ -905,10 +905,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Mijn interesses</span></div></div>
       <article class="full wrap"><h1>Mijn interesses</h1>
       <p class="lead">Waar de radar voor je op let. Tik aan wat anders moet en verstuur het; Claude past het vannacht aan.</p>
-      <div class="int-how">
-        <p><b>Niveau</b> stel jij in: ${[5, 4, 3, 2, 1].map((n) => `<span class="lvl-pill lvl-${n}">${LEVEL[n]}</span>`).join(" › ")}. Hoe hoger, hoe zwaarder het onderwerp meetelt en hoe vaker je er artikelen over krijgt.</p>
-        <p><b>Je duimpjes</b> sturen daarnaast vanzelf bij: artikelen over een onderwerp waar je vaak 👍 op geeft komen hoger, de rest iets lager (hooguit ${fbPoints()} punten). Dat verandert het niveau niet.</p>
-      </div>
       <div id="int-send-wrap">${intSendBar()}</div>
       ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2><p class="pick-note">Elke zondag nieuw, op basis van je duimpjes, wat je leest en het nieuws.</p>${sugg}</section>` : ""}
       <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">In vier gebieden, met hoeveel van je feed elk gebied ongeveer krijgt.</p>${areas}</section>
