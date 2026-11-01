@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T07:13:58.548817Z",
+ "generated_at": "2026-11-01T08:05:56.065471Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-01T03:45:00Z",
- "last_successful_update": "2026-11-01T07:13:58.548817Z",
+ "last_successful_update": "2026-11-01T08:05:56.065471Z",
  "groups": [
   {
    "id": "dbt",
@@ -97,12 +97,14 @@
   "cicd_data_deployment": {
    "name": "Release pipelines, bundles en uitrol",
    "priority": 5,
-   "group": "overig"
+   "group": "overig",
+   "learning": true
   },
   "data_ingestion": {
    "name": "Data ingestion",
    "priority": 5,
-   "group": "databricks"
+   "group": "databricks",
+   "learning": true
   },
   "sql_spark_sql": {
    "name": "SQL en Spark SQL",
@@ -152,7 +154,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-01T07:13:58.597318Z"
+   "checked_at": "2026-11-01T08:05:56.108349Z"
   },
   {
    "id": "dbt_core_releases",
@@ -165,7 +167,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-01T07:13:58.772628Z"
+   "checked_at": "2026-11-01T08:05:56.298177Z"
   },
   {
    "id": "claude_code_releases",
@@ -178,7 +180,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-01T07:13:59.537423Z"
+   "checked_at": "2026-11-01T08:05:56.807360Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -191,7 +193,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-01T07:13:59.985838Z"
+   "checked_at": "2026-11-01T08:05:57.085875Z"
   },
   {
    "id": "databricks_blog",
@@ -204,7 +206,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-01T07:14:00.433716Z"
+   "checked_at": "2026-11-01T08:05:57.378425Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -217,7 +219,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-01T07:14:00.554692Z"
+   "checked_at": "2026-11-01T08:05:57.449679Z"
   },
   {
    "id": "github_blog",
@@ -230,7 +232,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-11-01T07:14:00.680404Z"
+   "checked_at": "2026-11-01T08:05:57.607390Z"
   },
   {
    "id": "azure_blog",
@@ -243,7 +245,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-01T07:14:00.966705Z"
+   "checked_at": "2026-11-01T08:05:57.715411Z"
   },
   {
    "id": "powerbi_blog",
@@ -256,7 +258,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-01T07:14:01.139092Z"
+   "checked_at": "2026-11-01T08:05:57.926351Z"
   },
   {
    "id": "huggingface_blog",
@@ -269,7 +271,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-01T07:14:01.903109Z"
+   "checked_at": "2026-11-01T08:05:58.616767Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -282,7 +284,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-01T07:14:02.034964Z"
+   "checked_at": "2026-11-01T08:05:58.690858Z"
   },
   {
    "id": "simon_whiteley",
@@ -295,7 +297,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-01T07:14:02.296655Z"
+   "checked_at": "2026-11-01T08:05:58.814740Z"
   },
   {
    "id": "hamel_husain",
@@ -308,7 +310,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-01T07:14:02.642817Z"
+   "checked_at": "2026-11-01T08:05:59.006571Z"
   },
   {
    "id": "langchain_blog",
@@ -321,7 +323,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-01T07:14:03.209585Z"
+   "checked_at": "2026-11-01T08:05:59.106494Z"
   },
   {
    "id": "chip_huyen",
@@ -334,7 +336,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-01T07:14:03.362482Z"
+   "checked_at": "2026-11-01T08:05:59.236895Z"
   },
   {
    "id": "simon_willison",
@@ -347,7 +349,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-01T07:14:03.892052Z"
+   "checked_at": "2026-11-01T08:05:59.429073Z"
   },
   {
    "id": "chris_webb",
@@ -360,7 +362,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-01T07:14:04.007800Z"
+   "checked_at": "2026-11-01T08:05:59.495914Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -373,7 +375,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-01T07:14:04.434213Z"
+   "checked_at": "2026-11-01T08:05:59.786427Z"
   }
  ],
  "daily_top": [
@@ -1273,7 +1275,8 @@
      "term": "state:modified+",
      "explanation": "Een dbt-selectie die alleen gewijzigde modellen kiest, plus alles wat ervan afhangt."
     }
-   ]
+   ],
+   "learning": "Release pipelines, bundles en uitrol"
   },
   {
    "id": "3d41fbc3100a",
@@ -1384,7 +1387,8 @@
      "term": "versheidstests",
      "explanation": "Controles of data op tijd binnenkomt, bijvoorbeeld 'de laatste regel is niet ouder dan een uur'. In dbt heet dat source freshness."
     }
-   ]
+   ],
+   "learning": "Data ingestion"
   },
   {
    "id": "b380b17e60f1",
@@ -1459,7 +1463,8 @@
      "term": "service principal",
      "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
     }
-   ]
+   ],
+   "learning": "Release pipelines, bundles en uitrol"
   },
   {
    "id": "ea59c0428e23",
@@ -1587,7 +1592,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.51,
     "quality": 0.65,
     "feedback": 0.99
@@ -2126,7 +2131,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.85,
     "quality": 0.63
    },
@@ -2409,96 +2414,6 @@
    }
   },
   {
-   "id": "903131b53f30",
-   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T22:30:04Z",
-   "fetched_at": "2026-10-30T06:06:02.852195Z",
-   "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
-   "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
-   "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
-   "limitations": [
-    "De snelheidscijfers zijn claims van Databricks zelf.",
-    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
-    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Use real-time mode in Lakeflow pipelines",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
-    },
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.89,
-    "source": 0.85,
-    "quality": 0.48
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-     "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-     "published_at": "2026-10-29T22:30:04Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
-   "story": [
-    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
-    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
-    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
-    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
-   ],
-   "key_facts": [
-    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
-    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
-    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
-    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
-    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
-    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "real-time mode",
-     "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
-    },
-    {
-     "term": "micro-batches",
-     "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
-    },
-    {
-     "term": "ForEach-sink",
-     "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
-    },
-    {
-     "term": "Lakebase",
-     "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
-    }
-   ]
-  },
-  {
    "id": "25057022b0aa",
    "title": "Azure Databricks: wat is er nieuw in week 40",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W40",
@@ -2634,6 +2549,96 @@
    ]
   },
   {
+   "id": "903131b53f30",
+   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-29T22:30:04Z",
+   "fetched_at": "2026-10-30T06:06:02.852195Z",
+   "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
+   "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
+   "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
+   "limitations": [
+    "De snelheidscijfers zijn claims van Databricks zelf.",
+    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
+    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Use real-time mode in Lakeflow pipelines",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
+    },
+    {
+     "label": "Release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.85,
+    "quality": 0.48
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:20:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+     "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+     "published_at": "2026-10-29T22:30:04Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
+   "story": [
+    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
+    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
+    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
+    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
+   ],
+   "key_facts": [
+    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
+    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
+    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
+    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
+    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
+    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "real-time mode",
+     "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
+    },
+    {
+     "term": "micro-batches",
+     "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
+    },
+    {
+     "term": "ForEach-sink",
+     "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
+    },
+    {
+     "term": "Lakebase",
+     "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
+    }
+   ]
+  },
+  {
    "id": "68a2bf1c5563",
    "title": "What's the difference between dbt and dbt OSS?",
    "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
@@ -2716,7 +2721,8 @@
     "language": "bash",
     "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
     "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
-   }
+   },
+   "learning": "Release pipelines, bundles en uitrol"
   },
   {
    "id": "9a1a77aea3de",
@@ -5054,16 +5060,6 @@
     ]
    },
    {
-    "title": "Metric view window measures are generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
-    "relevance_score": 89,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Xero connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
@@ -5116,9 +5112,9 @@
     ]
    },
    {
-    "title": "Genie Code CLI is in Beta",
+    "title": "Metric view window measures are generally available",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
     "relevance_score": 88,
     "decision": "excluded",
     "excluded_by": [
@@ -5154,6 +5150,16 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Code CLI is in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
+    "relevance_score": 87,
+    "decision": "excluded",
+    "excluded_by": [
      "weekoverzicht"
     ]
    },
@@ -5337,7 +5343,7 @@
     "title": "Unpaginated requests to some Unity Catalog REST API operations will soon be rejected",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#unpaginated-requests-to-some-unity-catalog-rest-api-operations-will-soon-be-rejected",
-    "relevance_score": 81,
+    "relevance_score": 80,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -5419,20 +5425,23 @@
     "excluded_by": []
    },
    {
-    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Real-time mode in Lakeflow pipelines is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#real-time-mode-in-lakeflow-pipelines-is-now-generally-available",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.306",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.306",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    }
