@@ -297,6 +297,15 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .int-note { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; resize: vertical; min-height: 70px; }
 .int-excl summary { cursor: pointer; font-weight: 650; }
 .int-excl ul { margin: 8px 0 0; color: var(--muted); }
+.score-fb { margin: 10px 0 0; font-size: 0.86rem; line-height: 1.45; }
+.fb-eff .sum { margin: 0 0 6px; font-size: 0.9rem; color: var(--muted); }
+.fb-eff .sum b { color: var(--ink); }
+.fb-eff h3 { margin: 12px 0 4px; font-size: 0.78rem; font-family: var(--f-meta); color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.eff-list, .eff-lean { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 6px; font-size: 0.9rem; }
+.eff-list li, .eff-lean li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.eff-list a { color: var(--ink); text-decoration: none; }
+.fb-eff .d { flex: none; font-family: var(--f-meta); font-size: 0.78rem; color: var(--ok); }
+.fb-eff li.neg .d { color: var(--muted); }
 .int-log { list-style: none; padding: 0 !important; margin: 6px 0 0 !important; display: grid; gap: 6px; font-size: 0.9rem; }
 .int-log time { font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); margin-right: 8px; }
 .lamp { position: absolute; right: 13px; bottom: 8px; width: 10px; height: 13px; color: #f5d547; display: block; }
@@ -1000,6 +1009,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <p class="lead">Waar de radar voor je op let. Tik aan wat anders moet en verstuur het; Claude past het vannacht aan.</p>
       <div id="int-send-wrap">${intSendBar()}</div>
       ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2><p class="pick-note">Elke zondag nieuw, op basis van je duimpjes, wat je leest en het nieuws.</p>${sugg}</section>` : ""}
+      ${fbEffectBlock()}
       <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">In vier gebieden, met hoeveel van je feed elk gebied ongeveer krijgt.</p>${areas}</section>
       <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
       <section class="int-sec"><h2>In je eigen woorden</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Bijv. meer over Fabric, minder over AI-onderzoek">${esc(d.note)}</textarea></section>
@@ -1400,6 +1410,41 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     updateMenuDot();
   }
 
+  // Feedback per onderwerp of bron, in punten ten opzichte van het gemiddelde artikel
+  function fbLean() {
+    const f = state.feed.feedback || {}, o = f.offset || 0, W = fbPoints(), tn = state.feed.topics || {};
+    return [...Object.entries(f.topics || {}).map(([id, v]) => ({ key: "t:" + id, name: tn[id]?.name || id, pts: Math.round((v - o) * W) })),
+      ...Object.entries(f.sources || {}).map(([id, v]) => ({ key: "s:" + id, name: source(id).name, pts: Math.round((v - o) * W) }))];
+  }
+  // "Hoger door je 👍 op X" / "Lager door ... Y": welke onderwerpen en bron van dit artikel de feedback bepaalden
+  function fbReason(a) {
+    const pts = Math.round((a.score_parts?.feedback || 0) * fbPoints());
+    if (!pts) return "";
+    const lean = new Map(fbLean().map((x) => [x.key, x]));
+    const by = [...(a.topics || []).slice(0, 2).map((t) => lean.get("t:" + t)), lean.get("s:" + a.source_id)]
+      .filter((x) => x && Math.sign(x.pts) === Math.sign(pts)).map((x) => `<b>${esc(x.name)}</b>`);
+    const list = by.length > 1 ? by.slice(0, -1).join(", ") + " en " + by[by.length - 1] : by[0];
+    return pts > 0 ? `${pts} punten hoger: je waardeert ${list || "dit soort artikelen"} meer dan gemiddeld.`
+      : `${-pts} punten lager: je waardeert ${list || "dit soort artikelen"} minder dan gemiddeld.`;
+  }
+  // Mijn interesses: wat je feedback deze week veranderde
+  function fbEffectBlock() {
+    const e = state.feed.feedback?.effect, W = fbPoints();
+    const arts = state.feed.articles.map((a) => Math.round((a.score_parts?.feedback || 0) * W));
+    const up = arts.filter((p) => p >= 5).length, down = arts.filter((p) => p <= -5).length;
+    const lean = fbLean().filter((x) => x.pts).sort((x, y) => y.pts - x.pts);
+    const top = [...lean.filter((x) => x.pts > 0).slice(0, 3), ...lean.filter((x) => x.pts < 0).slice(-3)];
+    if (!e && !lean.length) return "";
+    const pt = (n) => `${n > 0 ? "+" : "−"}${Math.abs(n)}`;
+    const row = (x, href, ext) => `<li${x.delta < 0 ? ' class="neg"' : ""}><a href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${esc(x.title)}</a><span class="d">${pt(x.delta)}</span></li>`;
+    const lifted = e?.lifted || [], dropped = e?.dropped || [];
+    return `<section class="int-sec fb-eff"><h2>Wat je feedback deed</h2>
+      <p class="sum">Afgelopen ${e?.days || 7} dagen: <b>${lifted.length}</b> erbij en <b>${dropped.length}</b> eruit door je feedback. In je lijst nu ${up} hoger en ${down} lager (5 punten of meer).</p>
+      ${lifted.length ? `<h3>Erbij</h3><ul class="eff-list">${lifted.map((x) => row(x, "#a-" + x.id)).join("")}</ul>` : ""}
+      ${dropped.length ? `<h3>Eruit</h3><ul class="eff-list">${dropped.map((x) => row(x, x.url, true)).join("")}</ul>` : ""}
+      ${top.length ? `<h3>Sterkst</h3><ul class="eff-lean">${top.map((x) => `<li class="${x.pts < 0 ? "neg" : ""}"><span>${esc(x.name)}</span><span class="d">${pt(x.pts)}</span></li>`).join("")}</ul>` : ""}
+    </section>`;
+  }
   function renderArticle(a) {
     const mark = termMarker(a.terms);
     const s = source(a.source_id);
@@ -1408,6 +1453,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const partRows = [["Past bij je onderwerpen", parts.topic, "55%"], ["Inhoudelijke kwaliteit", parts.quality, "20%"], ["Actualiteit", parts.recency, "15%"], ["Bron", parts.source, "10%"]]
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("")
       + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±${fbPoints()})</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * fbPoints())} punten</td></tr>` : "");
+    const fbWhy = fbReason(a);
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
     const added = a.processed_at || a.fetched_at;
     const inApp = added ? fmtDate(added) : "onbekend";
@@ -1446,6 +1492,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <dialog class="score-dlg" id="score-dlg" aria-labelledby="score-dlg-h">
           <h2 id="score-dlg-h">Waarom deze score?</h2>
           <table class="score-table">${partRows}</table>
+          ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
           <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
         </dialog>

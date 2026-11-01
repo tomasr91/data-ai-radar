@@ -92,6 +92,13 @@ feed["interest_suggestions"] = [
     {"id": "data-contracts", "kind": "nieuw", "name": "Data contracts", "description": "Afspraken over vorm en kwaliteit van data tussen teams.", "why": "Kwam deze maand vaak terug.", "generated_at": "2026-11-01T04:00:00Z"},
     {"id": "powerbi-omhoog", "kind": "belangrijker", "topic": "powerbi_semantic_models", "why": "Je leest Power BI-artikelen helemaal.", "generated_at": "2026-11-01T04:00:00Z"}]
 feed["interest_log"] = [{"at": "2026-10-31T04:30:00Z", "text": "Test-wijziging in het logboek."}]
+# Nagebootst effect van je feedback (Wat je feedback deed + uitleg in de score)
+_en = next(a for a in arts if a["processing_status"] == "enriched")
+_t0 = (_en.get("topics") or ["dbt_analytics_engineering"])[0]
+_en.setdefault("score_parts", {})["feedback"] = 0.4
+feed["feedback"] = {**(feed.get("feedback") or {}), "topics": {_t0: 1.0}, "sources": {}, "offset": 0.6, "weight": 0.15,
+                    "effect": {"days": 7, "lifted": [{"id": _en["id"], "title": "Erbij-test", "source_id": _en["source_id"], "delta": 6}],
+                               "dropped": [{"id": "zzzzzzzzzzzz", "title": "Eruit-test", "source_id": "sqlbi", "delta": -7, "url": "https://example.org/x"}]}}
 # Nagebootste taakverslagen van de nacht
 feed["runs"] = {"date": "2026-11-02", "tasks": {
     "uitleggen": {"status": "ok", "summary": "12 artikelen uitgelegd", "finished_at": "2026-11-02T03:58:00Z", "problems": []},
@@ -184,6 +191,7 @@ with sync_playwright() as p:
     check("5. scoreuitleg standaard verborgen", not page.locator("#score-dlg").is_visible())
     page.click("#score-btn")
     check("5. knop toont scoreuitleg in een venster", page.locator("#score-dlg").is_visible() and "Waarom deze score?" in page.locator("#score-dlg").inner_text())
+    check("5. scoreuitleg zegt in gewone taal wat je feedback deed", "6 punten hoger" in page.locator("#score-dlg").inner_text())
     page.keyboard.press("Escape")
     check("5. Escape sluit eerst het venster, niet het artikel", not page.locator("#score-dlg").is_visible() and page.locator("#reader").is_visible())
     hrefs = page.eval_on_selector_all("#reader a.btn", "els => els.map(e => [e.href, e.target, e.rel])")
@@ -357,6 +365,9 @@ with sync_playwright() as p:
     check("   pagina toont voorstellen, onderwerpen per gebied, uitsluitingen en logboek", page.locator(".int-sugg").count() == 2
           and page.locator(".int-topic").count() == len(feed["interests"]["topics"]) and "Wat je niet wilt zien" in txt and "Test-wijziging" in txt
           and "30%" in txt)
+    eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
+    check("   blok Wat je feedback deed: erbij, eruit en sterkste voorkeur", "1 erbij en 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
+          and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
     page.click('.int-topic[data-topic="open_source_tools"] [data-int-chg="minder"]')
     page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-learn]')

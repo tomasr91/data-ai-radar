@@ -390,13 +390,17 @@ class TestFeedbackRelative(unittest.TestCase):
         prefs = {"topics": {"dbt_analytics_engineering": 1.0}, "sources": {}}
         base = {"title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-10-31T00:00:00Z",
                 "processing_status": "enriched", "quality": {"depth": .7, "practicality": .7, "novelty": .7}}
-        arts = [dict(base, id="a", topics=["dbt_analytics_engineering"]), dict(base, id="b", topics=["ai_agents_rag"])]
+        prefs["topics"]["ai_agents_rag"] = 0.0
+        arts = [dict(base, id="a", topics=["dbt_analytics_engineering"]), dict(base, id="b", topics=["ai_agents_rag"]),
+                dict(base, id="c", topics=["sql_spark_sql"], source_id="sqlbi")]
         prefs["offset"] = feedback.mean_factor(arts, prefs)
-        self.assertAlmostEqual(prefs["offset"], 0.5)
+        self.assertAlmostEqual(prefs["offset"], 0.5)          # c telt niet mee: daar gaf je geen feedback over
         a = score_article(dict(arts[0]), conf, now, prefs)
         b = score_article(dict(arts[1]), conf, now, prefs)
+        c = score_article(dict(arts[2]), conf, now, prefs)
         self.assertGreater(a["score_parts"]["feedback"], 0)
         self.assertLess(b["score_parts"]["feedback"], 0)
+        self.assertNotIn("feedback", c["score_parts"])        # geen feedback = geen duw omlaag
         self.assertEqual(feedback.WEIGHT, 0.15)
         self.assertTrue({"praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack", "meer_hiervan"} <= feedback.REASONS)
 

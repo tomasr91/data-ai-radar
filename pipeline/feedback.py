@@ -77,14 +77,16 @@ def preferences(data: dict, now=None) -> dict:
 
 
 def article_factor(article: dict, prefs: dict) -> float:
-    """-1..1: gemiddelde van de voorkeur voor de onderwerpen en de bron van dit artikel."""
+    """-1..1: gemiddelde van de voorkeur voor de onderwerpen en de bron van dit artikel.
+    None als je over geen van die onderwerpen of die bron feedback gaf: dan telt feedback niet mee
+    (anders duwt het nulpunt artikelen waar je nooit iets van vond omlaag)."""
     vals = [prefs["topics"][t] for t in article.get("topics", [])[:2] if t in prefs.get("topics", {})]
     if article.get("source_id") in prefs.get("sources", {}):
         vals.append(prefs["sources"][article["source_id"]])
-    return round(sum(vals) / len(vals), 2) if vals else 0.0
+    return round(sum(vals) / len(vals), 2) if vals else None
 
 
 def mean_factor(articles: list, prefs: dict) -> float:
     """Gemiddelde voorkeur over de artikelen die in aanmerking komen: het nulpunt voor 'relatief'."""
-    vals = [article_factor(a, prefs) for a in articles]
+    vals = [v for v in (article_factor(a, prefs) for a in articles) if v is not None]
     return round(sum(vals) / len(vals), 3) if vals else 0.0

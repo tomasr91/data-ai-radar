@@ -169,6 +169,36 @@ def area_minimum(arts: list, shown: list, conf, now) -> list:
     return extra
 
 
+EFFECT_DAYS = 7
+INCLUDED = ("included", "included_exceptional")
+
+
+def feedback_effect(arts: list, shown: list, conf, now) -> dict:
+    """Wat je feedback deze week veranderde: artikelen die er alleen door je feedback in staan (erbij)
+    en uitgelegde artikelen die zonder feedback wel in de feed hadden gestaan (eruit)."""
+    shown_ids = {a["id"] for a in shown}
+    cutoff = now - timedelta(days=EFFECT_DAYS)
+    lifted, dropped = [], []
+    for a in arts:
+        if a["processing_status"] != "enriched" or "feedback" not in a.get("score_parts", {}):
+            continue
+        try:
+            at = datetime.fromisoformat(str(a.get("processed_at") or a.get("published_at")).replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if at < cutoff:
+            continue
+        base = score_article({**a, "score_parts": {}}, conf, now)   # zelfde artikel, zonder feedback
+        delta = a["relevance_score"] - base["relevance_score"]
+        row = {"id": a["id"], "title": a.get("headline") or a["title"], "source_id": a["source_id"], "delta": delta}
+        if a["id"] in shown_ids and a["decision"] in INCLUDED and base["decision"] not in INCLUDED:
+            lifted.append(row)
+        elif a["id"] not in shown_ids and a["decision"] == "below_threshold" and base["decision"] in INCLUDED:
+            dropped.append({**row, "url": a["url"]})
+    return {"days": EFFECT_DAYS, "lifted": sorted(lifted, key=lambda r: -r["delta"]),
+            "dropped": sorted(dropped, key=lambda r: r["delta"])}
+
+
 def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=None, provider_fn=None):
     now = now or datetime.now(timezone.utc)
     conf = conf or cfg.load()
@@ -326,7 +356,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
-        "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at")},
+        "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at"),
+                     "effect": feedback_effect(arts, shown, conf, now)},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
             "fetched_items": len(result.items),
