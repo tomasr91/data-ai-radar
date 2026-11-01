@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T14:52:56.128162Z",
+ "generated_at": "2026-11-01T15:01:18.217550Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -17,17 +17,18 @@
    ]
   },
   {
-   "id": "3fd19a8cb4a2",
-   "title": "Claude Duet Safety, Privacy, and Security",
-   "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exist in products like Claude Code and Claude Managed Agents. On top of those, we added new protections for working across your accounts and acting on your behalf.",
-   "preliminary_score": 61,
+   "id": "e2d4ca39e816",
+   "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-21T17:00:00Z",
+   "excerpt": "Migrating an enterprise Teradata estate to Microsoft Fabric can require extensive manual work across database objects, SQL and BTEQ code, dependencies, and operational processes. Fabric Migration Assistant helps reduce that effort so teams can focus their review on the objects and workflows that need attention. Fabric Migration Assistant for Data Warehouse now supports Teradata sources in preview. It converts eligible Teradata metadata and code to Fabric-compatible T-SQL, deploys eligible destination definitions, and flags scripts that need review or remediation, reducing the manual effort required to prepare a migration. You can choose which objects to migrate, review the translated code, and focus remediation on exceptions instead of manually translating every eligible object. Migration Assistant does not move the associated data; you load data in the following step of the migration flow. Define a migration scope you can validate Reduce migration risk by starting with a representative set of interdependent objects from one workload or business process. Keeping the related tables, views, procedures, functions, and macros together lets you evaluate the translated result as a workin",
+   "preliminary_score": 77,
    "preliminary_topics": [
-    "claude_ai_development",
-    "data_governance_privacy"
+    "powerbi_semantic_models",
+    "metadata_lineage_catalogs",
+    "sql_spark_sql"
    ]
   },
   {
@@ -38,7 +39,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T18:20:11Z",
    "excerpt": "Moving a real-time data pipeline from development to test to production should not mean reconfiguring every source and destination. Yet environment-specific connection details and destination references can make each release a manual, error-prone task. Variable library integration with Eventstream in Microsoft Fabric lets teams reuse the same eventstream definition across environments, with references that resolve to each environment's resources. What's new? Variable library integration with Eventstream is available in preview. For supported source connections and destination items, you can use variable library references instead of direct values. These references are preserved through Git integration and deployment pipelines, helping teams reuse an eventstream definition across workspaces with environment-specific configuration. How variable library integration works Variable library is an item type in Microsoft Fabric that provides a centralized way to define and manage configuration values at the workspace level. Instead of entering environment-specific connection details and item identifiers directly into an eventstream, a team creates variables in a variable library and refere",
-   "preliminary_score": 78,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "cicd_data_deployment",
     "powerbi_semantic_models"
@@ -52,27 +53,12 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T17:48:58Z",
    "excerpt": "Coauthor: Shehab Amin Microsoft OneLake gives every Microsoft Fabric tenant a single, unified data lake built on open formats. One copy of data, many engines: that is the promise, and it is what makes OneLake such a strong foundation for analytics and AI alike. This post looks at how Sail , the open-source distributed compute framework, and LakeSail Cloud , the managed platform for running Sail in production, connect natively to OneLake, and what that unlocks for teams running Spark and Python workloads on Fabric. Sail is a drop-in replacement for Apache Spark, rebuilt from the ground up in Rust, with Rust-native support for Delta Lake and Apache Iceberg out of the box. That makes it a natural fit for OneLake, where lakehouse tables are stored in exactly these open formats. Point Sail at a Fabric lakehouse and it reads and writes the same tables the rest of Fabric uses, with no data copies, no extra connectors to install, and no changes to existing Spark code. One engine for data and AI Sail implements the Spark Connect protocol, the gRPC interface that decouples Spark clients from the engine that executes their plans. Existing Spark SQL and DataFrame code targeting Spark 3.5 or 4.",
-   "preliminary_score": 78,
+   "preliminary_score": 76,
    "preliminary_topics": [
     "databricks_data_engineering",
     "powerbi_semantic_models",
     "sql_spark_sql",
     "open_source_tools"
-   ]
-  },
-  {
-   "id": "e2d4ca39e816",
-   "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-21T17:00:00Z",
-   "excerpt": "Migrating an enterprise Teradata estate to Microsoft Fabric can require extensive manual work across database objects, SQL and BTEQ code, dependencies, and operational processes. Fabric Migration Assistant helps reduce that effort so teams can focus their review on the objects and workflows that need attention. Fabric Migration Assistant for Data Warehouse now supports Teradata sources in preview. It converts eligible Teradata metadata and code to Fabric-compatible T-SQL, deploys eligible destination definitions, and flags scripts that need review or remediation, reducing the manual effort required to prepare a migration. You can choose which objects to migrate, review the translated code, and focus remediation on exceptions instead of manually translating every eligible object. Migration Assistant does not move the associated data; you load data in the following step of the migration flow. Define a migration scope you can validate Reduce migration risk by starting with a representative set of interdependent objects from one workload or business process. Keeping the related tables, views, procedures, functions, and macros together lets you evaluate the translated result as a workin",
-   "preliminary_score": 77,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs",
-    "sql_spark_sql"
    ]
   },
   {
@@ -97,7 +83,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-13T00:00:00Z",
    "excerpt": "Uber's CISO, Philip Martin, on the importance of monitoring and observability for AI agents, and how Uber's open-source tooling works alongside Enterprise Frontier Safeguards.",
-   "preliminary_score": 73,
+   "preliminary_score": 72,
    "preliminary_topics": [
     "ai_agents_rag",
     "open_source_tools"
@@ -111,24 +97,10 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-21T00:00:00Z",
    "excerpt": "Claude Security now keeps up with your repositories as code changes, tracks findings until they’re fixed, learns from the context your team adds, and connects to your tools through an API and MCP. Available in public beta for Claude Enterprise customers.",
-   "preliminary_score": 69,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "ai_context_engineering",
     "claude_ai_development"
-   ]
-  },
-  {
-   "id": "d8ab32c2d8b1",
-   "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-your-Microsoft-Fabric-data-estate-from-one-place-with-the/ba-p/5377369",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-28T19:47:19Z",
-   "excerpt": "The Govern experience in the OneLake catalog is now generally available, providing centralized governance capabilities for tenants, domains, capacities, workspaces, tags, and policies in Microsoft Fabric. Govern Skills are also now available in the Skills for Fabric collection, giving AI agents the knowledge they need to help admins and data owners audit, investigate, and remediate governance issues at scale. Both were announced at FabCon Europe 2026. Together, they help you monitor, manage, and act on your data estate from one place, whether you work in the Fabric portal or with an AI agent. Why it matters As AI makes it easier for more people to build with data, data estates grow in size and complexity. More workspaces, items, and access requests create more decisions about ownership, organization, and protection. Centralized, proactive governance helps admins support new projects without turning every decision into a manual review or losing visibility into how data is used. Governance can't rely on periodic, manual audits anymore. It needs to be proactive, centralized, and able to scale with the estate. Capabilities with Govern experience and Govern Skills: Manage governance in ",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "powerbi_semantic_models"
    ]
   },
   {
@@ -159,20 +131,6 @@
    ]
   },
   {
-   "id": "ff437b403488",
-   "title": "Data Visualization in the Agentic Era",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Visualization-in-the-Agentic-Era/ba-p/5376290",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-26T21:00:00Z",
-   "excerpt": "Data visualizations help people identify patterns, trends, and outliers in their data. However, creating a useful visual requires several decisions: which chart and data to use, how to map the data to visual properties such as color and position, and how the finished visual should look. AI-assisted development can reduce that complexity by letting developers describe the intended result in natural language while reusable visualization components handle common design and interaction requirements. Deciding what visualization to create is one problem, while deciding how to create it is another. Power BI offers a convenient way to create reports and visualizations, but authors work within the chart types and formatting options that the product provides. AI coding agents another approach: developers can describe a visualization in natural language and optionally provide example images. Developers no longer have to start with a custom visual implementation or a visualization or graphics specification. Hello! I’m Alper, a data visualization engineer who joined the Power BI Core Visuals team after completing my PhD at the University of Wisconsin-Madison in 2017. My academic research concen",
-   "preliminary_score": 69,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
    "id": "1ebe4563dc44",
    "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
    "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
@@ -182,6 +140,20 @@
    "excerpt": "At the end of 2025, we launched DAX Lib, a public repository of DAX user-defined functions. So far, importing a DAX library has required a few manual steps, like clicking Add to Power BI on daxlib.org and then copying and…",
    "preliminary_score": 68,
    "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "d8ab32c2d8b1",
+   "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-your-Microsoft-Fabric-data-estate-from-one-place-with-the/ba-p/5377369",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-28T19:47:19Z",
+   "excerpt": "The Govern experience in the OneLake catalog is now generally available, providing centralized governance capabilities for tenants, domains, capacities, workspaces, tags, and policies in Microsoft Fabric. Govern Skills are also now available in the Skills for Fabric collection, giving AI agents the knowledge they need to help admins and data owners audit, investigate, and remediate governance issues at scale. Both were announced at FabCon Europe 2026. Together, they help you monitor, manage, and act on your data estate from one place, whether you work in the Fabric portal or with an AI agent. Why it matters As AI makes it easier for more people to build with data, data estates grow in size and complexity. More workspaces, items, and access requests create more decisions about ownership, organization, and protection. Centralized, proactive governance helps admins support new projects without turning every decision into a manual review or losing visibility into how data is used. Governance can't rely on periodic, manual audits anymore. It needs to be proactive, centralized, and able to scale with the estate. Capabilities with Govern experience and Govern Skills: Manage governance in ",
+   "preliminary_score": 68,
+   "preliminary_topics": [
+    "ai_agents_rag",
     "powerbi_semantic_models"
    ]
   },
@@ -211,6 +183,34 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "ff437b403488",
+   "title": "Data Visualization in the Agentic Era",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Visualization-in-the-Agentic-Era/ba-p/5376290",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-26T21:00:00Z",
+   "excerpt": "Data visualizations help people identify patterns, trends, and outliers in their data. However, creating a useful visual requires several decisions: which chart and data to use, how to map the data to visual properties such as color and position, and how the finished visual should look. AI-assisted development can reduce that complexity by letting developers describe the intended result in natural language while reusable visualization components handle common design and interaction requirements. Deciding what visualization to create is one problem, while deciding how to create it is another. Power BI offers a convenient way to create reports and visualizations, but authors work within the chart types and formatting options that the product provides. AI coding agents another approach: developers can describe a visualization in natural language and optionally provide example images. Developers no longer have to start with a custom visual implementation or a visualization or graphics specification. Hello! I’m Alper, a data visualization engineer who joined the Power BI Core Visuals team after completing my PhD at the University of Wisconsin-Madison in 2017. My academic research concen",
+   "preliminary_score": 67,
+   "preliminary_topics": [
+    "ai_agents_rag",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "e000e5cddc90",
+   "title": "Build clearer, more expressive Real-Time Dashboards with new design and KPI capabilities (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-clearer-more-expressive-Real-Time-Dashboards-with-new/ba-p/5377578",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-27T16:44:58Z",
+   "excerpt": "The new, generally available authoring capabilities in Microsoft Fabric Real-Time Dashboards help authors create dashboards that are easier to scan and act on. Design Tiles add structure and context, multi-KPI groups related measures from one query, and KPI styling makes status, scale, and targets easier to interpret. Together, these capabilities give viewers a clear path from context to metrics to investigation while reducing repetitive authoring work. Figure: Camp Nou Stadium Operations Center dashboard using Design Tiles, Multi-KPI, and styled KPIs. Give your dashboard a clear structure with Design Tiles A dashboard can contain accurate visuals and still make viewers work too hard to find what matters. As service health, deployment status, business metrics, and diagnostic details accumulate, Design Tiles provide the structure, and context viewers need to identify priorities and move quickly to the right information. Design Tiles provide three focused building blocks directly on the Real-Time Dashboard canvas: Title adds a dashboard heading or a short section label. Figure: Title tile in Editing mode, with the formatting toolbar. Text Box adds descriptions, operational guidance, ",
+   "preliminary_score": 64,
+   "preliminary_topics": [
+    "cicd_data_deployment",
+    "powerbi_semantic_models"
    ]
   }
  ]
