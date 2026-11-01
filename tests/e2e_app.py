@@ -307,9 +307,12 @@ with sync_playwright() as p:
           and "30%" in txt)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
     page.click('.int-topic[data-topic="open_source_tools"] [data-int-chg="minder"]')
+    page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-learn]')
+    check("   lampje aanzetten markeert het onderwerp als leeronderwerp", page.locator('.int-topic[data-topic="sql_spark_sql"] .row1 .int-lamp').count() == 1
+          and "wordt leeronderwerp" in page.locator('.int-topic[data-topic="sql_spark_sql"]').inner_text())
     page.fill("#int-note", "Meer over Fabric")
     sh = unquote(page.locator("#int-send").get_attribute("href") or "")
-    check("   versturen maakt issue 'Interesses:' met ja, minder en eigen woorden", "title=Interesses: 3 wijzigingen" in sh
+    check("   versturen maakt issue 'Interesses:' met ja, minder en eigen woorden", "title=Interesses: 4 wijzigingen" in sh and '{"topic":"sql_spark_sql","c":"leren"}' in sh
           and '{"id":"data-contracts","a":"ja"}' in sh and '{"topic":"open_source_tools","c":"minder"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-200:])
     page.click("#int-send")
     page.wait_for_timeout(500)

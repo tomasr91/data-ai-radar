@@ -4,7 +4,7 @@ Gebruik: python scripts/interest_requests.py
 
 De app stuurt T's reacties als één GitHub-issue met een JSON-blok:
     {"answers": [{"id": "<voorstel-id>", "a": "ja" | "nee"}],
-     "changes": [{"topic": "<onderwerp-id>", "c": "belangrijker" | "minder" | "weg"}],
+     "changes": [{"topic": "<onderwerp-id>", "c": "belangrijker" | "minder" | "weg" | "leren" | "niet_leren"}],
      "note": "vrije tekst"}
 Dit script zet de open issues van de eigenaar (de repository is openbaar; anderen tellen niet)
 om in een duidelijke werklijst voor de Claude-taak. Net als verdiepingen alleen 's nachts.
@@ -23,7 +23,7 @@ from pipeline import interests  # noqa: E402
 
 TITLE_RE = re.compile(r"^\s*Interesses:", re.I)
 BLOCK_RE = re.compile(r"```json\s*(\{.*?\})\s*```", re.S)
-CHANGES = {"belangrijker", "minder", "weg"}
+CHANGES = {"belangrijker", "minder", "weg", "leren", "niet_leren"}
 
 
 def parse(body: str) -> dict:

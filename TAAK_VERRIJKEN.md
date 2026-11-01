@@ -147,7 +147,7 @@ Een kort overzicht dat T zondagochtend leest om de week af te sluiten. De app ze
 T ziet in de app (tandwiel > Mijn interesses) zijn onderwerpen uit `context/interests.yml`, jouw voorstellen en een logboek. Wat hij wil veranderen komt als issue "Interesses: ..." binnen; `scripts/interest_requests.py` zet het om in een lijst. Je mag hiervoor **alleen** `context/interests.yml`, `data/interest_suggestions.json` en `data/interest_log.json` aanpassen; nooit het profiel, de bronnen of andere contextbestanden.
 
 **Verzoeken verwerken (stap 6c)**
-- `onderwerp <id>: belangrijker` → `priority` één omhoog (hooguit 5). `minder` → één omlaag (minstens 1). `weg` → `enabled: false` (het onderwerp blijft staan, zodat het terug kan).
+- `onderwerp <id>: belangrijker` → `priority` één omhoog (hooguit 5). `minder` → één omlaag (minstens 1). `weg` → `enabled: false` (het onderwerp blijft staan, zodat het terug kan). `leren` → `learning: true` (leeronderwerp: geel lampje op de kaarten, uitleg bij de basis beginnen); `niet_leren` → haal `learning` weg.
 - `voorstel <id>: JA` → voer het voorstel uit. Bij `nieuw`: voeg een onderwerp toe onder `topics` met een `id` in snake_case, `name`, `description` (2 of 3 zinnen), een bestaande `feed_group`, `enabled: true`, `priority: 3` (tenzij het voorstel iets anders zegt), 5 tot 15 specifieke `keywords` (geen losse woorden die ook in andere teksten staan) en `related_topics`; zet het `id` ook bij het passende gebied in `interest_areas`. Bij `belangrijker`/`minder`/`weg`: zoals hierboven.
 - `voorstel <id>: NEE` → niets veranderen.
 - Haal elk beantwoord voorstel (ja of nee) uit `data/interest_suggestions.json`.
