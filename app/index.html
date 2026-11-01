@@ -126,6 +126,11 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .week-bar .fb-send { padding-right: 44px; }
 .week-x { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
 .week-bar.gone { opacity: 0; }
+.near { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 10px; }
+.near li a { color: var(--ink); }
+.near li span { display: block; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+.all-src summary { cursor: pointer; font-weight: 650; }
+.all-src ul { list-style: none; padding: 0 !important; margin: 10px 0 0 !important; display: grid; gap: 6px; font-size: 0.9rem; }
 .wk-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 14px; }
 .wk-list li { border-left: 3px solid var(--accent2); padding: 2px 0 2px 12px; }
 .wk-list h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
@@ -379,7 +384,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   <div class="wrap">
     <a role="menuitem" href="#interesses"><span>Mijn interesses<i class="menu-dot" id="menu-dot" hidden></i></span><small>Wat de radar voor je kiest, en voorstellen van Claude</small></a>
     <a role="menuitem" href="#begrippen"><span>Begrippen</span><small>Alle uitgelegde termen, met zoeken</small></a>
-    <a role="menuitem" href="#feedcontrole"><span>Feedcontrole</span><small>Bronnen, wat er is opgehaald en wat niet</small></a>
+    <a role="menuitem" href="#feedcontrole"><span>Status</span><small>Werkt alles, en wat net niet in je feed kwam</small></a>
   </div>
 </div>
 <main class="wrap" id="main">
@@ -527,7 +532,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     st.hidden = fine;
     if (!fine) {
       const text = f.mode === "snapshot" ? `Momentopname uit ${ok} bronnen; wordt niet automatisch ververst.` : `${m.text} ${ok} van ${f.sources.length} bronnen leverden artikelen.`;
-      st.innerHTML = `<span class="dot" style="background:${m.color}"></span><span><strong>${esc(m.label)}</strong><br>${esc(text)} <a href="#feedcontrole">Feedcontrole</a></span>`;
+      st.innerHTML = `<span class="dot" style="background:${m.color}"></span><span><strong>${esc(m.label)}</strong><br>${esc(text)} <a href="#feedcontrole">Status</a></span>`;
     }
   }
 
@@ -1279,51 +1284,39 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   /* ---- Feedcontrole ---- */
-  function fbLearned() {
-    const f = state.feed.feedback;
-    if (!f?.votes && !f?.reads) return `<section class="block"><h2>Wat de radar van je feedback leerde</h2><p style="font-size:.92rem">Nog geen duimpjes verwerkt. Geef onderaan een artikel een 👍 of 👎 en verstuur ze vanaf Actueel.</p></section>`;
-    // Relatief: vergeleken met een gemiddeld artikel (offset)
-    const rel = (v) => Math.round((v - (f.offset || 0)) * fbPoints());
-    const row = (name, v) => `<li>${rel(v) >= 0 ? "▲" : "▼"} ${esc(name)} <span style="color:var(--muted)">(${rel(v) > 0 ? "+" : ""}${rel(v)} punten)</span></li>`;
-    const topics = Object.entries(f.topics || {}).sort((a, b) => b[1] - a[1]).map(([t, v]) => row(state.feed.topics[t]?.name || t, v));
-    const srcs = Object.entries(f.sources || {}).sort((a, b) => b[1] - a[1]).map(([sid, v]) => row(source(sid).name, v));
-    return `<section class="block"><h2>Wat de radar van je feedback leerde</h2>
-      <p style="font-size:.92rem">${f.votes || 0} beoordeling${f.votes === 1 ? "" : "en"}${f.reads ? ` en ${f.reads} gelezen artikel${f.reads === 1 ? "" : "en"}` : ""} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag, vergeleken met een gemiddeld artikel. Wat je niet beoordeelt zakt daardoor iets (hooguit ${fbPoints()} punten).</p>
-      ${topics.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Onderwerpen</h3><ul>${topics.join("")}</ul>` : ""}
-      ${srcs.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Bronnen</h3><ul>${srcs.join("")}</ul>` : ""}
-    </section>`;
+
+  // Status: werkt alles, wat deed de nachtrun, welke bronnen hebben een probleem, wat viel net buiten de feed.
+  function nightRun() {
+    const f = state.feed, t = (x) => Date.parse(x || "") || 0;
+    const times = [...f.articles.map((a) => t(a.processed_at)), ...(f.deepdives || []).map((d) => t(d.written_at))].filter(Boolean);
+    if (!times.length) return null;
+    const last = Math.max(...times), win = 3 * 3600e3;   // alles binnen 3 uur voor de laatste uitleg = dezelfde run
+    return { at: last, articles: f.articles.filter((a) => last - t(a.processed_at) < win).length,
+      deepdives: (f.deepdives || []).filter((d) => last - t(d.written_at) < win).length };
   }
   function renderReport() {
-    const f = state.feed, q = f.quality_report || {};
-    const enr = q.enrichment || {};
-    const srcRows = f.sources.map((s) => `<tr><td><strong>${esc(s.name)}</strong><br><span style="color:var(--muted)">${esc(TYPE_LABEL[s.type] || s.type)} · ${esc(s.fetch_method)}</span></td><td><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span></td><td style="font-variant-numeric:tabular-nums">${s.items ?? 0}</td><td>${esc(s.message || "")}</td></tr>`).join("");
-    const dec = { included: "getoond", included_exceptional: "getoond (uitzondering)", below_threshold: "onder de drempel", no_topic: "geen passend onderwerp", excluded: "uitgesloten onderwerp", hidden_by_feedback: "duim omlaag", source_cap: "maximum per bron" };
-    const hidden = (q.not_shown || []).map((x) => `<tr><td><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><br><span style="color:var(--muted)">${esc(source(x.source_id).name)}</span></td><td>${esc(dec[x.decision] || x.decision)}${x.excluded_by?.length ? ` (${esc(x.excluded_by.join(", "))})` : ""}</td><td style="font-variant-numeric:tabular-nums">${x.relevance_score}</td></tr>`).join("");
-    const flags = (q.date_flags || []).map((d) => `<li><strong>${esc(source(d.source_id).name)}:</strong> ${esc(d.message)}</li>`).join("");
-    const noSrc = (q.topics_without_source || []).map((t) => f.topics[t]?.name || t);
-    const perGroup = Object.entries(q.per_group || {}).map(([g, n]) => `${esc(groupLabel(g))}: ${n}`).join(" · ");
+    const f = state.feed, q = f.quality_report || {}, run = nightRun();
+    const bad = f.sources.filter((s) => s.status !== "ok" && s.status !== "skipped");
+    const stale = !run || Date.now() - run.at > 30 * 3600e3;   // langer dan 30 uur geen uitleg = nachtrun gemist
+    const failed = f.mode === "failed" || f.mode === "stale";
+    const color = failed ? "var(--bad)" : stale || bad.length ? "var(--warn)" : "var(--ok)";
+    const plural = (n, a, b) => `${n} ${n === 1 ? a : b}`;
+    const head = failed ? `<strong>Ophalen mislukt.</strong> ${esc(f.mode_note || "")}`
+      : stale ? `<strong>Vannacht niet bijgewerkt.</strong> Laatste nieuws van ${esc(run ? fmtDateTime(new Date(run.at).toISOString()) : "onbekend")}.`
+      : `<strong>${bad.length ? `${plural(bad.length, "bron gaf", "bronnen gaven")} niets` : "Alles werkt."}</strong> Laatste nachtrun ${esc(fmtDateTime(new Date(run.at).toISOString()))}: ${plural(run.articles, "artikel", "artikelen")} uitgelegd${run.deepdives ? `, ${plural(run.deepdives, "verdieping", "verdiepingen")} geschreven` : ""}.`;
+    const why = { below_threshold: (x) => `score net te laag (${x.relevance_score})`, source_cap: () => `al ${f.quality_report?.max_per_source || 8} artikelen van deze bron` };
+    const near = (q.not_shown || []).filter((x) => why[x.decision]).sort((a, b) => b.relevance_score - a.relevance_score).slice(0, 5);
     openReader(`
-      <div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Feedcontrole</span></div></div>
+      <div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug naar de feed"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Status</span></div></div>
       <div class="wrap report" style="padding-block:18px 60px">
-        <h1>Feedcontrole</h1>
-        <p style="color:var(--muted)">Hier zie je of de feed goede, actuele artikelen oplevert: welke bronnen werken, wat er is weggefilterd en waarom.</p>
-        <div class="status" style="margin:12px 0"><span class="dot" style="background:${(MODE[f.mode] || MODE.partial).color}"></span><span><strong>${esc((MODE[f.mode] || {}).label || f.mode)}</strong><br>${esc(f.mode_note || "")}</span></div>
-        <div class="stats">
-          <div class="stat"><b>${q.fetched_items ?? 0}</b><span>opgehaald</span></div>
-          <div class="stat"><b>${q.merged_duplicates ?? 0}</b><span>dubbel samengevoegd</span></div>
-          <div class="stat"><b>${q.shown ?? 0}</b><span>in de feed (drempel ${q.threshold ?? "?"})</span></div>
-          <div class="stat"><b>${q.processing?.enriched ?? 0}</b><span>uitgelegd door AI</span></div>
-          <div class="stat"><b>${q.without_date ?? 0}</b><span>zonder publicatiedatum</span></div>
-        </div>
-        ${fbLearned()}
-        <section class="block"><h2>Verdeling over onderwerpen</h2><p style="font-size:.92rem">${perGroup || "–"}</p></section>
-        ${noSrc.length ? `<section class="block"><h2>Onderwerpen zonder bron</h2><p style="font-size:.92rem">${esc(noSrc.join(", "))}. Hierover kan de feed alleen toevallig iets vinden.</p></section>` : ""}
-        ${flags ? `<section class="block"><h2>Datums om te controleren</h2><ul>${flags}</ul></section>` : ""}
-        <section class="block"><h2>AI-verwerking</h2><p style="font-size:.92rem">${enr.api_key_present ? `${enr.processed} nieuwe artikelen verwerkt${enr.failed?.length ? `, ${enr.failed.length} mislukt` : ""}.` : `Geen API-sleutel ingesteld: ${enr.skipped_no_key ?? 0} artikelen bleven onverwerkt. Bestaande uitleg wordt hergebruikt.`}</p></section>
-        <section class="block"><h2>Bronnen</h2><div class="tbl"><table><thead><tr><th>Bron</th><th>Status</th><th>Items</th><th>Toelichting</th></tr></thead><tbody>${srcRows}</tbody></table></div></section>
-        <section class="block"><h2>Niet getoond</h2><div class="tbl"><table><thead><tr><th>Artikel</th><th>Reden</th><th>Score</th></tr></thead><tbody>${hidden || `<tr><td colspan="3">Niets weggefilterd.</td></tr>`}</tbody></table></div></section>
+        <h1>Status</h1>
+        <div class="status" id="run-status" style="margin:12px 0"><span class="dot" style="background:${color}"></span><span>${head}</span></div>
+        ${bad.length ? `<section class="block"><h2>Bronnen met een probleem</h2><ul>${bad.map((s) => `<li><strong>${esc(s.name)}</strong>: ${esc(s.message || SRC_STATUS[s.status] || s.status)}</li>`).join("")}</ul></section>` : ""}
+        <section class="block"><h2>Net niet in je feed</h2>${near.length ? `<ul class="near">${near.map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><span>${esc(source(x.source_id).name)} · ${esc(why[x.decision](x))}</span></li>`).join("")}</ul>` : `<p style="font-size:.92rem;color:var(--muted)">Niets dat er net buiten viel.</p>`}</section>
+        <section class="block"><details class="all-src"><summary>Alle bronnen (${f.sources.length})</summary><ul>${f.sources.map((s) => `<li><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span> ${esc(s.name)} <span style="color:var(--muted)">· ${s.items ?? 0} items</span></li>`).join("")}</ul></details></section>
       </div>`);
   }
+
 
   /* ---- Navigatie (#a-<id> en #feedcontrole) ---- */
   function openReader(html) {

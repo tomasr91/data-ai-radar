@@ -261,8 +261,8 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
     check("   geen tabje Begrippen meer", "Begrippen" not in page.locator("#seg-dd").inner_text())
     page.click("#btn-menu")
-    check("   tandwiel opent menu met Mijn interesses, Begrippen en Feedcontrole", page.locator("#menu-sheet").is_visible()
-          and [t.split("\n")[0] for t in page.locator("#menu-sheet a").all_inner_texts()] == ["Mijn interesses", "Begrippen", "Feedcontrole"])
+    check("   tandwiel opent menu met Mijn interesses, Begrippen en Status", page.locator("#menu-sheet").is_visible()
+          and [t.split("\n")[0] for t in page.locator("#menu-sheet a").all_inner_texts()] == ["Mijn interesses", "Begrippen", "Status"])
     page.click('#menu-sheet a[href="#begrippen"]')
     page.wait_for_selector("#reader .gl-item")
     check("   menu > Begrippen opent de woordenlijst, menu dicht", page.locator("#reader .gl-item").count() == 2 and not page.locator("#menu-sheet").is_visible())
@@ -490,13 +490,16 @@ with sync_playwright() as p:
     check("   examen blijft geladen bij terugkeren", page.locator("#leren-frame").count() == 1 and page.locator("#leren").is_visible())
     page.click('#seg-view button[data-v="actueel"]')
 
-    # 7. Feedcontrole toont mislukte bronnen
+    # 7. Status (was Feedcontrole): één statusregel, alleen probleembronnen, net niet in de feed, alle bronnen ingeklapt
     page.goto(url + "#feedcontrole")
-    page.wait_for_selector("#reader .tbl")
-    rows = page.locator("#reader .tbl").first.locator("tbody tr").count()
-    check("7. feedcontrole toont alle bronnen met status", rows == len(feed["sources"]))
+    page.wait_for_selector("#reader #run-status")
+    st = page.locator("#run-status").inner_text()
+    check("7. status toont de nachtrun in één regel", ("Laatste nachtrun" in st or "niet bijgewerkt" in st or "mislukt" in st), st)
+    check("   alle bronnen ingeklapt, met status", page.locator("#reader details.all-src li").count() == len(feed["sources"])
+          and not page.locator("#reader details.all-src li").first.is_visible())
     failed = [s for s in feed["sources"] if s["status"] == "failed"]
-    check("7. mislukte bronnen zichtbaar, rest geladen", (not failed or page.locator(".st.failed").count() == len(failed)) and len(arts) > 0)
+    check("7. mislukte bronnen zichtbaar, rest geladen", (not failed or "Bronnen met een probleem" in page.locator("#reader").inner_text()) and len(arts) > 0)
+    check("   geen technische blokken meer", all(x not in page.locator("#reader").inner_text() for x in ["dubbel samengevoegd", "API-sleutel", "Verdeling over onderwerpen"]))
     if SHOTS:
         page.screenshot(path=str(SHOTS / "3-feedcontrole.png"))
 

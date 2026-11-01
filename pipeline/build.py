@@ -260,6 +260,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "invalid_weekly": invalid_weekly,
             "invalid_interest_suggestions": invalid_suggestions,
             "threshold": round(conf.scoring.get("min_relevance_score", 0.5) * 100),
+            "max_per_source": conf.scoring.get("max_articles_per_source"),
             "not_shown": [{"title": a["title"], "source_id": a["source_id"], "url": a["url"],
                            "relevance_score": a["relevance_score"], "decision": a["decision"],
                            "excluded_by": a.get("excluded_by", [])}
