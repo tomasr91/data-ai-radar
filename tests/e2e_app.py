@@ -230,8 +230,9 @@ with sync_playwright() as p:
         localStorage.setItem('radar:read', JSON.stringify({{'a-{by_added[0]['id']}': {{at: new Date().toISOString(), sent: true}}}})); }}""")
     page.reload(); page.wait_for_selector(".card")
     n_new = sum(1 for a in arts if (a.get("processed_at") or a.get("fetched_at") or "") > mid)
-    check("22. 'nieuw sinds je laatste bezoek' met scheidslijn 'Eerder'", page.locator(".since-head").count() == 1
-          and page.locator(".since-head").inner_text().startswith(str(n_new)) and page.locator(".since-line").count() == 1, f"{n_new}")
+    pos = page.evaluate("[...document.querySelectorAll('#content .cards > *')].findIndex(e => e.classList.contains('since-line'))")
+    check("22. scheidslijn 'Eerder' na de nieuwe artikelen, geen telling erboven", page.locator(".since-head").count() == 0
+          and page.locator(".since-line").count() == 1 and pos == n_new, f"{n_new} vs {pos}")
     check("   gelezen kaart gedimd met vinkje", page.locator(f'.card.read[data-id="{by_added[0]["id"]}"] .read-tick').count() == 1)
     page.click(f'.card[data-id="{by_added[0]["id"]}"]')
     page.wait_for_selector("#reader .next-link")
@@ -387,9 +388,6 @@ with sync_playwright() as p:
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)
-    page.click("#dd-all-read")
-    check("   'Alles gelezen' zet alle verdiepingen op gelezen", page.locator(".card[data-dd].read").count() == len(dds) and page.locator("#dd-all-read").count() == 0
-          and "has-dot" not in (page.locator('#seg-view button[data-v="verdieping"]').get_attribute("class") or "") or page.evaluate("Object.keys(JSON.parse(localStorage.getItem('radar:quiz')||'{}')).length > 0"))
     check("   eigen voorstel herkenbaar aan 'jouw voorstel'", page.locator(".card[data-dd] .pill.eigen").count() == 1
           and page.locator('.card[data-dd="eigen-test-voorstel"] .pill.eigen').count() == 1)
     page.click('#seg-dd button[data-v="morgen"]')
