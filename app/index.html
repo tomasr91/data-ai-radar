@@ -596,7 +596,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return ref - Date.parse(a.published_at) <= days * 864e5;
   }
   function matches(a) {
-    if (fb.get(a.id)?.v === -1) return false;   // duim omlaag: weg uit je lijst
     if (state.group !== "all" && !(a.groups || []).includes(state.group)) return false;
     if (!inPeriod(a)) return false;
     if (state.q) {
@@ -728,7 +727,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const ts = state.feed.trends || [];
     if (!ts.length) return `<div class="empty" style="margin-top:14px"><h3>Nu geen trends</h3><p>Een trend verschijnt als minstens drie artikelen uit verschillende bronnen over dezelfde ontwikkeling gaan. Claude kijkt daar elke ochtend naar.</p></div>`;
     return `<p class="pick-note">Waar meerdere bronnen nu tegelijk over schrijven.</p>` + ts.map((t) => {
-      const arts = t.article_ids.map((id) => state.byId.get(id)).filter((a) => a && fb.get(a.id)?.v !== -1);
+      const arts = t.article_ids.map((id) => state.byId.get(id)).filter(Boolean);
       const srcs = new Set(arts.map((a) => a.source_id)).size;
       return `<section class="trend card" data-trend="${esc(t.id)}">
         <div class="meta"><span class="src">Dit speelt nu</span><span>${arts.length} artikelen · ${srcs} bronnen</span></div>
@@ -1342,8 +1341,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <button type="button" data-vote="1" aria-pressed="${mine?.v === 1}" aria-label="Nuttig" title="Nuttig">👍</button>
         <button type="button" data-vote="-1" aria-pressed="${mine?.v === -1}" aria-label="Niet voor mij" title="Niet voor mij">👎</button>
       </div>
-      ${reasons ? `<div class="fb-reasons">${Object.entries(reasons).map(([k, l]) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${l}</button>`).join("")}</div>
-      ${mine.v === -1 ? `<p class="fb-note">Dit artikel verdwijnt uit je lijst.</p>` : ""}` : ""}`;
+      ${reasons ? `<div class="fb-reasons">${Object.entries(reasons).map(([k, l]) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${l}</button>`).join("")}</div>` : ""}`;
   }
   function fbClick(e) {
     const box = e.target.closest("#fb"); if (!box) return;

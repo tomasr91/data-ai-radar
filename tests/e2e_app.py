@@ -200,8 +200,8 @@ with sync_playwright() as p:
     check("   reden te kiezen na duim omlaag", page.locator('#fb [data-reason="te_basic"][aria-pressed="true"]').count() == 1)
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
-    check("   artikel met duim omlaag verdwijnt uit de lijst", page.locator(f'.card[data-id="{enriched["id"]}"]').count() == 0
-          and page.locator(".card[data-id]").count() == len(arts) - 1)
+    check("   artikel met duim omlaag blijft in de lijst", page.locator(f'.card[data-id="{enriched["id"]}"]').count() == 1
+          and page.locator(".card[data-id]").count() == len(arts))
     sh = page.locator("#fb-send").get_attribute("href") or ""
     from urllib.parse import unquote
     body = unquote(sh)

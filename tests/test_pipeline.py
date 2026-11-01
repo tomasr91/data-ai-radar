@@ -601,7 +601,7 @@ class TestFeedback(unittest.TestCase):
         self.assertLess(tuned["relevance_score"], plain)
         self.assertLessEqual(plain - tuned["relevance_score"], 15)
         down = score_article(dict(a), conf, NOW, prefs, {a["id"]: {"v": -1}})
-        self.assertEqual(down["decision"], "hidden_by_feedback")
+        self.assertNotEqual(down.get("decision"), "hidden_by_feedback")   # duim omlaag haalt het artikel niet weg
 
 
 class TestTrends(unittest.TestCase):

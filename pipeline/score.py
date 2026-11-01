@@ -132,15 +132,12 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         if fb:
             parts["feedback"] = fb
             total = min(1.0, max(0.0, total + FB_WEIGHT * fb))
-    my_vote = (votes or {}).get(article.get("id"), {}).get("v")
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})
     threshold = sc.get("min_relevance_score", 0.5)
     if excluded:
         decision = "excluded"
-    elif my_vote == -1:
-        decision = "hidden_by_feedback"   # jij gaf een duim omlaag
     elif not topic_ids:
         decision = "no_topic"
     elif total >= threshold:
