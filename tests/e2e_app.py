@@ -119,6 +119,8 @@ with sync_playwright() as p:
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" not in upd and re.search(r"\d{1,2} \w+.*\d{2}:\d{2}", upd, re.S) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
+    check("   bij openen: Actueel en Nieuw", page.locator('#seg-view button[aria-selected="true"]').inner_text() == "Actueel"
+          and page.locator('#seg-sort button[aria-pressed="true"]').inner_text() == "Nieuw")
     check("   filters Nieuw en Trends (Relevant is weg)", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Trends"])
     ids = page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.id)")
     check("10. geen dubbele artikelen in de lijst", len(ids) == len(set(ids)))
@@ -466,7 +468,7 @@ with sync_playwright() as p:
     check("   Download back-up zet een bestand met je voortgang in je downloads",
           d.suggested_filename.startswith("academy-voortgang-") and '"claude-certification-academy"' in body, d.suggested_filename)
     page.evaluate("localStorage.removeItem('cca-academy-v2')")
-    page.reload(); page.wait_for_selector("#leren-frame")
+    page.reload(); page.wait_for_selector(".card"); page.click('#seg-view button[data-v="leren"]'); page.wait_for_selector("#leren-frame")
     check("   regel 'Nieuwe artikelen' alleen bij Actueel", not page.locator("#upd").is_visible())
     page.click('#seg-view button[data-v="actueel"]')
     y_a = page.evaluate("document.querySelector('svg.mark').getBoundingClientRect().y")

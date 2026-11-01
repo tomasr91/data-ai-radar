@@ -496,9 +496,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       state.feed = feed;
       feed.articles.forEach((a) => state.byId.set(a.id, a));
       (feed.deepdives || []).forEach((d) => state.ddById.set(d.id, d));
-      state.sort = store.get("sort", "date") === "trends" ? "trends" : "date";   // tabje Relevant is weg (1-11-2026)
-      state.view = ["verdieping", "leren"].includes(store.get("view", "actueel")) ? store.get("view", "actueel") : "actueel";
-      state.ddTab = ["morgen", "later"].includes(store.get("ddTab", "alle")) ? store.get("ddTab", "alle") : "alle";
+      // Bij openen altijd: Actueel > Nieuw, en Verdieping op Verdiepingen (T, 1-11-2026).
+      // Binnen een sessie onthoudt de app wel waar je was.
+      state.sort = "date"; state.view = "actueel"; state.ddTab = "alle";
       renderStatus();
       renderSeg();
       updateMenuDot();
