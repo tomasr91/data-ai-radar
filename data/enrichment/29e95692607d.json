@@ -1,0 +1,88 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "29e95692607d",
+  "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
+  "headline": "Fivetran en dbt zetten de context voor agents als gewone tabellen in je warehouse",
+  "summary": "Fivetran bouwt een contextlaag die kennis uit documenten, apps en dbt koppelt. Die context staat als open tabellen in het warehouse, en elke AI-tool leest hem via MCP.",
+  "story": [
+    "Een simpele vraag als 'wat was onze jaaromzet eind augustus' valt voor een agent uiteen in veel kleine vragen. Welke omzet bedoel je, tellen diensten mee, welke tabel is leidend, en wie mag het zien? Op dbt Summit lieten Ben Moser (dbt Labs) en Kevin Kim (Fivetran) zien hoe ze die context willen vastleggen.",
+    "Het dbt-project is daarbij de eerste kaart: modellen, tests, documentatie en lineage. Maar veel kennis staat erbuiten, in tickets, Slack en verkoopgesprekken. De Fivetran Context Layer leest bronnen als Notion, Salesforce, Postgres en dbt, en bouwt er een zoekindex en een ontologie van. Zo kan een omzettabel in Postgres gekoppeld worden aan een omzetdocument in Notion.",
+    "De context komt niet achter een eigen koppeling te zitten, maar als gewone tabellen in het warehouse: het Agents Schema. Een hoofdtabel werkt als inhoudsopgave. Een begrippentabel bewaart interne afkortingen, zodat een agent niet hoeft te raden wat 'HRBP' betekent. Elke AI-tool kan die tabellen via MCP lezen. Een nieuwe functie, Traces, laat zien waar de agent twijfelde of context miste.",
+    "Het idee past bij je AI-contextlaag: een begrippentabel en een inhoudsopgave kun je ook zelf in Unity Catalog maken, als gewone tabel naast je dbt-modellen. Het artikel blijft wel bij concepten. Er staan geen cijfers, geen code en geen status van de producten in."
+  ],
+  "key_facts": [
+    "Verslag van een sessie op dbt Summit 2026 door Ben Moser (dbt platform, dbt Labs) en Kevin Kim (productmanager, Fivetran).",
+    "De Fivetran Context Layer koppelt kennisbronnen (Notion, Confluence), operationele bronnen (Salesforce, HubSpot, Postgres) en analysebronnen (dbt, Sigma), met een zoekindex en een afgeleide ontologie.",
+    "Agents Schema: context als open tabellen in het warehouse, op te vragen via MCP, met een hoofdtabel (inhoudsopgave) en een begrippentabel (interne afkortingen).",
+    "Traces toont waar een agent weinig vertrouwen had of context miste.",
+    "Het artikel noemt geen beschikbaarheid, cijfers of code."
+  ],
+  "personal_relevance": "Een begrippentabel als gewone tabel is een kleine, concrete bouwsteen voor je AI-contextlaag.",
+  "experiment": "Maak een begrippentabel met tien verzonnen interne afkortingen en hun bron-tabel, en kijk of een AI-assistent met die tabel betere antwoorden geeft op vragen met die afkortingen. Gebruik geen werkdata.",
+  "limitations": [
+    "Promotioneel verslag van twee inmiddels gefuseerde bedrijven; de producten zijn niet onafhankelijk getest.",
+    "Geen status of datum: onduidelijk wat nu al te gebruiken is.",
+    "Context uit Slack of tickets kan gevoelige informatie bevatten; dat vraagt om toegangsregels."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
+  ],
+  "quality": {
+    "depth": 0.4,
+    "practicality": 0.55,
+    "novelty": 0.5
+  },
+  "development_key": "fivetran-context-layer-agents-schema",
+  "terms": [
+    {
+      "term": "ontologie",
+      "explanation": "Een vastgelegd overzicht van begrippen en hoe ze samenhangen, zoals 'een opname hoort bij één patiënt en één afdeling'. Een AI kan zo verbanden opzoeken."
+    },
+    {
+      "term": "Agents Schema",
+      "explanation": "Een schema van Fivetran met gewone tabellen vol context voor AI-agents, zoals een inhoudsopgave en een lijst met interne begrippen."
+    },
+    {
+      "term": "MCP",
+      "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "Traces",
+      "explanation": "Een functie die per vraag laat zien welke stappen de agent zette en waar hij twijfelde of context miste."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo werkt het idee van een begrippentabel: voordat een agent een vraag over 'ARR' beantwoordt, zoekt hij eerst op wat het begrip betekent en welke tabel leidend is.",
+    "language": "sql",
+    "code": "CREATE TABLE begrippen AS SELECT * FROM (VALUES\n  ('HRBP', 'HR business partner: vaste HR-contactpersoon van een afdeling', 'hr.dim_medewerker'),\n  ('SKO',  'Sales kick-off: jaarlijkse startbijeenkomst van verkoop', 'agenda.events'),\n  ('ARR',  'Jaarlijkse terugkerende omzet, zonder diensten', 'finance.fct_arr')\n) AS t(begrip, betekenis, bron_tabel);\n\n-- Wat een agent opvraagt voordat hij een vraag over 'ARR' beantwoordt:\nSELECT begrip, betekenis, bron_tabel\nFROM begrippen\nWHERE begrip IN ('ARR', 'HRBP')\nORDER BY begrip;",
+    "result": {
+      "columns": [
+        "begrip",
+        "betekenis",
+        "bron_tabel"
+      ],
+      "rows": [
+        [
+          "ARR",
+          "Jaarlijkse terugkerende omzet, zonder diensten",
+          "finance.fct_arr"
+        ],
+        [
+          "HRBP",
+          "HR business partner: vaste HR-contactpersoon van een afdeling",
+          "hr.dim_medewerker"
+        ]
+      ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; hoe het Agents Schema van Fivetran er precies uitziet, staat niet in het artikel."
+  }
+}

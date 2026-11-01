@@ -36,5 +36,15 @@
   "format_version": 2,
   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
   "processed_at": "2026-10-28T21:00:00Z",
-  "prompt_version": "stijl-v2"
+  "prompt_version": "stijl-v2",
+  "terms": [
+    {
+      "term": "dbt State",
+      "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+      "term": "dbt v2",
+      "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
+    }
+  ]
 }

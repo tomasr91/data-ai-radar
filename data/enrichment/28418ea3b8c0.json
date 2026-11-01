@@ -43,5 +43,23 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-30T06:45:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "materializations",
+      "explanation": "Het recept dat dbt gebruikt om een model te bouwen, zoals tabel, view of incrementeel. Je kunt er ook zelf een schrijven."
+    },
+    {
+      "term": "lineage",
+      "explanation": "De herkomst van data: welke tabellen en modellen van elkaar afhangen, van bron tot rapport."
+    },
+    {
+      "term": "post-hook",
+      "explanation": "SQL die dbt automatisch draait direct nadat een model is gebouwd, bijvoorbeeld om rechten te zetten."
+    },
+    {
+      "term": "state:modified+",
+      "explanation": "Een dbt-selectie die alleen gewijzigde modellen kiest, plus alles wat ervan afhangt."
+    }
+  ]
 }

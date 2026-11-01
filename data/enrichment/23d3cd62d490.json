@@ -55,5 +55,23 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:20:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "serverless compute",
+      "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    },
+    {
+      "term": "DBU",
+      "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent."
+    },
+    {
+      "term": "rate limits",
+      "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen."
+    },
+    {
+      "term": "system.billing.usage",
+      "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren."
+    }
+  ]
 }

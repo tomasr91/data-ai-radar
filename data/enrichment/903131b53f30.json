@@ -51,5 +51,23 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:20:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "real-time mode",
+      "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
+    },
+    {
+      "term": "micro-batches",
+      "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
+    },
+    {
+      "term": "ForEach-sink",
+      "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
+    },
+    {
+      "term": "Lakebase",
+      "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
+    }
+  ]
 }

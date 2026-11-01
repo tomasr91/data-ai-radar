@@ -44,5 +44,27 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-30T06:45:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "skill",
+      "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+      "term": "MCP",
+      "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "hooks",
+      "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+      "term": "Bedrock",
+      "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
+    },
+    {
+      "term": "eval council",
+      "explanation": "Bij KOHO een vaste verzameling echte vragen van analisten waarmee elke wijziging aan de assistent wordt getest."
+    }
+  ]
 }

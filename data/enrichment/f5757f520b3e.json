@@ -42,5 +42,23 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-30T06:45:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "ADBC",
+      "explanation": "Arrow Database Connectivity: een standaard om met databases te praten die data in kolomvorm doorgeeft, in plaats van rij voor rij."
+    },
+    {
+      "term": "Apache Arrow",
+      "explanation": "Een open formaat om tabeldata in kolommen in het geheugen te zetten, zodat programma's het zonder omzetten kunnen uitwisselen."
+    },
+    {
+      "term": "ODBC",
+      "explanation": "Een oudere standaard om vanuit een programma met een database te praten; data gaat rij voor rij."
+    },
+    {
+      "term": "driver",
+      "explanation": "Een stukje software dat de vertaling doet tussen een programma en een specifieke database."
+    }
+  ]
 }

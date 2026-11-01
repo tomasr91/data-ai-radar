@@ -1,0 +1,23 @@
+{
+  "week": "2026-W44",
+  "generated_at": "2026-11-01T04:00:00Z",
+  "intro": "Een week waarin bijna elke bron hetzelfde zei: een AI-agent wordt betrouwbaar door vaste context en een vaste controle, niet door een slimmer model.",
+  "highlights": [
+    {
+      "title": "Vaste definities en context naast de data maken AI-antwoorden betrouwbaar",
+      "why": "AWS, Checkr en dbt Labs lieten zien dat een agent die uit vastgelegde maatstaven en beschrijvingen kiest veel minder vaak misrekent dan een agent die zelf SQL schrijft. Voor je AI-contextlaag betekent dat: leg maatstaven één keer vast in metric views of de dbt semantic layer, en voeg alleen context toe waar een test aantoonbaar faalt.",
+      "article_ids": ["4dcd7af26dab", "a68aede0b61b", "67b79f31be0e"]
+    },
+    {
+      "title": "Genie haalt vanaf begin november zelf context uit je metric views en dashboards",
+      "why": "Genie Ontology wordt begin november algemeen beschikbaar en staat dan standaard aan, met alleen snippets uit assets waar de gebruiker rechten op heeft. Het is goed om vooraf te weten welke metric views en dashboards Genie straks als context gebruikt.",
+      "article_ids": ["94b4924597e5", "382e049710f1"]
+    },
+    {
+      "title": "Agents leveren beter werk met een vaste lus van bouwen, testen en vergelijken",
+      "why": "dbt Labs zag dat Claude 5.5 dbt al kent en dat de fouten uit het proces komen; hun agent Wizard bouwt daarom alleen gewijzigde modellen, test ze en vergelijkt de data met productie. Bij Claude Code kun je hetzelfde inrichten met skills, korte uitvoer en een vaste controlestap.",
+      "article_ids": ["c63f36899b14", "c33e4a9941ba", "4cc09a1d9883"]
+    }
+  ],
+  "focus": "Probeer in een dbt-project met openbare data één gewijzigd model te bouwen met --defer, zoals in het artikel over dbt Wizard, en kijk hoeveel tijd en uitvoer het scheelt ten opzichte van een volledige build."
+}

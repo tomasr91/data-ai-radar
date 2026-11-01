@@ -55,5 +55,27 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-31T09:20:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "skills",
+      "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+      "term": "harness",
+      "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+      "term": "CLAUDE.md",
+      "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
+    },
+    {
+      "term": "full refresh",
+      "explanation": "Een dbt-run die een incrementeel model helemaal opnieuw opbouwt in plaats van alleen nieuwe rijen toe te voegen."
+    },
+    {
+      "term": "dbt-project-evaluator",
+      "explanation": "Een dbt-pakket dat je project controleert op afspraken, zoals naamgeving, laagindeling en ontbrekende tests."
+    }
+  ]
 }

@@ -1,0 +1,108 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "984223f109f3",
+  "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+  "headline": "Een agent kan een juist feit aan de verkeerde bron toeschrijven",
+  "summary": "ProvenanceGuard controleert per bewering in een agent-antwoord of de genoemde bron die bewering echt bevat. Bestaande controles kijken alleen of het feit ergens staat.",
+  "story": [
+    "Een agent met MCP haalt informatie uit meerdere tools tegelijk. Bekende controles, zoals RAGAS, kijken of een bewering ergens in al die gevonden tekst staat. Ze kijken niet of het de bron is die het antwoord noemt. Onderzoekers van Multiverse Computing noemen die fout bronverwarring (cross-source conflation).",
+    "Hun voorbeeld: het antwoord zegt dat het klantdossier een terugbetaaltermijn van 30 dagen noemt. Die termijn staat wel in het beleidsdocument, maar niet in het dossier. Het feit klopt dus, maar de verwijzing niet. In een zorgdossier of een financiële toepassing kan dat net zo misleidend zijn als een verzonnen feit.",
+    "ProvenanceGuard draait na het antwoord, op het spoor (trace) van de agent, en houdt elke bron apart. Het knipt het antwoord in losse beweringen en zoekt per bewering de best passende bron. Een klein model controleert of die bron de bewering steunt; getallen en datums moeten er letterlijk in staan. Daarna vergelijkt het die bron met de bron die het antwoord noemt, en beslist: doorlaten of tegenhouden.",
+    "In een test op 361 beweringen uit een medische agent hield het 138 van de 139 foute beweringen tegen. Het hield ook 67 goede beweringen tegen, dus het is voorzichtig afgesteld. De juiste bron vond het in ongeveer 86% van de gevallen, maar bij bronnen die op elkaar lijken nog maar in de helft.",
+    "Voor een data-assistent op je dbt-documentatie is dit een bruikbare toets: laat de assistent per antwoord zijn bron noemen en controleer of die bron het ook echt zegt. Dat kan al met een eenvoudige controle op letterlijke waarden."
+  ],
+  "key_facts": [
+    "Blog van Multiverse Computing op Hugging Face, 29 september 2026; bijbehorend paper ProvenanceGuard (arXiv 2606.18037).",
+    "Stappen: beweringen splitsen, per bewering een bron kiezen (MiniLM), steun controleren (DeBERTa-NLI, letterlijke waarden verplicht), genoemde bron vergelijken, besluit doorlaten of tegenhouden.",
+    "Test op 361 door experts gelabelde beweringen uit 40 antwoorden van een medische agent: 138 van 139 foute beweringen tegengehouden, 67 goede ten onrechte gemarkeerd.",
+    "F1 voor tegenhouden: ProvenanceGuard 0,802, MiniCheck 0,783, RAGAS Faithfulness 0,758.",
+    "Juiste bron in ongeveer 86% van de gevallen; in de moeilijkere test met lijkende bronnen 50,3%.",
+    "Ongeveer een halve seconde extra per antwoord in de lokale opzet."
+  ],
+  "personal_relevance": "Een concrete controle voor een AI-assistent die moet zeggen waar zijn antwoord vandaan komt.",
+  "experiment": "Laat een AI-assistent tien vragen over twee openbare documenten beantwoorden met bronvermelding per zin. Controleer met een klein script of elke genoemde waarde letterlijk in de genoemde bron staat.",
+  "limitations": [
+    "Getest in één medisch domein, met lokale modellen; andere modellen moeten opnieuw worden afgesteld.",
+    "Er is geen volledige code vrijgegeven, alleen het paper en een poster.",
+    "De meeste herstelde antwoorden werden een standaardtekst in plaats van een verbeterd antwoord."
+  ],
+  "availability_status": "experimenteel",
+  "official_docs": [
+    {
+      "label": "Blogpost op Hugging Face",
+      "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source"
+    }
+  ],
+  "topics": [
+    "ai_evaluation_observability",
+    "ai_agents_rag",
+    "ai_in_healthcare"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.5,
+    "novelty": 0.7
+  },
+  "development_key": "provenanceguard-bronverificatie",
+  "terms": [
+    {
+      "term": "MCP",
+      "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "RAGAS",
+      "explanation": "Een open-source hulpmiddel om RAG-antwoorden te beoordelen, bijvoorbeeld of een antwoord steunt op de gevonden tekst."
+    },
+    {
+      "term": "bronverwarring",
+      "explanation": "Een fout waarbij een feit wel klopt, maar aan de verkeerde bron wordt toegeschreven."
+    },
+    {
+      "term": "trace",
+      "explanation": "Het vastgelegde spoor van wat een agent deed: welke tools hij aanriep en wat die teruggaven."
+    }
+  ],
+  "showcase": {
+    "caption": "Het idee in gewone SQL: een bewering mag alleen door als de waarde letterlijk in de bron staat die het antwoord noemt. Bewering b1 klopt wel, maar staat in de verkeerde bron.",
+    "language": "sql",
+    "code": "CREATE TABLE bronnen AS SELECT * FROM (VALUES\n  ('beleid',  'Terugbetaling kan binnen 30 dagen na aankoop.'),\n  ('account', 'Klant sinds 2021, laatste bestelling op 3 oktober.')\n) AS t(bron_id, tekst);\n\nCREATE TABLE beweringen AS SELECT * FROM (VALUES\n  ('b1', 'binnen 30 dagen', 'account'),\n  ('b2', 'binnen 30 dagen', 'beleid'),\n  ('b3', '3 oktober',       'account')\n) AS t(id, waarde, genoemde_bron);\n\nSELECT b.id, b.waarde, b.genoemde_bron,\n       (SELECT string_agg(bron_id, ', ') FROM bronnen s\n        WHERE s.tekst ILIKE '%' || b.waarde || '%') AS staat_in,\n       CASE WHEN EXISTS (SELECT 1 FROM bronnen s\n            WHERE s.bron_id = b.genoemde_bron\n              AND s.tekst ILIKE '%' || b.waarde || '%')\n            THEN 'doorlaten' ELSE 'tegenhouden' END AS besluit\nFROM beweringen b ORDER BY b.id;",
+    "result": {
+      "columns": [
+        "id",
+        "waarde",
+        "genoemde_bron",
+        "staat_in",
+        "besluit"
+      ],
+      "rows": [
+        [
+          "b1",
+          "binnen 30 dagen",
+          "account",
+          "beleid",
+          "tegenhouden"
+        ],
+        [
+          "b2",
+          "binnen 30 dagen",
+          "beleid",
+          "beleid",
+          "doorlaten"
+        ],
+        [
+          "b3",
+          "3 oktober",
+          "account",
+          "account",
+          "doorlaten"
+        ]
+      ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Dit bouwt alleen de controle op letterlijke waarden na; ProvenanceGuard gebruikt daarnaast embeddings en een NLI-model."
+  }
+}

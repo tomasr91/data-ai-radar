@@ -1,0 +1,101 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "3d41fbc3100a",
+  "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
+  "headline": "Eén data-engineer bouwt kredietbeoordeling die binnen een minuut rekent",
+  "summary": "Bij de Canadese fintech Keep zet één persoon bankdata via CDC binnen een seconde in het warehouse. dbt bewaakt de logica, en elke berekening krijgt de versie van de code mee.",
+  "story": [
+    "Keep geeft kleine bedrijven bankrekeningen, creditcards en leningen. De beoordeling van een aanvraag liep via een spreadsheet per bedrijf en duurde tot een werkdag. Scott Ziolko, het hele datateam in zijn eentje, bouwde een platform dat zo'n beoordeling binnen een minuut doorrekent.",
+    "Hij kocht de onderdelen die hij niet zelf wilde bouwen. Artie haalt wijzigingen uit de database van de app met wijzigingsregistratie (change data capture, CDC). Dat werkt als een kopie van een kasboek die elke nieuwe regel meteen overneemt, in plaats van elke nacht het hele boek over te schrijven. Binnen een seconde staat de bankhistorie van een nieuwe klant als JSON in Snowflake.",
+    "Daarna nemen streams en tasks van Snowflake het over: ze pakken de JSON uit zodra die binnenkomt. dbt-modellen rekenen kasstroom en risicokenmerken uit en bepalen wat één unieke transactie is. Dat is nodig, want klanten koppelen hun bank soms opnieuw, waardoor periodes elkaar overlappen.",
+    "Twee ideeën zijn ook buiten Snowflake bruikbaar. Elke berekening wordt opgeslagen met de git-hash van de code die haar maakte. Zo kan Ziolko de hele portefeuille met één regel SQL opnieuw doorrekenen met een nieuw risicomodel. En omdat realtime onderdelen stil kunnen falen, schreef hij eigen versheidstests (freshness tests) die weekenden en Canadese feestdagen negeren.",
+    "Voor jouw bronze-laag laat dit zien hoe CDC en ontdubbelen samengaan. Op Databricks heten de bouwstenen anders, maar de vraag is dezelfde: hoe weet je zeker dat een regel maar één keer meetelt, en dat een stille storing opvalt?"
+  ],
+  "key_facts": [
+    "Keep is een Canadese fintech; volgens Ziolko ongeveer 5.000 klanten en meer dan 1 miljard dollar aan kaarttransacties.",
+    "Stack: Artie (CDC uit Postgres en MongoDB naar Snowflake, binnen een seconde), Snowflake dynamic tables, streams en tasks, en dbt voor beheer en versies.",
+    "Bankhistorie komt via Flinks binnen: zes tot twaalf maanden, als JSON-document in MongoDB.",
+    "De verwerking na binnenkomst duurt betrouwbaar minder dan een minuut; de externe bankkoppeling kan tot 30 minuten duren, 95% is binnen 5 minuten klaar.",
+    "Elke beoordeling wordt opgeslagen met de git-hash van de code; eigen dbt-versheidstests negeren weekenden en Canadese feestdagen.",
+    "dbt-documentatie staat in Notion en is via MCP vindbaar voor collega's."
+  ],
+  "personal_relevance": "Een concreet voorbeeld van CDC en ontdubbelen, precies het ingestion-deel dat je nog wilt leren.",
+  "experiment": "Maak in DuckDB of een Databricks-notebook twee verzonnen imports die elkaar overlappen, ontdubbel ze met ROW_NUMBER, en sla bij het resultaat de git-hash van je script op in een extra kolom.",
+  "limitations": [
+    "De stack is Snowflake; de realtime onderdelen hebben op Databricks andere namen en werken anders.",
+    "Het artikel is een verslag van een praatje, zonder code of configuratie.",
+    "Ziolko levert zelf in op overzicht: storingen in de realtime stappen kunnen stil blijven."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [],
+  "topics": [
+    "data_ingestion",
+    "dbt_analytics_engineering",
+    "data_quality_observability"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.6,
+    "novelty": 0.55
+  },
+  "development_key": "keep-realtime-dbt-cdc",
+  "terms": [
+    {
+      "term": "change data capture",
+      "explanation": "Een manier van inladen waarbij je alleen de wijzigingen uit een bronsysteem overneemt (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
+    },
+    {
+      "term": "git-hash",
+      "explanation": "De unieke code die Git aan elke vastgelegde versie (commit) geeft. Sla je die op bij een uitkomst, dan weet je precies met welke code die is gemaakt."
+    },
+    {
+      "term": "versheidstests",
+      "explanation": "Controles of data op tijd binnenkomt, bijvoorbeeld 'de laatste regel is niet ouder dan een uur'. In dbt heet dat source freshness."
+    }
+  ],
+  "showcase": {
+    "caption": "Twee imports overlappen. Met ROW_NUMBER houd je per transactie alleen de eerste geladen regel over, zodat niets dubbel meetelt.",
+    "language": "sql",
+    "code": "CREATE TABLE transacties AS SELECT * FROM (VALUES\n  (DATE '2026-05-01', 'tx-101', DATE '2026-04-02', 120.00),\n  (DATE '2026-05-01', 'tx-102', DATE '2026-04-05', -45.50),\n  (DATE '2026-05-01', 'tx-103', DATE '2026-04-09', 300.00),\n  (DATE '2026-06-01', 'tx-102', DATE '2026-04-05', -45.50),\n  (DATE '2026-06-01', 'tx-103', DATE '2026-04-09', 300.00),\n  (DATE '2026-06-01', 'tx-104', DATE '2026-05-01', 80.00)\n) AS t(geladen_op, transactie_id, datum, bedrag);\n\n-- Twee imports overlappen, en elke transactie mag maar één keer meetellen.\nSELECT transactie_id, datum, bedrag, geladen_op AS eerst_geladen\nFROM transacties\nQUALIFY ROW_NUMBER() OVER (\n  PARTITION BY transactie_id ORDER BY geladen_op\n) = 1\nORDER BY transactie_id;",
+    "result": {
+      "columns": [
+        "transactie_id",
+        "datum",
+        "bedrag",
+        "eerst_geladen"
+      ],
+      "rows": [
+        [
+          "tx-101",
+          "2026-04-02",
+          120.0,
+          "2026-05-01"
+        ],
+        [
+          "tx-102",
+          "2026-04-05",
+          -45.5,
+          "2026-05-01"
+        ],
+        [
+          "tx-103",
+          "2026-04-09",
+          300.0,
+          "2026-05-01"
+        ],
+        [
+          "tx-104",
+          "2026-05-01",
+          80.0,
+          "2026-06-01"
+        ]
+      ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Het artikel toont geen code; dit bouwt het idee 'wat telt als één unieke transactie' na in gewone SQL. QUALIFY werkt ook in Databricks SQL."
+  }
+}

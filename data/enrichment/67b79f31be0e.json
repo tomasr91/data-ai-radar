@@ -1,0 +1,62 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "67b79f31be0e",
+  "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
+  "headline": "Noonan: met een semantische laag rekent een AI-analist veel minder vaak mis",
+  "summary": "Op dbt Summit vertelde Alex Noonan dat AI via een semantische laag 96 tot 100% goed antwoordde, tegen 80 tot 91% met losse SQL. Hoe dat gemeten is, staat er niet bij.",
+  "story": [
+    "Alex Noonan werkt bij dbt Labs en sprak op dbt Summit over AI die vragen over bedrijfsdata beantwoordt. Zijn team liet een model dezelfde vragen op twee manieren beantwoorden. Via een semantische laag met vaste maatstaven was 96 tot 100% goed. Met zelfgeschreven SQL op het schema was dat 80 tot 91%.",
+    "Volgens Noonan is het taalprobleem opgelost: een taalmodel begrijpt je woorden. Wat overblijft is verankering (grounding): weten wat 'omzet' of 'actieve klant' in jouw organisatie betekent. Elke procent verschil is voor hem een fout antwoord dat met stelligheid bij een collega belandt.",
+    "Hij noemt drie routes die naar elkaar toe groeien: een semantische laag met vaste maatstaven, een ontologie met begrippen en hun relaties, en een contextlaag die per vraag de juiste context bij elkaar zoekt. Daarnaast maakt hij onderscheid tussen vaste context die weinig verandert, zoals definities en skills, en zoekbare context voor grote hoeveelheden tekst, zoals tickets.",
+    "De rest van zijn verhaal gaat over de basis: tests, versheid, documentatie die ook een machine kan lezen, en een consistent model. Twee praktische tips: laat collega's de AI in een openbaar kanaal gebruiken, zodat fouten zichtbaar worden. En wees voorzichtig met een taalmodel als beoordelaar (LLM-as-judge), want die heeft dezelfde blinde vlekken.",
+    "Voor je AI-contextlaag bevestigt dit de lijn van eerdere artikelen: leg maatstaven vast in metric views of de dbt semantic layer en laat de assistent daaruit kiezen. Het cijfer zelf is wel een eigen meting van de leverancier, zonder uitleg over de opzet."
+  ],
+  "key_facts": [
+    "Noonan (senior developer experience advocate, dbt Labs): via een semantische laag 96–100% juiste antwoorden, met losse SQL op het schema 80–91%.",
+    "Welk model, hoeveel vragen en hoe er gescoord is, staat niet in het artikel.",
+    "Drie routes voor verankering: semantische laag, ontologie, en een contextlaag voor agents (waaraan Fivetran en dbt samen werken).",
+    "Tips: gebruik de AI in een openbaar kanaal zoals Slack; wees voorzichtig met LLM-as-judge.",
+    "Volgens het State of Analytics Engineering-rapport bouwt ongeveer de helft van de dbt-gebruikers aan vraag-en-antwoord met AI."
+  ],
+  "personal_relevance": "Onderbouwt waarom je AI-contextlaag op vaste definities moet steunen in plaats van op losse tabellen.",
+  "experiment": "Stel tien vragen over een openbare dataset twee keer aan een AI-assistent: één keer met alleen het schema, één keer met een paar vastgelegde maatstaven erbij. Tel hoe vaak het antwoord klopt.",
+  "limitations": [
+    "Het cijfer komt van dbt Labs zelf, zonder beschreven opzet; behandel het als indicatie.",
+    "Een samenvatting van een praatje, geen gepubliceerd onderzoek.",
+    "Een semantische laag helpt alleen bij vragen over maatstaven die erin staan."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.45,
+    "practicality": 0.65,
+    "novelty": 0.4
+  },
+  "development_key": "semantische-laag-ai-nauwkeurigheid",
+  "article_type": "opinie",
+  "author": "Alex Noonan, senior developer experience advocate bij dbt Labs",
+  "terms": [
+    {
+      "term": "verankering",
+      "explanation": "Een AI-antwoord laten steunen op vastgelegde kennis van jouw organisatie, zoals definities en bronnen, in plaats van op wat het model zelf denkt."
+    },
+    {
+      "term": "ontologie",
+      "explanation": "Een vastgelegd overzicht van begrippen en hoe ze samenhangen, zoals 'een opname hoort bij één patiënt en één afdeling'. Een AI kan zo verbanden opzoeken."
+    },
+    {
+      "term": "LLM-as-judge",
+      "explanation": "Een taalmodel dat de antwoorden van een ander model beoordeelt. Handig bij veel antwoorden, maar het kan dezelfde fouten maken."
+    }
+  ]
+}

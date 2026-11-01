@@ -51,5 +51,27 @@
   "article_type": "nieuws",
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-10-30T06:45:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "terms": [
+    {
+      "term": "contextvenster",
+      "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    },
+    {
+      "term": "context rot",
+      "explanation": "Het verschijnsel dat een agent slechter werkt als zijn contextvenster te vol raakt met oude of overbodige informatie."
+    },
+    {
+      "term": "progressive disclosure",
+      "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
+    },
+    {
+      "term": "subagent",
+      "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+      "term": "compaction",
+      "explanation": "Het samenvatten van een lang gesprek zodat het contextvenster weer ruimte heeft, terwijl de kern bewaard blijft."
+    }
+  ]
 }

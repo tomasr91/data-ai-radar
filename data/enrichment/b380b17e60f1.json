@@ -1,0 +1,65 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "b380b17e60f1",
+  "url": "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases",
+  "headline": "Elke pull request zijn eigen kopie van de productiedatabase, in een minuut",
+  "summary": "Snorkel AI geeft elke pull request een eigen tak van een Postgres-database in Lakebase, met echte data. Zo'n tak is in seconden klaar en ruimt zichzelf op.",
+  "story": [
+    "Snorkel AI wilde elke pull request testen op echte productiedata. Een kopie van de database terugzetten duurde twintig tot dertig minuten per keer. Met takken (branches) in Lakebase, de serverless Postgres van Databricks, is een testomgeving nu binnen een minuut klaar.",
+    "Een tak werkt als een kopie van een document die alleen de wijzigingen apart bewaart (copy-on-write). Het maken ervan is een kleine administratieve stap, hoe groot de database ook is. Elke tak schrijft bij Snorkel maar 5 tot 10 GB aan wijzigingen, en heeft eigen rekenkracht die naar nul zakt als niemand hem gebruikt.",
+    "De pipeline gaat zo. Een replicatietaak (AWS DMS) houdt de hoofdtak met CDC binnen ongeveer twee minuten gelijk aan productie. Opent iemand een pull request, dan maakt de CI-pipeline via de Lakebase-API een tak met een vervaltijd. De tests draaien daarop, inclusief migraties. Is de pull request klaar, dan verdwijnt de tak. De vervaltijd (TTL) is het vangnet als dat opruimen mislukt.",
+    "Ook de beveiliging is netjes geregeld. Ontwikkelaars loggen in met hun eigen account, de pipeline draait als service principal met kortlevende tokens, en de auditlog toont per query wie het was. Databricks stelt hetzelfde patroon voor bij AI-agents: elke taak een eigen tak, en je bekijkt de wijzigingen voordat je ze overneemt.",
+    "Voor jou is het vooral een goed voorbeeld van een release-stap met een tijdelijke testomgeving per wijziging. Met zorgdata moet je wel eerst nagaan of echte data in een testomgeving mag."
+  ],
+  "key_facts": [
+    "Geschreven door Yasamin Tari en Kartik Mathur (Databricks), 31 oktober 2026; klant is Snorkel AI.",
+    "Doel: een PR-tak binnen 60 seconden (p95), ongeveer 100 takken tegelijk; het artikel markeert het gemeten p95-cijfer zelf nog als te controleren.",
+    "Een kopie terugzetten van Aurora PostgreSQL duurde volgens het artikel ongeveer 20 minuten (elders: meer dan 30 minuten).",
+    "AWS DMS houdt de hoofdtak met CDC binnen ongeveer 2 minuten gelijk aan productie.",
+    "Per tak 5 tot 10 GB aan wijzigingen; van 100 takken zijn er naar verwachting 20 tot 30 tegelijk actief.",
+    "Uitgerold naar 60 tot 70 ontwikkelaars; CI gebruikt service principals met kortlevende OAuth-tokens."
+  ],
+  "personal_relevance": "Laat zien hoe een release pipeline per wijziging een eigen, tijdelijke testomgeving kan maken en weer opruimen.",
+  "experiment": "Maak in een eigen Azure DevOps-testproject een pipeline met twee stappen die bij een pull request een tijdelijk schema met een vervaldatum in de naam aanmaakt en het na afloop weer verwijdert. Gebruik alleen verzonnen data.",
+  "limitations": [
+    "Lakebase is een Postgres-database voor apps, niet je Delta-tabellen; het patroon geldt voor operationele databases.",
+    "Het artikel spreekt zichzelf tegen over enkele cijfers (1 of 2,5 TB, 20 of 30 minuten) en noemt geen status van de functies.",
+    "Echte productiedata in testomgevingen is bij zorgdata vaak niet toegestaan."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [],
+  "topics": [
+    "cicd_data_deployment",
+    "databricks_data_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.5,
+    "novelty": 0.65
+  },
+  "development_key": "lakebase-branching-ci",
+  "terms": [
+    {
+      "term": "copy-on-write",
+      "explanation": "Een techniek waarbij een kopie niets dupliceert tot er iets verandert. Alleen de gewijzigde stukken worden apart opgeslagen, dus een kopie maken gaat bijna meteen."
+    },
+    {
+      "term": "CDC",
+      "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
+    },
+    {
+      "term": "TTL",
+      "explanation": "Time to live: een vervaltijd. Na die tijd wordt iets vanzelf opgeruimd, ook als niemand eraan denkt."
+    },
+    {
+      "term": "service principal",
+      "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+    }
+  ]
+}

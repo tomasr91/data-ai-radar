@@ -1,0 +1,109 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-01T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "c33e4a9941ba",
+  "url": "https://docs.getdbt.com/blog/wizard-agent-harness",
+  "headline": "dbt Wizard: de omgeving om het model heen bepaalt of een agent goed werk levert",
+  "summary": "dbt Labs legt uit hoe hun agent Wizard werkt: eerst metadata, dan bouwen, testen en vergelijken, met helpers voor elk deel van de taak. Het doel is een werkende wijziging, geen eerste versie.",
+  "story": [
+    "Een codeeragent met de dbt MCP-server kan dbt-stappen leren, maar volgt ze niet altijd. dbt Labs bouwde daarom Wizard rond een harnas (harness): alles om het taalmodel heen. Het harnas bepaalt wat de agent weet, welke tools hij mag gebruiken, wanneer hij controleert en wanneer hij het een mens vraagt.",
+    "De agent begint niet met bestanden lezen. Hij vraagt eerst het dbt Information Schema op: views in DuckDB over de manifest, de catalog en de runresultaten. Daarin staan modellen, kolommen, lineage tot op kolomniveau, tests en contracten. Dat is als een plattegrond van het gebouw, in plaats van door elke kamer te lopen.",
+    "Daarna volgt een lus van bouwen en controleren. De agent compileert, leest fouten met regelnummer en past aan. Pas daarna draait een aparte controle-agent alleen de goedgekeurde modellen. Ongewijzigde modellen komen met uitstel (defer) uit productie, zodat het warehouse niet alles opnieuw bouwt. Ook de uitvoer is ingekort: een rapport van ongeveer 150 tokens in plaats van 1.300 voor dezelfde mislukte test.",
+    "Wizard verdeelt het werk over helpers (subagents): een verkenner die alleen leest, een uitvoerder, een controleur en een testschrijver. Wijzigingen ziet de gebruiker als diff, met impactanalyse en een vergelijking van de data tussen ontwikkeling en productie. Gevaarlijke opdrachten, zoals een volledige herbouw, vragen altijd om toestemming.",
+    "De cijfers komen uit Noonans eigen project: 57% van zijn pull requests waren reparaties, en stille fouten werden pas na gemiddeld 65 dagen gevonden. Met Wizard was 5% van de wijzigingen binnen 14 dagen aan reparatie toe, het laagst gemeten. Voor jouw werk met Claude Code is de les bruikbaar: geef de agent metadata, korte uitvoer en een vaste controlestap."
+  ],
+  "key_facts": [
+    "Door Jason Lin, Alex Noonan en Sam Ferguson (dbt Labs), 14 oktober 2026.",
+    "Vijf lagen: metadata en context, tools, skills en geheugen, subagents, veiligheid en review.",
+    "Het dbt Information Schema bestaat uit DuckDB-views over parquet-artefacten (manifest, catalog, run results, semantic manifest).",
+    "Een build met een mislukte test: ongeveer 150 tokens in het Wizard-rapport, 1.300 in gewone dbt-uitvoer en 21.000 in een interactieve terminalsessie.",
+    "Eigen project van Noonan (1 maart–3 oktober 2026): 174 dbt-modellen, 57% reparatie-PR's, stille fouten mediaan 65 dagen, luide fouten 1 dag; Wizard (met GLM 5.3) 5% vervolgreparaties binnen 14 dagen.",
+    "Wizard is beschikbaar in het dbt-platform en als CLI; Wizard Desktop heeft een wachtlijst."
+  ],
+  "personal_relevance": "Een concreet ontwerp voor een dbt-agent dat je kunt overnemen bij Claude Code: metadata eerst, beperkte uitvoer en een vaste controlestap.",
+  "experiment": "Laat Claude Code in een dbt-project met openbare data een model aanpassen en vraag het daarna alleen het gewijzigde model te bouwen met --defer. Vergelijk hoeveel uitvoer en tijd dat scheelt met een volledige build.",
+  "limitations": [
+    "De cijfers komen uit één persoonlijk project van een medewerker van dbt Labs, niet uit een onafhankelijke meting.",
+    "Het artikel zegt niet of Wizard als preview of algemeen beschikbaar geldt.",
+    "Wizard is een product van dbt Labs; bij Claude Code moet je zo'n harnas zelf opbouwen met skills en hooks."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "How Wizard works",
+      "url": "https://docs.getdbt.com/docs/dbt-ai/wizard-how-it-works"
+    },
+    {
+      "label": "Wizard CLI",
+      "url": "https://docs.getdbt.com/docs/dbt-ai/wizard-cli"
+    },
+    {
+      "label": "dbt Information Schema",
+      "url": "https://docs.getdbt.com/docs/build/dbt-information-schema"
+    },
+    {
+      "label": "Defer",
+      "url": "https://docs.getdbt.com/reference/node-selection/defer"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "dbt_analytics_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.75,
+    "novelty": 0.7
+  },
+  "development_key": "dbt-wizard-harness",
+  "terms": [
+    {
+      "term": "harnas",
+      "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+      "term": "dbt Information Schema",
+      "explanation": "Een set views over de bestanden die dbt na elke run maakt (zoals de manifest). Een agent kan daarin snel opzoeken welke modellen, kolommen en tests er zijn."
+    },
+    {
+      "term": "defer",
+      "explanation": "Een dbt-optie waarbij je alleen de gewijzigde modellen bouwt. Voor modellen die je niet selecteert, gebruikt dbt de versie uit productie."
+    },
+    {
+      "term": "subagents",
+      "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+      "term": "diff",
+      "explanation": "Een overzicht van wat er precies veranderd is tussen twee versies, regel voor regel."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo bouw en test je alleen het model dat je wijzigde. Modellen die je niet selecteert en die in je ontwikkelschema ontbreken, haalt dbt uit productie.",
+    "language": "bash",
+    "code": "# Alleen model_b bouwen; ref('model_a') wijst naar productie\ndbt run  --select \"model_b\" --defer --state path/to/artifacts\ndbt test --select \"model_b\" --defer --state path/to/artifacts",
+    "result": {
+      "columns": [
+        "situatie",
+        "gecompileerde SQL van model_b"
+      ],
+      "rows": [
+        [
+          "zonder --defer, model_a nooit gebouwd in dev",
+          "from dev_alice.model_a  (mislukt)"
+        ],
+        [
+          "met --defer",
+          "from prod.model_a"
+        ]
+      ]
+    },
+    "note": "De commando's en het voorbeeld met dev_alice en prod komen uit de officiële dbt-documentatie over defer; path/to/artifacts is de map met de manifest.json van productie."
+  }
+}
