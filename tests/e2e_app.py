@@ -241,12 +241,10 @@ with sync_playwright() as p:
     page.click("#reader .next-link")
     page.wait_for_function(f"location.hash === '{href}'")
     check("   Volgende opent dat artikel", page.locator("#reader article.full").count() == 1)
-    page.evaluate("localStorage.setItem('radar:read', JSON.stringify(Object.fromEntries(" + json.dumps(["v-" + d["id"] for d in dds]) + ".map(k => [k, {at: new Date().toISOString(), sent: true}]))))")
-    page.evaluate("localStorage.removeItem('radar:quiz')")
     page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
-    check("   geen puntje op Verdieping als alles gelezen is", "has-dot" not in (page.locator('#seg-view button[data-v="verdieping"]').get_attribute("class") or ""))
+    check("   geen puntje op het tabblad Verdieping", "has-dot" not in (page.locator('#seg-view button[data-v="verdieping"]').get_attribute("class") or ""))
     page.evaluate("localStorage.removeItem('radar:read'); localStorage.removeItem('radar:lastVisit')")
 
     # 17. Gelezen en Jouw week

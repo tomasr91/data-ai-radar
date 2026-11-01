@@ -113,7 +113,6 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .since-line { display: flex; align-items: center; gap: 10px; color: var(--muted); font-family: var(--f-meta); font-size: 0.72rem; margin: 6px 2px; }
 .since-line::before, .since-line::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 #seg-view button { position: relative; }
-#seg-view button.has-dot::after { content: ""; position: absolute; top: 2px; right: -9px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); }
 .next-link { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 12px; margin: 22px 0 8px; padding: 14px 16px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
 .next-link span { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
 .next-link b { grid-column: 1; font-weight: 650; line-height: 1.3; }
@@ -559,7 +558,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       renderStatus();
       renderSeg();
       updateMenuDot();
-      updateTabDots();
       keepStorage();
       route();
     } catch (e) {
@@ -618,13 +616,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return l;
   }
 
-  // Oranje puntje op het tabblad Verdieping: nieuwe ongelezen verdieping (laatste 3 dagen) of vragen om te herhalen
-  function updateTabDots() {
-    const f = state.feed; if (!f) return;
-    const fresh = (f.deepdives || []).some((d) => Date.now() - Date.parse(d.written_at) < 3 * 864e5 && !isRead("v-" + d.id));
-    const due = typeof quiz !== "undefined" && quiz.due().filter(qLookup).length > 0;
-    $('#seg-view button[data-v="verdieping"]')?.classList.toggle("has-dot", fresh || due);
-  }
   function renderSeg() {
     document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
     document.querySelectorAll("#seg-view button").forEach((b) => b.setAttribute("aria-selected", b.dataset.v === state.view));
@@ -1542,7 +1533,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function closeReader() {
     const r = $("#reader");
-    updateTabDots();
     if (r.hidden) return;
     r.hidden = true; r.innerHTML = "";
     document.body.style.overflow = "";
