@@ -1,53 +1,56 @@
 {
- "checked_at": "2026-10-29T11:07:42.718722Z",
+ "checked_at": "2026-11-01T11:04:47.875712Z",
  "sources": [
   {
-   "id": "extra:https://www.langchain.com/blog",
-   "url": "https://www.langchain.com/blog",
+   "id": "extra:https://blog.fabric.microsoft.com/en-us/blog/",
+   "url": "https://blog.fabric.microsoft.com/en-us/blog/",
    "found": {
-    "feed_url": "https://www.langchain.com/blog/rss.xml",
-    "items": 30,
-    "latest": "2026-10-28T21:40:23Z",
+    "feed_url": "https://blog.fabric.microsoft.com/en-us/blog/feed",
+    "items": 20,
+    "latest": "2026-10-29T21:00:00Z",
     "sample_titles": [
-     "How We Built LangChain’s Paid Media Agent",
-     "How We Built Our Design Agent",
-     "The Art of Loop Engineering"
+     "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
+     "Using Allow workspace settings editing policy in Fabric (Preview)",
+     "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)"
+    ],
+    "method": "rss"
+   },
+   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
+   "tried": 1
+  },
+  {
+   "id": "extra:https://www.sqlbi.com/articles/",
+   "url": "https://www.sqlbi.com/articles/",
+   "found": {
+    "feed_url": "https://feeds.feedburner.com/sqlbi_blog",
+    "items": 30,
+    "latest": "2026-10-27T11:00:00Z",
+    "sample_titles": [
+     "DAX LLM Benchmark v2.0 Trailer",
+     "DAX LLM Benchmark v2",
+     "Install DAX libraries into Power BI Desktop by asking your AI assistant"
     ],
     "method": "rss"
    },
    "page": "ok",
-   "tried": 4
+   "tried": 1
   },
   {
-   "id": "extra:https://blog.langchain.com/",
-   "url": "https://blog.langchain.com/",
+   "id": "extra:https://www.sqlbi.com/",
+   "url": "https://www.sqlbi.com/",
    "found": {
-    "feed_url": "https://blog.langchain.com/rss.xml",
+    "feed_url": "https://feeds.feedburner.com/sqlbi_blog",
     "items": 30,
-    "latest": "2026-10-28T21:40:23Z",
+    "latest": "2026-10-27T11:00:00Z",
     "sample_titles": [
-     "How We Built LangChain’s Paid Media Agent",
-     "How We Built Our Design Agent",
-     "The Art of Loop Engineering"
+     "DAX LLM Benchmark v2.0 Trailer",
+     "DAX LLM Benchmark v2",
+     "Install DAX libraries into Power BI Desktop by asking your AI assistant"
     ],
     "method": "rss"
    },
    "page": "ok",
-   "tried": 4
-  },
-  {
-   "id": "extra:https://www.anthropic.com/news",
-   "url": "https://www.anthropic.com/news",
-   "found": null,
-   "page": "ok",
-   "tried": 18
-  },
-  {
-   "id": "extra:https://www.anthropic.com/engineering",
-   "url": "https://www.anthropic.com/engineering",
-   "found": null,
-   "page": "ok",
-   "tried": 18
+   "tried": 1
   }
  ]
 }
