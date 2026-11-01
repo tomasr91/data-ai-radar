@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
 from pipeline import feedback  # noqa: E402
 from pipeline.build import DEFAULT_REPO  # noqa: E402
 
@@ -70,6 +71,18 @@ def parse_reads(body: str) -> list:
     return list(dict.fromkeys(str(x) for x in reads if re.fullmatch(r"[0-9a-f]{12}", str(x)))) if isinstance(reads, list) else []
 
 
+def parse_interests(body: str):
+    """Wijzigingen in de interesses uit hetzelfde JSON-blok ("interests": {...}); None als er niets is."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return None
+    from interest_requests import parse_obj  # noqa: E402  (zelfde regels als bij losse issues)
+    req = parse_obj(data.get("interests") or {})
+    return req if (req["answers"] or req["changes"] or req["note"]) else None
+
+
 def owner_issues(issues: list, owner: str) -> list:
     return [i for i in issues if "pull_request" not in i and TITLE_RE.match(i.get("title", ""))
             and (i.get("user") or {}).get("login", "").lower() == owner.lower()]
@@ -115,11 +128,20 @@ def main():
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
             }
+        req = parse_interests(issue.get("body", ""))
+        if req:
+            path = ROOT / "data" / "interest_requests.json"
+            queue = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"requests": []}
+            queue.setdefault("requests", []).append({"at": now, "issue": issue["number"], **req})
+            path.write_text(json.dumps(queue, ensure_ascii=False, indent=1), encoding="utf-8")
+            print(f"Feedback: issue #{issue['number']}: wijzigingen in de interesses klaargezet voor de nachtrun")
         total += len(votes)
         print(f"Feedback: issue #{issue['number']}: {len(votes)} beoordelingen, {len(reads)} gelezen")
         if token:
             msg = (f"Verwerkt: {len(votes)} beoordeling(en) en {len(reads)} gelezen artikel(en). De radar houdt er vanaf nu rekening mee."
                    if votes or reads else "Geen leesbare beoordelingen gevonden in dit issue.")
+            if req:
+                msg += " De wijzigingen in je interesses verwerkt Claude vannacht."
             _req(f"{API}/repos/{repo}/issues/{issue['number']}/comments", token, "POST", {"body": msg})
             _req(f"{API}/repos/{repo}/issues/{issue['number']}", token, "PATCH", {"state": "closed", "state_reason": "completed"})
     store["updated_at"] = now

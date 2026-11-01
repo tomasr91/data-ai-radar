@@ -233,6 +233,7 @@ with sync_playwright() as p:
     check("   Jouw week toont hoogtepunten, focus en leerweek", page.locator(".wk-list > li").count() == 2
           and "Deze week proberen" in wk and "Jouw leerweek" in wk and "Gelezen: 1 artikel" in wk, wk[:200])
     check("   hoogtepunt linkt naar zijn artikelen", page.locator(".wk-links a").count() == 3)
+    check("   herinnering voor de back-up in Jouw week", "Nog geen back-up gemaakt" in page.locator("#bk-remind").inner_text())
     sh = unquote(page.locator("#reader #fb-send").get_attribute("href") or "")
     check("   gelezen gaat mee met de feedback", f'"reads":["{rid}"]' in sh and "1 gelezen" in sh, sh[-120:])
     page.click("#reader #fb-send")
@@ -313,12 +314,18 @@ with sync_playwright() as p:
     check("   lampje aanzetten markeert het onderwerp als leeronderwerp", page.locator('.int-topic[data-topic="sql_spark_sql"] .row1 .int-lamp').count() == 1
           and "wordt leeronderwerp" in page.locator('.int-topic[data-topic="sql_spark_sql"]').inner_text())
     page.fill("#int-note", "Meer over Fabric")
-    sh = unquote(page.locator("#int-send").get_attribute("href") or "")
-    check("   versturen maakt issue 'Interesses:' met ja, minder en eigen woorden", "title=Interesses: 4 wijzigingen" in sh and '{"topic":"sql_spark_sql","c":"leren"}' in sh
-          and '{"id":"data-contracts","a":"ja"}' in sh and '{"topic":"open_source_tools","c":"minder"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-200:])
-    page.click("#int-send")
+    check("   op de pagina zelf alleen een verwijzing naar Actueel", page.locator("#int-to-send").count() == 1 and "Actueel" in page.locator("#int-to-send").inner_text())
+    page.click("#int-to-send")
+    page.wait_for_selector("#reader", state="hidden")
+    sh = unquote(page.locator("#content #fb-send").get_attribute("href") or "")
+    check("   één verstuurbalk op Actueel, met de interesses erin", "title=Feedback: 4 wijzigingen in je interesses" in sh and '"interests":' in sh
+          and '{"topic":"sql_spark_sql","c":"leren"}' in sh and '{"id":"data-contracts","a":"ja"}' in sh
+          and '{"topic":"open_source_tools","c":"minder"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-220:])
+    page.click("#content #fb-send")
     page.wait_for_timeout(500)
-    check("   na versturen: niets meer klaar, voorstel op 'verstuurd'", page.locator("#int-send").count() == 0 and "Verstuurd: ja" in page.locator('.int-sugg[data-sugg="data-contracts"]').inner_text())
+    page.goto(url + "#interesses")
+    page.wait_for_selector("#reader .int-topic")
+    check("   na versturen: niets meer klaar, voorstel op 'verstuurd'", page.locator("#int-to-send").count() == 0 and "Verstuurd: ja" in page.locator('.int-sugg[data-sugg="data-contracts"]').inner_text())
     page.click('.int-sugg[data-sugg="powerbi-omhoog"] [data-int-ans="nee"]')
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")

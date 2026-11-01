@@ -9,6 +9,10 @@ De app stuurt T's reacties als één GitHub-issue met een JSON-blok:
 Dit script zet de open issues van de eigenaar (de repository is openbaar; anderen tellen niet)
 om in een duidelijke werklijst voor de Claude-taak. Net als verdiepingen alleen 's nachts.
 Uitvoer per issue: VERWERKEN: issue #n + de verzoeken; of GEEN VERZOEKEN / NIET NU / ONBEKEND.
+
+Sinds 1-11-2026 gaan wijzigingen meestal mee in het gezamenlijke feedback-issue (verstuurbalk op
+Actueel). GitHub Actions zet ze dan in data/interest_requests.json; dit script leest die wachtrij ook.
+Na verwerken: zet die wachtrij leeg ({"requests": []}).
 """
 import json
 import re
@@ -32,6 +36,11 @@ def parse(body: str) -> dict:
         data = json.loads(m.group(1)) if m else {}
     except json.JSONDecodeError:
         data = {}
+    return parse_obj(data)
+
+
+def parse_obj(data: dict) -> dict:
+    data = data if isinstance(data, dict) else {}
     answers = [a for a in data.get("answers", []) if isinstance(a, dict) and a.get("a") in ("ja", "nee")
                and interests.ID_RE.match(str(a.get("id", "")))]
     changes = [c for c in data.get("changes", []) if isinstance(c, dict) and c.get("c") in CHANGES
@@ -51,6 +60,28 @@ def requests(issues: list, owner: str) -> list:
     return out
 
 
+QUEUE = ROOT / "data" / "interest_requests.json"
+
+
+def queued() -> list:
+    try:
+        data = json.loads(QUEUE.read_text(encoding="utf-8")) if QUEUE.exists() else {}
+    except json.JSONDecodeError:
+        return []
+    return [r for r in data.get("requests", []) if isinstance(r, dict)]
+
+
+def show(label: str, req: dict, sugg: dict):
+    print(label)
+    for a in req["answers"]:
+        s = sugg.get(a["id"])
+        print(f"  voorstel {a['id']}: {a['a'].upper()}" + (f"  -> {json.dumps(s, ensure_ascii=False)}" if s else "  (voorstel niet meer gevonden)"))
+    for c in req["changes"]:
+        print(f"  onderwerp {c['topic']}: {c['c']}")
+    if req["note"]:
+        print(f"  in eigen woorden: {req['note']}")
+
+
 def main():
     if not is_night():
         print("NIET NU: interesses worden alleen in de nachtrun aangepast. Verander niets aan interests.yml.")
@@ -62,21 +93,17 @@ def main():
         print(f"ONBEKEND: GitHub-issues niet bereikbaar ({str(e)[:100]}). Verander niets aan interests.yml.")
         return
     todo = requests(issues, repo.split("/")[0])
-    if not todo:
+    q = [parse_obj(r) | {"issue": r.get("issue")} for r in queued()]
+    if not todo and not q:
         print("GEEN VERZOEKEN: T heeft niets aan zijn interesses gevraagd.")
         return
     sugg = {}
     if interests.SUGGESTIONS.exists():
         sugg = {s["id"]: s for s in json.loads(interests.SUGGESTIONS.read_text(encoding="utf-8")).get("suggestions", [])}
+    for req in q:
+        show(f"VERWERKEN: uit de wachtrij (feedback-issue #{req['issue']}, al gesloten); zet daarna data/interest_requests.json op {{\"requests\": []}}", req, sugg)
     for number, req in todo:
-        print(f"VERWERKEN: issue #{number} (sluit met Closes #{number})")
-        for a in req["answers"]:
-            s = sugg.get(a["id"])
-            print(f"  voorstel {a['id']}: {a['a'].upper()}" + (f"  -> {json.dumps(s, ensure_ascii=False)}" if s else "  (voorstel niet meer gevonden)"))
-        for c in req["changes"]:
-            print(f"  onderwerp {c['topic']}: {c['c']}")
-        if req["note"]:
-            print(f"  in eigen woorden: {req['note']}")
+        show(f"VERWERKEN: issue #{number} (sluit met Closes #{number})", req, sugg)
 
 
 if __name__ == "__main__":

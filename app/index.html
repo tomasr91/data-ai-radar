@@ -863,7 +863,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const md = $("#menu-dot"); if (md) md.hidden = !n;
   }
   function intPending(d) { return Object.keys(d.answers).length + Object.keys(d.changes).length + Object.keys(d.learn).length + (d.note.trim() ? 1 : 0); }
-  function intIssueUrl(d) {
+  // Interesses gaan mee in het gezamenlijke feedback-issue (verstuurbalk op Actueel).
+  function intParts(d) {
     const topics = new Map((state.feed.interests?.topics || []).map((t) => [t.id, t.name]));
     const sugg = new Map((state.feed.interest_suggestions || []).map((x) => [x.id, x]));
     const lines = [
@@ -871,17 +872,16 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ...Object.entries(d.changes).map(([t, c]) => `- ${topics.get(t) || t}: ${c}`),
       ...Object.entries(d.learn).map(([t, on]) => `- ${topics.get(t) || t}: ${on ? "leeronderwerp (geel lampje)" : "geen leeronderwerp meer"}`),
       ...(d.note.trim() ? [`- In mijn eigen woorden: ${d.note.trim().replace(/\s+/g, " ")}`] : []),
-    ].join("\n");
-    const block = JSON.stringify({ answers: Object.entries(d.answers).map(([id, a]) => ({ id, a })),
+    ];
+    const data = { answers: Object.entries(d.answers).map(([id, a]) => ({ id, a })),
       changes: [...Object.entries(d.changes).map(([topic, c]) => ({ topic, c })),
-        ...Object.entries(d.learn).map(([topic, on]) => ({ topic, c: on ? "leren" : "niet_leren" }))], note: d.note.trim() });
-    const n = intPending(d);
-    const body = backLink("interesses") + `Aanpassingen aan mijn interesses uit de Data & AI Radar. Claude verwerkt dit bij de volgende nachtrun en sluit dit issue daarna.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
-    return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(`Interesses: ${n} wijziging${n === 1 ? "" : "en"}`)}&body=${encodeURIComponent(body)}`;
+        ...Object.entries(d.learn).map(([topic, on]) => ({ topic, c: on ? "leren" : "niet_leren" }))], note: d.note.trim() };
+    return { lines, data };
   }
+
   function intSendBar() {
-    const d = intStore.get(), n = intPending(d);
-    return n ? `<a class="fb-send" id="int-send" href="${esc(intIssueUrl(d))}" target="_blank" rel="noopener"><span>${n} wijziging${n === 1 ? "" : "en"} klaar om te versturen</span><b>Versturen ›</b></a>` : "";
+    const n = intPending(intStore.get());
+    return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je bovenaan Actueel</span><b>Naar Actueel ›</b></a>` : "";
   }
   const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
   // Effect van je duimpjes op artikelen over dit onderwerp (relatief, in punten)
@@ -937,11 +937,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (note) note.oninput = () => { const x = intStore.get(); x.note = note.value; intStore.save(x); $("#int-send-wrap").innerHTML = intSendBar(); };
   }
   function intClick(e) {
-    if (e.target.closest("#int-send")) {
-      const d = intStore.get();
-      Object.assign(d.sentAnswers, d.answers);
-      intStore.save({ answers: {}, changes: {}, learn: {}, note: "", sentAnswers: d.sentAnswers });
-      setTimeout(() => { if (location.hash === "#interesses") renderInterests(); updateMenuDot(); }, 300);
+    if (e.target.closest("#int-to-send")) {
+      e.preventDefault(); state.view = "actueel"; state.sort = "date"; renderSeg(); location.hash = "";
       return true;
     }
     const lb = e.target.closest("[data-int-learn]");
@@ -1011,6 +1008,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const blob = new Blob([JSON.stringify({ app: BK_APP, version: 1, exportedAt: new Date().toISOString(), data }, null, 1)], { type: "application/json" });
       const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `radar-backup-${new Date().toISOString().slice(0, 10)}.json`;
       document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      store.set("backupAt", new Date().toISOString());
       renderBackup({ ok: true, text: "Back-up staat in je Downloads." });
     };
     $("#bk-file").onchange = async (e) => {
@@ -1122,6 +1120,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       return { practised, mastered };
     } catch { return null; }
   }
+  // Herinnering in Jouw week als de laatste back-up meer dan 6 dagen oud is (of er nog geen is).
+  function backupReminder() {
+    const at = Date.parse(store.get("backupAt", "")) || 0, days = Math.floor((Date.now() - at) / 864e5);
+    if (at && days < 7) return "";
+    return `<a class="fb-send" href="#backup" id="bk-remind"><span>${at ? `Laatste back-up: ${days} dagen geleden` : "Nog geen back-up gemaakt"}</span><b>Nu bewaren ›</b></a>`;
+  }
   function renderWeek() {
     const w = state.feed.weekly, since = Date.now() - 7 * 864e5;
     const read = new Set(reads.since(0));
@@ -1146,7 +1150,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <p class="lead">${esc(w.intro)}</p>
       <section class="block"><h2>Wat er echt toe deed</h2><ol class="wk-list">${hl}</ol></section>
       ${w.focus ? `<section class="try"><h2>Deze week proberen</h2><p>${esc(w.focus)}</p></section>` : ""}
-      <section class="block"><h2>Jouw leerweek</h2><ul class="wk-stats">${stats}</ul>${fbSendBar(true)}</section>
+      <section class="block"><h2>Jouw leerweek</h2><ul class="wk-stats">${stats}</ul>${fbSendBar(true)}${backupReminder()}</section>
       </article>`);
   }
 
@@ -1275,26 +1279,34 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
-  function fbSummary(items, rd) {
-    return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : ""].filter(Boolean).join(", ");
+  function fbSummary(items, rd, ni = 0) {
+    return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : "",
+      ni ? `${plural(ni, "wijziging", "wijzigingen")} in je interesses` : ""].filter(Boolean).join(", ");
   }
+  // Eén issue voor alles wat nog naar de radar moet: duimpjes, gelezen en wijzigingen in je interesses.
+  // GitHub Actions verwerkt duimpjes direct; interesses zet het klaar voor de nachtrun (collect_feedback.py).
   function fbIssueUrl(items, rd = []) {
+    const di = intStore.get(), ni = intPending(di), ip = ni ? intParts(di) : null;
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
-      .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })), reads: rd });
+      .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
+      .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })), reads: rd, ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
-    const title = `Feedback: ${fbSummary(items, rd)}`;
+    const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
   function fbSendBar(always) {
-    const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id));
-    if (!items.length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
-    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items, rd))}" target="_blank" rel="noopener"><span>${esc(fbSummary(items, rd))} klaar om te versturen</span><b>Versturen ›</b></a>`;
+    const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
+    if (!items.length && !ni && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    return `<a class="fb-send" id="fb-send" href="${esc(fbIssueUrl(items, rd))}" target="_blank" rel="noopener"><span>${esc(fbSummary(items, rd, ni))} klaar om te versturen</span><b>Versturen ›</b></a>`;
   }
   function markSent() {
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
+    const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
+    intStore.save({ answers: {}, changes: {}, learn: {}, note: "", sentAnswers: di.sentAnswers });
+    updateMenuDot();
   }
 
   function renderArticle(a) {

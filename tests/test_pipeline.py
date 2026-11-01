@@ -417,6 +417,13 @@ class TestInterests(unittest.TestCase):
         bad = {"generated_at": "2026-11-08T04:40:00Z", "suggestions": [{"id": "x", "kind": "weg", "topic": "bestaat_niet", "why": "y"}] * 4}
         self.assertTrue(interests.validate_suggestions(bad, set(conf.topics)))
 
+    def test_interests_in_feedback_issue(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import collect_feedback as cf
+        body = 'x\n```json\n{"votes": [], "reads": [], "interests": {"answers": [{"id": "data-contracts", "a": "ja"}], "changes": [{"topic": "sql_spark_sql", "c": "leren"}], "note": ""}}\n```'
+        self.assertEqual(cf.parse_interests(body), {"answers": [{"id": "data-contracts", "a": "ja"}], "changes": [{"topic": "sql_spark_sql", "c": "leren"}], "note": ""})
+        self.assertIsNone(cf.parse_interests('x\n```json\n{"votes": []}\n```'))
+
     def test_requests_only_owner(self):
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
         import interest_requests as ir
