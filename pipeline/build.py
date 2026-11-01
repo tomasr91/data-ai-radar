@@ -62,10 +62,43 @@ def update_archive(items, now):
     return list(archive["items"].values())
 
 
-def skipped_ids():
-    """Artikelen die Claude niet kon verwerken (bijv. pagina onleesbaar) komen niet terug op de werklijst."""
+RETRY_AFTER_DAYS = 7
+RETRIED = cfg.DATA / "retried.json"
+
+
+def skipped_ids(now=None):
+    """Artikelen die Claude niet kon verwerken komen niet terug op de werklijst.
+    Uitzondering: was de pagina niet te lezen, dan na een week nog één keer proberen. retried.json houdt bij
+    wanneer een artikel die kans kreeg; schrijft Claude daarna opnieuw een overslag, dan blijft het weg."""
     d = enrich_mod.CACHE / "skipped"
-    return {p.stem for p in d.glob("*.json")} if d.exists() else set()
+    if not d.exists():
+        return set()
+    now = now or datetime.now(timezone.utc)
+    try:
+        retried = json.loads(RETRIED.read_text(encoding="utf-8"))
+        retried = retried if isinstance(retried, dict) else {}
+    except (OSError, ValueError):
+        retried = {}
+    skip, changed = set(), False
+    for p in d.glob("*.json"):
+        try:
+            x = json.loads(p.read_text(encoding="utf-8"))
+            reason = (x.get("reason") or "").lower()
+            at = datetime.fromisoformat(str(x.get("checked_at")).replace("Z", "+00:00"))
+        except (OSError, ValueError, TypeError):
+            skip.add(p.stem); continue
+        if p.stem in retried:
+            if at > datetime.fromisoformat(retried[p.stem].replace("Z", "+00:00")):
+                skip.add(p.stem)       # tweede poging ook mislukt: blijft weg
+            continue                   # kans loopt nog
+        unreadable = "niet te lezen" in reason or "geweigerd" in reason or "onleesbaar" in reason
+        if unreadable and now - at >= timedelta(days=RETRY_AFTER_DAYS):
+            retried[p.stem] = _iso(now); changed = True
+        else:
+            skip.add(p.stem)
+    if changed:
+        RETRIED.write_text(json.dumps(retried, indent=1, sort_keys=True), encoding="utf-8")
+    return skip
 
 
 def _iso(dt):

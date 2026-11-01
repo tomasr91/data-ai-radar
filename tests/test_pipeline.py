@@ -605,6 +605,29 @@ class TestFeedback(unittest.TestCase):
         self.assertNotEqual(down.get("decision"), "hidden_by_feedback")   # duim omlaag haalt het artikel niet weg
 
 
+class TestSkippedRetry(unittest.TestCase):
+    """Onleesbare pagina: na een week nog één keer op de werklijst; daarna niet meer."""
+
+    def test_unreadable_gets_one_retry(self):
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+        from pipeline import build, enrich
+        tmp = Path(tempfile.mkdtemp())
+        (tmp / "skipped").mkdir()
+        def put(i, reason, at):
+            (tmp / "skipped" / f"{i}.json").write_text(json.dumps({"article_id": i, "reason": reason, "checked_at": at}), encoding="utf-8")
+        put("aaaaaaaaaaaa", "Bronpagina niet te lezen: fout", "2026-10-20T03:00:00Z")
+        put("bbbbbbbbbbbb", "Niet mijn stack", "2026-10-20T03:00:00Z")
+        put("cccccccccccc", "Pagina niet te lezen", "2026-10-30T03:00:00Z")
+        now = datetime(2026, 11, 1, 12, tzinfo=timezone.utc)
+        with mock.patch.object(enrich, "CACHE", tmp), mock.patch.object(build, "RETRIED", tmp / "retried.json"):
+            self.assertEqual(build.skipped_ids(now), {"bbbbbbbbbbbb", "cccccccccccc"})
+            self.assertEqual(build.skipped_ids(now), {"bbbbbbbbbbbb", "cccccccccccc"})   # kans blijft tot Claude opnieuw kijkt
+            put("aaaaaaaaaaaa", "Bronpagina niet te lezen: weer fout", "2026-11-02T03:00:00Z")
+            self.assertIn("aaaaaaaaaaaa", build.skipped_ids(datetime(2026, 11, 20, tzinfo=timezone.utc)))
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends

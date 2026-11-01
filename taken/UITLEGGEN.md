@@ -9,7 +9,7 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
 4. **Per artikel** (in volgorde, **maximaal 15**):
    1. Open de `url` en lees het **volledige artikel**. Nooit alleen op titel of `excerpt`.
-   2. Niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door.
+   2. Niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door. Begin `reason` dan met "Niet te lezen": zo'n artikel komt na een week nog één keer terug op de werklijst (staat er al een `skipped`-bestand, overschrijf het).
    3. Valt het onder **Niet uitleggen**? Ook een `skipped`-bestand, met de regel als `reason`.
    4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder, met begrippen (`terms`) en waar het past een `showcase`.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
