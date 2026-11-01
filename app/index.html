@@ -220,14 +220,25 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .int-sugg h3 { margin: 2px 0 4px; font-size: 1.02rem; }
 .int-sugg p { margin: 0 0 4px; font-family: var(--f-read); line-height: 1.55; }
 .int-sugg .why { color: var(--muted); font-family: inherit; font-size: 0.88rem; }
-.int-area { margin-top: 18px; }
-.int-area h3 { font-size: 0.95rem; margin: 0 0 6px; color: var(--muted); font-weight: 650; }
-.int-area h3 b { color: var(--ink); }
+.int-area { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 0 14px 4px; }
+.int-area > header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 0 10px; border-bottom: 2px solid var(--accent2); }
+.int-area > header h3 { margin: 0; font-size: 1.02rem; font-weight: 750; color: var(--ink); line-height: 1.3; }
+.int-area > header .share { flex: none; font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); background: var(--accent2-soft); border-radius: 999px; padding: 3px 8px; }
+.int-area .int-topic:first-of-type { border-top: 0; }
+.int-how { margin-top: 14px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: var(--r); font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+.int-how p { margin: 0 0 6px; } .int-how p:last-child { margin: 0; }
+.int-how b { color: var(--ink); }
+.lvl-pill { font-family: var(--f-meta); font-size: 0.7rem; border-radius: 999px; padding: 1px 7px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.lvl-pill.lvl-5 { color: var(--accent2); border-color: color-mix(in srgb, var(--accent2) 60%, transparent); }
+.lvl-pill.lvl-4 { color: var(--ink); }
+.int-topic .row1 .lvl-pill { margin-left: auto; }
+.int-plan { margin: 6px 0 0; font-size: 0.84rem; color: var(--accent2); }
+.int-plan b { font-weight: 650; }
 .int-topic { border-top: 1px solid var(--line); padding: 10px 0; }
 .int-topic .row1 { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .int-topic .nm { font-weight: 650; }
 .int-topic .lvl { font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
-.int-topic .eff { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
+.int-topic .eff { margin: 4px 0 0; font-family: var(--f-meta); font-size: 0.72rem; color: var(--ok); }
 .int-topic .eff.neg { color: var(--muted); }
 .int-topic .ds { margin: 3px 0 0; font-size: 0.84rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .int-topic .fb-reasons, .int-sugg .fb-reasons { margin-top: 8px; }
@@ -853,11 +864,29 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const d = intStore.get(), n = intPending(d);
     return n ? `<a class="fb-send" id="int-send" href="${esc(intIssueUrl(d))}" target="_blank" rel="noopener"><span>${n} wijziging${n === 1 ? "" : "en"} klaar om te versturen</span><b>Versturen ›</b></a>` : "";
   }
+  const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
+  // Effect van je duimpjes op artikelen over dit onderwerp (relatief, in punten)
+  function intEffect(id) {
+    const f = state.feed.feedback || {}, v = f.topics?.[id];
+    return v == null ? 0 : Math.round((v - (f.offset || 0)) * fbPoints());
+  }
+  // Eén onderwerp: niveau (jij kiest), je duimpjes (automatisch), en knoppen die zeggen wat er gebeurt
+  function intTopicRow(t, d) {
+    const p = t.priority, e = intEffect(t.id), chg = d.changes[t.id];
+    const to = { belangrijker: p < 5 ? LEVEL[p + 1] : null, minder: p > 1 ? LEVEL[p - 1] : null };
+    const btn = (c, label) => `<button type="button" data-int-chg="${c}" aria-pressed="${chg === c}">${label}</button>`;
+    const plan = chg === "weg" ? "Vannacht: uitgezet. Je krijgt er geen artikelen meer over."
+      : chg ? `Vannacht: van <b>${esc(LEVEL[p])}</b> naar <b>${esc(to[chg])}</b>.` : "";
+    return `<div class="int-topic" data-topic="${esc(t.id)}">
+      <div class="row1"><span class="nm">${esc(t.name)}</span>${t.learning ? INT_LAMP : ""}<span class="lvl-pill lvl-${p}">${esc(LEVEL[p] || "")}</span></div>
+      <p class="ds">${esc(t.description)}</p>
+      ${e ? `<p class="eff${e < 0 ? " neg" : ""}">Je duimpjes: ${e > 0 ? "+" : "−"}${Math.abs(e)} punten per artikel</p>` : ""}
+      <div class="fb-reasons">${to.belangrijker ? btn("belangrijker", `▲ Naar ${to.belangrijker}`) : ""}${to.minder ? btn("minder", `▼ Naar ${to.minder}`) : ""}${btn("weg", "Uitzetten")}</div>
+      ${plan ? `<p class="int-plan">${plan}</p>` : ""}</div>`;
+  }
   function renderInterests() {
     const f = state.feed, I = f.interests || { areas: [], topics: [], excluded: [] }, d = intStore.get();
     const fbf = f.feedback || {}, W = fbPoints();
-    const eff = (t) => { const v = fbf.topics?.[t]; if (v == null) return ""; const p = Math.round((v - (fbf.offset || 0)) * W);
-      return p ? `<span class="eff${p < 0 ? " neg" : ""}">${p > 0 ? "▲ +" : "▼ "}${p} door je feedback</span>` : ""; };
     const topicName = new Map(I.topics.map((t) => [t.id, t.name]));
     const sugg = (f.interest_suggestions || []).map((x) => {
       const ans = d.answers[x.id], sent = d.sentAnswers[x.id];
@@ -867,21 +896,22 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         ${sent ? `<p class="why">Verstuurd: ${esc(sent)}. Claude verwerkt het vannacht.</p>`
           : `<div class="fb-reasons">${["ja", "nee"].map((a) => `<button type="button" data-int-ans="${a}" aria-pressed="${ans === a}">${a === "ja" ? "Ja, doen" : "Nee"}</button>`).join("")}</div>`}</div>`;
     }).join("");
-    const lamp = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
-    const row = (t) => `<div class="int-topic" data-topic="${esc(t.id)}"><div class="row1"><span class="nm">${esc(t.name)}</span>${t.learning ? lamp : ""}<span class="lvl">${esc(LEVEL[t.priority] || "")}</span>${eff(t.id)}</div>
-      <p class="ds">${esc(t.description)}</p>
-      <div class="fb-reasons">${Object.entries(CHG).map(([c, l]) => `<button type="button" data-int-chg="${c}" aria-pressed="${d.changes[t.id] === c}">${l}</button>`).join("")}</div></div>`;
     const areas = [...I.areas, { id: "overig", name: "Overig", share: null }].map((a) => {
       const ts = I.topics.filter((t) => t.area === a.id).sort((x, y) => y.priority - x.priority);
-      return ts.length ? `<div class="int-area"><h3><b>${esc(a.name)}</b>${a.share ? ` · ${Math.round(a.share * 100)}%` : ""}</h3>${ts.map(row).join("")}</div>` : "";
+      return ts.length ? `<section class="int-area"><header><h3>${esc(a.name)}</h3>${a.share ? `<span class="share">${Math.round(a.share * 100)}% van je feed</span>` : ""}</header>
+        ${ts.map((t) => intTopicRow(t, d)).join("")}</section>` : "";
     }).join("");
     const log = (f.interest_log || []).map((x) => `<li><time>${esc(fmtDate(x.at))}</time>${esc(x.text)}</li>`).join("");
     openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Mijn interesses</span></div></div>
       <article class="full wrap"><h1>Mijn interesses</h1>
       <p class="lead">Waar de radar voor je op let. Tik aan wat anders moet en verstuur het; Claude past het vannacht aan.</p>
+      <div class="int-how">
+        <p><b>Niveau</b> stel jij in: ${[5, 4, 3, 2, 1].map((n) => `<span class="lvl-pill lvl-${n}">${LEVEL[n]}</span>`).join(" › ")}. Hoe hoger, hoe zwaarder het onderwerp meetelt en hoe vaker je er artikelen over krijgt.</p>
+        <p><b>Je duimpjes</b> sturen daarnaast vanzelf bij: artikelen over een onderwerp waar je vaak 👍 op geeft komen hoger, de rest iets lager (hooguit ${fbPoints()} punten). Dat verandert het niveau niet.</p>
+      </div>
       <div id="int-send-wrap">${intSendBar()}</div>
       ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2><p class="pick-note">Elke zondag nieuw, op basis van je duimpjes, wat je leest en het nieuws.</p>${sugg}</section>` : ""}
-      <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">Per gebied, met de richtverdeling. Belangrijker of minder schuift de prioriteit één stap.</p>${areas}</section>
+      <section class="int-sec"><h2>Jouw onderwerpen</h2><p class="pick-note">In vier gebieden, met hoeveel van je feed elk gebied ongeveer krijgt.</p>${areas}</section>
       <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
       <section class="int-sec"><h2>In je eigen woorden</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Bijv. meer over Fabric, minder over AI-onderzoek">${esc(d.note)}</textarea></section>
       ${log ? `<section class="int-sec"><h2>Recent aangepast</h2><ul class="int-log">${log}</ul></section>` : ""}
@@ -903,8 +933,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (ab) { const id = ab.closest("[data-sugg]").dataset.sugg; d.answers[id] === ab.dataset.intAns ? delete d.answers[id] : (d.answers[id] = ab.dataset.intAns); }
     if (cb) { const t = cb.closest("[data-topic]").dataset.topic; d.changes[t] === cb.dataset.intChg ? delete d.changes[t] : (d.changes[t] = cb.dataset.intChg); }
     intStore.save(d);
-    const box = (ab || cb).parentElement, val = ab ? d.answers[ab.closest("[data-sugg]").dataset.sugg] : d.changes[cb.closest("[data-topic]").dataset.topic];
-    box.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String((b.dataset.intAns || b.dataset.intChg) === val)));
+    if (cb) {
+      const row = cb.closest("[data-topic]"), t = (state.feed.interests?.topics || []).find((x) => x.id === row.dataset.topic);
+      if (t) row.outerHTML = intTopicRow(t, d);
+    } else {
+      const box = ab.parentElement, val = d.answers[ab.closest("[data-sugg]").dataset.sugg];
+      box.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.intAns === val)));
+    }
     $("#int-send-wrap").innerHTML = intSendBar();
     updateMenuDot();
     return true;
