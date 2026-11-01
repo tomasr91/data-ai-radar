@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T08:55:25.667993Z",
+ "generated_at": "2026-11-01T09:02:58.675021Z",
  "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -10,35 +10,9 @@
    "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
    "published_at": "2026-09-11T09:00:00Z",
    "excerpt": "Introduction Enterprise data architectures were designed around a single, comfortable assumption: a knowledgeable human would always sit at the end of the pipeline.",
-   "preliminary_score": 49,
+   "preliminary_score": 43,
    "preliminary_topics": [
     "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "e16b305207e9",
-   "title": "How our AI Research team uses AI Runtime",
-   "url": "https://www.databricks.com/blog/how-our-ai-research-team-uses-ai-runtime",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-15T21:37:44Z",
-   "excerpt": "At Databricks, we continuously develop and evaluate new AI research techniques to...",
-   "preliminary_score": 49,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "7e247e37dc78",
-   "title": "Rethinking Data Curation in the age of Databricks Genie Ontology",
-   "url": "https://www.advancinganalytics.co.uk/blog/data-curation-genie-ontology",
-   "source_id": "simon_whiteley",
-   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
-   "published_at": "2026-10-01T13:09:41Z",
-   "excerpt": "Want to watch this blog instead? Find the YouTube video here .",
-   "preliminary_score": 48,
-   "preliminary_topics": [
-    "databricks_data_engineering"
    ]
   },
   {
@@ -49,152 +23,35 @@
    "source_name": "Hugging Face Blog",
    "published_at": "2026-09-28T00:00:00Z",
    "excerpt": "",
-   "preliminary_score": 48,
+   "preliminary_score": 42,
    "preliminary_topics": [
     "cicd_data_deployment"
    ]
   },
   {
-   "id": "b76e27ccf012",
-   "title": "Databricks Genie ZeroOps: Your Self-Healing Agent?",
-   "url": "https://www.advancinganalytics.co.uk/blog/genie-zeroops-your-self-healing-agent",
-   "source_id": "simon_whiteley",
-   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
-   "published_at": "2026-09-28T08:37:14Z",
-   "excerpt": "Introduction There was so many announcements back at Databricks Data + AI Summit 2026, you'd be forgiven for getting announcement fatigue. Here at Advancing Analytics, we are incredibly excited about Genie Ontology, check out our videos for more , but I also believe Genie ZeroOps is another game changer ready to shake up Data Engineering!",
-   "preliminary_score": 47,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "9d251ac6836a",
-   "title": "Welcome Muse Spark Open: open-weight frontier multimodal mixture-of-experts model from Meta",
-   "url": "https://huggingface.co/blog/meta-muse-spark-open",
-   "source_id": "huggingface_blog",
-   "source_name": "Hugging Face Blog",
-   "published_at": "2026-10-15T00:00:00Z",
-   "excerpt": "",
-   "preliminary_score": 47,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "c04fd5b2c44c",
-   "title": "How Databricks rolls out frontier models to 12,000 employees on Day 1",
-   "url": "https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1",
+   "id": "e16b305207e9",
+   "title": "How our AI Research team uses AI Runtime",
+   "url": "https://www.databricks.com/blog/how-our-ai-research-team-uses-ai-runtime",
    "source_id": "databricks_engineering_blog",
    "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-09-28T20:11:23Z",
-   "excerpt": "Providing our employees access to frontier AI capabilities is a top priority at Databricks, and consequently...",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "09da01b66fd3",
-   "title": "How I built agent-based security reviews on Databricks",
-   "url": "https://www.databricks.com/blog/how-i-built-agent-based-security-reviews-databricks",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-09-24T02:00:00Z",
-   "excerpt": "We already had automation in parts of our security review process. It was useful,...",
-   "preliminary_score": 45,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "a31dac6d0b53",
-   "title": "Hello Python 3.15, goodbye 3.10, and now I can use 3.11",
-   "url": "https://simonwillison.net/2026/Oct/12/python-3-15/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-10-12T18:15:38Z",
-   "excerpt": "Python 3.15 is here ! Here's the essential What's new in Python 3.15 guide, this year curated by 3.14 and 3.15 release manager Hugo van Kemenade. As someone who builds open source software that works in every supported Python version, I get to say goodbye to Python 3.10 and start embracing features from Python 3.11. First, some highlights from Python 3.15. Explicit lazy imports I'm most excited about Explicit lazy imports from PEP 810 . These let you import modules like so: lazy import json lazy from pathlib import Path The module will then be imported the first time those symbols are used in the code that follows. My LLM CLI tool implements plugins. I had to recommend manual lazy imports in the plugin author documentation, because simply installing plugins that used heavy dependencies such as sentence_transformers could add multiple seconds to every invocation of the llm command. Lazy imports directly address this startup cost. Unpacking in comprehensions The new [*sublist for sublist in lists] unpacking syntax is neat. Here's an illustration lifted from the documentation : lists = [[ 1 , 2 ], [ 3 , 4 ], [ 5 ]] [ * L for L in lists ] # [1, 2, 3, 4, 5] # equivalent to [x for L in l",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "68011bfb652b",
-   "title": "Open SWE: An Open-Source Framework for Internal Coding Agents",
-   "url": "https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-13T19:56:07Z",
-   "excerpt": "Built on Deep Agents and LangGraph, Open SWE provides the core architectural components for internal coding agents.",
-   "preliminary_score": 44,
-   "preliminary_topics": [
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "add6ed1db267",
-   "title": "Managed Deep Agents v0.10: Browser Use and Async Subagents",
-   "url": "https://www.langchain.com/blog/managed-deep-agents-browser-use-and-asynchronous-subagents",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-29T17:03:39Z",
-   "excerpt": "Managed Deep Agents v0.10 adds browser use, so agents can work on sites with no API and hand you the window to sign in, and async subagents for background work.",
-   "preliminary_score": 47,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "48ac9eccb51b",
-   "title": "How To Use Decision Models for Evals",
-   "url": "https://hamel.dev/blog/posts/decision-model-evals/",
-   "source_id": "hamel_husain",
-   "source_name": "Hamel Husain",
-   "published_at": "2026-10-20T07:00:00Z",
-   "excerpt": "main.content table { display:block; width:100%; max-width:100%; overflow-x:auto; } #evaluation-prompt pre { background:var(--bs-body-bg); color:var(--bs-body-color); padding:18px; border:1px solid var(--bs-border-color); border-radius:6px; } #evaluation-prompt pre code { color:inherit; white-space:pre-wrap; overflow-wrap:anywhere; } Decision models have exploded onto the scene recently, starting with TypeSafe’s Jev, followed by Perplexity’s Decider, Liquid’s d1, Cloudflare’s Clef, and OpenAI’s Decisions API 1 . These models promise fast, inexpensive classification. Decision models are an appealing low-cost alternative to LLM judges 2 for automated evals. But whether they’re the right choice depends on the cost, performance, and latency requirements of your use case. We’ve also noticed people using the default decision threshold of 0.50 without checking whether it works well for their task. This can leave a lot of performance on the table. In this post, we’ll start by showing how to tune thresholds to get the best results from decision models. With those thresholds tuned, we’ll compare cost and performance to help you assess which model fits your use case. Finally, we’ll explore how",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "ai_evaluation_observability"
-   ]
-  },
-  {
-   "id": "00017a806f11",
-   "title": "How Numan Built an Eval-First AI Health Coach with LangGraph and LangSmith",
-   "url": "https://www.langchain.com/blog/how-numan-built-an-eval-first-ai-health-coach-with-langgraph-and-langsmith",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-19T16:44:34Z",
-   "excerpt": "How Numan built Nu, an AI health coach, on LangGraph and LangSmith with per-category evals, simulated conversations, and safety gates on a regulatory line.",
-   "preliminary_score": 42,
-   "preliminary_topics": [
-    "ai_evaluation_observability"
-   ]
-  },
-  {
-   "id": "8fee1fc7abb7",
-   "title": "The Most Common Questions About Agent Evals, Answered",
-   "url": "https://www.langchain.com/blog/common-questions-about-agent-evals",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-15T09:18:55Z",
-   "excerpt": "Where to start with agent evals, offline vs online evals, evaluator types, LLM judges, benchmarks with Harbor, multi-turn evals, and keeping costs down.",
-   "preliminary_score": 41,
-   "preliminary_topics": [
-    "ai_evaluation_observability"
-   ]
-  },
-  {
-   "id": "09594c5d97f1",
-   "title": "Set Budgets and Alerts for Cloud Data Warehouse Costs",
-   "url": "https://www.databricks.com/blog/set-budgets-and-alerts-cloud-data-warehouse-costs",
-   "source_id": "databricks_engineering_blog",
-   "source_name": "Databricks Engineering Blog",
-   "published_at": "2026-10-07T19:02:06Z",
-   "excerpt": "Every analytics team has been here: a month-end invoice arrives, and a single SQL...",
+   "published_at": "2026-10-15T21:37:44Z",
+   "excerpt": "At Databricks, we continuously develop and evaluate new AI research techniques to...",
    "preliminary_score": 40,
    "preliminary_topics": [
-    "sql_spark_sql"
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "81204e04abb9",
+   "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
+   "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:07:00Z",
+   "excerpt": "LangChain gave its Hex agent layered context, turning self-serve analytics questions from occasional to routine.",
+   "preliminary_score": 48,
+   "preliminary_topics": [
+    "open_source_tools"
    ]
   }
  ]
