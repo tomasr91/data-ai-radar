@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T14:33:23.408058Z",
+ "generated_at": "2026-11-01T14:39:41.433459Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-01T03:45:00Z",
- "last_successful_update": "2026-11-01T14:33:23.408058Z",
+ "last_successful_update": "2026-11-01T14:39:41.433459Z",
  "groups": [
   {
    "id": "dbt",
@@ -128,7 +128,7 @@
   },
   "powerbi_semantic_models": {
    "name": "Power BI en semantische modellen",
-   "priority": 4,
+   "priority": 5,
    "group": "overig"
   },
   "open_source_tools": {
@@ -154,7 +154,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-01T14:33:23.467056Z"
+   "checked_at": "2026-11-01T14:39:41.493789Z"
   },
   {
    "id": "dbt_core_releases",
@@ -167,7 +167,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-01T14:33:23.639904Z"
+   "checked_at": "2026-11-01T14:39:41.776736Z"
   },
   {
    "id": "claude_code_releases",
@@ -180,7 +180,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-01T14:33:24.012097Z"
+   "checked_at": "2026-11-01T14:39:42.325748Z"
   },
   {
    "id": "anthropic_engineering",
@@ -193,7 +193,7 @@
    "status": "ok",
    "items": 27,
    "message": "27 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-01T14:33:24.274356Z"
+   "checked_at": "2026-11-01T14:39:42.536505Z"
   },
   {
    "id": "claude_blog",
@@ -206,7 +206,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-01T14:33:24.285831Z"
+   "checked_at": "2026-11-01T14:39:42.564764Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -219,7 +219,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-01T14:33:24.304273Z"
+   "checked_at": "2026-11-01T14:39:42.608738Z"
   },
   {
    "id": "databricks_blog",
@@ -232,7 +232,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-01T14:33:24.474602Z"
+   "checked_at": "2026-11-01T14:39:42.860327Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -245,20 +245,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-01T14:33:24.592458Z"
-  },
-  {
-   "id": "github_blog",
-   "name": "GitHub Blog",
-   "url": "https://github.blog/",
-   "type": "vendor_blog",
-   "trust_level": "medium",
-   "priority": 4,
-   "fetch_method": "rss",
-   "status": "ok",
-   "items": 10,
-   "message": "10 items via https://github.blog/feed/",
-   "checked_at": "2026-11-01T14:33:24.648481Z"
+   "checked_at": "2026-11-01T14:39:42.937189Z"
   },
   {
    "id": "azure_blog",
@@ -271,7 +258,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-01T14:33:24.696921Z"
+   "checked_at": "2026-11-01T14:39:43.012570Z"
   },
   {
    "id": "powerbi_blog",
@@ -284,7 +271,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-01T14:33:24.749425Z"
+   "checked_at": "2026-11-01T14:39:43.098860Z"
   },
   {
    "id": "fabric_blog",
@@ -297,7 +284,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-01T14:33:25.512930Z"
+   "checked_at": "2026-11-01T14:39:43.886012Z"
   },
   {
    "id": "sqlbi",
@@ -310,7 +297,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-01T14:33:26.203205Z"
+   "checked_at": "2026-11-01T14:39:44.457771Z"
   },
   {
    "id": "huggingface_blog",
@@ -323,7 +310,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-01T14:33:26.369356Z"
+   "checked_at": "2026-11-01T14:39:44.679025Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -336,7 +323,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-01T14:33:26.445073Z"
+   "checked_at": "2026-11-01T14:39:44.785037Z"
   },
   {
    "id": "simon_whiteley",
@@ -349,7 +336,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-01T14:33:26.567322Z"
+   "checked_at": "2026-11-01T14:39:44.947528Z"
   },
   {
    "id": "hamel_husain",
@@ -362,7 +349,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-01T14:33:26.835033Z"
+   "checked_at": "2026-11-01T14:39:45.025041Z"
   },
   {
    "id": "langchain_blog",
@@ -375,7 +362,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-01T14:33:27.007470Z"
+   "checked_at": "2026-11-01T14:39:45.165307Z"
   },
   {
    "id": "chip_huyen",
@@ -388,7 +375,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-01T14:33:27.086262Z"
+   "checked_at": "2026-11-01T14:39:45.284988Z"
   },
   {
    "id": "simon_willison",
@@ -401,7 +388,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-01T14:33:27.206327Z"
+   "checked_at": "2026-11-01T14:39:45.389025Z"
   },
   {
    "id": "chris_webb",
@@ -414,7 +401,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-01T14:33:27.244224Z"
+   "checked_at": "2026-11-01T14:39:45.489536Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -427,7 +414,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-01T14:33:27.504905Z"
+   "checked_at": "2026-11-01T14:39:45.628756Z"
   }
  ],
  "daily_top": [
@@ -473,7 +460,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.8,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -542,7 +529,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.8,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -606,7 +593,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.78,
-    "feedback": 0.15
+    "feedback": 0.14
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -679,7 +666,7 @@
     "recency": 0.88,
     "source": 0.68,
     "quality": 0.8,
-    "feedback": 0.15
+    "feedback": 0.14
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -729,81 +716,6 @@
    ]
   },
   {
-   "id": "e7bf67f656d3",
-   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-27T18:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
-   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
-   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
-   "limitations": [
-    "Resultaten uit één project.",
-    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
-    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "ai_extract (documentatie)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 92,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.79,
-    "source": 0.85,
-    "quality": 0.75,
-    "feedback": 0.09
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-     "published_at": "2026-10-27T18:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
-   "story": [
-    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
-    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
-    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
-    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
-   ],
-   "key_facts": [
-    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
-    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
-    "Alle verbeteringen samen gaven 32% minder fouten.",
-    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
-   ],
-   "terms": [
-    {
-     "term": "prompt",
-     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
-    }
-   ]
-  },
-  {
    "id": "a68aede0b61b",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
    "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
@@ -836,7 +748,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.72,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -881,6 +793,81 @@
    ]
   },
   {
+   "id": "e7bf67f656d3",
+   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
+   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
+   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
+   "limitations": [
+    "Resultaten uit één project.",
+    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
+    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "ai_extract (documentatie)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 91,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.79,
+    "source": 0.85,
+    "quality": 0.75,
+    "feedback": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+     "published_at": "2026-10-27T18:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
+   "story": [
+    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
+    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
+    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
+    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
+   ],
+   "key_facts": [
+    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
+    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
+    "Alle verbeteringen samen gaven 32% minder fouten.",
+    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
+   ],
+   "terms": [
+    {
+     "term": "prompt",
+     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
+    }
+   ]
+  },
+  {
    "id": "ceb4b784fbab",
    "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
    "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
@@ -915,7 +902,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.68,
-    "feedback": 0.15
+    "feedback": 0.14
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -994,7 +981,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.62,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1068,8 +1055,7 @@
     "topic": 1.0,
     "recency": 0.65,
     "source": 0.85,
-    "quality": 0.8,
-    "feedback": 0.01
+    "quality": 0.8
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1144,7 +1130,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.57,
-    "feedback": 0.15
+    "feedback": 0.14
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1199,7 +1185,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.65,
-    "feedback": 0.05
+    "feedback": 0.04
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1263,7 +1249,7 @@
     "recency": 0.97,
     "source": 0.85,
     "quality": 0.62,
-    "feedback": -0.08
+    "feedback": -0.09
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1357,7 +1343,7 @@
     "recency": 0.72,
     "source": 1.0,
     "quality": 0.68,
-    "feedback": -0.1
+    "feedback": -0.11
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1421,7 +1407,7 @@
     "recency": 0.75,
     "source": 0.85,
     "quality": 0.6,
-    "feedback": 0.1
+    "feedback": 0.09
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1491,7 +1477,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.5,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1564,7 +1550,7 @@
     "recency": 0.79,
     "source": 0.85,
     "quality": 0.65,
-    "feedback": -0.04
+    "feedback": -0.05
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1607,95 +1593,6 @@
     {
      "term": "HIPAA",
      "explanation": "De Amerikaanse wet die regels geeft voor het beschermen van medische gegevens. In Nederland gelden de AVG en zorgspecifieke regels."
-    }
-   ]
-  },
-  {
-   "id": "ea59c0428e23",
-   "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
-   "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
-   "source_id": "langchain_blog",
-   "published_at": "2026-10-28T18:06:04Z",
-   "date_note": "De pagina noemt 14 oktober 2026 als publicatiedatum; de feed gaf 28 oktober.",
-   "fetched_at": "2026-10-29T11:08:44.075994Z",
-   "summary": "LangChain legt uit hoe Deep Agents lange taken volhoudt: grote resultaten naar bestanden, oude berichten samenvatten, skills pas laden als nodig, en geheugen in een eigen bestand.",
-   "personal_relevance": "Helpt je begrijpen waarom Claude Code en andere agents zo met context omgaan, en hoe je dat zelf ontwerpt.",
-   "experiment": "Installeer deepagents en laat een agent een openbare dataset (bijv. een grote CSV van data.overheid.nl) samenvatten. Kijk welke bestanden hij in /large_tool_results/ zet.",
-   "limitations": [
-    "Geschreven door de maker van het framework; er staan geen metingen in dat het beter werkt.",
-    "Samenvatten blijft verlies van detail in het actieve venster, ook al is de geschiedenis terug te halen."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Deep Agents",
-     "url": "https://www.langchain.com/deep-agents"
-    },
-    {
-     "label": "Context management for Deep Agents",
-     "url": "https://www.langchain.com/blog/context-management-for-deepagents"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.83,
-    "source": 0.51,
-    "quality": 0.62,
-    "feedback": 0.12
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-30T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Een agent onthoudt meer als hij minder in zijn hoofd houdt",
-   "story": [
-    "Een agent die lang werkt, stapelt instructies, toolresultaten en bestanden op. Dan wordt hij slechter, omdat zijn contextvenster te vol raakt. LangChain noemt dat 'context rot'. In dit stuk laat het zien hoe zijn open-source harnas Deep Agents dat voorkomt.",
-    "De truc is: context weghalen zonder hem te verliezen. Een toolresultaat groter dan ongeveer 20.000 tokens gaat naar een bestand; de agent ziet alleen een kort voorproefje en het pad. Is het venster voor 85 procent vol, dan worden oude berichten samengevat. De volledige geschiedenis blijft in een bestand staan, dus details zijn terug te halen. Vergelijk het met een bureau dat je opruimt door dingen in een la te leggen, niet in de prullenbak.",
-    "Daarnaast laadt de agent skills pas als hij ze nodig heeft (progressive disclosure). Rommelig zoekwerk gaat naar een subagent met een eigen venster, die alleen het eindresultaat teruggeeft. Lange-termijngeheugen staat in een gewoon Markdown-bestand, zoals /memories/AGENTS.md, dat bij de start wordt ingelezen.",
-    "Dit zijn dezelfde bouwstenen als in Claude Code: CLAUDE.md, skills, subagents en compaction. Het stuk maakt goed duidelijk waarom ze er zijn. Omdat het geheugen een gewoon bestand is, kun je het ook met een ander model gebruiken."
-   ],
-   "key_facts": [
-    "Toolresultaten boven ongeveer 20.000 tokens gaan naar /large_tool_results/{tool_call_id}; gebruikersberichten boven 50.000 tokens naar /conversation_history/.",
-    "Standaard wordt samengevat bij 85% gebruik van het contextvenster; de volledige geschiedenis blijft in /conversation_history/{session_id}.md.",
-    "Skills zijn mappen met een SKILL.md; alleen naam en beschrijving staan standaard in de systeemprompt.",
-    "Lange-termijngeheugen staat in een Markdown-bestand (voorbeeld /memories/AGENTS.md) dat bij de start wordt geladen en bijgewerkt.",
-    "Deep Agents is open source; installatie met uv add deepagents.",
-    "Geschreven door Jess Weng (LangChain)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "contextvenster",
-     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
-    },
-    {
-     "term": "context rot",
-     "explanation": "Het verschijnsel dat een agent slechter werkt als zijn contextvenster te vol raakt met oude of overbodige informatie."
-    },
-    {
-     "term": "progressive disclosure",
-     "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
-    },
-    {
-     "term": "subagent",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    },
-    {
-     "term": "compaction",
-     "explanation": "Het samenvatten van een lang gesprek zodat het contextvenster weer ruimte heeft, terwijl de kern bewaard blijft."
     }
    ]
   },
@@ -1743,7 +1640,7 @@
     "recency": 0.86,
     "source": 0.85,
     "quality": 0.63,
-    "feedback": -0.12
+    "feedback": -0.13
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1826,7 +1723,7 @@
     "recency": 0.74,
     "source": 0.51,
     "quality": 0.65,
-    "feedback": 0.12
+    "feedback": 0.11
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1850,6 +1747,95 @@
     "Geschreven door Jess Weng, gepubliceerd 23 oktober 2026."
    ],
    "article_type": "nieuws"
+  },
+  {
+   "id": "ea59c0428e23",
+   "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
+   "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+   "source_id": "langchain_blog",
+   "published_at": "2026-10-28T18:06:04Z",
+   "date_note": "De pagina noemt 14 oktober 2026 als publicatiedatum; de feed gaf 28 oktober.",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "summary": "LangChain legt uit hoe Deep Agents lange taken volhoudt: grote resultaten naar bestanden, oude berichten samenvatten, skills pas laden als nodig, en geheugen in een eigen bestand.",
+   "personal_relevance": "Helpt je begrijpen waarom Claude Code en andere agents zo met context omgaan, en hoe je dat zelf ontwerpt.",
+   "experiment": "Installeer deepagents en laat een agent een openbare dataset (bijv. een grote CSV van data.overheid.nl) samenvatten. Kijk welke bestanden hij in /large_tool_results/ zet.",
+   "limitations": [
+    "Geschreven door de maker van het framework; er staan geen metingen in dat het beter werkt.",
+    "Samenvatten blijft verlies van detail in het actieve venster, ook al is de geschiedenis terug te halen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Deep Agents",
+     "url": "https://www.langchain.com/deep-agents"
+    },
+    {
+     "label": "Context management for Deep Agents",
+     "url": "https://www.langchain.com/blog/context-management-for-deepagents"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.83,
+    "source": 0.51,
+    "quality": 0.62,
+    "feedback": 0.11
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Een agent onthoudt meer als hij minder in zijn hoofd houdt",
+   "story": [
+    "Een agent die lang werkt, stapelt instructies, toolresultaten en bestanden op. Dan wordt hij slechter, omdat zijn contextvenster te vol raakt. LangChain noemt dat 'context rot'. In dit stuk laat het zien hoe zijn open-source harnas Deep Agents dat voorkomt.",
+    "De truc is: context weghalen zonder hem te verliezen. Een toolresultaat groter dan ongeveer 20.000 tokens gaat naar een bestand; de agent ziet alleen een kort voorproefje en het pad. Is het venster voor 85 procent vol, dan worden oude berichten samengevat. De volledige geschiedenis blijft in een bestand staan, dus details zijn terug te halen. Vergelijk het met een bureau dat je opruimt door dingen in een la te leggen, niet in de prullenbak.",
+    "Daarnaast laadt de agent skills pas als hij ze nodig heeft (progressive disclosure). Rommelig zoekwerk gaat naar een subagent met een eigen venster, die alleen het eindresultaat teruggeeft. Lange-termijngeheugen staat in een gewoon Markdown-bestand, zoals /memories/AGENTS.md, dat bij de start wordt ingelezen.",
+    "Dit zijn dezelfde bouwstenen als in Claude Code: CLAUDE.md, skills, subagents en compaction. Het stuk maakt goed duidelijk waarom ze er zijn. Omdat het geheugen een gewoon bestand is, kun je het ook met een ander model gebruiken."
+   ],
+   "key_facts": [
+    "Toolresultaten boven ongeveer 20.000 tokens gaan naar /large_tool_results/{tool_call_id}; gebruikersberichten boven 50.000 tokens naar /conversation_history/.",
+    "Standaard wordt samengevat bij 85% gebruik van het contextvenster; de volledige geschiedenis blijft in /conversation_history/{session_id}.md.",
+    "Skills zijn mappen met een SKILL.md; alleen naam en beschrijving staan standaard in de systeemprompt.",
+    "Lange-termijngeheugen staat in een Markdown-bestand (voorbeeld /memories/AGENTS.md) dat bij de start wordt geladen en bijgewerkt.",
+    "Deep Agents is open source; installatie met uv add deepagents.",
+    "Geschreven door Jess Weng (LangChain)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "contextvenster",
+     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    },
+    {
+     "term": "context rot",
+     "explanation": "Het verschijnsel dat een agent slechter werkt als zijn contextvenster te vol raakt met oude of overbodige informatie."
+    },
+    {
+     "term": "progressive disclosure",
+     "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
+    },
+    {
+     "term": "subagent",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+     "term": "compaction",
+     "explanation": "Het samenvatten van een lang gesprek zodat het contextvenster weer ruimte heeft, terwijl de kern bewaard blijft."
+    }
+   ]
   },
   {
    "id": "903131b53f30",
@@ -1890,7 +1876,7 @@
     "recency": 0.88,
     "source": 0.85,
     "quality": 0.48,
-    "feedback": -0.04
+    "feedback": -0.05
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -1987,13 +1973,13 @@
     "dbt",
     "claude"
    ],
-   "relevance_score": 85,
+   "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.4,
     "source": 0.68,
     "quality": 0.75,
-    "feedback": 0.12
+    "feedback": 0.11
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2104,7 +2090,7 @@
     "recency": 0.4,
     "source": 0.8,
     "quality": 0.6,
-    "feedback": 0.16
+    "feedback": 0.15
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2163,14 +2149,14 @@
    ],
    "topics": [
     "databricks_data_engineering",
-    "data_governance_privacy",
     "powerbi_semantic_models",
+    "data_governance_privacy",
     "sql_spark_sql"
    ],
    "groups": [
     "databricks",
-    "kwaliteit",
-    "overig"
+    "overig",
+    "kwaliteit"
    ],
    "relevance_score": 83,
    "score_parts": {
@@ -2178,7 +2164,7 @@
     "recency": 0.51,
     "source": 1.0,
     "quality": 0.68,
-    "feedback": -0.23
+    "feedback": -0.22
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2261,7 +2247,7 @@
     "recency": 0.1,
     "source": 0.68,
     "quality": 0.82,
-    "feedback": 0.15
+    "feedback": 0.14
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2329,7 +2315,7 @@
     "recency": 0.27,
     "source": 0.68,
     "quality": 0.73,
-    "feedback": 0.1
+    "feedback": 0.09
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2381,6 +2367,63 @@
    }
   },
   {
+   "id": "77544766b84c",
+   "title": "Claude’s new auto eval tool",
+   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
+   "source_id": "hamel_husain",
+   "published_at": "2026-09-30T07:00:00Z",
+   "date_note": "Gepubliceerd op 30 september 2026; de radar ziet hem pas nu.",
+   "fetched_at": "2026-10-28T20:32:35.732516Z",
+   "summary": "Anthropic gaf Claude Code twee commando's om evals te bouwen en je toepassing ertegen te verbeteren. Evals-expert Hamel Husain testte ze: sterk in fouten vinden, maar het slaat de foutanalyse over.",
+   "personal_relevance": "Je wilt een data-assistent betrouwbaar maken; dit laat zien wat je Claude kunt laten doen bij evals en wat je zelf moet blijven doen.",
+   "experiment": "Draai build_eval op een kleine set verzonnen gesprekken met een vraag-en-antwoordassistent over een openbare dataset. Lees eerst zelf twintig gesprekken en vergelijk jouw foutenlijst met die van Claude.",
+   "limitations": [
+    "Eén test door één expert, tijdens een livestream.",
+    "Husain heeft zelf eval-skills en cursussen; hij vergelijkt met zijn eigen aanpak.",
+    "Externe AI zoals Claude alleen gebruiken op verzonnen gesprekken, nooit op werkdata."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability",
+    "claude_ai_development"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.2,
+    "source": 0.85,
+    "quality": 0.68,
+    "feedback": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen",
+   "story": [
+    "Anthropic voegde aan de claude-api-plugin voor Claude Code twee commando's toe. build_eval stelt mogelijke fouten voor, helpt je er één te kiezen, maakt een beoordelaar en controleert die. hill-climb gebruikt die evals daarna om je toepassing te verbeteren. Hamel Husain, die veel ontwikkelaars evals heeft geleerd, testte het met Isaac Flath op gesprekken van een verhuurassistent.",
+    "Zijn belangrijkste kritiek: de tool begint te vroeg met toetsen. Claude vroeg meteen welke fout ze wilden aanpakken, terwijl ze de data nog niet hadden bekeken. Volgens Husain hoort eerst foutanalyse (error analysis) te komen: zelf gesprekken lezen en noteren wat misgaat. De beoordelaar die Claude maakte, toetste ook vier dingen tegelijk, deels met een taalmodel en deels met code. Husain wil liever één beoordelaar per fout.",
+    "Er is ook lof. Zonder hulp vond de tool problemen die andere automatische aanpakken misten, zoals een gemiste overdracht naar een mens en opmaakfouten. Husain noemt het de sterkste eenmalige foutzoeker die hij heeft gezien. Toch wacht hij nog met gebruiken. Labels nakijken in Markdown in de chat vond hij onwerkbaar; ze bouwden er een webapp voor.",
+    "Voor een eigen data-assistent is de les praktisch. Laat Claude gerust fouten voorstellen, maar kijk eerst zelf naar de data voordat je een beoordelaar vastlegt. En vraag altijd naar de prompt of code van een beoordelaar, in plaats van op een uitleg te vertrouwen."
+   ],
+   "key_facts": [
+    "Hamel Husain publiceerde zijn bespreking op 30 september 2026.",
+    "De claude-api-plugin voor Claude Code heeft de commando's build_eval (fouten voorstellen, beoordelaar maken en controleren) en hill-climb (de toepassing verbeteren tegen de evals).",
+    "Volgens Husain dringt de tool aan op evals vóór foutanalyse, en mengt de eerste beoordelaar vier controles (LLM-beoordelaar en code).",
+    "Volgens Husain vond de tool zonder hulp problemen die andere auto-eval-aanpakken misten, zoals overdracht naar een mens, opmaak en spraakproblemen.",
+    "Husain wacht nog met gebruiken; de maker van de plugin wil de feedback verwerken."
+   ],
+   "article_type": "opinie",
+   "author": "Hamel Husain, consultant en docent over AI-evaluatie (met Shreya Shankar)"
+  },
+  {
    "id": "a704112d6f8a",
    "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
    "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
@@ -2414,12 +2457,13 @@
     "overig",
     "kwaliteit"
    ],
-   "relevance_score": 82,
+   "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.28,
     "source": 0.68,
-    "quality": 0.78
+    "quality": 0.78,
+    "feedback": -0.01
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2480,22 +2524,22 @@
    "topics": [
     "data_architecture_modeling",
     "ai_context_engineering",
-    "metadata_lineage_catalogs",
-    "powerbi_semantic_models"
+    "powerbi_semantic_models",
+    "metadata_lineage_catalogs"
    ],
    "groups": [
     "architectuur",
     "ai_context",
-    "kwaliteit",
-    "overig"
+    "overig",
+    "kwaliteit"
    ],
-   "relevance_score": 82,
+   "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.36,
     "source": 1.0,
     "quality": 0.65,
-    "feedback": -0.12
+    "feedback": -0.13
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2571,63 +2615,6 @@
    }
   },
   {
-   "id": "77544766b84c",
-   "title": "Claude’s new auto eval tool",
-   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
-   "source_id": "hamel_husain",
-   "published_at": "2026-09-30T07:00:00Z",
-   "date_note": "Gepubliceerd op 30 september 2026; de radar ziet hem pas nu.",
-   "fetched_at": "2026-10-28T20:32:35.732516Z",
-   "summary": "Anthropic gaf Claude Code twee commando's om evals te bouwen en je toepassing ertegen te verbeteren. Evals-expert Hamel Husain testte ze: sterk in fouten vinden, maar het slaat de foutanalyse over.",
-   "personal_relevance": "Je wilt een data-assistent betrouwbaar maken; dit laat zien wat je Claude kunt laten doen bij evals en wat je zelf moet blijven doen.",
-   "experiment": "Draai build_eval op een kleine set verzonnen gesprekken met een vraag-en-antwoordassistent over een openbare dataset. Lees eerst zelf twintig gesprekken en vergelijk jouw foutenlijst met die van Claude.",
-   "limitations": [
-    "Eén test door één expert, tijdens een livestream.",
-    "Husain heeft zelf eval-skills en cursussen; hij vergelijkt met zijn eigen aanpak.",
-    "Externe AI zoals Claude alleen gebruiken op verzonnen gesprekken, nooit op werkdata."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.2,
-    "source": 0.85,
-    "quality": 0.68,
-    "feedback": 0.07
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen",
-   "story": [
-    "Anthropic voegde aan de claude-api-plugin voor Claude Code twee commando's toe. build_eval stelt mogelijke fouten voor, helpt je er één te kiezen, maakt een beoordelaar en controleert die. hill-climb gebruikt die evals daarna om je toepassing te verbeteren. Hamel Husain, die veel ontwikkelaars evals heeft geleerd, testte het met Isaac Flath op gesprekken van een verhuurassistent.",
-    "Zijn belangrijkste kritiek: de tool begint te vroeg met toetsen. Claude vroeg meteen welke fout ze wilden aanpakken, terwijl ze de data nog niet hadden bekeken. Volgens Husain hoort eerst foutanalyse (error analysis) te komen: zelf gesprekken lezen en noteren wat misgaat. De beoordelaar die Claude maakte, toetste ook vier dingen tegelijk, deels met een taalmodel en deels met code. Husain wil liever één beoordelaar per fout.",
-    "Er is ook lof. Zonder hulp vond de tool problemen die andere automatische aanpakken misten, zoals een gemiste overdracht naar een mens en opmaakfouten. Husain noemt het de sterkste eenmalige foutzoeker die hij heeft gezien. Toch wacht hij nog met gebruiken. Labels nakijken in Markdown in de chat vond hij onwerkbaar; ze bouwden er een webapp voor.",
-    "Voor een eigen data-assistent is de les praktisch. Laat Claude gerust fouten voorstellen, maar kijk eerst zelf naar de data voordat je een beoordelaar vastlegt. En vraag altijd naar de prompt of code van een beoordelaar, in plaats van op een uitleg te vertrouwen."
-   ],
-   "key_facts": [
-    "Hamel Husain publiceerde zijn bespreking op 30 september 2026.",
-    "De claude-api-plugin voor Claude Code heeft de commando's build_eval (fouten voorstellen, beoordelaar maken en controleren) en hill-climb (de toepassing verbeteren tegen de evals).",
-    "Volgens Husain dringt de tool aan op evals vóór foutanalyse, en mengt de eerste beoordelaar vier controles (LLM-beoordelaar en code).",
-    "Volgens Husain vond de tool zonder hulp problemen die andere auto-eval-aanpakken misten, zoals overdracht naar een mens, opmaak en spraakproblemen.",
-    "Husain wacht nog met gebruiken; de maker van de plugin wil de feedback verwerken."
-   ],
-   "article_type": "opinie",
-   "author": "Hamel Husain, consultant en docent over AI-evaluatie (met Shreya Shankar)"
-  },
-  {
    "id": "f29afd156725",
    "title": "Donating Agent Skills to the Agentic AI Foundation",
    "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
@@ -2666,7 +2653,7 @@
     "recency": 0.59,
     "source": 0.68,
     "quality": 0.45,
-    "feedback": 0.07
+    "feedback": 0.06
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2735,7 +2722,7 @@
     "recency": 0.39,
     "source": 0.51,
     "quality": 0.65,
-    "feedback": 0.07
+    "feedback": 0.06
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2836,7 +2823,7 @@
     "recency": 0.25,
     "source": 1.0,
     "quality": 0.55,
-    "feedback": -0.1
+    "feedback": -0.11
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2901,7 +2888,8 @@
     "topic": 1.0,
     "recency": 0.28,
     "source": 0.68,
-    "quality": 0.6
+    "quality": 0.6,
+    "feedback": -0.01
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -2924,92 +2912,6 @@
     "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
     "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
    ]
-  },
-  {
-   "id": "68a2bf1c5563",
-   "title": "What's the difference between dbt and dbt OSS?",
-   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
-   "source_id": "dbt_developer_blog",
-   "published_at": "2026-09-16T00:00:00Z",
-   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
-   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
-   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
-   "limitations": [
-    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
-    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
-    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "dbt licensing",
-     "url": "https://docs.getdbt.com/docs/dbt-licensing"
-    },
-    {
-     "label": "Licensing FAQ",
-     "url": "https://www.getdbt.com/licenses-faq"
-    },
-    {
-     "label": "dbt-autofix",
-     "url": "https://github.com/dbt-labs/dbt-autofix"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "overig"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.1,
-    "source": 0.68,
-    "quality": 0.63,
-    "feedback": 0.04
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "dbt_developer_blog",
-     "title": "dbt v2.0 is GA",
-     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
-     "published_at": "2026-09-16T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
-   "story": [
-    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
-    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
-    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
-    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ."
-   ],
-   "key_facts": [
-    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
-    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
-    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
-    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
-    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
-    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
-    "language": "bash",
-    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
-    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
-   },
-   "learning": "Release pipelines, bundles en uitrol"
   },
   {
    "id": "984223f109f3",
@@ -3048,7 +2950,7 @@
     "recency": 0.19,
     "source": 0.51,
     "quality": 0.67,
-    "feedback": 0.07
+    "feedback": 0.06
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -3130,6 +3032,92 @@
    ]
   },
   {
+   "id": "68a2bf1c5563",
+   "title": "What's the difference between dbt and dbt OSS?",
+   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+   "source_id": "dbt_developer_blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
+   "fetched_at": "2026-10-28T20:32:37.744597Z",
+   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
+   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
+   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
+   "limitations": [
+    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
+    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
+    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "dbt licensing",
+     "url": "https://docs.getdbt.com/docs/dbt-licensing"
+    },
+    {
+     "label": "Licensing FAQ",
+     "url": "https://www.getdbt.com/licenses-faq"
+    },
+    {
+     "label": "dbt-autofix",
+     "url": "https://github.com/dbt-labs/dbt-autofix"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.1,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.03
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "dbt_developer_blog",
+     "title": "dbt v2.0 is GA",
+     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+     "published_at": "2026-09-16T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
+   "story": [
+    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
+    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
+    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
+    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ."
+   ],
+   "key_facts": [
+    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
+    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
+    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
+    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
+    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
+    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
+    "language": "bash",
+    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
+    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
+   },
+   "learning": "Release pipelines, bundles en uitrol"
+  },
+  {
    "id": "9a1a77aea3de",
    "title": "Running open-Jev in SQL on Databricks",
    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -3172,7 +3160,7 @@
     "recency": 0.15,
     "source": 0.68,
     "quality": 0.57,
-    "feedback": -0.02
+    "feedback": -0.03
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -3220,22 +3208,22 @@
     }
    ],
    "topics": [
+    "powerbi_semantic_models",
     "databricks_data_engineering",
-    "data_architecture_modeling",
-    "powerbi_semantic_models"
+    "data_architecture_modeling"
    ],
    "groups": [
+    "overig",
     "databricks",
-    "architectuur",
-    "overig"
+    "architectuur"
    ],
-   "relevance_score": 72,
+   "relevance_score": 73,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.06,
     "source": 0.68,
     "quality": 0.63,
-    "feedback": -0.21
+    "feedback": -0.17
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -3288,13 +3276,13 @@
     "claude",
     "agents"
    ],
-   "relevance_score": 62,
+   "relevance_score": 61,
    "score_parts": {
     "topic": 0.8,
     "recency": 0.72,
     "source": 0.8,
     "quality": 0.57,
-    "feedback": -0.84
+    "feedback": -0.85
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -3355,7 +3343,7 @@
     "recency": 0.29,
     "source": 0.68,
     "quality": 0.53,
-    "feedback": -0.84
+    "feedback": -0.85
    },
    "decision": "area_minimum",
    "processing_status": "enriched",
@@ -4963,7 +4951,7 @@
     "id": "powerbi_semantic_models",
     "name": "Power BI en semantische modellen",
     "description": "Aansluiting op BI, rapportages en AI op bedrijfsdata. Alleen de must-knows: grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, en functies die stoppen. Geen kleine updates of maandoverzichten.",
-    "priority": 4,
+    "priority": 5,
     "area": "data_engineering"
    },
    {
@@ -5032,21 +5020,21 @@
   },
   "votes": 12,
   "reads": 2,
-  "offset": 0.844,
+  "offset": 0.846,
   "weight": 0.15,
   "updated_at": "2026-11-01T13:55:35.633979Z"
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 417,
-  "unique_after_dedupe": 376,
+  "fetched_items": 407,
+  "unique_after_dedupe": 366,
   "merged_duplicates": 11,
   "shown": 38,
   "decisions": {
    "excluded": 106,
-   "included": 58,
-   "below_threshold": 110,
-   "no_topic": 94,
+   "included": 62,
+   "below_threshold": 106,
+   "no_topic": 84,
    "source_cap": 7,
    "area_minimum": 1
   },
@@ -5057,8 +5045,8 @@
   "per_group": {
    "ai_context": 12,
    "dbt": 8,
-   "databricks": 6,
-   "overig": 1,
+   "databricks": 5,
+   "overig": 2,
    "agents": 8,
    "architectuur": 1,
    "claude": 2
@@ -5134,16 +5122,6 @@
     ]
    },
    {
-    "title": "AI Functions Unity Catalog permissions is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
@@ -5174,6 +5152,16 @@
     "relevance_score": 88,
     "decision": "source_cap",
     "excluded_by": []
+   },
+   {
+    "title": "AI Functions Unity Catalog permissions is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
+    "relevance_score": 87,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    },
    {
     "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
@@ -5242,16 +5230,6 @@
     ]
    },
    {
-    "title": "Governed tag propagation is in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.311",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
@@ -5281,9 +5259,9 @@
     ]
    },
    {
-    "title": "Agent memory pipelines are in Beta",
+    "title": "Governed tag propagation is in Beta",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -5331,6 +5309,16 @@
     ]
    },
    {
+    "title": "Agent memory pipelines are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Metric view window measures are generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
@@ -5352,17 +5340,6 @@
     ]
    },
    {
-    "title": "v2.1.307",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.314",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
@@ -5372,14 +5349,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-    "source_id": "langchain_blog",
-    "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-    "relevance_score": 81,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "External writes to managed Delta tables are now generally available",
@@ -5412,6 +5381,17 @@
     ]
    },
    {
+    "title": "v2.1.307",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.1.305",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.305",
@@ -5423,6 +5403,14 @@
     ]
    },
    {
+    "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+    "source_id": "langchain_blog",
+    "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+    "relevance_score": 80,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Azure DevOps connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
@@ -5432,22 +5420,6 @@
      "connector_releases",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Bringing Rust-native Spark compatibility to Microsoft OneLake with Sail and LakeSail",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
@@ -5488,6 +5460,22 @@
     ]
    },
    {
+    "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Bringing Rust-native Spark compatibility to Microsoft OneLake with Sail and LakeSail",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Microsoft Graph Logs connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
@@ -5502,7 +5490,7 @@
     "title": "Xero connector is available in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
-    "relevance_score": 77,
+    "relevance_score": 76,
     "decision": "excluded",
     "excluded_by": [
      "connector_releases",
@@ -5629,27 +5617,6 @@
     ]
    },
    {
-    "title": "Unpaginated requests to some Unity Catalog REST API operations will soon be rejected",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#unpaginated-requests-to-some-unity-catalog-rest-api-operations-will-soon-be-rejected",
-    "relevance_score": 73,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.306",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.306",
-    "relevance_score": 73,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "How Ramp's internal AI agents crossed a million sessions",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
@@ -5678,6 +5645,16 @@
     ]
    },
    {
+    "title": "Unpaginated requests to some Unity Catalog REST API operations will soon be rejected",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#unpaginated-requests-to-some-unity-catalog-rest-api-operations-will-soon-be-rejected",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.0.0-dev.41-test-pypi",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
@@ -5685,6 +5662,17 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.306",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.306",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
     ]
    },
    {
