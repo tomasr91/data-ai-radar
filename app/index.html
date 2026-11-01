@@ -169,7 +169,6 @@ a.card.opt { text-decoration: none; color: inherit; }
 article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .pick-note b { color: var(--ink); font-weight: 650; }
-.later-h { margin: 22px 2px 0; font-size: 1rem; font-weight: 700; }
 .later-list { margin-top: 10px; display: grid; gap: 10px; }
 .later-item { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent2); border-radius: var(--r); padding: 12px 14px; }
 .later-item h3 { margin: 0 0 4px; font-size: 1.02rem; line-height: 1.3; }
@@ -198,6 +197,12 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pill.opinie { background: var(--accent2-soft); color: var(--accent2); }
 /* Lampje rechtsonder op de kaart: leeronderwerp (geel, fijne fitting) */
 .card.leer { position: relative; padding-bottom: 22px; }
+.menu-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(0,0,0,.45); padding: 10px 0 calc(14px + env(safe-area-inset-bottom)); }
+.menu-sheet[hidden] { display: none; }
+.menu-sheet a { display: flex; flex-direction: column; gap: 2px; padding: 12px 4px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.menu-sheet a:last-child { border-bottom: 0; }
+.menu-sheet a span { font-weight: 650; }
+.menu-sheet a small { color: var(--muted); font-size: 0.82rem; }
 .lamp { position: absolute; right: 13px; bottom: 8px; width: 10px; height: 13px; color: #f5d547; display: block; }
 .lamp svg { width: 100%; height: 100%; display: block; }
 .signal { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); }
@@ -296,8 +301,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <h1>Data &amp; AI Radar</h1>
       </div>
       <p class="upd" id="upd">Laden…</p>
-      <button class="icon-btn" id="btn-report" type="button" aria-label="Feedcontrole openen" title="Feedcontrole">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg>
+      <button class="icon-btn" id="btn-menu" type="button" aria-label="Menu" title="Menu" aria-haspopup="menu" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.02 7.83 L18.09 8.15 L18.09 11.85 L16.02 12.17 L15.79 12.72 L17.03 14.41 L14.41 17.03 L12.72 15.79 L12.17 16.02 L11.85 18.09 L8.15 18.09 L7.83 16.02 L7.28 15.79 L5.59 17.03 L2.97 14.41 L4.21 12.72 L3.98 12.17 L1.91 11.85 L1.91 8.15 L3.98 7.83 L4.21 7.28 L2.97 5.59 L5.59 2.97 L7.28 4.21 L7.83 3.98 L8.15 1.91 L11.85 1.91 L12.17 3.98 L12.72 4.21 L14.41 2.97 L17.03 5.59 L15.79 7.28Z"/><circle cx="10" cy="10" r="2.7"/></svg>
       </button>
     </div>
   </div>
@@ -311,11 +316,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <button type="button" data-v="date">Nieuw</button><button type="button" data-v="score">Relevant</button><button type="button" data-v="trends">Trends</button>
     </div>
     <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
-      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button><button type="button" data-v="begrippen">Begrippen</button>
+      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button><button type="button" data-v="later">Later</button>
     </div>
   </div>
 </div>
 
+<div class="menu-sheet" id="menu-sheet" role="menu" aria-label="Menu" hidden>
+  <div class="wrap">
+    <a role="menuitem" href="#begrippen"><span>Begrippen</span><small>Alle uitgelegde termen, met zoeken</small></a>
+    <a role="menuitem" href="#feedcontrole"><span>Feedcontrole</span><small>Bronnen, wat er is opgehaald en wat niet</small></a>
+  </div>
+</div>
 <main class="wrap" id="main">
   <div class="status" id="status" hidden></div>
   <div id="content"><div class="cards"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div>
@@ -431,7 +442,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       (feed.deepdives || []).forEach((d) => state.ddById.set(d.id, d));
       state.sort = store.get("sort", "score");
       state.view = ["verdieping", "leren"].includes(store.get("view", "actueel")) ? store.get("view", "actueel") : "actueel";
-      state.ddTab = ["morgen", "begrippen"].includes(store.get("ddTab", "alle")) ? store.get("ddTab", "alle") : "alle";
+      state.ddTab = ["morgen", "later"].includes(store.get("ddTab", "alle")) ? store.get("ddTab", "alle") : "alle";
       renderStatus();
       renderSeg();
       route();
@@ -552,11 +563,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (chosen.length) {
       // Er is gekozen: alleen die keuze, als de verdieping van morgen.
       return `<p class="pick-note">Claude schrijft deze morgenochtend. Daarna krijg je hier weer 5 nieuwe keuzes.</p>
-        <div class="cards">${chosen.map((id) => optCard(known.get(id) || (mine.has(id) ? { id, title: mine.get(id).title, question: mine.get(id).note, area: "eigen" } : { id, title: id }), true)).join("")}</div>
-        ${renderLater(false)}`;
+        <div class="cards">${chosen.map((id) => optCard(known.get(id) || (mine.has(id) ? { id, title: mine.get(id).title, question: mine.get(id).note, area: "eigen" } : { id, title: id }), true)).join("")}</div>`;
     }
-    if (!o?.options?.length) return renderLater(true) + `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>`;
-    return renderLater(true) + `${later.all().length ? `<h2 class="later-h">Keuzes van Claude</h2>` : ""}<p class="pick-note">Kies het onderwerp voor morgen. GitHub opent; tik daar op <b>Create</b>.</p><div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>`;
+    if (!o?.options?.length) return `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>`;
+    return `<p class="pick-note">Kies het onderwerp voor morgen. GitHub opent; tik daar op <b>Create</b>.</p><div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>`;
   }
   let chosenAt = 0;
   async function loadChosen(force) {
@@ -616,7 +626,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.view === "leren") return;
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
-      $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker() : state.ddTab === "begrippen" ? renderGlossary()
+      $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker() : state.ddTab === "later" ? renderLaterTab()
         : dds.length ? reviewBar() + `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
@@ -728,10 +738,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent("Verdieping: " + x.id)}&body=${encodeURIComponent(body)}`;
   }
   function renderLater(canChoose) {
-    const items = later.all(); if (!items.length) return "";
+    const items = later.all();
     const written = new Map((state.feed.deepdives || []).map((d) => [d.plan_id || d.id, d]));
     const chosen = new Set(state.chosen || []);
-    return `<h2 class="later-h">Jouw lijst</h2>
+    return `<p class="pick-note">Wat je nog wilt bekijken. Maak er een verdieping van, of tik op Klaar als je het gezien hebt.</p>
       <div class="later-list">${items.map((x) => {
         const dd = written.get(x.id);
         const act = dd ? `<a class="btn" href="#v-${esc(dd.id)}">Lees de verdieping ›</a>`
@@ -747,9 +757,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Je onderwerp en notitie komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
   }
 
+  function renderLaterTab() {
+    if (!later.all().length) return `<div class="empty" style="margin-top:14px"><h3>Nog niets bewaard</h3><p>Tik onder een artikel of verdieping op <b>＋ Later bekijken</b> om iets op deze lijst te zetten.</p></div>`;
+    return renderLater(!(state.chosen || []).length);
+  }
+
   /* ---- Begrippen ----
      Claude zet bij een stuk `terms` (pipeline/terms.py). De eerste keer dat een begrip in de tekst
-     staat wordt het onderstreept; tik erop voor de uitleg. Alle begrippen: Verdieping > Begrippen. */
+     staat wordt het onderstreept; tik erop voor de uitleg. Alle begrippen: menu (tandwiel) > Begrippen. */
   const reEsc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   // Begrippen die je al eens aantikte: niet meer oranje, alleen nog gestippeld (radar:terms).
   const termsSeen = {
@@ -785,6 +800,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     termsSeen.add(b.dataset.term);
     document.querySelectorAll(".term.new").forEach((el) => { if (el.dataset.term.toLowerCase() === b.dataset.term.toLowerCase()) el.classList.remove("new"); });
     return true;
+  }
+  function renderGlossaryPage() {
+    openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Begrippen</span></div></div>
+      <article class="full wrap"><h1>Begrippen</h1>${renderGlossary()}</article>`);
+    const q = $("#reader #gl-q");
+    if (q) q.oninput = () => { const v = q.value.trim().toLowerCase(); document.querySelectorAll("#reader .gl-item").forEach((el) => { el.hidden = !!v && !el.dataset.k.includes(v); }); };
   }
   const termSheet = `<div class="term-sheet" id="term-sheet" role="dialog" aria-label="Uitleg begrip" hidden></div>`;
   function renderGlossary() {
@@ -1143,13 +1164,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (h.startsWith("a-") && state.byId.has(h.slice(2))) { renderArticle(state.byId.get(h.slice(2))); return; }
     if (h === "herhaling") { renderReview(); return; }
     if (h === "lijst") {
-      state.view = "verdieping"; state.ddTab = "morgen"; store.set("view", state.view); store.set("ddTab", state.ddTab);
+      state.view = "verdieping"; state.ddTab = "later"; store.set("view", state.view); store.set("ddTab", state.ddTab);
       renderSeg(); closeReader(); renderList(); window.scrollTo(0, 0); return;
     }
-    if (h === "begrippen") {
-      state.view = "verdieping"; state.ddTab = "begrippen"; store.set("view", state.view); store.set("ddTab", state.ddTab);
-      renderSeg(); closeReader(); renderList(); window.scrollTo(0, 0); return;
-    }
+    if (h === "begrippen") { renderGlossaryPage(); return; }
     if (h === "week" && state.feed.weekly) { renderWeek(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
     if (h === "feedcontrole") { renderReport(); return; }
@@ -1181,7 +1199,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   $("#seg-view").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.v; store.set("view", state.view); renderSeg(); renderList(); window.scrollTo(0, 0); });
   $("#seg-dd").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.ddTab = b.dataset.v; store.set("ddTab", state.ddTab); renderSeg(); renderList(); window.scrollTo(0, 0); });
   $("#seg-sort").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.sort = b.dataset.v; store.set("sort", state.sort); renderSeg(); renderList(); });
-  $("#btn-report").addEventListener("click", () => { state.cameFromList = true; location.hash = "feedcontrole"; });
+  // Menu (tandwiel): Begrippen en Feedcontrole, onderin als paneel
+  const menu = $("#menu-sheet"), menuBtn = $("#btn-menu");
+  const menuOpen = (on) => { menu.hidden = !on; menuBtn.setAttribute("aria-expanded", String(on)); };
+  menuBtn.addEventListener("click", (e) => { e.stopPropagation(); menuOpen(menu.hidden); });
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) { state.cameFromList = true; menuOpen(false); } });
+  // Tik buiten het menu: alleen sluiten, niet ook iets eronder openen.
+  document.addEventListener("click", (e) => {
+    if (menu.hidden || e.target.closest("#menu-sheet") || e.target.closest("#btn-menu")) return;
+    e.preventDefault(); e.stopPropagation(); menuOpen(false);
+  }, true);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) menuOpen(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#reader").hidden && !document.querySelector("dialog[open]")) location.hash = ""; });
 
   load();
