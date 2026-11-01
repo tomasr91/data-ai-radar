@@ -658,6 +658,40 @@ class TestTaste(unittest.TestCase):
         self.assertTrue(enrich.validate_fit({"score": 0.4, "why": ""}))
 
 
+class TestRelevantNotFun(unittest.TestCase):
+    """Minder leuk maar wel relevant: kwaliteitsredenen raken het onderwerp niet, en 'altijd volgen'."""
+
+    def test_quality_reasons_spare_topic(self):
+        from pipeline import feedback
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        vote = lambda r: {"v": -1, "r": r, "at": "2026-10-31T00:00:00Z", "topics": ["data_governance_privacy"], "source_id": "s", "soort": "aankondiging"}
+        q = feedback.preferences({"votes": {"a": vote("te_vaag"), "b": vote("te_basic")}}, now)
+        self.assertNotIn("data_governance_privacy", q["topics"])
+        self.assertNotIn("s", q["sources"])
+        self.assertLess(q["kinds"]["aankondiging"], 0)
+        g = feedback.preferences({"votes": {"a": vote("geen_interesse")}}, now)
+        self.assertLess(g["topics"]["data_governance_privacy"], 0)
+
+    def test_follow_blocks_push_down_and_keeps_one(self):
+        from pipeline import build
+        conf = cfg.load()
+        tid = "data_governance_privacy"
+        next(t for t in conf.interests["topics"] if t["id"] == tid)["follow"] = True
+        conf.topics[tid]["follow"] = True
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        prefs = {"topics": {tid: -1.0}, "sources": {}, "offset": 0.0}
+        a = {"id": "g1", "title": "x", "url": "https://x", "source_id": "databricks_blog", "published_at": "2026-10-30T00:00:00Z",
+             "processing_status": "enriched", "topics": [tid], "quality": {"depth": .2, "practicality": .2, "novelty": .2},
+             "fit": {"score": 0.1, "why": "Saai."}}
+        r = score_article(dict(a), conf, now, prefs)
+        self.assertNotIn("feedback", r["score_parts"])
+        self.assertEqual(r["score_parts"]["fit"], 0.0)
+        r["decision"] = "below_threshold"
+        extra = build.follow_minimum([r], [], conf, now)
+        self.assertEqual([x["id"] for x in extra], ["g1"])
+        self.assertEqual(r["decision"], "follow_minimum")
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends

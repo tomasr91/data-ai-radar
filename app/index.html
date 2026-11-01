@@ -279,6 +279,11 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .lvl-pill.lvl-4 { color: var(--ink); }
 .int-topic .row1 .lvl-pill { margin-left: auto; }
 .learn-btn { display: inline-flex; align-items: center; gap: 5px; }
+.follow-btn { display: inline-flex; align-items: center; gap: 5px; }
+.int-pin { width: 11px; height: 13px; flex: none; color: var(--muted); }
+.row1 > .int-pin { color: var(--accent2); }
+.follow-btn[aria-pressed="true"] { border-color: var(--accent2) !important; color: var(--accent2) !important; background: var(--accent2-soft) !important; }
+.follow-btn[aria-pressed="true"] .int-pin { color: var(--accent2); }
 .learn-btn .int-lamp { color: var(--muted); }
 .learn-btn[aria-pressed="true"] { border-color: #f5d547 !important; color: #f5d547 !important; background: rgba(245,213,71,.1) !important; }
 .learn-btn[aria-pressed="true"] .int-lamp { color: #f5d547; }
@@ -933,7 +938,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const KIND = { nieuw: "Nieuw onderwerp", belangrijker: "Belangrijker maken", minder: "Minder belangrijk maken", weg: "Weghalen" };
   const CHG = { belangrijker: "Belangrijker", minder: "Minder", weg: "Weg" };
   const intStore = {
-    get() { try { return Object.assign({ answers: {}, changes: {}, learn: {}, note: "", sentAnswers: {} }, JSON.parse(localStorage.getItem("radar:int") || "{}")); } catch { return { answers: {}, changes: {}, learn: {}, note: "", sentAnswers: {} }; } },
+    get() { try { return Object.assign({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: {} }, JSON.parse(localStorage.getItem("radar:int") || "{}")); } catch { return { answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: {} }; } },
     save(d) { try { localStorage.setItem("radar:int", JSON.stringify(d)); } catch {} },
   };
   function openSuggestions() {
@@ -945,7 +950,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     $("#btn-menu")?.classList.toggle("has-dot", n > 0);
     const md = $("#menu-dot"); if (md) md.hidden = !n;
   }
-  function intPending(d) { return Object.keys(d.answers).length + Object.keys(d.changes).length + Object.keys(d.learn).length + (d.note.trim() ? 1 : 0); }
+  function intPending(d) { return Object.keys(d.answers).length + Object.keys(d.changes).length + Object.keys(d.learn).length + Object.keys(d.follow || {}).length + (d.note.trim() ? 1 : 0); }
   // Interesses gaan mee in het gezamenlijke feedback-issue (verstuurbalk op Actueel).
   function intParts(d) {
     const topics = new Map((state.feed.interests?.topics || []).map((t) => [t.id, t.name]));
@@ -954,11 +959,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ...Object.entries(d.answers).map(([id, a]) => `- Voorstel "${sugg.get(id)?.name || topics.get(sugg.get(id)?.topic) || id}" (${(KIND[sugg.get(id)?.kind] || "").toLowerCase()}): ${a}`),
       ...Object.entries(d.changes).map(([t, c]) => `- ${topics.get(t) || t}: ${c}`),
       ...Object.entries(d.learn).map(([t, on]) => `- ${topics.get(t) || t}: ${on ? "leeronderwerp (geel lampje)" : "geen leeronderwerp meer"}`),
+      ...Object.entries(d.follow || {}).map(([t, on]) => `- ${topics.get(t) || t}: ${on ? "altijd volgen" : "niet meer altijd volgen"}`),
       ...(d.note.trim() ? [`- In mijn eigen woorden: ${d.note.trim().replace(/\s+/g, " ")}`] : []),
     ];
     const data = { answers: Object.entries(d.answers).map(([id, a]) => ({ id, a })),
       changes: [...Object.entries(d.changes).map(([topic, c]) => ({ topic, c })),
-        ...Object.entries(d.learn).map(([topic, on]) => ({ topic, c: on ? "leren" : "niet_leren" }))], note: d.note.trim() };
+        ...Object.entries(d.learn).map(([topic, on]) => ({ topic, c: on ? "leren" : "niet_leren" })),
+        ...Object.entries(d.follow || {}).map(([topic, on]) => ({ topic, c: on ? "volgen" : "niet_volgen" }))], note: d.note.trim() };
     return { lines, data };
   }
 
@@ -967,6 +974,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je op Actueel</span><b>Naar Actueel ›</b></a>` : "";
   }
   const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
+  const INT_PIN = `<svg class="int-pin" viewBox="0 0 12 14" aria-label="altijd volgen" role="img"><path d="M3 1.2h6v1.6l-1 1v3.4l2 1.6v1.2H2V8.8l2-1.6V3.8l-1-1z M6 10v3" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
   // Effect van je duimpjes op artikelen over dit onderwerp (relatief, in punten)
   function intEffect(id) {
     const f = state.feed.feedback || {}, v = f.topics?.[id];
@@ -974,18 +982,20 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   // Eén onderwerp: niveau (jij kiest), je duimpjes (automatisch), en knoppen die zeggen wat er gebeurt
   function intTopicRow(t, d) {
-    const p = t.priority, e = intEffect(t.id), chg = d.changes[t.id];
+    const p = t.priority, chg = d.changes[t.id], e = t.follow ? Math.max(0, intEffect(t.id)) : intEffect(t.id);   // altijd volgen: nooit omlaag
     const learnNow = t.id in d.learn ? d.learn[t.id] : !!t.learning;   // zoals het wordt na versturen
+    const followNow = t.id in d.follow ? d.follow[t.id] : !!t.follow;
     const to = { belangrijker: p < 5 ? LEVEL[p + 1] : null, minder: p > 1 ? LEVEL[p - 1] : null };
     const btn = (c, label) => `<button type="button" data-int-chg="${c}" aria-pressed="${chg === c}">${label}</button>`;
     const plan = [chg === "weg" ? "Vannacht: uitgezet. Je krijgt er geen artikelen meer over."
       : chg ? `Vannacht: van <b>${esc(LEVEL[p])}</b> naar <b>${esc(to[chg])}</b>.` : "",
-      t.id in d.learn ? (d.learn[t.id] ? "Vannacht: wordt leeronderwerp (geel lampje op de kaarten)." : "Vannacht: geen leeronderwerp meer.") : ""].filter(Boolean).join("<br>");
+      t.id in d.learn ? (d.learn[t.id] ? "Vannacht: wordt leeronderwerp (geel lampje op de kaarten)." : "Vannacht: geen leeronderwerp meer.") : "",
+      t.id in d.follow ? (d.follow[t.id] ? "Vannacht: altijd volgen. Je feedback duwt het niet meer omlaag en er staat elke week minstens één artikel over in je feed." : "Vannacht: niet meer altijd volgen.") : ""].filter(Boolean).join("<br>");
     return `<div class="int-topic" data-topic="${esc(t.id)}">
-      <div class="row1"><span class="nm">${esc(t.name)}</span>${learnNow ? INT_LAMP : ""}<span class="lvl-pill lvl-${p}">${esc(LEVEL[p] || "")}</span></div>
+      <div class="row1"><span class="nm">${esc(t.name)}</span>${learnNow ? INT_LAMP : ""}${followNow ? INT_PIN : ""}<span class="lvl-pill lvl-${p}">${esc(LEVEL[p] || "")}</span></div>
       <p class="ds">${esc(t.description)}</p>
       ${e ? `<p class="eff${e < 0 ? " neg" : ""}">Je duimpjes: ${e > 0 ? "+" : "−"}${Math.abs(e)} punten per artikel</p>` : ""}
-      <div class="fb-reasons">${to.belangrijker ? btn("belangrijker", `▲ Naar ${to.belangrijker}`) : ""}${to.minder ? btn("minder", `▼ Naar ${to.minder}`) : ""}${btn("weg", "Uitzetten")}<button type="button" class="learn-btn" data-int-learn aria-pressed="${learnNow}" title="${learnNow ? "Leeronderwerp: tik om uit te zetten" : "Markeer als leeronderwerp"}">${INT_LAMP}${learnNow ? "Leeronderwerp" : "Leren"}</button></div>
+      <div class="fb-reasons">${to.belangrijker ? btn("belangrijker", `▲ Naar ${to.belangrijker}`) : ""}${to.minder ? btn("minder", `▼ Naar ${to.minder}`) : ""}${btn("weg", "Uitzetten")}<button type="button" class="learn-btn" data-int-learn aria-pressed="${learnNow}" title="${learnNow ? "Leeronderwerp: tik om uit te zetten" : "Markeer als leeronderwerp"}">${INT_LAMP}${learnNow ? "Leeronderwerp" : "Leren"}</button><button type="button" class="follow-btn" data-int-follow aria-pressed="${followNow}" title="${followNow ? "Altijd volgen: tik om uit te zetten" : "Altijd volgen, ook als je het minder leuk vindt"}">${INT_PIN}${followNow ? "Altijd volgen" : "Volgen"}</button></div>
       ${plan ? `<p class="int-plan">${plan}</p>` : ""}</div>`;
   }
   function renderInterests() {
@@ -1031,6 +1041,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const t = (state.feed.interests?.topics || []).find((x) => x.id === id);
       const now = id in d.learn ? d.learn[id] : !!t?.learning;
       if (id in d.learn) delete d.learn[id]; else d.learn[id] = !now;   // tweede tik = terug naar hoe het was
+      intStore.save(d);
+      if (t) row.outerHTML = intTopicRow(t, d);
+      $("#int-send-wrap").innerHTML = intSendBar();
+      return true;
+    }
+    const fbtn = e.target.closest("[data-int-follow]");
+    if (fbtn) {
+      const d = intStore.get(), row = fbtn.closest("[data-topic]"), id = row.dataset.topic;
+      const t = (state.feed.interests?.topics || []).find((x) => x.id === id);
+      const now = id in d.follow ? d.follow[id] : !!t?.follow;
+      if (id in d.follow) delete d.follow[id]; else d.follow[id] = !now;
       intStore.save(d);
       if (t) row.outerHTML = intTopicRow(t, d);
       $("#int-send-wrap").innerHTML = intSendBar();
@@ -1408,7 +1429,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
     const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
-    intStore.save({ answers: {}, changes: {}, learn: {}, note: "", sentAnswers: di.sentAnswers });
+    intStore.save({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: di.sentAnswers });
     updateMenuDot();
   }
 
@@ -1518,7 +1539,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <table class="score-table">${partRows}${fitRow}</table>
           ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
           ${a.fit?.why ? `<p class="score-fb">Claude: ${esc(a.fit.why)}</p>` : ""}
-          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : ""}.</p>
+          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
         </dialog>
       </article>`;

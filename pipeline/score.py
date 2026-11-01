@@ -132,11 +132,15 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         # gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag.
         f = article_factor({"topics": topic_ids, "source_id": article["source_id"], "soort": article.get("soort")}, prefs)
         fb = round(f - prefs.get("offset", 0.0), 2) if f is not None else 0
+        if fb < 0 and any(topics[t].get("follow") for t in topic_ids[:2]):
+            fb = 0   # 'Altijd volgen': feedback mag dit onderwerp alleen omhoog duwen
         if fb:
             parts["feedback"] = fb
             total = min(1.0, max(0.0, total + FB_WEIGHT * fb))
     # Claudes oordeel of dit artikel bij jou past (fit, 0-1, zie taken/UITLEGGEN.md): 0,5 is neutraal, max ±10 punten
     fit = (article.get("fit") or {}).get("score")
+    if isinstance(fit, (int, float)) and fit < 0.5 and any(topics[t].get("follow") for t in topic_ids[:2]):
+        fit = 0.5   # idem voor Claudes oordeel
     if isinstance(fit, (int, float)):
         parts["fit"] = round(fit - 0.5, 2)
         total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))

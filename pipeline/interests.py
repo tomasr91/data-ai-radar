@@ -38,7 +38,8 @@ def view(conf) -> dict:
                   for a in conf.interests.get("interest_areas", [])],
         "topics": [{"id": t["id"], "name": t["name"], "description": " ".join(str(t.get("description", "")).split()),
                     "priority": t.get("priority", 3), "area": area_of.get(t["id"], "overig"),
-                    **({"learning": True} if t.get("learning") else {})}
+                    **({"learning": True} if t.get("learning") else {}),
+                    **({"follow": True} if t.get("follow") else {})}
                    for t in topics if t.get("enabled", True)],
         "excluded": [{"id": x["id"], "name": x.get("name", x["id"])} for x in conf.interests.get("excluded_topics", [])],
         "updated": conf.interests.get("updated"),

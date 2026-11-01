@@ -20,6 +20,9 @@ PATH = DATA / "feedback.json"
 REASONS_DOWN = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interesse"}
 REASONS_UP = {"meer_hiervan", "praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack"}
 REASONS = REASONS_DOWN | REASONS_UP
+# 👎 om de kwaliteit van dít artikel: telt niet tegen het onderwerp of de bron, alleen tegen de soort
+# (en Claude ziet het in taste.json). Alleen geen_interesse / niet_mijn_stack / zonder reden verlagen het onderwerp.
+QUALITY_DOWN = {"te_basic", "te_vaag", "oud_nieuws"}
 HALF_LIFE_DAYS = 60
 WEIGHT = 0.15          # maximaal effect op de totaalscore (0-1): 15 punten
 SATURATION = 6.0       # na ~6 netto stemmen is de voorkeur ongeveer 0,76; zo blijft verschil zichtbaar tussen veel en weinig duimen (was 3)
@@ -58,10 +61,11 @@ def preferences(data: dict, now=None) -> dict:
     topics, sources, kinds = {}, {}, {}
     for v in data.get("votes", {}).values():
         w = v.get("v", 0) * (UP_WEIGHT if v.get("v", 0) > 0 else 1.0) * _age_weight(v.get("at", ""), now)
-        for t in v.get("topics", [])[:2]:  # de twee belangrijkste onderwerpen van het artikel
-            topics[t] = topics.get(t, 0.0) + w
-        if v.get("source_id"):
-            sources[v["source_id"]] = sources.get(v["source_id"], 0.0) + w
+        if not (w < 0 and v.get("r") in QUALITY_DOWN):
+            for t in v.get("topics", [])[:2]:  # de twee belangrijkste onderwerpen van het artikel
+                topics[t] = topics.get(t, 0.0) + w
+            if v.get("source_id"):
+                sources[v["source_id"]] = sources.get(v["source_id"], 0.0) + w
         if v.get("soort"):   # soort artikel: praktisch, aankondiging, ... (zie enrich.SOORTEN)
             kinds[v["soort"]] = kinds.get(v["soort"], 0.0) + w
     votes = data.get("votes", {})

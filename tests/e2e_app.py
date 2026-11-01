@@ -378,14 +378,17 @@ with sync_playwright() as p:
     page.click('.int-topic[data-topic="sql_spark_sql"] [data-int-learn]')
     check("   lampje aanzetten markeert het onderwerp als leeronderwerp", page.locator('.int-topic[data-topic="sql_spark_sql"] .row1 .int-lamp').count() == 1
           and "wordt leeronderwerp" in page.locator('.int-topic[data-topic="sql_spark_sql"]').inner_text())
+    page.click('.int-topic[data-topic="data_governance_privacy"] [data-int-follow]')
+    check("   altijd volgen aanzetten markeert het onderwerp en zegt wat er gebeurt", page.locator('.int-topic[data-topic="data_governance_privacy"] .row1 .int-pin').count() == 1
+          and "altijd volgen" in page.locator('.int-topic[data-topic="data_governance_privacy"]').inner_text())
     page.fill("#int-note", "Meer over Fabric")
     check("   op de pagina zelf alleen een verwijzing naar Actueel", page.locator("#int-to-send").count() == 1 and "Actueel" in page.locator("#int-to-send").inner_text())
     page.click("#int-to-send")
     page.wait_for_selector("#reader", state="hidden")
     sh = unquote(page.locator("#content #fb-send").get_attribute("href") or "")
-    check("   één verstuurbalk op Actueel, met de interesses erin", "title=Feedback: 4 wijzigingen in je interesses" in sh and '"interests":' in sh
+    check("   één verstuurbalk op Actueel, met de interesses erin", "title=Feedback: 5 wijzigingen in je interesses" in sh and '"interests":' in sh
           and '{"topic":"sql_spark_sql","c":"leren"}' in sh and '{"id":"data-contracts","a":"ja"}' in sh
-          and '{"topic":"open_source_tools","c":"minder"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-220:])
+          and '{"topic":"open_source_tools","c":"minder"}' in sh and '{"topic":"data_governance_privacy","c":"volgen"}' in sh and '"note":"Meer over Fabric"' in sh, sh[-220:])
     page.click("#content #fb-send")
     page.wait_for_timeout(500)
     page.goto(url + "#interesses")

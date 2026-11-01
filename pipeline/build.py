@@ -169,6 +169,34 @@ def area_minimum(arts: list, shown: list, conf, now) -> list:
     return extra
 
 
+FOLLOW_DAYS = 7
+
+
+def follow_minimum(arts: list, shown: list, conf, now) -> list:
+    """'Altijd volgen' (follow: true in interests.yml): verscheen er de afgelopen week iets over zo'n
+    onderwerp, dan staat er minstens één uitgelegd artikel van in de feed, ook onder de drempel."""
+    cutoff = now - timedelta(days=FOLLOW_DAYS)
+
+    def recent(a):
+        try:
+            return datetime.fromisoformat(str(a.get("published_at")).replace("Z", "+00:00")) >= cutoff
+        except ValueError:
+            return False
+    extra = []
+    for t in conf.interests.get("topics", []):
+        if not t.get("follow") or not t.get("enabled", True):
+            continue
+        if any(t["id"] in a["topics"][:2] and recent(a) for a in shown + extra):
+            continue
+        pool = sorted([a for a in arts if a not in shown and a not in extra and a["processing_status"] == "enriched"
+                       and a["decision"] in ("below_threshold", "source_cap") and t["id"] in a["topics"][:2] and recent(a)],
+                      key=lambda a: -a["relevance_score"])
+        if pool:
+            pool[0]["decision"] = "follow_minimum"
+            extra.append(pool[0])
+    return extra
+
+
 TASTE = cfg.DATA / "taste.json"
 TO_TAG = cfg.DATA / "to_tag.json"
 
@@ -357,6 +385,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Ondergrens per gebied (interest_areas.min_articles): aanvullen met de best scorende uitgelegde
     # artikelen van de laatste 14 dagen uit dat gebied, ook net onder de drempel of boven het maximum per bron.
     shown += area_minimum(arts, shown, conf, now)
+    shown += follow_minimum(arts, shown, conf, now)
     write_to_tag(shown)
     hidden = [a for a in arts if a not in shown]
 
@@ -376,7 +405,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "last_successful_update": result.extra.get("captured_at") if result.mode == "snapshot" else _iso(now),
         "groups": conf.feed_groups,
         "topics": {t["id"]: {"name": t["name"], "priority": t["priority"], "group": t.get("feed_group", "overig"),
-                             **({"learning": True} if t.get("learning") else {})}
+                             **({"learning": True} if t.get("learning") else {}),
+                             **({"follow": True} if t.get("follow") else {})}
                    for t in conf.interests["topics"]},
         "sources": _source_view(conf, result.source_results),
         "daily_top": daily_top(shown, size=5, per_group=min(2, conf.scoring.get("max_items_per_topic_per_feed", 3))),
