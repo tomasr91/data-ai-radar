@@ -194,7 +194,7 @@ with sync_playwright() as p:
     # 20. Lampje bij leeronderwerpen
     lamps = page.locator(".card .lamp").count()
     check("20. lampje alleen op kaarten over leeronderwerpen", lamps == len(_learn)
-          and all(page.locator(f'.card[data-id="{i}"] .signal .lamp').count() == 1 for i in _learn), f"{lamps} vs {len(_learn)}")
+          and all(page.locator(f'.card[data-id="{i}"] > .lamp').count() == 1 for i in _learn), f"{lamps} vs {len(_learn)}")
 
     # 17. Gelezen en Jouw week
     check("17. Jouw week staat bovenaan Actueel", page.locator('a.fb-send[href="#week"]').count() == 1)
