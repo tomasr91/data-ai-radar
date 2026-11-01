@@ -124,9 +124,11 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         "quality": (q["depth"] + q["practicality"] + q["novelty"]) / 3 if q else RAW_QUALITY,
     }
     total = sum(WEIGHTS[k] * v for k, v in parts.items())
-    if prefs:
+    if prefs and (prefs.get("topics") or prefs.get("sources")):
         from .feedback import WEIGHT as FB_WEIGHT, article_factor
-        fb = article_factor({"topics": topic_ids, "source_id": article["source_id"]}, prefs)
+        # Relatief: ten opzichte van het gemiddelde artikel (offset, zie build.py). Wat je vaker dan
+        # gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag.
+        fb = round(article_factor({"topics": topic_ids, "source_id": article["source_id"]}, prefs) - prefs.get("offset", 0.0), 2)
         if fb:
             parts["feedback"] = fb
             total = min(1.0, max(0.0, total + FB_WEIGHT * fb))

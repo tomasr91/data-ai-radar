@@ -360,7 +360,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   /* ---- Duimpjes ----
      Bewaard op dit toestel (radar:fb). Versturen = één GitHub-issue "Feedback: ..." met een
      JSON-blok; GitHub Actions verwerkt het direct (scripts/collect_feedback.py). */
-  const FB_UP = { meer_hiervan: "Meer hiervan" };
+  const FB_UP = { praktisch: "Praktisch toepasbaar", goed_uitgelegd: "Goed uitgelegd", nieuw_voor_mij: "Nieuw voor mij", mijn_stack: "Past bij mijn stack", meer_hiervan: "Meer hiervan" };
+  const fbPoints = () => Math.round((state.feed?.feedback?.weight || 0.15) * 100);   // maximaal effect in punten
   const FB_DOWN = { te_basic: "Te basic", niet_mijn_stack: "Niet mijn stack", oud_nieuws: "Oud nieuws", te_vaag: "Te vaag", geen_interesse: "Interesseert me niet" };
   const fb = {
     all() { try { return JSON.parse(localStorage.getItem("radar:fb") || "{}"); } catch { return {}; } },
@@ -1038,7 +1039,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const parts = a.score_parts || {};
     const partRows = [["Past bij je onderwerpen", parts.topic, "55%"], ["Inhoudelijke kwaliteit", parts.quality, "20%"], ["Actualiteit", parts.recency, "15%"], ["Bron", parts.source, "10%"]]
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("")
-      + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±8)</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * 8)} punten</td></tr>` : "");
+      + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±${fbPoints()})</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * fbPoints())} punten</td></tr>` : "");
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
     const added = a.processed_at || a.fetched_at;
     const inApp = added ? fmtDate(added) : "onbekend";
@@ -1094,11 +1095,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function fbLearned() {
     const f = state.feed.feedback;
     if (!f?.votes && !f?.reads) return `<section class="block"><h2>Wat de radar van je feedback leerde</h2><p style="font-size:.92rem">Nog geen duimpjes verwerkt. Geef onderaan een artikel een 👍 of 👎 en verstuur ze vanaf Actueel.</p></section>`;
-    const row = (name, v) => `<li>${v > 0 ? "▲" : "▼"} ${esc(name)} <span style="color:var(--muted)">(${v > 0 ? "+" : ""}${Math.round(v * 8)} punten)</span></li>`;
+    // Relatief: vergeleken met een gemiddeld artikel (offset)
+    const rel = (v) => Math.round((v - (f.offset || 0)) * fbPoints());
+    const row = (name, v) => `<li>${rel(v) >= 0 ? "▲" : "▼"} ${esc(name)} <span style="color:var(--muted)">(${rel(v) > 0 ? "+" : ""}${rel(v)} punten)</span></li>`;
     const topics = Object.entries(f.topics || {}).sort((a, b) => b[1] - a[1]).map(([t, v]) => row(state.feed.topics[t]?.name || t, v));
     const srcs = Object.entries(f.sources || {}).sort((a, b) => b[1] - a[1]).map(([sid, v]) => row(source(sid).name, v));
     return `<section class="block"><h2>Wat de radar van je feedback leerde</h2>
-      <p style="font-size:.92rem">${f.votes || 0} beoordeling${f.votes === 1 ? "" : "en"}${f.reads ? ` en ${f.reads} gelezen artikel${f.reads === 1 ? "" : "en"}` : ""} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag.</p>
+      <p style="font-size:.92rem">${f.votes || 0} beoordeling${f.votes === 1 ? "" : "en"}${f.reads ? ` en ${f.reads} gelezen artikel${f.reads === 1 ? "" : "en"}` : ""} verwerkt${f.updated_at ? `, laatst op ${esc(fmtDateTime(f.updated_at))}` : ""}. Artikelen over deze onderwerpen en bronnen schuiven zoveel punten omhoog of omlaag, vergeleken met een gemiddeld artikel. Wat je niet beoordeelt zakt daardoor iets (hooguit ${fbPoints()} punten).</p>
       ${topics.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Onderwerpen</h3><ul>${topics.join("")}</ul>` : ""}
       ${srcs.length ? `<h3 style="font-size:.9rem;margin:10px 0 4px">Bronnen</h3><ul>${srcs.join("")}</ul>` : ""}
     </section>`;

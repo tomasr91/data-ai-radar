@@ -3,8 +3,9 @@
 - 👎 op een artikel: dat artikel verdwijnt uit de app.
 - Per onderwerp en per bron telt de radar je stemmen op (recente zwaarder, halveert elke
   60 dagen). Dat geeft een voorkeur tussen -1 en +1.
-- De voorkeur weegt mee in de relevantiescore: hooguit 8 punten erbij of eraf. Zo stuur je
-  bij zonder dat één duimpje alles omgooit. Je ziet het per artikel bij "Jouw feedback".
+- De voorkeur weegt mee in de relevantiescore, relatief: vergeleken met het gemiddelde artikel
+  in de app (offset). Wat je vaker dan gemiddeld 👍 geeft gaat omhoog, de rest iets omlaag;
+  hooguit 15 punten erbij of eraf (T, 1-11-2026). Je ziet het per artikel bij "Jouw feedback".
 - Gewichten (T, 31-10-2026): 👍 telt 2 ("dit is echt interessant"), 👎 telt 1 de andere kant op,
   gelezen (tot onderaan, minstens 15 seconden open) telt 0,5: een benadering. Heb je een
   artikel ook beoordeeld, dan telt alleen je duim.
@@ -16,9 +17,11 @@ from datetime import datetime, timezone
 from .config import DATA
 
 PATH = DATA / "feedback.json"
-REASONS = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interesse", "meer_hiervan"}
+REASONS_DOWN = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interesse"}
+REASONS_UP = {"meer_hiervan", "praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack"}
+REASONS = REASONS_DOWN | REASONS_UP
 HALF_LIFE_DAYS = 60
-WEIGHT = 0.08          # maximaal effect op de totaalscore (0-1)
+WEIGHT = 0.15          # maximaal effect op de totaalscore (0-1): 15 punten
 SATURATION = 3.0       # na ~3 netto stemmen is de voorkeur ongeveer 0,76
 UP_WEIGHT = 2.0        # duim omhoog telt dubbel
 READ_WEIGHT = 0.5      # gelezen: een benadering, telt licht (T, 31-10-2026: 0,5 tegen 2 voor een duim)
@@ -79,3 +82,9 @@ def article_factor(article: dict, prefs: dict) -> float:
     if article.get("source_id") in prefs.get("sources", {}):
         vals.append(prefs["sources"][article["source_id"]])
     return round(sum(vals) / len(vals), 2) if vals else 0.0
+
+
+def mean_factor(articles: list, prefs: dict) -> float:
+    """Gemiddelde voorkeur over de artikelen die in aanmerking komen: het nulpunt voor 'relatief'."""
+    vals = [article_factor(a, prefs) for a in articles]
+    return round(sum(vals) / len(vals), 3) if vals else 0.0

@@ -157,6 +157,11 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     fb_votes = fb_data["votes"]
     for a in arts:
         score_article(a, conf, now, fb_prefs, fb_votes)
+    # Relatief maken: het gemiddelde artikel dat in aanmerking komt is het nulpunt.
+    pool = [a for a in arts if a["decision"] not in ("excluded", "no_topic") and a["processing_status"] == "enriched"]
+    fb_prefs["offset"] = feedback_mod.mean_factor(pool, fb_prefs)
+    for a in arts:
+        score_article(a, conf, now, fb_prefs, fb_votes)
     candidates = sorted([a for a in arts if a["decision"] not in ("excluded", "no_topic")],
                         key=lambda a: -a["relevance_score"])
     enrich_report = enrich_new(candidates, set(conf.topics), max_enrich)
@@ -195,6 +200,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     if cap:
         per_src = Counter()
         for a in shown:
+            if fb_votes.get(a["id"], {}).get("v") == 1:
+                continue   # wat je 👍 gaf blijft altijd staan en telt niet mee voor het maximum
             per_src[a["source_id"]] += 1
             if per_src[a["source_id"]] > cap:
                 a["decision"] = "source_cap"
@@ -226,7 +233,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "trends": trends,
         "weekly": weekly,
         "glossary": glossary(shown, deepdives),
-        "feedback": {**fb_prefs, "updated_at": fb_data.get("updated_at")},
+        "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at")},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
             "fetched_items": len(result.items),

@@ -379,6 +379,27 @@ class TestTerms(unittest.TestCase):
         self.assertEqual([r["id"] for r in g[1]["refs"]], ["a2", "a1"])
 
 
+class TestFeedbackRelative(unittest.TestCase):
+    """Feedback telt relatief: boven gemiddeld omhoog, de rest omlaag; hooguit 15 punten."""
+
+    def test_offset_centres_effect(self):
+        from pipeline import feedback
+        conf = cfg.load()
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        prefs = {"topics": {"dbt_analytics_engineering": 1.0}, "sources": {}}
+        base = {"title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-10-31T00:00:00Z",
+                "processing_status": "enriched", "quality": {"depth": .7, "practicality": .7, "novelty": .7}}
+        arts = [dict(base, id="a", topics=["dbt_analytics_engineering"]), dict(base, id="b", topics=["ai_agents_rag"])]
+        prefs["offset"] = feedback.mean_factor(arts, prefs)
+        self.assertAlmostEqual(prefs["offset"], 0.5)
+        a = score_article(dict(arts[0]), conf, now, prefs)
+        b = score_article(dict(arts[1]), conf, now, prefs)
+        self.assertGreater(a["score_parts"]["feedback"], 0)
+        self.assertLess(b["score_parts"]["feedback"], 0)
+        self.assertEqual(feedback.WEIGHT, 0.15)
+        self.assertTrue({"praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack", "meer_hiervan"} <= feedback.REASONS)
+
+
 class TestOwnTopic(unittest.TestCase):
     """Jouw lijst: eigen onderwerp als verdieping (issue 'Verdieping: eigen-...')."""
 
@@ -500,7 +521,7 @@ class TestFeedback(unittest.TestCase):
         plain = score_article(dict(a), conf, NOW)["relevance_score"]
         tuned = score_article(dict(a), conf, NOW, prefs, data["votes"])
         self.assertLess(tuned["relevance_score"], plain)
-        self.assertLessEqual(plain - tuned["relevance_score"], 8)
+        self.assertLessEqual(plain - tuned["relevance_score"], 15)
         down = score_article(dict(a), conf, NOW, prefs, {a["id"]: {"v": -1}})
         self.assertEqual(down["decision"], "hidden_by_feedback")
 
