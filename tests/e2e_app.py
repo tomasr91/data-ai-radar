@@ -54,6 +54,9 @@ sys.path.insert(0, str(ROOT))
 from pipeline import config as _cfg, deepdives as _dd  # noqa: E402
 feed["deepdives"], _ = _dd.load_all(set(_cfg.load().topics))
 dds = feed["deepdives"]
+# Een verdieping uit een eigen voorstel (Later): krijgt het label "jouw voorstel"
+if dds:
+    dds.append(dict(dds[-1], id="eigen-test-voorstel", plan_id="eigen-test-voorstel", written_at="2026-10-01T05:00:00Z"))
 feed["deepdive_options"], _ = _dd.load_options(set(_cfg.load().topics))
 feed["repo"] = "tomasr91/data-ai-radar"
 opts = feed["deepdive_options"]["options"]
@@ -285,11 +288,19 @@ with sync_playwright() as p:
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)
+    check("   eigen voorstel herkenbaar aan 'jouw voorstel'", page.locator(".card[data-dd] .pill.eigen").count() == 1
+          and page.locator('.card[data-dd="eigen-test-voorstel"] .pill.eigen').count() == 1)
     page.click('#seg-dd button[data-v="morgen"]')
     check("   tabje Morgen toont vijf keuzes", page.locator("a.card.opt").count() == 5 and page.locator(".card[data-dd]").count() == 0)
     href = page.locator("a.card.opt").first.get_attribute("href")
     check("   keuze opent een GitHub-issue met de juiste titel",
           href.startswith("https://github.com/tomasr91/data-ai-radar/issues/new?title=") and f"Verdieping%3A%20{opts[0]['id']}" in href, href[:120])
+    # Eigen voorstel ingediend (Later): de 5 keuzes blijven staan, met een regel "Ook morgen"
+    GH["issues"] = json.dumps([{"number": 9, "title": "Verdieping: eigen-dbt-project-evaluator", "user": {"login": "tomasr91"}}])
+    page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
+    page.wait_for_selector(".own-next", timeout=3000)
+    check("   eigen voorstel laat de 5 keuzes staan, met 'Ook morgen'", page.locator("a.card.opt").count() == 5
+          and "dbt project evaluator" in page.locator(".own-next").inner_text())
     # Terug uit GitHub: de eigenaar heeft nu gekozen
     GH["issues"] = FAKE_ISSUES
     page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")

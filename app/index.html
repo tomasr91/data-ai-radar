@@ -257,6 +257,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .score-dlg .score-note { font-size: .8rem; color: var(--muted); margin: 10px 0 12px; }
 .score-dlg form { display: flex; justify-content: flex-end; margin: 0; }
 .pill.verdieping { background: var(--accent2-soft); color: var(--accent2); }
+.pill.eigen { background: transparent; color: var(--accent2); border: 1px solid color-mix(in srgb, var(--accent2) 55%, transparent); padding: 1px 7px; }
+.own-next { margin: 14px 2px 0; padding: 10px 14px; border-radius: var(--r); border: 1px dashed var(--line); font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
+.own-next b { color: var(--ink); font-weight: 650; }
 .dd-sec h2 { font-size: 1.15rem; margin: 30px 0 8px; font-weight: 650; }
 .reading { margin: 6px 0 0; padding-left: 1.2em; max-width: 64ch; }
 .reading li { font-size: 0.95rem; line-height: 1.55; margin-bottom: 8px; }
@@ -530,9 +533,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     </article>`;
   }
 
+  // Eigen voorstel van T (uit Later): plan_id begint met "eigen-"
+  const isOwn = (d) => String(d.plan_id || d.id || "").startsWith("eigen-");
+  const ownPill = (d) => isOwn(d) ? `<span class="pill eigen">jouw voorstel</span>` : "";
   function ddCard(d) {
     return `<article class="card" data-dd="${esc(d.id)}" tabindex="0" role="link" aria-label="${esc(d.headline)}">
-      <div class="meta"><span class="src"><span class="card-date">${esc(shortDate(d.written_at))}</span>Verdieping</span><span>${d.reading_minutes} min lezen</span></div>
+      <div class="meta"><span class="src"><span class="card-date">${esc(shortDate(d.written_at))}</span>Verdieping</span>${ownPill(d)}<span>${d.reading_minutes} min lezen</span></div>
       <h3>${esc(d.headline)}</h3>
       <p class="sum">${esc(d.summary)}</p>
     </article>`;
@@ -557,16 +563,20 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function renderPicker() {
     const o = state.feed.deepdive_options;
-    const chosen = state.chosen || [];
+    // Eigen voorstellen (eigen-...) tellen niet als keuze: die komen er naast de gewone verdieping bij.
+    const all = state.chosen || [];
+    const chosen = all.filter((id) => !id.startsWith("eigen-"));
+    const own = all.filter((id) => id.startsWith("eigen-"));
     const known = new Map((o?.options || []).map((x) => [x.id, x]));
     const mine = new Map(later.all().map((x) => [x.id, x]));
+    const ownNote = own.length ? `<p class="own-next">Ook morgen: jouw voorstel ${own.map((id) => `<b>${esc(mine.get(id)?.title || id.slice(6).replace(/-/g, " "))}</b>`).join(" en ")}.</p>` : "";
     if (chosen.length) {
       // Er is gekozen: alleen die keuze, als de verdieping van morgen.
-      return `<p class="pick-note">Claude schrijft deze morgenochtend. Daarna krijg je hier weer 5 nieuwe keuzes.</p>
-        <div class="cards">${chosen.map((id) => optCard(known.get(id) || (mine.has(id) ? { id, title: mine.get(id).title, question: mine.get(id).note, area: "eigen" } : { id, title: id }), true)).join("")}</div>`;
+      return `<p class="pick-note">Claude schrijft deze vannacht; morgenochtend staat hij bij Verdiepingen. Daarna krijg je hier weer 5 nieuwe keuzes.</p>
+        <div class="cards">${chosen.map((id) => optCard(known.get(id) || { id, title: id }, true)).join("")}</div>${ownNote}`;
     }
-    if (!o?.options?.length) return `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>`;
-    return `<p class="pick-note">Kies het onderwerp voor morgen. GitHub opent; tik daar op <b>Create</b>.</p><div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>`;
+    if (!o?.options?.length) return `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>${ownNote}`;
+    return `<p class="pick-note">Kies het onderwerp voor morgen. GitHub opent; tik daar op <b>Create</b>.</p><div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>${ownNote}`;
   }
   let chosenAt = 0;
   async function loadChosen(force) {
@@ -754,12 +764,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <span class="from">${fromLink ? `Gezien in: ${fromLink} · ` : ""}${esc(fmtDate(x.at))}</span>
           <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></div>`;
       }).join("")}</div>
-      ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Je onderwerp en notitie komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
+      ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je onderwerp en notitie komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
   }
 
   function renderLaterTab() {
     if (!later.all().length) return `<div class="empty" style="margin-top:14px"><h3>Nog niets bewaard</h3><p>Tik onder een artikel of verdieping op <b>＋ Later bekijken</b> om iets op deze lijst te zetten.</p></div>`;
-    return renderLater(!(state.chosen || []).length);
+    return renderLater(true);
   }
 
   /* ---- Begrippen ----
@@ -885,7 +895,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <span class="crumb"></span>
       </div></div>
       <article class="full wrap dd">
-        <div class="meta top"><span class="pill verdieping">verdieping</span><span>${d.reading_minutes} min lezen</span>${topics.length ? `<span>${esc(topics.join(" · "))}</span>` : ""}</div>
+        <div class="meta top"><span class="pill verdieping">verdieping</span>${ownPill(d)}<span>${d.reading_minutes} min lezen</span>${topics.length ? `<span>${esc(topics.join(" · "))}</span>` : ""}</div>
         <h1>${esc(d.headline)}</h1>
         <p class="lead">${mark(d.summary)}</p>
         ${(d.sections || []).map((s) => `<section class="dd-sec"><h2>${esc(s.heading)}</h2><div class="story">${s.paragraphs.map((p) => `<p>${mark(p)}</p>`).join("")}</div></section>`).join("")}

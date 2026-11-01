@@ -393,6 +393,29 @@ class TestOwnTopic(unittest.TestCase):
                   {"number": 5, "title": "Verdieping: eigen-spam", "user": {"login": "vreemde"}}]
         self.assertEqual(nd.choices(issues, "tomasr91"), [(4, "eigen-dbt-project-evaluator")])
 
+    def test_plan_only_at_night_and_regular_plus_own(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import next_deepdive as nd
+        issues = [{"number": 12, "title": "Verdieping: eigen-a", "user": {"login": "tomasr91"}, "body": "Onderwerp: A"},
+                  {"number": 13, "title": "Verdieping: keuze-x", "user": {"login": "tomasr91"}},
+                  {"number": 14, "title": "Verdieping: eigen-b", "user": {"login": "tomasr91"}},
+                  {"number": 15, "title": "Verdieping: eigen-c", "user": {"login": "tomasr91"}},
+                  {"number": 16, "title": "Verdieping: keuze-y", "user": {"login": "tomasr91"}}]
+        known = {"keuze-x": {"id": "keuze-x"}, "keuze-y": {"id": "keuze-y"}}
+        night = datetime(2026, 11, 2, 3, 15, tzinfo=timezone.utc)      # 04:15 Amsterdam
+        day = datetime(2026, 11, 1, 14, 0, tzinfo=timezone.utc)        # 15:00 Amsterdam
+        out = "\n".join(nd.plan(issues, "tomasr91", known, set(), night))
+        self.assertIn("SCHRIJVEN: keuze-x (issue #13)", out)
+        self.assertIn("SCHRIJVEN: eigen-a (issue #12)", out)
+        self.assertIn("SCHRIJVEN: eigen-b (issue #14)", out)
+        self.assertNotIn("SCHRIJVEN: eigen-c", out)          # hooguit 2 eigen per nacht
+        self.assertNotIn("SCHRIJVEN: keuze-y", out)          # één gewone per nacht
+        self.assertIn("LATER: eigen voorstel 'eigen-c'", out)
+        self.assertTrue(nd.plan(issues, "tomasr91", known, set(), day)[0].startswith("NIET NU"))
+        done = "\n".join(nd.plan(issues, "tomasr91", known, {"keuze-x"}, night))
+        self.assertIn("AL GESCHREVEN: 'keuze-x'", done)
+        self.assertIn("SCHRIJVEN: keuze-y (issue #16)", done)
+
     def test_own_plan_id_is_valid(self):
         from pipeline import deepdives
         probs = deepdives.validate({"plan_id": "eigen-dbt-project-evaluator"}, set(), set())

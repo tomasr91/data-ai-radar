@@ -14,15 +14,18 @@ Deze taak draait elke nacht om 04:12 als geplande Claude-taak, nadat GitHub Acti
    3. Valt het artikel onder **"Niet uitleggen"** hieronder? Schrijf dan ook een `skipped`-bestand, met als `reason` welke regel het is, en ga door.
    4. Schrijf anders `data/enrichment/<id>.json` volgens het formaat hieronder. Gebruik precies de `id` uit de werklijst als bestandsnaam en als `article_id`.
 4b. **Begrippen aanvullen.** Geef bestaande uitleg en verdiepingen zonder `terms` alsnog begrippen, volgens **Begrippen** hieronder (hooguit 15 per run).
-5. **Verdieping.** Draai `python scripts/next_deepdive.py`.
-   - `SCHRIJVEN: <id> (issue #n)`: schrijf één verdieping over die keuze volgens het hoofdstuk **Verdiepingen** hieronder. Onthoud het issuenummer.
-   - `AL GESCHREVEN` of `ONBEKENDE KEUZE`: schrijf niets voor dat issue; noem het in de melding. Bij `AL GESCHREVEN` mag je het issue sluiten met `Closes #n` in de commit.
+5. **Verdieping.** Draai `python scripts/next_deepdive.py`. Het kan meerdere regels geven:
+   - `NIET NU`: dit is geen nachtrun. Schrijf **geen** verdieping en sla ook stap 7 (nieuwe keuzes) over. Alles wat T kiest hoort pas de volgende ochtend in de app te staan.
+   - `SCHRIJVEN: <id> (issue #n)`: schrijf een verdieping over die keuze volgens **Verdiepingen** hieronder. Er kunnen er meerdere zijn: de gewone keuze en daarnaast hooguit 2 eigen voorstellen van T (`- eigen voorstel van T`, zie **Eigen onderwerp**). Schrijf ze allemaal. Onthoud elk issuenummer.
+   - `AL GESCHREVEN`: schrijf niets voor dat issue; sluit het met `Closes #n` in de commit.
+   - `ONBEKENDE KEUZE`: schrijf niets; noem het in de melding.
+   - `LATER`: komt een volgende nacht aan de beurt; niets doen.
    - `GEEN KEUZE` of `ONBEKEND`: vandaag geen verdieping.
 6. **Trends.** Werk `data/trends.json` bij volgens **Trends** hieronder (mag een lege lijst zijn).
 6b. **Alleen op zondag (datum in Europe/Amsterdam): Jouw week.** Schrijf `data/weekly.json` volgens **Jouw week** hieronder, ná het uitleggen, zodat de artikelen van vannacht meetellen.
-7. **Nieuwe keuzes.** Maak **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
+7. **Nieuwe keuzes.** Maak in de nachtrun (niet bij `NIET NU`) **altijd** 5 nieuwe keuzes voor morgen in `data/deepdive_options.json`, volgens **Dagelijkse keuzes** hieronder.
 8. **Controleren.** Draai `python scripts/validate_enrichment.py`. Los elke fout op tot het resultaat `0 fout` is.
-9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` als je er een schreef). Schreef je een verdieping, zet dan `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
+9. **Opslaan.** `git add data/enrichment data/deepdives data/deepdive_options.json data/trends.json` (op zondag ook `data/weekly.json`), commit met `Uitleg: <aantal> artikelen` (plus `, verdieping: <id>` per geschreven verdieping). Zet voor elke geschreven verdieping `Closes #<n>` op een eigen regel in de commitboodschap: GitHub sluit het issue dan vanzelf. Daarna `git pull --rebase` en `git push`.
 10. **Melden.** Geef een korte samenvatting: hoeveel verwerkt, bij hoeveel stukken begrippen zijn aangevuld, hoeveel overgeslagen en waarom, welke verdieping is geschreven, de trends, op zondag de 3 hoogtepunten van Jouw week, en de titels van de 5 nieuwe keuzes.
 
 ## Weekoverzicht Claude Code
