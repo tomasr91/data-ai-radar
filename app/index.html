@@ -107,6 +107,18 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .act-btn, .act-bar .fb-btns button { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 0.9rem; cursor: pointer; }
 .act-bar .fb-btns button { padding: 0 13px; font-size: 1.05rem; }
 .act-btn[aria-expanded="true"] { border-color: var(--accent2); color: var(--accent2); }
+.card.read { opacity: .55; }
+.card.read h3 { font-weight: 550; }
+.read-tick { color: var(--ok); margin-right: 6px; font-weight: 700; }
+.since-head { margin: 14px 2px 0; font-size: 0.86rem; color: var(--accent2); font-weight: 650; }
+.since-line { display: flex; align-items: center; gap: 10px; color: var(--muted); font-family: var(--f-meta); font-size: 0.72rem; margin: 6px 2px; }
+.since-line::before, .since-line::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+#seg-view button { position: relative; }
+#seg-view button.has-dot::after { content: ""; position: absolute; top: 2px; right: -9px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); }
+.next-link { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 12px; margin: 22px 0 8px; padding: 14px 16px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
+.next-link span { font-family: var(--f-meta); font-size: 0.72rem; color: var(--accent2); }
+.next-link b { grid-column: 1; font-weight: 650; line-height: 1.3; }
+.next-link i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-style: normal; font-size: 1.5rem; color: var(--accent2); }
 .src-line { margin: 22px 0 0; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); line-height: 1.6; }
 .fb-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .fb-btns button, .fb-reasons button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 0 14px; height: 40px; font-size: 0.9rem; cursor: pointer; }
@@ -548,6 +560,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       renderStatus();
       renderSeg();
       updateMenuDot();
+      updateTabDots();
       keepStorage();
       route();
     } catch (e) {
@@ -606,6 +619,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return l;
   }
 
+  // Oranje puntje op het tabblad Verdieping: nieuwe ongelezen verdieping (laatste 3 dagen) of vragen om te herhalen
+  function updateTabDots() {
+    const f = state.feed; if (!f) return;
+    const fresh = (f.deepdives || []).some((d) => Date.now() - Date.parse(d.written_at) < 3 * 864e5 && !isRead("v-" + d.id));
+    const due = typeof quiz !== "undefined" && quiz.due().filter(qLookup).length > 0;
+    $('#seg-view button[data-v="verdieping"]')?.classList.toggle("has-dot", fresh || due);
+  }
   function renderSeg() {
     document.querySelectorAll("#seg-sort button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === state.sort));
     document.querySelectorAll("#seg-view button").forEach((b) => b.setAttribute("aria-selected", b.dataset.v === state.view));
@@ -623,11 +643,27 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const shortDate = (iso) => new Date(iso).toLocaleDateString("nl-NL", { day: "2-digit", month: "2-digit", timeZone: TZ });
   // Datum-tijd van het nieuwste artikel in de app.
   const newestAdded = (f) => [...(f.articles || []).map(addedAt), ...(f.deepdives || []).map((d) => d.written_at)].filter(Boolean).sort((x, y) => Date.parse(y) - Date.parse(x))[0];
+  /* Bezoeken: bij het openen van de app (nieuwe sessie) onthouden we wanneer je de vorige keer keek.
+     Artikelen die daarna in de app kwamen staan bovenaan onder "Nieuw sinds je laatste bezoek". */
+  const visit = (() => {
+    try {
+      let prev = sessionStorage.getItem("radar:prevVisit");
+      if (prev === null) {
+        prev = localStorage.getItem("radar:lastVisit") || "";
+        sessionStorage.setItem("radar:prevVisit", prev);
+        localStorage.setItem("radar:lastVisit", new Date().toISOString());
+      }
+      return Date.parse(prev) || 0;
+    } catch { return 0; }
+  })();
+  const isNew = (a) => visit && Date.parse(addedAt(a) || "") > visit;
+  const isRead = (key) => !!reads.all()[key];
   function card(a) {
     const s = source(a.source_id);
     const body = a.processing_status === "enriched" ? a.summary : a.excerpt;
-    return `<article class="card${a.learning ? " leer" : ""}" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}">
-      <div class="meta"><span class="src">${addedAt(a) ? `<span class="card-date">${esc(shortDate(addedAt(a)))}</span>` : ""}${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score, a)}</div>
+    const read = isRead("a-" + a.id);
+    return `<article class="card${a.learning ? " leer" : ""}${read ? " read" : ""}" data-id="${esc(a.id)}" tabindex="0" role="link" aria-label="${esc(a.headline || a.title)}${read ? " (gelezen)" : ""}">
+      <div class="meta"><span class="src">${read ? `<span class="read-tick" title="Gelezen">✓</span>` : ""}${addedAt(a) ? `<span class="card-date">${esc(shortDate(addedAt(a)))}</span>` : ""}${esc(s.name)}</span>${a.article_type === "opinie" ? `<span class="pill opinie">opinie</span>` : ""}${bars(a.relevance_score, a)}</div>
       <h3>${esc(a.headline || a.title)}</h3>
       ${body ? `<p class="sum">${esc(body)}</p>` : ""}
       ${lamp(a)}
@@ -638,7 +674,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const isOwn = (d) => String(d.plan_id || d.id || "").startsWith("eigen-");
   const ownPill = (d) => isOwn(d) ? `<span class="pill eigen">jouw voorstel</span>` : "";
   function ddCard(d) {
-    return `<article class="card" data-dd="${esc(d.id)}" tabindex="0" role="link" aria-label="${esc(d.headline)}">
+    const read = isRead("v-" + d.id);
+    return `<article class="card${read ? " read" : ""}" data-dd="${esc(d.id)}" tabindex="0" role="link" aria-label="${esc(d.headline)}">
       <div class="meta"><span class="src"><span class="card-date">${esc(shortDate(d.written_at))}</span></span>${ownPill(d)}<span>${d.reading_minutes} min lezen</span></div>
       <h3>${esc(d.headline)}</h3>
       <p class="sum">${esc(d.summary)}</p>
@@ -754,7 +791,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const groupMissing = state.group !== "all" && missing.some((t) => f.topics[t]?.group === state.group);
       html += `<div class="empty"><h3>Nog geen artikelen</h3><p>Er zijn nu geen artikelen om te tonen. Kom later terug.</p></div>`;
     } else {
-      html += weekBar() + fbSendBar() + `<div class="cards">${list.map(card).join("")}</div>`;
+      // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
+      const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
+      const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
+      html += weekBar() + fbSendBar() + (nNew ? `<p class="since-head">${nNew} nieuw sinds je laatste bezoek</p>` : "") + `<div class="cards">${cards}</div>`;
     }
     $("#content").innerHTML = html;
   }
@@ -1232,6 +1272,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <section class="act-bar">${laterBlock("v-" + d.id, d.headline)}${askBlock("verdieping")}</section>
         ${reading ? `<section class="block"><h2>Verder lezen</h2><ul class="reading">${reading}</ul></section>` : ""}
         <p class="src-line">Geschreven op ${esc(fmtDate(d.written_at))}${d.currency_check ? ` · ${esc(d.currency_check)}` : ""}</p>
+        ${nextLink("v", d.id)}
       </article>`;
     openReader(html);
     trackRead("v-" + d.id);
@@ -1361,6 +1402,15 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     updateMenuDot();
   }
 
+  // "Volgende ›": het eerstvolgende ongelezen stuk in dezelfde volgorde als je lijst (anders gewoon het volgende)
+  function nextLink(kind, id) {
+    const list = kind === "a" ? sorted(state.feed.articles.filter(matches))
+      : [...(state.feed.deepdives || [])].sort((x, y) => Date.parse(y.written_at) - Date.parse(x.written_at));
+    const i = list.findIndex((x) => x.id === id); if (i < 0) return "";
+    const rest = [...list.slice(i + 1), ...list.slice(0, i)];
+    const nxt = rest.find((x) => !isRead(kind + "-" + x.id)) || list[i + 1];
+    return nxt ? `<a class="next-link" href="#${kind}-${esc(nxt.id)}"><span>Volgende</span><b>${esc(nxt.headline || nxt.title)}</b><i aria-hidden="true">›</i></a>` : "";
+  }
   function renderArticle(a) {
     const mark = termMarker(a.terms);
     const s = source(a.source_id);
@@ -1404,6 +1454,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <div class="read-end" aria-hidden="true"></div>
         <section class="act-bar"><div class="fb" id="fb" data-id="${esc(a.id)}">${fbBlock(a)}</div>${laterBlock("a-" + a.id, a.headline || a.title)}${askBlock("artikel")}</section>
         <p class="src-line">Gepubliceerd ${esc(a.published_at ? fmtDate(a.published_at) : "onbekend")} · In de app sinds ${esc(inApp)}</p>
+        ${nextLink("a", a.id)}
         <dialog class="score-dlg" id="score-dlg" aria-labelledby="score-dlg-h">
           <h2 id="score-dlg-h">Waarom deze score?</h2>
           <table class="score-table">${partRows}</table>
@@ -1492,6 +1543,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function closeReader() {
     const r = $("#reader");
+    updateTabDots();
     if (r.hidden) return;
     r.hidden = true; r.innerHTML = "";
     document.body.style.overflow = "";

@@ -222,6 +222,32 @@ with sync_playwright() as p:
     check("20. lampje alleen op kaarten over leeronderwerpen", lamps == len(_learn)
           and all(page.locator(f'.card[data-id="{i}"] > .lamp').count() == 1 for i in _learn), f"{lamps} vs {len(_learn)}")
 
+    # 22. Ochtendronde: nieuw sinds je laatste bezoek, gelezen gedimd, Volgende, puntje op Verdieping
+    by_added = sorted(arts, key=lambda a: a.get("processed_at") or a.get("fetched_at") or "", reverse=True)
+    _times = sorted({a.get("processed_at") or a.get("fetched_at") or "" for a in arts}, reverse=True)
+    mid = _times[1]
+    page.evaluate(f"""() => {{ localStorage.setItem('radar:lastVisit', '{mid}'); sessionStorage.clear();
+        localStorage.setItem('radar:read', JSON.stringify({{'a-{by_added[0]['id']}': {{at: new Date().toISOString(), sent: true}}}})); }}""")
+    page.reload(); page.wait_for_selector(".card")
+    n_new = sum(1 for a in arts if (a.get("processed_at") or a.get("fetched_at") or "") > mid)
+    check("22. 'nieuw sinds je laatste bezoek' met scheidslijn 'Eerder'", page.locator(".since-head").count() == 1
+          and page.locator(".since-head").inner_text().startswith(str(n_new)) and page.locator(".since-line").count() == 1, f"{n_new}")
+    check("   gelezen kaart gedimd met vinkje", page.locator(f'.card.read[data-id="{by_added[0]["id"]}"] .read-tick').count() == 1)
+    page.click(f'.card[data-id="{by_added[0]["id"]}"]')
+    page.wait_for_selector("#reader .next-link")
+    href = page.locator("#reader .next-link").get_attribute("href")
+    check("   onderaan een artikel 'Volgende' naar een ongelezen artikel", href.startswith("#a-") and href != "#a-" + by_added[0]["id"], href)
+    page.click("#reader .next-link")
+    page.wait_for_function(f"location.hash === '{href}'")
+    check("   Volgende opent dat artikel", page.locator("#reader article.full").count() == 1)
+    page.evaluate("localStorage.setItem('radar:read', JSON.stringify(Object.fromEntries(" + json.dumps(["v-" + d["id"] for d in dds]) + ".map(k => [k, {at: new Date().toISOString(), sent: true}]))))")
+    page.evaluate("localStorage.removeItem('radar:quiz')")
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
+    page.goto(url)
+    page.wait_for_selector(".card")
+    check("   geen puntje op Verdieping als alles gelezen is", "has-dot" not in (page.locator('#seg-view button[data-v="verdieping"]').get_attribute("class") or ""))
+    page.evaluate("localStorage.removeItem('radar:read'); localStorage.removeItem('radar:lastVisit')")
+
     # 17. Gelezen en Jouw week
     check("17. Jouw week staat bovenaan Actueel", page.locator('a.fb-send[href="#week"]').count() == 1)
     page.click("#week-bar .week-x")
