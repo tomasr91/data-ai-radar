@@ -701,8 +701,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const ownNote = own.length ? `<p class="own-next">Ook morgen: jouw voorstel ${own.map((id) => `<b>${esc(mine.get(id)?.title || id.slice(6).replace(/-/g, " "))}</b>`).join(" en ")}.</p>` : "";
     if (chosen.length) {
       // Er is gekozen: alleen die keuze, als de verdieping van morgen.
-      return `<p class="pick-note">Claude schrijft deze vannacht; morgenochtend staat hij bij Verdiepingen. Daarna krijg je hier weer 5 nieuwe keuzes.</p>
-        <div class="cards">${chosen.map((id) => optCard(known.get(id) || { id, title: id }, true)).join("")}</div>${ownNote}`;
+      return `<div class="cards">${chosen.map((id) => optCard(known.get(id) || { id, title: id }, true)).join("")}</div>${ownNote}`;
     }
     if (!o?.options?.length) return `<div class="empty"><h3>Nog geen keuzes</h3><p>Claude zet morgenochtend 5 onderwerpen klaar.</p></div>${ownNote}`;
     return `<div class="cards">${o.options.map((x) => optCard(x)).join("")}</div>${ownNote}`;
