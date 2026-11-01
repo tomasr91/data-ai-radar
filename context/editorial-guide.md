@@ -22,7 +22,7 @@ Dit bestand bepaalt **hoe** de AI nieuws verwerkt en presenteert. **Wat** releva
 - Productnamen blijven zoals ze zijn (dbt, Unity Catalog, Azure DevOps).
 - Geen marketingtaal ("revolutionair", "game changer"), geen overdreven claims, geen opsommingen in het verhaal.
 
-**Zien:** waar het past krijgt een stuk een klein codevoorbeeld met resultaat ("Zo ziet het eruit"). Zie `TAAK_VERRIJKEN.md`.
+**Zien:** waar het past krijgt een stuk een klein codevoorbeeld met resultaat ("Zo ziet het eruit"). Zie `taken/UITLEGGEN.md`.
 
 **Centrale vraag:** wat is er nieuw, waarom is het interessant, hoe werkt het en welke mogelijkheden biedt het? Leg altijd uit *hoe* iets werkt. Concrete implementaties en codevoorbeelden gaan voor op alleen het concept.
 
@@ -57,7 +57,7 @@ Een onderbouwde mening van een **erkende vakpersoon** is welkom, ook zonder nieu
 - `availability_status` is meestal `onbekend`; `practicality` en `novelty` gaan over de bruikbaarheid en frisheid van het idee.
 
 ### Verdiepingen
-Naast het nieuws (tabblad *Actueel*) schrijft de radar ongeveer twee keer per week een **verdieping** (tabblad *Verdieping*): een langer stuk over een onderwerp uit `verdieping.yml`. Dezelfde schrijfstijl, maar met ruimte voor uitleg. Harde regel: **alleen wat nu actueel is**, geen verouderde technieken of tools. Details staan in `TAAK_VERRIJKEN.md`, hoofdstuk Verdiepingen.
+Naast het nieuws (tabblad *Actueel*) schrijft de radar ongeveer twee keer per week een **verdieping** (tabblad *Verdieping*): een langer stuk over een onderwerp uit `verdieping.yml`. Dezelfde schrijfstijl, maar met ruimte voor uitleg. Harde regel: **alleen wat nu actueel is**, geen verouderde technieken of tools. Details staan in `taken/VERDIEPEN.md`.
 
 ### Dagelijks overzicht
 De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):

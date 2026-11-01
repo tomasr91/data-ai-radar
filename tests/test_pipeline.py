@@ -454,6 +454,30 @@ class TestAreaMinimum(unittest.TestCase):
         self.assertEqual(extra[0]["relevance_score"], 50 + need + 1)   # beste eerst
 
 
+class TestNightRuns(unittest.TestCase):
+    """Taakverslagen en wat de inhaalrun nog moet doen."""
+
+    def test_night_status(self):
+        import tempfile
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import night_status as ns
+        d = Path(tempfile.mkdtemp())
+        (d / "runs").mkdir()
+        rep = lambda t, st="ok": json.dumps({"task": t, "status": st, "started_at": "2026-11-02T03:00:00Z", "finished_at": "2026-11-02T03:30:00Z", "summary": "x", "problems": []})
+        now = datetime(2026, 11, 2, 6, 30, tzinfo=timezone.utc)   # maandag 07:30 Amsterdam
+        self.assertEqual([t for t, _ in ns.missing(now, d)], ["uitleggen", "verdiepen", "overzicht"])
+        for t in ["uitleggen", "verdiepen", "overzicht"]:
+            (d / "runs" / f"2026-11-02-{t}.json").write_text(rep(t), encoding="utf-8")
+        (d / "deepdive_options.json").write_text(json.dumps({"generated_at": "2026-11-02T04:20:00Z"}), encoding="utf-8")
+        self.assertEqual(ns.missing(now, d), [])
+        self.assertEqual([t for t, _ in ns.missing(now, d, pending_deepdive=True)], ["verdiepen"])
+        (d / "runs" / "2026-11-02-overzicht.json").write_text(rep("overzicht", "deels"), encoding="utf-8")
+        self.assertEqual([t for t, _ in ns.missing(now, d)], ["overzicht"])
+        from pipeline import runs
+        self.assertEqual(runs.latest(d / "runs")["date"], "2026-11-02")
+        self.assertTrue(runs.validate({"task": "x"}))
+
+
 class TestOwnTopic(unittest.TestCase):
     """Jouw lijst: eigen onderwerp als verdieping (issue 'Verdieping: eigen-...')."""
 

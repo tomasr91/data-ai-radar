@@ -11,7 +11,7 @@
 
 T reageert in de app (ja/nee op voorstellen; belangrijker/minder/weg per onderwerp; vrije tekst).
 Dat gaat als één GitHub-issue "Interesses: ..." naar de repo; de Claude-taak verwerkt het 's nachts
-(scripts/interest_requests.py, TAAK_VERRIJKEN.md) en past alleen context/interests.yml aan.
+(scripts/interest_requests.py, taken/OVERZICHT.md) en past alleen context/interests.yml aan.
 """
 import json
 import re

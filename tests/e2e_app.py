@@ -92,6 +92,10 @@ feed["interest_suggestions"] = [
     {"id": "data-contracts", "kind": "nieuw", "name": "Data contracts", "description": "Afspraken over vorm en kwaliteit van data tussen teams.", "why": "Kwam deze maand vaak terug.", "generated_at": "2026-11-01T04:00:00Z"},
     {"id": "powerbi-omhoog", "kind": "belangrijker", "topic": "powerbi_semantic_models", "why": "Je leest Power BI-artikelen helemaal.", "generated_at": "2026-11-01T04:00:00Z"}]
 feed["interest_log"] = [{"at": "2026-10-31T04:30:00Z", "text": "Test-wijziging in het logboek."}]
+# Nagebootste taakverslagen van de nacht
+feed["runs"] = {"date": "2026-11-02", "tasks": {
+    "uitleggen": {"status": "ok", "summary": "12 artikelen uitgelegd", "finished_at": "2026-11-02T03:58:00Z", "problems": []},
+    "verdiepen": {"status": "deels", "summary": "1 verdieping, keuzes niet gelukt", "finished_at": "2026-11-02T04:40:00Z", "problems": ["tijd op"]}}}
 GH = {"issues": "[]"}  # eerst niets gekozen
 FAKE_ISSUES = json.dumps([
     {"number": 7, "title": f"Verdieping: {opts[1]['id']}", "user": {"login": "tomasr91"}},
@@ -516,6 +520,8 @@ with sync_playwright() as p:
     page.wait_for_selector("#reader #run-status")
     st = page.locator("#run-status").inner_text()
     check("7. status toont de nachtrun in één regel", ("Laatste nachtrun" in st or "niet bijgewerkt" in st or "mislukt" in st), st)
+    check("   status per nachttaak", page.locator("#reader .runs li").count() == 3 and "12 artikelen uitgelegd" in page.locator("#reader .runs").inner_text()
+          and page.locator("#reader .runs li.deels").count() == 1 and "niet gedraaid" in page.locator("#reader .runs").inner_text())
     check("   alle bronnen ingeklapt, met status", page.locator("#reader details.all-src li").count() == len(feed["sources"])
           and not page.locator("#reader details.all-src li").first.is_visible())
     failed = [s for s in feed["sources"] if s["status"] == "failed"]

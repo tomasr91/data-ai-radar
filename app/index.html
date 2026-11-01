@@ -126,6 +126,11 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .week-bar .fb-send { padding-right: 44px; }
 .week-x { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
 .week-bar.gone { opacity: 0; }
+.runs { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 8px; }
+.runs li { font-family: var(--f-display); display: grid; gap: 2px; }
+.runs li b { font-weight: 650; }
+.runs li span { font-size: 0.86rem; color: var(--muted); }
+.runs li.ok b { color: var(--ok); } .runs li.deels b { color: var(--warn); } .runs li.mislukt b { color: var(--bad); } .runs li.none b { color: var(--muted); }
 .near { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 10px; }
 .near li a { color: var(--ink); }
 .near li span { display: block; font-family: var(--f-meta); font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
@@ -1401,6 +1406,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return { at: last, articles: f.articles.filter((a) => last - t(a.processed_at) < win).length,
       deepdives: (f.deepdives || []).filter((d) => last - t(d.written_at) < win).length };
   }
+  // Per nachttaak (data/runs, pipeline/runs.py): wat deed hij en lukte het
+  function runTasks() {
+    const r = state.feed.runs; if (!r?.tasks) return "";
+    const names = { uitleggen: "Uitleggen", verdiepen: "Verdiepen", overzicht: "Overzicht", inhalen: "Inhalen" };
+    const icon = { ok: "✓", deels: "⚠", mislukt: "✗" };
+    const day = new Date(r.date + "T12:00:00Z").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "short", timeZone: "UTC" });
+    const rows = Object.keys(names).filter((t) => r.tasks[t] || t !== "inhalen").map((t) => {
+      const x = r.tasks[t];
+      return `<li class="run ${x ? esc(x.status) : "none"}"><b>${x ? icon[x.status] || "?" : "–"} ${names[t]}</b><span>${x ? esc(x.summary) : "niet gedraaid"}${x?.problems?.length ? ` · ${esc(x.problems.join("; "))}` : ""}</span></li>`;
+    }).join("");
+    return `<section class="block"><h2>Nachttaken, ${esc(day)}</h2><ul class="runs">${rows}</ul></section>`;
+  }
   function renderReport() {
     const f = state.feed, q = f.quality_report || {}, run = nightRun();
     const bad = f.sources.filter((s) => s.status !== "ok" && s.status !== "skipped");
@@ -1418,6 +1435,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <div class="wrap report" style="padding-block:18px 60px">
         <h1>Status</h1>
         <div class="status" id="run-status" style="margin:12px 0"><span class="dot" style="background:${color}"></span><span>${head}</span></div>
+        ${runTasks()}
         ${bad.length ? `<section class="block"><h2>Bronnen met een probleem</h2><ul>${bad.map((s) => `<li><strong>${esc(s.name)}</strong>: ${esc(s.message || SRC_STATUS[s.status] || s.status)}</li>`).join("")}</ul></section>` : ""}
         <section class="block"><h2>Net niet in je feed</h2>${near.length ? `<ul class="near">${near.map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><span>${esc(source(x.source_id).name)} · ${esc(why[x.decision](x))}</span></li>`).join("")}</ul>` : `<p style="font-size:.92rem;color:var(--muted)">Niets dat er net buiten viel.</p>`}</section>
         <section class="block"><details class="all-src"><summary>Alle bronnen (${f.sources.length})</summary><ul>${f.sources.map((s) => `<li><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span> ${esc(s.name)} <span style="color:var(--muted)">· ${s.items ?? 0} items</span></li>`).join("")}</ul></details></section>

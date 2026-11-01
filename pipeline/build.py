@@ -26,6 +26,7 @@ from . import trends as trends_mod
 from . import weekly as weekly_mod
 from .terms import glossary
 from . import interests as interests_mod
+from . import runs as runs_mod
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
@@ -218,7 +219,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({
         "generated_at": _iso(now),
-        "instructions": "Zie TAAK_VERRIJKEN.md. Schrijf per artikel data/enrichment/<id>.json.",
+        "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
         "items": [{"id": a["id"], "title": a["title"], "url": a["url"], "source_id": a["source_id"],
                    "source_name": sources_by_id.get(a["source_id"], {}).get("name", a["source_id"]),
                    "published_at": a.get("published_at"), "excerpt": a.get("excerpt", ""),
@@ -280,6 +281,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "interests": interests_mod.view(conf),
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
+        "runs": runs_mod.latest(),
         "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at")},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {

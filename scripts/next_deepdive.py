@@ -14,7 +14,7 @@ Werkwijze:
 - Eigen onderwerp: T zette iets op "Jouw lijst" in de app en koos "Maak hier een verdieping van".
   Het issue heet dan "Verdieping: eigen-<slug>" en de tekst bevat regels
   "Onderwerp: ...", "Notitie: ..." en "Gezien in: ...". Uitvoer: SCHRIJVEN met own: true.
-  Daarna altijd: maak 5 nieuwe keuzes (zie TAAK_VERRIJKEN.md).
+  Daarna altijd: maak 5 nieuwe keuzes (zie taken/VERDIEPEN.md).
 - Alleen 's nachts (00:00-09:00 Nederlandse tijd). Overdag (een extra run) zegt het script
   NIET NU: dan geen verdieping en geen nieuwe keuzes. Zo staat alles wat je kiest pas de
   volgende ochtend in de app (T, 1-11-2026).
@@ -122,7 +122,7 @@ def plan(issues: list, owner: str, known: dict, done: set, now=None) -> list:
         out.append(json.dumps(own_topic(oid, bodies.get(number, "")), ensure_ascii=False, indent=2))
     if not regular and not own:
         out.append("GEEN KEUZE: er is niets gekozen. Vandaag geen verdieping.")
-    out.append("\nDaarna: maak 5 nieuwe keuzes in data/deepdive_options.json (zie TAAK_VERRIJKEN.md).")
+    out.append("\nDaarna: maak 5 nieuwe keuzes in data/deepdive_options.json (zie taken/VERDIEPEN.md).")
     return out
 
 

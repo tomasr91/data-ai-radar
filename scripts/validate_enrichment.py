@@ -78,6 +78,19 @@ def main(argv):
                 print(f"FOUT trends.json: {pr}")
             if not tproblems:
                 print(f"{len(tdata.get('trends', []))} trends gecontroleerd")
+        from pipeline import runs as runs_mod
+        for f in sorted(runs_mod.DIR.glob("*.json")) if runs_mod.DIR.exists() else []:
+            if not runs_mod.NAME_RE.match(f.name):
+                bad += 1
+                print(f"FOUT runs/{f.name}: naam moet <jjjj-mm-dd>-<taak>.json zijn")
+                continue
+            try:
+                rproblems = runs_mod.validate(json.loads(f.read_text(encoding="utf-8")))
+            except json.JSONDecodeError as e:
+                rproblems = [f"geen geldige JSON ({e})"]
+            for pr in rproblems:
+                bad += 1
+                print(f"FOUT runs/{f.name}: {pr}")
         from pipeline import interests as interests_mod
         if interests_mod.SUGGESTIONS.exists():
             try:

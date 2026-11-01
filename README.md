@@ -43,7 +43,7 @@ data/
   feed.json                  ← klaar voor de app; het enige bestand dat de app leest
 app/
   index.html                 ← de mobiele app (leest feed.json ernaast)
-TAAK_VERRIJKEN.md            ← werkinstructie voor de geplande Claude-taak
+taken/                       ← werkinstructies voor de vier nachttaken (begin bij REGELS.md)
 .github/workflows/radar.yml  ← dagelijks ophalen, feed bouwen, app publiceren
 tests/
   test_pipeline.py           ← unit tests pipeline
@@ -77,7 +77,7 @@ Tabblad **Leren**: het Claude-examen (Claude Certification Academy) staat in `ap
 Zo werkt het elke nacht:
 
 1. **02:47 – GitHub Actions** (`.github/workflows/radar.yml`) haalt de feeds op, voegt nieuwe artikelen toe aan `data/archive.json` en bouwt `data/feed.json`. Onverwerkte artikelen die de moeite waard lijken, komen op de werklijst `data/to_enrich.json`. De app op GitHub Pages wordt bijgewerkt.
-2. **Daarna – de geplande Claude-taak** voert `TAAK_VERRIJKEN.md` uit: leest elk artikel op de werklijst volledig, schrijft de uitleg naar `data/enrichment/<id>.json`, schrijft ongeveer twee keer per week een verdieping naar `data/deepdives/<id>.json` (onderwerp via `scripts/next_deepdive.py`), controleert die met `scripts/validate_enrichment.py` en pusht.
+2. **Daarna – vier geplande Claude-taken** (04:12 uitleggen, 05:12 verdiepen, 06:12 overzicht, 07:27 inhalen), elk met een eigen instructie in `taken/`. Ze slaan tussendoor op en schrijven een taakverslag in `data/runs/`; de inhaalrun doet alleen wat nog ontbreekt (`scripts/night_status.py`).
 3. **Na die push** draait de workflow opnieuw. De nieuwe uitleg komt in de feed, en de app is bijgewerkt.
 
 Een fout uitlegbestand komt nooit in de app: de pipeline negeert het en meldt het in de feedcontrole. Een artikel dat Claude niet kan lezen, komt in `data/enrichment/skipped/` en niet terug op de werklijst.
@@ -90,7 +90,7 @@ Een fout uitlegbestand komt nooit in de app: de pipeline negeert het en meldt he
 4. **Actions → Radar bijwerken → Run workflow** voor de eerste run. Daarna staat de app op `https://<gebruiker>.github.io/<repo>/`.
 5. Laat Claude de geplande taak aanmaken (dagelijks om 04:12) met deze opdracht:
 
-> Voeg de GitHub-repository `<gebruiker>/<repo>` toe met push-toegang en clone hem. Voer daarna de taak uit die beschreven staat in `TAAK_VERRIJKEN.md` in die repository, van stap 1 tot en met 8. Wijzig niets buiten `data/enrichment/` en `data/deepdives/`.
+> Voeg de GitHub-repository `<gebruiker>/<repo>` toe met push-toegang en clone hem. Lees `taken/REGELS.md` en voer daarna `taken/<TAAK>.md` uit. Wijzig alleen de bestanden die in REGELS.md staan.
 
 ### Bron van artikelen vervangen
 
