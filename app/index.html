@@ -433,7 +433,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const store = {
     get(k, d) { try { const v = localStorage.getItem("radar:" + k); return v ?? d; } catch { return d; } },
-    set(k, v) { try { localStorage.setItem("radar:" + k, v); } catch {} },
+    set(k, v) {
+      try { localStorage.setItem("radar:" + k, v); } catch {}
+      // Tabblad en subtab ook per sessie: verversen houdt je waar je was, de app opnieuw openen begint bij Actueel
+      if (["view", "sort", "ddTab"].includes(k)) { try { sessionStorage.setItem("radar:" + k, v); } catch {} }
+    },
+    session(k) { try { return sessionStorage.getItem("radar:" + k); } catch { return null; } },
   };
 
   /* ---- Duimpjes ----
@@ -525,7 +530,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       (feed.deepdives || []).forEach((d) => state.ddById.set(d.id, d));
       // Bij openen altijd: Actueel > Nieuw, en Verdieping op Verdiepingen (T, 1-11-2026).
       // Binnen een sessie onthoudt de app wel waar je was.
-      state.sort = "date"; state.view = "actueel"; state.ddTab = "alle";
+      state.sort = store.session("sort") === "trends" ? "trends" : "date";
+      state.view = ["verdieping", "leren"].includes(store.session("view")) ? store.session("view") : "actueel";
+      state.ddTab = ["morgen", "later"].includes(store.session("ddTab")) ? store.session("ddTab") : "alle";
       renderStatus();
       renderSeg();
       updateMenuDot();
@@ -1493,6 +1500,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (h === "herhaling") { renderReview(); return; }
     if (h === "lijst") {
       state.view = "verdieping"; state.ddTab = "later"; store.set("view", state.view); store.set("ddTab", state.ddTab);
+      history.replaceState(null, "", location.pathname + location.search);   // #lijst niet laten staan: verversen = blijven waar je bent
       renderSeg(); closeReader(); renderList(); window.scrollTo(0, 0); return;
     }
     if (h === "begrippen") { renderGlossaryPage(); return; }

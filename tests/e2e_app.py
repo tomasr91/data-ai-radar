@@ -117,12 +117,20 @@ with sync_playwright() as p:
     page.route("https://api.github.com/**", lambda r: r.fulfill(status=200, content_type="application/json", body=GH["issues"], headers={"Access-Control-Allow-Origin": "*"}))
 
     # 1-2. App opent en laadt artikelen
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
     check("1. app opent en toont artikelen", page.locator(".card").count() == len(arts), f"{page.locator('.card').count()} kaarten")
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" not in upd and re.search(r"\d{1,2} \w+.*\d{2}:\d{2}", upd, re.S) is not None, upd)
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
+    # Verversen houdt tab en subtab; een nieuwe sessie (app opnieuw openen) begint bij Actueel
+    page.click('#seg-view button[data-v="verdieping"]'); page.click('#seg-dd button[data-v="morgen"]')
+    page.reload(); page.wait_for_selector("#seg-dd:not([hidden])")
+    check("   verversen blijft op Verdieping > Morgen", page.locator('#seg-view button[aria-selected="true"]').inner_text() == "Verdieping"
+          and page.locator('#seg-dd button[aria-pressed="true"]').inner_text() == "Morgen")
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()"); page.reload(); page.wait_for_timeout(1500)
+    page.wait_for_selector(".card")
     check("   bij openen: Actueel en Nieuw", page.locator('#seg-view button[aria-selected="true"]').inner_text() == "Actueel"
           and page.locator('#seg-sort button[aria-pressed="true"]').inner_text() == "Nieuw")
     check("   filters Nieuw en Trends (Relevant is weg)", page.locator("#seg-sort button").all_inner_texts() == ["Nieuw", "Trends"])
@@ -243,6 +251,7 @@ with sync_playwright() as p:
     page.click("#reader #fb-send")
     page.wait_for_timeout(500)
     check("   na versturen geen verstuurknop meer", page.locator("#reader #fb-send").count() == 0)
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
 
@@ -262,6 +271,7 @@ with sync_playwright() as p:
     check("   Alle begrippen opent de woordenlijst als pagina", page.locator("#reader .gl-item").count() == 2 and "Begrippen" in page.locator("#reader h1").inner_text())
     page.fill("#reader #gl-q", "zzz")
     check("   zoeken filtert de begrippen", page.locator("#reader .gl-item:not([hidden])").count() == 1)
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
     check("   geen tabje Begrippen meer", "Begrippen" not in page.locator("#seg-dd").inner_text())
@@ -277,6 +287,7 @@ with sync_playwright() as p:
     page.mouse.click(200, 500)
     check("   tik buiten het menu sluit het", not page.locator("#menu-sheet").is_visible())
     page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
 
@@ -300,6 +311,7 @@ with sync_playwright() as p:
     page.click("[data-later-done]")
     check("   Klaar haalt het van de lijst", page.locator(".later-item").count() == 0 and "Nog niets bewaard" in page.locator("#content").inner_text())
     page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
 
@@ -335,6 +347,7 @@ with sync_playwright() as p:
     page.wait_for_selector("#reader", state="hidden")
     check("   puntje weg als alle voorstellen beantwoord zijn", "has-dot" not in (page.locator("#btn-menu").get_attribute("class") or ""))
     page.evaluate("localStorage.removeItem('radar:int')")
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
 
@@ -410,6 +423,7 @@ with sync_playwright() as p:
         check("   onverwerkt artikel is herkenbaar en heeft bronlink", "nog niet uitgelegd" in page.locator("#reader").inner_text())
 
     # 17. Leren: het Claude-examen in een venster
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
     page.click('#seg-view button[data-v="leren"]')
@@ -490,10 +504,11 @@ with sync_playwright() as p:
     page.set_input_files("#bk-file", d.path())
     page.wait_for_selector("#bk-restore")
     page.click("#bk-restore")
-    page.wait_for_selector(".card")
+    page.wait_for_selector("#seg-view")
+    page.wait_for_timeout(500)
     check("   Terugzetten zet alles terug", page.evaluate("!!localStorage.getItem('cca-academy-v2') && JSON.parse(localStorage.getItem('radar:later')).length === 1"))
     page.evaluate("localStorage.removeItem('cca-academy-v2')")
-    page.reload(); page.wait_for_selector(".card"); page.click('#seg-view button[data-v="leren"]'); page.wait_for_selector("#leren-frame")
+    page.reload(); page.wait_for_selector("#seg-view"); page.click('#seg-view button[data-v="leren"]'); page.wait_for_selector("#leren-frame")
     check("   regel 'Nieuwe artikelen' alleen bij Actueel", not page.locator("#upd").is_visible())
     page.click('#seg-view button[data-v="actueel"]')
     y_a = page.evaluate("document.querySelector('svg.mark').getBoundingClientRect().y")
@@ -531,6 +546,7 @@ with sync_playwright() as p:
         page.screenshot(path=str(SHOTS / "3-feedcontrole.png"))
 
     # 8. Mobiel: geen horizontaal scrollen
+    page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
     page.wait_for_selector(".card")
     sw = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
