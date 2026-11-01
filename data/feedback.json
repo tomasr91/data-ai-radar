@@ -1,6 +1,17 @@
 {
  "format_version": 1,
  "reads": {
+  "29e95692607d": {
+   "at": "2026-11-01T13:40:09.196969Z",
+   "issue": 16,
+   "source_id": "dbt_labs_blog",
+   "title": "Fivetran en dbt zetten de context voor agents als gewone tabellen in je warehouse",
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
+   ]
+  },
   "b380b17e60f1": {
    "at": "2026-11-01T08:07:53.022655Z",
    "issue": 11,
@@ -13,12 +24,12 @@
    ]
   }
  },
- "updated_at": "2026-11-01T09:59:19.791786Z",
+ "updated_at": "2026-11-01T13:40:09.196969Z",
  "votes": {
   "059023edac5d": {
-   "at": "2026-10-30T06:05:59.889632Z",
-   "issue": 3,
-   "r": null,
+   "at": "2026-11-01T13:40:09.196969Z",
+   "issue": 16,
+   "r": "mijn_stack",
    "source_id": "dbt_labs_blog",
    "title": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
    "topics": [
@@ -37,6 +48,19 @@
     "ai_on_data_platform",
     "dbt_analytics_engineering",
     "data_quality_observability"
+   ],
+   "v": 1
+  },
+  "450468c3f304": {
+   "at": "2026-11-01T13:40:09.196969Z",
+   "issue": 16,
+   "r": null,
+   "source_id": "databricks_blog",
+   "title": "Laat AI liever beschrijven wat je wilt dan hoe het moet",
+   "topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "data_architecture_modeling"
    ],
    "v": 1
   },
@@ -63,6 +87,20 @@
     "dbt_analytics_engineering",
     "ai_context_engineering",
     "metadata_lineage_catalogs"
+   ],
+   "v": 1
+  },
+  "90ba3c46bbce": {
+   "at": "2026-11-01T13:40:09.196969Z",
+   "issue": 16,
+   "r": null,
+   "source_id": "databricks_blog",
+   "title": "Databricks geeft AI-assistenten zorgkennis mee",
+   "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_in_healthcare",
+    "ai_research_data"
    ],
    "v": 1
   },
