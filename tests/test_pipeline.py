@@ -429,6 +429,24 @@ class TestInterests(unittest.TestCase):
                                      "changes": [{"topic": "open_source_tools", "c": "minder"}], "note": "meer Fabric"})
 
 
+class TestAreaMinimum(unittest.TestCase):
+    """Ondergrens per gebied: aanvullen met recente uitgelegde artikelen net onder de drempel."""
+
+    def test_fills_area_up_to_minimum(self):
+        conf = cfg.load()
+        now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+        need = next(a for a in conf.interests["interest_areas"] if a["id"] == "claude")["min_articles"]
+        mk = lambda i, d, score, when="2026-10-30T04:00:00Z": {"id": f"{i:012x}", "main_topics": ["claude_ai_development"], "topics": ["claude_ai_development"],
+                                                              "processing_status": "enriched", "decision": d, "relevance_score": score, "processed_at": when}
+        arts = [mk(i, "below_threshold", 50 + i) for i in range(need + 2)] + [mk(99, "below_threshold", 99, "2026-09-01T04:00:00Z"), mk(98, "excluded", 98)]
+        extra = build_mod.area_minimum(arts, [], conf, now)
+        self.assertEqual(len(extra), need)
+        self.assertTrue(all(a["decision"] == "area_minimum" for a in extra))
+        self.assertNotIn(f"{99:012x}", [a["id"] for a in extra])   # te oud
+        self.assertNotIn(f"{98:012x}", [a["id"] for a in extra])   # uitgesloten blijft uitgesloten
+        self.assertEqual(extra[0]["relevance_score"], 50 + need + 1)   # beste eerst
+
+
 class TestOwnTopic(unittest.TestCase):
     """Jouw lijst: eigen onderwerp als verdieping (issue 'Verdieping: eigen-...')."""
 

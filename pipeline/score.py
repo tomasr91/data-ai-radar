@@ -156,6 +156,7 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     article["score_parts"] = {k: round(v, 2) for k, v in parts.items()}
     article["decision"] = decision
     # Lampje in de app: gaat vooral over iets dat T nog aan het leren is (learning: true in interests.yml)
+    article["main_topics"] = main_topics
     article["learning"] = next((topics[t]["name"] for t in main_topics if topics[t].get("learning")), None)
     article["excluded_by"] = excluded
     return article

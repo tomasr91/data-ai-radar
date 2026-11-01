@@ -99,6 +99,42 @@ def date_clusters(articles, window_hours=3, min_items=5):
     return flags
 
 
+AREA_WINDOW_DAYS = 14
+
+
+def area_of(article: dict, conf) -> str:
+    """Gebied van een artikel: dat van het eerste onderwerp in Claudes volgorde."""
+    main = (article.get("main_topics") or article.get("topics") or [None])[0]
+    for a in conf.interests.get("interest_areas", []):
+        if main in a.get("topics", []):
+            return a["id"]
+    return "overig"
+
+
+def area_minimum(arts: list, shown: list, conf, now) -> list:
+    extra = []
+    have = Counter(area_of(a, conf) for a in shown)
+    cutoff = now - timedelta(days=AREA_WINDOW_DAYS)
+
+    def recent(a):
+        iso = a.get("processed_at") or a.get("published_at") or a.get("fetched_at")
+        try:
+            return datetime.fromisoformat(str(iso).replace("Z", "+00:00")) >= cutoff
+        except ValueError:
+            return False
+    for area in conf.interests.get("interest_areas", []):
+        need = (area.get("min_articles") or 0) - have[area["id"]]
+        if need <= 0:
+            continue
+        pool = sorted([a for a in arts if a not in shown and a not in extra and a["processing_status"] == "enriched"
+                       and a["decision"] in ("below_threshold", "source_cap") and area_of(a, conf) == area["id"] and recent(a)],
+                      key=lambda a: -a["relevance_score"])
+        for a in pool[:need]:
+            a["decision"] = "area_minimum"
+            extra.append(a)
+    return extra
+
+
 def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=None, provider_fn=None):
     now = now or datetime.now(timezone.utc)
     conf = conf or cfg.load()
@@ -174,7 +210,10 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Volgorde: eerst hoe goed het onderwerp past, dan de totaalscore. Zo krijgt Claude ook oudere
     # artikelen over een kernonderwerp te zien; Claude beoordeelt daarna of ze de feed in mogen.
     # Weekoverzichten (zie digest.py) gaan voor: het zijn er hooguit een paar per week.
-    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, -a["score_parts"]["topic"], -a["relevance_score"]))
+    # Gebieden onder hun ondergrens krijgen voorrang op de werklijst (na de weekoverzichten).
+    have = Counter(area_of(a, conf) for a in arts if a["decision"] in ("included", "included_exceptional") and a["processing_status"] == "enriched")
+    under = {x["id"] for x in conf.interests.get("interest_areas", []) if have[x["id"]] < (x.get("min_articles") or 0)}
+    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, area_of(a, conf) not in under, -a["score_parts"]["topic"], -a["relevance_score"]))
              if a["processing_status"] != "enriched" and a["id"] not in skip
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({
@@ -207,6 +246,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             if per_src[a["source_id"]] > cap:
                 a["decision"] = "source_cap"
         shown = [a for a in shown if a["decision"] != "source_cap"]
+    # Ondergrens per gebied (interest_areas.min_articles): aanvullen met de best scorende uitgelegde
+    # artikelen van de laatste 14 dagen uit dat gebied, ook net onder de drempel of boven het maximum per bron.
+    shown += area_minimum(arts, shown, conf, now)
     hidden = [a for a in arts if a not in shown]
 
     # Moment waarop een artikel in de app kwam: uitgelegd, anders opgehaald (zoals "Nieuw" in de app).

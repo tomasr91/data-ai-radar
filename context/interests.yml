@@ -44,24 +44,31 @@ scoring:
       heeft voor een project in projects.md. De reden wordt bij het artikel vermeld.
 
 # Richtverdeling over de vier interessegebieden (uit mijn profiel van 29-10-2026).
+# min_articles = ondergrens (T, 1-11-2026): staan er minder artikelen uit een gebied in de app,
+# dan vult de radar aan met de best scorende uitgelegde artikelen van de laatste 14 dagen uit dat
+# gebied, ook als die net onder de drempel zaten. Zo trekt de feedback je niet in één bubbel.
 # Flexibele richtwaarden, geen quota. Een artikel kan meerdere onderwerpen raken, maar
 # verschijnt maar één keer in de feed.
 interest_areas:
   - id: data_engineering
     label: dbt, data engineering en data-architectuur
     target_share: 0.30
+    min_articles: 8       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
     topics: [dbt_analytics_engineering, databricks_data_engineering, data_ingestion, data_architecture_modeling, sql_spark_sql, cicd_data_deployment, data_quality_observability, metadata_lineage_catalogs, data_governance_privacy, powerbi_semantic_models]
   - id: context_agents
     label: Context engineering en AI-agents
     target_share: 0.30
+    min_articles: 6       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
     topics: [ai_context_engineering, ai_agents_rag, ai_on_data_platform, ai_evaluation_observability]
   - id: claude
     label: Claude en AI-ondersteunde ontwikkeling
     target_share: 0.20
+    min_articles: 6       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
     topics: [claude_ai_development]
   - id: new_tech
     label: Nieuwe technologieën en architectuurpatronen
     target_share: 0.20
+    min_articles: 4       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
     topics: [open_source_tools, general_ai_trends, ai_in_healthcare, ai_research_data]
 
 # Filtergroepen in de app. Elk onderwerp hoort bij één groep (feed_group).

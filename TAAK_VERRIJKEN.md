@@ -86,6 +86,8 @@ T heeft nog beginnersniveau in data-ingestion, bundels en release pipelines, en 
 
 ## Niet uitleggen (overslaan met reden)
 
+Let op de **ondergrens per gebied** (`min_articles` bij `interest_areas` in `interests.yml`): de werklijst zet artikelen uit gebieden die te weinig in de app hebben (vaak Claude en nieuwe technologie) vooraan. Sla die niet over omdat ze minder bij dbt aansluiten; alleen om de regels hieronder.
+
 De radar toont alleen **must-knows**. Sla deze artikelen over:
 
 - **Kleine updates**: een losse kleine functie, een UI-aanpassing, uitrol naar een extra regio, een nieuwe versie zonder inhoudelijke wijziging, een verzameloverzicht van veel kleine dingen.
