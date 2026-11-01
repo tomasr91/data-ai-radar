@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T13:55:37.307094Z",
+ "generated_at": "2026-11-01T14:33:23.408058Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -14,98 +14,6 @@
    "preliminary_topics": [
     "claude_ai_development",
     "data_governance_privacy"
-   ]
-  },
-  {
-   "id": "322ec1626872",
-   "title": "Connect coding agents to Fabric notebooks with FNTK (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Connect-coding-agents-to-Fabric-notebooks-with-FNTK-Preview/ba-p/5375986",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-26T17:22:43Z",
-   "excerpt": "The Fabric Notebook Toolkit (Preview) helps developers shorten the feedback loop between writing code and validating it with live notebook results. It connects coding agents to Microsoft Fabric notebooks through a command-line interface (CLI) that runs in the terminal alongside tools such as Claude Code, GitHub Copilot CLI, and Codex. An agent can inspect the current code, run one cell, review its output, make a targeted change, and run it again without resubmitting the entire notebook—much as a human programmer working interactively. Figure: Animated GIF A coding agent uses FNTK from the terminal to interact with a Microsoft Fabric notebook. From code suggestions to notebook execution A coding agent can help write a transformation, but a proposed change is not the same as a working result. When execution happens elsewhere, developers must move code into a notebook, run it, and bring the results or errors back to the agent. FNTK connects those steps so the agent can work with a running Fabric notebook and its execution results instead of relying only on code shared in the conversation. Interactive development and debugging are the central use cases. You can ask an agent to inspect ",
-   "preliminary_score": 56,
-   "preliminary_topics": [
-    "claude_ai_development",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "728afeb9147d",
-   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
-   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-27T00:00:00Z",
-   "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "7a3ac6df3675",
-   "title": "The full Claude Platform, available on Google Cloud",
-   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
-   "preliminary_score": 44,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "6d403bbe9379",
-   "title": "Building agents: When to fold subagents into your main agent loop",
-   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
-   "preliminary_score": 44,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "7fd7e06ab2f4",
-   "title": "How the Claude Code team does code review",
-   "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "excerpt": "How do you review code at the volume agents produce it? The Claude Code team shares its review process, from Claude verifying its own work to risk-tiered human approval, plus a checklist for adopting it.",
-   "preliminary_score": 41,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "ce8bd2396821",
-   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
-   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "excerpt": "How one business development representative clears his inbound queue and drafts bilingual customer emails with Claude Managed Agents and Claude Tag.",
-   "preliminary_score": 41,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "81204e04abb9",
-   "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
-   "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-10-27T18:07:00Z",
-   "excerpt": "LangChain gave its Hex agent layered context, turning self-serve analytics questions from occasional to routine.",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "open_source_tools"
    ]
   },
   {
@@ -174,7 +82,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-28T19:47:19Z",
    "excerpt": "The Govern experience in the OneLake catalog is now generally available, providing centralized governance capabilities for tenants, domains, capacities, workspaces, tags, and policies in Microsoft Fabric. Govern Skills are also now available in the Skills for Fabric collection, giving AI agents the knowledge they need to help admins and data owners audit, investigate, and remediate governance issues at scale. Both were announced at FabCon Europe 2026. Together, they help you monitor, manage, and act on your data estate from one place, whether you work in the Fabric portal or with an AI agent. Why it matters As AI makes it easier for more people to build with data, data estates grow in size and complexity. More workspaces, items, and access requests create more decisions about ownership, organization, and protection. Centralized, proactive governance helps admins support new projects without turning every decision into a manual review or losing visibility into how data is used. Governance can't rely on periodic, manual audits anymore. It needs to be proactive, centralized, and able to scale with the estate. Capabilities with Govern experience and Govern Skills: Manage governance in ",
-   "preliminary_score": 71,
+   "preliminary_score": 70,
    "preliminary_topics": [
     "ai_agents_rag",
     "powerbi_semantic_models"
@@ -205,6 +113,104 @@
    "preliminary_score": 66,
    "preliminary_topics": [
     "cicd_data_deployment",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "5c86ce454fa4",
+   "title": "From mixed events to real-time action: Fabric Eventstreams Q3 2026",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/From-mixed-events-to-real-time-action-Fabric-Eventstreams-Q3/ba-p/5375736",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-20T21:00:00Z",
+   "excerpt": "Coauthor: Arindam Chatterjee Fabric Eventstreams makes it easy to connect to streaming sources, transform the ingested events and route them to destinations across Microsoft Fabric. But building real-time systems also requires teams to understand the events in motion, enriching them with business context, detecting and responding to any issues on time, and securely managing their streams across environments. That broader experience is the story behind this quarter’s updates. Eventstreams is expanding beyond connectivity and data movement to provide more of the capabilities teams need to work with streaming data after it arrives, while it is still in motion. With these expanded capabilities, users can now: Connect to more managed sources and extend Eventstreams with custom connectors. Capture change feeds from more operational databases. Explore and process multiple event types in a single Eventstream. Enrich streaming events with contextual data before processing and routing. Monitor processing health, diagnose problems, and act faster. Deploy with workspace-scoped networking and reusable configuration. Connect managed and custom streaming sources Eventstream added generally availa",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "cicd_data_deployment",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "322ec1626872",
+   "title": "Connect coding agents to Fabric notebooks with FNTK (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Connect-coding-agents-to-Fabric-notebooks-with-FNTK-Preview/ba-p/5375986",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-26T17:22:43Z",
+   "excerpt": "The Fabric Notebook Toolkit (Preview) helps developers shorten the feedback loop between writing code and validating it with live notebook results. It connects coding agents to Microsoft Fabric notebooks through a command-line interface (CLI) that runs in the terminal alongside tools such as Claude Code, GitHub Copilot CLI, and Codex. An agent can inspect the current code, run one cell, review its output, make a targeted change, and run it again without resubmitting the entire notebook—much as a human programmer working interactively. Figure: Animated GIF A coding agent uses FNTK from the terminal to interact with a Microsoft Fabric notebook. From code suggestions to notebook execution A coding agent can help write a transformation, but a proposed change is not the same as a working result. When execution happens elsewhere, developers must move code into a notebook, run it, and bring the results or errors back to the agent. FNTK connects those steps so the agent can work with a running Fabric notebook and its execution results instead of relying only on code shared in the conversation. Interactive development and debugging are the central use cases. You can ask an agent to inspect ",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "claude_ai_development",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "392fd68ef936",
+   "title": "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Strengthening-data-security-with-workspace-level-private/ba-p/5377347",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T21:00:00Z",
+   "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "data_ingestion",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "e2d4ca39e816",
+   "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-21T17:00:00Z",
+   "excerpt": "Migrating an enterprise Teradata estate to Microsoft Fabric can require extensive manual work across database objects, SQL and BTEQ code, dependencies, and operational processes. Fabric Migration Assistant helps reduce that effort so teams can focus their review on the objects and workflows that need attention. Fabric Migration Assistant for Data Warehouse now supports Teradata sources in preview. It converts eligible Teradata metadata and code to Fabric-compatible T-SQL, deploys eligible destination definitions, and flags scripts that need review or remediation, reducing the manual effort required to prepare a migration. You can choose which objects to migrate, review the translated code, and focus remediation on exceptions instead of manually translating every eligible object. Migration Assistant does not move the associated data; you load data in the following step of the migration flow. Define a migration scope you can validate Reduce migration risk by starting with a representative set of interdependent objects from one workload or business process. Keeping the related tables, views, procedures, functions, and macros together lets you evaluate the translated result as a workin",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "metadata_lineage_catalogs",
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "1762eca8130f",
+   "title": "T-SQL language enhancements in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/T-SQL-language-enhancements-in-Microsoft-Fabric-Data-Warehouse/ba-p/5375433",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-20T17:00:00Z",
+   "excerpt": "Microsoft Fabric Data Warehouse is expanding its T-SQL capabilities with four language enhancements in preview. GROUP BY ALL, ORDER BY ALL, the QUALIFY clause, and the FROM ... SELECT query format help SQL developers and data professionals reduce repetitive code, simplify query maintenance, and make analytical logic easier to understand. Figure: A T-SQL query uses GROUP BY ALL and ORDER BY ALL in Microsoft Fabric Data Warehouse. What’s new Four T-SQL language enhancements are available in preview: GROUP BY ALL — automatically groups by every non-aggregate expression in the SELECT list, reducing duplication between SELECT and GROUP BY clauses. ORDER BY ALL — sorts results by each column in the SELECT list, using the same column order, so developers do not need to repeat every sort expression. QUALIFY — filters rows after window functions are evaluated, so common ranking and top-N patterns no longer require an additional subquery or common table expression. FROM ... SELECT — provides an alternative query format that begins with the data source and defines the selected columns later, allowing developers to write complex queries in a source-first sequence. These additions reduce repeti",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "d33525fc8eb0",
+   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-28T17:00:00Z",
+   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
+   "preliminary_score": 48,
+   "preliminary_topics": [
+    "sql_spark_sql",
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "1ebe4563dc44",
+   "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
+   "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
+   "source_id": "sqlbi",
+   "source_name": "SQLBI",
+   "published_at": "2026-10-22T07:30:36Z",
+   "excerpt": "At the end of 2025, we launched DAX Lib, a public repository of DAX user-defined functions. So far, importing a DAX library has required a few manual steps, like clicking Add to Power BI on daxlib.org and then copying and…",
+   "preliminary_score": 47,
+   "preliminary_topics": [
     "powerbi_semantic_models"
    ]
   }
