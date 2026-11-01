@@ -387,6 +387,9 @@ with sync_playwright() as p:
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)
+    page.click("#dd-all-read")
+    check("   'Alles gelezen' zet alle verdiepingen op gelezen", page.locator(".card[data-dd].read").count() == len(dds) and page.locator("#dd-all-read").count() == 0
+          and "has-dot" not in (page.locator('#seg-view button[data-v="verdieping"]').get_attribute("class") or "") or page.evaluate("Object.keys(JSON.parse(localStorage.getItem('radar:quiz')||'{}')).length > 0"))
     check("   eigen voorstel herkenbaar aan 'jouw voorstel'", page.locator(".card[data-dd] .pill.eigen").count() == 1
           and page.locator('.card[data-dd="eigen-test-voorstel"] .pill.eigen').count() == 1)
     page.click('#seg-dd button[data-v="morgen"]')

@@ -108,6 +108,8 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .act-bar .fb-btns button { padding: 0 13px; font-size: 1.05rem; }
 .act-btn[aria-expanded="true"] { border-color: var(--accent2); color: var(--accent2); }
 .card.read { opacity: .55; }
+.all-read { display: flex; justify-content: flex-end; margin-top: 10px; }
+.all-read button { border: 0; background: none; color: var(--muted); font-size: 0.82rem; cursor: pointer; padding: 4px 2px; }
 .card.read h3 { font-weight: 550; }
 .read-tick { color: var(--ok); margin-right: 6px; font-weight: 700; }
 .since-head { margin: 14px 2px 0; font-size: 0.86rem; color: var(--accent2); font-weight: 650; }
@@ -778,7 +780,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
       $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker() : state.ddTab === "later" ? renderLaterTab()
-        : dds.length ? reviewBar() + `<div class="cards">${dds.map(ddCard).join("")}</div>`
+        : dds.length ? reviewBar() + (dds.some((d) => !isRead("v-" + d.id)) ? `<div class="all-read"><button type="button" id="dd-all-read">Alles gelezen ✓</button></div>` : "") + `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
       return;
@@ -1615,6 +1617,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (bar.dataset.swiped) { e.preventDefault(); e.stopPropagation(); delete bar.dataset.swiped; return; }   // na vegen niet ook openen
     if (e.target.closest(".week-x")) { e.preventDefault(); e.stopPropagation(); weekGone(bar, 1); }
   }, true);
+  // Verdiepingen: alles in één keer als gelezen markeren
+  $("#content").addEventListener("click", (e) => {
+    if (!e.target.closest("#dd-all-read")) return;
+    const r = reads.all(), now = new Date().toISOString();
+    (state.feed.deepdives || []).forEach((d) => { if (!r["v-" + d.id]) r["v-" + d.id] = { at: now, sent: false }; });
+    reads.save(r); updateTabDots(); renderList();
+  });
   $("#content").addEventListener("input", (e) => {
     if (e.target.id !== "gl-q") return;
     const q = e.target.value.trim().toLowerCase();
