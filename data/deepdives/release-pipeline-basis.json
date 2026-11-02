@@ -1,0 +1,189 @@
+{
+  "format_version": 1,
+  "id": "release-pipeline-basis",
+  "plan_id": "release-pipeline-basis",
+  "request_issue": 13,
+  "headline": "Van je laptop naar productie: zo werkt een release pipeline",
+  "summary": "Een release pipeline brengt je code in vaste stappen van ontwikkeling naar productie: eerst controleren, dan uitrollen, met een goedkeuring ertussen. Dit stuk legt de bouwstenen van Azure Pipelines uit, zoals stage, agent en deployment job, en laat zien hoe dat eruitziet voor een dbt- en Databricks-project.",
+  "sections": [
+    {
+      "heading": "Waarom niet gewoon vanaf je laptop?",
+      "paragraphs": [
+        "Stel dat je een dbt-model aanpast. Je kunt het vanaf je laptop meteen in productie draaien. Dat werkt, tot je een keer de verkeerde target kiest of een test overslaat. Dan staat er een fout in een rapport en weet niemand precies wat er is uitgerold.",
+        "Een release pipeline lost dat op. Het is een vast, geautomatiseerd stappenplan dat je code van ontwikkeling naar productie brengt. Elke wijziging gaat langs dezelfde controles, in dezelfde volgorde. En achteraf zie je precies welke versie wanneer is uitgerold, en door wie hij is goedgekeurd.",
+        "Vergelijk het met een restaurantkeuken. Een nieuw gerecht gaat niet meteen naar de gasten. De kok maakt het eerst in de testkeuken, de chef proeft, en pas daarna komt het op de kaart. Een release pipeline is die vaste route, maar dan voor code."
+      ]
+    },
+    {
+      "heading": "De bouwstenen van Azure Pipelines",
+      "paragraphs": [
+        "In Azure DevOps heet zo'n stappenplan een pipeline. Een trigger bepaalt wanneer hij start: bijvoorbeeld bij een push naar een branch, op een vast tijdstip of met de hand. Elke keer dat de pipeline draait, heet een run.",
+        "Een pipeline bestaat uit één of meer stages. Een stage is een grote fase, zoals 'bouwen', 'testen' of 'productie'. Stages lopen standaard na elkaar, in de volgorde van het bestand. Met dependsOn en een condition bepaal je zelf de volgorde, of dat een stage alleen draait als de vorige slaagde.",
+        "Binnen een stage zitten jobs, en binnen een job zitten steps. Een step is het kleinste blok: een script of een kant-en-klare taak (task). Alle steps van één job draaien na elkaar op dezelfde agent. Een agent is de computer die het werk doet; Microsoft biedt er kant-en-klare aan, zoals een Ubuntu-machine die na de job weer verdwijnt.",
+        "Je kunt een pipeline in Azure DevOps op twee manieren maken: met de klassieke editor (Classic) of als YAML-bestand in je repository. Dit stuk gebruikt YAML, net als de Databricks-documentatie. Het voordeel: de pipeline staat als code naast je dbt-project, met versiebeheer en review."
+      ]
+    },
+    {
+      "heading": "Eerst controleren, dan uitrollen",
+      "paragraphs": [
+        "Bijna elke pipeline heeft twee helften. De eerste helft controleert: code ophalen, afhankelijkheden installeren, testen. Dat heet continue integratie (CI). De tweede helft brengt de goedgekeurde code naar een omgeving. Dat heet continue uitrol (continuous deployment, CD). Een release pipeline is vooral die tweede helft.",
+        "Soms maakt de eerste helft een pakketje dat de tweede helft uitrolt. Azure DevOps noemt dat een artifact: een verzameling bestanden die een run publiceert, zodat latere stappen ermee verder kunnen. Bij een dbt-project is het pakketje vaak gewoon de code zelf. De uitrolstap haalt die opnieuw op en draait dbt tegen productie.",
+        "Voor een pull request draait meestal alleen de eerste helft. Zo zie je vóór het samenvoegen of je wijziging werkt. Pas na de merge naar main gaat de pipeline door naar de uitrol."
+      ]
+    },
+    {
+      "heading": "Omgevingen en goedkeuringen",
+      "paragraphs": [
+        "Een omgeving (environment) is in Azure DevOps een benoemde plek waar je naartoe uitrolt, zoals 'test' of 'prod'. Je koppelt een stap aan een omgeving met een deployment job. Dat is een gewone job, maar dan met een vaste uitrolstrategie en een geschiedenis: per omgeving zie je welke runs daar iets hebben uitgerold. Let op: een deployment job haalt je code niet vanzelf op. Daarvoor zet je checkout: self in de steps.",
+        "Aan een omgeving hang je controles (approvals and checks). De bekendste is een handmatige goedkeuring: de run pauzeert tot een aangewezen collega op 'goedkeuren' klikt. Er zijn er meer, zoals alleen uitrollen vanaf een bepaalde branch, alleen binnen kantoortijden, of een vergrendeling (exclusive lock) zodat er maar één uitrol tegelijk loopt.",
+        "Een belangrijk detail: die controles staan niet in je YAML-bestand. Een beheerder stelt ze in de webomgeving in, onder Pipelines > Environments. Zo kan iemand die de pipeline schrijft de goedkeuring niet zelf weghalen. Wordt een goedkeuring niet op tijd gegeven, dan slaat de pipeline die stage over."
+      ]
+    },
+    {
+      "heading": "Variabelen en geheimen",
+      "paragraphs": [
+        "Elke omgeving heeft eigen instellingen: een andere werkruimte, een ander schema, een ander toegangsbewijs. Die zet je niet in de code. Azure DevOps bewaart ze in een variable group: een benoemde set variabelen die je in een pipeline aanroept. Je kunt een variable group ook koppelen aan Azure Key Vault, de kluis voor geheimen in Azure. De pipeline haalt dan bij elke run de actuele waarde op.",
+        "Geheimen gedragen zich anders dan gewone variabelen. Ze komen niet vanzelf als omgevingsvariabele in je script. Je geeft ze per stap expliciet door met env:. Azure DevOps probeert geheimen in de logs te vervangen door sterretjes, maar Microsoft noemt dat 'best effort'. Druk een geheim dus nooit zelf af.",
+        "Voor de verbinding met Databricks gebruik je liefst geen persoonlijk account. In het voorbeeld van Databricks draait de pipeline als service principal, via een service connection in Azure DevOps. Die gebruikt workload identity federation: Azure DevOps bewijst wie het is zonder opgeslagen wachtwoord, en krijgt een kortlevend token."
+      ]
+    },
+    {
+      "heading": "Zo ziet het eruit voor dbt en Databricks",
+      "paragraphs": [
+        "Voor dbt zijn de omgevingen vaak targets in je profiel: dezelfde code, maar een ander schema of een andere catalogus. De pipeline draait dan dbt build met --target ci voor de controle en --target prod voor de uitrol. Het voorbeeld hieronder laat precies die twee stages zien.",
+        "Gebruik je het dbt-platform, dan kan dat platform zelf de CI-stap doen. Bij elke pull request bouwt een CI-job alleen de gewijzigde modellen en wat ervan afhangt, in een tijdelijk schema. Na het samenvoegen of sluiten ruimt dbt dat schema op, en de uitslag verschijnt in de pull request. Met Azure DevOps kan dat volgens de dbt-documentatie alleen in de Enterprise-abonnementen.",
+        "Voor Databricks-onderdelen zoals jobs en pipelines gebruik je bundels. Let op de naam: Databricks noemt ze sinds kort Declarative Automation Bundles, voorheen Databricks Asset Bundles. In het Azure DevOps-voorbeeld van Databricks rolt de eerste stage na elke merge automatisch uit naar staging. De tweede stage is een deployment job op de omgeving prod, met de goedkeuring daar. Elke stage draait databricks bundle validate en daarna databricks bundle deploy met de juiste target."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jouw project?",
+      "paragraphs": [
+        "Je gebruikt GitHub voor versiebeheer en Azure DevOps voor CI/CD. Een goede eerste stap is één YAML-pipeline met twee stages: controleren bij elke pull request, en uitrollen naar productie na de merge, met een goedkeuring op de omgeving prod. Een aparte teststage kan later.",
+        "Begin klein met geheimen. Zet het token van een service principal in een variable group of Key Vault, en geef het alleen door aan de stap die het nodig heeft. Gebruik voor test en productie aparte groepen, zodat een teststap nooit bij productie kan.",
+        "Denk ook na over je testomgeving. Het artikel over Lakebase liet zien hoe een team per pull request een eigen kopie van productie maakt. Dat is handig, maar met zorgdata moet je eerst nagaan of echte data in een testomgeving mag. Vaak is een kleine set verzonnen data in de CI-stap veiliger en ruim genoeg om je modellen te testen."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een pipeline met twee stages: bij elke pull request draait dbt build tegen de testomgeving, en na een merge naar main volgt de uitrol naar productie, pas na goedkeuring op de omgeving prod.",
+    "language": "yaml",
+    "code": "trigger: [main]          # draai na elke merge naar main\npr: [main]               # en bij elke pull request naar main\n\nstages:\n- stage: Build           # 1. controleren\n  variables:\n  - group: dbt-ci        # waarden en geheimen voor de testomgeving\n  jobs:\n  - job: test\n    pool: {vmImage: ubuntu-latest}\n    steps:\n    - script: pip install dbt-databricks && dbt deps && dbt build --target ci\n      env:\n        DBT_TOKEN: $(dbt-token)   # geheim expliciet doorgeven\n\n- stage: Prod            # 2. uitrollen\n  dependsOn: Build\n  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))\n  variables:\n  - group: dbt-prod\n  jobs:\n  - deployment: dbt_prod\n    pool: {vmImage: ubuntu-latest}\n    environment: prod    # de goedkeuring hangt aan deze omgeving\n    strategy:\n      runOnce:\n        deploy:\n          steps:\n          - checkout: self\n          - script: pip install dbt-databricks && dbt deps && dbt build --target prod\n            env:\n              DBT_TOKEN: $(dbt-token)",
+    "note": "Eigen voorbeeld, niet uitgevoerd. De onderdelen (trigger, pr, stages, dependsOn, condition, deployment, environment, runOnce, checkout: self en geheimen via env:) komen uit de documentatie van Azure Pipelines. Aannames: dbt Core met dbt-databricks, een profiles.yml met targets ci en prod die het token leest via env_var('DBT_TOKEN'), en variable groups met de namen dbt-ci en dbt-prod. De goedkeuring stel je in bij de omgeving prod, niet in dit bestand."
+  },
+  "experiment": "Maak in een eigen Azure DevOps-project (zonder koppeling met werk) een pipeline met twee stages die alleen een echo-script draaien. Maak een omgeving 'prod' en zet er een handmatige goedkeuring op. Kijk hoe de run pauzeert, keur goed, en bekijk daarna de deploymentgeschiedenis van de omgeving. Voeg als laatste een geheime variabele toe en zie hoe hij in de log als *** verschijnt.",
+  "limitations": [
+    "Het YAML-voorbeeld is niet uitgevoerd; namen van targets, groepen en geheimen moet je aanpassen aan je eigen opzet.",
+    "Goedkeuringen en controles stel je buiten het YAML-bestand in; wie beheerder is van een omgeving bepaalt dus mee hoe veilig de uitrol is.",
+    "Gebruik in CI- en testomgevingen geen echte patiëntgegevens zonder dat is getoetst of dat mag; verzonnen data is voor de meeste tests genoeg.",
+    "Automatische CI-jobs van het dbt-platform met Azure DevOps vragen een Enterprise-abonnement; anders bouw je de CI-stap zelf in Azure Pipelines."
+  ],
+  "further_reading": [
+    {
+      "label": "Key concepts for new Azure Pipelines users (Microsoft Learn, maart 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/key-pipelines-concepts",
+      "note": "Korte definities van trigger, stage, job, step, agent, omgeving, artifact en deployment job op één pagina."
+    },
+    {
+      "label": "Define approvals and checks (Microsoft Learn, geraadpleegd november 2026)",
+      "url": "https://learn.microsoft.com/azure/devops/pipelines/process/approvals",
+      "note": "Welke controles er zijn, in welke volgorde ze lopen en waarom ze niet in het YAML-bestand staan."
+    },
+    {
+      "label": "Deployment jobs (Microsoft Learn, oktober 2025)",
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/process/deployment-jobs",
+      "note": "De syntax van een deployment job met runOnce, en waarom je zelf checkout: self moet toevoegen."
+    },
+    {
+      "label": "Set secret variables (Microsoft Learn, januari 2026)",
+      "url": "https://learn.microsoft.com/lv-lv/azure/devops/pipelines/process/set-secret-variables?view=azure-devops",
+      "note": "Hoe geheimen werken, waarom je ze met env: doorgeeft en waar het maskeren in de log ophoudt."
+    },
+    {
+      "label": "Azure DevOps CI/CD with Declarative Automation Bundles (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/aws/en/voices/dev-tools/bundles-azure-devops",
+      "note": "Een compleet voorbeeld met een staging- en een prod-stage, een goedkeuring op de omgeving en aanmelden zonder opgeslagen wachtwoord."
+    },
+    {
+      "label": "Continuous integration in dbt (dbt Labs, oktober 2026)",
+      "url": "https://docs.getdbt.com/docs/deploy/continuous-integration",
+      "note": "Hoe CI-jobs van het dbt-platform per pull request een tijdelijk schema bouwen en opruimen, en welke Git-aanbieders dat ondersteunen."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Je wilt dat niemand de goedkeuring voor productie kan omzeilen door het pipelinebestand aan te passen. Waar stel je die goedkeuring in?",
+      "options": [
+        "In het YAML-bestand, met een approval-blok in de stage",
+        "Op de omgeving prod in de webomgeving van Azure DevOps",
+        "In de variable group van productie",
+        "In profiles.yml van dbt"
+      ],
+      "answer": 1,
+      "explanation": "Controles en goedkeuringen horen bij de omgeving en worden door een beheerder in de webomgeving ingesteld. Wie de YAML schrijft, kan ze daardoor niet weghalen."
+    },
+    {
+      "question": "Je script in de uitrolstap krijgt het Databricks-token niet binnen, terwijl het wel in de variable group staat. Wat is de meest waarschijnlijke oorzaak?",
+      "options": [
+        "Geheimen werken alleen in de klassieke editor",
+        "Een deployment job kan geen variabelen lezen",
+        "Geheimen komen niet vanzelf als omgevingsvariabele binnen; je moet ze met env: doorgeven"
+      ],
+      "answer": 2,
+      "explanation": "Anders dan gewone variabelen worden geheime variabelen niet automatisch aan scripts doorgegeven. Je koppelt ze per stap met env:."
+    },
+    {
+      "question": "Waarom draait bij een pull request meestal alleen de controlestap en nog niet de uitrol naar productie?",
+      "options": [
+        "Omdat je eerst wilt zien of de wijziging werkt, voordat hij is samengevoegd en uitgerold",
+        "Omdat Azure DevOps bij een pull request geen agents beschikbaar heeft",
+        "Omdat een deployment job alleen 's nachts mag draaien",
+        "Omdat dbt build bij een pull request niet werkt"
+      ],
+      "answer": 0,
+      "explanation": "De controle (CI) laat vóór de merge zien of de code werkt. Pas na de merge naar main gaat de wijziging, na goedkeuring, naar productie."
+    }
+  ],
+  "terms": [
+    {
+      "term": "stage",
+      "explanation": "Een grote fase in een pipeline, zoals bouwen, testen of productie. Stages lopen standaard na elkaar en bevatten één of meer jobs."
+    },
+    {
+      "term": "agent",
+      "explanation": "De computer die de stappen van een pipeline-job uitvoert. Microsoft biedt kant-en-klare agents die na de job weer verdwijnen."
+    },
+    {
+      "term": "artifact",
+      "explanation": "Een verzameling bestanden die een pipeline-run publiceert, zodat een latere stap, zoals de uitrol, ermee verder kan."
+    },
+    {
+      "term": "deployment job",
+      "explanation": "Een job in Azure Pipelines die aan een omgeving gekoppeld is. Hij houdt per omgeving bij wat er is uitgerold en laat de goedkeuringen van die omgeving gelden."
+    },
+    {
+      "term": "variable group",
+      "explanation": "Een benoemde set variabelen en geheimen in Azure DevOps die je in meerdere pipelines kunt gebruiken, bijvoorbeeld één groep per omgeving."
+    },
+    {
+      "term": "service connection",
+      "explanation": "Een opgeslagen verbinding in Azure DevOps met een andere dienst, zoals Azure. Pipelines gebruiken hem om in te loggen zonder dat er wachtwoorden in de code staan."
+    },
+    {
+      "term": "workload identity federation",
+      "explanation": "Inloggen zonder opgeslagen geheim: de pipeline bewijst wie hij is met een kortlevend bewijs van Azure DevOps en krijgt daarvoor een tijdelijk token."
+    },
+    {
+      "term": "Declarative Automation Bundles",
+      "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 2 november 2026. Bronnen uit oktober 2025 tot en met oktober 2026: Microsoft Learn over de basisbegrippen (maart 2026), geheimen (januari 2026) en deployment jobs (oktober 2025), de Databricks-pagina over Azure DevOps en bundels (29 oktober 2026) en de dbt-documentatie over CI (7 oktober 2026). Databricks Asset Bundles heten nu Declarative Automation Bundles; dit stuk gebruikt de nieuwe naam. Bewust niet opgenomen: de klassieke releasepipelines (Classic) uitgebreid uitleggen, en aanmelden met een persoonlijk toegangstoken in de pipeline, omdat de Databricks-documentatie een service principal met workload identity federation gebruikt.",
+  "topics": [
+    "cicd_data_deployment",
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+  ],
+  "written_at": "2026-11-02T04:50:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
