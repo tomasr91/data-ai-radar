@@ -1,80 +1,7 @@
 {
- "generated_at": "2026-11-02T03:30:04.184193Z",
+ "generated_at": "2026-11-02T03:30:51.377592Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "8490db033ef6",
-   "title": "Bringing Rust-native Spark compatibility to Microsoft OneLake with Sail and LakeSail",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T17:48:58Z",
-   "excerpt": "Coauthor: Shehab Amin Microsoft OneLake gives every Microsoft Fabric tenant a single, unified data lake built on open formats. One copy of data, many engines: that is the promise, and it is what makes OneLake such a strong foundation for analytics and AI alike. This post looks at how Sail , the open-source distributed compute framework, and LakeSail Cloud , the managed platform for running Sail in production, connect natively to OneLake, and what that unlocks for teams running Spark and Python workloads on Fabric. Sail is a drop-in replacement for Apache Spark, rebuilt from the ground up in Rust, with Rust-native support for Delta Lake and Apache Iceberg out of the box. That makes it a natural fit for OneLake, where lakehouse tables are stored in exactly these open formats. Point Sail at a Fabric lakehouse and it reads and writes the same tables the rest of Fabric uses, with no data copies, no extra connectors to install, and no changes to existing Spark code. One engine for data and AI Sail implements the Spark Connect protocol, the gRPC interface that decouples Spark clients from the engine that executes their plans. Existing Spark SQL and DataFrame code targeting Spark 3.5 or 4.",
-   "preliminary_score": 87,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "powerbi_semantic_models",
-    "sql_spark_sql",
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "b603e27850b0",
-   "title": "Uber's CISO on building an insider threat program for AI",
-   "url": "https://claude.com/resources/articles/uber-s-ciso-on-building-an-insider-threat-program-for-ai",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-13T00:00:00Z",
-   "excerpt": "Uber's CISO, Philip Martin, on the importance of monitoring and observability for AI agents, and how Uber's open-source tooling works alongside Enterprise Frontier Safeguards.",
-   "preliminary_score": 82,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "e2d4ca39e816",
-   "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-21T17:00:00Z",
-   "excerpt": "Migrating an enterprise Teradata estate to Microsoft Fabric can require extensive manual work across database objects, SQL and BTEQ code, dependencies, and operational processes. Fabric Migration Assistant helps reduce that effort so teams can focus their review on the objects and workflows that need attention. Fabric Migration Assistant for Data Warehouse now supports Teradata sources in preview. It converts eligible Teradata metadata and code to Fabric-compatible T-SQL, deploys eligible destination definitions, and flags scripts that need review or remediation, reducing the manual effort required to prepare a migration. You can choose which objects to migrate, review the translated code, and focus remediation on exceptions instead of manually translating every eligible object. Migration Assistant does not move the associated data; you load data in the following step of the migration flow. Define a migration scope you can validate Reduce migration risk by starting with a representative set of interdependent objects from one workload or business process. Keeping the related tables, views, procedures, functions, and macros together lets you evaluate the translated result as a workin",
-   "preliminary_score": 77,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "1762eca8130f",
-   "title": "T-SQL language enhancements in Microsoft Fabric Data Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/T-SQL-language-enhancements-in-Microsoft-Fabric-Data-Warehouse/ba-p/5375433",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-20T17:00:00Z",
-   "excerpt": "Microsoft Fabric Data Warehouse is expanding its T-SQL capabilities with four language enhancements in preview. GROUP BY ALL, ORDER BY ALL, the QUALIFY clause, and the FROM ... SELECT query format help SQL developers and data professionals reduce repetitive code, simplify query maintenance, and make analytical logic easier to understand. Figure: A T-SQL query uses GROUP BY ALL and ORDER BY ALL in Microsoft Fabric Data Warehouse. What’s new Four T-SQL language enhancements are available in preview: GROUP BY ALL — automatically groups by every non-aggregate expression in the SELECT list, reducing duplication between SELECT and GROUP BY clauses. ORDER BY ALL — sorts results by each column in the SELECT list, using the same column order, so developers do not need to repeat every sort expression. QUALIFY — filters rows after window functions are evaluated, so common ranking and top-N patterns no longer require an additional subquery or common table expression. FROM ... SELECT — provides an alternative query format that begins with the data source and defines the selected columns later, allowing developers to write complex queries in a source-first sequence. These additions reduce repeti",
-   "preliminary_score": 76,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "3964fa015c0d",
-   "title": "Claude Security now scans continuously and tracks fixes",
-   "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-21T00:00:00Z",
-   "excerpt": "Claude Security now keeps up with your repositories as code changes, tracks findings until they’re fixed, learns from the context your team adds, and connects to your tools through an API and MCP. Available in public beta for Claude Enterprise customers.",
-   "preliminary_score": 81,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "claude_ai_development"
-   ]
-  },
   {
    "id": "d8ab32c2d8b1",
    "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
@@ -211,6 +138,71 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "728afeb9147d",
+   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
+   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-27T00:00:00Z",
+   "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "7a3ac6df3675",
+   "title": "The full Claude Platform, available on Google Cloud",
+   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "6d403bbe9379",
+   "title": "Building agents: When to fold subagents into your main agent loop",
+   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "7fd7e06ab2f4",
+   "title": "How the Claude Code team does code review",
+   "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-16T00:00:00Z",
+   "excerpt": "How do you review code at the volume agents produce it? The Claude Code team shares its review process, from Claude verifying its own work to risk-tiered human approval, plus a checklist for adopting it.",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "ce8bd2396821",
+   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
+   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-16T00:00:00Z",
+   "excerpt": "How one business development representative clears his inbound queue and drafts bilingual customer emails with Claude Managed Agents and Claude Tag.",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "claude_ai_development"
    ]
   }
  ]
