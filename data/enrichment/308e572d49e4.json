@@ -1,0 +1,91 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-02T03:28:00Z",
+  "prompt_version": "taak-v2",
+  "article_id": "308e572d49e4",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+  "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
+  "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
+  "story": [
+    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
+    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
+    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
+    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
+    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA)."
+  ],
+  "key_facts": [
+    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
+    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
+    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
+    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
+    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
+    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
+  ],
+  "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
+  "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
+  "limitations": [
+    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
+    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
+    "AI Functions-rechten moet je via het accountteam laten aanzetten."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Release notes oktober 2026",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+      "label": "Read and write XML files",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
+    },
+    {
+      "label": "Genie One MCP server",
+      "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_ingestion",
+    "ai_on_data_platform",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.8,
+    "novelty": 0.6
+  },
+  "development_key": "azure-databricks-week-44-2026",
+  "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {
+    "score": 0.7,
+    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
+  },
+  "terms": [
+    {
+      "term": "MCP",
+      "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "Auto Loader",
+      "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+    },
+    {
+      "term": "OAuth",
+      "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
+    },
+    {
+      "term": "metric views",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
+    "language": "sql",
+    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
+    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
+  }
+}

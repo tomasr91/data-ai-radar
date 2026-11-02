@@ -1,0 +1,84 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-02T03:27:35Z",
+  "prompt_version": "taak-v2",
+  "article_id": "6df581b9d8ed",
+  "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
+  "headline": "Claude Code kan nu nergens meer schrijven buiten je projectmap",
+  "summary": "Een nieuwe instelling houdt schrijfacties binnen je werkmappen, subagents krijgen een eigen denkniveau, en de snelle modus van Opus 4.8 verdwijnt op 30 november.",
+  "story": [
+    "Claude Code kreeg deze week een harde grens voor schrijven. Met de nieuwe instelling `blockWritesOutsideWorkingDirectories` weigeren Write, Edit en NotebookEdit elk pad buiten je werkmappen. Dat geldt in elke toestemmingsmodus, ook als je verder alles automatisch laat goedkeuren (v2.1.314).",
+    "Je kunt het zien als een hek om je tuin. Claude mag binnen het hek alles verbouwen, maar kan niet per ongeluk in de schuur van de buren een bestand overschrijven. Werk je met meerdere dbt-projecten of een gedeelde configuratiemap naast je repository, dan blijft die zo buiten schot.",
+    "Ook subagents worden beter te sturen. Met `CLAUDE_CODE_SUBAGENT_EFFORT` stel je in hoe hard subagents nadenken als niets anders het zegt (v2.1.316). Eerder namen ze het niveau van je hoofdsessie over. Zo kun je een zoek-subagent zuinig laten werken, terwijl de hoofdsessie diep nadenkt. Daarnaast lopen er per sessie hooguit 24 prompt- en agent-hooks tegelijk, subagents meegeteld (v2.1.312).",
+    "Er is ook iets om op te letten. De snelle modus (fast mode) voor Opus 4.8 is sinds 30 oktober verouderd en verdwijnt op 30 november 2026. Daarna geeft zo'n verzoek een fout en valt het niet terug op gewone Opus 4.8. Wie de snelheid wil houden, stapt over op Opus 5.5.",
+    "Tot slot vat Claude in VS Code en de Code-tab van Claude Desktop een stilliggend gesprek van meer dan 200.000 tokens nu vanzelf samen (v2.1.314). Bij lange dbt-sessies scheelt dat context als je later verdergaat."
+  ],
+  "key_facts": [
+    "v2.1.314 (30 okt 2026): nieuwe instelling permissions.blockWritesOutsideWorkingDirectories; Write, Edit en NotebookEdit weigeren paden buiten de werkmappen, in elke toestemmingsmodus.",
+    "v2.1.314: idle compaction in VS Code en de Code-tab van Claude Desktop; een gesprek van 200K+ tokens dat stil ligt wordt samengevat.",
+    "v2.1.316 (31 okt 2026): nieuwe variabele CLAUDE_CODE_SUBAGENT_EFFORT bepaalt het effort-niveau van subagents als niets anders er een noemt, in plaats van dat van de sessie over te nemen.",
+    "v2.1.316: fast mode voor Opus 4.8 is verouderd per 30 oktober 2026 en wordt verwijderd op 30 november 2026; daarna geeft fast mode op Opus 4.8 een fout zonder terugval. Advies: overstappen op Opus 5.5.",
+    "v2.1.312 (27 okt 2026): prompt- en agent-hooks draaien hooguit 24 tegelijk per sessie (subagents meegeteld); een timeout onder 1 seconde telt als 1 seconde.",
+    "v2.1.311 (27 okt 2026): ultrathink draait in de terminal een beurt op xhigh effort op Opus 5.5; v2.1.316 voegt CLAUDE_CODE_DISABLE_ULTRATHINK toe om het sleutelwoord uit te zetten."
+  ],
+  "personal_relevance": "Met een schrijfgrens en een eigen denkniveau voor subagents kun je Claude Code veiliger en zuiniger op je dbt-repository loslaten.",
+  "experiment": "Zet in een testproject met een openbare dbt-voorbeeldrepository blockWritesOutsideWorkingDirectories aan en vraag Claude een bestand in een map ernaast aan te passen. Kijk hoe de weigering eruitziet.",
+  "limitations": [
+    "De release notes geven geen voorbeeldconfiguratie; de JSON hieronder volgt de naam van de instelling.",
+    "De bevestigde releases deze week zijn v2.1.311, .312, .314 en .316; v2.1.313 en .315 staan niet op de releasepagina."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Release v2.1.316",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316"
+    },
+    {
+      "label": "Releases Claude Code",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_context_engineering"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.7,
+    "novelty": 0.6
+  },
+  "development_key": "claude-code-week-44-2026",
+  "date_note": "Weekoverzicht van releases tussen 26 en 31 oktober 2026; v2.1.311 en v2.1.314 zijn deels via een kopie van de releasetekst gelezen omdat de officiële pagina afgekapt was.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {
+    "score": 0.6,
+    "why": "Releasenotes over Claude Code-werkwijze; je duimen gaan vooral naar praktische AI-met-dbt-stukken."
+  },
+  "terms": [
+    {
+      "term": "subagents",
+      "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+      "term": "hooks",
+      "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+      "term": "fast mode",
+      "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+    },
+    {
+      "term": "tokens",
+      "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo zet je de schrijfgrens aan in .claude/settings.json en geef je subagents een eigen denkniveau.",
+    "language": "bash",
+    "code": "# .claude/settings.json in je project\ncat > .claude/settings.json <<'JSON'\n{\n  \"permissions\": {\n    \"blockWritesOutsideWorkingDirectories\": true\n  }\n}\nJSON\n\n# subagents zuiniger laten denken dan de hoofdsessie\nexport CLAUDE_CODE_SUBAGENT_EFFORT=medium\nclaude",
+    "note": "De namen van de instelling en de variabele komen uit de release notes van v2.1.314 en v2.1.316. De waarde true en het niveau medium zijn een aanname over de notatie; controleer die in de documentatie."
+  }
+}

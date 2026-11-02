@@ -1,0 +1,84 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-02T03:29:34Z",
+  "prompt_version": "taak-v2",
+  "article_id": "3fd19a8cb4a2",
+  "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
+  "headline": "Zo houdt Anthropic een agent die zelf handelt in toom",
+  "summary": "Claude Duet werkt door terwijl je weg bent. Anthropic legt uit welke controles eromheen staan: goedkeuring vooraf, een losse intentiecheck en een agent die nooit je wachtwoorden ziet.",
+  "story": [
+    "Anthropic beschrijft hoe het Claude Duet beveiligt. Duet is een agent op een computer in de cloud die doorwerkt als je de app sluit. Hij leest bijvoorbeeld je inbox, schrijft conceptantwoorden en draait vaste routines. Duet is een onderzoeksversie (research preview), eerst voor Pro- en Max-abonnees in de VS via een wachtlijst.",
+    "De taak van de agent is dus handelen in jouw apps. De controle zit op drie plekken. Bij belangrijke acties, zoals betalen, iets verwijderen of een gevoelig bericht sturen, toont Duet eerst de actie, de ontvangers en de volledige inhoud. Pas na jouw goedkeuring gaat het door. Sommige acties, zoals beleggen of geld overmaken tussen rekeningen, zijn altijd verboden.",
+    "Daarnaast kijkt een losse controle of elke actie past bij wat je vroeg. Die check is een uitbreiding van de classifier achter auto mode in Claude Code en draait buiten het model. Een verborgen instructie op een webpagina (prompt injection) kan de uitkomst dus niet beïnvloeden. Uitgaande berichten gaan ook langs een classifier die gevoelige gegevens herkent: inloggegevens en rekeningnummers gaan nooit mee, en voor gezondheids- of financiële gegevens is toestemming nodig.",
+    "Het meest leerzame deel gaat over geheimen. De agent ziet nooit je wachtwoorden of tokens. Zijn machine heeft alleen een plaatshouder; een proxy buiten die machine zet het echte toegangsbewijs er pas bij het verzoek in. Het lijkt op een portier die de sleutel bewaart en de deur zelf opent, zodat de bezorger de sleutel nooit in handen krijgt.",
+    "Je gebruikt Duet niet voor je werk, maar het ontwerp is een bruikbaar voorbeeld. Als je zelf agents bouwt op een dataplatform, kun je dezelfde scheiding toepassen: goedkeuring vóór onomkeerbare acties, een controle buiten het model en geheimen die de agent nooit ziet."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 23 oktober 2026; Claude Duet is een research preview, toegang via wachtlijst, eerst voor Pro- en Max-abonnees in de VS.",
+    "Vóór gevoelige berichten, betalingen of verwijderen toont Duet actie, bestemming en volledige inhoud en wacht op goedkeuring; beleggen, geld tussen rekeningen overmaken en andermans account gebruiken zijn altijd geblokkeerd.",
+    "Een intentiecheck, uitgebreid vanuit de auto mode-classifier van Claude Code, draait buiten het model zodat verborgen instructies op webpagina's de uitkomst niet kunnen veranderen.",
+    "Een aparte classifier controleert uitgaande berichten en geüploade bestanden: inloggegevens, volledige kaart- en rekeningnummers en ID-nummers worden nooit gedeeld; andere privégegevens vragen toestemming.",
+    "Inlogtokens: de machine van de agent heeft alleen een plaatshouder; een proxy buiten die machine voegt het echte toegangsbewijs toe bij het verzoek. De browser draait in een aparte virtuele machine.",
+    "Anthropic zegt dat de classifier soms dingen mist of onschuldige berichten tegenhoudt; daarom staat de goedkeuringsstap ernaast."
+  ],
+  "personal_relevance": "Het ontwerp laat concreet zien hoe je een zelfstandige agent veilig maakt; dat patroon kun je hergebruiken als je agents op je dataplatform laat handelen.",
+  "experiment": "Teken voor een denkbeeldige agent die dbt-runs herstart welke acties vooraf goedkeuring vragen, welke verboden zijn en waar de inloggegevens staan. Gebruik de drie plekken uit dit artikel als checklist.",
+  "limitations": [
+    "Duet is een consumentenproduct in research preview en alleen in de VS te krijgen.",
+    "Het artikel noemt geen opslagregio's, bewaartermijnen of drempels van de classifiers.",
+    "Het stuk komt van Anthropic zelf; de effectiviteit van de controles is niet onafhankelijk gemeten."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Claude Duet Safety, Privacy, and Security",
+      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security"
+    },
+    {
+      "label": "Introducing Claude Duet",
+      "url": "https://claude.com/en/resources/articles/claude-duet"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "data_governance_privacy"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.4,
+    "novelty": 0.7
+  },
+  "development_key": "claude-duet-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.5,
+    "why": "Agentontwerp met controles, maar geen dbt- of dataplatformstuk zoals je meeste duimen."
+  },
+  "terms": [
+    {
+      "term": "research preview",
+      "explanation": "Een vroege testversie van een product die een bedrijf openstelt om te leren hoe mensen het gebruiken. Functies en regels kunnen nog veranderen."
+    },
+    {
+      "term": "classifier",
+      "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
+    },
+    {
+      "term": "prompt injection",
+      "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf."
+    },
+    {
+      "term": "proxy",
+      "explanation": "Een tussenstation waar verzoeken langs gaan. Hier voegt de proxy het echte toegangsbewijs pas op het laatste moment toe, zodat de agent het nooit ziet."
+    },
+    {
+      "term": "auto mode",
+      "explanation": "Een modus in Claude Code waarin een aparte controle tool-aanroepen beoordeelt, zodat je minder vaak handmatig toestemming hoeft te geven."
+    }
+  ]
+}
