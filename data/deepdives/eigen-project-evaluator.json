@@ -1,0 +1,209 @@
+{
+  "format_version": 1,
+  "id": "eigen-project-evaluator",
+  "plan_id": "eigen-project-evaluator",
+  "request_issue": 12,
+  "headline": "dbt-project-evaluator: een bouwinspecteur voor je dbt-project",
+  "summary": "dbt-project-evaluator is een dbt-pakket van dbt Labs dat je project naloopt op afspraken over modellering, tests, documentatie, mappen en namen. Het kijkt naar de opbouw van je project, niet naar je data. Dit stuk laat zien hoe het eruitziet, wat er wel en niet in zit, en hoe je het afstemt op een Bronze/Silver/Gold-opzet.",
+  "sections": [
+    {
+      "heading": "Wat is het, en waarom bestaat het?",
+      "paragraphs": [
+        "dbt-project-evaluator is een gratis dbt-pakket van dbt Labs. Het controleert of je project de best practices van dbt Labs volgt. Het idee komt van hun adviesteam: dat zag dat projecten die de afspraken volgen beter te gebruiken, sneller en makkelijker uit te breiden zijn. Nalopen kostte veel handwerk, dus maakten ze er in 2022 een pakket van.",
+        "Vergelijk het met een bouwinspecteur. Die kijkt niet of je huis mooi is of of de bewoners gelukkig zijn. Hij loopt een lijst af: zit de trap op de goede plek, is er een nooduitgang, klopt de bouwtekening. Zo kijkt dit pakket naar je lineage-graaf (DAG), je mappen, je namen en je yml-bestanden.",
+        "In het eerdere stuk over teamafspraken voor Claude kwam het al langs. Alex Noonan van dbt Labs raadt aan regels over laagindeling en naamgeving met dit pakket af te dwingen, en niet met tekst in een skill. Een regel die een machine controleert, hoeft een AI-assistent niet te onthouden."
+      ]
+    },
+    {
+      "heading": "Twee versies: voor dbt 1.x en voor dbt v2",
+      "paragraphs": [
+        "Er zijn nu twee versies, en welke je nodig hebt hangt af van je dbt. Versie 1.x is voor dbt 1.x, dus ook voor dbt Core zoals je dat nu draait. Die versie zet de beschrijving van je project als modellen in je warehouse. Je draait hem met dbt build --select package:dbt_project_evaluator. Elke test die waarschuwt, wijst op een soort afwijking.",
+        "Databricks staat in de lijst van ondersteunde adapters. Je moet dan wel een dispatch-blok in dbt_project.yml zetten, omdat het pakket een paar ingebouwde macro's van dbt vervangt. Een kleine beperking op Databricks: omdat Databricks SQL geen recursieve CTE's kent, gebruikt het pakket daar een lus met een vaste maximale diepte.",
+        "Versie 2 is voor dbt v2 (2.0.0 of nieuwer). Daar is elke regel een ingebouwde dbt-check: een SQL-query die één rij per overtreding teruggeeft. Geen rijen betekent geslaagd. De checks draaien lokaal in DuckDB op de projectinformatie, dus zonder verbinding met je warehouse. Ze draaien vanzelf vóór elke dbt build, of los met dbt check. Volgens dbt Labs duurt dat ongeveer 15 seconden voor zo'n 1.900 modellen, tegen ongeveer 2 minuten met versie 1 op Snowflake."
+      ]
+    },
+    {
+      "heading": "Wat zit erin: zes soorten regels",
+      "paragraphs": [
+        "Versie 2 heeft 28 checks in zes groepen. Modellering (modeling) kijkt naar de vorm van je graaf. Bijvoorbeeld: een model zonder ouders (fct_root_models), een mart die direct uit een bron leest, een model dat meerdere bronnen samenvoegt, of een model met te veel joins. Ook bronnen die nergens gebruikt worden of dubbel zijn gedefinieerd, vallen op.",
+        "Testen (testing) controleert of elk model een test op zijn primaire sleutel heeft: standaard unique plus not_null, of unique_combination_of_columns uit dbt_utils. Het kijkt ook of bronnen een freshness-controle hebben en hoeveel van je project getest is. Documentatie (documentation) telt modellen en bronnen zonder beschrijving.",
+        "Structuur (structure) gaat over mappen en namen. De standaard is: staging-modellen beginnen met stg_, intermediate met int_, marts met fct_ of dim_, en rapporten met rpt_. Staging-modellen staan in een submap per bron. De laatste twee groepen zijn prestaties (performance), zoals lange ketens van views, en beheer (governance), zoals publieke modellen zonder contract.",
+        "Een paar regels hebben een drempel die je kunt aanpassen. Standaard is een model verdacht als het meer dan 3 eindmodellen voedt (fanout), en vanaf 7 verwijzingen telt het als te veel joins. Het doel voor test- en documentatiedekking staat standaard op 100 procent."
+      ]
+    },
+    {
+      "heading": "Wat zit er níet in",
+      "paragraphs": [
+        "Het pakket kijkt naar de opbouw, niet naar de inhoud. Het ziet of een model een test op de sleutel heeft, maar niet of de data klopt. Dat blijft het werk van je dbt-tests en monitoring. Het controleert ook niet of je bedrijfslogica goed is, of een berekening de juiste definitie volgt.",
+        "SQL-stijl hoort er ook niet bij. Vaste tabelnamen in plaats van ref() of source() vindt versie 2 niet zelf; daarvoor verwijst de documentatie naar lintregel DBT05 van dbt lint. Opmaak van SQL laat je over aan een linter, zoals SQLFluff in dbt 1.x.",
+        "Eigen regels schrijven, bijvoorbeeld 'een gold-model mag niet uit bronze lezen', zit niet als functie in het pakket. Je kunt wel de mappen en voorvoegsels aanpassen, en in dbt v2 eigen checks maken; daarvoor verwijst de documentatie naar de dbt-documentatie over checks. Let ook op twee grenzen: de dekkingscijfers voor tests en documentatie gaan altijd over het hele project, en negeren je uitzonderingen."
+      ]
+    },
+    {
+      "heading": "Zo ziet een uitslag eruit",
+      "paragraphs": [
+        "In versie 2 krijg je bij dbt check per regel een regel in de log, zoals '[warning] [CheckWarned (dbt1651)]: check 'fct_root_models' found with 1 violation(s)'. Daaronder staat een tabelletje met hooguit vijf rijen. Elke rij begint met de unique_id van het model dat je moet aanpassen. Wil je alles zien, dan draai je het meegeleverde script show_violations.py, met uitvoer als tabel, markdown, csv of json.",
+        "Sommige checks zeggen ook wat je moet doen. fct_model_directories geeft bijvoorbeeld current_file_path en change_file_path_to: hier staat het bestand nu, en hier hoort het. Standaard is alles een waarschuwing (severity warn). Je build gaat dus gewoon door, tot je zelf kiest om een regel als fout te laten tellen.",
+        "In versie 1.x zie je de uitslag als waarschuwende tests na dbt build. De overtredingen staan dan in modellen in je warehouse, die je met SQL kunt bekijken."
+      ]
+    },
+    {
+      "heading": "Afstemmen op Bronze, Silver en Gold",
+      "paragraphs": [
+        "De standaardregels gaan uit van de lagen staging, intermediate en marts. Jullie werken met bronze, silver en gold. Je hoeft je project niet om te bouwen. Met variabelen in dbt_project.yml stel je de mapnamen en voorvoegsels in, zoals staging_folder_name en staging_prefixes. Je zou bijvoorbeeld silver als staging-laag kunnen aanmerken; welke indeling past, hangt af van wat er in jullie lagen mag.",
+        "Bewuste afwijkingen leg je vast als uitzondering. Een kalendertabel heeft bijvoorbeeld geen bron, en wordt dus als model zonder ouders gemeld. In versie 2 zet je zoiets in de variabele dbt_project_evaluator_exceptions, per check, op naam of op map. Hele groepen of losse checks zet je uit met +enabled: false, en hele packages of mappen sluit je uit met exclude_packages en exclude_paths_from_project.",
+        "Bouw het rustig op. Begin met alles op waarschuwing en kijk welke meldingen terecht zijn. Zet daarna per groep de severity op error, bijvoorbeeld eerst voor naamgeving. De documentatie laat zien hoe je dat alleen in CI doet, met een omgevingsvariabele."
+      ]
+    },
+    {
+      "heading": "In de pipeline en naast Claude",
+      "paragraphs": [
+        "In een pull request wil je alleen meldingen over wat je zelf hebt aangeraakt. In versie 2 doe je dat met dbt check --select state:modified en de staat van main. Let op: bij dbt 2.0.6 kan --select de checks op bronnen nog niet beperken. Draai dan daarnaast een volledige dbt check die niet blokkeert.",
+        "Voor je generatorscripts is het pakket een mooie eindcontrole. Laat de scripts modellen en yml maken, en laat de evaluator kijken of namen, mappen, beschrijvingen en sleuteltests kloppen. Werk je met Claude Code, dan hoeft CLAUDE.md alleen te zeggen dat deze checks moeten slagen. Het pakket leest alleen projectbestanden en geen data, dus het past bij de regel dat externe AI niet bij werkdata mag.",
+        "Werkt je organisatie met Enterprise in het dbt-platform, dan zie je een deel van deze regels ook als aanbevelingen (recommendations) in dbt Catalog. Die gebruiken wel de standaardinstellingen van het pakket, niet je eigen aanpassingen."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Zo werkt een check: een SQL-query die één rij per overtreding teruggeeft. Hier het idee van de naamregel, op een verzonnen lijst modellen: twee modellen missen het verwachte voorvoegsel.",
+    "language": "sql",
+    "code": "WITH models(name, folder) AS (VALUES\n  ('stg_shop__orders', 'staging'),\n  ('stg_shop__klanten', 'staging'),\n  ('klanten_opgeschoond', 'staging'),\n  ('int_orders_per_dag', 'intermediate'),\n  ('fct_orders', 'marts'),\n  ('omzet_rapport', 'marts'),\n  ('dim_klant', 'marts')),\nprefixes(folder, prefix) AS (VALUES\n  ('staging', 'stg_'), ('intermediate', 'int_'),\n  ('marts', 'fct_'), ('marts', 'dim_'))\n-- één rij per overtreding; geen rijen = check geslaagd\nSELECT m.name AS model, m.folder AS map,\n       string_agg(p.prefix, ' of ' ORDER BY p.prefix) AS verwacht_prefix\nFROM models m JOIN prefixes p USING (folder)\nGROUP BY m.name, m.folder\nHAVING NOT bool_or(starts_with(m.name, p.prefix))\nORDER BY model;",
+    "result": {
+      "columns": [
+        "model",
+        "map",
+        "verwacht_prefix"
+      ],
+      "rows": [
+        [
+          "klanten_opgeschoond",
+          "staging",
+          "stg_"
+        ],
+        [
+          "omzet_rapport",
+          "marts",
+          "dim_ of fct_"
+        ]
+      ]
+    },
+    "note": "Verzonnen data, uitgevoerd in DuckDB. Zo werkt het idee in gewone SQL; dit is niet de echte code van fct_model_naming_conventions. De voorvoegsels zijn de standaardwaarden uit de documentatie van het pakket."
+  },
+  "experiment": "Maak een klein dbt-project op DuckDB met verzonnen data (of gebruik een openbaar voorbeeldproject) en zet er bewust drie fouten in: een model zonder voorvoegsel, een mart die direct uit een bron leest, en een model zonder sleuteltest. Installeer dbt-project-evaluator (versie 1.x bij dbt 1.x, versie 2 bij dbt v2), draai het en kijk of alle drie gevonden worden. Pas daarna de variabelen aan naar bronze, silver en gold en kijk wat er verandert.",
+  "limitations": [
+    "De regels zijn de mening van dbt Labs over een goed project; niet elke melding hoeft opgelost te worden.",
+    "Het pakket ziet de opbouw van je project, niet de kwaliteit van je data of de juistheid van je logica.",
+    "Versie 1.x zet de projectbeschrijving als modellen in je warehouse en kost dus wat rekentijd; versie 2 vraagt dbt v2.",
+    "Draai het met een externe AI-assistent alleen op projectbestanden, nooit met een verbinding naar zorg- of werkdata."
+  ],
+  "further_reading": [
+    {
+      "label": "dbt_project_evaluator, documentatie (dbt Labs, geraadpleegd november 2026)",
+      "url": "https://dbt-labs.github.io/dbt-project-evaluator/latest",
+      "note": "De actuele documentatie van versie 2, met het verschil met 1.x, de installatie en hoe checks werken."
+    },
+    {
+      "label": "Lijst van alle regels (dbt Labs, geraadpleegd november 2026)",
+      "url": "https://dbt-labs.github.io/dbt-project-evaluator/latest/rules/",
+      "note": "Alle checks per groep, met per regel waarom hij bestaat en hoe je hem oplost."
+    },
+    {
+      "label": "Overriding variables (dbt Labs, geraadpleegd november 2026)",
+      "url": "https://dbt-labs.github.io/dbt-project-evaluator/latest/customization/overriding-variables/",
+      "note": "Alle drempels, mapnamen en voorvoegsels die je kunt aanpassen, met hun standaardwaarden."
+    },
+    {
+      "label": "Run in CI Check (dbt Labs, geraadpleegd november 2026)",
+      "url": "https://dbt-labs.github.io/dbt-project-evaluator/latest/ci-check/",
+      "note": "Hoe je checks alleen in CI als fout laat tellen en alleen gewijzigde modellen controleert."
+    },
+    {
+      "label": "dbt-project-evaluator op GitHub (dbt Labs)",
+      "url": "https://github.com/dbt-labs/dbt-project-evaluator",
+      "note": "De code, de lijst met ondersteunde adapters (waaronder Databricks) en de opmerking over het dispatch-blok."
+    },
+    {
+      "label": "Project recommendations (dbt Labs, juli 2026)",
+      "url": "https://docs.getdbt.com/docs/explore/project-recommendations",
+      "note": "Hoe het dbt-platform een deel van deze regels als aanbevelingen in dbt Catalog toont."
+    },
+    {
+      "label": "Introducing the dbt_project_evaluator (Grace Goheen, dbt Labs, november 2022)",
+      "url": "https://docs.getdbt.com/blog/align-with-dbt-project-evaluator",
+      "note": "Oudere bron, alleen voor het oorspronkelijke idee: waarom dbt Labs het pakket maakte en hoe je met meldingen omgaat."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Een collega zegt: 'dbt-project-evaluator geeft geen meldingen, dus onze data klopt.' Waarom is dat volgens het stuk geen goede conclusie?",
+      "options": [
+        "Omdat het pakket alleen draait op Snowflake",
+        "Omdat het pakket de opbouw van het project controleert, niet de inhoud van de data",
+        "Omdat het pakket meldingen standaard verbergt"
+      ],
+      "answer": 1,
+      "explanation": "Het pakket kijkt naar graaf, mappen, namen, tests en documentatie. Of de data zelf klopt, toetsen je dbt-tests en monitoring."
+    },
+    {
+      "question": "Jullie werken met bronze, silver en gold in plaats van staging, intermediate en marts. Wat is de beste eerste stap?",
+      "options": [
+        "Alle modellen hernoemen naar stg_, int_ en fct_",
+        "Het pakket niet gebruiken, want het past niet",
+        "Alle checks op error zetten, zodat iedereen de regels leert",
+        "Mapnamen en voorvoegsels instellen met variabelen, en bewuste afwijkingen als uitzondering vastleggen"
+      ],
+      "answer": 3,
+      "explanation": "Met variabelen stem je de regels af op je eigen lagen, en uitzonderingen leggen bewuste keuzes vast. Pas daarna zet je regels stap voor stap op error."
+    },
+    {
+      "question": "Je draait nog dbt Core 1.x op Databricks. Welke versie van het pakket past en hoe draai je hem?",
+      "options": [
+        "Versie 1.x, met een dispatch-blok in dbt_project.yml en dbt build --select package:dbt_project_evaluator",
+        "Versie 2, met dbt check",
+        "Versie 2, maar alleen via dbt Catalog"
+      ],
+      "answer": 0,
+      "explanation": "Versie 2 vraagt dbt v2 (2.0.0 of nieuwer). Op dbt 1.x gebruik je versie 1.x, die op Databricks een dispatch-blok nodig heeft."
+    }
+  ],
+  "terms": [
+    {
+      "term": "fanout",
+      "explanation": "Hoeveel modellen direct op één model leunen. Een hoge fanout kan betekenen dat logica beter in één gedeeld model of in de BI-laag past."
+    },
+    {
+      "term": "dispatch",
+      "explanation": "Een instelling in dbt_project.yml die bepaalt in welk pakket dbt eerst naar een macro zoekt. Zo kan een pakket een ingebouwde macro vervangen."
+    },
+    {
+      "term": "recursieve CTE",
+      "explanation": "Een WITH-query die naar zichzelf verwijst, zodat je stap voor stap een boom of keten afloopt, zoals alle voorouders van een model."
+    },
+    {
+      "term": "freshness",
+      "explanation": "Een controle in dbt of een bron recent genoeg is bijgewerkt, bijvoorbeeld niet ouder dan 24 uur."
+    },
+    {
+      "term": "unique_id",
+      "explanation": "De vaste sleutel waarmee dbt elk onderdeel van een project aanwijst, zoals model.mijn_project.dim_klant."
+    },
+    {
+      "term": "severity",
+      "explanation": "Hoe zwaar een melding telt in dbt: warn geeft alleen een waarschuwing, error laat de run mislukken."
+    },
+    {
+      "term": "dbt lint",
+      "explanation": "Het ingebouwde controlecommando van dbt v2 dat SQL-code naloopt op stijl- en lintregels, zoals vaste tabelnamen in plaats van ref()."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 2 november 2026. Hoofdbronnen: de actuele documentatie van dbt_project_evaluator versie 2 (met verwijzingen naar dbt 2.0.6 en 2.0.8), de GitHub-pagina van het pakket, en de dbt-documentatie over project recommendations (juli 2026). De blog van Grace Goheen uit 2022 staat er alleen voor het oorspronkelijke idee, naast de actuele documentatie. Bewust niet opgenomen: de seed dbt_project_evaluator_exceptions als manier voor uitzonderingen in versie 2 (vervangen door een variabele of macro), en details uit de oude documentatie van versie 0.8. Het aantal checks (28) is geteld uit de regelpagina; Hard Coded References staat daar wel, maar is geen check meer.",
+  "topics": [
+    "dbt_analytics_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment",
+    "claude_ai_development"
+  ],
+  "written_at": "2026-11-02T05:20:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
