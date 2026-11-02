@@ -1,0 +1,83 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-02T03:30:24Z",
+  "prompt_version": "taak-v2",
+  "article_id": "3964fa015c0d",
+  "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+  "headline": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is",
+  "summary": "Claude Security scant repositories niet meer alleen op verzoek, maar volgt elke wijziging. Het ziet wanneer een lek gedicht is en heeft nu een API en een MCP-koppeling voor Claude Code.",
+  "story": [
+    "Claude Security zoekt beveiligingslekken in je code. Tot nu toe startte je zelf een scan. Sinds 21 oktober 2026 bewaakt het je repositories doorlopend, voor Claude Enterprise-klanten in publieke bèta.",
+    "Het werkt in twee stappen. Eerst maakt Claude één grondige nulmeting (baseline) van de code. Daarna scant het wijzigingen opnieuw, vaker naarmate ze riskanter of ingewikkelder zijn. Je maakt een project, koppelt een of meer repositories en kiest per repository een branch. Omdat één project meerdere repositories kan bevatten, ziet Claude ook problemen die over diensten heen lopen.",
+    "Een open bevinding houdt Claude zelf bij. Komt er een fix in de code, dan zet Claude de bevinding op opgelost, ook als de fix buiten Claude Code is gemaakt. Duikt het probleem later weer op, dan gaat de bevinding vanzelf weer open. Het lijkt op een dbt-test die niet alleen faalt, maar ook onthoudt wanneer hij weer groen werd.",
+    "Per project kun je context meegeven: hoe het wordt uitgerold en welke beveiligingsregels gelden. Claude maakt ook een dreigingsmodel (threat model) van de code, dat je team kan aanpassen. Latere scans gebruiken dat om te bepalen wat ze melden. Via de MCP-koppeling kun je in Claude Code een bevinding bekijken, een fix starten en hem afsluiten in één sessie.",
+    "Voor een datateam is dit vooral interessant als je eigen Python-scripts of tooling in GitHub hebt staan. Let wel op: het is een Enterprise-product, en je code gaat naar een externe dienst. Dat moet passen bij de regels van je organisatie."
+  ],
+  "key_facts": [
+    "Aangekondigd op 21 oktober 2026; doorlopend scannen is in publieke bèta voor Claude Enterprise-klanten.",
+    "Claude Security kwam in april 2026 in publieke bèta; volgens Anthropic vonden duizenden organisaties er samen meer dan een miljoen kwetsbaarheden mee.",
+    "Na een baseline-scan scant Claude wijzigingen opnieuw op basis van risico en complexiteit; repositories koppel je via de Claude GitHub-app (ook GitHub Enterprise Server) of met een token voor GitLab en andere Git-aanbieders.",
+    "Fix tracking: bevindingen worden als opgelost gemarkeerd als de fix live gaat, ook buiten Claude Code; komt het probleem terug, dan gaat de bevinding automatisch weer open.",
+    "Per project een kennisbank en een door Claude gemaakt, bewerkbaar threat model; elke bevinding krijgt een ernst en een uitleg van het aanvalspad.",
+    "Nieuw: een API, persoonlijke toegangstokens, webhooks bij nieuwe bevindingen, een MCP-connector voor Claude.ai en Claude Code, en rolgebaseerde toegang. Organisaties krijgen twee maanden 25.000 dollar gratis tegoed per maand, tot 31 december 2026."
+  ],
+  "personal_relevance": "Als je generatorscripts en tooling in Git staan, laat dit zien hoe een AI-controle doorlopend meekijkt en zelf bijhoudt of een probleem echt opgelost is.",
+  "experiment": "Lees de Getting Started-gids en schets voor een openbare voorbeeldrepository (geen werkcode) welke context en welk threat model je zou meegeven.",
+  "limitations": [
+    "Alleen voor Claude Enterprise, en in bèta.",
+    "Je code gaat naar een externe dienst; voor werkcode moet dat eerst getoetst worden aan de regels van je organisatie.",
+    "Hoe vaak er precies opnieuw gescand wordt, staat niet in het artikel."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Claude Security",
+      "url": "https://claude.com/product/claude-security"
+    },
+    {
+      "label": "Getting started with Claude Security",
+      "url": "https://academy.claude.com/tutorials/getting-started-with-claude-security"
+    },
+    {
+      "label": "Use Claude Security (Help Center)",
+      "url": "https://support.claude.com/en/articles/14661296-use-claude-security"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.4,
+    "novelty": 0.6
+  },
+  "development_key": "claude-security-continuous-okt-2026",
+  "date_note": "Gepubliceerd op 21 oktober 2026.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.45,
+    "why": "Productaankondiging buiten dbt en data; je duimen gaan vooral naar praktische AI-bij-dbt-stukken."
+  },
+  "terms": [
+    {
+      "term": "baseline",
+      "explanation": "Een nulmeting: de eerste volledige scan waartegen latere wijzigingen worden vergeleken."
+    },
+    {
+      "term": "threat model",
+      "explanation": "Een overzicht van wat aanvallers zouden kunnen doen met een systeem en welke risico's al zijn afgedekt. Het helpt kiezen welke problemen echt tellen."
+    },
+    {
+      "term": "MCP",
+      "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "webhooks",
+      "explanation": "Een automatisch bericht dat een dienst naar jouw systeem stuurt zodra er iets gebeurt, bijvoorbeeld een nieuwe bevinding."
+    }
+  ]
+}
