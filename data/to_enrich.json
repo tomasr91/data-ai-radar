@@ -1,7 +1,60 @@
 {
- "generated_at": "2026-11-02T08:21:10.911730Z",
+ "generated_at": "2026-11-02T14:36:00.611956Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "efcf00e7bea3",
+   "title": "The U.S. Census Bureau and “Super Intelligence”",
+   "url": "https://simonwillison.net/2026/Nov/2/census-bureau-super-intelligence/",
+   "source_id": "simon_willison",
+   "source_name": "Simon Willison",
+   "published_at": "2026-11-02T13:31:26Z",
+   "excerpt": "I was reminded today of AI Adoption Rate Trending Down for Large Companies , a chart produced by Apollo Global Management in September 2025, which appeared to show a slowdown in U.S. corporate AI adoption based on numbers collected by the U.S. Census Bureau. At the time I used that chart to demonstrate GPT-5 data analysis , and then to experiment with Claude's new Code Interpreter . I decided to try running those numbers again to see what had changed over the past year, and in doing so learned that the Bureau has fallen foul of Executive Order 14434 , aka the asinine Super Intelligence one. First, the updated chart Every two weeks the U.S. Census Bureau runs a survey called the Business Trends and Outlook Survey (aka BTOS). Each time it goes to 200,000 businesses out of 1.2 million total - the surveyed group (a \"panel\") cycles such that an individual business only completes the survey every twelve weeks. The latest data is published on alternating Thursdays at 10am. I used the most recent numbers (published October 22, 2026) to create a new version ( GPT-6 Astra Extra High transcript ) of the AI adoption chart, updated to reflect both the last twelve months and a change that was ma",
+   "preliminary_score": 69,
+   "preliminary_topics": [
+    "claude_ai_development",
+    "general_ai_trends"
+   ]
+  },
+  {
+   "id": "728afeb9147d",
+   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
+   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-27T00:00:00Z",
+   "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "7a3ac6df3675",
+   "title": "The full Claude Platform, available on Google Cloud",
+   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "6d403bbe9379",
+   "title": "Building agents: When to fold subagents into your main agent loop",
+   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-22T00:00:00Z",
+   "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
   {
    "id": "d33525fc8eb0",
    "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
@@ -71,45 +124,6 @@
    ]
   },
   {
-   "id": "728afeb9147d",
-   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
-   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-27T00:00:00Z",
-   "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "7a3ac6df3675",
-   "title": "The full Claude Platform, available on Google Cloud",
-   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
-   "preliminary_score": 56,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "6d403bbe9379",
-   "title": "Building agents: When to fold subagents into your main agent loop",
-   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
-   "preliminary_score": 56,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
    "id": "7fd7e06ab2f4",
    "title": "How the Claude Code team does code review",
    "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
@@ -117,7 +131,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-16T00:00:00Z",
    "excerpt": "How do you review code at the volume agents produce it? The Claude Code team shares its review process, from Claude verifying its own work to risk-tiered human approval, plus a checklist for adopting it.",
-   "preliminary_score": 54,
+   "preliminary_score": 58,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -130,7 +144,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-16T00:00:00Z",
    "excerpt": "How one business development representative clears his inbound queue and drafts bilingual customer emails with Claude Managed Agents and Claude Tag.",
-   "preliminary_score": 54,
+   "preliminary_score": 58,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -143,7 +157,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-07T00:00:00Z",
    "excerpt": "Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill's build-eval and hillclimb commands put them to work.",
-   "preliminary_score": 51,
+   "preliminary_score": 56,
    "preliminary_topics": [
     "ai_evaluation_observability",
     "claude_ai_development"
@@ -157,7 +171,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-06T00:00:00Z",
    "excerpt": "What changes when Claude Code runs on its own machine, the workflows where that pays off, and how to connect GitHub on the first try.",
-   "preliminary_score": 51,
+   "preliminary_score": 56,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -183,20 +197,7 @@
    "source_name": "Chris Webb's BI Blog",
    "published_at": "2026-11-01T09:30:00Z",
    "excerpt": "If you’re a regular reader of my blog you’re likely to be a Power BI developer, consultant or admin. You’re probably also under pressure from your management and your end users to do something, anything with AI that will allow them to get answers to business questions with natural language using the data that’s stored … Continue reading Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data →",
-   "preliminary_score": 56,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "7eb9526b31bc",
-   "title": "DAX LLM Benchmark v2.0 Trailer",
-   "url": "https://www.sqlbi.com/tv/dax-llm-benchmark-v2-0-trailer/",
-   "source_id": "sqlbi",
-   "source_name": "SQLBI",
-   "published_at": "2026-10-27T11:00:00Z",
-   "excerpt": "Which LLMs are ready to write DAX? Check it out at https://www.daxbench.com/",
-   "preliminary_score": 54,
+   "preliminary_score": 55,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
