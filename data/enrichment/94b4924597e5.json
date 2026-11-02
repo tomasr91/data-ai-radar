@@ -67,5 +67,10 @@
     "language": "text",
     "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
     "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
+  },
+  "soort": "release",
+  "fit": {
+    "score": 0.7,
+    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
   }
 }
