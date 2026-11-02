@@ -1,7 +1,39 @@
 {
- "generated_at": "2026-11-01T19:19:10.427161Z",
+ "generated_at": "2026-11-02T03:13:42.244635Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "6df581b9d8ed",
+   "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
+   "source_id": "claude_code_releases",
+   "source_name": "Claude Code releases (GitHub)",
+   "published_at": "2026-11-01T23:59:59Z",
+   "excerpt": "Weekoverzicht van 4 releases (v2.1.311 t/m v2.1.316). v2.1.311: What's changed Added --hold-idle-file and --max-hold-min to self-hosted-runner , to keep an idle session while your host reports processes it left running Added a tip for the Explanatory output style, · v2.1.312: What's changed Added oidc.user_id_claim to the Claude apps gateway, to identify people by an id_token claim other than sub , such as Microsoft Entra ID's oid Added click to send: in fullscreen, clicki · v2.1.314: What's changed Added permissions.blockWritesOutsideWorkingDirectories : Write, Edit and NotebookEdit refuse paths outside the working directories in every permission mode Added an optional groups list · v2.1.316: What's changed Added CLAUDE_CODE_DISABLE_ULTRATHINK , which turns the ultrathink keyword off Added pooled group budgets to the Claude apps gateway: one monthly budget that a group's members share, on . Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.311, https://github.com/anthropics/claude-code/releases/tag/v2.1.312, https://github.com/anthropics/claude-code/releases/tag/v2.1.314, https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
+   "preliminary_score": 65,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "308e572d49e4",
+   "title": "Azure Databricks: wat is er nieuw in week 44",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-11-01T23:59:59Z",
+   "excerpt": "Weekoverzicht van 33 release notes. QuickBooks connector is available in Beta: The managed QuickBooks connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest accounting data such as accounts, customers, vendors, items, invoices, bills, paym · Improved Lakeflow Performance Observability is now generally available: Lakeflow Jobs now show query performance metrics and insights at the job level for supported tasks. You can view job-level data volume metrics and use the Optimize button to open Genie Code to help im · Serverless GPU in clean rooms will soon be on by default for accounts where it's turned off: Starting on or after November 26, 2026, serverless GPU in clean rooms will be on by default for accounts on the Enterprise or Premium pricing tier. Until then, an account admin can turn on Clean Rooms · Serverless GPU for clean room notebooks is now generally available: You can now run clean room notebooks on serverless GPU compute for model inference and training over shared data. GPU notebooks run on AI Runtime and use the same approval flow, data access, and outpu · Editing files in Unity Catalog volumes is now generally available: You can now edit files in Unity Catalog volumes directly in the workspace file editor, without downloading and uploading them again. Open a file from Catalog Explorer or from the schema browser in a n · Default OAuth apps for external AI agents are now generally available: ChatGPT, Codex, Claude, Claude Code, and Cursor can now connect to Azure Databricks MCP servers, including the Genie One MCP server, using default OAuth client IDs. An account admin doesn't need to cr · AI Functions Unity Catalog permissions is now generally available: AI Functions Unity Catalog permissions is now generally available . Metastore admins can use Unity Catalog permissions on the system.ai schema to control which task-specific AI Functions users in your · Improved Lakeflow Performance Observability will soon be available by default for workspaces with the compliance security profile enabled: Starting on or after November 25, 2026, Improved Lakeflow Performance Observability will be available by default for eligible workspaces with the compliance security profile enabled. Lakeflow Jobs now · Account-level security features are now available by default at GA: Going forward, account-level security features will be available to all accounts immediately upon General Availability (GA) , without requiring account admins to manually enable them on the Previews p · Upcoming end of life for the Genie One MCP Beta endpoint: The Genie One MCP Beta endpoint, https:// /api/2.0/mcp/genie , reaches end of life on November 30, 2026. After that date, requests to the Beta endpoint fail. The end-of-life date wa · View personal and shared spend limits with the ug CLI: ug usage now shows up to five personal and shared spend limits, starting with the highest percentage used. Run ug usage --all to see all applicable limits. See Check your usage . · Check budget usage with the Spend Status API: Use the Spend Status API to check your usage against Unity Gateway budget limits. Retrieve a single budget's spend status or list statuses across budgets. See Budget Spend Status API . · Track Unity Gateway skill usage with audit logs and the usage dashboard: You can now track usage of Unity Gateway Skills, which are in Beta . Audit logs record skill list, load, and file fetch events under the aiGatewaySkills service. The Skills tab of the usage dashboard · Claude Code auto mode for Anthropic and non-Anthropic models: Claude Code auto mode is now supported for both Anthropic and non-Anthropic models hosted by Azure Databricks. Auto mode reviews tool calls to reduce routine permission prompts. See Auto mode . · Microsoft Graph Logs connector is available in Beta: The managed Microsoft Graph Logs connector is now available in Beta in Databricks Lakeflow Connect. Use the connector to ingest security alerts from Microsoft Defender XDR, Microsoft Sentinel, and oth · Relationships between metric views (Beta): Relationships between Unity Catalog metric views are in Beta . Use ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP to record how a source metric view joins to a target metric view, including the cardin · Thinking Machine Labs Inkling is retired: Thinking Machine Labs Inkling was retired on October 30, 2026. GLM 5.3 or Kimi K3 is the recommended replacement. See Deprecated and retired models for migration guidance. · Genie Agents enhancements and bug fixes: Guided agent creation : A guided experience now walks you through creating an effective Genie Agent. See Set up an agent with Genie Code . Faster file retrieval (Beta) : Genie Agents now retrieve file · Dashboard relationships are now generally available: Dashboard relationships, which let you build complex multi-fact data models scoped to an AI/BI dashboard, are now generally available. See Dashboard relationships and Create dashboard relationships . · Dashboard bug fixes: Single-field filter default : Changing the field on a single-field filter now clears the previous field's default value. The filter falls back to All , or to None when All isn't allowed. Widget-level · Xero connector is available in Beta: The managed Xero connector is now available in Beta in Databricks Lakeflow Connect. Workspace admins can enable it from the Previews page. Use the connector to ingest accounting data such as invoices, · Choose a billing workspace for private endpoint charges (Public Preview): You can now choose which workspace is billed for the hourly charges of Private Link endpoints and private network gateways in a network connectivity configuration (NCC). See Choose a billing workspace · Native XML file format support is now generally available: Native XML file format support is now generally available. You can ingest, query, and parse XML files in batch or streaming workloads with Auto Loader, read_files , and COPY INTO , and use ",
+   "preliminary_score": 94,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "data_ingestion",
+    "claude_ai_development",
+    "metadata_lineage_catalogs"
+   ]
+  },
   {
    "id": "322ec1626872",
    "title": "Connect coding agents to Fabric notebooks with FNTK (Preview)",
@@ -184,33 +216,6 @@
    "preliminary_score": 70,
    "preliminary_topics": [
     "data_ingestion",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "d33525fc8eb0",
-   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-28T17:00:00Z",
-   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
-   "preliminary_score": 69,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "5b296e9220f1",
-   "title": "On-premises data gateway October 2026 release",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-27T14:00:00Z",
-   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
-   "preliminary_score": 69,
-   "preliminary_topics": [
     "powerbi_semantic_models"
    ]
   }
