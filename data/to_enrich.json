@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T08:37:18.858485Z",
+ "generated_at": "2026-11-04T03:13:55.560580Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -24,7 +24,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-27T00:00:00Z",
    "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
-   "preliminary_score": 63,
+   "preliminary_score": 62,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -56,6 +56,37 @@
    ]
   },
   {
+   "id": "225ab7984001",
+   "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-03T20:00:00Z",
+   "excerpt": "Access more Unity Catalog objects through the existing mirrored catalog experience in Microsoft Fabric We are expanding Mirrored Azure Databricks catalogs in Microsoft Fabric to support materialized views and streaming tables alongside tables. These objects remain created and managed in Azure Databricks, while Fabric provides read-only access to the underlying data through shortcuts. This brings more of your Unity Catalog environment into Fabric without copying or replicating the data. What's new A Mirrored Azure Databricks catalog can now include support: Tables Materialized views Streaming tables When configuring the mirrored catalog, select the Unity Catalog catalogs, schemas, and supported objects you want to make available in Fabric. Fabric mirrors the selected catalog structure and creates shortcuts to the underlying data. This enhancement uses the existing Mirrored Azure Databricks catalog item and configuration workflow. There is no separate Fabric item type for materialized views or streaming tables. Why this matters Materialized views store precomputed results that can simplify recurring analytical queries. Streaming tables continuously process incoming data and maintain ",
+   "preliminary_score": 89,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "data_ingestion",
+    "powerbi_semantic_models",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "6eafeb6028b4",
+   "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-03T17:00:00Z",
+   "excerpt": "Challenges solved by Microsoft Fabric Microsoft Fabric is an end-to-end analytics platform that brings together data integration, data engineering, warehousing, real-time analytics, business intelligence, and AI-related experiences. It has grown tremendously within the community because it is solving a key problem: lowering the integration tax across data and analytics systems. To understand the integration tax, consider a mid-sized or large organization that wants to perform analytics and data processing. It may use several source systems, an analytics platform such as a warehouse or lakehouse, and yet another platform or vendor for orchestration. To generate insights, the organization must integrate these different systems (hence the term integration tax). Fabric brings together a broad set of analytics capabilities within one platform, which can reduce the number of separate integrations an organization needs to design and operate. You can bring data into Fabric, store it in a warehouse or lakehouse, query and analyze it with Spark or T-SQL, visualize insights with Power BI, and support real-time scenarios with Real-Time Intelligence. Fabric also interoperates with platforms suc",
+   "preliminary_score": 89,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "powerbi_semantic_models",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "6d9c0429baf2",
    "title": "Data Days: Learn, build, and connect with AI @Work",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
@@ -68,6 +99,20 @@
     "databricks_data_engineering",
     "powerbi_semantic_models",
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "bca544cd94f7",
+   "title": "OneLake: The file system for agent-first data engineering",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-The-file-system-for-agent-first-data-engineering/ba-p/5383035",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-03T18:00:00Z",
+   "excerpt": "Software engineers are increasingly using agents to build software, and data engineers are no different. We want OneLake to help enable data engineers to develop software in this new agent-first era. Think about how you work in a terminal: you use it to run programs that read and write files. Both the programs and the data live in the file system. Now apply that model to data engineering: OneLake is the file system, Fabric engines are the programs, and the AI prompt is your terminal. Over the last few weeks, we’ve released several new capabilities in OneLake that come together to create an experience where agent-first data engineers can thrive. This blog post provides a rundown of those features. Managing OneLake OneLake now offers a remotely hosted MCP server (preview), so agents can explore and manage your data without installing a local server. The local MCP option remains available if you prefer. We’ve also added tools to the Fabric Core MCP server for managing shortcuts and OneLake security . In our previous post , we asked an agent to document an open mirrored database. It found the workspace, discovered the table schema, mapped the underlying files, and checked replication h",
+   "preliminary_score": 86,
+   "preliminary_topics": [
+    "ai_context_engineering",
+    "ai_agents_rag"
    ]
   },
   {
@@ -85,6 +130,20 @@
    ]
   },
   {
+   "id": "a9b6458ba033",
+   "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
+   "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-03T21:00:00Z",
+   "excerpt": "An agent can return a plausible answer while missing an important finding or reading the same source repeatedly...",
+   "preliminary_score": 81,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "claude_ai_development"
+   ]
+  },
+  {
    "id": "4ccf04047cf8",
    "title": "Bring insights and action together with Fabric Apps in Org apps",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-insights-and-action-together-with-Fabric-Apps-in-Org-apps/ba-p/5377690",
@@ -92,7 +151,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-02T22:00:00Z",
    "excerpt": "Business users move from understanding what happened, to investigating why, to acting. Microsoft Fabric can bring that journey together. Fabric Apps provide purpose-built, data-driven experiences when users need more than a report. Org apps distribute them alongside Power BI reports and other supported Fabric content in a curated destination. Move from insight to action in one destination Power BI reports help users monitor performance, explore trends, and understand what’s happening in the business. Many insights, however, lead to a next step: submitting a request, updating a plan, investigating an exception, assigning an owner, or tracking a resolution. A Fabric App provides the custom interface and workflow for that next step. Including it in an org app places action beside the reports and operational content that provide context. Users enter one destination organized around their role, review the insight, open the Fabric App, and act. Understanding apps in Fabric Experience Purpose Value Fabric Apps Build for a specific task Create purpose-built applications connected to Fabric data, with managed APIs, authentication, hosting, and service integration. Org apps Distribute in bus",
-   "preliminary_score": 72,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
@@ -112,19 +171,6 @@
    ]
   },
   {
-   "id": "5b296e9220f1",
-   "title": "On-premises data gateway October 2026 release",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-27T14:00:00Z",
-   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
-   "preliminary_score": 68,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
    "id": "1ebe4563dc44",
    "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
    "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
@@ -132,6 +178,19 @@
    "source_name": "SQLBI",
    "published_at": "2026-10-22T07:30:36Z",
    "excerpt": "At the end of 2025, we launched DAX Lib, a public repository of DAX user-defined functions. So far, importing a DAX library has required a few manual steps, like clicking Add to Power BI on daxlib.org and then copying and…",
+   "preliminary_score": 67,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "5b296e9220f1",
+   "title": "On-premises data gateway October 2026 release",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-27T14:00:00Z",
+   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
    "preliminary_score": 67,
    "preliminary_topics": [
     "powerbi_semantic_models"
@@ -149,60 +208,6 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "7725e9b20af1",
-   "title": "Continuous axis for any Date table in Power BI",
-   "url": "https://www.sqlbi.com/articles/continuous-axis-for-any-date-table-in-power-bi/",
-   "source_id": "sqlbi",
-   "source_name": "SQLBI",
-   "published_at": "2026-10-19T20:00:42Z",
-   "excerpt": "Power BI enables the continuous X-axis on the auto date/time hierarchy even at the month level. We can get the same behavior on any Date table by setting the right metadata in TMDL. In a previous article, Creating a simpler…",
-   "preliminary_score": 66,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "7fd7e06ab2f4",
-   "title": "How the Claude Code team does code review",
-   "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "excerpt": "How do you review code at the volume agents produce it? The Claude Code team shares its review process, from Claude verifying its own work to risk-tiered human approval, plus a checklist for adopting it.",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "ce8bd2396821",
-   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
-   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "excerpt": "How one business development representative clears his inbound queue and drafts bilingual customer emails with Claude Managed Agents and Claude Tag.",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "583b8d97bd5d",
-   "title": "Automating eval design and hillclimbing with Claude",
-   "url": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-07T00:00:00Z",
-   "excerpt": "Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill's build-eval and hillclimb commands put them to work.",
-   "preliminary_score": 56,
-   "preliminary_topics": [
-    "ai_evaluation_observability",
-    "claude_ai_development"
    ]
   }
  ]
