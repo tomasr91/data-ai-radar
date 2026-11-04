@@ -3,7 +3,7 @@
 # Prioriteit = hoe zwaar een onderwerp meetelt bij de selectie, niet hoe belangrijk het in het algemeen is.
 
 schema_version: 1
-updated: "2026-10-29"
+updated: "2026-11-04"
 
 priority_levels:
   5:
@@ -142,7 +142,7 @@ topics:
     description: Het Databricks-platform, Spark, Delta Lake, pipelines en cloudontwikkeling.
     feed_group: databricks
     enabled: true
-    priority: 5
+    priority: 4
     keywords: [Databricks, Delta Lake, Unity Catalog, Lakeflow, serverless compute, Databricks Asset Bundles, Spark, lakehouse]
     related_topics: [sql_spark_sql, data_ingestion, ai_on_data_platform, metadata_lineage_catalogs]
 
@@ -211,7 +211,7 @@ topics:
       engineering. Ook werkwijzen, niet alleen nieuwe functies.
     feed_group: claude
     enabled: true
-    priority: 4
+    priority: 5
     keywords: [Claude, Claude Code, Anthropic, Claude Sonnet, Claude Opus, Claude Haiku, agentic coding, CLAUDE.md, subagents, Agent Skills, hooks, Claude Agent SDK]
     related_topics: [ai_agents_rag, ai_context_engineering, cicd_data_deployment]
 
@@ -243,7 +243,7 @@ topics:
     learning: true   # nog aan het leren: lampje op de kaart in de app
     feed_group: overig
     enabled: true
-    priority: 5
+    priority: 4
     keywords: [Azure DevOps, Azure Pipelines, release pipeline, deployment pipeline, CI/CD, slim CI, DataOps, deployment, Databricks Asset Bundles, asset bundles, bundles, databricks.yml, environments, pull request review, infrastructure as code, Terraform]
     related_topics: [dbt_analytics_engineering, databricks_data_engineering, data_ingestion]
 
@@ -258,7 +258,7 @@ topics:
     learning: true   # nog aan het leren: lampje op de kaart in de app
     feed_group: databricks
     enabled: true
-    priority: 5
+    priority: 4
     keywords: [data ingestion, ingestion, ingest, Auto Loader, Lakeflow Connect, Lakeflow Declarative Pipelines, declarative pipelines, change data capture, CDC, incremental load, incremental ingestion, COPY INTO, streaming tables, schema evolution, bronze layer]
     related_topics: [databricks_data_engineering, cicd_data_deployment, data_quality_observability]
 
