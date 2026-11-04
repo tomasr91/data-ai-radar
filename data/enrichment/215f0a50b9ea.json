@@ -1,0 +1,66 @@
+{
+ "format_version": 2,
+ "article_id": "215f0a50b9ea",
+ "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
+ "headline": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
+ "summary": "Chris Webb vindt de koppeling van M365 Copilot met Power BI-modellen de makkelijkste en goedkoopste start voor vragen in gewone taal.",
+ "story": [
+  "Chris Webb werkt bij Microsoft en schrijft al jaren over Power BI. Hij vindt dat organisaties die veel met Power BI werken hun 'chat met je data' moeten beginnen bij M365 Copilot. De koppeling van M365 Copilot en Cowork met semantische modellen is nu algemeen beschikbaar.",
+  "Zijn belangrijkste argument: er verandert alleen de voorkant. Gebruikers stellen hun vraag in Copilot, bijvoorbeeld in Excel of de browser, in plaats van in Power BI zelf. Het semantisch model met de bedrijfslogica blijft hetzelfde. Wat je eerder deed om het model klaar te maken voor AI, zoals synoniemen en AI-instructies, blijft dus nuttig.",
+  "Webb noemt ook de kosten. Volgens hem betaal je bij een Pro- of PPU-werkruimte niets extra voor de vragen, naast de licentie. Daarnaast kan Copilot cijfers combineren met mails en vergaderverslagen uit Work IQ, om uit te leggen waarom iets gebeurde.",
+  "Voor jou is de kern bekend: een goed semantisch model is de context voor AI. Let wel op zijn belang, want hij werkt bij Microsoft. En in de zorg mag Copilot alleen bij data waarvoor dat binnen de interne regels is toegestaan; Work IQ leest bovendien mails en verslagen mee. Databricks noemt hij niet."
+ ],
+ "key_facts": [
+  "Webb: organisaties die veel Power BI gebruiken, moeten 'chat met je data' beginnen met de M365 Copilot- en Cowork-koppeling met Power BI-semantische modellen.",
+  "Webb: de koppeling is aangekondigd in juli 2026 en nu algemeen beschikbaar.",
+  "Webb: eerdere AI-voorbereiding van het model, zoals synoniemen en AI-instructies, blijft relevant.",
+  "Webb: bij Pro- of PPU-werkruimten zijn er geen extra kosten voor de vragen naast de licentie; op capaciteit tellen alleen de CU's van de DAX-queries.",
+  "Webb noemt Fabric Data Agents en Ontologies krachtig, maar raadt ze niet aan als startpunt.",
+  "Gepubliceerd 1 november 2026."
+ ],
+ "personal_relevance": "Je semantische modellen worden de bron voor vragen in gewone taal; dat maakt goede definities nog belangrijker.",
+ "experiment": "Zet synoniemen en AI-instructies in een oefenmodel met verzonnen data en kijk welke vragen Copilot daardoor beter beantwoordt.",
+ "limitations": [
+  "Webb werkt bij Microsoft; het stuk is geschreven vanuit dat perspectief.",
+  "Welke licentie precies nodig is, staat niet helemaal eenduidig in het stuk.",
+  "Copilot is een externe AI-dienst: alleen met data waarvoor dat binnen de interne regels is toegestaan."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [],
+ "topics": [
+  "powerbi_semantic_models",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.5,
+  "practicality": 0.6,
+  "novelty": 0.55
+ },
+ "development_key": "m365-copilot-power-bi-semantische-modellen-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "opinie",
+ "author": "Chris Webb, Microsoft-medewerker en al jaren een bekende Power BI-auteur en blogger",
+ "soort": "mening",
+ "fit": {
+  "score": 0.55,
+  "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
+ },
+ "terms": [
+  {
+   "term": "M365 Copilot",
+   "explanation": "De AI-assistent van Microsoft in Office-programma's zoals Excel, Outlook en Teams."
+  },
+  {
+   "term": "Work IQ",
+   "explanation": "De laag in Microsoft 365 die werkcontext zoals mails en vergaderverslagen aan Copilot geeft."
+  },
+  {
+   "term": "PPU",
+   "explanation": "Premium Per User: een Power BI-licentie per persoon met Premium-functies, zonder dat je een hele capaciteit koopt."
+  }
+ ],
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:43:29Z",
+ "prompt_version": "taak-v2"
+}

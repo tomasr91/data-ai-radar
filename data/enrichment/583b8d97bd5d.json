@@ -1,0 +1,85 @@
+{
+ "format_version": 2,
+ "article_id": "583b8d97bd5d",
+ "url": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
+ "headline": "Claude bouwt nu zelf je evals en verbetert je prompt ertegen",
+ "summary": "Twee nieuwe commando's in de claude-api-skill maken een eval en verbeteren daarna stap voor stap je prompt, met een aparte testset tegen valsspelen.",
+ "story": [
+  "Een AI-toepassing verbeter je pas echt als je kunt meten of hij beter wordt. Daarvoor heb je evals nodig: vaste testgevallen met een beoordeling. Anthropic heeft dat werk nu in Claude Code gestopt. De claude-api-skill heeft twee commando's: build-eval maakt een eval, hillclimb verbetert je toepassing ertegen.",
+  "build-eval werkt als een interview. Claude vraagt waar de testgevallen vandaan komen, liefst uit echte gesprekken, bugmeldingen of een handvol zelfgeschreven voorbeelden. Daarna kiest het een beoordelaar. Is het antwoord vast, zoals een label of JSON, dan controleert code het. Is het antwoord open, dan beoordeelt een ander model het met een lijst controleerbare punten (LLM-as-judge). Jij keurt de gevallen en de beoordelaar goed.",
+  "hillclimb past daarna steeds één ding aan, zoals de systeemprompt of een toolbeschrijving. De gevallen worden eerst verdeeld in een trainset en een testset die Claude nooit ziet. Gaat de trainset omhoog en blijft de test gelijk, dan is dat overfitting: Claude draait de wijziging terug. Het lijkt op een leerling die alleen de oefentoets uit zijn hoofd leert.",
+  "Voor jouw werk is vooral de manier van denken bruikbaar. Bouw je een assistent die vragen over dbt-modellen beantwoordt, dan heb je dezelfde vragen: welke testgevallen zijn echt, en wie beoordeelt het antwoord? In een voorbeeld uit het artikel werd een klantenservice-agent beter én kostte hij ongeveer een vijfde."
+ ],
+ "key_facts": [
+  "De commando's /claude-api build-eval en /claude-api hillclimb zitten in de claude-api-skill die met Claude Code wordt meegeleverd; eerst claude update draaien.",
+  "build-eval zoekt testgevallen in deze volgorde: productiegesprekken, bugmeldingen en tickets, 5 tot 10 zelfgeschreven gevallen, en gevallen afgeleid uit je code.",
+  "hillclimb splitst de gevallen willekeurig in train en test; train omhoog en test gelijk betekent terugdraaien.",
+  "Voorbeeld klantenservice: op de apart gehouden tickets 90,5% goed tegenover 78,6%, voor ongeveer een vijfde van de kosten.",
+  "Voorbeeld van de skill zelf: de score ging van 66,1% naar 87,9%.",
+  "Auteur Lance Martin, gepubliceerd 28 september 2026."
+ ],
+ "personal_relevance": "Evals en tracing staan op je leerlijst; dit laat in de praktijk zien hoe je eerlijk meet en niet jezelf voor de gek houdt.",
+ "experiment": "Laat /claude-api build-eval een eval bouwen voor een klein script dat verzonnen supportvragen in drie categorieën indeelt. Kijk welke beoordelaar Claude kiest en lees een paar transcripten na.",
+ "limitations": [
+  "De voorbeelden en cijfers komen van Anthropic zelf; ze zijn niet onafhankelijk getest.",
+  "Een eval op productiegesprekken mag bij jou nooit met werk- of patiëntdata in een externe AI; gebruik verzonnen gevallen.",
+  "Werkt alleen goed als de testgevallen lijken op het echte gebruik."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "claude-api skill op GitHub",
+   "url": "https://github.com/anthropics/skills/tree/main/skills/claude-api"
+  },
+  {
+   "label": "Demystifying evals for AI agents",
+   "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+  }
+ ],
+ "topics": [
+  "ai_evaluation_observability",
+  "claude_ai_development",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.85,
+  "practicality": 0.7,
+  "novelty": 0.75
+ },
+ "development_key": "claude-api-build-eval-hillclimb-2026",
+ "date_note": "Gepubliceerd op 28 september 2026; de feed toont 7 oktober.",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.7,
+  "why": "Praktisch stuk over evals en Claude, net als de dbt Labs-proef met Claude die je een duim gaf."
+ },
+ "terms": [
+  {
+   "term": "evals",
+   "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+  },
+  {
+   "term": "LLM-as-judge",
+   "explanation": "Een taalmodel dat de antwoorden van een ander model beoordeelt. Handig bij veel antwoorden, maar het kan dezelfde fouten maken."
+  },
+  {
+   "term": "overfitting",
+   "explanation": "Als iets zo goed wordt afgestemd op de testgevallen dat het wel daarop scoort, maar niet beter werkt in het echt."
+  },
+  {
+   "term": "hillclimb",
+   "explanation": "Stap voor stap verbeteren: steeds één kleine wijziging proberen, meten, en alleen houden wat echt beter is."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo start je het in Claude Code. Eerst bijwerken, dan een eval bouwen, dan verbeteren.",
+  "language": "bash",
+  "code": "claude update\n\n# in Claude Code:\n/claude-api build-eval\n/claude-api hillclimb",
+  "note": "Commando's letterlijk uit het artikel."
+ },
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:42:38Z",
+ "prompt_version": "taak-v2"
+}

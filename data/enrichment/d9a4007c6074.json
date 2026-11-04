@@ -1,0 +1,62 @@
+{
+ "format_version": 2,
+ "article_id": "d9a4007c6074",
+ "url": "https://www.anthropic.com/research/redesigning-source-control",
+ "headline": "Git werd te klein: Anthropic bouwde in vijf maanden eigen versiebeheer",
+ "summary": "Door AI-agents ging het aantal codewijzigingen per dag ruim tien keer omhoog. Git hield het niet bij, dus bouwde Anthropic Scion.",
+ "story": [
+  "Bij Anthropic is code schrijven niet meer de bottleneck. Het versiebeheer is dat wel. Door agents steeg het aantal wijzigingen per dag in hun monorepo van ongeveer 2.500 in mei naar meer dan 30.000 in september. Een team van zeven mensen bouwde daarom in vijf maanden een eigen systeem: Scion.",
+  "Git is gemaakt om overal een volledige kopie te hebben, ook offline. Bij Anthropic zijn de gebruikers juist bijna altijd online: agents en CI-taken. Die haalden elke dag ongeveer 25 miljoen keer de code op, terwijl de geschiedenis bijna 100 GB groot is. Scion keert het om: de server doet het zware werk en de computer haalt alleen de bestanden op die hij echt nodig heeft. Het lijkt op een streamingdienst in plaats van alle films zelf downloaden.",
+  "Het resultaat is groot. Scion gebruikt 200 keer minder rekenkracht en geheugen dan de oude opzet. Code ophalen voor CI gaat in seconden in plaats van minuten. Claude schreef het meeste van de code. De engineers keken vooral of Claude zich aan de grenzen van het systeem hield.",
+  "Voor jou is Scion zelf niet bruikbaar: Anthropic zegt er nadrukkelijk bij dat het geen vervanging voor git is. De les gaat over processen. Wat gebouwd is voor menselijk tempo, zoals een wachtrij voor het samenvoegen, loopt vast als agents veel meer leveren."
+ ],
+ "key_facts": [
+  "Samenvoegingen naar de monorepo: ongeveer 2.500 per dag in mei 2026, meer dan 30.000 per dag in september 2026.",
+  "De geschiedenis van de hoofdbranch is bijna 100 GB; er waren ongeveer 25 miljoen checkouts per dag voor CI.",
+  "Een team van zeven mensen migreerde de monorepo in vijf maanden naar Scion.",
+  "Scion gebruikt 200 keer minder CPU en geheugen dan de oude git-mirrors; CI-checkouts zijn twee ordes van grootte sneller en CI won 25% CPU-capaciteit.",
+  "Volgens Anthropic is Scion geen geschikte algemene vervanging voor git.",
+  "Gepubliceerd 13 oktober 2026.",
+  "Eerdere noodoplossingen waren onder meer ondiepe clones, sparse checkouts en honderden interne git-mirrors."
+ ],
+ "personal_relevance": "Laat zien welke delen van een ontwikkelproces vastlopen als AI veel meer code maakt.",
+ "experiment": "Vergelijk in een eigen oefenrepository hoe lang een volledige clone duurt tegenover een ondiepe kopie met git clone --depth 1, een van de noodoplossingen die Anthropic eerst gebruikte.",
+ "limitations": [
+  "Scion is intern bij Anthropic en niet beschikbaar voor anderen.",
+  "Het gaat om een schaal die bij een gewoon datateam niet voorkomt."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [],
+ "topics": [
+  "claude_ai_development",
+  "cicd_data_deployment",
+  "general_ai_trends"
+ ],
+ "quality": {
+  "depth": 0.85,
+  "practicality": 0.2,
+  "novelty": 0.8
+ },
+ "development_key": "anthropic-scion-versiebeheer-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "achtergrond",
+ "fit": {
+  "score": 0.45,
+  "why": "Achtergrond over AI-ontwikkeling bij Anthropic, maar ver van je dbt-praktijk."
+ },
+ "terms": [
+  {
+   "term": "monorepo",
+   "explanation": "Eén grote repository waarin de code van veel projecten samen staat, in plaats van een repository per project."
+  },
+  {
+   "term": "CI",
+   "explanation": "Continuous integration: bij elke wijziging draaien automatisch tests en controles, zodat fouten snel opvallen."
+  }
+ ],
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:43:29Z",
+ "prompt_version": "taak-v2"
+}

@@ -1,0 +1,90 @@
+{
+ "format_version": 2,
+ "article_id": "7fd7e06ab2f4",
+ "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+ "headline": "Zo leest Claude bijna alle code van Claude Code na",
+ "summary": "Het Claude Code-team laat machines het meeste leeswerk doen. Mensen keuren alleen nog goed waar het risico het vraagt.",
+ "story": [
+  "Claude schrijft ongeveer 90 procent van de code van Claude Code zelf. Daardoor kwamen er zoveel wijzigingen bij dat mensen niet meer alles regel voor regel konden lezen. Het team bouwde daarom een reviewproces waarin machines het meeste leeswerk doen. Het doel: de meeste wijzigingen gaan erin met hooguit één mens, zonder meer fouten.",
+  "Het werkt in lagen, een beetje zoals een spellingscontrole die al meekijkt terwijl je typt. Eerst moet Claude zijn eigen werk bewijzen: tests draaien en de uitkomst laten zien. Een subagent met een frisse blik leest de wijziging nog eens. Daarna kijkt een automatische review naar elke pull request, plus een aparte beveiligingscontrole. Openstaande bevindingen blokkeren het samenvoegen.",
+  "Hoeveel mensen moeten goedkeuren, hangt af van het risico van de wijziging, niet van wie hem maakte. Documentatie mag zonder mens erin als alle controles groen zijn. Gewone wijzigingen vragen één persoon, gevoelige plekken twee. Een goedkeuring door een agent telt nooit als die van een mens.",
+  "Wat je eraan hebt bij dbt: het team legt vast wat telt in een REVIEW.md naast CLAUDE.md. Zo'n bestand zegt hoe een fout eruitziet in jouw project. Steeds terugkerende reviewopmerkingen verhuizen daarheen, of naar een test of lintregel. Dat kun je ook doen voor je eigen dbt-afspraken.",
+  "Het team leerde ook dat een reviewer kan blijven zeuren. Eén wijziging ging een nacht lang meer dan vijftig rondes heen en weer. Nu stopt het na drie rondes en kijkt de reviewer daarna alleen naar het nieuwe deel."
+ ],
+ "key_facts": [
+  "Claude schrijft ongeveer 90 procent van de code van Claude Code.",
+  "Tussen juni en september 2026 verdubbelde het aantal samengevoegde pull requests ruim; het aandeel dat werd teruggedraaid daalde met meer dan 40 procent.",
+  "Code Review for Claude Code is algemeen beschikbaar op Team- en Enterprise-abonnementen; /code-review en /security-review draaien een lichtere versie lokaal.",
+  "Tijdens de research preview steeg het aandeel interne pull requests met inhoudelijke reviewopmerkingen van 16% naar 54%.",
+  "Drie risiconiveaus: laag (geen mens nodig als alles groen is), midden (één persoon), hoog (twee personen).",
+  "Na het werk aan te veel reviewrondes: 78% slaagt na één ronde (was 65%), gemiddeld 1,32 reviews (was 2,08)."
+ ],
+ "personal_relevance": "Een REVIEW.md en vaste controles laten Claude je dbt-wijzigingen nakijken volgens jouw eigen afspraken.",
+ "experiment": "Schrijf een REVIEW.md voor een eigen oefenproject in dbt (met verzonnen data) en laat /code-review een wijziging nakijken. Kijk of de bevindingen je regels volgen.",
+ "limitations": [
+  "Het proces is gebouwd voor een team met veel automatische tests, feature flags en snelle rollback; zonder die vangnetten werkt minder menselijke review niet.",
+  "Het team heeft nog geen automatische rem die strenger wordt als er meer fouten terugkomen.",
+  "Bij externe AI zoals Claude: alleen code zonder werk- of patiëntdata."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Code Review for Claude Code",
+   "url": "https://code.claude.com/docs/en/code-review"
+  },
+  {
+   "label": "Automatische beveiligingsreviews",
+   "url": "https://support.claude.com/en/articles/11932705-automated-security-reviews-in-claude-code"
+  },
+  {
+   "label": "Best practices Claude Code",
+   "url": "https://code.claude.com/docs/en/best-practices"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "cicd_data_deployment",
+  "ai_evaluation_observability"
+ ],
+ "quality": {
+  "depth": 0.85,
+  "practicality": 0.7,
+  "novelty": 0.7
+ },
+ "development_key": "claude-code-review-proces-okt-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.7,
+  "why": "Praktijkverhaal over werken met Claude Code, zoals je duim omhoog voor de Claude Code-schrijfgrenzen."
+ },
+ "terms": [
+  {
+   "term": "subagent",
+   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+  },
+  {
+   "term": "REVIEW.md",
+   "explanation": "Een bestand in je repository waarin de eigenaren van de code zeggen waar een AI-reviewer op moet letten en wat hij mag overslaan."
+  },
+  {
+   "term": "CLAUDE.md",
+   "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
+  },
+  {
+   "term": "lintregel",
+   "explanation": "Een automatische regel die code controleert op stijl of veelgemaakte fouten, zoals SQLFluff voor SQL."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo zou een korte REVIEW.md voor een dbt-project eruit kunnen zien, volgens de tips uit het artikel: zeg hoe een fout eruitziet, beperk muggenzifterij, noem wat overgeslagen mag worden en vraag om bewijs.",
+  "language": "text",
+  "code": "# REVIEW.md\n\n## Hoe een fout er hier uitziet\n- Een model in gold verandert van grain zonder dat de naam of de docs dat zeggen.\n- Een join verdubbelt rijen (geen unique-test op de sleutel).\n\n## Overslaan\n- models/staging/_generated/  (gegenereerd door scripts)\n\n## Regels voor bevindingen\n- Hooguit 3 nits per review.\n- Noem altijd bestand en regel als bewijs.\n- Begin de samenvatting met het aantal bevindingen; zeg het eerlijk als er niets te doen is.",
+  "note": "Zelf opgesteld voorbeeld op basis van de tips in het artikel; REVIEW.md is gewone tekst zonder vaste notatie. De paden zijn verzonnen."
+ },
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:42:38Z",
+ "prompt_version": "taak-v2"
+}

@@ -1,0 +1,84 @@
+{
+ "format_version": 2,
+ "article_id": "efe52b80d045",
+ "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
+ "headline": "Claude Code in de cloud: elke taak een eigen machine en branch",
+ "summary": "Een cloudsessie draait Claude Code op een eigen virtuele machine. Je laptop mag dicht, en het werk eindigt als branch die je kunt nakijken.",
+ "story": [
+  "Een gewone Claude Code-sessie hangt aan je laptop. Klapt die dicht, dan stopt het werk. Twee sessies in dezelfde map kunnen elkaars bestanden raken. Een cloudsessie lost dat op: elke taak krijgt een eigen virtuele machine (VM) met een kopie van je repository op een nieuwe branch.",
+  "Het werkt een beetje als een uitzendkracht met een eigen bureau. Je geeft een duidelijke opdracht mee, hij werkt los van jou en levert een branch op die je kunt nakijken. Je GitHub-sleutel komt nooit op die machine. Een tussenstation houdt hem vast en geeft de sessie alleen recht om naar zijn eigen branch te pushen.",
+  "Starten kan vanuit de browser, de app op je telefoon of de terminal met claude --cloud. Met claude --teleport haal je een sessie terug naar je eigen terminal. Een setupscript installeert eenmalig wat nodig is, zodat volgende sessies snel starten. Afspraken en commando's moeten in de repository staan, bijvoorbeeld in CLAUDE.md, want je persoonlijke instellingen gaan niet mee.",
+  "Voor dbt-werk is dit handig bij losse klussen, zoals documentatie bijwerken of een test repareren. Let wel op: de machine kan niet bij je eigen netwerk. Een sessie die je Databricks-werkruimte of werkdata nodig heeft, hoort daar dus niet thuis. Met werkdata mag het sowieso niet."
+ ],
+ "key_facts": [
+  "Cloudsessies zitten in Pro, Max, Team en Enterprise, zonder aparte rekenkosten; ze tellen mee in dezelfde gebruikslimieten.",
+  "Elke taak krijgt een eigen VM van ongeveer 4 vCPU's, 16 GB geheugen en 30 GB schijf.",
+  "claude --cloud kloont je GitHub-remote op de huidige branch; push lokale commits dus eerst.",
+  "Met organisaties die Zero Data Retention gebruiken staan cloudsessies uit.",
+  "Een setupscript moet binnen ongeveer vijf minuten klaar zijn om in de cache te komen; de cache wordt ongeveer elke zeven dagen opnieuw gebouwd.",
+  "Auteur Addy Osmani, gepubliceerd 6 oktober 2026."
+ ],
+ "personal_relevance": "Je kunt losse klussen aan je eigen code (zonder werkdata) laten doorlopen terwijl je iets anders doet.",
+ "experiment": "Start met claude --cloud één kleine taak op een openbaar of eigen oefenrepo met verzonnen data, met een commando dat bewijst dat het klaar is. Kijk daarna de branch na.",
+ "limitations": [
+  "De VM kan niet bij je eigen netwerk, VPN of lokale databases.",
+  "Gegevens in de sessie gaan naar Anthropic; dus nooit werk- of patiëntdata.",
+  "Parallelle sessies weten niets van elkaar en kunnen botsen bij het samenvoegen."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Claude Code on the web (cloudsessies)",
+   "url": "https://code.claude.com/docs/en/claude-code-on-the-web"
+  },
+  {
+   "label": "Cloud environments",
+   "url": "https://code.claude.com/docs/en/cloud-environments"
+  },
+  {
+   "label": "Web quickstart",
+   "url": "https://code.claude.com/docs/en/web-quickstart"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "cicd_data_deployment"
+ ],
+ "quality": {
+  "depth": 0.8,
+  "practicality": 0.7,
+  "novelty": 0.5
+ },
+ "development_key": "claude-code-cloudsessies-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.65,
+  "why": "Praktische Claude Code-uitleg, zoals je duim omhoog voor de schrijfgrenzen van Claude Code."
+ },
+ "terms": [
+  {
+   "term": "virtuele machine",
+   "explanation": "Een computer die als software op een grotere computer draait. Je kunt hem snel aanmaken en weer weggooien."
+  },
+  {
+   "term": "setupscript",
+   "explanation": "Een script dat bij het opstarten van een omgeving draait om alles te installeren wat nodig is."
+  },
+  {
+   "term": "CLAUDE.md",
+   "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo plan je lokaal, bouw je in de cloud en haal je het werk terug naar je terminal.",
+  "language": "bash",
+  "code": "claude --permission-mode plan\n# plan opslaan in docs/migration-plan.md, committen en pushen\nclaude --cloud \"Execute the migration plan in docs/migration-plan.md\"\n\n# later: sessie terughalen naar je eigen terminal\nclaude --teleport",
+  "note": "Commando's letterlijk uit het artikel."
+ },
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:43:29Z",
+ "prompt_version": "taak-v2"
+}
