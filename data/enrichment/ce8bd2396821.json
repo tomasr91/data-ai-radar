@@ -1,0 +1,66 @@
+{
+ "format_version": 2,
+ "article_id": "ce8bd2396821",
+ "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+ "headline": "Zes kleine agents met elk één taak, en een mens die tekent",
+ "summary": "Een verkoper bij Anthropic Japan laat zes Claude-agents zijn leads, mails en CRM bijhouden. Elke agent heeft één taak; hij keurt alles goed.",
+ "story": [
+  "Shahboz Ibragimov werkt in de verkoop bij Anthropic in Japan. Hij laat een team van zes Claude-agents het routinewerk doen: binnenkomende leads verdelen, leads beoordelen, mails beantwoorden, Salesforce bijwerken en vergaderingen samenvatten. Hij leest alles na voordat het de deur uitgaat.",
+  "De opzet is leerzaam. Elke agent heeft precies één taak en draait op een vast schema, zoals een collega met één vaste klus. Eén agent kijkt elk uur in de mailbox en schrijft concepten in het Japans of Engels. Een coördinator past de instructies van de andere agents aan als Ibragimov daar in Slack om vraagt.",
+  "Fouten worden één keer opgelost. Agents schrijven correcties in een gedeeld geheugen, zodat de les voor allemaal blijft hangen. Prijsvragen, gevoelige klanten en onduidelijke verzoeken gaan altijd naar hem. Ook de modelkeuze is bewust: eenvoudige taken op Sonnet, lastige op Opus, en één agent vraagt Opus als adviseur bij moeilijke beslissingen.",
+  "De agents draaien op Claude Managed Agents, een dienst in bèta die schema's, geheugen en afgeschermde toegangsgegevens regelt. Voor jou is vooral het patroon bruikbaar: kleine agents met één taak, een gedeelde plek voor correcties en een vaste plek waar een mens beslist. Hoe de koppeling met Salesforce is gebouwd, staat er niet in."
+ ],
+ "key_facts": [
+  "Zes agents: Furiwake (leads verdelen), Sabaki (leads beoordelen en eerste mail), Henji (mail elk uur, Japans of Engels), Shoudan (Salesforce bijwerken), Nokori (vergaderingen samenvatten) en een coördinator.",
+  "De agents draaien op Claude Managed Agents (bèta) met schema's, een gedeeld geheugen, versies van instructies en kluizen voor toegangsgegevens.",
+  "Claude Tag (bèta) werkt als lid van Slack en vraagt hem om akkoord.",
+  "Furiwake en Shoudan draaien op Sonnet; Sabaki, Nokori en de coördinator op Opus; Henji op Sonnet met Opus als adviseur.",
+  "Volgens een eigen wekelijkse takenlijst scheelt het ongeveer 60 uur werk; er waren een paar honderd correctierondes nodig om zijn toon te raken.",
+  "Gepubliceerd 16 oktober 2026."
+ ],
+ "personal_relevance": "Het patroon van agents met één taak en een vaste menselijke controle kun je ook gebruiken voor terugkerend datawerk.",
+ "experiment": "Schets voor een terugkerende taak, zoals het bijwerken van dbt-documentatie, welke kleine agents je zou maken, welke informatie elk nodig heeft en waar jij moet goedkeuren. Test één agent op een oefenproject met verzonnen data.",
+ "limitations": [
+  "Het is een verhaal van Anthropic over een eigen medewerker; de 60 uur is een eigen schatting zonder vergelijking.",
+  "Over de technische inrichting, zoals de Salesforce-koppeling, geeft het stuk weinig details.",
+  "Managed Agents en Claude Tag zijn bèta, en externe AI mag bij jou niet met werkdata."
+ ],
+ "availability_status": "preview",
+ "official_docs": [],
+ "topics": [
+  "ai_agents_rag",
+  "claude_ai_development",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.45,
+  "novelty": 0.55
+ },
+ "development_key": "claude-managed-agents-praktijk-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.45,
+  "why": "Agentpatroon met Claude, maar in verkoopwerk en met weinig techniek, net als het kredietverhaal dat je te vaag vond."
+ },
+ "terms": [
+  {
+   "term": "Claude Managed Agents",
+   "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen."
+  },
+  {
+   "term": "gedeeld geheugen",
+   "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken."
+  },
+  {
+   "term": "leads",
+   "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website."
+  }
+ ],
+ "processed_by": "Claude (geplande taak, inhaalrun)",
+ "processed_at": "2026-11-04T06:44:03Z",
+ "prompt_version": "taak-v2"
+}
