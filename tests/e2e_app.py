@@ -374,7 +374,7 @@ with sync_playwright() as p:
     eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
     check("   blok Wat de radar over je leerde: erbij en eruit", "Wat de radar over je leerde" in eff and "1</b> erbij" not in eff and "1 erbij, 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
           and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)
-    check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "1 van de 1 beoordeelde" in eff)
+    check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "beoordeelde artikelen in je lijst sterk passend" in eff)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
     check("   onderwerpen ingeklapt: geen knoppen tot je een onderwerp opent", page.locator(".int-topic [data-int-chg]").count() == 0
           and page.locator(".int-topic .row1[data-int-open]").count() == len(feed["interests"]["topics"]))
@@ -423,7 +423,7 @@ with sync_playwright() as p:
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)
-    check("   eigen voorstel herkenbaar aan 'jouw voorstel'", page.locator(".card[data-dd] .pill.eigen").count() == 1
+    check("   eigen voorstel herkenbaar aan 'jouw voorstel'", page.locator(".card[data-dd] .pill.eigen").count() == sum(1 for d in dds if d["id"].startswith("eigen-"))
           and page.locator('.card[data-dd="eigen-test-voorstel"] .pill.eigen').count() == 1)
     page.click('#seg-dd button[data-v="morgen"]')
     check("   tabje Morgen toont vijf keuzes", page.locator("a.card.opt").count() == 5 and page.locator(".card[data-dd]").count() == 0)
