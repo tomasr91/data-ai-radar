@@ -1,79 +1,7 @@
 {
- "generated_at": "2026-11-04T03:23:39.815777Z",
+ "generated_at": "2026-11-04T03:25:02.786612Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "6eafeb6028b4",
-   "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-03T17:00:00Z",
-   "excerpt": "Challenges solved by Microsoft Fabric Microsoft Fabric is an end-to-end analytics platform that brings together data integration, data engineering, warehousing, real-time analytics, business intelligence, and AI-related experiences. It has grown tremendously within the community because it is solving a key problem: lowering the integration tax across data and analytics systems. To understand the integration tax, consider a mid-sized or large organization that wants to perform analytics and data processing. It may use several source systems, an analytics platform such as a warehouse or lakehouse, and yet another platform or vendor for orchestration. To generate insights, the organization must integrate these different systems (hence the term integration tax). Fabric brings together a broad set of analytics capabilities within one platform, which can reduce the number of separate integrations an organization needs to design and operate. You can bring data into Fabric, store it in a warehouse or lakehouse, query and analyze it with Spark or T-SQL, visualize insights with Power BI, and support real-time scenarios with Real-Time Intelligence. Fabric also interoperates with platforms suc",
-   "preliminary_score": 89,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "6d9c0429baf2",
-   "title": "Data Days: Learn, build, and connect with AI @Work",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-02T16:19:22Z",
-   "excerpt": "Real people. Real projects. Real AI on Fabric, SQL, and Power BI. From November 2 through December 15, Data Days is your chance to get past polished demos and put data and AI to work yourself. Join a live session, build something new, work toward a certification, or connect with a community study group. Share what you've learned, showcase something you've created, or bring Data Days to your own community. This is about doing, not just watching. Start with the series that interests you AI Work​ is at the heart of this Data Days, with three stages designed to meet you wherever you are: Let's Make Sense of It explores how Copilot, Fabric IQ, Fabric Apps, and your data fit together. If you've heard the names but want to understand what they mean for your work, start here. Let's Build Something gets hands-on. Watch practitioners build Fabric Apps, work with Spark to make data AI-ready, and turn ideas into something useful. See It in Action showcases real projects, including Fabric IQ and Fabric Apps examples. Discover what community builders created, the decisions they made, and what they learned along the way. There's more to explore, too. Catch up on announcements and demos with the F",
-   "preliminary_score": 88,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "bca544cd94f7",
-   "title": "OneLake: The file system for agent-first data engineering",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-The-file-system-for-agent-first-data-engineering/ba-p/5383035",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-03T18:00:00Z",
-   "excerpt": "Software engineers are increasingly using agents to build software, and data engineers are no different. We want OneLake to help enable data engineers to develop software in this new agent-first era. Think about how you work in a terminal: you use it to run programs that read and write files. Both the programs and the data live in the file system. Now apply that model to data engineering: OneLake is the file system, Fabric engines are the programs, and the AI prompt is your terminal. Over the last few weeks, we’ve released several new capabilities in OneLake that come together to create an experience where agent-first data engineers can thrive. This blog post provides a rundown of those features. Managing OneLake OneLake now offers a remotely hosted MCP server (preview), so agents can explore and manage your data without installing a local server. The local MCP option remains available if you prefer. We’ve also added tools to the Fabric Core MCP server for managing shortcuts and OneLake security . In our previous post , we asked an agent to document an open mirrored database. It found the workspace, discovered the table schema, mapped the underlying files, and checked replication h",
-   "preliminary_score": 86,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "f5c90621cdfb",
-   "title": "New context engineering challenges in late 2026",
-   "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-02T17:12:41Z",
-   "excerpt": "LangChain CEO Harrison Chase shares insights into the biggest harness engineering challenges with the emergence of proactive agents.",
-   "preliminary_score": 85,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "a9b6458ba033",
-   "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
-   "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-03T21:00:00Z",
-   "excerpt": "An agent can return a plausible answer while missing an important finding or reading the same source repeatedly...",
-   "preliminary_score": 81,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "claude_ai_development"
-   ]
-  },
   {
    "id": "4ccf04047cf8",
    "title": "Bring insights and action together with Fabric Apps in Org apps",
@@ -207,6 +135,71 @@
    "preliminary_topics": [
     "ai_evaluation_observability",
     "claude_ai_development"
+   ]
+  },
+  {
+   "id": "efe52b80d045",
+   "title": "Claude Code in the cloud: a field guide to cloud sessions",
+   "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-06T00:00:00Z",
+   "excerpt": "What changes when Claude Code runs on its own machine, the workflows where that pays off, and how to connect GitHub on the first try.",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "fa55dbcedb33",
+   "title": "Declare and optimize with UNIQUE constraints on Databricks",
+   "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-03T21:00:00Z",
+   "excerpt": "Data teams often maintain uniqueness guarantees in their pipelines, but without a...",
+   "preliminary_score": 65,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "2e0fb69e7f67",
+   "title": "Why human insight is a strategic advantage for building better agents",
+   "url": "https://www.langchain.com/blog/human-insight-strategic-advantage-agents",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-03T21:48:04Z",
+   "excerpt": "Explore 3 principles for effective human-in-the-loop workflows and how human-review is a strategic imperative for production-ready agents.",
+   "preliminary_score": 64,
+   "preliminary_topics": [
+    "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "b6bd616345c2",
+   "title": "Introducing the data engineering agent for Fabric (Project Osmos)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Introducing-the-data-engineering-agent-for-Fabric-Project-Osmos/ba-p/5377944",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T15:55:24Z",
+   "excerpt": "AI coding assistants are excellent at turning natural-language transformation instructions into code. For data engineers, the harder question is whether that code produces results they can trust. You can describe transformation logic in natural language, and an AI coding assistant will happily generate hundreds of lines of Spark code. Impressive. But a Spark job can execute successfully and still produce completely wrong results. The logic may work for a subset of the data but fail when run against the full dataset. The pipeline's logic and validation checks may not account for future changes to the data or schema. Incremental loads can cause duplicates. Revenue numbers might look perfectly reasonable until someone reconciles them against the source. Anyone who's spent time working with real-world enterprise data knows that automating data engineering with AI comes with a unique set of challenges. Data engineering involves more than code: it requires working with large datasets and retaining context about their schemas, relationships, and business rules over time. Quality & governance matter a lot. The cost of errors or data loss is very high. Data engineering work typically spans ",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "c2c4600e175e",
+   "title": "DAX with AI: Scenarios is now available",
+   "url": "https://www.sqlbi.com/blog/marco/2026/11/02/dax-with-ai-scenarios-is-now-available/",
+   "source_id": "sqlbi",
+   "source_name": "SQLBI",
+   "published_at": "2026-11-02T09:00:25Z",
+   "excerpt": "This post describes DAX with AI: Scenarios, our new video course on using AI for complex business requirements in DAX. DISCLAIMER: I drafted this post with the help of AI, starting from my notes and the outlines of the course…",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
    ]
   }
  ]
