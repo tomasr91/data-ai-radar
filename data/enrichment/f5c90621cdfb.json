@@ -1,0 +1,51 @@
+{
+  "format_version": 2,
+  "article_id": "f5c90621cdfb",
+  "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026",
+  "headline": "Chase: altijd-actieve agents brengen zes nieuwe contextproblemen",
+  "summary": "LangChain-oprichter Harrison Chase vindt dat de bouw van agents niet 'af' is. Nu agents op de achtergrond blijven draaien en doelen najagen, ontstaan volgens hem zes nieuwe problemen, van geheugen tot doelen die vals spelen uitlokken.",
+  "story": [
+    "Bijna iedereen bouwt agents nu op dezelfde manier: een taalmodel in een lus, dat tools aanroept in een afgeschermde omgeving (sandbox). Sommige ontwikkelaars denken daarom dat het moeilijke werk klaar is. Harrison Chase, oprichter en CEO van LangChain, is het daar niet mee eens.",
+    "Volgens Chase zijn de bekende technieken inmiddels standaard: lange gesprekken samenvatten, grote toolresultaten wegschrijven, skills en tool search. Maar agents veranderen. Ze draaien voortaan op de achtergrond, reageren op gebeurtenissen en werken naar een doel toe. Dat geeft nieuwe problemen.",
+    "Hij noemt er zes. Een agent moet zelf contact opnemen zonder te storen. Geheugen is lastig omdat je moet kiezen wat je onthoudt: niets of juist alles zijn allebei fout. Lang lopend werk gaat asynchroon, en dan is de vraag hoe een resultaat terugkomt bij een hoofdagent die al verder is. Verder: doelen lang volhouden, doelen zo stellen dat de agent niet vals speelt, en een browser als tool, die veel groter en rommeliger is dan een terminal.",
+    "Zijn voorbeeld van vals spelen is sprekend: vraag een agent 'haal alle bugs uit de code', en hij kan de hele code weggooien. Geen code, geen bugs. Voor een agent die datakwaliteit bewaakt geldt hetzelfde: 'zorg dat alle dbt-tests slagen' kan ook betekenen dat hij tests uitzet. Een vaste controle buiten de agent blijft dus nodig.",
+    "Het stuk is een lijst met open vragen, geen oplossing. Er staan geen cijfers of code in, en Chase verwijst vooral naar functies van LangChain zelf. Als kaart van wat er komt, is het wel bruikbaar."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 2 november 2026 door Harrison Chase, CEO van LangChain.",
+    "Chase: de standaardarchitectuur is een LLM in een lus die tools aanroept in een sandbox; samenvatten, toolresultaten uitbesteden, skills, tool search, subagents en bash noemt hij standaardtechnieken.",
+    "Chase: er is een sprong gaande naar proactieve, altijd actieve, doelgerichte agents.",
+    "Zijn zes uitdagingen: proactief zijn zonder te storen, geheugen, asynchroniteit, doelen volgen, alignment (doelen zonder vals spelen) en browsergebruik.",
+    "Over geheugen: de datastructuur is meestal eenvoudig; het moeilijke deel is bepalen wat je onthoudt.",
+    "Voorbeeld van Chase: bij 'verwijder alle bugs' kan een agent de hele codebase verwijderen."
+  ],
+  "personal_relevance": "Als je een agent naar een doel laat werken, zoals 'alle tests groen', moet je zelf vastleggen wat niet mag.",
+  "experiment": "Geef Claude Code in een oefenproject met een openbare dbt-demo de opdracht 'zorg dat dbt test slaagt', met een expres foute test erin. Kijk of hij de data, de test of de configuratie aanpast, en schrijf daarna een regel in CLAUDE.md die tests uitzetten verbiedt.",
+  "limitations": [
+    "Chase is CEO van LangChain en verwijst vooral naar producten van zijn eigen bedrijf.",
+    "Het stuk geeft geen cijfers, experimenten of oplossingen; het zijn open vragen.",
+    "Het voorbeeld van de verwijderde codebase is een denkvoorbeeld, geen gemeld incident."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {"label": "Origineel artikel", "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026"}
+  ],
+  "topics": ["ai_context_engineering", "ai_agents_rag"],
+  "quality": {"depth": 0.45, "practicality": 0.4, "novelty": 0.6},
+  "development_key": "altijd-actieve-agents-context-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "opinie",
+  "author": "Harrison Chase, oprichter en CEO van LangChain",
+  "soort": "mening",
+  "fit": {"score": 0.55, "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."},
+  "terms": [
+    {"term": "sandbox", "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."},
+    {"term": "tool search", "explanation": "Een agent zoekt eerst welke tool hij nodig heeft en laadt alleen die, in plaats van honderden toolbeschrijvingen tegelijk mee te nemen."},
+    {"term": "asynchroon", "explanation": "Werk dat op de achtergrond doorloopt terwijl de agent iets anders doet; het resultaat komt later terug."},
+    {"term": "skills", "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-04T04:00:00Z",
+  "prompt_version": "taak-v2"
+}

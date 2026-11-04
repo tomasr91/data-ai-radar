@@ -1,0 +1,62 @@
+{
+  "format_version": 2,
+  "article_id": "a9b6458ba033",
+  "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
+  "headline": "Wat je Claude-agent deed, staat nu als tabel in Unity Catalog",
+  "summary": "Claude stuurt zelf sporen (traces) van elke model- en toolaanroep naar Databricks MLflow. Ze komen in Unity Catalog-tabellen terecht, met de gewone rechten en op te vragen met SQL. De functie is in publieke bèta.",
+  "story": [
+    "Een agent kan een geloofwaardig antwoord geven en toch een belangrijke bron missen. Om dat te zien, moet je terugkijken wat hij deed. Claude kan dat spoor nu met ingebouwde meetpunten naar Databricks MLflow sturen. Dat geldt voor de Anthropic SDK's, de Messages API en Claude Managed Agents.",
+    "Het werkt zo: Claude maakt bij elke modelaanroep en elke toolaanroep een span, een soort regel in een logboek met begin, eind en details. Die spans gaan via de open standaard OTLP naar Databricks. Daar neemt Zerobus Ingest ze aan en schrijft ze in Unity Catalog-tabellen die aan een MLflow-experiment hangen. Je stelt in het experiment de catalog en het schema in.",
+    "Omdat de sporen gewone tabellen zijn, bepalen de rechten in Unity Catalog wie ze mag zien. Je kunt ze ook met SQL bevragen, bijvoorbeeld om agentruns te vinden die dezelfde tool steeds opnieuw aanroepen. De inhoud van prompts en antwoorden wordt alleen bewaard als je de inhoudsmodus op 'full' zet. Dat is een bewuste keuze, zeker als er gevoelige gegevens in kunnen zitten.",
+    "Het artikel laat ook zien wat je daarna kunt doen. MLflow Issues (bèta) zoekt terugkerende fouten, zoals herhaalde zoekopdrachten of ontbrekende toolargumenten. Domeinexperts kunnen in een beoordelingsrij (review queue) traces nakijken en het goede antwoord geven. En met agentevaluatie vergelijk je oude en nieuwe instructies op dezelfde vragen.",
+    "Let op de status: de koppeling is publieke bèta, en de blog zelf bevat nog een ontbrekende link en aangekondigde code die er niet staat. Voor de echte stappen heb je de gelinkte handleidingen nodig."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 3 november 2026 door Yuki Watanabe (Databricks Engineering).",
+    "De OpenTelemetry-integratie van Claude Platform met Databricks MLflow is Public Beta; MLflow Issues is Beta.",
+    "Ondersteund: de Anthropic SDK's, de Messages API en Claude Managed Agents; Claude Code en de Claude Agent SDK ondersteunen OpenTelemetry ook.",
+    "Spans gaan via OTLP naar Zerobus Ingest en worden opgeslagen in Unity Catalog-tabellen die aan een MLflow-experiment gekoppeld zijn.",
+    "Inputs en outputs worden alleen vastgelegd als de content mode op 'full' staat.",
+    "Voor de export geef je workspace-ID, regio en de spans-tabel op, plus een tabelgebonden OAuth-token volgens de Zerobus-gids."
+  ],
+  "personal_relevance": "Als je een AI-assistent op je dbt-metadata bouwt, krijg je zo het controlespoor in je eigen catalogus, met dezelfde rechten als de rest van je data.",
+  "experiment": "Maak in een testworkspace een MLflow-experiment met opslag in Unity Catalog, laat een klein script met de Anthropic SDK drie vragen over verzonnen data stellen, en zoek daarna met SQL welke spans het langst duurden. Gebruik geen werkdata, want Claude is een externe dienst.",
+  "limitations": [
+    "Publieke bèta: gedrag en tabelvorm kunnen nog veranderen.",
+    "De blog bevat geen code; de exacte stappen staan in de Claude- en Databricks-handleidingen.",
+    "Met de inhoudsmodus 'full' komen prompts en antwoorden in de tabellen; regel dus goed wie erbij kan."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {"label": "Claude OpenTelemetry-gids", "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry"},
+    {"label": "Traces opslaan in Unity Catalog", "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/trace-unity-catalog"},
+    {"label": "Issues detecteren in traces", "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/observe-with-traces/analyze-traces"},
+    {"label": "Zerobus OpenTelemetry instellen", "url": "https://docs.databricks.com/aws/en/ingestion/opentelemetry/configure"},
+    {"label": "MLflow-blog: Claude-agents tracen via OpenTelemetry", "url": "https://mlflow.org/blog/claude-otel-tracing"}
+  ],
+  "topics": ["ai_evaluation_observability", "ai_on_data_platform", "claude_ai_development", "metadata_lineage_catalogs"],
+  "quality": {"depth": 0.6, "practicality": 0.75, "novelty": 0.7},
+  "development_key": "claude-otel-tracing-mlflow-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {"score": 0.7, "why": "Databricks-functie rond controle van AI, zoals je duim bij 'een agent kan een feit aan de verkeerde bron toeschrijven'."},
+  "terms": [
+    {"term": "span", "explanation": "Eén stap in een spoor (trace): bijvoorbeeld één modelaanroep of één toolaanroep, met begin, eind en details."},
+    {"term": "OTLP", "explanation": "OpenTelemetry Protocol: de afgesproken manier om sporen en meetgegevens te versturen, zodat elk systeem dat het ondersteunt ze kan ontvangen."},
+    {"term": "Zerobus Ingest", "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."},
+    {"term": "MLflow", "explanation": "Een open-source platform, ingebouwd in Databricks, om AI-modellen en agents te volgen, te testen en te beheren."},
+    {"term": "review queue", "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was."}
+  ],
+  "showcase": {
+    "caption": "Omdat de sporen in tabellen staan, vind je met gewone SQL agentruns die dezelfde tool steeds opnieuw aanroepen, een van de problemen die het artikel noemt.",
+    "language": "sql",
+    "code": "SELECT trace_id, tool,\n       COUNT(*)     AS aantal,\n       SUM(duur_ms) AS totaal_ms\nFROM spans\nWHERE soort = 'tool_call'\nGROUP BY trace_id, tool\nHAVING COUNT(*) > 1\nORDER BY trace_id, tool;",
+    "result": {"columns": ["trace_id", "tool", "aantal", "totaal_ms"], "rows": [["run-1", "lees_bestand", 2, 175], ["run-2", "zoek_documentatie", 3, 913]]},
+    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; de echte kolomnamen van de spans-tabel in Unity Catalog staan in de Databricks-documentatie."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-04T03:55:00Z",
+  "prompt_version": "taak-v2"
+}
