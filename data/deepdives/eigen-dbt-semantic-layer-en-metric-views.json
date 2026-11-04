@@ -1,0 +1,197 @@
+{
+  "format_version": 1,
+  "id": "eigen-dbt-semantic-layer-en-metric-views",
+  "plan_id": "eigen-dbt-semantic-layer-en-metric-views",
+  "request_issue": 20,
+  "headline": "dbt semantic layer of metric views: waar leg je je maatstaven vast?",
+  "summary": "De dbt semantic layer en metric views in Unity Catalog doen hetzelfde: een maatstaf zoals omzet één keer vastleggen, zodat elk rapport en elke AI hetzelfde getal krijgt. Ze verschillen in waar de definitie woont en wie hem kan opvragen. Dit stuk legt uit hoe beide werken en wat dat betekent voor jouw stack met dbt, Databricks en Power BI.",
+  "sections": [
+    {
+      "heading": "Het probleem: elke query rekent net anders",
+      "paragraphs": [
+        "In het artikel over AWS vroeg iemand een AI-agent om de omzet per regio. De agent schreef zelf SQL, pakte een kolom die logisch klonk en zat er 3,5 miljoen dollar naast. Niemand deed iets geks. Er stond alleen nergens wat 'omzet' precies betekent.",
+        "Hetzelfde gebeurt zonder AI. Twee collega's schrijven elk een query voor de gemiddelde orderwaarde en krijgen een ander getal. De een rekent het gemiddelde van de regio-gemiddelden uit, de ander deelt de totale omzet door het aantal orders. In het voorbeeld hieronder geeft dat 90 tegen 87,5. Alleen het tweede klopt.",
+        "Een semantische laag lost dat op. Je legt de berekening één keer vast, met de juiste joins en filters. Daarna kiest iedereen, ook een AI, uit die vaste maatstaven in plaats van zelf SQL te schrijven. Vergelijk het met een rekenmachine met alleen de goede knoppen erop."
+      ]
+    },
+    {
+      "heading": "Hoe de dbt semantic layer werkt",
+      "paragraphs": [
+        "In dbt heet het onderdeel dat dit doet MetricFlow. Je beschrijft in YAML, naast je dbt-model, een semantisch model (semantic model). Daarin staan drie soorten dingen: entiteiten (entities), dimensies en metrics. Entiteiten zijn de sleutels waarmee tabellen aan elkaar hangen. Dimensies zijn de manieren om te groeperen, zoals regio of datum.",
+        "Een metric is de berekening zelf. Een simple metric is bijvoorbeeld de som van een kolom. Een ratio deelt twee metrics, zoals omzet per klant. Er zijn ook cumulatieve, afgeleide en conversie-metrics. Vanaf dbt v1.12 schrijf je dit volgens de documentatie direct in het YAML-bestand van je model, bij de kolommen.",
+        "Als iemand een metric opvraagt met een dimensie erbij, schrijft MetricFlow zelf de SQL. Het kiest de joins op basis van de entiteiten. Zo voorkomt het de bekende fout waarbij een join rijen verdubbelt (fan-out). Jij schrijft de definitie, MetricFlow schrijft de query.",
+        "MetricFlow zelf is open source, onder de Apache 2.0-licentie. Je kunt metrics dus ook in dbt Core definiëren en lokaal opvragen via de opdrachtregel. Maar de koppelingen (API's en integraties) om metrics vanuit andere tools op te vragen, zitten in het dbt-platform, vanaf het Starter-abonnement. Databricks wordt ondersteund, Fabric volgens de documentatie nog niet."
+      ]
+    },
+    {
+      "heading": "Hoe metric views in Unity Catalog werken",
+      "paragraphs": [
+        "Databricks heeft een eigen variant: metric views. Een metric view is een object in Unity Catalog, net als een tabel of view. Je maakt hem met CREATE VIEW ... WITH METRICS LANGUAGE YAML, en daarbinnen staat een YAML-definitie. Die heeft een bron (source), eventueel joins en een filter, velden (fields) om op te groeperen en maatstaven (measures).",
+        "Het grote verschil met een gewone view: een gewone view legt de groepering vast op het moment dat je hem maakt. Een metric view niet. Je definieert de maatstaf één keer, en wie hem opvraagt, kiest zelf de velden. Opvragen doe je met de functie MEASURE(), bijvoorbeeld MEASURE(gem_orderwaarde) met GROUP BY regio. SELECT * werkt niet; je noemt elke kolom.",
+        "Metric views kunnen ook extra uitleg voor AI bevatten. Je geeft een veld een display_name en synoniemen (synonyms), zoals 'revenue' en 'sales' bij omzet. Genie, dashboards, notebooks en alerts gebruiken die metric views. Er komen ook nieuwe functies bij, zoals window measures voor een lopend totaal en, nog in bèta, relaties tussen metric views."
+      ]
+    },
+    {
+      "heading": "Naast elkaar: wanneer kies je wat?",
+      "paragraphs": [
+        "De twee lijken sterk op elkaar: allebei YAML, allebei vaste maatstaven, allebei bedoeld voor BI én AI. Het verschil zit in waar de definitie woont. Bij dbt staat hij in je dbt-project en draait MetricFlow de vertaling naar SQL. Bij metric views staat hij in Unity Catalog en rekent Databricks zelf.",
+        "Dat heeft gevolgen voor wie hem kan opvragen. Metric views zijn direct bruikbaar in alles wat al met Unity Catalog praat, zoals Genie en Databricks-dashboards. De dbt semantic layer is breder bedoeld, over meerdere dataplatforms heen, maar voor opvragen vanuit tools heb je het dbt-platform nodig.",
+        "Voor Power BI zijn beide routes nog niet glad. De dbt-koppeling met Power BI is een preview: een eigen connector met ODBC-driver, alleen in DirectQuery-modus, en voor de Power BI-service via een on-premises data gateway. Metric views vraag je in Power BI op met een eigen SQL-query (Native query) met MEASURE(), ook in DirectQuery. De oude compatibiliteitsmodus in de Power BI-connector bestaat niet meer.",
+        "Er komt wel een gezamenlijke richting. Apache Ossie, voorheen Open Semantic Interchange, is een open standaard om maatstaven tussen tools uit te wisselen. dbt Labs en Databricks werken er allebei aan mee. Volgens dbt hangt de productierijpheid van hun Power BI-koppeling af van of Microsoft meedoet met Ossie. Dat is dus nog een open vraag."
+      ]
+    },
+    {
+      "heading": "Waar vakmensen op letten",
+      "paragraphs": [
+        "Volgens Alex Noonan van dbt Labs antwoordde een AI via een semantische laag in 96 tot 100% van de gevallen goed, tegen 80 tot 91% met zelfgeschreven SQL. Dat is een meting van de leverancier zelf, zonder uitleg over de opzet. Zie het dus als een aanwijzing, niet als bewijs.",
+        "Het grootste deel van Noonans verhaal gaat over de basis: tests, verse data, documentatie die ook een machine kan lezen en een consistent model. Een semantische laag helpt bovendien alleen bij vragen over maatstaven die erin staan. Een metric op een slecht model geeft nog steeds een fout getal, alleen wel overal hetzelfde fout getal.",
+        "Een praktisch punt: leg elke maatstaf op één plek vast. Staat omzet in een metric view én in DAX in Power BI, dan lopen ze vroeg of laat uit elkaar. Op GitHub staat een verzoek om metric views vanuit de dbt-databricks-adapter te maken. Volgens de beheerders moet dat nog worden afgestemd met dbt Labs, omdat MetricFlow en metric views niet precies hetzelfde werken. Een vaste, gedocumenteerde manier vond ik op de schrijfdatum niet."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Voor je AI-contextlaag is dit het belangrijkste deel. Een assistent die vragen over je Gold-laag beantwoordt, moet kunnen kiezen uit vaste maatstaven in plaats van zelf SQL te raden. Omdat AI binnen Databricks met werkdata mag, liggen metric views voor de hand: Genie gebruikt ze al, en ze staan onder dezelfde rechten in Unity Catalog als je tabellen.",
+        "De dbt semantic layer wordt interessant als je maatstaven dicht bij je dbt-modellen wilt houden, met dezelfde pull requests en reviews. Je kunt dat in dbt Core al uitproberen. Wil je dat Power BI of een agent ze opvraagt, dan heb je het dbt-platform nodig en een koppeling die voor Power BI nog in preview is.",
+        "Een redelijke eerste stap is klein beginnen. Kies twee of drie kerncijfers waar nu discussie over is, en schrijf per cijfer op wat het precies betekent. Leg ze vast als metric view op een Gold-tabel, met synoniemen in de taal van je collega's. Dan weet je beter welke route bij je organisatie past, voordat je alles omzet."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een metric view met twee maatstaven. De gemiddelde orderwaarde is omzet gedeeld door het aantal orders, dus over alle regio's 87,5 en niet 90, het gemiddelde van de twee regio-gemiddelden.",
+    "language": "sql",
+    "code": "CREATE OR REPLACE VIEW demo.verkoop.bestellingen_metrics\nWITH METRICS\nLANGUAGE YAML\nAS $$\nversion: 1.1\nsource: demo.verkoop.bestellingen\nfields:\n  - name: regio\n    expr: regio\nmeasures:\n  - name: omzet\n    expr: SUM(bedrag)\n    synonyms: ['revenue', 'verkoop']\n  - name: aantal_orders\n    expr: COUNT(DISTINCT order_id)\n  - name: gem_orderwaarde\n    expr: MEASURE(omzet) / MEASURE(aantal_orders)\n$$;\n\n-- per regio, en zonder GROUP BY voor alle regio's samen\nSELECT regio, MEASURE(omzet), MEASURE(gem_orderwaarde)\nFROM demo.verkoop.bestellingen_metrics\nGROUP BY regio;",
+    "result": {
+      "columns": ["regio", "omzet", "gem_orderwaarde"],
+      "rows": [
+        ["Noord", "300.0", "100.0"],
+        ["Zuid", "400.0", "80.0"],
+        ["(alle regio's)", "700.0", "87.5"]
+      ]
+    },
+    "note": "Verzonnen data: 8 bestellingen in 2 regio's. De YAML volgt de notatie uit de Databricks-documentatie (versie 1.1, oktober 2026). Metric views draaien alleen in Databricks; de uitkomst is daarom nagebouwd in DuckDB met gewone SQL (SUM gedeeld door COUNT DISTINCT, met GROUP BY ROLLUP voor de totaalregel)."
+  },
+  "experiment": "Maak in een testwerkruimte een kleine tabel met verzonnen bestellingen, zoals in het voorbeeld, en zet er een metric view op met omzet, aantal orders en gemiddelde orderwaarde. Vraag de maatstaven op per regio en zonder groepering, en controleer dat het totaal 87,5 is en niet 90. Schrijf daarna dezelfde drie metrics als dbt-metric in een los dbt Core-project op dezelfde verzonnen data en vergelijk hoe de twee definities voelen. Geen werkdata gebruiken.",
+  "limitations": [
+    "Het cijfer 96 tegen 80% komt van dbt Labs zelf, zonder beschreven opzet.",
+    "De dbt-koppeling met Power BI is een preview en werkt alleen in DirectQuery; de API's en integraties van de dbt semantic layer vragen een betaald dbt-platformabonnement.",
+    "Een maatstaf die in dbt, een metric view én DAX staat, loopt uit elkaar; kies per maatstaf één eigenaar en één plek.",
+    "Een metric view erft de rechten van Unity Catalog, maar synoniemen en beschrijvingen gaan mee naar AI-tools; zet daar geen gevoelige details uit zorgdata in."
+  ],
+  "further_reading": [
+    {
+      "label": "Unity Catalog metric views (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/business-semantics/metric-views",
+      "note": "Het overzicht: wat metric views zijn, waar je ze gebruikt en welke functies er zijn."
+    },
+    {
+      "label": "Metric view YAML syntax reference (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-ca/azure/databricks/business-semantics/metric-views/yaml-reference",
+      "note": "Alle velden van de YAML, inclusief synoniemen en display_name voor AI-tools."
+    },
+    {
+      "label": "Use metric views with BI tools (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/business-semantics/metric-views/bi-tools",
+      "note": "Hoe Power BI metric views opvraagt met Native query en MEASURE(), en wat niet meer kan."
+    },
+    {
+      "label": "About MetricFlow (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/docs/build/about-metricflow.md",
+      "note": "De begrippen van de dbt semantic layer met voorbeelden in de nieuwe YAML vanaf dbt v1.12."
+    },
+    {
+      "label": "dbt Semantic Layer FAQs (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/docs/use-dbt-semantic-layer/sl-faqs",
+      "note": "Wat in dbt Core kan en wat het dbt-platform vraagt, en welke dataplatforms worden ondersteund."
+    },
+    {
+      "label": "Power BI integration for the dbt Semantic Layer (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/docs/platform-integrations/semantic-layer/power-bi.md",
+      "note": "De preview-koppeling met Power BI, met alle beperkingen op een rij."
+    },
+    {
+      "label": "Apache Ossie joins incubator to standardise metrics (IT Brief, juli 2026)",
+      "url": "https://itbrief.co.uk/story/apache-ossie-joins-incubator-to-standardise-metrics",
+      "note": "Achtergrond bij de open standaard voor maatstaven waar dbt Labs en Databricks aan meewerken."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Waarom is een metric view handiger dan een gewone view met een vaste GROUP BY?",
+      "options": [
+        "Een metric view is altijd sneller omdat hij de uitkomst opslaat.",
+        "Een metric view legt de berekening vast, maar laat wie hem opvraagt zelf kiezen waarop gegroepeerd wordt.",
+        "Een metric view mag SELECT * gebruiken, een gewone view niet.",
+        "Een metric view heeft geen rechten in Unity Catalog nodig."
+      ],
+      "answer": 1,
+      "explanation": "Een gewone view zet de groepering vast bij het aanmaken. Een metric view scheidt de maatstaf van de velden, zodat dezelfde definitie per regio, per maand of in totaal klopt."
+    },
+    {
+      "question": "Je werkt met dbt Core en wilt dat Power BI je dbt-metrics rechtstreeks opvraagt. Wat heb je volgens de documentatie nodig?",
+      "options": [
+        "Niets extra; MetricFlow is open source en heeft een Power BI-koppeling.",
+        "Alleen de dbt-databricks-adapter.",
+        "Het dbt-platform (vanaf Starter) en de Power BI-connector, die nog in preview is en alleen DirectQuery ondersteunt.",
+        "Een metric view in Unity Catalog, die dbt automatisch aanmaakt."
+      ],
+      "answer": 2,
+      "explanation": "In dbt Core kun je metrics definiëren en lokaal opvragen. De API's en integraties, zoals de Power BI-connector, zitten in het dbt-platform."
+    },
+    {
+      "question": "Wat is het grootste risico als je omzet in een metric view én in DAX in Power BI definieert?",
+      "options": [
+        "De twee definities lopen na verloop van tijd uit elkaar, en dan krijgen rapport en AI verschillende getallen.",
+        "Power BI kan metric views dan helemaal niet meer lezen.",
+        "Unity Catalog verwijdert de dubbele definitie automatisch.",
+        "Genie gebruikt dan altijd de DAX-versie."
+      ],
+      "answer": 0,
+      "explanation": "Het doel van een semantische laag is één bron per maatstaf. Twee plekken betekent twee definities die je apart moet bijhouden."
+    }
+  ],
+  "terms": [
+    {
+      "term": "semantische laag",
+      "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
+    },
+    {
+      "term": "MetricFlow",
+      "explanation": "Het open-source onderdeel van dbt dat semantische modellen en metrics in YAML leest en daar zelf de SQL voor schrijft."
+    },
+    {
+      "term": "semantisch model",
+      "explanation": "In dbt de beschrijving bij een model van zijn sleutels (entiteiten), dimensies en metrics, zodat MetricFlow weet hoe tabellen samenhangen."
+    },
+    {
+      "term": "metric views",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+      "term": "MEASURE()",
+      "explanation": "De functie waarmee je in Databricks SQL een maatstaf uit een metric view opvraagt, bijvoorbeeld MEASURE(omzet) met GROUP BY regio."
+    },
+    {
+      "term": "fan-out",
+      "explanation": "Een join die rijen verdubbelt, bijvoorbeeld orders koppelen aan orderregels, waardoor een som ineens te hoog uitvalt."
+    },
+    {
+      "term": "DirectQuery",
+      "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
+    },
+    {
+      "term": "Apache Ossie",
+      "explanation": "Een open standaard, voorheen Open Semantic Interchange, om maatstaven en dimensies tussen tools uit te wisselen. dbt Labs en Databricks werken eraan mee."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 4 november 2026 in de actuele documentatie van Databricks (metric views, bijgewerkt 16 tot 30 oktober 2026) en dbt Labs (MetricFlow, Semantic Layer FAQ en Power BI-integratie), plus de dbt-blog van 27 oktober 2026 en IT Brief van juli 2026. Het oude dbt Metrics-pakket is bewust weggelaten (vervangen door MetricFlow), net als de Metric View BI Compatibility Mode in Power BI, die volgens Databricks niet meer bestaat. Over een metric view-materialisatie in dbt-databricks vond ik geen bevestigde release, dus die staat er niet als functie in.",
+  "topics": [
+    "dbt_analytics_engineering",
+    "ai_context_engineering",
+    "powerbi_semantic_models",
+    "metadata_lineage_catalogs"
+  ],
+  "written_at": "2026-11-04T05:05:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
