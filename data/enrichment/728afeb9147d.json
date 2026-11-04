@@ -1,0 +1,57 @@
+{
+  "format_version": 2,
+  "article_id": "728afeb9147d",
+  "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+  "headline": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen",
+  "summary": "Anthropic beschrijft hoe een platformteam de kosten van Claude Code beheerst en laat zien wat het oplevert. Het voorbeeld is Google Cloud, maar de meeste knoppen zitten in Claude Code zelf.",
+  "story": [
+    "Anthropic heeft op een rij gezet hoe je de kosten van Claude Code in een organisatie in de hand houdt. Het stuk volgt drie stappen: begrenzen, bijhouden en bewijzen. Het gaat uit van Google Cloud, maar veel ervan werkt ook elders.",
+    "De kosten volgen het aantal tokens. Een agent als Claude Code leest bestanden, draait tools en denkt in stappen, en gebruikt dus meer tokens per taak dan een chat. De keuze van het model is de tweede grote knop. Volgens het artikel zit verspilling vaak bij een paar zware gebruikers: een duur model voor licht werk, of een vergeten geplande taak die blijft draaien.",
+    "Begrenzen gaat via de Claude apps gateway, een dienst die je zelf in je eigen cloudproject draait. Ontwikkelaars loggen in via je identiteitsdienst (IdP), dus elk verzoek heeft een bekende gebruiker. Per gebruiker of groep stel je een maximum per dag, week of maand in. Bij 75 en 95 procent krijgt de ontwikkelaar een waarschuwing in de terminal; daarboven weigert de gateway verzoeken tot de periode om is.",
+    "Bijhouden doet Claude Code zelf: het stuurt meetgegevens via OpenTelemetry, uitgesplitst naar skill, plugin, agent en MCP-server. Met één omgevingsvariabele hang je er labels aan, zoals afdeling of kostenplaats. Zo zie je ook welke skill of MCP-server de meeste tokens kost. Dat is nuttig als je in een team skills deelt voor dbt-werk.",
+    "Bewijzen is het lastigste deel. Het artikel raadt aan om vooraf een nulmeting te doen en een eenheid van werk af te spreken, bijvoorbeeld gemergde pull requests met een bepaald label. Let op: de ingebouwde telling gaat over pull requests die Claude aanmaakte, niet over wat uiteindelijk gemerged wordt. De klantcijfers in het stuk komen van Anthropic zelf."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 27 oktober 2026, op basis van een webinar met Google Cloud.",
+    "De Claude apps gateway draait zelf gehost in je eigen cloudproject en zit in dezelfde claude-binary; gebruikers loggen in via je IdP.",
+    "Bestedingslimieten gelden per gebruiker, IdP-groep of organisatie, per dag, week of maand; waarschuwingen in de CLI bij 75% en 95%, daarna HTTP 429 tot de reset.",
+    "Claude Code stuurt OpenTelemetry-metrics en -events (gebruik, geschatte kosten), uitgesplitst naar skill, plugin, agent en MCP-server.",
+    "Labels voor kostentoewijzing gaan via OTEL_RESOURCE_ATTRIBUTES, bijvoorbeeld department=engineering,cost_center=eng-123.",
+    "Het loggen van prompts staat standaard uit; de ingebouwde PR-telling telt door Claude aangemaakte PR's, niet gemergde."
+  ],
+  "personal_relevance": "Als je Claude Code breder in je team wilt inzetten, is dit het lijstje vragen dat je manager gaat stellen.",
+  "experiment": "Zet op je eigen machine OpenTelemetry voor Claude Code aan met de console-exporter en een label als team=data, doe een korte taak in een oefenproject zonder werkdata, en bekijk welke meetwaarden er per skill of MCP-server verschijnen.",
+  "limitations": [
+    "Het stuk is geschreven voor Google Cloud; de knoppen voor budgetten en facturering zijn daar specifiek voor.",
+    "De klantvoorbeelden en cijfers komen van Anthropic zelf en zijn niet onafhankelijk getoetst.",
+    "Spend caps in Google Cloud zijn nog preview."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {"label": "Origineel artikel", "url": "https://claude.com/blog/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud"},
+    {"label": "Webinar: kosten beheersen en ROI tonen", "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"}
+  ],
+  "topics": ["claude_ai_development", "ai_evaluation_observability"],
+  "quality": {"depth": 0.65, "practicality": 0.55, "novelty": 0.45},
+  "development_key": "claude-code-kosten-roi-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "praktisch",
+  "fit": {"score": 0.5, "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."},
+  "terms": [
+    {"term": "Claude apps gateway", "explanation": "Een dienst die je zelf draait tussen Claude Code en het model. Hij controleert wie er inlogt en houdt limieten per gebruiker of groep bij."},
+    {"term": "OpenTelemetry", "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."},
+    {"term": "IdP", "explanation": "Identity provider: de dienst waarmee je organisatie bijhoudt wie wie is en tot welke groep hoort, zoals Entra ID of Google Workspace."},
+    {"term": "nulmeting", "explanation": "Een meting vóór je iets verandert, zodat je achteraf kunt vergelijken of het echt beter werd."}
+  ],
+  "showcase": {
+    "caption": "Met één omgevingsvariabele hang je labels aan alle meetgegevens die Claude Code verstuurt. Zo kun je kosten later per afdeling of kostenplaats optellen.",
+    "language": "bash",
+    "code": "export OTEL_RESOURCE_ATTRIBUTES=\"department=engineering,cost_center=eng-123\"",
+    "note": "De variabele en de waarden komen letterlijk uit het artikel. Hoe je telemetrie aanzet en naar welke bestemming die gaat, staat op code.claude.com/docs/en/monitoring-usage."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-04T03:40:00Z",
+  "prompt_version": "taak-v2"
+}

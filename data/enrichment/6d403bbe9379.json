@@ -1,0 +1,51 @@
+{
+  "format_version": 2,
+  "article_id": "6d403bbe9379",
+  "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+  "headline": "Eén agent met skills werkt vaak beter dan een team van subagents",
+  "summary": "Anthropic ziet bij grote klanten dat één agent die skills en tools pas laadt als het nodig is, vaak beter, sneller en goedkoper werkt dan een stelsel van subagents. Het artikel geeft een stappenplan om om te bouwen.",
+  "story": [
+    "Veel bedrijven bouwen hun AI-agent als een team: een verdeler die werk doorgeeft aan gespecialiseerde subagents. Anthropic schrijft dat één agent met skills dat bij verschillende grote klanten vaak beter deed. Hij was ook goedkoper en sneller. Eén klant zag de looptijd ongeveer halveren.",
+    "Waarom gaat een team van agents mis? Bij elke overdracht gaat context verloren, net als bij een telefoonketting. Het aantal subagents groeit, en de centrale instructie wordt een lappendeken van regels die elkaar tegenspreken. Elk team test bovendien alleen zijn eigen stukje, niet het geheel.",
+    "Het alternatief is één lus: één model met één contextvenster, dat skills en tools pas helemaal inleest als een taak erom vraagt (progressive disclosure). Harde regels, zoals een validatie of een goedkeuringsstap, horen in een tool en niet in de prompt. Anthropic noemt als voorbeeld dat de systeemprompt van Claude Code voor nieuwere modellen meer dan 80 procent korter is geworden.",
+    "Het stappenplan begint met evals: tien goede voorbeelden van begin tot eind zijn al genoeg. Daarna roep je bestaande subagents eerst aan als tool, voeg je nauw verwante specialisten samen, en zet je ze één voor één om naar skills of MCP-tools. Na elke stap vergelijk je met en zonder. Draai elke taak meerdere keren, want een fout zat in een voorbeeld maar in één van twee runs.",
+    "Subagents blijven nuttig voor controle achteraf, voor werk dat parallel moet en voor aparte rechten. Voor een AI-assistent op dbt-metadata betekent dit: begin met één agent en een paar smalle datatools, het artikel noemt er 4 à 5. Boven de 30 à 50 tooldefinities kiest een model volgens Anthropic slechter."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 22 oktober 2026 door Diane Sarkis (Claude Platform, categorie best practices).",
+    "Bij verschillende enterprise-klanten presteerde één agent met skills vaak beter dan een ontwerp met één grote prompt of met subagents, tegen lagere kosten en latentie.",
+    "Eén klant zag een ongeveer twee keer snellere looptijd na de overstap naar één lus.",
+    "De systeemprompt van Claude Code is voor geavanceerdere modellen met meer dan 80% ingekort.",
+    "Advies: begin met een eval-set van tien golden examples; boven 30 à 50 tooldefinities daalt de toolkeuze doorgaans.",
+    "Anthropic biedt een migratiekit op GitHub (anthropics/single-agent-loop-kit) met de skills build-eval, prompt-audit, hillclimb en cost-optimize."
+  ],
+  "personal_relevance": "Voor je AI-contextlaag op dbt en Databricks is dit een duidelijke ontwerpkeuze: start met één agent en smalle tools, niet met een stelsel van subagents.",
+  "experiment": "Schrijf tien vragen met een bekend goed antwoord over een openbare of verzonnen dbt-demo (bijv. jaffle_shop). Laat Claude Code ze beantwoorden met één skill die de manifest.json leest, draai elke vraag twee keer en tel hoe vaak het antwoord klopt.",
+  "limitations": [
+    "De resultaten komen van Anthropic-klanten en zijn niet openbaar te controleren; er staan geen benchmarks of code in het stuk.",
+    "Anthropic verkoopt zelf het platform waarvoor dit advies geldt.",
+    "Bij taken die echt parallel moeten of aparte rechten nodig hebben, blijven subagents volgens het artikel de betere keuze."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {"label": "Origineel artikel", "url": "https://claude.com/blog/building-agents-when-to-fold-subagents-into-your-main-agent-loop"}
+  ],
+  "topics": ["ai_agents_rag", "ai_context_engineering", "claude_ai_development", "ai_evaluation_observability"],
+  "quality": {"depth": 0.7, "practicality": 0.7, "novelty": 0.65},
+  "development_key": "single-agent-loop-vs-subagents-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {"score": 0.75, "why": "Gaat over het harnas rond het model, zoals je duimen voor dbt Wizard en de proef van dbt Labs."},
+  "terms": [
+    {"term": "subagents", "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."},
+    {"term": "skills", "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."},
+    {"term": "progressive disclosure", "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."},
+    {"term": "evals", "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."},
+    {"term": "contextvenster", "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-04T03:45:00Z",
+  "prompt_version": "taak-v2"
+}
