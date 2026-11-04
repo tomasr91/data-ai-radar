@@ -69,5 +69,10 @@
       "term": "Lakebase",
       "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
     }
-  ]
+  ],
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.5,
+    "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
+  }
 }

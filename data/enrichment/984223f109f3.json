@@ -104,5 +104,10 @@
       ]
     },
     "note": "Verzonnen data, gedraaid in DuckDB. Dit bouwt alleen de controle op letterlijke waarden na; ProvenanceGuard gebruikt daarnaast embeddings en een NLI-model."
+  },
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.6,
+    "why": "Controle van agentantwoorden; past bij je interesse in evals, maar zonder dbt-koppeling."
   }
 }

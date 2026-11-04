@@ -28,32 +28,95 @@
   ],
   "availability_status": "preview",
   "official_docs": [
-    {"label": "Claude OpenTelemetry-gids", "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry"},
-    {"label": "Traces opslaan in Unity Catalog", "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/trace-unity-catalog"},
-    {"label": "Issues detecteren in traces", "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/observe-with-traces/analyze-traces"},
-    {"label": "Zerobus OpenTelemetry instellen", "url": "https://docs.databricks.com/aws/en/ingestion/opentelemetry/configure"},
-    {"label": "MLflow-blog: Claude-agents tracen via OpenTelemetry", "url": "https://mlflow.org/blog/claude-otel-tracing"}
+    {
+      "label": "Claude OpenTelemetry-gids",
+      "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry"
+    },
+    {
+      "label": "Traces opslaan in Unity Catalog",
+      "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/trace-unity-catalog"
+    },
+    {
+      "label": "Issues detecteren in traces",
+      "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/observe-with-traces/analyze-traces"
+    },
+    {
+      "label": "Zerobus OpenTelemetry instellen",
+      "url": "https://docs.databricks.com/aws/en/ingestion/opentelemetry/configure"
+    },
+    {
+      "label": "MLflow-blog: Claude-agents tracen via OpenTelemetry",
+      "url": "https://mlflow.org/blog/claude-otel-tracing"
+    }
   ],
-  "topics": ["ai_evaluation_observability", "ai_on_data_platform", "claude_ai_development", "metadata_lineage_catalogs"],
-  "quality": {"depth": 0.6, "practicality": 0.75, "novelty": 0.7},
+  "topics": [
+    "ai_evaluation_observability",
+    "ai_on_data_platform",
+    "claude_ai_development",
+    "metadata_lineage_catalogs"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.75,
+    "novelty": 0.7
+  },
   "development_key": "claude-otel-tracing-mlflow-nov-2026",
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws",
   "soort": "aankondiging",
-  "fit": {"score": 0.7, "why": "Databricks-functie rond controle van AI, zoals je duim bij 'een agent kan een feit aan de verkeerde bron toeschrijven'."},
+  "fit": {
+    "score": 0.7,
+    "why": "Databricks-functie voor AI-agents, in de lijn van je duimen voor 'Databricks geeft AI-assistenten zorgkennis mee'."
+  },
   "terms": [
-    {"term": "span", "explanation": "Eén stap in een spoor (trace): bijvoorbeeld één modelaanroep of één toolaanroep, met begin, eind en details."},
-    {"term": "OTLP", "explanation": "OpenTelemetry Protocol: de afgesproken manier om sporen en meetgegevens te versturen, zodat elk systeem dat het ondersteunt ze kan ontvangen."},
-    {"term": "Zerobus Ingest", "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."},
-    {"term": "MLflow", "explanation": "Een open-source platform, ingebouwd in Databricks, om AI-modellen en agents te volgen, te testen en te beheren."},
-    {"term": "review queue", "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was."}
+    {
+      "term": "span",
+      "explanation": "Eén stap in een spoor (trace): bijvoorbeeld één modelaanroep of één toolaanroep, met begin, eind en details."
+    },
+    {
+      "term": "OTLP",
+      "explanation": "OpenTelemetry Protocol: de afgesproken manier om sporen en meetgegevens te versturen, zodat elk systeem dat het ondersteunt ze kan ontvangen."
+    },
+    {
+      "term": "Zerobus Ingest",
+      "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
+    },
+    {
+      "term": "MLflow",
+      "explanation": "Een open-source platform, ingebouwd in Databricks, om AI-modellen en agents te volgen, te testen en te beheren."
+    },
+    {
+      "term": "review queue",
+      "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was."
+    }
   ],
   "showcase": {
     "caption": "Omdat de sporen in tabellen staan, vind je met gewone SQL agentruns die dezelfde tool steeds opnieuw aanroepen, een van de problemen die het artikel noemt.",
     "language": "sql",
     "code": "SELECT trace_id, tool,\n       COUNT(*)     AS aantal,\n       SUM(duur_ms) AS totaal_ms\nFROM spans\nWHERE soort = 'tool_call'\nGROUP BY trace_id, tool\nHAVING COUNT(*) > 1\nORDER BY trace_id, tool;",
-    "result": {"columns": ["trace_id", "tool", "aantal", "totaal_ms"], "rows": [["run-1", "lees_bestand", 2, 175], ["run-2", "zoek_documentatie", 3, 913]]},
+    "result": {
+      "columns": [
+        "trace_id",
+        "tool",
+        "aantal",
+        "totaal_ms"
+      ],
+      "rows": [
+        [
+          "run-1",
+          "lees_bestand",
+          2,
+          175
+        ],
+        [
+          "run-2",
+          "zoek_documentatie",
+          3,
+          913
+        ]
+      ]
+    },
     "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; de echte kolomnamen van de spans-tabel in Unity Catalog staan in de Databricks-documentatie."
   },
   "processed_by": "Claude (geplande taak)",

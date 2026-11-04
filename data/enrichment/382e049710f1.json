@@ -110,5 +110,10 @@
       ]
     },
     "note": "Verzonnen data, echt uitgevoerd in DuckDB. Zo werkt het idee in gewone SQL; de notatie in een metric view (YAML) staat in de documentatie over window measures."
+  },
+  "soort": "release",
+  "fit": {
+    "score": 0.7,
+    "why": "Metric views in Unity Catalog, zoals je duim bij 'Metric views leggen nu vast hoe ze koppelen'."
   }
 }
