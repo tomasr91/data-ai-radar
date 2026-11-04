@@ -49,5 +49,15 @@
   "fit": {
     "score": 0.45,
     "why": "Nieuw model en prijzen; je duimen gaan meer over hoe je AI inzet dan over modellen."
-  }
+  },
+  "terms": [
+    {
+      "term": "tokens",
+      "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    },
+    {
+      "term": "reasoning",
+      "explanation": "Het model denkt eerst in tussenstappen na voordat het antwoordt. Dat kost extra tokens, maar helpt bij lastige vragen."
+    }
+  ]
 }

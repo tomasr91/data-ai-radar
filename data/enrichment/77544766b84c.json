@@ -48,5 +48,23 @@
   "fit": {
     "score": 0.65,
     "why": "Onderbouwde mening over evals, zoals je duim bij Noonan; nu over Claude Code."
-  }
+  },
+  "terms": [
+    {
+      "term": "evals",
+      "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    },
+    {
+      "term": "hill-climb",
+      "explanation": "Een commando dat je toepassing stap voor stap aanpast en na elke stap met de evals meet of het beter werd."
+    },
+    {
+      "term": "foutanalyse",
+      "explanation": "Zelf een reeks echte gesprekken of uitkomsten lezen en noteren wat er misgaat, voordat je toetsen vastlegt."
+    },
+    {
+      "term": "beoordelaar",
+      "explanation": "Code of een taalmodel dat per antwoord beslist of het goed of fout is; de kern van een eval."
+    }
+  ]
 }

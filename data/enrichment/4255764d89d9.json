@@ -84,5 +84,27 @@
   "fit": {
     "score": 0.55,
     "why": "AI-functie in Databricks SQL; je duimen gaan vaker over AI-context dan over vectorzoeken."
-  }
+  },
+  "terms": [
+    {
+      "term": "NEAREST BY",
+      "explanation": "Een SQL-join in Databricks die bij elke rij de k meest gelijkende rijen uit een andere tabel zoekt, op basis van vectoren."
+    },
+    {
+      "term": "embeddings",
+      "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen."
+    },
+    {
+      "term": "top-k",
+      "explanation": "De k beste resultaten, bijvoorbeeld de 5 rijen die het meest op een zoekvraag lijken."
+    },
+    {
+      "term": "entity resolution",
+      "explanation": "Records herkennen die over hetzelfde ding gaan, ook als ze net anders gespeld of opgeslagen zijn."
+    },
+    {
+      "term": "LTS",
+      "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    }
+  ]
 }

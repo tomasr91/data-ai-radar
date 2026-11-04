@@ -54,5 +54,27 @@
   "fit": {
     "score": 0.75,
     "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
-  }
+  },
+  "terms": [
+    {
+      "term": "ingestion time",
+      "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
+    },
+    {
+      "term": "queryplan",
+      "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
+    },
+    {
+      "term": "upstream",
+      "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
+    },
+    {
+      "term": "dbt-manifest",
+      "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
+    },
+    {
+      "term": "RFID",
+      "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
+    }
+  ]
 }

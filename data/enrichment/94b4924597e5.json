@@ -72,5 +72,27 @@
   "fit": {
     "score": 0.7,
     "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
-  }
+  },
+  "terms": [
+    {
+      "term": "Declarative Automation Bundles",
+      "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    },
+    {
+      "term": "serverless compute",
+      "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    },
+    {
+      "term": "pyproject.toml",
+      "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
+    },
+    {
+      "term": "Lakeflow Jobs",
+      "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+      "term": "metric views",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+  ]
 }

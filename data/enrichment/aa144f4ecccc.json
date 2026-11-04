@@ -51,5 +51,27 @@
   "fit": {
     "score": 0.5,
     "why": "Power BI op Databricks; je duimen gaan zelden over rapportageprestaties."
-  }
+  },
+  "terms": [
+    {
+      "term": "Direct Lake",
+      "explanation": "Een opslagmodus in Power BI die Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren."
+    },
+    {
+      "term": "OneLake",
+      "explanation": "De centrale dataopslag van Microsoft Fabric, waarin tabellen als Delta-bestanden staan."
+    },
+    {
+      "term": "DirectQuery",
+      "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
+    },
+    {
+      "term": "composite model",
+      "explanation": "Een Power BI-model dat opslagmodi mengt: sommige tabellen zijn geïmporteerd, andere worden via DirectQuery opgevraagd."
+    },
+    {
+      "term": "Dual-modus",
+      "explanation": "Een instelling voor een tabel in Power BI waardoor die zowel als import als via DirectQuery kan werken, afhankelijk van de query."
+    }
+  ]
 }

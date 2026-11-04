@@ -56,5 +56,19 @@
   "fit": {
     "score": 0.85,
     "why": "Je gaf dit praktische AI-in-dbt-stuk een duim omhoog."
-  }
+  },
+  "terms": [
+    {
+      "term": "full refresh",
+      "explanation": "Een dbt-run die een incrementeel model helemaal opnieuw opbouwt in plaats van alleen nieuwe rijen toe te voegen."
+    },
+    {
+      "term": "structured output",
+      "explanation": "Het taalmodel antwoordt in een vast formaat, zoals JSON met vaste velden, zodat je het antwoord direct in een tabel kunt gebruiken."
+    },
+    {
+      "term": "BigQuery",
+      "explanation": "Het datawarehouse van Google Cloud."
+    }
+  ]
 }

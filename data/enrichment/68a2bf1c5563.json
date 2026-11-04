@@ -66,5 +66,27 @@
   "fit": {
     "score": 0.7,
     "why": "Vervolg op dbt v2, waar je een duim omhoog bij gaf."
-  }
+  },
+  "terms": [
+    {
+      "term": "Fusion-engine",
+      "explanation": "De nieuwe motor van dbt die je SQL zelf begrijpt; sinds dbt v2 heet die gewoon 'dbt'."
+    },
+    {
+      "term": "linting",
+      "explanation": "Automatisch je code nalopen op stijlregels en veelgemaakte fouten, zonder hem uit te voeren."
+    },
+    {
+      "term": "LSP",
+      "explanation": "Language Server Protocol: een standaard waarmee een editor aanvulling, foutmeldingen en uitleg krijgt van een taalserver."
+    },
+    {
+      "term": "Apache 2.0",
+      "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven."
+    },
+    {
+      "term": "dbt Mesh",
+      "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
+    }
+  ]
 }

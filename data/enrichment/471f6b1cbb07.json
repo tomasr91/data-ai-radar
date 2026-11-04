@@ -55,5 +55,27 @@
   "fit": {
     "score": 0.65,
     "why": "Context engineering voor agents, maar zonder dbt-koppeling zoals in je duimen."
-  }
+  },
+  "terms": [
+    {
+      "term": "glob",
+      "explanation": "Een zoekpatroon voor bestandsnamen, zoals *.sql voor alle SQL-bestanden in een map."
+    },
+    {
+      "term": "grep",
+      "explanation": "Een commando dat in de inhoud van bestanden zoekt naar een woord of patroon, zonder ze helemaal te openen."
+    },
+    {
+      "term": "vectorstore",
+      "explanation": "Een database die embeddings bewaart, zodat je teksten kunt terugvinden op betekenis in plaats van op exacte woorden."
+    },
+    {
+      "term": "RAG",
+      "explanation": "Retrieval-augmented generation: een AI zoekt eerst relevante tekst op en baseert daar zijn antwoord op."
+    },
+    {
+      "term": "prompt-injectie",
+      "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf."
+    }
+  ]
 }

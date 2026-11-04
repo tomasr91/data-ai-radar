@@ -83,5 +83,27 @@
   "fit": {
     "score": 0.6,
     "why": "Databricks-releaseoverzicht met functies uit je stack; lijkt op je duim bij de metric views-release."
-  }
+  },
+  "terms": [
+    {
+      "term": "ADBC",
+      "explanation": "Arrow Database Connectivity: een standaard om met databases te praten die data in kolomvorm doorgeeft, in plaats van rij voor rij."
+    },
+    {
+      "term": "legacy",
+      "explanation": "Een oudere functie die nog werkt, maar niet verder ontwikkeld wordt. Voor nieuw werk kies je beter iets anders."
+    },
+    {
+      "term": "Governed tags",
+      "explanation": "Labels in Unity Catalog met vaste toegestane waarden, bijvoorbeeld voor gevoelige data, die je gebruikt voor beleid en rechten."
+    },
+    {
+      "term": "Data Classification API",
+      "explanation": "Een dienst in Databricks die kolommen doorzoekt en aangeeft welke soort gevoelige data erin lijkt te staan."
+    },
+    {
+      "term": "GA",
+      "explanation": "Algemeen beschikbaar (general availability): de functie is af en wordt volledig ondersteund, anders dan een preview of bèta."
+    }
+  ]
 }

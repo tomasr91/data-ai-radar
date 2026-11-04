@@ -56,5 +56,15 @@
   "fit": {
     "score": 0.65,
     "why": "AI vanuit SQL op Databricks, zoals je duim bij 'AI in je dbt-model'."
-  }
+  },
+  "terms": [
+    {
+      "term": "ai_query",
+      "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren."
+    },
+    {
+      "term": "GPU-endpoint",
+      "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen."
+    }
+  ]
 }

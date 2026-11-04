@@ -92,5 +92,27 @@
   "fit": {
     "score": 0.75,
     "why": "Het harnas maakt het verschil, net als bij dbt Wizard dat je een duim met 'meer hiervan' gaf."
-  }
+  },
+  "terms": [
+    {
+      "term": "harness",
+      "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+      "term": "middleware",
+      "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat."
+    },
+    {
+      "term": "Stop-hook",
+      "explanation": "Een hook in Claude Code die draait op het moment dat Claude wil stoppen, bijvoorbeeld om eerst een controle af te dwingen."
+    },
+    {
+      "term": "trace",
+      "explanation": "Het vastgelegde spoor van wat een agent deed: welke tools hij aanriep en wat die teruggaven."
+    },
+    {
+      "term": "evals",
+      "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    }
+  ]
 }

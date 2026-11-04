@@ -51,5 +51,27 @@
   "fit": {
     "score": 0.7,
     "why": "Claude Code-release, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
-  }
+  },
+  "terms": [
+    {
+      "term": "auto mode",
+      "explanation": "Een modus in Claude Code waarin een aparte controle tool-aanroepen beoordeelt, zodat je minder vaak handmatig toestemming hoeft te geven."
+    },
+    {
+      "term": "compaction",
+      "explanation": "Het samenvatten van een lang gesprek zodat het contextvenster weer ruimte heeft, terwijl de kern bewaard blijft."
+    },
+    {
+      "term": "OpenTelemetry",
+      "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    },
+    {
+      "term": "sandbox",
+      "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+      "term": "Bedrock",
+      "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
+    }
+  ]
 }
