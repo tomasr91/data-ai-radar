@@ -39,6 +39,8 @@ PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
 QUEUE_MAX = 15         # max. aantal artikelen op de werklijst voor Claude
 QUEUE_MIN_SCORE = 40   # voorlopige score die een onverwerkt artikel minstens moet hebben
+QUEUE_MAX_AGE_DAYS = 14   # alleen recente artikelen op de werklijst: een nieuwe bron levert geen weken achterstand op (T, 4-11-2026)
+AREA_MAX_FACTOR = 1.5     # een gebied vult hooguit 1,5 x zijn richtwaarde van de feed (T, 4-11-2026)
 
 
 def update_archive(items, now):
@@ -143,6 +145,30 @@ def area_of(article: dict, conf) -> str:
         if main in a.get("topics", []):
             return a["id"]
     return "overig"
+
+
+def _age_days(a, now) -> float:
+    try:
+        return (now - datetime.fromisoformat(str(a.get("published_at")).replace("Z", "+00:00"))).days
+    except ValueError:
+        return 0.0   # geen datum: niet tegenhouden
+
+
+def area_cap(shown: list, conf, votes: dict) -> list:
+    """Hooguit AREA_MAX_FACTOR x de richtwaarde per gebied. De laagst scorende artikelen boven dat
+    maximum vallen af (decision area_cap); wat je 👍 gaf blijft altijd staan."""
+    n = len(shown)
+    keep, count = [], Counter()
+    share = {x["id"]: x.get("target_share") for x in conf.interests.get("interest_areas", [])}
+    for a in sorted(shown, key=lambda a: -a["relevance_score"]):
+        ar = area_of(a, conf)
+        mx = math.ceil(AREA_MAX_FACTOR * share[ar] * n) if share.get(ar) else None
+        if mx is not None and count[ar] >= mx and votes.get(a["id"], {}).get("v") != 1:
+            a["decision"] = "area_cap"
+            continue
+        count[ar] += 1
+        keep.append(a)
+    return keep
 
 
 def area_minimum(arts: list, shown: list, conf, now) -> list:
@@ -340,7 +366,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     bar = conf.scoring.get("min_relevance_score", 0.6) * 100
     queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, not (area_of(a, conf) in under and a["relevance_score"] >= bar),
                                                     -a["score_parts"]["topic"], -a["relevance_score"]))
-             if a["processing_status"] != "enriched" and a["id"] not in skip
+             if a["processing_status"] != "enriched" and a["id"] not in skip and (a["id"] in digest_ids or _age_days(a, now) <= QUEUE_MAX_AGE_DAYS)
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({
         "generated_at": _iso(now),
@@ -381,6 +407,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         shown = [a for a in shown if a["decision"] != "source_cap"]
     # Ondergrens per gebied (interest_areas.min_articles): aanvullen met de best scorende uitgelegde
     # artikelen van de laatste 14 dagen uit dat gebied, ook net onder de drempel of boven het maximum per bron.
+    shown = area_cap(shown, conf, fb_votes)
     shown += area_minimum(arts, shown, conf, now)
     shown += follow_minimum(arts, shown, conf, now)
     write_to_tag(shown)

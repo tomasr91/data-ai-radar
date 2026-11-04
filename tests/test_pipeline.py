@@ -693,6 +693,26 @@ class TestRelevantNotFun(unittest.TestCase):
         self.assertEqual(r["decision"], "follow_minimum")
 
 
+class TestBalance(unittest.TestCase):
+    """Maximum per gebied en alleen recente artikelen op de werklijst (T, 4-11-2026)."""
+
+    def test_area_cap_and_age(self):
+        from pipeline import build
+        conf = cfg.load()
+        now = datetime(2026, 11, 4, tzinfo=timezone.utc)
+        mk = lambda i, t, sc: {"id": f"{i:012x}", "topics": [t], "relevance_score": sc, "decision": "included", "source_id": "x"}
+        shown = [mk(i, "ai_agents_rag", 90 - i) for i in range(16)] + [mk(100 + i, "dbt_analytics_engineering", 70) for i in range(4)]
+        shown[15]["id"] = "liked0000000"
+        kept = build.area_cap(list(shown), conf, {"liked0000000": {"v": 1}})
+        agents = [a for a in kept if a["topics"] == ["ai_agents_rag"]]
+        self.assertEqual(len(agents), 9 + 1)                     # 1,5 x 30% van 20 = 9, plus het artikel met 👍
+        self.assertIn("liked0000000", [a["id"] for a in agents])
+        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 6)
+        self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 4)
+        self.assertGreater(build._age_days({"published_at": "2026-10-06T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
+        self.assertLessEqual(build._age_days({"published_at": "2026-10-28T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends
