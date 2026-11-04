@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:26:47.896462Z",
+ "generated_at": "2026-11-04T05:14:03.483485Z",
  "mode": "live",
  "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-04T04:05:00Z",
- "last_successful_update": "2026-11-04T04:26:47.896462Z",
+ "last_successful_update": "2026-11-04T05:14:03.483485Z",
  "groups": [
   {
    "id": "dbt",
@@ -51,7 +51,7 @@
   },
   "databricks_data_engineering": {
    "name": "Databricks en data engineering",
-   "priority": 5,
+   "priority": 4,
    "group": "databricks"
   },
   "ai_on_data_platform": {
@@ -81,7 +81,7 @@
   },
   "claude_ai_development": {
    "name": "Claude en AI-ondersteunde ontwikkeling",
-   "priority": 4,
+   "priority": 5,
    "group": "claude"
   },
   "data_quality_observability": {
@@ -96,13 +96,13 @@
   },
   "cicd_data_deployment": {
    "name": "Release pipelines, bundles en uitrol",
-   "priority": 5,
+   "priority": 4,
    "group": "overig",
    "learning": true
   },
   "data_ingestion": {
    "name": "Data ingestion",
-   "priority": 5,
+   "priority": 4,
    "group": "databricks",
    "learning": true
   },
@@ -154,7 +154,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-04T04:26:47.955995Z"
+   "checked_at": "2026-11-04T05:14:03.528850Z"
   },
   {
    "id": "dbt_core_releases",
@@ -167,7 +167,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-04T04:26:48.183958Z"
+   "checked_at": "2026-11-04T05:14:03.970707Z"
   },
   {
    "id": "claude_code_releases",
@@ -180,7 +180,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-04T04:26:48.567294Z"
+   "checked_at": "2026-11-04T05:14:04.824612Z"
   },
   {
    "id": "anthropic_engineering",
@@ -193,7 +193,7 @@
    "status": "ok",
    "items": 27,
    "message": "27 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-04T04:26:48.784040Z"
+   "checked_at": "2026-11-04T05:14:05.369858Z"
   },
   {
    "id": "claude_blog",
@@ -206,7 +206,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-04T04:26:48.799472Z"
+   "checked_at": "2026-11-04T05:14:05.512209Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -219,7 +219,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-04T04:26:48.820741Z"
+   "checked_at": "2026-11-04T05:14:05.685776Z"
   },
   {
    "id": "databricks_blog",
@@ -232,7 +232,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-04T04:26:48.900488Z"
+   "checked_at": "2026-11-04T05:14:05.839411Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -245,7 +245,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-04T04:26:48.943630Z"
+   "checked_at": "2026-11-04T05:14:05.960859Z"
   },
   {
    "id": "azure_blog",
@@ -258,7 +258,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-04T04:26:48.991486Z"
+   "checked_at": "2026-11-04T05:14:06.059903Z"
   },
   {
    "id": "powerbi_blog",
@@ -271,7 +271,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-04T04:26:49.049056Z"
+   "checked_at": "2026-11-04T05:14:06.402609Z"
   },
   {
    "id": "fabric_blog",
@@ -284,7 +284,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-04T04:26:49.735831Z"
+   "checked_at": "2026-11-04T05:14:07.210750Z"
   },
   {
    "id": "sqlbi",
@@ -297,7 +297,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-04T04:26:50.302038Z"
+   "checked_at": "2026-11-04T05:14:07.918768Z"
   },
   {
    "id": "huggingface_blog",
@@ -310,7 +310,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-04T04:26:50.637178Z"
+   "checked_at": "2026-11-04T05:14:08.152836Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -323,7 +323,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-04T04:26:50.716625Z"
+   "checked_at": "2026-11-04T05:14:08.274490Z"
   },
   {
    "id": "simon_whiteley",
@@ -336,7 +336,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-04T04:26:50.863706Z"
+   "checked_at": "2026-11-04T05:14:08.592497Z"
   },
   {
    "id": "hamel_husain",
@@ -349,7 +349,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-04T04:26:51.044206Z"
+   "checked_at": "2026-11-04T05:14:08.910000Z"
   },
   {
    "id": "langchain_blog",
@@ -362,7 +362,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-04T04:26:51.350097Z"
+   "checked_at": "2026-11-04T05:14:09.186234Z"
   },
   {
    "id": "chip_huyen",
@@ -375,7 +375,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-04T04:26:51.445081Z"
+   "checked_at": "2026-11-04T05:14:09.383387Z"
   },
   {
    "id": "simon_willison",
@@ -388,7 +388,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-04T04:26:51.575240Z"
+   "checked_at": "2026-11-04T05:14:09.859870Z"
   },
   {
    "id": "chris_webb",
@@ -401,7 +401,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-04T04:26:51.657737Z"
+   "checked_at": "2026-11-04T05:14:10.006959Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -414,15 +414,15 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-04T04:26:51.763858Z"
+   "checked_at": "2026-11-04T05:14:10.205306Z"
   }
  ],
  "daily_top": [
   "c33e4a9941ba",
   "450468c3f304",
-  "67b79f31be0e",
+  "94b4924597e5",
   "f5757f520b3e",
-  "e7bf67f656d3"
+  "d2e9b967064a"
  ],
  "articles": [
   {
@@ -568,14 +568,14 @@
    ],
    "availability_status": "beschikbaar",
    "topics": [
-    "databricks_data_engineering",
     "ai_on_data_platform",
-    "data_architecture_modeling"
+    "data_architecture_modeling",
+    "databricks_data_engineering"
    ],
    "groups": [
-    "databricks",
     "ai_context",
-    "architectuur"
+    "architectuur",
+    "databricks"
    ],
    "relevance_score": 100,
    "score_parts": {
@@ -583,7 +583,7 @@
     "recency": 0.57,
     "source": 0.85,
     "quality": 0.8,
-    "feedback": 0.63,
+    "feedback": 0.61,
     "fit": 0.35
    },
    "decision": "included",
@@ -619,6 +619,94 @@
    "fit": {
     "score": 0.85,
     "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
+   }
+  },
+  {
+   "id": "94b4924597e5",
+   "title": "Azure Databricks: wat is er nieuw in week 43",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-25T23:59:59Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
+   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
+   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
+   "limitations": [
+    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
+    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
+   ],
+   "availability_status": "aangekondigd",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+     "label": "What's coming? (Genie Ontology)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
+    },
+    {
+     "label": "Genie Code task for jobs",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
+    },
+    {
+     "label": "Shared Serverless voor Git-mappen en bundels",
+     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 100,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.63,
+    "source": 1.0,
+    "quality": 0.68,
+    "feedback": 0.59,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T16:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
+   "story": [
+    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
+    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
+    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
+    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
+   ],
+   "key_facts": [
+    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
+    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
+    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
+    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
+    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
+    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
+    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
+    "language": "text",
+    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
+    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
+   },
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
    }
   },
   {
@@ -1501,15 +1589,15 @@
     }
    ],
    "topics": [
+    "claude_ai_development",
     "dbt_analytics_engineering",
     "ai_context_engineering",
-    "claude_ai_development",
     "ai_evaluation_observability"
    ],
    "groups": [
+    "claude",
     "dbt",
     "ai_context",
-    "claude",
     "agents"
    ],
    "relevance_score": 100,
@@ -1518,7 +1606,7 @@
     "recency": 0.77,
     "source": 0.68,
     "quality": 0.8,
-    "feedback": 0.86,
+    "feedback": 0.7,
     "fit": 0.4
    },
    "decision": "included",
@@ -1605,15 +1693,15 @@
     }
    ],
    "topics": [
-    "databricks_data_engineering",
-    "data_ingestion",
     "ai_on_data_platform",
-    "ai_agents_rag"
+    "ai_agents_rag",
+    "databricks_data_engineering",
+    "data_ingestion"
    ],
    "groups": [
-    "databricks",
     "ai_context",
-    "agents"
+    "agents",
+    "databricks"
    ],
    "relevance_score": 100,
    "score_parts": {
@@ -1621,7 +1709,7 @@
     "recency": 0.9,
     "source": 1.0,
     "quality": 0.67,
-    "feedback": 0.34,
+    "feedback": 0.5,
     "fit": 0.2
    },
    "decision": "included",
@@ -1671,7 +1759,6 @@
      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
     }
    ],
-   "learning": "Data ingestion",
    "soort": "release",
    "fit": {
     "score": 0.7,
@@ -1718,14 +1805,14 @@
    ],
    "topics": [
     "ai_on_data_platform",
-    "ai_evaluation_observability",
     "claude_ai_development",
+    "ai_evaluation_observability",
     "metadata_lineage_catalogs"
    ],
    "groups": [
     "ai_context",
-    "agents",
     "claude",
+    "agents",
     "kwaliteit"
    ],
    "relevance_score": 100,
@@ -1734,7 +1821,7 @@
     "recency": 0.98,
     "source": 0.85,
     "quality": 0.68,
-    "feedback": 0.56,
+    "feedback": 0.5,
     "fit": 0.2
    },
    "decision": "included",
@@ -1823,94 +1910,6 @@
    "fit": {
     "score": 0.7,
     "why": "Databricks-functie voor AI-agents, in de lijn van je duimen voor 'Databricks geeft AI-assistenten zorgkennis mee'."
-   }
-  },
-  {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
-   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
-   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
-   "limitations": [
-    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
-    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "What's coming? (Genie Ontology)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
-    },
-    {
-     "label": "Genie Code task for jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
-    },
-    {
-     "label": "Shared Serverless voor Git-mappen en bundels",
-     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "databricks",
-    "ai_context",
-    "overig"
-   ],
-   "relevance_score": 99,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.63,
-    "source": 1.0,
-    "quality": 0.68,
-    "feedback": 0.44,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
-   "story": [
-    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
-    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
-    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
-    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
-   ],
-   "key_facts": [
-    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
-    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
-    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
-    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
-    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
-    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
-    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
-    "language": "text",
-    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
-    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
-   },
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
    }
   },
   {
@@ -2043,7 +2042,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.51,
     "quality": 0.65,
     "feedback": 0.78,
@@ -2199,12 +2198,12 @@
     }
    ],
    "topics": [
-    "ai_context_engineering",
-    "claude_ai_development"
+    "claude_ai_development",
+    "ai_context_engineering"
    ],
    "groups": [
-    "ai_context",
-    "claude"
+    "claude",
+    "ai_context"
    ],
    "relevance_score": 98,
    "score_parts": {
@@ -2293,14 +2292,14 @@
    "topics": [
     "dbt_analytics_engineering",
     "databricks_data_engineering",
-    "cicd_data_deployment",
-    "data_quality_observability"
+    "data_quality_observability",
+    "cicd_data_deployment"
    ],
    "groups": [
     "dbt",
     "databricks",
-    "overig",
-    "kwaliteit"
+    "kwaliteit",
+    "overig"
    ],
    "relevance_score": 97,
    "score_parts": {
@@ -2416,99 +2415,6 @@
    }
   },
   {
-   "id": "23d3cd62d490",
-   "title": "Smarter cost controls for serverless",
-   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T15:00:00Z",
-   "fetched_at": "2026-10-29T16:25:27.740167Z",
-   "summary": "Databricks geeft serverless compute objecten die je kunt taggen, afschermen en begrenzen. Kosten zie je per tag terug in system.billing.usage, en een job krijgt een maximale grootte.",
-   "personal_relevance": "Als je dbt of notebooks op serverless draait, zie je hiermee per team of laag wat het kost en kun je uitschieters begrenzen.",
-   "experiment": "Schrijf een query op system.billing.usage in een oefen- of testwerkruimte die de serverless kosten van de afgelopen 30 dagen per tag en per product optelt, en zet er een SQL-alert op.",
-   "limitations": [
-    "Tags en rate limits zijn Beta.",
-    "De blog bevat geen configuratievoorbeelden; de details staan in de documentatie.",
-    "Een te laag plafond maakt nachtelijke runs trager; meet eerst wat ze nu gebruiken."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Manage serverless compute (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/manage-serverless-compute"
-    },
-    {
-     "label": "Serverless billing system tables (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/serverless-billing"
-    },
-    {
-     "label": "Budgets (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/budgets"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "databricks",
-    "kwaliteit"
-   ],
-   "relevance_score": 96,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.76,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": 0.41,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Serverless kosten per team: tags, budgetten en een plafond per job",
-   "story": [
-    "Bij serverless compute start je geen cluster meer. Daardoor was het lastig te zien wie wat kost, en om te begrenzen. Databricks werkt dat nu bij met serverless compute-objecten. Er is een standaardobject voor notebooks en Databricks Connect, en één voor jobs en pipelines.",
-    "Zo'n object werkt als een kostenplaats met een slot erop. Je zet er één keer een tag op, en elke DBU die erop draait, draagt die tag mee naar de facturatie. Met de rechten Can Use en Can Manage bepaal je wie het mag gebruiken. Haal je 'All Users' weg en zet je er een groep op, dan zien anderen serverless grijs in hun notebook.",
-    "Daarnaast kun je de snelheid van uitgeven begrenzen (rate limits). Dat doe je met maten S, M, L en XL; voor notebooks en jobs is dat een plafond voor het opschalen. In system.billing.usage zie je de kosten per gebruiker, product en tag. Budgetten in de accountconsole mailen je als een drempel wordt overschreden.",
-    "Voor nachtelijke dbt-runs op serverless kan dit helpen om per laag of per team te zien wat het kost. Let op de status: tags en rate limits zijn Beta, en gedeelde budgetten voor interactief werk komen nog."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 29 oktober 2026: het serverless-gebruik bij Databricks groeide het afgelopen jaar meer dan drie keer.",
-    "Serverless compute-tags (Beta): één tag op een serverless compute-object, en elke DBU draagt die tag mee naar de facturatie.",
-    "Serverless Compute Access Controls (algemeen beschikbaar): rechten Can Use en Can Manage; elke gebruiker begint met Can Use.",
-    "Rate limits (Beta, via de preview-instellingen): maten S, M, L en XL; voor notebooks en jobs een plafond voor autoscaling.",
-    "system.billing.usage splitst serverless DBU's uit per gebruiker, product en tag; budgetten met e-mailwaarschuwing zijn algemeen beschikbaar.",
-    "Gedeelde budgetten voor interactief werk, met een maximum per sessie, komen binnenkort."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "DBU",
-     "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent."
-    },
-    {
-     "term": "rate limits",
-     "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen."
-    },
-    {
-     "term": "system.billing.usage",
-     "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Praktisch Databricks-kostenstuk, buiten de AI-hoek van je meeste duimen."
-   }
-  },
-  {
    "id": "b380b17e60f1",
    "title": "Lakebase branching for CI/CD: lessons from 100 PR databases",
    "url": "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases",
@@ -2525,14 +2431,14 @@
    ],
    "availability_status": "onbekend",
    "topics": [
+    "ai_agents_rag",
     "cicd_data_deployment",
-    "databricks_data_engineering",
-    "ai_agents_rag"
+    "databricks_data_engineering"
    ],
    "groups": [
+    "agents",
     "overig",
-    "databricks",
-    "agents"
+    "databricks"
    ],
    "relevance_score": 96,
    "score_parts": {
@@ -2540,7 +2446,7 @@
     "recency": 0.85,
     "source": 0.85,
     "quality": 0.62,
-    "feedback": 0.53,
+    "feedback": 0.58,
     "fit": -0.05
    },
    "decision": "included",
@@ -2794,114 +2700,6 @@
    }
   },
   {
-   "id": "4cc09a1d9883",
-   "title": "Improving Deep Agents with harness engineering",
-   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
-   "source_id": "langchain_blog",
-   "published_at": "2026-10-13T19:56:07Z",
-   "date_note": "Het artikel zelf is gedateerd 17 februari 2026; de feed toont 13 oktober 2026, vermoedelijk een herpublicatie.",
-   "fetched_at": "2026-10-29T11:08:44.075994Z",
-   "summary": "LangChain verbeterde zijn codeeragent op Terminal Bench 2.0 van 52,8 naar 66,5 procent zonder het model te wisselen. Alleen de systeemprompt, de tools en haken rond de agent veranderden.",
-   "personal_relevance": "De lessen (zelfcontrole afdwingen, omgeving meegeven, traces lezen) passen direct op hoe je Claude Code bij dbt-werk inzet.",
-   "experiment": "Zet in een testproject een Stop-hook in Claude Code die dbt build op DuckDB draait met verzonnen data, en vergelijk een paar taken met en zonder die hook.",
-   "limitations": [
-    "Het artikel is van februari 2026; nieuwere modellen hebben sommige hulpmiddelen volgens de auteurs straks niet meer nodig.",
-    "Het gaat om één benchmark en één model; de auteurs waarschuwen zelf voor overfitting op de taken.",
-    "LangChain verkoopt LangSmith, het hulpmiddel dat in het verhaal centraal staat."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "deepagents-cli (GitHub)",
-     "url": "https://github.com/langchain-ai/deepagents/tree/main/libs/code"
-    },
-    {
-     "label": "Terminal Bench 2.0 leaderboard",
-     "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
-    },
-    {
-     "label": "LangChain middleware",
-     "url": "https://docs.langchain.com/oss/python/langchain/middleware/overview#the-agent-loop"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 94,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.51,
-    "quality": 0.65,
-    "feedback": 0.69,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5",
-   "story": [
-    "LangChain liet zijn codeeragent deepagents-cli dezelfde 89 taken van Terminal Bench 2.0 doen, steeds met hetzelfde model. Alleen de omgeving rond het model veranderde: de testomgeving (harness). De score ging van 52,8 naar 66,5 procent. Op de ranglijst klom de agent van net buiten de top 30 naar de top 5.",
-    "De belangrijkste fout was herkenbaar: de agent schreef een oplossing, las hem nog eens, vond hem goed en stopte. De oplossing was een vaste werkwijze in vier stappen: plannen, bouwen met tests, controleren tegen de opdracht, en herstellen. Een extra haak (middleware) houdt de agent vlak voor het stoppen tegen en vraagt om een controle. Dat lijkt op een Stop-hook in Claude Code.",
-    "Andere ingrepen: bij de start brengt een haak de mappen en beschikbare tools in kaart. De agent krijgt te horen dat programmatische tests zijn werk beoordelen. Een teller per bestand grijpt in als de agent hetzelfde bestand steeds opnieuw bewerkt, een 'rondje' van soms meer dan tien bijna gelijke wijzigingen. En de agent denkt het diepst bij plannen en controleren, minder bij het bouwen.",
-    "Hoe vonden ze die fouten? Elke stap van elke run staat in LangSmith als trace. Een eigen skill haalt die traces op, laat parallelle agents de fouten analyseren en vat de voorstellen samen. Dat is dezelfde foutanalyse als bij evals, maar dan op het gedrag van een agent.",
-    "Voor jou geldt de les ook buiten LangChain. Geef een agent een controle die hij zelf kan draaien, zoals dbt build of een test. Vertel hem hoe het werk beoordeeld wordt, en kijk in de logs waar hij vastloopt voordat je aan de prompt gaat sleutelen."
-   ],
-   "key_facts": [
-    "Auteur: Vivek Trivedy (LangChain); het artikel is gedateerd 17 februari 2026.",
-    "Benchmark: Terminal Bench 2.0 (89 taken); agent: deepagents-cli; model: gpt-5.2-codex, steeds hetzelfde.",
-    "Score van 52,8% naar 66,5% (+13,7 punten); van net buiten de top 30 naar de top 5.",
-    "Ingrepen: werkwijze met zelfcontrole, PreCompletionChecklistMiddleware, LocalContextMiddleware, tijdswaarschuwingen, LoopDetectionMiddleware en meer redeneertijd bij plannen en controleren.",
-    "Alleen op het hoogste redeneerniveau (xhigh) scoorde de agent 53,9%, vooral door time-outs; op high 63,6%.",
-    "Een testrun met Claude Opus 4.6 op een eerdere versie van de harness haalde 59,6%."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo vind je een 'rondje' in de stappen van een agent: tel per bestand hoe vaak de agent het bewerkte. Vaak hetzelfde bestand aanpassen is een teken dat hij vastzit.",
-    "language": "sql",
-    "code": "SELECT\n  doel AS bestand,\n  COUNT(*) AS bewerkingen,\n  COUNT(*) >= 4 AS mogelijk_rondje\nFROM stappen\nWHERE tool = 'Edit'\nGROUP BY doel\nORDER BY bewerkingen DESC;",
-    "result": {
-     "columns": [
-      "bestand",
-      "bewerkingen",
-      "mogelijk_rondje"
-     ],
-     "rows": [
-      [
-       "src/parser.py",
-       5,
-       true
-      ],
-      [
-       "tests/test_parser.py",
-       1,
-       false
-      ],
-      [
-       "README.md",
-       1,
-       false
-      ]
-     ]
-    },
-    "note": "Verzonnen trace van 12 stappen, echt uitgevoerd in DuckDB. Zo werkt het idee van LoopDetectionMiddleware in gewone SQL; LangChain doet het tijdens de run met een haak rond de toolaanroepen."
-   },
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.75,
-    "why": "Het harnas maakt het verschil, net als bij dbt Wizard dat je een duim met 'meer hiervan' gaf."
-   }
-  },
-  {
    "id": "f5c90621cdfb",
    "title": "New context engineering challenges in late 2026",
    "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026",
@@ -3061,6 +2859,181 @@
    }
   },
   {
+   "id": "72dc169275f9",
+   "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-10-25T23:59:59Z",
+   "date_note": "Weekoverzicht van releases tussen 19 en 23 oktober 2026.",
+   "fetched_at": "2026-10-29T10:59:44.882544Z",
+   "summary": "In week 43 kreeg Claude Code een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie. Ook gedragen skills zich anders na het samenvatten van een gesprek.",
+   "personal_relevance": "Als je Claude Code steeds meer zelfstandig laat werken, wil je weten waar het tegen grenzen aanloopt.",
+   "experiment": "Draai /auto-mode-setup in een openbaar oefenproject met dbt (bijv. jaffle_shop) en vergelijk daarna hoe vaak Claude nog om toestemming vraagt.",
+   "limitations": [
+    "De release notes van v2.1.304 en v2.1.309 waren op de overzichtspagina ingekort; niet elk detail is gelezen.",
+    "De meeste wijzigingen deze week zijn reparaties."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Code releases",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.63,
+    "source": 0.8,
+    "quality": 0.57,
+    "feedback": 0.32,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code leert je omgeving kennen voor de automatische modus",
+   "story": [
+    "Claude Code kreeg in week 43 zeven releases, met vooral veel reparaties. Drie veranderingen raken hoe je ermee werkt. De belangrijkste is /auto-mode-setup: een begeleide setup die je project en je recente sessies leest. Zo leert de automatische modus (auto mode) jouw omgeving kennen.",
+    "Auto mode laat Claude zelf beslissen welke acties veilig zijn, met een veiligheidscontrole ertussen. Vergelijk het met een nieuwe collega die eerst je werkplek rondgeleid krijgt. Wie weet waar de belangrijke mappen en commando's zitten, hoeft minder vaak te vragen. De setup werkt nu ook via Bedrock, Vertex en Foundry, en zonder telemetrie.",
+    "De tweede verandering gaat over toezicht. Sinds v2.1.307 stuurt Claude Code een OpenTelemetry-event (claude_code.safety_event) voor elke toolaanroep die werd tegengehouden of teruggestuurd. Dat gebeurt door een permissieregel, auto mode, een hook of de sandbox. Je ziet dan in je eigen monitoring hoe vaak Claude tegen een grens aanloopt.",
+    "De derde verandering raakt skills. Na het samenvatten van een lang gesprek (compaction) krijgt Claude de lijst met skills opnieuw. /reload-skills stuurt alleen nog nieuwe of gewijzigde skills. Een skill in een dbt-project blijft dus ook in lange sessies vindbaar. Let ook op: sed -i loopt sinds v2.1.309 als gewoon Bash-commando en wordt niet meer teruggedraaid door /rewind."
+   ],
+   "key_facts": [
+    "v2.1.304 (19 oktober): /auto-mode-setup leest je project en recente sessies om auto mode je omgeving te leren; ook op Bedrock, Vertex, Foundry, Claude apps gateway en zonder telemetrie.",
+    "v2.1.304: na compaction krijgt Claude de skilllijst opnieuw; /reload-skills stuurt alleen nieuwe of gewijzigde skills.",
+    "v2.1.304: de skills van één bron mogen per sessie hooguit 1.024 hooks en 16.384 matcher-tekens registreren.",
+    "v2.1.307 (21 oktober): nieuw OpenTelemetry-event claude_code.safety_event voor elke toolaanroep die een permissieregel, auto mode, een veiligheidscheck, een hook of de sandbox tegenhield, liet vragen of terugstuurde.",
+    "v2.1.309 (22 oktober): sed -i krijgt de gewone Bash-prompt in plaats van een bewerkingsvoorbeeld en wordt niet meer hersteld door /rewind.",
+    "v2.1.310 (23 oktober): de Monitor-tool werkt nu ook op Bedrock, Vertex en Foundry."
+   ],
+   "article_type": "nieuws",
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Claude Code-release, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
+   }
+  },
+  {
+   "id": "4cc09a1d9883",
+   "title": "Improving Deep Agents with harness engineering",
+   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+   "source_id": "langchain_blog",
+   "published_at": "2026-10-13T19:56:07Z",
+   "date_note": "Het artikel zelf is gedateerd 17 februari 2026; de feed toont 13 oktober 2026, vermoedelijk een herpublicatie.",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "summary": "LangChain verbeterde zijn codeeragent op Terminal Bench 2.0 van 52,8 naar 66,5 procent zonder het model te wisselen. Alleen de systeemprompt, de tools en haken rond de agent veranderden.",
+   "personal_relevance": "De lessen (zelfcontrole afdwingen, omgeving meegeven, traces lezen) passen direct op hoe je Claude Code bij dbt-werk inzet.",
+   "experiment": "Zet in een testproject een Stop-hook in Claude Code die dbt build op DuckDB draait met verzonnen data, en vergelijk een paar taken met en zonder die hook.",
+   "limitations": [
+    "Het artikel is van februari 2026; nieuwere modellen hebben sommige hulpmiddelen volgens de auteurs straks niet meer nodig.",
+    "Het gaat om één benchmark en één model; de auteurs waarschuwen zelf voor overfitting op de taken.",
+    "LangChain verkoopt LangSmith, het hulpmiddel dat in het verhaal centraal staat."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "deepagents-cli (GitHub)",
+     "url": "https://github.com/langchain-ai/deepagents/tree/main/libs/code"
+    },
+    {
+     "label": "Terminal Bench 2.0 leaderboard",
+     "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+    },
+    {
+     "label": "LangChain middleware",
+     "url": "https://docs.langchain.com/oss/python/langchain/middleware/overview#the-agent-loop"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.35,
+    "source": 0.51,
+    "quality": 0.65,
+    "feedback": 0.56,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T16:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5",
+   "story": [
+    "LangChain liet zijn codeeragent deepagents-cli dezelfde 89 taken van Terminal Bench 2.0 doen, steeds met hetzelfde model. Alleen de omgeving rond het model veranderde: de testomgeving (harness). De score ging van 52,8 naar 66,5 procent. Op de ranglijst klom de agent van net buiten de top 30 naar de top 5.",
+    "De belangrijkste fout was herkenbaar: de agent schreef een oplossing, las hem nog eens, vond hem goed en stopte. De oplossing was een vaste werkwijze in vier stappen: plannen, bouwen met tests, controleren tegen de opdracht, en herstellen. Een extra haak (middleware) houdt de agent vlak voor het stoppen tegen en vraagt om een controle. Dat lijkt op een Stop-hook in Claude Code.",
+    "Andere ingrepen: bij de start brengt een haak de mappen en beschikbare tools in kaart. De agent krijgt te horen dat programmatische tests zijn werk beoordelen. Een teller per bestand grijpt in als de agent hetzelfde bestand steeds opnieuw bewerkt, een 'rondje' van soms meer dan tien bijna gelijke wijzigingen. En de agent denkt het diepst bij plannen en controleren, minder bij het bouwen.",
+    "Hoe vonden ze die fouten? Elke stap van elke run staat in LangSmith als trace. Een eigen skill haalt die traces op, laat parallelle agents de fouten analyseren en vat de voorstellen samen. Dat is dezelfde foutanalyse als bij evals, maar dan op het gedrag van een agent.",
+    "Voor jou geldt de les ook buiten LangChain. Geef een agent een controle die hij zelf kan draaien, zoals dbt build of een test. Vertel hem hoe het werk beoordeeld wordt, en kijk in de logs waar hij vastloopt voordat je aan de prompt gaat sleutelen."
+   ],
+   "key_facts": [
+    "Auteur: Vivek Trivedy (LangChain); het artikel is gedateerd 17 februari 2026.",
+    "Benchmark: Terminal Bench 2.0 (89 taken); agent: deepagents-cli; model: gpt-5.2-codex, steeds hetzelfde.",
+    "Score van 52,8% naar 66,5% (+13,7 punten); van net buiten de top 30 naar de top 5.",
+    "Ingrepen: werkwijze met zelfcontrole, PreCompletionChecklistMiddleware, LocalContextMiddleware, tijdswaarschuwingen, LoopDetectionMiddleware en meer redeneertijd bij plannen en controleren.",
+    "Alleen op het hoogste redeneerniveau (xhigh) scoorde de agent 53,9%, vooral door time-outs; op high 63,6%.",
+    "Een testrun met Claude Opus 4.6 op een eerdere versie van de harness haalde 59,6%."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo vind je een 'rondje' in de stappen van een agent: tel per bestand hoe vaak de agent het bewerkte. Vaak hetzelfde bestand aanpassen is een teken dat hij vastzit.",
+    "language": "sql",
+    "code": "SELECT\n  doel AS bestand,\n  COUNT(*) AS bewerkingen,\n  COUNT(*) >= 4 AS mogelijk_rondje\nFROM stappen\nWHERE tool = 'Edit'\nGROUP BY doel\nORDER BY bewerkingen DESC;",
+    "result": {
+     "columns": [
+      "bestand",
+      "bewerkingen",
+      "mogelijk_rondje"
+     ],
+     "rows": [
+      [
+       "src/parser.py",
+       5,
+       true
+      ],
+      [
+       "tests/test_parser.py",
+       1,
+       false
+      ],
+      [
+       "README.md",
+       1,
+       false
+      ]
+     ]
+    },
+    "note": "Verzonnen trace van 12 stappen, echt uitgevoerd in DuckDB. Zo werkt het idee van LoopDetectionMiddleware in gewone SQL; LangChain doet het tijdens de run met een haak rond de toolaanroepen."
+   },
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Het harnas maakt het verschil, net als bij dbt Wizard dat je een duim met 'meer hiervan' gaf."
+   }
+  },
+  {
    "id": "ae2bc3c9f749",
    "title": "Azure Databricks: wat is er nieuw in week 42",
    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W42",
@@ -3094,14 +3067,14 @@
     }
    ],
    "topics": [
-    "databricks_data_engineering",
     "powerbi_semantic_models",
+    "databricks_data_engineering",
     "data_governance_privacy",
     "sql_spark_sql"
    ],
    "groups": [
-    "databricks",
     "overig",
+    "databricks",
     "kwaliteit"
    ],
    "relevance_score": 92,
@@ -3157,166 +3130,6 @@
    "fit": {
     "score": 0.6,
     "why": "Databricks-releaseoverzicht met functies uit je stack; lijkt op je duim bij de metric views-release."
-   }
-  },
-  {
-   "id": "903131b53f30",
-   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T22:30:04Z",
-   "fetched_at": "2026-10-30T06:06:02.852195Z",
-   "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
-   "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
-   "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
-   "limitations": [
-    "De snelheidscijfers zijn claims van Databricks zelf.",
-    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
-    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Use real-time mode in Lakeflow pipelines",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
-    },
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.77,
-    "source": 0.85,
-    "quality": 0.48,
-    "feedback": 0.44,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-     "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-     "published_at": "2026-10-29T22:30:04Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
-   "story": [
-    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
-    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
-    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
-    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
-   ],
-   "key_facts": [
-    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
-    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
-    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
-    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
-    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
-    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "real-time mode",
-     "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
-    },
-    {
-     "term": "micro-batches",
-     "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
-    },
-    {
-     "term": "ForEach-sink",
-     "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
-    },
-    {
-     "term": "Lakebase",
-     "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.5,
-    "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
-   }
-  },
-  {
-   "id": "77544766b84c",
-   "title": "Claude’s new auto eval tool",
-   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
-   "source_id": "hamel_husain",
-   "published_at": "2026-09-30T07:00:00Z",
-   "date_note": "Gepubliceerd op 30 september 2026; de radar ziet hem pas nu.",
-   "fetched_at": "2026-10-28T20:32:35.732516Z",
-   "summary": "Anthropic gaf Claude Code twee commando's om evals te bouwen en je toepassing ertegen te verbeteren. Evals-expert Hamel Husain testte ze: sterk in fouten vinden, maar het slaat de foutanalyse over.",
-   "personal_relevance": "Je wilt een data-assistent betrouwbaar maken; dit laat zien wat je Claude kunt laten doen bij evals en wat je zelf moet blijven doen.",
-   "experiment": "Draai build_eval op een kleine set verzonnen gesprekken met een vraag-en-antwoordassistent over een openbare dataset. Lees eerst zelf twintig gesprekken en vergelijk jouw foutenlijst met die van Claude.",
-   "limitations": [
-    "Eén test door één expert, tijdens een livestream.",
-    "Husain heeft zelf eval-skills en cursussen; hij vergelijkt met zijn eigen aanpak.",
-    "Externe AI zoals Claude alleen gebruiken op verzonnen gesprekken, nooit op werkdata."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.18,
-    "source": 0.85,
-    "quality": 0.68,
-    "feedback": 0.46,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen",
-   "story": [
-    "Anthropic voegde aan de claude-api-plugin voor Claude Code twee commando's toe. build_eval stelt mogelijke fouten voor, helpt je er één te kiezen, maakt een beoordelaar en controleert die. hill-climb gebruikt die evals daarna om je toepassing te verbeteren. Hamel Husain, die veel ontwikkelaars evals heeft geleerd, testte het met Isaac Flath op gesprekken van een verhuurassistent.",
-    "Zijn belangrijkste kritiek: de tool begint te vroeg met toetsen. Claude vroeg meteen welke fout ze wilden aanpakken, terwijl ze de data nog niet hadden bekeken. Volgens Husain hoort eerst foutanalyse (error analysis) te komen: zelf gesprekken lezen en noteren wat misgaat. De beoordelaar die Claude maakte, toetste ook vier dingen tegelijk, deels met een taalmodel en deels met code. Husain wil liever één beoordelaar per fout.",
-    "Er is ook lof. Zonder hulp vond de tool problemen die andere automatische aanpakken misten, zoals een gemiste overdracht naar een mens en opmaakfouten. Husain noemt het de sterkste eenmalige foutzoeker die hij heeft gezien. Toch wacht hij nog met gebruiken. Labels nakijken in Markdown in de chat vond hij onwerkbaar; ze bouwden er een webapp voor.",
-    "Voor een eigen data-assistent is de les praktisch. Laat Claude gerust fouten voorstellen, maar kijk eerst zelf naar de data voordat je een beoordelaar vastlegt. En vraag altijd naar de prompt of code van een beoordelaar, in plaats van op een uitleg te vertrouwen."
-   ],
-   "key_facts": [
-    "Hamel Husain publiceerde zijn bespreking op 30 september 2026.",
-    "De claude-api-plugin voor Claude Code heeft de commando's build_eval (fouten voorstellen, beoordelaar maken en controleren) en hill-climb (de toepassing verbeteren tegen de evals).",
-    "Volgens Husain dringt de tool aan op evals vóór foutanalyse, en mengt de eerste beoordelaar vier controles (LLM-beoordelaar en code).",
-    "Volgens Husain vond de tool zonder hulp problemen die andere auto-eval-aanpakken misten, zoals overdracht naar een mens, opmaak en spraakproblemen.",
-    "Husain wacht nog met gebruiken; de maker van de plugin wil de feedback verwerken."
-   ],
-   "article_type": "opinie",
-   "author": "Hamel Husain, consultant en docent over AI-evaluatie (met Shreya Shankar)",
-   "soort": "mening",
-   "fit": {
-    "score": 0.65,
-    "why": "Onderbouwde mening over evals, zoals je duim bij Noonan; nu over Claude Code."
    }
   },
   {
@@ -3412,6 +3225,69 @@
    }
   },
   {
+   "id": "77544766b84c",
+   "title": "Claude’s new auto eval tool",
+   "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
+   "source_id": "hamel_husain",
+   "published_at": "2026-09-30T07:00:00Z",
+   "date_note": "Gepubliceerd op 30 september 2026; de radar ziet hem pas nu.",
+   "fetched_at": "2026-10-28T20:32:35.732516Z",
+   "summary": "Anthropic gaf Claude Code twee commando's om evals te bouwen en je toepassing ertegen te verbeteren. Evals-expert Hamel Husain testte ze: sterk in fouten vinden, maar het slaat de foutanalyse over.",
+   "personal_relevance": "Je wilt een data-assistent betrouwbaar maken; dit laat zien wat je Claude kunt laten doen bij evals en wat je zelf moet blijven doen.",
+   "experiment": "Draai build_eval op een kleine set verzonnen gesprekken met een vraag-en-antwoordassistent over een openbare dataset. Lees eerst zelf twintig gesprekken en vergelijk jouw foutenlijst met die van Claude.",
+   "limitations": [
+    "Eén test door één expert, tijdens een livestream.",
+    "Husain heeft zelf eval-skills en cursussen; hij vergelijkt met zijn eigen aanpak.",
+    "Externe AI zoals Claude alleen gebruiken op verzonnen gesprekken, nooit op werkdata."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.18,
+    "source": 0.85,
+    "quality": 0.68,
+    "feedback": 0.42,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen",
+   "story": [
+    "Anthropic voegde aan de claude-api-plugin voor Claude Code twee commando's toe. build_eval stelt mogelijke fouten voor, helpt je er één te kiezen, maakt een beoordelaar en controleert die. hill-climb gebruikt die evals daarna om je toepassing te verbeteren. Hamel Husain, die veel ontwikkelaars evals heeft geleerd, testte het met Isaac Flath op gesprekken van een verhuurassistent.",
+    "Zijn belangrijkste kritiek: de tool begint te vroeg met toetsen. Claude vroeg meteen welke fout ze wilden aanpakken, terwijl ze de data nog niet hadden bekeken. Volgens Husain hoort eerst foutanalyse (error analysis) te komen: zelf gesprekken lezen en noteren wat misgaat. De beoordelaar die Claude maakte, toetste ook vier dingen tegelijk, deels met een taalmodel en deels met code. Husain wil liever één beoordelaar per fout.",
+    "Er is ook lof. Zonder hulp vond de tool problemen die andere automatische aanpakken misten, zoals een gemiste overdracht naar een mens en opmaakfouten. Husain noemt het de sterkste eenmalige foutzoeker die hij heeft gezien. Toch wacht hij nog met gebruiken. Labels nakijken in Markdown in de chat vond hij onwerkbaar; ze bouwden er een webapp voor.",
+    "Voor een eigen data-assistent is de les praktisch. Laat Claude gerust fouten voorstellen, maar kijk eerst zelf naar de data voordat je een beoordelaar vastlegt. En vraag altijd naar de prompt of code van een beoordelaar, in plaats van op een uitleg te vertrouwen."
+   ],
+   "key_facts": [
+    "Hamel Husain publiceerde zijn bespreking op 30 september 2026.",
+    "De claude-api-plugin voor Claude Code heeft de commando's build_eval (fouten voorstellen, beoordelaar maken en controleren) en hill-climb (de toepassing verbeteren tegen de evals).",
+    "Volgens Husain dringt de tool aan op evals vóór foutanalyse, en mengt de eerste beoordelaar vier controles (LLM-beoordelaar en code).",
+    "Volgens Husain vond de tool zonder hulp problemen die andere auto-eval-aanpakken misten, zoals overdracht naar een mens, opmaak en spraakproblemen.",
+    "Husain wacht nog met gebruiken; de maker van de plugin wil de feedback verwerken."
+   ],
+   "article_type": "opinie",
+   "author": "Hamel Husain, consultant en docent over AI-evaluatie (met Shreya Shankar)",
+   "soort": "mening",
+   "fit": {
+    "score": 0.65,
+    "why": "Onderbouwde mening over evals, zoals je duim bij Noonan; nu over Claude Code."
+   }
+  },
+  {
    "id": "4255764d89d9",
    "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
    "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
@@ -3440,8 +3316,8 @@
    "topics": [
     "ai_on_data_platform",
     "ai_agents_rag",
-    "databricks_data_engineering",
-    "sql_spark_sql"
+    "sql_spark_sql",
+    "databricks_data_engineering"
    ],
    "groups": [
     "ai_context",
@@ -3821,6 +3697,102 @@
    }
   },
   {
+   "id": "728afeb9147d",
+   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
+   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+   "source_id": "claude_blog",
+   "published_at": "2026-10-27T00:00:00Z",
+   "fetched_at": "2026-11-01T11:05:55.569159Z",
+   "summary": "Anthropic beschrijft hoe een platformteam de kosten van Claude Code beheerst en laat zien wat het oplevert. Het voorbeeld is Google Cloud, maar de meeste knoppen zitten in Claude Code zelf.",
+   "personal_relevance": "Als je Claude Code breder in je team wilt inzetten, is dit het lijstje vragen dat je manager gaat stellen.",
+   "experiment": "Zet op je eigen machine OpenTelemetry voor Claude Code aan met de console-exporter en een label als team=data, doe een korte taak in een oefenproject zonder werkdata, en bekijk welke meetwaarden er per skill of MCP-server verschijnen.",
+   "limitations": [
+    "Het stuk is geschreven voor Google Cloud; de knoppen voor budgetten en facturering zijn daar specifiek voor.",
+    "De klantvoorbeelden en cijfers komen van Anthropic zelf en zijn niet onafhankelijk getoetst.",
+    "Spend caps in Google Cloud zijn nog preview."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Origineel artikel",
+     "url": "https://claude.com/blog/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud"
+    },
+    {
+     "label": "Webinar: kosten beheersen en ROI tonen",
+     "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.67,
+    "source": 0.51,
+    "quality": 0.55,
+    "feedback": 0.32,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-04T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen",
+   "story": [
+    "Anthropic heeft op een rij gezet hoe je de kosten van Claude Code in een organisatie in de hand houdt. Het stuk volgt drie stappen: begrenzen, bijhouden en bewijzen. Het gaat uit van Google Cloud, maar veel ervan werkt ook elders.",
+    "De kosten volgen het aantal tokens. Een agent als Claude Code leest bestanden, draait tools en denkt in stappen, en gebruikt dus meer tokens per taak dan een chat. De keuze van het model is de tweede grote knop. Volgens het artikel zit verspilling vaak bij een paar zware gebruikers: een duur model voor licht werk, of een vergeten geplande taak die blijft draaien.",
+    "Begrenzen gaat via de Claude apps gateway, een dienst die je zelf in je eigen cloudproject draait. Ontwikkelaars loggen in via je identiteitsdienst (IdP), dus elk verzoek heeft een bekende gebruiker. Per gebruiker of groep stel je een maximum per dag, week of maand in. Bij 75 en 95 procent krijgt de ontwikkelaar een waarschuwing in de terminal; daarboven weigert de gateway verzoeken tot de periode om is.",
+    "Bijhouden doet Claude Code zelf: het stuurt meetgegevens via OpenTelemetry, uitgesplitst naar skill, plugin, agent en MCP-server. Met één omgevingsvariabele hang je er labels aan, zoals afdeling of kostenplaats. Zo zie je ook welke skill of MCP-server de meeste tokens kost. Dat is nuttig als je in een team skills deelt voor dbt-werk.",
+    "Bewijzen is het lastigste deel. Het artikel raadt aan om vooraf een nulmeting te doen en een eenheid van werk af te spreken, bijvoorbeeld gemergde pull requests met een bepaald label. Let op: de ingebouwde telling gaat over pull requests die Claude aanmaakte, niet over wat uiteindelijk gemerged wordt. De klantcijfers in het stuk komen van Anthropic zelf."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 27 oktober 2026, op basis van een webinar met Google Cloud.",
+    "De Claude apps gateway draait zelf gehost in je eigen cloudproject en zit in dezelfde claude-binary; gebruikers loggen in via je IdP.",
+    "Bestedingslimieten gelden per gebruiker, IdP-groep of organisatie, per dag, week of maand; waarschuwingen in de CLI bij 75% en 95%, daarna HTTP 429 tot de reset.",
+    "Claude Code stuurt OpenTelemetry-metrics en -events (gebruik, geschatte kosten), uitgesplitst naar skill, plugin, agent en MCP-server.",
+    "Labels voor kostentoewijzing gaan via OTEL_RESOURCE_ATTRIBUTES, bijvoorbeeld department=engineering,cost_center=eng-123.",
+    "Het loggen van prompts staat standaard uit; de ingebouwde PR-telling telt door Claude aangemaakte PR's, niet gemergde."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Met één omgevingsvariabele hang je labels aan alle meetgegevens die Claude Code verstuurt. Zo kun je kosten later per afdeling of kostenplaats optellen.",
+    "language": "bash",
+    "code": "export OTEL_RESOURCE_ATTRIBUTES=\"department=engineering,cost_center=eng-123\"",
+    "note": "De variabele en de waarden komen letterlijk uit het artikel. Hoe je telemetrie aanzet en naar welke bestemming die gaat, staat op code.claude.com/docs/en/monitoring-usage."
+   },
+   "terms": [
+    {
+     "term": "Claude apps gateway",
+     "explanation": "Een dienst die je zelf draait tussen Claude Code en het model. Hij controleert wie er inlogt en houdt limieten per gebruiker of groep bij."
+    },
+    {
+     "term": "OpenTelemetry",
+     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    },
+    {
+     "term": "IdP",
+     "explanation": "Identity provider: de dienst waarmee je organisatie bijhoudt wie wie is en tot welke groep hoort, zoals Entra ID of Google Workspace."
+    },
+    {
+     "term": "nulmeting",
+     "explanation": "Een meting vóór je iets verandert, zodat je achteraf kunt vergelijken of het echt beter werd."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.5,
+    "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."
+   }
+  },
+  {
    "id": "9a1a77aea3de",
    "title": "Running open-Jev in SQL on Databricks",
    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -3935,7 +3907,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.68,
     "quality": 0.6,
     "feedback": 0.56,
@@ -3994,12 +3966,12 @@
     }
    ],
    "topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
+    "claude_ai_development",
+    "ai_agents_rag"
    ],
    "groups": [
-    "agents",
-    "claude"
+    "claude",
+    "agents"
    ],
    "relevance_score": 85,
    "score_parts": {
@@ -4037,6 +4009,99 @@
    }
   },
   {
+   "id": "23d3cd62d490",
+   "title": "Smarter cost controls for serverless",
+   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-29T15:00:00Z",
+   "fetched_at": "2026-10-29T16:25:27.740167Z",
+   "summary": "Databricks geeft serverless compute objecten die je kunt taggen, afschermen en begrenzen. Kosten zie je per tag terug in system.billing.usage, en een job krijgt een maximale grootte.",
+   "personal_relevance": "Als je dbt of notebooks op serverless draait, zie je hiermee per team of laag wat het kost en kun je uitschieters begrenzen.",
+   "experiment": "Schrijf een query op system.billing.usage in een oefen- of testwerkruimte die de serverless kosten van de afgelopen 30 dagen per tag en per product optelt, en zet er een SQL-alert op.",
+   "limitations": [
+    "Tags en rate limits zijn Beta.",
+    "De blog bevat geen configuratievoorbeelden; de details staan in de documentatie.",
+    "Een te laag plafond maakt nachtelijke runs trager; meet eerst wat ze nu gebruiken."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Manage serverless compute (Azure)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/manage-serverless-compute"
+    },
+    {
+     "label": "Serverless billing system tables (Azure)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/serverless-billing"
+    },
+    {
+     "label": "Budgets (Azure)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/budgets"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.76,
+    "source": 0.85,
+    "quality": 0.63,
+    "feedback": 0.41,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Serverless kosten per team: tags, budgetten en een plafond per job",
+   "story": [
+    "Bij serverless compute start je geen cluster meer. Daardoor was het lastig te zien wie wat kost, en om te begrenzen. Databricks werkt dat nu bij met serverless compute-objecten. Er is een standaardobject voor notebooks en Databricks Connect, en één voor jobs en pipelines.",
+    "Zo'n object werkt als een kostenplaats met een slot erop. Je zet er één keer een tag op, en elke DBU die erop draait, draagt die tag mee naar de facturatie. Met de rechten Can Use en Can Manage bepaal je wie het mag gebruiken. Haal je 'All Users' weg en zet je er een groep op, dan zien anderen serverless grijs in hun notebook.",
+    "Daarnaast kun je de snelheid van uitgeven begrenzen (rate limits). Dat doe je met maten S, M, L en XL; voor notebooks en jobs is dat een plafond voor het opschalen. In system.billing.usage zie je de kosten per gebruiker, product en tag. Budgetten in de accountconsole mailen je als een drempel wordt overschreden.",
+    "Voor nachtelijke dbt-runs op serverless kan dit helpen om per laag of per team te zien wat het kost. Let op de status: tags en rate limits zijn Beta, en gedeelde budgetten voor interactief werk komen nog."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 29 oktober 2026: het serverless-gebruik bij Databricks groeide het afgelopen jaar meer dan drie keer.",
+    "Serverless compute-tags (Beta): één tag op een serverless compute-object, en elke DBU draagt die tag mee naar de facturatie.",
+    "Serverless Compute Access Controls (algemeen beschikbaar): rechten Can Use en Can Manage; elke gebruiker begint met Can Use.",
+    "Rate limits (Beta, via de preview-instellingen): maten S, M, L en XL; voor notebooks en jobs een plafond voor autoscaling.",
+    "system.billing.usage splitst serverless DBU's uit per gebruiker, product en tag; budgetten met e-mailwaarschuwing zijn algemeen beschikbaar.",
+    "Gedeelde budgetten voor interactief werk, met een maximum per sessie, komen binnenkort."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "serverless compute",
+     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    },
+    {
+     "term": "DBU",
+     "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent."
+    },
+    {
+     "term": "rate limits",
+     "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen."
+    },
+    {
+     "term": "system.billing.usage",
+     "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Praktisch Databricks-kostenstuk, buiten de AI-hoek van je meeste duimen."
+   }
+  },
+  {
    "id": "aa144f4ecccc",
    "title": "Choosing A Power BI Storage Mode For Reporting On Data From Azure Databricks",
    "url": "https://blog.crossjoin.co.uk/2026/09/06/choosing-a-power-bi-storage-mode-for-reporting-on-data-from-azure-databricks/",
@@ -4061,21 +4126,21 @@
    ],
    "topics": [
     "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "data_architecture_modeling"
+    "data_architecture_modeling",
+    "databricks_data_engineering"
    ],
    "groups": [
     "overig",
-    "databricks",
-    "architectuur"
+    "architectuur",
+    "databricks"
    ],
-   "relevance_score": 84,
+   "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.06,
     "source": 0.68,
     "quality": 0.63,
-    "feedback": 0.57,
+    "feedback": 0.53,
     "fit": 0.0
    },
    "decision": "included",
@@ -4136,17 +4201,17 @@
     }
    ],
    "topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
+    "claude_ai_development",
+    "ai_agents_rag"
    ],
    "groups": [
-    "agents",
-    "claude"
+    "claude",
+    "agents"
    ],
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.42,
@@ -4200,166 +4265,100 @@
    }
   },
   {
-   "id": "72dc169275f9",
-   "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
-   "source_id": "claude_code_releases",
-   "published_at": "2026-10-25T23:59:59Z",
-   "date_note": "Weekoverzicht van releases tussen 19 en 23 oktober 2026.",
-   "fetched_at": "2026-10-29T10:59:44.882544Z",
-   "summary": "In week 43 kreeg Claude Code een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie. Ook gedragen skills zich anders na het samenvatten van een gesprek.",
-   "personal_relevance": "Als je Claude Code steeds meer zelfstandig laat werken, wil je weten waar het tegen grenzen aanloopt.",
-   "experiment": "Draai /auto-mode-setup in een openbaar oefenproject met dbt (bijv. jaffle_shop) en vergelijk daarna hoe vaak Claude nog om toestemming vraagt.",
+   "id": "903131b53f30",
+   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-29T22:30:04Z",
+   "fetched_at": "2026-10-30T06:06:02.852195Z",
+   "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
+   "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
+   "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
    "limitations": [
-    "De release notes van v2.1.304 en v2.1.309 waren op de overzichtspagina ingekort; niet elk detail is gelezen.",
-    "De meeste wijzigingen deze week zijn reparaties."
+    "De snelheidscijfers zijn claims van Databricks zelf.",
+    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
+    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
    ],
    "availability_status": "beschikbaar",
    "official_docs": [
     {
-     "label": "Claude Code releases",
-     "url": "https://github.com/anthropics/claude-code/releases"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 82,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.63,
-    "source": 0.8,
-    "quality": 0.57,
-    "feedback": 0.32,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-30T06:45:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code leert je omgeving kennen voor de automatische modus",
-   "story": [
-    "Claude Code kreeg in week 43 zeven releases, met vooral veel reparaties. Drie veranderingen raken hoe je ermee werkt. De belangrijkste is /auto-mode-setup: een begeleide setup die je project en je recente sessies leest. Zo leert de automatische modus (auto mode) jouw omgeving kennen.",
-    "Auto mode laat Claude zelf beslissen welke acties veilig zijn, met een veiligheidscontrole ertussen. Vergelijk het met een nieuwe collega die eerst je werkplek rondgeleid krijgt. Wie weet waar de belangrijke mappen en commando's zitten, hoeft minder vaak te vragen. De setup werkt nu ook via Bedrock, Vertex en Foundry, en zonder telemetrie.",
-    "De tweede verandering gaat over toezicht. Sinds v2.1.307 stuurt Claude Code een OpenTelemetry-event (claude_code.safety_event) voor elke toolaanroep die werd tegengehouden of teruggestuurd. Dat gebeurt door een permissieregel, auto mode, een hook of de sandbox. Je ziet dan in je eigen monitoring hoe vaak Claude tegen een grens aanloopt.",
-    "De derde verandering raakt skills. Na het samenvatten van een lang gesprek (compaction) krijgt Claude de lijst met skills opnieuw. /reload-skills stuurt alleen nog nieuwe of gewijzigde skills. Een skill in een dbt-project blijft dus ook in lange sessies vindbaar. Let ook op: sed -i loopt sinds v2.1.309 als gewoon Bash-commando en wordt niet meer teruggedraaid door /rewind."
-   ],
-   "key_facts": [
-    "v2.1.304 (19 oktober): /auto-mode-setup leest je project en recente sessies om auto mode je omgeving te leren; ook op Bedrock, Vertex, Foundry, Claude apps gateway en zonder telemetrie.",
-    "v2.1.304: na compaction krijgt Claude de skilllijst opnieuw; /reload-skills stuurt alleen nieuwe of gewijzigde skills.",
-    "v2.1.304: de skills van één bron mogen per sessie hooguit 1.024 hooks en 16.384 matcher-tekens registreren.",
-    "v2.1.307 (21 oktober): nieuw OpenTelemetry-event claude_code.safety_event voor elke toolaanroep die een permissieregel, auto mode, een veiligheidscheck, een hook of de sandbox tegenhield, liet vragen of terugstuurde.",
-    "v2.1.309 (22 oktober): sed -i krijgt de gewone Bash-prompt in plaats van een bewerkingsvoorbeeld en wordt niet meer hersteld door /rewind.",
-    "v2.1.310 (23 oktober): de Monitor-tool werkt nu ook op Bedrock, Vertex en Foundry."
-   ],
-   "article_type": "nieuws",
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Claude Code-release, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
-   }
-  },
-  {
-   "id": "728afeb9147d",
-   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
-   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-27T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Anthropic beschrijft hoe een platformteam de kosten van Claude Code beheerst en laat zien wat het oplevert. Het voorbeeld is Google Cloud, maar de meeste knoppen zitten in Claude Code zelf.",
-   "personal_relevance": "Als je Claude Code breder in je team wilt inzetten, is dit het lijstje vragen dat je manager gaat stellen.",
-   "experiment": "Zet op je eigen machine OpenTelemetry voor Claude Code aan met de console-exporter en een label als team=data, doe een korte taak in een oefenproject zonder werkdata, en bekijk welke meetwaarden er per skill of MCP-server verschijnen.",
-   "limitations": [
-    "Het stuk is geschreven voor Google Cloud; de knoppen voor budgetten en facturering zijn daar specifiek voor.",
-    "De klantvoorbeelden en cijfers komen van Anthropic zelf en zijn niet onafhankelijk getoetst.",
-    "Spend caps in Google Cloud zijn nog preview."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Origineel artikel",
-     "url": "https://claude.com/blog/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud"
+     "label": "Use real-time mode in Lakeflow pipelines",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
     },
     {
-     "label": "Webinar: kosten beheersen en ROI tonen",
-     "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"
+     "label": "Release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
     }
    ],
    "topics": [
-    "claude_ai_development",
-    "ai_evaluation_observability"
+    "databricks_data_engineering",
+    "sql_spark_sql"
    ],
    "groups": [
-    "claude",
-    "agents"
+    "databricks"
    ],
-   "relevance_score": 75,
+   "relevance_score": 83,
    "score_parts": {
-    "topic": 0.8,
-    "recency": 0.67,
-    "source": 0.51,
-    "quality": 0.55,
-    "feedback": 0.32,
+    "topic": 0.85,
+    "recency": 0.77,
+    "source": 0.85,
+    "quality": 0.48,
+    "feedback": 0.44,
     "fit": 0.0
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-04T03:40:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen",
-   "story": [
-    "Anthropic heeft op een rij gezet hoe je de kosten van Claude Code in een organisatie in de hand houdt. Het stuk volgt drie stappen: begrenzen, bijhouden en bewijzen. Het gaat uit van Google Cloud, maar veel ervan werkt ook elders.",
-    "De kosten volgen het aantal tokens. Een agent als Claude Code leest bestanden, draait tools en denkt in stappen, en gebruikt dus meer tokens per taak dan een chat. De keuze van het model is de tweede grote knop. Volgens het artikel zit verspilling vaak bij een paar zware gebruikers: een duur model voor licht werk, of een vergeten geplande taak die blijft draaien.",
-    "Begrenzen gaat via de Claude apps gateway, een dienst die je zelf in je eigen cloudproject draait. Ontwikkelaars loggen in via je identiteitsdienst (IdP), dus elk verzoek heeft een bekende gebruiker. Per gebruiker of groep stel je een maximum per dag, week of maand in. Bij 75 en 95 procent krijgt de ontwikkelaar een waarschuwing in de terminal; daarboven weigert de gateway verzoeken tot de periode om is.",
-    "Bijhouden doet Claude Code zelf: het stuurt meetgegevens via OpenTelemetry, uitgesplitst naar skill, plugin, agent en MCP-server. Met één omgevingsvariabele hang je er labels aan, zoals afdeling of kostenplaats. Zo zie je ook welke skill of MCP-server de meeste tokens kost. Dat is nuttig als je in een team skills deelt voor dbt-werk.",
-    "Bewijzen is het lastigste deel. Het artikel raadt aan om vooraf een nulmeting te doen en een eenheid van werk af te spreken, bijvoorbeeld gemergde pull requests met een bepaald label. Let op: de ingebouwde telling gaat over pull requests die Claude aanmaakte, niet over wat uiteindelijk gemerged wordt. De klantcijfers in het stuk komen van Anthropic zelf."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 27 oktober 2026, op basis van een webinar met Google Cloud.",
-    "De Claude apps gateway draait zelf gehost in je eigen cloudproject en zit in dezelfde claude-binary; gebruikers loggen in via je IdP.",
-    "Bestedingslimieten gelden per gebruiker, IdP-groep of organisatie, per dag, week of maand; waarschuwingen in de CLI bij 75% en 95%, daarna HTTP 429 tot de reset.",
-    "Claude Code stuurt OpenTelemetry-metrics en -events (gebruik, geschatte kosten), uitgesplitst naar skill, plugin, agent en MCP-server.",
-    "Labels voor kostentoewijzing gaan via OTEL_RESOURCE_ATTRIBUTES, bijvoorbeeld department=engineering,cost_center=eng-123.",
-    "Het loggen van prompts staat standaard uit; de ingebouwde PR-telling telt door Claude aangemaakte PR's, niet gemergde."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Met één omgevingsvariabele hang je labels aan alle meetgegevens die Claude Code verstuurt. Zo kun je kosten later per afdeling of kostenplaats optellen.",
-    "language": "bash",
-    "code": "export OTEL_RESOURCE_ATTRIBUTES=\"department=engineering,cost_center=eng-123\"",
-    "note": "De variabele en de waarden komen letterlijk uit het artikel. Hoe je telemetrie aanzet en naar welke bestemming die gaat, staat op code.claude.com/docs/en/monitoring-usage."
-   },
-   "terms": [
+   "processed_at": "2026-10-31T09:20:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
     {
-     "term": "Claude apps gateway",
-     "explanation": "Een dienst die je zelf draait tussen Claude Code en het model. Hij controleert wie er inlogt en houdt limieten per gebruiker of groep bij."
-    },
-    {
-     "term": "OpenTelemetry",
-     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
-    },
-    {
-     "term": "IdP",
-     "explanation": "Identity provider: de dienst waarmee je organisatie bijhoudt wie wie is en tot welke groep hoort, zoals Entra ID of Google Workspace."
-    },
-    {
-     "term": "nulmeting",
-     "explanation": "Een meting vóór je iets verandert, zodat je achteraf kunt vergelijken of het echt beter werd."
+     "source_id": "databricks_engineering_blog",
+     "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+     "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+     "published_at": "2026-10-29T22:30:04Z",
+     "reason": "zelfde URL"
     }
    ],
-   "soort": "praktisch",
+   "format_version": 2,
+   "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
+   "story": [
+    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
+    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
+    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
+    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
+   ],
+   "key_facts": [
+    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
+    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
+    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
+    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
+    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
+    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "real-time mode",
+     "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
+    },
+    {
+     "term": "micro-batches",
+     "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
+    },
+    {
+     "term": "ForEach-sink",
+     "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
+    },
+    {
+     "term": "Lakebase",
+     "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
+    }
+   ],
+   "soort": "aankondiging",
    "fit": {
     "score": 0.5,
-    "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."
+    "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
    }
   },
   {
@@ -4392,9 +4391,9 @@
     "claude",
     "overig"
    ],
-   "relevance_score": 69,
+   "relevance_score": 80,
    "score_parts": {
-    "topic": 0.8,
+    "topic": 1.0,
     "recency": 0.26,
     "source": 0.68,
     "quality": 0.53,
@@ -7354,7 +7353,7 @@
     "id": "databricks_data_engineering",
     "name": "Databricks en data engineering",
     "description": "Het Databricks-platform, Spark, Delta Lake, pipelines en cloudontwikkeling.",
-    "priority": 5,
+    "priority": 4,
     "area": "data_engineering"
    },
    {
@@ -7396,7 +7395,7 @@
     "id": "claude_ai_development",
     "name": "Claude en AI-ondersteunde ontwikkeling",
     "description": "Alleen Claude en het eigen ecosysteem; andere LLM-aanbieders zijn geen eigen interessegebied. Nieuwe Claude-modellen, Claude Code en agentic coding, skills, hooks, subagents en projectinstructies, werken met grote repositories, codereview en refactoring, en Claude praktisch inzetten bij dbt, data engineering en context engineering. Ook werkwijzen, niet alleen nieuwe functies.",
-    "priority": 4,
+    "priority": 5,
     "area": "claude"
    },
    {
@@ -7417,7 +7416,7 @@
     "id": "cicd_data_deployment",
     "name": "Release pipelines, bundles en uitrol",
     "description": "Hoe je data- en dbt-werk veilig van ontwikkeling naar productie brengt: release pipelines in Azure DevOps (stages, omgevingen, goedkeuringen), Databricks Asset Bundles (een project als code uitrollen naar dev/test/prod), slim CI voor dbt en versiebeheer. Kennisniveau nog beginner: uitleg mag bij de basis beginnen.",
-    "priority": 5,
+    "priority": 4,
     "area": "data_engineering",
     "learning": true
    },
@@ -7425,7 +7424,7 @@
     "id": "data_ingestion",
     "name": "Data ingestion",
     "description": "Hoe data uit bronsystemen in het dataplatform komt: batch en streaming, incrementeel laden, change data capture (CDC), Auto Loader, Lakeflow Connect en declaratieve pipelines, schema-wijzigingen en de bronze-laag. Kennisniveau nog beginner: uitleg mag bij de basis beginnen. Losse nieuwe connectoren blijven uitgesloten (excluded_topics); het gaat om hoe ingestion werkt.",
-    "priority": 5,
+    "priority": 4,
     "area": "data_engineering",
     "learning": true
    },
@@ -7505,10 +7504,27 @@
     "name": "Kleine updates en verzameloverzichten"
    }
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-11-04"
  },
  "interest_suggestions": [],
- "interest_log": [],
+ "interest_log": [
+  {
+   "at": "2026-11-04T05:13:37Z",
+   "text": "Databricks en data engineering: van 'kernonderwerp' naar 'zeer relevant' (jouw verzoek)."
+  },
+  {
+   "at": "2026-11-04T05:13:37Z",
+   "text": "Release pipelines, bundles en uitrol: van 'kernonderwerp' naar 'zeer relevant' (jouw verzoek; je vroeg het twee keer, ik heb het één keer toegepast)."
+  },
+  {
+   "at": "2026-11-04T05:13:37Z",
+   "text": "Data ingestion: van 'kernonderwerp' naar 'zeer relevant' (jouw verzoek; je vroeg het twee keer, ik heb het één keer toegepast)."
+  },
+  {
+   "at": "2026-11-04T05:13:37Z",
+   "text": "Claude en AI-ondersteunde ontwikkeling: van 'zeer relevant' naar 'kernonderwerp' (jouw verzoek)."
+  }
+ ],
  "runs": {
   "date": "2026-11-04",
   "tasks": {
@@ -7594,19 +7610,19 @@
   },
   "without_date": 0,
   "per_group": {
-   "agents": 11,
-   "databricks": 6,
-   "ai_context": 14,
-   "dbt": 8,
-   "overig": 3,
+   "agents": 9,
+   "ai_context": 16,
+   "dbt": 7,
+   "claude": 8,
    "architectuur": 1,
-   "claude": 3
+   "overig": 3,
+   "databricks": 2
   },
   "per_source": {
    "dbt_developer_blog": 4,
    "databricks_blog": 8,
-   "dbt_labs_blog": 9,
    "azure_databricks_release_notes": 4,
+   "dbt_labs_blog": 9,
    "claude_blog": 4,
    "langchain_blog": 4,
    "claude_code_releases": 2,
@@ -7693,17 +7709,17 @@
     "excluded_by": []
    },
    {
-    "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
+    "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
     "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
-    "relevance_score": 98,
+    "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+    "relevance_score": 99,
     "decision": "source_cap",
     "excluded_by": []
    },
    {
-    "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+    "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
     "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+    "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
     "relevance_score": 98,
     "decision": "source_cap",
     "excluded_by": []
@@ -7756,7 +7772,7 @@
     "title": "The agentic code converter is generally available for SQL conversion",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
-    "relevance_score": 93,
+    "relevance_score": 94,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -7792,49 +7808,9 @@
     ]
    },
    {
-    "title": "Improved Lakeflow Performance Observability is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/diagnose-job-performance#query-performance-metrics",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Agent memory pipelines are in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Managed warehouse for MLflow (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#managed-warehouse-for-mlflow-beta",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Higher limits and BROWSE support for Unity Catalog secrets",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#higher-limits-and-browse-support-for-unity-catalog-secrets",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "OneLake external locations are in Public Preview",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#onelake-external-locations-are-in-public-preview",
     "relevance_score": 91,
     "decision": "excluded",
     "excluded_by": [
@@ -7852,30 +7828,9 @@
     ]
    },
    {
-    "title": "Okta connector is available in Beta",
+    "title": "Metric view window measures are generally available",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#okta-connector-is-available-in-beta",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Zerobus Ingest into default storage is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#zerobus-ingest-into-default-storage-is-now-generally-available",
-    "relevance_score": 91,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Governed tag propagation is in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
     "relevance_score": 90,
     "decision": "excluded",
     "excluded_by": [
@@ -7883,9 +7838,9 @@
     ]
    },
    {
-    "title": "Metric view window measures are generally available",
+    "title": "Genie Code CLI is in Beta",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
     "relevance_score": 90,
     "decision": "excluded",
     "excluded_by": [
@@ -7954,17 +7909,6 @@
     ]
    },
    {
-    "title": "Microsoft Graph Logs connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
-    "relevance_score": 89,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Claude Code auto mode for Anthropic and non-Anthropic models",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#claude-code-auto-mode-for-anthropic-and-non-anthropic-models",
@@ -7975,12 +7919,13 @@
     ]
    },
    {
-    "title": "Monitor data freshness in Lakeflow Connect database connector pipelines (Public Preview)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#monitor-data-freshness-in-lakeflow-connect-database-connector-pipelines-public-preview",
+    "title": "v2.1.317",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
     "relevance_score": 89,
     "decision": "excluded",
     "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -7991,57 +7936,6 @@
     "relevance_score": 89,
     "decision": "included",
     "excluded_by": []
-   },
-   {
-    "title": "Filter data per end user with OAuth custom identity claims",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-custom-identity-claims",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "External writes to managed Delta tables are now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/external-access/unity-rest",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie Code CLI is in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Xero connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#xero-connector-is-available-in-beta",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Native XML file format support is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#native-xml-file-format-support-is-now-generally-available",
-    "relevance_score": 88,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
    },
    {
     "title": "v2.1.309",
@@ -8069,38 +7963,6 @@
     "relevance_score": 88,
     "decision": "included",
     "excluded_by": []
-   },
-   {
-    "title": "Azure DevOps connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
-    "relevance_score": 87,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Improved Lakeflow Performance Observability will soon be available by default for workspaces with the compliance security profile enabled",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#improved-lakeflow-performance-observability-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-    "relevance_score": 87,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "QuickBooks connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#quickbooks-connector-is-available-in-beta",
-    "relevance_score": 87,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
    },
    {
     "title": "v2.1.307",
@@ -8136,6 +7998,17 @@
     ]
    },
    {
+    "title": "v2.1.316",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
+    "relevance_score": 87,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
     "source_id": "langchain_blog",
     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
@@ -8154,20 +8027,17 @@
     ]
    },
    {
-    "title": "PayPal connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#paypal-connector-is-available-in-beta",
-    "relevance_score": 86,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "OneLake: The file system for agent-first data engineering",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-The-file-system-for-agent-first-data-engineering/ba-p/5383035",
+    "relevance_score": 86,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "What Databricks is doing with Genie for Business Users",
+    "source_id": "simon_whiteley",
+    "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
     "relevance_score": 86,
     "decision": "included",
     "excluded_by": []
@@ -8181,9 +8051,9 @@
     "excluded_by": []
    },
    {
-    "title": "Shared Serverless for Asset Bundles (Beta)",
+    "title": "Managed warehouse for MLflow (Beta)",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/notebooks/shared-serverless#asset-bundles-serverless",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#managed-warehouse-for-mlflow-beta",
     "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
@@ -8191,45 +8061,12 @@
     ]
    },
    {
-    "title": "Google Analytics Aggregated connector is available in Beta",
+    "title": "OneLake external locations are in Public Preview",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#google-analytics-aggregated-connector-is-available-in-beta",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#onelake-external-locations-are-in-public-preview",
     "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Box Audit Logs managed ingestion connector (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#box-audit-logs-managed-ingestion-connector-beta",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Shared Serverless for Asset Bundles (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#shared-serverless-for-asset-bundles-beta",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Microsoft Entra ID connector is available in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-entra-id-connector-is-available-in-beta",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "connector_releases",
      "weekoverzicht"
     ]
    },
@@ -8246,6 +8083,172 @@
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
     "relevance_score": 85,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Power BI September 2026 Feature Summary",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-September-2026-Feature-Summary/ba-p/5325831",
+    "relevance_score": 85,
+    "decision": "excluded",
+    "excluded_by": [
+     "mini_updates"
+    ]
+   },
+   {
+    "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/doordash-merchant-analytics-thoughtspot-self-serve",
+    "relevance_score": 84,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Okta connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#okta-connector-is-available-in-beta",
+    "relevance_score": 83,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Monitor data freshness in Lakeflow Connect database connector pipelines (Public Preview)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#monitor-data-freshness-in-lakeflow-connect-database-connector-pipelines-public-preview",
+    "relevance_score": 83,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.310",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
+    "relevance_score": 83,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect coding agents to Fabric notebooks with FNTK (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Connect-coding-agents-to-Fabric-notebooks-with-FNTK-Preview/ba-p/5375986",
+    "relevance_score": 83,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "How Ramp's internal AI agents crossed a million sessions",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
+    "relevance_score": 83,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Higher limits and BROWSE support for Unity Catalog secrets",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#higher-limits-and-browse-support-for-unity-catalog-secrets",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Zerobus Ingest into default storage is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#zerobus-ingest-into-default-storage-is-now-generally-available",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.0.0-dev.41-test-pypi",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.304",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Data Classification adds 50 new classes and support for 16 more countries and regions",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Governed tag propagation is in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Microsoft Graph Logs connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#microsoft-graph-logs-connector-is-available-in-beta",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Uber's CISO on building an insider threat program for AI",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/uber-s-ciso-on-building-an-insider-threat-program-for-ai",
+    "relevance_score": 81,
     "decision": "included",
     "excluded_by": []
    }
