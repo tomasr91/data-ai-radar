@@ -1,76 +1,7 @@
 {
- "generated_at": "2026-11-04T03:13:55.560580Z",
+ "generated_at": "2026-11-04T03:23:39.815777Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "efcf00e7bea3",
-   "title": "The U.S. Census Bureau and “Super Intelligence”",
-   "url": "https://simonwillison.net/2026/Nov/2/census-bureau-super-intelligence/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-11-02T13:31:26Z",
-   "excerpt": "I was reminded today of AI Adoption Rate Trending Down for Large Companies , a chart produced by Apollo Global Management in September 2025, which appeared to show a slowdown in U.S. corporate AI adoption based on numbers collected by the U.S. Census Bureau. At the time I used that chart to demonstrate GPT-5 data analysis , and then to experiment with Claude's new Code Interpreter . I decided to try running those numbers again to see what had changed over the past year, and in doing so learned that the Bureau has fallen foul of Executive Order 14434 , aka the asinine Super Intelligence one. First, the updated chart Every two weeks the U.S. Census Bureau runs a survey called the Business Trends and Outlook Survey (aka BTOS). Each time it goes to 200,000 businesses out of 1.2 million total - the surveyed group (a \"panel\") cycles such that an individual business only completes the survey every twelve weeks. The latest data is published on alternating Thursdays at 10am. I used the most recent numbers (published October 22, 2026) to create a new version ( GPT-6 Astra Extra High transcript ) of the AI adoption chart, updated to reflect both the last twelve months and a change that was ma",
-   "preliminary_score": 68,
-   "preliminary_topics": [
-    "claude_ai_development",
-    "general_ai_trends"
-   ]
-  },
-  {
-   "id": "728afeb9147d",
-   "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
-   "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-27T00:00:00Z",
-   "excerpt": "Best practices for managing costs and measuring return on investment for Claude Code on Google Cloud.",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "7a3ac6df3675",
-   "title": "The full Claude Platform, available on Google Cloud",
-   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
-   "preliminary_score": 60,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "6d403bbe9379",
-   "title": "Building agents: When to fold subagents into your main agent loop",
-   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "When building agents in Claude Platform, using fewer subagents in favor of progressively disclosed context and tools can improve quality while reducing cost and latency. Here’s when and how to migrate.",
-   "preliminary_score": 60,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "225ab7984001",
-   "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-03T20:00:00Z",
-   "excerpt": "Access more Unity Catalog objects through the existing mirrored catalog experience in Microsoft Fabric We are expanding Mirrored Azure Databricks catalogs in Microsoft Fabric to support materialized views and streaming tables alongside tables. These objects remain created and managed in Azure Databricks, while Fabric provides read-only access to the underlying data through shortcuts. This brings more of your Unity Catalog environment into Fabric without copying or replicating the data. What's new A Mirrored Azure Databricks catalog can now include support: Tables Materialized views Streaming tables When configuring the mirrored catalog, select the Unity Catalog catalogs, schemas, and supported objects you want to make available in Fabric. Fabric mirrors the selected catalog structure and creates shortcuts to the underlying data. This enhancement uses the existing Mirrored Azure Databricks catalog item and configuration workflow. There is no separate Fabric item type for materialized views or streaming tables. Why this matters Materialized views store precomputed results that can simplify recurring analytical queries. Streaming tables continuously process incoming data and maintain ",
-   "preliminary_score": 89,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "data_ingestion",
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs"
-   ]
-  },
   {
    "id": "6eafeb6028b4",
    "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
@@ -208,6 +139,74 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "7725e9b20af1",
+   "title": "Continuous axis for any Date table in Power BI",
+   "url": "https://www.sqlbi.com/articles/continuous-axis-for-any-date-table-in-power-bi/",
+   "source_id": "sqlbi",
+   "source_name": "SQLBI",
+   "published_at": "2026-10-19T20:00:42Z",
+   "excerpt": "Power BI enables the continuous X-axis on the auto date/time hierarchy even at the month level. We can get the same behavior on any Date table by setting the right metadata in TMDL. In a previous article, Creating a simpler…",
+   "preliminary_score": 66,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "5df353b4c3a1",
+   "title": "LangSmith BYOC is now available on AWS, Azure, and Google Cloud",
+   "url": "https://www.langchain.com/blog/langsmith-byoc-aws-gc-azure",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-04T02:56:29Z",
+   "excerpt": "LangSmith BYOC now runs on AWS (GA), Azure and Google Cloud (Beta). Your traces, evals, and agent deployments stay in your cloud account while LangChain runs it.",
+   "preliminary_score": 62,
+   "preliminary_topics": [
+    "ai_evaluation_observability",
+    "open_source_tools"
+   ]
+  },
+  {
+   "id": "7fd7e06ab2f4",
+   "title": "How the Claude Code team does code review",
+   "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-16T00:00:00Z",
+   "excerpt": "How do you review code at the volume agents produce it? The Claude Code team shares its review process, from Claude verifying its own work to risk-tiered human approval, plus a checklist for adopting it.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "ce8bd2396821",
+   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
+   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-16T00:00:00Z",
+   "excerpt": "How one business development representative clears his inbound queue and drafts bilingual customer emails with Claude Managed Agents and Claude Tag.",
+   "preliminary_score": 58,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "583b8d97bd5d",
+   "title": "Automating eval design and hillclimbing with Claude",
+   "url": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-07T00:00:00Z",
+   "excerpt": "Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill's build-eval and hillclimb commands put them to work.",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "ai_evaluation_observability",
+    "claude_ai_development"
    ]
   }
  ]
