@@ -1,0 +1,184 @@
+{
+  "format_version": 1,
+  "id": "asset-bundles-basis",
+  "plan_id": "asset-bundles-basis",
+  "request_issue": 19,
+  "headline": "Bundels: je Databricks-project als code naar dev, test en prod",
+  "summary": "Een bundel beschrijft je Databricks-project in tekstbestanden: welke jobs en pipelines er zijn en hoe ze per omgeving verschillen. Met een paar commando's controleer je die beschrijving en rol je hem uit, steeds op dezelfde manier. Dit stuk legt uit wat er in databricks.yml staat en hoe dev, test en prod uit één bestand komen.",
+  "sections": [
+    {
+      "heading": "Waarom je project als code beschrijven?",
+      "paragraphs": [
+        "Stel dat je in Databricks een job hebt die elke nacht je dbt-project draait. Je hebt hem met de muis gemaakt in de werkruimte. Nu wil je dezelfde job ook in een testomgeving. Dan klik je hem opnieuw bij elkaar, en hoop je dat je niets vergeet. Een maand later weet niemand meer waarom de twee versies net iets verschillen.",
+        "Daarvoor bestaat infrastructuur als code (infrastructure as code, IaC). Je beschrijft in een tekstbestand wat er moet bestaan: deze job, met deze taak, op dit tijdstip. Een programma leest dat bestand en zorgt dat de werkruimte er zo uitziet. Het bestand staat in Git, dus je ziet elke wijziging, je kunt hem reviewen en terugdraaien.",
+        "Vergelijk het met een bouwtekening. Een aannemer bouwt niet uit zijn hoofd, maar volgt de tekening. Wil je hetzelfde huis nog een keer, dan geef je dezelfde tekening aan een andere ploeg. Een bundel is die bouwtekening voor je Databricks-project."
+      ]
+    },
+    {
+      "heading": "Wat een bundel is, en hoe hij nu heet",
+      "paragraphs": [
+        "Databricks noemt dit Declarative Automation Bundles. Tot kort geleden heette het Databricks Asset Bundles. Volgens de documentatie past de nieuwe naam beter bij wat bundels doen, en betekent het woord 'asset' binnen Databricks te veel verschillende dingen. De naamswijziging breekt niets: de commando's en bestanden blijven hetzelfde. In artikelen en op fora kom je beide namen nog tegen.",
+        "Een bundel is een map met je bronbestanden en een paar YAML-bestanden. De bronbestanden zijn bijvoorbeeld notebooks, Python-code of je dbt-project. De YAML-bestanden beschrijven de Databricks-onderdelen die erbij horen, zoals Lakeflow Jobs, Lakeflow-pipelines, dashboards en model serving endpoints. Databricks noemt een bundel 'een complete beschrijving van een project', van opbouw tot testen en uitrollen.",
+        "Het werk doe je met de Databricks CLI, het opdrachtregelprogramma van Databricks. Je kunt bundels ook in de werkruimte zelf gebruiken, zonder iets te installeren. Maar in een release pipeline gebruik je altijd de CLI, want die draait gewoon op de agent van Azure DevOps."
+      ]
+    },
+    {
+      "heading": "Wat er in databricks.yml staat",
+      "paragraphs": [
+        "Elke bundel heeft precies één bestand dat databricks.yml heet, in de hoofdmap. Andere YAML-bestanden mogen, maar dan noem je ze onder include. Het kleinste geldige bestand heeft maar twee blokken: bundle met een naam, en targets met één omgeving.",
+        "De belangrijkste blokken zijn er vier. Onder bundle staat de naam van het project. Onder resources beschrijf je de onderdelen, zoals een job met zijn taken. Onder variables zet je waarden die per omgeving verschillen, zoals de id van een SQL warehouse. En onder targets beschrijf je de omgevingen waar je naartoe uitrolt, zoals dev en prod.",
+        "Een variabele gebruik je met ${var.naam}. Daarnaast zijn er vaste vervangingen (substitutions), zoals ${bundle.target} voor de naam van de huidige omgeving en ${workspace.current_user.userName} voor wie er uitrolt. Let op: zulke variabelen worden ingevuld op het moment van uitrollen. Wil je een waarde pas meegeven als de job draait, dan gebruik je jobparameters.",
+        "Een variabele vul je op vijf manieren, en die hebben een vaste voorrang. Bovenaan staat --var bij het commando. Dan een omgevingsvariabele die begint met BUNDLE_VAR_. Dan een bestand variable-overrides.json. Dan de waarde onder de target. En als laatste de default bij de variabele zelf. In een pipeline is BUNDLE_VAR_ handig: je zet de waarde in een variable group en geeft hem door aan de stap."
+      ]
+    },
+    {
+      "heading": "Eén project, drie omgevingen: targets",
+      "paragraphs": [
+        "Alles wat bovenaan in databricks.yml staat, is de standaard. Een target mag daar per omgeving iets over zeggen. In het voorbeeld van Databricks gebruikt prod een andere werkruimte en een ander cluster, maar dezelfde taak als de rest. Zo schrijf je de job één keer en verschillen alleen de instellingen.",
+        "Precies één target krijgt default: true. Die gebruikt de CLI als je niets opgeeft. Voor een andere omgeving geef je -t mee, bijvoorbeeld -t prod. Dat is dezelfde gedachte als een dbt-target in je profiel: dezelfde code, een andere bestemming.",
+        "Daarbovenop heeft elke target een mode. Met mode: development krijgt alles wat je uitrolt een voorvoegsel met je naam, zoals [dev jan]. Alle schema's en triggers staan dan op pauze, zodat je testjob niet stiekem elke nacht draait. Zo kunnen collega's naast elkaar ontwikkelen in dezelfde werkruimte zonder elkaars jobs te overschrijven.",
+        "Met mode: production gebeurt het omgekeerde: de CLI controleert strenger. Je kunt eisen dat je op de branch main staat. Pipelines mogen niet in ontwikkelstand staan. En Databricks raadt aan om in productie te draaien als service principal, met run_as. Gebruik je geen service principal, dan moet je run_as en permissions zelf invullen."
+      ]
+    },
+    {
+      "heading": "De vaste volgorde: maken, controleren, uitrollen, draaien",
+      "paragraphs": [
+        "Een nieuwe bundel begin je met databricks bundle init. Je kiest dan een sjabloon (template). Voor jou is dbt-sql het interessantst: je ontwikkelt lokaal met dbt Core, en de bundel rolt het uit als job met een dbt-taak. Er zijn ook sjablonen voor Python, voor SQL en een leeg sjabloon.",
+        "Daarna komt databricks bundle validate. Dat controleert je YAML tegen het schema van Databricks, zonder iets te veranderen. Wil je vooraf zien wat er gaat veranderen in de werkruimte, dan is er databricks bundle plan. Dat lijkt op een droge oefening.",
+        "Met databricks bundle deploy zet je alles in de werkruimte. Met databricks bundle run en de naam van de job start je hem. En databricks bundle destroy ruimt alles weer op. Wees daar voorzichtig mee: het verwijdert de uitgerolde jobs en pipelines definitief.",
+        "Heb je al jobs die je met de hand hebt gemaakt? Dan hoef je niet opnieuw te beginnen. Met databricks bundle generate maak je YAML van een bestaande job. Met databricks bundle deployment bind koppel je de bundel aan dat bestaande onderdeel, zodat de bundel het voortaan beheert."
+      ]
+    },
+    {
+      "heading": "Hoe een bundel in je release pipeline past",
+      "paragraphs": [
+        "In de verdieping over release pipelines zag je al de lijn. De CI-stap draait databricks bundle validate bij elke pull request. Na de merge rolt een stage automatisch uit naar test, met bundle deploy -t test. Een deployment job op de omgeving prod doet daarna bundle deploy -t prod, pas na goedkeuring.",
+        "De pipeline zelf blijft dus dun. Alle kennis over je jobs zit in de bundel, en de pipeline zegt alleen welke target wanneer aan de beurt is. Dat maakt het overzichtelijk: wil je een job wijzigen, dan pas je YAML aan in een pull request, en niet de pipeline.",
+        "Voor jouw situatie is een kleine eerste stap genoeg. Neem één bestaande job, bijvoorbeeld de nachtelijke dbt-run, en haal hem met bundle generate in een bundel. Maak twee targets: dev in development-modus en prod in production-modus met git.branch op main. Hang daarna pas de pipeline eraan. Zo leer je de bundel kennen voordat er een release pipeline omheen zit."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een kleine databricks.yml: één job die je dbt-project draait, met een warehouse per omgeving. Op dev staat alles op pauze met je naam ervoor; op prod mag je alleen vanaf main uitrollen.",
+    "language": "yaml",
+    "code": "bundle:\n  name: dbt_nachtrun\n\nvariables:\n  warehouse_id:\n    description: SQL warehouse voor deze omgeving\n\nresources:\n  jobs:\n    nachtrun:\n      name: nachtrun_${bundle.target}\n      tasks:\n        - task_key: dbt_build\n          dbt_task:\n            project_directory: /Workspace/voorbeeld/dbt_project\n            warehouse_id: ${var.warehouse_id}\n            commands:\n              - 'dbt deps'\n              - 'dbt build'\n\ntargets:\n  dev:\n    default: true\n    mode: development          # [dev jouwnaam] ervoor, schema's op pauze\n    variables:\n      warehouse_id: 1a111111a1111aa1\n  prod:\n    mode: production           # strengere controles\n    git:\n      branch: main             # alleen uitrollen vanaf main\n    variables:\n      warehouse_id: 2b222222b2222bb2\n\n# databricks bundle validate\n# databricks bundle deploy -t prod",
+    "note": "Notatie van dbt_task, variables, targets, mode en git.branch uit de Databricks-documentatie over bundels (september en oktober 2026). Namen, pad en warehouse-id's zijn verzonnen. Hoe het dbt-sql-sjabloon het pad en het dbt-profiel instelt, zie je na databricks bundle init."
+  },
+  "experiment": "Installeer de Databricks CLI en maak in een persoonlijke testwerkruimte een bundel met databricks bundle init en het sjabloon dbt-sql. Kijk welke bestanden er komen, voeg een tweede target toe, en draai databricks bundle validate en databricks bundle deploy. Zoek daarna in de werkruimte de job met [dev jouwnaam] ervoor en ruim alles op met databricks bundle destroy. Gebruik alleen de voorbeelddata uit het sjabloon, geen werkdata.",
+  "limitations": [
+    "Een bundel beheert alleen wat erin staat; wat collega's met de hand in de werkruimte veranderen, kan bij de volgende deploy worden overschreven.",
+    "databricks bundle destroy verwijdert uitgerolde jobs en pipelines definitief; zet het nooit zonder controle in een pipeline.",
+    "Geheimen zoals tokens horen niet in databricks.yml; geef ze vanuit Azure DevOps of Key Vault door.",
+    "Voor zorgdata blijft de vraag welke data in dev en test mag staan; een bundel regelt de uitrol, niet de toegang tot gegevens."
+  ],
+  "further_reading": [
+    {
+      "label": "What are Declarative Automation Bundles? (Databricks, september 2026)",
+      "url": "https://docs.databricks.com/aws/en/dev-tools/bundles",
+      "note": "Het overzicht: wat een bundel is, welke onderdelen erin kunnen en wanneer je hem gebruikt."
+    },
+    {
+      "label": "Declarative Automation Bundles configuration (Azure Databricks, september 2026)",
+      "url": "https://docs.azure.cn/en-us/databricks/dev-tools/bundles/settings",
+      "note": "Alle blokken van databricks.yml op een rij, met hoe targets de standaard overschrijven."
+    },
+    {
+      "label": "Declarative Automation Bundles deployment modes (Microsoft Learn, september 2026)",
+      "url": "https://learn.microsoft.com/en-sg/azure/databricks/dev-tools/bundles/deployment-modes",
+      "note": "Precies wat development- en production-modus doen, en hoe je dat met presets aanpast."
+    },
+    {
+      "label": "Substitutions and variables in Declarative Automation Bundles (Microsoft Learn, september 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/Databricks/dev-tools/bundles/variables",
+      "note": "Hoe variabelen werken, de vijf manieren om ze te vullen en welke voorgaat."
+    },
+    {
+      "label": "Develop Declarative Automation Bundles (Microsoft Learn, september 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/work-tasks",
+      "note": "De vaste volgorde init, validate, deploy, run en destroy, met de commando's."
+    },
+    {
+      "label": "Declarative Automation Bundles project templates (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-au/Azure/databricks/dev-tools/bundles/templates",
+      "note": "Welke sjablonen er zijn, waaronder dbt-sql voor een dbt-project."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Je wilt dat je nachtelijke dbt-job in dev en prod hetzelfde is, maar met een ander SQL warehouse. Hoe doe je dat in een bundel?",
+      "options": [
+        "Je maakt twee aparte bundels, één voor dev en één voor prod.",
+        "Je beschrijft de job één keer onder resources en geeft per target een andere waarde aan een variabele.",
+        "Je past het warehouse na elke deploy met de hand aan in de werkruimte.",
+        "Je zet beide warehouses in de job en Databricks kiest zelf de goede."
+      ],
+      "answer": 1,
+      "explanation": "Bovenaan staat de standaard, en een target overschrijft alleen wat anders is. Zo schrijf je de job één keer en verschilt alleen de variabele."
+    },
+    {
+      "question": "Waarom staan schema's en triggers op pauze als je uitrolt met mode: development?",
+      "options": [
+        "Omdat development-modus geen jobs kan draaien.",
+        "Om kosten te besparen op het SQL warehouse van productie.",
+        "Zodat jouw testversie van een job niet ongemerkt elke nacht meedraait naast de echte.",
+        "Omdat triggers alleen in Azure DevOps mogen staan."
+      ],
+      "answer": 2,
+      "explanation": "In development-modus krijgt alles je naam ervoor en staan schema's op pauze. Zo kunnen ontwikkelaars veilig naast elkaar testen zonder dat hun kopieën zelf gaan draaien."
+    },
+    {
+      "question": "Wat is de taakverdeling tussen een bundel en een release pipeline in Azure DevOps?",
+      "options": [
+        "De bundel beschrijft wat er uitgerold wordt; de pipeline bepaalt wanneer welke target aan de beurt is en wie goedkeurt.",
+        "De pipeline beschrijft de jobs; de bundel regelt de goedkeuringen.",
+        "Een bundel vervangt de release pipeline helemaal.",
+        "De bundel bewaart de geheimen; de pipeline leest ze uit databricks.yml."
+      ],
+      "answer": 0,
+      "explanation": "Alle kennis over jobs en omgevingen zit in de bundel. De pipeline draait validate en deploy met de juiste target, en de goedkeuring hangt aan de omgeving in Azure DevOps."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Declarative Automation Bundles",
+      "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    },
+    {
+      "term": "infrastructuur als code",
+      "explanation": "In een tekstbestand beschrijven welke onderdelen er moeten bestaan, zodat een programma ze steeds op dezelfde manier aanmaakt. Het bestand staat in Git."
+    },
+    {
+      "term": "Databricks CLI",
+      "explanation": "Het opdrachtregelprogramma van Databricks. Je gebruikt het om bundels te controleren, uit te rollen en te draaien, ook vanuit een pipeline."
+    },
+    {
+      "term": "databricks.yml",
+      "explanation": "Het hoofdbestand van een bundel. Daarin staan de naam, de onderdelen (resources), variabelen en de omgevingen (targets)."
+    },
+    {
+      "term": "targets",
+      "explanation": "De omgevingen in een bundel, zoals dev en prod. Elke target mag instellingen van de standaard overschrijven, zoals de werkruimte of een variabele."
+    },
+    {
+      "term": "substitutions",
+      "explanation": "Vaste plaatshouders in een bundel, zoals ${bundle.target}, die de CLI bij het uitrollen invult met de echte waarde."
+    },
+    {
+      "term": "service principal",
+      "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+    },
+    {
+      "term": "sjabloon",
+      "explanation": "Een kant-en-klaar startproject voor een bundel, met de mappen en YAML al ingevuld. Je kiest het bij databricks bundle init."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 4 november 2026 in de actuele documentatie van Databricks en Microsoft Learn over bundels (bijgewerkt tussen 11 september en 20 oktober 2026). De huidige naam is Declarative Automation Bundles; de oude naam Databricks Asset Bundles staat er alleen als 'voorheen'. Vervanging ${bundle.environment} is bewust niet genoemd: de documentatie zegt ${bundle.target} te gebruiken. Geen oudere blogs gebruikt.",
+  "topics": [
+    "cicd_data_deployment",
+    "databricks_data_engineering",
+    "dbt_analytics_engineering"
+  ],
+  "written_at": "2026-11-04T04:40:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
