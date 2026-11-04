@@ -357,6 +357,14 @@ with sync_playwright() as p:
           and "Notitie: Past dit bij onze silver-laag?" in href, href[:160])
     page.click("[data-later-done]")
     check("   Klaar haalt het van de lijst", page.locator(".later-item").count() == 0 and "Nog niets bewaard" in page.locator("#content").inner_text())
+    page.click('[data-later-new="open"]')
+    page.fill("#later-new-t", "Eigen notitie-test")
+    page.fill("#later-new-n", "Even uitzoeken.")
+    page.click('[data-later-new="save"]')
+    _li = page.locator(".later-item").first.inner_text() if page.locator(".later-item").count() else ""
+    check("   eigen notitie toevoegen op Later, zonder artikel", "Eigen notitie-test" in _li and "Even uitzoeken." in _li and "Gezien in" not in _li
+          and page.locator("[data-later-pick]").count() == 1)
+    page.click("[data-later-done]")
     page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
     page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
     page.goto(url)
