@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T08:04:34.510046Z",
+ "generated_at": "2026-11-04T11:27:33.427865Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -55,32 +55,6 @@
    ]
   },
   {
-   "id": "3591421f80e3",
-   "title": "AI Agents Expose What Your Data Platform Never Captured",
-   "url": "https://www.advancinganalytics.co.uk/blog/ai-agents-expose-what-your-data-platform-never-captured",
-   "source_id": "simon_whiteley",
-   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
-   "published_at": "2026-09-11T09:00:00Z",
-   "excerpt": "Introduction Enterprise data architectures were designed around a single, comfortable assumption: a knowledgeable human would always sit at the end of the pipeline.",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "faf6b20eb041",
-   "title": "Claude Cowork and chat come together for Enterprise",
-   "url": "https://claude.com/resources/articles/unified-claude-enterprise",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-23T00:00:00Z",
-   "excerpt": "Claude Cowork and chat come together for Enterprise",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
    "id": "1108578f6cfd",
    "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
@@ -107,6 +81,19 @@
    ]
   },
   {
+   "id": "faf6b20eb041",
+   "title": "Claude Cowork and chat come together for Enterprise",
+   "url": "https://claude.com/resources/articles/unified-claude-enterprise",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "Claude Cowork and chat come together for Enterprise",
+   "preliminary_score": 52,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
    "id": "d8bc34fcb284",
    "title": "HCLTech joins the Claude Partner Network as a Global Premier partner",
    "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
@@ -128,32 +115,6 @@
    "published_at": "2026-10-21T00:00:00Z",
    "excerpt": "A research preview is available by waitlist today, starting with US Pro and Max subscribers.",
    "preliminary_score": 52,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "f6e31c04776b",
-   "title": "Continuous axis for any Date table in Power BI",
-   "url": "https://www.sqlbi.com/tv/continuous-axis-for-any-date-table-in-power-bi/",
-   "source_id": "sqlbi",
-   "source_name": "SQLBI",
-   "published_at": "2026-10-20T10:00:00Z",
-   "excerpt": "How to get a continuous X-axis at the month level in Power BI with any Date table, like the one we get using the auto date/time feature.",
-   "preliminary_score": 50,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "0fff098609ae",
-   "title": "Agent observability on the Claude Platform",
-   "url": "https://claude.com/resources/articles/agent-observability-on-the-claude-platform",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-14T00:00:00Z",
-   "excerpt": "Announcing OpenTelemetry traces from Claude Managed Agents, the Messages API, and Claude SDKs on the Claude Platform.",
-   "preliminary_score": 50,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -185,16 +146,55 @@
    ]
   },
   {
-   "id": "50827233e7bf",
-   "title": "Building effective agent automations",
-   "url": "https://claude.dev/blog/building-effective-agent-automations/",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-10-08T00:00:00Z",
-   "excerpt": "A reference implementation walkthrough for a scheduled Claude Managed Agents automation, with the config files and six rules for avoiding common failure modes.",
-   "preliminary_score": 48,
+   "id": "fa55dbcedb33",
+   "title": "Declare and optimize with UNIQUE constraints on Databricks",
+   "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-03T21:00:00Z",
+   "excerpt": "Data teams often maintain uniqueness guarantees in their pipelines, but without a...",
+   "preliminary_score": 60,
    "preliminary_topics": [
-    "claude_ai_development"
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "b6bd616345c2",
+   "title": "Introducing the data engineering agent for Fabric (Project Osmos)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Introducing-the-data-engineering-agent-for-Fabric-Project-Osmos/ba-p/5377944",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T15:55:24Z",
+   "excerpt": "AI coding assistants are excellent at turning natural-language transformation instructions into code. For data engineers, the harder question is whether that code produces results they can trust. You can describe transformation logic in natural language, and an AI coding assistant will happily generate hundreds of lines of Spark code. Impressive. But a Spark job can execute successfully and still produce completely wrong results. The logic may work for a subset of the data but fail when run against the full dataset. The pipeline's logic and validation checks may not account for future changes to the data or schema. Incremental loads can cause duplicates. Revenue numbers might look perfectly reasonable until someone reconciles them against the source. Anyone who's spent time working with real-world enterprise data knows that automating data engineering with AI comes with a unique set of challenges. Data engineering involves more than code: it requires working with large datasets and retaining context about their schemas, relationships, and business rules over time. Quality & governance matter a lot. The cost of errors or data loss is very high. Data engineering work typically spans ",
+   "preliminary_score": 52,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "86eab858089b",
+   "title": "How We Optimized Browser Use for Deep Agents",
+   "url": "https://www.langchain.com/blog/how-we-optimized-browser-use-for-deep-agents",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-03T22:30:50Z",
+   "excerpt": "We compared seven browser toolsets for Deep Agents, picked Stagehand from Browserbase, and tuned it with LangSmith traces and evals. Here's what we learned.",
+   "preliminary_score": 49,
+   "preliminary_topics": [
+    "ai_evaluation_observability"
+   ]
+  },
+  {
+   "id": "81204e04abb9",
+   "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
+   "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+   "source_id": "dbt_labs_blog",
+   "source_name": "dbt Labs Blog",
+   "published_at": "2026-10-27T18:07:00Z",
+   "excerpt": "LangChain gave its Hex agent layered context, turning self-serve analytics questions from occasional to routine.",
+   "preliminary_score": 56,
+   "preliminary_topics": [
+    "open_source_tools"
    ]
   }
  ]
