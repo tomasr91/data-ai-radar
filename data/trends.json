@@ -1,6 +1,6 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-01T03:55:00Z",
+ "generated_at": "2026-11-04T05:14:15Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
@@ -13,7 +13,6 @@
     "a68aede0b61b",
     "560fbec0053e",
     "94b4924597e5",
-    "29e95692607d",
     "67b79f31be0e"
    ],
    "topics": [
@@ -25,8 +24,10 @@
   {
    "id": "geheugen-en-context-voor-agents",
    "title": "Agents houden hun venster leeg: geheugen, skills en subagents",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, zoekwerk gaat naar subagents en blijvend geheugen komt in een apart bestand of een geheugenpipeline. Agent Skills kreeg deze maand een neutrale beheerder.",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en volgens Anthropic werkt één agent met skills bij grote klanten vaak beter en goedkoper dan een stelsel van subagents. LangChain noemt die technieken nu standaard; de nieuwe vragen zijn wat een agent wel en niet onthoudt en hoe agents op de achtergrond doorwerken.",
    "article_ids": [
+    "f5c90621cdfb",
+    "6d403bbe9379",
     "ea59c0428e23",
     "471f6b1cbb07",
     "ae2bc3c9f749",
@@ -42,20 +43,20 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs zag dat Claude 5.5 dbt al kent en dat fouten uit de werkwijze komen; hun agent Wizard bouwt daarom een vaste lus van compileren, testen en data vergelijken in. LangChain verbeterde een codeeragent met zelfcontrole en traces, Ecolab liet elke gemigreerde tabel met data bewijzen, en onderzoekers controleren per bewering of de genoemde bron klopt. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs zag dat Claude 5.5 dbt al kent en dat fouten uit de werkwijze komen; hun agent Wizard bouwt daarom een vaste lus van compileren, testen en data vergelijken in. Ecolab liet elke gemigreerde tabel met data bewijzen, Databricks verbeterde documentextractie met metingen, en Claude kan nu sporen van elke model- en toolaanroep naar MLflow sturen om terugkerende fouten te vinden. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "article_ids": [
+    "a9b6458ba033",
     "c63f36899b14",
-    "4cc09a1d9883",
     "d2e9b967064a",
     "e7bf67f656d3",
-    "c33e4a9941ba",
-    "984223f109f3"
+    "c33e4a9941ba"
    ],
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
     "data_quality_observability",
-    "ai_agents_rag"
+    "ai_agents_rag",
+    "ai_on_data_platform"
    ]
   }
  ]
