@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T07:29:58.724797Z",
+ "generated_at": "2026-11-05T07:40:24.998761Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-05T03:34:43Z",
  "last_successful_update": "2026-11-05T07:29:58.724797Z",
  "groups": [
@@ -10725,7 +10725,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 407,
+  "fetched_items": 442,
   "unique_after_dedupe": 418,
   "merged_duplicates": 16,
   "shown": 53,
@@ -10870,14 +10870,6 @@
     "excluded_by": []
    },
    {
-    "title": "dbt without the warehouse (or the bill): DuckDB end to end",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
-    "relevance_score": 86,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Default OAuth apps for external AI agents are now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
@@ -10920,6 +10912,14 @@
     "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
+    "relevance_score": 85,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "dbt without the warehouse (or the bill): DuckDB end to end",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
     "relevance_score": 85,
     "decision": "source_cap",
     "excluded_by": []
