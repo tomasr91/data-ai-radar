@@ -11,6 +11,7 @@ Lagen:
 """
 import argparse
 import json
+import re
 import math
 import os
 import sys
@@ -37,7 +38,10 @@ SCHEMA_VERSION = 1
 DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
 PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
-QUEUE_MAX = 15         # max. aantal artikelen op de werklijst voor Claude
+QUEUE_MAX = 25         # werklijst voor Claude: hooguit 15 uitleggen, de rest vult aan wat is overgeslagen (T, 5-11-2026)
+# Bronnen met queue_low: true in sources.yml (bijv. Fabric) komen achteraan op de werklijst, behalve
+# als het om iets algemeen beschikbaars gaat of om de koppeling met Power BI of Databricks.
+QUEUE_LOW_EXCEPT = re.compile(r"generally available|\bGA\b|now available|Power BI|Databricks", re.I)
 QUEUE_MIN_SCORE = 40   # voorlopige score die een onverwerkt artikel minstens moet hebben
 QUEUE_MAX_AGE_DAYS = 14   # alleen recente artikelen op de werklijst: een nieuwe bron levert geen weken achterstand op (T, 4-11-2026)
 AREA_MAX_FACTOR = 1.5     # een gebied vult hooguit 1,5 x zijn richtwaarde van de feed (T, 4-11-2026)
@@ -252,7 +256,7 @@ def write_to_tag(shown: list) -> None:
 
 
 EFFECT_DAYS = 7
-INCLUDED = ("included", "included_exceptional")
+INCLUDED = ("included", "included_exceptional", "included_near")
 
 
 def feedback_effect(arts: list, shown: list, conf, now) -> dict:
@@ -359,12 +363,14 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # artikelen over een kernonderwerp te zien; Claude beoordeelt daarna of ze de feed in mogen.
     # Weekoverzichten (zie digest.py) gaan voor: het zijn er hooguit een paar per week.
     # Gebieden onder hun ondergrens krijgen voorrang op de werklijst (na de weekoverzichten).
-    have = Counter(area_of(a, conf) for a in arts if a["decision"] in ("included", "included_exceptional") and a["processing_status"] == "enriched")
+    have = Counter(area_of(a, conf) for a in arts if a["decision"] in INCLUDED and a["processing_status"] == "enriched")
     under = {x["id"] for x in conf.interests.get("interest_areas", []) if have[x["id"]] < (x.get("min_articles") or 0)}
     # Voorrang voor een gebied onder de ondergrens alleen bij een score boven de drempel: anders vult
     # marketing van een bron in dat gebied (bijv. "nu ook op Google Cloud") de werklijst.
     bar = conf.scoring.get("min_relevance_score", 0.6) * 100
-    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, not (area_of(a, conf) in under and a["relevance_score"] >= bar),
+    def low(a):
+        return bool((sources_by_id.get(a["source_id"]) or {}).get("queue_low")) and not QUEUE_LOW_EXCEPT.search(f"{a['title']} {a.get('excerpt', '')}")
+    queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, low(a), not (area_of(a, conf) in under and a["relevance_score"] >= bar),
                                                     -a["score_parts"]["topic"], -a["relevance_score"]))
              if a["processing_status"] != "enriched" and a["id"] not in skip and (a["id"] in digest_ids or _age_days(a, now) <= QUEUE_MAX_AGE_DAYS)
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
@@ -384,7 +390,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         a.pop("canonical_url", None)
 
     # Alleen artikelen die Claude heeft uitgelegd komen in de app; de rest wacht op de werklijst.
-    shown = sorted([a for a in arts if a["decision"] in ("included", "included_exceptional")
+    shown = sorted([a for a in arts if a["decision"] in INCLUDED
                     and a["processing_status"] == "enriched"],
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))
     # Maximum per bron: zo kan één bron de feed niet vullen. De hoogste scores blijven staan.

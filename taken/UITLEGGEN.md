@@ -7,8 +7,9 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 1. **Vers ophalen afdwingen.** Kijk naar `generated_at` in `data/feed.json`. Is die niet van vandaag (UTC), schrijf dan de datum van vandaag (`date -u +%F`) in `data/run-request`, commit alleen dat bestand ("Ophalen aangevraagd <datum>") en push. Wacht daarna tot `data/feed.json` van vandaag is: elke 30 seconden `git pull`, hooguit 10 minuten. Lukt het niet, ga door met de werklijst die er is en zet dat in het taakverslag.
 2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
-4. **Per artikel** (in volgorde, **maximaal 15**):
-   1. Open de `url` en lees het **volledige artikel**. Nooit alleen op titel of `excerpt`.
+4. **Per artikel** (in volgorde): ga door tot je **15 artikelen hebt uitgelegd** of de lijst op is (er staan er hooguit 25). Overslaan telt niet mee voor die 15: zo vult het volgende artikel de plek op.
+   0. Valt een artikel op titel en `excerpt` al **duidelijk** onder **Niet uitleggen** (bijv. buiten het vakgebied, een kleine Fabric-preview, dubbel)? Sla het dan over zonder de pagina te openen, met de regel als `reason`. Bij twijfel: openen.
+   1. Open de `url` en lees het **volledige artikel**. Uitleggen nooit alleen op titel of `excerpt`.
    2. Niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door. Begin `reason` dan met "Niet te lezen": zo'n artikel komt na een week nog één keer terug op de werklijst (staat er al een `skipped`-bestand, overschrijf het).
    3. Valt het onder **Niet uitleggen**? Ook een `skipped`-bestand, met de regel als `reason`.
    4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder, met begrippen (`terms`) en waar het past een `showcase`.

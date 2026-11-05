@@ -31,6 +31,7 @@ WEIGHTS = {"topic": 0.55, "quality": 0.20, "recency": 0.15, "source": 0.10}
 RAW_QUALITY = 0.35
 
 
+NEAR_MARGIN = 0.05   # uitgelegd en tot 5 punten onder de drempel: toch tonen als het bij je past
 FIT_WEIGHT = 0.10   # Claudes "past bij jou": hooguit 10 punten erbij of eraf
 
 def match_certainty(n_hits: int) -> float:
@@ -156,6 +157,9 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
     elif (article.get("exceptional") and override.get("enabled")
           and best_priority in override.get("applies_to_priorities", [])):
         decision = "included_exceptional"
+    elif (article.get("processing_status") == "enriched" and total >= threshold - NEAR_MARGIN
+          and isinstance(fit, (int, float)) and fit >= 0.5):
+        decision = "included_near"   # al uitgelegd, net onder de drempel en past bij jou: toch tonen (T, 5-11-2026)
     else:
         decision = "below_threshold"
 

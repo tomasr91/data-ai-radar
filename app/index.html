@@ -1582,7 +1582,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <table class="score-table">${partRows}${fitRow}</table>
           ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
           ${a.fit?.why ? `<p class="score-fb">Claude: ${esc(a.fit.why)}</p>` : ""}
-          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : ""}.</p>
+          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : a.decision === "included_near" ? "; net onder de drempel, maar het past bij je" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
         </dialog>
       </article>`;

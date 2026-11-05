@@ -713,6 +713,22 @@ class TestBalance(unittest.TestCase):
         self.assertLessEqual(build._age_days({"published_at": "2026-10-28T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
 
 
+class TestNearThreshold(unittest.TestCase):
+    def test_enriched_near_threshold_with_fit_is_shown(self):
+        conf = cfg.load()
+        now = datetime(2026, 11, 5, tzinfo=timezone.utc)
+        base = {"id": "n1", "title": "x", "url": "https://x", "source_id": "sqlbi", "published_at": "2026-11-04T00:00:00Z",
+                "processing_status": "enriched", "topics": ["powerbi_semantic_models"], "quality": {"depth": .5, "practicality": .5, "novelty": .4}}
+        r = score_article(dict(base, fit={"score": 0.5, "why": "Neutraal."}), conf, now)
+        thr = round(conf.scoring["min_relevance_score"] * 100)
+        if thr - 5 <= r["relevance_score"] < thr:
+            self.assertEqual(r["decision"], "included_near")
+        raw = score_article(dict(base, processing_status="raw", fit=None, quality=None), conf, now)
+        self.assertNotEqual(raw["decision"], "included_near")      # alleen al uitgelegde artikelen
+        lo = score_article(dict(base, fit={"score": 0.3, "why": "Past niet."}), conf, now)
+        self.assertNotEqual(lo["decision"], "included_near")      # en alleen als het bij je past
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends

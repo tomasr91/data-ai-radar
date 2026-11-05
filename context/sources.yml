@@ -202,6 +202,7 @@ sources:
     topics: [powerbi_semantic_models]
     # Veel kleine (Preview-)functies; mini_updates en de score filteren. Alleen de must-knows.
     priority: 3
+    queue_low: true   # achteraan op de werklijst, behalve bij GA of koppeling met Power BI/Databricks (T, 5-11-2026)
     enabled: true
     trust_level: high
     language: en
