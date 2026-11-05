@@ -54,5 +54,27 @@
   "fit": {
     "score": 0.7,
     "why": "dbt plus context voor AI, zoals je duimen bij Noonan en synoniemen per veld."
-  }
+  },
+  "terms": [
+    {
+      "term": "dbt_context_engineering",
+      "explanation": "Een open-source dbt-pakket van dbt Labs dat tekst in je warehouse in stukken knipt, omzet naar embeddings en doorzoekbaar maakt voor AI-agents."
+    },
+    {
+      "term": "embeddings",
+      "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen."
+    },
+    {
+      "term": "AI-agents",
+      "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
+    },
+    {
+      "term": "prompts",
+      "explanation": "De instructie en tekst die je aan een taalmodel geeft."
+    },
+    {
+      "term": "tokens",
+      "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+  ]
 }

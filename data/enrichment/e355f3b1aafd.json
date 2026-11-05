@@ -58,5 +58,23 @@
   "fit": {
     "score": 0.65,
     "why": "dbt-release in je eigen stack, maar een bèta zonder AI-hoek."
-  }
+  },
+  "terms": [
+    {
+      "term": "dbt State",
+      "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+      "term": "dbt v2",
+      "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
+    },
+    {
+      "term": "vlaggen",
+      "explanation": "Instellingen waarmee je nieuw gedrag van dbt al vooraf aanzet. In een latere versie wordt dat gedrag de standaard."
+    },
+    {
+      "term": "parser",
+      "explanation": "Het onderdeel van dbt dat je projectbestanden inleest en omzet in een overzicht van modellen en hun verbanden, voordat er iets draait."
+    }
+  ]
 }

@@ -43,5 +43,19 @@
   "fit": {
     "score": 0.85,
     "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
-  }
+  },
+  "terms": [
+    {
+      "term": "declaratief",
+      "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
+    },
+    {
+      "term": "AI-agents",
+      "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
+    },
+    {
+      "term": "tokens",
+      "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+  ]
 }

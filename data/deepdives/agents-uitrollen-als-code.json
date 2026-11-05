@@ -156,5 +156,39 @@
   ],
   "written_at": "2026-10-31T09:40:00Z",
   "processed_by": "Claude (geplande taak)",
-  "prompt_version": "verdieping-v2"
+  "prompt_version": "verdieping-v2",
+  "terms": [
+    {
+      "term": "materialization",
+      "explanation": "De manier waarop dbt een model in het warehouse bouwt, zoals view, table of incremental. Je kunt ook eigen materializations schrijven."
+    },
+    {
+      "term": "post-hook",
+      "explanation": "SQL die dbt vanzelf draait direct nadat een model is gebouwd, bijvoorbeeld om rechten toe te kennen."
+    },
+    {
+      "term": "lineage",
+      "explanation": "Het overzicht van waar data vandaan komt en wat ervan afhangt, van bron tot dashboard of agent."
+    },
+    {
+      "term": "CI",
+      "explanation": "Continuous integration: bij elke wijziging draaien automatisch tests en controles, zodat fouten snel opvallen."
+    },
+    {
+      "term": "Declarative Automation Bundles",
+      "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    },
+    {
+      "term": "targets",
+      "explanation": "De omgevingen in een bundel, zoals dev en prod. Elke target mag instellingen van de standaard overschrijven, zoals de werkruimte of een variabele."
+    },
+    {
+      "term": "Agent Bricks CLI",
+      "explanation": "Een opdrachtregelprogramma van Databricks, nu in Beta, om een agent als code te maken en met agentbricks deploy naar Databricks Apps te brengen."
+    },
+    {
+      "term": "deployment jobs",
+      "explanation": "Jobs in Databricks die bij elke nieuwe modelversie een evaluatie draaien, op een goedkeuring wachten en dan uitrollen. Nu in Public Preview."
+    }
+  ]
 }

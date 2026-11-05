@@ -60,5 +60,27 @@
   "fit": {
     "score": 0.45,
     "why": "Praktische dbt-stappen, maar over migratie, een project dat je nu hebt gepauzeerd."
-  }
+  },
+  "terms": [
+    {
+      "term": "adapter",
+      "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks."
+    },
+    {
+      "term": "SQL-dialect",
+      "explanation": "De eigen variant van SQL die elk datawarehouse spreekt. De basis is gelijk, maar sommige functies heten of werken anders."
+    },
+    {
+      "term": "dbt_utils",
+      "explanation": "Een veelgebruikt dbt-pakket met kant-en-klare macro's en tests die op verschillende datawarehouses werken."
+    },
+    {
+      "term": "dbt-audit-helper",
+      "explanation": "Een dbt-pakket met macro's die twee tabellen rij voor rij vergelijken, zodat je ziet of een nieuwe versie dezelfde uitkomst geeft."
+    },
+    {
+      "term": "Lakeflow Jobs",
+      "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    }
+  ]
 }

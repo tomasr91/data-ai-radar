@@ -174,5 +174,39 @@
       ]
     },
     "note": "Verzonnen testresultaten, alleen om het idee te laten zien. In Databricks staan zulke uitkomsten bij een MLflow-evaluatie; hier staan ze in een gewone tabel."
-  }
+  },
+  "terms": [
+    {
+      "term": "evals",
+      "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    },
+    {
+      "term": "foutanalyse",
+      "explanation": "Zelf een reeks echte gesprekken of uitkomsten lezen en noteren wat er misgaat, voordat je toetsen vastlegt."
+    },
+    {
+      "term": "trace",
+      "explanation": "Het vastgelegde spoor van wat een agent deed: welke tools hij aanriep en wat die teruggaven."
+    },
+    {
+      "term": "LLM-as-judge",
+      "explanation": "Een taalmodel dat de antwoorden van een ander model beoordeelt. Handig bij veel antwoorden, maar het kan dezelfde fouten maken."
+    },
+    {
+      "term": "Pass@k",
+      "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
+    },
+    {
+      "term": "Pass^k",
+      "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
+    },
+    {
+      "term": "scorer",
+      "explanation": "De naam voor een beoordelaar in MLflow: code of een AI-oordeel dat per antwoord bepaalt of het goed is."
+    },
+    {
+      "term": "regressieset",
+      "explanation": "Een testset met vragen die al goed gaan. De score moet rond de 100 procent blijven; zakt die, dan heb je iets kapotgemaakt."
+    }
+  ]
 }

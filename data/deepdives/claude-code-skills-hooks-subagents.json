@@ -141,5 +141,39 @@
   ],
   "written_at": "2026-10-30T07:20:00Z",
   "processed_by": "Claude (geplande taak)",
-  "prompt_version": "verdieping-v2"
+  "prompt_version": "verdieping-v2",
+  "terms": [
+    {
+      "term": "SKILL.md",
+      "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill."
+    },
+    {
+      "term": "frontmatter",
+      "explanation": "Een paar regels met instellingen bovenaan een bestand, zoals de naam en beschrijving van een skill."
+    },
+    {
+      "term": "progressive disclosure",
+      "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
+    },
+    {
+      "term": "hooks",
+      "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+      "term": "PreToolUse",
+      "explanation": "Het moment in Claude Code vlak voordat een tool wordt aangeroepen. Een hook op dit moment kan de aanroep nog blokkeren."
+    },
+    {
+      "term": "exitcode",
+      "explanation": "Het getal dat een script bij het stoppen teruggeeft. Bij een hook in Claude Code blokkeert exitcode 2 de actie, exitcode 1 niet."
+    },
+    {
+      "term": "contextvenster",
+      "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    },
+    {
+      "term": "fork",
+      "explanation": "Een subagent die het gesprek tot nu toe meeneemt, in plaats van blanco te beginnen zoals een gewone subagent."
+    }
+  ]
 }

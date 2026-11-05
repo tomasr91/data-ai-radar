@@ -151,5 +151,39 @@
   ],
   "written_at": "2026-10-31T16:40:00Z",
   "processed_by": "Claude (geplande taak)",
-  "prompt_version": "verdieping-v2"
+  "prompt_version": "verdieping-v2",
+  "terms": [
+    {
+      "term": "CLAUDE.md",
+      "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
+    },
+    {
+      "term": ".claude/rules",
+      "explanation": "Een map met losse regelbestanden voor Claude Code, elk over één onderwerp. Met een paths-veld laadt een regel alleen bij bestanden die erbij passen."
+    },
+    {
+      "term": "AGENTS.md",
+      "explanation": "Een afsprakenbestand voor AI-codeertools. Claude Code leest het als er geen CLAUDE.md is, of je importeert het vanuit CLAUDE.md met @AGENTS.md."
+    },
+    {
+      "term": "skills",
+      "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    },
+    {
+      "term": "Stop-hook",
+      "explanation": "Een hook in Claude Code die draait op het moment dat Claude wil stoppen, bijvoorbeeld om eerst een controle af te dwingen."
+    },
+    {
+      "term": "subagent",
+      "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+      "term": "dbt-project-evaluator",
+      "explanation": "Een dbt-pakket dat je project controleert op afspraken, zoals naamgeving, laagindeling en ontbrekende tests."
+    },
+    {
+      "term": "invarianten",
+      "explanation": "Regels over de data die altijd moeten gelden, zoals 'omzet is nooit negatief', in plaats van vaste waarden van vandaag."
+    }
+  ]
 }
