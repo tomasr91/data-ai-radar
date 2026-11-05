@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T06:28:19.773574Z",
+ "generated_at": "2026-11-05T06:53:05.902446Z",
  "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
  "votes": [
   {
@@ -11,6 +11,8 @@
     "claude_ai_development"
    ],
    "soort": "release",
+   "labels": [],
+   "score": 90,
    "v": 1,
    "r": null
   },
@@ -23,6 +25,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktijk",
+   "labels": [],
+   "score": 79,
    "v": -1,
    "r": "te_vaag"
   },
@@ -35,6 +39,8 @@
     "cicd_data_deployment"
    ],
    "soort": "praktijk",
+   "labels": [],
+   "score": 94,
    "v": 1,
    "r": "mijn_stack"
   },
@@ -47,6 +53,8 @@
     "ai_on_data_platform"
    ],
    "soort": "achtergrond",
+   "labels": [],
+   "score": 95,
    "v": 1,
    "r": null
   },
@@ -59,6 +67,8 @@
     "data_governance_privacy"
    ],
    "soort": "aankondiging",
+   "labels": [],
+   "score": 93,
    "v": 1,
    "r": null
   },
@@ -71,6 +81,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "mening",
+   "labels": [],
+   "score": 90,
    "v": 1,
    "r": null
   },
@@ -83,6 +95,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "achtergrond",
+   "labels": [],
+   "score": 89,
    "v": 1,
    "r": "meer_hiervan"
   },
@@ -95,6 +109,8 @@
     "ai_context_engineering"
    ],
    "soort": "achtergrond",
+   "labels": [],
+   "score": 97,
    "v": 1,
    "r": null
   },
@@ -107,6 +123,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktijk",
+   "labels": [],
+   "score": 96,
    "v": 1,
    "r": "meer_hiervan"
   },
@@ -119,6 +137,8 @@
     "data_architecture_modeling"
    ],
    "soort": null,
+   "labels": [],
+   "score": 91,
    "v": 1,
    "r": null
   },
@@ -131,6 +151,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktijk",
+   "labels": [],
+   "score": 95,
    "v": 1,
    "r": null
   },
@@ -143,6 +165,8 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktisch",
+   "labels": [],
+   "score": 92,
    "v": 1,
    "r": null
   },
@@ -155,6 +179,8 @@
     "ai_context_engineering"
    ],
    "soort": null,
+   "labels": [],
+   "score": null,
    "v": 1,
    "r": null
   }
@@ -168,7 +194,9 @@
     "powerbi_semantic_models",
     "ai_context_engineering"
    ],
-   "soort": "mening"
+   "soort": "mening",
+   "labels": [],
+   "score": 86
   },
   {
    "id": "308e572d49e4",
@@ -178,7 +206,9 @@
     "ai_on_data_platform",
     "ai_agents_rag"
    ],
-   "soort": "release"
+   "soort": "release",
+   "labels": [],
+   "score": 95
   },
   {
    "id": "3fd19a8cb4a2",
@@ -188,7 +218,9 @@
     "ai_agents_rag",
     "claude_ai_development"
    ],
-   "soort": "achtergrond"
+   "soort": "achtergrond",
+   "labels": [],
+   "score": 80
   },
   {
    "id": "7fd7e06ab2f4",
@@ -198,7 +230,9 @@
     "claude_ai_development",
     "cicd_data_deployment"
    ],
-   "soort": "praktijk"
+   "soort": "praktijk",
+   "labels": [],
+   "score": 85
   },
   {
    "id": "a9b6458ba033",
@@ -208,14 +242,18 @@
     "ai_on_data_platform",
     "claude_ai_development"
    ],
-   "soort": "aankondiging"
+   "soort": "aankondiging",
+   "labels": [],
+   "score": 95
   },
   {
    "id": "ce8bd2396821",
    "title": "Zes kleine agents met elk één taak, en een mens die tekent",
    "source_id": "",
    "topics": [],
-   "soort": "praktijk"
+   "soort": "praktijk",
+   "labels": [],
+   "score": 75
   },
   {
    "id": "29e95692607d",
@@ -225,7 +263,9 @@
     "ai_context_engineering",
     "ai_agents_rag"
    ],
-   "soort": null
+   "soort": null,
+   "labels": [],
+   "score": 83
   },
   {
    "id": "b380b17e60f1",
@@ -235,7 +275,10 @@
     "cicd_data_deployment",
     "databricks_data_engineering"
    ],
-   "soort": "praktijk"
+   "soort": "praktijk",
+   "labels": [],
+   "score": 87
   }
- ]
+ ],
+ "labels_in_use": []
 }
