@@ -39,7 +39,8 @@ SCHEMA_VERSION = 1
 DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
 PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
-QUEUE_MAX = 40         # werklijst voor Claude: hooguit 15 vol en 20 kort uitleggen; de rest vult aan wat is overgeslagen (T, 5-11-2026)
+QUEUE_MAX = 40         # werklijst voor Claude: hooguit 10 per nacht uitleggen (vol of kort); de rest vult aan wat is overgeslagen (T, 5-11-2026)
+FRESH_DAYS, FRESH_BONUS = 2, 10   # liefst actueel: artikelen van de laatste 2 dagen krijgen 10 punten voorrang op de werklijst
 EXPLAIN_REQUESTS = cfg.DATA / "explain_requests.json"   # korte uitleg die T volledig wil (knop "Volledig uitleggen")
 # Bronnen met queue_low: true in sources.yml (bijv. Fabric) komen achteraan op de werklijst, behalve
 # als het om iets algemeen beschikbaars gaat of om de koppeling met Power BI of Databricks.
@@ -392,9 +393,10 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         EXPLAIN_REQUESTS.write_text(json.dumps({"ids": [a["id"] for a in full]}, indent=1), encoding="utf-8")
 
     def low(a):
-        return bool((sources_by_id.get(a["source_id"]) or {}).get("queue_low")) and not QUEUE_LOW_EXCEPT.search(f"{a['title']} {a.get('excerpt', '')}")
+        return bool((sources_by_id.get(a["source_id"]) or {}).get("queue_low")) and not QUEUE_LOW_EXCEPT.search(a["title"])   # alleen de titel: in de tekst staat bijna altijd 'Power BI'
+    # Volgorde (T, 5-11-2026): per nacht hooguit 10, liefst actueel; een ouder artikel met een hoge score mag voor.
     queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, low(a), not (area_of(a, conf) in under and a["relevance_score"] >= bar),
-                                                    -a["score_parts"]["topic"], -a["relevance_score"]))
+                                                    -(a["relevance_score"] + (FRESH_BONUS if _age_days(a, now) <= FRESH_DAYS else 0))))
              if a["processing_status"] != "enriched" and a["id"] not in skip and (a["id"] in digest_ids or _age_days(a, now) <= QUEUE_MAX_AGE_DAYS)
              and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX - len(full)]
     queue = full + queue
