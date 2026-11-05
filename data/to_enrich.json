@@ -1,80 +1,7 @@
 {
- "generated_at": "2026-11-05T03:13:44.812748Z",
+ "generated_at": "2026-11-05T03:32:35.919402Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "e0430f87ce3c",
-   "title": "dbt v1.13.0rc1",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1",
-   "source_id": "dbt_core_releases",
-   "source_name": "dbt-core releases (GitHub)",
-   "published_at": "2026-11-04T11:47:03Z",
-   "excerpt": "dbt-core 1.13.0-rc1 - November 04, 2026 Breaking Changes Drop support for Python 3.10, which has reached end-of-life ( #TBD ) Fixes Recognize Databricks Python model config keys ( access_control_list , notebook_access_control_list ) in jsonschema validation so they no longer raise spurious CustomKeyInConfigDeprecation warnings (dbt-databricks#1661) ( #N/A ) Macro namespace resolution no longer lets an internal search_package shadow adapter or root overrides. When search_package is itself an internal package (e.g. dbt or dbt_postgres), the adapter override is now consistently preferred over the base dbt implementation, and a root-project macro always wins. ( #16540 ) Accept the dbt v2-only info_schema , check-paths and checks keys in dbt_project.yml, ignoring them with a note that they are specific to the dbt v2 engine ( #16640 ) Ignore manifest nodes with resource types dbt-core doesn't support, such as dbt v2 checks, when loading a manifest for --state and --defer ( #16849 ) Supply credentials for dbt deps git packages through a git credential helper instead of embedding them in the clone URL, so clones of redirecting repositories keep working with libcurl 7.81.0-1ubuntu1.30 and l",
-   "preliminary_score": 95,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "data_governance_privacy"
-   ]
-  },
-  {
-   "id": "3cf817db3b41",
-   "title": "OneLake table APIs: Now with Iceberg writes, plus richer table metadata (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-table-APIs-Now-with-Iceberg-writes-plus-richer-table/ba-p/5391262",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T20:00:00Z",
-   "excerpt": "OneLake table APIs already let Iceberg-compatible engines discover and read tables in Microsoft Fabric. Today we're taking the next step with two additions: Iceberg REST Catalog (IRC) writes through the OneLake table endpoint, now available, and a new additional table metadata API, in preview, for adding descriptions and tags to tables and columns. Together, they make OneLake a place where any engine can not only read data, but also publish it, with the business context people and AI agents need to use it well. Write native Iceberg tables from the engines you already use Until now, the OneLake Iceberg endpoint supported read-only metadata operations. Now, IRC-compatible clients can create native Iceberg tables, commit new snapshots, and request short-lived storage credentials through the same endpoint they already use for reads. That means engines such as PyIceberg, Snowflake, and DuckDB can land results directly in OneLake using standard Iceberg tooling, with no custom connectors or copy jobs. Some of the supported Iceberg REST Catalog operations at the OneLake table endpoint include: Operation What it does Status List/get/check namespaces Discovers the schemas in a data item Avai",
-   "preliminary_score": 89,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "fdd5d7528171",
-   "title": "Bring your Fabric data into your next app with connectors",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T18:00:00Z",
-   "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
-   "preliminary_score": 86,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "e23fad0ddde8",
-   "title": "Eventhouse support for OneLake security (Generally Available)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Eventhouse-support-for-OneLake-security-Generally-Available/ba-p/5377875",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T22:00:00Z",
-   "excerpt": "Security should be consistent wherever you query your data. With OneLake security, you can define access controls once, close to the data, and apply them across supported Microsoft Fabric engines without recreating your security rules for each experience. Today, we’re announcing the general availability of OneLake security support for Eventhouse external tables. When these external tables query data secured by OneLake security, they automatically enforce object-level, column-level, and row-level access controls. This extends the same centrally managed security model to KQL queries, helping you maintain consistent, end-to-end security and governance across analytics experiences. Lakehouse data with Eventhouse power The Eventhouse endpoint for Lakehouses provides a high-performance query layer over data stored in the Lakehouse, bringing the speed and scale of the Eventhouse engine to your existing data without requiring another copy. Because access remains governed by OneLake security, users get Eventhouse performance while your organization maintains a shared, centrally managed security model across Fabric. Object, column, and row level security Eventhouse support covers three level",
-   "preliminary_score": 75,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "2fe4fbe32c22",
-   "title": "Govern Fabric connections with admin APIs and data connection policies (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-Fabric-connections-with-admin-APIs-and-data-connection/ba-p/5383656",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T19:00:00Z",
-   "excerpt": "Co-author: Abhishek Narain Protect continuity, understand connection risk, and set tenant-wide guardrails Imagine that the person who built a business-critical pipeline has left your organization. The connection still exists, but nobody is sure who can manage it or whether its credentials will keep working. What begins as a handover problem quickly becomes a governance question: who owns your connections, where do they lead, and which identities should be allowed to use them? Microsoft Fabric brings these questions together through two complementary capabilities: Admin connection APIs give tenant administrators visibility and ownership-management tools across connection types. Data connection policies set preventive controls for cloud connections. Together, they support a practical sequence: restore responsibility, understand your connections, then enforce the authentication boundaries your organization needs. From recovery to prevention Keep work moving when a connection owner leaves A departure should not leave a connection without someone who can maintain it. When an existing connection has a single owner, a Fabric tenant administrator can use the admin connection APIs to grant ",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "ai_evaluation_observability"
-   ]
-  },
   {
    "id": "a72fbd9496d2",
    "title": "Salesforce Data 360 integration with OneLake (Preview)",
@@ -204,6 +131,71 @@
    "preliminary_score": 53,
    "preliminary_topics": [
     "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "1108578f6cfd",
+   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T19:00:00Z",
+   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "42961f224d85",
+   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T17:00:00Z",
+   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "faf6b20eb041",
+   "title": "Claude Cowork and chat come together for Enterprise",
+   "url": "https://claude.com/resources/articles/unified-claude-enterprise",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-10-23T00:00:00Z",
+   "excerpt": "Claude Cowork and chat come together for Enterprise",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "f61b8e821bc3",
+   "title": "Incrementally migrate and re-migrate database objects with Migration Assistant for Fabric Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Incrementally-migrate-and-re-migrate-database-objects-with/ba-p/5376060",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-21T18:00:00Z",
+   "excerpt": "Migrate database objects to Microsoft Fabric in phases without creating a new Warehouse for every run. Start with one business domain, add another when it is ready, or revisit an object after its source definition changes. You can also build on an existing Warehouse instead of replacing it. Incremental migration for Microsoft Fabric Data Warehouse (Preview) lets you move workloads in manageable phases while keeping control of the destination. Select the objects required for the current workload, add more objects in later runs, and resolve naming conflicts when an incoming object already exists. The process migrates object definitions; it does not continuously synchronize changed rows. You can start with an empty Warehouse, continue a previous migration, or use an existing Warehouse that was not created through migration. This flexibility lets teams preserve completed work while adding the next approved scope. It also supports deliberate consolidation into the Fabric destinations that match your architecture. Choose the objects that belong in each migration Enterprise migration plans often span several teams, applications, and business domains. Those groups do not always need to mov",
+   "preliminary_score": 49,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "fa55dbcedb33",
+   "title": "Declare and optimize with UNIQUE constraints on Databricks",
+   "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-03T21:00:00Z",
+   "excerpt": "Data teams often maintain uniqueness guarantees in their pipelines, but without a...",
+   "preliminary_score": 60,
+   "preliminary_topics": [
+    "databricks_data_engineering"
    ]
   }
  ]
