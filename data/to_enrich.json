@@ -1,33 +1,7 @@
 {
- "generated_at": "2026-11-05T05:16:16.534906Z",
+ "generated_at": "2026-11-05T06:00:37.129035Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "1108578f6cfd",
-   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T19:00:00Z",
-   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "42961f224d85",
-   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T17:00:00Z",
-   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
   {
    "id": "faf6b20eb041",
    "title": "Claude Cowork and chat come together for Enterprise",
@@ -39,19 +13,6 @@
    "preliminary_score": 53,
    "preliminary_topics": [
     "claude_ai_development"
-   ]
-  },
-  {
-   "id": "f61b8e821bc3",
-   "title": "Incrementally migrate and re-migrate database objects with Migration Assistant for Fabric Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Incrementally-migrate-and-re-migrate-database-objects-with/ba-p/5376060",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-21T18:00:00Z",
-   "excerpt": "Migrate database objects to Microsoft Fabric in phases without creating a new Warehouse for every run. Start with one business domain, add another when it is ready, or revisit an object after its source definition changes. You can also build on an existing Warehouse instead of replacing it. Incremental migration for Microsoft Fabric Data Warehouse (Preview) lets you move workloads in manageable phases while keeping control of the destination. Select the objects required for the current workload, add more objects in later runs, and resolve naming conflicts when an incoming object already exists. The process migrates object definitions; it does not continuously synchronize changed rows. You can start with an empty Warehouse, continue a previous migration, or use an existing Warehouse that was not created through migration. This flexibility lets teams preserve completed work while adding the next approved scope. It also supports deliberate consolidation into the Fabric destinations that match your architecture. Choose the objects that belong in each migration Enterprise migration plans often span several teams, applications, and business domains. Those groups do not always need to mov",
-   "preliminary_score": 49,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
    ]
   },
   {
@@ -81,19 +42,6 @@
    ]
   },
   {
-   "id": "b6bd616345c2",
-   "title": "Introducing the data engineering agent for Fabric (Project Osmos)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Introducing-the-data-engineering-agent-for-Fabric-Project-Osmos/ba-p/5377944",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T15:55:24Z",
-   "excerpt": "AI coding assistants are excellent at turning natural-language transformation instructions into code. For data engineers, the harder question is whether that code produces results they can trust. You can describe transformation logic in natural language, and an AI coding assistant will happily generate hundreds of lines of Spark code. Impressive. But a Spark job can execute successfully and still produce completely wrong results. The logic may work for a subset of the data but fail when run against the full dataset. The pipeline's logic and validation checks may not account for future changes to the data or schema. Incremental loads can cause duplicates. Revenue numbers might look perfectly reasonable until someone reconciles them against the source. Anyone who's spent time working with real-world enterprise data knows that automating data engineering with AI comes with a unique set of challenges. Data engineering involves more than code: it requires working with large datasets and retaining context about their schemas, relationships, and business rules over time. Quality & governance matter a lot. The cost of errors or data loss is very high. Data engineering work typically spans ",
-   "preliminary_score": 52,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
    "id": "86eab858089b",
    "title": "How We Optimized Browser Use for Deep Agents",
    "url": "https://www.langchain.com/blog/how-we-optimized-browser-use-for-deep-agents",
@@ -117,6 +65,58 @@
    "preliminary_score": 56,
    "preliminary_topics": [
     "open_source_tools"
+   ]
+  },
+  {
+   "id": "1108578f6cfd",
+   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T19:00:00Z",
+   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "42961f224d85",
+   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T17:00:00Z",
+   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
+   "preliminary_score": 53,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "f61b8e821bc3",
+   "title": "Incrementally migrate and re-migrate database objects with Migration Assistant for Fabric Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Incrementally-migrate-and-re-migrate-database-objects-with/ba-p/5376060",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-21T18:00:00Z",
+   "excerpt": "Migrate database objects to Microsoft Fabric in phases without creating a new Warehouse for every run. Start with one business domain, add another when it is ready, or revisit an object after its source definition changes. You can also build on an existing Warehouse instead of replacing it. Incremental migration for Microsoft Fabric Data Warehouse (Preview) lets you move workloads in manageable phases while keeping control of the destination. Select the objects required for the current workload, add more objects in later runs, and resolve naming conflicts when an incoming object already exists. The process migrates object definitions; it does not continuously synchronize changed rows. You can start with an empty Warehouse, continue a previous migration, or use an existing Warehouse that was not created through migration. This flexibility lets teams preserve completed work while adding the next approved scope. It also supports deliberate consolidation into the Fabric destinations that match your architecture. Choose the objects that belong in each migration Enterprise migration plans often span several teams, applications, and business domains. Those groups do not always need to mov",
+   "preliminary_score": 49,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "b6bd616345c2",
+   "title": "Introducing the data engineering agent for Fabric (Project Osmos)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Introducing-the-data-engineering-agent-for-Fabric-Project-Osmos/ba-p/5377944",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T15:55:24Z",
+   "excerpt": "AI coding assistants are excellent at turning natural-language transformation instructions into code. For data engineers, the harder question is whether that code produces results they can trust. You can describe transformation logic in natural language, and an AI coding assistant will happily generate hundreds of lines of Spark code. Impressive. But a Spark job can execute successfully and still produce completely wrong results. The logic may work for a subset of the data but fail when run against the full dataset. The pipeline's logic and validation checks may not account for future changes to the data or schema. Incremental loads can cause duplicates. Revenue numbers might look perfectly reasonable until someone reconciles them against the source. Anyone who's spent time working with real-world enterprise data knows that automating data engineering with AI comes with a unique set of challenges. Data engineering involves more than code: it requires working with large datasets and retaining context about their schemas, relationships, and business rules over time. Quality & governance matter a lot. The cost of errors or data loss is very high. Data engineering work typically spans ",
+   "preliminary_score": 52,
+   "preliminary_topics": [
+    "databricks_data_engineering"
    ]
   }
  ]
