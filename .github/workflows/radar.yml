@@ -88,6 +88,7 @@ jobs:
           [ -f data/feedback.json ] && git add data/feedback.json
           [ -f data/retried.json ] && git add data/retried.json
           [ -f data/interest_requests.json ] && git add data/interest_requests.json
+          [ -f data/explain_requests.json ] && git add data/explain_requests.json
           if git diff --cached --quiet; then
             echo "Geen wijzigingen."
           else

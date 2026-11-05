@@ -101,9 +101,9 @@ De radar levert één kort dagelijks overzicht (leesritme uit `profile.md`):
 ## 6. Wat níet in de feed hoort
 
 - Alles uit `excluded_topics` in `interests.yml` (funding en overnames, AI voor beeld/video/muziek, crypto en blockchain, nieuwe connectoren, patches en dev-builds, maandoverzichten). Ook niet via de uitzonderingsregel.
-- **Alleen must-knows.** Geen kleine updates: losse kleine functies, UI-aanpassingen, uitrol naar extra regio's of verzameloverzichten.
+- **Volle uitleg alleen voor must-knows.** Kleine updates (losse kleine functies, UI-aanpassingen, previews) binnen het vakgebied krijgen een **korte uitleg** (T, 5-11-2026: meer artikelen zien, zelf kiezen). Uitrol naar extra regio's en verzameloverzichten blijven weg.
 - **Klantverhalen** alleen als ze concreet maken welke tools er gebruikt worden en wat de toepassing is. Het verhaal begint dan bij de toepassing, niet bij het bedrijf.
-- **Power BI en Fabric**: alleen grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen.
+- **Power BI en Fabric**: volle uitleg alleen bij grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen; de rest kort.
 - **dbt-releases**: grote en kleine releases en bèta's wel; patches en dev-builds niet.
 - Artikelen zonder technische inhoud of praktische toepassing. Uitzondering: onderbouwde opinies van erkende vakmensen (zie §2, Opiniestukken).
 - Personeelsnieuws, tenzij het directe gevolgen heeft voor een tool uit mijn stack.

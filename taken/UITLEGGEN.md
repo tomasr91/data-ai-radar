@@ -7,12 +7,12 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 1. **Vers ophalen afdwingen.** Kijk naar `generated_at` in `data/feed.json`. Is die niet van vandaag (UTC), schrijf dan de datum van vandaag (`date -u +%F`) in `data/run-request`, commit alleen dat bestand ("Ophalen aangevraagd <datum>") en push. Wacht daarna tot `data/feed.json` van vandaag is: elke 30 seconden `git pull`, hooguit 10 minuten. Lukt het niet, ga door met de werklijst die er is en zet dat in het taakverslag.
 2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
-4. **Per artikel** (in volgorde): ga door tot je **15 artikelen hebt uitgelegd** of de lijst op is (er staan er hooguit 25). Overslaan telt niet mee voor die 15: zo vult het volgende artikel de plek op.
-   0. Valt een artikel op titel en `excerpt` al **duidelijk** onder **Niet uitleggen** (bijv. buiten het vakgebied, een kleine Fabric-preview, dubbel)? Sla het dan over zonder de pagina te openen, met de regel als `reason`. Bij twijfel: openen.
-   1. Open de `url` en lees het **volledige artikel**. Uitleggen nooit alleen op titel of `excerpt`.
+4. **Per artikel** (in volgorde): ga door tot je **15 volle en 20 korte uitleggen** hebt gemaakt of de lijst op is (er staan er hooguit 40). Overslaan telt niet mee: zo vult het volgende artikel de plek op. Kies per artikel **vol**, **kort** of **overslaan** (zie **Vol, kort of overslaan**). Staat bij een artikel `"volledig": true`, dan vroeg T zelf om de volle uitleg: altijd vol, en overschrijf het bestaande korte bestand.
+   0. Valt een artikel op titel en `excerpt` al **duidelijk** onder **overslaan** (buiten het vakgebied, dubbel)? Sla het dan over zonder de pagina te openen, met de regel als `reason`. Bij twijfel: openen.
+   1. Open de `url` en lees het artikel: bij vol het **volledige artikel**, bij kort mag je vlotter lezen. Uitleggen nooit alleen op titel of `excerpt`.
    2. Niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door. Begin `reason` dan met "Niet te lezen": zo'n artikel komt na een week nog één keer terug op de werklijst (staat er al een `skipped`-bestand, overschrijf het).
-   3. Valt het onder **Niet uitleggen**? Ook een `skipped`-bestand, met de regel als `reason`.
-   4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder, met begrippen (`terms`) en waar het past een `showcase`.
+   3. Moet het worden overgeslagen (zie **Vol, kort of overslaan**)? Ook een `skipped`-bestand, met de regel als `reason`.
+   4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder. Vol: met begrippen (`terms`) en waar het past een `showcase`. Kort: alleen de velden van **Korte uitleg**.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
 5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort`, `fit` en/of `labels` (de rest niet aanraken). Hooguit 20, opslaan met commit `Soort, fit en labels: <aantal> artikelen`.
 6. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
@@ -69,20 +69,48 @@ T heeft nog beginnersniveau in data-ingestion, bundels en release pipelines, en 
 "terms": [{"term": "Auto Loader", "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."}]
 ```
 
-## Niet uitleggen (overslaan met reden)
+## Vol, kort of overslaan
+
+T wil meer artikelen zien en kiest zelf wat hij leest (5-11-2026). Daarom:
+
+- **Vol**: de must-knows hieronder. Een volle uitleg zoals altijd.
+- **Kort**: wel binnen T's vakgebied, maar geen must-know: een kleine update, een preview, een klantverhaal met weinig aanpak, een kleinere Power BI- of Fabric-functie. Kort = een Nederlandse kop, twee zinnen samenvatting, `soort`, `fit` en `labels` (zie **Korte uitleg**). Wil T meer, dan tikt hij op "Volledig uitleggen".
+- **Overslaan** (met reden): buiten het vakgebied (bijv. een plugin voor financieel adviseurs), een nieuwe connector voor een bronsysteem (T wil die niet zien), dubbel (bijv. de video bij een artikel dat al is uitgelegd), niet te lezen, of pure marketing zonder inhoud.
+
+Hieronder: wat **vol** krijgt. Wat daar niet onder valt maar wel binnen het vakgebied ligt, wordt **kort** (niet meer overslaan).
+
+## Korte uitleg
+
+```json
+{
+  "format_version": 2, "diepte": "kort",
+  "article_id": "<id>", "url": "<url>",
+  "headline": "Nederlandse kop, hooguit ongeveer 70 tekens",
+  "summary": "Twee zinnen: wat is het en voor wie is het handig.",
+  "topics": ["..."], "availability_status": "preview",
+  "quality": {"depth": 0.3, "practicality": 0.4, "novelty": 0.4},
+  "soort": "aankondiging", "fit": {"score": 0.5, "why": "..."}, "labels": ["..."],
+  "development_key": "korte-sleutel",
+  "processed_by": "Claude (geplande taak)", "processed_at": "2026-11-05T03:20:00Z", "prompt_version": "taak-v3-kort"
+}
+```
+
+Dezelfde regels: niets verzinnen, `quality` streng. Geen `story`, `key_facts`, `terms` of `showcase` nodig.
+
+## Wat vol krijgt (anders kort)
 
 Let op de **ondergrens per gebied** (`min_articles` bij `interest_areas` in `interests.yml`): de werklijst zet artikelen uit gebieden die te weinig in de app hebben (vaak Claude en nieuwe technologie) vooraan. Sla die niet over omdat ze minder bij dbt aansluiten; alleen om de regels hieronder.
 
-De radar toont alleen **must-knows**. Sla deze artikelen over:
+Een volle uitleg krijgen alleen de **must-knows**. Deze artikelen worden **kort** (niet vol):
 
 - **Kleine updates**: een losse kleine functie, een UI-aanpassing, uitrol naar een extra regio, een nieuwe versie zonder inhoudelijke wijziging, een verzameloverzicht van veel kleine dingen.
-- **Nieuwe connectoren** voor bronsystemen (bijv. "X connector is available in Beta"). Een driver of koppeling tussen tools uit de eigen stack (bijv. Power BI ↔ Databricks) is géén connector in deze zin en mag wel.
+- **Nieuwe connectoren** voor bronsystemen (bijv. "X connector is available in Beta"): overslaan, niet kort. Een driver of koppeling tussen tools uit de eigen stack (bijv. Power BI ↔ Databricks) is géén connector in deze zin en mag wel.
 - **Klantverhalen zonder concrete aanpak**: het artikel moet noemen **welke tools** ze gebruiken en **wat de toepassing** is (wat bouwden ze, hoe werkt het). Alleen resultaten, citaten of marketing: overslaan.
-- **Power BI en Fabric**: alleen grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen. De rest overslaan.
+- **Power BI en Fabric**: vol alleen bij grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen. De rest kort.
 
-**Opiniestukken mogen wel**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Sla over met reden: een opinie van een niet-erkende auteur, een stuk zonder onderbouwing, een verkooppraatje, of een stuk buiten het vakgebied (bijv. over sport of politiek).
+**Opiniestukken mogen wel vol**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Een opinie van een niet-erkende auteur of zonder onderbouwing: kort. Een verkooppraatje of een stuk buiten het vakgebied (bijv. over sport of politiek): overslaan.
 
-Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee, overslaan.
+Twijfel je tussen vol en kort? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee: kort.
 
 ## Feedback van T
 

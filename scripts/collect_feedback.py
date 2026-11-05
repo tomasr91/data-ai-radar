@@ -75,6 +75,17 @@ def _learn_fields(a: dict, prev: dict, s):
     return out
 
 
+def parse_explain(body: str) -> list:
+    """Artikelen met korte uitleg die T volledig wil ("explain": [id, ...])."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return []
+    ids = data.get("explain", [])
+    return list(dict.fromkeys(str(x) for x in ids if re.fullmatch(r"[0-9a-f]{12}", str(x)))) if isinstance(ids, list) else []
+
+
 def parse_reads(body: str) -> list:
     """Gelezen artikelen uit hetzelfde JSON-blok ("reads": [id, ...])."""
     m = BLOCK_RE.search(body or "")
@@ -149,6 +160,11 @@ def main():
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
                 **_learn_fields(a, prev, None),
             }
+        ask = parse_explain(issue.get("body", ""))
+        if ask:   # "Volledig uitleggen": de werklijst zet ze vooraan (pipeline/build.py)
+            path = ROOT / "data" / "explain_requests.json"
+            cur = json.loads(path.read_text(encoding="utf-8")).get("ids", []) if path.exists() else []
+            path.write_text(json.dumps({"ids": list(dict.fromkeys(cur + ask))}, indent=1), encoding="utf-8")
         req = parse_interests(issue.get("body", ""))
         if req:
             path = ROOT / "data" / "interest_requests.json"

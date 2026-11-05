@@ -214,6 +214,8 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note { margin: 14px 2px 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
 .pick-note b { color: var(--ink); font-weight: 650; }
 #later-new { margin-top: 14px; }
+.explain { margin: 14px 0 4px; }
+.explain .btn { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-add { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-list { margin-top: 10px; display: grid; gap: 10px; }
 .later-item { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent2); border-radius: var(--r); padding: 12px 14px; }
@@ -504,6 +506,20 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
     pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
   };
+  /* ---- Volledig uitleggen ----
+     Een artikel met korte uitleg (diepte: kort) kun je volledig laten uitleggen. Het verzoek gaat mee
+     met de verstuurbalk ("explain"); de werklijst zet het de volgende nacht vooraan (radar:explain). */
+  const explain = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:explain") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:explain", JSON.stringify(d)); } catch {} },
+    pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
+  };
+  function explainBlock(a) {
+    const x = explain.all()[a.id];
+    return `<div class="explain" id="explain" data-id="${esc(a.id)}">${x
+      ? `<p class="later-done">✓ ${x.sent ? "Gevraagd: komt de volgende nacht volledig" : "Klaar om te versturen: volledige uitleg de volgende nacht"}</p>`
+      : `<button type="button" class="btn ghost" data-explain>Volledig uitleggen</button>`}</div>`;
+  }
   /* ---- Gelezen ----
      Een artikel of verdieping telt als gelezen als je tot onderaan scrolt en het minstens
      15 seconden open had. Bewaard op dit toestel (radar:read). Gelezen artikelen gaan mee met
@@ -1452,7 +1468,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
   function fbSummary(items, rd, ni = 0) {
+    const ne = explain.pending().length;
     return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : "",
+      ne ? `${ne} volledig uitleggen` : "",
       ni ? `${plural(ni, "wijziging", "wijzigingen")} in je interesses` : ""].filter(Boolean).join(", ");
   }
   // Eén issue voor alles wat nog naar de radar moet: duimpjes, gelezen en wijzigingen in je interesses.
@@ -1462,21 +1480,23 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
+      .concat(explain.pending().map(([, x]) => `- 🔎 Volledig uitleggen: ${x.title}`))
       .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(ip ? { interests: ip.data } : {}) });
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
-    if (!items.length && !ni && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    if (!items.length && !ni && !explain.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
     const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
     if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
     return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
   }
   function markSent() {
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
+    const ex = explain.all(); Object.values(ex).forEach((v) => { v.sent = true; }); explain.save(ex);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
     const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
     intStore.save({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: di.sentAnswers });
@@ -1579,6 +1599,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <p class="orig">Origineel: ${esc(a.title)}</p>
         ${a.article_type === "opinie" && a.author ? `<div class="note" style="margin-top:14px">Dit is een mening van ${esc(a.author)}.</div>` : ""}
         ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
+        ${a.diepte === "kort" ? `<p class="lead">${mark(a.summary || "")}</p>${explainBlock(a)}` : ""}
         <div class="story">${(a.story || []).map((p) => `<p>${mark(p)}</p>`).join("")}</div>
         ${showcaseBlock(a.showcase)}
         ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
@@ -1603,7 +1624,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <table class="score-table">${partRows}${fitRow}</table>
           ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
           ${a.fit?.why ? `<p class="score-fb">Claude: ${esc(a.fit.why)}</p>` : ""}
-          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : a.decision === "included_near" ? "; net onder de drempel, maar het past bij je" : ""}.</p>
+          <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : a.decision === "included_low" ? "; onder de drempel, maar uitgelegd: jij kiest of je het leest" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
         </dialog>
       </article>`;
@@ -1675,6 +1696,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     r.onclick = (e) => {
       if (termClick(e)) return;
       if (laterClick(e)) return;
+      const eb = e.target.closest("[data-explain]");
+      if (eb) { const box = eb.closest("#explain"), id = box.dataset.id, a = state.byId.get(id), d = explain.all();
+        d[id] = { title: a?.headline || a?.title || id, at: new Date().toISOString(), sent: false }; explain.save(d);
+        box.outerHTML = explainBlock(a || { id }); return; }
       if (intClick(e)) return;
       if (e.target.closest("#fb-send")) { markSent(); setTimeout(() => { if (location.hash === "#week") renderWeek(); }, 300); return; }
       fbClick(e); quizClick(e); askClick(e);

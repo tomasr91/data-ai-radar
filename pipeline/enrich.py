@@ -54,7 +54,19 @@ def validate(data: dict, topic_ids: set) -> list:
       2 = Nederlandse kop + doorlopend verhaal + bronfeiten (format_version: 2)
     """
     problems = []
-    if data.get("format_version") == 2:
+    if data.get("format_version") == 2 and data.get("diepte") == "kort":
+        # Korte uitleg (T, 5-11-2026): kop, samenvatting, soort, fit en labels; geen verhaal nodig
+        for f in ["headline", "summary"]:
+            if not isinstance(data.get(f), str) or not data[f].strip():
+                problems.append(f"veld '{f}' ontbreekt")
+        if isinstance(data.get("headline"), str) and len(data["headline"]) > 90:
+            problems.append("headline is langer dan 90 tekens")
+        for f in ["soort", "fit", "labels"]:
+            if not data.get(f):
+                problems.append(f"bij een korte uitleg is '{f}' verplicht")
+    elif data.get("diepte") not in (None, "vol", "kort"):
+        problems.append("diepte is 'vol' of 'kort'")
+    elif data.get("format_version") == 2:
         for f in ["headline", "summary", "personal_relevance", "experiment"]:
             if not isinstance(data.get(f), str) or not data[f].strip():
                 problems.append(f"veld '{f}' ontbreekt")
@@ -118,7 +130,7 @@ def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
                             "format_version", "headline", "story", "key_facts", "article_type", "author",
-              "showcase", "terms", "soort", "fit", "labels"]:
+              "showcase", "terms", "soort", "fit", "labels", "diepte"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"

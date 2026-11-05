@@ -105,6 +105,9 @@ feed["feedback"] = {**{k: v for k, v in (feed.get("feedback") or {}).items() if 
                     "surprises": [{"id": _en["id"], "title": "Verrassing-test", "s": 52}],
                     "effect": {"days": 7, "lifted": [{"id": _en["id"], "title": "Erbij-test", "source_id": _en["source_id"], "delta": 6}],
                                "dropped": [{"id": "zzzzzzzzzzzz", "title": "Eruit-test", "source_id": "sqlbi", "delta": -7, "url": "https://example.org/x"}]}}
+# Een artikel met korte uitleg (diepte: kort)
+_k = [a for a in arts if a["processing_status"] == "enriched" and a.get("format_version") == 2 and a["id"] != _en["id"]][0]
+_k.update({"diepte": "kort", "story": [], "summary": "Kort-test samenvatting."})
 # Nagebootste taakverslagen van de nacht
 feed["runs"] = {"date": "2026-11-02", "tasks": {
     "uitleggen": {"status": "ok", "summary": "12 artikelen uitgelegd", "finished_at": "2026-11-02T03:58:00Z", "problems": []},
@@ -606,6 +609,18 @@ with sync_playwright() as p:
     check("   examen blijft geladen bij terugkeren", page.locator("#leren-frame").count() == 1 and page.locator("#leren").is_visible())
     page.click('#seg-view button[data-v="actueel"]')
 
+    # Korte uitleg: knop Volledig uitleggen gaat mee in de verstuurbalk
+    page.evaluate("localStorage.removeItem('radar:fb'); localStorage.removeItem('radar:explain')")
+    page.goto(url + "#a-" + _k["id"])
+    page.wait_for_selector("#reader [data-explain]")
+    check("   korte uitleg: samenvatting en knop Volledig uitleggen", "Kort-test samenvatting." in page.locator("#reader").inner_text())
+    page.click("#reader [data-explain]")
+    check("   Volledig uitleggen zet het klaar om te versturen", "Klaar om te versturen" in page.locator("#explain").inner_text())
+    page.click("#back")
+    page.wait_for_selector("#reader", state="hidden")
+    _h = unquote(page.locator("#content #fb-send").get_attribute("href") or "") if page.locator("#content #fb-send").count() else ""
+    check("   verstuurbalk neemt het verzoek mee", f'"explain":["{_k["id"]}"]' in _h and "1 volledig uitleggen" in _h, _h[-120:])
+    page.evaluate("localStorage.removeItem('radar:explain')")
     # 7. Status (was Feedcontrole): één statusregel, alleen probleembronnen, net niet in de feed, alle bronnen ingeklapt
     page.goto(url + "#feedcontrole")
     page.wait_for_selector("#reader #run-status")

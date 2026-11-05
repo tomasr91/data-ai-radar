@@ -589,6 +589,7 @@ class TestFeedback(unittest.TestCase):
         body = 'Tekst\n\n```json\n{"votes":[{"id":"841d424db697","v":-1,"r":"te_basic"},{"id":"xyz","v":1},{"id":"aaaaaaaaaaaa","v":1,"r":"onzin"}]}\n```'
         self.assertEqual(cf.parse_votes(body), [{"id": "841d424db697", "v": -1, "r": "te_basic"}, {"id": "aaaaaaaaaaaa", "v": 1, "r": None}])
         b2 = 'x\n```json\n{"votes": [{"id": "aaaaaaaaaaaa", "v": 1, "r": "score_te_laag", "s": 55}, {"id": "bbbbbbbbbbbb", "v": 1, "s": 300}]}\n```'
+        self.assertEqual(cf.parse_explain('```json\n{"votes": [], "explain": ["aaaaaaaaaaaa", "nope"]}\n```'), ["aaaaaaaaaaaa"])
         self.assertEqual(cf.parse_votes(b2), [{"id": "aaaaaaaaaaaa", "v": 1, "r": "score_te_laag", "s": 55}, {"id": "bbbbbbbbbbbb", "v": 1, "r": None}])
         issues = [{"number": 1, "title": "Feedback: 2 beoordelingen", "user": {"login": "tomasr91"}},
                   {"number": 2, "title": "Feedback: 1", "user": {"login": "vreemde"}},
@@ -715,20 +716,26 @@ class TestBalance(unittest.TestCase):
         self.assertLessEqual(build._age_days({"published_at": "2026-10-28T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
 
 
-class TestNearThreshold(unittest.TestCase):
-    def test_enriched_near_threshold_with_fit_is_shown(self):
+class TestShortTier(unittest.TestCase):
+    """Meer artikelen: uitgelegd en tussen 45 en de drempel komt ook in de feed; korte uitleg is geldig."""
+
+    def test_low_band_and_short_validation(self):
+        from pipeline import enrich
         conf = cfg.load()
         now = datetime(2026, 11, 5, tzinfo=timezone.utc)
         base = {"id": "n1", "title": "x", "url": "https://x", "source_id": "sqlbi", "published_at": "2026-11-04T00:00:00Z",
-                "processing_status": "enriched", "topics": ["powerbi_semantic_models"], "quality": {"depth": .5, "practicality": .5, "novelty": .4}}
-        r = score_article(dict(base, fit={"score": 0.5, "why": "Neutraal."}), conf, now)
-        thr = round(conf.scoring["min_relevance_score"] * 100)
-        if thr - 5 <= r["relevance_score"] < thr:
-            self.assertEqual(r["decision"], "included_near")
-        raw = score_article(dict(base, processing_status="raw", fit=None, quality=None), conf, now)
-        self.assertNotEqual(raw["decision"], "included_near")      # alleen al uitgelegde artikelen
-        lo = score_article(dict(base, fit={"score": 0.3, "why": "Past niet."}), conf, now)
-        self.assertNotEqual(lo["decision"], "included_near")      # en alleen als het bij je past
+                "processing_status": "enriched", "topics": ["open_source_tools"], "quality": {"depth": .4, "practicality": .4, "novelty": .4}}
+        r = score_article(dict(base), conf, now)
+        lo, thr = conf.scoring["min_relevance_score_short"] * 100, conf.scoring["min_relevance_score"] * 100
+        if lo <= r["relevance_score"] < thr:
+            self.assertEqual(r["decision"], "included_low")
+        raw = score_article(dict(base, processing_status="raw", quality=None), conf, now)
+        self.assertNotEqual(raw["decision"], "included_low")       # alleen al uitgelegde artikelen
+        short = {"format_version": 2, "diepte": "kort", "headline": "Kop", "summary": "Twee zinnen.", "topics": ["open_source_tools"],
+                 "availability_status": "onbekend", "quality": {"depth": .3, "practicality": .4, "novelty": .4},
+                 "soort": "aankondiging", "fit": {"score": 0.5, "why": "Neutraal."}, "labels": ["lakefs"]}
+        self.assertEqual(enrich.validate(short, set(conf.topics)), [])
+        self.assertTrue(enrich.validate({k: v for k, v in short.items() if k != "labels"}, set(conf.topics)))
 
 
 class TestLearnScoreCorrection(unittest.TestCase):

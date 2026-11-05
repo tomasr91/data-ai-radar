@@ -31,6 +31,7 @@ priority_levels:
 scoring:
   target_share_is_guideline: true      # richtwaarden, geen harde quota
   related_topic_weight: 0.5            # een gerelateerd onderwerp telt voor de helft mee
+  min_relevance_score_short: 0.45      # uitgelegde artikelen vanaf deze score komen ook in de feed (vaak met korte uitleg; T, 5-11-2026)
   min_relevance_score: 0.6             # onder deze drempel geen plek in de feed, ook niet bij prioriteit 5 (0.5 liet ook losse productvermeldingen door)
   max_items_per_topic_per_feed: 3      # houdt de feed gevarieerd
   max_articles_per_source: 12          # hooguit zoveel artikelen per bron in de app (hoogste scores blijven; T, 1-11-2026)

@@ -39,11 +39,12 @@ SCHEMA_VERSION = 1
 DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
 PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
-QUEUE_MAX = 25         # werklijst voor Claude: hooguit 15 uitleggen, de rest vult aan wat is overgeslagen (T, 5-11-2026)
+QUEUE_MAX = 40         # werklijst voor Claude: hooguit 15 vol en 20 kort uitleggen; de rest vult aan wat is overgeslagen (T, 5-11-2026)
+EXPLAIN_REQUESTS = cfg.DATA / "explain_requests.json"   # korte uitleg die T volledig wil (knop "Volledig uitleggen")
 # Bronnen met queue_low: true in sources.yml (bijv. Fabric) komen achteraan op de werklijst, behalve
 # als het om iets algemeen beschikbaars gaat of om de koppeling met Power BI of Databricks.
 QUEUE_LOW_EXCEPT = re.compile(r"generally available|\bGA\b|now available|Power BI|Databricks", re.I)
-QUEUE_MIN_SCORE = 40   # voorlopige score die een onverwerkt artikel minstens moet hebben
+QUEUE_MIN_SCORE = 35   # voorlopige score die een onverwerkt artikel minstens moet hebben (was 40; korte uitleg vanaf 45)
 QUEUE_MAX_AGE_DAYS = 14   # alleen recente artikelen op de werklijst: een nieuwe bron levert geen weken achterstand op (T, 4-11-2026)
 AREA_MAX_FACTOR = 1.5     # een gebied vult hooguit 1,5 x zijn richtwaarde van de feed (T, 4-11-2026)
 
@@ -261,7 +262,7 @@ def write_to_tag(shown: list) -> None:
 
 
 EFFECT_DAYS = 7
-INCLUDED = ("included", "included_exceptional", "included_near")
+INCLUDED = ("included", "included_exceptional", "included_low")
 
 
 def feedback_effect(arts: list, shown: list, conf, now) -> dict:
@@ -382,19 +383,29 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Voorrang voor een gebied onder de ondergrens alleen bij een score boven de drempel: anders vult
     # marketing van een bron in dat gebied (bijv. "nu ook op Google Cloud") de werklijst.
     bar = conf.scoring.get("min_relevance_score", 0.6) * 100
+    try:
+        wanted = [x for x in json.loads(EXPLAIN_REQUESTS.read_text(encoding="utf-8")).get("ids", []) if isinstance(x, str)]
+    except (OSError, ValueError):
+        wanted = []
+    full = [a for a in arts if a["id"] in wanted and a.get("diepte") == "kort"]   # nog kort: volledig uitleggen, vooraan
+    if len(full) != len(wanted):   # al volledig uitgelegd of niet meer in de feed: van de lijst
+        EXPLAIN_REQUESTS.write_text(json.dumps({"ids": [a["id"] for a in full]}, indent=1), encoding="utf-8")
+
     def low(a):
         return bool((sources_by_id.get(a["source_id"]) or {}).get("queue_low")) and not QUEUE_LOW_EXCEPT.search(f"{a['title']} {a.get('excerpt', '')}")
     queue = [a for a in sorted(arts, key=lambda a: (a["id"] not in digest_ids, low(a), not (area_of(a, conf) in under and a["relevance_score"] >= bar),
                                                     -a["score_parts"]["topic"], -a["relevance_score"]))
              if a["processing_status"] != "enriched" and a["id"] not in skip and (a["id"] in digest_ids or _age_days(a, now) <= QUEUE_MAX_AGE_DAYS)
-             and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX]
+             and a["decision"] not in ("excluded", "no_topic") and a["relevance_score"] >= QUEUE_MIN_SCORE][:QUEUE_MAX - len(full)]
+    queue = full + queue
     (cfg.DATA / "to_enrich.json").write_text(json.dumps({
         "generated_at": _iso(now),
         "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
         "items": [{"id": a["id"], "title": a["title"], "url": a["url"], "source_id": a["source_id"],
                    "source_name": sources_by_id.get(a["source_id"], {}).get("name", a["source_id"]),
                    "published_at": a.get("published_at"), "excerpt": a.get("excerpt", ""),
-                   "preliminary_score": a["relevance_score"], "preliminary_topics": a["topics"]} for a in queue],
+                   "preliminary_score": a["relevance_score"], "preliminary_topics": a["topics"],
+                   **({"volledig": True} if a in full else {})} for a in queue],
     }, ensure_ascii=False, indent=1), encoding="utf-8")
 
     group_of = {t["id"]: t.get("feed_group", "overig") for t in conf.interests["topics"]}
@@ -508,7 +519,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why"]
+                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why", "diepte"]
 
 
 def _public(a):
