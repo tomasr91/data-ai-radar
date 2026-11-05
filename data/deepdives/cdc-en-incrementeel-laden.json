@@ -1,0 +1,210 @@
+{
+  "format_version": 1,
+  "id": "cdc-en-incrementeel-laden",
+  "plan_id": "cdc-en-incrementeel-laden",
+  "request_issue": 23,
+  "headline": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
+  "summary": "Elke nacht een hele brontabel opnieuw inlezen (full load) werkt, tot de tabel te groot wordt. Incrementeel laden haalt alleen op wat veranderd is. Dit stuk legt uit hoe je ziet wat er veranderd is (een watermark, CDC of snapshots vergelijken), hoe je die wijzigingen verwerkt met MERGE, en wat Databricks en dbt daarvoor bieden.",
+  "sections": [
+    {
+      "heading": "Waarom niet gewoon alles opnieuw laden?",
+      "paragraphs": [
+        "De eenvoudigste manier om data uit een bronsysteem te halen is alles kopiëren. Elke nacht lees je de hele tabel in en overschrijf je de oude kopie. Dat heet een full load. Het is simpel en altijd juist, want je kopie is precies gelijk aan de bron op dat moment.",
+        "Het nadeel groeit mee met de tabel. Een tabel met tien jaar aan afspraken of facturen verandert per dag maar een klein beetje. Toch lees je elke nacht alles in. Dat kost rekentijd, belast het bronsysteem en duurt steeds langer.",
+        "Incrementeel laden draait het om: je haalt alleen op wat sinds de vorige keer nieuw, gewijzigd of verwijderd is. Vergelijk het met je bankrekening. Je leest niet elke dag al je afschriften vanaf je eerste rekening opnieuw, je kijkt alleen naar de transacties sinds de vorige keer. De moeilijkheid zit in twee vragen: hoe weet je wat er veranderd is, en hoe verwerk je dat goed in je kopie?"
+      ]
+    },
+    {
+      "heading": "Drie manieren om te zien wat er veranderd is",
+      "paragraphs": [
+        "De eerste manier is een tijdstempel. Veel tabellen hebben een kolom als 'laatst_gewijzigd'. Je onthoudt de hoogste waarde van de vorige run, de watermark, en haalt de volgende keer alleen rijen op met een latere tijd. Dat is goedkoop, maar het werkt alleen als die kolom echt bij elke wijziging wordt bijgewerkt. En een verwijderde rij heeft geen tijdstempel meer: die zie je zo nooit.",
+        "De tweede manier is CDC (change data capture). Het bronsysteem houdt dan zelf bij wat er gebeurde, inclusief verwijderingen. SQL Server heeft daar twee functies voor. Change tracking meldt welke rijen veranderd zijn, en vraagt een primaire sleutel. CDC legt elke bewerking vast, ook zonder primaire sleutel, maar kan het bronsysteem zwaarder belasten. Volgens Databricks gebruikt de SQL Server-koppeling van Lakeflow Connect bij voorkeur change tracking voor tabellen met een primaire sleutel.",
+        "De derde manier is twee snapshots vergelijken. Je krijgt elke dag een volledige kopie en rekent zelf uit wat er anders is. Een rij die gisteren wel en vandaag niet in de kopie staat, is verwijderd. Dat is zwaarder, maar soms de enige optie als een bron geen wijzigingen bijhoudt. Databricks heeft hier een eigen functie voor, AUTO CDC FROM SNAPSHOT."
+      ]
+    },
+    {
+      "heading": "Wijzigingen verwerken met MERGE",
+      "paragraphs": [
+        "Heb je de wijzigingen, dan moet je ze in je eigen tabel verwerken. Daarvoor gebruik je MERGE: één opdracht die per sleutel kiest tussen toevoegen, bijwerken of verwijderen. In het voorbeeld hieronder wordt klant 2 bijgewerkt, klant 3 verwijderd en klant 4 toegevoegd.",
+        "Twee dingen gaan in de praktijk vaak mis. Ten eerste kan dezelfde rij twee keer in één batch zitten, zoals klant 2 in het voorbeeld. MERGE weet dan niet welke versie hij moet nemen. Daarom houd je per sleutel alleen de laatste wijziging over, op volgorde van een volgnummer of tijd. Ten tweede komen wijzigingen niet altijd op volgorde binnen. Sorteer dus op het moment van de wijziging in de bron, niet op het moment van inlezen.",
+        "Een goede incrementele load is idempotent: draai je dezelfde batch per ongeluk twee keer, dan is de uitkomst hetzelfde. MERGE op een sleutel helpt daarbij, want een tweede keer bijwerken met dezelfde waarde verandert niets. Een simpele INSERT zonder controle doet dat niet; die zet de rijen er gewoon nog een keer in."
+      ]
+    },
+    {
+      "heading": "Wat Databricks hiervoor biedt",
+      "paragraphs": [
+        "Tussen je eigen Delta-tabellen, bijvoorbeeld van bronze naar silver, kun je de change data feed gebruiken. Die geeft per rij aan of hij is toegevoegd, bijgewerkt of verwijderd, met het versienummer erbij. Je leest hem met table_changes('tabel', versie). Volgens de documentatie van oktober 2026 rekent Databricks Runtime 19 die wijzigingen ook automatisch uit voor Unity Catalog-tabellen met row tracking; vroeger moest je hem per tabel aanzetten.",
+        "Let op: de change data feed is geen blijvende geschiedenis. Oude versies verdwijnen na de bewaartermijn. Mis je een paar runs, dan kunnen de wijzigingen weg zijn en moet je toch volledig herladen.",
+        "In Lakeflow-pipelines hoef je de MERGE niet zelf te schrijven. Met AUTO CDC geef je de sleutel op (KEYS), de kolom die de volgorde bepaalt (SEQUENCE BY) en wanneer een rij een verwijdering is (APPLY AS DELETE WHEN). Databricks regelt de rest, ook wijzigingen die in de verkeerde volgorde binnenkomen. AUTO CDC vervangt het oudere APPLY CHANGES, met dezelfde opbouw.",
+        "Met STORED AS SCD TYPE 1 houdt AUTO CDC alleen de huidige stand bij. Met SCD type 2 bewaart hij elke versie, met de kolommen __START_AT en __END_AT. Een lege __END_AT betekent: dit is de huidige versie."
+      ]
+    },
+    {
+      "heading": "Hoe dbt hierop aansluit",
+      "paragraphs": [
+        "In dbt heet dit een incrementeel model. Bij de eerste run bouwt dbt de hele tabel. Daarna voert hij alleen de query uit binnen het blok {% if is_incremental() %}, waarin je zelf filtert op nieuwe rijen, vaak met een paar dagen extra voor late data. Hoe dbt de nieuwe rijen in de tabel zet, bepaal je met incremental_strategy.",
+        "Op Databricks kun je kiezen uit append, merge, delete+insert, insert_overwrite en microbatch. Merge met een unique_key voegt nieuwe sleutels toe en werkt bestaande bij, zoals SCD type 1. Volgens de dbt-documentatie gedraagt merge zich zonder unique_key als append, en kan hij duur worden omdat hij de hele doeltabel doorzoekt. Met incremental_predicates beperk je dat. Wil je geschiedenis zoals SCD type 2, dan raadt dbt snapshots aan.",
+        "Microbatch is nieuwer. Je geeft een tijdkolom (event_time), een begindatum en een batchgrootte op, en dbt verwerkt de data per dag of uur als losse batches. Je schrijft dan geen is_incremental-filter meer, en een mislukte batch draai je los opnieuw. Op Databricks gebruikt dbt daarvoor replace_where. Het past vooral bij grote tijdreeksen, zoals gebeurtenissen of metingen.",
+        "Over verwijderingen zegt de dbt-documentatie bij merge alleen dat rijen worden toegevoegd en bijgewerkt. Een rij die in de bron verdwijnt, blijft dus staan, tenzij je de verwijdering als wijziging binnenkrijgt en zelf verwerkt."
+      ]
+    },
+    {
+      "heading": "Waar je op let",
+      "paragraphs": [
+        "De dbt-documentatie is er nuchter over: begin niet met incrementele modellen, maar stap over als je runs te traag worden. Een incrementeel model heeft meer configuratie nodig en heeft meer manieren om stil fout te gaan. Bij een paar miljoen rijen is een gewone tabel vaak goed genoeg.",
+        "Kies per brontabel bewust. Heeft de bron een betrouwbare wijzigingsdatum en worden rijen nooit hard verwijderd? Dan volstaat een watermark. Worden rijen wel verwijderd, of is de wijzigingsdatum onbetrouwbaar? Dan heb je CDC of snapshots nodig. Vraag dat na bij de beheerder van het bronsysteem, in plaats van het aan te nemen.",
+        "Plan ook een uitweg. Elke incrementele opzet raakt ooit uit de pas, door een gemiste run of een fout in de logica. Zorg dat je een volledige herlaad kunt doen, zoals een full refresh in dbt, en dat je weet hoe lang dat duurt."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Je bronnen zijn onder meer HiX en AFAS, en SQL Server is onderdeel van je omgeving. Een eerste stap is per grote brontabel opschrijven: is er een sleutel, is er een betrouwbare wijzigingsdatum, en worden rijen hard verwijderd? Dat bepaalt welke van de drie manieren past.",
+        "In je silver-laag kun je incrementele dbt-modellen met merge gebruiken op de grootste tabellen, met een is_incremental-filter en een paar dagen marge. Houd daarnaast een periodieke volledige herbouw achter de hand om afwijkingen recht te zetten.",
+        "Dit sluit aan bij het artikel over Virgin Media O2 dat je een duim gaf. dbt State slaat modellen over waarvan de brondata niet veranderde. Incrementeel laden gaat een stap verder: binnen een model dat wel moet draaien, verwerk je alleen de rijen die veranderd zijn. De twee vullen elkaar aan."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een batch wijzigingen wordt met MERGE verwerkt. Klant 2 staat er twee keer in; alleen de laatste wijziging (volgnummer 12) telt. Klant 3 wordt verwijderd, klant 4 toegevoegd.",
+    "language": "sql",
+    "code": "CREATE TABLE klanten AS SELECT * FROM (VALUES\n  (1, 'Anna', 'Utrecht'), (2, 'Bram', 'Breda'), (3, 'Cor', 'Delft')\n) t(klant_id, naam, plaats);\n\n-- wijzigingen sinds de vorige run, met volgnummer\nCREATE TABLE wijzigingen AS SELECT * FROM (VALUES\n  (2, 'Bram', 'Tilburg', 'UPDATE', 11),\n  (2, 'Bram', 'Eindhoven', 'UPDATE', 12),\n  (3, NULL, NULL, 'DELETE', 13),\n  (4, 'Dewi', 'Zwolle', 'INSERT', 14)\n) t(klant_id, naam, plaats, operatie, volgnr);\n\nMERGE INTO klanten AS t\nUSING (\n  SELECT * FROM wijzigingen\n  QUALIFY row_number() OVER (PARTITION BY klant_id ORDER BY volgnr DESC) = 1\n) AS w\nON t.klant_id = w.klant_id\nWHEN MATCHED AND w.operatie = 'DELETE' THEN DELETE\nWHEN MATCHED THEN UPDATE SET naam = w.naam, plaats = w.plaats\nWHEN NOT MATCHED AND w.operatie <> 'DELETE' THEN\n  INSERT (klant_id, naam, plaats) VALUES (w.klant_id, w.naam, w.plaats);\n\nSELECT * FROM klanten ORDER BY klant_id;",
+    "result": {
+      "columns": [
+        "klant_id",
+        "naam",
+        "plaats"
+      ],
+      "rows": [
+        [
+          "1",
+          "Anna",
+          "Utrecht"
+        ],
+        [
+          "2",
+          "Bram",
+          "Eindhoven"
+        ],
+        [
+          "4",
+          "Dewi",
+          "Zwolle"
+        ]
+      ]
+    },
+    "note": "Verzonnen data. Gedraaid in DuckDB 2.0; MERGE met WHEN MATCHED ... THEN DELETE en QUALIFY werken in Databricks SQL op dezelfde manier."
+  },
+  "experiment": "Maak in een testschema twee kleine Delta-tabellen met verzonnen klanten: een bron en een kopie. Wijzig, verwijder en voeg een paar rijen toe in de bron en lees de wijzigingen met table_changes. Verwerk ze met de MERGE uit het voorbeeld en controleer dat de kopie weer gelijk is aan de bron. Draai de MERGE daarna nog een keer en kijk of er niets verandert (idempotent). Bouw tot slot hetzelfde als incrementeel dbt-model met merge en unique_key, en kijk wat er gebeurt met de verwijderde rij. Geen werkdata gebruiken.",
+  "limitations": [
+    "De change data feed bewaart wijzigingen maar een beperkte tijd; mis je te veel runs, dan moet je volledig herladen.",
+    "CDC aanzetten op een bronsysteem kan het zwaarder belasten; overleg dat met de beheerder, zeker bij een zorgsysteem in productie.",
+    "Een watermark op een wijzigingsdatum mist verwijderingen en rijen waarbij de datum niet wordt bijgewerkt.",
+    "AUTO CDC vraagt serverless pipelines of de Pro- of Advanced-editie van Lakeflow-pipelines."
+  ],
+  "further_reading": [
+    {
+      "label": "The AUTO CDC APIs: Simplify change data capture with pipelines (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/aws/dlt/cdc",
+      "note": "Hoe AUTO CDC werkt, met voorbeelden van SCD type 1 en 2, verwijderingen en wijzigingen die in de verkeerde volgorde komen."
+    },
+    {
+      "label": "Use Delta Lake change data feed on Databricks (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/aws/en/delta/delta-change-data-feed",
+      "note": "Wat de change data feed bijhoudt, hoe je hem leest met table_changes en waarom hij geen blijvende geschiedenis is."
+    },
+    {
+      "label": "Configure SQL Server for ingestion (Microsoft Learn, september 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/connect/external-systems/sql-server",
+      "note": "Het verschil tussen change tracking en CDC in SQL Server, en wat Lakeflow Connect van de bron vraagt."
+    },
+    {
+      "label": "About incremental strategy (dbt Labs)",
+      "url": "https://docs.getdbt.com/docs/build/incremental-strategy",
+      "note": "Alle strategieën voor incrementele modellen naast elkaar, met wat elke strategie wel en niet doet."
+    },
+    {
+      "label": "About microbatch incremental models (dbt Labs)",
+      "url": "https://docs.getdbt.com/docs/build/incremental-microbatch",
+      "note": "Hoe microbatch per dag of uur verwerkt, met backfills en het opnieuw draaien van mislukte batches."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Waarom is een watermark op een kolom 'laatst_gewijzigd' niet altijd genoeg?",
+      "options": [
+        "Omdat een watermark alleen werkt in Lakeflow-pipelines.",
+        "Omdat verwijderde rijen geen tijdstempel meer hebben en je ze dus niet ziet.",
+        "Omdat een watermark altijd de hele tabel opnieuw inleest.",
+        "Omdat MERGE niet kan werken met een tijdstempel."
+      ],
+      "answer": 1,
+      "explanation": "Je haalt alleen rijen op met een latere wijzigingsdatum. Een verwijderde rij staat niet meer in de bron, dus die komt nooit mee. Daarvoor heb je CDC of snapshots nodig."
+    },
+    {
+      "question": "In één batch staan twee wijzigingen voor dezelfde klant. Wat doe je vóór de MERGE?",
+      "options": [
+        "Per sleutel alleen de laatste wijziging overhouden, op volgorde van het moment in de bron.",
+        "Beide rijen invoegen, want dan bewaar je de geschiedenis.",
+        "De batch overslaan en de volgende nacht opnieuw proberen.",
+        "Sorteren op het moment van inlezen en de eerste rij nemen."
+      ],
+      "answer": 0,
+      "explanation": "MERGE kan per sleutel maar één bronrij aan. Je neemt de laatste wijziging volgens de volgorde in de bron, want wijzigingen kunnen in de verkeerde volgorde binnenkomen."
+    },
+    {
+      "question": "Wanneer raadt de dbt-documentatie aan om met een incrementeel model te beginnen?",
+      "options": [
+        "Altijd, omdat het goedkoper is dan een tabel.",
+        "Alleen als de bron CDC ondersteunt.",
+        "Als je runs te traag worden; begin anders met een view of tabel.",
+        "Alleen voor tabellen met SCD type 2."
+      ],
+      "answer": 2,
+      "explanation": "Incrementele modellen vragen extra configuratie en kunnen stil fout gaan. dbt raadt aan pas over te stappen als gewone runs te traag worden."
+    }
+  ],
+  "terms": [
+    {
+      "term": "full load",
+      "explanation": "Elke keer de hele brontabel opnieuw inlezen en de oude kopie overschrijven. Simpel en altijd juist, maar traag bij grote tabellen."
+    },
+    {
+      "term": "watermark",
+      "explanation": "De hoogste waarde (vaak een tijdstempel) die je bij de vorige run hebt verwerkt. De volgende run haalt alleen rijen op die daarna komen."
+    },
+    {
+      "term": "CDC",
+      "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
+    },
+    {
+      "term": "Change tracking",
+      "explanation": "Een functie van SQL Server die bijhoudt welke rijen veranderd zijn. Lichter dan CDC, maar de tabel moet een primaire sleutel hebben."
+    },
+    {
+      "term": "change data feed",
+      "explanation": "Een functie van Delta-tabellen die per rij laat zien of hij is toegevoegd, bijgewerkt of verwijderd, met het versienummer. Je leest hem met table_changes."
+    },
+    {
+      "term": "AUTO CDC",
+      "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
+    },
+    {
+      "term": "SCD type 2",
+      "explanation": "Een manier om de geschiedenis van een rij te bewaren: bij een wijziging komt er een nieuwe versie bij, met een begin- en einddatum, in plaats van dat de oude waarde wordt overschreven."
+    },
+    {
+      "term": "idempotent",
+      "explanation": "Een stap is idempotent als je hem vaker kunt draaien met dezelfde uitkomst. Handig als een load mislukt en je hem opnieuw start."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 5 november 2026 in de actuele documentatie van Databricks (AUTO CDC, bijgewerkt 9 oktober 2026; change data feed, 9 oktober 2026), Microsoft Learn (SQL Server voor Lakeflow Connect, 11 september 2026) en dbt Labs (incremental strategy en microbatch). APPLY CHANGES is bewust niet als aanpak beschreven, omdat AUTO CDC het volgens Databricks vervangt. Het aanzetten van delta.enableChangeDataFeed per tabel heet in de documentatie nu 'legacy'; daarom noem ik de automatische change data feed in Runtime 19. Of er een kant-en-klare koppeling voor HiX of AFAS is, heb ik niet onderzocht en staat er daarom niet in.",
+  "topics": [
+    "data_ingestion",
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+  ],
+  "written_at": "2026-11-05T04:40:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
