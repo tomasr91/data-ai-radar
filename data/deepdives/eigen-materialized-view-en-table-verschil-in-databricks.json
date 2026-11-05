@@ -1,0 +1,205 @@
+{
+  "format_version": 1,
+  "id": "eigen-materialized-view-en-table-verschil-in-databricks",
+  "plan_id": "eigen-materialized-view-en-table-verschil-in-databricks",
+  "request_issue": 22,
+  "headline": "Materialized view of tabel in Databricks: wie houdt de data bij?",
+  "summary": "Een tabel en een materialized view slaan allebei een uitkomst op. Het verschil zit in wie hem bijhoudt: een tabel vul en wijzig je zelf, een materialized view ververst Databricks op basis van zijn query, waar het kan alleen voor wat veranderd is. Dit stuk legt uit hoe dat werkt, waar de grenzen liggen en waar het past in je dbt- en Databricks-stack.",
+  "sections": [
+    {
+      "heading": "Drie manieren om een uitkomst te bewaren",
+      "paragraphs": [
+        "In Databricks kun je het resultaat van een query op drie manieren beschikbaar maken. Een view slaat niets op: hij is alleen de query, en die draait elke keer als iemand hem opvraagt. Een tabel slaat de data echt op. En een materialized view zit ertussen: hij is gedefinieerd door een query, maar slaat de uitkomst op en ververst die.",
+        "Een vergelijking uit de keuken. Een view is een recept: elke keer dat iemand wil eten, kook je opnieuw. Een tabel is een maaltijd die je één keer kookt en in de vriezer zet; wil je iets veranderen, dan doe je dat zelf. Een materialized view is een maaltijdservice die het gerecht klaar heeft staan en het opnieuw maakt als de ingrediënten veranderen.",
+        "Volgens de documentatie gebruik je een tabel voor data die je zelf wilt schrijven en wijzigen, met INSERT, UPDATE, DELETE of MERGE. Een materialized view gebruik je als een query sneller moet zijn dan een gewone view, ten koste van extra opslag."
+      ]
+    },
+    {
+      "heading": "Hoe een materialized view wordt bijgewerkt",
+      "paragraphs": [
+        "Als je een materialized view maakt, maakt Databricks er zelf een serverless pipeline bij. Die pipeline is de enige die de view bijwerkt. Je schrijft er dus niet zelf rijen in; je verandert de query, en de pipeline ververst de uitkomst.",
+        "Wanneer dat gebeurt, kies je zelf. Handmatig met REFRESH MATERIALIZED VIEW, op een vast schema met SCHEDULE EVERY 1 DAY of een cron-uitdrukking, of met TRIGGER ON UPDATE: dan ververst hij zodra de brontabel verandert. Databricks raadt TRIGGER ON UPDATE aan voor productie, vooral als de stappen ervoor geen vast tijdstip hebben.",
+        "Bij elke refresh kiest Databricks tussen alleen de wijzigingen verwerken (incrementeel) en alles opnieuw uitrekenen (full recompute). Een kostenmodel kiest de goedkoopste. Beide geven dezelfde uitkomst. Met REFRESH POLICY kun je dat sturen: AUTO is de standaard, INCREMENTAL STRICT laat de refresh mislukken als incrementeel niet kan, FULL rekent altijd alles opnieuw uit."
+      ]
+    },
+    {
+      "heading": "Wanneer incrementeel lukt en wanneer niet",
+      "paragraphs": [
+        "Incrementeel verversen werkt alleen op serverless compute. Een materialized view in een pipeline op klassieke compute wordt altijd helemaal opnieuw uitgerekend. De bronnen moeten Delta-tabellen (of beheerde Iceberg-tabellen, materialized views of streaming tables) zijn. Voor een deel van de bewerkingen is row tracking op de bron nodig; deletion vectors worden aangeraden.",
+        "De meeste gewone SQL kan incrementeel: joins, GROUP BY, WHERE, UNION ALL, CTE's en window functions met PARTITION BY. Er zijn een paar valkuilen. Tijdfuncties zoals current_date() mogen alleen in de WHERE. Een SUM of AVG over FLOAT of DOUBLE kan een volledige herberekening afdwingen; cast die kolommen naar DECIMAL. En recursieve CTE's vallen altijd terug op alles opnieuw.",
+        "Of een query incrementeel kan, test je vooraf met EXPLAIN CREATE MATERIALIZED VIEW. Achteraf zie je in het event log van de pipeline welke techniek werd gebruikt, zoals ROW_BASED, APPEND_ONLY, NO_OP (niets veranderd) of FULL_RECOMPUTE."
+      ]
+    },
+    {
+      "heading": "Grenzen van een materialized view",
+      "paragraphs": [
+        "Een materialized view kan niet alles wat een tabel kan. Volgens de documentatie ondersteunt hij geen identity columns of surrogate keys. Time travel werkt niet. OPTIMIZE en VACUUM kun je niet zelf draaien, want onderhoud gaat automatisch. En je kunt hem niet klonen (CLONE).",
+        "Er zit ook een eigenaardigheid in: een SUM over een kolom waarin alleen nog NULL staat, geeft 0 in plaats van NULL. Bij een tabel met dezelfde query krijg je NULL.",
+        "Belangrijk voor zorgdata: de onderliggende opslag kan volgens Databricks brondata bevatten die niet in de view zelf staat, zoals de waarden achter een COUNT(DISTINCT ...). Deel die opslag dus niet met mensen die de brondata niet mogen zien. Wie de view opvraagt, heeft alleen SELECT op de view nodig; je kunt rijfilters en kolommaskers toevoegen bij het aanmaken.",
+        "Verversen kost serverless rekentijd van Lakeflow-pipelines, los van je SQL warehouse. De kosten hangen af van hoeveel data er verwerkt wordt, niet van de grootte van het warehouse. Je ziet ze terug in de system tables."
+      ]
+    },
+    {
+      "heading": "En in dbt?",
+      "paragraphs": [
+        "In dbt kies je dit met materialized. Een table wordt bij elke dbt run helemaal opnieuw gebouwd. Een incremental model voegt bij elke run nieuwe rijen toe, met logica die jij schrijft. Een materialized_view laat de logica aan het platform over.",
+        "De dbt-documentatie beschrijft het verschil zo: bij een materialized view is dbt run vooral een uitrol van de definitie, net als bij een view. De data zelf ververst het platform, als je verversen hebt ingesteld. Bij een tabel of incrementeel model moet je dbt draaien om nieuwe data te krijgen. dbt raadt materialized views aan waar een incrementeel model zou volstaan, maar je het bijhouden liever aan het platform overlaat.",
+        "De dbt-databricks-adapter ondersteunt materialized_view sinds versie 1.8, met een schedule-instelling voor de refresh. De precieze instellingen voor jouw versie staan in de adapterdocumentatie van dbt."
+      ]
+    },
+    {
+      "heading": "Wanneer kies je wat?",
+      "paragraphs": [
+        "Een materialized view past goed bij een samenvatting voor dashboards en rapporten: een aggregatie in Gold die Power BI vaak opvraagt en die bij moet blijven met Silver. Je schrijft één query en Databricks zoekt uit wat er veranderd is. Ook late of verkeerd geordende data komt bij de volgende refresh goed.",
+        "Een tabel (of incrementeel dbt-model) houd je waar je zelf de controle nodig hebt. Denk aan modellen met surrogate keys, historie volgens SCD type 2, of data die je zelf corrigeert. Voor batches die een vaste periode of partitie overschrijven, raadt Databricks een REPLACE WHERE-flow aan in plaats van een materialized view.",
+        "Een materialized view is niet bedoeld voor milliseconden. Een refresh duurt seconden tot minuten. Heb je echt direct actuele data nodig, dan is een gewone view of streaming table logischer."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Kijk in je Gold-laag naar modellen die nu elke nacht als table worden herbouwd, maar waarvan de bron per dag maar weinig verandert. Dat zijn de beste kandidaten. Zet row tracking aan op de Silver-tabellen eronder en controleer met EXPLAIN of de query incrementeel kan.",
+        "Voor je AI-contextlaag is dit ook nuttig. In een artikel van deze week las je dat Databricks AI Search zoekindexen kan bouwen op materialized views, die dan vanzelf actueel blijven. Een materialized view met de beschrijvingen van je dbt-modellen is zo een bron die bijblijft zonder extra job.",
+        "Begin klein: één materialized view naast de bestaande tabel, een week laten meedraaien, en dan de uitkomst en de kosten vergelijken in de system tables."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Dezelfde query als tabel en als materialized view. Na twee nieuwe orders loopt de tabel achter tot je hem opnieuw bouwt; de materialized view is na zijn refresh bij. Het bedrag is DECIMAL, omdat een SUM over DOUBLE incrementeel verversen kan blokkeren.",
+    "language": "sql",
+    "code": "-- 1. Gewone tabel: de uitkomst ligt vast tot je hem opnieuw bouwt\nCREATE OR REPLACE TABLE demo.verkoop.omzet_tabel AS\nSELECT datum, sum(bedrag) AS omzet          -- bedrag is DECIMAL\nFROM demo.verkoop.orders\nGROUP BY datum;\n\n-- 2. Materialized view: Databricks ververst hem zelf\nCREATE OR REPLACE MATERIALIZED VIEW demo.verkoop.omzet_mv\n  SCHEDULE EVERY 1 DAY\nAS SELECT datum, sum(bedrag) AS omzet\nFROM demo.verkoop.orders\nGROUP BY datum;\n\n-- Er komen twee orders bij (4 en 5 november).\n-- Na de volgende refresh van de materialized view:\nSELECT datum, t.omzet AS tabel, m.omzet AS materialized_view\nFROM demo.verkoop.omzet_mv m\nFULL JOIN demo.verkoop.omzet_tabel t USING (datum)\nORDER BY datum;",
+    "result": {
+      "columns": [
+        "datum",
+        "tabel",
+        "materialized_view"
+      ],
+      "rows": [
+        [
+          "2026-11-03",
+          "150.0",
+          "150.0"
+        ],
+        [
+          "2026-11-04",
+          "80.0",
+          "120.0"
+        ],
+        [
+          "2026-11-05",
+          "",
+          "70.0"
+        ]
+      ]
+    },
+    "note": "Verzonnen data. De syntax van CREATE MATERIALIZED VIEW en SCHEDULE EVERY komt uit de documentatie van Azure Databricks. De uitkomst is nagebouwd in DuckDB 2.0, dat geen materialized views kent: de kolom tabel is de uitkomst bij het aanmaken, de kolom materialized_view dezelfde query na de nieuwe orders."
+  },
+  "experiment": "Maak in een testschema een kleine Delta-tabel met verzonnen orders (bedrag als DECIMAL) en zet row tracking aan. Draai EXPLAIN CREATE MATERIALIZED VIEW op een GROUP BY-query en maak daarna de materialized view. Voeg een paar rijen toe, ververs met REFRESH MATERIALIZED VIEW en kijk in het event log of de refresh incrementeel was. Herhaal met het bedrag als DOUBLE en met current_date() in de SELECT, en kijk wat er verandert. Geen werkdata gebruiken.",
+  "limitations": [
+    "Incrementeel verversen werkt alleen op serverless; op klassieke compute wordt elke refresh een volledige herberekening.",
+    "Geen identity columns, surrogate keys, time travel of CLONE; voor zulke modellen blijft een tabel nodig.",
+    "De onderliggende opslag kan brondata bevatten die niet in de view staat; let daarop bij zorgdata en deel die opslag niet breed.",
+    "Elke refresh kost serverless rekentijd, ook als je de view vanuit een gewoon warehouse hebt gemaakt."
+  ],
+  "further_reading": [
+    {
+      "label": "Use materialized views in Databricks SQL (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/views/materialized",
+      "note": "Aanmaken, verversen met SCHEDULE of TRIGGER ON UPDATE, kosten en beperkingen van losse materialized views."
+    },
+    {
+      "label": "Incremental refresh for materialized views (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/aws/en/ldp/incremental-refresh",
+      "note": "Wanneer een refresh incrementeel kan, welke SQL wordt ondersteund en hoe je controleert wat er gebeurde."
+    },
+    {
+      "label": "CREATE MATERIALIZED VIEW (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view",
+      "note": "De volledige syntax, de rechten die je nodig hebt en de beperkingen op een rij."
+    },
+    {
+      "label": "Tables and views (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/aws/en/data-engineering/tables-views",
+      "note": "Kort overzicht van tabellen, views, materialized views en streaming tables naast elkaar."
+    },
+    {
+      "label": "Materializations (dbt Labs)",
+      "url": "https://docs.getdbt.com/docs/build/materializations",
+      "note": "Hoe dbt table, incremental en materialized_view ziet, met voor- en nadelen en advies per soort."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Wat is het belangrijkste verschil tussen een tabel en een materialized view in Databricks?",
+      "options": [
+        "Een tabel slaat data op, een materialized view niet.",
+        "Een tabel vul en wijzig je zelf; een materialized view wordt door zijn eigen pipeline ververst op basis van de query.",
+        "Een materialized view is altijd sneller op te vragen dan een tabel.",
+        "Een materialized view staat buiten Unity Catalog."
+      ],
+      "answer": 1,
+      "explanation": "Beide slaan een uitkomst op. Bij een tabel schrijf je zelf met INSERT, UPDATE of MERGE; een materialized view wordt alleen door zijn pipeline bijgewerkt, op basis van zijn query."
+    },
+    {
+      "question": "Je materialized view wordt bij elke refresh helemaal opnieuw uitgerekend. Wat is een logische eerste controle?",
+      "options": [
+        "Of de view op serverless draait en of er bijvoorbeeld een SUM over DOUBLE in de query staat.",
+        "Of de view een COMMENT heeft.",
+        "Of er een surrogate key in de view zit, want die versnelt de refresh.",
+        "Of je OPTIMIZE op de view hebt gedraaid."
+      ],
+      "answer": 0,
+      "explanation": "Incrementeel verversen kan alleen op serverless, en sommige SQL, zoals een SUM over FLOAT of DOUBLE, dwingt een volledige herberekening af. OPTIMIZE en surrogate keys worden in een materialized view niet ondersteund."
+    },
+    {
+      "question": "Voor welk model is een gewone tabel (of incrementeel dbt-model) de betere keuze?",
+      "options": [
+        "Een dagelijkse omzetsamenvatting voor een Power BI-dashboard.",
+        "Een aggregatie op Silver die bij moet blijven als er nieuwe rijen komen.",
+        "Een dimensie met surrogate keys en geschiedenis volgens SCD type 2.",
+        "Een eenvoudige join van twee Silver-tabellen voor rapportage."
+      ],
+      "answer": 2,
+      "explanation": "Materialized views ondersteunen geen surrogate keys of identity columns, en geschiedenis bijhouden vraagt je eigen logica. De andere drie zijn typische gevallen voor een materialized view."
+    }
+  ],
+  "terms": [
+    {
+      "term": "materialized view",
+      "explanation": "Een view waarvan de uitkomst wordt opgeslagen en bijgewerkt als de brondata verandert, zodat opvragen snel gaat."
+    },
+    {
+      "term": "full recompute",
+      "explanation": "Een refresh waarbij de hele query opnieuw wordt uitgerekend, in plaats van alleen de wijzigingen te verwerken."
+    },
+    {
+      "term": "row tracking",
+      "explanation": "Een functie van Delta-tabellen die per rij bijhoudt wanneer hij is toegevoegd of gewijzigd. Databricks gebruikt dat om alleen de wijzigingen te verwerken."
+    },
+    {
+      "term": "deletion vectors",
+      "explanation": "Een manier waarop Delta verwijderde of gewijzigde rijen markeert in plaats van hele bestanden te herschrijven. Maakt wijzigingen sneller."
+    },
+    {
+      "term": "surrogate keys",
+      "explanation": "Een kunstmatige sleutel, zoals een volgnummer, die je zelf aan een rij geeft in plaats van een sleutel uit de bron te gebruiken."
+    },
+    {
+      "term": "Time travel",
+      "explanation": "Een functie van Delta-tabellen om een eerdere versie van een tabel op te vragen, bijvoorbeeld de stand van gisteren."
+    },
+    {
+      "term": "serverless",
+      "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 5 november 2026 in de actuele documentatie van Azure Databricks en Databricks (materialized views en incrementele refresh, bijgewerkt 15 tot 29 oktober 2026; CREATE MATERIALIZED VIEW, 2 oktober 2026; tables and views, 15 oktober 2026) en dbt Labs (materializations). De oudere bewering dat current_date() incrementeel verversen altijd blokkeert (o.a. een Medium-artikel van januari 2025) is weggelaten: volgens de huidige documentatie mag het in de WHERE. Het vereiste om de oude change data feed op bronnen aan te zetten is ook weggelaten; volgens de documentatie is die niet meer nodig. Over dbt-databricks heb ik alleen de release-aankondiging van versie 1.8 (februari 2024) kunnen lezen, niet de actuele adapterpagina; daarom noem ik geen precieze instellingen.",
+  "topics": [
+    "databricks_data_engineering",
+    "dbt_analytics_engineering",
+    "data_architecture_modeling"
+  ],
+  "written_at": "2026-11-05T04:50:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
