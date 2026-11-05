@@ -127,7 +127,20 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         "quality": (q["depth"] + q["practicality"] + q["novelty"]) / 3 if q else RAW_QUALITY,
     }
     total = sum(WEIGHTS[k] * v for k, v in parts.items())
-    if prefs and (prefs.get("topics") or prefs.get("sources")):
+    article.pop("fb_why", None)
+    adjust = 0.0   # feedback + fit samen, hooguit ±20 punten bij het nieuwe model
+    follow = any(topics[t].get("follow") for t in topic_ids[:2])
+    if prefs and prefs.get("model") is not None:
+        # Duim = correctie op de score (pipeline/learn.py, T 5-11-2026)
+        from .learn import effect
+        d, why = effect({**article, "topics": topic_ids}, prefs["model"])
+        if d < 0 and follow:
+            d, why = 0.0, None   # 'Altijd volgen': feedback mag dit onderwerp alleen omhoog duwen
+        if round(d, 2):
+            parts["feedback"] = d
+            article["fb_why"] = why
+            adjust += d
+    elif prefs and (prefs.get("topics") or prefs.get("sources")):
         from .feedback import WEIGHT as FB_WEIGHT, article_factor
         # Absoluut (T, 1-11-2026): 👍 duwt omhoog, alleen een echte 👎 op het onderwerp omlaag, niets doen is neutraal.
         f = article_factor({"topics": topic_ids, "source_id": article["source_id"], "soort": article.get("soort")}, prefs)
@@ -143,7 +156,12 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
         fit = 0.5   # idem voor Claudes oordeel
     if isinstance(fit, (int, float)):
         parts["fit"] = round(fit - 0.5, 2)
-        total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))
+        if prefs and prefs.get("model") is not None:
+            adjust += FIT_WEIGHT * 2 * (fit - 0.5)
+        else:
+            total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))
+    if adjust:
+        total = min(1.0, max(0.0, total + max(-0.20, min(0.20, adjust))))
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})

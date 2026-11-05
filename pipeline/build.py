@@ -23,6 +23,7 @@ from .dedupe import dedupe
 from . import deepdives as deepdives_mod
 from .digest import weekly_digests
 from . import feedback as feedback_mod
+from . import learn as learn_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
 from .terms import glossary
@@ -231,12 +232,15 @@ TASTE = cfg.DATA / "taste.json"
 TO_TAG = cfg.DATA / "to_tag.json"
 
 
-def write_taste(fb_data: dict, by_id: dict, now) -> None:
-    """data/taste.json: je recente duimpjes en gelezen artikelen, voor Claudes oordeel 'past bij jou' (fit)."""
+def write_taste(fb_data: dict, by_id: dict, now, arts=()) -> None:
+    """data/taste.json: je recente duimpjes en gelezen artikelen, voor Claudes oordeel 'past bij jou' (fit),
+    met de score op het moment van de duim en de labels die al in gebruik zijn."""
     def row(aid, x, extra):
         a = by_id.get(aid, {})
         return {"id": aid, "title": x.get("title") or a.get("headline") or a.get("title", ""), "source_id": x.get("source_id", ""),
-                "topics": x.get("topics", [])[:2], "soort": x.get("soort") or a.get("soort"), **extra}
+                "topics": x.get("topics", [])[:2], "soort": x.get("soort") or a.get("soort"),
+                "labels": x.get("labels") or a.get("labels") or [], "score": x.get("s"), **extra}
+    labels = Counter(lab for a in arts if a.get("processing_status") == "enriched" for lab in a.get("labels", []) or [])
     votes = sorted(fb_data["votes"].items(), key=lambda kv: kv[1].get("at", ""), reverse=True)[:20]
     reads = sorted([kv for kv in fb_data["reads"].items() if kv[0] not in fb_data["votes"]],
                    key=lambda kv: kv[1].get("at", ""), reverse=True)[:10]
@@ -245,13 +249,14 @@ def write_taste(fb_data: dict, by_id: dict, now) -> None:
         "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
         "votes": [row(k, x, {"v": x.get("v"), "r": x.get("r")}) for k, x in votes],
         "reads": [row(k, x, {}) for k, x in reads],
+        "labels_in_use": [lab for lab, _ in labels.most_common(120)],
     }, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def write_to_tag(shown: list) -> None:
     """data/to_tag.json: uitgelegde artikelen in de feed zonder soort of fit; Claude vult ze 's nachts aan."""
-    todo = [{"id": a["id"], "title": a.get("headline") or a["title"], "missing": [k for k in ("soort", "fit") if not a.get(k)]}
-            for a in shown if a["processing_status"] == "enriched" and (not a.get("soort") or not a.get("fit"))]
+    todo = [{"id": a["id"], "title": a.get("headline") or a["title"], "missing": [k for k in ("soort", "fit", "labels") if not a.get(k)]}
+            for a in shown if a["processing_status"] == "enriched" and (not a.get("soort") or not a.get("fit") or not a.get("labels"))]
     TO_TAG.write_text(json.dumps({"items": todo[:20]}, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
@@ -341,11 +346,20 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Jouw duimpjes (data/feedback.json) wegen mee; een duim omlaag haalt het artikel weg.
     fb_data = feedback_mod.load()
     by_id = {a["id"]: a for a in arts}
-    for x in list(fb_data["votes"].items()) + list(fb_data["reads"].items()):   # soort aanvullen (niet opgeslagen)
-        if not x[1].get("soort") and by_id.get(x[0], {}).get("soort"):
-            x[1]["soort"] = by_id[x[0]]["soort"]
+    for aid, x in list(fb_data["votes"].items()) + list(fb_data["reads"].items()):   # aanvullen (niet opgeslagen)
+        a = by_id.get(aid)
+        if not a:
+            continue
+        for k in ("soort", "labels"):
+            if not x.get(k) and a.get(k):
+                x[k] = a[k]
+        if not x.get("text"):
+            x["text"] = learn_mod.text_of(a)[:800]
+        if not isinstance(x.get("s"), (int, float)):   # duim van vóór 5-11-2026: score zonder feedback als benadering
+            x["s"] = score_article(dict(a), conf, now)["relevance_score"]
     fb_prefs = feedback_mod.preferences(fb_data, now)
-    write_taste(fb_data, by_id, now)
+    fb_prefs["model"] = learn_mod.model(fb_data, now)   # duim = correctie op de score (pipeline/learn.py)
+    write_taste(fb_data, by_id, now, arts)
     fb_votes = fb_data["votes"]
     for a in arts:
         score_article(a, conf, now, fb_prefs, fb_votes)
@@ -450,7 +464,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
-        "feedback": {**fb_prefs, "weight": feedback_mod.WEIGHT, "updated_at": fb_data.get("updated_at"),
+        "feedback": {**{k: v for k, v in fb_prefs.items() if k != "model"}, "weight": 1.0, "updated_at": fb_data.get("updated_at"),
+                     **learn_mod.summary(fb_data, fb_prefs["model"], now),
                      "effect": feedback_effect(arts, shown, conf, now)},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
         "quality_report": {
@@ -493,7 +508,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms", "learning", "soort", "fit"]
+                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why"]
 
 
 def _public(a):

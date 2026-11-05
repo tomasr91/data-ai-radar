@@ -492,11 +492,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   /* ---- Duimpjes ----
      Bewaard op dit toestel (radar:fb). Versturen = één GitHub-issue "Feedback: ..." met een
      JSON-blok; GitHub Actions verwerkt het direct (scripts/collect_feedback.py). */
-  const FB_UP = { praktisch: "Praktisch toepasbaar", goed_uitgelegd: "Goed uitgelegd", nieuw_voor_mij: "Nieuw voor mij", mijn_stack: "Past bij mijn stack", meer_hiervan: "Meer hiervan" };
+  const FB_UP = { praktisch: "Praktisch toepasbaar", goed_uitgelegd: "Goed uitgelegd", nieuw_voor_mij: "Nieuw voor mij", mijn_stack: "Past bij mijn stack", meer_hiervan: "Meer hiervan", score_te_laag: "Score te laag" };
   const fbPoints = () => Math.round((state.feed?.feedback?.weight || 0.15) * 100);   // maximaal effect in punten
   // 👎 standaard over het artikel; alleen de onderwerp-redenen verlagen het onderwerp en de bron (pipeline/feedback.py)
-  const FB_DOWN_ARTICLE = ["te_basic", "te_vaag", "oud_nieuws"], FB_DOWN_TOPIC = ["geen_interesse", "niet_mijn_stack"];
-  const FB_DOWN = { te_basic: "Te basic", niet_mijn_stack: "Niet mijn stack", oud_nieuws: "Oud nieuws", te_vaag: "Te vaag", geen_interesse: "Interesseert me niet" };
+  const FB_DOWN_ARTICLE = ["te_basic", "te_vaag", "oud_nieuws"], FB_DOWN_TOPIC = ["geen_interesse", "niet_mijn_stack", "score_te_hoog"];
+  const FB_DOWN = { te_basic: "Te basic", niet_mijn_stack: "Niet mijn stack", oud_nieuws: "Oud nieuws", te_vaag: "Te vaag", geen_interesse: "Interesseert me niet", score_te_hoog: "Score te hoog" };
   const fb = {
     all() { try { return JSON.parse(localStorage.getItem("radar:fb") || "{}"); } catch { return {}; } },
     save(d) { try { localStorage.setItem("radar:fb", JSON.stringify(d)); } catch {} },
@@ -1008,7 +1008,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const INT_PIN = `<svg class="int-pin" viewBox="0 0 12 14" aria-label="altijd volgen" role="img"><path d="M3 1.2h6v1.6l-1 1v3.4l2 1.6v1.2H2V8.8l2-1.6V3.8l-1-1z M6 10v3" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
   // Effect van je duimpjes op artikelen over dit onderwerp (relatief, in punten)
   function intEffect(id) {
-    const f = state.feed.feedback || {}, v = f.topics?.[id];
+    const f = state.feed.feedback || {};
+    if (f.levels) return f.levels.topic?.[id] || 0;
+    const v = f.topics?.[id];
     return v == null ? 0 : Math.round((v - (f.offset || 0)) * fbPoints());
   }
   // Eén onderwerp: niveau (jij kiest), je duimpjes (automatisch), en knoppen die zeggen wat er gebeurt
@@ -1440,7 +1442,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const vb = e.target.closest("[data-vote]"), rb = e.target.closest("[data-reason]");
     if (vb) {
       const v = Number(vb.dataset.vote);
-      fb.set(id, cur?.v === v ? null : { v, r: null, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false });
+      // s = de score op het moment van de duim: de radar leert van het verschil (pipeline/learn.py)
+      fb.set(id, cur?.v === v ? null : { v, r: null, s: a?.relevance_score ?? null, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false });
     } else if (rb && cur) {
       fb.set(id, { ...cur, r: cur.r === rb.dataset.reason ? null : rb.dataset.reason, sent: false });
     } else return;
@@ -1460,7 +1463,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
       .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null })), reads: rd, ...(ip ? { interests: ip.data } : {}) });
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
@@ -1481,8 +1484,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   // Feedback per onderwerp of bron, in punten ten opzichte van het gemiddelde artikel
+  const labelName = (l) => l.replace(/-/g, " ");
   function fbLean() {
     const f = state.feed.feedback || {}, o = f.offset || 0, W = fbPoints(), tn = state.feed.topics || {};
+    if (f.levels) {
+      const L = f.levels, row = (pre, d, name) => Object.entries(d || {}).map(([id, pts]) => ({ key: pre + id, name: name(id), pts }));
+      return [...row("t:", L.topic, (id) => tn[id]?.name || id), ...row("s:", L.source, (id) => source(id).name),
+        ...row("k:", L.kind, (id) => SOORT[id] || id), ...row("l:", L.label, labelName)];
+    }
     return [...Object.entries(f.topics || {}).map(([id, v]) => ({ key: "t:" + id, name: tn[id]?.name || id, pts: Math.round((v - o) * W) })),
       ...Object.entries(f.sources || {}).map(([id, v]) => ({ key: "s:" + id, name: source(id).name, pts: Math.round((v - o) * W) })),
       ...Object.entries(f.kinds || {}).map(([id, v]) => ({ key: "k:" + id, name: SOORT[id] || id, pts: Math.round((v - o) * W) }))];
@@ -1493,7 +1502,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const lc = (s) => s.charAt(0).toLowerCase() + s.slice(1);
     const and = (xs) => xs.length > 1 ? xs.slice(0, -1).join(", ") + " en " + xs[xs.length - 1] : xs[0];
     const kinds = lean.filter((x) => x.key.startsWith("k:")), topics = lean.filter((x) => x.key.startsWith("t:")), srcs = lean.filter((x) => x.key.startsWith("s:"));
+    const labs = lean.filter((x) => x.key.startsWith("l:") && x.pts > 0).slice(0, 3).map((x) => `<b>${esc(x.name)}</b>`);
     const out = [];
+    if (labs.length) out.push(`Je pakt vooral ${and(labs)}.`);
     const kUp = kinds.filter((x) => x.pts > 0), kDown = kinds.filter((x) => x.pts < 0);
     if (kUp.length) out.push(`Je waardeert <b>${esc(lc(kUp[0].name))}</b> het meest${kDown.length ? `, <b>${esc(lc(kDown[kDown.length - 1].name))}</b> het minst` : ""}.`);
     const tUp = topics.filter((x) => x.pts > 0).slice(0, 2).map((x) => `<b>${esc(x.name)}</b>`);
@@ -1502,12 +1513,22 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (down.length) out.push(`Minder bij ${and(down)}.`);
     const fits = state.feed.articles.filter((a) => a.fit), good = fits.filter((a) => a.fit.score >= 0.7).length;
     if (fits.length) out.push(`Claude vond ${good} van de ${fits.length} beoordeelde artikelen in je lijst sterk passend.`);
+    const dv = state.feed.feedback?.deviation;
+    if (dv?.now != null) out.push(`Je duimen wijken gemiddeld ${dv.now} punten af van de score${dv.before != null ? ` (vorige maand ${dv.before})` : ""}: hoe lager, hoe beter de score bij je past.`);
     return out;
   }
   // "Hoger door je 👍 op X" / "Lager door ... Y": welke onderwerpen en bron van dit artikel de feedback bepaalden
   function fbReason(a) {
     const pts = Math.round((a.score_parts?.feedback || 0) * fbPoints());
     if (!pts) return "";
+    const w = a.fb_why;
+    if (w) {
+      const head = `${pts > 0 ? `${pts} punten hoger` : `${-pts} punten lager`}`;
+      const tn = state.feed.topics || {};
+      if (w.by === "similar") return `${head}: lijkt op <b>${esc(w.title)}</b>, ${w.v === 1 ? "dat je een duim omhoog gaf" : w.v === -1 ? "dat je een duim omlaag gaf" : "dat je helemaal las"}${w.s != null ? ` (score toen ${w.s})` : ""}.`;
+      const name = w.by === "label" ? labelName(w.name) : w.by === "topic" ? (tn[w.name]?.name || w.name) : w.by === "source" ? source(w.name).name : (SOORT[w.name] || w.name).toLowerCase();
+      return `${head} door je duimen bij <b>${esc(name)}</b>.`;
+    }
     const lean = new Map(fbLean().map((x) => [x.key, x]));
     const by = [...(a.topics || []).slice(0, 2).map((t) => lean.get("t:" + t)), lean.get("s:" + a.source_id)]
       .filter((x) => x && Math.sign(x.pts) === Math.sign(pts)).map((x) => `<b>${esc(x.name)}</b>`);
@@ -1632,6 +1653,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <div class="status" id="run-status" style="margin:12px 0"><span class="dot" style="background:${color}"></span><span>${head}</span></div>
         ${runTasks()}
         ${bad.length ? `<section class="block"><h2>Bronnen met een probleem</h2><ul>${bad.map((s) => `<li><strong>${esc(s.name)}</strong>: ${esc(s.message || SRC_STATUS[s.status] || s.status)}</li>`).join("")}</ul></section>` : ""}
+        ${(f.feedback?.surprises || []).length ? `<section class="block"><h2>Grootste verrassingen</h2><ul class="near">${f.feedback.surprises.map((x) => `<li>${state.byId.has(x.id) ? `<a href="#a-${esc(x.id)}">${esc(x.title)}</a>` : esc(x.title)}<span>score ${esc(x.s)} · toch een duim omhoog</span></li>`).join("")}</ul></section>` : ""}
         <section class="block"><h2>Net niet in je feed</h2>${near.length ? `<ul class="near">${near.map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a><span>${esc(source(x.source_id).name)} · ${esc(why[x.decision](x))}</span></li>`).join("")}</ul>` : `<p style="font-size:.92rem;color:var(--muted)">Niets dat er net buiten viel.</p>`}</section>
         <section class="block"><details class="all-src"><summary>Alle bronnen (${f.sources.length})</summary><ul>${f.sources.map((s) => `<li><span class="st ${esc(s.status)}">${esc(SRC_STATUS[s.status] || s.status)}</span> ${esc(s.name)} <span style="color:var(--muted)">· ${s.items ?? 0} items</span></li>`).join("")}</ul></details></section>
       </div>`);

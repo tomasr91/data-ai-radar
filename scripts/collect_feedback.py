@@ -54,7 +54,24 @@ def parse_votes(body: str) -> list:
         aid, vote = str(v.get("id", "")), v.get("v")
         if re.fullmatch(r"[0-9a-f]{12}", aid) and vote in (1, -1):
             reason = v.get("r") if v.get("r") in feedback.REASONS else None
-            out.append({"id": aid, "v": vote, "r": reason})
+            s = v.get("s")   # score op het moment van de duim (app, vanaf 5-11-2026)
+            out.append({"id": aid, "v": vote, "r": reason, **({"s": round(s)} if isinstance(s, (int, float)) and 0 <= s <= 100 else {})})
+    return out
+
+
+def _learn_fields(a: dict, prev: dict, s):
+    """Score (op het moment van de duim, anders de huidige), labels en tekst: om van te leren (pipeline/learn.py)."""
+    from pipeline.learn import text_of
+    score = s if isinstance(s, (int, float)) else prev.get("s", a.get("relevance_score"))
+    out = {}
+    if isinstance(score, (int, float)):
+        out["s"] = round(score)
+    labels = a.get("labels") or prev.get("labels")
+    if labels:
+        out["labels"] = labels
+    text = (text_of(a)[:800] if a else "") or prev.get("text")
+    if text:
+        out["text"] = text
     return out
 
 
@@ -118,6 +135,7 @@ def main():
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
+                **_learn_fields(a, prev, v.get("s")),
             }
         reads = parse_reads(issue.get("body", ""))
         for rid in reads:
@@ -129,6 +147,7 @@ def main():
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
+                **_learn_fields(a, prev, None),
             }
         req = parse_interests(issue.get("body", ""))
         if req:

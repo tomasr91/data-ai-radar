@@ -588,6 +588,8 @@ class TestFeedback(unittest.TestCase):
         import collect_feedback as cf
         body = 'Tekst\n\n```json\n{"votes":[{"id":"841d424db697","v":-1,"r":"te_basic"},{"id":"xyz","v":1},{"id":"aaaaaaaaaaaa","v":1,"r":"onzin"}]}\n```'
         self.assertEqual(cf.parse_votes(body), [{"id": "841d424db697", "v": -1, "r": "te_basic"}, {"id": "aaaaaaaaaaaa", "v": 1, "r": None}])
+        b2 = 'x\n```json\n{"votes": [{"id": "aaaaaaaaaaaa", "v": 1, "r": "score_te_laag", "s": 55}, {"id": "bbbbbbbbbbbb", "v": 1, "s": 300}]}\n```'
+        self.assertEqual(cf.parse_votes(b2), [{"id": "aaaaaaaaaaaa", "v": 1, "r": "score_te_laag", "s": 55}, {"id": "bbbbbbbbbbbb", "v": 1, "r": None}])
         issues = [{"number": 1, "title": "Feedback: 2 beoordelingen", "user": {"login": "tomasr91"}},
                   {"number": 2, "title": "Feedback: 1", "user": {"login": "vreemde"}},
                   {"number": 3, "title": "Verdieping: x", "user": {"login": "tomasr91"}}]
@@ -727,6 +729,67 @@ class TestNearThreshold(unittest.TestCase):
         self.assertNotEqual(raw["decision"], "included_near")      # alleen al uitgelegde artikelen
         lo = score_article(dict(base, fit={"score": 0.3, "why": "Past niet."}), conf, now)
         self.assertNotEqual(lo["decision"], "included_near")      # en alleen als het bij je past
+
+
+class TestLearnScoreCorrection(unittest.TestCase):
+    """Duim = correctie op de score: snel waar het specifiek is, traag waar het breed is (pipeline/learn.py)."""
+
+    def _fb(self, **vote):
+        base = {"v": 1, "at": "2026-11-04T00:00:00Z", "title": "Metric views in Unity Catalog", "topics": ["databricks_data_engineering"],
+                "source_id": "databricks_blog", "soort": "praktisch", "labels": ["metric-views", "unity-catalog"],
+                "text": "Metric views in Unity Catalog definieer je metrics eenmalig in YAML", "s": 55}
+        return {"votes": {"aaaaaaaaaaaa": {**base, **vote}}, "reads": {}}
+
+    def test_levels_and_caps(self):
+        from pipeline import learn
+        now = datetime(2026, 11, 5, tzinfo=timezone.utc)
+        m = learn.model(self._fb(), now)
+        same = {"title": "Metric views krijgen materialisatie", "labels": ["metric-views", "unity-catalog"], "summary": "Metric views in Unity Catalog",
+                "topics": ["databricks_data_engineering"], "source_id": "databricks_blog", "soort": "praktisch"}
+        other = {"title": "Auto Loader leest sneller", "labels": ["auto-loader"], "summary": "Bestanden inlezen",
+                 "topics": ["databricks_data_engineering"], "source_id": "simon_whiteley", "soort": "aankondiging"}
+        far = {"title": "Claude Code hooks", "labels": ["claude-code-hooks"], "topics": ["claude_ai_development"], "source_id": "claude_blog"}
+        d_same, why = learn.effect(same, m)
+        d_other, _ = learn.effect(other, m)
+        d_far, _ = learn.effect(far, m)
+        self.assertGreater(d_same, 0.12)                 # één duim op een 55 doet al echt iets bij vergelijkbare artikelen
+        self.assertLessEqual(d_same, learn.TOTAL_CAP)
+        self.assertEqual(why["by"], "similar")
+        self.assertTrue(0 < d_other < 0.08)               # zelfde onderwerp, ander ding: weinig
+        self.assertEqual(d_far, 0.0)
+        # duim bij 92: de score klopte al, dus bijna geen effect
+        d_hi, _ = learn.effect(same, learn.model(self._fb(s=92), now))
+        self.assertLess(d_hi, 0.02)
+        # 'score te laag' telt zwaarder
+        d_strong, _ = learn.effect(other, learn.model(self._fb(r="score_te_laag"), now))
+        self.assertGreater(d_strong, d_other)
+        # 👎 om de kwaliteit raakt alleen de soort, niet het onderwerp of vergelijkbare artikelen
+        mq = learn.model(self._fb(v=-1, r="te_vaag"), now)
+        self.assertEqual(mq["examples"], [])
+        self.assertNotIn("databricks_data_engineering", mq["levels"]["topic"])
+        # 👎 'interesseert me niet' duwt vergelijkbare artikelen omlaag
+        d_down, _ = learn.effect(same, learn.model(self._fb(v=-1, r="geen_interesse", s=80), now))
+        self.assertLess(d_down, -0.1)
+
+    def test_score_article_uses_model_and_follow(self):
+        from pipeline import learn
+        conf = cfg.load()
+        now = datetime(2026, 11, 5, tzinfo=timezone.utc)
+        art = {"id": "bbbbbbbbbbbb", "title": "Metric views krijgen materialisatie", "url": "https://x", "source_id": "databricks_blog",
+               "published_at": "2026-11-04T00:00:00Z", "processing_status": "enriched", "topics": ["databricks_data_engineering"],
+               "labels": ["metric-views", "unity-catalog"], "summary": "Metric views in Unity Catalog", "soort": "praktisch",
+               "quality": {"depth": .5, "practicality": .5, "novelty": .5}}
+        plain = score_article(dict(art), conf, now)["relevance_score"]
+        prefs = {"model": learn.model(self._fb(), now)}
+        tuned = score_article(dict(art), conf, now, prefs)
+        self.assertGreater(tuned["relevance_score"], plain + 10)
+        self.assertEqual(tuned["fb_why"]["by"], "similar")
+        self.assertLessEqual(tuned["relevance_score"] - plain, 20)
+        down = {"model": learn.model(self._fb(v=-1, r="geen_interesse", s=80), now)}
+        tid = "databricks_data_engineering"
+        next(t for t in conf.interests["topics"] if t["id"] == tid)["follow"] = True
+        conf.topics[tid]["follow"] = True
+        self.assertNotIn("feedback", score_article(dict(art), conf, now, down)["score_parts"])   # altijd volgen: niet omlaag
 
 
 class TestTrends(unittest.TestCase):

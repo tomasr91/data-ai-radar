@@ -18,8 +18,8 @@ from datetime import datetime, timezone
 from .config import DATA
 
 PATH = DATA / "feedback.json"
-REASONS_DOWN = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interesse"}
-REASONS_UP = {"meer_hiervan", "praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack"}
+REASONS_DOWN = {"te_basic", "niet_mijn_stack", "oud_nieuws", "te_vaag", "geen_interesse", "score_te_hoog"}
+REASONS_UP = {"meer_hiervan", "praktisch", "goed_uitgelegd", "nieuw_voor_mij", "mijn_stack", "score_te_laag"}
 REASONS = REASONS_DOWN | REASONS_UP
 # 👎 om de kwaliteit van dít artikel: telt niet tegen het onderwerp of de bron, alleen tegen de soort
 # (en Claude ziet het in taste.json). Alleen geen_interesse / niet_mijn_stack / zonder reden verlagen het onderwerp.

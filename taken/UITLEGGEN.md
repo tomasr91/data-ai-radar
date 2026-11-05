@@ -14,7 +14,7 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
    3. Valt het onder **Niet uitleggen**? Ook een `skipped`-bestand, met de regel als `reason`.
    4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder, met begrippen (`terms`) en waar het past een `showcase`.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
-5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort` en/of `fit` (de rest niet aanraken). Hooguit 20, opslaan met commit `Soort en fit: <aantal> artikelen`.
+5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort`, `fit` en/of `labels` (de rest niet aanraken). Hooguit 20, opslaan met commit `Soort, fit en labels: <aantal> artikelen`.
 6. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
 
 ## Weekoverzicht Claude Code
@@ -106,7 +106,7 @@ Redenen bij 👍:
 
 ## Past bij jou
 
-`data/taste.json` bevat T's laatste 20 duimpjes (met reden) en 10 gelezen artikelen, elk met titel, onderwerpen, bron en soort. Geef elk artikel dat je uitlegt een `fit`: hoe goed past het bij wat T daar waardeert?
+`data/taste.json` bevat T's laatste 20 duimpjes (met reden) en 10 gelezen artikelen, elk met titel, onderwerpen, bron, soort, labels en `score` (de score op het moment van de duim). Een duim omhoog bij een lage score (bijv. 55) zegt het meest: T vond het veel interessanter dan de radar dacht. Een duim bij 90 zegt weinig. Geef elk artikel dat je uitlegt een `fit`: hoe goed past het bij wat T daar waardeert?
 
 - `score` 0 tot 1: 0,5 = geen idee of neutraal, 0,8+ = lijkt sterk op zijn duimen omhoog, 0,2- = lijkt op zijn duimen omlaag. Telt hooguit 10 punten mee.
 - `why`: één korte zin met de vergelijking, bijv. "Praktisch dbt-stuk met code, zoals je incrementele-modellenartikel."
@@ -137,6 +137,7 @@ Redenen bij 👍:
 - `date_note`: vul in als de datum twijfelachtig is (bijv. alleen 'laatst bewerkt', of een herpublicatie).
 - `article_type`: `nieuws` (standaard, mag je weglaten) of `opinie`. Bij `opinie` is `author` verplicht: naam plus waarom erkend, bijv. `"Benn Stancil, oprichter van Mode"`. Schrijf de mening altijd toe aan de auteur en zet in `key_facts` zijn kernpunten.
 - `soort`: `praktisch` (hoe je iets doet, met stappen of code), `aankondiging` (nieuwe functie of product), `release` (versie- of releasenotes), `achtergrond` (uitleg van een concept of architectuur), `praktijk` (hoe een organisatie het deed) of `mening`. Kies de beste.
+- `labels`: 2 tot 4 korte labels voor waar het artikel precies over gaat, fijner dan een onderwerp. Kleine letters met streepjes, bijv. `metric-views`, `dbt-semantic-layer`, `lakeflow`, `unity-catalog-abac`, `claude-code-skills`. **Hergebruik** een label uit `labels_in_use` in `data/taste.json` als dat hetzelfde bedoelt; maak alleen een nieuw label voor iets nieuws. Geen algemene labels als `databricks`, `ai` of `data`. De radar leert hiermee wat T binnen een onderwerp wel en niet interessant vindt.
 - `exceptional: true` alleen bij een grote, bevestigde wijziging in een tool uit de eigen stack.
 - Schrijf in eenvoudig Nederlands. Zet de Engelse vakterm bij het eerste gebruik tussen haakjes. Geen marketingtaal.
 
@@ -168,6 +169,7 @@ Redenen bij 👍:
   "article_type": "nieuws | opinie",
   "soort": "praktisch | aankondiging | release | achtergrond | praktijk | mening",
   "fit": {"score": 0.7, "why": "Eén korte zin: lijkt op welke duimen van T."},
+  "labels": ["metric-views", "dbt-semantic-layer"],
   "author": "Alleen bij opinie: naam, en waarom erkend",
   "terms": [{"term": "Zoals in de tekst", "explanation": "Eén of twee korte zinnen."}],
   "processed_by": "Claude (geplande taak)",

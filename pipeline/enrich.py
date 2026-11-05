@@ -12,6 +12,7 @@ Nooit patiëntgegevens of interne documenten.
 """
 import hashlib
 import json
+import re
 import os
 import urllib.request
 from datetime import datetime, timezone
@@ -80,6 +81,10 @@ def validate(data: dict, topic_ids: set) -> list:
     if "soort" in data and data["soort"] not in SOORTEN:
         problems.append(f"ongeldige soort '{data['soort']}' ({', '.join(sorted(SOORTEN))})")
     problems += validate_fit(data.get("fit"))
+    labs = data.get("labels")
+    if labs is not None and (not isinstance(labs, list) or not 1 <= len(labs) <= 4
+                             or not all(isinstance(x, str) and re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", x) and len(x) <= 40 for x in labs)):
+        problems.append("labels: 1 tot 4 korte labels in kleine letters met streepjes, bijv. 'metric-views'")
     if data.get("availability_status") not in STATUSES:
         problems.append(f"ongeldige availability_status '{data.get('availability_status')}'")
     if not isinstance(data.get("limitations", []), list):
@@ -113,7 +118,7 @@ def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
                             "format_version", "headline", "story", "key_facts", "article_type", "author",
-              "showcase", "terms", "soort", "fit"]:
+              "showcase", "terms", "soort", "fit", "labels"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
     article["processing_status"] = "enriched"

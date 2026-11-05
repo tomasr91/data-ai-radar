@@ -95,10 +95,14 @@ feed["interest_log"] = [{"at": "2026-10-31T04:30:00Z", "text": "Test-wijziging i
 # Nagebootst effect van je feedback (Wat je feedback deed + uitleg in de score)
 _en = next(a for a in arts if a["processing_status"] == "enriched")
 _t0 = (_en.get("topics") or ["dbt_analytics_engineering"])[0]
-_en.setdefault("score_parts", {})["feedback"] = 0.4
+_en.setdefault("score_parts", {})["feedback"] = 0.06
 _en["score_parts"]["fit"] = 0.3
 _en["fit"] = {"score": 0.8, "why": "Fit-test: lijkt op je praktische dbt-stukken."}
-feed["feedback"] = {**(feed.get("feedback") or {}), "topics": {_t0: 1.0}, "sources": {}, "kinds": {"praktisch": 1.0, "aankondiging": -0.5}, "offset": 0.6, "weight": 0.15,
+_en["fb_why"] = {"by": "similar", "title": "Vergelijk-test", "id": "cccccccccccc", "v": 1, "s": 55, "pts": 6}
+feed["feedback"] = {**{k: v for k, v in (feed.get("feedback") or {}).items() if k not in ("topics", "sources", "kinds")}, "weight": 1.0, "offset": 0,
+                    "levels": {"topic": {_t0: 6}, "source": {}, "kind": {"praktisch": 6, "aankondiging": -4}, "label": {"metric-views": 8}},
+                    "deviation": {"now": 14, "n": 5, "before": 22, "n_before": 3},
+                    "surprises": [{"id": _en["id"], "title": "Verrassing-test", "s": 52}],
                     "effect": {"days": 7, "lifted": [{"id": _en["id"], "title": "Erbij-test", "source_id": _en["source_id"], "delta": 6}],
                                "dropped": [{"id": "zzzzzzzzzzzz", "title": "Eruit-test", "source_id": "sqlbi", "delta": -7, "url": "https://example.org/x"}]}}
 # Nagebootste taakverslagen van de nacht
@@ -194,7 +198,7 @@ with sync_playwright() as p:
     page.click("#score-btn")
     check("5. knop toont scoreuitleg in een venster", page.locator("#score-dlg").is_visible() and "Waarom deze score?" in page.locator("#score-dlg").inner_text())
     _dlg = page.locator("#score-dlg").inner_text()
-    check("5. scoreuitleg zegt in gewone taal wat je feedback deed", "6 punten hoger" in _dlg)
+    check("5. scoreuitleg zegt welk eerder artikel de feedback bepaalde", "6 punten hoger" in _dlg and "lijkt op Vergelijk-test" in _dlg and "score toen 55" in _dlg)
     check("5. scoreuitleg toont Claudes 'past bij jou' met reden", "Past bij jou" in _dlg and "+6 punten" in _dlg and "Fit-test" in _dlg)
     page.keyboard.press("Escape")
     check("5. Escape sluit eerst het venster, niet het artikel", not page.locator("#score-dlg").is_visible() and page.locator("#reader").is_visible())
@@ -232,7 +236,7 @@ with sync_playwright() as p:
     body = unquote(sh)
     check("   issue begint met een link terug naar de app", "[↩ Terug naar de Data & AI Radar](http://127.0.0.1" in body)
     check("   versturen maakt een feedback-issue met de stem als JSON",
-          "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic"' in body, body[-160:])
+          "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic","s":{enriched["relevance_score"]}' in body, body[-160:])
     page.route("https://github.com/**", lambda r: r.abort())
     page.click("#fb-send")
     page.wait_for_timeout(500)
@@ -382,7 +386,8 @@ with sync_playwright() as p:
     eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
     check("   blok Wat de radar over je leerde: erbij en eruit", "Wat de radar over je leerde" in eff and "1</b> erbij" not in eff and "1 erbij, 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
           and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)
-    check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "beoordeelde artikelen in je lijst sterk passend" in eff)
+    check("   zegt wat de radar over je leerde", "praktische artikelen het meest" in eff and "aankondigingen het minst" in eff and "beoordeelde artikelen in je lijst sterk passend" in eff
+          and "Je pakt vooral metric views" in eff and "gemiddeld 14 punten af" in eff and "vorige maand 22" in eff)
     page.click('.int-sugg[data-sugg="data-contracts"] [data-int-ans="ja"]')
     check("   onderwerpen ingeklapt: geen knoppen tot je een onderwerp opent", page.locator(".int-topic [data-int-chg]").count() == 0
           and page.locator(".int-topic .row1[data-int-open]").count() == len(feed["interests"]["topics"]))
@@ -608,6 +613,8 @@ with sync_playwright() as p:
     check("7. status toont de nachtrun in één regel", ("Laatste nachtrun" in st or "niet bijgewerkt" in st or "mislukt" in st), st)
     check("   status per nachttaak", page.locator("#reader .runs li").count() == 3 and "12 artikelen uitgelegd" in page.locator("#reader .runs").inner_text()
           and page.locator("#reader .runs li.deels").count() == 1 and "niet gedraaid" in page.locator("#reader .runs").inner_text())
+    check("   grootste verrassingen: lage score, toch een duim omhoog", "Grootste verrassingen" in page.locator("#reader").inner_text()
+          and "Verrassing-test" in page.locator("#reader").inner_text() and "score 52" in page.locator("#reader").inner_text())
     check("   alle bronnen ingeklapt, met status", page.locator("#reader details.all-src li").count() == len(feed["sources"])
           and not page.locator("#reader details.all-src li").first.is_visible())
     failed = [s for s in feed["sources"] if s["status"] == "failed"]
