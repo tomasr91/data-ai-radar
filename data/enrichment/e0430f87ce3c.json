@@ -1,0 +1,69 @@
+{
+  "format_version": 2,
+  "article_id": "e0430f87ce3c",
+  "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1",
+  "headline": "dbt 1.13 is bijna klaar en werkt niet meer met Python 3.10",
+  "summary": "De eerste release candidate van dbt 1.13 is uit. Python 3.10 valt af, en een paar fouten rond Databricks en dbt deps zijn opgelost.",
+  "story": [
+    "dbt Labs heeft op 4 november de eerste release candidate van dbt 1.13 uitgebracht. Dat is de laatste proefversie voor de echte release. Er komen geen nieuwe functies meer bij; dit is het moment om te testen.",
+    "De enige breuk is de Python-versie. dbt 1.13 draait niet meer op Python 3.10, omdat die versie geen onderhoud meer krijgt. Je hebt Python 3.11 of nieuwer nodig. Gebruik je een oudere omgeving of een CI-image met 3.10, dan installeert dbt 1.13 daar niet.",
+    "De rest zijn reparaties. Twee gaan over Databricks: Python-modellen met instellingen voor toegangsrechten (access_control_list) geven geen valse waarschuwingen meer, en de instelling use_materialization_v2 wordt herkend. Ook haalt dbt deps git-packages nu op via een git credential helper. Het wachtwoord staat dan niet meer in de clone-URL.",
+    "Verder bereidt dbt 1.13 zich voor op dbt v2. Sleutels die alleen v2 kent, zoals checks in dbt_project.yml, geven geen fout maar worden genegeerd met een melding. Zo kan één project in de overgang met beide versies werken."
+  ],
+  "key_facts": [
+    "dbt-core 1.13.0-rc1 is uitgebracht op 4 november 2026 (pre-release).",
+    "Breuk: ondersteuning voor Python 3.10 vervalt; dbt v1.13 vereist Python 3.11 of nieuwer.",
+    "Fix: Databricks Python-modelinstellingen access_control_list en notebook_access_control_list geven geen onterechte CustomKeyInConfigDeprecation-waarschuwing meer.",
+    "Fix: de Databricks-instelling use_materialization_v2 wordt herkend in de JSON-schemacontrole.",
+    "Fix: dbt deps geeft inloggegevens voor git-packages via een git credential helper, in plaats van in de clone-URL.",
+    "dbt v2-sleutels info_schema, check-paths en checks in dbt_project.yml worden geaccepteerd en genegeerd, met een melding."
+  ],
+  "personal_relevance": "Je draait dbt Core op Databricks; controleer vóór de upgrade welke Python-versie je omgeving en pipeline gebruiken.",
+  "experiment": "Zet een losse virtuele omgeving op met Python 3.11, installeer dbt-core 1.13.0rc1 met de Databricks-adapter, en draai dbt parse op een kopie van een voorbeeldproject (bijv. jaffle shop). Kijk of de waarschuwingen over Databricks-instellingen weg zijn.",
+  "limitations": [
+    "Dit is een release candidate; wacht met productie tot de definitieve 1.13.",
+    "De release noemt geen datum voor de definitieve versie."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Release dbt v1.13.0rc1",
+      "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1"
+    },
+    {
+      "label": "Upgraden naar v1.13",
+      "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.13"
+    }
+  ],
+  "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.7,
+    "novelty": 0.35
+  },
+  "development_key": "dbt-v1-13-beta-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {
+    "score": 0.6,
+    "why": "dbt-release in je eigen stack, zoals de 1.13-bèta, maar vooral reparaties."
+  },
+  "terms": [
+    {
+      "term": "release candidate",
+      "explanation": "Een proefversie die bijna klaar is. Komen er geen grote fouten meer uit, dan wordt hij zonder wijzigingen de echte release."
+    },
+    {
+      "term": "git credential helper",
+      "explanation": "Een hulpje van git dat inloggegevens bewaart en doorgeeft wanneer git erom vraagt. Zo hoeft een wachtwoord niet in een URL of script te staan."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-05T03:32:13Z",
+  "prompt_version": "taak-v2"
+}
