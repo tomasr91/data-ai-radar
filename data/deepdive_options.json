@@ -1,38 +1,39 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-04T04:25:00Z",
+  "generated_at": "2026-11-05T04:55:00Z",
   "options": [
     {
-      "id": "cdc-en-incrementeel-laden",
-      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
-      "question": "Hoe laad je alleen wat er in de bron veranderd is, welke manieren zijn er (tijdstempel, change data feed, CDC, MERGE), en hoe ga je om met updates en verwijderingen?",
-      "why": "Ingestion is nog beginnersterrein voor jou, en het artikel 'dbt hoeft niet elke nacht alles opnieuw te bouwen', waar je een duim omhoog bij gaf, draait om hetzelfde idee.",
+      "id": "ingestion-basis",
+      "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
+      "question": "Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming), met welke Databricks-opties (Auto Loader, Lakeflow Connect, pipelines, COPY INTO)?",
+      "why": "Ingestion is nog beginnersterrein voor jou; na het stuk over CDC is dit het bredere plaatje van hoe data uit bronnen als SQL Server in bronze komt.",
       "topics": [
         "data_ingestion",
-        "dbt_analytics_engineering"
+        "databricks_data_engineering"
       ],
       "area": "data_engineering",
       "level": "beginner"
     },
     {
-      "id": "serverless-kosten-per-team",
-      "title": "Serverless kosten in Databricks per team zien en begrenzen",
-      "question": "Hoe zie je welk team of project hoeveel serverless compute gebruikt, en hoe zet je budgetten en plafonds zodat een job niet ongemerkt duur wordt?",
-      "why": "Databricks bracht eind oktober tags, budgetten en een maximale grootte per job voor serverless compute; handig voordat AI-functies in SQL je rekening laten groeien.",
+      "id": "scd2-snapshots-of-auto-cdc",
+      "title": "Geschiedenis bijhouden: dbt snapshots, AUTO CDC of Spark 4.3?",
+      "question": "Welke manieren zijn er om SCD type 2 te bouwen op Databricks (dbt snapshots, AUTO CDC in Lakeflow-pipelines, de nieuwe SCD2-functie in Spark 4.3), en wanneer kies je welke?",
+      "why": "Databricks schreef deze week dat Spark 4.3 in Runtime 19 zelf de geschiedenis van een rij bijhoudt; historisering staat nog open in je laagdefinities.",
       "topics": [
+        "data_architecture_modeling",
         "databricks_data_engineering",
-        "data_governance_privacy"
+        "dbt_analytics_engineering"
       ],
       "area": "data_engineering"
     },
     {
-      "id": "altijd-actieve-agents-context",
-      "title": "Agents die blijven draaien: wat verandert er aan context en geheugen?",
-      "question": "Wat is het verschil tussen een agent die één vraag beantwoordt en een agent die op de achtergrond doelen najaagt, en welke nieuwe problemen met context, geheugen en toezicht ontstaan daardoor?",
-      "why": "Harrison Chase (LangChain) noemde deze week zes nieuwe problemen bij altijd-actieve agents; past bij de trend 'Agents houden hun venster leeg: geheugen, skills en subagents'.",
+      "id": "agent-zoekt-eerst-dan-leest",
+      "title": "Eerst zoeken, dan lezen: hoe een agent zijn informatie vindt",
+      "question": "Waarom laat je een agent eerst goedkoop zoeken (op naam, met grep) voordat hij op betekenis zoekt, hoe werkt 'retrieve, offload, delegate', en wat betekent dat voor een assistent op dbt-documentatie?",
+      "why": "Past bij de trend 'Agents houden hun venster leeg'; LangChain beschreef het patroon en het is direct bruikbaar voor je AI-contextlaag.",
       "topics": [
-        "ai_context_engineering",
-        "ai_agents_rag"
+        "ai_agents_rag",
+        "ai_context_engineering"
       ],
       "area": "context_agents"
     },
@@ -49,13 +50,13 @@
       "area": "claude"
     },
     {
-      "id": "zorgkennis-als-skills",
-      "title": "Zorgkennis vastleggen voor AI-assistenten: wat Vital Skills laat zien",
-      "question": "Hoe leg je domeinkennis uit de zorg, zoals het samenstellen van cohorten, vast als skills, en wat moet je aanpassen aan Nederlandse regels zoals de AVG?",
-      "why": "Databricks bracht open-source zorgskills uit; een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform.",
+      "id": "database-takken-per-pull-request",
+      "title": "Een eigen kopie van de database per pull request: zo werkt branching",
+      "question": "Wat is een database-tak (branch) met copy-on-write, hoe gebruik je die in een release pipeline om elke pull request op een eigen omgeving te testen, en wat vraagt dat bij gevoelige data?",
+      "why": "Snorkel AI testte elke pull request in een minuut op een eigen tak van Lakebase; een concreet voorbeeld van een release-stap, en release pipelines zijn nog nieuw voor je.",
       "topics": [
-        "ai_in_healthcare",
-        "open_source_tools",
+        "cicd_data_deployment",
+        "databricks_data_engineering",
         "data_governance_privacy"
       ],
       "area": "new_tech"
@@ -414,6 +415,64 @@
         "ai_in_healthcare",
         "data_governance_privacy",
         "ai_research_data"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "cdc-en-incrementeel-laden",
+      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
+      "question": "Hoe laad je alleen wat er in de bron veranderd is, welke manieren zijn er (tijdstempel, change data feed, CDC, MERGE), en hoe ga je om met updates en verwijderingen?",
+      "why": "Ingestion is nog beginnersterrein voor jou, en het artikel 'dbt hoeft niet elke nacht alles opnieuw te bouwen', waar je een duim omhoog bij gaf, draait om hetzelfde idee.",
+      "topics": [
+        "data_ingestion",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering",
+      "level": "beginner"
+    },
+    {
+      "id": "serverless-kosten-per-team",
+      "title": "Serverless kosten in Databricks per team zien en begrenzen",
+      "question": "Hoe zie je welk team of project hoeveel serverless compute gebruikt, en hoe zet je budgetten en plafonds zodat een job niet ongemerkt duur wordt?",
+      "why": "Databricks bracht eind oktober tags, budgetten en een maximale grootte per job voor serverless compute; handig voordat AI-functies in SQL je rekening laten groeien.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_governance_privacy"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "altijd-actieve-agents-context",
+      "title": "Agents die blijven draaien: wat verandert er aan context en geheugen?",
+      "question": "Wat is het verschil tussen een agent die één vraag beantwoordt en een agent die op de achtergrond doelen najaagt, en welke nieuwe problemen met context, geheugen en toezicht ontstaan daardoor?",
+      "why": "Harrison Chase (LangChain) noemde deze week zes nieuwe problemen bij altijd-actieve agents; past bij de trend 'Agents houden hun venster leeg: geheugen, skills en subagents'.",
+      "topics": [
+        "ai_context_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-traces-in-unity-catalog",
+      "title": "Terugkijken wat je Claude-agent deed: traces als tabel in Unity Catalog",
+      "question": "Wat zijn traces en spans, hoe komen die van Claude via OpenTelemetry in Databricks MLflow terecht, en hoe gebruik je ze met SQL om fouten van een agent te vinden?",
+      "why": "Sinds 3 november kan Claude zijn traces in bèta naar Unity Catalog sturen; past bij de trend 'Agents worden beter door controles en metingen'.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability",
+        "ai_on_data_platform"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "zorgkennis-als-skills",
+      "title": "Zorgkennis vastleggen voor AI-assistenten: wat Vital Skills laat zien",
+      "question": "Hoe leg je domeinkennis uit de zorg, zoals het samenstellen van cohorten, vast als skills, en wat moet je aanpassen aan Nederlandse regels zoals de AVG?",
+      "why": "Databricks bracht open-source zorgskills uit; een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform.",
+      "topics": [
+        "ai_in_healthcare",
+        "open_source_tools",
+        "data_governance_privacy"
       ],
       "area": "new_tech"
     }
