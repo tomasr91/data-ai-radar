@@ -77,8 +77,10 @@ jobs:
         run: python scripts/collect_feedback.py
 
       - name: Artikelen ophalen en feed bouwen
-        # --max-enrich 0: de uitleg maakt Claude via de geplande taak, niet de API
-        run: python -m pipeline.build --provider feeds --max-enrich 0
+        # --max-enrich 0: de uitleg maakt Claude via de geplande taak, niet de API.
+        # Ophalen bij de nachtelijke run en handmatig; anders 'auto': alleen ophalen als het meer dan
+        # 12 uur geleden is of de nachttaak erom vraagt (data/run-request). Zo niet: opnieuw samenstellen.
+        run: python -m pipeline.build --provider ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && 'feeds' || 'auto' }} --max-enrich 0
 
       - name: Feed, archief en werklijst opslaan
         run: |

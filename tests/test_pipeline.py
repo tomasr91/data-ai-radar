@@ -4,7 +4,7 @@ import sys
 import tempfile
 import unittest
 import urllib.error
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from pipeline import build as build_mod
@@ -797,6 +797,35 @@ class TestLearnScoreCorrection(unittest.TestCase):
         next(t for t in conf.interests["topics"] if t["id"] == tid)["follow"] = True
         conf.topics[tid]["follow"] = True
         self.assertNotIn("feedback", score_article(dict(art), conf, now, down)["score_parts"])   # altijd volgen: niet omlaag
+
+
+class TestFetchLess(unittest.TestCase):
+    """Alleen ophalen als het nodig is; anders opnieuw samenstellen uit het archief (T, 5-11-2026)."""
+
+    def test_should_fetch_and_archive_provider(self):
+        import tempfile
+        from pathlib import Path
+        from pipeline import build
+        from pipeline.providers import archive
+        conf = cfg.load()
+        d = Path(tempfile.mkdtemp())
+        feed, req = d / "feed.json", d / "run-request"
+        now = datetime(2026, 11, 5, 9, tzinfo=timezone.utc)
+        srcs = [{"id": s["id"], "status": "ok", "items": 3} for s in conf.source_list if s.get("enabled")]
+        self.assertTrue(build.should_fetch(conf, now, feed, req))                      # geen feed: ophalen
+        feed.write_text(json.dumps({"last_successful_update": "2026-11-05T03:00:00Z", "mode": "live", "sources": srcs}))
+        self.assertFalse(build.should_fetch(conf, now, feed, req))                     # 6 uur geleden: niet
+        self.assertTrue(build.should_fetch(conf, now + timedelta(hours=13), feed, req))  # te lang geleden
+        req.write_text("2026-11-06")
+        self.assertTrue(build.should_fetch(conf, now, feed, req))                      # de nachttaak vraagt erom
+        req.write_text("2026-11-05")
+        self.assertFalse(build.should_fetch(conf, now, feed, req))
+        feed.write_text(json.dumps({"last_successful_update": "2026-11-05T03:00:00Z", "sources": srcs[1:]}))
+        self.assertTrue(build.should_fetch(conf, now, feed, req))                      # nieuwe bron
+        (d / "archive.json").write_text(json.dumps({"items": {"x:1": {"source_id": "x", "title": "t", "url": "https://x"}}}))
+        r = archive.collect(conf, d / "archive.json", feed)
+        self.assertEqual(len(r.items), 1)
+        self.assertEqual(r.extra["captured_at"], "2026-11-05T03:00:00Z")
 
 
 class TestTrends(unittest.TestCase):

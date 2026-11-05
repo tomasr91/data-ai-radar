@@ -1,7 +1,7 @@
 """End-to-end test van de app in headless Chromium (telefoonformaat).
 
 Draaien: python tests/e2e_app.py   (vereist: pip install playwright && playwright install chromium)
-Gebruikt data/feed.json; zet een kopie naast de app en start een lokale server.
+Gebruikt tests/fixtures/feed.json; zet een kopie naast de app en start een lokale server.
 """
 import re
 import functools
@@ -47,17 +47,16 @@ def check(name, cond, detail=""):
     print(("OK   " if cond else "FOUT ") + name + (f"  ({detail})" if detail and not cond else ""))
 
 
-feed = json.loads((ROOT / "data" / "feed.json").read_text(encoding="utf-8"))
+# Vaste nagemaakte feed (tests/fixtures/feed.json, vastgelegd op 5-11-2026): de tests breken dan alleen
+# als de app stuk is, niet omdat er 's nachts nieuwe data bij kwam. Opnieuw vastleggen: zie tests/fixtures/README.md.
+feed = json.loads((ROOT / "tests" / "fixtures" / "feed.json").read_text(encoding="utf-8"))
 arts = feed["articles"]
-# Verdiepingen uit de repo gebruiken, ook als feed.json nog niet opnieuw is gebouwd.
 sys.path.insert(0, str(ROOT))
-from pipeline import config as _cfg, deepdives as _dd  # noqa: E402
-feed["deepdives"], _ = _dd.load_all(set(_cfg.load().topics))
+from pipeline import config as _cfg  # noqa: E402
 dds = feed["deepdives"]
 # Een verdieping uit een eigen voorstel (Later): krijgt het label "jouw voorstel"
 if dds:
     dds.append(dict(dds[-1], id="eigen-test-voorstel", plan_id="eigen-test-voorstel", written_at="2026-10-01T05:00:00Z"))
-feed["deepdive_options"], _ = _dd.load_options(set(_cfg.load().topics))
 feed["repo"] = "tomasr91/data-ai-radar"
 opts = feed["deepdive_options"]["options"]
 # Nagebootste GitHub-API: de eigenaar koos de tweede keuze; een vreemde koos de eerste (telt niet).

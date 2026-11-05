@@ -32,12 +32,13 @@ from . import runs as runs_mod
 from . import enrich as enrich_mod
 from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
-from .providers import feeds, snapshot
+from .providers import archive as archive_provider, feeds, snapshot
 from .score import daily_top, score_article
 
 SCHEMA_VERSION = 1
 DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
-PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect}
+PROVIDERS = {"feeds": feeds.collect, "snapshot": snapshot.collect, "archive": archive_provider.collect}
+FETCH_EVERY_HOURS = 12   # bij --provider auto: alleen ophalen als het langer geleden is (of als de nachttaak erom vraagt)
 ARCHIVE_DAYS = 60      # hoe lang een artikel in de feed kan blijven nadat het uit een bronfeed is verdwenen
 QUEUE_MAX = 40         # werklijst voor Claude: hooguit 10 per nacht uitleggen (vol of kort); de rest vult aan wat is overgeslagen (T, 5-11-2026)
 FRESH_DAYS, FRESH_BONUS = 2, 10   # liefst actueel: artikelen van de laatste 2 dagen krijgen 10 punten voorrang op de werklijst
@@ -459,7 +460,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "mode": result.mode,
         "mode_note": result.note,
         "last_article_added_at": max(fetched) if fetched else None,
-        "last_successful_update": result.extra.get("captured_at") if result.mode == "snapshot" else _iso(now),
+        "last_successful_update": (result.extra.get("captured_at") or _iso(now)) if provider_name != "feeds" else _iso(now),
         "groups": conf.feed_groups,
         "topics": {t["id"]: {"name": t["name"], "priority": t["priority"], "group": t.get("feed_group", "overig"),
                              **({"learning": True} if t.get("learning") else {}),
@@ -544,14 +545,40 @@ def _source_view(conf, results):
     return view
 
 
+def should_fetch(conf, now=None, feed_path=None, request_path=None) -> bool:
+    """Voor --provider auto: ophalen als er nog geen feed is, als het langer dan FETCH_EVERY_HOURS
+    geleden is, als de nachttaak er vandaag om vroeg (data/run-request) of als er een bron bij kwam."""
+    now = now or datetime.now(timezone.utc)
+    feed_path, request_path = feed_path or cfg.DATA / "feed.json", request_path or cfg.DATA / "run-request"
+    try:
+        prev = json.loads(feed_path.read_text(encoding="utf-8"))
+        last = datetime.fromisoformat(prev["last_successful_update"].replace("Z", "+00:00"))
+    except (OSError, ValueError, KeyError, TypeError, AttributeError):
+        return True
+    if now - last > timedelta(hours=FETCH_EVERY_HOURS):
+        return True
+    try:
+        req = request_path.read_text(encoding="utf-8").strip().splitlines()[-1].strip()
+        if req > last.strftime("%Y-%m-%d"):
+            return True
+    except (OSError, IndexError):
+        pass
+    enabled = {s["id"] for s in conf.source_list if s.get("enabled")}
+    return not enabled <= {s.get("id") for s in prev.get("sources", [])}
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description="Bouw data/feed.json voor de Data & AI Radar")
-    p.add_argument("--provider", choices=sorted(PROVIDERS), default="feeds")
+    p.add_argument("--provider", choices=sorted(PROVIDERS) + ["auto"], default="feeds")
     p.add_argument("--out", default=str(cfg.DATA / "feed.json"))
     p.add_argument("--max-enrich", type=int, default=15, help="max. aantal nieuwe AI-verrijkingen per run")
     args = p.parse_args(argv)
     from pathlib import Path
-    feed = build(args.provider, Path(args.out), args.max_enrich)
+    provider = args.provider
+    if provider == "auto":
+        provider = "feeds" if should_fetch(cfg.load()) else "archive"
+        print(f"auto: {'ophalen' if provider == 'feeds' else 'opnieuw samenstellen zonder ophalen'}")
+    feed = build(provider, Path(args.out), args.max_enrich)
     q = feed.get("quality_report", {})
     print(f"modus: {feed['mode']} - {feed['mode_note']}")
     for s in feed["sources"]:
