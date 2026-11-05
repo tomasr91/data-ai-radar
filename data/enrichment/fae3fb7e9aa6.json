@@ -1,0 +1,75 @@
+{
+  "format_version": 2,
+  "article_id": "fae3fb7e9aa6",
+  "url": "https://www.sqlbi.com/blog/marco/2026/10/27/dax-llm-benchmark-v2/",
+  "headline": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit",
+  "summary": "SQLBI testte met DAXBench v2 hoe goed taalmodellen DAX schrijven. Zes recente modellen van drie leveranciers scoren 90 tot 96 procent.",
+  "story": [
+    "Marco Russo van SQLBI heeft samen met Maxim Anatsko een nieuwe versie gemaakt van DAXBench. Dat is een toets die meet hoe goed taalmodellen DAX schrijven en begrijpen. De nieuwe versie heeft meer opgaven uit de praktijk, van makkelijk tot moeilijk.",
+    "De toets werkt als een examen zonder herkansing. Elk model krijgt één opdracht en mag nadenken, maar niet zelf testen of opnieuw proberen. Het krijgt ook geen skills mee. Daarna past de toets de DAX toe op een model, meestal een variant van Contoso, en draait een testquery. Alleen een goede uitkomst telt; nette code die het verkeerde antwoord geeft, krijgt geen punten.",
+    "De uitkomst: zes modellen van drie leveranciers, uitgebracht in augustus en september 2026, scoren tussen 90 en 96 procent. Elke opgave werd door minstens één model opgelost. Russo vindt dat de generatie van een model meer uitmaakt dan de leverancier. Open-source modellen lopen achter, maar volgen dezelfde lijn.",
+    "Russo vindt DAX leren wel nog steeds zinvol. Wie de DAX kan lezen, ziet hoe een bedrijfsregel echt is uitgewerkt. Een beschrijving in gewone taal kan dubbelzinnig zijn, een formule niet. Zijn advies: gebruik de toets om een modelgeneratie te kiezen en kosten te sturen, maar test altijd op je eigen semantische modellen."
+  ],
+  "key_facts": [
+    "DAXBench v2 is gepubliceerd op 27 oktober 2026 door Marco Russo (SQLBI) met Maxim Anatsko, die versie 1 in december 2025 uitbracht.",
+    "Elke test is één opdracht met het standaard redeneerniveau, zonder herhalen, zelf testen of skills.",
+    "De score telt geslaagde taken, juistheid van de uitkomst en juiste syntax; een fout antwoord krijgt geen punten.",
+    "Stand van 18 oktober 2026: zes modellen van drie leveranciers (uitgebracht augustus en september 2026) scoren 90% tot 96%.",
+    "Russo: de modelgeneratie telt meer dan de leverancier; kleine scoreverschillen doen er in dagelijks gebruik weinig toe.",
+    "Russo: de tests raken bijna verzadigd; een versie 2.1 of 3.0 is mogelijk nodig."
+  ],
+  "personal_relevance": "Je schrijft DAX in Power BI; dit zegt hoe ver je een AI-assistent kunt vertrouwen, en dat je eigen testen nodig blijven.",
+  "experiment": "Kies drie DAX-maatstaven die je zelf goed kent en beschrijf ze in gewone taal, zonder werkdata. Laat Claude ze schrijven op een openbaar voorbeeldmodel (zoals Contoso) en vergelijk de uitkomsten met je eigen versie.",
+  "limitations": [
+    "De scores per model staan alleen in de grafieken op daxbench.com, niet in de tekst van het artikel.",
+    "De auteurs zeggen zelf dat de tests niet perfect zijn; ervaring in de praktijk telt zwaarder.",
+    "SQLBI verkoopt zelf DAX-cursussen en -tools."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "DAXBench",
+      "url": "https://www.daxbench.com/"
+    },
+    {
+      "label": "Methodologie",
+      "url": "https://www.daxbench.com/methodology"
+    },
+    {
+      "label": "Where we stand on AI and DAX in 2026",
+      "url": "https://www.sqlbi.com/blog/marco/2026/09/22/where-we-stand-on-ai-and-dax-in-2026/"
+    }
+  ],
+  "topics": [
+    "powerbi_semantic_models",
+    "ai_evaluation_observability",
+    "claude_ai_development"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.55,
+    "novelty": 0.6
+  },
+  "development_key": "sqlbi-dax-met-ai-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.55,
+    "why": "Over hoe goed AI code schrijft, zoals de dbt Labs-proef met Claude; wel Power BI in plaats van dbt."
+  },
+  "terms": [
+    {
+      "term": "DAXBench",
+      "explanation": "Een openbare toets van SQLBI en Maxim Anatsko die meet hoe goed taalmodellen DAX-formules schrijven, door de uitkomst echt na te rekenen."
+    },
+    {
+      "term": "skills",
+      "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-05T03:34:43Z",
+  "prompt_version": "taak-v2"
+}
