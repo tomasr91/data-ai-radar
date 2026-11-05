@@ -1,0 +1,75 @@
+{
+  "format_version": 2,
+  "article_id": "9e09c1b3c3a1",
+  "url": "https://www.sqlbi.com/articles/optimizing-dax-with-ai/",
+  "headline": "AI versnelt DAX het best als een mens het eerst bijstuurt",
+  "summary": "SQLBI liet AI een lastige DAX-maatstaf schrijven, versnellen en testen. De snelste versie kwam uit AI die de versie van een mens verbeterde.",
+  "story": [
+    "Marco Russo en Alberto Ferrari van SQLBI testten of AI een DAX-formule sneller kan maken. Ze kozen een lastige maatstaf: omzet op dagen waarop een klant binnen 30 dagen na zijn vorige aankoop weer kocht. Eerst legden ze precies vast wat de maatstaf moet doen, in een soort contract met voorbeelden.",
+    "Daarna lieten ze AI vier dingen doen. Het schreef een eerste versie, versnelde die zelf, verbeterde de versie van de mensen, en schreef testen. De eerste AI-versie klopte, maar liep drie keer genest door klanten en datums. Dat is traag, zoals elke klant met elke dag vergelijken.",
+    "De grootste winst zat in één idee: kijk maar 30 dagen terug, want oudere aankopen tellen toch niet. De mensen bedachten dat, en de AI vond het ook zelf. De versie waarin AI de menselijke formule verbeterde, was in de meeste tests het snelst. Een totaal over alle jaren ging van ruim 4,4 naar ruim 1,5 seconde.",
+    "Voor jou zit de les vooral in de werkwijze. AI schreef veel meer testen dan de auteurs ooit zelf maakten: testen die twee versies onder lastige filters vergelijken, en testen voor de snelheid. Dat is hetzelfde patroon als een vaste definitie plus een dbt-test, maar dan voor DAX."
+  ],
+  "key_facts": [
+    "Artikel van Marco Russo en Alberto Ferrari (SQLBI), 2 november 2026; een kleine proef, geen volledige benchmark.",
+    "Maatstaf: omzet op aankoopdagen die 1 tot en met 30 dagen na de vorige aankoopdag van dezelfde klant vallen.",
+    "AI maakte een eerste versie, een eigen optimalisatie, een verbetering van de menselijke versie, en gelijkwaardigheids- en snelheidstesten.",
+    "Totaal over alle historie: eerste versie 4.396 ms, menselijke versie 2.594 ms, AI-verbetering van de menselijke versie 1.538 ms, zelfstandige AI-versie 3.910 ms.",
+    "De grootste winst kwam van maar 30 dagen terugkijken; geen enkele versie was in alle tests het snelst.",
+    "Het artikel noemt niet welk AI-model of welke tool is gebruikt."
+  ],
+  "personal_relevance": "Je schrijft DAX in Power BI; dit laat zien hoe je AI veilig laat optimaliseren: eerst een contract, dan testen.",
+  "experiment": "Download het voorbeeldbestand van SQLBI (Contoso-data) en laat Claude een eigen DAX-maatstaf versnellen. Geef eerst een korte beschrijving met randgevallen, en laat Claude ook vergelijkingstesten schrijven. Gebruik geen werkmodellen.",
+  "limitations": [
+    "Kleine proef op één maatstaf en één datamodel; resultaten hangen af van de data en het model.",
+    "Het artikel noemt het gebruikte AI-model niet.",
+    "De auteurs verkopen ook een DAX-optimalisatietool en cursussen."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Optimizing DAX with AI (SQLBI)",
+      "url": "https://www.sqlbi.com/articles/optimizing-dax-with-ai/"
+    },
+    {
+      "label": "Voorbeeldbestanden",
+      "url": "https://www.sqlbi.com/wp-content/uploads/C0311-Optimizing-DAX-with-AI.zip"
+    },
+    {
+      "label": "Understanding DAX contracts when using AI",
+      "url": "https://www.sqlbi.com/articles/understanding-dax-contracts-when-using-ai/"
+    }
+  ],
+  "topics": [
+    "powerbi_semantic_models",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.7,
+    "novelty": 0.6
+  },
+  "development_key": "sqlbi-dax-met-ai-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "praktisch",
+  "fit": {
+    "score": 0.6,
+    "why": "AI plus een duidelijk proces en testen, zoals de dbt Labs-proef met Claude die je een duim gaf; wel Power BI in plaats van dbt."
+  },
+  "terms": [
+    {
+      "term": "contract",
+      "explanation": "Een precieze beschrijving van wat een berekening moet doen, met voorbeelden en randgevallen. Zo kun je controleren of een AI-formule klopt."
+    },
+    {
+      "term": "genest",
+      "explanation": "Een lus binnen een lus: voor elk item in de ene lijst loop je opnieuw door een andere lijst. Dat wordt snel traag bij grote tabellen."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-05T03:33:46Z",
+  "prompt_version": "taak-v2"
+}
