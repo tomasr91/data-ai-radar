@@ -80,5 +80,9 @@
     "language": "bash",
     "code": "# .claude/settings.json in je project\ncat > .claude/settings.json <<'JSON'\n{\n  \"permissions\": {\n    \"blockWritesOutsideWorkingDirectories\": true\n  }\n}\nJSON\n\n# subagents zuiniger laten denken dan de hoofdsessie\nexport CLAUDE_CODE_SUBAGENT_EFFORT=medium\nclaude",
     "note": "De namen van de instelling en de variabele komen uit de release notes van v2.1.314 en v2.1.316. De waarde true en het niveau medium zijn een aanname over de notatie; controleer die in de documentatie."
-  }
+  },
+  "labels": [
+    "claude-code-sandbox",
+    "claude-code-subagents"
+  ]
 }

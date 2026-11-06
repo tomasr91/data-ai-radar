@@ -87,5 +87,10 @@
     "language": "sql",
     "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
     "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
-  }
+  },
+  "labels": [
+    "genie-mcp",
+    "metric-views",
+    "claude-code-databricks"
+  ]
 }
