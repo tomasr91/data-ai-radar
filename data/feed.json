@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T03:12:45.285249Z",
+ "generated_at": "2026-11-06T03:21:51.807744Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-05T03:34:43Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-06T03:21:27Z",
  "last_successful_update": "2026-11-06T03:12:45.285249Z",
  "groups": [
   {
@@ -2181,6 +2181,106 @@
    }
   },
   {
+   "id": "3b1aa647a1b3",
+   "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-05T19:00:00Z",
+   "date_note": "Fabric-blog meldt GA op 5 november 2026; de Databricks-documentatie noemt de functie nog Beta.",
+   "fetched_at": "2026-11-06T03:12:47.625169Z",
+   "summary": "Unity Catalog kan OneLake gebruiken als opslagplek voor beheerde tabellen. Databricks blijft rekenen en beheren, Fabric leest dezelfde kopie.",
+   "personal_relevance": "Als Power BI of Fabric dezelfde data moet gebruiken als je Databricks-modellen, scheelt dit een kopie, maar de rechten moet je dubbel bewaken.",
+   "experiment": "Maak in een testomgeving een Fabric-werkruimte met een Azure Databricks Storage-item, koppel een testcatalog en schrijf een tabel met verzonnen data. Kijk daarna wie er in Fabric bij kan.",
+   "limitations": [
+    "Microsoft meldt GA, de Databricks-documentatie zegt nog Beta.",
+    "Rollen in de Fabric-werkruimte geven toegang langs Unity Catalog heen.",
+    "Meldingen van nieuwe bestanden (file events) werken niet op OneLake-paden."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Connect Azure Databricks to a OneLake external location",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-onelake"
+    },
+    {
+     "label": "Enable OneLake catalog federation (alleen lezen)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/query-federation/onelake"
+    }
+   ],
+   "topics": [
+    "data_architecture_modeling",
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "architectuur",
+    "overig",
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.6,
+    "quality": 0.57,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Databricks-tabellen kunnen nu fysiek in OneLake staan",
+   "story": [
+    "Microsoft meldt dat Azure Databricks zijn tabellen nu direct in OneLake kan opslaan. OneLake is de centrale dataopslag van Microsoft Fabric. Volgens de Fabric-blog is dit nu algemeen beschikbaar (GA) aan de Fabric-kant. OneLake-beveiliging staat daarbij standaard aan.",
+    "Het werkt met een externe locatie (external location) in Unity Catalog. Je maakt in Fabric een speciaal opslagitem aan, het Azure Databricks Storage-item. In Databricks maak je een opslagsleutel (storage credential) en een externe locatie die naar dat item wijst. Daarna geef je een catalog of schema die locatie als vaste opslagplek. Alles wat je daarin schrijft, landt in OneLake.",
+    "Vergelijk het met een gedeelde schuur. Databricks blijft de werkplaats met het gereedschap en de inventarislijst (Unity Catalog). Alleen de spullen zelf staan nu in de schuur van Fabric. Beheerde tabellen, volumes, views, materialized views en streaming tables blijven gewoon in Databricks beheerd.",
+    "Let wel op de rechten. Je moet ze aan twee kanten regelen: in Unity Catalog én in OneLake. De documentatie van Databricks waarschuwt dat iedereen met de rol Member, Contributor of Administrator in de Fabric-werkruimte de data kan lezen, schrijven en wissen, ook zonder rechten in Unity Catalog. Voor zorgdata is een aparte, kleine werkruimte dus belangrijk.",
+    "Voor jou is dit vooral interessant als Power BI of Fabric dezelfde data moet lezen als je dbt-modellen op Databricks. Dan hoef je geen kopieerpijplijn te bouwen. Maar de documentatie van Databricks noemt de functie op 6 november nog Beta, dus de twee kanten zijn het niet eens over de status."
+   ],
+   "key_facts": [
+    "Microsoft Fabric meldt op 5 november 2026 dat OneLake als externe locatie voor Azure Databricks Unity Catalog algemeen beschikbaar is aan de Fabric-kant.",
+    "OneLake Security staat standaard aan voor Azure Databricks Storage-items; beheerders geven per identiteit rechten om te ontdekken, lezen of schrijven.",
+    "Ondersteund: beheerde tabellen (Delta en Iceberg), volumes, views, materialized views en streaming tables.",
+    "Vereist: Databricks Runtime 18.1 of hoger of serverless compute, en een Fabric-werkruimte met toegewezen capaciteit.",
+    "Het pad gebruikt GUID's: abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/; namen worden geweigerd.",
+    "De Databricks-documentatie noemt de functie Beta en waarschuwt dat Member, Contributor en Administrator in de Fabric-werkruimte de data kunnen lezen, schrijven en wissen zonder Unity Catalog-rechten."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Na het koppelen geef je een catalog de OneLake-locatie als vaste opslagplek. Elke tabel die je daarin maakt, staat fysiek in OneLake.",
+    "language": "sql",
+    "code": "-- Catalog met de OneLake-locatie als beheerde opslag\nCREATE CATALOG my_onelake_catalog\nMANAGED LOCATION '<onelake_external_location_path>';\n\n-- Een gewone beheerde tabel\nCREATE TABLE my_onelake_catalog.default.my_table (\n  id INT,\n  name STRING,\n  created_at TIMESTAMP\n);\n\nINSERT INTO my_onelake_catalog.default.my_table\nVALUES (1, 'example', current_timestamp());",
+    "note": "Overgenomen uit de Azure Databricks-documentatie. Het pad heeft de vorm abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/. De externe locatie zelf maak je volgens de documentatie in de Catalog-UI."
+   },
+   "terms": [
+    {
+     "term": "OneLake",
+     "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt."
+    },
+    {
+     "term": "externe locatie",
+     "explanation": "Een verwijzing in Unity Catalog naar een plek in cloudopslag, samen met de sleutel om erbij te mogen. Zo regelt Unity Catalog wie daar mag lezen en schrijven."
+    },
+    {
+     "term": "storage credential",
+     "explanation": "Een opgeslagen sleutel in Unity Catalog, meestal een managed identity of service principal, waarmee Databricks bij cloudopslag mag."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.6,
+    "why": "Koppeling Databricks–Power BI-wereld, zoals je duim bij metric views; wel een aankondiging zonder praktijkverhaal."
+   },
+   "labels": [
+    "onelake-databricks",
+    "unity-catalog-external-locations"
+   ]
+  },
+  {
    "id": "f5757f520b3e",
    "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
    "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
@@ -2875,7 +2975,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.51,
     "quality": 0.65,
     "feedback": 0.01,
@@ -3585,6 +3685,142 @@
     "name": "ai_context_engineering",
     "pts": 1
    }
+  },
+  {
+   "id": "e197b15d9798",
+   "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
+   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-05T12:48:00Z",
+   "fetched_at": "2026-11-06T03:12:46.373805Z",
+   "summary": "Debezium leest de wijzigingen uit een database en duwt ze via Zerobus Ingest rechtstreeks in Delta-tabellen. Er is geen Kafka nodig en de database hoeft geen inkomende verbindingen toe te staan.",
+   "personal_relevance": "Een concreet beeld van CDC van bron tot silver, precies het ingestion-onderwerp waar je nog in groeit.",
+   "experiment": "Bouw in DuckDB een kleine bronze-tabel met verzonnen wijzigingsberichten, inclusief een dubbel bericht en een delete, en maak daar met SQL de actuele stand van.",
+   "limitations": [
+    "Het artikel zegt niet of Zerobus Ingest preview of GA is en geeft geen cijfers over snelheid.",
+    "Berichten kunnen dubbel aankomen; je moet zelf ontdubbelen.",
+    "Je moet Debezium Server zelf naast de database draaien."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Debezium 3.7 release notes (Zerobus-sink)",
+     "url": "https://debezium.io/blog/2026/09/29/debezium-3-7-final-released/#databricks_zerobus_ingest_sink_adapter"
+    },
+    {
+     "label": "Handleiding: PostgreSQL-CDC met Debezium naar Databricks",
+     "url": "https://community.databricks.com/t5/technical-blog/how-to-stream-postgresql-cdc-into-databricks-with-debezium/ba-p/175646"
+    },
+    {
+     "label": "Zerobus Ingest-documentatie",
+     "url": "https://docs.databricks.com/aws/en/ingestion/zerobus-ingest"
+    }
+   ],
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.63,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
+     "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
+     "published_at": "2026-11-05T12:48:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
+   "story": [
+    "Databricks laat zien hoe je wijzigingen uit een database naar Unity Catalog stuurt zonder Kafka. Het open-sourceprogramma Debezium leest de wijzigingen. Een nieuwe koppeling (sink) duwt ze daarna rechtstreeks naar Zerobus Ingest. Engineers van Databricks en NVIDIA bouwden die sink. Hij zit in Debezium Server 3.7.",
+    "Het idee heet CDC: je neemt alleen de wijzigingen over, niet steeds de hele tabel. Debezium draait naast de database en leest het logboek waarin Postgres elke wijziging bijhoudt (de write-ahead log). Van elke wijziging maakt hij een bericht met de rij vóór en ná, en een code: nieuw, gewijzigd, verwijderd of eerste lading.",
+    "Het verschil zit in de richting. Normaal haalt een pijplijn data op bij de database. Hier duwt Debezium de data naar buiten, zoals een brief die je zelf op de post doet. Dat helpt bij databases in afgeschermde netwerken: die mogen vaak wel naar buiten bellen, maar niemand binnenlaten. En je hoeft geen Kafka-cluster te beheren.",
+    "In Unity Catalog komen de berichten eerst in een tabel waar alleen rijen bijkomen (append-only), je bronze-laag. Elke rij krijgt een unieke sleutel (idempotency_key) en de plek in het logboek. De sink garandeert dat elk bericht minstens één keer aankomt, dus soms dubbel. In silver gooi je dubbele berichten weg, zet je ze op volgorde en houd je per sleutel de laatste stand over. Dat kan met AUTO CDC of een MERGE.",
+    "Het artikel heeft zelf geen code. Een aparte handleiding op de Databricks Community toont de configuratie van Debezium Server en de AUTO CDC-stappen. Voor jou is dit vooral een heldere les in hoe CDC van begin tot eind werkt."
+   ],
+   "key_facts": [
+    "Blog van Databricks Engineering, 5 november 2026, door Victoria Bukta, Omkar Mehta en Wagner Santos.",
+    "De Zerobus Ingest-sink zit in Debezium Server 3.7 en is gebouwd door engineers van Databricks en NVIDIA.",
+    "Debezium leest bij PostgreSQL de write-ahead log; elk bericht bevat before- en after-beelden, een op-code (c, u, d, r), bronmetadata met de LSN en ts_ms.",
+    "Twee tabelvormen: typed (standaard, de kolommen van de bron) en envelope (negen vaste kolommen, JSON in VARIANT of Protobuf).",
+    "Levering is at-least-once; de idempotency_key is een SHA-256-hash waarop je ontdubbelt, maar die ordent of ontdubbelt de tabel niet zelf.",
+    "Zerobus Ingest schrijft append-only; voor de actuele stand is een aparte MERGE- of AUTO CDC-stap nodig."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Van bronze naar actuele stand: eerst dubbele berichten weg op idempotency_key, dan per klant het laatste bericht op logboekpositie, en verwijderde klanten eruit.",
+    "language": "sql",
+    "code": "WITH uniek AS (\n  SELECT * FROM bronze\n  QUALIFY ROW_NUMBER() OVER (\n    PARTITION BY idempotency_key ORDER BY source_position) = 1\n),\nlaatste AS (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY klant_id ORDER BY source_position DESC) AS rn\n  FROM uniek\n)\nSELECT klant_id, plaats, source_position\nFROM laatste\nWHERE rn = 1 AND operation <> 'd'\nORDER BY klant_id;",
+    "result": {
+     "columns": [
+      "klant_id",
+      "plaats",
+      "source_position"
+     ],
+     "rows": [
+      [
+       1,
+       "Arnhem",
+       120
+      ],
+      [
+       3,
+       "Delft",
+       140
+      ]
+     ]
+    },
+    "note": "Verzonnen data in DuckDB: zes berichten (c, c, u, dezelfde u nog eens, d, c). Zo werkt het idee in gewone SQL; in Databricks doe je dit met AUTO CDC of MERGE, zie de handleiding."
+   },
+   "terms": [
+    {
+     "term": "CDC",
+     "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
+    },
+    {
+     "term": "Zerobus Ingest",
+     "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
+    },
+    {
+     "term": "write-ahead log",
+     "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden."
+    },
+    {
+     "term": "append-only",
+     "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan."
+    },
+    {
+     "term": "AUTO CDC",
+     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
+    }
+   ],
+   "learning": "Data ingestion",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Uitleg van een ingestion-patroon met medaillonlagen; minder dbt dan je duimen omhoog, maar wel een leeronderwerp."
+   },
+   "labels": [
+    "cdc",
+    "zerobus-ingest",
+    "debezium"
+   ]
   },
   {
    "id": "77544766b84c",
@@ -4605,6 +4841,49 @@
    }
   },
   {
+   "id": "5673f63258aa",
+   "title": "Power BI reports support OAP exceptions for semantic models in separate workspaces (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-reports-support-OAP-exceptions-for-semantic-models-in/ba-p/5377907",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-11-05T22:00:00Z",
+   "fetched_at": "2026-11-06T03:12:46.802136Z",
+   "summary": "Met uitgaande toegangsbescherming (OAP) aan mocht een rapport eerst alleen een semantisch model uit dezelfde werkruimte gebruiken. Nu kan een beheerder een uitzondering maken voor een vaste model-werkruimte, handig als een centraal team de modellen beheert (preview).",
+   "availability_status": "preview",
+   "topics": [
+    "powerbi_semantic_models",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.99,
+    "source": 0.51,
+    "quality": 0.4,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Power BI-rapport mag model uit andere werkruimte gebruiken ondanks OAP",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.4,
+    "why": "Kleine Power BI-beheerfunctie; je duimen gaan vooral naar dbt- en AI-stukken."
+   },
+   "labels": [
+    "power-bi-oap",
+    "fabric-netwerkbeveiliging"
+   ],
+   "diepte": "kort"
+  },
+  {
    "id": "efe52b80d045",
    "title": "Claude Code in the cloud: a field guide to cloud sessions",
    "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
@@ -4795,6 +5074,51 @@
    }
   },
   {
+   "id": "6eafeb6028b4",
+   "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-03T17:00:00Z",
+   "fetched_at": "2026-11-04T03:13:57.709960Z",
+   "summary": "Microsoft zet de bestaande manieren op een rij om Databricks- en Snowflake-data in Fabric te gebruiken: mirroring, shortcuts, DirectQuery of kopiëren met pipelines. Een tabel zegt per situatie of de data gekopieerd wordt en waarvoor elke optie het best past.",
+   "availability_status": "onbekend",
+   "topics": [
+    "data_architecture_modeling",
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.6,
+    "quality": 0.37,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
+   "learning": "Data ingestion",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.4,
+    "why": "Overzicht van bestaande opties zonder code; je duimen gaan naar concretere stukken."
+   },
+   "labels": [
+    "onelake-databricks",
+    "fabric-mirroring"
+   ],
+   "diepte": "kort"
+  },
+  {
    "id": "9a1a77aea3de",
    "title": "Running open-Jev in SQL on Databricks",
    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -4874,6 +5198,129 @@
    "fit": {
     "score": 0.65,
     "why": "AI vanuit SQL op Databricks, zoals je duim bij 'AI in je dbt-model'."
+   }
+  },
+  {
+   "id": "984223f109f3",
+   "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "source_id": "huggingface_blog",
+   "published_at": "2026-09-29T13:07:00Z",
+   "fetched_at": "2026-10-28T20:32:35.279431Z",
+   "summary": "ProvenanceGuard controleert per bewering in een agent-antwoord of de genoemde bron die bewering echt bevat. Bestaande controles kijken alleen of het feit ergens staat.",
+   "personal_relevance": "Een concrete controle voor een AI-assistent die moet zeggen waar zijn antwoord vandaan komt.",
+   "experiment": "Laat een AI-assistent tien vragen over twee openbare documenten beantwoorden met bronvermelding per zin. Controleer met een klein script of elke genoemde waarde letterlijk in de genoemde bron staat.",
+   "limitations": [
+    "Getest in één medisch domein, met lokale modellen; andere modellen moeten opnieuw worden afgesteld.",
+    "Er is geen volledige code vrijgegeven, alleen het paper en een poster.",
+    "De meeste herstelde antwoorden werden een standaardtekst in plaats van een verbeterd antwoord."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Blogpost op Hugging Face",
+     "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "agents",
+    "zorg"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.16,
+    "source": 0.51,
+    "quality": 0.67,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-01T03:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Een agent kan een juist feit aan de verkeerde bron toeschrijven",
+   "story": [
+    "Een agent met MCP haalt informatie uit meerdere tools tegelijk. Bekende controles, zoals RAGAS, kijken of een bewering ergens in al die gevonden tekst staat. Ze kijken niet of het de bron is die het antwoord noemt. Onderzoekers van Multiverse Computing noemen die fout bronverwarring (cross-source conflation).",
+    "Hun voorbeeld: het antwoord zegt dat het klantdossier een terugbetaaltermijn van 30 dagen noemt. Die termijn staat wel in het beleidsdocument, maar niet in het dossier. Het feit klopt dus, maar de verwijzing niet. In een zorgdossier of een financiële toepassing kan dat net zo misleidend zijn als een verzonnen feit.",
+    "ProvenanceGuard draait na het antwoord, op het spoor (trace) van de agent, en houdt elke bron apart. Het knipt het antwoord in losse beweringen en zoekt per bewering de best passende bron. Een klein model controleert of die bron de bewering steunt; getallen en datums moeten er letterlijk in staan. Daarna vergelijkt het die bron met de bron die het antwoord noemt, en beslist: doorlaten of tegenhouden.",
+    "In een test op 361 beweringen uit een medische agent hield het 138 van de 139 foute beweringen tegen. Het hield ook 67 goede beweringen tegen, dus het is voorzichtig afgesteld. De juiste bron vond het in ongeveer 86% van de gevallen, maar bij bronnen die op elkaar lijken nog maar in de helft.",
+    "Voor een data-assistent op je dbt-documentatie is dit een bruikbare toets: laat de assistent per antwoord zijn bron noemen en controleer of die bron het ook echt zegt. Dat kan al met een eenvoudige controle op letterlijke waarden."
+   ],
+   "key_facts": [
+    "Blog van Multiverse Computing op Hugging Face, 29 september 2026; bijbehorend paper ProvenanceGuard (arXiv 2606.18037).",
+    "Stappen: beweringen splitsen, per bewering een bron kiezen (MiniLM), steun controleren (DeBERTa-NLI, letterlijke waarden verplicht), genoemde bron vergelijken, besluit doorlaten of tegenhouden.",
+    "Test op 361 door experts gelabelde beweringen uit 40 antwoorden van een medische agent: 138 van 139 foute beweringen tegengehouden, 67 goede ten onrechte gemarkeerd.",
+    "F1 voor tegenhouden: ProvenanceGuard 0,802, MiniCheck 0,783, RAGAS Faithfulness 0,758.",
+    "Juiste bron in ongeveer 86% van de gevallen; in de moeilijkere test met lijkende bronnen 50,3%.",
+    "Ongeveer een halve seconde extra per antwoord in de lokale opzet."
+   ],
+   "showcase": {
+    "caption": "Het idee in gewone SQL: een bewering mag alleen door als de waarde letterlijk in de bron staat die het antwoord noemt. Bewering b1 klopt wel, maar staat in de verkeerde bron.",
+    "language": "sql",
+    "code": "CREATE TABLE bronnen AS SELECT * FROM (VALUES\n  ('beleid',  'Terugbetaling kan binnen 30 dagen na aankoop.'),\n  ('account', 'Klant sinds 2021, laatste bestelling op 3 oktober.')\n) AS t(bron_id, tekst);\n\nCREATE TABLE beweringen AS SELECT * FROM (VALUES\n  ('b1', 'binnen 30 dagen', 'account'),\n  ('b2', 'binnen 30 dagen', 'beleid'),\n  ('b3', '3 oktober',       'account')\n) AS t(id, waarde, genoemde_bron);\n\nSELECT b.id, b.waarde, b.genoemde_bron,\n       (SELECT string_agg(bron_id, ', ') FROM bronnen s\n        WHERE s.tekst ILIKE '%' || b.waarde || '%') AS staat_in,\n       CASE WHEN EXISTS (SELECT 1 FROM bronnen s\n            WHERE s.bron_id = b.genoemde_bron\n              AND s.tekst ILIKE '%' || b.waarde || '%')\n            THEN 'doorlaten' ELSE 'tegenhouden' END AS besluit\nFROM beweringen b ORDER BY b.id;",
+    "result": {
+     "columns": [
+      "id",
+      "waarde",
+      "genoemde_bron",
+      "staat_in",
+      "besluit"
+     ],
+     "rows": [
+      [
+       "b1",
+       "binnen 30 dagen",
+       "account",
+       "beleid",
+       "tegenhouden"
+      ],
+      [
+       "b2",
+       "binnen 30 dagen",
+       "beleid",
+       "beleid",
+       "doorlaten"
+      ],
+      [
+       "b3",
+       "3 oktober",
+       "account",
+       "account",
+       "doorlaten"
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Dit bouwt alleen de controle op letterlijke waarden na; ProvenanceGuard gebruikt daarnaast embeddings en een NLI-model."
+   },
+   "terms": [
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "RAGAS",
+     "explanation": "Een open-source hulpmiddel om RAG-antwoorden te beoordelen, bijvoorbeeld of een antwoord steunt op de gevonden tekst."
+    },
+    {
+     "term": "bronverwarring",
+     "explanation": "Een fout waarbij een feit wel klopt, maar aan de verkeerde bron wordt toegeschreven."
+    },
+    {
+     "term": "trace",
+     "explanation": "Het vastgelegde spoor van wat een agent deed: welke tools hij aanriep en wat die teruggaven."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Controle van agentantwoorden; past bij je interesse in evals, maar zonder dbt-koppeling."
    }
   },
   {
@@ -5427,6 +5874,129 @@
     "score": 0.5,
     "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
    }
+  },
+  {
+   "id": "ce8bd2396821",
+   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
+   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+   "source_id": "claude_blog",
+   "published_at": "2026-10-16T00:00:00Z",
+   "fetched_at": "2026-11-01T11:05:55.569159Z",
+   "summary": "Een verkoper bij Anthropic Japan laat zes Claude-agents zijn leads, mails en CRM bijhouden. Elke agent heeft één taak; hij keurt alles goed.",
+   "personal_relevance": "Het patroon van agents met één taak en een vaste menselijke controle kun je ook gebruiken voor terugkerend datawerk.",
+   "experiment": "Schets voor een terugkerende taak, zoals het bijwerken van dbt-documentatie, welke kleine agents je zou maken, welke informatie elk nodig heeft en waar jij moet goedkeuren. Test één agent op een oefenproject met verzonnen data.",
+   "limitations": [
+    "Het is een verhaal van Anthropic over een eigen medewerker; de 60 uur is een eigen schatting zonder vergelijking.",
+    "Over de technische inrichting, zoals de Salesforce-koppeling, geeft het stuk weinig details.",
+    "Managed Agents en Claude Tag zijn bèta, en externe AI mag bij jou niet met werkdata."
+   ],
+   "availability_status": "preview",
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "agents",
+    "claude",
+    "ai_context"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.35,
+    "source": 0.51,
+    "quality": 0.52,
+    "feedback": -0.02,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak, inhaalrun)",
+   "processed_at": "2026-11-04T06:44:03Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Zes kleine agents met elk één taak, en een mens die tekent",
+   "story": [
+    "Shahboz Ibragimov werkt in de verkoop bij Anthropic in Japan. Hij laat een team van zes Claude-agents het routinewerk doen: binnenkomende leads verdelen, leads beoordelen, mails beantwoorden, Salesforce bijwerken en vergaderingen samenvatten. Hij leest alles na voordat het de deur uitgaat.",
+    "De opzet is leerzaam. Elke agent heeft precies één taak en draait op een vast schema, zoals een collega met één vaste klus. Eén agent kijkt elk uur in de mailbox en schrijft concepten in het Japans of Engels. Een coördinator past de instructies van de andere agents aan als Ibragimov daar in Slack om vraagt.",
+    "Fouten worden één keer opgelost. Agents schrijven correcties in een gedeeld geheugen, zodat de les voor allemaal blijft hangen. Prijsvragen, gevoelige klanten en onduidelijke verzoeken gaan altijd naar hem. Ook de modelkeuze is bewust: eenvoudige taken op Sonnet, lastige op Opus, en één agent vraagt Opus als adviseur bij moeilijke beslissingen.",
+    "De agents draaien op Claude Managed Agents, een dienst in bèta die schema's, geheugen en afgeschermde toegangsgegevens regelt. Voor jou is vooral het patroon bruikbaar: kleine agents met één taak, een gedeelde plek voor correcties en een vaste plek waar een mens beslist. Hoe de koppeling met Salesforce is gebouwd, staat er niet in."
+   ],
+   "key_facts": [
+    "Zes agents: Furiwake (leads verdelen), Sabaki (leads beoordelen en eerste mail), Henji (mail elk uur, Japans of Engels), Shoudan (Salesforce bijwerken), Nokori (vergaderingen samenvatten) en een coördinator.",
+    "De agents draaien op Claude Managed Agents (bèta) met schema's, een gedeeld geheugen, versies van instructies en kluizen voor toegangsgegevens.",
+    "Claude Tag (bèta) werkt als lid van Slack en vraagt hem om akkoord.",
+    "Furiwake en Shoudan draaien op Sonnet; Sabaki, Nokori en de coördinator op Opus; Henji op Sonnet met Opus als adviseur.",
+    "Volgens een eigen wekelijkse takenlijst scheelt het ongeveer 60 uur werk; er waren een paar honderd correctierondes nodig om zijn toon te raken.",
+    "Gepubliceerd 16 oktober 2026."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Claude Managed Agents",
+     "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen."
+    },
+    {
+     "term": "gedeeld geheugen",
+     "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken."
+    },
+    {
+     "term": "leads",
+     "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.45,
+    "why": "Agentpatroon met Claude, maar in verkoopwerk en met weinig techniek, net als het kredietverhaal dat je te vaag vond."
+   },
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -2
+   }
+  },
+  {
+   "id": "e23fad0ddde8",
+   "title": "Eventhouse support for OneLake security (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Eventhouse-support-for-OneLake-security-Generally-Available/ba-p/5377875",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-04T22:00:00Z",
+   "fetched_at": "2026-11-05T03:13:48.528871Z",
+   "summary": "Externe tabellen in Eventhouse passen nu de beveiliging van OneLake toe op object-, kolom- en rijniveau. Wie via KQL op Lakehouse-data zoekt, ziet dus alleen wat hij mag zien (GA).",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "kwaliteit"
+   ],
+   "relevance_score": 67,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.94,
+    "source": 0.6,
+    "quality": 0.37,
+    "fit": -0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "KQL-query's in Fabric volgen nu ook de rij- en kolomrechten van OneLake",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.3,
+    "why": "Fabric-realtime-functie buiten je stack; je duimen gaan naar dbt en AI."
+   },
+   "labels": [
+    "onelake-security",
+    "fabric-eventhouse"
+   ],
+   "diepte": "kort"
   }
  ],
  "deepdives": [
@@ -7703,6 +8273,17 @@
    ]
   },
   {
+   "term": "append-only",
+   "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "e197b15d9798",
+     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
+    }
+   ]
+  },
+  {
    "term": "artifact",
    "explanation": "Een verzameling bestanden die een pipeline-run publiceert, zodat een latere stap, zoals de uitrol, ermee verder kan.",
    "refs": [
@@ -7739,6 +8320,11 @@
    "term": "AUTO CDC",
    "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "e197b15d9798",
+     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
+    },
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -7828,9 +8414,25 @@
    ]
   },
   {
+   "term": "bronverwarring",
+   "explanation": "Een fout waarbij een feit wel klopt, maar aan de verkeerde bron wordt toegeschreven.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "984223f109f3",
+     "title": "Een agent kan een juist feit aan de verkeerde bron toeschrijven"
+    }
+   ]
+  },
+  {
    "term": "CDC",
    "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "e197b15d9798",
+     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
+    },
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -7900,6 +8502,17 @@
      "kind": "a",
      "id": "728afeb9147d",
      "title": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen"
+    }
+   ]
+  },
+  {
+   "term": "Claude Managed Agents",
+   "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ce8bd2396821",
+     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
     }
    ]
   },
@@ -8412,6 +9025,17 @@
    ]
   },
   {
+   "term": "externe locatie",
+   "explanation": "Een verwijzing in Unity Catalog naar een plek in cloudopslag, samen met de sleutel om erbij te mogen. Zo regelt Unity Catalog wie daar mag lezen en schrijven.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "3b1aa647a1b3",
+     "title": "Databricks-tabellen kunnen nu fysiek in OneLake staan"
+    }
+   ]
+  },
+  {
    "term": "fan-out",
    "explanation": "Een join die rijen verdubbelt, bijvoorbeeld orders koppelen aan orderregels, waardoor een som ineens te hoog uitvalt.",
    "refs": [
@@ -8566,6 +9190,17 @@
      "kind": "a",
      "id": "ae2bc3c9f749",
      "title": "Databricks werkt nu meerdere tabellen in één keer bij, of helemaal niet"
+    }
+   ]
+  },
+  {
+   "term": "gedeeld geheugen",
+   "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ce8bd2396821",
+     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
     }
    ]
   },
@@ -8777,6 +9412,17 @@
    ]
   },
   {
+   "term": "leads",
+   "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ce8bd2396821",
+     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
+    }
+   ]
+  },
+  {
    "term": "legacy",
    "explanation": "Een oudere functie die nog werkt, maar niet verder ontwikkeld wordt. Voor nieuw werk kies je beter iets anders.",
    "refs": [
@@ -8934,6 +9580,11 @@
     },
     {
      "kind": "a",
+     "id": "984223f109f3",
+     "title": "Een agent kan een juist feit aan de verkeerde bron toeschrijven"
+    },
+    {
+     "kind": "a",
      "id": "a68aede0b61b",
      "title": "Geef een AI-agent per veld synoniemen, voorbeeldwaarden en regels"
     },
@@ -8941,11 +9592,6 @@
      "kind": "a",
      "id": "ceb4b784fbab",
      "title": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen"
-    },
-    {
-     "kind": "a",
-     "id": "f29afd156725",
-     "title": "Agent Skills krijgt een neutraal thuis bij de Linux Foundation"
     }
    ]
   },
@@ -9114,6 +9760,17 @@
      "kind": "a",
      "id": "f5757f520b3e",
      "title": "Waarom de nieuwe verbinding onder dbt v2 lastiger is dan hij lijkt"
+    }
+   ]
+  },
+  {
+   "term": "OneLake",
+   "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "3b1aa647a1b3",
+     "title": "Databricks-tabellen kunnen nu fysiek in OneLake staan"
     }
    ]
   },
@@ -9343,6 +10000,17 @@
      "kind": "a",
      "id": "560fbec0053e",
      "title": "Zoekindexen voor AI blijven nu vanzelf actueel"
+    }
+   ]
+  },
+  {
+   "term": "RAGAS",
+   "explanation": "Een open-source hulpmiddel om RAG-antwoorden te beoordelen, bijvoorbeeld of een antwoord steunt op de gevonden tekst.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "984223f109f3",
+     "title": "Een agent kan een juist feit aan de verkeerde bron toeschrijven"
     }
    ]
   },
@@ -9747,6 +10415,17 @@
    ]
   },
   {
+   "term": "storage credential",
+   "explanation": "Een opgeslagen sleutel in Unity Catalog, meestal een managed identity of service principal, waarmee Databricks bij cloudopslag mag.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "3b1aa647a1b3",
+     "title": "Databricks-tabellen kunnen nu fysiek in OneLake staan"
+    }
+   ]
+  },
+  {
    "term": "streaming tables",
    "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt.",
    "refs": [
@@ -9940,6 +10619,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "984223f109f3",
+     "title": "Een agent kan een juist feit aan de verkeerde bron toeschrijven"
+    },
+    {
+     "kind": "a",
      "id": "4cc09a1d9883",
      "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     },
@@ -10094,9 +10778,25 @@
    ]
   },
   {
+   "term": "write-ahead log",
+   "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "e197b15d9798",
+     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
+    }
+   ]
+  },
+  {
    "term": "Zerobus Ingest",
    "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "e197b15d9798",
+     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
+    },
     {
      "kind": "a",
      "id": "a9b6458ba033",
@@ -10437,38 +11137,39 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 407,
+  "fetched_items": 474,
   "unique_after_dedupe": 449,
   "merged_duplicates": 17,
-  "shown": 51,
+  "shown": 58,
   "decisions": {
    "excluded": 140,
-   "included": 104,
+   "included": 106,
    "below_threshold": 96,
    "no_topic": 100,
-   "source_cap": 7,
-   "area_cap": 2
+   "source_cap": 7
   },
   "processing": {
-   "enriched": 51
+   "enriched": 58
   },
   "without_date": 0,
   "per_group": {
    "claude": 12,
    "ai_context": 16,
-   "agents": 8,
+   "agents": 10,
    "dbt": 7,
-   "databricks": 3,
-   "architectuur": 1,
-   "overig": 4
+   "databricks": 4,
+   "architectuur": 3,
+   "overig": 5,
+   "kwaliteit": 1
   },
   "per_source": {
    "dbt_developer_blog": 4,
    "dbt_labs_blog": 9,
    "azure_databricks_release_notes": 4,
-   "databricks_blog": 9,
+   "databricks_blog": 10,
    "claude_code_releases": 2,
-   "claude_blog": 7,
+   "fabric_blog": 3,
+   "claude_blog": 8,
    "dbt_core_releases": 1,
    "langchain_blog": 4,
    "chris_webb": 1,
@@ -10476,6 +11177,8 @@
    "hamel_husain": 1,
    "databricks_engineering_blog": 4,
    "anthropic_engineering": 1,
+   "powerbi_blog": 1,
+   "huggingface_blog": 1,
    "simon_willison": 2
   },
   "date_flags": [
@@ -10512,7 +11215,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 149
+   "skipped_no_key": 144
   },
   "queue_size": 40,
   "invalid_enrichment": [],
@@ -10755,14 +11458,6 @@
     "excluded_by": []
    },
    {
-    "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
-    "relevance_score": 83,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "With great context comes great autonomy",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
@@ -10792,14 +11487,6 @@
     "title": "Bring your Fabric data into your next app with connectors",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
-    "relevance_score": 82,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Power BI reports support OAP exceptions for semantic models in separate workspaces (Preview)",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-reports-support-OAP-exceptions-for-semantic-models-in/ba-p/5377907",
     "relevance_score": 82,
     "decision": "included",
     "excluded_by": []
@@ -10873,14 +11560,6 @@
     "excluded_by": []
    },
    {
-    "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
-    "relevance_score": 81,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "AI Function tasks for jobs (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#ai-function-tasks-for-jobs-beta",
@@ -10900,14 +11579,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
-    "relevance_score": 80,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Managed warehouse for MLflow (Beta)",
@@ -10976,14 +11647,6 @@
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
     "relevance_score": 78,
     "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
-    "source_id": "huggingface_blog",
-    "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
-    "relevance_score": 78,
-    "decision": "area_cap",
     "excluded_by": []
    },
    {
@@ -11093,6 +11756,49 @@
     "excluded_by": [
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "v2.1.304",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
+    "relevance_score": 76,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "How a one-person data team at Keep built real-time banking infrastructure on dbt",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/keep-real-time-banking-dbt-data-platform",
+    "relevance_score": 76,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
+    "relevance_score": 76,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
+    "relevance_score": 75,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "T-SQL language enhancements in Microsoft Fabric Data Warehouse (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/T-SQL-language-enhancements-in-Microsoft-Fabric-Data-Warehouse/ba-p/5375433",
+    "relevance_score": 75,
+    "decision": "included",
+    "excluded_by": []
    }
   ],
   "topics_without_source": [
