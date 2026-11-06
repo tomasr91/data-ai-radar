@@ -1,6 +1,6 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-05T05:13:46Z",
+ "generated_at": "2026-11-06T05:20:00Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
@@ -45,14 +45,17 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs zag dat fouten van Claude uit de werkwijze komen en bouwde een vaste lus van compileren, testen en data vergelijken; Ecolab liet elke gemigreerde tabel met data bewijzen en Databricks verbeterde documentextractie met metingen. Het Claude Code-team laat Claude eerst zelf tests draaien en de uitkomst tonen voordat de review begint, en Claude kan sporen van elke aanroep naar MLflow sturen om terugkerende fouten te vinden. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "article_ids": [
     "a9b6458ba033",
     "c63f36899b14",
     "d2e9b967064a",
     "e7bf67f656d3",
     "c33e4a9941ba",
-    "7fd7e06ab2f4"
+    "7fd7e06ab2f4",
+    "583b8d97bd5d",
+    "77544766b84c",
+    "4cc09a1d9883"
    ],
    "topics": [
     "ai_evaluation_observability",
