@@ -1,0 +1,87 @@
+{
+  "format_version": 2,
+  "article_id": "3b1aa647a1b3",
+  "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
+  "headline": "Databricks-tabellen kunnen nu fysiek in OneLake staan",
+  "summary": "Unity Catalog kan OneLake gebruiken als opslagplek voor beheerde tabellen. Databricks blijft rekenen en beheren, Fabric leest dezelfde kopie.",
+  "story": [
+    "Microsoft meldt dat Azure Databricks zijn tabellen nu direct in OneLake kan opslaan. OneLake is de centrale dataopslag van Microsoft Fabric. Volgens de Fabric-blog is dit nu algemeen beschikbaar (GA) aan de Fabric-kant. OneLake-beveiliging staat daarbij standaard aan.",
+    "Het werkt met een externe locatie (external location) in Unity Catalog. Je maakt in Fabric een speciaal opslagitem aan, het Azure Databricks Storage-item. In Databricks maak je een opslagsleutel (storage credential) en een externe locatie die naar dat item wijst. Daarna geef je een catalog of schema die locatie als vaste opslagplek. Alles wat je daarin schrijft, landt in OneLake.",
+    "Vergelijk het met een gedeelde schuur. Databricks blijft de werkplaats met het gereedschap en de inventarislijst (Unity Catalog). Alleen de spullen zelf staan nu in de schuur van Fabric. Beheerde tabellen, volumes, views, materialized views en streaming tables blijven gewoon in Databricks beheerd.",
+    "Let wel op de rechten. Je moet ze aan twee kanten regelen: in Unity Catalog én in OneLake. De documentatie van Databricks waarschuwt dat iedereen met de rol Member, Contributor of Administrator in de Fabric-werkruimte de data kan lezen, schrijven en wissen, ook zonder rechten in Unity Catalog. Voor zorgdata is een aparte, kleine werkruimte dus belangrijk.",
+    "Voor jou is dit vooral interessant als Power BI of Fabric dezelfde data moet lezen als je dbt-modellen op Databricks. Dan hoef je geen kopieerpijplijn te bouwen. Maar de documentatie van Databricks noemt de functie op 6 november nog Beta, dus de twee kanten zijn het niet eens over de status."
+  ],
+  "key_facts": [
+    "Microsoft Fabric meldt op 5 november 2026 dat OneLake als externe locatie voor Azure Databricks Unity Catalog algemeen beschikbaar is aan de Fabric-kant.",
+    "OneLake Security staat standaard aan voor Azure Databricks Storage-items; beheerders geven per identiteit rechten om te ontdekken, lezen of schrijven.",
+    "Ondersteund: beheerde tabellen (Delta en Iceberg), volumes, views, materialized views en streaming tables.",
+    "Vereist: Databricks Runtime 18.1 of hoger of serverless compute, en een Fabric-werkruimte met toegewezen capaciteit.",
+    "Het pad gebruikt GUID's: abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/; namen worden geweigerd.",
+    "De Databricks-documentatie noemt de functie Beta en waarschuwt dat Member, Contributor en Administrator in de Fabric-werkruimte de data kunnen lezen, schrijven en wissen zonder Unity Catalog-rechten."
+  ],
+  "personal_relevance": "Als Power BI of Fabric dezelfde data moet gebruiken als je Databricks-modellen, scheelt dit een kopie, maar de rechten moet je dubbel bewaken.",
+  "experiment": "Maak in een testomgeving een Fabric-werkruimte met een Azure Databricks Storage-item, koppel een testcatalog en schrijf een tabel met verzonnen data. Kijk daarna wie er in Fabric bij kan.",
+  "limitations": [
+    "Microsoft meldt GA, de Databricks-documentatie zegt nog Beta.",
+    "Rollen in de Fabric-werkruimte geven toegang langs Unity Catalog heen.",
+    "Meldingen van nieuwe bestanden (file events) werken niet op OneLake-paden."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Connect Azure Databricks to a OneLake external location",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-onelake"
+    },
+    {
+      "label": "Enable OneLake catalog federation (alleen lezen)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/query-federation/onelake"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_architecture_modeling",
+    "data_governance_privacy",
+    "powerbi_semantic_models"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.6,
+    "novelty": 0.5
+  },
+  "development_key": "onelake-opslag-unity-catalog-2026",
+  "date_note": "Fabric-blog meldt GA op 5 november 2026; de Databricks-documentatie noemt de functie nog Beta.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.6,
+    "why": "Koppeling Databricks–Power BI-wereld, zoals je duim bij metric views; wel een aankondiging zonder praktijkverhaal."
+  },
+  "labels": [
+    "onelake-databricks",
+    "unity-catalog-external-locations"
+  ],
+  "terms": [
+    {
+      "term": "OneLake",
+      "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt."
+    },
+    {
+      "term": "externe locatie",
+      "explanation": "Een verwijzing in Unity Catalog naar een plek in cloudopslag, samen met de sleutel om erbij te mogen. Zo regelt Unity Catalog wie daar mag lezen en schrijven."
+    },
+    {
+      "term": "storage credential",
+      "explanation": "Een opgeslagen sleutel in Unity Catalog, meestal een managed identity of service principal, waarmee Databricks bij cloudopslag mag."
+    }
+  ],
+  "showcase": {
+    "caption": "Na het koppelen geef je een catalog de OneLake-locatie als vaste opslagplek. Elke tabel die je daarin maakt, staat fysiek in OneLake.",
+    "language": "sql",
+    "code": "-- Catalog met de OneLake-locatie als beheerde opslag\nCREATE CATALOG my_onelake_catalog\nMANAGED LOCATION '<onelake_external_location_path>';\n\n-- Een gewone beheerde tabel\nCREATE TABLE my_onelake_catalog.default.my_table (\n  id INT,\n  name STRING,\n  created_at TIMESTAMP\n);\n\nINSERT INTO my_onelake_catalog.default.my_table\nVALUES (1, 'example', current_timestamp());",
+    "note": "Overgenomen uit de Azure Databricks-documentatie. Het pad heeft de vorm abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/. De externe locatie zelf maak je volgens de documentatie in de Catalog-UI."
+  },
+  "prompt_version": "taak-v2",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-06T03:21:27Z"
+}

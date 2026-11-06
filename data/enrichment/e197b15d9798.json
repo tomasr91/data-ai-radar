@@ -1,0 +1,117 @@
+{
+  "format_version": 2,
+  "article_id": "e197b15d9798",
+  "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
+  "headline": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
+  "summary": "Debezium leest de wijzigingen uit een database en duwt ze via Zerobus Ingest rechtstreeks in Delta-tabellen. Er is geen Kafka nodig en de database hoeft geen inkomende verbindingen toe te staan.",
+  "story": [
+    "Databricks laat zien hoe je wijzigingen uit een database naar Unity Catalog stuurt zonder Kafka. Het open-sourceprogramma Debezium leest de wijzigingen. Een nieuwe koppeling (sink) duwt ze daarna rechtstreeks naar Zerobus Ingest. Engineers van Databricks en NVIDIA bouwden die sink. Hij zit in Debezium Server 3.7.",
+    "Het idee heet CDC: je neemt alleen de wijzigingen over, niet steeds de hele tabel. Debezium draait naast de database en leest het logboek waarin Postgres elke wijziging bijhoudt (de write-ahead log). Van elke wijziging maakt hij een bericht met de rij vóór en ná, en een code: nieuw, gewijzigd, verwijderd of eerste lading.",
+    "Het verschil zit in de richting. Normaal haalt een pijplijn data op bij de database. Hier duwt Debezium de data naar buiten, zoals een brief die je zelf op de post doet. Dat helpt bij databases in afgeschermde netwerken: die mogen vaak wel naar buiten bellen, maar niemand binnenlaten. En je hoeft geen Kafka-cluster te beheren.",
+    "In Unity Catalog komen de berichten eerst in een tabel waar alleen rijen bijkomen (append-only), je bronze-laag. Elke rij krijgt een unieke sleutel (idempotency_key) en de plek in het logboek. De sink garandeert dat elk bericht minstens één keer aankomt, dus soms dubbel. In silver gooi je dubbele berichten weg, zet je ze op volgorde en houd je per sleutel de laatste stand over. Dat kan met AUTO CDC of een MERGE.",
+    "Het artikel heeft zelf geen code. Een aparte handleiding op de Databricks Community toont de configuratie van Debezium Server en de AUTO CDC-stappen. Voor jou is dit vooral een heldere les in hoe CDC van begin tot eind werkt."
+  ],
+  "key_facts": [
+    "Blog van Databricks Engineering, 5 november 2026, door Victoria Bukta, Omkar Mehta en Wagner Santos.",
+    "De Zerobus Ingest-sink zit in Debezium Server 3.7 en is gebouwd door engineers van Databricks en NVIDIA.",
+    "Debezium leest bij PostgreSQL de write-ahead log; elk bericht bevat before- en after-beelden, een op-code (c, u, d, r), bronmetadata met de LSN en ts_ms.",
+    "Twee tabelvormen: typed (standaard, de kolommen van de bron) en envelope (negen vaste kolommen, JSON in VARIANT of Protobuf).",
+    "Levering is at-least-once; de idempotency_key is een SHA-256-hash waarop je ontdubbelt, maar die ordent of ontdubbelt de tabel niet zelf.",
+    "Zerobus Ingest schrijft append-only; voor de actuele stand is een aparte MERGE- of AUTO CDC-stap nodig."
+  ],
+  "personal_relevance": "Een concreet beeld van CDC van bron tot silver, precies het ingestion-onderwerp waar je nog in groeit.",
+  "experiment": "Bouw in DuckDB een kleine bronze-tabel met verzonnen wijzigingsberichten, inclusief een dubbel bericht en een delete, en maak daar met SQL de actuele stand van.",
+  "limitations": [
+    "Het artikel zegt niet of Zerobus Ingest preview of GA is en geeft geen cijfers over snelheid.",
+    "Berichten kunnen dubbel aankomen; je moet zelf ontdubbelen.",
+    "Je moet Debezium Server zelf naast de database draaien."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Debezium 3.7 release notes (Zerobus-sink)",
+      "url": "https://debezium.io/blog/2026/09/29/debezium-3-7-final-released/#databricks_zerobus_ingest_sink_adapter"
+    },
+    {
+      "label": "Handleiding: PostgreSQL-CDC met Debezium naar Databricks",
+      "url": "https://community.databricks.com/t5/technical-blog/how-to-stream-postgresql-cdc-into-databricks-with-debezium/ba-p/175646"
+    },
+    {
+      "label": "Zerobus Ingest-documentatie",
+      "url": "https://docs.databricks.com/aws/en/ingestion/zerobus-ingest"
+    }
+  ],
+  "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.6,
+    "novelty": 0.6
+  },
+  "development_key": "zerobus-debezium-cdc-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.6,
+    "why": "Uitleg van een ingestion-patroon met medaillonlagen; minder dbt dan je duimen omhoog, maar wel een leeronderwerp."
+  },
+  "labels": [
+    "cdc",
+    "zerobus-ingest",
+    "debezium"
+  ],
+  "terms": [
+    {
+      "term": "CDC",
+      "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
+    },
+    {
+      "term": "Zerobus Ingest",
+      "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
+    },
+    {
+      "term": "write-ahead log",
+      "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden."
+    },
+    {
+      "term": "append-only",
+      "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan."
+    },
+    {
+      "term": "AUTO CDC",
+      "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
+    }
+  ],
+  "showcase": {
+    "caption": "Van bronze naar actuele stand: eerst dubbele berichten weg op idempotency_key, dan per klant het laatste bericht op logboekpositie, en verwijderde klanten eruit.",
+    "language": "sql",
+    "code": "WITH uniek AS (\n  SELECT * FROM bronze\n  QUALIFY ROW_NUMBER() OVER (\n    PARTITION BY idempotency_key ORDER BY source_position) = 1\n),\nlaatste AS (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY klant_id ORDER BY source_position DESC) AS rn\n  FROM uniek\n)\nSELECT klant_id, plaats, source_position\nFROM laatste\nWHERE rn = 1 AND operation <> 'd'\nORDER BY klant_id;",
+    "result": {
+      "columns": [
+        "klant_id",
+        "plaats",
+        "source_position"
+      ],
+      "rows": [
+        [
+          1,
+          "Arnhem",
+          120
+        ],
+        [
+          3,
+          "Delft",
+          140
+        ]
+      ]
+    },
+    "note": "Verzonnen data in DuckDB: zes berichten (c, c, u, dezelfde u nog eens, d, c). Zo werkt het idee in gewone SQL; in Databricks doe je dit met AUTO CDC of MERGE, zie de handleiding."
+  },
+  "prompt_version": "taak-v2",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-06T03:21:27Z"
+}
