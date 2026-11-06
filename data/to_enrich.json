@@ -1,7 +1,35 @@
 {
- "generated_at": "2026-11-05T08:32:55.667832Z",
+ "generated_at": "2026-11-06T03:12:45.285249Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "3b1aa647a1b3",
+   "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-05T19:00:00Z",
+   "excerpt": "Organizations increasingly use Microsoft Fabric and Azure Databricks together so teams can choose the tools that best fit their data engineering, analytics, and AI workloads while working from a common data foundation. OneLake external-location support for Azure Databricks Unity Catalog is now Generally available from the Microsoft Fabric side, with OneLake Security enabled by default for Azure Databricks Storage items. With this integration, supported Unity Catalog-managed data can be stored directly in OneLake. To understand the setup and supported scenarios, Connect Azure Databricks to a OneLake external location . Why this matters Data teams often need Azure Databricks and Microsoft Fabric in the same architecture. Without a shared storage approach, organizations may create copies of the same data for different platforms, introduce pipelines whose primary purpose is synchronization, and manage access independently across multiple storage locations. Using OneLake as managed storage for supported Unity Catalog objects gives organizations a common physical data foundation while preserving flexibility in the services used above it. Azure Databricks continues to provide compute and ",
+   "preliminary_score": 83,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
+  {
+   "id": "5673f63258aa",
+   "title": "Power BI reports support OAP exceptions for semantic models in separate workspaces (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-reports-support-OAP-exceptions-for-semantic-models-in/ba-p/5377907",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-11-05T22:00:00Z",
+   "excerpt": "Workspace outbound access protection (OAP) helps you control where data in a Microsoft Fabric workspace can flow. The initial preview for Power BI reports , launched in June, required a report in an OAP-protected workspace to use a semantic model in that same workspace. Customer feedback highlighted that this was too restrictive. With this improvement, a report can now query a semantic model in another workspace provided a workspace administrator explicitly allowed that destination through an OAP exception policy. Apply exception policies to allow report-to-model connections OAP continues to block outbound report-to-model connections by default. When a report opens, Power BI evaluates the report workspace policy before it renders the report in the browser. If the destination workspace is covered by an applicable exception, the report can connect to its semantic model. Otherwise, Power BI blocks the connection, and the report does not open. The report honors the policy that a workspace admin configured for the semantic model destination. You don't configure an exception on each report, and you don't need to move the report and semantic model into the same workspace. The OAP exceptio",
+   "preliminary_score": 82,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
   {
    "id": "6eafeb6028b4",
    "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
@@ -10,11 +38,39 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-03T17:00:00Z",
    "excerpt": "Challenges solved by Microsoft Fabric Microsoft Fabric is an end-to-end analytics platform that brings together data integration, data engineering, warehousing, real-time analytics, business intelligence, and AI-related experiences. It has grown tremendously within the community because it is solving a key problem: lowering the integration tax across data and analytics systems. To understand the integration tax, consider a mid-sized or large organization that wants to perform analytics and data processing. It may use several source systems, an analytics platform such as a warehouse or lakehouse, and yet another platform or vendor for orchestration. To generate insights, the organization must integrate these different systems (hence the term integration tax). Fabric brings together a broad set of analytics capabilities within one platform, which can reduce the number of separate integrations an organization needs to design and operate. You can bring data into Fabric, store it in a warehouse or lakehouse, query and analyze it with Spark or T-SQL, visualize insights with Power BI, and support real-time scenarios with Real-Time Intelligence. Fabric also interoperates with platforms suc",
-   "preliminary_score": 82,
+   "preliminary_score": 81,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering",
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "e197b15d9798",
+   "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
+   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-05T12:48:00Z",
+   "excerpt": "Data in operational databases drives business decisions, and much of that analysis...",
+   "preliminary_score": 80,
+   "preliminary_topics": [
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "data_ingestion"
+   ]
+  },
+  {
+   "id": "711b0a63906a",
+   "title": "Inside DAXBench v2: Results and Your Questions",
+   "url": "https://www.sqlbi.com/tv/inside-daxbench-v2-results-and-your-questions/",
+   "source_id": "sqlbi",
+   "source_name": "SQLBI",
+   "published_at": "2026-11-04T17:52:38Z",
+   "excerpt": "How well do AI models write DAX? DAXBench is a public leaderboard that tests AI models on DAX tasks. Version 2 uses a new set of tasks that run against prepared Power BI models. In this webinar, Marco Russo (SQLBI)…",
+   "preliminary_score": 73,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
    ]
   },
   {
@@ -25,7 +81,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T22:00:00Z",
    "excerpt": "Security should be consistent wherever you query your data. With OneLake security, you can define access controls once, close to the data, and apply them across supported Microsoft Fabric engines without recreating your security rules for each experience. Today, we’re announcing the general availability of OneLake security support for Eventhouse external tables. When these external tables query data secured by OneLake security, they automatically enforce object-level, column-level, and row-level access controls. This extends the same centrally managed security model to KQL queries, helping you maintain consistent, end-to-end security and governance across analytics experiences. Lakehouse data with Eventhouse power The Eventhouse endpoint for Lakehouses provides a high-performance query layer over data stored in the Lakehouse, bringing the speed and scale of the Eventhouse engine to your existing data without requiring another copy. Because access remains governed by OneLake security, users get Eventhouse performance while your organization maintains a shared, centrally managed security model across Fabric. Object, column, and row level security Eventhouse support covers three level",
-   "preliminary_score": 72,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering"
@@ -67,7 +123,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-27T16:44:58Z",
    "excerpt": "The new, generally available authoring capabilities in Microsoft Fabric Real-Time Dashboards help authors create dashboards that are easier to scan and act on. Design Tiles add structure and context, multi-KPI groups related measures from one query, and KPI styling makes status, scale, and targets easier to interpret. Together, these capabilities give viewers a clear path from context to metrics to investigation while reducing repetitive authoring work. Figure: Camp Nou Stadium Operations Center dashboard using Design Tiles, Multi-KPI, and styled KPIs. Give your dashboard a clear structure with Design Tiles A dashboard can contain accurate visuals and still make viewers work too hard to find what matters. As service health, deployment status, business metrics, and diagnostic details accumulate, Design Tiles provide the structure, and context viewers need to identify priorities and move quickly to the right information. Design Tiles provide three focused building blocks directly on the Real-Time Dashboard canvas: Title adds a dashboard heading or a short section label. Figure: Title tile in Editing mode, with the formatting toolbar. Text Box adds descriptions, operational guidance, ",
-   "preliminary_score": 67,
+   "preliminary_score": 66,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "cicd_data_deployment"
@@ -87,14 +143,53 @@
    ]
   },
   {
-   "id": "7a3ac6df3675",
-   "title": "The full Claude Platform, available on Google Cloud",
-   "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
+   "id": "00183b004892",
+   "title": "Introducing Personal Finance in Claude",
+   "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
    "source_id": "claude_blog",
    "source_name": "Claude Blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "excerpt": "Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement.",
-   "preliminary_score": 63,
+   "published_at": "2026-11-05T00:00:00Z",
+   "excerpt": "Ask Claude about your money and get straight answers from the accounts you connect.",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "94b7888e188f",
+   "title": "More visibility and control over Claude Enterprise for security teams",
+   "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-11-05T00:00:00Z",
+   "excerpt": "More visibility and control over Claude Enterprise for security teams",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "claude_ai_development"
+   ]
+  },
+  {
+   "id": "aca665944832",
+   "title": "Power Query Corner: Finding and connecting to data in the new experience (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-Query-Corner-Finding-and-connecting-to-data-in-the-new/ba-p/5382053",
+   "source_id": "powerbi_blog",
+   "source_name": "Microsoft Power BI Blog",
+   "published_at": "2026-11-05T17:00:00Z",
+   "excerpt": "About this series This is the first in a six-part Power Query Corner series exploring the new Power Query experience. Each post takes a closer look at a different part of the experience, including what’s changing, why it matters, and how you can put it to work. Getting data doesn't always begin with a connector name. You might know which database to use, recognize a team-maintained Fabric item, want to return to a source from yesterday, or already have the query logic you need. A connector list is useful once you've decided how to connect. But choosing the right data often comes before that decision. We moved to a module-based approach so Get data can support those different starting points, rather than making every task begin with the same connector picker. The idea is simple: start with what you know, then follow the route that fits the task . Modules organize discovery, reconnection, and authoring around that idea. They don't remove the need to authenticate, select the right objects, inspect a preview, or maintain the query afterward. This first Power Query Corner issue follows a sales-report scenario in the new Power BI Desktop experience. It also uses clearly labeled Power Que",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "4ade36aa9099",
+   "title": "Agents Are Going Async",
+   "url": "https://www.langchain.com/blog/agents-are-going-async",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-05T20:03:27Z",
+   "excerpt": "Async subagents let an agent stay responsive while background workers run long tasks. How the orchestrator, notifications and approvals work in Deep Agents.",
+   "preliminary_score": 54,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -107,6 +202,19 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-04T20:00:00Z",
    "excerpt": "As field engineers at Databricks, we spend our days inside enterprise AI deployments,...",
+   "preliminary_score": 52,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "95ae3c341206",
+   "title": "A builder’s guide to scaling Databricks Apps",
+   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-05T18:00:00Z",
+   "excerpt": "Congratulations, you've built an app on Databricks Apps, and it's gone from a couple...",
    "preliminary_score": 52,
    "preliminary_topics": [
     "databricks_data_engineering"
@@ -146,7 +254,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-28T00:00:00Z",
    "excerpt": "In many organizations, members have identified the unique work that Claude can unlock. The next step is expanding that work to every team.",
-   "preliminary_score": 50,
+   "preliminary_score": 49,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -159,7 +267,7 @@
    "source_name": "Claude Blog",
    "published_at": "2026-10-28T00:00:00Z",
    "excerpt": "IDC integrated Claude as part of its Quanta platform, and it has rolled Claude out across its own business",
-   "preliminary_score": 50,
+   "preliminary_score": 49,
    "preliminary_topics": [
     "claude_ai_development"
    ]
@@ -185,7 +293,7 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-10-23T19:00:00Z",
    "excerpt": "What energy trading desks need for real-time analytics.",
-   "preliminary_score": 46,
+   "preliminary_score": 45,
    "preliminary_topics": [
     "databricks_data_engineering"
    ]
@@ -198,7 +306,7 @@
    "source_name": "dbt Labs Blog",
    "published_at": "2026-10-27T18:07:00Z",
    "excerpt": "LangChain gave its Hex agent layered context, turning self-serve analytics questions from occasional to routine.",
-   "preliminary_score": 42,
+   "preliminary_score": 41,
    "preliminary_topics": [
     "open_source_tools"
    ]
@@ -256,6 +364,21 @@
    ]
   },
   {
+   "id": "3244615a8462",
+   "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-05T20:00:00Z",
+   "excerpt": "Data warehouses routinely ingest valuable information embedded in free text, where inconsistent structure makes it difficult to query, connect, and analyze. Incoming values can also require quality checks before they reach curated tables. Microsoft Fabric Data Warehouse and the SQL analytics endpoint now support scalar regular expression functions in preview, so you can extract useful values, validate formats, standardize text, and mask sensitive data directly in T-SQL instead of adding a separate processing step. What’s new in preview Regular expressions provide a concise way to recognize, extract, and transform complex text patterns that would otherwise require multiple string operations. The preview introduces the following scalar functions: REGEXP_LIKE : checks whether text matches a pattern. REGEXP_REPLACE : replaces matching text to clean, standardize, or mask values. REGEXP_SUBSTR : extracts a substring that matches a pattern. REGEXP_INSTR : returns the position of a matching substring. REGEXP_COUNT : counts pattern occurrences in a string. Use these functions during refinement to turn identifiers embedded in free text into structured values and to flag malformed records bef",
+   "preliminary_score": 83,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "data_ingestion",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "3cf817db3b41",
    "title": "OneLake table APIs: Now with Iceberg writes, plus richer table metadata (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-table-APIs-Now-with-Iceberg-writes-plus-richer-table/ba-p/5391262",
@@ -263,7 +386,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T20:00:00Z",
    "excerpt": "OneLake table APIs already let Iceberg-compatible engines discover and read tables in Microsoft Fabric. Today we're taking the next step with two additions: Iceberg REST Catalog (IRC) writes through the OneLake table endpoint, now available, and a new additional table metadata API, in preview, for adding descriptions and tags to tables and columns. Together, they make OneLake a place where any engine can not only read data, but also publish it, with the business context people and AI agents need to use it well. Write native Iceberg tables from the engines you already use Until now, the OneLake Iceberg endpoint supported read-only metadata operations. Now, IRC-compatible clients can create native Iceberg tables, commit new snapshots, and request short-lived storage credentials through the same endpoint they already use for reads. That means engines such as PyIceberg, Snowflake, and DuckDB can land results directly in OneLake using standard Iceberg tooling, with no custom connectors or copy jobs. Some of the supported Iceberg REST Catalog operations at the OneLake table endpoint include: Operation What it does Status List/get/check namespaces Discovers the schemas in a data item Avai",
-   "preliminary_score": 83,
+   "preliminary_score": 82,
    "preliminary_topics": [
     "ai_agents_rag",
     "powerbi_semantic_models",
@@ -278,22 +401,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T18:00:00Z",
    "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
-   "preliminary_score": 83,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "6d9c0429baf2",
-   "title": "Data Days: Learn, build, and connect with AI @Work",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-02T16:19:22Z",
-   "excerpt": "Real people. Real projects. Real AI on Fabric, SQL, and Power BI. From November 2 through December 15, Data Days is your chance to get past polished demos and put data and AI to work yourself. Join a live session, build something new, work toward a certification, or connect with a community study group. Share what you've learned, showcase something you've created, or bring Data Days to your own community. This is about doing, not just watching. Start with the series that interests you AI Work​ is at the heart of this Data Days, with three stages designed to meet you wherever you are: Let's Make Sense of It explores how Copilot, Fabric IQ, Fabric Apps, and your data fit together. If you've heard the names but want to understand what they mean for your work, start here. Let's Build Something gets hands-on. Watch practitioners build Fabric Apps, work with Spark to make data AI-ready, and turn ideas into something useful. See It in Action showcases real projects, including Fabric IQ and Fabric Apps examples. Discover what community builders created, the decisions they made, and what they learned along the way. There's more to explore, too. Catch up on announcements and demos with the F",
-   "preliminary_score": 81,
+   "preliminary_score": 82,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering",
@@ -315,6 +423,34 @@
    ]
   },
   {
+   "id": "3f8664fcabdf",
+   "title": "Build more connected workflows with Fabric Actions and Business Actions in Fabric Pipelines (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-more-connected-workflows-with-Fabric-Actions-and-Business/ba-p/5377911",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-05T22:00:00Z",
+   "excerpt": "Modern data workflows rarely stop at moving and transforming data. Once data is ready, you may need to trigger another operation in Fabric, refresh a semantic model, update a business application, send a notification, generate a document, or kick off the next step in a business process. With Fabric Actions and Business Actions activities in Microsoft Fabric Data Factory, you can bring these steps directly into your Fabric pipelines. Together, these activities make it easier to orchestrate workflows across Fabric and the business applications your organization relies on, without having to build and maintain custom API integrations for every scenario. We’re continuing to expand what you can do with these activities, with support for more Fabric operations and 25 additional third-party connectors for Business Actions. Bring Fabric operations directly into your pipelines The Fabric Actions activity lets you invoke supported Fabric REST API operations directly from a pipeline. Instead of manually constructing REST API requests and managing the underlying authentication and request details, you can select the Fabric operation you need, configure its inputs, and incorporate it into the re",
+   "preliminary_score": 72,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "6d9c0429baf2",
+   "title": "Data Days: Learn, build, and connect with AI @Work",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-02T16:19:22Z",
+   "excerpt": "Real people. Real projects. Real AI on Fabric, SQL, and Power BI. From November 2 through December 15, Data Days is your chance to get past polished demos and put data and AI to work yourself. Join a live session, build something new, work toward a certification, or connect with a community study group. Share what you've learned, showcase something you've created, or bring Data Days to your own community. This is about doing, not just watching. Start with the series that interests you AI Work​ is at the heart of this Data Days, with three stages designed to meet you wherever you are: Let's Make Sense of It explores how Copilot, Fabric IQ, Fabric Apps, and your data fit together. If you've heard the names but want to understand what they mean for your work, start here. Let's Build Something gets hands-on. Watch practitioners build Fabric Apps, work with Spark to make data AI-ready, and turn ideas into something useful. See It in Action showcases real projects, including Fabric IQ and Fabric Apps examples. Discover what community builders created, the decisions they made, and what they learned along the way. There's more to explore, too. Catch up on announcements and demos with the F",
+   "preliminary_score": 81,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "2fe4fbe32c22",
    "title": "Govern Fabric connections with admin APIs and data connection policies (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-Fabric-connections-with-admin-APIs-and-data-connection/ba-p/5383656",
@@ -322,23 +458,10 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T19:00:00Z",
    "excerpt": "Co-author: Abhishek Narain Protect continuity, understand connection risk, and set tenant-wide guardrails Imagine that the person who built a business-critical pipeline has left your organization. The connection still exists, but nobody is sure who can manage it or whether its credentials will keep working. What begins as a handover problem quickly becomes a governance question: who owns your connections, where do they lead, and which identities should be allowed to use them? Microsoft Fabric brings these questions together through two complementary capabilities: Admin connection APIs give tenant administrators visibility and ownership-management tools across connection types. Data connection policies set preventive controls for cloud connections. Together, they support a practical sequence: restore responsibility, understand your connections, then enforce the authentication boundaries your organization needs. From recovery to prevention Keep work moving when a connection owner leaves A departure should not leave a connection without someone who can maintain it. When an existing connection has a single owner, a Fabric tenant administrator can use the admin connection APIs to grant ",
-   "preliminary_score": 72,
+   "preliminary_score": 71,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "ai_evaluation_observability"
-   ]
-  },
-  {
-   "id": "4ccf04047cf8",
-   "title": "Bring insights and action together with Fabric Apps in Org apps",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-insights-and-action-together-with-Fabric-Apps-in-Org-apps/ba-p/5377690",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-02T22:00:00Z",
-   "excerpt": "Business users move from understanding what happened, to investigating why, to acting. Microsoft Fabric can bring that journey together. Fabric Apps provide purpose-built, data-driven experiences when users need more than a report. Org apps distribute them alongside Power BI reports and other supported Fabric content in a curated destination. Move from insight to action in one destination Power BI reports help users monitor performance, explore trends, and understand what’s happening in the business. Many insights, however, lead to a next step: submitting a request, updating a plan, investigating an exception, assigning an owner, or tracking a resolution. A Fabric App provides the custom interface and workflow for that next step. Including it in an org app places action beside the reports and operational content that provide context. Users enter one destination organized around their role, review the insight, open the Fabric App, and act. Understanding apps in Fabric Experience Purpose Value Fabric Apps Build for a specific task Create purpose-built applications connected to Fabric data, with managed APIs, authentication, hosting, and service integration. Org apps Distribute in bus",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
    ]
   },
   {
@@ -349,7 +472,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T18:20:11Z",
    "excerpt": "Moving a real-time data pipeline from development to test to production should not mean reconfiguring every source and destination. Yet environment-specific connection details and destination references can make each release a manual, error-prone task. Variable library integration with Eventstream in Microsoft Fabric lets teams reuse the same eventstream definition across environments, with references that resolve to each environment's resources. What's new? Variable library integration with Eventstream is available in preview. For supported source connections and destination items, you can use variable library references instead of direct values. These references are preserved through Git integration and deployment pipelines, helping teams reuse an eventstream definition across workspaces with environment-specific configuration. How variable library integration works Variable library is an item type in Microsoft Fabric that provides a centralized way to define and manage configuration values at the workspace level. Instead of entering environment-specific connection details and item identifiers directly into an eventstream, a team creates variables in a variable library and refere",
-   "preliminary_score": 79,
+   "preliminary_score": 78,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "cicd_data_deployment"
@@ -363,7 +486,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T17:48:58Z",
    "excerpt": "Coauthor: Shehab Amin Microsoft OneLake gives every Microsoft Fabric tenant a single, unified data lake built on open formats. One copy of data, many engines: that is the promise, and it is what makes OneLake such a strong foundation for analytics and AI alike. This post looks at how Sail , the open-source distributed compute framework, and LakeSail Cloud , the managed platform for running Sail in production, connect natively to OneLake, and what that unlocks for teams running Spark and Python workloads on Fabric. Sail is a drop-in replacement for Apache Spark, rebuilt from the ground up in Rust, with Rust-native support for Delta Lake and Apache Iceberg out of the box. That makes it a natural fit for OneLake, where lakehouse tables are stored in exactly these open formats. Point Sail at a Fabric lakehouse and it reads and writes the same tables the rest of Fabric uses, with no data copies, no extra connectors to install, and no changes to existing Spark code. One engine for data and AI Sail implements the Spark Connect protocol, the gRPC interface that decouples Spark clients from the engine that executes their plans. Existing Spark SQL and DataFrame code targeting Spark 3.5 or 4.",
-   "preliminary_score": 79,
+   "preliminary_score": 78,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering",
@@ -386,18 +509,16 @@
    ]
   },
   {
-   "id": "e2d4ca39e816",
-   "title": "Simplify Teradata migrations with Fabric Migration Assistant (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Simplify-Teradata-migrations-with-Fabric-Migration-Assistant/ba-p/5376058",
+   "id": "4ccf04047cf8",
+   "title": "Bring insights and action together with Fabric Apps in Org apps",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-insights-and-action-together-with-Fabric-Apps-in-Org-apps/ba-p/5377690",
    "source_id": "fabric_blog",
    "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-21T17:00:00Z",
-   "excerpt": "Migrating an enterprise Teradata estate to Microsoft Fabric can require extensive manual work across database objects, SQL and BTEQ code, dependencies, and operational processes. Fabric Migration Assistant helps reduce that effort so teams can focus their review on the objects and workflows that need attention. Fabric Migration Assistant for Data Warehouse now supports Teradata sources in preview. It converts eligible Teradata metadata and code to Fabric-compatible T-SQL, deploys eligible destination definitions, and flags scripts that need review or remediation, reducing the manual effort required to prepare a migration. You can choose which objects to migrate, review the translated code, and focus remediation on exceptions instead of manually translating every eligible object. Migration Assistant does not move the associated data; you load data in the following step of the migration flow. Define a migration scope you can validate Reduce migration risk by starting with a representative set of interdependent objects from one workload or business process. Keeping the related tables, views, procedures, functions, and macros together lets you evaluate the translated result as a workin",
-   "preliminary_score": 75,
+   "published_at": "2026-11-02T22:00:00Z",
+   "excerpt": "Business users move from understanding what happened, to investigating why, to acting. Microsoft Fabric can bring that journey together. Fabric Apps provide purpose-built, data-driven experiences when users need more than a report. Org apps distribute them alongside Power BI reports and other supported Fabric content in a curated destination. Move from insight to action in one destination Power BI reports help users monitor performance, explore trends, and understand what’s happening in the business. Many insights, however, lead to a next step: submitting a request, updating a plan, investigating an exception, assigning an owner, or tracking a resolution. A Fabric App provides the custom interface and workflow for that next step. Including it in an org app places action beside the reports and operational content that provide context. Users enter one destination organized around their role, review the insight, open the Fabric App, and act. Understanding apps in Fabric Experience Purpose Value Fabric Apps Build for a specific task Create purpose-built applications connected to Fabric data, with managed APIs, authentication, hosting, and service integration. Org apps Distribute in bus",
+   "preliminary_score": 70,
    "preliminary_topics": [
-    "powerbi_semantic_models",
-    "metadata_lineage_catalogs",
-    "sql_spark_sql"
+    "powerbi_semantic_models"
    ]
   },
   {
@@ -408,7 +529,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T21:00:00Z",
    "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
-   "preliminary_score": 68,
+   "preliminary_score": 67,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "data_ingestion"
@@ -426,98 +547,6 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "5b296e9220f1",
-   "title": "On-premises data gateway October 2026 release",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-27T14:00:00Z",
-   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
-   "preliminary_score": 67,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "adea183a9d9e",
-   "title": "Announcing workspace monitoring integration for Fabric Data Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-workspace-monitoring-integration-for-Fabric-Data/ba-p/5376599",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-26T16:00:00Z",
-   "excerpt": "With Microsoft Fabric Data Warehouse integration with workspace monitoring (Preview), you can analyze completed warehouse query activity across an entire workspace from the monitoring Eventhouse and KQL database, helping you find failed or slow queries and quickly identify the warehouse that needs attention. See warehouse activity across your workspace Monitoring multiple warehouses is difficult when query activity is spread across separate tools and experiences. Workspace monitoring brings completed warehouse execution events into the WarehouseExecutions table, where administrators and operators can review activity across the workspace from a single monitoring database. The integration supports warehouses, SQL analytics endpoints, and warehouse snapshots. It captures completed, user-initiated queries that use distributed execution and records details such as duration, status, result codes, and CPU time. With this information in one place, you can spot failures or performance issues and focus your investigation on the affected warehouse and query. Use this telemetry to: Compare performance: Track query duration trends and percentiles across warehouses and other supported items to i",
-   "preliminary_score": 66,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
-   "id": "5f209baed0bf",
-   "title": "From a prompt to an operational dashboard: Generate Real-Time Dashboards with Copilot (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/From-a-prompt-to-an-operational-dashboard-Generate-Real-Time/ba-p/5380258",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-02T20:00:00Z",
-   "excerpt": "Start with the question, not a blank dashboard Which transit stations are sending the most fans toward a stadium? How does that incoming demand compare with activity at the gates? Where are queues building? Answering these operational questions traditionally requires translating them into tables, queries, visualizations, and a dashboard layout. When you already know what you want to monitor, that setup can get in the way of the question you are trying to answer. Copilot in Microsoft Fabric can generate a Real-Time Dashboard from a natural-language description of the insights you want. Working with a selected database in an Eventhouse, it uses the tables in that database to create a dashboard tailored to your goal. Figure: Start generating a Real-Time Dashboard with Copilot from an Eventhouse database . Rather than beginning with an empty canvas and building each visual separately, you describe the operational view you need. Copilot helps create the initial dashboard, and you review and customize it for your team. Describe, refine, and create Copilot can already help you write KQL queries and edit individual dashboard tiles. With dashboard generation, you can start one level higher:",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "1108578f6cfd",
-   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T19:00:00Z",
-   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
-   "preliminary_score": 51,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "42961f224d85",
-   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T17:00:00Z",
-   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
-   "preliminary_score": 51,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "f61b8e821bc3",
-   "title": "Incrementally migrate and re-migrate database objects with Migration Assistant for Fabric Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Incrementally-migrate-and-re-migrate-database-objects-with/ba-p/5376060",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-21T18:00:00Z",
-   "excerpt": "Migrate database objects to Microsoft Fabric in phases without creating a new Warehouse for every run. Start with one business domain, add another when it is ready, or revisit an object after its source definition changes. You can also build on an existing Warehouse instead of replacing it. Incremental migration for Microsoft Fabric Data Warehouse (Preview) lets you move workloads in manageable phases while keeping control of the destination. Select the objects required for the current workload, add more objects in later runs, and resolve naming conflicts when an incoming object already exists. The process migrates object definitions; it does not continuously synchronize changed rows. You can start with an empty Warehouse, continue a previous migration, or use an existing Warehouse that was not created through migration. This flexibility lets teams preserve completed work while adding the next approved scope. It also supports deliberate consolidation into the Fabric destinations that match your architecture. Choose the objects that belong in each migration Enterprise migration plans often span several teams, applications, and business domains. Those groups do not always need to mov",
-   "preliminary_score": 48,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "b6bd616345c2",
-   "title": "Introducing the data engineering agent for Fabric (Project Osmos)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Introducing-the-data-engineering-agent-for-Fabric-Project-Osmos/ba-p/5377944",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T15:55:24Z",
-   "excerpt": "AI coding assistants are excellent at turning natural-language transformation instructions into code. For data engineers, the harder question is whether that code produces results they can trust. You can describe transformation logic in natural language, and an AI coding assistant will happily generate hundreds of lines of Spark code. Impressive. But a Spark job can execute successfully and still produce completely wrong results. The logic may work for a subset of the data but fail when run against the full dataset. The pipeline's logic and validation checks may not account for future changes to the data or schema. Incremental loads can cause duplicates. Revenue numbers might look perfectly reasonable until someone reconciles them against the source. Anyone who's spent time working with real-world enterprise data knows that automating data engineering with AI comes with a unique set of challenges. Data engineering involves more than code: it requires working with large datasets and retaining context about their schemas, relationships, and business rules over time. Quality & governance matter a lot. The cost of errors or data loss is very high. Data engineering work typically spans ",
-   "preliminary_score": 46,
-   "preliminary_topics": [
-    "databricks_data_engineering"
    ]
   }
  ]
