@@ -1,12 +1,12 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-05T04:24:00Z",
+  "generated_at": "2026-11-06T04:13:55Z",
   "options": [
     {
       "id": "ingestion-basis",
       "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
       "question": "Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming), met welke Databricks-opties (Auto Loader, Lakeflow Connect, pipelines, COPY INTO)?",
-      "why": "Ingestion is nog beginnersterrein voor jou; na het stuk over CDC is dit het bredere plaatje van hoe data uit bronnen als SQL Server in bronze komt.",
+      "why": "Ingestion is nog beginnersterrein voor jou; deze week kwamen push-CDC met Zerobus en Spark 4.3 langs, en dit stuk geeft het bredere plaatje eronder.",
       "topics": [
         "data_ingestion",
         "databricks_data_engineering"
@@ -15,22 +15,22 @@
       "level": "beginner"
     },
     {
-      "id": "scd2-snapshots-of-auto-cdc",
-      "title": "Geschiedenis bijhouden: dbt snapshots, AUTO CDC of Spark 4.3?",
-      "question": "Welke manieren zijn er om SCD type 2 te bouwen op Databricks (dbt snapshots, AUTO CDC in Lakeflow-pipelines, de nieuwe SCD2-functie in Spark 4.3), en wanneer kies je welke?",
-      "why": "Databricks schreef deze week dat Spark 4.3 in Runtime 19 zelf de geschiedenis van een rij bijhoudt; historisering staat nog open in je laagdefinities.",
+      "id": "databricks-opslag-in-onelake",
+      "title": "Databricks-tabellen in OneLake: één kopie voor Databricks en Power BI?",
+      "question": "Hoe werkt het als Unity Catalog zijn tabellen via een externe locatie in OneLake opslaat, wat betekent dat voor Power BI en Fabric, en hoe regel je de rechten aan twee kanten goed?",
+      "why": "Microsoft meldde op 5 november dat OneLake als opslag voor Azure Databricks algemeen beschikbaar is, terwijl de Databricks-documentatie het nog Beta noemt en waarschuwt voor rechten via de Fabric-werkruimte.",
       "topics": [
         "data_architecture_modeling",
-        "databricks_data_engineering",
-        "dbt_analytics_engineering"
+        "powerbi_semantic_models",
+        "data_governance_privacy"
       ],
       "area": "data_engineering"
     },
     {
-      "id": "agent-zoekt-eerst-dan-leest",
-      "title": "Eerst zoeken, dan lezen: hoe een agent zijn informatie vindt",
-      "question": "Waarom laat je een agent eerst goedkoop zoeken (op naam, met grep) voordat hij op betekenis zoekt, hoe werkt 'retrieve, offload, delegate', en wat betekent dat voor een assistent op dbt-documentatie?",
-      "why": "Past bij de trend 'Agents houden hun venster leeg'; LangChain beschreef het patroon en het is direct bruikbaar voor je AI-contextlaag.",
+      "id": "een-agent-of-subagents",
+      "title": "Eén agent met skills of een team van subagents: wanneer kies je wat?",
+      "question": "Waarom werkt één agent met skills en een paar smalle tools vaak beter dan een verdeler met subagents, wanneer zijn subagents wel nuttig, en hoe stap je met evals stap voor stap over?",
+      "why": "Past bij de trend 'Agents houden hun venster leeg'; Anthropic beschreef hoe klanten hun subagents samenvoegden, en het raakt direct aan hoe je een assistent op dbt-metadata opzet.",
       "topics": [
         "ai_agents_rag",
         "ai_context_engineering"
@@ -38,26 +38,24 @@
       "area": "context_agents"
     },
     {
-      "id": "claude-traces-in-unity-catalog",
-      "title": "Terugkijken wat je Claude-agent deed: traces als tabel in Unity Catalog",
-      "question": "Wat zijn traces en spans, hoe komen die van Claude via OpenTelemetry in Databricks MLflow terecht, en hoe gebruik je ze met SQL om fouten van een agent te vinden?",
-      "why": "Sinds 3 november kan Claude zijn traces in bèta naar Unity Catalog sturen; past bij de trend 'Agents worden beter door controles en metingen'.",
+      "id": "prompt-verbeteren-tegen-eval",
+      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
+      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
       "topics": [
         "claude_ai_development",
-        "ai_evaluation_observability",
-        "ai_on_data_platform"
+        "ai_evaluation_observability"
       ],
       "area": "claude"
     },
     {
-      "id": "database-takken-per-pull-request",
-      "title": "Een eigen kopie van de database per pull request: zo werkt branching",
-      "question": "Wat is een database-tak (branch) met copy-on-write, hoe gebruik je die in een release pipeline om elke pull request op een eigen omgeving te testen, en wat vraagt dat bij gevoelige data?",
-      "why": "Snorkel AI testte elke pull request in een minuut op een eigen tak van Lakebase; een concreet voorbeeld van een release-stap, en release pipelines zijn nog nieuw voor je.",
+      "id": "cdc-duwen-met-debezium",
+      "title": "Wijzigingen duwen in plaats van ophalen: CDC met Debezium en Zerobus",
+      "question": "Wat is het verschil tussen een pijplijn die data ophaalt en een bron die wijzigingen zelf naar buiten duwt, hoe werkt Debezium met de write-ahead log, en hoe maak je van 'minstens één keer' een schone silver-tabel?",
+      "why": "Databricks en NVIDIA bouwden deze week een Debezium-sink naar Zerobus Ingest, zodat wijzigingen uit Postgres zonder Kafka in Unity Catalog komen; een open-sourcepatroon dat ook bij afgeschermde netwerken past.",
       "topics": [
-        "cicd_data_deployment",
-        "databricks_data_engineering",
-        "data_governance_privacy"
+        "data_ingestion",
+        "open_source_tools"
       ],
       "area": "new_tech"
     }
@@ -472,6 +470,65 @@
       "topics": [
         "ai_in_healthcare",
         "open_source_tools",
+        "data_governance_privacy"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "ingestion-basis",
+      "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
+      "question": "Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming), met welke Databricks-opties (Auto Loader, Lakeflow Connect, pipelines, COPY INTO)?",
+      "why": "Ingestion is nog beginnersterrein voor jou; na het stuk over CDC is dit het bredere plaatje van hoe data uit bronnen als SQL Server in bronze komt.",
+      "topics": [
+        "data_ingestion",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering",
+      "level": "beginner"
+    },
+    {
+      "id": "scd2-snapshots-of-auto-cdc",
+      "title": "Geschiedenis bijhouden: dbt snapshots, AUTO CDC of Spark 4.3?",
+      "question": "Welke manieren zijn er om SCD type 2 te bouwen op Databricks (dbt snapshots, AUTO CDC in Lakeflow-pipelines, de nieuwe SCD2-functie in Spark 4.3), en wanneer kies je welke?",
+      "why": "Databricks schreef deze week dat Spark 4.3 in Runtime 19 zelf de geschiedenis van een rij bijhoudt; historisering staat nog open in je laagdefinities.",
+      "topics": [
+        "data_architecture_modeling",
+        "databricks_data_engineering",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "agent-zoekt-eerst-dan-leest",
+      "title": "Eerst zoeken, dan lezen: hoe een agent zijn informatie vindt",
+      "question": "Waarom laat je een agent eerst goedkoop zoeken (op naam, met grep) voordat hij op betekenis zoekt, hoe werkt 'retrieve, offload, delegate', en wat betekent dat voor een assistent op dbt-documentatie?",
+      "why": "Past bij de trend 'Agents houden hun venster leeg'; LangChain beschreef het patroon en het is direct bruikbaar voor je AI-contextlaag.",
+      "topics": [
+        "ai_agents_rag",
+        "ai_context_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-traces-in-unity-catalog",
+      "title": "Terugkijken wat je Claude-agent deed: traces als tabel in Unity Catalog",
+      "question": "Wat zijn traces en spans, hoe komen die van Claude via OpenTelemetry in Databricks MLflow terecht, en hoe gebruik je ze met SQL om fouten van een agent te vinden?",
+      "why": "Sinds 3 november kan Claude zijn traces in bèta naar Unity Catalog sturen; past bij de trend 'Agents worden beter door controles en metingen'.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability",
+        "ai_on_data_platform"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "database-takken-per-pull-request",
+      "title": "Een eigen kopie van de database per pull request: zo werkt branching",
+      "question": "Wat is een database-tak (branch) met copy-on-write, hoe gebruik je die in een release pipeline om elke pull request op een eigen omgeving te testen, en wat vraagt dat bij gevoelige data?",
+      "why": "Snorkel AI testte elke pull request in een minuut op een eigen tak van Lakebase; een concreet voorbeeld van een release-stap, en release pipelines zijn nog nieuw voor je.",
+      "topics": [
+        "cicd_data_deployment",
+        "databricks_data_engineering",
         "data_governance_privacy"
       ],
       "area": "new_tech"
