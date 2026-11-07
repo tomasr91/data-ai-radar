@@ -1,0 +1,32 @@
+{
+  "format_version": 2,
+  "diepte": "kort",
+  "article_id": "49daca0e1c3d",
+  "url": "https://www.langchain.com/blog/paid-media-agent",
+  "headline": "Rekenen in code, oordelen door het model: lessen uit een marketingagent",
+  "summary": "LangChain bouwde een agent in Slack die elke maandag advertentiedata en pipeline uit BigQuery combineert, met subagents per platform, skills, een wiki en goedkeuring door een mens voor elke wijziging. De lessen zijn breder bruikbaar: berekeningen in code maakten één rapport 40 keer goedkoper, en per maatstaf ligt vast welke bron leidend is (code staat open op GitHub).",
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+  ],
+  "availability_status": "beschikbaar",
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.5,
+    "novelty": 0.5
+  },
+  "soort": "praktijk",
+  "fit": {
+    "score": 0.65,
+    "why": "Agent met lagen context en vaste definities, zoals je duimen voor de dbt Wizard- en semantische-laagstukken; het domein is wel marketing."
+  },
+  "labels": [
+    "data-agent",
+    "agent-harness",
+    "human-in-the-loop"
+  ],
+  "development_key": "langchain-paid-media-agent-2026",
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-07T04:20:00Z",
+  "prompt_version": "taak-v3-kort"
+}
