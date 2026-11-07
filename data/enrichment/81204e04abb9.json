@@ -1,0 +1,89 @@
+{
+  "format_version": 2,
+  "article_id": "81204e04abb9",
+  "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+  "headline": "LangChain geeft zijn data-agent vier lagen context, vanuit dbt",
+  "summary": "Het datateam van LangChain liet een AI-agent in Hex vragen beantwoorden met context uit vier lagen: dbt-documentatie, uitleg in markdown, een semantische laag en goedgekeurde modellen. Het aantal self-service vragen steeg 40 keer.",
+  "story": [
+    "Bij LangChain stellen collega's hun datavragen aan een AI-agent in Hex, die op BigQuery werkt. Om die agent goede antwoorden te laten geven, bouwde het datateam vier lagen context. Volgens het team stellen collega's nu 40 keer zo veel vragen via self-service.",
+    "De eerste laag is de dbt-documentatie. Beschrijvingen van tabellen en kolommen gaan vanuit dbt naar BigQuery, zodat elke agent die het warehouse leest ze ziet. Het team moest die beschrijvingen veel explicieter maken: welke waarden een veld kan hebben en wat elke waarde betekent. Ook kan de agent de dbt-repo en de DAG lezen, om te zien waar een model van afhangt.",
+    "De tweede laag zijn werkruimtegidsen (workspace guides): markdownbestanden die uitleggen hoe het bedrijf bijvoorbeeld jaaromzet (ARR) meet. Ze staan in de dbt-repo, dus met versiebeheer, en een GitHub Action zet ze in Hex. De derde laag is een semantische laag, waarin de belangrijkste maatstaven en joins in code vastliggen. Zo krijgt dezelfde omzetvraag steeds hetzelfde antwoord.",
+    "De vierde laag is een keurmerk (endorsement) op betrouwbare marts en dashboards. LangChain deelt dat bewust spaarzaam uit, anders zegt het niets meer. Wijzigingen aan goedgekeurde dashboards moeten eerst langs het datateam.",
+    "Wat het team niet heeft: een vaste manier om te meten of antwoorden kloppen. Het meet vooral gebruik, en evals staan nog op de planning. Het patroon past wel goed bij een dbt-project: je beschrijvingen en YAML zijn al de plek waar zulke context kan wonen."
+  ],
+  "key_facts": [
+    "Gebruikte tools: dbt, BigQuery en Hex; een GitHub Action zet de werkruimtegidsen vanuit de dbt-repo in Hex.",
+    "De vier lagen: dbt-documentatie (gesynchroniseerd naar BigQuery), werkruimtegidsen in markdown, een semantische laag, en endorsements op marts en dashboards.",
+    "LangChain meldt 40 keer zo veel vragen via self-service analytics.",
+    "Er is nog geen formele controle op juistheid; evals en het verrijken van context met de CLI van Hex staan op de planning.",
+    "Blog van dbt Labs (Daniel Poppy, 27 oktober 2026) over een talk van Emily Hawkins en Logan Cochran van LangChain."
+  ],
+  "personal_relevance": "Laat zien hoe je dbt-beschrijvingen en markdown in je repo gebruikt als context voor een data-agent, precies je leerdoel.",
+  "experiment": "Kies één Gold-model en schrijf de kolombeschrijvingen opnieuw zoals LangChain het doet: met alle mogelijke waarden en hun betekenis. Laat Claude (zonder werkdata, alleen de YAML met verzonnen voorbeelden) daarna drie vragen beantwoorden met en zonder die beschrijvingen.",
+  "limitations": [
+    "De 40 keer meer vragen zegt iets over gebruik, niet over hoe vaak de antwoorden kloppen.",
+    "Het stuk komt van dbt Labs en is een samenvatting van een talk; er staat geen code of configuratie in."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Talk op dbt Summit: No drift allowed",
+      "url": "https://www.getdbt.com/dbt-summit/agenda/no-drift-allowed-langchains-context-playbook-with-hex"
+    }
+  ],
+  "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.8,
+    "novelty": 0.5
+  },
+  "development_key": "langchain-hex-gelaagde-context-okt-2026",
+  "date_note": "",
+  "exceptional": false,
+  "soort": "praktijk",
+  "fit": {
+    "score": 0.85,
+    "why": "Lijkt sterk op je duimen voor 'synoniemen en regels per veld' en 'self-service op goedgekeurde dbt-modellen'."
+  },
+  "labels": [
+    "dbt-docs-als-context",
+    "semantische-laag",
+    "data-agent"
+  ],
+  "terms": [
+    {
+      "term": "DAG",
+      "explanation": "Directed acyclic graph: de kaart van alle dbt-modellen en hoe ze van elkaar afhangen. dbt bepaalt er de volgorde van bouwen mee."
+    },
+    {
+      "term": "werkruimtegidsen",
+      "explanation": "Markdownbestanden met bedrijfsuitleg, zoals hoe je een maatstaf meet, die een AI-agent in Hex als vaste achtergrond leest."
+    },
+    {
+      "term": "semantische laag",
+      "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
+    },
+    {
+      "term": "endorsement",
+      "explanation": "Een keurmerk op een model of dashboard dat zegt: dit is een betrouwbare bron. Een agent kan zulke bronnen voorrang geven."
+    },
+    {
+      "term": "evals",
+      "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    }
+  ],
+  "showcase": {
+    "caption": "Een vage beschrijving tegenover een beschrijving waar een agent iets aan heeft: elke waarde staat erbij. Met persist_docs zet dbt de beschrijving ook in de tabel in het warehouse.",
+    "language": "yaml",
+    "code": "models:\n  - name: dim_klant\n    config:\n      persist_docs:\n        relation: true\n        columns: true\n    columns:\n      - name: status\n        # vaag: \"Status van de klant\"\n        description: >\n          Fase van de klant. Waarden:\n          'proef' = gratis proefperiode, nog geen betaling;\n          'actief' = betaalt nu;\n          'opgezegd' = heeft opgezegd, telt niet mee in omzet.",
+    "note": "Het artikel toont geen code. Zo werkt het idee in dbt; persist_docs is een gewone dbt-instelling, of LangChain die gebruikt staat niet in het artikel. Verzonnen model."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-07T04:05:00Z",
+  "prompt_version": "taak-v3"
+}
