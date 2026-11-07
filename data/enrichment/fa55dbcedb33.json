@@ -1,0 +1,107 @@
+{
+  "format_version": 2,
+  "article_id": "fa55dbcedb33",
+  "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
+  "headline": "Databricks kent nu UNIQUE: sneller rekenen als je de data vertrouwt",
+  "summary": "Je kunt op een Databricks-tabel nu vastleggen welke kolommen uniek zijn. Met RELY gebruikt de optimizer dat om joins en DISTINCT over te slaan, tot 12 keer sneller in de test van Databricks (Public Preview).",
+  "story": [
+    "Databricks heeft UNIQUE-constraints toegevoegd aan tabellen in Unity Catalog. Je legt daarmee vast dat een kolom, zoals een e-mailadres, maar één keer voorkomt. Naast de ene primaire sleutel mag een tabel nu meerdere van zulke uniekheidsregels hebben. De kolommen mogen ook leeg (NULL) zijn, wat bij een primaire sleutel niet mag.",
+    "Belangrijk: Databricks controleert de regel niet bij het schrijven. Een dubbele waarde komt gewoon in de tabel. De regel is een belofte, geen slot op de deur. Pas als je de optie RELY aanzet, gaat de optimizer op die belofte vertrouwen.",
+    "Dan wordt het interessant. Weet de optimizer dat een join hooguit één rij oplevert, dan kan hij die join soms helemaal weglaten (join elimination). En een DISTINCT op een kolom die al uniek is, slaat hij over. In een test op 10 TB aan TPC-DS-data werd een query met een overbodige join 7,9 keer sneller, en een DISTINCT-query 12 keer.",
+    "De snelheidswinst werkt alleen op compute met Photon. Het risico zit in de belofte zelf. Klopt de data niet, dan kan een query met RELY een fout antwoord geven, zonder foutmelding. Databricks raadt daarom aan: eerst declareren met NORELY, de data controleren en bijhouden, en pas daarna RELY aanzetten en de queryplannen met EXPLAIN vergelijken.",
+    "Voor een dbt-project ligt de koppeling voor de hand. Een unique-test in dbt controleert precies wat RELY aanneemt. Je zou de constraint pas kunnen zetten op modellen waar die test elke run groen is, bijvoorbeeld de dimensies in Gold."
+  ],
+  "key_facts": [
+    "UNIQUE-constraints zijn in Public Preview, voor Unity Catalog Delta-tabellen in Databricks SQL en Databricks Runtime 18.2 en hoger.",
+    "Een tabel kan meerdere UNIQUE-constraints hebben; de kolommen mogen NULL zijn en een foreign key mag naar een UNIQUE-constraint verwijzen.",
+    "De constraints worden niet afgedwongen bij het schrijven. De standaard is NORELY; met RELY gaat de optimizer ervan uit dat de regel klopt.",
+    "De optimalisaties (join elimination en DISTINCT overslaan) werken alleen op compute met Photon.",
+    "Test op TPC-DS SF10000 (10 TB): join elimination van 23,6 naar 3,0 seconden (7,9×), DISTINCT overslaan van 33,7 naar 2,8 seconden (12,0×).",
+    "Gepubliceerd op 3 november 2026 door Yan Yan, Yuchuan Huang, Xinyi Yu en Gengliang Wang."
+  ],
+  "personal_relevance": "Je kunt uniekheid die dbt-tests al controleren, doorgeven aan de optimizer en zo Gold-queries sneller maken.",
+  "experiment": "Maak in een sandbox-schema twee kleine tabellen met verzonnen data, zet een UNIQUE-constraint met RELY op de dimensie en vergelijk met EXPLAIN of de join verdwijnt in een query die alleen kolommen uit de feitentabel gebruikt.",
+  "limitations": [
+    "Met RELY op data die niet echt uniek is, kan een query stil een fout antwoord geven.",
+    "Nog Public Preview, en de snelheidswinst geldt alleen met Photon.",
+    "De cijfers komen uit een benchmark van Databricks zelf, niet uit een gewone werkomgeving."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Constraints on Databricks",
+      "url": "https://docs.databricks.com/aws/en/tables/constraints"
+    },
+    {
+      "label": "CONSTRAINT clause",
+      "url": "https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-constraint"
+    },
+    {
+      "label": "Primary key en foreign key GA (eerdere blog)",
+      "url": "https://www.databricks.com/blog/primary-key-and-foreign-key-constraints-are-ga-and-now-enable-faster-queries"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "sql_spark_sql",
+    "data_architecture_modeling",
+    "dbt_analytics_engineering"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.8,
+    "novelty": 0.6
+  },
+  "development_key": "databricks-unique-constraints-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.75,
+    "why": "Praktisch stuk over sneller rekenen met modelkennis, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
+  },
+  "labels": [
+    "table-constraints",
+    "query-optimalisatie",
+    "rely"
+  ],
+  "terms": [
+    {
+      "term": "RELY",
+      "explanation": "Een optie op een constraint die zegt: de optimizer mag erop vertrouwen dat deze regel klopt. Databricks controleert dat zelf niet."
+    },
+    {
+      "term": "join elimination",
+      "explanation": "De optimizer laat een join weg als hij zeker weet dat die het resultaat niet verandert. Dat scheelt veel rekenwerk."
+    },
+    {
+      "term": "Photon",
+      "explanation": "De snelle query-engine van Databricks, geschreven in C++. Sommige optimalisaties werken alleen als je compute Photon gebruikt."
+    },
+    {
+      "term": "TPC-DS",
+      "explanation": "Een bekende standaardset met tabellen en queries om de snelheid van datawarehouses te meten en te vergelijken."
+    }
+  ],
+  "showcase": {
+    "caption": "Eerst controleren, dan beloven. De query zoekt dubbele e-mailadressen (NULL telt niet mee). Pas als die leeg is, zet je de constraint met RELY.",
+    "language": "sql",
+    "code": "-- 1. Controle: komen e-mailadressen dubbel voor?\nSELECT email, COUNT(*) AS aantal\nFROM gebruikers\nWHERE email IS NOT NULL\nGROUP BY email\nHAVING COUNT(*) > 1;\n\n-- 2. Pas als stap 1 niets oplevert (Databricks):\n-- ALTER TABLE main.default.gebruikers\n--   ADD CONSTRAINT gebruikers_uq_email UNIQUE(email) RELY;",
+    "result": {
+      "columns": [
+        "email",
+        "aantal"
+      ],
+      "rows": [
+        [
+          "anna@voorbeeld.nl",
+          2
+        ]
+      ]
+    },
+    "note": "Verzonnen data, stap 1 gedraaid in DuckDB. Hier is de controle dus niet schoon en zet je nog geen RELY. De notatie in stap 2 volgt de CONSTRAINT-syntax uit de Databricks-documentatie."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-07T03:40:00Z",
+  "prompt_version": "taak-v3"
+}
