@@ -1,0 +1,19 @@
+{
+ "task": "uitleggen",
+ "started_at": "2026-11-07T03:12:30Z",
+ "finished_at": "2026-11-07T03:31:56Z",
+ "status": "deels",
+ "summary": "10 artikelen uitgelegd (2 vol, 8 kort, 2 met voorbeeld) en 2 overgeslagen, uit de werklijst van gisteren omdat vers ophalen mislukte.",
+ "counts": {
+  "uitgelegd": 10,
+  "vol": 2,
+  "kort": 8,
+  "met_voorbeeld": 2,
+  "overgeslagen": 2,
+  "overgeslagen_zonder_openen": 0
+ },
+ "problems": [
+  "Vers ophalen lukte niet: de workflow 'Radar bijwerken' faalt sinds 6 november op test_feed_contract, die 'story' eist bij korte uitleg (diepte kort). Daardoor is de werklijst van 6 november gebruikt.",
+  "De eerste 6 artikelen op de werklijst waren al verwerkt; data/to_tag.json had al labels voor alle 20 artikelen."
+ ]
+}
