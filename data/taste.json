@@ -1,7 +1,58 @@
 {
- "generated_at": "2026-11-06T03:21:51.807744Z",
+ "generated_at": "2026-11-10T20:23:13.883211Z",
  "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
  "votes": [
+  {
+   "id": "5673f63258aa",
+   "title": "Power BI-rapport mag model uit andere werkruimte gebruiken ondanks OAP",
+   "source_id": "powerbi_blog",
+   "topics": [
+    "powerbi_semantic_models",
+    "data_governance_privacy"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "power-bi-oap",
+    "fabric-netwerkbeveiliging"
+   ],
+   "score": 81,
+   "v": 1,
+   "r": "praktisch"
+  },
+  {
+   "id": "e197b15d9798",
+   "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
+   "source_id": "databricks_blog",
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "soort": "achtergrond",
+   "labels": [
+    "cdc",
+    "zerobus-ingest",
+    "debezium"
+   ],
+   "score": 84,
+   "v": -1,
+   "r": "score_te_hoog"
+  },
+  {
+   "id": "e23fad0ddde8",
+   "title": "KQL-query's in Fabric volgen nu ook de rij- en kolomrechten van OneLake",
+   "source_id": "fabric_blog",
+   "topics": [
+    "data_governance_privacy"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "onelake-security",
+    "fabric-eventhouse"
+   ],
+   "score": 67,
+   "v": -1,
+   "r": "niet_mijn_stack"
+  },
   {
    "id": "6df581b9d8ed",
    "title": "Claude Code kan nu nergens meer schrijven buiten je projectmap",
@@ -11,8 +62,11 @@
     "claude_ai_development"
    ],
    "soort": "release",
-   "labels": [],
-   "score": 90,
+   "labels": [
+    "claude-code-sandbox",
+    "claude-code-subagents"
+   ],
+   "score": 87,
    "v": 1,
    "r": null
   },
@@ -26,7 +80,7 @@
    ],
    "soort": "praktijk",
    "labels": [],
-   "score": 79,
+   "score": 77,
    "v": -1,
    "r": "te_vaag"
   },
@@ -39,8 +93,12 @@
     "cicd_data_deployment"
    ],
    "soort": "praktijk",
-   "labels": [],
-   "score": 94,
+   "labels": [
+    "dbt-state",
+    "slimme-rebuilds",
+    "compute-kosten"
+   ],
+   "score": 92,
    "v": 1,
    "r": "mijn_stack"
   },
@@ -53,8 +111,11 @@
     "ai_on_data_platform"
    ],
    "soort": "achtergrond",
-   "labels": [],
-   "score": 94,
+   "labels": [
+    "agents-bouwen-pipelines",
+    "declaratieve-pipelines"
+   ],
+   "score": 93,
    "v": 1,
    "r": null
   },
@@ -67,8 +128,11 @@
     "data_governance_privacy"
    ],
    "soort": "aankondiging",
-   "labels": [],
-   "score": 93,
+   "labels": [
+    "ai-in-de-zorg",
+    "agent-skills"
+   ],
+   "score": 91,
    "v": 1,
    "r": null
   },
@@ -81,8 +145,11 @@
     "dbt_analytics_engineering"
    ],
    "soort": "mening",
-   "labels": [],
-   "score": 90,
+   "labels": [
+    "semantische-laag-ai",
+    "dbt-semantic-layer"
+   ],
+   "score": 88,
    "v": 1,
    "r": null
   },
@@ -95,8 +162,11 @@
     "dbt_analytics_engineering"
    ],
    "soort": "achtergrond",
-   "labels": [],
-   "score": 89,
+   "labels": [
+    "dbt-wizard",
+    "agent-harness"
+   ],
+   "score": 88,
    "v": 1,
    "r": "meer_hiervan"
   },
@@ -109,8 +179,11 @@
     "ai_context_engineering"
    ],
    "soort": "achtergrond",
-   "labels": [],
-   "score": 96,
+   "labels": [
+    "claude-dbt-skills",
+    "agent-evals"
+   ],
+   "score": 94,
    "v": 1,
    "r": null
   },
@@ -123,8 +196,12 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktijk",
-   "labels": [],
-   "score": 95,
+   "labels": [
+    "agent-context-laag",
+    "semantische-laag-ai",
+    "agent-evals"
+   ],
+   "score": 93,
    "v": 1,
    "r": "meer_hiervan"
   },
@@ -138,7 +215,7 @@
    ],
    "soort": null,
    "labels": [],
-   "score": 91,
+   "score": 88,
    "v": 1,
    "r": null
   },
@@ -151,8 +228,12 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktijk",
-   "labels": [],
-   "score": 95,
+   "labels": [
+    "claude-code-self-service",
+    "dbt-mcp",
+    "claude-code-skills"
+   ],
+   "score": 93,
    "v": 1,
    "r": null
   },
@@ -165,8 +246,11 @@
     "dbt_analytics_engineering"
    ],
    "soort": "praktisch",
-   "labels": [],
-   "score": 91,
+   "labels": [
+    "ai-functies-in-sql",
+    "incrementele-modellen"
+   ],
+   "score": 89,
    "v": 1,
    "r": null
   },
@@ -187,6 +271,37 @@
  ],
  "reads": [
   {
+   "id": "6eafeb6028b4",
+   "title": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
+   "source_id": "fabric_blog",
+   "topics": [
+    "data_architecture_modeling",
+    "data_ingestion"
+   ],
+   "soort": "achtergrond",
+   "labels": [
+    "onelake-databricks",
+    "fabric-mirroring"
+   ],
+   "score": 80
+  },
+  {
+   "id": "f2cef2be2ab7",
+   "title": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
+   "source_id": "databricks_blog",
+   "topics": [
+    "databricks_data_engineering",
+    "data_ingestion"
+   ],
+   "soort": "release",
+   "labels": [
+    "spark-release",
+    "scd-type-2",
+    "auto-cdc"
+   ],
+   "score": 90
+  },
+  {
    "id": "215f0a50b9ea",
    "title": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
    "source_id": "chris_webb",
@@ -196,7 +311,7 @@
    ],
    "soort": "mening",
    "labels": [],
-   "score": 86
+   "score": 83
   },
   {
    "id": "308e572d49e4",
@@ -207,8 +322,12 @@
     "ai_agents_rag"
    ],
    "soort": "release",
-   "labels": [],
-   "score": 95
+   "labels": [
+    "genie-mcp",
+    "metric-views",
+    "claude-code-databricks"
+   ],
+   "score": 92
   },
   {
    "id": "3fd19a8cb4a2",
@@ -220,7 +339,7 @@
    ],
    "soort": "achtergrond",
    "labels": [],
-   "score": 80
+   "score": 78
   },
   {
    "id": "7fd7e06ab2f4",
@@ -232,7 +351,7 @@
    ],
    "soort": "praktijk",
    "labels": [],
-   "score": 84
+   "score": 83
   },
   {
    "id": "a9b6458ba033",
@@ -243,8 +362,12 @@
     "claude_ai_development"
    ],
    "soort": "aankondiging",
-   "labels": [],
-   "score": 95
+   "labels": [
+    "claude-tracing",
+    "mlflow-tracing",
+    "opentelemetry"
+   ],
+   "score": 92
   },
   {
    "id": "ce8bd2396821",
@@ -253,7 +376,7 @@
    "topics": [],
    "soort": "praktijk",
    "labels": [],
-   "score": 75
+   "score": 74
   },
   {
    "id": "29e95692607d",
@@ -265,7 +388,7 @@
    ],
    "soort": null,
    "labels": [],
-   "score": 83
+   "score": 81
   },
   {
    "id": "b380b17e60f1",
@@ -277,19 +400,82 @@
    ],
    "soort": "praktijk",
    "labels": [],
-   "score": 86
+   "score": 84
   }
  ],
  "labels_in_use": [
+  "semantische-laag-ai",
+  "agent-evals",
+  "agent-harness",
+  "claude-enterprise-beheer",
   "onelake-databricks",
+  "agent-context-laag",
+  "dbt-semantic-layer",
+  "agents-bouwen-pipelines",
+  "data-agent",
+  "genie-ontology",
+  "asset-bundles",
+  "databricks-weekoverzicht",
+  "genie-mcp",
+  "metric-views",
+  "claude-code-databricks",
+  "claude-code-sandbox",
+  "claude-code-subagents",
+  "fabric-real-time-dashboards",
   "fabric-mirroring",
+  "fabric-capaciteit",
+  "query-kosten",
   "onelake-security",
   "fabric-eventhouse",
   "unity-catalog-external-locations",
+  "interne-ai-agents",
+  "dashboards-als-code",
+  "dbt-state",
+  "slimme-rebuilds",
+  "compute-kosten",
+  "context-als-code",
+  "ai-functies-in-sql",
+  "incrementele-modellen",
+  "claude-code-self-service",
+  "dbt-mcp",
+  "claude-code-skills",
+  "vaste-metric-definities",
+  "migratie-naar-dbt",
+  "data-diffing",
+  "ai-in-de-zorg",
+  "agent-skills",
+  "ai-documentextractie",
+  "declaratieve-pipelines",
+  "dbt-docs-als-context",
+  "semantische-laag",
+  "dbt-v2",
+  "adbc",
+  "claude-tracing",
+  "mlflow-tracing",
+  "opentelemetry",
+  "table-constraints",
+  "query-optimalisatie",
+  "rely",
+  "unity-ai-gateway",
+  "open-weight-modellen",
+  "spark-release",
+  "scd-type-2",
+  "auto-cdc",
+  "databricks-apps",
+  "lakebase",
   "cdc",
   "zerobus-ingest",
   "debezium",
+  "dbt-wizard",
+  "claude-dbt-skills",
+  "human-in-the-loop",
+  "claude-cowork",
+  "agent-tooling",
+  "claude-security",
   "power-bi-oap",
-  "fabric-netwerkbeveiliging"
+  "fabric-netwerkbeveiliging",
+  "power-query",
+  "onelake-catalog",
+  "async-subagents"
  ]
 }

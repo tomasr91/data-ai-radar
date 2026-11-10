@@ -48,6 +48,24 @@
     "data_governance_privacy"
    ]
   },
+  "6eafeb6028b4": {
+   "at": "2026-11-10T20:23:10.680146Z",
+   "issue": 25,
+   "labels": [
+    "onelake-databricks",
+    "fabric-mirroring"
+   ],
+   "s": 80,
+   "soort": "achtergrond",
+   "source_id": "fabric_blog",
+   "text": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric Microsoft zet de bestaande manieren op een rij om Databricks- en Snowflake-data in Fabric te gebruiken: mirroring, shortcuts, DirectQuery of kopiëren met pipelines. Een tabel zegt per situatie of de data gekopieerd wordt en waarvoor elke optie het best past. onelake-databricks fabric-mirroring",
+   "title": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
+   "topics": [
+    "data_architecture_modeling",
+    "data_ingestion",
+    "databricks_data_engineering"
+   ]
+  },
   "7fd7e06ab2f4": {
    "at": "2026-11-04T20:43:05.062194Z",
    "issue": 24,
@@ -90,9 +108,23 @@
    "source_id": "",
    "title": "",
    "topics": []
+  },
+  "f2cef2be2ab7": {
+   "at": "2026-11-10T20:23:10.680146Z",
+   "issue": 25,
+   "s": 90,
+   "soort": "release",
+   "source_id": "databricks_blog",
+   "text": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19 Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2) Apache Spark 4.3 brengt SCD type 2 via Auto CDC, snellere real-time streams met geheugen, en nieuwe SQL zoals JSON_TABLE en ASOF JOIN (preview). Apache Spark 4.3 is aangekondigd op 5 november 2026; volgens Databricks beschikbaar in Databricks Runtime 19. Spark krijgt vanaf 4.3 elk kwartaal een featurerelease, in plaats van elke zes maanden. Meer dan 200 bijdragers losten meer dan 1.100 Jira-tickets op. SCD type 2 via Auto CDC werkt in Python, SQL en Spark Connect; elke versie krijgt __START_AT en __END_AT. Het doel moet MERGE ondersteunen (Data Source V2 row-level operations); gewone Parquet kan dat niet. Real-time mode ondersteunt nu streaming-aggregatie",
+   "title": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
+   "topics": [
+    "databricks_data_engineering",
+    "data_ingestion",
+    "sql_spark_sql"
+   ]
   }
  },
- "updated_at": "2026-11-04T20:43:05.062194Z",
+ "updated_at": "2026-11-10T20:23:10.680146Z",
  "votes": {
   "059023edac5d": {
    "at": "2026-11-01T13:40:09.196969Z",
@@ -142,6 +174,25 @@
     "databricks_data_engineering",
     "ai_on_data_platform",
     "data_architecture_modeling"
+   ],
+   "v": 1
+  },
+  "5673f63258aa": {
+   "at": "2026-11-10T20:23:10.680146Z",
+   "issue": 29,
+   "labels": [
+    "power-bi-oap",
+    "fabric-netwerkbeveiliging"
+   ],
+   "r": "praktisch",
+   "s": 81,
+   "soort": "aankondiging",
+   "source_id": "powerbi_blog",
+   "text": "Power BI reports support OAP exceptions for semantic models in separate workspaces (Preview) Power BI-rapport mag model uit andere werkruimte gebruiken ondanks OAP Met uitgaande toegangsbescherming (OAP) aan mocht een rapport eerst alleen een semantisch model uit dezelfde werkruimte gebruiken. Nu kan een beheerder een uitzondering maken voor een vaste model-werkruimte, handig als een centraal team de modellen beheert (preview). power-bi-oap fabric-netwerkbeveiliging",
+   "title": "Power BI-rapport mag model uit andere werkruimte gebruiken ondanks OAP",
+   "topics": [
+    "powerbi_semantic_models",
+    "data_governance_privacy"
    ],
    "v": 1
   },
@@ -267,6 +318,44 @@
     "ai_evaluation_observability"
    ],
    "v": 1
+  },
+  "e197b15d9798": {
+   "at": "2026-11-10T20:23:10.680146Z",
+   "issue": 25,
+   "labels": [
+    "cdc",
+    "zerobus-ingest",
+    "debezium"
+   ],
+   "r": "score_te_hoog",
+   "s": 84,
+   "soort": "achtergrond",
+   "source_id": "databricks_blog",
+   "text": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen Debezium leest de wijzigingen uit een database en duwt ze via Zerobus Ingest rechtstreeks in Delta-tabellen. Er is geen Kafka nodig en de database hoeft geen inkomende verbindingen toe te staan. Blog van Databricks Engineering, 5 november 2026, door Victoria Bukta, Omkar Mehta en Wagner Santos. De Zerobus Ingest-sink zit in Debezium Server 3.7 en is gebouwd door engineers van Databricks en NVIDIA. Debezium leest bij PostgreSQL de write-ahead log; elk bericht bevat before- en after-beelden, een op-code (c, u, d, r), bronmetadata met de LSN en ts_ms. Twee tabelvormen: typed (standaard, de kolommen van de bron) en envelope (negen vaste kolommen, JSON in VARIANT",
+   "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "v": -1
+  },
+  "e23fad0ddde8": {
+   "at": "2026-11-10T20:23:10.680146Z",
+   "issue": 25,
+   "labels": [
+    "onelake-security",
+    "fabric-eventhouse"
+   ],
+   "r": "niet_mijn_stack",
+   "s": 67,
+   "soort": "aankondiging",
+   "source_id": "fabric_blog",
+   "text": "Eventhouse support for OneLake security (Generally Available) KQL-query's in Fabric volgen nu ook de rij- en kolomrechten van OneLake Externe tabellen in Eventhouse passen nu de beveiliging van OneLake toe op object-, kolom- en rijniveau. Wie via KQL op Lakehouse-data zoekt, ziet dus alleen wat hij mag zien (GA). onelake-security fabric-eventhouse",
+   "title": "KQL-query's in Fabric volgen nu ook de rij- en kolomrechten van OneLake",
+   "topics": [
+    "data_governance_privacy"
+   ],
+   "v": -1
   }
  }
 }
