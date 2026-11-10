@@ -258,8 +258,10 @@ def write_taste(fb_data: dict, by_id: dict, now, arts=()) -> None:
 
 def write_to_tag(shown: list) -> None:
     """data/to_tag.json: uitgelegde artikelen in de feed zonder soort of fit; Claude vult ze 's nachts aan."""
-    todo = [{"id": a["id"], "title": a.get("headline") or a["title"], "missing": [k for k in ("soort", "fit", "labels") if not a.get(k)]}
-            for a in shown if a["processing_status"] == "enriched" and (not a.get("soort") or not a.get("fit") or not a.get("labels"))]
+    def missing(a):
+        return [k for k in ("soort", "fit", "labels") if not a.get(k)] + ([] if a.get("project_checked") else ["project_ref"])
+    todo = [{"id": a["id"], "title": a.get("headline") or a["title"], "missing": missing(a)}
+            for a in shown if a["processing_status"] == "enriched" and missing(a)]
     TO_TAG.write_text(json.dumps({"items": todo[:20]}, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
@@ -475,6 +477,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "weekly": weekly,
         "glossary": glossary(shown, deepdives),
         "interests": interests_mod.view(conf),
+        "rode_draad": {"name": enrich_mod.rode_draad().get("name"),
+                       "phases": [{"fase": p["fase"], "name": p["name"]} for p in enrich_mod.rode_draad().get("phases", [])]},
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
@@ -522,7 +526,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why", "diepte"]
+                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why", "diepte", "project_ref"]
 
 
 def _public(a):

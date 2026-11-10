@@ -5,7 +5,7 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 ## Stappen
 
 1. **Vers ophalen afdwingen.** Kijk naar `last_successful_update` in `data/feed.json` (wanneer de bronnen voor het laatst zijn opgehaald; `generated_at` zegt alleen wanneer de feed opnieuw is samengesteld). Is die niet van vandaag (UTC), schrijf dan de datum van vandaag (`date -u +%F`) in `data/run-request`, commit alleen dat bestand ("Ophalen aangevraagd <datum>") en push. Wacht daarna tot `last_successful_update` in `data/feed.json` van vandaag is: elke 30 seconden `git pull`, hooguit 10 minuten. Lukt het niet, ga door met de werklijst die er is en zet dat in het taakverslag.
-2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` en de onderwerp-id's in `context/interests.yml`. De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
+2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` de onderwerp-id's in `context/interests.yml` en `context/rode-draad.yml` (zie **Dataflow**). De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
 4. **Per artikel** (in volgorde): ga door tot je **10 artikelen** hebt uitgelegd (vol en kort samen) of de lijst op is (er staan er hooguit 40). T wil elke dag hooguit 10 nieuwe artikelen. Overslaan telt niet mee: zo vult het volgende artikel de plek op. Artikelen met `"volledig": true` tellen niet mee voor de 10. De werklijst staat al in de goede volgorde (actueel eerst, een ouder artikel met een hoge score mag voor). Kies per artikel **vol**, **kort** of **overslaan** (zie **Vol, kort of overslaan**). Staat bij een artikel `"volledig": true`, dan vroeg T zelf om de volle uitleg: altijd vol, en overschrijf het bestaande korte bestand.
    0. Valt een artikel op titel en `excerpt` al **duidelijk** onder **overslaan** (buiten het vakgebied, dubbel)? Sla het dan over zonder de pagina te openen, met de regel als `reason`. Bij twijfel: openen.
@@ -14,7 +14,7 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
    3. Moet het worden overgeslagen (zie **Vol, kort of overslaan**)? Ook een `skipped`-bestand, met de regel als `reason`.
    4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder. Vol: met begrippen (`terms`) en waar het past een `showcase`. Kort: alleen de velden van **Korte uitleg**.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
-5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort`, `fit` en/of `labels` (de rest niet aanraken). Hooguit 20, opslaan met commit `Soort, fit en labels: <aantal> artikelen`.
+5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort`, `fit`, `labels` en/of `project_ref` (de rest niet aanraken; bij `project_ref` mag je één zin aan het verhaal toevoegen, zie **Dataflow**). Hooguit 20, opslaan met commit `Aanvullen: <aantal> artikelen`.
 6. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
 
 ## Weekoverzicht Claude Code
@@ -89,7 +89,7 @@ Hieronder: wat **vol** krijgt. Wat daar niet onder valt maar wel binnen het vakg
   "summary": "Twee zinnen: wat is het en voor wie is het handig.",
   "topics": ["..."], "availability_status": "preview",
   "quality": {"depth": 0.3, "practicality": 0.4, "novelty": 0.4},
-  "soort": "aankondiging", "fit": {"score": 0.5, "why": "..."}, "labels": ["..."],
+  "soort": "aankondiging", "fit": {"score": 0.5, "why": "..."}, "labels": ["..."], "project_ref": null,
   "development_key": "korte-sleutel",
   "processed_by": "Claude (geplande taak)", "processed_at": "2026-11-05T03:20:00Z", "prompt_version": "taak-v3-kort"
 }
@@ -139,6 +139,16 @@ Redenen bij 👍:
 - `score` 0 tot 1: 0,5 = geen idee of neutraal, 0,8+ = lijkt sterk op zijn duimen omhoog, 0,2- = lijkt op zijn duimen omlaag. Telt hooguit 10 punten mee.
 - `why`: één korte zin met de vergelijking, bijv. "Praktisch dbt-stuk met code, zoals je incrementele-modellenartikel."
 - Kijk naar de inhoud en de soort, niet alleen het onderwerp: een aankondiging over dbt is niet hetzelfde als een praktische dbt-uitleg. Weinig duimen? Blijf dicht bij 0,5.
+
+## Dataflow (rode draad)
+
+T bouwt in zijn eigen tijd een persoonlijk data-engineering- en AI-platform: "Dataflow" (`context/rode-draad.yml`, 8 fases, van inrichting tot eigen agent). Hij wil artikelen daaraan kunnen ophangen.
+
+- Helpt een artikel **duidelijk** bij een fase (iets wat hij in die fase moet doen, kiezen of begrijpen)? Laat dat dan **in de tekst** aan bod komen: één zin in het verhaal (bij kort: in `summary`) die het verband concreet maakt, bijv. "Voor Dataflow is dit de manier om in fase 4 de historie van KNMI-metingen bij te houden." Zet daarna `project_ref`:
+  `"project_ref": {"fase": 4, "quote": "<die zin, of een stuk ervan van minstens 15 tekens, letterlijk>", "why": "Eén korte zin waarom."}`
+- Geen duidelijk verband? Zet `"project_ref": null`. Niet forceren: liever geen verwijzing dan een gezochte.
+- Let bij fase 1, 2, 5, 6 en 7 extra op wat wel en niet kan in **Databricks Free Edition**: dat is in het project een belangrijke vraag. Noem het als het artikel het zegt; verzin het niet.
+- Een artikel met `project_ref` krijgt 5 punten voorrang; de app markeert de zin en noemt de fase.
 
 ## Regels
 
@@ -198,6 +208,7 @@ Redenen bij 👍:
   "soort": "praktisch | aankondiging | release | achtergrond | praktijk | mening",
   "fit": {"score": 0.7, "why": "Eén korte zin: lijkt op welke duimen van T."},
   "labels": ["metric-views", "dbt-semantic-layer"],
+  "project_ref": {"fase": 4, "quote": "Letterlijk stuk uit het verhaal", "why": "Eén korte zin."},
   "author": "Alleen bij opinie: naam, en waarom erkend",
   "terms": [{"term": "Zoals in de tekst", "explanation": "Eén of twee korte zinnen."}],
   "processed_by": "Claude (geplande taak)",

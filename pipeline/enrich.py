@@ -93,6 +93,7 @@ def validate(data: dict, topic_ids: set) -> list:
     if "soort" in data and data["soort"] not in SOORTEN:
         problems.append(f"ongeldige soort '{data['soort']}' ({', '.join(sorted(SOORTEN))})")
     problems += validate_fit(data.get("fit"))
+    problems += validate_project_ref(data)
     labs = data.get("labels")
     if labs is not None and (not isinstance(labs, list) or not 1 <= len(labs) <= 4
                              or not all(isinstance(x, str) and re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", x) and len(x) <= 40 for x in labs)):
@@ -126,13 +127,38 @@ def validate_fit(fit) -> list:
     return []
 
 
+def rode_draad() -> dict:
+    """context/rode-draad.yml: T's leerproject (fases). Leeg als het bestand er niet is."""
+    import yaml
+    path = CONTEXT / "rode-draad.yml"
+    return yaml.safe_load(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def validate_project_ref(data: dict) -> list:
+    """project_ref: {"fase": n, "quote": "letterlijk stuk uit story of summary", "why": "..."} of null (geen verband)."""
+    ref = data.get("project_ref")
+    if ref is None:
+        return []
+    fases = {p["fase"] for p in rode_draad().get("phases", [])}
+    if not isinstance(ref, dict) or ref.get("fase") not in fases:
+        return [f"project_ref.fase moet een van {sorted(fases)} zijn (of project_ref: null)"]
+    text = " ".join(list(data.get("story") or []) + [data.get("summary") or ""])
+    if not isinstance(ref.get("quote"), str) or len(ref["quote"]) < 15 or ref["quote"] not in text:
+        return ["project_ref.quote moet letterlijk in story of summary staan (minstens 15 tekens)"]
+    if not isinstance(ref.get("why"), str) or not ref["why"].strip() or len(ref["why"]) > 200:
+        return ["project_ref.why moet een korte zin zijn (hooguit 200 tekens)"]
+    return []
+
+
 def attach(article: dict, cached: dict) -> None:
     for k in TEXT_FIELDS + ["availability_status", "limitations", "official_docs", "topics",
                             "quality", "development_key", "exceptional", "date_note",
                             "format_version", "headline", "story", "key_facts", "article_type", "author",
-              "showcase", "terms", "soort", "fit", "labels", "diepte"]:
+              "showcase", "terms", "soort", "fit", "labels", "diepte", "project_ref"]:
         if k in cached and cached[k] not in (None, ""):
             article[k] = cached[k]
+    if "project_ref" in cached:
+        article["project_checked"] = True   # ook bij null: Claude keek, er is geen verband
     article["processing_status"] = "enriched"
     article["processed_by"] = cached.get("processed_by", "onbekend")
     article["processed_at"] = cached.get("processed_at")

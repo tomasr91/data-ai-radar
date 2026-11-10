@@ -215,6 +215,9 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .pick-note b { color: var(--ink); font-weight: 650; }
 #later-new { margin-top: 14px; }
 .explain { margin: 14px 0 4px; }
+.pr-para { border-left: 2px solid var(--accent2); padding-left: 10px; }
+.story .pr-para, .lead.pr-para { margin-bottom: 4px; }
+.pr-note { margin: 0 0 14px 12px !important; font-family: var(--f-meta); font-size: 0.74rem !important; color: var(--accent2); letter-spacing: .02em; }
 .explain .btn { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-add { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-list { margin-top: 10px; display: grid; gap: 10px; }
@@ -1572,6 +1575,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ${dropped.length ? `<h3>Eruit</h3><ul class="eff-list">${dropped.map((x) => row(x, x.url, true)).join("")}</ul>` : ""}
     </section>`;
   }
+  // Rode draad (context/rode-draad.yml): de zin die over T's project Dataflow gaat, met de fase eronder
+  const prHit = (a, text) => !!(a.project_ref?.quote && (text || "").includes(a.project_ref.quote));
+  function prNote(a) {
+    const ph = (state.feed.rode_draad?.phases || []).find((x) => x.fase === a.project_ref.fase);
+    return `<p class="pr-note" title="${esc(a.project_ref.why || "")}">${esc(state.feed.rode_draad?.name || "Project")} · fase ${esc(a.project_ref.fase)}${ph ? ` · ${esc(ph.name)}` : ""}</p>`;
+  }
   function renderArticle(a) {
     const mark = termMarker(a.terms);
     const s = source(a.source_id);
@@ -1599,8 +1608,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         <p class="orig">Origineel: ${esc(a.title)}</p>
         ${a.article_type === "opinie" && a.author ? `<div class="note" style="margin-top:14px">Dit is een mening van ${esc(a.author)}.</div>` : ""}
         ${a.date_note ? `<div class="note" style="margin-top:14px">${esc(a.date_note)}</div>` : ""}
-        ${a.diepte === "kort" ? `<p class="lead">${mark(a.summary || "")}</p>${explainBlock(a)}` : ""}
-        <div class="story">${(a.story || []).map((p) => `<p>${mark(p)}</p>`).join("")}</div>
+        ${a.diepte === "kort" ? `<p class="lead${prHit(a, a.summary) ? " pr-para" : ""}">${mark(a.summary || "")}</p>${prHit(a, a.summary) ? prNote(a) : ""}${explainBlock(a)}` : ""}
+        <div class="story">${(() => { let done = false; return (a.story || []).map((p) => {
+          const hit = !done && prHit(a, p); if (hit) done = true;
+          return `<p${hit ? ' class="pr-para"' : ""}>${mark(p)}</p>${hit ? prNote(a) : ""}`; }).join(""); })()}</div>
         ${showcaseBlock(a.showcase)}
         ${a.experiment ? `<section class="try"><h2>Probeer dit</h2><p>${esc(a.experiment)}</p></section>` : ""}
         ${a.limitations?.length ? `<section class="block"><h2>Let op</h2><ul>${a.limitations.map((l) => `<li>${esc(l)}</li>`).join("")}</ul></section>` : ""}

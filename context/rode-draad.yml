@@ -1,0 +1,40 @@
+# Rode draad: T's eigen leerproject "Dataflow" (T, 10-11-2026).
+# Een persoonlijk data-engineering- en AI-platform op Databricks Free Edition, met openbare data (KNMI, CBS).
+# Artikelen die duidelijk helpen bij een fase krijgen in de uitleg een verwijzing (project_ref) en 5 punten extra.
+# Alleen fases en trefwoorden: deze repository is openbaar.
+
+name: Dataflow
+boost: 0.05
+phases:
+  - fase: 1
+    name: Fundament
+    about: Databricks Free Edition, GitHub, VS Code, Python-omgeving, Databricks CLI en Claude Code inrichten.
+    keywords: [Databricks Free Edition, Databricks CLI, Claude Code, VS Code, Python virtual environment]
+  - fase: 2
+    name: Unity Catalog
+    about: Catalogus, schema's en volumes inrichten, met beschrijvingen, tags, eigenaarschap, rechten en lineage.
+    keywords: [Unity Catalog, volumes, privileges, USE CATALOG, ownership, tags, column comments, lineage, least privilege]
+  - fase: 3
+    name: Ingestion en Bronze
+    about: Openbare data (CSV, JSON, REST API's) met Python ophalen en als Delta-tabellen in Bronze opslaan, met technische metadata.
+    keywords: [ingestion, REST API, Python ingestion, Auto Loader, COPY INTO, Delta Lake, bronze, open data]
+  - fase: 4
+    name: dbt Silver en Gold
+    about: dbt Core met dbt-databricks; sources, modellen, tests, snapshots, facts en dimensions, documentatie en artifacts.
+    keywords: [dbt-databricks, dbt profiles, dbt tests, dbt snapshots, incremental models, dimensional modeling, SCD, dbt artifacts, manifest.json, dbt docs]
+  - fase: 5
+    name: DAB en Jobs
+    about: Databricks Asset Bundles en Jobs om ingestion en dbt als code te deployen en als workflow met afhankelijkheden te draaien.
+    keywords: [Databricks Asset Bundles, databricks.yml, bundle deploy, Databricks Jobs, task dependencies, retries, orchestration]
+  - fase: 6
+    name: AI-integratie onderzoeken
+    about: Wat kan gratis met Claude, Claude Code, MCP en AI Gateway in Databricks Free Edition, en hoe houd je het veilig.
+    keywords: [MCP, Model Context Protocol, Databricks MCP, AI Gateway, Claude Code, Free Edition limits]
+  - fase: 7
+    name: Eigen agent
+    about: Een eigen data-platform-agent met een MCP-server naar Databricks, Unity Catalog-metadata en dbt-artifacts als context, read-only SQL.
+    keywords: [MCP server, agent tools, text-to-SQL, read-only SQL, context engineering, dbt manifest, agent runtime]
+  - fase: 8
+    name: Uitbreiding en automatisering
+    about: Monitoring, foutdiagnose, goedgekeurde acties door de agent en eventueel een Databricks App.
+    keywords: [job monitoring, human in the loop, Databricks Apps, observability]

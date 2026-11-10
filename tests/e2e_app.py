@@ -104,8 +104,12 @@ feed["feedback"] = {**{k: v for k, v in (feed.get("feedback") or {}).items() if 
                     "surprises": [{"id": _en["id"], "title": "Verrassing-test", "s": 52}],
                     "effect": {"days": 7, "lifted": [{"id": _en["id"], "title": "Erbij-test", "source_id": _en["source_id"], "delta": 6}],
                                "dropped": [{"id": "zzzzzzzzzzzz", "title": "Eruit-test", "source_id": "sqlbi", "delta": -7, "url": "https://example.org/x"}]}}
+# Rode draad: verwijzing naar het project in de tekst
+_pr = [a for a in arts if a["processing_status"] == "enriched" and len(a.get("story") or []) >= 2 and a["id"] != _en["id"]][0]
+_pr["project_ref"] = {"fase": 4, "quote": _pr["story"][1][:30], "why": "Test-verband."}
+feed["rode_draad"] = {"name": "Dataflow", "phases": [{"fase": 4, "name": "dbt Silver en Gold"}]}
 # Een artikel met korte uitleg (diepte: kort)
-_k = [a for a in arts if a["processing_status"] == "enriched" and a.get("format_version") == 2 and a["id"] != _en["id"]][0]
+_k = [a for a in arts if a["processing_status"] == "enriched" and a.get("format_version") == 2 and a["id"] not in (_en["id"], _pr["id"])][0]
 _k.update({"diepte": "kort", "story": [], "summary": "Kort-test samenvatting."})
 # Nagebootste taakverslagen van de nacht
 feed["runs"] = {"date": "2026-11-02", "tasks": {
@@ -608,6 +612,13 @@ with sync_playwright() as p:
     check("   examen blijft geladen bij terugkeren", page.locator("#leren-frame").count() == 1 and page.locator("#leren").is_visible())
     page.click('#seg-view button[data-v="actueel"]')
 
+    page.goto(url + "#a-" + _pr["id"])
+    page.wait_for_selector("#reader .story p")
+    check("   rode draad: de zin over het project gemarkeerd, met de fase eronder", page.locator("#reader .story p.pr-para").count() == 1
+          and "Dataflow · fase 4 · dbt Silver en Gold" in page.locator("#reader .pr-note").inner_text()
+          and page.locator(f'.card[data-id="{_pr["id"]}"] .pr-note').count() == 0)
+    page.click("#back")
+    page.wait_for_selector("#reader", state="hidden")
     # Korte uitleg: knop Volledig uitleggen gaat mee in de verstuurbalk
     page.evaluate("localStorage.removeItem('radar:fb'); localStorage.removeItem('radar:explain')")
     page.goto(url + "#a-" + _k["id"])

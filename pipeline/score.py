@@ -31,6 +31,7 @@ WEIGHTS = {"topic": 0.55, "quality": 0.20, "recency": 0.15, "source": 0.10}
 RAW_QUALITY = 0.35
 
 
+PROJECT_BOOST = 0.05   # rode draad: 5 punten extra (T, 10-11-2026)
 FIT_WEIGHT = 0.10   # Claudes "past bij jou": hooguit 10 punten erbij of eraf
 
 def match_certainty(n_hits: int) -> float:
@@ -161,6 +162,10 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
             total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))
     if adjust:
         total = min(1.0, max(0.0, total + max(-0.20, min(0.20, adjust))))
+    # Rode draad (context/rode-draad.yml): helpt dit artikel bij een fase van T's eigen project? Een beetje voorrang.
+    if article.get("project_ref"):
+        parts["project"] = PROJECT_BOOST
+        total = min(1.0, total + PROJECT_BOOST)
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})

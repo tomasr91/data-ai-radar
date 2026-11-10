@@ -828,6 +828,29 @@ class TestFetchLess(unittest.TestCase):
         self.assertEqual(r.extra["captured_at"], "2026-11-05T03:00:00Z")
 
 
+class TestRodeDraad(unittest.TestCase):
+    """Dataflow (context/rode-draad.yml): verwijzing in de uitleg en 5 punten voorrang."""
+
+    def test_project_ref(self):
+        from pipeline import enrich
+        conf = cfg.load()
+        now = datetime(2026, 11, 10, tzinfo=timezone.utc)
+        self.assertEqual(len(enrich.rode_draad()["phases"]), 8)
+        story = ["Een alinea.", "Met snapshots bewaar je in dbt de historie van een tabel."]
+        ok = {"fase": 4, "quote": "Met snapshots bewaar je in dbt de historie", "why": "Snapshots zitten in fase 4."}
+        self.assertEqual(enrich.validate_project_ref({"story": story, "project_ref": ok}), [])
+        self.assertEqual(enrich.validate_project_ref({"story": story, "project_ref": None}), [])
+        self.assertTrue(enrich.validate_project_ref({"story": story, "project_ref": {**ok, "fase": 12}}))
+        self.assertTrue(enrich.validate_project_ref({"story": story, "project_ref": {**ok, "quote": "staat er niet in maar is lang genoeg"}}))
+        base = {"id": "p1", "title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-11-09T00:00:00Z",
+                "processing_status": "enriched", "topics": ["dbt_analytics_engineering"], "quality": {"depth": .5, "practicality": .5, "novelty": .5}}
+        plain = score_article(dict(base), conf, now)["relevance_score"]
+        self.assertEqual(score_article(dict(base, project_ref=ok), conf, now)["relevance_score"] - plain, 5)
+        a = {}
+        enrich.attach(a, {"project_ref": None})
+        self.assertTrue(a["project_checked"])
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends
@@ -990,7 +1013,7 @@ class TestPublishedFeed(unittest.TestCase):
             self.assertTrue(set(a["groups"]) <= group_ids)
             self.assertIn("fetched_at", a)
             if a["processing_status"] == "enriched":
-                needed = (["headline", "summary", "story", "key_facts", "availability_status"] if a.get("format_version") == 2
+                needed = ((["headline", "summary", "availability_status"] if a.get("diepte") == "kort" else ["headline", "summary", "story", "key_facts", "availability_status"]) if a.get("format_version") == 2
                           else ["summary", "what_is_new", "personal_relevance", "availability_status"])
                 for k in needed:
                     self.assertIn(k, a, f"{a['title']}: {k}")
