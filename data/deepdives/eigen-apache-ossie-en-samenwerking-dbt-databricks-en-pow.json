@@ -1,0 +1,200 @@
+{
+  "format_version": 1,
+  "id": "eigen-apache-ossie-en-samenwerking-dbt-databricks-en-pow",
+  "plan_id": "eigen-apache-ossie-en-samenwerking-dbt-databricks-en-pow",
+  "request_issue": 26,
+  "headline": "Ossie, dbt, metric views en Power BI: wie praat met wie?",
+  "summary": "Apache Ossie is een open standaard om maatstaven tussen tools uit te wisselen, en dbt Labs, Databricks en Microsoft doen alle drie mee. Ondertussen kun je Power BI al voeden met metric views: met een eigen SQL-query, of als semantisch model via Publish to Power BI, dat nog in private preview is. Dit stuk zet de verhoudingen op een rij en laat zien welke route je nu kunt nemen.",
+  "sections": [
+    {
+      "heading": "Drie plekken voor dezelfde maatstaf",
+      "paragraphs": [
+        "In jouw stack kan een maatstaf zoals omzet op drie plekken staan. In dbt, als metric in de semantic layer van MetricFlow. In Unity Catalog, als metric view. En in Power BI, als DAX-measure in een semantisch model. Elke plek heeft zijn eigen taal.",
+        "Staat dezelfde maatstaf op twee of drie plekken, dan lopen de definities vroeg of laat uit elkaar. Iemand past de ene aan en vergeet de andere. Dan geeft het dashboard een ander getal dan de AI-assistent.",
+        "Er zijn twee manieren om dat op te lossen. Je kiest één plek als bron en laat de andere tools daaruit lezen. Of je maakt een vertaler, zodat een definitie van de ene tool naar de andere kan. Ossie is die vertaler. Publish to Power BI en de native query zijn voorbeelden van de eerste manier."
+      ]
+    },
+    {
+      "heading": "Wat Apache Ossie is",
+      "paragraphs": [
+        "Apache Ossie begon als Open Semantic Interchange (OSI). In juni 2026 werd het project opgenomen in de Apache Incubator, de kweekvijver van de Apache Software Foundation. Daarbij kreeg het de nieuwe naam. Het is een open, leveranciersneutrale beschrijving van een semantisch model: datasets, velden, relaties, maatstaven en context voor AI, in YAML.",
+        "Ossie werkt als tussentaal. Elke tool krijgt een omzetter (converter) van en naar Ossie. Zo hoeft niet elke tool met elke andere tool een eigen koppeling te bouwen. Vergelijk het met een tolk die zes talen spreekt: niet iedereen hoeft elkaars taal te leren, alleen die van de tolk.",
+        "Ossie is nog in ontwikkeling. Incubator betekent dat het project nog moet bewijzen dat het levensvatbaar is. Techzine schrijft dat volledige uitwisselbaarheid niet vanzelfsprekend is, en dat het slagen afhangt van hoe de specificatie verder groeit."
+      ]
+    },
+    {
+      "heading": "Wie doet mee, en wat is er al?",
+      "paragraphs": [
+        "dbt Labs is een van de vijf trekkers van Ossie. MetricFlow, het hart van de dbt semantic layer, is open source onder Apache 2.0. Volgens dbt Labs zet MetricFlow zijn metrics om naar het Ossie-formaat. Snowflake noemt een omzetter tussen Ossie en dbt MetricFlow als een van de eerste werkende voorbeelden.",
+        "Databricks staat ook op de lijst van deelnemers. Volgens een overzicht van Alex Merced van 9 november 2026 staan er in de Ossie-code omzetters voor metric views, in beide richtingen. Dat heb ik niet zelf in de code gecontroleerd.",
+        "Sinds september 2026 doet ook Microsoft mee. Het leverde code voor een omzetter tussen Ossie en Power BI-modellen in TMDL, en een uitbreiding zodat Ossie DAX herkent als rekentaal. Snowflake noemt die omzetter zelf een eerste versie, met nog werk te doen. Volgens Techzine gaat ook Google bijdragen."
+      ]
+    },
+    {
+      "heading": "Power BI voeden met metric views: dat kan al",
+      "paragraphs": [
+        "Het antwoord op je vraag is ja, en op meer dan één manier. De eerste is de route die de documentatie nu aanraadt: in de Power BI-connector van Azure Databricks kies je Native query, in DirectQuery-modus. Daarin schrijf je zelf een SQL-query met MEASURE() rond elke maatstaf. Databricks rekent, Power BI toont.",
+        "De tweede is een gewone view bovenop de metric view (wrapper view). Die werkt in elke tool die een tabel uit Unity Catalog kan lezen, ook Power BI. Het nadeel: een gewone view legt de groepering vast. Je hebt dus een aparte view nodig voor elke combinatie van velden die je rapporten gebruiken. De oude compatibiliteitsmodus voor metric views zit niet meer in de Power BI-connector.",
+        "De derde is nieuw: Publish to Power BI. Databricks kondigde op 10 november aan dat je een metric view vanuit Catalog Explorer kunt publiceren naar een Power BI-werkruimte. Elke metric view wordt dan een tabel in een semantisch model. Velden worden kolommen, en maatstaven worden DAX-measures. Een SUM wordt een SUM in DAX, en een deling van twee maatstaven wordt DIVIDE.",
+        "Bij Publish to Power BI blijft de metric view de bron van de waarheid. Standaard draait het model in DirectQuery, zodat de rechten van Unity Catalog bij elke vraag gelden. Met een Power BI-taak in een Lakeflow Job automatiseer je het publiceren, zodat het model gelijk blijft met de metric view. Het werkt maar één kant op: wat je in Power BI aanpast, komt niet terug in de metric view. En het is nog een private preview, dus je moet het aanvragen via Databricks."
+      ]
+    },
+    {
+      "heading": "En dbt? Een metric view als dbt-model",
+      "paragraphs": [
+        "In de vorige verdieping stond dat er nog geen gedocumenteerde manier was om metric views vanuit dbt te maken. Die is er nu wel. De dbt-databricks-adapter heeft een materialisatie metric_view. Volgens de release notes kwam die erbij in versie 1.12.",
+        "Het model bevat dan geen SQL, maar de YAML van de metric view. De bron geef je met ref(), zodat dbt de volgorde en lineage kent. dbt geeft de YAML ongewijzigd door aan Databricks, dus synoniemen, display_name en window-measures werken ook. Je kunt er ook tags en grants op zetten.",
+        "Let op het verschil met MetricFlow. Een metric_view-model maakt een metric view in Unity Catalog; Databricks rekent. MetricFlow is de semantic layer van dbt zelf; daar schrijft dbt de SQL. Volgens een beheerder van de adapter sluiten de twee niet precies op elkaar aan. Je kiest dus per maatstaf één van de twee, niet allebei."
+      ]
+    },
+    {
+      "heading": "Hoe liggen de verhoudingen?",
+      "paragraphs": [
+        "Power BI rekent met DAX in zijn eigen semantisch model. Elke route hierboven doet daarom één van twee dingen. Of hij vertaalt de definitie naar DAX, zoals Publish to Power BI en de Semantic Bridge van Tabular Editor. Of hij laat Databricks rekenen en stuurt alleen de uitkomst door, zoals de native query.",
+        "Tabular Editor maakte zo'n vertaler al eerder. De Semantic Bridge in Tabular Editor 3 Enterprise zet de YAML van een metric view om naar een Power BI-model. Ingewikkelde SQL die hij niet kan vertalen, wordt een lege measure met de SQL erbij als opmerking. Ook dat werkt maar één kant op.",
+        "De andere richting bestaat ook. Volgens de documentatie kan Genie Code een Power BI-bestand (.pbit of .tmdl) inlezen en er een metric view van maken. Dat is handig als je bestaande definities in Power BI hebt en ze naar Unity Catalog wilt halen.",
+        "Ossie is de route voor de lange termijn: één tussentaal waar dbt, Databricks en Power BI alle drie mee kunnen praten. De routes van Databricks werken nu al, maar alleen tussen Databricks en Power BI. Wat je kiest, hangt dus af van hoe lang je wilt wachten en hoeveel tools je wilt verbinden."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Een route die bij je stack past: Gold-tabellen in dbt, daarop een metric view als dbt-model, en Power BI dat die metric view leest. Dan staat de definitie in je dbt-project, gaat hij door dezelfde pull requests, en lezen Genie en Power BI hetzelfde getal. Voor je AI-contextlaag is dat belangrijk, omdat de assistent dezelfde maatstaven ziet als de rapporten.",
+        "Voor een eerste rapport kun je nu de native query in DirectQuery gebruiken. Wil je dat measures vanzelf in een semantisch model verschijnen, vraag dan naar de private preview van Publish to Power BI. Ossie is iets om te volgen, nog niet om op te bouwen: de omzetters zijn eerste versies.",
+        "Wat in alle gevallen blijft: leg elke maatstaf op één plek vast en wijs een eigenaar aan. Een measure die je in Power BI met de hand aanpast nadat hij gepubliceerd is, loopt weer uit de pas met de metric view."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een metric view als dbt-model, en de native query die Power BI daarop in DirectQuery uitvoert. De definitie staat in dbt, het rekenen gebeurt in Databricks.",
+    "language": "sql",
+    "code": "-- models/gold/bestellingen_metrics.sql\n{{ config(materialized='metric_view') }}\n\nversion: 1.1\nsource: \"{{ ref('fct_bestellingen') }}\"\nfields:\n  - name: regio\n    expr: regio\nmeasures:\n  - name: omzet\n    expr: SUM(bedrag)\n    synonyms: [revenue, verkoop]\n  - name: aantal_orders\n    expr: COUNT(DISTINCT order_id)\n\n-- Power BI > Azure Databricks-connector > Native query (DirectQuery)\nSELECT regio, MEASURE(omzet), MEASURE(aantal_orders)\nFROM gold.verkoop.bestellingen_metrics\nGROUP BY ALL;",
+    "note": "Notatie uit de dbt-documentatie (Databricks configurations, materialized='metric_view') en de Databricks-documentatie (native query met MEASURE(), oktober 2026); namen verzonnen. In de metric view-YAML zijn fields en dimensions volgens Databricks gelijkwaardig. Draait alleen in Databricks, daarom zonder resultaat; een uitgerekend voorbeeld staat in de verdieping over de dbt semantic layer en metric views."
+  },
+  "experiment": "Maak in een los dbt-project met een testwerkruimte een kleine Gold-tabel met verzonnen bestellingen en zet er een metric_view-model op zoals in het voorbeeld. Draai dbt run en controleer in Catalog Explorer dat de metric view er staat. Open daarna Power BI Desktop, kies de Azure Databricks-connector met Native query in DirectQuery en vraag omzet per regio op. Pas een measure aan in dbt, draai opnieuw en kijk of Power BI het nieuwe getal toont. Geen werkdata gebruiken.",
+  "limitations": [
+    "Publish to Power BI is een private preview: je moet het aanvragen, en functies en beperkingen kunnen nog veranderen.",
+    "In Import-modus komt de data in Power BI te staan en gelden de rechten van Power BI, niet die van Unity Catalog. Voor zorgdata is DirectQuery de veiligere keuze.",
+    "Ossie en de omzetter voor Power BI zijn eerste versies in een incubatorproject; reken nog niet op volledige uitwisseling.",
+    "Voor de metric_view-materialisatie noemt de dbt-documentatie geen status of versie-eis; test hem eerst buiten productie."
+  ],
+  "further_reading": [
+    {
+      "label": "Unity Catalog Metric Views, now in Power BI (Databricks, november 2026)",
+      "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
+      "note": "De aankondiging van Publish to Power BI, met hoe maatstaven naar DAX worden vertaald."
+    },
+    {
+      "label": "Use metric views with BI tools (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/business-semantics/metric-views/bi-tools",
+      "note": "De routes per BI-tool, met de native query voor Power BI en de wrapper view."
+    },
+    {
+      "label": "Databricks configurations: metric views (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/reference/resource-configs/databricks-configs",
+      "note": "Hoe je met materialized='metric_view' een metric view vanuit dbt maakt en bijwerkt."
+    },
+    {
+      "label": "Apache Ossie (Incubating): The New Name for Open Semantic Interchange (Snowflake, juli 2026)",
+      "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/apache-ossie-open-semantic-interchange-incubator",
+      "note": "Wat Ossie is, wie meedoet en welke omzetters er als eerste waren."
+    },
+    {
+      "label": "Microsoft Ecosystem Support Comes to Apache Ossie (Snowflake, september 2026)",
+      "url": "https://www.snowflake.com/en/blog/engineering/apache-ossie-microsoft-ecosystem-support/",
+      "note": "Over de eerste omzetter tussen Ossie en Power BI en de DAX-uitbreiding van Microsoft."
+    },
+    {
+      "label": "Microsoft and Google to contribute to the Apache Ossie project (Techzine, oktober 2026)",
+      "url": "https://www.techzine.eu/news/data-management/144719/microsoft-and-google-to-contribute-to-the-apache-ossie-project/",
+      "note": "Een nuchtere samenvatting, met de kanttekening dat volledige uitwisseling niet vanzelf gaat."
+    },
+    {
+      "label": "Bridge analytics in Databricks and Power BI via Tabular Editor (Kurt Buhler, augustus 2026)",
+      "url": "https://tabulareditor.com/blog/bridge-analytics-in-databricks-and-power-bi-via-tabular-editor",
+      "note": "Hoe de Semantic Bridge een metric view naar een Power BI-model vertaalt, en waar dat stopt."
+    },
+    {
+      "label": "Semantic Model Interchange Matrix, november 2026 (Alex Merced)",
+      "url": "https://datalakehousehub.com/blog/semantic-model-interchange-matrix-november-2026/",
+      "note": "Een overzicht van welke platforms elkaars semantische modellen kunnen inlezen; niet van een leverancier van jouw stack."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Waarom is Apache Ossie als tussentaal opgezet, in plaats van losse koppelingen tussen tools?",
+      "options": [
+        "Omdat elke tool dan maar één omzetter nodig heeft, van en naar Ossie, in plaats van een koppeling met elke andere tool.",
+        "Omdat Ossie zelf de maatstaven uitrekent, zodat de tools dat niet meer hoeven.",
+        "Omdat Power BI alleen nog Ossie kan lezen en geen DAX meer gebruikt."
+      ],
+      "answer": 0,
+      "explanation": "Ossie is een beschrijving, geen rekenmachine. Met een tussentaal heb je per tool één omzetter nodig; Power BI blijft met DAX rekenen."
+    },
+    {
+      "question": "Je publiceert een metric view met Publish to Power BI en past daarna in Power BI een measure aan. Wat gebeurt er?",
+      "options": [
+        "De wijziging wordt automatisch teruggeschreven naar de metric view in Unity Catalog.",
+        "Ossie zorgt dat dbt, Databricks en Power BI de wijziging alle drie overnemen.",
+        "De wijziging blijft in Power BI; de metric view verandert niet, dus de definities lopen uit elkaar.",
+        "Power BI weigert de wijziging, omdat gepubliceerde measures op slot staan."
+      ],
+      "answer": 2,
+      "explanation": "Publish to Power BI werkt maar één kant op, van Unity Catalog naar Power BI. Daarom leg je elke maatstaf op één plek vast."
+    },
+    {
+      "question": "Wat is het verschil tussen een dbt-model met materialized='metric_view' en een metric in MetricFlow?",
+      "options": [
+        "Er is geen verschil; het zijn twee namen voor hetzelfde.",
+        "Het metric_view-model maakt een metric view in Unity Catalog waar Databricks rekent; bij MetricFlow schrijft dbt zelf de SQL.",
+        "MetricFlow werkt alleen in Power BI, een metric view alleen in Genie."
+      ],
+      "answer": 1,
+      "explanation": "Het zijn twee verschillende semantische lagen die volgens de adapterbeheerder niet precies op elkaar aansluiten. Kies per maatstaf één van de twee."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Apache Ossie",
+      "explanation": "Een open standaard, nog in de Apache Incubator, om semantische modellen met maatstaven, velden en relaties tussen tools uit te wisselen. Voorheen Open Semantic Interchange."
+    },
+    {
+      "term": "Apache Incubator",
+      "explanation": "De kweekvijver van de Apache Software Foundation, waar nieuwe open-sourceprojecten moeten laten zien dat ze levensvatbaar zijn."
+    },
+    {
+      "term": "MetricFlow",
+      "explanation": "Het open-source onderdeel van dbt dat semantische modellen en metrics in YAML leest en daar zelf de SQL voor schrijft."
+    },
+    {
+      "term": "metric view",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+      "term": "MEASURE()",
+      "explanation": "De functie waarmee je in Databricks SQL een maatstaf uit een metric view opvraagt, bijvoorbeeld MEASURE(omzet) met GROUP BY regio."
+    },
+    {
+      "term": "TMDL",
+      "explanation": "Tabular Model Definition Language: de tekstnotatie waarin je een Power BI-semantisch model als bestanden beschrijft."
+    },
+    {
+      "term": "DirectQuery",
+      "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
+    },
+    {
+      "term": "Publish to Power BI",
+      "explanation": "Een functie van Databricks, nu in private preview, die een metric view als semantisch model in een Power BI-werkruimte zet, met de maatstaven als DAX-measures."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 11-11-2026. Bronnen uit juli tot november 2026: de Databricks-blog over Publish to Power BI (10 november), de Databricks-documentatie over BI-tools (oktober en 9 november), de dbt-documentatie over de metric_view-materialisatie, en berichten over Ossie van Snowflake en Techzine (juli tot oktober). De oude BI-compatibiliteitsmodus in de Power BI-connector heb ik bewust alleen genoemd als 'niet meer beschikbaar'. De naam Open Semantic Interchange staat er alleen als oude naam. De bewering dat er Ossie-omzetters voor metric views zijn, komt uit één onafhankelijk overzicht en is niet in de code nagekeken. Een opiniestuk op Medium over Microsoft en metric views heb ik gelezen maar niet gebruikt, omdat het zijn bronnen niet linkt.",
+  "topics": [
+    "powerbi_semantic_models",
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "ai_context_engineering"
+  ],
+  "written_at": "2026-11-11T04:38:10Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
