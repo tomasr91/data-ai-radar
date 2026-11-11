@@ -1,7 +1,68 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-06T04:13:55Z",
+  "generated_at": "2026-11-11T04:40:28Z",
   "options": [
+    {
+      "id": "constraints-met-rely",
+      "title": "Sleutels die Databricks niet controleert maar wel gebruikt: PK, UNIQUE en RELY",
+      "question": "Wat doen primaire sleutels en UNIQUE-constraints in Databricks als ze niet bij het schrijven worden gecontroleerd, wat verandert er met RELY in de optimizer, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
+      "why": "Databricks voegde begin november UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer joins en DISTINCT over, maar een foute belofte geeft stilletjes foute uitkomsten.",
+      "topics": [
+        "sql_spark_sql",
+        "dbt_analytics_engineering",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "datakwaliteit-monitoren",
+      "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
+      "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks zelf voor monitoring en afwijkingsdetectie naast je dbt-tests?",
+      "why": "Je project AI voor data-engineering en datakwaliteit vraagt hoe kwaliteit nu wordt gemeten; dit stuk zet vaste tests en automatische bewaking naast elkaar.",
+      "topics": [
+        "data_quality_observability",
+        "databricks_data_engineering",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "contextlagen-voor-data-agent",
+      "title": "Wat leg je vast voor een data-agent? Context in lagen, vanuit dbt",
+      "question": "Welke soorten context heeft een AI-agent op je data nodig (beschrijvingen per veld, gidsen in markdown, vaste maatstaven, goedgekeurde modellen), waar leg je elke laag vast, en hoe houd je ze bij met pull requests?",
+      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf': Okta en LangChain legden hun agent-context in lagen vast naast dbt, en je gaf het artikel over synoniemen per veld een 'meer hiervan'.",
+      "topics": [
+        "ai_context_engineering",
+        "metadata_lineage_catalogs",
+        "dbt_analytics_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "prompt-verbeteren-tegen-eval",
+      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
+      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "synthetische-data-voor-experimenten",
+      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
+      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
+      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
+      "topics": [
+        "data_governance_privacy",
+        "ai_in_healthcare",
+        "ai_research_data"
+      ],
+      "area": "new_tech"
+    }
+  ],
+  "history": [
     {
       "id": "ingestion-basis",
       "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
@@ -58,9 +119,7 @@
         "open_source_tools"
       ],
       "area": "new_tech"
-    }
-  ],
-  "history": [
+    },
     {
       "id": "ingestion-basis",
       "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
