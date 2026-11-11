@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "article_id": "d8887a09bc5e",
+  "url": "https://www.anthropic.com/research/components-of-agent-memory",
+  "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
+  "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
+  "story": [
+    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
+    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
+    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
+    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
+    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
+  ],
+  "key_facts": [
+    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
+    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
+    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
+    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
+    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
+    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
+  ],
+  "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
+  "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
+  "limitations": [
+    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
+    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
+    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {"label": "Dreaming in Claude Managed Agents", "url": "https://platform.claude.com/docs/en/managed-agents/dreams"},
+    {"label": "Geheugenmap in Managed Agents", "url": "https://platform.claude.com/docs/en/managed-agents/memory"},
+    {"label": "Geheugen in Claude Code", "url": "https://code.claude.com/docs/en/memory"},
+    {"label": "Knowledge wiki quickstart", "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"}
+  ],
+  "topics": ["ai_context_engineering", "ai_agents_rag", "claude_ai_development"],
+  "quality": {"depth": 0.85, "practicality": 0.65, "novelty": 0.75},
+  "development_key": "agent-geheugen-wiki-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {"score": 0.75, "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."},
+  "labels": ["agent-geheugen", "llm-wiki", "context-als-code"],
+  "project_ref": null,
+  "terms": [
+    {"term": "dreaming", "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."},
+    {"term": "transcripten", "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."},
+    {"term": "MEMORY.md", "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-11T03:48:00Z",
+  "prompt_version": "taak-v2"
+}

@@ -1,0 +1,115 @@
+{
+  "format_version": 2,
+  "article_id": "5352c33d33f8",
+  "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+  "headline": "Een wiki met bewijslijnen maakt agents vijf keer beter bij lastige vragen",
+  "summary": "LangChain bouwt met OpenWiki een wiki als geheugen voor agents, waarin elke bewering naar de exacte bronalinea wijst. Bij vragen die meerdere documenten verbinden steeg de juistheid van 0,10 naar 0,52; bij simpele opzoekvragen hielp het niet.",
+  "story": [
+    "LangChain onderzocht hoe een agent beter antwoord geeft op vragen die over meerdere documenten gaan. Hun antwoord is een wiki die een agent zelf samenstelt uit de bronnen, met daaronder een netwerk van bewijslijnen. Bij zulke verbonden vragen steeg de juistheid van 0,10 naar 0,52. Bij simpele opzoekvragen maakte het niets uit.",
+    "Het hulpmiddel heet OpenWiki, een open-source opdrachtregelprogramma (CLI). Elke zin in de wiki rust op een bewering (claim) die wijst naar de bronregels, met een vingerafdruk (hash) van die regels. Verandert de bron, dan verandert de hash. OpenWiki markeert dan alleen die beweringen, zonder een taalmodel aan te roepen. Pas daarna kijkt een model of de bewering nog klopt.",
+    "Daarbovenop komt een bewijsgraaf (evidence graph). Elk document wordt in alinea's met een eigen id geknipt. Beweringen citeren alinea's, nieuwere documenten vervangen oudere, en secties verwijzen naar andere documenten. Een agent zoekt met de tool locate een startpunt en loopt met expand langs die lijnen naar het bewijs. Het lijkt op lineage, maar dan voor kennis: je volgt een bewering terug naar de bron.",
+    "Met de graaf erbij steeg de juistheid nog 27 procent en daalden de kosten per goed antwoord met 58 procent. Het opbouwen van de graaf kostte minder dan een seconde. De test liep wel op 111 verzonnen verzekeringsdocumenten, dus het is nog geen bewijs voor echte bedrijfsdata.",
+    "Het idee van een hash per bronregel past goed bij documentatie over je datamodellen. Als een dbt-model wijzigt, weet je dan precies welke uitleg opnieuw gecontroleerd moet worden. Voor Dataflow is dit iets voor fase 7: zo houd je de context van je eigen agent actueel als je dbt-artifacts veranderen."
+  ],
+  "key_facts": [
+    "OpenWiki is LangChain's open-source CLI, gebouwd op Deep Agents, die bronnen omzet in gelinkte wikipagina's met bronvermelding (blog van 28 oktober 2026, Eugene Liu).",
+    "Elke bewering verwijst naar bronregels plus een hash; bij een gewijzigde bron markeert OpenWiki de beweringen zonder modelaanroep.",
+    "De bewijsgraaf heeft knopen voor beweringen, wikipagina's, alinea's en onderwerpen, en getypeerde lijnen zoals cite, supersede en refers_to; opbouwen duurde minder dan een seconde.",
+    "Test: 111 verzonnen verzekeringsdocumenten met 972 feiten, 80 simpele en 50 verbonden vragen, elk drie keer gesteld.",
+    "Verbonden vragen: juistheid 0,10 (zoeken) naar 0,52 (wiki); kosten per goed antwoord van ongeveer $0,55 naar $0,19. Simpele vragen: 0,84 tegen 0,83.",
+    "Wiki plus graaf tegenover alleen wiki: 27% juister, twee keer zo consistente bronvermelding, 40% snellere mediaan en 58% lagere kosten per goed antwoord."
+  ],
+  "personal_relevance": "Het laat zien hoe je kennis voor een agent bijhoudt met herkomst per bewering, net als lineage voor data.",
+  "experiment": "Draai OpenWiki op de documentatie van een openbaar dbt-project (bijv. jaffle_shop) en stel een agent drie vragen die meerdere modellen verbinden, met en zonder de wiki.",
+  "limitations": [
+    "De test gebruikte een verzonnen, door een taalmodel gemaakte verzameling documenten.",
+    "Ook met de wiki bleef de bronvermelding bij verbonden vragen wisselend (overlap 0,25).",
+    "De lijnen uit wiki-citaten erven fouten van het model dat die citaten schreef."
+  ],
+  "availability_status": "experimenteel",
+  "official_docs": [
+    {
+      "label": "OpenWiki documentatie",
+      "url": "https://docs.langchain.com/oss/openwiki/overview"
+    },
+    {
+      "label": "OpenWiki op GitHub",
+      "url": "https://github.com/langchain-ai/openwiki"
+    },
+    {
+      "label": "Zelfcorrigerend geheugen in OpenWiki",
+      "url": "https://www.langchain.com/blog/self-correcting-memory-openwiki"
+    }
+  ],
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "metadata_lineage_catalogs"
+  ],
+  "quality": {
+    "depth": 0.85,
+    "practicality": 0.55,
+    "novelty": 0.7
+  },
+  "development_key": "agent-geheugen-wiki-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.7,
+    "why": "Context voor agents met cijfers en herkomst, zoals je duimen voor de dbt Wizard- en LangChain-contextstukken."
+  },
+  "labels": [
+    "agent-geheugen",
+    "llm-wiki",
+    "kennisgraaf"
+  ],
+  "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dit iets voor fase 7",
+    "why": "Fase 7 gebruikt dbt-artifacts als context voor een eigen agent; dit laat zien hoe je die context actueel houdt."
+  },
+  "terms": [
+    {
+      "term": "hash",
+      "explanation": "Een korte vingerafdruk van een stuk tekst. Verandert er één teken, dan verandert de hele vingerafdruk, zodat je wijzigingen snel ziet."
+    },
+    {
+      "term": "bewijsgraaf",
+      "explanation": "Een netwerk van beweringen, alinea's en documenten met lijnen ertussen, zodat een agent van een bewering naar het bewijs kan lopen."
+    },
+    {
+      "term": "lineage",
+      "explanation": "Het overzicht van waar data vandaan komt en wat ervan afhangt, van bron tot dashboard of agent."
+    }
+  ],
+  "showcase": {
+    "caption": "Het idee achter de hash per bron: elke bewering bewaart de vingerafdruk van de alinea die hij citeert. Is de alinea later anders, dan valt die bewering vanzelf op, zonder taalmodel.",
+    "language": "sql",
+    "code": "-- claims: bewering + geciteerde alinea + hash bij schrijven\n-- paragrafen: de huidige tekst per alinea\nSELECT c.claim_id, c.bewering,\n  CASE WHEN md5(p.tekst) = c.hash_bij_schrijven\n       THEN 'klopt nog' ELSE 'opnieuw controleren' END AS status\nFROM claims c\nJOIN paragrafen p ON p.paragraaf_id = c.cite\nORDER BY c.claim_id;",
+    "result": {
+      "columns": [
+        "claim_id",
+        "bewering",
+        "status"
+      ],
+      "rows": [
+        [
+          "c1",
+          "Het eigen risico is 385 euro.",
+          "opnieuw controleren"
+        ],
+        [
+          "c2",
+          "De dekking is wereldwijd.",
+          "klopt nog"
+        ]
+      ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB; de alinea bij c1 werd na het schrijven aangepast. Zo werkt het idee in gewone SQL; hoe OpenWiki het zelf doet, staat in de documentatie."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-11T03:46:00Z",
+  "prompt_version": "taak-v2"
+}
