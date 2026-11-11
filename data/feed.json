@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T03:30:17.496355Z",
+ "generated_at": "2026-11-11T03:31:07.108124Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-11T03:54:00Z",
@@ -419,8 +419,8 @@
  ],
  "daily_top": [
   "5c7174c45ad1",
+  "308e572d49e4",
   "4dcd7af26dab",
-  "941b0ba5dad7",
   "d2e9b967064a",
   "c63f36899b14"
  ],
@@ -567,6 +567,120 @@
    }
   },
   {
+   "id": "308e572d49e4",
+   "title": "Azure Databricks: wat is er nieuw in week 44",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-01T23:59:59Z",
+   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
+   "fetched_at": "2026-11-06T03:12:45.337266Z",
+   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
+   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
+   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
+   "limitations": [
+    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
+    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
+    "AI Functions-rechten moet je via het accountteam laten aanzetten."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+     "label": "Read and write XML files",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
+    },
+    {
+     "label": "Genie One MCP server",
+     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering",
+    "data_ingestion"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 97,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.64,
+    "source": 1.0,
+    "quality": 0.67,
+    "fit": 0.2,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-02T03:28:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
+   "story": [
+    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
+    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
+    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
+    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
+    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
+   ],
+   "key_facts": [
+    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
+    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
+    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
+    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
+    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
+    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
+    "language": "sql",
+    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
+    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
+   },
+   "terms": [
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "Auto Loader",
+     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+    },
+    {
+     "term": "OAuth",
+     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
+   },
+   "labels": [
+    "genie-mcp",
+    "metric-views",
+    "claude-code-databricks"
+   ],
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
+    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
+   }
+  },
+  {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
    "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
@@ -648,6 +762,110 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "ceb4b784fbab",
+   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:44:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Fintech KOHO bouwde KoDa: medewerkers stellen een vraag in Claude Code en krijgen antwoord uit gecertificeerde dbt-marts in Redshift, via een skill en een MCP-server.",
+   "personal_relevance": "Precies het idee van een data-assistent op je Gold-laag, inclusief hoe je controleert of de antwoorden kloppen.",
+   "experiment": "Schrijf 20 testvragen met verwachte antwoorden voor de openbare jaffle_shop-marts en laat Claude ze beantwoorden via een SQL-tool. Tel hoeveel er kloppen.",
+   "limitations": [
+    "Geen cijfers over nauwkeurigheid, gebruik of kosten.",
+    "Bestuursrapportages worden nog steeds met de hand gecontroleerd.",
+    "Met werkdata alleen binnen Databricks na te bouwen, niet met externe AI."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_on_data_platform",
+    "dbt_analytics_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 95,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.49,
+    "source": 0.85,
+    "quality": 0.68,
+    "feedback": -0.03,
+    "fit": 0.4,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
+   "story": [
+    "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
+    "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
+    "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
+    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata. Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten."
+   ],
+   "key_facts": [
+    "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
+    "Tools: Claude via Bedrock, Claude Code met de KoDa-skill, een Redshift-MCP-server, en dbt-marts in Redshift.",
+    "Ongeveer 1.400 dbt-modellen met tests en documentatie, zonder persoonsgegevens; de pipeline werd in 2022 opnieuw in dbt gebouwd.",
+    "Alleen leesrechten, alleen gecertificeerde mart-modellen, alleen analytische vragen.",
+    "Eval council van ongeveer 375 analistenvragen; ongeveer 11 commits van drie mensen in drie maanden voor contextbibliotheken en evaluatie.",
+    "Verslag van een sessie op dbt Summit 2026; geen cijfers over nauwkeurigheid of gebruik."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "skill",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "hooks",
+     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+     "term": "Bedrock",
+     "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
+    },
+    {
+     "term": "eval council",
+     "explanation": "Bij KOHO een vaste verzameling echte vragen van analisten waarmee elke wijziging aan de assistent wordt getest."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.9,
+    "why": "Je gaf dit stuk over Claude op dbt-modellen een duim omhoog."
+   },
+   "labels": [
+    "claude-code-self-service",
+    "dbt-mcp",
+    "claude-code-skills"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten",
+    "why": "Fase 7 vraagt om een agent met read-only SQL via een MCP-server."
    }
   },
   {
@@ -757,112 +975,117 @@
    }
   },
   {
-   "id": "308e572d49e4",
-   "title": "Azure Databricks: wat is er nieuw in week 44",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-01T23:59:59Z",
-   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
-   "fetched_at": "2026-11-06T03:12:45.337266Z",
-   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
-   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
-   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
+   "id": "81204e04abb9",
+   "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
+   "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:07:00Z",
+   "fetched_at": "2026-10-28T20:21:53.503248Z",
+   "summary": "Het datateam van LangChain liet een AI-agent in Hex vragen beantwoorden met context uit vier lagen: dbt-documentatie, uitleg in markdown, een semantische laag en goedgekeurde modellen. Het aantal self-service vragen steeg 40 keer.",
+   "personal_relevance": "Laat zien hoe je dbt-beschrijvingen en markdown in je repo gebruikt als context voor een data-agent, precies je leerdoel.",
+   "experiment": "Kies één Gold-model en schrijf de kolombeschrijvingen opnieuw zoals LangChain het doet: met alle mogelijke waarden en hun betekenis. Laat Claude (zonder werkdata, alleen de YAML met verzonnen voorbeelden) daarna drie vragen beantwoorden met en zonder die beschrijvingen.",
    "limitations": [
-    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
-    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
-    "AI Functions-rechten moet je via het accountteam laten aanzetten."
+    "De 40 keer meer vragen zegt iets over gebruik, niet over hoe vaak de antwoorden kloppen.",
+    "Het stuk komt van dbt Labs en is een samenvatting van een talk; er staat geen code of configuratie in."
    ],
-   "availability_status": "beschikbaar",
+   "availability_status": "onbekend",
    "official_docs": [
     {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "Read and write XML files",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
-    },
-    {
-     "label": "Genie One MCP server",
-     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
+     "label": "Talk op dbt Summit: No drift allowed",
+     "url": "https://www.getdbt.com/dbt-summit/agenda/no-drift-allowed-langchains-context-playbook-with-hex"
     }
    ],
    "topics": [
-    "ai_on_data_platform",
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
     "ai_agents_rag",
-    "databricks_data_engineering",
-    "data_ingestion"
+    "metadata_lineage_catalogs"
    ],
    "groups": [
     "ai_context",
+    "dbt",
     "agents",
-    "databricks"
+    "kwaliteit"
    ],
-   "relevance_score": 92,
+   "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
-    "source": 1.0,
-    "quality": 0.67,
-    "fit": 0.2
+    "recency": 0.49,
+    "source": 0.85,
+    "quality": 0.63,
+    "feedback": -0.02,
+    "fit": 0.35,
+    "project": 0.05
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:28:00Z",
+   "processed_at": "2026-11-07T04:05:00Z",
    "reading_minutes": 3,
    "format_version": 2,
-   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
+   "headline": "LangChain geeft zijn data-agent vier lagen context, vanuit dbt",
    "story": [
-    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
-    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
-    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
-    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
-    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA)."
+    "Bij LangChain stellen collega's hun datavragen aan een AI-agent in Hex, die op BigQuery werkt. Om die agent goede antwoorden te laten geven, bouwde het datateam vier lagen context. Volgens het team stellen collega's nu 40 keer zo veel vragen via self-service.",
+    "De eerste laag is de dbt-documentatie. Beschrijvingen van tabellen en kolommen gaan vanuit dbt naar BigQuery, zodat elke agent die het warehouse leest ze ziet. Het team moest die beschrijvingen veel explicieter maken: welke waarden een veld kan hebben en wat elke waarde betekent. Ook kan de agent de dbt-repo en de DAG lezen, om te zien waar een model van afhangt.",
+    "De tweede laag zijn werkruimtegidsen (workspace guides): markdownbestanden die uitleggen hoe het bedrijf bijvoorbeeld jaaromzet (ARR) meet. Ze staan in de dbt-repo, dus met versiebeheer, en een GitHub Action zet ze in Hex. De derde laag is een semantische laag, waarin de belangrijkste maatstaven en joins in code vastliggen. Zo krijgt dezelfde omzetvraag steeds hetzelfde antwoord.",
+    "De vierde laag is een keurmerk (endorsement) op betrouwbare marts en dashboards. LangChain deelt dat bewust spaarzaam uit, anders zegt het niets meer. Wijzigingen aan goedgekeurde dashboards moeten eerst langs het datateam.",
+    "Wat het team niet heeft: een vaste manier om te meten of antwoorden kloppen. Het meet vooral gebruik, en evals staan nog op de planning. Het patroon past wel goed bij een dbt-project: je beschrijvingen en YAML zijn al de plek waar zulke context kan wonen. Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent."
    ],
    "key_facts": [
-    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
-    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
-    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
-    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
-    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
-    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
+    "Gebruikte tools: dbt, BigQuery en Hex; een GitHub Action zet de werkruimtegidsen vanuit de dbt-repo in Hex.",
+    "De vier lagen: dbt-documentatie (gesynchroniseerd naar BigQuery), werkruimtegidsen in markdown, een semantische laag, en endorsements op marts en dashboards.",
+    "LangChain meldt 40 keer zo veel vragen via self-service analytics.",
+    "Er is nog geen formele controle op juistheid; evals en het verrijken van context met de CLI van Hex staan op de planning.",
+    "Blog van dbt Labs (Daniel Poppy, 27 oktober 2026) over een talk van Emily Hawkins en Logan Cochran van LangChain."
    ],
-   "article_type": "nieuws",
    "showcase": {
-    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
-    "language": "sql",
-    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
-    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
+    "caption": "Een vage beschrijving tegenover een beschrijving waar een agent iets aan heeft: elke waarde staat erbij. Met persist_docs zet dbt de beschrijving ook in de tabel in het warehouse.",
+    "language": "yaml",
+    "code": "models:\n  - name: dim_klant\n    config:\n      persist_docs:\n        relation: true\n        columns: true\n    columns:\n      - name: status\n        # vaag: \"Status van de klant\"\n        description: >\n          Fase van de klant. Waarden:\n          'proef' = gratis proefperiode, nog geen betaling;\n          'actief' = betaalt nu;\n          'opgezegd' = heeft opgezegd, telt niet mee in omzet.",
+    "note": "Het artikel toont geen code. Zo werkt het idee in dbt; persist_docs is een gewone dbt-instelling, of LangChain die gebruikt staat niet in het artikel. Verzonnen model."
    },
    "terms": [
     {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+     "term": "DAG",
+     "explanation": "Directed acyclic graph: de kaart van alle dbt-modellen en hoe ze van elkaar afhangen. dbt bepaalt er de volgorde van bouwen mee."
     },
     {
-     "term": "Auto Loader",
-     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+     "term": "werkruimtegidsen",
+     "explanation": "Markdownbestanden met bedrijfsuitleg, zoals hoe je een maatstaf meet, die een AI-agent in Hex als vaste achtergrond leest."
     },
     {
-     "term": "OAuth",
-     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
+     "term": "semantische laag",
+     "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
     },
     {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+     "term": "endorsement",
+     "explanation": "Een keurmerk op een model of dashboard dat zegt: dit is een betrouwbare bron. Een agent kan zulke bronnen voorrang geven."
+    },
+    {
+     "term": "evals",
+     "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
     }
    ],
-   "soort": "release",
+   "soort": "praktijk",
    "fit": {
-    "score": 0.7,
-    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
+    "score": 0.85,
+    "why": "Lijkt sterk op je duimen voor 'synoniemen en regels per veld' en 'self-service op goedgekeurde dbt-modellen'."
    },
    "labels": [
-    "genie-mcp",
-    "metric-views",
-    "claude-code-databricks"
-   ]
+    "dbt-docs-als-context",
+    "semantische-laag",
+    "data-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -2
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent",
+    "why": "Fase 7 gebruikt dbt-artifacts als context voor een eigen data-agent."
+   }
   },
   {
    "id": "d8887a09bc5e",
@@ -1359,104 +1582,6 @@
    }
   },
   {
-   "id": "ceb4b784fbab",
-   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
-   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:44:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Fintech KOHO bouwde KoDa: medewerkers stellen een vraag in Claude Code en krijgen antwoord uit gecertificeerde dbt-marts in Redshift, via een skill en een MCP-server.",
-   "personal_relevance": "Precies het idee van een data-assistent op je Gold-laag, inclusief hoe je controleert of de antwoorden kloppen.",
-   "experiment": "Schrijf 20 testvragen met verwachte antwoorden voor de openbare jaffle_shop-marts en laat Claude ze beantwoorden via een SQL-tool. Tel hoeveel er kloppen.",
-   "limitations": [
-    "Geen cijfers over nauwkeurigheid, gebruik of kosten.",
-    "Bestuursrapportages worden nog steeds met de hand gecontroleerd.",
-    "Met werkdata alleen binnen Databricks na te bouwen, niet met externe AI."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_on_data_platform",
-    "dbt_analytics_engineering",
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "dbt",
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.49,
-    "source": 0.85,
-    "quality": 0.68,
-    "feedback": -0.03,
-    "fit": 0.4
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-30T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
-   "story": [
-    "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
-    "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
-    "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
-    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata."
-   ],
-   "key_facts": [
-    "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
-    "Tools: Claude via Bedrock, Claude Code met de KoDa-skill, een Redshift-MCP-server, en dbt-marts in Redshift.",
-    "Ongeveer 1.400 dbt-modellen met tests en documentatie, zonder persoonsgegevens; de pipeline werd in 2022 opnieuw in dbt gebouwd.",
-    "Alleen leesrechten, alleen gecertificeerde mart-modellen, alleen analytische vragen.",
-    "Eval council van ongeveer 375 analistenvragen; ongeveer 11 commits van drie mensen in drie maanden voor contextbibliotheken en evaluatie.",
-    "Verslag van een sessie op dbt Summit 2026; geen cijfers over nauwkeurigheid of gebruik."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "skill",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "hooks",
-     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
-    },
-    {
-     "term": "Bedrock",
-     "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
-    },
-    {
-     "term": "eval council",
-     "explanation": "Bij KOHO een vaste verzameling echte vragen van analisten waarmee elke wijziging aan de assistent wordt getest."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.9,
-    "why": "Je gaf dit stuk over Claude op dbt-modellen een duim omhoog."
-   },
-   "labels": [
-    "claude-code-self-service",
-    "dbt-mcp",
-    "claude-code-skills"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -3
-   }
-  },
-  {
    "id": "412d4b1345c3",
    "title": "How to put generative AI directly into a dbt pipeline with plain SQL",
    "url": "https://www.getdbt.com/blog/bigquery-generative-ai-dbt-sql-functions",
@@ -1923,113 +2048,6 @@
    }
   },
   {
-   "id": "81204e04abb9",
-   "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
-   "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:07:00Z",
-   "fetched_at": "2026-10-28T20:21:53.503248Z",
-   "summary": "Het datateam van LangChain liet een AI-agent in Hex vragen beantwoorden met context uit vier lagen: dbt-documentatie, uitleg in markdown, een semantische laag en goedgekeurde modellen. Het aantal self-service vragen steeg 40 keer.",
-   "personal_relevance": "Laat zien hoe je dbt-beschrijvingen en markdown in je repo gebruikt als context voor een data-agent, precies je leerdoel.",
-   "experiment": "Kies één Gold-model en schrijf de kolombeschrijvingen opnieuw zoals LangChain het doet: met alle mogelijke waarden en hun betekenis. Laat Claude (zonder werkdata, alleen de YAML met verzonnen voorbeelden) daarna drie vragen beantwoorden met en zonder die beschrijvingen.",
-   "limitations": [
-    "De 40 keer meer vragen zegt iets over gebruik, niet over hoe vaak de antwoorden kloppen.",
-    "Het stuk komt van dbt Labs en is een samenvatting van een talk; er staat geen code of configuratie in."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Talk op dbt Summit: No drift allowed",
-     "url": "https://www.getdbt.com/dbt-summit/agenda/no-drift-allowed-langchains-context-playbook-with-hex"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "dbt_analytics_engineering",
-    "ai_agents_rag",
-    "metadata_lineage_catalogs"
-   ],
-   "groups": [
-    "ai_context",
-    "dbt",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 88,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.49,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.02,
-    "fit": 0.35
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T04:05:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "LangChain geeft zijn data-agent vier lagen context, vanuit dbt",
-   "story": [
-    "Bij LangChain stellen collega's hun datavragen aan een AI-agent in Hex, die op BigQuery werkt. Om die agent goede antwoorden te laten geven, bouwde het datateam vier lagen context. Volgens het team stellen collega's nu 40 keer zo veel vragen via self-service.",
-    "De eerste laag is de dbt-documentatie. Beschrijvingen van tabellen en kolommen gaan vanuit dbt naar BigQuery, zodat elke agent die het warehouse leest ze ziet. Het team moest die beschrijvingen veel explicieter maken: welke waarden een veld kan hebben en wat elke waarde betekent. Ook kan de agent de dbt-repo en de DAG lezen, om te zien waar een model van afhangt.",
-    "De tweede laag zijn werkruimtegidsen (workspace guides): markdownbestanden die uitleggen hoe het bedrijf bijvoorbeeld jaaromzet (ARR) meet. Ze staan in de dbt-repo, dus met versiebeheer, en een GitHub Action zet ze in Hex. De derde laag is een semantische laag, waarin de belangrijkste maatstaven en joins in code vastliggen. Zo krijgt dezelfde omzetvraag steeds hetzelfde antwoord.",
-    "De vierde laag is een keurmerk (endorsement) op betrouwbare marts en dashboards. LangChain deelt dat bewust spaarzaam uit, anders zegt het niets meer. Wijzigingen aan goedgekeurde dashboards moeten eerst langs het datateam.",
-    "Wat het team niet heeft: een vaste manier om te meten of antwoorden kloppen. Het meet vooral gebruik, en evals staan nog op de planning. Het patroon past wel goed bij een dbt-project: je beschrijvingen en YAML zijn al de plek waar zulke context kan wonen."
-   ],
-   "key_facts": [
-    "Gebruikte tools: dbt, BigQuery en Hex; een GitHub Action zet de werkruimtegidsen vanuit de dbt-repo in Hex.",
-    "De vier lagen: dbt-documentatie (gesynchroniseerd naar BigQuery), werkruimtegidsen in markdown, een semantische laag, en endorsements op marts en dashboards.",
-    "LangChain meldt 40 keer zo veel vragen via self-service analytics.",
-    "Er is nog geen formele controle op juistheid; evals en het verrijken van context met de CLI van Hex staan op de planning.",
-    "Blog van dbt Labs (Daniel Poppy, 27 oktober 2026) over een talk van Emily Hawkins en Logan Cochran van LangChain."
-   ],
-   "showcase": {
-    "caption": "Een vage beschrijving tegenover een beschrijving waar een agent iets aan heeft: elke waarde staat erbij. Met persist_docs zet dbt de beschrijving ook in de tabel in het warehouse.",
-    "language": "yaml",
-    "code": "models:\n  - name: dim_klant\n    config:\n      persist_docs:\n        relation: true\n        columns: true\n    columns:\n      - name: status\n        # vaag: \"Status van de klant\"\n        description: >\n          Fase van de klant. Waarden:\n          'proef' = gratis proefperiode, nog geen betaling;\n          'actief' = betaalt nu;\n          'opgezegd' = heeft opgezegd, telt niet mee in omzet.",
-    "note": "Het artikel toont geen code. Zo werkt het idee in dbt; persist_docs is een gewone dbt-instelling, of LangChain die gebruikt staat niet in het artikel. Verzonnen model."
-   },
-   "terms": [
-    {
-     "term": "DAG",
-     "explanation": "Directed acyclic graph: de kaart van alle dbt-modellen en hoe ze van elkaar afhangen. dbt bepaalt er de volgorde van bouwen mee."
-    },
-    {
-     "term": "werkruimtegidsen",
-     "explanation": "Markdownbestanden met bedrijfsuitleg, zoals hoe je een maatstaf meet, die een AI-agent in Hex als vaste achtergrond leest."
-    },
-    {
-     "term": "semantische laag",
-     "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
-    },
-    {
-     "term": "endorsement",
-     "explanation": "Een keurmerk op een model of dashboard dat zegt: dit is een betrouwbare bron. Een agent kan zulke bronnen voorrang geven."
-    },
-    {
-     "term": "evals",
-     "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.85,
-    "why": "Lijkt sterk op je duimen voor 'synoniemen en regels per veld' en 'self-service op goedgekeurde dbt-modellen'."
-   },
-   "labels": [
-    "dbt-docs-als-context",
-    "semantische-laag",
-    "data-agent"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -2
-   }
-  },
-  {
    "id": "6df581b9d8ed",
    "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
@@ -2132,6 +2150,118 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "e355f3b1aafd",
+   "title": "dbt v1.13.0b1",
+   "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
+   "source_id": "dbt_core_releases",
+   "published_at": "2026-10-14T07:41:52Z",
+   "fetched_at": "2026-10-28T20:21:52.729187Z",
+   "summary": "De eerste bèta van dbt 1.13 zet vlaggen uit 1.9 en 1.10 standaard aan. Ook zit dbt State er nu in, en je kunt de nieuwe v2-parser proberen.",
+   "personal_relevance": "Je gebruikt dbt Core, en de nieuwe standaardvlaggen kunnen gedrag van je project veranderen.",
+   "experiment": "Installeer dbt 1.13.0b1 in een losse virtuele omgeving en draai dbt parse en dbt compile op een kopie van je project. Vergelijk de waarschuwingen en de gecompileerde SQL met je huidige versie.",
+   "limitations": [
+    "Dit is een bèta; gebruik hem niet in productie.",
+    "De release noemt niet welke vlaggen precies omgaan; dat moet je in de changelog nazoeken.",
+    "Het artikel zegt niet hoeveel dbt State oplevert op Databricks."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Release dbt v1.13.0b1",
+     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1"
+    },
+    {
+     "label": "Upgraden naar v1.13",
+     "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.13"
+    },
+    {
+     "label": "dbt State",
+     "url": "https://docs.getdbt.com/docs/deploy/dbt-state-about"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering"
+   ],
+   "groups": [
+    "dbt"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.25,
+    "source": 0.8,
+    "quality": 0.6,
+    "feedback": 0.04,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-29T06:45:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "dbt_core_releases",
+     "title": "dbt v1.13.0rc1",
+     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1",
+     "published_at": "2026-11-04T11:47:03Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "dbt 1.13 bèta zet oude vlaggen aan en brengt dbt State naar v1",
+   "story": [
+    "dbt Labs heeft op 14 oktober de eerste bèta van dbt 1.13 uitgebracht. De belangrijkste wijziging is een breuk: vlaggen die in 1.9 en 1.10 zijn ingevoerd, staan nu standaard aan. Gedrag waar je tot nu toe zelf voor koos, wordt dus de norm.",
+    "Daarnaast zit dbt State nu standaard in dbt 1.13. Daarmee slaat dbt modellen over waarvan logica en data niet zijn veranderd. Je zet het zelf aan met --manage-state. Het is alsof je alleen de kamers schoonmaakt waar iemand is geweest.",
+    "Een derde nieuwtje is de optie --use-v2-parser. Daarmee laat dbt 1.13 het inlezen van je project over aan de parser van dbt v2. Zo kun je proeven aan de nieuwe engine, zonder meteen helemaal over te stappen.",
+    "Voor jouw project is vooral de breuk belangrijk. Draai je dbt Core met eigen generatorscripts, test dan of de nieuwe standaardvlaggen iets veranderen. Er staat ook een fix in voor valse waarschuwingen bij Databricks-instellingen."
+   ],
+   "key_facts": [
+    "dbt v1.13.0b1 (dbt-core 1.13.0-b1) is een bèta (pre-release) van 14 oktober 2026.",
+    "Breuk: vlaggen uit 1.9 en 1.10 staan nu standaard op true.",
+    "De dbt-state-plugin is meegebundeld en werkt opt-in via --manage-state, DBT_ENGINE_MANAGE_STATE of manage_state in de configuratie.",
+    "Nieuwe optie --use-v2-parser laat de v2-parser het project inlezen.",
+    "Nieuw: een dbt login-commando en een instelbare limiet voor seed-grootte (MAXIMUM_SEED_SIZE_MIB).",
+    "Fix: Databricks-adapterinstellingen geven geen valse deprecation-waarschuwingen meer."
+   ],
+   "terms": [
+    {
+     "term": "dbt State",
+     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+     "term": "dbt v2",
+     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
+    },
+    {
+     "term": "vlaggen",
+     "explanation": "Instellingen waarmee je nieuw gedrag van dbt al vooraf aanzet. In een latere versie wordt dat gedrag de standaard."
+    },
+    {
+     "term": "parser",
+     "explanation": "Het onderdeel van dbt dat je projectbestanden inleest en omzet in een overzicht van modellen en hun verbanden, voordat er iets draait."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.65,
+    "why": "dbt-release in je eigen stack, maar een bèta zonder AI-hoek."
+   },
+   "labels": [
+    "dbt-release",
+    "dbt-state",
+    "dbt-v2"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
+    "id": "681080ea70e4",
+    "v": 1,
+    "s": 70,
+    "pts": 4
    }
   },
   {
@@ -2368,113 +2498,6 @@
    }
   },
   {
-   "id": "e355f3b1aafd",
-   "title": "dbt v1.13.0b1",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
-   "source_id": "dbt_core_releases",
-   "published_at": "2026-10-14T07:41:52Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "summary": "De eerste bèta van dbt 1.13 zet vlaggen uit 1.9 en 1.10 standaard aan. Ook zit dbt State er nu in, en je kunt de nieuwe v2-parser proberen.",
-   "personal_relevance": "Je gebruikt dbt Core, en de nieuwe standaardvlaggen kunnen gedrag van je project veranderen.",
-   "experiment": "Installeer dbt 1.13.0b1 in een losse virtuele omgeving en draai dbt parse en dbt compile op een kopie van je project. Vergelijk de waarschuwingen en de gecompileerde SQL met je huidige versie.",
-   "limitations": [
-    "Dit is een bèta; gebruik hem niet in productie.",
-    "De release noemt niet welke vlaggen precies omgaan; dat moet je in de changelog nazoeken.",
-    "Het artikel zegt niet hoeveel dbt State oplevert op Databricks."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Release dbt v1.13.0b1",
-     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1"
-    },
-    {
-     "label": "Upgraden naar v1.13",
-     "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.13"
-    },
-    {
-     "label": "dbt State",
-     "url": "https://docs.getdbt.com/docs/deploy/dbt-state-about"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering"
-   ],
-   "groups": [
-    "dbt"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.25,
-    "source": 0.8,
-    "quality": 0.6,
-    "feedback": 0.03,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-29T06:45:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "dbt_core_releases",
-     "title": "dbt v1.13.0rc1",
-     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1",
-     "published_at": "2026-11-04T11:47:03Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "dbt 1.13 bèta zet oude vlaggen aan en brengt dbt State naar v1",
-   "story": [
-    "dbt Labs heeft op 14 oktober de eerste bèta van dbt 1.13 uitgebracht. De belangrijkste wijziging is een breuk: vlaggen die in 1.9 en 1.10 zijn ingevoerd, staan nu standaard aan. Gedrag waar je tot nu toe zelf voor koos, wordt dus de norm.",
-    "Daarnaast zit dbt State nu standaard in dbt 1.13. Daarmee slaat dbt modellen over waarvan logica en data niet zijn veranderd. Je zet het zelf aan met --manage-state. Het is alsof je alleen de kamers schoonmaakt waar iemand is geweest.",
-    "Een derde nieuwtje is de optie --use-v2-parser. Daarmee laat dbt 1.13 het inlezen van je project over aan de parser van dbt v2. Zo kun je proeven aan de nieuwe engine, zonder meteen helemaal over te stappen.",
-    "Voor jouw project is vooral de breuk belangrijk. Draai je dbt Core met eigen generatorscripts, test dan of de nieuwe standaardvlaggen iets veranderen. Er staat ook een fix in voor valse waarschuwingen bij Databricks-instellingen."
-   ],
-   "key_facts": [
-    "dbt v1.13.0b1 (dbt-core 1.13.0-b1) is een bèta (pre-release) van 14 oktober 2026.",
-    "Breuk: vlaggen uit 1.9 en 1.10 staan nu standaard op true.",
-    "De dbt-state-plugin is meegebundeld en werkt opt-in via --manage-state, DBT_ENGINE_MANAGE_STATE of manage_state in de configuratie.",
-    "Nieuwe optie --use-v2-parser laat de v2-parser het project inlezen.",
-    "Nieuw: een dbt login-commando en een instelbare limiet voor seed-grootte (MAXIMUM_SEED_SIZE_MIB).",
-    "Fix: Databricks-adapterinstellingen geven geen valse deprecation-waarschuwingen meer."
-   ],
-   "terms": [
-    {
-     "term": "dbt State",
-     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
-    },
-    {
-     "term": "dbt v2",
-     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
-    },
-    {
-     "term": "vlaggen",
-     "explanation": "Instellingen waarmee je nieuw gedrag van dbt al vooraf aanzet. In een latere versie wordt dat gedrag de standaard."
-    },
-    {
-     "term": "parser",
-     "explanation": "Het onderdeel van dbt dat je projectbestanden inleest en omzet in een overzicht van modellen en hun verbanden, voordat er iets draait."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.65,
-    "why": "dbt-release in je eigen stack, maar een bèta zonder AI-hoek."
-   },
-   "fb_why": {
-    "by": "similar",
-    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
-    "id": "681080ea70e4",
-    "v": 1,
-    "s": 70,
-    "pts": 3
-   }
-  },
-  {
    "id": "450468c3f304",
    "title": "Built for Agents: The Case for Spark Declarative Pipelines",
    "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
@@ -2653,7 +2676,12 @@
    "fit": {
     "score": 0.7,
     "why": "Claude Code-release, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
-   }
+   },
+   "labels": [
+    "claude-code-auto-mode",
+    "claude-code-skills",
+    "opentelemetry"
+   ]
   },
   {
    "id": "e7bf67f656d3",
@@ -12390,23 +12418,22 @@
   }
  ],
  "runs": {
-  "date": "2026-11-07",
+  "date": "2026-11-11",
   "tasks": {
    "uitleggen": {
-    "status": "deels",
-    "summary": "10 artikelen uitgelegd (2 vol, 8 kort, 2 met voorbeeld) en 2 overgeslagen, uit de werklijst van gisteren omdat vers ophalen mislukte.",
-    "finished_at": "2026-11-07T03:31:56Z",
-    "problems": [
-     "Vers ophalen lukte niet: de workflow 'Radar bijwerken' faalt sinds 6 november op test_feed_contract, die 'story' eist bij korte uitleg (diepte kort). Daardoor is de werklijst van 6 november gebruikt.",
-     "De eerste 6 artikelen op de werklijst waren al verwerkt; data/to_tag.json had al labels voor alle 20 artikelen."
-    ],
+    "status": "ok",
+    "summary": "10 artikelen uitgelegd (6 vol, 4 kort, 2 met voorbeeld) en 4 overgeslagen; daarna bij 20 oudere uitleggen de Dataflow-verwijzing en ontbrekende labels aangevuld.",
+    "finished_at": "2026-11-11T03:30:40Z",
+    "problems": [],
     "counts": {
      "uitgelegd": 10,
-     "vol": 2,
-     "kort": 8,
+     "vol": 6,
+     "kort": 4,
      "met_voorbeeld": 2,
-     "overgeslagen": 2,
-     "overgeslagen_zonder_openen": 0
+     "overgeslagen": 4,
+     "overgeslagen_zonder_openen": 3,
+     "aangevuld": 20,
+     "project_ref_gezet": 6
     }
    }
   }
@@ -12524,13 +12551,13 @@
   },
   "per_source": {
    "databricks_blog": 14,
-   "dbt_labs_blog": 9,
    "azure_databricks_release_notes": 4,
+   "dbt_labs_blog": 9,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
-   "claude_blog": 11,
    "dbt_core_releases": 1,
+   "claude_blog": 11,
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
