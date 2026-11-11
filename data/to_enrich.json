@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T10:45:29.233758Z",
+ "generated_at": "2026-11-11T14:38:47.479414Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -138,6 +138,19 @@
    ]
   },
   {
+   "id": "0b6411ed8e60",
+   "title": "How Stripe Built Kai on Deep Agents in 1 Week",
+   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-10T12:31:02Z",
+   "excerpt": "Learn how Stripe built Kai, a company-wide AI agent on LangChain, LangGraph, and Deep Agents, reaching 5,000 users in roughly 4 weeks.",
+   "preliminary_score": 43,
+   "preliminary_topics": [
+    "open_source_tools"
+   ]
+  },
+  {
    "id": "724fae925148",
    "title": "Pay for Hugging Face Hub with your Google Cloud Account",
    "url": "https://huggingface.co/blog/hub-gcp-marketplace",
@@ -145,7 +158,7 @@
    "source_name": "Hugging Face Blog",
    "published_at": "2026-11-10T00:00:00Z",
    "excerpt": "",
-   "preliminary_score": 43,
+   "preliminary_score": 42,
    "preliminary_topics": [
     "open_source_tools"
    ]
@@ -158,20 +171,7 @@
    "source_name": "Hugging Face Blog",
    "published_at": "2026-11-10T00:00:00Z",
    "excerpt": "",
-   "preliminary_score": 43,
-   "preliminary_topics": [
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "0b6411ed8e60",
-   "title": "How Stripe Built Kai on Deep Agents in 1 Week",
-   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-10T12:31:02Z",
-   "excerpt": "Learn how Stripe built Kai, a company-wide AI agent on LangChain, LangGraph, and Deep Agents, reaching 5,000 users in roughly 4 weeks.",
-   "preliminary_score": 43,
+   "preliminary_score": 42,
    "preliminary_topics": [
     "open_source_tools"
    ]
@@ -210,7 +210,7 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-06T22:10:00Z",
    "excerpt": "If you ingest data from your customers over SFTP or APIs, you have probably asked...",
-   "preliminary_score": 39,
+   "preliminary_score": 38,
    "preliminary_topics": [
     "data_ingestion"
    ]
@@ -249,7 +249,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-09T15:58:55Z",
    "excerpt": "Microsoft is a Leader in the 2026 Gartner® Magic Quadrant™ for Data Integration Tools For the sixth consecutive year, Microsoft has been named a Leader in the 2026 Gartner® Magic Quadrant™ for Data Integration Tools—and this year, the story isn't just about unifying data, it's about what customers are building on it. In our view, it reflects how far Microsoft Fabric has come—from a unified platform to an open, AI-ready foundation that connects data across clouds, formats, and partners. Gartner evaluates vendors on two critical dimensions: Completeness of Vision and Ability to Execute. Microsoft offers Microsoft Fabric, Azure Data Factory, SQL Server Data Integration Services (SSIS), Power Query, and Azure Synapse Analytics as its data integration tools. The report noted Microsoft’s global reach, industry diversity and our ongoing investment in innovative data integration capabilities. The MQ measures both the strength of the vision as well as ability to execute. The 2026 iteration firmly places Microsoft as a leader. We agree with Gartner’s perspective that our success hinges on delivering seamless integration across Microsoft’s Data Integration portfolio, unifying experiences acro",
-   "preliminary_score": 79,
+   "preliminary_score": 78,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
@@ -285,21 +285,6 @@
    ]
   },
   {
-   "id": "fdd5d7528171",
-   "title": "Bring your Fabric data into your next app with connectors",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T18:00:00Z",
-   "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
-   "preliminary_score": 74,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ]
-  },
-  {
    "id": "3244615a8462",
    "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
@@ -315,6 +300,21 @@
    ]
   },
   {
+   "id": "fdd5d7528171",
+   "title": "Bring your Fabric data into your next app with connectors",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-04T18:00:00Z",
+   "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
+   "preliminary_score": 73,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "33aba6cab6d1",
    "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
@@ -322,7 +322,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T18:20:11Z",
    "excerpt": "Moving a real-time data pipeline from development to test to production should not mean reconfiguring every source and destination. Yet environment-specific connection details and destination references can make each release a manual, error-prone task. Variable library integration with Eventstream in Microsoft Fabric lets teams reuse the same eventstream definition across environments, with references that resolve to each environment's resources. What's new? Variable library integration with Eventstream is available in preview. For supported source connections and destination items, you can use variable library references instead of direct values. These references are preserved through Git integration and deployment pipelines, helping teams reuse an eventstream definition across workspaces with environment-specific configuration. How variable library integration works Variable library is an item type in Microsoft Fabric that provides a centralized way to define and manage configuration values at the workspace level. Instead of entering environment-specific connection details and item identifiers directly into an eventstream, a team creates variables in a variable library and refere",
-   "preliminary_score": 73,
+   "preliminary_score": 72,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "cicd_data_deployment"
@@ -414,20 +414,6 @@
    ]
   },
   {
-   "id": "d33525fc8eb0",
-   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-28T17:00:00Z",
-   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
-   "preliminary_score": 62,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "sql_spark_sql"
-   ]
-  },
-  {
    "id": "12d151d364ff",
    "title": "Share data and context across organizations with IQ Share (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Share-data-and-context-across-organizations-with-IQ-Share/ba-p/5378764",
@@ -442,16 +428,17 @@
    ]
   },
   {
-   "id": "5b296e9220f1",
-   "title": "On-premises data gateway October 2026 release",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
+   "id": "d33525fc8eb0",
+   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
    "source_id": "fabric_blog",
    "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-27T14:00:00Z",
-   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
+   "published_at": "2026-10-28T17:00:00Z",
+   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
    "preliminary_score": 61,
    "preliminary_topics": [
-    "powerbi_semantic_models"
+    "powerbi_semantic_models",
+    "sql_spark_sql"
    ]
   },
   {
