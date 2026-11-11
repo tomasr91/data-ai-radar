@@ -180,8 +180,11 @@ with sync_playwright() as p:
     check("   nooit meer dan 2 kaarten van dezelfde bron achter elkaar", max(len(list(g)) for _, g in groupby(src[i] for i in dates)) <= 2
           or len({src[i] for i in dates}) == 1)
     page.click('#seg-sort button[data-v="trends"]')
-    check("13. Trends toont de trend met zijn artikelen", page.locator(".trend").count() == 1 and page.locator(".trend-list button").count() == len(_tr)
-          and "Testtrend" in page.locator(".trend").inner_text())
+    check("13. Trends toont de trend; artikelen ingeklapt tot je tikt", page.locator(".trend").count() == 1 and page.locator(".trend-list button").count() == len(_tr)
+          and "Testtrend" in page.locator(".trend").inner_text() and not page.locator(".trend-list").first.is_visible()
+          and f"{len(_tr)} artikelen" in page.locator(".trend-more summary").inner_text())
+    page.click(".trend-more summary")
+    check("   tik op de regel klapt de artikelen uit", page.locator(".trend-list").first.is_visible())
     page.locator(".trend-list button").first.click()
     page.wait_for_selector("#reader:not([hidden]) article.full")
     check("   artikel uit een trend opent", page.locator("#reader").is_visible())
