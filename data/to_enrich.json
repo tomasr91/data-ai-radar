@@ -1,35 +1,7 @@
 {
- "generated_at": "2026-11-11T03:28:25.396034Z",
+ "generated_at": "2026-11-11T03:30:17.496355Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "d8887a09bc5e",
-   "title": "The components of agent memory",
-   "url": "https://www.anthropic.com/research/components-of-agent-memory",
-   "source_id": "anthropic_engineering",
-   "source_name": "Anthropic Engineering",
-   "published_at": "2026-11-06T00:00:00Z",
-   "excerpt": "For Claude to learn from experience, it has to decide what’s worth remembering before it knows what’s next. Here’s how “dreaming” helps it organize memory and correct mistakes.",
-   "preliminary_score": 75,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "5352c33d33f8",
-   "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-   "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-10-28T17:28:42Z",
-   "excerpt": "LangChain used OpenWiki, its open-source wiki compiler, and an evidence graph to build a persistent memory layer that preserves knowledge for agents to reuse across tasks. Learn how.",
-   "preliminary_score": 75,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "open_source_tools"
-   ]
-  },
   {
    "id": "225ab7984001",
    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
@@ -44,58 +16,6 @@
     "databricks_data_engineering",
     "metadata_lineage_catalogs",
     "data_ingestion"
-   ]
-  },
-  {
-   "id": "7737e173e31a",
-   "title": "Introducing Claude Whiteboards, Claude Sheets, and Claude Data",
-   "url": "https://claude.com/resources/articles/sheets-whiteboards-data",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "excerpt": "Now you can brainstorm on whiteboards, build sheets, and share data directly in Claude.",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "45561964eabb",
-   "title": "More ways to work with Claude: Sheets, Whiteboards, and Interactive Connectors",
-   "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "excerpt": "Work at the speed of thought",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "eb06b7a71ce1",
-   "title": "Your apps can now open in Claude, and Claude can work in them",
-   "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "excerpt": "Our partners can now embed their apps directly in Claude, so you and Claude can work in the same tool, on the same screen, without switching tabs.",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "3180dbea1b88",
-   "title": "How Curative is building a national provider network with agents on Claude",
-   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "excerpt": "Curative’s deal-making agent negotiates 2,000+ provider contracts a week.",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "claude_ai_development"
    ]
   },
   {
@@ -546,6 +466,45 @@
    "preliminary_score": 45,
    "preliminary_topics": [
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "5f209baed0bf",
+   "title": "From a prompt to an operational dashboard: Generate Real-Time Dashboards with Copilot (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/From-a-prompt-to-an-operational-dashboard-Generate-Real-Time/ba-p/5380258",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-02T20:00:00Z",
+   "excerpt": "Start with the question, not a blank dashboard Which transit stations are sending the most fans toward a stadium? How does that incoming demand compare with activity at the gates? Where are queues building? Answering these operational questions traditionally requires translating them into tables, queries, visualizations, and a dashboard layout. When you already know what you want to monitor, that setup can get in the way of the question you are trying to answer. Copilot in Microsoft Fabric can generate a Real-Time Dashboard from a natural-language description of the insights you want. Working with a selected database in an Eventhouse, it uses the tables in that database to create a dashboard tailored to your goal. Figure: Start generating a Real-Time Dashboard with Copilot from an Eventhouse database . Rather than beginning with an empty canvas and building each visual separately, you describe the operational view you need. Copilot helps create the initial dashboard, and you review and customize it for your team. Describe, refine, and create Copilot can already help you write KQL queries and edit individual dashboard tiles. With dashboard generation, you can start one level higher:",
+   "preliminary_score": 47,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "42961f224d85",
+   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T17:00:00Z",
+   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
+   "preliminary_score": 46,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "1108578f6cfd",
+   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T19:00:00Z",
+   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
    ]
   }
  ]

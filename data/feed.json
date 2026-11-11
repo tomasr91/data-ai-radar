@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T03:28:25.396034Z",
+ "generated_at": "2026-11-11T03:30:17.496355Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-11T03:41:00Z",
+ "last_article_added_at": "2026-11-11T03:54:00Z",
  "last_successful_update": "2026-11-11T03:13:11.717998Z",
  "groups": [
   {
@@ -863,6 +863,128 @@
     "metric-views",
     "claude-code-databricks"
    ]
+  },
+  {
+   "id": "d8887a09bc5e",
+   "title": "The components of agent memory",
+   "url": "https://www.anthropic.com/research/components-of-agent-memory",
+   "source_id": "anthropic_engineering",
+   "published_at": "2026-11-06T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.778789Z",
+   "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
+   "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
+   "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
+   "limitations": [
+    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
+    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
+    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Dreaming in Claude Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/dreams"
+    },
+    {
+     "label": "Geheugenmap in Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/memory"
+    },
+    {
+     "label": "Geheugen in Claude Code",
+     "url": "https://code.claude.com/docs/en/memory"
+    },
+    {
+     "label": "Knowledge wiki quickstart",
+     "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.78,
+    "source": 1.0,
+    "quality": 0.75,
+    "feedback": -0.04,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:48:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "langchain_blog",
+     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+     "published_at": "2026-10-28T17:28:42Z",
+     "reason": "zelfde ontwikkeling"
+    },
+    {
+     "source_id": "claude_blog",
+     "title": "The components of agent memory",
+     "url": "https://www.anthropic.com/research/components-of-agent-memory",
+     "published_at": "2026-11-06T00:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
+   "story": [
+    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
+    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
+    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
+    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
+    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
+   ],
+   "key_facts": [
+    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
+    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
+    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
+    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
+    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
+    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "dreaming",
+     "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."
+    },
+    {
+     "term": "transcripten",
+     "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."
+    },
+    {
+     "term": "MEMORY.md",
+     "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."
+   },
+   "labels": [
+    "agent-geheugen",
+    "llm-wiki",
+    "context-als-code"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   }
   },
   {
    "id": "a68aede0b61b",
@@ -3235,6 +3357,58 @@
    }
   },
   {
+   "id": "3180dbea1b88",
+   "title": "How Curative is building a national provider network with agents on Claude",
+   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-10T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Zorgverzekeraar Curative bouwde agent Gwen (Claude Opus) die per zorgverlener een contract onderhandelt met alleen een Python-runner als tool; een Haiku-'rechter' leest elk uitgaand bericht vóór verzending en een Sonnet-agent beoordeelt tarieven boven de standaard. Concreet patroon voor agents met controle, al zijn de cijfers door de leverancier gepubliceerd.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "agents",
+    "claude",
+    "zorg"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.5,
+    "feedback": -0.03,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:54:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Curative laat een Claude-agent zorgcontracten onderhandelen, met een rechter",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Agent met controle-stappen in de zorg, zoals je duim voor Databricks' zorgkennis voor AI-assistenten."
+   },
+   "labels": [
+    "llm-als-rechter",
+    "human-in-the-loop",
+    "ai-in-de-zorg"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -3
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "77544766b84c",
    "title": "Claude’s new auto eval tool",
    "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
@@ -4476,6 +4650,105 @@
    "fb_why": {
     "by": "kind",
     "name": "praktijk",
+    "pts": -3
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "7737e173e31a",
+   "title": "Introducing Claude Whiteboards, Claude Sheets, and Claude Data",
+   "url": "https://claude.com/resources/articles/sheets-whiteboards-data",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-10T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic lanceert Claude Whiteboards en Claude Sheets (beide bèta) en hernoemt Claude Dashboards tot Claude Data (algemeen beschikbaar), met gecertificeerde metric-definities en live delen van goedgekeurde query's. Claude Data werkt met warehouses als BigQuery, Redshift en ClickHouse; Databricks wordt in het artikel niet genoemd.",
+   "availability_status": "preview",
+   "topics": [
+    "claude_ai_development",
+    "ai_on_data_platform"
+   ],
+   "groups": [
+    "claude",
+    "ai_context"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.4,
+    "feedback": -0.02,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:52:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Claude krijgt whiteboards en spreadsheets; Dashboards heet nu Claude Data",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.45,
+    "why": "Productaankondiging zonder uitleg hoe het werkt; je duimen gaan meer naar praktische en achtergrondstukken."
+   },
+   "labels": [
+    "claude-data",
+    "claude-sheets",
+    "vaste-metric-definities"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -2
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "eb06b7a71ce1",
+   "title": "Your apps can now open in Claude, and Claude can work in them",
+   "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-10T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Interactieve connectoren kunnen een hele app naast het gesprek of schermvullend openen, en Claude kan er na jouw goedkeuring direct in werken. Het draait op MCP Apps, een uitbreiding van het Model Context Protocol waarmee een MCP-server zijn eigen scherm meelevert; ontwikkelaarssteun is public preview.",
+   "availability_status": "preview",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.42,
+    "feedback": -0.03,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:53:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Apps als Asana en Notion openen nu volledig in Claude via MCP Apps",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.45,
+    "why": "Claude-productnieuws over kantoorapps, minder dicht bij je data-stack dan je duimen voor MCP- en agentstukken."
+   },
+   "labels": [
+    "mcp-apps",
+    "claude-connectoren"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
     "pts": -3
    },
    "diepte": "kort"
@@ -6271,188 +6544,6 @@
    }
   },
   {
-   "id": "ce8bd2396821",
-   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
-   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Een verkoper bij Anthropic Japan laat zes Claude-agents zijn leads, mails en CRM bijhouden. Elke agent heeft één taak; hij keurt alles goed.",
-   "personal_relevance": "Het patroon van agents met één taak en een vaste menselijke controle kun je ook gebruiken voor terugkerend datawerk.",
-   "experiment": "Schets voor een terugkerende taak, zoals het bijwerken van dbt-documentatie, welke kleine agents je zou maken, welke informatie elk nodig heeft en waar jij moet goedkeuren. Test één agent op een oefenproject met verzonnen data.",
-   "limitations": [
-    "Het is een verhaal van Anthropic over een eigen medewerker; de 60 uur is een eigen schatting zonder vergelijking.",
-    "Over de technische inrichting, zoals de Salesforce-koppeling, geeft het stuk weinig details.",
-    "Managed Agents en Claude Tag zijn bèta, en externe AI mag bij jou niet met werkdata."
-   ],
-   "availability_status": "preview",
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "agents",
-    "claude",
-    "ai_context"
-   ],
-   "relevance_score": 72,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.27,
-    "source": 0.51,
-    "quality": 0.52,
-    "feedback": -0.02,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:44:03Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Zes kleine agents met elk één taak, en een mens die tekent",
-   "story": [
-    "Shahboz Ibragimov werkt in de verkoop bij Anthropic in Japan. Hij laat een team van zes Claude-agents het routinewerk doen: binnenkomende leads verdelen, leads beoordelen, mails beantwoorden, Salesforce bijwerken en vergaderingen samenvatten. Hij leest alles na voordat het de deur uitgaat.",
-    "De opzet is leerzaam. Elke agent heeft precies één taak en draait op een vast schema, zoals een collega met één vaste klus. Eén agent kijkt elk uur in de mailbox en schrijft concepten in het Japans of Engels. Een coördinator past de instructies van de andere agents aan als Ibragimov daar in Slack om vraagt.",
-    "Fouten worden één keer opgelost. Agents schrijven correcties in een gedeeld geheugen, zodat de les voor allemaal blijft hangen. Prijsvragen, gevoelige klanten en onduidelijke verzoeken gaan altijd naar hem. Ook de modelkeuze is bewust: eenvoudige taken op Sonnet, lastige op Opus, en één agent vraagt Opus als adviseur bij moeilijke beslissingen.",
-    "De agents draaien op Claude Managed Agents, een dienst in bèta die schema's, geheugen en afgeschermde toegangsgegevens regelt. Voor jou is vooral het patroon bruikbaar: kleine agents met één taak, een gedeelde plek voor correcties en een vaste plek waar een mens beslist. Hoe de koppeling met Salesforce is gebouwd, staat er niet in."
-   ],
-   "key_facts": [
-    "Zes agents: Furiwake (leads verdelen), Sabaki (leads beoordelen en eerste mail), Henji (mail elk uur, Japans of Engels), Shoudan (Salesforce bijwerken), Nokori (vergaderingen samenvatten) en een coördinator.",
-    "De agents draaien op Claude Managed Agents (bèta) met schema's, een gedeeld geheugen, versies van instructies en kluizen voor toegangsgegevens.",
-    "Claude Tag (bèta) werkt als lid van Slack en vraagt hem om akkoord.",
-    "Furiwake en Shoudan draaien op Sonnet; Sabaki, Nokori en de coördinator op Opus; Henji op Sonnet met Opus als adviseur.",
-    "Volgens een eigen wekelijkse takenlijst scheelt het ongeveer 60 uur werk; er waren een paar honderd correctierondes nodig om zijn toon te raken.",
-    "Gepubliceerd 16 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Claude Managed Agents",
-     "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen."
-    },
-    {
-     "term": "gedeeld geheugen",
-     "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken."
-    },
-    {
-     "term": "leads",
-     "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.45,
-    "why": "Agentpatroon met Claude, maar in verkoopwerk en met weinig techniek, net als het kredietverhaal dat je te vaag vond."
-   },
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -2
-   }
-  },
-  {
-   "id": "3964fa015c0d",
-   "title": "Claude Security now scans continuously and tracks fixes",
-   "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-21T00:00:00Z",
-   "date_note": "Gepubliceerd op 21 oktober 2026.",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Claude Security scant repositories niet meer alleen op verzoek, maar volgt elke wijziging. Het ziet wanneer een lek gedicht is en heeft nu een API en een MCP-koppeling voor Claude Code.",
-   "personal_relevance": "Als je generatorscripts en tooling in Git staan, laat dit zien hoe een AI-controle doorlopend meekijkt en zelf bijhoudt of een probleem echt opgelost is.",
-   "experiment": "Lees de Getting Started-gids en schets voor een openbare voorbeeldrepository (geen werkcode) welke context en welk threat model je zou meegeven.",
-   "limitations": [
-    "Alleen voor Claude Enterprise, en in bèta.",
-    "Je code gaat naar een externe dienst; voor werkcode moet dat eerst getoetst worden aan de regels van je organisatie.",
-    "Hoe vaak er precies opnieuw gescand wordt, staat niet in het artikel."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Claude Security",
-     "url": "https://claude.com/product/claude-security"
-    },
-    {
-     "label": "Getting started with Claude Security",
-     "url": "https://academy.claude.com/tutorials/getting-started-with-claude-security"
-    },
-    {
-     "label": "Use Claude Security (Help Center)",
-     "url": "https://support.claude.com/en/articles/14661296-use-claude-security"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 72,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.51,
-    "quality": 0.53,
-    "feedback": -0.03,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:30:24Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is",
-   "story": [
-    "Claude Security zoekt beveiligingslekken in je code. Tot nu toe startte je zelf een scan. Sinds 21 oktober 2026 bewaakt het je repositories doorlopend, voor Claude Enterprise-klanten in publieke bèta.",
-    "Het werkt in twee stappen. Eerst maakt Claude één grondige nulmeting (baseline) van de code. Daarna scant het wijzigingen opnieuw, vaker naarmate ze riskanter of ingewikkelder zijn. Je maakt een project, koppelt een of meer repositories en kiest per repository een branch. Omdat één project meerdere repositories kan bevatten, ziet Claude ook problemen die over diensten heen lopen.",
-    "Een open bevinding houdt Claude zelf bij. Komt er een fix in de code, dan zet Claude de bevinding op opgelost, ook als de fix buiten Claude Code is gemaakt. Duikt het probleem later weer op, dan gaat de bevinding vanzelf weer open. Het lijkt op een dbt-test die niet alleen faalt, maar ook onthoudt wanneer hij weer groen werd.",
-    "Per project kun je context meegeven: hoe het wordt uitgerold en welke beveiligingsregels gelden. Claude maakt ook een dreigingsmodel (threat model) van de code, dat je team kan aanpassen. Latere scans gebruiken dat om te bepalen wat ze melden. Nieuwe bevindingen kunnen via webhooks naar je eigen systemen. Via de MCP-koppeling kun je in Claude Code een bevinding bekijken, een fix starten en hem afsluiten in één sessie.",
-    "Voor een datateam is dit vooral interessant als je eigen Python-scripts of tooling in GitHub hebt staan. Let wel op: het is een Enterprise-product, en je code gaat naar een externe dienst. Dat moet passen bij de regels van je organisatie."
-   ],
-   "key_facts": [
-    "Aangekondigd op 21 oktober 2026; doorlopend scannen is in publieke bèta voor Claude Enterprise-klanten.",
-    "Claude Security kwam in april 2026 in publieke bèta; volgens Anthropic vonden duizenden organisaties er samen meer dan een miljoen kwetsbaarheden mee.",
-    "Na een baseline-scan scant Claude wijzigingen opnieuw op basis van risico en complexiteit; repositories koppel je via de Claude GitHub-app (ook GitHub Enterprise Server) of met een token voor GitLab en andere Git-aanbieders.",
-    "Fix tracking: bevindingen worden als opgelost gemarkeerd als de fix live gaat, ook buiten Claude Code; komt het probleem terug, dan gaat de bevinding automatisch weer open.",
-    "Per project een kennisbank en een door Claude gemaakt, bewerkbaar threat model; elke bevinding krijgt een ernst en een uitleg van het aanvalspad.",
-    "Nieuw: een API, persoonlijke toegangstokens, webhooks bij nieuwe bevindingen, een MCP-connector voor Claude.ai en Claude Code, en rolgebaseerde toegang. Organisaties krijgen twee maanden 25.000 dollar gratis tegoed per maand, tot 31 december 2026."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "baseline",
-     "explanation": "Een nulmeting: de eerste volledige scan waartegen latere wijzigingen worden vergeleken."
-    },
-    {
-     "term": "threat model",
-     "explanation": "Een overzicht van wat aanvallers zouden kunnen doen met een systeem en welke risico's al zijn afgedekt. Het helpt kiezen welke problemen echt tellen."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "webhooks",
-     "explanation": "Een automatisch bericht dat een dienst naar jouw systeem stuurt zodra er iets gebeurt, bijvoorbeeld een nieuwe bevinding."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.45,
-    "why": "Productaankondiging buiten dbt en data; je duimen gaan vooral naar praktische AI-bij-dbt-stukken."
-   },
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
-   }
-  },
-  {
    "id": "a343c9786e70",
    "title": "Claude Haiku 5.5",
    "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
@@ -6542,53 +6633,6 @@
    }
   },
   {
-   "id": "faf6b20eb041",
-   "title": "Claude Cowork and chat come together for Enterprise",
-   "url": "https://claude.com/resources/articles/unified-claude-enterprise",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-23T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Ook voor Enterprise zijn chat en Cowork samengevoegd: een simpele vraag krijgt een snel antwoord, een taak met code of bestanden draait in een cloudomgeving en loopt door als je laptop dicht gaat. Beheerders regelen de uitrol, modellen per rol en budgetten; algemeen beschikbaar sinds 23 oktober 2026.",
-   "availability_status": "beschikbaar",
-   "topics": [
-    "claude_ai_development"
-   ],
-   "groups": [
-    "claude"
-   ],
-   "relevance_score": 70,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.39,
-    "source": 0.51,
-    "quality": 0.4,
-    "feedback": -0.03,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T04:10:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Claude Enterprise: chat en Cowork zijn nu één Claude",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.45,
-    "why": "Verandering in hoe je Claude gebruikt, maar zonder praktische aanpak voor dbt-werk."
-   },
-   "labels": [
-    "claude-cowork",
-    "claude-enterprise-beheer"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "6eafeb6028b4",
    "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
@@ -6636,52 +6680,6 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -7
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "cba4e4e6bf9f",
-   "title": "Smart reports, surveys, and pooled group budgets for Claude Enterprise",
-   "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-28T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Beheerders van Claude Enterprise krijgen slimme rapporten die laten zien waar teams Claude voor gebruiken en welke terugkerende taken een skill kunnen worden, plus enquêtes en één gedeeld maandbudget per groep. Algemeen beschikbaar sinds 28 oktober 2026, vooral relevant als je Claude in je organisatie uitrolt.",
-   "availability_status": "beschikbaar",
-   "topics": [
-    "claude_ai_development"
-   ],
-   "groups": [
-    "claude"
-   ],
-   "relevance_score": 68,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.5,
-    "source": 0.51,
-    "quality": 0.33,
-    "feedback": -0.03,
-    "fit": -0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T04:10:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Claude Enterprise: rapporten over gebruik, enquêtes en een gedeeld budget",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.35,
-    "why": "Beheerfunctie voor Claude; je duimen gaan naar hoe je Claude bij dbt-werk inzet."
-   },
-   "labels": [
-    "claude-enterprise-beheer"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
    },
    "diepte": "kort"
   },
@@ -9593,17 +9591,6 @@
    ]
   },
   {
-   "term": "baseline",
-   "explanation": "Een nulmeting: de eerste volledige scan waartegen latere wijzigingen worden vergeleken.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3964fa015c0d",
-     "title": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is"
-    }
-   ]
-  },
-  {
    "term": "Bedrock",
    "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt.",
    "refs": [
@@ -9735,17 +9722,6 @@
      "kind": "a",
      "id": "728afeb9147d",
      "title": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen"
-    }
-   ]
-  },
-  {
-   "term": "Claude Managed Agents",
-   "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
     }
    ]
   },
@@ -10178,6 +10154,17 @@
    ]
   },
   {
+   "term": "dreaming",
+   "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d8887a09bc5e",
+     "title": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'"
+    }
+   ]
+  },
+  {
    "term": "embeddings",
    "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen.",
    "refs": [
@@ -10444,17 +10431,6 @@
    ]
   },
   {
-   "term": "gedeeld geheugen",
-   "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
-    }
-   ]
-  },
-  {
    "term": "glob",
    "explanation": "Een zoekpatroon voor bestandsnamen, zoals *.sql voor alle SQL-bestanden in een map.",
    "refs": [
@@ -10700,17 +10676,6 @@
    ]
   },
   {
-   "term": "leads",
-   "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
-    }
-   ]
-  },
-  {
    "term": "Lean",
    "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert.",
    "refs": [
@@ -10885,11 +10850,6 @@
    "refs": [
     {
      "kind": "a",
-     "id": "3964fa015c0d",
-     "title": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is"
-    },
-    {
-     "kind": "a",
      "id": "308e572d49e4",
      "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
     },
@@ -10907,6 +10867,11 @@
      "kind": "a",
      "id": "ceb4b784fbab",
      "title": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen"
+    },
+    {
+     "kind": "a",
+     "id": "f29afd156725",
+     "title": "Agent Skills krijgt een neutraal thuis bij de Linux Foundation"
     }
    ]
   },
@@ -10945,6 +10910,17 @@
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
      "title": "dbt semantic layer of metric views: waar leg je je maatstaven vast?"
+    }
+   ]
+  },
+  {
+   "term": "MEMORY.md",
+   "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d8887a09bc5e",
+     "title": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'"
     }
    ]
   },
@@ -11881,17 +11857,6 @@
    ]
   },
   {
-   "term": "threat model",
-   "explanation": "Een overzicht van wat aanvallers zouden kunnen doen met een systeem en welke risico's al zijn afgedekt. Het helpt kiezen welke problemen echt tellen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3964fa015c0d",
-     "title": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is"
-    }
-   ]
-  },
-  {
    "term": "Time travel",
    "explanation": "Een functie van Delta-tabellen om een eerdere versie van een tabel op te vragen, bijvoorbeeld de stand van gisteren.",
    "refs": [
@@ -11984,6 +11949,17 @@
      "kind": "v",
      "id": "evals-ai-assistent",
      "title": "Hoe weet je of je AI-assistent goede antwoorden geeft?"
+    }
+   ]
+  },
+  {
+   "term": "transcripten",
+   "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d8887a09bc5e",
+     "title": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'"
     }
    ]
   },
@@ -12094,17 +12070,6 @@
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC"
-    }
-   ]
-  },
-  {
-   "term": "webhooks",
-   "explanation": "Een automatisch bericht dat een dienst naar jouw systeem stuurt zodra er iets gebeurt, bijvoorbeeld een nieuwe bevinding.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3964fa015c0d",
-     "title": "Claude Security bewaakt je code nu doorlopend en ziet zelf of een lek dicht is"
     }
    ]
   },
@@ -12531,16 +12496,17 @@
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
   "fetched_items": 540,
-  "unique_after_dedupe": 512,
-  "merged_duplicates": 21,
+  "unique_after_dedupe": 511,
+  "merged_duplicates": 22,
   "shown": 74,
   "decisions": {
    "excluded": 165,
-   "included": 117,
-   "below_threshold": 104,
+   "included": 115,
+   "below_threshold": 101,
    "included_low": 2,
    "no_topic": 114,
-   "source_cap": 10
+   "source_cap": 13,
+   "area_cap": 1
   },
   "processing": {
    "enriched": 74
@@ -12548,9 +12514,9 @@
   "without_date": 0,
   "per_group": {
    "overig": 8,
-   "ai_context": 19,
+   "ai_context": 20,
    "dbt": 6,
-   "claude": 17,
+   "claude": 16,
    "architectuur": 3,
    "agents": 14,
    "databricks": 5,
@@ -12560,9 +12526,10 @@
    "databricks_blog": 14,
    "dbt_labs_blog": 9,
    "azure_databricks_release_notes": 4,
+   "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
-   "claude_blog": 12,
+   "claude_blog": 11,
    "dbt_core_releases": 1,
    "chris_webb": 1,
    "simon_willison": 3,
@@ -12572,7 +12539,6 @@
    "databricks_engineering_blog": 4,
    "sqlbi": 2,
    "powerbi_blog": 2,
-   "anthropic_engineering": 1,
    "huggingface_blog": 1
   },
   "date_flags": [
@@ -12609,9 +12575,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 149
+   "skipped_no_key": 144
   },
-  "queue_size": 40,
+  "queue_size": 37,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -13053,14 +13019,6 @@
     ]
    },
    {
-    "title": "The components of agent memory",
-    "source_id": "anthropic_engineering",
-    "url": "https://www.anthropic.com/research/components-of-agent-memory",
-    "relevance_score": 75,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "v2.1.304",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
@@ -13085,14 +13043,6 @@
     "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
     "relevance_score": 75,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-    "source_id": "langchain_blog",
-    "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-    "relevance_score": 75,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -13187,6 +13137,27 @@
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Azure DevOps connector is available in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/azure-devops",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "connector_releases",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.0.0-dev.41-test-pypi",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
     ]
    }
   ],
