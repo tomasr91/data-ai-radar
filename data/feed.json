@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T14:38:47.479414Z",
+ "generated_at": "2026-11-11T14:41:26.535328Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-11T03:54:00Z",
@@ -907,7 +907,7 @@
     "recency": 0.88,
     "source": 1.0,
     "quality": 0.62,
-    "feedback": -0.04,
+    "feedback": -0.03,
     "fit": 0.1,
     "project": 0.05
    },
@@ -966,7 +966,7 @@
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
-    "pts": -4
+    "pts": -3
    },
    "project_ref": {
     "fase": 5,
@@ -3566,7 +3566,7 @@
     "recency": 0.31,
     "source": 1.0,
     "quality": 0.68,
-    "feedback": -0.04,
+    "feedback": -0.03,
     "fit": 0.1
    },
    "decision": "included",
@@ -3639,7 +3639,7 @@
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
-    "pts": -4
+    "pts": -3
    }
   },
   {
@@ -3738,6 +3738,104 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
+   }
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
+   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
+   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
+   "limitations": [
+    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
+    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
+    "databricks-dbt-factory is een open-source project, geen product van Databricks."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "databricks-dbt-factory (GitHub)",
+     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "databricks",
+    "kwaliteit",
+    "overig"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.17,
+    "source": 0.68,
+    "quality": 0.78,
+    "feedback": -0.04,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
+   "story": [
+    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
+    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
+    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar."
+   ],
+   "key_facts": [
+    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
+    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
+    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
+    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
+    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
+    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "ingestion time",
+     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
+    },
+    {
+     "term": "queryplan",
+     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
+    },
+    {
+     "term": "upstream",
+     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
+    },
+    {
+     "term": "dbt-manifest",
+     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
+    },
+    {
+     "term": "RFID",
+     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.75,
+    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
+   },
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -4
    }
   },
   {
@@ -3935,104 +4033,6 @@
    "fb_why": {
     "by": "source",
     "name": "fabric_blog",
-    "pts": -5
-   }
-  },
-  {
-   "id": "a704112d6f8a",
-   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
-   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T16:00:00Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
-   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
-   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
-   "limitations": [
-    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
-    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
-    "databricks-dbt-factory is een open-source project, geen product van Databricks."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "databricks-dbt-factory (GitHub)",
-     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "data_quality_observability",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "databricks",
-    "kwaliteit",
-    "overig"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.17,
-    "source": 0.68,
-    "quality": 0.78,
-    "feedback": -0.05,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
-   "story": [
-    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
-    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
-    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
-    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar."
-   ],
-   "key_facts": [
-    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
-    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
-    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
-    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
-    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
-    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "ingestion time",
-     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
-    },
-    {
-     "term": "queryplan",
-     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
-    },
-    {
-     "term": "upstream",
-     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
-    },
-    {
-     "term": "dbt-manifest",
-     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
-    },
-    {
-     "term": "RFID",
-     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.75,
-    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
-   },
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
     "pts": -5
    }
   },
@@ -5665,7 +5665,7 @@
     "recency": 0.72,
     "source": 0.85,
     "quality": 0.73,
-    "feedback": -0.11,
+    "feedback": -0.1,
     "fit": 0.15
    },
    "decision": "included",
@@ -5776,7 +5776,7 @@
    "fb_why": {
     "by": "topic",
     "name": "data_ingestion",
-    "pts": -11
+    "pts": -10
    }
   },
   {
@@ -6092,7 +6092,7 @@
     "recency": 0.09,
     "source": 0.68,
     "quality": 0.57,
-    "feedback": -0.04,
+    "feedback": -0.03,
     "fit": 0.15
    },
    "decision": "included",
@@ -6134,7 +6134,7 @@
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
-    "pts": -4
+    "pts": -3
    }
   },
   {
@@ -6812,53 +6812,6 @@
    "diepte": "kort"
   },
   {
-   "id": "95ae3c341206",
-   "title": "A builder’s guide to scaling Databricks Apps",
-   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T18:00:00Z",
-   "fetched_at": "2026-11-06T03:12:46.373805Z",
-   "summary": "Een praktische gids voor apps op Databricks Apps die groeien: zware taken naar jobs, vaste gegevens in Lakebase, instantiegroottes van Medium tot XLarge en een rekensom voor het aantal databaseverbindingen. Vooral handig als je zelf een app bouwt voor meer dan een handvol collega's.",
-   "availability_status": "onbekend",
-   "topics": [
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 63,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.75,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.1,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Databricks Apps voor veel gebruikers: zo plan je de schaal",
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.45,
-    "why": "Praktisch, maar over apps bouwen, wat buiten je dagelijkse dbt-werk ligt."
-   },
-   "labels": [
-    "databricks-apps",
-    "lakebase"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -10
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "903131b53f30",
    "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
    "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
@@ -6891,13 +6844,13 @@
    "groups": [
     "databricks"
    ],
-   "relevance_score": 62,
+   "relevance_score": 63,
    "score_parts": {
     "topic": 0.85,
     "recency": 0.53,
     "source": 0.85,
     "quality": 0.48,
-    "feedback": -0.11,
+    "feedback": -0.1,
     "fit": 0.0
    },
    "decision": "included",
@@ -6957,8 +6910,55 @@
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
-    "pts": -11
+    "pts": -10
    }
+  },
+  {
+   "id": "95ae3c341206",
+   "title": "A builder’s guide to scaling Databricks Apps",
+   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-05T18:00:00Z",
+   "fetched_at": "2026-11-06T03:12:46.373805Z",
+   "summary": "Een praktische gids voor apps op Databricks Apps die groeien: zware taken naar jobs, vaste gegevens in Lakebase, instantiegroottes van Medium tot XLarge en een rekensom voor het aantal databaseverbindingen. Vooral handig als je zelf een app bouwt voor meer dan een handvol collega's.",
+   "availability_status": "onbekend",
+   "topics": [
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 63,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.75,
+    "source": 0.85,
+    "quality": 0.5,
+    "feedback": -0.09,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-07T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Databricks Apps voor veel gebruikers: zo plan je de schaal",
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.45,
+    "why": "Praktisch, maar over apps bouwen, wat buiten je dagelijkse dbt-werk ligt."
+   },
+   "labels": [
+    "databricks-apps",
+    "lakebase"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -9
+   },
+   "diepte": "kort"
   },
   {
    "id": "e197b15d9798",
@@ -7123,7 +7123,7 @@
    "relevance_score": 59,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.72,
+    "recency": 0.71,
     "source": 0.6,
     "quality": 0.33,
     "feedback": -0.05,
@@ -13271,8 +13271,8 @@
   "topics": {
    "dbt_analytics_engineering": 0.98,
    "cicd_data_deployment": 0.42,
-   "ai_on_data_platform": 0.78,
-   "databricks_data_engineering": 0.43,
+   "ai_on_data_platform": 0.88,
+   "databricks_data_engineering": 0.66,
    "powerbi_semantic_models": 0.39,
    "data_governance_privacy": 0.43,
    "ai_context_engineering": 0.96,
@@ -13287,7 +13287,7 @@
    "powerbi_blog": 0.32,
    "dbt_developer_blog": 0.71,
    "claude_code_releases": 0.29,
-   "azure_databricks_release_notes": 0.36,
+   "azure_databricks_release_notes": 0.61,
    "fabric_blog": -0.08,
    "chris_webb": 0.08,
    "claude_blog": 0.15
@@ -13298,13 +13298,13 @@
    "achtergrond": 0.71,
    "aankondiging": 0.49,
    "mening": 0.36,
-   "release": 0.43
+   "release": 0.66
   },
-  "votes": 16,
+  "votes": 17,
   "reads": 10,
   "offset": 0.0,
   "weight": 1.0,
-  "updated_at": "2026-11-10T20:23:10.680146Z",
+  "updated_at": "2026-11-11T14:41:24.387577Z",
   "levels": {
    "label": {
     "power-bi-oap": 2,
@@ -13319,7 +13319,7 @@
    },
    "topic": {
     "dbt_analytics_engineering": 1,
-    "databricks_data_engineering": -8,
+    "databricks_data_engineering": -7,
     "powerbi_semantic_models": 1,
     "data_governance_privacy": -4,
     "ai_context_engineering": 1,
@@ -13338,7 +13338,7 @@
   },
   "deviation": {
    "now": 6,
-   "n": 14,
+   "n": 15,
    "before": null,
    "n_before": 0
   },
@@ -13390,9 +13390,9 @@
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
+   "databricks_engineering_blog": 4,
    "langchain_blog": 7,
    "fabric_blog": 5,
-   "databricks_engineering_blog": 4,
    "sqlbi": 2,
    "powerbi_blog": 2
   },
@@ -13453,17 +13453,6 @@
     ]
    },
    {
-    "title": "v2.1.321",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
@@ -13501,6 +13490,17 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.321",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+    "relevance_score": 84,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
     ]
    },
    {
@@ -13652,6 +13652,26 @@
     ]
    },
    {
+    "title": "Run Claude Code and Codex in the SSH tunnel",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#run-claude-code-and-codex-in-the-ssh-tunnel",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "External knowledge sources are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.1.317",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
@@ -13673,19 +13693,9 @@
     ]
    },
    {
-    "title": "Run Claude Code and Codex in the SSH tunnel",
+    "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#run-claude-code-and-codex-in-the-ssh-tunnel",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "External knowledge sources are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -13703,20 +13713,10 @@
     ]
    },
    {
-    "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "AI Functions require Databricks Runtime 17.3 LTS or above",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#ai-functions-require-databricks-runtime-173-lts-or-above",
-    "relevance_score": 78,
+    "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -13804,6 +13804,16 @@
     ]
    },
    {
+    "title": "Databricks-provided MCP connectors in Genie One and Genie Code will soon be enabled by default for workspaces with the compliance security profile enabled",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#databricks-provided-mcp-connectors-in-genie-one-and-genie-code-will-soon-be-enabled-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Join us at FABCON + SQLCON 2027 in Atlanta and save",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Join-us-at-FABCON-SQLCON-2027-in-Atlanta-and-save/ba-p/5400304",
@@ -13818,16 +13828,6 @@
     "relevance_score": 77,
     "decision": "source_cap",
     "excluded_by": []
-   },
-   {
-    "title": "Databricks-provided MCP connectors in Genie One and Genie Code will soon be enabled by default for workspaces with the compliance security profile enabled",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#databricks-provided-mcp-connectors-in-genie-one-and-genie-code-will-soon-be-enabled-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-    "relevance_score": 76,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
    },
    {
     "title": "v2.1.310",
@@ -13921,6 +13921,14 @@
     ]
    },
    {
+    "title": "Bring your Fabric data into your next app with connectors",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+    "relevance_score": 74,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
@@ -13953,17 +13961,17 @@
     "excluded_by": []
    },
    {
-    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
+    "title": "Data Days: Learn, build, and connect with AI @Work",
     "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
     "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
    },
    {
-    "title": "Bring your Fabric data into your next app with connectors",
+    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
     "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
     "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
@@ -14006,14 +14014,6 @@
     "excluded_by": [
      "minor_builds"
     ]
-   },
-   {
-    "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
-    "relevance_score": 72,
-    "decision": "included",
-    "excluded_by": []
    }
   ],
   "topics_without_source": [

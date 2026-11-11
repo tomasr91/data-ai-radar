@@ -124,7 +124,7 @@
    ]
   }
  },
- "updated_at": "2026-11-10T20:23:10.680146Z",
+ "updated_at": "2026-11-11T14:41:24.387577Z",
  "votes": {
   "059023edac5d": {
    "at": "2026-11-01T13:40:09.196969Z",
@@ -246,6 +246,30 @@
     "data_governance_privacy",
     "ai_in_healthcare",
     "ai_research_data"
+   ],
+   "v": 1
+  },
+  "941b0ba5dad7": {
+   "at": "2026-11-11T14:41:24.387577Z",
+   "issue": 30,
+   "labels": [
+    "databricks-weekoverzicht",
+    "ai-functies-in-sql",
+    "lakeflow-jobs",
+    "genie-externe-kennis"
+   ],
+   "n": "Nieuwe features super interessant. Maar alleen iets wat niet meer ondersteunt wordt hoef ik geen nieuws over",
+   "r": null,
+   "s": 94,
+   "soort": "release",
+   "source_id": "azure_databricks_release_notes",
+   "text": "Azure Databricks: wat is er nieuw in week 45 AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta). Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026). AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel. Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ",
+   "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment",
+    "metadata_lineage_catalogs"
    ],
    "v": 1
   },

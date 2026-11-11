@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T14:38:47.479414Z",
+ "generated_at": "2026-11-11T14:41:26.535328Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -117,7 +117,7 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-09T19:00:00Z",
    "excerpt": "GPUs are usually the most expensive part of any training run, and most teams can't...",
-   "preliminary_score": 44,
+   "preliminary_score": 45,
    "preliminary_topics": [
     "databricks_data_engineering",
     "metadata_lineage_catalogs"
@@ -151,6 +151,19 @@
    ]
   },
   {
+   "id": "a9e2bd5a260a",
+   "title": "Databricks' Commitment to European Sovereignty",
+   "url": "https://www.databricks.com/blog/databricks-commitment-european-sovereignty",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-09T19:40:00Z",
+   "excerpt": "Over a Decade of Investment in EuropeDatabricks has been building in Europe since...",
+   "preliminary_score": 42,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
    "id": "724fae925148",
    "title": "Pay for Hugging Face Hub with your Google Cloud Account",
    "url": "https://huggingface.co/blog/hub-gcp-marketplace",
@@ -174,19 +187,6 @@
    "preliminary_score": 42,
    "preliminary_topics": [
     "open_source_tools"
-   ]
-  },
-  {
-   "id": "a9e2bd5a260a",
-   "title": "Databricks' Commitment to European Sovereignty",
-   "url": "https://www.databricks.com/blog/databricks-commitment-european-sovereignty",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-09T19:40:00Z",
-   "excerpt": "Over a Decade of Investment in EuropeDatabricks has been building in Europe since...",
-   "preliminary_score": 41,
-   "preliminary_topics": [
-    "databricks_data_engineering"
    ]
   },
   {
@@ -285,6 +285,21 @@
    ]
   },
   {
+   "id": "fdd5d7528171",
+   "title": "Bring your Fabric data into your next app with connectors",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-04T18:00:00Z",
+   "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
+   "preliminary_score": 74,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
    "id": "3244615a8462",
    "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
@@ -300,13 +315,13 @@
    ]
   },
   {
-   "id": "fdd5d7528171",
-   "title": "Bring your Fabric data into your next app with connectors",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+   "id": "6d9c0429baf2",
+   "title": "Data Days: Learn, build, and connect with AI @Work",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
    "source_id": "fabric_blog",
    "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T18:00:00Z",
-   "excerpt": "Most business applications start with data that already exists. Customer orders may live in a Fabric SQL database. Inventory history may be in a Lakehouse. Sales performance may already be modeled in Power BI. The opportunity is not to move that data again, but to turn trusted data into an experience that helps people make decisions and take action. Connectors in Fabric Apps shorten that path. They give an app a consistent way to work with Fabric data, so developers can spend less time on integration plumbing and more time building the experience users need. Connect to the Fabric data you already trust. Build the experience your users need. Keep the application close to the data and governance foundation already in place. Instead of beginning with infrastructure, start with the customer's need: What should this app help someone understand, decide, or do? From data to an application Imagine a large telecommunications provider operating thousands of cell sites and serving millions of customers. Network telemetry may stream into a Lakehouse; service-impact and incident data may live in a Fabric SQL database; and trusted availability and capacity measures may already be modeled in Powe",
+   "published_at": "2026-11-02T16:19:22Z",
+   "excerpt": "Real people. Real projects. Real AI on Fabric, SQL, and Power BI. From November 2 through December 15, Data Days is your chance to get past polished demos and put data and AI to work yourself. Join a live session, build something new, work toward a certification, or connect with a community study group. Share what you've learned, showcase something you've created, or bring Data Days to your own community. This is about doing, not just watching. Start with the series that interests you AI Work​ is at the heart of this Data Days, with three stages designed to meet you wherever you are: Let's Make Sense of It explores how Copilot, Fabric IQ, Fabric Apps, and your data fit together. If you've heard the names but want to understand what they mean for your work, start here. Let's Build Something gets hands-on. Watch practitioners build Fabric Apps, work with Spark to make data AI-ready, and turn ideas into something useful. See It in Action showcases real projects, including Fabric IQ and Fabric Apps examples. Discover what community builders created, the decisions they made, and what they learned along the way. There's more to explore, too. Catch up on announcements and demos with the F",
    "preliminary_score": 73,
    "preliminary_topics": [
     "powerbi_semantic_models",
@@ -326,21 +341,6 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "cicd_data_deployment"
-   ]
-  },
-  {
-   "id": "6d9c0429baf2",
-   "title": "Data Days: Learn, build, and connect with AI @Work",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-02T16:19:22Z",
-   "excerpt": "Real people. Real projects. Real AI on Fabric, SQL, and Power BI. From November 2 through December 15, Data Days is your chance to get past polished demos and put data and AI to work yourself. Join a live session, build something new, work toward a certification, or connect with a community study group. Share what you've learned, showcase something you've created, or bring Data Days to your own community. This is about doing, not just watching. Start with the series that interests you AI Work​ is at the heart of this Data Days, with three stages designed to meet you wherever you are: Let's Make Sense of It explores how Copilot, Fabric IQ, Fabric Apps, and your data fit together. If you've heard the names but want to understand what they mean for your work, start here. Let's Build Something gets hands-on. Watch practitioners build Fabric Apps, work with Spark to make data AI-ready, and turn ideas into something useful. See It in Action showcases real projects, including Fabric IQ and Fabric Apps examples. Discover what community builders created, the decisions they made, and what they learned along the way. There's more to explore, too. Catch up on announcements and demos with the F",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "sql_spark_sql"
    ]
   },
   {
@@ -421,7 +421,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T16:00:00Z",
    "excerpt": "The data needed to answer a business question rarely belongs to one organization. Enterprises depend on suppliers, software providers, research partners, and customers for information that complement their own. Yet getting that data into their workflow often means building another pipeline, maintaining another copy, and reconciling access across organizational boundaries. Even when the data arrives, its meaning can be left behind. Definitions, assumptions, and usage guidance are shared separately, leaving teams to reconstruct the context before they can put the data to work. With IQ Share in Microsoft Fabric, now in preview, organizations can share supported Fabric data items, along with context stored in lakehouse files, with recipients in other Fabric tenants. Data stays in the producer's tenant, recipients work in their own Fabric workspace, and producers retain control over access. Introducing IQ Share IQ Share brings cross-tenant data and context sharing into a Fabric item-based experience. In this preview, producers can share an entire Lakehouse, Warehouse, and Mirrored Items. For Lakehouses, markdown files can accompany the data with descriptions, business definitions, and i",
-   "preliminary_score": 62,
+   "preliminary_score": 63,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering"
