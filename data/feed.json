@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T04:41:42.458095Z",
+ "generated_at": "2026-11-11T05:14:13.875133Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-11T03:54:00Z",
@@ -3186,7 +3186,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.62,
+    "recency": 0.61,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.01,
@@ -3258,7 +3258,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 0.68,
     "quality": 0.43,
     "fit": 0.0
@@ -3321,7 +3321,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.18,
+    "recency": 0.17,
     "source": 0.51,
     "quality": 0.77,
     "feedback": 0.01,
@@ -3874,7 +3874,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.6,
     "quality": 0.57,
     "feedback": -0.05,
@@ -4265,7 +4265,7 @@
     "recency": 0.52,
     "source": 0.51,
     "quality": 0.57,
-    "feedback": -0.03,
+    "feedback": -0.02,
     "fit": 0.15
    },
    "decision": "included",
@@ -4288,7 +4288,7 @@
    "fb_why": {
     "by": "kind",
     "name": "praktijk",
-    "pts": -3
+    "pts": -2
    },
    "diepte": "kort"
   },
@@ -6938,7 +6938,7 @@
    "relevance_score": 62,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 0.85,
     "quality": 0.48,
     "feedback": -0.11,
@@ -7044,7 +7044,7 @@
    "relevance_score": 61,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.2,
@@ -9914,7 +9914,7 @@
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Okta, KOHO, Checkr en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. Databricks zet Genie Ontology standaard aan, en M365 Copilot kan nu algemeen beschikbaar vragen stellen aan Power BI-modellen, waarbij synoniemen en AI-instructies in het model de context blijven. Volgens dbt Labs antwoordt AI via een semantische laag 96 tot 100% goed, tegen 80 tot 91% met losse SQL.",
+   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie haalt context uit metric views, een metric view kan straks met één knop een Power BI-model worden (private preview), en Claude Data werkt met gecertificeerde metric-definities. Volgens dbt Labs antwoordt AI via een semantische laag 96 tot 100% goed, tegen 80 tot 91% met losse SQL.",
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
@@ -9929,14 +9929,17 @@
     "560fbec0053e",
     "94b4924597e5",
     "67b79f31be0e",
-    "215f0a50b9ea"
+    "215f0a50b9ea",
+    "5c7174c45ad1",
+    "81204e04abb9",
+    "7737e173e31a"
    ],
-   "generated_at": "2026-11-06T05:20:00Z"
+   "generated_at": "2026-11-11T05:13:56Z"
   },
   {
    "id": "geheugen-en-context-voor-agents",
-   "title": "Agents houden hun venster leeg: geheugen, skills en subagents",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en volgens Anthropic werkt één agent met skills bij grote klanten vaak beter en goedkoper dan een stelsel van subagents. LangChain noemt die technieken nu standaard; de nieuwe vragen zijn wat een agent wel en niet onthoudt en hoe agents op de achtergrond doorwerken.",
+   "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
    "topics": [
     "ai_context_engineering",
     "ai_agents_rag",
@@ -9949,9 +9952,12 @@
     "471f6b1cbb07",
     "ae2bc3c9f749",
     "f29afd156725",
-    "72dc169275f9"
+    "72dc169275f9",
+    "d8887a09bc5e",
+    "4ade36aa9099",
+    "53acc8538264"
    ],
-   "generated_at": "2026-11-06T05:20:00Z"
+   "generated_at": "2026-11-11T05:13:56Z"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
@@ -9974,9 +9980,10 @@
     "7fd7e06ab2f4",
     "583b8d97bd5d",
     "77544766b84c",
-    "4cc09a1d9883"
+    "4cc09a1d9883",
+    "86eab858089b"
    ],
-   "generated_at": "2026-11-06T05:20:00Z"
+   "generated_at": "2026-11-11T05:13:56Z"
   }
  ],
  "weekly": {
@@ -13599,16 +13606,6 @@
     "excluded_by": []
    },
    {
-    "title": "Agent memory pipelines are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Default OAuth apps for external AI agents are now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
@@ -13646,6 +13643,16 @@
     "relevance_score": 81,
     "decision": "source_cap",
     "excluded_by": []
+   },
+   {
+    "title": "Agent memory pipelines are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    },
    {
     "title": "The Discover page and domains are now GA",
