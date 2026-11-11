@@ -1,0 +1,194 @@
+{
+  "format_version": 1,
+  "id": "ingestion-basis",
+  "plan_id": "ingestion-basis",
+  "request_issue": 27,
+  "headline": "Hoe komt data in Databricks? De basis van ingestion",
+  "summary": "Ingestion is de stap die data uit een bronsysteem naar je bronze-laag brengt. Databricks biedt daarvoor drie lagen, van veel zelf bouwen tot bijna alles uit handen geven. Dit stuk legt de basis uit en laat zien wanneer je Auto Loader, streaming tables, COPY INTO, Lakeflow Connect of Zerobus Ingest kiest.",
+  "sections": [
+    {
+      "heading": "Wat is ingestion, en waarom is het lastig?",
+      "paragraphs": [
+        "Inname van data (ingestion) is alles wat er gebeurt voordat data in je bronze-laag staat. De data staat eerst ergens anders: in de database van een bronsysteem, in een app in de cloud of in losse bestanden. Ingestion haalt die data op en schrijft hem weg als tabel in Unity Catalog.",
+        "Vergelijk het met de post. Een brief moet worden opgehaald en bezorgd, niet twee keer en ook niet helemaal niet. Bij ingestion is dat net zo. Je wilt geen rijen missen, geen rijen dubbel hebben, en weten waar je was als er halverwege iets misgaat.",
+        "Daarbij verandert de bron. Er komt een kolom bij, een type verandert, of een tabel groeit harder dan verwacht. Een goede ingestion merkt dat op en loopt niet zomaar vast. Daarom biedt Databricks hulpmiddelen die dit voor je bijhouden, zodat je het niet allemaal zelf hoeft te bouwen."
+      ]
+    },
+    {
+      "heading": "Drie ritmes: alles, alleen het nieuwe, of meteen",
+      "paragraphs": [
+        "De eenvoudigste manier is een volledige lading (full load): elke keer de hele brontabel opnieuw inlezen. Dat klopt altijd, maar het wordt traag als de tabel groeit. Het is alsof je elke dag de hele bibliotheek telt om te zien welke boeken erbij zijn gekomen.",
+        "Incrementeel laden haalt alleen op wat nieuw of gewijzigd is sinds de vorige keer. Het systeem moet dus onthouden waar het gebleven was. Bij bestanden is dat een lijst van wat al gelezen is. Bij databases gaat het vaak via CDC, het bijhouden van wijzigingen in de bron zelf. Hoe dat werkt, lees je in de verdieping over incrementeel laden en CDC.",
+        "Het derde ritme is verwerken zodra er iets binnenkomt (streaming). Databricks noemt het verschil getriggerd (triggered) en continu (continuous). Een getriggerde pipeline verwerkt nieuwe data volgens een schema of als jij hem start. Een continue pipeline verwerkt data zodra die in de bron verschijnt.",
+        "Incrementeel en getriggerd gaan prima samen. Elk uur alleen het nieuwe ophalen is voor veel bronnen ruim genoeg. Continu verwerken is pas nodig als iemand echt binnen seconden of minuten nieuwe data moet zien."
+      ]
+    },
+    {
+      "heading": "Drie lagen in Databricks: begin bovenaan",
+      "paragraphs": [
+        "Databricks deelt ingestion in drie lagen in. Onderaan staat Structured Streaming, de streaming-motor van Spark. Die verwerkt volgens de documentatie elk record precies één keer (exactly-once), ook na een storing. Maar je schrijft zelf code in Python of Scala.",
+        "Daarboven staan Lakeflow pipelines. Die bouwen op Structured Streaming. Je beschrijft welke tabel je wilt, en de pipeline regelt de volgorde, de bewaking, de datakwaliteit en de foutafhandeling. Dat voelt bekend als je dbt gewend bent.",
+        "Bovenaan staan de beheerde koppelingen (managed connectors) van Lakeflow Connect. Die voegen per bron nog meer toe: het inloggen, CDC, nieuwe pogingen bij fouten en het meegaan met schema-wijzigingen.",
+        "Het advies van Databricks is kort: begin bij de meest beheerde laag. Past die niet, bijvoorbeeld omdat je bron niet wordt ondersteund, dan ga je een laag omlaag. Meer gemak betekent minder vrijheid, en andersom."
+      ]
+    },
+    {
+      "heading": "Bestanden: Auto Loader, streaming tables en COPY INTO",
+      "paragraphs": [
+        "Komt je data als bestanden in cloudopslag of in een volume van Unity Catalog, dan is Auto Loader het basisgereedschap. Auto Loader ziet nieuwe bestanden vanzelf en leest ze stap voor stap in. In een checkpoint houdt hij bij welke bestanden al verwerkt zijn. Zo wordt elk bestand precies één keer gelezen, ook als een run halverwege stopt.",
+        "Auto Loader kan ook het schema raden en merken dat het verandert. Data die niet in het schema past, gooit hij niet weg maar bewaart hij apart. Hij leest onder meer JSON, CSV, XML, Parquet en Avro. Om nieuwe bestanden te vinden, raadt Databricks voor de meeste situaties meldingen van de opslag (file events) aan, in plaats van steeds de hele map te doorzoeken.",
+        "Als SQL-gebruiker hoef je Auto Loader niet in Python te schrijven. Je maakt een streaming table met CREATE OR REFRESH STREAMING TABLE en de functie read_files. Bij elke verversing leest die alleen de bestanden die er sinds de vorige keer bij zijn gekomen. Databricks maakt daar zelf een serverless pipeline voor, die niet op je SQL warehouse draait.",
+        "Je komt ook COPY INTO tegen: één SQL-opdracht die bestanden in een Delta-tabel laadt. Bestanden die al geladen zijn, slaat hij over. Hij is dus idempotent: je kunt hem vaker draaien zonder dubbele rijen. Toch raadt Databricks SQL-gebruikers nu streaming tables aan, omdat die beter schalen en robuuster zijn."
+      ]
+    },
+    {
+      "heading": "Databases en apps: Lakeflow Connect",
+      "paragraphs": [
+        "Staat je data in een database of een app, dan kijk je naar Lakeflow Connect. Er zijn koppelingen voor databases zoals SQL Server, MySQL en PostgreSQL, voor apps zoals Salesforce en Workday, en voor bestanden in SharePoint en Google Drive. Ze schrijven naar streaming tables in Unity Catalog en draaien standaard op serverless compute.",
+        "Een koppeling met een database bestaat uit twee delen. De ingestion gateway draait continu en leest de wijzigingen uit de bron. Hij zet ze klaar in een opslagvolume. De ingestion pipeline haalt ze daar op een schema op en verwerkt ze in de doeltabellen. Zie de gateway als een brievenbus die altijd open is, en de pipeline als de postbode die op vaste tijden langskomt.",
+        "Bij SQL Server werkt de koppeling met change tracking of met CDC in de bron. De eerste run haalt alles op, daarna alleen wat veranderd is. Per tabel kies je of je alleen de laatste stand bewaart (SCD type 1) of ook de geschiedenis (SCD type 2). Voor geschiedenis moet CDC in de bron aanstaan; change tracking is dan niet genoeg.",
+        "Er zijn ook koppelingen die de database op vaste tijden gewoon bevragen (query-based connectors). Die werken zonder gateway en zonder tussenopslag. Je hoeft dan in de bron geen CDC aan te zetten, wat het opzetten eenvoudiger maakt."
+      ]
+    },
+    {
+      "heading": "Duwen in plaats van ophalen: Zerobus Ingest",
+      "paragraphs": [
+        "Bij alles hierboven haalt Databricks de data op. Zerobus Ingest werkt andersom: de bron duwt zelf berichten naar een tabel. Er zit geen berichtensysteem zoals Kafka tussen. Zerobus Ingest controleert elk bericht tegen het schema van de tabel en schrijft het meestal binnen enkele seconden weg.",
+        "Programma's sturen hun data via een SDK, een REST-API of protocollen zoals OpenTelemetry en MQTT. Dat past bij apparaten, apps of eigen diensten die zelf gebeurtenissen versturen. Voor bestanden die al in opslag staan, wijst de documentatie gewoon naar Auto Loader."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "In je context staat niet hoe de data uit HiX en AFAS nu in je bronze-laag komt. Dat is de eerste vraag om uit te zoeken. Komt de data als exportbestanden, via een databasekoppeling of via een API? Het antwoord bepaalt welke laag van Databricks past.",
+        "Komen er bestanden in opslag terecht, dan is een streaming table met read_files de eenvoudigste stap. Je dbt-modellen in silver lezen die bronze-tabel daarna gewoon als source. Is de bron een SQL Server-database, dan is de koppeling van Lakeflow Connect het bekijken waard. Let dan op de voorwaarden: change tracking of CDC in de bron, en een netwerkverbinding vanaf Azure.",
+        "Handig om te weten: Databricks laat in zijn voorbeelden zien hoe je zo'n koppeling als bundel beschrijft, net als jobs en pipelines. Dat sluit aan op de verdieping over bundels. Zo komt ook ingestion in je release pipeline terecht, in plaats van met de hand in een webscherm."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een bronze-tabel die elk uur alleen de nieuwe JSON-bestanden uit een volume inleest. Met REFRESH ververs je hem met de hand; met FULL verwerk je alles opnieuw.",
+    "language": "sql",
+    "code": "-- Bronze-tabel: elk uur alleen nieuwe bestanden inlezen\nCREATE OR REFRESH STREAMING TABLE bronze.demo.bestellingen_raw\n  SCHEDULE EVERY 1 hour\n  AS SELECT *\n  FROM STREAM read_files(\n    '/Volumes/bronze/demo/landing/bestellingen/',\n    format => 'json'\n  );\n\n-- Met de hand verversen: alleen wat sinds de vorige keer binnenkwam\nREFRESH STREAMING TABLE bronze.demo.bestellingen_raw;\n\n-- Alles opnieuw verwerken met de huidige definitie (let op bij bronnen met korte bewaartijd)\nREFRESH STREAMING TABLE bronze.demo.bestellingen_raw FULL;",
+    "note": "De notatie komt uit de Databricks-documentatie over losse streaming tables (Microsoft Learn, oktober 2026); catalogus-, schema- en mapnamen zijn verzonnen. Dit draait alleen in Databricks, daarom staat er geen resultaat bij."
+  },
+  "experiment": "Maak in een testwerkruimte een volume en zet er twee kleine JSON-bestanden in met verzonnen bestellingen. Maak er een streaming table op zoals in het voorbeeld en tel de rijen. Zet er een derde bestand bij, draai REFRESH en controleer dat alleen de nieuwe rijen erbij komen. Voeg daarna een bestand toe met een extra veld en kijk wat er met het schema gebeurt. Gebruik geen werk- of patiëntdata.",
+  "limitations": [
+    "Een volledige verversing (FULL) verwerkt alle brondata opnieuw; bij bronnen met een korte bewaartijd, zoals Kafka, kun je zo data kwijtraken.",
+    "De ingestion gateway van een databasekoppeling draait continu op een eigen klassiek cluster; reken die kosten mee, ook als er weinig verandert.",
+    "Niet elke bron of tabel ondersteunt al incrementeel laden, en de status per koppeling (algemeen beschikbaar of preview) verschilt; controleer die vooraf.",
+    "Bij zorgdata: bepaal vóór de koppeling welke tabellen en kolommen echt nodig zijn en wie bij de bronze-tabellen mag. Een streaming table kan bij het aanmaken al kolommaskers en rijfilters krijgen."
+  ],
+  "further_reading": [
+    {
+      "label": "Ingest data into an Azure Databricks lakehouse (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/",
+      "note": "Het overzicht met de drie lagen en per soort bron de mogelijke route."
+    },
+    {
+      "label": "Lakeflow Connect connector concepts (Microsoft Learn, november 2026)",
+      "url": "https://learn.microsoft.com/en-us/Azure/Databricks/ingestion/lakeflow-connect",
+      "note": "Uitleg van de soorten koppelingen, de gateway, de tussenopslag en hoe incrementeel laden werkt."
+    },
+    {
+      "label": "What is Auto Loader? (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/nb-no/Azure/databricks/ingestion/cloud-object-storage/auto-loader/",
+      "note": "Hoe Auto Loader nieuwe bestanden vindt, het checkpoint bijhoudt en met schema-wijzigingen omgaat."
+    },
+    {
+      "label": "Use standalone streaming tables (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/nb-no/Azure/databricks/ldp/dbsql/streaming",
+      "note": "De SQL-route met read_files, verversen op schema en de beperkingen van een volledige verversing."
+    },
+    {
+      "label": "Ingest data from SQL Server (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/sql-server-pipeline",
+      "note": "De SQL Server-koppeling stap voor stap, met SCD type 1 en 2 en een voorbeeld als bundel."
+    },
+    {
+      "label": "Get started using COPY INTO to load data (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-in/Azure/databricks/ingestion/cloud-object-storage/copy-into/",
+      "note": "Wat COPY INTO doet en waarom Databricks SQL-gebruikers nu naar streaming tables verwijst."
+    },
+    {
+      "label": "Zerobus Ingest overview (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/ingestion/zerobus-overview",
+      "note": "De duw-route: hoe programma's zelf records naar een tabel sturen, en wanneer je een andere route kiest."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Een brontabel heeft 50 miljoen rijen, en er komen er elke dag een paar duizend bij. Waarom is incrementeel laden hier beter dan een full load?",
+      "options": [
+        "Incrementeel laden geeft altijd een juistere uitkomst dan een full load.",
+        "Je leest alleen wat sinds de vorige keer nieuw is, in plaats van elke keer alles opnieuw.",
+        "Incrementeel laden kan alleen continu draaien, dus de data is sneller binnen."
+      ],
+      "answer": 1,
+      "explanation": "Een full load klopt ook altijd, maar leest elke keer alles. Incrementeel laden onthoudt waar het was en haalt alleen het nieuwe op; dat kan prima getriggerd, bijvoorbeeld elk uur."
+    },
+    {
+      "question": "Je wilt data uit een SQL Server-database in Databricks krijgen. Waar begin je volgens het advies van Databricks?",
+      "options": [
+        "Bij Structured Streaming, omdat je daar de meeste controle hebt.",
+        "Met een COPY INTO-opdracht die de database elke nacht leest.",
+        "Bij de beheerde SQL Server-koppeling van Lakeflow Connect; pas als die niet past, ga je een laag omlaag.",
+        "Bij Zerobus Ingest, omdat de database dan zelf de wijzigingen duwt."
+      ],
+      "answer": 2,
+      "explanation": "Databricks raadt aan bij de meest beheerde laag te beginnen. COPY INTO is voor bestanden, en Zerobus Ingest is voor programma's die zelf berichten sturen."
+    },
+    {
+      "question": "Waarom raadt Databricks SQL-gebruikers nu streaming tables aan in plaats van COPY INTO?",
+      "options": [
+        "Streaming tables schalen beter en zijn robuuster, en verversen alleen wat er nieuw bij is gekomen.",
+        "COPY INTO laadt bestanden die al geladen zijn opnieuw, waardoor je dubbele rijen krijgt.",
+        "Streaming tables draaien op je eigen SQL warehouse, COPY INTO niet."
+      ],
+      "answer": 0,
+      "explanation": "COPY INTO is juist idempotent en slaat geladen bestanden over. Streaming tables draaien op een eigen serverless pipeline, niet op je SQL warehouse."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Auto Loader",
+      "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+    },
+    {
+      "term": "streaming tables",
+      "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    },
+    {
+      "term": "checkpoint",
+      "explanation": "Een opgeslagen administratie van wat een stream al heeft verwerkt. Na een storing gaat de verwerking daar verder, zonder dubbel werk."
+    },
+    {
+      "term": "COPY INTO",
+      "explanation": "Een SQL-opdracht in Databricks die bestanden uit opslag in een Delta-tabel laadt en bestanden die al geladen zijn overslaat."
+    },
+    {
+      "term": "idempotent",
+      "explanation": "Een stap is idempotent als je hem vaker kunt draaien met dezelfde uitkomst. Handig als een load mislukt en je hem opnieuw start."
+    },
+    {
+      "term": "Lakeflow Connect",
+      "explanation": "Het deel van Databricks met kant-en-klare koppelingen naar databases, apps en bestandsbronnen, die data incrementeel in Unity Catalog laden."
+    },
+    {
+      "term": "ingestion gateway",
+      "explanation": "Het onderdeel van een databasekoppeling in Lakeflow Connect dat continu wijzigingen uit de bron leest en klaarzet voor de ingestion pipeline."
+    },
+    {
+      "term": "Zerobus Ingest",
+      "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 11-11-2026 in de Azure Databricks-documentatie op Microsoft Learn; de gebruikte pagina's zijn bijgewerkt tussen 1 oktober en 3 november 2026. Ik gebruik de huidige namen Lakeflow pipelines en Lakeflow Connect, niet de oude naam Delta Live Tables. COPY INTO staat er als tweede keus, omdat Databricks SQL-gebruikers nu streaming tables aanraadt. De status per koppeling (algemeen beschikbaar of preview) staat niet op de gelezen pagina's en heb ik daarom niet genoemd. CDC zelf staat in een eerdere verdieping en is hier kort gehouden.",
+  "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+  ],
+  "written_at": "2026-11-11T04:36:35Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
