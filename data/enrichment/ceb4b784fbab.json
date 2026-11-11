@@ -8,7 +8,7 @@
     "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
     "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
     "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
-    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata."
+    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata. Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten."
   ],
   "key_facts": [
     "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
@@ -76,5 +76,10 @@
     "claude-code-self-service",
     "dbt-mcp",
     "claude-code-skills"
-  ]
+  ],
+  "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten",
+    "why": "Fase 7 vraagt om een agent met read-only SQL via een MCP-server."
+  }
 }

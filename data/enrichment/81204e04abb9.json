@@ -9,7 +9,7 @@
     "De eerste laag is de dbt-documentatie. Beschrijvingen van tabellen en kolommen gaan vanuit dbt naar BigQuery, zodat elke agent die het warehouse leest ze ziet. Het team moest die beschrijvingen veel explicieter maken: welke waarden een veld kan hebben en wat elke waarde betekent. Ook kan de agent de dbt-repo en de DAG lezen, om te zien waar een model van afhangt.",
     "De tweede laag zijn werkruimtegidsen (workspace guides): markdownbestanden die uitleggen hoe het bedrijf bijvoorbeeld jaaromzet (ARR) meet. Ze staan in de dbt-repo, dus met versiebeheer, en een GitHub Action zet ze in Hex. De derde laag is een semantische laag, waarin de belangrijkste maatstaven en joins in code vastliggen. Zo krijgt dezelfde omzetvraag steeds hetzelfde antwoord.",
     "De vierde laag is een keurmerk (endorsement) op betrouwbare marts en dashboards. LangChain deelt dat bewust spaarzaam uit, anders zegt het niets meer. Wijzigingen aan goedgekeurde dashboards moeten eerst langs het datateam.",
-    "Wat het team niet heeft: een vaste manier om te meten of antwoorden kloppen. Het meet vooral gebruik, en evals staan nog op de planning. Het patroon past wel goed bij een dbt-project: je beschrijvingen en YAML zijn al de plek waar zulke context kan wonen."
+    "Wat het team niet heeft: een vaste manier om te meten of antwoorden kloppen. Het meet vooral gebruik, en evals staan nog op de planning. Het patroon past wel goed bij een dbt-project: je beschrijvingen en YAML zijn al de plek waar zulke context kan wonen. Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent."
   ],
   "key_facts": [
     "Gebruikte tools: dbt, BigQuery en Hex; een GitHub Action zet de werkruimtegidsen vanuit de dbt-repo in Hex.",
@@ -85,5 +85,10 @@
   },
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-11-07T04:05:00Z",
-  "prompt_version": "taak-v3"
+  "prompt_version": "taak-v3",
+  "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent",
+    "why": "Fase 7 gebruikt dbt-artifacts als context voor een eigen data-agent."
+  }
 }

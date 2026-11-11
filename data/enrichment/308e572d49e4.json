@@ -12,7 +12,7 @@
     "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
     "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
     "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
-    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA)."
+    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
   ],
   "key_facts": [
     "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
@@ -92,5 +92,10 @@
     "genie-mcp",
     "metric-views",
     "claude-code-databricks"
-  ]
+  ],
+  "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
+    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
+  }
 }
