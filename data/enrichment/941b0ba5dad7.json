@@ -1,0 +1,51 @@
+{
+  "format_version": 2,
+  "article_id": "941b0ba5dad7",
+  "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
+  "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
+  "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
+  "story": [
+    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
+    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
+    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
+    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
+    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
+  ],
+  "key_facts": [
+    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
+    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
+    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
+    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
+    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
+    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
+  ],
+  "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
+  "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
+  "limitations": [
+    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
+    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {"label": "Azure Databricks release notes november 2026", "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"}
+  ],
+  "topics": ["databricks_data_engineering", "ai_on_data_platform", "cicd_data_deployment", "metadata_lineage_catalogs"],
+  "quality": {"depth": 0.5, "practicality": 0.75, "novelty": 0.6},
+  "development_key": "databricks-weekoverzicht-2026-w45",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {"score": 0.6, "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."},
+  "labels": ["databricks-weekoverzicht", "ai-functies-in-sql", "lakeflow-jobs", "genie-externe-kennis"],
+  "project_ref": {"fase": 5, "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5", "why": "Jobs met afhankelijkheden zijn de kern van fase 5."},
+  "terms": [
+    {"term": "LTS", "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."},
+    {"term": "Lakeflow Job", "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."},
+    {"term": "metastore", "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."},
+    {"term": "ai_parse_document", "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-11T03:32:00Z",
+  "prompt_version": "taak-v2"
+}

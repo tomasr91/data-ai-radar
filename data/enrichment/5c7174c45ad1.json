@@ -1,0 +1,60 @@
+{
+  "format_version": 2,
+  "article_id": "5c7174c45ad1",
+  "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
+  "headline": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
+  "summary": "Databricks kan metric views nu publiceren als Power BI-semantisch model: dimensies worden kolommen en maatstaven worden DAX-measures. Het is nog een private preview.",
+  "story": [
+    "Databricks heeft een knop gemaakt die een metric view uit Unity Catalog omzet in een Power BI-semantisch model. Je definieert een maatstaf zoals omzet dan één keer in Databricks. Power BI, AI/BI-dashboards en Genie gebruiken daarna dezelfde definitie. De functie heet Publish to Power BI en is nog een private preview.",
+    "Het werkt als een vertaling. Elke metric view wordt één tabel in het Power BI-model. Dimensies worden kolommen en maatstaven worden DAX-measures, dus een SUM wordt een SUM in DAX en een verhouding wordt een DIVIDE. Joins die in de metric view staan, draait Databricks zelf. Je hoeft in Power BI dus geen relaties opnieuw te leggen.",
+    "Publiceren kan op twee manieren. Je kiest in Catalog Explorer voor Publish to Power BI en een werkruimte. Of je voegt een Power BI-taak toe aan een Lakeflow Job, zodat het model na elke verversing van de brontabellen wordt bijgewerkt. Standaard gebruikt het model DirectQuery: Power BI vraagt bij elke klik de metric view op, en de rechten uit Unity Catalog blijven gelden. In importmodus gelden de Power BI-rechten.",
+    "Voor jouw werk raakt dit een bekende spanning. Nu staan veel maatstaven als DAX in een Power BI-model, waar een AI-assistent of een ander rapport er niet bij kan. Met deze route wordt de catalogus de bron en Power BI de afnemer. Let wel op: het werkt maar één kant op. Pas je een measure in Power BI aan, dan komt dat niet terug in Databricks.",
+    "Voor Dataflow is dit iets voor fase 4: als je Gold-tabellen hebt, kun je één metric view bouwen en kijken hoe die als model in Power BI aankomt. Of de functie in Databricks Free Edition werkt, zegt het artikel niet."
+  ],
+  "key_facts": [
+    "Publish to Power BI publiceert Unity Catalog metric views als Power BI-semantische modellen; status private preview, toegang via het Databricks-accountteam (blog van 10 november 2026).",
+    "Elke metric view wordt één tabel; dimensies worden kolommen, maatstaven worden DAX-measures (bijv. roas = DIVIDE([total_revenue], [total_spend])).",
+    "Publiceren kan vanuit Catalog Explorer of met een Power BI-taak in een Lakeflow Job.",
+    "Standaard DirectQuery op Lakehouse//RT of Databricks SQL, met row filters, column masks en ABAC uit Unity Catalog; importmodus volgt de Power BI-rechten.",
+    "Ondersteund: SUM, COUNT, AVG, MIN, MAX, MEDIAN, STDDEV, VARIANCE, distinct counts, verhoudingen, gefilterde en samengestelde measures en window measures; beschrijvingen en weergaveformaten gaan mee.",
+    "Synchronisatie is eenrichtingsverkeer: wijzigingen in Power BI gaan niet terug naar de metric view; materialisatie voor Power BI komt later."
+  ],
+  "personal_relevance": "Je maatstaven kunnen één keer in de catalogus staan en toch in je Power BI-rapporten verschijnen, zodat AI en rapporten hetzelfde getal geven.",
+  "experiment": "Bouw op een openbare of verzonnen dataset een metric view met een som en een verhouding, en vergelijk de DAX die Power BI ervan maakt met wat je zelf zou schrijven (als je toegang tot de preview krijgt).",
+  "limitations": [
+    "Private preview: alleen via het accountteam, en functies kunnen nog veranderen.",
+    "Eén richting: wijzigingen in Power BI gaan verloren bij de volgende publicatie.",
+    "Het artikel noemt geen eisen voor licenties, XMLA of Power BI Desktop-versies."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {"label": "Publish to Power BI (preview)", "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/publish-metric-views"},
+    {"label": "Unity Catalog metric views", "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/"},
+    {"label": "Power BI-taken in Lakeflow Jobs", "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/powerbi"}
+  ],
+  "topics": ["powerbi_semantic_models", "data_architecture_modeling", "databricks_data_engineering", "ai_context_engineering"],
+  "quality": {"depth": 0.7, "practicality": 0.8, "novelty": 0.75},
+  "development_key": "metric-views-publish-power-bi-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {"score": 0.8, "why": "Power BI-koppeling met vaste definities, zoals je duimen voor de semantische-laag- en OAP-stukken."},
+  "labels": ["metric-views", "vaste-metric-definities", "semantische-laag"],
+  "project_ref": {"fase": 4, "quote": "Voor Dataflow is dit iets voor fase 4", "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."},
+  "terms": [
+    {"term": "metric view", "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."},
+    {"term": "DirectQuery", "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."},
+    {"term": "Lakeflow Job", "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."}
+  ],
+  "showcase": {
+    "caption": "Waarom een verhouding als maatstaf vastligt: eerst optellen, dan delen. Het gemiddelde van losse verhoudingen geeft een ander, fout getal. Een metric view legt de juiste volgorde één keer vast; Power BI krijgt dan DIVIDE([total_revenue], [total_spend]).",
+    "language": "sql",
+    "code": "SELECT kanaal,\n  SUM(revenue) AS total_revenue,\n  SUM(spend) AS total_spend,\n  ROUND(SUM(revenue) / SUM(spend), 2) AS roas_juist,\n  ROUND(AVG(revenue / spend), 2) AS roas_fout\nFROM campagnes\nGROUP BY kanaal\nORDER BY kanaal;",
+    "result": {"columns": ["kanaal", "total_revenue", "total_spend", "roas_juist", "roas_fout"], "rows": [["email", 1000, 400, 2.5, 3.0], ["social", 550, 250, 2.2, 3.25]]},
+    "note": "Verzonnen data, gedraaid in DuckDB. De namen total_spend, total_revenue en roas komen uit het voorbeeld in de blog; de notatie van de metric view zelf staat in de documentatie."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-11T03:30:00Z",
+  "prompt_version": "taak-v2"
+}

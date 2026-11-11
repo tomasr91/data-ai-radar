@@ -1,0 +1,52 @@
+{
+  "format_version": 2,
+  "article_id": "53acc8538264",
+  "url": "https://github.com/anthropics/claude-code/releases?week=2026-W45",
+  "headline": "Claude Code laat lange MCP-taken op de achtergrond lopen",
+  "summary": "In week 45 kreeg Claude Code MCP-taken die op de achtergrond doorlopen, een instelling om te weigeren in plaats van te vragen, en extra controles op wat er het netwerk op gaat.",
+  "story": [
+    "De grootste verandering van deze week zit in versie 2.1.319. Claude Code ondersteunt nu MCP-taken (MCP tasks) in de terminal. Zo'n taak gaat naar de achtergrond en meldt zich als hij klaar is. Je hoeft dus niet te wachten op een trage tool, zoals een lange query via een MCP-server.",
+    "In dezelfde versie kwam de instelling permissions.denyInsteadOfPrompting. Normaal vraagt Claude Code om toestemming als een actie niet vooraf is toegestaan. Met deze instelling weigert hij zo'n actie meteen. Dat is handig als niemand meekijkt, bijvoorbeeld bij een geplande taak: dan blijft hij niet hangen op een vraag.",
+    "Versie 2.1.317 bracht twee controles op wat er naar buiten gaat. Claude Code vraagt eerst toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt. En /schedule waarschuwt als een nieuwe geplande taak in de cloud connectoren krijgt waar je niet om vroeg, met uitleg hoe je ze weghaalt.",
+    "Voor wie zelf agents bouwt met de Agent SDK: een hook-callback kan nu onFailure: \"block\" krijgen. Gaat de hook zelf mis, dan wordt de actie tegengehouden in plaats van doorgelaten. Bij dbt- of data-engineeringwerk is dat een veilige standaard voor een hook die bijvoorbeeld schrijfacties naar productie moet tegenhouden."
+  ],
+  "key_facts": [
+    "v2.1.319 (6 november): ondersteuning voor MCP-taken in de terminal; ze gaan naar de achtergrond en melden het resultaat als ze klaar zijn.",
+    "v2.1.319: nieuwe instelling permissions.denyInsteadOfPrompting en omgevingsvariabele CLAUDE_CODE_DISABLE_FEATURE_FLAGS.",
+    "v2.1.319: auto mode zonder telemetrie of feature flags (ook achter LLM-gateways) vraagt of weigert aanroepen die de server niet kan controleren, zonder terug te vallen op de ingebouwde classifier.",
+    "v2.1.317 (3 november): /schedule waarschuwt voor ongevraagde connectoren; Claude Code vraagt toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt.",
+    "v2.1.317: onFailure: \"block\" voor hook-callbacks in de Agent SDK.",
+    "v2.1.318 (4 november): deniedMcpServers met een URL blokkeert ook passende servers die Anthropic zelf levert."
+  ],
+  "personal_relevance": "Lange MCP-aanroepen naar Databricks hoeven je sessie niet meer te blokkeren, en geplande taken kun je strenger afschermen.",
+  "experiment": "Zet in een testproject permissions.denyInsteadOfPrompting aan en laat Claude Code een niet-toegestane actie proberen, om te zien hoe hij reageert.",
+  "limitations": [
+    "De release notes geven geen voorbeeld van hoe je een MCP-taak start of welke MCP-servers het ondersteunen.",
+    "Alleen de belangrijkste wijzigingen staan hier; de volledige lijst staat in de release notes."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {"label": "Release v2.1.317", "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317"},
+    {"label": "Release v2.1.318", "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318"},
+    {"label": "Release v2.1.319", "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"}
+  ],
+  "topics": ["claude_ai_development", "ai_agents_rag"],
+  "quality": {"depth": 0.45, "practicality": 0.6, "novelty": 0.55},
+  "development_key": "claude-code-weekoverzicht-2026-w45",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {"score": 0.65, "why": "Claude Code-release over veiligheid en werkwijze, zoals je duim voor de sandbox-release."},
+  "labels": ["claude-code-mcp-taken", "claude-code-permissies", "claude-code-sandbox"],
+  "project_ref": null,
+  "terms": [
+    {"term": "MCP-taken", "explanation": "Aanroepen van een MCP-tool die lang mogen duren: ze lopen op de achtergrond door en melden zich als het resultaat klaar is."},
+    {"term": "MCP-server", "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."},
+    {"term": "Agent SDK", "explanation": "Een programmeerbibliotheek van Anthropic om zelf agents te bouwen met dezelfde bouwstenen als Claude Code, zoals tools en hooks."},
+    {"term": "hook", "explanation": "Een stukje code dat automatisch draait op een vast moment, bijvoorbeeld vlak voordat een AI-assistent een tool gebruikt."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-11T03:34:00Z",
+  "prompt_version": "taak-v2"
+}
