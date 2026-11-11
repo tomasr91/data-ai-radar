@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T05:15:02.080248Z",
+ "generated_at": "2026-11-11T06:29:21.809964Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -449,7 +449,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-10-29T21:00:00Z",
    "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
-   "preliminary_score": 60,
+   "preliminary_score": 59,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "data_ingestion"
