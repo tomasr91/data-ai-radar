@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T03:13:11.717998Z",
+ "generated_at": "2026-11-11T03:28:25.396034Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-07T04:20:00Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-11T03:41:00Z",
  "last_successful_update": "2026-11-11T03:13:11.717998Z",
  "groups": [
   {
@@ -418,13 +418,154 @@
   }
  ],
  "daily_top": [
+  "5c7174c45ad1",
   "4dcd7af26dab",
-  "308e572d49e4",
+  "941b0ba5dad7",
   "d2e9b967064a",
-  "c63f36899b14",
-  "059023edac5d"
+  "c63f36899b14"
  ],
  "articles": [
+  {
+   "id": "5c7174c45ad1",
+   "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
+   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-10T18:45:00Z",
+   "fetched_at": "2026-11-10T20:23:14.925389Z",
+   "summary": "Databricks kan metric views nu publiceren als Power BI-semantisch model: dimensies worden kolommen en maatstaven worden DAX-measures. Het is nog een private preview.",
+   "personal_relevance": "Je maatstaven kunnen één keer in de catalogus staan en toch in je Power BI-rapporten verschijnen, zodat AI en rapporten hetzelfde getal geven.",
+   "experiment": "Bouw op een openbare of verzonnen dataset een metric view met een som en een verhouding, en vergelijk de DAX die Power BI ervan maakt met wat je zelf zou schrijven (als je toegang tot de preview krijgt).",
+   "limitations": [
+    "Private preview: alleen via het accountteam, en functies kunnen nog veranderen.",
+    "Eén richting: wijzigingen in Power BI gaan verloren bij de volgende publicatie.",
+    "Het artikel noemt geen eisen voor licenties, XMLA of Power BI Desktop-versies."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Publish to Power BI (preview)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/publish-metric-views"
+    },
+    {
+     "label": "Unity Catalog metric views",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/"
+    },
+    {
+     "label": "Power BI-taken in Lakeflow Jobs",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/powerbi"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "overig",
+    "architectuur",
+    "ai_context",
+    "databricks"
+   ],
+   "relevance_score": 98,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.75,
+    "feedback": -0.06,
+    "fit": 0.3,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:30:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
+   "story": [
+    "Databricks heeft een knop gemaakt die een metric view uit Unity Catalog omzet in een Power BI-semantisch model. Je definieert een maatstaf zoals omzet dan één keer in Databricks. Power BI, AI/BI-dashboards en Genie gebruiken daarna dezelfde definitie. De functie heet Publish to Power BI en is nog een private preview.",
+    "Het werkt als een vertaling. Elke metric view wordt één tabel in het Power BI-model. Dimensies worden kolommen en maatstaven worden DAX-measures, dus een SUM wordt een SUM in DAX en een verhouding wordt een DIVIDE. Joins die in de metric view staan, draait Databricks zelf. Je hoeft in Power BI dus geen relaties opnieuw te leggen.",
+    "Publiceren kan op twee manieren. Je kiest in Catalog Explorer voor Publish to Power BI en een werkruimte. Of je voegt een Power BI-taak toe aan een Lakeflow Job, zodat het model na elke verversing van de brontabellen wordt bijgewerkt. Standaard gebruikt het model DirectQuery: Power BI vraagt bij elke klik de metric view op, en de rechten uit Unity Catalog blijven gelden. In importmodus gelden de Power BI-rechten.",
+    "Voor jouw werk raakt dit een bekende spanning. Nu staan veel maatstaven als DAX in een Power BI-model, waar een AI-assistent of een ander rapport er niet bij kan. Met deze route wordt de catalogus de bron en Power BI de afnemer. Let wel op: het werkt maar één kant op. Pas je een measure in Power BI aan, dan komt dat niet terug in Databricks.",
+    "Voor Dataflow is dit iets voor fase 4: als je Gold-tabellen hebt, kun je één metric view bouwen en kijken hoe die als model in Power BI aankomt. Of de functie in Databricks Free Edition werkt, zegt het artikel niet."
+   ],
+   "key_facts": [
+    "Publish to Power BI publiceert Unity Catalog metric views als Power BI-semantische modellen; status private preview, toegang via het Databricks-accountteam (blog van 10 november 2026).",
+    "Elke metric view wordt één tabel; dimensies worden kolommen, maatstaven worden DAX-measures (bijv. roas = DIVIDE([total_revenue], [total_spend])).",
+    "Publiceren kan vanuit Catalog Explorer of met een Power BI-taak in een Lakeflow Job.",
+    "Standaard DirectQuery op Lakehouse//RT of Databricks SQL, met row filters, column masks en ABAC uit Unity Catalog; importmodus volgt de Power BI-rechten.",
+    "Ondersteund: SUM, COUNT, AVG, MIN, MAX, MEDIAN, STDDEV, VARIANCE, distinct counts, verhoudingen, gefilterde en samengestelde measures en window measures; beschrijvingen en weergaveformaten gaan mee.",
+    "Synchronisatie is eenrichtingsverkeer: wijzigingen in Power BI gaan niet terug naar de metric view; materialisatie voor Power BI komt later."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Waarom een verhouding als maatstaf vastligt: eerst optellen, dan delen. Het gemiddelde van losse verhoudingen geeft een ander, fout getal. Een metric view legt de juiste volgorde één keer vast; Power BI krijgt dan DIVIDE([total_revenue], [total_spend]).",
+    "language": "sql",
+    "code": "SELECT kanaal,\n  SUM(revenue) AS total_revenue,\n  SUM(spend) AS total_spend,\n  ROUND(SUM(revenue) / SUM(spend), 2) AS roas_juist,\n  ROUND(AVG(revenue / spend), 2) AS roas_fout\nFROM campagnes\nGROUP BY kanaal\nORDER BY kanaal;",
+    "result": {
+     "columns": [
+      "kanaal",
+      "total_revenue",
+      "total_spend",
+      "roas_juist",
+      "roas_fout"
+     ],
+     "rows": [
+      [
+       "email",
+       1000,
+       400,
+       2.5,
+       3.0
+      ],
+      [
+       "social",
+       550,
+       250,
+       2.2,
+       3.25
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. De namen total_spend, total_revenue en roas komen uit het voorbeeld in de blog; de notatie van de metric view zelf staat in de documentatie."
+   },
+   "terms": [
+    {
+     "term": "metric view",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "DirectQuery",
+     "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
+    },
+    {
+     "term": "Lakeflow Job",
+     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.8,
+    "why": "Power BI-koppeling met vaste definities, zoals je duimen voor de semantische-laag- en OAP-stukken."
+   },
+   "labels": [
+    "metric-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow is dit iets voor fase 4",
+    "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
+   }
+  },
   {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
@@ -507,6 +648,112 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "941b0ba5dad7",
+   "title": "Azure Databricks: wat is er nieuw in week 45",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-08T23:59:59Z",
+   "fetched_at": "2026-11-10T20:23:13.940839Z",
+   "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
+   "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
+   "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
+   "limitations": [
+    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
+    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes november 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 94,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 1.0,
+    "quality": 0.62,
+    "feedback": -0.04,
+    "fit": 0.1,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:32:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
+   "story": [
+    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
+    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
+    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
+    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
+    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
+   ],
+   "key_facts": [
+    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
+    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
+    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
+    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
+    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
+    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "LTS",
+     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    },
+    {
+     "term": "Lakeflow Job",
+     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "metastore",
+     "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."
+    },
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "ai-functies-in-sql",
+    "lakeflow-jobs",
+    "genie-externe-kennis"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
+    "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
    }
   },
   {
@@ -1292,6 +1539,102 @@
    }
   },
   {
+   "id": "53acc8538264",
+   "title": "Claude Code: wat is er nieuw in week 45 (v2.1.317 t/m v2.1.319)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W45",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-08T23:59:59Z",
+   "fetched_at": "2026-11-10T20:23:14.559963Z",
+   "summary": "In week 45 kreeg Claude Code MCP-taken die op de achtergrond doorlopen, een instelling om te weigeren in plaats van te vragen, en extra controles op wat er het netwerk op gaat.",
+   "personal_relevance": "Lange MCP-aanroepen naar Databricks hoeven je sessie niet meer te blokkeren, en geplande taken kun je strenger afschermen.",
+   "experiment": "Zet in een testproject permissions.denyInsteadOfPrompting aan en laat Claude Code een niet-toegestane actie proberen, om te zien hoe hij reageert.",
+   "limitations": [
+    "De release notes geven geen voorbeeld van hoe je een MCP-taak start of welke MCP-servers het ondersteunen.",
+    "Alleen de belangrijkste wijzigingen staan hier; de volledige lijst staat in de release notes."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release v2.1.317",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317"
+    },
+    {
+     "label": "Release v2.1.318",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318"
+    },
+    {
+     "label": "Release v2.1.319",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.8,
+    "quality": 0.53,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:34:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code laat lange MCP-taken op de achtergrond lopen",
+   "story": [
+    "De grootste verandering van deze week zit in versie 2.1.319. Claude Code ondersteunt nu MCP-taken (MCP tasks) in de terminal. Zo'n taak gaat naar de achtergrond en meldt zich als hij klaar is. Je hoeft dus niet te wachten op een trage tool, zoals een lange query via een MCP-server.",
+    "In dezelfde versie kwam de instelling permissions.denyInsteadOfPrompting. Normaal vraagt Claude Code om toestemming als een actie niet vooraf is toegestaan. Met deze instelling weigert hij zo'n actie meteen. Dat is handig als niemand meekijkt, bijvoorbeeld bij een geplande taak: dan blijft hij niet hangen op een vraag.",
+    "Versie 2.1.317 bracht twee controles op wat er naar buiten gaat. Claude Code vraagt eerst toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt. En /schedule waarschuwt als een nieuwe geplande taak in de cloud connectoren krijgt waar je niet om vroeg, met uitleg hoe je ze weghaalt.",
+    "Voor wie zelf agents bouwt met de Agent SDK: een hook-callback kan nu onFailure: \"block\" krijgen. Gaat de hook zelf mis, dan wordt de actie tegengehouden in plaats van doorgelaten. Bij dbt- of data-engineeringwerk is dat een veilige standaard voor een hook die bijvoorbeeld schrijfacties naar productie moet tegenhouden."
+   ],
+   "key_facts": [
+    "v2.1.319 (6 november): ondersteuning voor MCP-taken in de terminal; ze gaan naar de achtergrond en melden het resultaat als ze klaar zijn.",
+    "v2.1.319: nieuwe instelling permissions.denyInsteadOfPrompting en omgevingsvariabele CLAUDE_CODE_DISABLE_FEATURE_FLAGS.",
+    "v2.1.319: auto mode zonder telemetrie of feature flags (ook achter LLM-gateways) vraagt of weigert aanroepen die de server niet kan controleren, zonder terug te vallen op de ingebouwde classifier.",
+    "v2.1.317 (3 november): /schedule waarschuwt voor ongevraagde connectoren; Claude Code vraagt toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt.",
+    "v2.1.317: onFailure: \"block\" voor hook-callbacks in de Agent SDK.",
+    "v2.1.318 (4 november): deniedMcpServers met een URL blokkeert ook passende servers die Anthropic zelf levert."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "MCP-taken",
+     "explanation": "Aanroepen van een MCP-tool die lang mogen duren: ze lopen op de achtergrond door en melden zich als het resultaat klaar is."
+    },
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "Agent SDK",
+     "explanation": "Een programmeerbibliotheek van Anthropic om zelf agents te bouwen met dezelfde bouwstenen als Claude Code, zoals tools en hooks."
+    },
+    {
+     "term": "hook",
+     "explanation": "Een stukje code dat automatisch draait op een vast moment, bijvoorbeeld vlak voordat een AI-assistent een tool gebruikt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.65,
+    "why": "Claude Code-release over veiligheid en werkwijze, zoals je duim voor de sandbox-release."
+   },
+   "labels": [
+    "claude-code-mcp-taken",
+    "claude-code-permissies",
+    "claude-code-sandbox"
+   ]
+  },
+  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -1800,6 +2143,106 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -7
+   }
+  },
+  {
+   "id": "62afb1e0ab94",
+   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
+   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
+   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
+   "limitations": [
+    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
+    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Blog: Safely scaling multi-agent teams",
+     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+    },
+    {
+     "label": "Formalisering uit september",
+     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.51,
+    "quality": 0.68,
+    "feedback": -0.05,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
+   "story": [
+    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
+    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
+    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
+    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
+    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
+   ],
+   "key_facts": [
+    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
+    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
+    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
+    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
+    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
+    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Lean",
+     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
+    },
+    {
+     "term": "gateway",
+     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
+    },
+    {
+     "term": "classifier",
+     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
+    },
+    {
+     "term": "least privilege",
+     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
+   },
+   "labels": [
+    "multi-agent",
+    "agent-harness",
+    "agent-sandbox"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -5
    }
   },
   {
@@ -2646,6 +3089,47 @@
     "name": "ai_context_engineering",
     "pts": 1
    }
+  },
+  {
+   "id": "6ee1dee33e4b",
+   "title": "Hide your slop PR descriptions behind <details><summary>",
+   "url": "https://simonwillison.net/2026/Nov/9/details-summary/",
+   "source_id": "simon_willison",
+   "published_at": "2026-11-09T04:25:05Z",
+   "fetched_at": "2026-11-10T20:23:17.357683Z",
+   "summary": "Simon Willison laat de PR-beschrijving van Claude Code of Codex staan, maar verbergt die in een <details><summary>-blok met de modelnaam als kopje. Erboven schrijft hij zelf een korte alinea over waar de PR voor is, zodat lezers weten waar ze op moeten letten.",
+   "availability_status": "onbekend",
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.91,
+    "source": 0.68,
+    "quality": 0.43,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:41:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Willison: zet de lange PR-tekst van je agent achter een uitklapblok",
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.5,
+    "why": "Kleine werktip rond Claude Code; je duimen gaan vaker naar stukken met meer diepgang."
+   },
+   "labels": [
+    "claude-code-pr-werkwijze",
+    "ai-gegenereerde-tekst"
+   ],
+   "diepte": "kort"
   },
   {
    "id": "583b8d97bd5d",
@@ -5509,53 +5993,6 @@
    }
   },
   {
-   "id": "aca665944832",
-   "title": "Power Query Corner: Finding and connecting to data in the new experience (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-Query-Corner-Finding-and-connecting-to-data-in-the-new/ba-p/5382053",
-   "source_id": "powerbi_blog",
-   "published_at": "2026-11-05T17:00:00Z",
-   "fetched_at": "2026-11-06T03:12:46.802136Z",
-   "summary": "In de nieuwe Power Query-ervaring (preview) kies je data via blokken als Recent, OneLake-catalogus en Blank query, in plaats van één lange lijst connectoren. Microsoft noemt ook wat nog ontbreekt na 386 reacties van gebruikers, en je kunt in Power BI Desktop terug naar de oude ervaring.",
-   "availability_status": "preview",
-   "topics": [
-    "powerbi_semantic_models"
-   ],
-   "groups": [
-    "overig"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.76,
-    "source": 0.51,
-    "quality": 0.37,
-    "feedback": -0.02,
-    "fit": -0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Nieuwe Power Query: data zoeken via OneLake-catalogus en 'recent'",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.35,
-    "why": "Kleine Power BI-functie; je duimen gaan vooral naar dbt- en AI-stukken."
-   },
-   "labels": [
-    "power-query",
-    "onelake-catalog"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -2
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "984223f109f3",
    "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
    "url": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
@@ -5683,6 +6120,53 @@
     "name": "achtergrond",
     "pts": -5
    }
+  },
+  {
+   "id": "aca665944832",
+   "title": "Power Query Corner: Finding and connecting to data in the new experience (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-Query-Corner-Finding-and-connecting-to-data-in-the-new/ba-p/5382053",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-11-05T17:00:00Z",
+   "fetched_at": "2026-11-06T03:12:46.802136Z",
+   "summary": "In de nieuwe Power Query-ervaring (preview) kies je data via blokken als Recent, OneLake-catalogus en Blank query, in plaats van één lange lijst connectoren. Microsoft noemt ook wat nog ontbreekt na 386 reacties van gebruikers, en je kunt in Power BI Desktop terug naar de oude ervaring.",
+   "availability_status": "preview",
+   "topics": [
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "overig"
+   ],
+   "relevance_score": 73,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.76,
+    "source": 0.51,
+    "quality": 0.37,
+    "feedback": -0.02,
+    "fit": -0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-07T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Nieuwe Power Query: data zoeken via OneLake-catalogus en 'recent'",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.35,
+    "why": "Kleine Power BI-functie; je duimen gaan vooral naar dbt- en AI-stukken."
+   },
+   "labels": [
+    "power-query",
+    "onelake-catalog"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -2
+   },
+   "diepte": "kort"
   },
   {
    "id": "0b4ae9670355",
@@ -6704,7 +7188,7 @@
    "relevance_score": 48,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.2,
@@ -8924,6 +9408,17 @@
    ]
   },
   {
+   "term": "Agent SDK",
+   "explanation": "Een programmeerbibliotheek van Anthropic om zelf agents te bouwen met dezelfde bouwstenen als Claude Code, zoals tools en hooks.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "53acc8538264",
+     "title": "Claude Code laat lange MCP-taken op de achtergrond lopen"
+    }
+   ]
+  },
+  {
    "term": "Agent Skills",
    "explanation": "Een open formaat voor skills: mappen met een SKILL.md-bestand die een agent pas laadt als hij ze nodig heeft.",
    "refs": [
@@ -8958,6 +9453,17 @@
      "kind": "a",
      "id": "450468c3f304",
      "title": "Laat AI liever beschrijven wat je wilt dan hoe het moet"
+    }
+   ]
+  },
+  {
+   "term": "ai_parse_document",
+   "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "941b0ba5dad7",
+     "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
     }
    ]
   },
@@ -9209,6 +9715,11 @@
    "term": "classifier",
    "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    },
     {
      "kind": "a",
      "id": "3fd19a8cb4a2",
@@ -9644,6 +10155,11 @@
    "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden.",
    "refs": [
     {
+     "kind": "a",
+     "id": "5c7174c45ad1",
+     "title": "Metric views uit Unity Catalog worden vanzelf een Power BI-model"
+    },
+    {
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
      "title": "dbt semantic layer of metric views: waar leg je je maatstaven vast?"
@@ -9917,6 +10433,17 @@
    ]
   },
   {
+   "term": "gateway",
+   "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    }
+   ]
+  },
+  {
    "term": "gedeeld geheugen",
    "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken.",
    "refs": [
@@ -10032,6 +10559,17 @@
    ]
   },
   {
+   "term": "hook",
+   "explanation": "Een stukje code dat automatisch draait op een vast moment, bijvoorbeeld vlak voordat een AI-assistent een tool gebruikt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "53acc8538264",
+     "title": "Claude Code laat lange MCP-taken op de achtergrond lopen"
+    }
+   ]
+  },
+  {
    "term": "hooks",
    "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent.",
    "refs": [
@@ -10130,6 +10668,22 @@
    ]
   },
   {
+   "term": "Lakeflow Job",
+   "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "941b0ba5dad7",
+     "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    },
+    {
+     "kind": "a",
+     "id": "5c7174c45ad1",
+     "title": "Metric views uit Unity Catalog worden vanzelf een Power BI-model"
+    }
+   ]
+  },
+  {
    "term": "Lakeflow Jobs",
    "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien.",
    "refs": [
@@ -10153,6 +10707,28 @@
      "kind": "a",
      "id": "ce8bd2396821",
      "title": "Zes kleine agents met elk één taak, en een mens die tekent"
+    }
+   ]
+  },
+  {
+   "term": "Lean",
+   "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    }
+   ]
+  },
+  {
+   "term": "least privilege",
+   "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
     }
    ]
   },
@@ -10249,6 +10825,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "941b0ba5dad7",
+     "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    },
+    {
+     "kind": "a",
      "id": "4255764d89d9",
      "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
     }
@@ -10335,8 +10916,24 @@
    "refs": [
     {
      "kind": "a",
+     "id": "53acc8538264",
+     "title": "Claude Code laat lange MCP-taken op de achtergrond lopen"
+    },
+    {
+     "kind": "a",
      "id": "1ebe4563dc44",
      "title": "Vraag je AI-assistent om DAX-functies in je Power BI-model te zetten"
+    }
+   ]
+  },
+  {
+   "term": "MCP-taken",
+   "explanation": "Aanroepen van een MCP-tool die lang mogen duren: ze lopen op de achtergrond door en melden zich als het resultaat klaar is.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "53acc8538264",
+     "title": "Claude Code laat lange MCP-taken op de achtergrond lopen"
     }
    ]
   },
@@ -10348,6 +10945,28 @@
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
      "title": "dbt semantic layer of metric views: waar leg je je maatstaven vast?"
+    }
+   ]
+  },
+  {
+   "term": "metastore",
+   "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "941b0ba5dad7",
+     "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    }
+   ]
+  },
+  {
+   "term": "metric view",
+   "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "5c7174c45ad1",
+     "title": "Metric views uit Unity Catalog worden vanzelf een Power BI-model"
     }
    ]
   },
@@ -11911,10 +12530,10 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 408,
+  "fetched_items": 540,
   "unique_after_dedupe": 512,
   "merged_duplicates": 21,
-  "shown": 69,
+  "shown": 74,
   "decisions": {
    "excluded": 165,
    "included": 117,
@@ -11924,28 +12543,29 @@
    "source_cap": 10
   },
   "processing": {
-   "enriched": 69
+   "enriched": 74
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 18,
+   "overig": 8,
+   "ai_context": 19,
    "dbt": 6,
-   "claude": 15,
+   "claude": 17,
    "architectuur": 3,
-   "agents": 13,
-   "overig": 7,
+   "agents": 14,
    "databricks": 5,
    "kwaliteit": 2
   },
   "per_source": {
+   "databricks_blog": 14,
    "dbt_labs_blog": 9,
-   "azure_databricks_release_notes": 3,
+   "azure_databricks_release_notes": 4,
    "dbt_developer_blog": 4,
-   "claude_code_releases": 2,
-   "databricks_blog": 13,
+   "claude_code_releases": 3,
+   "claude_blog": 12,
    "dbt_core_releases": 1,
    "chris_webb": 1,
-   "claude_blog": 11,
+   "simon_willison": 3,
    "hamel_husain": 1,
    "langchain_blog": 7,
    "fabric_blog": 5,
@@ -11953,7 +12573,6 @@
    "sqlbi": 2,
    "powerbi_blog": 2,
    "anthropic_engineering": 1,
-   "simon_willison": 2,
    "huggingface_blog": 1
   },
   "date_flags": [
@@ -11990,7 +12609,7 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 154
+   "skipped_no_key": 149
   },
   "queue_size": 40,
   "invalid_enrichment": [],
@@ -12011,14 +12630,6 @@
     "excluded_by": [
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Azure Databricks: wat is er nieuw in week 45",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
-    "relevance_score": 86,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "The agentic code converter is generally available for SQL conversion",
@@ -12187,14 +12798,6 @@
     "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
     "relevance_score": 81,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
-    "relevance_score": 81,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -12567,6 +13170,24 @@
     "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
+   },
+   {
+    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+    "relevance_score": 73,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Governed tag propagation is in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+    "relevance_score": 72,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    }
   ],
   "topics_without_source": [

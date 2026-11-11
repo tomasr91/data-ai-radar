@@ -1,111 +1,7 @@
 {
- "generated_at": "2026-11-11T03:13:11.717998Z",
+ "generated_at": "2026-11-11T03:28:25.396034Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "941b0ba5dad7",
-   "title": "Azure Databricks: wat is er nieuw in week 45",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-11-08T23:59:59Z",
-   "excerpt": "Weekoverzicht van 33 release notes. Managed warehouse for MLflow (Beta): With managed warehouse, users can view traces stored in Unity Catalog in the MLflow UI without selecting a SQL warehouse. MLflow runs trace queries on a SQL warehouse that it creates in your workspace · Genie Agents enhancements: Analyze files in Unity Catalog volumes (Public Preview) : A Genie Agent can now analyze unstructured files stored in Unity Catalog volumes, such as PDFs, slide decks, and images, and answer with citat · Higher limits and BROWSE support for Unity Catalog secrets: A schema can now hold up to 1,000 Unity Catalog secrets, and a metastore up to 10,000, up from 100 and 1,000. The limits apply to Azure Databricks-managed secrets and secrets backed by Azure Key Vault · OneLake external locations are in Public Preview: OneLake external locations are now in Public Preview . Use a OneLake external location as managed storage for a Unity Catalog catalog to store managed tables, volumes, materialized views, and streamin · Okta connector is available in Beta: The managed Okta connector is now available in Beta in Databricks Lakeflow Connect. Workspace admins can enable Lakeflow Connect for Okta on the Previews page . Use the connector to ingest identity an · Control Lakebase sink upserts with merge strategies: When you write to Lakebase from Structured Streaming, you can use merge strategies to control how upserts update individual columns. Keep the first or last value, ignore nulls, or select values by an · Trigger Lakeflow Jobs when upstream jobs complete (Beta): You can now run a Lakeflow Job when one or more upstream jobs complete, including across workspaces attached to the same Unity Catalog metastore. Configure dependencies on the downstream job. See Trig · Zerobus Ingest into default storage is now generally available: Ingesting into tables backed by default storage with Zerobus Ingest in Lakeflow Connect is now generally available. See Create or identify the target table . · More external knowledge sources: Azure Databricks plans to support Tableau and Sigma as external knowledge sources. See External knowledge sources . · Dashboard enhancements and bug fixes: Reorder dashboard variables : Authors can now reorder dashboard variables directly in the dashboard editor. See Use dashboard variables . Display names for field variable options : Authors can now set · Run Claude Code and Codex in the SSH tunnel: Claude Code and Codex are now available in SSH tunnel sessions. The agents send model requests through Unity Gateway and authenticate with the credentials of your SSH session. This requires Databricks · Allow partner platforms in context-based ingress policies: Context-based ingress policies can now allow traffic from Power BI, Tableau Cloud, dbt Cloud, and the Genie apps for Slack and Microsoft Teams. Azure Databricks keeps partner details current, so you d · FedRAMP High compliance controls now available on Azure Databricks on Azure: Azure Databricks is a FedRAMP® Authorized Cloud Service Offering (CSO) at the high impact level in the Azure East US and East US2 (commercial) regions. To process data regulated by FedRAMP High, enabl · External knowledge sources are in Beta: External knowledge sources are in Beta . You can pull metadata from Power BI semantic models into Azure Databricks, and Genie can use your Power BI measure definitions when it answers questions. To us · Upcoming removal of AI Functions support on older runtimes: Starting in January 2027, AI Functions in SQL queries will no longer be supported on Databricks Runtime versions below 17.3 LTS. This change doesn't affect ai_similarity or the AI Functions REST API. · Publish Unity Gateway Skills with a GitHub Action in Beta: Publish Git-managed skills to Unity Catalog with a GitHub Action in Beta . Map folders to skills and publish updates on merges to your publishing branch. See Publish skills from your GitHub repository · AI Function tasks for jobs (Beta): You can now add AI Function tasks to your Azure Databricks jobs to run ai_parse_document , ai_extract , or ai_classify on the files in a volume or the rows of a table, without writing SQL. Each run pr · Lakehouse//RT supports fine-grained access control (Beta): You can now run read queries on tables protected by row filters, column masks, and attribute-based access control (ABAC) policies with Lakehouse//RT. See Fine-grained access control . · Approve Genie tool actions in Slack and Microsoft Teams (Public Preview): When Genie needs approval to run a connected external tool, the Databricks Genie apps for Slack and Microsoft Teams now show an approval prompt in the reply, so you can allow or deny the action withou · Recover dropped Unity Catalog volumes with UNDROP VOLUME: You can now recover a dropped Unity Catalog volume within 7 days. Find its ID with SHOW VOLUMES DROPPED , then run UNDROP VOLUME WITH ID to restore it with its privileges and tags. Requires Databricks · Install drivers for JDBC Unity Catalog connections from Maven: You can now install the JDBC driver for a JDBC Unity Catalog connection from a Maven coordinate instead of uploading it to a volume. This requires serverless compute, Databricks Runtime 19 or above, o · Load Unity Catalog tables into PyTorch on AI Runtime (Beta): UCDataset streams rows from Unity Catalog tables directly into PyTorch training loops on AI Runtime, without Spark or a SQL warehouse. It applies filter expressions and deletion vectors as it reads, a · Restore a deleted Unity Catalog metastore with the REST API (Public Preview): Account admins can now restore a deleted Unity Catalog metastore by its ID. You can restore a metastore for up to 5 days after it's deleted. See Restore a deleted metastore . · Unity Catalog wikis are in Beta: Unity Catalog wikis are in Beta . A wiki lets your team document a table's meaning, intended use, and sources, then collaborate on that information. Data owners and stewards draft and publish wikis in · All Uni",
-   "preliminary_score": 86,
-   "preliminary_topics": [
-    "dbt_analytics_engineering",
-    "ai_on_data_platform",
-    "claude_ai_development",
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs",
-    "data_ingestion",
-    "sql_spark_sql",
-    "data_governance_privacy",
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "53acc8538264",
-   "title": "Claude Code: wat is er nieuw in week 45 (v2.1.317 t/m v2.1.319)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W45",
-   "source_id": "claude_code_releases",
-   "source_name": "Claude Code releases (GitHub)",
-   "published_at": "2026-11-08T23:59:59Z",
-   "excerpt": "Weekoverzicht van 3 releases (v2.1.317 t/m v2.1.319). v2.1.317: What's changed Added a warning to /schedule when a new cloud scheduled task gets connectors you did not ask for, with how to remove them Added a check that asks before a web or shell tool call sends y · v2.1.318: What's changed Added a record of your answer when Claude Code asks to turn on the mods it writes in a session Added assume_role on mantle upstreams of the Claude apps gateway, for a role in another AW · v2.1.319: What's changed Changed auto mode with telemetry or feature flags off, including behind LLM gateways: calls the server can't check are asked about or denied, with no fallback to the built-in classifier. Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.317, https://github.com/anthropics/claude-code/releases/tag/v2.1.318, https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "5c7174c45ad1",
-   "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
-   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-10T18:45:00Z",
-   "excerpt": "Organizations want a single, trusted definition of their business semantics. Revenue,...",
-   "preliminary_score": 81,
-   "preliminary_topics": [
-    "ai_context_engineering",
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "baaf713b11e3",
-   "title": "Locating the source of a mysterious beep with Claude",
-   "url": "https://simonwillison.net/2026/Nov/9/mysterious-beeps/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-11-09T23:57:21Z",
-   "excerpt": "Our house has a box room, full of boxes that we still haven't unpacked from our last move. A couple of weeks ago something in that room started intermittently beeping . The beeps were far enough apart that standing in the room and trying to determine the source of the noise was frustrating, and I really didn't want to dig through every one of those boxes. So I had Claude Code build Beep Locator , a software system for triangulating the source of a mysterious beep using multiple devices scattered around the room. Here's what Beep Locator looks like after it has been running for a while: You run Python web server to show the primary UI, and then use the QR code or URL to connect as many devices as you can spare to act as listeners - I was using two iPads, a phone, a MacBook Pro and a Surface Ultra. The devices then play noises to each other to help estimate their locations. This didn't work particularly well, so I added a \"Rough mode\" where you can drag their icons around in the space to provide rough locations which are then adjusted based on those sounds. Once that's set up, the devices all listen for the beep! I added a clapping mode too so I could test it by clapping my hands in ",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "62afb1e0ab94",
-   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
-   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "excerpt": "How a team of 1,000 agents running an early version of Claude Fable 5.2 reproduced a formal proof of Fermat's Last Theorem with general tools, a shared database, and layered safety controls.",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "6ee1dee33e4b",
-   "title": "Hide your slop PR descriptions behind <details><summary>",
-   "url": "https://simonwillison.net/2026/Nov/9/details-summary/",
-   "source_id": "simon_willison",
-   "source_name": "Simon Willison",
-   "published_at": "2026-11-09T04:25:05Z",
-   "excerpt": "Most of the changes I make to my projects these days come in the form of PRs opened for me by Claude Code or Codex. The PR is my unit of work - I use them to bundle commits together, iterating on them until a feature is complete, document decisions and then merge the finished result. Today's coding agents are great at writing PR descriptions. They're too good at describing the work The problem is that they are too good. An agent-written PR description is accurate and comprehensive. It describes the problem, the detailed solution, and the steps taken to verify it. That's a lot of information to absorb. It's not necessarily slop, but it reads like slop! It's very easy to spot an AI-written PR, and as with other forms of AI writing my instant reaction is best summarized as \"I'm not reading all of that\". It doesn't matter how accurate or useful the information is, I'm instantly put off by the thought that it will take me longer to read than it took the driving author to write... even when that driving author is me! I want human editorial judgement. I want someone to have thought just long enough about the PR to give me a human-approved introduction that helps me understand, at a high l",
-   "preliminary_score": 71,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "418fd0c9fee6",
-   "title": "JPMorganChase expands Claude Code to more employees across the firm",
-   "url": "https://claude.com/resources/articles/jpmorganchase-expands-claude-code",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "excerpt": "JPMorganChase expands Claude Code to more employees across the firm",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
   {
    "id": "d8887a09bc5e",
    "title": "The components of agent memory",
@@ -135,16 +31,19 @@
    ]
   },
   {
-   "id": "01554d202974",
-   "title": "Promptim: an experimental library for prompt optimization",
-   "url": "https://www.langchain.com/blog/promptim",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-09T18:57:45Z",
-   "excerpt": "Automate prompt engineering with Promptim's optimization library. Save time, improve AI performance, and switch models faster.",
-   "preliminary_score": 55,
+   "id": "225ab7984001",
+   "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-03T20:00:00Z",
+   "excerpt": "Access more Unity Catalog objects through the existing mirrored catalog experience in Microsoft Fabric We are expanding Mirrored Azure Databricks catalogs in Microsoft Fabric to support materialized views and streaming tables alongside tables. These objects remain created and managed in Azure Databricks, while Fabric provides read-only access to the underlying data through shortcuts. This brings more of your Unity Catalog environment into Fabric without copying or replicating the data. What's new A Mirrored Azure Databricks catalog can now include support: Tables Materialized views Streaming tables When configuring the mirrored catalog, select the Unity Catalog catalogs, schemas, and supported objects you want to make available in Fabric. Fabric mirrors the selected catalog structure and creates shortcuts to the underlying data. This enhancement uses the existing Mirrored Azure Databricks catalog item and configuration workflow. There is no separate Fabric item type for materialized views or streaming tables. Why this matters Materialized views store precomputed results that can simplify recurring analytical queries. Streaming tables continuously process incoming data and maintain ",
+   "preliminary_score": 73,
    "preliminary_topics": [
-    "ai_context_engineering"
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "data_ingestion"
    ]
   },
   {
@@ -553,6 +452,100 @@
    "preliminary_score": 65,
    "preliminary_topics": [
     "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "4ccf04047cf8",
+   "title": "Bring insights and action together with Fabric Apps in Org apps",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-insights-and-action-together-with-Fabric-Apps-in-Org-apps/ba-p/5377690",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-02T22:00:00Z",
+   "excerpt": "Business users move from understanding what happened, to investigating why, to acting. Microsoft Fabric can bring that journey together. Fabric Apps provide purpose-built, data-driven experiences when users need more than a report. Org apps distribute them alongside Power BI reports and other supported Fabric content in a curated destination. Move from insight to action in one destination Power BI reports help users monitor performance, explore trends, and understand what’s happening in the business. Many insights, however, lead to a next step: submitting a request, updating a plan, investigating an exception, assigning an owner, or tracking a resolution. A Fabric App provides the custom interface and workflow for that next step. Including it in an org app places action beside the reports and operational content that provide context. Users enter one destination organized around their role, review the insight, open the Fabric App, and act. Understanding apps in Fabric Experience Purpose Value Fabric Apps Build for a specific task Create purpose-built applications connected to Fabric data, with managed APIs, authentication, hosting, and service integration. Org apps Distribute in bus",
+   "preliminary_score": 64,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "12d151d364ff",
+   "title": "Share data and context across organizations with IQ Share (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Share-data-and-context-across-organizations-with-IQ-Share/ba-p/5378764",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-04T16:00:00Z",
+   "excerpt": "The data needed to answer a business question rarely belongs to one organization. Enterprises depend on suppliers, software providers, research partners, and customers for information that complement their own. Yet getting that data into their workflow often means building another pipeline, maintaining another copy, and reconciling access across organizational boundaries. Even when the data arrives, its meaning can be left behind. Definitions, assumptions, and usage guidance are shared separately, leaving teams to reconstruct the context before they can put the data to work. With IQ Share in Microsoft Fabric, now in preview, organizations can share supported Fabric data items, along with context stored in lakehouse files, with recipients in other Fabric tenants. Data stays in the producer's tenant, recipients work in their own Fabric workspace, and producers retain control over access. Introducing IQ Share IQ Share brings cross-tenant data and context sharing into a Fabric item-based experience. In this preview, producers can share an entire Lakehouse, Warehouse, and Mirrored Items. For Lakehouses, markdown files can accompany the data with descriptions, business definitions, and i",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "d33525fc8eb0",
+   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-28T17:00:00Z",
+   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
+   "preliminary_score": 62,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "5b296e9220f1",
+   "title": "On-premises data gateway October 2026 release",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-October-2026-release/ba-p/5376557",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-27T14:00:00Z",
+   "excerpt": "The October 2026 release of the on-premises data gateway (version 3000.338) continues our commitment to secure, reliable and accessible connectivity between on-premises data sources and Microsoft Fabric services. This release focuses on accessibility, configuration reliability, and troubleshooting. It makes the installer and configurator more inclusive, keeps your Power Query settings intact during connection tests, and makes service-start failures easier to diagnose. It also brings compatibility updates for the October 2026 release of Power BI Desktop, so queries run the same way in Power BI Desktop and in cloud refreshes. General improvements and fixes The October 2026 Gateway release (3000.338) includes Power Query Engine 2.159.229 and introduces the following improvements: Accessibility improvements in the installer and configurator Building on the accessibility work in the September release, this update improves the experience for users who rely on assistive technologies: Keyboard navigation: Moving through the gateway installer and configurator with the keyboard is smoother and more predictable. Screen-reader announcements: Screen readers now give clearer, more accurate annou",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "c6d7e860d2ee",
+   "title": "Securing and governing your medallion layers in Fabric Data Warehouse",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Securing-and-governing-your-medallion-layers-in-Fabric-Data/ba-p/5377539",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-09T21:32:00Z",
+   "excerpt": "Coauthor - Artur Vieira Part 4 of a series on medallion architecture with Fabric Data Warehouse. Security should follow the layers, not fight them. In Part 1 we chose the pattern, in Part 2 we built the layers, and in Part 3 we covered the operating practices that keep them healthy. Security is the natural next step, because a medallion architecture already gives you something most platforms do not: three clearly different audiences. A medallion architecture creates clear boundaries between raw, refined, and curated data. Applying security and governance at those boundaries helps reduce unnecessary exposure, simplify access decisions, and give each audience the data it needs without opening every layer.. The following approach shows how to secure and govern a medallion pipeline in Fabric Data Warehouse. Why this matters Most access problems in analytics platforms are not dramatic breaches. They are cases of unnecessary access, such as an analyst who can read raw customer records because the entire warehouse was shared or a service account with more permissions than its task requires. A medallion architecture simplifies this work because each layer already signals a different level ",
+   "preliminary_score": 51,
+   "preliminary_topics": [
+    "data_architecture_modeling"
+   ]
+  },
+  {
+   "id": "392fd68ef936",
+   "title": "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Strengthening-data-security-with-workspace-level-private/ba-p/5377347",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T21:00:00Z",
+   "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
+   "preliminary_score": 60,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "data_ingestion"
+   ]
+  },
+  {
+   "id": "9a9695e2cb4b",
+   "title": "Unifying SQL Pools: Upcoming changes to UI and APIs",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Unifying-SQL-Pools-Upcoming-changes-to-UI-and-APIs/ba-p/5397390",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-09T17:00:00Z",
+   "excerpt": "SQL pools are Fabric Data Warehouse’s built-in workload management capability. They help administrators organize workloads and control how compute resources are allocated across them. SQL pool configurations are represented differently depending on whether a workspace uses the built-in or custom pool model. With unified SQL pools, we’re removing that distinction and representing all pools through a single configuration model across the UI and APIs. This removes the need to switch between built-in and custom modes, making SQL pool configurations easier to understand and manage consistently across the UI and APIs. What's changing and when This blog provides advance notice of upcoming changes to SQL pool configuration management in Fabric Data Warehouse. We're introducing a unified configuration model that removes the distinction between built-in and custom SQL pools. By mid-December 2026: Customers should stop relying on customSQLPoolsEnabled flag to retrieve previously submitted inactive pool configurations. With unification, GET APIs will return only effective configurations, and inactive configurations will no longer be surfaced in the UI or APIs. Beginning January 2027 : New work",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "sql_spark_sql"
    ]
   }
  ]
