@@ -1,0 +1,244 @@
+{
+  "format_version": 1,
+  "id": "eigen-performance-meten-vanuit-dbt-in-databricks",
+  "plan_id": "eigen-performance-meten-vanuit-dbt-in-databricks",
+  "request_issue": 28,
+  "headline": "Waarom duurt dit dbt-model zo lang? Zo zoek je het uit",
+  "summary": "Een traag dbt-model onderzoek je in twee stappen. Eerst zoek je uit welk model echt de tijd kost, met run_results.json of de tab Model timing. Daarna kijk je in Databricks waar die tijd heen gaat: wachten, rekenen, te veel lezen of naar schijf schrijven. Query tags koppelen de twee aan elkaar.",
+  "sections": [
+    {
+      "heading": "Twee vragen: welk model, en waarom",
+      "paragraphs": [
+        "Als een dbt-run lang duurt, zijn het eigenlijk twee vragen. Welk model kost de tijd? En wat doet Databricks in die tijd? dbt beantwoordt de eerste vraag, Databricks de tweede.",
+        "Vergelijk het met een treinreis die te lang duurt. De dienstregeling laat zien welk traject vertraging had. Maar waarom, dat zie je pas bij het spoor zelf: een sein, een wissel, een volle trein. dbt is de dienstregeling, Databricks het spoor.",
+        "Begin altijd bij de eerste vraag. Het heeft weinig zin een query te verbeteren die maar een paar seconden van een run van een uur kost."
+      ]
+    },
+    {
+      "heading": "Stap 1: welk model kost de tijd?",
+      "paragraphs": [
+        "De snelste bron is de uitvoer van dbt zelf. Achter elk model staat hoe lang het duurde, bijvoorbeeld [OK in 0.13s]. Volgens dbt Labs duurt een view meestal minder dan een of twee seconden. De tabellen en incrementele modellen zijn de modellen om in de gaten te houden.",
+        "Na elke run schrijft dbt het bestand run_results.json in de map target. Daarin staat per model de execution_time, en in timing hoe lang compileren en uitvoeren duurden. Bovenaan staat elapsed_time, de duur van de hele run. Bewaar je dit bestand bij elke run, dan zie je ook welk model langzaam trager wordt.",
+        "Werk je in het dbt-platform (vanaf Starter), dan heeft elke job-run de tab Model timing. Die laat een tijdlijn zien met het kritieke pad (critical path): de keten van modellen die samen de totale duur bepalen. Een traag model buiten die keten maakt de run niet korter als je het versnelt. Een model op die keten wel."
+      ]
+    },
+    {
+      "heading": "Stap 2: model en query koppelen met query tags",
+      "paragraphs": [
+        "Weet je welk model traag is, dan wil je de query's van dat model in Databricks terugvinden. Daar zijn query tags voor: labels met een sleutel en een waarde die aan een query hangen. Vergelijk ze met een etiket op een pakketje, zodat je het in het sorteercentrum terugvindt.",
+        "De dbt-databricks-adapter zet vanaf versie 1.11 zelf een paar tags op elke query. Bijvoorbeeld @@dbt_model_name met de naam van het model en @@dbt_materialized met de materialisatie. Je kunt in profiles.yml eigen tags toevoegen, zoals team of omgeving, en per model nog meer.",
+        "De tags komen terecht in de kolom query_tags van de systeemtabel system.query.history. Je ziet ze ook in de Query History en in het query profile. Ze werken op SQL warehouses en op serverless compute voor notebooks en jobs; bij andere compute blijft de kolom leeg. Databricks noemt query tags nog een publieke preview.",
+        "Eén model kan meer dan één query geven. Gebruik je bijvoorbeeld liquid_clustered_by, dan draait dbt-databricks na elke run nog een OPTIMIZE. Die tijd hoort ook bij het model, en je kunt hem per model uitzetten met skip_optimize."
+      ]
+    },
+    {
+      "heading": "Stap 3: waar gaat de tijd heen?",
+      "paragraphs": [
+        "In system.query.history staat per query niet alleen de totale duur, maar ook waar die tijd zat. Er zijn aparte kolommen voor wachten tot de compute is opgestart, wachten in de wachtrij omdat het warehouse vol zit, compileren en uitvoeren. Zo zie je of een model traag is door zijn eigen werk, of omdat het moest wachten.",
+        "Daarnaast staat er hoeveel er gelezen is. read_files is het aantal gelezen bestanden en pruned_files het aantal dat Databricks kon overslaan. Weinig overslaan betekent vaak dat de hele tabel wordt gelezen, terwijl je maar een stukje nodig hebt.",
+        "Twee andere kolommen wijzen op zwaar rekenwerk. spilled_local_bytes is data die tijdelijk naar schijf moest, omdat het geheugen niet genoeg was. shuffle_read_bytes is data die tussen machines werd rondgestuurd, bijvoorbeeld bij grote joins of groeperingen.",
+        "Een paar praktische punten. De gegevens staan er meestal binnen een uur in. De SQL-tekst zelf zie je alleen als accountbeheerder of als lid van een speciale groep."
+      ]
+    },
+    {
+      "heading": "Stap 4: één query onder de loep",
+      "paragraphs": [
+        "Voor de traagste query open je het query profile. Dat doe je via Query History, de query aanklikken en See query profile. Je ziet dan een schema van alle stappen (operators) van de query, met per stap de tijd, het geheugen en het aantal rijen.",
+        "Let op drie dingen. Welke stap kost de meeste tijd? Groeit het aantal rijen ineens enorm, wat wijst op een join die rijen verdubbelt? En hoeveel data is er overgeslagen bij het lezen? De documentatie noemt zulke exploderende joins en het lezen van hele tabellen als veelgemaakte fouten.",
+        "Databricks geeft er soms zelf tips bij (performance insights), gesorteerd op hoeveel tijd ze kunnen schelen. Met de knop Optimize opent Genie Code, dat de query herschrijft en de wijziging aan je voorlegt. Let op: een query die uit de cache kwam, heeft geen profiel."
+      ]
+    },
+    {
+      "heading": "Soms is het niet de query",
+      "paragraphs": [
+        "Het team van Calm deed dit op Databricks met dbt en Airflow. Ze zetten bij elke dbt-query de modelnaam erbij en telden in system.query.history de tijd per model over zeven dagen. Daarbij bleek dat 81 procent van de rekentijd opging aan overhead: opstarten en het steeds opnieuw inlezen van het dbt-project, niet aan de modellen zelf.",
+        "Hun oplossing zat daarom niet in de SQL. Ze draaiden één dbt build per groep modellen in plaats van één taak per model. Daarna konden ze een kleiner warehouse nemen. Volgens Calm werd de run 44 procent korter en de rekenkosten 37 procent lager.",
+        "De les voor jou: vergelijk de totale duur van de run met de optelsom van de modellen. Zit er een groot gat tussen, dan zit de tijd in opstarten, compileren of wachten, en niet in je SQL. In run_results.json zie je dat aan het verschil tussen compile en execute."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "In je context staat nog niet op welke compute je dbt-runs draaien. Dat bepaalt wat je kunt zien: query tags verschijnen alleen bij een SQL warehouse of serverless compute. Draai je op een SQL warehouse, dan heb je met dbt-databricks 1.11 of hoger de tags al zonder iets in te stellen.",
+        "Een goede eerste stap is één vaste query op system.query.history die per model de totale tijd, wachttijd en spill optelt, zoals in het voorbeeld hieronder. Zet hem in een dashboard of draai hem wekelijks. Kijk dan alleen naar de bovenste drie, en open daarvan het query profile.",
+        "Het past ook bij je project rond AI voor data-engineering. Een lijst met trage modellen en hun kenmerken is precies het soort context waarmee een AI-assistent binnen Databricks verbeteringen kan voorstellen. Gebruik daarvoor wel alleen AI binnen Databricks, want de SQL-tekst van je query's is werkinformatie."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Per dbt-model de totale tijd, de tijd in de wachtrij, de spill naar schijf en het deel van de bestanden dat werd overgeslagen. Hier valt fct_bestellingen op: veel spill en bijna niets overgeslagen. dim_klant zat vooral in de wachtrij.",
+    "language": "sql",
+    "code": "SELECT query_tags['@@dbt_model_name']   AS model,\n       query_tags['@@dbt_materialized']  AS materialisatie,\n       COUNT(*)                           AS queries,\n       ROUND(SUM(total_duration_ms) / 1000, 1)                AS totaal_s,\n       ROUND(SUM(waiting_at_capacity_duration_ms) / 1000, 1)  AS wachtrij_s,\n       ROUND(SUM(spilled_local_bytes) / 1e9, 1)               AS spill_gb,\n       ROUND(100.0 * SUM(pruned_files)\n             / NULLIF(SUM(pruned_files + read_files), 0))     AS pct_overgeslagen\nFROM system.query.history\nWHERE MAP_CONTAINS_KEY(query_tags, '@@dbt_model_name')\n  AND start_time >= current_date() - INTERVAL 7 DAYS\nGROUP BY ALL\nORDER BY totaal_s DESC;",
+    "result": {
+      "columns": [
+        "model",
+        "materialisatie",
+        "queries",
+        "totaal_s",
+        "wachtrij_s",
+        "spill_gb",
+        "pct_overgeslagen"
+      ],
+      "rows": [
+        [
+          "fct_bestellingen",
+          "incremental",
+          "2",
+          "205.0",
+          "4.0",
+          "6.2",
+          "1.0"
+        ],
+        [
+          "dim_klant",
+          "table",
+          "1",
+          "41.0",
+          "27.0",
+          "0.0",
+          "80.0"
+        ],
+        [
+          "stg_bestellingen",
+          "view",
+          "1",
+          "0.9",
+          "0.0",
+          "0.0",
+          "NULL"
+        ],
+        [
+          "stg_klant",
+          "view",
+          "1",
+          "0.7",
+          "0.0",
+          "0.0",
+          "NULL"
+        ]
+      ]
+    },
+    "note": "Kolomnamen en tagnamen uit de Databricks- en dbt-documentatie (november 2026). De uitkomst is nagebouwd in DuckDB op zes verzonnen query's; daar heet de tabel anders, vervalt het datumfilter en heet MAP_CONTAINS_KEY map_contains. Geen werkdata."
+  },
+  "experiment": "Maak een klein dbt-project met verzonnen data op een SQL warehouse in een testwerkruimte, met een view, een tabel en een incrementeel model. Zet in profiles.yml een eigen query tag, bijvoorbeeld omgeving: test. Draai dbt build twee keer en zoek de modellen terug in system.query.history met de query uit het voorbeeld (na een uur). Open van het traagste model het query profile en vergelijk de duur met execution_time in run_results.json. Geen werkdata gebruiken.",
+  "limitations": [
+    "Query tags zijn een publieke preview en vullen de kolom alleen bij SQL warehouses en serverless compute; op andere compute blijft hij leeg.",
+    "Tags worden als platte tekst opgeslagen; zet er geen namen, persoonsgegevens of andere gevoelige informatie in.",
+    "system.query.history loopt tot ongeveer een uur achter, en de SQL-tekst is standaard afgeschermd; je hebt dus de juiste rechten nodig.",
+    "Het voorbeeld van Calm is één praktijkverhaal; hun winst kwam uit hun eigen opzet met Airflow en zegt niets zeker over jouw runs."
+  ],
+  "further_reading": [
+    {
+      "label": "Run results JSON file (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/reference/artifacts/run-results-json",
+      "note": "Wat er per model in run_results.json staat, met execution_time en timing."
+    },
+    {
+      "label": "Examining our builds (dbt Labs, best practices)",
+      "url": "https://docs.getdbt.com/best-practices/materializations/6-examining-builds",
+      "note": "Hoe je met de CLI-uitvoer en Model timing de traagste modellen vindt."
+    },
+    {
+      "label": "Run visibility (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/docs/deploy/run-visibility",
+      "note": "De tab Model timing in het dbt-platform, met kritiek pad en gelijktijdigheid."
+    },
+    {
+      "label": "Databricks configurations: query tags (dbt Labs, docs)",
+      "url": "https://docs.getdbt.com/reference/resource-configs/databricks-configs",
+      "note": "Welke tags dbt-databricks zelf zet en hoe je eigen tags toevoegt, met de grenzen."
+    },
+    {
+      "label": "Query tags (Databricks, oktober 2026)",
+      "url": "https://docs.databricks.com/gcp/en/sql/user/queries/query-tags",
+      "note": "Waar query tags werken, hoe je ze opvraagt en wat je er niet in zet."
+    },
+    {
+      "label": "Query history system table reference (Microsoft Learn, november 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/admin/system-tables/query-history",
+      "note": "Alle kolommen van system.query.history, met de verschillende soorten wachttijd."
+    },
+    {
+      "label": "Query profile (Microsoft Learn, september 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/sql/user/queries/query-profile",
+      "note": "Hoe je het query profile leest en wat performance insights zijn."
+    },
+    {
+      "label": "How We Cut Our ETL Costs by 37% and Runtime by 44% (Calm Engineering)",
+      "url": "https://blog.calm.com/engineering/how-we-cut-our-etl-costs",
+      "note": "Een praktijkverhaal met dbt op Databricks, waar de tijd in overhead bleek te zitten."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In Model timing zie je een traag model dat niet op het kritieke pad ligt. Wat levert het versnellen ervan op?",
+      "options": [
+        "De hele run wordt evenveel korter als het model sneller wordt.",
+        "Weinig voor de totale duur, want die wordt bepaald door de keten op het kritieke pad.",
+        "Niets, want modellen buiten het kritieke pad draaien niet in productie."
+      ],
+      "answer": 1,
+      "explanation": "Het kritieke pad is de keten van modellen die samen de totale duur bepalen. Een model ernaast loopt parallel en verkort de run niet; het kan wel rekenkosten besparen."
+    },
+    {
+      "question": "Een model staat in system.query.history met veel tijd in waiting_at_capacity_duration_ms en weinig uitvoertijd. Wat is de beste eerste conclusie?",
+      "options": [
+        "De SQL van het model moet herschreven worden, want hij leest de hele tabel.",
+        "Het model lekt geheugen naar schijf.",
+        "Het model wachtte vooral in de wachtrij omdat het warehouse vol zat; de query zelf is niet het probleem.",
+        "De query kwam uit de cache, dus de meting klopt niet."
+      ],
+      "answer": 2,
+      "explanation": "Die kolom meet de tijd in de wachtrij. Dan zit het probleem in de drukte op het warehouse of hoeveel er tegelijk draait, niet in de SQL."
+    },
+    {
+      "question": "De totale duur van je run is veel langer dan de optelsom van de modellen. Waar zoek je dan, naar het voorbeeld van Calm?",
+      "options": [
+        "In overhead buiten de modellen, zoals opstarten, compileren en wachten.",
+        "In het query profile van de traagste query.",
+        "In de query tags, want die vertragen elke query."
+      ],
+      "answer": 0,
+      "explanation": "Bij Calm ging 81 procent van de rekentijd naar overhead. Een query profile helpt pas als de tijd echt in een query zit."
+    }
+  ],
+  "terms": [
+    {
+      "term": "run_results.json",
+      "explanation": "Een bestand dat dbt na elke run in de map target schrijft, met per model de status en hoe lang compileren en uitvoeren duurden."
+    },
+    {
+      "term": "Model timing",
+      "explanation": "Een tab bij elke job-run in het dbt-platform met een tijdlijn van alle modellen, het kritieke pad en hoeveel modellen tegelijk draaiden."
+    },
+    {
+      "term": "kritieke pad",
+      "explanation": "De keten van modellen die na elkaar moeten draaien en samen de totale duur van een run bepalen."
+    },
+    {
+      "term": "query tags",
+      "explanation": "Labels met een sleutel en waarde die aan een query hangen. Ze staan in system.query.history, zodat je query's per model, team of project kunt groeperen."
+    },
+    {
+      "term": "system.query.history",
+      "explanation": "Een systeemtabel in Databricks met een rij per query: wie, wanneer, hoe lang, hoeveel gelezen en waar de tijd zat."
+    },
+    {
+      "term": "query profile",
+      "explanation": "Een schema in Databricks van alle stappen van één query, met per stap de tijd, het geheugen en het aantal rijen."
+    },
+    {
+      "term": "spilled_local_bytes",
+      "explanation": "De hoeveelheid data die tijdens een query tijdelijk naar schijf moest omdat het geheugen niet genoeg was. Veel spill maakt een query trager."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 11-11-2026. Bronnen uit september tot november 2026: Microsoft Learn over system.query.history (4 november) en het query profile (september), de Databricks-pagina over query tags (oktober), de Databricks-blog over query tags voor dbt (juli 2026) en de huidige dbt-documentatie over run_results.json, Model timing en de Databricks-configuratie. Calm koppelde query's nog via query-commentaar; voor nieuwe opzet gebruik ik de query tags die dbt-databricks nu zelf zet. De Calm-blog draagt geen jaartal en is daarom alleen als praktijkvoorbeeld gebruikt. Spark UI-details voor klassieke clusters heb ik weggelaten, omdat de bronnen zich op SQL warehouses en serverless richten.",
+  "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability"
+  ],
+  "written_at": "2026-11-11T04:39:34Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
