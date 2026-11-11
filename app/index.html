@@ -100,7 +100,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 /* Actiebalk onder een artikel of verdieping: 👍 👎 ＋ Later ✦ Vraag Claude in één rij; extra's eronder */
 .act-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); }
 .act-bar .fb, .act-bar .later, .act-bar .fb-btns { display: contents; }
-.act-bar .fb-reasons, .act-bar .fb-note { flex-basis: 100%; order: 5; margin: 2px 0 0; }
+.act-bar .fb-reasons, .act-bar .fb-note, .act-bar .fb-why-in { flex-basis: 100%; order: 5; margin: 2px 0 0; }
 .act-bar .later-form, .act-bar .later-done { flex-basis: 100%; order: 6; }
 .act-bar .ask { flex-basis: 100%; order: 7; margin-top: 4px; }
 .act-bar .ask[hidden] { display: none; }
@@ -122,6 +122,12 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-group .lbl { flex-basis: 100%; font-family: var(--f-meta); font-size: 0.72rem; color: var(--muted); }
 .fb-reasons button { height: 34px; font-size: 0.82rem; color: var(--muted); }
 .fb-reasons button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+.fb-why-in { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 0; height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 0.88rem; }
+.fb-why-in:focus { outline: none; border-color: var(--accent2); }
+.rule-list { list-style: none; padding: 0 !important; margin: 0 0 10px !important; display: grid; gap: 6px; font-size: 0.9rem; }
+.rule-list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.rule-list .rt { color: var(--muted); font-family: var(--f-meta); font-size: 0.74rem; display: block; }
+.rule-list button { flex: none; width: 32px; height: 32px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; font-size: 0.9rem; }
 .fb-note { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
 .fb-send { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 14px; min-height: 44px; border-radius: var(--r); border: 1px solid var(--accent2); background: var(--accent2-soft); color: var(--ink); text-decoration: none; font-size: 0.9rem; }
 .fb-send b { color: var(--accent2); }
@@ -507,6 +513,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     save(d) { try { localStorage.setItem("radar:fb", JSON.stringify(d)); } catch {} },
     get(id) { return this.all()[id]; },
     set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
+    pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
+  };
+  // Leerregels die je met ✕ weghaalt gaan mee met de verstuurbalk ("rules_off"); radar:rules_off
+  const rulesOff = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:rules_off") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:rules_off", JSON.stringify(d)); } catch {} },
     pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
   };
   /* ---- Volledig uitleggen ----
@@ -1020,7 +1032,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   function intSendBar() {
-    const n = intPending(intStore.get());
+    const n = intPending(intStore.get()) + rulesOff.pending().length;
     return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je op Actueel</span><b>Naar Actueel ›</b></a>` : "";
   }
   const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
@@ -1450,7 +1462,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       </div>
       ${!reasons ? "" : mine.v === 1 ? `<div class="fb-reasons">${rbtns(FB_UP, Object.keys(FB_UP), mine)}</div>`
         : `<div class="fb-reasons fb-group"><span class="lbl">Dit artikel</span>${rbtns(FB_DOWN, FB_DOWN_ARTICLE, mine)}</div>
-           <div class="fb-reasons fb-group"><span class="lbl">Dit onderwerp</span>${rbtns(FB_DOWN, FB_DOWN_TOPIC, mine)}</div>`}`;
+           <div class="fb-reasons fb-group"><span class="lbl">Dit onderwerp</span>${rbtns(FB_DOWN, FB_DOWN_TOPIC, mine)}</div>`}
+      ${mine ? `<input class="fb-why-in" id="fb-why" type="text" maxlength="200" autocomplete="off" placeholder="Waarom? (optioneel)" aria-label="Waarom?" value="${esc(mine.n || "")}">` : ""}`;
   }
   function rbtns(map, keys, mine) {
     return keys.map((k) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${map[k]}</button>`).join("");
@@ -1462,7 +1475,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (vb) {
       const v = Number(vb.dataset.vote);
       // s = de score op het moment van de duim: de radar leert van het verschil (pipeline/learn.py)
-      fb.set(id, cur?.v === v ? null : { v, r: null, s: a?.relevance_score ?? null, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false });
+      fb.set(id, cur?.v === v ? null : { v, r: null, n: cur?.n || "", s: a?.relevance_score ?? null, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false });
     } else if (rb && cur) {
       fb.set(id, { ...cur, r: cur.r === rb.dataset.reason ? null : rb.dataset.reason, sent: false });
     } else return;
@@ -1471,9 +1484,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
   function fbSummary(items, rd, ni = 0) {
-    const ne = explain.pending().length;
+    const ne = explain.pending().length, nr = rulesOff.pending().length;
     return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : "",
       ne ? `${ne} volledig uitleggen` : "",
+      nr ? `${plural(nr, "regel", "regels")} weggehaald` : "",
       ni ? `${plural(ni, "wijziging", "wijzigingen")} in je interesses` : ""].filter(Boolean).join(", ");
   }
   // Eén issue voor alles wat nog naar de radar moet: duimpjes, gelezen en wijzigingen in je interesses.
@@ -1481,18 +1495,19 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function fbIssueUrl(items, rd = []) {
     const di = intStore.get(), ni = intPending(di), ip = ni ? intParts(di) : null;
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
-    const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}`)
+    const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}${v.n ? ` — "${v.n}"` : ""}`)
+      .concat(rulesOff.pending().map(([id]) => `- ✕ Leerregel weggehaald: ${id}`))
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
       .concat(explain.pending().map(([, x]) => `- 🔎 Volledig uitleggen: ${x.title}`))
       .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.n ? { n: v.n } : {}), ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(rulesOff.pending().length ? { rules_off: rulesOff.pending().map(([id]) => id) } : {}), ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
-    if (!items.length && !ni && !explain.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
     const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
     if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
     return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
@@ -1500,6 +1515,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function markSent() {
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
     const ex = explain.all(); Object.values(ex).forEach((v) => { v.sent = true; }); explain.save(ex);
+    const ro = rulesOff.all(); Object.values(ro).forEach((v) => { v.sent = true; }); rulesOff.save(ro);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
     const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
     intStore.save({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: di.sentAnswers });
@@ -1567,8 +1583,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const pt = (n) => `${n > 0 ? "+" : "−"}${Math.abs(n)}`;
     const row = (x, href, ext) => `<li${x.delta < 0 ? ' class="neg"' : ""}><a href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${esc(x.title)}</a><span class="d">${pt(x.delta)}</span></li>`;
     const lifted = e?.lifted || [], dropped = e?.dropped || [];
-    if (!learned.length && !lifted.length && !dropped.length) return "";
+    const off = rulesOff.all(), rl = (state.feed.leerregels || []).filter((x) => !off[x.id]);
+    if (!learned.length && !lifted.length && !dropped.length && !rl.length) return "";
+    const rules = rl.length ? `<h3>Jouw regels</h3><ul class="rule-list">${rl.map((x) => `<li><span>${x.richting < 0 ? "Minder: " : "Meer: "}${esc(x.text)}<span class="rt">${x.stale ? "raakt al een tijd niets meer" : x.hits ? `raakt nu ${plural(x.hits, "artikel", "artikelen")}` : "raakt nu niets"}${x.sterkte < 1 ? " · met twijfel" : ""}</span></span><button type="button" data-rule-off="${esc(x.id)}" aria-label="Regel weghalen">✕</button></li>`).join("")}</ul>` : "";
     return `<section class="int-sec fb-eff"><h2>Wat de radar over je leerde</h2>
+      ${rules}
       ${learned.length ? `<p class="learned">${learned.join(" ")}</p>` : ""}
       ${lifted.length || dropped.length ? `<p class="sum">Afgelopen ${e?.days || 7} dagen door je feedback: <b>${lifted.length}</b> erbij, <b>${dropped.length}</b> eruit.</p>` : ""}
       ${lifted.length ? `<h3>Erbij</h3><ul class="eff-list">${lifted.map((x) => row(x, "#a-" + x.id)).join("")}</ul>` : ""}
@@ -1590,6 +1609,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       .map(([l, v, w]) => `<tr><td>${l} <span style="color:var(--muted)">(${w})</span></td><td><span class="meter"><span style="width:${Math.round((v || 0) * 100)}%"></span></span>${(v ?? 0).toFixed(2)}</td></tr>`).join("")
       + (parts.feedback ? `<tr><td>Jouw feedback <span style="color:var(--muted)">(max. ±${fbPoints()})</span></td><td>${parts.feedback > 0 ? "+" : ""}${Math.round(parts.feedback * fbPoints())} punten</td></tr>` : "");
     const fbWhy = fbReason(a);
+    const ruleWhy = (a.rule_why || []).map((r) => `${r.pts > 0 ? `${r.pts} punten hoger` : `${-r.pts} punten lager`} door je regel: <b>${esc(r.text)}</b>.`).join(" ");
     const fitPts = parts.fit != null ? Math.round(parts.fit * 20) : null;
     const fitRow = a.fit ? `<tr><td>Past bij jou <span style="color:var(--muted)">(Claude, max. ±10)</span></td><td>${fitPts > 0 ? "+" : ""}${fitPts} punten</td></tr>` : "";
     // In de app sinds = wanneer Claude het uitlegde, anders wanneer het werd opgehaald (zelfde als sorteren op Nieuw).
@@ -1634,6 +1654,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <h2 id="score-dlg-h">Waarom deze score?</h2>
           <table class="score-table">${partRows}${fitRow}</table>
           ${fbWhy ? `<p class="score-fb">${fbWhy}</p>` : ""}
+          ${ruleWhy ? `<p class="score-fb">${ruleWhy}</p>` : ""}
           ${a.fit?.why ? `<p class="score-fb">Claude: ${esc(a.fit.why)}</p>` : ""}
           <p class="score-note">Berekend met de prioriteiten uit interests.yml. Totaal ${a.relevance_score} van 100${a.decision === "included_exceptional" ? "; getoond via de uitzonderingsregel" : a.decision === "area_minimum" ? "; getoond via de ondergrens voor dit gebied" : a.decision === "follow_minimum" ? "; getoond omdat je dit onderwerp altijd volgt" : a.decision === "included_low" ? "; onder de drempel, maar uitgelegd: jij kiest of je het leest" : ""}.</p>
           <form method="dialog"><button class="btn ghost" type="submit">Sluiten</button></form>
@@ -1711,9 +1732,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (eb) { const box = eb.closest("#explain"), id = box.dataset.id, a = state.byId.get(id), d = explain.all();
         d[id] = { title: a?.headline || a?.title || id, at: new Date().toISOString(), sent: false }; explain.save(d);
         box.outerHTML = explainBlock(a || { id }); return; }
+      const ro = e.target.closest("[data-rule-off]");
+      if (ro) { const d = rulesOff.all(); d[ro.dataset.ruleOff] = { at: new Date().toISOString(), sent: false }; rulesOff.save(d);
+        const sec = ro.closest(".fb-eff"); if (sec) sec.outerHTML = fbEffectBlock();
+        const w = $("#int-send-wrap"); if (w) w.innerHTML = intSendBar(); return; }
       if (intClick(e)) return;
       if (e.target.closest("#fb-send")) { markSent(); setTimeout(() => { if (location.hash === "#week") renderWeek(); }, 300); return; }
       fbClick(e); quizClick(e); askClick(e);
+    };
+    r.oninput = (e) => {   // toelichting bij de duim ("Waarom?"): bewaren zodra je typt, gaat mee met versturen
+      const inp = e.target.closest("#fb-why"); if (!inp) return;
+      const id = inp.closest("#fb")?.dataset.id, cur = id && fb.get(id); if (!cur) return;
+      fb.set(id, { ...cur, n: inp.value.slice(0, 200), sent: false });
     };
     const af = $("#ask-form", r);
     if (af) af.onsubmit = (e) => { e.preventDefault(); askOpen($("#ask-q", r).value); };

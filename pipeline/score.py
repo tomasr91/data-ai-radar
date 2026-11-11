@@ -162,6 +162,15 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
             total = min(1.0, max(0.0, total + FIT_WEIGHT * 2 * (fit - 0.5)))
     if adjust:
         total = min(1.0, max(0.0, total + max(-0.20, min(0.20, adjust))))
+    # Leerregels (data/leerregels.json): wat T bij een duim in eigen woorden zei; raken alleen artikelen die erbij passen
+    article.pop("rule_why", None)
+    if prefs and prefs.get("rules"):
+        from .rules import effect as rule_effect
+        rd, rwhy = rule_effect(article, prefs["rules"])
+        if round(rd, 2):
+            parts["regel"] = round(rd, 2)
+            article["rule_why"] = rwhy
+            total = min(1.0, max(0.0, total + rd))
     # Rode draad (context/rode-draad.yml): helpt dit artikel bij een fase van T's eigen project? Een beetje voorrang.
     if article.get("project_ref"):
         parts["project"] = PROJECT_BOOST

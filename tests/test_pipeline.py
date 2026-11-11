@@ -851,6 +851,77 @@ class TestRodeDraad(unittest.TestCase):
         self.assertTrue(a["project_checked"])
 
 
+class TestLeerregels(unittest.TestCase):
+    """Toelichting bij een duim -> leerregel (pipeline/rules.py): raakt alleen passende artikelen, nooit een artikel weg."""
+    RULE = {"id": "einde-support", "text": "Einde van support voor versies", "richting": -1, "sterkte": 1.0,
+            "keywords": ["end of support", "einde support"], "labels": ["einde-support"], "van": "0123456789ab", "at": "2026-11-12", "active": True}
+
+    def art(self, title, **kw):
+        return {"id": "x1", "title": title, "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-11-09T00:00:00Z",
+                "processing_status": "enriched", "topics": ["dbt_analytics_engineering"],
+                "quality": {"depth": .5, "practicality": .5, "novelty": .5}, **kw}
+
+    def test_validate(self):
+        from pipeline import rules
+        self.assertEqual(rules.validate(self.RULE), [])
+        self.assertTrue(rules.validate({**self.RULE, "richting": 0}))
+        self.assertTrue(rules.validate({**self.RULE, "keywords": ["dbt"], "labels": []}))       # te kort/los
+        self.assertTrue(rules.validate({**self.RULE, "keywords": [], "labels": []}))
+        self.assertTrue(rules.validate({**self.RULE, "sterkte": 2}))
+        self.assertTrue(rules.validate({**self.RULE, "id": "Fout id"}))
+
+    def test_raakt_alleen_passende_artikelen(self):
+        from pipeline import rules
+        conf, now = cfg.load(), datetime(2026, 11, 12, tzinfo=timezone.utc)
+        plain = score_article(self.art("Snapshots in dbt"), conf, now, {"rules": [self.RULE]})
+        self.assertNotIn("rule_why", plain)
+        base = score_article(self.art("Databricks Runtime 17.3: end of support in december"), conf, now)["relevance_score"]
+        hit = score_article(self.art("Databricks Runtime 17.3: end of support in december"), conf, now, {"rules": [self.RULE]})
+        self.assertEqual(base - hit["relevance_score"], 15)
+        self.assertEqual(hit["rule_why"][0]["id"], "einde-support")
+        self.assertNotEqual(hit["decision"], "excluded")   # een regel haalt niets weg
+        lab = score_article(self.art("Iets anders", labels=["einde-support"]), conf, now, {"rules": [self.RULE]})
+        self.assertIn("regel", lab["score_parts"])
+        up = {**self.RULE, "id": "meer", "richting": 1, "sterkte": 0.5, "keywords": ["iets anders"]}
+        self.assertEqual(rules.effect({"title": "Iets anders", "labels": []}, [up])[1][0]["pts"], 8)
+
+    def test_cap_en_actief(self):
+        from pipeline import rules
+        two = [self.RULE, {**self.RULE, "id": "twee"}]
+        self.assertEqual(rules.effect({"title": "end of support"}, two)[0], -0.15)   # samen hooguit 15 punten
+        data = {"rules": [self.RULE, {**self.RULE, "id": "uit", "active": False}, {**self.RULE, "id": "fout", "richting": 5}], "noted": {}}
+        self.assertEqual([r["id"] for r in rules.active_rules(data)], ["einde-support"])
+
+    def test_view_stale_en_todo(self):
+        from pipeline import rules
+        data = {"rules": [{**self.RULE, "at": "2026-06-01"}], "noted": {"aaaaaaaaaaaa": None}}
+        v = rules.view(data, [{"title": "Snapshots", "decision": "included"}], "2026-11-12")
+        self.assertTrue(v[0]["stale"])
+        self.assertEqual(rules.view(data, [{"title": "end of support", "decision": "included"}], "2026-11-12")[0]["hits"], 1)
+        fb = {"votes": {"aaaaaaaaaaaa": {"v": -1, "n": "al bekeken"}, "bbbbbbbbbbbb": {"v": -1, "n": "nieuw", "title": "T"}, "cccccccccccc": {"v": 1}}}
+        with tempfile.TemporaryDirectory() as tmp:
+            old = rules.TODO
+            rules.TODO = Path(tmp) / "todo.json"
+            try:
+                self.assertEqual(rules.write_todo(fb, data), 1)
+                self.assertEqual(json.loads(rules.TODO.read_text())["items"][0]["id"], "bbbbbbbbbbbb")
+            finally:
+                rules.TODO = old
+
+    def test_collect_feedback(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import collect_feedback as cf
+        body = '```json\n{"votes": [{"id": "0123456789ab", "v": -1, "r": null, "n": "  Einde  support\\n van versies  "}], "rules_off": ["einde-support", "Fout id"]}\n```'
+        self.assertEqual(cf.parse_votes(body)[0]["n"], "Einde support van versies")
+        self.assertEqual(cf.parse_rules_off(body), ["einde-support"])
+        self.assertNotIn("n", cf.parse_votes('```json\n{"votes": [{"id": "0123456789ab", "v": 1}]}\n```')[0])
+
+    def test_validate_script_en_taak(self):
+        text = (Path(__file__).resolve().parent.parent / "taken" / "LEERREGELS.md").read_text(encoding="utf-8")
+        self.assertIn("validate_rules.py", text)
+        self.assertTrue((Path(__file__).resolve().parent.parent / "scripts" / "validate_rules.py").exists())
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends

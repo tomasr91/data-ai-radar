@@ -51,6 +51,8 @@ def check(name, cond, detail=""):
 # als de app stuk is, niet omdat er 's nachts nieuwe data bij kwam. Opnieuw vastleggen: zie tests/fixtures/README.md.
 feed = json.loads((ROOT / "tests" / "fixtures" / "feed.json").read_text(encoding="utf-8"))
 arts = feed["articles"]
+feed["leerregels"] = [{"id": "einde-support", "text": "Einde van support voor versies", "richting": -1, "sterkte": 1.0, "hits": 2},
+                      {"id": "twijfel-regel", "text": "Marketingpraat", "richting": -1, "sterkte": 0.5, "hits": 0, "stale": True}]
 sys.path.insert(0, str(ROOT))
 from pipeline import config as _cfg  # noqa: E402
 dds = feed["deepdives"]
@@ -230,9 +232,13 @@ with sync_playwright() as p:
     check("14. duimpjes onderaan het artikel", page.locator("#fb [data-vote]").count() == 2)
     page.click('#fb [data-vote="-1"]')
     page.click('#fb [data-reason="te_basic"]')
+    page.fill("#fb-why", "Einde  support van versies")
+    page.click('#fb [data-reason="te_basic"]')   # opnieuw renderen: de toelichting blijft staan
+    page.click('#fb [data-reason="te_basic"]')
+    check("   toelichting 'Waarom?' bij de duim blijft staan na opnieuw tekenen", page.locator("#fb-why").input_value() == "Einde  support van versies")
     check("   reden te kiezen na duim omlaag", page.locator('#fb [data-reason="te_basic"][aria-pressed="true"]').count() == 1)
     check("   redenen bij duim omlaag in twee groepen: dit artikel en dit onderwerp", page.locator("#fb .fb-group").count() == 2
-          and "Dit onderwerp" in page.locator("#fb").inner_text() and page.locator('#fb .fb-group:last-child [data-reason="geen_interesse"]').count() == 1)
+          and "Dit onderwerp" in page.locator("#fb").inner_text() and page.locator("#fb .fb-group").nth(1).locator('[data-reason="geen_interesse"]').count() == 1)
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")
     check("   artikel met duim omlaag blijft in de lijst", page.locator(f'.card[data-id="{enriched["id"]}"]').count() == 1
@@ -242,7 +248,8 @@ with sync_playwright() as p:
     body = unquote(sh)
     check("   issue begint met een link terug naar de app", "[↩ Terug naar de Data & AI Radar](http://127.0.0.1" in body)
     check("   versturen maakt een feedback-issue met de stem als JSON",
-          "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic","s":{enriched["relevance_score"]}' in body, body[-160:])
+          "issues/new?title=Feedback" in sh and f'"id":"{enriched["id"]}","v":-1,"r":"te_basic","n":"Einde  support van versies","s":{enriched["relevance_score"]}' in body
+          and '— "Einde  support van versies"' in body, body[-200:])
     page.route("https://github.com/**", lambda r: r.abort())
     page.click("#fb-send")
     page.wait_for_timeout(500)
@@ -424,6 +431,13 @@ with sync_playwright() as p:
     page.goto(url + "#interesses")
     page.wait_for_selector("#reader .int-topic")
     check("   na versturen: niets meer klaar, voorstel op 'verstuurd'", page.locator("#int-to-send").count() == 0 and "Verstuurd: ja" in page.locator('.int-sugg[data-sugg="data-contracts"]').inner_text())
+    rl = page.locator(".fb-eff .rule-list li")
+    check("   Jouw regels: tekst, aantal artikelen en twijfel/verouderd", rl.count() == 2 and "Minder: Einde van support voor versies" in rl.nth(0).inner_text()
+          and "raakt nu 2 artikelen" in rl.nth(0).inner_text() and "raakt al een tijd niets meer" in rl.nth(1).inner_text() and "met twijfel" in rl.nth(1).inner_text())
+    page.click('[data-rule-off="twijfel-regel"]')
+    check("   regel weghalen: uit de lijst en klaar om te versturen", page.locator(".fb-eff .rule-list li").count() == 1
+          and "1 wijziging" in page.locator("#int-to-send").inner_text() and "twijfel-regel" in page.evaluate("localStorage.getItem('radar:rules_off')"))
+    page.evaluate("localStorage.removeItem('radar:rules_off')")
     page.click('.int-sugg[data-sugg="powerbi-omhoog"] [data-int-ans="nee"]')
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")

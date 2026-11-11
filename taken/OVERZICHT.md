@@ -4,9 +4,10 @@ Lees eerst `taken/REGELS.md`. Deze taak doet alles wat over de feed als geheel g
 
 ## Stappen
 
-1. **Context lezen.** `context/profile.md`, `context/editorial-guide.md`, `context/interests.yml`, `data/feedback.json`. `git pull` zodat je de uitleg van vannacht hebt.
+1. **Context lezen.** `context/profile.md`, `context/editorial-guide.md`, `context/interests.yml`, `data/feedback.json`, `data/notes_todo.json`. `git pull` zodat je de uitleg van vannacht hebt.
 2. **Trends.** Werk `data/trends.json` bij volgens **Trends** hieronder (een lege lijst mag). Opslaan, commit `Trends`.
 3. **Interesses.** Draai `python scripts/interest_requests.py` en verwerk elke `VERWERKEN`-regel volgens **Mijn interesses** hieronder (wachtrij `data/interest_requests.json` daarna leeg: `{"requests": []}`). Bij `NIET NU`, `GEEN VERZOEKEN` of `ONBEKEND`: niets aan `context/interests.yml` veranderen. Opslaan, commit `Interesses aangepast` (met `Closes #n` voor losse issues).
+3b. **Leerregels.** Lees `taken/LEERREGELS.md` en verwerk `data/notes_todo.json` daarmee. Opslaan, commit `Leerregels`.
 4. **Begrippen aanvullen.** Hooguit 15 bestaande uitleg- of verdiepingsbestanden zonder `terms`, volgens **Begrippen** hieronder. Opslaan, commit `Begrippen aangevuld`.
 5. **Alleen op zondag** (datum in Europe/Amsterdam):
    - `data/weekly.json` volgens **Jouw week** hieronder.

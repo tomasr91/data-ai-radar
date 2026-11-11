@@ -24,6 +24,7 @@ from . import deepdives as deepdives_mod
 from .digest import weekly_digests
 from . import feedback as feedback_mod
 from . import learn as learn_mod
+from . import rules as rules_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
 from .terms import glossary
@@ -242,7 +243,8 @@ def write_taste(fb_data: dict, by_id: dict, now, arts=()) -> None:
         a = by_id.get(aid, {})
         return {"id": aid, "title": x.get("title") or a.get("headline") or a.get("title", ""), "source_id": x.get("source_id", ""),
                 "topics": x.get("topics", [])[:2], "soort": x.get("soort") or a.get("soort"),
-                "labels": x.get("labels") or a.get("labels") or [], "score": x.get("s"), **extra}
+                "labels": x.get("labels") or a.get("labels") or [], "score": x.get("s"),
+                **({"note": x["n"]} if x.get("n") else {}), **extra}
     labels = Counter(lab for a in arts if a.get("processing_status") == "enriched" for lab in a.get("labels", []) or [])
     votes = sorted(fb_data["votes"].items(), key=lambda kv: kv[1].get("at", ""), reverse=True)[:20]
     reads = sorted([kv for kv in fb_data["reads"].items() if kv[0] not in fb_data["votes"]],
@@ -364,6 +366,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             x["s"] = score_article(dict(a), conf, now)["relevance_score"]
     fb_prefs = feedback_mod.preferences(fb_data, now)
     fb_prefs["model"] = learn_mod.model(fb_data, now)   # duim = correctie op de score (pipeline/learn.py)
+    rules_data = rules_mod.load()
+    fb_prefs["rules"] = rules_mod.active_rules(rules_data)   # leerregels uit je toelichtingen (pipeline/rules.py)
+    rules_mod.write_todo(fb_data, rules_data)
     write_taste(fb_data, by_id, now, arts)
     fb_votes = fb_data["votes"]
     for a in arts:
@@ -482,7 +487,8 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
-        "feedback": {**{k: v for k, v in fb_prefs.items() if k != "model"}, "weight": 1.0, "updated_at": fb_data.get("updated_at"),
+        "leerregels": rules_mod.view(rules_data, arts, now.strftime("%Y-%m-%d")),
+        "feedback": {**{k: v for k, v in fb_prefs.items() if k not in ("model", "rules")}, "weight": 1.0, "updated_at": fb_data.get("updated_at"),
                      **learn_mod.summary(fb_data, fb_prefs["model"], now),
                      "effect": feedback_effect(arts, shown, conf, now)},
         "repo": os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPO),
@@ -526,7 +532,7 @@ PUBLIC_FIELDS = ["id", "title", "url", "source_id", "published_at", "date_note",
                  "official_docs", "topics", "groups", "relevance_score", "score_parts", "decision",
                  "processing_status", "processed_by", "processed_at", "reading_minutes", "also_reported_by", "excerpt",
                  "format_version", "headline", "story", "key_facts", "article_type", "author",
-                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why", "diepte", "project_ref"]
+                 "showcase", "terms", "learning", "soort", "fit", "labels", "fb_why", "rule_why", "diepte", "project_ref"]
 
 
 def _public(a):

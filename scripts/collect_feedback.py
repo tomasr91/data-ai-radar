@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from pipeline import feedback  # noqa: E402
+from pipeline import feedback, rules  # noqa: E402
 from pipeline.build import DEFAULT_REPO  # noqa: E402
 
 TITLE_RE = re.compile(r"^\s*Feedback:", re.I)
@@ -55,7 +55,8 @@ def parse_votes(body: str) -> list:
         if re.fullmatch(r"[0-9a-f]{12}", aid) and vote in (1, -1):
             reason = v.get("r") if v.get("r") in feedback.REASONS else None
             s = v.get("s")   # score op het moment van de duim (app, vanaf 5-11-2026)
-            out.append({"id": aid, "v": vote, "r": reason, **({"s": round(s)} if isinstance(s, (int, float)) and 0 <= s <= 100 else {})})
+            note = re.sub(r"\s+", " ", str(v.get("n") or "")).strip()[:rules.NOTE_MAX]
+            out.append({"id": aid, "v": vote, "r": reason, **({"n": note} if note else {}), **({"s": round(s)} if isinstance(s, (int, float)) and 0 <= s <= 100 else {})})
     return out
 
 
@@ -84,6 +85,17 @@ def parse_explain(body: str) -> list:
         return []
     ids = data.get("explain", [])
     return list(dict.fromkeys(str(x) for x in ids if re.fullmatch(r"[0-9a-f]{12}", str(x)))) if isinstance(ids, list) else []
+
+
+def parse_rules_off(body: str) -> list:
+    """Leerregels die T in de app weghaalde ("rules_off": [id, ...])."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return []
+    ids = data.get("rules_off", [])
+    return list(dict.fromkeys(str(x) for x in ids if re.fullmatch(r"[a-z0-9][a-z0-9\-]{1,40}", str(x)))) if isinstance(ids, list) else []
 
 
 def parse_reads(body: str) -> list:
@@ -142,6 +154,7 @@ def main():
             prev = store["votes"].get(v["id"], {})
             store["votes"][v["id"]] = {
                 "v": v["v"], "r": v["r"], "at": now, "issue": issue["number"],
+                **({"n": v["n"]} if v.get("n") else {}),
                 "title": a.get("headline") or a.get("title") or prev.get("title", ""),
                 "topics": a.get("topics") or prev.get("topics", []),
                 "source_id": a.get("source_id") or prev.get("source_id", ""),
@@ -160,6 +173,13 @@ def main():
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
                 **_learn_fields(a, prev, None),
             }
+        off = parse_rules_off(issue.get("body", ""))
+        if off:   # T haalde een leerregel weg (✕ in de app): meteen uit
+            rd = rules.load()
+            for r in rd["rules"]:
+                if r.get("id") in off:
+                    r["active"] = False
+            rules.save(rd)
         ask = parse_explain(issue.get("body", ""))
         if ask:   # "Volledig uitleggen": de werklijst zet ze vooraan (pipeline/build.py)
             path = ROOT / "data" / "explain_requests.json"

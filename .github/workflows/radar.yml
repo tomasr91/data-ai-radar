@@ -23,6 +23,7 @@ on:
       - "data/weekly.json"
       - "data/interest_suggestions.json"
       - "data/interest_log.json"
+      - "data/leerregels.json"
       - "data/runs/**"
       - "data/run-request"     # de Claude-taak vraagt hiermee om vers ophalen (GitHub-klok is soms uren te laat)
       - "context/**"
@@ -86,11 +87,12 @@ jobs:
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add data/feed.json data/archive.json data/to_enrich.json data/taste.json data/to_tag.json
+          git add data/feed.json data/archive.json data/to_enrich.json data/taste.json data/to_tag.json data/notes_todo.json
           [ -f data/feedback.json ] && git add data/feedback.json
           [ -f data/retried.json ] && git add data/retried.json
           [ -f data/interest_requests.json ] && git add data/interest_requests.json
           [ -f data/explain_requests.json ] && git add data/explain_requests.json
+          [ -f data/leerregels.json ] && git add data/leerregels.json
           if git diff --cached --quiet; then
             echo "Geen wijzigingen."
           else
