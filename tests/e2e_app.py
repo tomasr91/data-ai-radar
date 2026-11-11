@@ -144,6 +144,17 @@ with sync_playwright() as p:
     check("1. app opent en toont artikelen", page.locator(".card").count() == len(arts), f"{page.locator('.card').count()} kaarten")
     upd = page.locator("#upd").inner_text()
     check("2. laatste update met datum en tijd zichtbaar", "Nieuwe artikelen" not in upd and re.search(r"\d{1,2} \w+.*\d{2}:\d{2}", upd, re.S) is not None, upd)
+    # Lampje naast de tijd: groen = vandaag, oranje = afgelopen week, rood = langer geleden
+    from datetime import datetime as _dt, timedelta as _td
+    _newest = max(_dt.fromisoformat(x.replace("Z", "+00:00")) for x in [(a.get("processed_at") or a.get("fetched_at")) for a in arts] + [d["written_at"] for d in feed["deepdives"]] if x)
+    _dots = {}
+    for _name, _delta in (("vandaag", _td(hours=1)), ("drie dagen", _td(days=3)), ("zeven dagen", _td(days=7)), ("acht dagen", _td(days=8))):
+        page.clock.set_fixed_time(_newest + _delta)
+        page.reload(); page.wait_for_selector(".card")
+        _dots[_name] = page.evaluate("getComputedStyle(document.querySelector('#upd .dot')).backgroundColor")
+    page.clock.set_fixed_time(_newest + _td(hours=1))
+    check("   lampje: groen vandaag, oranje afgelopen week, rood daarna", _dots["vandaag"] != _dots["drie dagen"] == _dots["zeven dagen"] != _dots["acht dagen"]
+          and _dots["vandaag"] != _dots["acht dagen"], str(_dots))
     check("   geen zoekbalk, chips of periodekeuze meer", page.locator("#q, .chip, #seg-period, .top5").count() == 0)
     # Verversen houdt tab en subtab; een nieuwe sessie (app opnieuw openen) begint bij Actueel
     page.click('#seg-view button[data-v="verdieping"]'); page.click('#seg-dd button[data-v="morgen"]')

@@ -641,7 +641,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const ud = new Date(updIso);
     const day = ud.toLocaleDateString("nl-NL", { day: "numeric", month: "short", timeZone: TZ });
     const time = ud.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: TZ });
-    $("#upd").innerHTML = `<span class="dot" style="background:${m.color}"></span><span><span>${esc(day)}</span><span>${esc(time)}</span></span>`;   // alleen bolletje + datum/tijd, rechts
+    // Lampje naast de tijd: groen = vandaag bijgewerkt, oranje = afgelopen week, rood = langer geleden (of mislukt)
+    const dayKey = (d) => d.toLocaleDateString("sv-SE", { timeZone: TZ });
+    const ageDays = Math.round((Date.parse(dayKey(new Date()) + "T00:00:00Z") - Date.parse(dayKey(ud) + "T00:00:00Z")) / 864e5);
+    const dotColor = f.mode === "demo" || f.mode === "stale" || ageDays > 7 ? "var(--bad)" : ageDays <= 0 ? "var(--ok)" : "var(--warn)";
+    $("#upd").innerHTML = `<span class="dot" style="background:${dotColor}"></span><span><span>${esc(day)}</span><span>${esc(time)}</span></span>`;   // alleen bolletje + datum/tijd, rechts
     $("#upd").title = $("#upd").ariaLabel = `Nieuwe artikelen toegevoegd op ${upd}`;
     const st = $("#status");
     st.hidden = fine;
