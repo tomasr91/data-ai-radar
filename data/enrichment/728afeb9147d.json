@@ -28,22 +28,50 @@
   ],
   "availability_status": "beschikbaar",
   "official_docs": [
-    {"label": "Origineel artikel", "url": "https://claude.com/blog/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud"},
-    {"label": "Webinar: kosten beheersen en ROI tonen", "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"}
+    {
+      "label": "Origineel artikel",
+      "url": "https://claude.com/blog/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud"
+    },
+    {
+      "label": "Webinar: kosten beheersen en ROI tonen",
+      "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"
+    }
   ],
-  "topics": ["claude_ai_development", "ai_evaluation_observability"],
-  "quality": {"depth": 0.65, "practicality": 0.55, "novelty": 0.45},
+  "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.65,
+    "practicality": 0.55,
+    "novelty": 0.45
+  },
   "development_key": "claude-code-kosten-roi-okt-2026",
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws",
   "soort": "praktisch",
-  "fit": {"score": 0.5, "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."},
+  "fit": {
+    "score": 0.5,
+    "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."
+  },
   "terms": [
-    {"term": "Claude apps gateway", "explanation": "Een dienst die je zelf draait tussen Claude Code en het model. Hij controleert wie er inlogt en houdt limieten per gebruiker of groep bij."},
-    {"term": "OpenTelemetry", "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."},
-    {"term": "IdP", "explanation": "Identity provider: de dienst waarmee je organisatie bijhoudt wie wie is en tot welke groep hoort, zoals Entra ID of Google Workspace."},
-    {"term": "nulmeting", "explanation": "Een meting vóór je iets verandert, zodat je achteraf kunt vergelijken of het echt beter werd."}
+    {
+      "term": "Claude apps gateway",
+      "explanation": "Een dienst die je zelf draait tussen Claude Code en het model. Hij controleert wie er inlogt en houdt limieten per gebruiker of groep bij."
+    },
+    {
+      "term": "OpenTelemetry",
+      "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    },
+    {
+      "term": "IdP",
+      "explanation": "Identity provider: de dienst waarmee je organisatie bijhoudt wie wie is en tot welke groep hoort, zoals Entra ID of Google Workspace."
+    },
+    {
+      "term": "nulmeting",
+      "explanation": "Een meting vóór je iets verandert, zodat je achteraf kunt vergelijken of het echt beter werd."
+    }
   ],
   "showcase": {
     "caption": "Met één omgevingsvariabele hang je labels aan alle meetgegevens die Claude Code verstuurt. Zo kun je kosten later per afdeling of kostenplaats optellen.",
@@ -53,5 +81,11 @@
   },
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-11-04T03:40:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "labels": [
+    "claude-code-kosten",
+    "opentelemetry",
+    "claude-enterprise-beheer"
+  ],
+  "project_ref": null
 }

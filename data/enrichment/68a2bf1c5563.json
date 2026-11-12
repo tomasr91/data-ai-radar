@@ -8,7 +8,7 @@
     "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
     "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
     "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
-    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ."
+    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ. Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'?"
   ],
   "key_facts": [
     "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
@@ -88,5 +88,15 @@
       "term": "dbt Mesh",
       "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
     }
-  ]
+  ],
+  "labels": [
+    "dbt-v2",
+    "dbt-oss",
+    "dbt-release"
+  ],
+  "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'",
+    "why": "Fase 4 richt dbt met dbt-databricks in."
+  }
 }

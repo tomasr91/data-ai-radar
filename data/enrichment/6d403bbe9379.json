@@ -9,7 +9,7 @@
     "Waarom gaat een team van agents mis? Bij elke overdracht gaat context verloren, net als bij een telefoonketting. Het aantal subagents groeit, en de centrale instructie wordt een lappendeken van regels die elkaar tegenspreken. Elk team test bovendien alleen zijn eigen stukje, niet het geheel.",
     "Het alternatief is één lus: één model met één contextvenster, dat skills en tools pas helemaal inleest als een taak erom vraagt (progressive disclosure). Harde regels, zoals een validatie of een goedkeuringsstap, horen in een tool en niet in de prompt. Anthropic noemt als voorbeeld dat de systeemprompt van Claude Code voor nieuwere modellen meer dan 80 procent korter is geworden.",
     "Het stappenplan begint met evals: tien goede voorbeelden van begin tot eind zijn al genoeg. Daarna roep je bestaande subagents eerst aan als tool, voeg je nauw verwante specialisten samen, en zet je ze één voor één om naar skills of MCP-tools. Na elke stap vergelijk je met en zonder. Draai elke taak meerdere keren, want een fout zat in een voorbeeld maar in één van twee runs.",
-    "Subagents blijven nuttig voor controle achteraf, voor werk dat parallel moet en voor aparte rechten. Voor een AI-assistent op dbt-metadata betekent dit: begin met één agent en een paar smalle datatools, het artikel noemt er 4 à 5. Boven de 30 à 50 tooldefinities kiest een model volgens Anthropic slechter."
+    "Subagents blijven nuttig voor controle achteraf, voor werk dat parallel moet en voor aparte rechten. Voor een AI-assistent op dbt-metadata betekent dit: begin met één agent en een paar smalle datatools, het artikel noemt er 4 à 5. Boven de 30 à 50 tooldefinities kiest een model volgens Anthropic slechter. Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools."
   ],
   "key_facts": [
     "Gepubliceerd op 22 oktober 2026 door Diane Sarkis (Claude Platform, categorie best practices).",
@@ -28,24 +28,64 @@
   ],
   "availability_status": "onbekend",
   "official_docs": [
-    {"label": "Origineel artikel", "url": "https://claude.com/blog/building-agents-when-to-fold-subagents-into-your-main-agent-loop"}
+    {
+      "label": "Origineel artikel",
+      "url": "https://claude.com/blog/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
+    }
   ],
-  "topics": ["ai_agents_rag", "ai_context_engineering", "claude_ai_development", "ai_evaluation_observability"],
-  "quality": {"depth": 0.7, "practicality": 0.7, "novelty": 0.65},
+  "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.7,
+    "novelty": 0.65
+  },
   "development_key": "single-agent-loop-vs-subagents-okt-2026",
   "date_note": "",
   "exceptional": false,
   "article_type": "nieuws",
   "soort": "achtergrond",
-  "fit": {"score": 0.75, "why": "Gaat over het harnas rond het model, zoals je duimen voor dbt Wizard en de proef van dbt Labs."},
+  "fit": {
+    "score": 0.75,
+    "why": "Gaat over het harnas rond het model, zoals je duimen voor dbt Wizard en de proef van dbt Labs."
+  },
   "terms": [
-    {"term": "subagents", "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."},
-    {"term": "skills", "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."},
-    {"term": "progressive disclosure", "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."},
-    {"term": "evals", "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."},
-    {"term": "contextvenster", "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."}
+    {
+      "term": "subagents",
+      "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+      "term": "skills",
+      "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+      "term": "progressive disclosure",
+      "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
+    },
+    {
+      "term": "evals",
+      "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    },
+    {
+      "term": "contextvenster",
+      "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    }
   ],
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-11-04T03:45:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "labels": [
+    "agent-skills",
+    "multi-agent",
+    "agent-tooling"
+  ],
+  "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools",
+    "why": "Fase 7 bouwt een eigen data-platform-agent met tools naar Databricks."
+  }
 }

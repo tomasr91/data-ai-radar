@@ -8,7 +8,7 @@
     "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
     "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
     "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
-    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar."
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
   ],
   "key_facts": [
     "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
@@ -76,5 +76,15 @@
       "term": "RFID",
       "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
     }
-  ]
+  ],
+  "labels": [
+    "incrementele-modellen",
+    "dbt-op-databricks-jobs",
+    "compute-kosten"
+  ],
+  "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
+    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
+  }
 }

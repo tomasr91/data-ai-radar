@@ -28,24 +28,54 @@
   ],
   "availability_status": "onbekend",
   "official_docs": [
-    {"label": "Origineel artikel", "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026"}
+    {
+      "label": "Origineel artikel",
+      "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026"
+    }
   ],
-  "topics": ["ai_context_engineering", "ai_agents_rag"],
-  "quality": {"depth": 0.45, "practicality": 0.4, "novelty": 0.6},
+  "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.45,
+    "practicality": 0.4,
+    "novelty": 0.6
+  },
   "development_key": "altijd-actieve-agents-context-nov-2026",
   "date_note": "",
   "exceptional": false,
   "article_type": "opinie",
   "author": "Harrison Chase, oprichter en CEO van LangChain",
   "soort": "mening",
-  "fit": {"score": 0.55, "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."},
+  "fit": {
+    "score": 0.55,
+    "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."
+  },
   "terms": [
-    {"term": "sandbox", "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."},
-    {"term": "tool search", "explanation": "Een agent zoekt eerst welke tool hij nodig heeft en laadt alleen die, in plaats van honderden toolbeschrijvingen tegelijk mee te nemen."},
-    {"term": "asynchroon", "explanation": "Werk dat op de achtergrond doorloopt terwijl de agent iets anders doet; het resultaat komt later terug."},
-    {"term": "skills", "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."}
+    {
+      "term": "sandbox",
+      "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+      "term": "tool search",
+      "explanation": "Een agent zoekt eerst welke tool hij nodig heeft en laadt alleen die, in plaats van honderden toolbeschrijvingen tegelijk mee te nemen."
+    },
+    {
+      "term": "asynchroon",
+      "explanation": "Werk dat op de achtergrond doorloopt terwijl de agent iets anders doet; het resultaat komt later terug."
+    },
+    {
+      "term": "skills",
+      "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    }
   ],
   "processed_by": "Claude (geplande taak)",
   "processed_at": "2026-11-04T04:00:00Z",
-  "prompt_version": "taak-v2"
+  "prompt_version": "taak-v2",
+  "labels": [
+    "agent-geheugen",
+    "altijd-actieve-agents"
+  ],
+  "project_ref": null
 }
