@@ -1,0 +1,32 @@
+{
+ "format_version": 2,
+ "diepte": "kort",
+ "article_id": "8b7855abcc2d",
+ "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
+ "headline": "Eerst de eval, dan de wijziging: zo verbeter je een agent stap voor stap",
+ "summary": "LangChain legt eval-driven development uit: beschrijf per gedrag wat goed is, schrijf de eval vóór je bouwt en vergelijk daarna per voorbeeld, niet alleen het gemiddelde. Een voorbeeld laat zien hoe een nieuwe tool een oude vraag ('hoe verbind ik met de VPN?') ten onrechte een ticket liet maken.",
+ "topics": [
+  "ai_evaluation_observability",
+  "ai_agents_rag"
+ ],
+ "availability_status": "onbekend",
+ "quality": {
+  "depth": 0.5,
+  "practicality": 0.5,
+  "novelty": 0.35
+ },
+ "soort": "achtergrond",
+ "fit": {
+  "score": 0.6,
+  "why": "Evals voor agents, zoals je duim voor Claudes eval-hulp; wel een bekende methode."
+ },
+ "labels": [
+  "agent-evals",
+  "llm-als-rechter"
+ ],
+ "project_ref": null,
+ "development_key": "eval-driven-development",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-12T03:40:00Z",
+ "prompt_version": "taak-v3-kort"
+}

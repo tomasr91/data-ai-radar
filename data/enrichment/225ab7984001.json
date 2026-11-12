@@ -1,0 +1,33 @@
+{
+ "format_version": 2,
+ "diepte": "kort",
+ "article_id": "225ab7984001",
+ "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+ "headline": "Fabric ziet nu ook materialized views en streaming tables uit Databricks",
+ "summary": "Een gespiegelde Azure Databricks-catalogus (mirrored catalog) in Fabric toont nu naast tabellen ook materialized views en streaming tables, alleen-lezen via shortcuts en zonder kopie. Handig als Power BI-rapporten in Fabric de voorberekende uitkomsten uit Databricks willen gebruiken.",
+ "topics": [
+  "powerbi_semantic_models",
+  "databricks_data_engineering"
+ ],
+ "availability_status": "onbekend",
+ "quality": {
+  "depth": 0.35,
+  "practicality": 0.5,
+  "novelty": 0.45
+ },
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.55,
+  "why": "Kleine Fabric–Databricks-koppeling, zoals je eerdere OneLake-artikelen; geen praktische aanpak."
+ },
+ "labels": [
+  "onelake-databricks",
+  "fabric-mirroring"
+ ],
+ "project_ref": null,
+ "development_key": "fabric-mirroring-databricks-mv-st-2026",
+ "date_note": "De blogpagina zelf was niet te openen; samengevat uit de RSS-tekst en de Fabric-documentatie over mirroring van Azure Databricks, die materialized views en streaming tables bij de synchronisatie noemt. Status (preview of GA) staat er niet bij.",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-12T03:30:00Z",
+ "prompt_version": "taak-v3-kort"
+}

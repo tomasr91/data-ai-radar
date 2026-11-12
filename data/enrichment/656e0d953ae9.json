@@ -1,0 +1,95 @@
+{
+ "format_version": 2,
+ "article_id": "656e0d953ae9",
+ "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
+ "headline": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk",
+ "summary": "Databricks maakt Genie Ontology algemeen beschikbaar: een contextlaag die begrippen leert uit dashboards, queries en Power BI-modellen, en die combineert met definities die je zelf vastlegt. Via MCP kunnen ook Claude en ChatGPT die context gebruiken.",
+ "story": [
+  "Een AI-agent geeft pas goede antwoorden als hij weet wat 'actieve klant' of 'omzet' in jouw organisatie betekent. Databricks heeft daarvoor Genie Ontology gemaakt, en die is sinds 11 november algemeen beschikbaar (GA). Eind oktober was al bekend dat Genie zelf context gaat halen uit metric views en dashboards; nu is het officieel te gebruiken.",
+  "Het werkt met twee soorten kennis. De eerste is geleerde kennis: agents lezen mee in dashboards, SQL-queries, notebooks en semantische modellen, ook die van Power BI. Wat ze vinden, bewaren ze als korte stukjes uitleg (Ontology Snippets) die vanzelf bijgewerkt worden. De tweede is gemodelleerde kennis: definities die mensen zelf vastleggen in Unity Catalog, zoals metric views, domeinen (Domains) en pagina's (Pages).",
+  "Spreken twee bronnen elkaar tegen, dan kiest een rangorde-algoritme (OntoRank). Het weegt mee of een bron gecertificeerd is, wie hem maakte, hoe vaak hij gebruikt wordt en hoe vers hij is. Vergelijk het met een collega die bij twijfel het officiële rapport boven een los notitieblok kiest. De agent ziet alleen wat de gebruiker zelf mag zien. Via Genie MCP kunnen agents buiten Databricks, zoals Claude en ChatGPT, dezelfde context opvragen.",
+  "Voor je AI-contextlaag op dbt en Databricks is dit een kant-en-klaar alternatief voor een deel van wat je zelf zou bouwen. De vraag wordt dan: leg je definities vast in metric views, zodat Genie ze als gemodelleerde kennis kan gebruiken? Interessant is ook dat Power BI-modellen als bron dienen; dat is nog bèta.",
+  "Databricks claimt in een eigen test met Turing dat Genie 91 procent van de taken goed deed, tegen 45 en 58 procent bij twee niet genoemde andere agents. Die test is door de aanbieder zelf gedaan, op een verzonnen energiebedrijf. Neem het cijfer dus met een korrel zout."
+ ],
+ "key_facts": [
+  "Genie Ontology is algemeen beschikbaar (GA), aangekondigd op 11 november 2026.",
+  "Ook GA: Genie Search (kennis uit documenten, tickets en wiki's), Ontology Snippets, organisatieoverzichten (eerst Workday), Unity Catalog Domains en Subdomains, en Unity Catalog Pages.",
+  "Geleerde kennis komt uit dashboards, SQL-queries, notebooks en semantische modellen; Power BI als externe kennisbron is bèta, Tableau en Sigma volgen later.",
+  "OntoRank weegt bronnen op autoriteit, certificering, expertise, populariteit en actualiteit; de context volgt de rechten van de gebruiker.",
+  "Genie MCP maakt dezelfde context beschikbaar voor agents buiten Databricks, zoals ChatGPT, Claude en Microsoft Copilot.",
+  "Eigen benchmark met Turing (5 runs per taak): Genie 91% geslaagd, 432K tokens per run; andere agents 45% (889K) en 58% (1,05M). Ontology Manager komt later als bèta."
+ ],
+ "personal_relevance": "Dit raakt je AI-contextlaag direct: definities in metric views en Unity Catalog worden context voor elke agent, ook Claude via MCP.",
+ "experiment": "Maak in een testwerkruimte één metric view met een verzonnen definitie (bijv. 'actieve gebruiker') en vraag Genie daarna naar dat begrip. Kijk of het antwoord de definitie uit de metric view gebruikt.",
+ "limitations": [
+  "De benchmark is door Databricks zelf gedaan, op gesimuleerde data, tegen twee anonieme concurrenten.",
+  "Ontology Manager en Power BI als kennisbron zijn nog niet GA.",
+  "Of dit in Databricks Free Edition werkt, staat niet in het artikel."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Genie Ontology (documentatie)",
+   "url": "https://docs.databricks.com/en/genie/genie-ontology"
+  },
+  {
+   "label": "Unity Catalog semantics",
+   "url": "https://docs.databricks.com/en/uc-semantics/"
+  },
+  {
+   "label": "Genie MCP",
+   "url": "https://docs.databricks.com/en/agents/mcp-tools/genie-mcp"
+  },
+  {
+   "label": "Benchmarkblog",
+   "url": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens"
+  }
+ ],
+ "topics": [
+  "ai_context_engineering",
+  "metadata_lineage_catalogs",
+  "ai_on_data_platform",
+  "ai_agents_rag"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.6,
+  "novelty": 0.6
+ },
+ "development_key": "genie-ontology-ga-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.75,
+  "why": "Contextlaag op metric views en Unity Catalog, zoals je duimen voor metric view-relaties en de semantische laag."
+ },
+ "labels": [
+  "genie-ontology",
+  "metric-views",
+  "genie-mcp"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "Ontology Snippets",
+   "explanation": "Korte stukjes uitleg over begrippen die Genie zelf leert uit dashboards, queries en modellen, en die vanzelf bijgewerkt worden."
+  },
+  {
+   "term": "OntoRank",
+   "explanation": "Het rangorde-algoritme van Genie dat bij tegenstrijdige definities kiest welke bron het meest betrouwbaar is, bijv. een gecertificeerde boven een losse query."
+  },
+  {
+   "term": "metric views",
+   "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+  },
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-12T03:40:00Z",
+ "prompt_version": "taak-v2"
+}

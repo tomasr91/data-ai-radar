@@ -1,0 +1,111 @@
+{
+ "format_version": 2,
+ "article_id": "6ded4aa1cdcf",
+ "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context",
+ "headline": "Zet context voor agents in je warehouse: de helft minder tokens",
+ "summary": "dbt Labs zegt meer dan de helft op tokenkosten te besparen door context voor agents één keer in het warehouse klaar te zetten, in plaats van alles live via MCP op te halen. Met een rekenvoorbeeld en een stappenplan voor de businesscase.",
+ "story": [
+  "AI-projecten verdienen zich traag terug, maar de rekening voor tokens komt elke maand. Volgens Deloitte duurt het bij een typische AI-toepassing 2 tot 4 jaar, tegen 7 tot 12 maanden bij gewone IT. Daniel Poppy van dbt Labs zegt: aan die terugverdientijd doe je weinig, aan de lopende kosten wel. Zijn team bespaarde naar eigen zeggen meer dan 50 procent op tokens.",
+  "Het probleem zit volgens hem in een naïeve aanpak met MCP. Een agent laadt dan bij elke aanroep alle beschrijvingen van alle tools. Vijf MCP-servers met 58 tools kosten zo al zo'n 55.000 tokens voordat het gesprek begint. Bij 10.000 aanroepen per maand is dat ongeveer 2.200 dollar, alleen aan voorwerk. Daarnaast gaat ruwe data door het model, soms twee keer, en wordt dezelfde context steeds opnieuw opgehaald.",
+  "De oplossing is 'warehouse-first': werk de context vooraf uit, net zoals je een Gold-tabel bouwt in plaats van elke keer de Bronze-data te bevragen. dbt Labs knipt bijvoorbeeld lange gesprekstranscripten met dbt in stukken, maakt er embeddings van en classificeert ze. Alleen de passages die ertoe doen gaan naar het model. Agents praten met één gecontroleerde laag via de dbt MCP-server, niet met twintig losse servers. Nieuwe gesprekken komen er via Fivetran bij; oude worden niet opnieuw verwerkt.",
+  "Voor je eigen platform is het idee herkenbaar: context is gewoon een dataproduct met een incrementeel model. Het stappenplan in het artikel begint met meten wat je nu uitgeeft, daarna zoeken welke MCP-bronnen al in het warehouse staan, en beginnen bij de duurste bron. Voor Dataflow past dit in fase 7: geef je eigen agent context uit tabellen en dbt-artifacts in plaats van uit veel losse tools.",
+  "Let wel: de besparing is een eigen meting van dbt Labs, zonder details over hoe ze gemeten is. En het stuk verkoopt zijdelings de eigen MCP-server en Fivetran."
+ ],
+ "key_facts": [
+  "Deloitte (Europa en Midden-Oosten): gewone tech-investeringen verdienen zich terug in 7 tot 12 maanden, een typische AI-toepassing in 2 tot 4 jaar.",
+  "dbt Labs zegt meer dan 50% op tokenkosten te hebben bespaard door context in het warehouse op te slaan in plaats van dynamisch via MCP op te halen.",
+  "Vijf MCP-servers met 58 tools kosten ongeveer 55.000 tokens vóór het gesprek; bij 10.000 aanroepen per maand is dat 550 miljoen inputtokens, ongeveer $2.200 per maand op Claude Opus 5.5.",
+  "Drie kostenoorzaken: alle tooldefinities bij elke aanroep, ruwe data door het model (soms dubbel), en steeds opnieuw dezelfde context ophalen zonder hergebruik.",
+  "Aanpak: transcripten met dbt opknippen, embedden en classificeren; agents gebruiken één gecontroleerde laag via de dbt MCP-server; alleen nieuwe gesprekken worden via Fivetran opgehaald.",
+  "Volgens Anthropic-data kan een vergelijkbare aanpak het tokengebruik met 85% verlagen; één workflow ging van 150.000 naar 2.000 tokens."
+ ],
+ "personal_relevance": "Je wilt een AI-contextlaag op dbt en Databricks: dit geeft een kostenargument om die context als modellen te bouwen in plaats van alles live op te halen.",
+ "experiment": "Tel in Claude Code met /context hoeveel tokens je MCP-tools vooraf innemen. Zet daarna één verzonnen of openbare tekstbron als vooraf opgeknipte tabel klaar en vergelijk het tokengebruik van dezelfde vraag.",
+ "limitations": [
+  "De besparing van meer dan 50% is een eigen meting van dbt Labs, zonder methode.",
+  "Het stuk promoot de dbt MCP-server en Fivetran.",
+  "Vooraf verwerken betekent ook onderhoud: de context kan verouderen als je hem niet ververst."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "Making the economic case for warehouse-first AI context",
+   "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context"
+  }
+ ],
+ "topics": [
+  "ai_context_engineering",
+  "dbt_analytics_engineering",
+  "ai_agents_rag"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.65,
+  "novelty": 0.55
+ },
+ "development_key": "warehouse-first-ai-context-kosten",
+ "date_note": "De pagina toont 'Last edited on Nov 11, 2026'.",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "achtergrond",
+ "fit": {
+  "score": 0.75,
+  "why": "dbt als contextlaag voor agents, zoals je duimen voor de Noonan- en agent-contextartikelen."
+ },
+ "labels": [
+  "context-als-code",
+  "agent-context-laag",
+  "dbt-mcp"
+ ],
+ "project_ref": {
+  "fase": 7,
+  "quote": "Voor Dataflow past dit in fase 7: geef je eigen agent context uit tabellen en dbt-artifacts",
+  "why": "Fase 7 bouwt een agent met dbt-artifacts en metadata als context."
+ },
+ "terms": [
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  },
+  {
+   "term": "tokens",
+   "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+  },
+  {
+   "term": "embeddings",
+   "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen."
+  },
+  {
+   "term": "warehouse-first",
+   "explanation": "Context voor AI vooraf uitwerken en opslaan als tabellen in het datawarehouse, in plaats van die bij elke vraag opnieuw uit losse bronnen op te halen."
+  }
+ ],
+ "showcase": {
+  "caption": "De rekensom uit het artikel: tokens die vóór elk gesprek opgaan, maal het aantal aanroepen. De tweede rij is een verzonnen voorbeeld van een kleinere opstelling.",
+  "language": "sql",
+  "code": "WITH opstelling AS (\n  SELECT '5 MCP-servers, 58 tools' AS aanpak, 55000 AS tokens_vooraf, 10000 AS aanroepen\n  UNION ALL\n  SELECT 'stel: 1 server, 5.000 tokens', 5000, 10000\n)\nSELECT aanpak,\n       tokens_vooraf * aanroepen / 1e6 AS miljoen_tokens,\n       ROUND(tokens_vooraf * aanroepen / 1e6 * 4) AS dollar_per_maand\nFROM opstelling;",
+  "result": {
+   "columns": [
+    "aanpak",
+    "miljoen_tokens",
+    "dollar_per_maand"
+   ],
+   "rows": [
+    [
+     "5 MCP-servers, 58 tools",
+     550.0,
+     2200.0
+    ],
+    [
+     "stel: 1 server, 5.000 tokens",
+     50.0,
+     200.0
+    ]
+   ]
+  },
+  "note": "Gedraaid in DuckDB. De eerste rij gebruikt de cijfers uit het artikel ($2.200 voor 550 miljoen tokens, dus $4 per miljoen); de tweede rij is verzonnen ter vergelijking."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-12T03:30:00Z",
+ "prompt_version": "taak-v2"
+}
