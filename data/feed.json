@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T03:31:53.760503Z",
+ "generated_at": "2026-11-12T03:39:48.679959Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-12T03:40:00Z",
+ "last_article_added_at": "2026-11-12T04:00:00Z",
  "last_successful_update": "2026-11-12T03:13:28.207125Z",
  "groups": [
   {
@@ -611,7 +611,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 1.0,
     "quality": 0.67,
     "fit": 0.2,
@@ -1820,102 +1820,6 @@
    }
   },
   {
-   "id": "53acc8538264",
-   "title": "Claude Code: wat is er nieuw in week 45 (v2.1.317 t/m v2.1.319)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W45",
-   "source_id": "claude_code_releases",
-   "published_at": "2026-11-08T23:59:59Z",
-   "fetched_at": "2026-11-10T20:23:14.559963Z",
-   "summary": "In week 45 kreeg Claude Code MCP-taken die op de achtergrond doorlopen, een instelling om te weigeren in plaats van te vragen, en extra controles op wat er het netwerk op gaat.",
-   "personal_relevance": "Lange MCP-aanroepen naar Databricks hoeven je sessie niet meer te blokkeren, en geplande taken kun je strenger afschermen.",
-   "experiment": "Zet in een testproject permissions.denyInsteadOfPrompting aan en laat Claude Code een niet-toegestane actie proberen, om te zien hoe hij reageert.",
-   "limitations": [
-    "De release notes geven geen voorbeeld van hoe je een MCP-taak start of welke MCP-servers het ondersteunen.",
-    "Alleen de belangrijkste wijzigingen staan hier; de volledige lijst staat in de release notes."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Release v2.1.317",
-     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317"
-    },
-    {
-     "label": "Release v2.1.318",
-     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318"
-    },
-    {
-     "label": "Release v2.1.319",
-     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.86,
-    "source": 0.8,
-    "quality": 0.53,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:34:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code laat lange MCP-taken op de achtergrond lopen",
-   "story": [
-    "De grootste verandering van deze week zit in versie 2.1.319. Claude Code ondersteunt nu MCP-taken (MCP tasks) in de terminal. Zo'n taak gaat naar de achtergrond en meldt zich als hij klaar is. Je hoeft dus niet te wachten op een trage tool, zoals een lange query via een MCP-server.",
-    "In dezelfde versie kwam de instelling permissions.denyInsteadOfPrompting. Normaal vraagt Claude Code om toestemming als een actie niet vooraf is toegestaan. Met deze instelling weigert hij zo'n actie meteen. Dat is handig als niemand meekijkt, bijvoorbeeld bij een geplande taak: dan blijft hij niet hangen op een vraag.",
-    "Versie 2.1.317 bracht twee controles op wat er naar buiten gaat. Claude Code vraagt eerst toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt. En /schedule waarschuwt als een nieuwe geplande taak in de cloud connectoren krijgt waar je niet om vroeg, met uitleg hoe je ze weghaalt.",
-    "Voor wie zelf agents bouwt met de Agent SDK: een hook-callback kan nu onFailure: \"block\" krijgen. Gaat de hook zelf mis, dan wordt de actie tegengehouden in plaats van doorgelaten. Bij dbt- of data-engineeringwerk is dat een veilige standaard voor een hook die bijvoorbeeld schrijfacties naar productie moet tegenhouden."
-   ],
-   "key_facts": [
-    "v2.1.319 (6 november): ondersteuning voor MCP-taken in de terminal; ze gaan naar de achtergrond en melden het resultaat als ze klaar zijn.",
-    "v2.1.319: nieuwe instelling permissions.denyInsteadOfPrompting en omgevingsvariabele CLAUDE_CODE_DISABLE_FEATURE_FLAGS.",
-    "v2.1.319: auto mode zonder telemetrie of feature flags (ook achter LLM-gateways) vraagt of weigert aanroepen die de server niet kan controleren, zonder terug te vallen op de ingebouwde classifier.",
-    "v2.1.317 (3 november): /schedule waarschuwt voor ongevraagde connectoren; Claude Code vraagt toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt.",
-    "v2.1.317: onFailure: \"block\" voor hook-callbacks in de Agent SDK.",
-    "v2.1.318 (4 november): deniedMcpServers met een URL blokkeert ook passende servers die Anthropic zelf levert."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "MCP-taken",
-     "explanation": "Aanroepen van een MCP-tool die lang mogen duren: ze lopen op de achtergrond door en melden zich als het resultaat klaar is."
-    },
-    {
-     "term": "MCP-server",
-     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
-    },
-    {
-     "term": "Agent SDK",
-     "explanation": "Een programmeerbibliotheek van Anthropic om zelf agents te bouwen met dezelfde bouwstenen als Claude Code, zoals tools en hooks."
-    },
-    {
-     "term": "hook",
-     "explanation": "Een stukje code dat automatisch draait op een vast moment, bijvoorbeeld vlak voordat een AI-assistent een tool gebruikt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.65,
-    "why": "Claude Code-release over veiligheid en werkwijze, zoals je duim voor de sandbox-release."
-   },
-   "labels": [
-    "claude-code-mcp-taken",
-    "claude-code-permissies",
-    "claude-code-sandbox"
-   ]
-  },
-  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -2178,6 +2082,102 @@
    }
   },
   {
+   "id": "53acc8538264",
+   "title": "Claude Code: wat is er nieuw in week 45 (v2.1.317 t/m v2.1.319)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W45",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-08T23:59:59Z",
+   "fetched_at": "2026-11-10T20:23:14.559963Z",
+   "summary": "In week 45 kreeg Claude Code MCP-taken die op de achtergrond doorlopen, een instelling om te weigeren in plaats van te vragen, en extra controles op wat er het netwerk op gaat.",
+   "personal_relevance": "Lange MCP-aanroepen naar Databricks hoeven je sessie niet meer te blokkeren, en geplande taken kun je strenger afschermen.",
+   "experiment": "Zet in een testproject permissions.denyInsteadOfPrompting aan en laat Claude Code een niet-toegestane actie proberen, om te zien hoe hij reageert.",
+   "limitations": [
+    "De release notes geven geen voorbeeld van hoe je een MCP-taak start of welke MCP-servers het ondersteunen.",
+    "Alleen de belangrijkste wijzigingen staan hier; de volledige lijst staat in de release notes."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release v2.1.317",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317"
+    },
+    {
+     "label": "Release v2.1.318",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318"
+    },
+    {
+     "label": "Release v2.1.319",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.86,
+    "source": 0.8,
+    "quality": 0.53,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:34:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code laat lange MCP-taken op de achtergrond lopen",
+   "story": [
+    "De grootste verandering van deze week zit in versie 2.1.319. Claude Code ondersteunt nu MCP-taken (MCP tasks) in de terminal. Zo'n taak gaat naar de achtergrond en meldt zich als hij klaar is. Je hoeft dus niet te wachten op een trage tool, zoals een lange query via een MCP-server.",
+    "In dezelfde versie kwam de instelling permissions.denyInsteadOfPrompting. Normaal vraagt Claude Code om toestemming als een actie niet vooraf is toegestaan. Met deze instelling weigert hij zo'n actie meteen. Dat is handig als niemand meekijkt, bijvoorbeeld bij een geplande taak: dan blijft hij niet hangen op een vraag.",
+    "Versie 2.1.317 bracht twee controles op wat er naar buiten gaat. Claude Code vraagt eerst toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt. En /schedule waarschuwt als een nieuwe geplande taak in de cloud connectoren krijgt waar je niet om vroeg, met uitleg hoe je ze weghaalt.",
+    "Voor wie zelf agents bouwt met de Agent SDK: een hook-callback kan nu onFailure: \"block\" krijgen. Gaat de hook zelf mis, dan wordt de actie tegengehouden in plaats van doorgelaten. Bij dbt- of data-engineeringwerk is dat een veilige standaard voor een hook die bijvoorbeeld schrijfacties naar productie moet tegenhouden."
+   ],
+   "key_facts": [
+    "v2.1.319 (6 november): ondersteuning voor MCP-taken in de terminal; ze gaan naar de achtergrond en melden het resultaat als ze klaar zijn.",
+    "v2.1.319: nieuwe instelling permissions.denyInsteadOfPrompting en omgevingsvariabele CLAUDE_CODE_DISABLE_FEATURE_FLAGS.",
+    "v2.1.319: auto mode zonder telemetrie of feature flags (ook achter LLM-gateways) vraagt of weigert aanroepen die de server niet kan controleren, zonder terug te vallen op de ingebouwde classifier.",
+    "v2.1.317 (3 november): /schedule waarschuwt voor ongevraagde connectoren; Claude Code vraagt toestemming voordat een web- of shell-tool je e-mailadres naar het netwerk stuurt.",
+    "v2.1.317: onFailure: \"block\" voor hook-callbacks in de Agent SDK.",
+    "v2.1.318 (4 november): deniedMcpServers met een URL blokkeert ook passende servers die Anthropic zelf levert."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "MCP-taken",
+     "explanation": "Aanroepen van een MCP-tool die lang mogen duren: ze lopen op de achtergrond door en melden zich als het resultaat klaar is."
+    },
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "Agent SDK",
+     "explanation": "Een programmeerbibliotheek van Anthropic om zelf agents te bouwen met dezelfde bouwstenen als Claude Code, zoals tools en hooks."
+    },
+    {
+     "term": "hook",
+     "explanation": "Een stukje code dat automatisch draait op een vast moment, bijvoorbeeld vlak voordat een AI-assistent een tool gebruikt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.65,
+    "why": "Claude Code-release over veiligheid en werkwijze, zoals je duim voor de sandbox-release."
+   },
+   "labels": [
+    "claude-code-mcp-taken",
+    "claude-code-permissies",
+    "claude-code-sandbox"
+   ]
+  },
+  {
    "id": "656e0d953ae9",
    "title": "Announcing GA of Genie Ontology",
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
@@ -2334,7 +2334,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.8,
     "quality": 0.63,
     "feedback": 0.01,
@@ -2834,96 +2834,6 @@
    ]
   },
   {
-   "id": "e7bf67f656d3",
-   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-27T18:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
-   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
-   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
-   "limitations": [
-    "Resultaten uit één project.",
-    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
-    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "ai_extract (documentatie)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.47,
-    "source": 0.85,
-    "quality": 0.75,
-    "feedback": -0.05,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-     "published_at": "2026-10-27T18:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
-   "story": [
-    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
-    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
-    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
-    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
-   ],
-   "key_facts": [
-    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
-    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
-    "Alle verbeteringen samen gaven 32% minder fouten.",
-    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
-   ],
-   "terms": [
-    {
-     "term": "prompt",
-     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktische aanpak met evals en een testset, zoals de meetbare AI-stukken die je duimde."
-   },
-   "labels": [
-    "agent-evals",
-    "ai-documentextractie"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -5
-   }
-  },
-  {
    "id": "a9b6458ba033",
    "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
    "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
@@ -3281,6 +3191,96 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
+   }
+  },
+  {
+   "id": "e7bf67f656d3",
+   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
+   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
+   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
+   "limitations": [
+    "Resultaten uit één project.",
+    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
+    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "ai_extract (documentatie)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.47,
+    "source": 0.85,
+    "quality": 0.75,
+    "feedback": -0.05,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+     "published_at": "2026-10-27T18:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
+   "story": [
+    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
+    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
+    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
+    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
+   ],
+   "key_facts": [
+    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
+    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
+    "Alle verbeteringen samen gaven 32% minder fouten.",
+    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
+   ],
+   "terms": [
+    {
+     "term": "prompt",
+     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktische aanpak met evals en een testset, zoals de meetbare AI-stukken die je duimde."
+   },
+   "labels": [
+    "agent-evals",
+    "ai-documentextractie"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -5
    }
   },
   {
@@ -3694,6 +3694,109 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -4
+   }
+  },
+  {
+   "id": "ffe8a09e969f",
+   "title": "Claude Fable 5.2 and Mythos 5.2",
+   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
+   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
+   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
+   "limitations": [
+    "Alle benchmarks zijn van Anthropic zelf.",
+    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
+    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Fable 5.2 (modeldocumentatie)",
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
+    },
+    {
+     "label": "Advisor in Claude Code",
+     "url": "https://code.claude.com/docs/en/advisor"
+    },
+    {
+     "label": "Multi-agent orchestration",
+     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+    },
+    {
+     "label": "System card",
+     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.86,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.03,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T04:00:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+   "story": [
+    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
+    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
+    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
+    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
+    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
+   ],
+   "key_facts": [
+    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
+    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
+    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
+    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
+    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
+    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "fast mode",
+     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+    },
+    {
+     "term": "Orchestrator",
+     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
+   },
+   "labels": [
+    "claude-modellen",
+    "multi-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -3
    }
   },
   {
@@ -6641,55 +6744,6 @@
    }
   },
   {
-   "id": "94b7888e188f",
-   "title": "More visibility and control over Claude Enterprise for security teams",
-   "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-05T00:00:00Z",
-   "fetched_at": "2026-11-06T03:12:46.175690Z",
-   "summary": "Claude Enterprise krijgt een securitycentrum dat je instellingen voor chat, Cowork en Claude Code vergelijkt met de aanbevolen waarden (bèta), en algemeen beschikbare hooks die prompts en toolaanroepen eerst langs je eigen securitytool sturen. Vooral nuttig voor wie Claude in een organisatie beheert.",
-   "availability_status": "preview",
-   "topics": [
-    "claude_ai_development",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "claude",
-    "kwaliteit"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.7,
-    "source": 0.51,
-    "quality": 0.4,
-    "feedback": -0.04,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-06T03:21:58Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Claude Enterprise: securitycentrum en hooks die prompts laten controleren",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.45,
-    "why": "Claude-beheer in plaats van Claude bij dbt-werk; je duim ging wel naar de Claude Code-schrijfgrens."
-   },
-   "labels": [
-    "claude-enterprise-beheer",
-    "claude-security"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -4
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "f29afd156725",
    "title": "Donating Agent Skills to the Agentic AI Foundation",
    "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
@@ -7168,6 +7222,55 @@
    }
   },
   {
+   "id": "827b239977de",
+   "title": "Detecting credential-driven attacks on Databricks",
+   "url": "https://www.databricks.com/blog/detecting-credential-driven-attacks-databricks",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T23:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Databricks beschrijft zes stappen van een aanval met gestolen tokens of service principal-gegevens, van snelle list-calls tot secrets uitlezen, en welke audit-events in system.access.audit dat verraden. Met een stappenplan om in te grijpen en tips voor preventie, zoals vervaldatums op tokens en least privilege op secret scopes.",
+   "availability_status": "onbekend",
+   "topics": [
+    "data_governance_privacy",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "kwaliteit",
+    "databricks"
+   ],
+   "relevance_score": 67,
+   "score_parts": {
+    "topic": 0.8,
+    "recency": 0.99,
+    "source": 0.85,
+    "quality": 0.5,
+    "feedback": -0.09,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T04:00:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Zo herken je een aanval met gestolen inloggegevens in Databricks",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.45,
+    "why": "Beveiliging voor beheerders; weinig raakvlak met je duimen voor dbt en context."
+   },
+   "labels": [
+    "databricks-beveiliging",
+    "audit-logs"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -9
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "e000e5cddc90",
    "title": "Build clearer, more expressive Real-Time Dashboards with new design and KPI capabilities (Generally Available)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-clearer-more-expressive-Real-Time-Dashboards-with-new/ba-p/5377578",
@@ -7316,49 +7419,51 @@
    }
   },
   {
-   "id": "95ae3c341206",
-   "title": "A builder’s guide to scaling Databricks Apps",
-   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T18:00:00Z",
-   "fetched_at": "2026-11-06T03:12:46.373805Z",
-   "summary": "Een praktische gids voor apps op Databricks Apps die groeien: zware taken naar jobs, vaste gegevens in Lakebase, instantiegroottes van Medium tot XLarge en een rekensom voor het aantal databaseverbindingen. Vooral handig als je zelf een app bouwt voor meer dan een handvol collega's.",
-   "availability_status": "onbekend",
+   "id": "d8ab32c2d8b1",
+   "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-your-Microsoft-Fabric-data-estate-from-one-place-with-the/ba-p/5377369",
+   "source_id": "fabric_blog",
+   "published_at": "2026-10-28T19:47:19Z",
+   "date_note": "Blog van 28 oktober 2026; de pagina zelf was niet te openen. Samengevat uit de RSS-tekst en de officiële documentatie over de Govern-weergave, die meldt dat de uitrol per regio gaat.",
+   "fetched_at": "2026-11-01T11:05:56.917007Z",
+   "summary": "De Govern-weergave in de OneLake-catalogus is algemeen beschikbaar: beheerders en eigenaars zien op één plek inzichten over domeinen, capaciteiten, labels en curatie, met aanbevolen acties. Nieuwe Govern Skills geven AI-agents de kennis om zulke governance-problemen mee te helpen opsporen en oplossen.",
+   "availability_status": "beschikbaar",
    "topics": [
-    "databricks_data_engineering"
+    "data_governance_privacy",
+    "metadata_lineage_catalogs"
    ],
    "groups": [
-    "databricks"
+    "kwaliteit"
    ],
-   "relevance_score": 63,
+   "relevance_score": 60,
    "score_parts": {
-    "topic": 0.8,
-    "recency": 0.73,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.09,
+    "topic": 0.85,
+    "recency": 0.49,
+    "source": 0.6,
+    "quality": 0.37,
+    "feedback": -0.06,
     "fit": -0.05
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
+   "processed_at": "2026-11-12T04:00:00Z",
    "reading_minutes": 1,
    "format_version": 2,
-   "headline": "Databricks Apps voor veel gebruikers: zo plan je de schaal",
-   "soort": "praktisch",
+   "headline": "Fabric-beheer op één plek in de OneLake-catalogus, ook voor agents",
+   "soort": "aankondiging",
    "fit": {
     "score": 0.45,
-    "why": "Praktisch, maar over apps bouwen, wat buiten je dagelijkse dbt-werk ligt."
+    "why": "Fabric-beheer is meer iets voor beheerders dan voor je modelleerwerk."
    },
    "labels": [
-    "databricks-apps",
-    "lakebase"
+    "onelake-catalog",
+    "agent-skills"
    ],
    "fb_why": {
     "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -9
+    "name": "data_governance_privacy",
+    "pts": -6
    },
    "diepte": "kort"
   },
@@ -11086,6 +11191,17 @@
    ]
   },
   {
+   "term": "effort",
+   "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ffe8a09e969f",
+     "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard"
+    }
+   ]
+  },
+  {
    "term": "embeddings",
    "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen.",
    "refs": [
@@ -11218,6 +11334,11 @@
    "term": "fast mode",
    "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "ffe8a09e969f",
+     "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard"
+    },
     {
      "kind": "a",
      "id": "6df581b9d8ed",
@@ -12139,6 +12260,17 @@
      "kind": "a",
      "id": "72dc169275f9",
      "title": "Claude Code leert je omgeving kennen voor de automatische modus"
+    }
+   ]
+  },
+  {
+   "term": "Orchestrator",
+   "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ffe8a09e969f",
+     "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard"
     }
    ]
   },
@@ -13655,18 +13787,18 @@
   "fetched_items": 579,
   "unique_after_dedupe": 548,
   "merged_duplicates": 24,
-  "shown": 77,
+  "shown": 78,
   "decisions": {
    "excluded": 186,
-   "included": 119,
-   "below_threshold": 103,
+   "included": 120,
+   "below_threshold": 99,
    "included_low": 2,
    "no_topic": 122,
-   "source_cap": 14,
+   "source_cap": 17,
    "area_cap": 2
   },
   "processing": {
-   "enriched": 77
+   "enriched": 78
   },
   "without_date": 0,
   "per_group": {
@@ -13676,8 +13808,8 @@
    "claude": 16,
    "architectuur": 3,
    "agents": 15,
-   "databricks": 4,
-   "kwaliteit": 2
+   "databricks": 3,
+   "kwaliteit": 4
   },
   "per_source": {
    "databricks_blog": 13,
@@ -13694,7 +13826,7 @@
    "hamel_husain": 1,
    "databricks_engineering_blog": 4,
    "langchain_blog": 8,
-   "fabric_blog": 6,
+   "fabric_blog": 7,
    "sqlbi": 2
   },
   "date_flags": [
@@ -13738,9 +13870,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 147
+   "skipped_no_key": 143
   },
-  "queue_size": 38,
+  "queue_size": 30,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -14319,11 +14451,11 @@
     "excluded_by": []
    },
    {
-    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
+    "title": "More visibility and control over Claude Enterprise for security teams",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
     "relevance_score": 74,
-    "decision": "included",
+    "decision": "source_cap",
     "excluded_by": []
    }
   ],

@@ -1,126 +1,7 @@
 {
- "generated_at": "2026-11-12T03:31:53.760503Z",
+ "generated_at": "2026-11-12T03:39:48.679959Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "18362005d94c",
-   "title": "LangSmith BYOC on AWS is generally available",
-   "url": "https://www.langchain.com/blog/langsmith-byoc-is-now-generally-available-on-aws",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-09T18:57:45Z",
-   "excerpt": "LangSmith Bring Your Own Cloud is now generally available on AWS, giving Enterprise teams managed observability, evaluation, and deployment inside their own VPC.",
-   "preliminary_score": 47,
-   "preliminary_topics": [
-    "cicd_data_deployment"
-   ]
-  },
-  {
-   "id": "8decd58a6787",
-   "title": "Accelerate GPU training on Unity Catalog tables with UCDataset",
-   "url": "https://www.databricks.com/blog/accelerate-gpu-training-unity-catalog-tables-ucdataset",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-09T19:00:00Z",
-   "excerpt": "GPUs are usually the most expensive part of any training run, and most teams can't...",
-   "preliminary_score": 44,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "d8ab32c2d8b1",
-   "title": "Govern your Microsoft Fabric data estate from one place with the OneLake catalog and Govern Skills (Generally Available)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-your-Microsoft-Fabric-data-estate-from-one-place-with-the/ba-p/5377369",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-28T19:47:19Z",
-   "excerpt": "The Govern experience in the OneLake catalog is now generally available, providing centralized governance capabilities for tenants, domains, capacities, workspaces, tags, and policies in Microsoft Fabric. Govern Skills are also now available in the Skills for Fabric collection, giving AI agents the knowledge they need to help admins and data owners audit, investigate, and remediate governance issues at scale. Both were announced at FabCon Europe 2026. Together, they help you monitor, manage, and act on your data estate from one place, whether you work in the Fabric portal or with an AI agent. Why it matters As AI makes it easier for more people to build with data, data estates grow in size and complexity. More workspaces, items, and access requests create more decisions about ownership, organization, and protection. Centralized, proactive governance helps admins support new projects without turning every decision into a manual review or losing visibility into how data is used. Governance can't rely on periodic, manual audits anymore. It needs to be proactive, centralized, and able to scale with the estate. Capabilities with Govern experience and Govern Skills: Manage governance in ",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "ai_agents_rag",
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "827b239977de",
-   "title": "Detecting credential-driven attacks on Databricks",
-   "url": "https://www.databricks.com/blog/detecting-credential-driven-attacks-databricks",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-11T23:00:00Z",
-   "excerpt": "At Databricks, we know your data is your most valuable asset. Databricks has worked...",
-   "preliminary_score": 43,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "821ab7bc8d45",
-   "title": "Databricks Doubles Down on AI Products, Opens New 235,000-Square-Foot San Francisco Headquarters",
-   "url": "https://www.databricks.com/blog/databricks-doubles-down-ai-products-opens-new-235000-square-foot-san-francisco-headquarters",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-11T18:20:00Z",
-   "excerpt": "Last week, we opened our new headquarters at One Sansome Street in San Francisco,...",
-   "preliminary_score": 43,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "014ca30e546e",
-   "title": "How our GTM Agent builds consistent, high-quality sales artifacts",
-   "url": "https://www.langchain.com/blog/gtm-agent-high-quality-sales-artifacts",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-11T18:27:26Z",
-   "excerpt": "Learn how LangChain built GTM Agent on Deep Agents to build high-quality, custom sales artifacts trained on business context.",
-   "preliminary_score": 43,
-   "preliminary_topics": [
-    "open_source_tools"
-   ]
-  },
-  {
-   "id": "a9e2bd5a260a",
-   "title": "Databricks' Commitment to European Sovereignty",
-   "url": "https://www.databricks.com/blog/databricks-commitment-european-sovereignty",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-09T19:40:00Z",
-   "excerpt": "Over a Decade of Investment in EuropeDatabricks has been building in Europe since...",
-   "preliminary_score": 42,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "c4ba76b538d8",
-   "title": "Claude can design electronic prototypes from start to finish",
-   "url": "https://www.anthropic.com/research/claude-electronics-design",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "excerpt": "We asked Claude to design three electronic devices: a speakerphone, a voice-assistant hub, and a handheld virtual pet. The prototypes worked without any fixes to their circuitry.",
-   "preliminary_score": 52,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "ffe8a09e969f",
-   "title": "Claude Fable 5.2 and Mythos 5.2",
-   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
-   "source_id": "claude_blog",
-   "source_name": "Claude Blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "excerpt": "Introducing Claude Fable 5.2 and Claude Mythos 5.2, our new models for the hardest technical challenges.",
-   "preliminary_score": 52,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
   {
    "id": "d5f14a6242b0",
    "title": "Which Claude model should you build with?",
@@ -184,6 +65,19 @@
    "preliminary_score": 50,
    "preliminary_topics": [
     "ai_agents_rag"
+   ]
+  },
+  {
+   "id": "58a090b4c911",
+   "title": "New agents and products for security, productivity, and creative work on Claude Marketplace",
+   "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
+   "source_id": "claude_blog",
+   "source_name": "Claude Blog",
+   "published_at": "2026-11-04T00:00:00Z",
+   "excerpt": "New agents and products for security, productivity, and creative work on Claude Marketplace",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "claude_ai_development"
    ]
   },
   {
