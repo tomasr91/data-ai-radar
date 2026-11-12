@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T05:14:39.687012Z",
+ "generated_at": "2026-11-12T06:28:28.955533Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-12T04:00:00Z",
@@ -602,7 +602,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.97,
+    "recency": 0.96,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -728,7 +728,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -812,7 +812,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.03,
@@ -1026,7 +1026,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.02,
@@ -1150,7 +1150,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -1255,7 +1255,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.72,
     "feedback": -0.02,
@@ -1350,7 +1350,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.78,
     "feedback": -0.03,
@@ -1712,7 +1712,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.57,
     "feedback": 0.01,
@@ -3327,7 +3327,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.07,
@@ -3418,7 +3418,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.01,
@@ -3632,7 +3632,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.68,
     "quality": 0.75,
     "feedback": -0.04,
@@ -3885,7 +3885,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.03,
@@ -4669,55 +4669,6 @@
    }
   },
   {
-   "id": "4ade36aa9099",
-   "title": "Agents Are Going Async",
-   "url": "https://www.langchain.com/blog/agents-are-going-async",
-   "source_id": "langchain_blog",
-   "published_at": "2026-11-05T20:03:27Z",
-   "fetched_at": "2026-11-06T03:12:48.949813Z",
-   "summary": "LangChain laat in Deep Agents subagents op de achtergrond werken, terwijl de hoofdagent (orchestrator) met je blijft praten en via vijf tools taken start, bijstuurt en ophaalt. Handig om te snappen hoe agents lange klussen verdelen; de meldingen zijn nog bèta.",
-   "availability_status": "preview",
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "agents",
-    "ai_context"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.73,
-    "source": 0.51,
-    "quality": 0.53,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Agents met achtergrondtaken: de hoofdagent blijft bereikbaar",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.6,
-    "why": "Agentpatroon met uitleg hoe het werkt, wat dichtbij je duimen voor agent-omgevingen ligt."
-   },
-   "labels": [
-    "async-subagents",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "8b7855abcc2d",
    "title": "What Is Eval-Driven Development? How to Improve AI Agents",
    "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
@@ -4736,7 +4687,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.45,
     "feedback": -0.05,
@@ -5122,6 +5073,55 @@
    "diepte": "kort"
   },
   {
+   "id": "4ade36aa9099",
+   "title": "Agents Are Going Async",
+   "url": "https://www.langchain.com/blog/agents-are-going-async",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-05T20:03:27Z",
+   "fetched_at": "2026-11-06T03:12:48.949813Z",
+   "summary": "LangChain laat in Deep Agents subagents op de achtergrond werken, terwijl de hoofdagent (orchestrator) met je blijft praten en via vijf tools taken start, bijstuurt en ophaalt. Handig om te snappen hoe agents lange klussen verdelen; de meldingen zijn nog bèta.",
+   "availability_status": "preview",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.73,
+    "source": 0.51,
+    "quality": 0.53,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-07T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Agents met achtergrondtaken: de hoofdagent blijft bereikbaar",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Agentpatroon met uitleg hoe het werkt, wat dichtbij je duimen voor agent-omgevingen ligt."
+   },
+   "labels": [
+    "async-subagents",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "728afeb9147d",
    "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
    "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
@@ -5403,7 +5403,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.02,
@@ -5453,7 +5453,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.42,
     "feedback": -0.03,
@@ -5778,7 +5778,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.36,
+    "recency": 0.35,
     "source": 0.8,
     "quality": 0.57,
     "feedback": -0.03,
@@ -7122,7 +7122,7 @@
    "relevance_score": 70,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -7214,7 +7214,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7362,7 +7362,7 @@
    "relevance_score": 67,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.99,
+    "recency": 0.98,
     "source": 0.85,
     "quality": 0.5,
     "feedback": -0.09,
@@ -7653,7 +7653,7 @@
    "relevance_score": 48,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.2,
@@ -13816,6 +13816,15 @@
      "aangevuld": 20,
      "project_ref_gezet": 3
     }
+   },
+   "inhalen": {
+    "status": "ok",
+    "summary": "niets in te halen",
+    "finished_at": "2026-11-12T06:28:11Z",
+    "problems": [],
+    "counts": {
+     "ingehaald": 0
+    }
    }
   }
  },
@@ -14014,7 +14023,7 @@
     "title": "Relationships between metric views (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#relationships-between-metric-views-beta",
-    "relevance_score": 89,
+    "relevance_score": 88,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
