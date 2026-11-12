@@ -1,0 +1,88 @@
+{
+ "format_version": 2,
+ "article_id": "ffe8a09e969f",
+ "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+ "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+ "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
+ "story": [
+  "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
+  "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
+  "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
+  "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
+  "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
+ ],
+ "key_facts": [
+  "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
+  "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
+  "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
+  "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
+  "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
+  "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
+ ],
+ "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
+ "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
+ "limitations": [
+  "Alle benchmarks zijn van Anthropic zelf.",
+  "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
+  "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Claude Fable 5.2 (modeldocumentatie)",
+   "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
+  },
+  {
+   "label": "Advisor in Claude Code",
+   "url": "https://code.claude.com/docs/en/advisor"
+  },
+  {
+   "label": "Multi-agent orchestration",
+   "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+  },
+  {
+   "label": "System card",
+   "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "ai_agents_rag"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.5,
+  "novelty": 0.7
+ },
+ "development_key": "claude-fable-mythos-5-2",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.55,
+  "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
+ },
+ "labels": [
+  "claude-modellen",
+  "multi-agent"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "effort",
+   "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+  },
+  {
+   "term": "fast mode",
+   "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+  },
+  {
+   "term": "Orchestrator",
+   "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-12T04:00:00Z",
+ "prompt_version": "taak-v2"
+}
