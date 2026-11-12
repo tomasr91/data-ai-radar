@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T05:13:48.046420Z",
+ "generated_at": "2026-11-12T05:14:39.687012Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-12T04:00:00Z",
@@ -419,8 +419,8 @@
  ],
  "daily_top": [
   "5c7174c45ad1",
-  "308e572d49e4",
   "6ded4aa1cdcf",
+  "4dcd7af26dab",
   "d2e9b967064a",
   "c63f36899b14"
  ],
@@ -564,120 +564,6 @@
     "fase": 4,
     "quote": "Voor Dataflow is dit iets voor fase 4",
     "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
-   }
-  },
-  {
-   "id": "308e572d49e4",
-   "title": "Azure Databricks: wat is er nieuw in week 44",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-01T23:59:59Z",
-   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
-   "fetched_at": "2026-11-06T03:12:45.337266Z",
-   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
-   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
-   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
-   "limitations": [
-    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
-    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
-    "AI Functions-rechten moet je via het accountteam laten aanzetten."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "Read and write XML files",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
-    },
-    {
-     "label": "Genie One MCP server",
-     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "databricks_data_engineering",
-    "data_ingestion"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 96,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.6,
-    "source": 1.0,
-    "quality": 0.67,
-    "fit": 0.2,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:28:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
-   "story": [
-    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
-    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
-    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
-    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
-    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
-   ],
-   "key_facts": [
-    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
-    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
-    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
-    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
-    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
-    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
-    "language": "sql",
-    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
-    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
-   },
-   "terms": [
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "Auto Loader",
-     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
-    },
-    {
-     "term": "OAuth",
-     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-mcp",
-    "metric-views",
-    "claude-code-databricks"
-   ],
-   "project_ref": {
-    "fase": 6,
-    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
-    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
    }
   },
   {
@@ -1430,126 +1316,6 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -2
-   }
-  },
-  {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
-   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
-   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
-   "limitations": [
-    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
-    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "What's coming? (Genie Ontology)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
-    },
-    {
-     "label": "Genie Code task for jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
-    },
-    {
-     "label": "Shared Serverless voor Git-mappen en bundels",
-     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "databricks_data_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.43,
-    "source": 1.0,
-    "quality": 0.68,
-    "feedback": 0.01,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
-   "story": [
-    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
-    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
-    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
-    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
-   ],
-   "key_facts": [
-    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
-    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
-    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
-    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
-    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
-    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
-    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
-    "language": "text",
-    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
-    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
-   },
-   "terms": [
-    {
-     "term": "Declarative Automation Bundles",
-     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
-    },
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "pyproject.toml",
-     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-ontology",
-    "asset-bundles",
-    "databricks-weekoverzicht"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
    }
   },
   {
@@ -3442,109 +3208,6 @@
    }
   },
   {
-   "id": "0f8380eb8c98",
-   "title": "Announcing the retirement of R and Python visuals in Power BI",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Announcing-the-retirement-of-R-and-Python-visuals-in-Power-BI/ba-p/5400748",
-   "source_id": "powerbi_blog",
-   "published_at": "2026-11-09T19:00:39Z",
-   "date_note": "De blogpagina was niet te openen; uitgelegd op basis van de RSS-tekst en de officiële documentatiepagina met dezelfde aankondiging.",
-   "fetched_at": "2026-11-10T20:23:15.144556Z",
-   "summary": "Vanaf mei 2027 werken R- en Python-visuals niet meer in gepubliceerde Power BI-rapporten, ook oude niet. Python in Power Query blijft wel werken; elke visual moet je zelf vervangen.",
-   "personal_relevance": "Staan er in jullie Power BI-rapporten Python- of R-grafieken, dan heb je tot mei 2027 om ze te vervangen.",
-   "experiment": "Zet een PBIP-export van een testrapport in Git en zoek met grep naar pythonVisual en scriptVisual. Maak er een kleine check van die je in een pipeline kunt draaien.",
-   "limitations": [
-    "Een exacte datum in mei 2027 staat er niet bij.",
-    "Wat er met embedded rapporten gebeurt, staat niet op de documentatiepagina.",
-    "De zoekactie in PBIP vindt R-powered custom visuals niet."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Script visuals in Power BI: retirement",
-     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/script-visuals-overview#retirement-of-r-and-python-visuals"
-    },
-    {
-     "label": "Power BI Desktop projects (PBIP)",
-     "url": "https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview"
-    },
-    {
-     "label": "Power BI custom visuals SDK",
-     "url": "https://learn.microsoft.com/en-us/power-bi/developer/visuals/develop-power-bi-visuals"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models"
-   ],
-   "groups": [
-    "overig"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.89,
-    "source": 0.51,
-    "quality": 0.6,
-    "feedback": -0.02,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T03:40:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "R- en Python-visuals in Power BI stoppen in mei 2027",
-   "story": [
-    "Microsoft haalt de ingebouwde R- en Python-visuals uit Power BI. In mei 2027 stoppen ze in alle gepubliceerde rapporten in de Power BI-service, ook in rapporten van vóór die datum. Custom visuals die op R draaien, stoppen ook. Nieuwe versies van Power BI Desktop krijgen de visuals niet meer.",
-    "Een R- of Python-visual is een grafiek die een script tekent, bijvoorbeeld met matplotlib, in plaats van een ingebouwde grafiek van Power BI. Het script draaide op een server van Microsoft. Dat houdt op. Alleen oudere versies van Power BI Desktop tonen ze nog lokaal, met R of Python op je eigen computer.",
-    "Niet alles met Python valt eronder. Python-scripts in Power Query, die tabellen vullen, blijven werken. Het gaat alleen om visuals in interactieve rapporten. Een automatische omzetting is er niet: je moet elke visual zelf vervangen door een ingebouwde grafiek, een bestaande custom visual of een zelfgemaakte met de custom visuals SDK. Lukt dat niet, dan noemt Microsoft Fabric-notebooks of Fabric-apps als uitweg.",
-    "Wat moet je doen? Zoek eerst op waar zulke visuals zitten. Gebruik je het PBIP-formaat met Git, dan zoek je in de rapportbestanden naar het visualtype `pythonVisual` of `scriptVisual`. R-custom visuals vind je zo niet; die moet je apart nalopen. Bewaar de scripts en de lijst met packages, en laat collega's weten welke rapporten geraakt worden."
-   ],
-   "key_facts": [
-    "R- en Python-visuals in Power BI, inclusief R-powered custom visuals, stoppen in mei 2027 (geen exacte dag genoemd).",
-    "In de Power BI-service stoppen ze in alle gepubliceerde rapporten, ook rapporten van vóór de uitfasering.",
-    "Python-scripts in Power Query die tabellen vullen, worden niet geraakt.",
-    "Oudere versies van Power BI Desktop tonen de visuals lokaal met de eigen R- of Python-installatie; nieuwe versies hebben ze niet meer.",
-    "Er is geen automatische migratie; elke visual moet vóór de uitfasering vervangen worden.",
-    "In PBIP en Git-geïntegreerde werkruimten zoek je naar visualType pythonVisual (Python) of scriptVisual (R); R-powered custom visuals vind je zo niet."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo vind je R- en Python-visuals in een rapport dat als PBIP in Git staat: zoek naar de twee visualtypes die Microsoft noemt.",
-    "language": "bash",
-    "code": "# in de map van je Power BI-project (PBIP)\ngrep -rlE 'pythonVisual|scriptVisual' --include='*.json' .",
-    "note": "De zoekwaarden pythonVisual en scriptVisual komen uit de officiële documentatie; het grep-commando is een eigen voorbeeld, zonder resultaat. R-powered custom visuals vind je hiermee niet."
-   },
-   "terms": [
-    {
-     "term": "PBIP",
-     "explanation": "Power BI Project: een manier om een rapport en model op te slaan als gewone tekstbestanden in een map, zodat je ze in Git kunt beheren en vergelijken."
-    },
-    {
-     "term": "custom visual",
-     "explanation": "Een extra grafiektype voor Power BI dat niet standaard is ingebouwd, gemaakt door Microsoft, een andere partij of je eigen organisatie."
-    },
-    {
-     "term": "Power Query",
-     "explanation": "Het onderdeel van Power BI waarin je data ophaalt en bewerkt voordat die in het model komt."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.6,
-    "why": "Power BI-wijziging waar je iets mee moet, zoals je duim voor het OAP-artikel."
-   },
-   "labels": [
-    "power-bi-uitfasering",
-    "power-bi-visuals"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -2
-   }
-  },
-  {
    "id": "e7bf67f656d3",
    "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
    "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
@@ -4567,6 +4230,128 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
+   }
+  },
+  {
+   "id": "308e572d49e4",
+   "title": "Azure Databricks: wat is er nieuw in week 44",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-01T23:59:59Z",
+   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
+   "fetched_at": "2026-11-06T03:12:45.337266Z",
+   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
+   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
+   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
+   "limitations": [
+    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
+    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
+    "AI Functions-rechten moet je via het accountteam laten aanzetten."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+     "label": "Read and write XML files",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
+    },
+    {
+     "label": "Genie One MCP server",
+     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering",
+    "data_ingestion"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.6,
+    "source": 1.0,
+    "quality": 0.67,
+    "fit": 0.2,
+    "regel": -0.15,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-02T03:28:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
+   "story": [
+    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
+    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
+    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
+    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
+    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
+   ],
+   "key_facts": [
+    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
+    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
+    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
+    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
+    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
+    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
+    "language": "sql",
+    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
+    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
+   },
+   "terms": [
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "Auto Loader",
+     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+    },
+    {
+     "term": "OAuth",
+     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
+   },
+   "labels": [
+    "genie-mcp",
+    "metric-views",
+    "claude-code-databricks"
+   ],
+   "rule_why": [
+    {
+     "id": "einde-support",
+     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+     "pts": -15
+    }
+   ],
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
+    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
    }
   },
   {
@@ -6602,6 +6387,134 @@
    }
   },
   {
+   "id": "94b4924597e5",
+   "title": "Azure Databricks: wat is er nieuw in week 43",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-25T23:59:59Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
+   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
+   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
+   "limitations": [
+    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
+    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
+   ],
+   "availability_status": "aangekondigd",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+     "label": "What's coming? (Genie Ontology)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
+    },
+    {
+     "label": "Genie Code task for jobs",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
+    },
+    {
+     "label": "Shared Serverless voor Git-mappen en bundels",
+     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 75,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 1.0,
+    "quality": 0.68,
+    "feedback": 0.01,
+    "fit": 0.2,
+    "regel": -0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T16:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
+   "story": [
+    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
+    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
+    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
+    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
+   ],
+   "key_facts": [
+    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
+    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
+    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
+    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
+    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
+    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
+    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
+    "language": "text",
+    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
+    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
+   },
+   "terms": [
+    {
+     "term": "Declarative Automation Bundles",
+     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    },
+    {
+     "term": "serverless compute",
+     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    },
+    {
+     "term": "pyproject.toml",
+     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
+    },
+    {
+     "term": "Lakeflow Jobs",
+     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
+   },
+   "labels": [
+    "genie-ontology",
+    "asset-bundles",
+    "databricks-weekoverzicht"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   },
+   "rule_why": [
+    {
+     "id": "einde-support",
+     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+     "pts": -15
+    }
+   ]
+  },
+  {
    "id": "225ab7984001",
    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
@@ -7168,6 +7081,117 @@
     "name": "aankondiging",
     "pts": -3
    }
+  },
+  {
+   "id": "0f8380eb8c98",
+   "title": "Announcing the retirement of R and Python visuals in Power BI",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Announcing-the-retirement-of-R-and-Python-visuals-in-Power-BI/ba-p/5400748",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-11-09T19:00:39Z",
+   "date_note": "De blogpagina was niet te openen; uitgelegd op basis van de RSS-tekst en de officiële documentatiepagina met dezelfde aankondiging.",
+   "fetched_at": "2026-11-10T20:23:15.144556Z",
+   "summary": "Vanaf mei 2027 werken R- en Python-visuals niet meer in gepubliceerde Power BI-rapporten, ook oude niet. Python in Power Query blijft wel werken; elke visual moet je zelf vervangen.",
+   "personal_relevance": "Staan er in jullie Power BI-rapporten Python- of R-grafieken, dan heb je tot mei 2027 om ze te vervangen.",
+   "experiment": "Zet een PBIP-export van een testrapport in Git en zoek met grep naar pythonVisual en scriptVisual. Maak er een kleine check van die je in een pipeline kunt draaien.",
+   "limitations": [
+    "Een exacte datum in mei 2027 staat er niet bij.",
+    "Wat er met embedded rapporten gebeurt, staat niet op de documentatiepagina.",
+    "De zoekactie in PBIP vindt R-powered custom visuals niet."
+   ],
+   "availability_status": "aangekondigd",
+   "official_docs": [
+    {
+     "label": "Script visuals in Power BI: retirement",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/script-visuals-overview#retirement-of-r-and-python-visuals"
+    },
+    {
+     "label": "Power BI Desktop projects (PBIP)",
+     "url": "https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview"
+    },
+    {
+     "label": "Power BI custom visuals SDK",
+     "url": "https://learn.microsoft.com/en-us/power-bi/developer/visuals/develop-power-bi-visuals"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "overig"
+   ],
+   "relevance_score": 70,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.02,
+    "fit": 0.1,
+    "regel": -0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "R- en Python-visuals in Power BI stoppen in mei 2027",
+   "story": [
+    "Microsoft haalt de ingebouwde R- en Python-visuals uit Power BI. In mei 2027 stoppen ze in alle gepubliceerde rapporten in de Power BI-service, ook in rapporten van vóór die datum. Custom visuals die op R draaien, stoppen ook. Nieuwe versies van Power BI Desktop krijgen de visuals niet meer.",
+    "Een R- of Python-visual is een grafiek die een script tekent, bijvoorbeeld met matplotlib, in plaats van een ingebouwde grafiek van Power BI. Het script draaide op een server van Microsoft. Dat houdt op. Alleen oudere versies van Power BI Desktop tonen ze nog lokaal, met R of Python op je eigen computer.",
+    "Niet alles met Python valt eronder. Python-scripts in Power Query, die tabellen vullen, blijven werken. Het gaat alleen om visuals in interactieve rapporten. Een automatische omzetting is er niet: je moet elke visual zelf vervangen door een ingebouwde grafiek, een bestaande custom visual of een zelfgemaakte met de custom visuals SDK. Lukt dat niet, dan noemt Microsoft Fabric-notebooks of Fabric-apps als uitweg.",
+    "Wat moet je doen? Zoek eerst op waar zulke visuals zitten. Gebruik je het PBIP-formaat met Git, dan zoek je in de rapportbestanden naar het visualtype `pythonVisual` of `scriptVisual`. R-custom visuals vind je zo niet; die moet je apart nalopen. Bewaar de scripts en de lijst met packages, en laat collega's weten welke rapporten geraakt worden."
+   ],
+   "key_facts": [
+    "R- en Python-visuals in Power BI, inclusief R-powered custom visuals, stoppen in mei 2027 (geen exacte dag genoemd).",
+    "In de Power BI-service stoppen ze in alle gepubliceerde rapporten, ook rapporten van vóór de uitfasering.",
+    "Python-scripts in Power Query die tabellen vullen, worden niet geraakt.",
+    "Oudere versies van Power BI Desktop tonen de visuals lokaal met de eigen R- of Python-installatie; nieuwe versies hebben ze niet meer.",
+    "Er is geen automatische migratie; elke visual moet vóór de uitfasering vervangen worden.",
+    "In PBIP en Git-geïntegreerde werkruimten zoek je naar visualType pythonVisual (Python) of scriptVisual (R); R-powered custom visuals vind je zo niet."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo vind je R- en Python-visuals in een rapport dat als PBIP in Git staat: zoek naar de twee visualtypes die Microsoft noemt.",
+    "language": "bash",
+    "code": "# in de map van je Power BI-project (PBIP)\ngrep -rlE 'pythonVisual|scriptVisual' --include='*.json' .",
+    "note": "De zoekwaarden pythonVisual en scriptVisual komen uit de officiële documentatie; het grep-commando is een eigen voorbeeld, zonder resultaat. R-powered custom visuals vind je hiermee niet."
+   },
+   "terms": [
+    {
+     "term": "PBIP",
+     "explanation": "Power BI Project: een manier om een rapport en model op te slaan als gewone tekstbestanden in een map, zodat je ze in Git kunt beheren en vergelijken."
+    },
+    {
+     "term": "custom visual",
+     "explanation": "Een extra grafiektype voor Power BI dat niet standaard is ingebouwd, gemaakt door Microsoft, een andere partij of je eigen organisatie."
+    },
+    {
+     "term": "Power Query",
+     "explanation": "Het onderdeel van Power BI waarin je data ophaalt en bewerkt voordat die in het model komt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.6,
+    "why": "Power BI-wijziging waar je iets mee moet, zoals je duim voor het OAP-artikel."
+   },
+   "labels": [
+    "power-bi-uitfasering",
+    "power-bi-visuals"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -2
+   },
+   "rule_why": [
+    {
+     "id": "einde-support",
+     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+     "pts": -15
+    }
+   ]
   },
   {
    "id": "6eafeb6028b4",
@@ -13752,6 +13776,18 @@
  "runs": {
   "date": "2026-11-12",
   "tasks": {
+   "overzicht": {
+    "status": "ok",
+    "summary": "3 trends bijgewerkt met 3 nieuwe artikelen, geen interesseverzoeken, 1 leerregel gemaakt (einde support), geen begrippen aangevuld: de 17 stukken zonder begrippen zijn korte uitleg zonder verhaal.",
+    "finished_at": "2026-11-12T05:14:02Z",
+    "problems": [],
+    "counts": {
+     "trends": 3,
+     "interesse_verzoeken": 0,
+     "leerregels": 1,
+     "begrippen_aangevuld": 0
+    }
+   },
    "verdiepen": {
     "status": "ok",
     "summary": "Geen verdieping: gisteren is niets gekozen; 5 nieuwe keuzes klaargezet",
@@ -13783,7 +13819,15 @@
    }
   }
  },
- "leerregels": [],
+ "leerregels": [
+  {
+   "id": "einde-support",
+   "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+   "richting": -1,
+   "sterkte": 1.0,
+   "hits": 4
+  }
+ ],
  "feedback": {
   "topics": {
    "dbt_analytics_engineering": 0.98,
@@ -13874,8 +13918,8 @@
   "shown": 78,
   "decisions": {
    "excluded": 186,
-   "included": 120,
-   "below_threshold": 99,
+   "included": 119,
+   "below_threshold": 100,
    "included_low": 2,
    "no_topic": 122,
    "source_cap": 17,
@@ -13897,21 +13941,21 @@
   },
   "per_source": {
    "databricks_blog": 13,
-   "azure_databricks_release_notes": 4,
    "dbt_labs_blog": 10,
+   "azure_databricks_release_notes": 4,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
    "databricks_engineering_blog": 4,
    "dbt_core_releases": 1,
    "claude_blog": 12,
-   "powerbi_blog": 3,
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
    "langchain_blog": 8,
    "fabric_blog": 7,
-   "sqlbi": 2
+   "sqlbi": 2,
+   "powerbi_blog": 3
   },
   "date_flags": [
    {
@@ -14159,16 +14203,6 @@
     ]
    },
    {
-    "title": "v2.0.11",
-    "source_id": "dbt_core_releases",
-    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.11",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds"
-    ]
-   },
-   {
     "title": "v2.1.318",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
@@ -14300,17 +14334,6 @@
     "title": "v2.1.314",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.316",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
@@ -14539,6 +14562,22 @@
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
     "relevance_score": 74,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Bring your Fabric data into your next app with connectors",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bring-your-Fabric-data-into-your-next-app-with-connectors/ba-p/5377609",
+    "relevance_score": 73,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
+    "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
    }
