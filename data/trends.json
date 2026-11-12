@@ -1,12 +1,14 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-11T05:13:56Z",
+ "generated_at": "2026-11-12T05:13:33Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie haalt context uit metric views, een metric view kan straks met één knop een Power BI-model worden (private preview), en Claude Data werkt met gecertificeerde metric-definities. Volgens dbt Labs antwoordt AI via een semantische laag 96 tot 100% goed, tegen 80 tot 91% met losse SQL.",
+   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie Ontology is sinds 11 november algemeen beschikbaar en haalt context uit metric views, dashboards en Power BI-modellen, en Claude Data werkt met gecertificeerde metric-definities. dbt Labs voegt een kostenargument toe: context vooraf in het warehouse uitwerken, zoals een Gold-tabel, scheelde hen naar eigen zeggen meer dan de helft aan tokens.",
    "article_ids": [
+    "656e0d953ae9",
+    "6ded4aa1cdcf",
     "4dcd7af26dab",
     "069e6a8001ed",
     "ceb4b784fbab",
@@ -51,8 +53,9 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "article_ids": [
+    "8b7855abcc2d",
     "a9b6458ba033",
     "c63f36899b14",
     "d2e9b967064a",
