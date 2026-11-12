@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T04:15:32.517076Z",
+ "generated_at": "2026-11-12T05:13:48.046420Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-12T04:00:00Z",
@@ -1848,7 +1848,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.5,
     "feedback": 0.01,
@@ -2464,7 +2464,7 @@
     "claude",
     "ai_context"
    ],
-   "relevance_score": 88,
+   "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.6,
@@ -3579,7 +3579,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.05,
@@ -4602,7 +4602,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.51,
     "quality": 0.48,
     "feedback": 0.01,
@@ -5569,7 +5569,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.03,
@@ -6949,7 +6949,7 @@
    "relevance_score": 73,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.73,
+    "recency": 0.72,
     "source": 0.51,
     "quality": 0.37,
     "feedback": -0.02,
@@ -7020,7 +7020,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.17,
+    "recency": 0.16,
     "source": 0.68,
     "quality": 0.6,
     "feedback": -0.03,
@@ -7582,7 +7582,7 @@
    "relevance_score": 58,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.6,
     "quality": 0.33,
     "feedback": -0.05,
@@ -10330,7 +10330,7 @@
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie haalt context uit metric views, een metric view kan straks met één knop een Power BI-model worden (private preview), en Claude Data werkt met gecertificeerde metric-definities. Volgens dbt Labs antwoordt AI via een semantische laag 96 tot 100% goed, tegen 80 tot 91% met losse SQL.",
+   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie Ontology is sinds 11 november algemeen beschikbaar en haalt context uit metric views, dashboards en Power BI-modellen, en Claude Data werkt met gecertificeerde metric-definities. dbt Labs voegt een kostenargument toe: context vooraf in het warehouse uitwerken, zoals een Gold-tabel, scheelde hen naar eigen zeggen meer dan de helft aan tokens.",
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
@@ -10338,6 +10338,8 @@
     "powerbi_semantic_models"
    ],
    "article_ids": [
+    "656e0d953ae9",
+    "6ded4aa1cdcf",
     "4dcd7af26dab",
     "069e6a8001ed",
     "ceb4b784fbab",
@@ -10350,7 +10352,7 @@
     "81204e04abb9",
     "7737e173e31a"
    ],
-   "generated_at": "2026-11-11T05:13:56Z"
+   "generated_at": "2026-11-12T05:13:33Z"
   },
   {
    "id": "geheugen-en-context-voor-agents",
@@ -10373,12 +10375,12 @@
     "4ade36aa9099",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-11T05:13:56Z"
+   "generated_at": "2026-11-12T05:13:33Z"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
@@ -10388,6 +10390,7 @@
     "cicd_data_deployment"
    ],
    "article_ids": [
+    "8b7855abcc2d",
     "a9b6458ba033",
     "c63f36899b14",
     "d2e9b967064a",
@@ -10399,7 +10402,7 @@
     "4cc09a1d9883",
     "86eab858089b"
    ],
-   "generated_at": "2026-11-11T05:13:56Z"
+   "generated_at": "2026-11-12T05:13:33Z"
   }
  ],
  "weekly": {
@@ -14294,17 +14297,6 @@
     ]
    },
    {
-    "title": "v2.1.311",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.314",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314",
@@ -14330,14 +14322,6 @@
     "title": "A Leader in Data Integration—six years running",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/A-Leader-in-Data-Integration-six-years-running/ba-p/5400776",
-    "relevance_score": 78,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Use OneLake as native storage for Azure Databricks (Preview)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Preview/ba-p/5377939",
     "relevance_score": 78,
     "decision": "included",
     "excluded_by": []
@@ -14391,6 +14375,25 @@
     "excluded_by": [
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "v2.1.311",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Use OneLake as native storage for Azure Databricks (Preview)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Preview/ba-p/5377939",
+    "relevance_score": 77,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "How DoorDash scaled merchant-facing analytics to thousands of users in weeks, on dbt and ThoughtSpot",
@@ -14492,14 +14495,6 @@
     ]
    },
    {
-    "title": "Regular expression functions in Microsoft Fabric Data Warehouse (Preview)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Regular-expression-functions-in-Microsoft-Fabric-Data-Warehouse/ba-p/5382375",
-    "relevance_score": 74,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "How Ramp's internal AI agents crossed a million sessions",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
@@ -14537,6 +14532,14 @@
     "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
     "relevance_score": 74,
     "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Microsoft & Snowflake’s Commitment to Apache Ossie",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
+    "relevance_score": 74,
+    "decision": "included",
     "excluded_by": []
    }
   ],
