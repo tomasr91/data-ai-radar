@@ -1,51 +1,52 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-11T04:40:28Z",
+  "generated_at": "2026-11-12T04:14:23Z",
   "options": [
     {
-      "id": "constraints-met-rely",
-      "title": "Sleutels die Databricks niet controleert maar wel gebruikt: PK, UNIQUE en RELY",
-      "question": "Wat doen primaire sleutels en UNIQUE-constraints in Databricks als ze niet bij het schrijven worden gecontroleerd, wat verandert er met RELY in de optimizer, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
-      "why": "Databricks voegde begin november UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer joins en DISTINCT over, maar een foute belofte geeft stilletjes foute uitkomsten.",
+      "id": "declaratieve-pipelines-naast-dbt",
+      "title": "Declaratieve pipelines in Databricks naast dbt: wie doet wat?",
+      "question": "Wat zijn Spark Declarative Pipelines, hoe verschillen ze van een stap-voor-stap-pipeline en van dbt, en wanneer kies je welke voor inlezen en transformeren?",
+      "why": "Databricks liet deze maand AI-agents pipelines in beide stijlen bouwen; de declaratieve versies waren korter en zuiniger, en jij gaf dat artikel een duim omhoog.",
       "topics": [
-        "sql_spark_sql",
-        "dbt_analytics_engineering",
-        "data_architecture_modeling"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "datakwaliteit-monitoren",
-      "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
-      "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks zelf voor monitoring en afwijkingsdetectie naast je dbt-tests?",
-      "why": "Je project AI voor data-engineering en datakwaliteit vraagt hoe kwaliteit nu wordt gemeten; dit stuk zet vaste tests en automatische bewaking naast elkaar.",
-      "topics": [
-        "data_quality_observability",
         "databricks_data_engineering",
+        "data_ingestion",
         "dbt_analytics_engineering"
       ],
       "area": "data_engineering"
     },
     {
-      "id": "contextlagen-voor-data-agent",
-      "title": "Wat leg je vast voor een data-agent? Context in lagen, vanuit dbt",
-      "question": "Welke soorten context heeft een AI-agent op je data nodig (beschrijvingen per veld, gidsen in markdown, vaste maatstaven, goedgekeurde modellen), waar leg je elke laag vast, en hoe houd je ze bij met pull requests?",
-      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf': Okta en LangChain legden hun agent-context in lagen vast naast dbt, en je gaf het artikel over synoniemen per veld een 'meer hiervan'.",
+      "id": "ontologie-voor-data-agents",
+      "title": "Genie Ontology: hoe een agent de begrippen van je organisatie leert",
+      "question": "Hoe combineert een ontologie geleerde kennis uit dashboards en query's met definities die je zelf vastlegt, en wat moet je in dbt en Unity Catalog regelen zodat een agent de juiste kiest?",
+      "why": "Sluit aan op de trend 'Context voor AI-agents komt in het dataplatform zelf': Genie Ontology is sinds 11 november algemeen beschikbaar en gebruikt metric views als gemodelleerde kennis.",
       "topics": [
         "ai_context_engineering",
         "metadata_lineage_catalogs",
-        "dbt_analytics_engineering"
+        "ai_on_data_platform"
       ],
       "area": "context_agents"
     },
     {
-      "id": "prompt-verbeteren-tegen-eval",
-      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
-      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
-      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
+      "id": "vectorjoin-voor-ontdubbelen",
+      "title": "Bijna-dubbele records vinden met een vectorjoin in SQL (NEAREST BY)",
+      "question": "Hoe werken embeddings en een NEAREST BY-join, en hoe gebruik je die in de Silver-laag om records te koppelen die net anders gespeld zijn?",
+      "why": "Databricks heeft vectorzoeken nu als gewone SQL-join, gebouwd voor veel rijen tegelijk, zoals ontdubbelen en entity resolution.",
+      "topics": [
+        "ai_on_data_platform",
+        "sql_spark_sql",
+        "data_quality_observability"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "stop-hook-controle-claude-code",
+      "title": "Claude laten controleren voordat hij stopt: een Stop-hook met dbt build",
+      "question": "Hoe bouw je in Claude Code een vaste controle in (een hook die dbt build of tests draait) zodat de agent zijn werk eerst nakijkt voordat hij klaar zegt te zijn?",
+      "why": "Sluit aan op de trend 'Agents worden beter door controles en metingen': LangChain kwam met hetzelfde model van 52,8 naar 66,5 procent door zo'n controle vlak voor het stoppen.",
       "topics": [
         "claude_ai_development",
-        "ai_evaluation_observability"
+        "ai_evaluation_observability",
+        "dbt_analytics_engineering"
       ],
       "area": "claude"
     },
@@ -589,6 +590,65 @@
         "cicd_data_deployment",
         "databricks_data_engineering",
         "data_governance_privacy"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "constraints-met-rely",
+      "title": "Sleutels die Databricks niet controleert maar wel gebruikt: PK, UNIQUE en RELY",
+      "question": "Wat doen primaire sleutels en UNIQUE-constraints in Databricks als ze niet bij het schrijven worden gecontroleerd, wat verandert er met RELY in de optimizer, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
+      "why": "Databricks voegde begin november UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer joins en DISTINCT over, maar een foute belofte geeft stilletjes foute uitkomsten.",
+      "topics": [
+        "sql_spark_sql",
+        "dbt_analytics_engineering",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "datakwaliteit-monitoren",
+      "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
+      "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks zelf voor monitoring en afwijkingsdetectie naast je dbt-tests?",
+      "why": "Je project AI voor data-engineering en datakwaliteit vraagt hoe kwaliteit nu wordt gemeten; dit stuk zet vaste tests en automatische bewaking naast elkaar.",
+      "topics": [
+        "data_quality_observability",
+        "databricks_data_engineering",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "contextlagen-voor-data-agent",
+      "title": "Wat leg je vast voor een data-agent? Context in lagen, vanuit dbt",
+      "question": "Welke soorten context heeft een AI-agent op je data nodig (beschrijvingen per veld, gidsen in markdown, vaste maatstaven, goedgekeurde modellen), waar leg je elke laag vast, en hoe houd je ze bij met pull requests?",
+      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf': Okta en LangChain legden hun agent-context in lagen vast naast dbt, en je gaf het artikel over synoniemen per veld een 'meer hiervan'.",
+      "topics": [
+        "ai_context_engineering",
+        "metadata_lineage_catalogs",
+        "dbt_analytics_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "prompt-verbeteren-tegen-eval",
+      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
+      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "synthetische-data-voor-experimenten",
+      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
+      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
+      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
+      "topics": [
+        "data_governance_privacy",
+        "ai_in_healthcare",
+        "ai_research_data"
       ],
       "area": "new_tech"
     }
