@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T03:39:48.679959Z",
+ "generated_at": "2026-11-12T03:40:34.107103Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-12T04:00:00Z",
@@ -2298,6 +2298,139 @@
    }
   },
   {
+   "id": "68a2bf1c5563",
+   "title": "What's the difference between dbt and dbt OSS?",
+   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+   "source_id": "dbt_developer_blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
+   "fetched_at": "2026-10-28T20:32:37.744597Z",
+   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
+   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
+   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
+   "limitations": [
+    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
+    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
+    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "dbt licensing",
+     "url": "https://docs.getdbt.com/docs/dbt-licensing"
+    },
+    {
+     "label": "Licensing FAQ",
+     "url": "https://www.getdbt.com/licenses-faq"
+    },
+    {
+     "label": "dbt-autofix",
+     "url": "https://github.com/dbt-labs/dbt-autofix"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.06,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.04,
+    "fit": 0.2,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "dbt_developer_blog",
+     "title": "dbt v2.0 is GA",
+     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+     "published_at": "2026-09-16T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
+   "story": [
+    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
+    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
+    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
+    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ. Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'?"
+   ],
+   "key_facts": [
+    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
+    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
+    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
+    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
+    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
+    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
+    "language": "bash",
+    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
+    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
+   },
+   "terms": [
+    {
+     "term": "Fusion-engine",
+     "explanation": "De nieuwe motor van dbt die je SQL zelf begrijpt; sinds dbt v2 heet die gewoon 'dbt'."
+    },
+    {
+     "term": "linting",
+     "explanation": "Automatisch je code nalopen op stijlregels en veelgemaakte fouten, zonder hem uit te voeren."
+    },
+    {
+     "term": "LSP",
+     "explanation": "Language Server Protocol: een standaard waarmee een editor aanvulling, foutmeldingen en uitleg krijgt van een taalserver."
+    },
+    {
+     "term": "Apache 2.0",
+     "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven."
+    },
+    {
+     "term": "dbt Mesh",
+     "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "Vervolg op dbt v2, waar je een duim omhoog bij gaf."
+   },
+   "labels": [
+    "dbt-v2",
+    "dbt-oss",
+    "dbt-release"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
+    "id": "681080ea70e4",
+    "v": 1,
+    "s": 70,
+    "pts": 4
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'",
+    "why": "Fase 4 richt dbt met dbt-databricks in."
+   }
+  },
+  {
    "id": "6df581b9d8ed",
    "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
@@ -2400,6 +2533,115 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
+   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
+   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
+   "limitations": [
+    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
+    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
+    "databricks-dbt-factory is een open-source project, geen product van Databricks."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "databricks-dbt-factory (GitHub)",
+     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "databricks",
+    "kwaliteit",
+    "overig"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.16,
+    "source": 0.68,
+    "quality": 0.78,
+    "feedback": -0.04,
+    "fit": 0.25,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
+   "story": [
+    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
+    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
+    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
+   ],
+   "key_facts": [
+    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
+    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
+    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
+    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
+    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
+    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "ingestion time",
+     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
+    },
+    {
+     "term": "queryplan",
+     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
+    },
+    {
+     "term": "upstream",
+     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
+    },
+    {
+     "term": "dbt-manifest",
+     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
+    },
+    {
+     "term": "RFID",
+     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.75,
+    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
+   },
+   "labels": [
+    "incrementele-modellen",
+    "dbt-op-databricks-jobs",
+    "compute-kosten"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
+    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
    }
   },
   {
@@ -2645,6 +2887,115 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -7
+   }
+  },
+  {
+   "id": "6d403bbe9379",
+   "title": "Building agents: When to fold subagents into your main agent loop",
+   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+   "source_id": "claude_blog",
+   "published_at": "2026-10-22T00:00:00Z",
+   "fetched_at": "2026-11-01T11:05:55.569159Z",
+   "summary": "Anthropic ziet bij grote klanten dat één agent die skills en tools pas laadt als het nodig is, vaak beter, sneller en goedkoper werkt dan een stelsel van subagents. Het artikel geeft een stappenplan om om te bouwen.",
+   "personal_relevance": "Voor je AI-contextlaag op dbt en Databricks is dit een duidelijke ontwerpkeuze: start met één agent en smalle tools, niet met een stelsel van subagents.",
+   "experiment": "Schrijf tien vragen met een bekend goed antwoord over een openbare of verzonnen dbt-demo (bijv. jaffle_shop). Laat Claude Code ze beantwoorden met één skill die de manifest.json leest, draai elke vraag twee keer en tel hoe vaak het antwoord klopt.",
+   "limitations": [
+    "De resultaten komen van Anthropic-klanten en zijn niet openbaar te controleren; er staan geen benchmarks of code in het stuk.",
+    "Anthropic verkoopt zelf het platform waarvoor dit advies geldt.",
+    "Bij taken die echt parallel moeten of aparte rechten nodig hebben, blijven subagents volgens het artikel de betere keuze."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Origineel artikel",
+     "url": "https://claude.com/blog/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "ai_context",
+    "claude"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.35,
+    "source": 0.51,
+    "quality": 0.68,
+    "feedback": -0.04,
+    "fit": 0.25,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-04T03:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Eén agent met skills werkt vaak beter dan een team van subagents",
+   "story": [
+    "Veel bedrijven bouwen hun AI-agent als een team: een verdeler die werk doorgeeft aan gespecialiseerde subagents. Anthropic schrijft dat één agent met skills dat bij verschillende grote klanten vaak beter deed. Hij was ook goedkoper en sneller. Eén klant zag de looptijd ongeveer halveren.",
+    "Waarom gaat een team van agents mis? Bij elke overdracht gaat context verloren, net als bij een telefoonketting. Het aantal subagents groeit, en de centrale instructie wordt een lappendeken van regels die elkaar tegenspreken. Elk team test bovendien alleen zijn eigen stukje, niet het geheel.",
+    "Het alternatief is één lus: één model met één contextvenster, dat skills en tools pas helemaal inleest als een taak erom vraagt (progressive disclosure). Harde regels, zoals een validatie of een goedkeuringsstap, horen in een tool en niet in de prompt. Anthropic noemt als voorbeeld dat de systeemprompt van Claude Code voor nieuwere modellen meer dan 80 procent korter is geworden.",
+    "Het stappenplan begint met evals: tien goede voorbeelden van begin tot eind zijn al genoeg. Daarna roep je bestaande subagents eerst aan als tool, voeg je nauw verwante specialisten samen, en zet je ze één voor één om naar skills of MCP-tools. Na elke stap vergelijk je met en zonder. Draai elke taak meerdere keren, want een fout zat in een voorbeeld maar in één van twee runs.",
+    "Subagents blijven nuttig voor controle achteraf, voor werk dat parallel moet en voor aparte rechten. Voor een AI-assistent op dbt-metadata betekent dit: begin met één agent en een paar smalle datatools, het artikel noemt er 4 à 5. Boven de 30 à 50 tooldefinities kiest een model volgens Anthropic slechter. Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 22 oktober 2026 door Diane Sarkis (Claude Platform, categorie best practices).",
+    "Bij verschillende enterprise-klanten presteerde één agent met skills vaak beter dan een ontwerp met één grote prompt of met subagents, tegen lagere kosten en latentie.",
+    "Eén klant zag een ongeveer twee keer snellere looptijd na de overstap naar één lus.",
+    "De systeemprompt van Claude Code is voor geavanceerdere modellen met meer dan 80% ingekort.",
+    "Advies: begin met een eval-set van tien golden examples; boven 30 à 50 tooldefinities daalt de toolkeuze doorgaans.",
+    "Anthropic biedt een migratiekit op GitHub (anthropics/single-agent-loop-kit) met de skills build-eval, prompt-audit, hillclimb en cost-optimize."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "subagents",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+     "term": "skills",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "progressive disclosure",
+     "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
+    },
+    {
+     "term": "evals",
+     "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    },
+    {
+     "term": "contextvenster",
+     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Gaat over het harnas rond het model, zoals je duimen voor dbt Wizard en de proef van dbt Labs."
+   },
+   "labels": [
+    "agent-skills",
+    "multi-agent",
+    "agent-tooling"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools",
+    "why": "Fase 7 bouwt een eigen data-platform-agent met tools naar Databricks."
    }
   },
   {
@@ -3452,6 +3803,10 @@
     "score": 0.55,
     "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
    },
+   "labels": [
+    "copilot-power-bi",
+    "semantische-laag-ai"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "ai_context_engineering",
@@ -3555,6 +3910,11 @@
     "score": 0.7,
     "why": "Praktisch stuk over evals en Claude, net als de dbt Labs-proef met Claude die je een duim gaf."
    },
+   "labels": [
+    "agent-evals",
+    "claude-code-skills",
+    "llm-als-rechter"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "ai_context_engineering",
@@ -3970,7 +4330,11 @@
    "fit": {
     "score": 0.65,
     "why": "Onderbouwde mening over evals, zoals je duim bij Noonan; nu over Claude Code."
-   }
+   },
+   "labels": [
+    "agent-evals",
+    "foutanalyse"
+   ]
   },
   {
    "id": "ae2bc3c9f749",
@@ -4092,6 +4456,11 @@
     "score": 0.6,
     "why": "Databricks-releaseoverzicht met functies uit je stack; lijkt op je duim bij de metric views-release."
    },
+   "labels": [
+    "databricks-weekoverzicht",
+    "multi-table-transacties",
+    "adbc"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
@@ -4190,108 +4559,14 @@
     "score": 0.7,
     "why": "dbt plus context voor AI, zoals je duimen bij Noonan en synoniemen per veld."
    },
+   "labels": [
+    "context-als-code",
+    "rag-in-dbt"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
-   }
-  },
-  {
-   "id": "a704112d6f8a",
-   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
-   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T16:00:00Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
-   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
-   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
-   "limitations": [
-    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
-    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
-    "databricks-dbt-factory is een open-source project, geen product van Databricks."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "databricks-dbt-factory (GitHub)",
-     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "data_quality_observability",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "databricks",
-    "kwaliteit",
-    "overig"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.16,
-    "source": 0.68,
-    "quality": 0.78,
-    "feedback": -0.04,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
-   "story": [
-    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
-    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
-    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
-    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar."
-   ],
-   "key_facts": [
-    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
-    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
-    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
-    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
-    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
-    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "ingestion time",
-     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
-    },
-    {
-     "term": "queryplan",
-     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
-    },
-    {
-     "term": "upstream",
-     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
-    },
-    {
-     "term": "dbt-manifest",
-     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
-    },
-    {
-     "term": "RFID",
-     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.75,
-    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
-   },
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -4
    }
   },
   {
@@ -4380,6 +4655,10 @@
     "score": 0.55,
     "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."
    },
+   "labels": [
+    "agent-geheugen",
+    "altijd-actieve-agents"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "ai_context_engineering",
@@ -4594,108 +4873,14 @@
     "score": 0.7,
     "why": "Praktijkverhaal over werken met Claude Code, zoals je duim omhoog voor de Claude Code-schrijfgrenzen."
    },
+   "labels": [
+    "claude-code-pr-werkwijze",
+    "ai-code-review"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "praktijk",
     "pts": -3
-   }
-  },
-  {
-   "id": "6d403bbe9379",
-   "title": "Building agents: When to fold subagents into your main agent loop",
-   "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-22T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Anthropic ziet bij grote klanten dat één agent die skills en tools pas laadt als het nodig is, vaak beter, sneller en goedkoper werkt dan een stelsel van subagents. Het artikel geeft een stappenplan om om te bouwen.",
-   "personal_relevance": "Voor je AI-contextlaag op dbt en Databricks is dit een duidelijke ontwerpkeuze: start met één agent en smalle tools, niet met een stelsel van subagents.",
-   "experiment": "Schrijf tien vragen met een bekend goed antwoord over een openbare of verzonnen dbt-demo (bijv. jaffle_shop). Laat Claude Code ze beantwoorden met één skill die de manifest.json leest, draai elke vraag twee keer en tel hoe vaak het antwoord klopt.",
-   "limitations": [
-    "De resultaten komen van Anthropic-klanten en zijn niet openbaar te controleren; er staan geen benchmarks of code in het stuk.",
-    "Anthropic verkoopt zelf het platform waarvoor dit advies geldt.",
-    "Bij taken die echt parallel moeten of aparte rechten nodig hebben, blijven subagents volgens het artikel de betere keuze."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Origineel artikel",
-     "url": "https://claude.com/blog/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering",
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "agents",
-    "ai_context",
-    "claude"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.51,
-    "quality": 0.68,
-    "feedback": -0.04,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-04T03:45:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Eén agent met skills werkt vaak beter dan een team van subagents",
-   "story": [
-    "Veel bedrijven bouwen hun AI-agent als een team: een verdeler die werk doorgeeft aan gespecialiseerde subagents. Anthropic schrijft dat één agent met skills dat bij verschillende grote klanten vaak beter deed. Hij was ook goedkoper en sneller. Eén klant zag de looptijd ongeveer halveren.",
-    "Waarom gaat een team van agents mis? Bij elke overdracht gaat context verloren, net als bij een telefoonketting. Het aantal subagents groeit, en de centrale instructie wordt een lappendeken van regels die elkaar tegenspreken. Elk team test bovendien alleen zijn eigen stukje, niet het geheel.",
-    "Het alternatief is één lus: één model met één contextvenster, dat skills en tools pas helemaal inleest als een taak erom vraagt (progressive disclosure). Harde regels, zoals een validatie of een goedkeuringsstap, horen in een tool en niet in de prompt. Anthropic noemt als voorbeeld dat de systeemprompt van Claude Code voor nieuwere modellen meer dan 80 procent korter is geworden.",
-    "Het stappenplan begint met evals: tien goede voorbeelden van begin tot eind zijn al genoeg. Daarna roep je bestaande subagents eerst aan als tool, voeg je nauw verwante specialisten samen, en zet je ze één voor één om naar skills of MCP-tools. Na elke stap vergelijk je met en zonder. Draai elke taak meerdere keren, want een fout zat in een voorbeeld maar in één van twee runs.",
-    "Subagents blijven nuttig voor controle achteraf, voor werk dat parallel moet en voor aparte rechten. Voor een AI-assistent op dbt-metadata betekent dit: begin met één agent en een paar smalle datatools, het artikel noemt er 4 à 5. Boven de 30 à 50 tooldefinities kiest een model volgens Anthropic slechter."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 22 oktober 2026 door Diane Sarkis (Claude Platform, categorie best practices).",
-    "Bij verschillende enterprise-klanten presteerde één agent met skills vaak beter dan een ontwerp met één grote prompt of met subagents, tegen lagere kosten en latentie.",
-    "Eén klant zag een ongeveer twee keer snellere looptijd na de overstap naar één lus.",
-    "De systeemprompt van Claude Code is voor geavanceerdere modellen met meer dan 80% ingekort.",
-    "Advies: begin met een eval-set van tien golden examples; boven 30 à 50 tooldefinities daalt de toolkeuze doorgaans.",
-    "Anthropic biedt een migratiekit op GitHub (anthropics/single-agent-loop-kit) met de skills build-eval, prompt-audit, hillclimb en cost-optimize."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "subagents",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    },
-    {
-     "term": "skills",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    },
-    {
-     "term": "progressive disclosure",
-     "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt."
-    },
-    {
-     "term": "evals",
-     "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
-    },
-    {
-     "term": "contextvenster",
-     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.75,
-    "why": "Gaat over het harnas rond het model, zoals je duimen voor dbt Wizard en de proef van dbt Labs."
-   },
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
    }
   },
   {
@@ -4888,7 +5073,11 @@
    "fit": {
     "score": 0.65,
     "why": "Praktische Claude Code-uitleg, zoals je duim omhoog voor de schrijfgrenzen van Claude Code."
-   }
+   },
+   "labels": [
+    "claude-code-cloud",
+    "claude-code-sandbox"
+   ]
   },
   {
    "id": "471f6b1cbb07",
@@ -4982,6 +5171,10 @@
     "score": 0.65,
     "why": "Context engineering voor agents, maar zonder dbt-koppeling zoals in je duimen."
    },
+   "labels": [
+    "agentic-search",
+    "agent-harness"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
@@ -5082,6 +5275,11 @@
     "score": 0.65,
     "why": "Context engineering voor agents, maar zonder dbt-koppeling zoals in je duimen."
    },
+   "labels": [
+    "agent-geheugen",
+    "agent-harness",
+    "context-rot"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
@@ -5139,125 +5337,6 @@
    "diepte": "kort"
   },
   {
-   "id": "68a2bf1c5563",
-   "title": "What's the difference between dbt and dbt OSS?",
-   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
-   "source_id": "dbt_developer_blog",
-   "published_at": "2026-09-16T00:00:00Z",
-   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
-   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
-   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
-   "limitations": [
-    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
-    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
-    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "dbt licensing",
-     "url": "https://docs.getdbt.com/docs/dbt-licensing"
-    },
-    {
-     "label": "Licensing FAQ",
-     "url": "https://www.getdbt.com/licenses-faq"
-    },
-    {
-     "label": "dbt-autofix",
-     "url": "https://github.com/dbt-labs/dbt-autofix"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "overig"
-   ],
-   "relevance_score": 78,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.06,
-    "source": 0.68,
-    "quality": 0.63,
-    "feedback": -0.01,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "dbt_developer_blog",
-     "title": "dbt v2.0 is GA",
-     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
-     "published_at": "2026-09-16T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
-   "story": [
-    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
-    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
-    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
-    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ."
-   ],
-   "key_facts": [
-    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
-    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
-    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
-    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
-    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
-    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
-    "language": "bash",
-    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
-    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
-   },
-   "terms": [
-    {
-     "term": "Fusion-engine",
-     "explanation": "De nieuwe motor van dbt die je SQL zelf begrijpt; sinds dbt v2 heet die gewoon 'dbt'."
-    },
-    {
-     "term": "linting",
-     "explanation": "Automatisch je code nalopen op stijlregels en veelgemaakte fouten, zonder hem uit te voeren."
-    },
-    {
-     "term": "LSP",
-     "explanation": "Language Server Protocol: een standaard waarmee een editor aanvulling, foutmeldingen en uitleg krijgt van een taalserver."
-    },
-    {
-     "term": "Apache 2.0",
-     "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven."
-    },
-    {
-     "term": "dbt Mesh",
-     "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.7,
-    "why": "Vervolg op dbt v2, waar je een duim omhoog bij gaf."
-   },
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -1
-   }
-  },
-  {
    "id": "728afeb9147d",
    "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
    "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
@@ -5297,6 +5376,7 @@
     "recency": 0.45,
     "source": 0.51,
     "quality": 0.55,
+    "feedback": 0.01,
     "fit": 0.0
    },
    "decision": "included",
@@ -5350,6 +5430,19 @@
    "fit": {
     "score": 0.5,
     "why": "Claude Code-stuk zoals je duim bij de sandbox-release, maar over beheer en kosten in plaats van dbt-werk."
+   },
+   "labels": [
+    "claude-code-kosten",
+    "opentelemetry",
+    "claude-enterprise-beheer"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "Zo houdt Anthropic een agent die zelf handelt in toom",
+    "id": "3fd19a8cb4a2",
+    "v": 0,
+    "s": 78,
+    "pts": 1
    }
   },
   {
@@ -5447,6 +5540,10 @@
     "score": 0.55,
     "why": "Over hoe goed AI code schrijft, zoals de dbt Labs-proef met Claude; wel Power BI in plaats van dbt."
    },
+   "labels": [
+    "dax-benchmark",
+    "power-bi-ai"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
@@ -13649,52 +13746,25 @@
   }
  ],
  "runs": {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "tasks": {
    "uitleggen": {
     "status": "ok",
-    "summary": "10 artikelen uitgelegd (6 vol, 4 kort, 2 met voorbeeld) en 4 overgeslagen; daarna bij 20 oudere uitleggen de Dataflow-verwijzing en ontbrekende labels aangevuld.",
-    "finished_at": "2026-11-11T03:30:40Z",
-    "problems": [],
+    "summary": "Vers opgehaald; 10 artikelen uitgelegd (4 vol, 6 kort, 2 met voorbeeld) en 8 overgeslagen (5 zonder openen); daarna bij 20 oudere uitleggen labels en de Dataflow-verwijzing aangevuld.",
+    "finished_at": "2026-11-12T03:40:23Z",
+    "problems": [
+     "Drie Fabric-blogpagina's (community.fabric.microsoft.com) gaven een fout; die drie korte en volle uitleggen steunen op de RSS-tekst plus de officiële Microsoft-documentatie.",
+     "Het LangChain-artikel over de GTM-agent was niet op te halen; als 'Niet te lezen' gemarkeerd zodat het volgende week terugkomt."
+    ],
     "counts": {
      "uitgelegd": 10,
-     "vol": 6,
-     "kort": 4,
+     "vol": 4,
+     "kort": 6,
      "met_voorbeeld": 2,
-     "overgeslagen": 4,
-     "overgeslagen_zonder_openen": 3,
+     "overgeslagen": 8,
+     "overgeslagen_zonder_openen": 5,
      "aangevuld": 20,
-     "project_ref_gezet": 6
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt met 7 nieuwe artikelen, geen verzoeken voor interesses, geen begrippen aan te vullen (alleen korte meldingen zonder verhaal over)",
-    "finished_at": "2026-11-11T05:14:13Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesse_verzoeken": 0,
-     "begrippen_aangevuld": 0
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "3 verdiepingen geschreven (ingestion-basis en 2 eigen voorstellen: Ossie met dbt, Databricks en Power BI, en performance meten vanuit dbt); 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-11T04:40:39Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 3,
-     "keuzes": 5
-    }
-   },
-   "inhalen": {
-    "status": "ok",
-    "summary": "niets in te halen",
-    "finished_at": "2026-11-11T06:29:04Z",
-    "problems": [],
-    "counts": {
-     "ingehaald": 0
+     "project_ref_gezet": 3
     }
    }
   }
@@ -13818,13 +13888,13 @@
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
+   "databricks_engineering_blog": 4,
    "dbt_core_releases": 1,
    "claude_blog": 12,
    "powerbi_blog": 3,
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
-   "databricks_engineering_blog": 4,
    "langchain_blog": 8,
    "fabric_blog": 7,
    "sqlbi": 2
