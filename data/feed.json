@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T03:13:28.207125Z",
+ "generated_at": "2026-11-12T03:31:53.760503Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-11T03:54:00Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-12T03:40:00Z",
  "last_successful_update": "2026-11-12T03:13:28.207125Z",
  "groups": [
   {
@@ -420,7 +420,7 @@
  "daily_top": [
   "5c7174c45ad1",
   "308e572d49e4",
-  "4dcd7af26dab",
+  "6ded4aa1cdcf",
   "d2e9b967064a",
   "c63f36899b14"
  ],
@@ -470,7 +470,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
@@ -678,6 +678,136 @@
     "fase": 6,
     "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
     "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
+   }
+  },
+  {
+   "id": "6ded4aa1cdcf",
+   "title": "Making the economic case for warehouse-first AI context",
+   "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-11-11T13:00:00Z",
+   "date_note": "De pagina toont 'Last edited on Nov 11, 2026'.",
+   "fetched_at": "2026-11-12T03:13:30.155031Z",
+   "summary": "dbt Labs zegt meer dan de helft op tokenkosten te besparen door context voor agents één keer in het warehouse klaar te zetten, in plaats van alles live via MCP op te halen. Met een rekenvoorbeeld en een stappenplan voor de businesscase.",
+   "personal_relevance": "Je wilt een AI-contextlaag op dbt en Databricks: dit geeft een kostenargument om die context als modellen te bouwen in plaats van alles live op te halen.",
+   "experiment": "Tel in Claude Code met /context hoeveel tokens je MCP-tools vooraf innemen. Zet daarna één verzonnen of openbare tekstbron als vooraf opgeknipte tabel klaar en vergelijk het tokengebruik van dezelfde vraag.",
+   "limitations": [
+    "De besparing van meer dan 50% is een eigen meting van dbt Labs, zonder methode.",
+    "Het stuk promoot de dbt MCP-server en Fivetran.",
+    "Vooraf verwerken betekent ook onderhoud: de context kan verouderen als je hem niet ververst."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Making the economic case for warehouse-first AI context",
+     "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "agents"
+   ],
+   "relevance_score": 96,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.6,
+    "feedback": -0.04,
+    "fit": 0.25,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:30:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Zet context voor agents in je warehouse: de helft minder tokens",
+   "story": [
+    "AI-projecten verdienen zich traag terug, maar de rekening voor tokens komt elke maand. Volgens Deloitte duurt het bij een typische AI-toepassing 2 tot 4 jaar, tegen 7 tot 12 maanden bij gewone IT. Daniel Poppy van dbt Labs zegt: aan die terugverdientijd doe je weinig, aan de lopende kosten wel. Zijn team bespaarde naar eigen zeggen meer dan 50 procent op tokens.",
+    "Het probleem zit volgens hem in een naïeve aanpak met MCP. Een agent laadt dan bij elke aanroep alle beschrijvingen van alle tools. Vijf MCP-servers met 58 tools kosten zo al zo'n 55.000 tokens voordat het gesprek begint. Bij 10.000 aanroepen per maand is dat ongeveer 2.200 dollar, alleen aan voorwerk. Daarnaast gaat ruwe data door het model, soms twee keer, en wordt dezelfde context steeds opnieuw opgehaald.",
+    "De oplossing is 'warehouse-first': werk de context vooraf uit, net zoals je een Gold-tabel bouwt in plaats van elke keer de Bronze-data te bevragen. dbt Labs knipt bijvoorbeeld lange gesprekstranscripten met dbt in stukken, maakt er embeddings van en classificeert ze. Alleen de passages die ertoe doen gaan naar het model. Agents praten met één gecontroleerde laag via de dbt MCP-server, niet met twintig losse servers. Nieuwe gesprekken komen er via Fivetran bij; oude worden niet opnieuw verwerkt.",
+    "Voor je eigen platform is het idee herkenbaar: context is gewoon een dataproduct met een incrementeel model. Het stappenplan in het artikel begint met meten wat je nu uitgeeft, daarna zoeken welke MCP-bronnen al in het warehouse staan, en beginnen bij de duurste bron. Voor Dataflow past dit in fase 7: geef je eigen agent context uit tabellen en dbt-artifacts in plaats van uit veel losse tools.",
+    "Let wel: de besparing is een eigen meting van dbt Labs, zonder details over hoe ze gemeten is. En het stuk verkoopt zijdelings de eigen MCP-server en Fivetran."
+   ],
+   "key_facts": [
+    "Deloitte (Europa en Midden-Oosten): gewone tech-investeringen verdienen zich terug in 7 tot 12 maanden, een typische AI-toepassing in 2 tot 4 jaar.",
+    "dbt Labs zegt meer dan 50% op tokenkosten te hebben bespaard door context in het warehouse op te slaan in plaats van dynamisch via MCP op te halen.",
+    "Vijf MCP-servers met 58 tools kosten ongeveer 55.000 tokens vóór het gesprek; bij 10.000 aanroepen per maand is dat 550 miljoen inputtokens, ongeveer $2.200 per maand op Claude Opus 5.5.",
+    "Drie kostenoorzaken: alle tooldefinities bij elke aanroep, ruwe data door het model (soms dubbel), en steeds opnieuw dezelfde context ophalen zonder hergebruik.",
+    "Aanpak: transcripten met dbt opknippen, embedden en classificeren; agents gebruiken één gecontroleerde laag via de dbt MCP-server; alleen nieuwe gesprekken worden via Fivetran opgehaald.",
+    "Volgens Anthropic-data kan een vergelijkbare aanpak het tokengebruik met 85% verlagen; één workflow ging van 150.000 naar 2.000 tokens."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "De rekensom uit het artikel: tokens die vóór elk gesprek opgaan, maal het aantal aanroepen. De tweede rij is een verzonnen voorbeeld van een kleinere opstelling.",
+    "language": "sql",
+    "code": "WITH opstelling AS (\n  SELECT '5 MCP-servers, 58 tools' AS aanpak, 55000 AS tokens_vooraf, 10000 AS aanroepen\n  UNION ALL\n  SELECT 'stel: 1 server, 5.000 tokens', 5000, 10000\n)\nSELECT aanpak,\n       tokens_vooraf * aanroepen / 1e6 AS miljoen_tokens,\n       ROUND(tokens_vooraf * aanroepen / 1e6 * 4) AS dollar_per_maand\nFROM opstelling;",
+    "result": {
+     "columns": [
+      "aanpak",
+      "miljoen_tokens",
+      "dollar_per_maand"
+     ],
+     "rows": [
+      [
+       "5 MCP-servers, 58 tools",
+       550.0,
+       2200.0
+      ],
+      [
+       "stel: 1 server, 5.000 tokens",
+       50.0,
+       200.0
+      ]
+     ]
+    },
+    "note": "Gedraaid in DuckDB. De eerste rij gebruikt de cijfers uit het artikel ($2.200 voor 550 miljoen tokens, dus $4 per miljoen); de tweede rij is verzonnen ter vergelijking."
+   },
+   "terms": [
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "tokens",
+     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    },
+    {
+     "term": "embeddings",
+     "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen."
+    },
+    {
+     "term": "warehouse-first",
+     "explanation": "Context voor AI vooraf uitwerken en opslaan als tabellen in het datawarehouse, in plaats van die bij elke vraag opnieuw uit losse bronnen op te halen."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "dbt als contextlaag voor agents, zoals je duimen voor de Noonan- en agent-contextartikelen."
+   },
+   "labels": [
+    "context-als-code",
+    "agent-context-laag",
+    "dbt-mcp"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow past dit in fase 7: geef je eigen agent context uit tabellen en dbt-artifacts",
+    "why": "Fase 7 bouwt een agent met dbt-artifacts en metadata als context."
    }
   },
   {
@@ -2048,6 +2178,126 @@
    }
   },
   {
+   "id": "656e0d953ae9",
+   "title": "Announcing GA of Genie Ontology",
+   "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Databricks maakt Genie Ontology algemeen beschikbaar: een contextlaag die begrippen leert uit dashboards, queries en Power BI-modellen, en die combineert met definities die je zelf vastlegt. Via MCP kunnen ook Claude en ChatGPT die context gebruiken.",
+   "personal_relevance": "Dit raakt je AI-contextlaag direct: definities in metric views en Unity Catalog worden context voor elke agent, ook Claude via MCP.",
+   "experiment": "Maak in een testwerkruimte één metric view met een verzonnen definitie (bijv. 'actieve gebruiker') en vraag Genie daarna naar dat begrip. Kijk of het antwoord de definitie uit de metric view gebruikt.",
+   "limitations": [
+    "De benchmark is door Databricks zelf gedaan, op gesimuleerde data, tegen twee anonieme concurrenten.",
+    "Ontology Manager en Power BI als kennisbron zijn nog niet GA.",
+    "Of dit in Databricks Free Edition werkt, staat niet in het artikel."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Genie Ontology (documentatie)",
+     "url": "https://docs.databricks.com/en/genie/genie-ontology"
+    },
+    {
+     "label": "Unity Catalog semantics",
+     "url": "https://docs.databricks.com/en/uc-semantics/"
+    },
+    {
+     "label": "Genie MCP",
+     "url": "https://docs.databricks.com/en/agents/mcp-tools/genie-mcp"
+    },
+    {
+     "label": "Benchmarkblog",
+     "url": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.58,
+    "feedback": -0.06,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:40:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_blog",
+     "title": "Bring your business context to ChatGPT, Claude, Microsoft Copilot Cowork and Grok Bot",
+     "url": "https://www.databricks.com/blog/bring-your-business-context-chatgpt-claude-microsoft-copilot-cowork-and-grok-bot",
+     "published_at": "2026-11-11T15:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk",
+   "story": [
+    "Een AI-agent geeft pas goede antwoorden als hij weet wat 'actieve klant' of 'omzet' in jouw organisatie betekent. Databricks heeft daarvoor Genie Ontology gemaakt, en die is sinds 11 november algemeen beschikbaar (GA). Eind oktober was al bekend dat Genie zelf context gaat halen uit metric views en dashboards; nu is het officieel te gebruiken.",
+    "Het werkt met twee soorten kennis. De eerste is geleerde kennis: agents lezen mee in dashboards, SQL-queries, notebooks en semantische modellen, ook die van Power BI. Wat ze vinden, bewaren ze als korte stukjes uitleg (Ontology Snippets) die vanzelf bijgewerkt worden. De tweede is gemodelleerde kennis: definities die mensen zelf vastleggen in Unity Catalog, zoals metric views, domeinen (Domains) en pagina's (Pages).",
+    "Spreken twee bronnen elkaar tegen, dan kiest een rangorde-algoritme (OntoRank). Het weegt mee of een bron gecertificeerd is, wie hem maakte, hoe vaak hij gebruikt wordt en hoe vers hij is. Vergelijk het met een collega die bij twijfel het officiële rapport boven een los notitieblok kiest. De agent ziet alleen wat de gebruiker zelf mag zien. Via Genie MCP kunnen agents buiten Databricks, zoals Claude en ChatGPT, dezelfde context opvragen.",
+    "Voor je AI-contextlaag op dbt en Databricks is dit een kant-en-klaar alternatief voor een deel van wat je zelf zou bouwen. De vraag wordt dan: leg je definities vast in metric views, zodat Genie ze als gemodelleerde kennis kan gebruiken? Interessant is ook dat Power BI-modellen als bron dienen; dat is nog bèta.",
+    "Databricks claimt in een eigen test met Turing dat Genie 91 procent van de taken goed deed, tegen 45 en 58 procent bij twee niet genoemde andere agents. Die test is door de aanbieder zelf gedaan, op een verzonnen energiebedrijf. Neem het cijfer dus met een korrel zout."
+   ],
+   "key_facts": [
+    "Genie Ontology is algemeen beschikbaar (GA), aangekondigd op 11 november 2026.",
+    "Ook GA: Genie Search (kennis uit documenten, tickets en wiki's), Ontology Snippets, organisatieoverzichten (eerst Workday), Unity Catalog Domains en Subdomains, en Unity Catalog Pages.",
+    "Geleerde kennis komt uit dashboards, SQL-queries, notebooks en semantische modellen; Power BI als externe kennisbron is bèta, Tableau en Sigma volgen later.",
+    "OntoRank weegt bronnen op autoriteit, certificering, expertise, populariteit en actualiteit; de context volgt de rechten van de gebruiker.",
+    "Genie MCP maakt dezelfde context beschikbaar voor agents buiten Databricks, zoals ChatGPT, Claude en Microsoft Copilot.",
+    "Eigen benchmark met Turing (5 runs per taak): Genie 91% geslaagd, 432K tokens per run; andere agents 45% (889K) en 58% (1,05M). Ontology Manager komt later als bèta."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Ontology Snippets",
+     "explanation": "Korte stukjes uitleg over begrippen die Genie zelf leert uit dashboards, queries en modellen, en die vanzelf bijgewerkt worden."
+    },
+    {
+     "term": "OntoRank",
+     "explanation": "Het rangorde-algoritme van Genie dat bij tegenstrijdige definities kiest welke bron het meest betrouwbaar is, bijv. een gecertificeerde boven een losse query."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.75,
+    "why": "Contextlaag op metric views en Unity Catalog, zoals je duimen voor metric view-relaties en de semantische laag."
+   },
+   "labels": [
+    "genie-ontology",
+    "metric-views",
+    "genie-mcp"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   }
+  },
+  {
    "id": "6df581b9d8ed",
    "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
@@ -2928,6 +3178,109 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -5
+   }
+  },
+  {
+   "id": "0f8380eb8c98",
+   "title": "Announcing the retirement of R and Python visuals in Power BI",
+   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Announcing-the-retirement-of-R-and-Python-visuals-in-Power-BI/ba-p/5400748",
+   "source_id": "powerbi_blog",
+   "published_at": "2026-11-09T19:00:39Z",
+   "date_note": "De blogpagina was niet te openen; uitgelegd op basis van de RSS-tekst en de officiële documentatiepagina met dezelfde aankondiging.",
+   "fetched_at": "2026-11-10T20:23:15.144556Z",
+   "summary": "Vanaf mei 2027 werken R- en Python-visuals niet meer in gepubliceerde Power BI-rapporten, ook oude niet. Python in Power Query blijft wel werken; elke visual moet je zelf vervangen.",
+   "personal_relevance": "Staan er in jullie Power BI-rapporten Python- of R-grafieken, dan heb je tot mei 2027 om ze te vervangen.",
+   "experiment": "Zet een PBIP-export van een testrapport in Git en zoek met grep naar pythonVisual en scriptVisual. Maak er een kleine check van die je in een pipeline kunt draaien.",
+   "limitations": [
+    "Een exacte datum in mei 2027 staat er niet bij.",
+    "Wat er met embedded rapporten gebeurt, staat niet op de documentatiepagina.",
+    "De zoekactie in PBIP vindt R-powered custom visuals niet."
+   ],
+   "availability_status": "aangekondigd",
+   "official_docs": [
+    {
+     "label": "Script visuals in Power BI: retirement",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/script-visuals-overview#retirement-of-r-and-python-visuals"
+    },
+    {
+     "label": "Power BI Desktop projects (PBIP)",
+     "url": "https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview"
+    },
+    {
+     "label": "Power BI custom visuals SDK",
+     "url": "https://learn.microsoft.com/en-us/power-bi/developer/visuals/develop-power-bi-visuals"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models"
+   ],
+   "groups": [
+    "overig"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.02,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "R- en Python-visuals in Power BI stoppen in mei 2027",
+   "story": [
+    "Microsoft haalt de ingebouwde R- en Python-visuals uit Power BI. In mei 2027 stoppen ze in alle gepubliceerde rapporten in de Power BI-service, ook in rapporten van vóór die datum. Custom visuals die op R draaien, stoppen ook. Nieuwe versies van Power BI Desktop krijgen de visuals niet meer.",
+    "Een R- of Python-visual is een grafiek die een script tekent, bijvoorbeeld met matplotlib, in plaats van een ingebouwde grafiek van Power BI. Het script draaide op een server van Microsoft. Dat houdt op. Alleen oudere versies van Power BI Desktop tonen ze nog lokaal, met R of Python op je eigen computer.",
+    "Niet alles met Python valt eronder. Python-scripts in Power Query, die tabellen vullen, blijven werken. Het gaat alleen om visuals in interactieve rapporten. Een automatische omzetting is er niet: je moet elke visual zelf vervangen door een ingebouwde grafiek, een bestaande custom visual of een zelfgemaakte met de custom visuals SDK. Lukt dat niet, dan noemt Microsoft Fabric-notebooks of Fabric-apps als uitweg.",
+    "Wat moet je doen? Zoek eerst op waar zulke visuals zitten. Gebruik je het PBIP-formaat met Git, dan zoek je in de rapportbestanden naar het visualtype `pythonVisual` of `scriptVisual`. R-custom visuals vind je zo niet; die moet je apart nalopen. Bewaar de scripts en de lijst met packages, en laat collega's weten welke rapporten geraakt worden."
+   ],
+   "key_facts": [
+    "R- en Python-visuals in Power BI, inclusief R-powered custom visuals, stoppen in mei 2027 (geen exacte dag genoemd).",
+    "In de Power BI-service stoppen ze in alle gepubliceerde rapporten, ook rapporten van vóór de uitfasering.",
+    "Python-scripts in Power Query die tabellen vullen, worden niet geraakt.",
+    "Oudere versies van Power BI Desktop tonen de visuals lokaal met de eigen R- of Python-installatie; nieuwe versies hebben ze niet meer.",
+    "Er is geen automatische migratie; elke visual moet vóór de uitfasering vervangen worden.",
+    "In PBIP en Git-geïntegreerde werkruimten zoek je naar visualType pythonVisual (Python) of scriptVisual (R); R-powered custom visuals vind je zo niet."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo vind je R- en Python-visuals in een rapport dat als PBIP in Git staat: zoek naar de twee visualtypes die Microsoft noemt.",
+    "language": "bash",
+    "code": "# in de map van je Power BI-project (PBIP)\ngrep -rlE 'pythonVisual|scriptVisual' --include='*.json' .",
+    "note": "De zoekwaarden pythonVisual en scriptVisual komen uit de officiële documentatie; het grep-commando is een eigen voorbeeld, zonder resultaat. R-powered custom visuals vind je hiermee niet."
+   },
+   "terms": [
+    {
+     "term": "PBIP",
+     "explanation": "Power BI Project: een manier om een rapport en model op te slaan als gewone tekstbestanden in een map, zodat je ze in Git kunt beheren en vergelijken."
+    },
+    {
+     "term": "custom visual",
+     "explanation": "Een extra grafiektype voor Power BI dat niet standaard is ingebouwd, gemaakt door Microsoft, een andere partij of je eigen organisatie."
+    },
+    {
+     "term": "Power Query",
+     "explanation": "Het onderdeel van Power BI waarin je data ophaalt en bewerkt voordat die in het model komt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.6,
+    "why": "Power BI-wijziging waar je iets mee moet, zoals je duim voor het OAP-artikel."
+   },
+   "labels": [
+    "power-bi-uitfasering",
+    "power-bi-visuals"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -2
    }
   },
   {
@@ -4288,6 +4641,54 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -4
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "8b7855abcc2d",
+   "title": "What Is Eval-Driven Development? How to Improve AI Agents",
+   "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-09T18:57:45Z",
+   "fetched_at": "2026-11-10T20:23:17.126201Z",
+   "summary": "LangChain legt eval-driven development uit: beschrijf per gedrag wat goed is, schrijf de eval vóór je bouwt en vergelijk daarna per voorbeeld, niet alleen het gemiddelde. Een voorbeeld laat zien hoe een nieuwe tool een oude vraag ('hoe verbind ik met de VPN?') ten onrechte een ticket liet maken.",
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.51,
+    "quality": 0.45,
+    "feedback": -0.05,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:40:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Eerst de eval, dan de wijziging: zo verbeter je een agent stap voor stap",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Evals voor agents, zoals je duim voor Claudes eval-hulp; wel een bekende methode."
+   },
+   "labels": [
+    "agent-evals",
+    "llm-als-rechter"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -5
    },
    "diepte": "kort"
   },
@@ -5799,7 +6200,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.01,
@@ -6001,6 +6402,56 @@
    }
   },
   {
+   "id": "225ab7984001",
+   "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-03T20:00:00Z",
+   "date_note": "De blogpagina zelf was niet te openen; samengevat uit de RSS-tekst en de Fabric-documentatie over mirroring van Azure Databricks, die materialized views en streaming tables bij de synchronisatie noemt. Status (preview of GA) staat er niet bij.",
+   "fetched_at": "2026-11-04T03:13:57.709960Z",
+   "summary": "Een gespiegelde Azure Databricks-catalogus (mirrored catalog) in Fabric toont nu naast tabellen ook materialized views en streaming tables, alleen-lezen via shortcuts en zonder kopie. Handig als Power BI-rapporten in Fabric de voorberekende uitkomsten uit Databricks willen gebruiken.",
+   "availability_status": "onbekend",
+   "topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "overig",
+    "databricks"
+   ],
+   "relevance_score": 75,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.66,
+    "source": 0.6,
+    "quality": 0.43,
+    "feedback": -0.05,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:30:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Fabric ziet nu ook materialized views en streaming tables uit Databricks",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Kleine Fabric–Databricks-koppeling, zoals je eerdere OneLake-artikelen; geen praktische aanpak."
+   },
+   "labels": [
+    "onelake-databricks",
+    "fabric-mirroring"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "fabric_blog",
+    "pts": -5
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "9a1a77aea3de",
    "title": "Running open-Jev in SQL on Databricks",
    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -6188,55 +6639,6 @@
     "name": "achtergrond",
     "pts": -4
    }
-  },
-  {
-   "id": "b8f28272e892",
-   "title": "The Enterprise Case for Open-Weight Models on Databricks",
-   "url": "https://www.databricks.com/blog/enterprise-case-open-weight-models-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-04T20:00:00Z",
-   "fetched_at": "2026-11-04T20:43:07.897195Z",
-   "summary": "Field engineers van Databricks pleiten voor een mix van modellen, met open-weight modellen als GLM en Kimi naast de grote aanbieders, beheerd via Unity AI Gateway. Vooral een verkoopverhaal, met wel een paar cijfers, zoals dat een model in een andere omgeving (harness) 38 tot 62 procent scoorde.",
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_on_data_platform",
-    "general_ai_trends"
-   ],
-   "groups": [
-    "ai_context",
-    "overig"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.7,
-    "source": 0.85,
-    "quality": 0.37,
-    "feedback": -0.05,
-    "fit": -0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Databricks: gebruik naast Claude en GPT ook open modellen via één gateway",
-   "soort": "mening",
-   "fit": {
-    "score": 0.4,
-    "why": "Strategiestuk van een leverancier; je duimen gaan naar concrete aanpakken."
-   },
-   "labels": [
-    "unity-ai-gateway",
-    "open-weight-modellen"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -5
-   },
-   "diepte": "kort"
   },
   {
    "id": "94b7888e188f",
@@ -6959,151 +7361,6 @@
     "pts": -9
    },
    "diepte": "kort"
-  },
-  {
-   "id": "e197b15d9798",
-   "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T12:48:00Z",
-   "fetched_at": "2026-11-06T03:12:46.373805Z",
-   "summary": "Debezium leest de wijzigingen uit een database en duwt ze via Zerobus Ingest rechtstreeks in Delta-tabellen. Er is geen Kafka nodig en de database hoeft geen inkomende verbindingen toe te staan.",
-   "personal_relevance": "Een concreet beeld van CDC van bron tot silver, precies het ingestion-onderwerp waar je nog in groeit.",
-   "experiment": "Bouw in DuckDB een kleine bronze-tabel met verzonnen wijzigingsberichten, inclusief een dubbel bericht en een delete, en maak daar met SQL de actuele stand van.",
-   "limitations": [
-    "Het artikel zegt niet of Zerobus Ingest preview of GA is en geeft geen cijfers over snelheid.",
-    "Berichten kunnen dubbel aankomen; je moet zelf ontdubbelen.",
-    "Je moet Debezium Server zelf naast de database draaien."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Debezium 3.7 release notes (Zerobus-sink)",
-     "url": "https://debezium.io/blog/2026/09/29/debezium-3-7-final-released/#databricks_zerobus_ingest_sink_adapter"
-    },
-    {
-     "label": "Handleiding: PostgreSQL-CDC met Debezium naar Databricks",
-     "url": "https://community.databricks.com/t5/technical-blog/how-to-stream-postgresql-cdc-into-databricks-with-debezium/ba-p/175646"
-    },
-    {
-     "label": "Zerobus Ingest-documentatie",
-     "url": "https://docs.databricks.com/aws/en/ingestion/zerobus-ingest"
-    }
-   ],
-   "topics": [
-    "data_ingestion",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 61,
-   "score_parts": {
-    "topic": 0.85,
-    "recency": 0.72,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.2,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-06T03:21:27Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-     "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
-     "published_at": "2026-11-05T12:48:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
-   "story": [
-    "Databricks laat zien hoe je wijzigingen uit een database naar Unity Catalog stuurt zonder Kafka. Het open-sourceprogramma Debezium leest de wijzigingen. Een nieuwe koppeling (sink) duwt ze daarna rechtstreeks naar Zerobus Ingest. Engineers van Databricks en NVIDIA bouwden die sink. Hij zit in Debezium Server 3.7.",
-    "Het idee heet CDC: je neemt alleen de wijzigingen over, niet steeds de hele tabel. Debezium draait naast de database en leest het logboek waarin Postgres elke wijziging bijhoudt (de write-ahead log). Van elke wijziging maakt hij een bericht met de rij vóór en ná, en een code: nieuw, gewijzigd, verwijderd of eerste lading.",
-    "Het verschil zit in de richting. Normaal haalt een pijplijn data op bij de database. Hier duwt Debezium de data naar buiten, zoals een brief die je zelf op de post doet. Dat helpt bij databases in afgeschermde netwerken: die mogen vaak wel naar buiten bellen, maar niemand binnenlaten. En je hoeft geen Kafka-cluster te beheren.",
-    "In Unity Catalog komen de berichten eerst in een tabel waar alleen rijen bijkomen (append-only), je bronze-laag. Elke rij krijgt een unieke sleutel (idempotency_key) en de plek in het logboek. De sink garandeert dat elk bericht minstens één keer aankomt, dus soms dubbel. In silver gooi je dubbele berichten weg, zet je ze op volgorde en houd je per sleutel de laatste stand over. Dat kan met AUTO CDC of een MERGE.",
-    "Het artikel heeft zelf geen code. Een aparte handleiding op de Databricks Community toont de configuratie van Debezium Server en de AUTO CDC-stappen. Voor jou is dit vooral een heldere les in hoe CDC van begin tot eind werkt."
-   ],
-   "key_facts": [
-    "Blog van Databricks Engineering, 5 november 2026, door Victoria Bukta, Omkar Mehta en Wagner Santos.",
-    "De Zerobus Ingest-sink zit in Debezium Server 3.7 en is gebouwd door engineers van Databricks en NVIDIA.",
-    "Debezium leest bij PostgreSQL de write-ahead log; elk bericht bevat before- en after-beelden, een op-code (c, u, d, r), bronmetadata met de LSN en ts_ms.",
-    "Twee tabelvormen: typed (standaard, de kolommen van de bron) en envelope (negen vaste kolommen, JSON in VARIANT of Protobuf).",
-    "Levering is at-least-once; de idempotency_key is een SHA-256-hash waarop je ontdubbelt, maar die ordent of ontdubbelt de tabel niet zelf.",
-    "Zerobus Ingest schrijft append-only; voor de actuele stand is een aparte MERGE- of AUTO CDC-stap nodig."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Van bronze naar actuele stand: eerst dubbele berichten weg op idempotency_key, dan per klant het laatste bericht op logboekpositie, en verwijderde klanten eruit.",
-    "language": "sql",
-    "code": "WITH uniek AS (\n  SELECT * FROM bronze\n  QUALIFY ROW_NUMBER() OVER (\n    PARTITION BY idempotency_key ORDER BY source_position) = 1\n),\nlaatste AS (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY klant_id ORDER BY source_position DESC) AS rn\n  FROM uniek\n)\nSELECT klant_id, plaats, source_position\nFROM laatste\nWHERE rn = 1 AND operation <> 'd'\nORDER BY klant_id;",
-    "result": {
-     "columns": [
-      "klant_id",
-      "plaats",
-      "source_position"
-     ],
-     "rows": [
-      [
-       1,
-       "Arnhem",
-       120
-      ],
-      [
-       3,
-       "Delft",
-       140
-      ]
-     ]
-    },
-    "note": "Verzonnen data in DuckDB: zes berichten (c, c, u, dezelfde u nog eens, d, c). Zo werkt het idee in gewone SQL; in Databricks doe je dit met AUTO CDC of MERGE, zie de handleiding."
-   },
-   "terms": [
-    {
-     "term": "CDC",
-     "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
-    },
-    {
-     "term": "Zerobus Ingest",
-     "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
-    },
-    {
-     "term": "write-ahead log",
-     "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden."
-    },
-    {
-     "term": "append-only",
-     "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan."
-    },
-    {
-     "term": "AUTO CDC",
-     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
-    }
-   ],
-   "learning": "Data ingestion",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.6,
-    "why": "Uitleg van een ingestion-patroon met medaillonlagen; minder dbt dan je duimen omhoog, maar wel een leeronderwerp."
-   },
-   "labels": [
-    "cdc",
-    "zerobus-ingest",
-    "debezium"
-   ],
-   "fb_why": {
-    "by": "similar",
-    "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
-    "id": "e197b15d9798",
-    "v": -1,
-    "s": 84,
-    "pts": -20
-   }
   },
   {
    "id": "eb6fb91698c7",
@@ -10141,17 +10398,6 @@
    ]
   },
   {
-   "term": "append-only",
-   "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    }
-   ]
-  },
-  {
    "term": "artifact",
    "explanation": "Een verzameling bestanden die een pipeline-run publiceert, zodat een latere stap, zoals de uitrol, ermee verder kan.",
    "refs": [
@@ -10188,11 +10434,6 @@
    "term": "AUTO CDC",
    "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    },
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -10279,11 +10520,6 @@
    "term": "CDC",
    "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    },
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -10498,6 +10734,17 @@
      "kind": "a",
      "id": "b380b17e60f1",
      "title": "Elke pull request zijn eigen kopie van de productiedatabase, in een minuut"
+    }
+   ]
+  },
+  {
+   "term": "custom visual",
+   "explanation": "Een extra grafiektype voor Power BI dat niet standaard is ingebouwd, gemaakt door Microsoft, een andere partij of je eigen organisatie.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "0f8380eb8c98",
+     "title": "R- en Python-visuals in Power BI stoppen in mei 2027"
     }
    ]
   },
@@ -10842,6 +11089,11 @@
    "term": "embeddings",
    "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "6ded4aa1cdcf",
+     "title": "Zet context voor agents in je warehouse: de helft minder tokens"
+    },
     {
      "kind": "a",
      "id": "4255764d89d9",
@@ -11584,6 +11836,16 @@
    "refs": [
     {
      "kind": "a",
+     "id": "656e0d953ae9",
+     "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
+    },
+    {
+     "kind": "a",
+     "id": "6ded4aa1cdcf",
+     "title": "Zet context voor agents in je warehouse: de helft minder tokens"
+    },
+    {
+     "kind": "a",
      "id": "308e572d49e4",
      "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
     },
@@ -11596,11 +11858,6 @@
      "kind": "a",
      "id": "ceb4b784fbab",
      "title": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen"
-    },
-    {
-     "kind": "a",
-     "id": "f29afd156725",
-     "title": "Agent Skills krijgt een neutraal thuis bij de Linux Foundation"
     }
    ]
   },
@@ -11689,6 +11946,11 @@
    "term": "metric views",
    "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "656e0d953ae9",
+     "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
+    },
     {
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
@@ -11843,6 +12105,28 @@
    ]
   },
   {
+   "term": "Ontology Snippets",
+   "explanation": "Korte stukjes uitleg over begrippen die Genie zelf leert uit dashboards, queries en modellen, en die vanzelf bijgewerkt worden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "656e0d953ae9",
+     "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
+    }
+   ]
+  },
+  {
+   "term": "OntoRank",
+   "explanation": "Het rangorde-algoritme van Genie dat bij tegenstrijdige definities kiest welke bron het meest betrouwbaar is, bijv. een gecertificeerde boven een losse query.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "656e0d953ae9",
+     "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
+    }
+   ]
+  },
+  {
    "term": "OpenTelemetry",
    "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen.",
    "refs": [
@@ -11914,6 +12198,17 @@
    ]
   },
   {
+   "term": "PBIP",
+   "explanation": "Power BI Project: een manier om een rapport en model op te slaan als gewone tekstbestanden in een map, zodat je ze in Git kunt beheren en vergelijken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "0f8380eb8c98",
+     "title": "R- en Python-visuals in Power BI stoppen in mei 2027"
+    }
+   ]
+  },
+  {
    "term": "Photon",
    "explanation": "De snelle query-engine van Databricks, geschreven in C++. Sommige optimalisaties werken alleen als je compute Photon gebruikt.",
    "refs": [
@@ -11932,6 +12227,17 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
+    }
+   ]
+  },
+  {
+   "term": "Power Query",
+   "explanation": "Het onderdeel van Power BI waarin je data ophaalt en bewerkt voordat die in het model komt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "0f8380eb8c98",
+     "title": "R- en Python-visuals in Power BI stoppen in mei 2027"
     }
    ]
   },
@@ -12699,6 +13005,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "6ded4aa1cdcf",
+     "title": "Zet context voor agents in je warehouse: de helft minder tokens"
+    },
+    {
+     "kind": "a",
      "id": "6df581b9d8ed",
      "title": "Claude Code kan nu nergens meer schrijven buiten je projectmap"
     },
@@ -12716,11 +13027,6 @@
      "kind": "a",
      "id": "841d424db697",
      "title": "dbt krijgt een pakket om tekst klaar te maken voor AI"
-    },
-    {
-     "kind": "a",
-     "id": "450468c3f304",
-     "title": "Laat AI liever beschrijven wat je wilt dan hoe het moet"
     }
    ]
   },
@@ -12884,6 +13190,17 @@
    ]
   },
   {
+   "term": "warehouse-first",
+   "explanation": "Context voor AI vooraf uitwerken en opslaan als tabellen in het datawarehouse, in plaats van die bij elke vraag opnieuw uit losse bronnen op te halen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "6ded4aa1cdcf",
+     "title": "Zet context voor agents in je warehouse: de helft minder tokens"
+    }
+   ]
+  },
+  {
    "term": "watermark",
    "explanation": "De hoogste waarde (vaak een tijdstempel) die je bij de vorige run hebt verwerkt. De volgende run haalt alleen rijen op die daarna komen.",
    "refs": [
@@ -12928,17 +13245,6 @@
    ]
   },
   {
-   "term": "write-ahead log",
-   "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    }
-   ]
-  },
-  {
    "term": "Zerobus Ingest",
    "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft.",
    "refs": [
@@ -12946,11 +13252,6 @@
      "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
-    },
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
     },
     {
      "kind": "a",
@@ -13351,50 +13652,50 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 408,
-  "unique_after_dedupe": 549,
-  "merged_duplicates": 23,
-  "shown": 74,
+  "fetched_items": 579,
+  "unique_after_dedupe": 548,
+  "merged_duplicates": 24,
+  "shown": 77,
   "decisions": {
    "excluded": 186,
-   "included": 117,
-   "below_threshold": 108,
+   "included": 119,
+   "below_threshold": 103,
    "included_low": 2,
    "no_topic": 122,
-   "source_cap": 13,
-   "area_cap": 1
+   "source_cap": 14,
+   "area_cap": 2
   },
   "processing": {
-   "enriched": 74
+   "enriched": 77
   },
   "without_date": 0,
   "per_group": {
-   "overig": 8,
-   "ai_context": 20,
+   "overig": 10,
+   "ai_context": 21,
    "dbt": 6,
    "claude": 16,
    "architectuur": 3,
-   "agents": 14,
-   "databricks": 5,
+   "agents": 15,
+   "databricks": 4,
    "kwaliteit": 2
   },
   "per_source": {
-   "databricks_blog": 14,
+   "databricks_blog": 13,
    "azure_databricks_release_notes": 4,
-   "dbt_labs_blog": 9,
+   "dbt_labs_blog": 10,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
    "dbt_core_releases": 1,
    "claude_blog": 12,
+   "powerbi_blog": 3,
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
    "databricks_engineering_blog": 4,
-   "langchain_blog": 7,
-   "fabric_blog": 5,
-   "sqlbi": 2,
-   "powerbi_blog": 2
+   "langchain_blog": 8,
+   "fabric_blog": 6,
+   "sqlbi": 2
   },
   "date_flags": [
    {
@@ -13413,10 +13714,10 @@
    },
    {
     "source_id": "databricks_blog",
-    "items": 6,
+    "items": 5,
     "from": "2026-11-11T15:00:00Z",
     "to": "2026-11-11T16:00:00Z",
-    "message": "6 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
+    "message": "5 items binnen 3 uur gedateerd; mogelijk een herpublicatie, controleer de datum bij de bron."
    },
    {
     "source_id": "langchain_blog",
@@ -13437,9 +13738,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 153
+   "skipped_no_key": 147
   },
-  "queue_size": 40,
+  "queue_size": 38,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -13994,6 +14295,14 @@
     "excluded_by": []
    },
    {
+    "title": "The Enterprise Case for Open-Weight Models on Databricks",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/enterprise-case-open-weight-models-databricks",
+    "relevance_score": 74,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "What Databricks is doing with Genie for Business Users",
     "source_id": "simon_whiteley",
     "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
@@ -14014,14 +14323,6 @@
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Microsoft-Snowflake-s-Commitment-to-Apache-Ossie/ba-p/5369534",
     "relevance_score": 74,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
-    "relevance_score": 73,
     "decision": "included",
     "excluded_by": []
    }

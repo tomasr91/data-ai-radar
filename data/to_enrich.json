@@ -1,129 +1,7 @@
 {
- "generated_at": "2026-11-12T03:13:28.207125Z",
+ "generated_at": "2026-11-12T03:31:53.760503Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "9faf7642734c",
-   "title": "Use OneLake as native storage for Azure Databricks (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Preview/ba-p/5377939",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-11T12:13:55Z",
-   "excerpt": "Organizations increasingly use Microsoft Fabric and Azure Databricks together so teams can choose the tools that best fit their data engineering, analytics, and AI workloads while working from a common data foundation. OneLake external-location support for Azure Databricks Unity Catalog is now generally available in Microsoft Fabric, with OneLake Security enabled by default for Azure Databricks Storage items. On the Azure Databricks side, the feature is in preview. With this integration, supported Unity Catalog-managed data can be stored directly in OneLake. To understand the setup and supported scenarios, Connect Azure Databricks to a OneLake external location . Why this matters Data teams often need Azure Databricks and Microsoft Fabric in the same architecture. Without a shared storage approach, organizations may create copies of the same data for different platforms, introduce pipelines whose primary purpose is synchronization, and manage access independently across multiple storage locations. Using OneLake as managed storage for supported Unity Catalog objects gives organizations a common physical data foundation while preserving flexibility in the services used above it. Azur",
-   "preliminary_score": 78,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "225ab7984001",
-   "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-03T20:00:00Z",
-   "excerpt": "Access more Unity Catalog objects through the existing mirrored catalog experience in Microsoft Fabric We are expanding Mirrored Azure Databricks catalogs in Microsoft Fabric to support materialized views and streaming tables alongside tables. These objects remain created and managed in Azure Databricks, while Fabric provides read-only access to the underlying data through shortcuts. This brings more of your Unity Catalog environment into Fabric without copying or replicating the data. What's new A Mirrored Azure Databricks catalog can now include support: Tables Materialized views Streaming tables When configuring the mirrored catalog, select the Unity Catalog catalogs, schemas, and supported objects you want to make available in Fabric. Fabric mirrors the selected catalog structure and creates shortcuts to the underlying data. This enhancement uses the existing Mirrored Azure Databricks catalog item and configuration workflow. There is no separate Fabric item type for materialized views or streaming tables. Why this matters Materialized views store precomputed results that can simplify recurring analytical queries. Streaming tables continuously process incoming data and maintain ",
-   "preliminary_score": 73,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs",
-    "data_ingestion"
-   ]
-  },
-  {
-   "id": "6ded4aa1cdcf",
-   "title": "Making the economic case for warehouse-first AI context",
-   "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-11-11T13:00:00Z",
-   "excerpt": "AI agents can take years to pay off, but token bills arrive every month. Here’s how we dramatically reduced token costs.",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "c37e1b21a6c6",
-   "title": "A letter from our founders",
-   "url": "https://www.getdbt.com/blog/founders-letter",
-   "source_id": "dbt_labs_blog",
-   "source_name": "dbt Labs Blog",
-   "published_at": "2026-11-11T00:00:00Z",
-   "excerpt": "Our founders on the age of intelligence: agents, open data infrastructure, and the humans building the agentic future.",
-   "preliminary_score": 57,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "0f8380eb8c98",
-   "title": "Announcing the retirement of R and Python visuals in Power BI",
-   "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Announcing-the-retirement-of-R-and-Python-visuals-in-Power-BI/ba-p/5400748",
-   "source_id": "powerbi_blog",
-   "source_name": "Microsoft Power BI Blog",
-   "published_at": "2026-11-09T19:00:39Z",
-   "excerpt": "The built-in R and Python visuals in Power BI will retire in May 2027 . What changes This retirement applies only to R and Python visuals in interactive Power BI reports. Python scripts used in Power Query to populate tables are not affected. Power BI service: At retirement, all R and Python visuals will stop working in published reports, including those published before retirement. R-powered custom visuals: Custom visuals that use R will also no longer work at retirement. Older versions of Power BI Desktop: These visuals will continue to work locally using R and Python installed on your machine. Future versions of Power BI Desktop: After retirement, R and Python visuals will be removed, so you won't be able to add them to reports. What you need to do No migration within your report will recreate your exact R or Python visual. You must replace it with a different visualization before retirement. Start reviewing your reports for R and Python visuals and communicate within your organization that reports using them will be impacted. Preserve their scripts and dependencies. If you use Power BI project (PBIP) format and Git-integrated workspaces , search your report definitions in sourc",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "b22522d14a17",
-   "title": "BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model",
-   "url": "https://huggingface.co/blog/qvac/botpsy",
-   "source_id": "huggingface_blog",
-   "source_name": "Hugging Face Blog",
-   "published_at": "2026-11-11T05:01:16Z",
-   "excerpt": "",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "656e0d953ae9",
-   "title": "Announcing GA of Genie Ontology",
-   "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-11T15:00:00Z",
-   "excerpt": "AI agents are only as useful as their understanding of the business in which they work. Within a given domain...",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "f1911b997c8c",
-   "title": "Bring your business context to ChatGPT, Claude, Microsoft Copilot Cowork and Grok Bot",
-   "url": "https://www.databricks.com/blog/bring-your-business-context-chatgpt-claude-microsoft-copilot-cowork-and-grok-bot",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-11T15:00:00Z",
-   "excerpt": "Every business is adding more data to their AI-powered workflows. But more data doesn't...",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "claude_ai_development"
-   ]
-  },
-  {
-   "id": "8b7855abcc2d",
-   "title": "What Is Eval-Driven Development? How to Improve AI Agents",
-   "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-09T18:57:45Z",
-   "excerpt": "Eval-driven development helps you build AI agents against a consistent set of metrics. Define good behavior, write the eval first, then compare experiments.",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
   {
    "id": "18362005d94c",
    "title": "LangSmith BYOC on AWS is generally available",
@@ -544,6 +422,99 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "d33525fc8eb0",
+   "title": "More ways to use scalar UDFs in Microsoft Fabric Data Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/More-ways-to-use-scalar-UDFs-in-Microsoft-Fabric-Data-Warehouse/ba-p/5376708",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-28T17:00:00Z",
+   "excerpt": "Scalar user-defined functions (UDFs) let data teams define a business rule once and reuse it across workloads in both Warehouse and the SQL analytics endpoint in Microsoft Fabric. This helps teams maintain consistent logic without duplicating it across queries. Some business rules require more than a single expression. They use procedural logic such as conditional branches, multiple RETURN statements, or WHILE loops. Expression Block inlining compiles and executes this logic in a distributed manner, helping reusable functions scale across analytical workloads. Building on that foundation, this update brings several improvements: More natural loop control and broader query-shape support. Automatic adoption of newly supported capabilities by existing functions, without recreating or altering them. Inlineability validation for new or changed functions, with diagnostics that explain any gaps and an explicit WITH INLINE = AUTO override when a non-inlineable function is acceptable. Express loop intent with BREAK and CONTINUE Loops often need to skip the rest of the current iteration or stop processing entirely. Without CONTINUE and BREAK, developers typically rely on extra flags, nested ",
+   "preliminary_score": 61,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "c6d7e860d2ee",
+   "title": "Securing and governing your medallion layers in Fabric Data Warehouse",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Securing-and-governing-your-medallion-layers-in-Fabric-Data/ba-p/5377539",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-09T21:32:00Z",
+   "excerpt": "Coauthor - Artur Vieira Part 4 of a series on medallion architecture with Fabric Data Warehouse. Security should follow the layers, not fight them. In Part 1 we chose the pattern, in Part 2 we built the layers, and in Part 3 we covered the operating practices that keep them healthy. Security is the natural next step, because a medallion architecture already gives you something most platforms do not: three clearly different audiences. A medallion architecture creates clear boundaries between raw, refined, and curated data. Applying security and governance at those boundaries helps reduce unnecessary exposure, simplify access decisions, and give each audience the data it needs without opening every layer.. The following approach shows how to secure and govern a medallion pipeline in Fabric Data Warehouse. Why this matters Most access problems in analytics platforms are not dramatic breaches. They are cases of unnecessary access, such as an analyst who can read raw customer records because the entire warehouse was shared or a service account with more permissions than its task requires. A medallion architecture simplifies this work because each layer already signals a different level ",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "data_architecture_modeling"
+   ]
+  },
+  {
+   "id": "392fd68ef936",
+   "title": "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Strengthening-data-security-with-workspace-level-private/ba-p/5377347",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T21:00:00Z",
+   "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
+   "preliminary_score": 59,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "data_ingestion"
+   ]
+  },
+  {
+   "id": "9a9695e2cb4b",
+   "title": "Unifying SQL Pools: Upcoming changes to UI and APIs",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Unifying-SQL-Pools-Upcoming-changes-to-UI-and-APIs/ba-p/5397390",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-09T17:00:00Z",
+   "excerpt": "SQL pools are Fabric Data Warehouse’s built-in workload management capability. They help administrators organize workloads and control how compute resources are allocated across them. SQL pool configurations are represented differently depending on whether a workspace uses the built-in or custom pool model. With unified SQL pools, we’re removing that distinction and representing all pools through a single configuration model across the UI and APIs. This removes the need to switch between built-in and custom modes, making SQL pool configurations easier to understand and manage consistently across the UI and APIs. What's changing and when This blog provides advance notice of upcoming changes to SQL pool configuration management in Fabric Data Warehouse. We're introducing a unified configuration model that removes the distinction between built-in and custom SQL pools. By mid-December 2026: Customers should stop relying on customSQLPoolsEnabled flag to retrieve previously submitted inactive pool configurations. With unification, GET APIs will return only effective configurations, and inactive configurations will no longer be surfaced in the UI or APIs. Beginning January 2027 : New work",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "5f209baed0bf",
+   "title": "From a prompt to an operational dashboard: Generate Real-Time Dashboards with Copilot (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/From-a-prompt-to-an-operational-dashboard-Generate-Real-Time/ba-p/5380258",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-02T20:00:00Z",
+   "excerpt": "Start with the question, not a blank dashboard Which transit stations are sending the most fans toward a stadium? How does that incoming demand compare with activity at the gates? Where are queues building? Answering these operational questions traditionally requires translating them into tables, queries, visualizations, and a dashboard layout. When you already know what you want to monitor, that setup can get in the way of the question you are trying to answer. Copilot in Microsoft Fabric can generate a Real-Time Dashboard from a natural-language description of the insights you want. Working with a selected database in an Eventhouse, it uses the tables in that database to create a dashboard tailored to your goal. Figure: Start generating a Real-Time Dashboard with Copilot from an Eventhouse database . Rather than beginning with an empty canvas and building each visual separately, you describe the operational view you need. Copilot helps create the initial dashboard, and you review and customize it for your team. Describe, refine, and create Copilot can already help you write KQL queries and edit individual dashboard tiles. With dashboard generation, you can start one level higher:",
+   "preliminary_score": 47,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "1108578f6cfd",
+   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T19:00:00Z",
+   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "42961f224d85",
+   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-10-29T17:00:00Z",
+   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
    ]
   }
  ]
