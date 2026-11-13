@@ -1,0 +1,83 @@
+{
+ "format_version": 2,
+ "article_id": "d5f14a6242b0",
+ "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
+ "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+ "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
+ "story": [
+  "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
+  "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
+  "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
+  "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
+  "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
+ ],
+ "key_facts": [
+  "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
+  "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
+  "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
+  "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
+  "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
+  "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
+ ],
+ "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
+ "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
+ "limitations": [
+  "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
+  "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
+  "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Choosing the right model",
+   "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+  }
+ ],
+ "topics": [
+  "claude_ai_development"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.7,
+  "novelty": 0.55
+ },
+ "development_key": "claude-opus-5-5-modelkeuze-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.7,
+  "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
+ },
+ "labels": [
+  "claude-modellen",
+  "claude-effort",
+  "claude-code-subagents",
+  "claude-code-kosten"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "effort",
+   "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+  },
+  {
+   "term": "SWE-bench Pro",
+   "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
+  },
+  {
+   "term": "subagent",
+   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+  }
+ ],
+ "showcase": {
+  "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
+  "language": "text",
+  "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
+  "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-13T04:10:00Z",
+ "prompt_version": "taak-v2"
+}

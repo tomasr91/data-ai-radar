@@ -1,0 +1,90 @@
+{
+ "format_version": 2,
+ "article_id": "5b59c75a11e5",
+ "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
+ "headline": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet",
+ "summary": "Anthropic laat bedrijven Claude Managed Agents zelf hosten: de agentserver, de sessiegeschiedenis, de sandboxes en de sleutels blijven in de eigen cloud of het eigen datacenter. Alleen de modelaanroepen gaan nog naar buiten. Het is een private bèta.",
+ "story": [
+  "Claude Managed Agents is de dienst van Anthropic die agents laat draaien die zelfstandig werken, bijvoorbeeld builds repareren of meldingen uitzoeken. Tot nu toe kon je alleen de sandbox zelf hosten: de plek waar de agent code en commando's uitvoert. De rest, zoals de sessiegeschiedenis en de sleutels, beheerde Anthropic. Sinds 12 november kan een bedrijf ook die rest zelf draaien, in een private bèta.",
+  "Hoe ziet dat eruit? Bij jou draaien de agentserver, een PostgreSQL-database met de sessiegeschiedenis en de workers waar de tools draaien. Sleutels kunnen in je eigen secret manager blijven. Het enige wat naar buiten gaat, zijn de vragen aan het model zelf. Die kun je naar Anthropic sturen, maar ook naar Amazon Bedrock, Google, Microsoft Foundry of een eigen gateway.",
+  "De opzet scheidt de harness van de sandbox. De harness is het deel dat Claude aanroept en de geschiedenis bijhoudt; de sandbox is alleen de werkplaats. Sleutels komen nooit in de sandbox: een proxy daarbuiten zet de sleutel pas op het verzoek als de agent een MCP-tool of een ondersteunde API aanroept. Het lijkt op een balie die namens jou belt, zonder dat jij het nummer kent. Daarnaast bepaal je per omgeving naar welke hosts een agent mag, en elke stap wordt gelogd en is te exporteren via OpenTelemetry.",
+  "Zelf hosten betekent ook zelf beheren, en niet alles werkt hetzelfde. Volgens de documentatie zijn onder meer de Files API, webhooks, geplande runs en de kant-en-klare skills voor Word, PDF, PowerPoint en Excel er niet. MCP-servers, Git-hosts en webtools staan standaard uit tot je ze in een instellingenbestand toestaat.",
+  "Voor een zorgorganisatie is dit vooral een verschuiving in wat binnen blijft: geschiedenis, sleutels en logs. De prompts zelf gaan nog steeds naar een model buiten de deur. Daarmee blijft de regel staan dat werkdata niet naar externe AI mag."
+ ],
+ "key_facts": [
+  "Aangekondigd op 12 november 2026; self-hosted Claude Managed Agents is een private bèta, toegang via het Anthropic-accountteam.",
+  "Bij de klant draaien de Managed Agents-server, een PostgreSQL-database met sessiegeschiedenis en de workers met de sandbox; credentials kunnen in de eigen secret manager.",
+  "Modelaanroepen gaan naar Anthropic, Amazon Bedrock, Google, Microsoft Foundry of een eigen model-gateway.",
+  "Credentials komen niet in de sandbox; een proxy voegt ze toe bij MCP-tools en ondersteunde API-aanroepen. Andere diensten zijn daar niet door beschermd.",
+  "Niet beschikbaar op de eigen server: cloud-omgevingen, de Files API, webhooks, geplande runs en de kant-en-klare skills docx, pdf, pptx en xlsx.",
+  "MCP-servers, Git-hosts en webtools staan standaard uit; je zet ze aan met een allowlist in het instellingenbestand. Logs zijn te exporteren via OpenTelemetry."
+ ],
+ "personal_relevance": "Het laat zien welke delen van een agent je binnen je eigen muren kunt houden, en welk deel (de prompts naar het model) altijd naar buiten gaat.",
+ "experiment": "Teken voor een eigen agentidee (bijv. een agent die dbt-documentatie in een testproject bijwerkt) wat er in deze opzet waar zou draaien: harness, sandbox, sleutels, logs en model. Markeer welke stappen data naar buiten sturen. Gebruik alleen verzonnen voorbeelddata.",
+ "limitations": [
+  "Private bèta voor bedrijven via het accountteam; niet om zelf even te proberen.",
+  "De prompts en antwoorden gaan nog steeds naar een model buiten je netwerk.",
+  "Je beheert, patcht en beveiligt server, database en firewall zelf, en een aantal functies van de gehoste dienst ontbreekt."
+ ],
+ "availability_status": "preview",
+ "official_docs": [
+  {
+   "label": "Verschillen met de gehoste dienst",
+   "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted/differences"
+  },
+  {
+   "label": "Help Net Security over de lancering",
+   "url": "https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "ai_agents_rag",
+  "data_governance_privacy"
+ ],
+ "quality": {
+  "depth": 0.65,
+  "practicality": 0.35,
+  "novelty": 0.7
+ },
+ "development_key": "claude-managed-agents-self-hosted-nov-2026",
+ "date_note": "Het originele Anthropic-artikel kon niet worden geopend; de uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.55,
+  "why": "Claude-agentnieuws met veiligheidsdetails, zoals je sandbox-duim, maar ver van je eigen dbt-werk."
+ },
+ "labels": [
+  "claude-managed-agents",
+  "agent-sandbox",
+  "agent-beveiliging"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "sandbox",
+   "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+  },
+  {
+   "term": "harness",
+   "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+  },
+  {
+   "term": "secret manager",
+   "explanation": "Een beveiligde kluis voor wachtwoorden en sleutels, zodat programma's ze kunnen opvragen zonder dat ze in code of bestanden staan."
+  },
+  {
+   "term": "workers",
+   "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox."
+  },
+  {
+   "term": "OpenTelemetry",
+   "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-13T04:05:00Z",
+ "prompt_version": "taak-v2"
+}
