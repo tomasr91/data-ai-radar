@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-13T05:14:48.018402Z",
+ "generated_at": "2026-11-13T06:30:24.232700Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-13T04:10:00Z",
@@ -467,10 +467,10 @@
     "ai_context",
     "databricks"
    ],
-   "relevance_score": 97,
+   "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
@@ -599,7 +599,7 @@
     "dbt",
     "agents"
    ],
-   "relevance_score": 96,
+   "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.92,
@@ -3090,7 +3090,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.8,
     "quality": 0.57,
     "fit": 0.2
@@ -3238,91 +3238,6 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -5
-   }
-  },
-  {
-   "id": "215f0a50b9ea",
-   "title": "Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data",
-   "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
-   "source_id": "chris_webb",
-   "published_at": "2026-11-01T09:30:00Z",
-   "fetched_at": "2026-11-01T09:33:59.422669Z",
-   "summary": "Chris Webb vindt de koppeling van M365 Copilot met Power BI-modellen de makkelijkste en goedkoopste start voor vragen in gewone taal.",
-   "personal_relevance": "Je semantische modellen worden de bron voor vragen in gewone taal; dat maakt goede definities nog belangrijker.",
-   "experiment": "Zet synoniemen en AI-instructies in een oefenmodel met verzonnen data en kijk welke vragen Copilot daardoor beter beantwoordt.",
-   "limitations": [
-    "Webb werkt bij Microsoft; het stuk is geschreven vanuit dat perspectief.",
-    "Welke licentie precies nodig is, staat niet helemaal eenduidig in het stuk.",
-    "Copilot is een externe AI-dienst: alleen met data waarvoor dat binnen de interne regels is toegestaan."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "powerbi_semantic_models",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "overig",
-    "ai_context"
-   ],
-   "relevance_score": 84,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.56,
-    "source": 0.68,
-    "quality": 0.55,
-    "feedback": 0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:43:29Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
-   "story": [
-    "Chris Webb werkt bij Microsoft en schrijft al jaren over Power BI. Hij vindt dat organisaties die veel met Power BI werken hun 'chat met je data' moeten beginnen bij M365 Copilot. De koppeling van M365 Copilot en Cowork met semantische modellen is nu algemeen beschikbaar.",
-    "Zijn belangrijkste argument: er verandert alleen de voorkant. Gebruikers stellen hun vraag in Copilot, bijvoorbeeld in Excel of de browser, in plaats van in Power BI zelf. Het semantisch model met de bedrijfslogica blijft hetzelfde. Wat je eerder deed om het model klaar te maken voor AI, zoals synoniemen en AI-instructies, blijft dus nuttig.",
-    "Webb noemt ook de kosten. Volgens hem betaal je bij een Pro- of PPU-werkruimte niets extra voor de vragen, naast de licentie. Daarnaast kan Copilot cijfers combineren met mails en vergaderverslagen uit Work IQ, om uit te leggen waarom iets gebeurde.",
-    "Voor jou is de kern bekend: een goed semantisch model is de context voor AI. Let wel op zijn belang, want hij werkt bij Microsoft. En in de zorg mag Copilot alleen bij data waarvoor dat binnen de interne regels is toegestaan; Work IQ leest bovendien mails en verslagen mee. Databricks noemt hij niet."
-   ],
-   "key_facts": [
-    "Webb: organisaties die veel Power BI gebruiken, moeten 'chat met je data' beginnen met de M365 Copilot- en Cowork-koppeling met Power BI-semantische modellen.",
-    "Webb: de koppeling is aangekondigd in juli 2026 en nu algemeen beschikbaar.",
-    "Webb: eerdere AI-voorbereiding van het model, zoals synoniemen en AI-instructies, blijft relevant.",
-    "Webb: bij Pro- of PPU-werkruimten zijn er geen extra kosten voor de vragen naast de licentie; op capaciteit tellen alleen de CU's van de DAX-queries.",
-    "Webb noemt Fabric Data Agents en Ontologies krachtig, maar raadt ze niet aan als startpunt.",
-    "Gepubliceerd 1 november 2026."
-   ],
-   "article_type": "opinie",
-   "author": "Chris Webb, Microsoft-medewerker en al jaren een bekende Power BI-auteur en blogger",
-   "terms": [
-    {
-     "term": "M365 Copilot",
-     "explanation": "De AI-assistent van Microsoft in Office-programma's zoals Excel, Outlook en Teams."
-    },
-    {
-     "term": "Work IQ",
-     "explanation": "De laag in Microsoft 365 die werkcontext zoals mails en vergaderverslagen aan Copilot geeft."
-    },
-    {
-     "term": "PPU",
-     "explanation": "Premium Per User: een Power BI-licentie per persoon met Premium-functies, zonder dat je een hele capaciteit koopt."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.55,
-    "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
-   },
-   "labels": [
-    "copilot-power-bi",
-    "semantische-laag-ai"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
    }
   },
   {
@@ -4030,6 +3945,91 @@
    }
   },
   {
+   "id": "215f0a50b9ea",
+   "title": "Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data",
+   "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
+   "source_id": "chris_webb",
+   "published_at": "2026-11-01T09:30:00Z",
+   "fetched_at": "2026-11-01T09:33:59.422669Z",
+   "summary": "Chris Webb vindt de koppeling van M365 Copilot met Power BI-modellen de makkelijkste en goedkoopste start voor vragen in gewone taal.",
+   "personal_relevance": "Je semantische modellen worden de bron voor vragen in gewone taal; dat maakt goede definities nog belangrijker.",
+   "experiment": "Zet synoniemen en AI-instructies in een oefenmodel met verzonnen data en kijk welke vragen Copilot daardoor beter beantwoordt.",
+   "limitations": [
+    "Webb werkt bij Microsoft; het stuk is geschreven vanuit dat perspectief.",
+    "Welke licentie precies nodig is, staat niet helemaal eenduidig in het stuk.",
+    "Copilot is een externe AI-dienst: alleen met data waarvoor dat binnen de interne regels is toegestaan."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "powerbi_semantic_models",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "overig",
+    "ai_context"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.56,
+    "source": 0.68,
+    "quality": 0.55,
+    "feedback": 0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak, inhaalrun)",
+   "processed_at": "2026-11-04T06:43:29Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
+   "story": [
+    "Chris Webb werkt bij Microsoft en schrijft al jaren over Power BI. Hij vindt dat organisaties die veel met Power BI werken hun 'chat met je data' moeten beginnen bij M365 Copilot. De koppeling van M365 Copilot en Cowork met semantische modellen is nu algemeen beschikbaar.",
+    "Zijn belangrijkste argument: er verandert alleen de voorkant. Gebruikers stellen hun vraag in Copilot, bijvoorbeeld in Excel of de browser, in plaats van in Power BI zelf. Het semantisch model met de bedrijfslogica blijft hetzelfde. Wat je eerder deed om het model klaar te maken voor AI, zoals synoniemen en AI-instructies, blijft dus nuttig.",
+    "Webb noemt ook de kosten. Volgens hem betaal je bij een Pro- of PPU-werkruimte niets extra voor de vragen, naast de licentie. Daarnaast kan Copilot cijfers combineren met mails en vergaderverslagen uit Work IQ, om uit te leggen waarom iets gebeurde.",
+    "Voor jou is de kern bekend: een goed semantisch model is de context voor AI. Let wel op zijn belang, want hij werkt bij Microsoft. En in de zorg mag Copilot alleen bij data waarvoor dat binnen de interne regels is toegestaan; Work IQ leest bovendien mails en verslagen mee. Databricks noemt hij niet."
+   ],
+   "key_facts": [
+    "Webb: organisaties die veel Power BI gebruiken, moeten 'chat met je data' beginnen met de M365 Copilot- en Cowork-koppeling met Power BI-semantische modellen.",
+    "Webb: de koppeling is aangekondigd in juli 2026 en nu algemeen beschikbaar.",
+    "Webb: eerdere AI-voorbereiding van het model, zoals synoniemen en AI-instructies, blijft relevant.",
+    "Webb: bij Pro- of PPU-werkruimten zijn er geen extra kosten voor de vragen naast de licentie; op capaciteit tellen alleen de CU's van de DAX-queries.",
+    "Webb noemt Fabric Data Agents en Ontologies krachtig, maar raadt ze niet aan als startpunt.",
+    "Gepubliceerd 1 november 2026."
+   ],
+   "article_type": "opinie",
+   "author": "Chris Webb, Microsoft-medewerker en al jaren een bekende Power BI-auteur en blogger",
+   "terms": [
+    {
+     "term": "M365 Copilot",
+     "explanation": "De AI-assistent van Microsoft in Office-programma's zoals Excel, Outlook en Teams."
+    },
+    {
+     "term": "Work IQ",
+     "explanation": "De laag in Microsoft 365 die werkcontext zoals mails en vergaderverslagen aan Copilot geeft."
+    },
+    {
+     "term": "PPU",
+     "explanation": "Premium Per User: een Power BI-licentie per persoon met Premium-functies, zonder dat je een hele capaciteit koopt."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.55,
+    "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
+   },
+   "labels": [
+    "copilot-power-bi",
+    "semantische-laag-ai"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
    "id": "6ee1dee33e4b",
    "title": "Hide your slop PR descriptions behind <details><summary>",
    "url": "https://simonwillison.net/2026/Nov/9/details-summary/",
@@ -4562,102 +4562,6 @@
    }
   },
   {
-   "id": "f5c90621cdfb",
-   "title": "New context engineering challenges in late 2026",
-   "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026",
-   "source_id": "langchain_blog",
-   "published_at": "2026-11-02T17:12:41Z",
-   "fetched_at": "2026-11-03T08:37:24.809098Z",
-   "summary": "LangChain-oprichter Harrison Chase vindt dat de bouw van agents niet 'af' is. Nu agents op de achtergrond blijven draaien en doelen najagen, ontstaan volgens hem zes nieuwe problemen, van geheugen tot doelen die vals spelen uitlokken.",
-   "personal_relevance": "Als je een agent naar een doel laat werken, zoals 'alle tests groen', moet je zelf vastleggen wat niet mag.",
-   "experiment": "Geef Claude Code in een oefenproject met een openbare dbt-demo de opdracht 'zorg dat dbt test slaagt', met een expres foute test erin. Kijk of hij de data, de test of de configuratie aanpast, en schrijf daarna een regel in CLAUDE.md die tests uitzetten verbiedt.",
-   "limitations": [
-    "Chase is CEO van LangChain en verwijst vooral naar producten van zijn eigen bedrijf.",
-    "Het stuk geeft geen cijfers, experimenten of oplossingen; het zijn open vragen.",
-    "Het voorbeeld van de verwijderde codebase is een denkvoorbeeld, geen gemeld incident."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Origineel artikel",
-     "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "ai_context",
-    "agents"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.59,
-    "source": 0.51,
-    "quality": 0.48,
-    "feedback": 0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-04T04:00:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Chase: altijd-actieve agents brengen zes nieuwe contextproblemen",
-   "story": [
-    "Bijna iedereen bouwt agents nu op dezelfde manier: een taalmodel in een lus, dat tools aanroept in een afgeschermde omgeving (sandbox). Sommige ontwikkelaars denken daarom dat het moeilijke werk klaar is. Harrison Chase, oprichter en CEO van LangChain, is het daar niet mee eens.",
-    "Volgens Chase zijn de bekende technieken inmiddels standaard: lange gesprekken samenvatten, grote toolresultaten wegschrijven, skills en tool search. Maar agents veranderen. Ze draaien voortaan op de achtergrond, reageren op gebeurtenissen en werken naar een doel toe. Dat geeft nieuwe problemen.",
-    "Hij noemt er zes. Een agent moet zelf contact opnemen zonder te storen. Geheugen is lastig omdat je moet kiezen wat je onthoudt: niets of juist alles zijn allebei fout. Lang lopend werk gaat asynchroon, en dan is de vraag hoe een resultaat terugkomt bij een hoofdagent die al verder is. Verder: doelen lang volhouden, doelen zo stellen dat de agent niet vals speelt, en een browser als tool, die veel groter en rommeliger is dan een terminal.",
-    "Zijn voorbeeld van vals spelen is sprekend: vraag een agent 'haal alle bugs uit de code', en hij kan de hele code weggooien. Geen code, geen bugs. Voor een agent die datakwaliteit bewaakt geldt hetzelfde: 'zorg dat alle dbt-tests slagen' kan ook betekenen dat hij tests uitzet. Een vaste controle buiten de agent blijft dus nodig.",
-    "Het stuk is een lijst met open vragen, geen oplossing. Er staan geen cijfers of code in, en Chase verwijst vooral naar functies van LangChain zelf. Als kaart van wat er komt, is het wel bruikbaar."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 2 november 2026 door Harrison Chase, CEO van LangChain.",
-    "Chase: de standaardarchitectuur is een LLM in een lus die tools aanroept in een sandbox; samenvatten, toolresultaten uitbesteden, skills, tool search, subagents en bash noemt hij standaardtechnieken.",
-    "Chase: er is een sprong gaande naar proactieve, altijd actieve, doelgerichte agents.",
-    "Zijn zes uitdagingen: proactief zijn zonder te storen, geheugen, asynchroniteit, doelen volgen, alignment (doelen zonder vals spelen) en browsergebruik.",
-    "Over geheugen: de datastructuur is meestal eenvoudig; het moeilijke deel is bepalen wat je onthoudt.",
-    "Voorbeeld van Chase: bij 'verwijder alle bugs' kan een agent de hele codebase verwijderen."
-   ],
-   "article_type": "opinie",
-   "author": "Harrison Chase, oprichter en CEO van LangChain",
-   "terms": [
-    {
-     "term": "sandbox",
-     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
-    },
-    {
-     "term": "tool search",
-     "explanation": "Een agent zoekt eerst welke tool hij nodig heeft en laadt alleen die, in plaats van honderden toolbeschrijvingen tegelijk mee te nemen."
-    },
-    {
-     "term": "asynchroon",
-     "explanation": "Werk dat op de achtergrond doorloopt terwijl de agent iets anders doet; het resultaat komt later terug."
-    },
-    {
-     "term": "skills",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.55,
-    "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."
-   },
-   "labels": [
-    "agent-geheugen",
-    "altijd-actieve-agents"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "f2cef2be2ab7",
    "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
@@ -4699,7 +4603,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 0.9,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.1,
@@ -4932,6 +4836,102 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -3
+   }
+  },
+  {
+   "id": "f5c90621cdfb",
+   "title": "New context engineering challenges in late 2026",
+   "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-02T17:12:41Z",
+   "fetched_at": "2026-11-03T08:37:24.809098Z",
+   "summary": "LangChain-oprichter Harrison Chase vindt dat de bouw van agents niet 'af' is. Nu agents op de achtergrond blijven draaien en doelen najagen, ontstaan volgens hem zes nieuwe problemen, van geheugen tot doelen die vals spelen uitlokken.",
+   "personal_relevance": "Als je een agent naar een doel laat werken, zoals 'alle tests groen', moet je zelf vastleggen wat niet mag.",
+   "experiment": "Geef Claude Code in een oefenproject met een openbare dbt-demo de opdracht 'zorg dat dbt test slaagt', met een expres foute test erin. Kijk of hij de data, de test of de configuratie aanpast, en schrijf daarna een regel in CLAUDE.md die tests uitzetten verbiedt.",
+   "limitations": [
+    "Chase is CEO van LangChain en verwijst vooral naar producten van zijn eigen bedrijf.",
+    "Het stuk geeft geen cijfers, experimenten of oplossingen; het zijn open vragen.",
+    "Het voorbeeld van de verwijderde codebase is een denkvoorbeeld, geen gemeld incident."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Origineel artikel",
+     "url": "https://www.langchain.com/blog/context-engineering-challenges-late-2026"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.59,
+    "source": 0.51,
+    "quality": 0.48,
+    "feedback": 0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-04T04:00:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Chase: altijd-actieve agents brengen zes nieuwe contextproblemen",
+   "story": [
+    "Bijna iedereen bouwt agents nu op dezelfde manier: een taalmodel in een lus, dat tools aanroept in een afgeschermde omgeving (sandbox). Sommige ontwikkelaars denken daarom dat het moeilijke werk klaar is. Harrison Chase, oprichter en CEO van LangChain, is het daar niet mee eens.",
+    "Volgens Chase zijn de bekende technieken inmiddels standaard: lange gesprekken samenvatten, grote toolresultaten wegschrijven, skills en tool search. Maar agents veranderen. Ze draaien voortaan op de achtergrond, reageren op gebeurtenissen en werken naar een doel toe. Dat geeft nieuwe problemen.",
+    "Hij noemt er zes. Een agent moet zelf contact opnemen zonder te storen. Geheugen is lastig omdat je moet kiezen wat je onthoudt: niets of juist alles zijn allebei fout. Lang lopend werk gaat asynchroon, en dan is de vraag hoe een resultaat terugkomt bij een hoofdagent die al verder is. Verder: doelen lang volhouden, doelen zo stellen dat de agent niet vals speelt, en een browser als tool, die veel groter en rommeliger is dan een terminal.",
+    "Zijn voorbeeld van vals spelen is sprekend: vraag een agent 'haal alle bugs uit de code', en hij kan de hele code weggooien. Geen code, geen bugs. Voor een agent die datakwaliteit bewaakt geldt hetzelfde: 'zorg dat alle dbt-tests slagen' kan ook betekenen dat hij tests uitzet. Een vaste controle buiten de agent blijft dus nodig.",
+    "Het stuk is een lijst met open vragen, geen oplossing. Er staan geen cijfers of code in, en Chase verwijst vooral naar functies van LangChain zelf. Als kaart van wat er komt, is het wel bruikbaar."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 2 november 2026 door Harrison Chase, CEO van LangChain.",
+    "Chase: de standaardarchitectuur is een LLM in een lus die tools aanroept in een sandbox; samenvatten, toolresultaten uitbesteden, skills, tool search, subagents en bash noemt hij standaardtechnieken.",
+    "Chase: er is een sprong gaande naar proactieve, altijd actieve, doelgerichte agents.",
+    "Zijn zes uitdagingen: proactief zijn zonder te storen, geheugen, asynchroniteit, doelen volgen, alignment (doelen zonder vals spelen) en browsergebruik.",
+    "Over geheugen: de datastructuur is meestal eenvoudig; het moeilijke deel is bepalen wat je onthoudt.",
+    "Voorbeeld van Chase: bij 'verwijder alle bugs' kan een agent de hele codebase verwijderen."
+   ],
+   "article_type": "opinie",
+   "author": "Harrison Chase, oprichter en CEO van LangChain",
+   "terms": [
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "tool search",
+     "explanation": "Een agent zoekt eerst welke tool hij nodig heeft en laadt alleen die, in plaats van honderden toolbeschrijvingen tegelijk mee te nemen."
+    },
+    {
+     "term": "asynchroon",
+     "explanation": "Werk dat op de achtergrond doorloopt terwijl de agent iets anders doet; het resultaat komt later terug."
+    },
+    {
+     "term": "skills",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.55,
+    "why": "Mening over het harnas rond agents, zoals Noonans stuk, maar zonder dbt-koppeling of praktijkvoorbeeld."
+   },
+   "labels": [
+    "agent-geheugen",
+    "altijd-actieve-agents"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
    }
   },
   {
@@ -5726,7 +5726,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.05,
@@ -5827,7 +5827,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.51,
     "quality": 0.62,
     "feedback": -0.04,
@@ -6974,7 +6974,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.01,
@@ -7266,7 +7266,7 @@
    "relevance_score": 71,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.17,
+    "recency": 0.16,
     "source": 0.68,
     "quality": 0.53,
     "feedback": -0.03,
@@ -7325,57 +7325,6 @@
     "name": "aankondiging",
     "pts": -3
    }
-  },
-  {
-   "id": "6eafeb6028b4",
-   "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
-   "source_id": "fabric_blog",
-   "published_at": "2026-11-03T17:00:00Z",
-   "fetched_at": "2026-11-04T03:13:57.709960Z",
-   "summary": "Microsoft zet de bestaande manieren op een rij om Databricks- en Snowflake-data in Fabric te gebruiken: mirroring, shortcuts, DirectQuery of kopiëren met pipelines. Een tabel zegt per situatie of de data gekopieerd wordt en waarvoor elke optie het best past.",
-   "availability_status": "onbekend",
-   "topics": [
-    "data_architecture_modeling",
-    "data_ingestion",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "architectuur",
-    "databricks"
-   ],
-   "relevance_score": 69,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.62,
-    "source": 0.6,
-    "quality": 0.37,
-    "feedback": -0.07,
-    "fit": -0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-06T03:21:27Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
-   "learning": "Data ingestion",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.4,
-    "why": "Overzicht van bestaande opties zonder code; je duimen gaan naar concretere stukken."
-   },
-   "labels": [
-    "onelake-databricks",
-    "fabric-mirroring"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -7
-   },
-   "diepte": "kort"
   },
   {
    "id": "0f8380eb8c98",
@@ -7487,6 +7436,57 @@
      "pts": -15
     }
    ]
+  },
+  {
+   "id": "6eafeb6028b4",
+   "title": "Modernize data integration strategy with Microsoft Fabric when using Snowflake and Databricks",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Modernize-data-integration-strategy-with-Microsoft-Fabric-when/ba-p/5377581",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-03T17:00:00Z",
+   "fetched_at": "2026-11-04T03:13:57.709960Z",
+   "summary": "Microsoft zet de bestaande manieren op een rij om Databricks- en Snowflake-data in Fabric te gebruiken: mirroring, shortcuts, DirectQuery of kopiëren met pipelines. Een tabel zegt per situatie of de data gekopieerd wordt en waarvoor elke optie het best past.",
+   "availability_status": "onbekend",
+   "topics": [
+    "data_architecture_modeling",
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 68,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.62,
+    "source": 0.6,
+    "quality": 0.37,
+    "feedback": -0.07,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
+   "learning": "Data ingestion",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.4,
+    "why": "Overzicht van bestaande opties zonder code; je duimen gaan naar concretere stukken."
+   },
+   "labels": [
+    "onelake-databricks",
+    "fabric-mirroring"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -7
+   },
+   "diepte": "kort"
   },
   {
    "id": "e000e5cddc90",
@@ -13703,6 +13703,13 @@
      "keuzes": 5
     }
    },
+   "inhalen": {
+    "status": "ok",
+    "summary": "niets in te halen",
+    "finished_at": "2026-11-13T06:29:54Z",
+    "problems": [],
+    "counts": {}
+   },
    "overzicht": {
     "status": "ok",
     "summary": "3 trends bijgewerkt (3 nieuwe artikelen toegevoegd), geen verzoeken voor interesses, geen nieuwe leerregels, alle stukken hadden al begrippen",
@@ -14403,17 +14410,6 @@
     ]
    },
    {
-    "title": "v2.1.310",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
-    "relevance_score": 76,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.309",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.309",
@@ -14461,6 +14457,17 @@
     "relevance_score": 76,
     "decision": "source_cap",
     "excluded_by": []
+   },
+   {
+    "title": "v2.1.310",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
+    "relevance_score": 75,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
    },
    {
     "title": "OneLake table APIs: Now with Iceberg writes, plus richer table metadata (Preview)",

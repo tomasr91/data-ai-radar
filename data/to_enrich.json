@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13T05:14:48.018402Z",
+ "generated_at": "2026-11-13T06:30:24.232700Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -81,19 +81,6 @@
    ]
   },
   {
-   "id": "9d75db3e383d",
-   "title": "The next chapter for CI/CD in Fabric Warehouse (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/The-next-chapter-for-CI-CD-in-Fabric-Warehouse-Preview/ba-p/5401222",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-11T18:00:00Z",
-   "excerpt": "Building and operating a data warehouse is increasingly a software engineering discipline. Teams want to develop warehouse changes in isolation, version them in Git, review them through pull requests, promote them safely across environments, and automate the entire process using their existing CI/CD systems. Over the past several releases, we've been evolving CI/CD in Fabric Warehouse around that lifecycle: DacFx established a common schema deployment foundation. Pre, and post-deployment scripts expanded deployments beyond schema changes. Warehouse Item Definition APIs opened the same lifecycle to automation. Together, these investments are creating a more complete CI/CD lifecycle for Fabric Warehouse, from developing and versioning database changes to deploying and automating them across environments. Let’s take a closer look at how each capability moves that experience forward, what’s available today, and what we’re building next. What we've delivered Establishing a consistent deployment foundation with DacFx The first challenge was making Warehouse deployments behave like database deployments, not artifact copies. A Warehouse contains state, data, dependencies, and relationships",
-   "preliminary_score": 68,
-   "preliminary_topics": [
-    "cicd_data_deployment"
-   ]
-  },
-  {
    "id": "47d7ca35b360",
    "title": "A Leader in Data Integration—six years running",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/A-Leader-in-Data-Integration-six-years-running/ba-p/5400776",
@@ -105,6 +92,19 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "9d75db3e383d",
+   "title": "The next chapter for CI/CD in Fabric Warehouse (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/The-next-chapter-for-CI-CD-in-Fabric-Warehouse-Preview/ba-p/5401222",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-11T18:00:00Z",
+   "excerpt": "Building and operating a data warehouse is increasingly a software engineering discipline. Teams want to develop warehouse changes in isolation, version them in Git, review them through pull requests, promote them safely across environments, and automate the entire process using their existing CI/CD systems. Over the past several releases, we've been evolving CI/CD in Fabric Warehouse around that lifecycle: DacFx established a common schema deployment foundation. Pre, and post-deployment scripts expanded deployments beyond schema changes. Warehouse Item Definition APIs opened the same lifecycle to automation. Together, these investments are creating a more complete CI/CD lifecycle for Fabric Warehouse, from developing and versioning database changes to deploying and automating them across environments. Let’s take a closer look at how each capability moves that experience forward, what’s available today, and what we’re building next. What we've delivered Establishing a consistent deployment foundation with DacFx The first challenge was making Warehouse deployments behave like database deployments, not artifact copies. A Warehouse contains state, data, dependencies, and relationships",
+   "preliminary_score": 67,
+   "preliminary_topics": [
+    "cicd_data_deployment"
    ]
   },
   {
