@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-13T03:24:02.071587Z",
+ "generated_at": "2026-11-13T03:26:16.798350Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-13T03:55:00Z",
+ "last_article_added_at": "2026-11-13T04:10:00Z",
  "last_successful_update": "2026-11-13T03:13:27.417245Z",
  "groups": [
   {
@@ -421,8 +421,8 @@
   "5c7174c45ad1",
   "6ded4aa1cdcf",
   "4dcd7af26dab",
-  "d2e9b967064a",
-  "059023edac5d"
+  "d5f14a6242b0",
+  "d2e9b967064a"
  ],
  "articles": [
   {
@@ -1396,6 +1396,106 @@
     "name": "praktijk",
     "pts": -2
    }
+  },
+  {
+   "id": "d5f14a6242b0",
+   "title": "Which Claude model should you build with?",
+   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
+   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
+   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
+   "limitations": [
+    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
+    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
+    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Choosing the right model",
+     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+    }
+   ],
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.81,
+    "source": 0.51,
+    "quality": 0.67,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:10:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "claude_blog",
+     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
+     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+     "published_at": "2026-11-12T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "story": [
+    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
+    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
+    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
+    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
+    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
+    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
+    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
+    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
+    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
+    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
+    "language": "text",
+    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
+    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
+   },
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "SWE-bench Pro",
+     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
+    },
+    {
+     "term": "subagent",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
+   },
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
+   ]
   },
   {
    "id": "d2e9b967064a",
@@ -3383,6 +3483,113 @@
    }
   },
   {
+   "id": "5b59c75a11e5",
+   "title": "Operate Claude Managed Agents inside your security perimeter",
+   "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-12T00:00:00Z",
+   "date_note": "Het originele Anthropic-artikel kon niet worden geopend; de uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
+   "fetched_at": "2026-11-13T03:13:29.038183Z",
+   "summary": "Anthropic laat bedrijven Claude Managed Agents zelf hosten: de agentserver, de sessiegeschiedenis, de sandboxes en de sleutels blijven in de eigen cloud of het eigen datacenter. Alleen de modelaanroepen gaan nog naar buiten. Het is een private bèta.",
+   "personal_relevance": "Het laat zien welke delen van een agent je binnen je eigen muren kunt houden, en welk deel (de prompts naar het model) altijd naar buiten gaat.",
+   "experiment": "Teken voor een eigen agentidee (bijv. een agent die dbt-documentatie in een testproject bijwerkt) wat er in deze opzet waar zou draaien: harness, sandbox, sleutels, logs en model. Markeer welke stappen data naar buiten sturen. Gebruik alleen verzonnen voorbeelddata.",
+   "limitations": [
+    "Private bèta voor bedrijven via het accountteam; niet om zelf even te proberen.",
+    "De prompts en antwoorden gaan nog steeds naar een model buiten je netwerk.",
+    "Je beheert, patcht en beveiligt server, database en firewall zelf, en een aantal functies van de gehoste dienst ontbreekt."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Verschillen met de gehoste dienst",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted/differences"
+    },
+    {
+     "label": "Help Net Security over de lancering",
+     "url": "https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "claude",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.57,
+    "feedback": -0.02,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:05:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet",
+   "story": [
+    "Claude Managed Agents is de dienst van Anthropic die agents laat draaien die zelfstandig werken, bijvoorbeeld builds repareren of meldingen uitzoeken. Tot nu toe kon je alleen de sandbox zelf hosten: de plek waar de agent code en commando's uitvoert. De rest, zoals de sessiegeschiedenis en de sleutels, beheerde Anthropic. Sinds 12 november kan een bedrijf ook die rest zelf draaien, in een private bèta.",
+    "Hoe ziet dat eruit? Bij jou draaien de agentserver, een PostgreSQL-database met de sessiegeschiedenis en de workers waar de tools draaien. Sleutels kunnen in je eigen secret manager blijven. Het enige wat naar buiten gaat, zijn de vragen aan het model zelf. Die kun je naar Anthropic sturen, maar ook naar Amazon Bedrock, Google, Microsoft Foundry of een eigen gateway.",
+    "De opzet scheidt de harness van de sandbox. De harness is het deel dat Claude aanroept en de geschiedenis bijhoudt; de sandbox is alleen de werkplaats. Sleutels komen nooit in de sandbox: een proxy daarbuiten zet de sleutel pas op het verzoek als de agent een MCP-tool of een ondersteunde API aanroept. Het lijkt op een balie die namens jou belt, zonder dat jij het nummer kent. Daarnaast bepaal je per omgeving naar welke hosts een agent mag, en elke stap wordt gelogd en is te exporteren via OpenTelemetry.",
+    "Zelf hosten betekent ook zelf beheren, en niet alles werkt hetzelfde. Volgens de documentatie zijn onder meer de Files API, webhooks, geplande runs en de kant-en-klare skills voor Word, PDF, PowerPoint en Excel er niet. MCP-servers, Git-hosts en webtools staan standaard uit tot je ze in een instellingenbestand toestaat.",
+    "Voor een zorgorganisatie is dit vooral een verschuiving in wat binnen blijft: geschiedenis, sleutels en logs. De prompts zelf gaan nog steeds naar een model buiten de deur. Daarmee blijft de regel staan dat werkdata niet naar externe AI mag."
+   ],
+   "key_facts": [
+    "Aangekondigd op 12 november 2026; self-hosted Claude Managed Agents is een private bèta, toegang via het Anthropic-accountteam.",
+    "Bij de klant draaien de Managed Agents-server, een PostgreSQL-database met sessiegeschiedenis en de workers met de sandbox; credentials kunnen in de eigen secret manager.",
+    "Modelaanroepen gaan naar Anthropic, Amazon Bedrock, Google, Microsoft Foundry of een eigen model-gateway.",
+    "Credentials komen niet in de sandbox; een proxy voegt ze toe bij MCP-tools en ondersteunde API-aanroepen. Andere diensten zijn daar niet door beschermd.",
+    "Niet beschikbaar op de eigen server: cloud-omgevingen, de Files API, webhooks, geplande runs en de kant-en-klare skills docx, pdf, pptx en xlsx.",
+    "MCP-servers, Git-hosts en webtools staan standaard uit; je zet ze aan met een allowlist in het instellingenbestand. Logs zijn te exporteren via OpenTelemetry."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "secret manager",
+     "explanation": "Een beveiligde kluis voor wachtwoorden en sleutels, zodat programma's ze kunnen opvragen zonder dat ze in code of bestanden staan."
+    },
+    {
+     "term": "workers",
+     "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox."
+    },
+    {
+     "term": "OpenTelemetry",
+     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-agentnieuws met veiligheidsdetails, zoals je sandbox-duim, maar ver van je eigen dbt-werk."
+   },
+   "labels": [
+    "claude-managed-agents",
+    "agent-sandbox",
+    "agent-beveiliging"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -2
+   }
+  },
+  {
    "id": "583b8d97bd5d",
    "title": "Automating eval design and hillclimbing with Claude",
    "url": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
@@ -5052,27 +5259,29 @@
    "diepte": "kort"
   },
   {
-   "id": "05f1e3cef617",
-   "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
-   "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+   "id": "e89c62d75061",
+   "title": "The Claude Tag guide for startups",
+   "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
    "source_id": "claude_blog",
    "published_at": "2026-11-12T00:00:00Z",
    "fetched_at": "2026-11-13T03:13:29.038183Z",
-   "summary": "Anthropic vergelijkt Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2 voor kenniswerk en raadt Opus 5.5 op effort Medium aan als dagelijkse keuze; loopt het vast, zet dan eerst de effort hoger voordat je een zwaarder model kiest. Handig als je Claude voor analyse, rapporten of decks gebruikt; de tips (eindresultaat beschrijven, 'denk goed na' weglaten) gelden ook voor Claude Code.",
-   "availability_status": "beschikbaar",
+   "summary": "Een gids met ervaringen van acht startups met Claude Tag (bèta), waarmee je Claude in een Slack-kanaal aanroept: meldingen uitzoeken, een thread omzetten in een concept-PR, en datavragen beantwoorden op basis van vaste dbt-modellen en metrics. Alleen voor Team en Enterprise, en niet beschikbaar bij de HIPAA-configuratie of zero data retention.",
+   "availability_status": "preview",
    "topics": [
-    "claude_ai_development"
+    "claude_ai_development",
+    "ai_agents_rag"
    ],
    "groups": [
-    "claude"
+    "claude",
+    "agents"
    ],
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 0.51,
-    "quality": 0.45,
-    "feedback": -0.05,
+    "quality": 0.38,
+    "feedback": -0.03,
     "fit": 0.0
    },
    "decision": "included",
@@ -5081,20 +5290,20 @@
    "processed_at": "2026-11-13T03:50:00Z",
    "reading_minutes": 1,
    "format_version": 2,
-   "headline": "Anthropic: begin met Opus 5.5 op Medium, ga pas daarna omhoog",
-   "soort": "achtergrond",
+   "headline": "Zo zetten startups Claude in Slack in: van melding tot concept-PR",
+   "soort": "praktijk",
    "fit": {
     "score": 0.5,
-    "why": "Claude-keuzehulp voor kenniswerk, minder gericht op code dan je Claude Code-duimen."
+    "why": "Claude-werkwijze met een dbt-haakje, maar vooral startupvoorbeelden zonder techniek."
    },
    "labels": [
-    "claude-modellen",
-    "claude-effort"
+    "claude-tag",
+    "claude-in-slack"
    ],
    "fb_why": {
     "by": "kind",
-    "name": "achtergrond",
-    "pts": -5
+    "name": "praktijk",
+    "pts": -3
    },
    "diepte": "kort"
   },
@@ -5614,55 +5823,6 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "eb06b7a71ce1",
-   "title": "Your apps can now open in Claude, and Claude can work in them",
-   "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Interactieve connectoren kunnen een hele app naast het gesprek of schermvullend openen, en Claude kan er na jouw goedkeuring direct in werken. Het draait op MCP Apps, een uitbreiding van het Model Context Protocol waarmee een MCP-server zijn eigen scherm meelevert; ontwikkelaarssteun is public preview.",
-   "availability_status": "preview",
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 78,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.86,
-    "source": 0.51,
-    "quality": 0.42,
-    "feedback": -0.03,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:53:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Apps als Asana en Notion openen nu volledig in Claude via MCP Apps",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.45,
-    "why": "Claude-productnieuws over kantoorapps, minder dicht bij je data-stack dan je duimen voor MCP- en agentstukken."
-   },
-   "labels": [
-    "mcp-apps",
-    "claude-connectoren"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
    },
    "diepte": "kort"
   },
@@ -6603,91 +6763,6 @@
    }
   },
   {
-   "id": "ce8bd2396821",
-   "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
-   "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Een verkoper bij Anthropic Japan laat zes Claude-agents zijn leads, mails en CRM bijhouden. Elke agent heeft één taak; hij keurt alles goed.",
-   "personal_relevance": "Het patroon van agents met één taak en een vaste menselijke controle kun je ook gebruiken voor terugkerend datawerk.",
-   "experiment": "Schets voor een terugkerende taak, zoals het bijwerken van dbt-documentatie, welke kleine agents je zou maken, welke informatie elk nodig heeft en waar jij moet goedkeuren. Test één agent op een oefenproject met verzonnen data.",
-   "limitations": [
-    "Het is een verhaal van Anthropic over een eigen medewerker; de 60 uur is een eigen schatting zonder vergelijking.",
-    "Over de technische inrichting, zoals de Salesforce-koppeling, geeft het stuk weinig details.",
-    "Managed Agents en Claude Tag zijn bèta, en externe AI mag bij jou niet met werkdata."
-   ],
-   "availability_status": "preview",
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "agents",
-    "claude",
-    "ai_context"
-   ],
-   "relevance_score": 75,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.25,
-    "source": 0.51,
-    "quality": 0.52,
-    "feedback": 0.02,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:44:03Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Zes kleine agents met elk één taak, en een mens die tekent",
-   "story": [
-    "Shahboz Ibragimov werkt in de verkoop bij Anthropic in Japan. Hij laat een team van zes Claude-agents het routinewerk doen: binnenkomende leads verdelen, leads beoordelen, mails beantwoorden, Salesforce bijwerken en vergaderingen samenvatten. Hij leest alles na voordat het de deur uitgaat.",
-    "De opzet is leerzaam. Elke agent heeft precies één taak en draait op een vast schema, zoals een collega met één vaste klus. Eén agent kijkt elk uur in de mailbox en schrijft concepten in het Japans of Engels. Een coördinator past de instructies van de andere agents aan als Ibragimov daar in Slack om vraagt.",
-    "Fouten worden één keer opgelost. Agents schrijven correcties in een gedeeld geheugen, zodat de les voor allemaal blijft hangen. Prijsvragen, gevoelige klanten en onduidelijke verzoeken gaan altijd naar hem. Ook de modelkeuze is bewust: eenvoudige taken op Sonnet, lastige op Opus, en één agent vraagt Opus als adviseur bij moeilijke beslissingen.",
-    "De agents draaien op Claude Managed Agents, een dienst in bèta die schema's, geheugen en afgeschermde toegangsgegevens regelt. Voor jou is vooral het patroon bruikbaar: kleine agents met één taak, een gedeelde plek voor correcties en een vaste plek waar een mens beslist. Hoe de koppeling met Salesforce is gebouwd, staat er niet in."
-   ],
-   "key_facts": [
-    "Zes agents: Furiwake (leads verdelen), Sabaki (leads beoordelen en eerste mail), Henji (mail elk uur, Japans of Engels), Shoudan (Salesforce bijwerken), Nokori (vergaderingen samenvatten) en een coördinator.",
-    "De agents draaien op Claude Managed Agents (bèta) met schema's, een gedeeld geheugen, versies van instructies en kluizen voor toegangsgegevens.",
-    "Claude Tag (bèta) werkt als lid van Slack en vraagt hem om akkoord.",
-    "Furiwake en Shoudan draaien op Sonnet; Sabaki, Nokori en de coördinator op Opus; Henji op Sonnet met Opus als adviseur.",
-    "Volgens een eigen wekelijkse takenlijst scheelt het ongeveer 60 uur werk; er waren een paar honderd correctierondes nodig om zijn toon te raken.",
-    "Gepubliceerd 16 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Claude Managed Agents",
-     "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen."
-    },
-    {
-     "term": "gedeeld geheugen",
-     "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken."
-    },
-    {
-     "term": "leads",
-     "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.45,
-    "why": "Agentpatroon met Claude, maar in verkoopwerk en met weinig techniek, net als het kredietverhaal dat je te vaag vond."
-   },
-   "fb_why": {
-    "by": "similar",
-    "title": "",
-    "id": "ce8bd2396821",
-    "v": 0,
-    "s": 73,
-    "pts": 2
-   }
-  },
-  {
    "id": "225ab7984001",
    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
@@ -6785,6 +6860,94 @@
     "pts": -1
    },
    "diepte": "kort"
+  },
+  {
+   "id": "9a1a77aea3de",
+   "title": "Running open-Jev in SQL on Databricks",
+   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-09-24T16:55:01Z",
+   "date_note": "Gepubliceerd op 24 september 2026; ruim een maand voor deze verwerking.",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Databricks laat zien hoe je een open beslismodel op een eigen GPU-endpoint zet en het met ai_query vanuit SQL aanroept. Het model kiest uit vaste opties, zoals goed of slecht.",
+   "personal_relevance": "Een goedkope manier om vrije tekst in Silver te labelen zonder dat de data Databricks verlaat.",
+   "experiment": "Draai het notebook uit het artikel in een proefwerkruimte en classificeer twintig zelfverzonnen recensies met ai_query. Vergelijk de uitkomst met je eigen oordeel.",
+   "limitations": [
+    "Geen cijfers over nauwkeurigheid, kosten of snelheid.",
+    "De modelnamen in het artikel zijn niet consequent gespeld; controleer het model en de licentie op GitHub.",
+    "Er is een GPU-endpoint nodig; dat kost geld zolang het aanstaat."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Notebook: SemIf-beslismodellen serveren",
+     "url": "https://docs.databricks.com/aws/en/notebooks/source/machine-learning/serve-semif-decision-models.html"
+    },
+    {
+     "label": "ai_query",
+     "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "open_source_tools"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 74,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.09,
+    "source": 0.68,
+    "quality": 0.57,
+    "feedback": -0.03,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (handmatige run op verzoek)",
+   "processed_at": "2026-10-29T07:40:54Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Een klein open beslismodel draaien vanuit SQL op Databricks",
+   "story": [
+    "Databricks beschrijft een nieuw soort model: een beslismodel dat niet vrij tekst schrijft, maar kiest uit een vaste lijst opties. Het geeft daarbij per optie een kans. Zulke modellen zijn volgens Databricks snel en goedkoop, en dus bruikbaar op grote tabellen.",
+    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev. Een notebook downloadt het model en zet het op een serverless GPU-endpoint. Daarna roep je het vanuit SQL aan met ai_query. Dat werkt nu ook voor modellen met een eigen aanroepformaat. Je krijgt kolommen terug met de gekozen klasse en de kansen.",
+    "Het lijkt op een dbt-test met accepted_values, maar dan voor vrije tekst: het antwoord valt altijd in een vaste lijst. In het artikel classificeren ze hotelrecensies als goed of slecht.",
+    "Voor jou is dit interessant omdat het model binnen Databricks draait. Dan mag het in principe ook op werkdata, binnen de toegangsrechten. Het artikel geeft wel geen cijfers over nauwkeurigheid of kosten, en de SQL zelf staat er niet in."
+   ],
+   "key_facts": [
+    "Blog van Databricks van 24 september 2026.",
+    "Beslismodellen kiezen uit een vaste set opties en geven per optie een kans.",
+    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev; een notebook zet het op een GPU Model Serving-endpoint via AI Runtime en Express Deployments.",
+    "ai_query ondersteunt eigen model-API's, dus het model is vanuit SQL en vanuit Lakeflow-jobs aan te roepen.",
+    "Het voorbeeld classificeert hotelrecensies als goed of slecht.",
+    "Het artikel noemt geen cijfers over nauwkeurigheid, kosten of snelheid."
+   ],
+   "terms": [
+    {
+     "term": "ai_query",
+     "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren."
+    },
+    {
+     "term": "GPU-endpoint",
+     "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.65,
+    "why": "AI vanuit SQL op Databricks, zoals je duim bij 'AI in je dbt-model'."
+   },
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   }
   },
   {
    "id": "f29afd156725",
@@ -10360,6 +10523,17 @@
    ]
   },
   {
+   "term": "ai_query",
+   "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9a1a77aea3de",
+     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
+    }
+   ]
+  },
+  {
    "term": "Apache 2.0",
    "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven.",
    "refs": [
@@ -10617,17 +10791,6 @@
      "kind": "a",
      "id": "728afeb9147d",
      "title": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen"
-    }
-   ]
-  },
-  {
-   "term": "Claude Managed Agents",
-   "explanation": "Een dienst van Anthropic die agents voor je host, met schema's, geheugen en afgeschermde toegang tot andere systemen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
     }
    ]
   },
@@ -11087,6 +11250,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "d5f14a6242b0",
+     "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model"
+    },
+    {
+     "kind": "a",
      "id": "ffe8a09e969f",
      "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard"
     }
@@ -11358,17 +11526,6 @@
    ]
   },
   {
-   "term": "gedeeld geheugen",
-   "explanation": "Een plek waar agents lessen en correcties opslaan, zodat andere agents en latere runs die ook gebruiken.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
-    }
-   ]
-  },
-  {
    "term": "glob",
    "explanation": "Een zoekpatroon voor bestandsnamen, zoals *.sql voor alle SQL-bestanden in een map.",
    "refs": [
@@ -11387,6 +11544,17 @@
      "kind": "a",
      "id": "ae2bc3c9f749",
      "title": "Databricks werkt nu meerdere tabellen in één keer bij, of helemaal niet"
+    }
+   ]
+  },
+  {
+   "term": "GPU-endpoint",
+   "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9a1a77aea3de",
+     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
     }
    ]
   },
@@ -11416,6 +11584,11 @@
    "term": "harness",
    "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "5b59c75a11e5",
+     "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
+    },
     {
      "kind": "a",
      "id": "4cc09a1d9883",
@@ -11621,17 +11794,6 @@
      "kind": "a",
      "id": "0b4ae9670355",
      "title": "Een dbt-project overzetten naar Databricks in zeven stappen"
-    }
-   ]
-  },
-  {
-   "term": "leads",
-   "explanation": "Mogelijke klanten die interesse hebben getoond, bijvoorbeeld via een formulier op de website.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "ce8bd2396821",
-     "title": "Zes kleine agents met elk één taak, en een mens die tekent"
     }
    ]
   },
@@ -12096,6 +12258,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "5b59c75a11e5",
+     "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
+    },
+    {
+     "kind": "a",
      "id": "728afeb9147d",
      "title": "Claude Code in een team: eerst grenzen, dan meten, dan bewijzen"
     },
@@ -12490,6 +12657,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "5b59c75a11e5",
+     "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
+    },
+    {
+     "kind": "a",
      "id": "f5c90621cdfb",
      "title": "Chase: altijd-actieve agents brengen zes nieuwe contextproblemen"
     },
@@ -12524,6 +12696,17 @@
      "kind": "v",
      "id": "evals-ai-assistent",
      "title": "Hoe weet je of je AI-assistent goede antwoorden geeft?"
+    }
+   ]
+  },
+  {
+   "term": "secret manager",
+   "explanation": "Een beveiligde kluis voor wachtwoorden en sleutels, zodat programma's ze kunnen opvragen zonder dat ze in code of bestanden staan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "5b59c75a11e5",
+     "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
     }
    ]
   },
@@ -12802,6 +12985,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "d5f14a6242b0",
+     "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model"
+    },
+    {
+     "kind": "a",
      "id": "7fd7e06ab2f4",
      "title": "Zo leest Claude bijna alle code van Claude Code na"
     },
@@ -12857,6 +13045,17 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
+    }
+   ]
+  },
+  {
+   "term": "SWE-bench Pro",
+   "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d5f14a6242b0",
+     "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model"
     }
    ]
   },
@@ -13145,8 +13344,13 @@
   },
   {
    "term": "workers",
-   "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data.",
+   "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "5b59c75a11e5",
+     "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
+    },
     {
      "kind": "a",
      "id": "56bb11919377",
@@ -13586,29 +13790,29 @@
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
   "fetched_items": 608,
-  "unique_after_dedupe": 573,
-  "merged_duplicates": 28,
-  "shown": 77,
+  "unique_after_dedupe": 572,
+  "merged_duplicates": 29,
+  "shown": 78,
   "decisions": {
    "excluded": 196,
-   "included": 116,
-   "area_cap": 3,
-   "below_threshold": 106,
+   "included": 117,
+   "area_cap": 2,
+   "below_threshold": 101,
    "included_low": 3,
    "no_topic": 127,
-   "source_cap": 22
+   "source_cap": 26
   },
   "processing": {
-   "enriched": 77
+   "enriched": 78
   },
   "without_date": 0,
   "per_group": {
    "overig": 10,
-   "ai_context": 21,
+   "ai_context": 22,
+   "claude": 18,
    "dbt": 6,
-   "claude": 17,
    "architectuur": 3,
-   "agents": 15,
+   "agents": 14,
    "databricks": 2,
    "kwaliteit": 3
   },
@@ -13617,11 +13821,11 @@
    "dbt_labs_blog": 10,
    "azure_databricks_release_notes": 3,
    "anthropic_engineering": 2,
+   "claude_blog": 12,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
-   "databricks_engineering_blog": 3,
+   "databricks_engineering_blog": 4,
    "dbt_core_releases": 1,
-   "claude_blog": 12,
    "chris_webb": 1,
    "simon_willison": 3,
    "hamel_husain": 1,
@@ -13671,9 +13875,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 148
+   "skipped_no_key": 143
   },
-  "queue_size": 33,
+  "queue_size": 26,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -14053,6 +14257,14 @@
     "excluded_by": []
    },
    {
+    "title": "Your apps can now open in Claude, and Claude can work in them",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
+    "relevance_score": 78,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Claude Code auto mode for Anthropic and non-Anthropic models",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#claude-code-auto-mode-for-anthropic-and-non-anthropic-models",
@@ -14131,6 +14343,14 @@
     "excluded_by": []
    },
    {
+    "title": "Introducing Claude Meetings",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/claude-meetings",
+    "relevance_score": 77,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Databricks-provided MCP connectors in Genie One and Genie Code will soon be enabled by default for workspaces with the compliance security profile enabled",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#databricks-provided-mcp-connectors-in-genie-one-and-genie-code-will-soon-be-enabled-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
@@ -14193,6 +14413,14 @@
     "excluded_by": []
    },
    {
+    "title": "How Constellation is building a governed data foundation on Databricks",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks",
+    "relevance_score": 76,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "v2.1.304",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
@@ -14212,6 +14440,14 @@
     "excluded_by": []
    },
    {
+    "title": "How an Anthropic BDR in Japan runs his day with Claude Managed Agents",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+    "relevance_score": 75,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Azure Databricks: wat is er nieuw in week 43",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
@@ -14225,38 +14461,6 @@
     "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
     "relevance_score": 74,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "The Enterprise Case for Open-Weight Models on Databricks",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/enterprise-case-open-weight-models-databricks",
-    "relevance_score": 74,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "What Databricks is doing with Genie for Business Users",
-    "source_id": "simon_whiteley",
-    "url": "https://www.advancinganalytics.co.uk/blog/what-databricks-is-doing-with-genie-for-business-users",
-    "relevance_score": 74,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Running open-Jev in SQL on Databricks",
-    "source_id": "databricks_engineering_blog",
-    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
-    "relevance_score": 74,
-    "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
-    "source_id": "chris_webb",
-    "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
-    "relevance_score": 74,
-    "decision": "included",
     "excluded_by": []
    }
   ],
