@@ -1,64 +1,62 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-12T04:14:23Z",
+  "generated_at": "2026-11-13T04:14:36Z",
   "options": [
     {
-      "id": "declaratieve-pipelines-naast-dbt",
-      "title": "Declaratieve pipelines in Databricks naast dbt: wie doet wat?",
-      "question": "Wat zijn Spark Declarative Pipelines, hoe verschillen ze van een stap-voor-stap-pipeline en van dbt, en wanneer kies je welke voor inlezen en transformeren?",
-      "why": "Databricks liet deze maand AI-agents pipelines in beide stijlen bouwen; de declaratieve versies waren korter en zuiniger, en jij gaf dat artikel een duim omhoog.",
+      "id": "onelake-als-opslag-voor-databricks",
+      "title": "Databricks-tabellen in OneLake: wat verandert er voor Unity Catalog en Power BI?",
+      "question": "Wat betekent het als Azure Databricks zijn tabellen direct in OneLake opslaat, wie beheert dan rechten en opslag, en wanneer kies je hiervoor in plaats van je eigen opslagaccount?",
+      "why": "Microsoft meldt sinds 5 november dat Azure Databricks tabellen via een externe locatie in Unity Catalog direct in OneLake kan opslaan; dat raakt jouw combinatie van Databricks en Power BI (Fabric).",
       "topics": [
+        "data_architecture_modeling",
         "databricks_data_engineering",
-        "data_ingestion",
-        "dbt_analytics_engineering"
+        "powerbi_semantic_models"
       ],
       "area": "data_engineering"
     },
     {
-      "id": "ontologie-voor-data-agents",
-      "title": "Genie Ontology: hoe een agent de begrippen van je organisatie leert",
-      "question": "Hoe combineert een ontologie geleerde kennis uit dashboards en query's met definities die je zelf vastlegt, en wat moet je in dbt en Unity Catalog regelen zodat een agent de juiste kiest?",
-      "why": "Sluit aan op de trend 'Context voor AI-agents komt in het dataplatform zelf': Genie Ontology is sinds 11 november algemeen beschikbaar en gebruikt metric views als gemodelleerde kennis.",
+      "id": "eigen-spark-bron-met-python",
+      "title": "Je eigen databron voor Spark schrijven met de Python Data Source API",
+      "question": "Hoe maak je van een bron zonder standaardkoppeling (een eigen bestandsformaat of een REST API) een gewone Spark-bron, en wanneer is dat beter dan een los Python-script dat eerst bestanden omzet?",
+      "why": "Eclipse Aerospace leest sinds kort zijn eigen binaire vluchtbestanden direct in Spark met deze API (12 november), en het past bij fase 3 van Dataflow: openbare data uit API's in Bronze krijgen.",
+      "topics": [
+        "data_ingestion",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "context-vooraf-in-het-warehouse",
+      "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
+      "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
+      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
       "topics": [
         "ai_context_engineering",
-        "metadata_lineage_catalogs",
-        "ai_on_data_platform"
+        "dbt_analytics_engineering",
+        "ai_agents_rag"
       ],
       "area": "context_agents"
     },
     {
-      "id": "vectorjoin-voor-ontdubbelen",
-      "title": "Bijna-dubbele records vinden met een vectorjoin in SQL (NEAREST BY)",
-      "question": "Hoe werken embeddings en een NEAREST BY-join, en hoe gebruik je die in de Silver-laag om records te koppelen die net anders gespeld zijn?",
-      "why": "Databricks heeft vectorzoeken nu als gewone SQL-join, gebouwd voor veel rijen tegelijk, zoals ontdubbelen en entity resolution.",
-      "topics": [
-        "ai_on_data_platform",
-        "sql_spark_sql",
-        "data_quality_observability"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "stop-hook-controle-claude-code",
-      "title": "Claude laten controleren voordat hij stopt: een Stop-hook met dbt build",
-      "question": "Hoe bouw je in Claude Code een vaste controle in (een hook die dbt build of tests draait) zodat de agent zijn werk eerst nakijkt voordat hij klaar zegt te zijn?",
-      "why": "Sluit aan op de trend 'Agents worden beter door controles en metingen': LangChain kwam met hetzelfde model van 52,8 naar 66,5 procent door zo'n controle vlak voor het stoppen.",
+      "id": "claude-agents-in-eigen-netwerk",
+      "title": "Claude-agents in je eigen netwerk: wat blijft binnen, wat gaat naar buiten?",
+      "question": "Welke onderdelen van een agent (sandbox, sessiegeschiedenis, sleutels, tools, model) kun je zelf hosten, en wat betekent die verdeling voor gevoelige data zoals zorgdata?",
+      "why": "Anthropic laat bedrijven sinds 12 november (private bèta) ook de agentserver en sessiegeschiedenis van Claude Managed Agents zelf draaien; alleen de vragen aan het model gaan dan nog naar buiten.",
       "topics": [
         "claude_ai_development",
-        "ai_evaluation_observability",
-        "dbt_analytics_engineering"
+        "data_governance_privacy",
+        "ai_agents_rag"
       ],
       "area": "claude"
     },
     {
-      "id": "synthetische-data-voor-experimenten",
-      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
-      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
-      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
+      "id": "bewakend-model-voor-agents",
+      "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
+      "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
+      "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
       "topics": [
-        "data_governance_privacy",
         "ai_in_healthcare",
-        "ai_research_data"
+        "ai_agents_rag"
       ],
       "area": "new_tech"
     }
@@ -637,6 +635,66 @@
       "topics": [
         "claude_ai_development",
         "ai_evaluation_observability"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "synthetische-data-voor-experimenten",
+      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
+      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
+      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
+      "topics": [
+        "data_governance_privacy",
+        "ai_in_healthcare",
+        "ai_research_data"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "declaratieve-pipelines-naast-dbt",
+      "title": "Declaratieve pipelines in Databricks naast dbt: wie doet wat?",
+      "question": "Wat zijn Spark Declarative Pipelines, hoe verschillen ze van een stap-voor-stap-pipeline en van dbt, en wanneer kies je welke voor inlezen en transformeren?",
+      "why": "Databricks liet deze maand AI-agents pipelines in beide stijlen bouwen; de declaratieve versies waren korter en zuiniger, en jij gaf dat artikel een duim omhoog.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_ingestion",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "ontologie-voor-data-agents",
+      "title": "Genie Ontology: hoe een agent de begrippen van je organisatie leert",
+      "question": "Hoe combineert een ontologie geleerde kennis uit dashboards en query's met definities die je zelf vastlegt, en wat moet je in dbt en Unity Catalog regelen zodat een agent de juiste kiest?",
+      "why": "Sluit aan op de trend 'Context voor AI-agents komt in het dataplatform zelf': Genie Ontology is sinds 11 november algemeen beschikbaar en gebruikt metric views als gemodelleerde kennis.",
+      "topics": [
+        "ai_context_engineering",
+        "metadata_lineage_catalogs",
+        "ai_on_data_platform"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "vectorjoin-voor-ontdubbelen",
+      "title": "Bijna-dubbele records vinden met een vectorjoin in SQL (NEAREST BY)",
+      "question": "Hoe werken embeddings en een NEAREST BY-join, en hoe gebruik je die in de Silver-laag om records te koppelen die net anders gespeld zijn?",
+      "why": "Databricks heeft vectorzoeken nu als gewone SQL-join, gebouwd voor veel rijen tegelijk, zoals ontdubbelen en entity resolution.",
+      "topics": [
+        "ai_on_data_platform",
+        "sql_spark_sql",
+        "data_quality_observability"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "stop-hook-controle-claude-code",
+      "title": "Claude laten controleren voordat hij stopt: een Stop-hook met dbt build",
+      "question": "Hoe bouw je in Claude Code een vaste controle in (een hook die dbt build of tests draait) zodat de agent zijn werk eerst nakijkt voordat hij klaar zegt te zijn?",
+      "why": "Sluit aan op de trend 'Agents worden beter door controles en metingen': LangChain kwam met hetzelfde model van 52,8 naar 66,5 procent door zo'n controle vlak voor het stoppen.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability",
+        "dbt_analytics_engineering"
       ],
       "area": "claude"
     },
