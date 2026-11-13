@@ -1405,13 +1405,19 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return `<div class="res-wrap"><table class="res"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map((r) => `<tr>${r.map((v) => `<td>${esc(v === null ? "NULL" : v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   }
+  // "Verzonnen data, gedraaid in DuckDB."-zin hoeft niet; de rest van de toelichting (notatie, verschillen) blijft
+  function showNote(t) {
+    let n = String(t || "").trim(), prev;
+    do { prev = n; n = n.replace(/^(Verzonnen [^.]*\.|Gedraaid in DuckDB( \d+(\.\d+)*)?[.;,])\s*/i, ""); } while (n !== prev);
+    return n;
+  }
   function showcaseBlock(sc) {
     if (!sc?.code) return "";
     return `<section class="block show"><h2>Zo ziet het eruit</h2>
       <p class="show-cap">${esc(sc.caption)}</p>
       <pre class="code" data-lang="${esc(sc.language || "")}"><code>${esc(sc.code)}</code></pre>
       ${sc.result?.columns ? `<p class="show-arrow">Resultaat</p>${resultTable(sc.result.columns, sc.result.rows)}` : ""}
-      ${sc.note ? `<p class="fb-note">${esc(sc.note)}</p>` : ""}</section>`;
+      ${showNote(sc.note) ? `<p class="fb-note">${esc(showNote(sc.note))}</p>` : ""}</section>`;
   }
 
 

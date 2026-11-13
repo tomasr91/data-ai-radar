@@ -46,11 +46,11 @@ T leert het best als hij het ziet. Lezen alleen blijft te abstract. Voeg daarom 
 - Gebruik het als het artikel over iets gaat dat je in code of configuratie doet. Bij puur nieuws of een mening laat je het weg.
 - **Verzin geen productnotatie.** Staat de exacte syntax in de bron of de officiële documentatie, gebruik die. Zo niet, laat dan het idee zien in gewone SQL of Python en zeg dat in `note` ("zo werkt het idee in gewone SQL; de notatie in X staat in de documentatie").
 - Bij een SQL-voorbeeld met resultaat: draai het echt in DuckDB (`python -c "import duckdb; ..."`) op een klein verzonnen dataset en neem de echte uitkomst over (hooguit 12 rijen). Geen werk- of patiëntdata.
-- Hooguit ongeveer 25 regels code. `note` zegt waar het vandaan komt of wat is nagebouwd.
+- Hooguit ongeveer 25 regels code. `note` zegt alleen wat een lezer anders verkeerd zou aannemen: welke notatie uit de documentatie komt, of wat in het voorbeeld is nagebouwd of anders werkt. Schrijf er niet in dat de data verzonnen is of dat je het in DuckDB draaide; dat is vanzelfsprekend. Is er niets te melden, laat `note` leeg.
 
 ```json
 "showcase": {"caption": "Wat je ziet, in één of twee zinnen.", "language": "sql", "code": "SELECT ...",
-             "result": {"columns": ["kolom"], "rows": [["waarde"]]}, "note": "Verzonnen data; ..."}
+             "result": {"columns": ["kolom"], "rows": [["waarde"]]}, "note": "De notatie staat in de Databricks-documentatie."}
 ```
 
 Voorbeelden staan in `data/enrichment/60e7e131218f.json` en `data/deepdives/evals-ai-assistent.json`.

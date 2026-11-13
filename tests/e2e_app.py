@@ -317,6 +317,11 @@ with sync_playwright() as p:
     page.locator("#reader .read-end").scroll_into_view_if_needed()
     page.wait_for_timeout(700)
     check("   artikel tot onderaan gelezen telt als gelezen", page.evaluate(f"!!JSON.parse(localStorage.getItem('radar:read')||'{{}}')['a-{rid}']"))
+    _sc = next((x for x in arts if x["id"] == "a9b6458ba033" and x.get("showcase")), None)
+    if _sc:   # "Zo ziet het eruit": de zin 'Verzonnen data, gedraaid in DuckDB' is weg, de rest van de toelichting blijft
+        page.goto(url + "#a-" + _sc["id"]); page.wait_for_selector(".block.show")
+        _t = page.locator(".block.show").inner_text()
+        check("   Zo ziet het eruit: geen 'verzonnen data / DuckDB'-melding, wel de echte toelichting", "Verzonnen" not in _t and "DuckDB" not in _t and "Unity Catalog" in _t, _t[-200:])
     page.goto(url + "#week")
     page.wait_for_selector(".wk-list")
     wk = page.locator("#reader").inner_text()
