@@ -1,0 +1,120 @@
+{
+ "format_version": 2,
+ "article_id": "56bb11919377",
+ "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
+ "headline": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+ "summary": "Eclipse Aerospace leest twintig jaar vluchtdata in een eigen binair formaat nu direct in met een zelfgebouwde Spark-bron: Python als dunne laag, een Rust-decoder eronder. De tussenstap via AWS Lambda en Avro is weg.",
+ "story": [
+  "Eclipse Aerospace bouwt en vliegt kleine straalvliegtuigen. Het bedrijf heeft bijna twintig jaar vluchtmetingen: meer dan 3 TB, uit meer dan een miljoen vlieguren. Die data staat in eigen binaire formaten, die alleen met speciale decoders te lezen zijn. Vroeger zette een keten met AWS Lambda de bestanden eerst om naar Avro, en pas daarna kon Spark ermee werken.",
+  "Nu leest Spark de originele bestanden zelf. Daarvoor gebruikt het team de Python Data Source API: je schrijft een kleine Python-klasse die Spark vertelt hoe een bron eruitziet en hoe je hem leest. Daarna gebruik je hem als elke andere bron, met spark.read.format(...). Het lijkt op een dbt-macro: één keer vastleggen hoe iets werkt, en daarna overal hergebruiken.",
+  "Het eigenlijke ontleden gebeurt niet in Python, maar in een decoder die in Rust is geschreven. Python is alleen de dunne laag ertussen. Spark verdeelt de bestanden over de workers; elke worker start de Rust-decoder en krijgt de gegevens terug als Apache Arrow-blokken. Zo hoeft Python niet elke rij apart om te zetten. Volgens het team is dat ongeveer 2 keer sneller dan een Python-versie met PyArrow en bijna 20 keer sneller dan gewoon Python.",
+  "Wat levert het op? Een nieuw bestand staat volgens het artikel binnen een minuut als tabel klaar, en grote batches van een paar GB binnen twee minuten. Fouten bij het decoderen en slechte records blijven zichtbaar in Databricks, in plaats van verstopt in een losse Lambda-functie. Het voorbeeld staat met benchmarks op GitHub.",
+  "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken. Je hebt daarvoor geen Rust nodig: voor CSV of JSON van een open-data-API is een Python-reader al genoeg."
+ ],
+ "key_facts": [
+  "Gepubliceerd op 12 november 2026 op de Databricks-blog, door Jack Yallop.",
+  "Eclipse Aerospace heeft bijna 20 jaar vluchtdata: meer dan 3 TB en meer dan 1 miljoen vlieguren, in eigen binaire formaten.",
+  "De oude keten gebruikte AWS Lambda, Avro en Glacier-opslag; de nieuwe leest de originele bestanden direct in een Spark-read.",
+  "Opbouw: PySpark custom data source (Python Data Source API) met een Rust-decoder (via PyO3/Maturin) die Apache Arrow RecordBatches teruggeeft.",
+  "Gemeld: ongeveer 2x sneller dan een pure-Python-versie met PyArrow en bijna 20x sneller dan Python zonder Arrow; geen absolute tijden of testomgeving genoemd.",
+  "Records zijn binnen een minuut na upload verwerkt; batches van meerdere GB parallel in minder dan twee minuten.",
+  "De Python Data Source API werkt vanaf Databricks Runtime 15.4 LTS en serverless environment 2."
+ ],
+ "personal_relevance": "Je leert hoe je een lastige bron één keer als nette Spark-bron vastlegt, zodat ingestion niet in losse scripts buiten het platform zit.",
+ "experiment": "Schrijf in Databricks Free Edition een Python-datasource die een openbaar CSV- of JSON-bestand (bijv. KNMI-daggegevens) leest, registreer hem met spark.dataSource.register en schrijf het resultaat als Delta-tabel in je Bronze-schema.",
+ "limitations": [
+  "Het is een klantverhaal op de Databricks-blog; de snelheidscijfers zijn alleen verhoudingen, zonder testopzet.",
+  "De blog zelf bevat geen code; die staat in de GitHub-repository.",
+  "Een Rust-decoder is pas nodig bij binaire formaten of veel volume; voor CSV of JSON is Python genoeg."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "PySpark custom data sources (Azure Databricks)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/pyspark/datasources"
+  }
+ ],
+ "topics": [
+  "data_ingestion",
+  "databricks_data_engineering"
+ ],
+ "quality": {
+  "depth": 0.7,
+  "practicality": 0.6,
+  "novelty": 0.55
+ },
+ "development_key": "python-data-source-api-rust-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.65,
+  "why": "Concreet ingestion-praktijkverhaal met architectuur, het soort praktische uitleg waar je eerder duimen voor gaf."
+ },
+ "labels": [
+  "python-data-source-api",
+  "custom-ingestion",
+  "apache-arrow"
+ ],
+ "project_ref": {
+  "fase": 3,
+  "quote": "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken.",
+  "why": "Fase 3 gaat over openbare data met Python inlezen in Bronze."
+ },
+ "terms": [
+  {
+   "term": "Python Data Source API",
+   "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...)."
+  },
+  {
+   "term": "Avro",
+   "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data."
+  },
+  {
+   "term": "Rust",
+   "explanation": "Een snelle programmeertaal, vergelijkbaar met C, die veel fouten met geheugen al bij het bouwen tegenhoudt."
+  },
+  {
+   "term": "Apache Arrow",
+   "explanation": "Een standaardformaat om tabellen kolom voor kolom in het geheugen te zetten, zodat programma's data uitwisselen zonder ze eerst om te zetten."
+  },
+  {
+   "term": "workers",
+   "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data."
+  }
+ ],
+ "showcase": {
+  "caption": "Een eigen Spark-bron voor een verzonnen binair formaat met vaste records van 12 bytes. Na registreren lees je hem als elke andere bron.",
+  "language": "python",
+  "code": "import struct\nfrom pyspark.sql.datasource import DataSource, DataSourceReader\n\nclass TelemetrieBron(DataSource):\n    @classmethod\n    def name(cls):\n        return \"telemetrie\"\n    def schema(self):\n        return \"meting int, seconde int, snelheid float\"\n    def reader(self, schema):\n        return TelemetrieLezer(self.options)\n\nclass TelemetrieLezer(DataSourceReader):\n    def __init__(self, options):\n        self.pad = options[\"path\"]\n    def read(self, partition):\n        data = open(self.pad, \"rb\").read()\n        for rec in struct.iter_unpack(\"<iif\", data):  # 12 bytes per meting\n            yield (rec[0], rec[1], round(rec[2], 1))\n\nspark.dataSource.register(TelemetrieBron)\nspark.read.format(\"telemetrie\").load(\"vlucht.bin\").show()",
+  "result": {
+   "columns": [
+    "meting",
+    "seconde",
+    "snelheid"
+   ],
+   "rows": [
+    [
+     1,
+     1200,
+     310.5
+    ],
+    [
+     2,
+     1260,
+     312.0
+    ],
+    [
+     3,
+     1320,
+     309.8
+    ]
+   ]
+  },
+  "note": "Verzonnen data, echt gedraaid met PySpark 4 lokaal. De klassen en register/format-aanroepen volgen de Databricks-documentatie; Eclipse doet het decoderen in Rust in plaats van met struct."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-13T03:55:00Z",
+ "prompt_version": "taak-v2"
+}
