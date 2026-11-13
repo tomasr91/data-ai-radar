@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-13T03:26:16.798350Z",
+ "generated_at": "2026-11-13T03:27:00.186638Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-13T04:10:00Z",
@@ -2958,6 +2958,106 @@
    }
   },
   {
+   "id": "62afb1e0ab94",
+   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
+   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
+   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
+   "limitations": [
+    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
+    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Blog: Safely scaling multi-agent teams",
+     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+    },
+    {
+     "label": "Formalisering uit september",
+     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.81,
+    "source": 0.51,
+    "quality": 0.68,
+    "feedback": -0.04,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
+   "story": [
+    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
+    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
+    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
+    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
+    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
+   ],
+   "key_facts": [
+    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
+    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
+    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
+    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
+    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
+    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Lean",
+     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
+    },
+    {
+     "term": "gateway",
+     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
+    },
+    {
+     "term": "classifier",
+     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
+    },
+    {
+     "term": "least privilege",
+     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
+   },
+   "labels": [
+    "multi-agent",
+    "agent-harness",
+    "agent-sandbox"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   }
+  },
+  {
    "id": "72dc169275f9",
    "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
@@ -3383,103 +3483,106 @@
    }
   },
   {
-   "id": "62afb1e0ab94",
-   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
-   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+   "id": "ffe8a09e969f",
+   "title": "Claude Fable 5.2 and Mythos 5.2",
+   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
    "source_id": "claude_blog",
    "published_at": "2026-11-09T00:00:00Z",
    "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
-   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
-   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
+   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
+   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
+   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
    "limitations": [
-    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
-    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
+    "Alle benchmarks zijn van Anthropic zelf.",
+    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
+    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
    ],
-   "availability_status": "experimenteel",
+   "availability_status": "beschikbaar",
    "official_docs": [
     {
-     "label": "Blog: Safely scaling multi-agent teams",
-     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+     "label": "Claude Fable 5.2 (modeldocumentatie)",
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
     },
     {
-     "label": "Formalisering uit september",
-     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+     "label": "Advisor in Claude Code",
+     "url": "https://code.claude.com/docs/en/advisor"
+    },
+    {
+     "label": "Multi-agent orchestration",
+     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+    },
+    {
+     "label": "System card",
+     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
     }
    ],
    "topics": [
-    "ai_agents_rag",
     "claude_ai_development",
-    "ai_evaluation_observability"
+    "ai_agents_rag"
    ],
    "groups": [
-    "agents",
-    "claude"
+    "claude",
+    "agents"
    ],
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.81,
     "source": 0.51,
-    "quality": 0.68,
-    "feedback": -0.05,
-    "fit": 0.15
+    "quality": 0.6,
+    "feedback": -0.02,
+    "fit": 0.05
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:40:00Z",
+   "processed_at": "2026-11-12T04:00:00Z",
    "reading_minutes": 3,
    "format_version": 2,
-   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
+   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
    "story": [
-    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
-    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
-    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
-    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
-    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
+    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
+    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
+    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
+    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
+    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
    ],
    "key_facts": [
-    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
-    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
-    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
-    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
-    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
-    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
+    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
+    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
+    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
+    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
+    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
+    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
    ],
    "article_type": "nieuws",
    "terms": [
     {
-     "term": "Lean",
-     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
     },
     {
-     "term": "gateway",
-     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
+     "term": "fast mode",
+     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
     },
     {
-     "term": "classifier",
-     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
-    },
-    {
-     "term": "least privilege",
-     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+     "term": "Orchestrator",
+     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
     }
    ],
-   "soort": "achtergrond",
+   "soort": "aankondiging",
    "fit": {
-    "score": 0.65,
-    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
+    "score": 0.55,
+    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
    },
    "labels": [
-    "multi-agent",
-    "agent-harness",
-    "agent-sandbox"
+    "claude-modellen",
+    "multi-agent"
    ],
    "fb_why": {
     "by": "kind",
-    "name": "achtergrond",
-    "pts": -5
+    "name": "aankondiging",
+    "pts": -2
    }
   },
   {
@@ -3525,7 +3628,7 @@
     "recency": 0.94,
     "source": 0.51,
     "quality": 0.57,
-    "feedback": -0.02,
+    "feedback": -0.03,
     "fit": 0.05
    },
    "decision": "included",
@@ -3586,7 +3689,7 @@
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
-    "pts": -2
+    "pts": -3
    }
   },
   {
@@ -3927,109 +4030,6 @@
    }
   },
   {
-   "id": "ffe8a09e969f",
-   "title": "Claude Fable 5.2 and Mythos 5.2",
-   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
-   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
-   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
-   "limitations": [
-    "Alle benchmarks zijn van Anthropic zelf.",
-    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
-    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Fable 5.2 (modeldocumentatie)",
-     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
-    },
-    {
-     "label": "Advisor in Claude Code",
-     "url": "https://code.claude.com/docs/en/advisor"
-    },
-    {
-     "label": "Multi-agent orchestration",
-     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
-    },
-    {
-     "label": "System card",
-     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.81,
-    "source": 0.51,
-    "quality": 0.6,
-    "feedback": -0.03,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T04:00:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
-   "story": [
-    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
-    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
-    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
-    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
-    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
-   ],
-   "key_facts": [
-    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
-    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
-    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
-    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
-    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
-    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "fast mode",
-     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
-    },
-    {
-     "term": "Orchestrator",
-     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
-   },
-   "labels": [
-    "claude-modellen",
-    "multi-agent"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
-   }
-  },
-  {
    "id": "6ee1dee33e4b",
    "title": "Hide your slop PR descriptions behind <details><summary>",
    "url": "https://simonwillison.net/2026/Nov/9/details-summary/",
@@ -4068,6 +4068,58 @@
     "claude-code-pr-werkwijze",
     "ai-gegenereerde-tekst"
    ],
+   "diepte": "kort"
+  },
+  {
+   "id": "3180dbea1b88",
+   "title": "How Curative is building a national provider network with agents on Claude",
+   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-10T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Zorgverzekeraar Curative bouwde agent Gwen (Claude Opus) die per zorgverlener een contract onderhandelt met alleen een Python-runner als tool; een Haiku-'rechter' leest elk uitgaand bericht vóór verzending en een Sonnet-agent beoordeelt tarieven boven de standaard. Concreet patroon voor agents met controle, al zijn de cijfers door de leverancier gepubliceerd.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "agents",
+    "claude",
+    "zorg"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.86,
+    "source": 0.51,
+    "quality": 0.5,
+    "feedback": -0.02,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:54:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Curative laat een Claude-agent zorgcontracten onderhandelen, met een rechter",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Agent met controle-stappen in de zorg, zoals je duim voor Databricks' zorgkennis voor AI-assistenten."
+   },
+   "labels": [
+    "llm-als-rechter",
+    "human-in-the-loop",
+    "ai-in-de-zorg"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -2
+   },
    "diepte": "kort"
   },
   {
@@ -4284,58 +4336,6 @@
     "name": "databricks_data_engineering",
     "pts": -3
    }
-  },
-  {
-   "id": "3180dbea1b88",
-   "title": "How Curative is building a national provider network with agents on Claude",
-   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Zorgverzekeraar Curative bouwde agent Gwen (Claude Opus) die per zorgverlener een contract onderhandelt met alleen een Python-runner als tool; een Haiku-'rechter' leest elk uitgaand bericht vóór verzending en een Sonnet-agent beoordeelt tarieven boven de standaard. Concreet patroon voor agents met controle, al zijn de cijfers door de leverancier gepubliceerd.",
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "ai_in_healthcare"
-   ],
-   "groups": [
-    "agents",
-    "claude",
-    "zorg"
-   ],
-   "relevance_score": 82,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.86,
-    "source": 0.51,
-    "quality": 0.5,
-    "feedback": -0.03,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:54:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Curative laat een Claude-agent zorgcontracten onderhandelen, met een rechter",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Agent met controle-stappen in de zorg, zoals je duim voor Databricks' zorgkennis voor AI-assistenten."
-   },
-   "labels": [
-    "llm-als-rechter",
-    "human-in-the-loop",
-    "ai-in-de-zorg"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -3
-   },
-   "diepte": "kort"
   },
   {
    "id": "841d424db697",
@@ -4655,6 +4655,171 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "f2cef2be2ab7",
+   "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
+   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-05T00:00:00Z",
+   "date_note": "De blog zegt 'nu beschikbaar in Databricks Runtime 19', maar een kopie van de release notes van Runtime 19 (GA sinds 23 juli 2026) noemt Spark 4.2.0.",
+   "fetched_at": "2026-11-05T03:13:46.521986Z",
+   "summary": "Apache Spark 4.3 brengt SCD type 2 via Auto CDC, snellere real-time streams met geheugen, en nieuwe SQL zoals JSON_TABLE en ASOF JOIN (preview).",
+   "personal_relevance": "SCD type 2 en CDC zijn kern van data ingestion, het onderwerp waar je nog bij de basis begint.",
+   "experiment": "Maak een klein verzonnen tabelletje met klantwijzigingen en bouw de geldig-van/geldig-tot-kolommen eerst zelf met LEAD, zoals in het voorbeeld. Probeer daarna in een testwerkruimte met Runtime 19 hoe Auto CDC dezelfde historie maakt, als die versie Spark 4.3 bevat.",
+   "limitations": [
+    "De blog geeft de exacte syntax van Auto CDC niet in de tekst; zoek die op in de documentatie.",
+    "Een kopie van de Runtime 19-release notes noemt Spark 4.2; welke runtimeversie Spark 4.3 bevat, is niet eenduidig.",
+    "ASOF JOIN en nanoseconde-timestamps zijn preview; er kunnen nog brekende wijzigingen komen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Databricks Runtime release notes",
+     "url": "https://docs.databricks.com/aws/en/release-notes/runtime/"
+    },
+    {
+     "label": "SPARK-56249: SCD Type 2 Auto CDC",
+     "url": "https://issues.apache.org/jira/browse/SPARK-56249"
+    },
+    {
+     "label": "SPARK-58092: SQL ASOF JOIN",
+     "url": "https://issues.apache.org/jira/browse/SPARK-58092"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_ingestion",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 0.9,
+    "recency": 0.67,
+    "source": 0.85,
+    "quality": 0.73,
+    "feedback": -0.1,
+    "fit": 0.15,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-05T03:33:46Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
+     "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
+     "published_at": "2026-11-05T00:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
+   "story": [
+    "Databricks schrijft dat Apache Spark 4.3 nu in Databricks Runtime 19 zit. Meer dan 200 mensen werkten mee. Spark komt vanaf nu ook vaker uit: elk kwartaal een nieuwe versie, in plaats van elk halfjaar.",
+    "Voor jou is SCD type 2 met Auto CDC het interessantst. Verandert een klant van woonplaats, dan bewaart Spark de oude rij en maakt een nieuwe. Elke versie krijgt de kolommen __START_AT en __END_AT, zoals een paspoort met een geldig-van- en geldig-tot-datum. Spark verwerkt de wijzigingen in kleine stukjes (micro-batches) en voert per stukje een MERGE uit. Dat werkt in Python, SQL en via Spark Connect. Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
+    "Ook streaming wordt sneller met geheugen. In real-time mode kun je nu ook optellen per tijdvak, dubbele rijen weggooien en transformWithState gebruiken. Databricks meet bij drie testopstellingen een vertraging rond de 140 milliseconden voor 99 procent van de berichten. Het is een meting, geen garantie.",
+    "Voor SQL zijn er handige extra's. JSON_TABLE pakt een JSON-lijst uit tot rijen met kolommen. ASOF JOIN koppelt elke rij aan de laatst bekende waarde op dat moment, bijvoorbeeld een prijs op een tijdstip; dat is nog een preview. Daarnaast kan Spark kleine data nu zonder shuffle in één taak verwerken (Project Feather), maar dat moet je zelf aanzetten.",
+    "Let wel op de versie. Een kopie van de release notes van Databricks Runtime 19 noemt nog Spark 4.2. Controleer daarom in je eigen werkruimte welke runtime Spark 4.3 bevat, voordat je op deze functies bouwt."
+   ],
+   "key_facts": [
+    "Apache Spark 4.3 is aangekondigd op 5 november 2026; volgens Databricks beschikbaar in Databricks Runtime 19.",
+    "Spark krijgt vanaf 4.3 elk kwartaal een featurerelease, in plaats van elke zes maanden.",
+    "Meer dan 200 bijdragers losten meer dan 1.100 Jira-tickets op.",
+    "SCD type 2 via Auto CDC werkt in Python, SQL en Spark Connect; elke versie krijgt __START_AT en __END_AT. Het doel moet MERGE ondersteunen (Data Source V2 row-level operations); gewone Parquet kan dat niet.",
+    "Real-time mode ondersteunt nu streaming-aggregatie, dropDuplicates en transformWithState; gemeten P99-vertraging 136 ms, 139 ms en 141 ms bij drie testopstellingen.",
+    "Nieuw in SQL: JSON_TABLE, VARIANT-transformaties en ASOF JOIN (preview); nanoseconde-timestamps zijn een opt-in preview."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Het idee van SCD type 2: elke woonplaats van een klant blijft bewaard, met een geldig-van (__START_AT) en geldig-tot (__END_AT). Een lege __END_AT betekent: dit is de huidige versie.",
+    "language": "sql",
+    "code": "WITH klant_wijzigingen(klant_id, woonplaats, gewijzigd_op) AS (VALUES\n  (1, 'Utrecht',    DATE '2026-01-10'),\n  (1, 'Amersfoort', DATE '2026-05-02'),\n  (1, 'Zeist',      DATE '2026-09-15'),\n  (2, 'Delft',      DATE '2026-03-01'))\nSELECT\n  klant_id,\n  woonplaats,\n  gewijzigd_op AS __START_AT,\n  LEAD(gewijzigd_op) OVER (\n    PARTITION BY klant_id ORDER BY gewijzigd_op\n  ) AS __END_AT\nFROM klant_wijzigingen\nORDER BY klant_id, __START_AT;",
+    "result": {
+     "columns": [
+      "klant_id",
+      "woonplaats",
+      "__START_AT",
+      "__END_AT"
+     ],
+     "rows": [
+      [
+       1,
+       "Utrecht",
+       "2026-01-10",
+       "2026-05-02"
+      ],
+      [
+       1,
+       "Amersfoort",
+       "2026-05-02",
+       "2026-09-15"
+      ],
+      [
+       1,
+       "Zeist",
+       "2026-09-15",
+       null
+      ],
+      [
+       2,
+       "Delft",
+       "2026-03-01",
+       null
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; Auto CDC in Spark 4.3 maakt deze kolommen zelf, en de notatie daarvan staat in de documentatie."
+   },
+   "terms": [
+    {
+     "term": "SCD type 2",
+     "explanation": "Een manier om de geschiedenis van een rij te bewaren: bij een wijziging komt er een nieuwe versie bij, met een begin- en einddatum, in plaats van dat de oude waarde wordt overschreven."
+    },
+    {
+     "term": "Auto CDC",
+     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
+    },
+    {
+     "term": "micro-batches",
+     "explanation": "Kleine pakketjes nieuwe data die een stream één voor één verwerkt, in plaats van alles in één keer."
+    },
+    {
+     "term": "real-time mode",
+     "explanation": "Een modus van Spark Structured Streaming die records vrijwel direct doorgeeft, voor toepassingen die binnen een fractie van een seconde moeten reageren."
+    },
+    {
+     "term": "ASOF JOIN",
+     "explanation": "Een join die elke rij koppelt aan de laatst bekende rij uit de andere tabel op dat tijdstip, bijvoorbeeld de geldende prijs op het moment van een bestelling."
+    }
+   ],
+   "learning": "Data ingestion",
+   "soort": "release",
+   "fit": {
+    "score": 0.65,
+    "why": "Technische release met nieuwe SQL en CDC, zoals de Databricks-releases die je een duim gaf."
+   },
+   "labels": [
+    "spark-release",
+    "scd-type-2",
+    "auto-cdc"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "data_ingestion",
+    "pts": -10
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
+    "why": "Fase 4 gaat over historie bijhouden (SCD) met dbt snapshots."
    }
   },
   {
@@ -5827,6 +5992,56 @@
    "diepte": "kort"
   },
   {
+   "id": "334fd5b5e6c0",
+   "title": "How Block powers collaborative AI agents with Buzz and Unity Gateway",
+   "url": "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T14:59:06Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Block bouwde Buzz, een open-source werkruimte waar medewerkers agents aan een gesprek toevoegen en per agent het model kiezen; de modellen lopen via Databricks Unity Gateway. Interessant als voorbeeld van mensen die agentwerk zien en nakijken, maar het stuk geeft geen details over rechten, controles of resultaten.",
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_agents_rag",
+    "ai_on_data_platform"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.33,
+    "feedback": -0.06,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Block laat collega's en AI-agents samenwerken in één chatruimte",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.45,
+    "why": "Agentpraktijk zonder concrete aanpak, iets wat je eerder 'te vaag' noemde."
+   },
+   "labels": [
+    "unity-ai-gateway",
+    "multi-agent",
+    "human-in-the-loop"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "4255764d89d9",
    "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
    "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
@@ -5947,10 +6162,126 @@
     "score": 0.55,
     "why": "AI-functie in Databricks SQL; je duimen gaan vaker over AI-context dan over vectorzoeken."
    },
+   "labels": [
+    "vector-search-sql",
+    "nearest-by"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
     "pts": -3
+   }
+  },
+  {
+   "id": "0b4ae9670355",
+   "title": "How to Repoint dbt ETL Pipelines to Databricks",
+   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T18:53:48Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Databricks laat stap voor stap zien hoe je een bestaand dbt-project naar Databricks verhuist. De kern: andere adapter, dialectfouten oplossen en per model uitkomsten vergelijken.",
+   "personal_relevance": "Een bruikbare checklist voor de laatste stap van je eigen migratie van SQL Server naar Databricks.",
+   "experiment": "Kies één model dat al op beide platforms draait. Vergelijk de uitkomsten met dbt-audit-helper en kijk of de match 100 procent is.",
+   "limitations": [
+    "Het voorbeeld is sterk vereenvoudigd: één model uit twee bronnen.",
+    "Het gaat niet specifiek over T-SQL of SQL Server; je dialectfouten kunnen anders zijn.",
+    "Databricks schreef dit zelf; Lakebridge en Genie Code zijn eigen producten."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "dbt-databricks adapter",
+     "url": "https://github.com/databricks/dbt-databricks"
+    },
+    {
+     "label": "dbt in Lakeflow Jobs",
+     "url": "https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows"
+    },
+    {
+     "label": "Lakebridge",
+     "url": "https://www.databricks.com/solutions/migration/lakebridge"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "dbt",
+    "databricks"
+   ],
+   "relevance_score": 77,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.16,
+    "source": 0.68,
+    "quality": 0.6,
+    "feedback": -0.03,
+    "fit": -0.05,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-29T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Een dbt-project overzetten naar Databricks in zeven stappen",
+   "story": [
+    "Databricks heeft een handleiding geschreven om een dbt-project van een ander datawarehouse naar Databricks te verhuizen. Het idee is simpel: je herschrijft geen modellen of tests. Je wisselt de adapter, past de bronnen aan en lost de verschillen in SQL-dialect op.",
+    "Het voorbeeld gaat over één feitentabel. Bij het eerste compileren gaven drie functies een fout, zoals DIV0 en REGEXP_SUBSTR. Die vervangen ze door een Databricks-variant of door een macro uit dbt_utils. Het is als een recept vertalen: de stappen blijven hetzelfde, alleen sommige ingrediënten heten anders.",
+    "Het nuttigste deel gaat over controleren. Met het package dbt-audit-helper vergelijken ze de uitkomst van het oude en nieuwe warehouse, rij voor rij. Ze herhalen dat tot de match 100 procent is. Daarna draait dbt als taak in Lakeflow Jobs.",
+    "Je migratie is al bijna klaar, dus de basis ken je. Maar de controlestap met audit-helper en het afsluitende stappenplan zijn handig als checklist voor de laatste modellen. Denk vooral aan incrementele modellen en snapshots: daarvoor waarschuwen de auteurs apart. Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven."
+   ],
+   "key_facts": [
+    "Handleiding op het Databricks-blog van 6 oktober 2026.",
+    "Stappen: dbt-databricks installeren, sources aanpassen naar catalog.schema.table, compileren, draaien, rij voor rij valideren met dbt-audit-helper, uitrollen met Lakeflow Jobs en daarna overschakelen.",
+    "In het voorbeeld gaven drie functies een fout: REGEXP_SUBSTR (wordt regexp_extract), DIV0 (wordt dbt_utils.safe_divide) en object_construct (wordt named_struct).",
+    "Incrementele modellen en snapshots vragen een aparte aanpak; historische snapshotdata moet je los migreren.",
+    "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
+    "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
+   ],
+   "terms": [
+    {
+     "term": "adapter",
+     "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks."
+    },
+    {
+     "term": "SQL-dialect",
+     "explanation": "De eigen variant van SQL die elk datawarehouse spreekt. De basis is gelijk, maar sommige functies heten of werken anders."
+    },
+    {
+     "term": "dbt_utils",
+     "explanation": "Een veelgebruikt dbt-pakket met kant-en-klare macro's en tests die op verschillende datawarehouses werken."
+    },
+    {
+     "term": "dbt-audit-helper",
+     "explanation": "Een dbt-pakket met macro's die twee tabellen rij voor rij vergelijken, zodat je ziet of een nieuwe versie dezelfde uitkomst geeft."
+    },
+    {
+     "term": "Lakeflow Jobs",
+     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.45,
+    "why": "Praktische dbt-stappen, maar over migratie, een project dat je nu hebt gepauzeerd."
+   },
+   "labels": [
+    "migratie-naar-dbt",
+    "dbt-audit-helper"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven.",
+    "why": "Fase 4 richt dbt Core met dbt-databricks in."
    }
   },
   {
@@ -6082,6 +6413,10 @@
     "score": 0.75,
     "why": "Het harnas maakt het verschil, net als bij dbt Wizard dat je een duim met 'meer hiervan' gaf."
    },
+   "labels": [
+    "agent-harness",
+    "agent-evals"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
@@ -6176,6 +6511,10 @@
     "score": 0.5,
     "why": "Praktische MCP-toepassing in Power BI; je duimen gaan vaker over dbt en Databricks dan over Power BI."
    },
+   "labels": [
+    "dax-mcp",
+    "power-bi-ai"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
@@ -6257,6 +6596,10 @@
     "score": 0.55,
     "why": "Databricks-aankondiging over AI-zoekindexen; neutraal ten opzichte van je duimen."
    },
+   "labels": [
+    "ai-search-index",
+    "rag-op-delta"
+   ],
    "fb_why": {
     "by": "source",
     "name": "databricks_blog",
@@ -6344,61 +6687,15 @@
     "score": 0.45,
     "why": "Praktijkverhaal over Lakebase, dat buiten je stack valt."
    },
+   "labels": [
+    "lakebase",
+    "database-branching"
+   ],
    "fb_why": {
     "by": "source",
     "name": "databricks_blog",
     "pts": -6
    }
-  },
-  {
-   "id": "334fd5b5e6c0",
-   "title": "How Block powers collaborative AI agents with Buzz and Unity Gateway",
-   "url": "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-12T14:59:06Z",
-   "fetched_at": "2026-11-13T03:13:29.332345Z",
-   "summary": "Block bouwde Buzz, een open-source werkruimte waar medewerkers agents aan een gesprek toevoegen en per agent het model kiezen; de modellen lopen via Databricks Unity Gateway. Interessant als voorbeeld van mensen die agentwerk zien en nakijken, maar het stuk geeft geen details over rechten, controles of resultaten.",
-   "availability_status": "experimenteel",
-   "topics": [
-    "ai_agents_rag",
-    "ai_on_data_platform"
-   ],
-   "groups": [
-    "agents",
-    "ai_context"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.97,
-    "source": 0.85,
-    "quality": 0.33,
-    "feedback": -0.06,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Block laat collega's en AI-agents samenwerken in één chatruimte",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.45,
-    "why": "Agentpraktijk zonder concrete aanpak, iets wat je eerder 'te vaag' noemde."
-   },
-   "labels": [
-    "unity-ai-gateway",
-    "multi-agent",
-    "human-in-the-loop"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -6
-   },
-   "diepte": "kort"
   },
   {
    "id": "d6ea4662f2dc",
@@ -6457,165 +6754,6 @@
     "pts": -7
    },
    "diepte": "kort"
-  },
-  {
-   "id": "f2cef2be2ab7",
-   "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
-   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T00:00:00Z",
-   "date_note": "De blog zegt 'nu beschikbaar in Databricks Runtime 19', maar een kopie van de release notes van Runtime 19 (GA sinds 23 juli 2026) noemt Spark 4.2.0.",
-   "fetched_at": "2026-11-05T03:13:46.521986Z",
-   "summary": "Apache Spark 4.3 brengt SCD type 2 via Auto CDC, snellere real-time streams met geheugen, en nieuwe SQL zoals JSON_TABLE en ASOF JOIN (preview).",
-   "personal_relevance": "SCD type 2 en CDC zijn kern van data ingestion, het onderwerp waar je nog bij de basis begint.",
-   "experiment": "Maak een klein verzonnen tabelletje met klantwijzigingen en bouw de geldig-van/geldig-tot-kolommen eerst zelf met LEAD, zoals in het voorbeeld. Probeer daarna in een testwerkruimte met Runtime 19 hoe Auto CDC dezelfde historie maakt, als die versie Spark 4.3 bevat.",
-   "limitations": [
-    "De blog geeft de exacte syntax van Auto CDC niet in de tekst; zoek die op in de documentatie.",
-    "Een kopie van de Runtime 19-release notes noemt Spark 4.2; welke runtimeversie Spark 4.3 bevat, is niet eenduidig.",
-    "ASOF JOIN en nanoseconde-timestamps zijn preview; er kunnen nog brekende wijzigingen komen."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Databricks Runtime release notes",
-     "url": "https://docs.databricks.com/aws/en/release-notes/runtime/"
-    },
-    {
-     "label": "SPARK-56249: SCD Type 2 Auto CDC",
-     "url": "https://issues.apache.org/jira/browse/SPARK-56249"
-    },
-    {
-     "label": "SPARK-58092: SQL ASOF JOIN",
-     "url": "https://issues.apache.org/jira/browse/SPARK-58092"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_ingestion",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 76,
-   "score_parts": {
-    "topic": 0.9,
-    "recency": 0.67,
-    "source": 0.85,
-    "quality": 0.73,
-    "feedback": -0.1,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-05T03:33:46Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
-     "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
-     "published_at": "2026-11-05T00:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
-   "story": [
-    "Databricks schrijft dat Apache Spark 4.3 nu in Databricks Runtime 19 zit. Meer dan 200 mensen werkten mee. Spark komt vanaf nu ook vaker uit: elk kwartaal een nieuwe versie, in plaats van elk halfjaar.",
-    "Voor jou is SCD type 2 met Auto CDC het interessantst. Verandert een klant van woonplaats, dan bewaart Spark de oude rij en maakt een nieuwe. Elke versie krijgt de kolommen __START_AT en __END_AT, zoals een paspoort met een geldig-van- en geldig-tot-datum. Spark verwerkt de wijzigingen in kleine stukjes (micro-batches) en voert per stukje een MERGE uit. Dat werkt in Python, SQL en via Spark Connect.",
-    "Ook streaming wordt sneller met geheugen. In real-time mode kun je nu ook optellen per tijdvak, dubbele rijen weggooien en transformWithState gebruiken. Databricks meet bij drie testopstellingen een vertraging rond de 140 milliseconden voor 99 procent van de berichten. Het is een meting, geen garantie.",
-    "Voor SQL zijn er handige extra's. JSON_TABLE pakt een JSON-lijst uit tot rijen met kolommen. ASOF JOIN koppelt elke rij aan de laatst bekende waarde op dat moment, bijvoorbeeld een prijs op een tijdstip; dat is nog een preview. Daarnaast kan Spark kleine data nu zonder shuffle in één taak verwerken (Project Feather), maar dat moet je zelf aanzetten.",
-    "Let wel op de versie. Een kopie van de release notes van Databricks Runtime 19 noemt nog Spark 4.2. Controleer daarom in je eigen werkruimte welke runtime Spark 4.3 bevat, voordat je op deze functies bouwt."
-   ],
-   "key_facts": [
-    "Apache Spark 4.3 is aangekondigd op 5 november 2026; volgens Databricks beschikbaar in Databricks Runtime 19.",
-    "Spark krijgt vanaf 4.3 elk kwartaal een featurerelease, in plaats van elke zes maanden.",
-    "Meer dan 200 bijdragers losten meer dan 1.100 Jira-tickets op.",
-    "SCD type 2 via Auto CDC werkt in Python, SQL en Spark Connect; elke versie krijgt __START_AT en __END_AT. Het doel moet MERGE ondersteunen (Data Source V2 row-level operations); gewone Parquet kan dat niet.",
-    "Real-time mode ondersteunt nu streaming-aggregatie, dropDuplicates en transformWithState; gemeten P99-vertraging 136 ms, 139 ms en 141 ms bij drie testopstellingen.",
-    "Nieuw in SQL: JSON_TABLE, VARIANT-transformaties en ASOF JOIN (preview); nanoseconde-timestamps zijn een opt-in preview."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Het idee van SCD type 2: elke woonplaats van een klant blijft bewaard, met een geldig-van (__START_AT) en geldig-tot (__END_AT). Een lege __END_AT betekent: dit is de huidige versie.",
-    "language": "sql",
-    "code": "WITH klant_wijzigingen(klant_id, woonplaats, gewijzigd_op) AS (VALUES\n  (1, 'Utrecht',    DATE '2026-01-10'),\n  (1, 'Amersfoort', DATE '2026-05-02'),\n  (1, 'Zeist',      DATE '2026-09-15'),\n  (2, 'Delft',      DATE '2026-03-01'))\nSELECT\n  klant_id,\n  woonplaats,\n  gewijzigd_op AS __START_AT,\n  LEAD(gewijzigd_op) OVER (\n    PARTITION BY klant_id ORDER BY gewijzigd_op\n  ) AS __END_AT\nFROM klant_wijzigingen\nORDER BY klant_id, __START_AT;",
-    "result": {
-     "columns": [
-      "klant_id",
-      "woonplaats",
-      "__START_AT",
-      "__END_AT"
-     ],
-     "rows": [
-      [
-       1,
-       "Utrecht",
-       "2026-01-10",
-       "2026-05-02"
-      ],
-      [
-       1,
-       "Amersfoort",
-       "2026-05-02",
-       "2026-09-15"
-      ],
-      [
-       1,
-       "Zeist",
-       "2026-09-15",
-       null
-      ],
-      [
-       2,
-       "Delft",
-       "2026-03-01",
-       null
-      ]
-     ]
-    },
-    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; Auto CDC in Spark 4.3 maakt deze kolommen zelf, en de notatie daarvan staat in de documentatie."
-   },
-   "terms": [
-    {
-     "term": "SCD type 2",
-     "explanation": "Een manier om de geschiedenis van een rij te bewaren: bij een wijziging komt er een nieuwe versie bij, met een begin- en einddatum, in plaats van dat de oude waarde wordt overschreven."
-    },
-    {
-     "term": "Auto CDC",
-     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
-    },
-    {
-     "term": "micro-batches",
-     "explanation": "Kleine pakketjes nieuwe data die een stream één voor één verwerkt, in plaats van alles in één keer."
-    },
-    {
-     "term": "real-time mode",
-     "explanation": "Een modus van Spark Structured Streaming die records vrijwel direct doorgeeft, voor toepassingen die binnen een fractie van een seconde moeten reageren."
-    },
-    {
-     "term": "ASOF JOIN",
-     "explanation": "Een join die elke rij koppelt aan de laatst bekende rij uit de andere tabel op dat tijdstip, bijvoorbeeld de geldende prijs op het moment van een bestelling."
-    }
-   ],
-   "learning": "Data ingestion",
-   "soort": "release",
-   "fit": {
-    "score": 0.65,
-    "why": "Technische release met nieuwe SQL en CDC, zoals de Databricks-releases die je een duim gaf."
-   },
-   "labels": [
-    "spark-release",
-    "scd-type-2",
-    "auto-cdc"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "data_ingestion",
-    "pts": -10
-   }
   },
   {
    "id": "c57e227522fd",
@@ -6756,6 +6894,10 @@
     "score": 0.45,
     "why": "Achtergrond over AI-ontwikkeling bij Anthropic, maar ver van je dbt-praktijk."
    },
+   "labels": [
+    "versiebeheer-voor-agents",
+    "ai-codevolume"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
@@ -7034,111 +7176,13 @@
     "score": 0.5,
     "why": "Nieuws over de skills-standaard, zonder de praktische dbt-kant die je duimen vaak hebben."
    },
+   "labels": [
+    "agent-skills",
+    "skills-standaard"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
-    "pts": -3
-   }
-  },
-  {
-   "id": "0b4ae9670355",
-   "title": "How to Repoint dbt ETL Pipelines to Databricks",
-   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T18:53:48Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Databricks laat stap voor stap zien hoe je een bestaand dbt-project naar Databricks verhuist. De kern: andere adapter, dialectfouten oplossen en per model uitkomsten vergelijken.",
-   "personal_relevance": "Een bruikbare checklist voor de laatste stap van je eigen migratie van SQL Server naar Databricks.",
-   "experiment": "Kies één model dat al op beide platforms draait. Vergelijk de uitkomsten met dbt-audit-helper en kijk of de match 100 procent is.",
-   "limitations": [
-    "Het voorbeeld is sterk vereenvoudigd: één model uit twee bronnen.",
-    "Het gaat niet specifiek over T-SQL of SQL Server; je dialectfouten kunnen anders zijn.",
-    "Databricks schreef dit zelf; Lakebridge en Genie Code zijn eigen producten."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "dbt-databricks adapter",
-     "url": "https://github.com/databricks/dbt-databricks"
-    },
-    {
-     "label": "dbt in Lakeflow Jobs",
-     "url": "https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows"
-    },
-    {
-     "label": "Lakebridge",
-     "url": "https://www.databricks.com/solutions/migration/lakebridge"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "dbt",
-    "databricks"
-   ],
-   "relevance_score": 72,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.16,
-    "source": 0.68,
-    "quality": 0.6,
-    "feedback": -0.03,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-29T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Een dbt-project overzetten naar Databricks in zeven stappen",
-   "story": [
-    "Databricks heeft een handleiding geschreven om een dbt-project van een ander datawarehouse naar Databricks te verhuizen. Het idee is simpel: je herschrijft geen modellen of tests. Je wisselt de adapter, past de bronnen aan en lost de verschillen in SQL-dialect op.",
-    "Het voorbeeld gaat over één feitentabel. Bij het eerste compileren gaven drie functies een fout, zoals DIV0 en REGEXP_SUBSTR. Die vervangen ze door een Databricks-variant of door een macro uit dbt_utils. Het is als een recept vertalen: de stappen blijven hetzelfde, alleen sommige ingrediënten heten anders.",
-    "Het nuttigste deel gaat over controleren. Met het package dbt-audit-helper vergelijken ze de uitkomst van het oude en nieuwe warehouse, rij voor rij. Ze herhalen dat tot de match 100 procent is. Daarna draait dbt als taak in Lakeflow Jobs.",
-    "Je migratie is al bijna klaar, dus de basis ken je. Maar de controlestap met audit-helper en het afsluitende stappenplan zijn handig als checklist voor de laatste modellen. Denk vooral aan incrementele modellen en snapshots: daarvoor waarschuwen de auteurs apart."
-   ],
-   "key_facts": [
-    "Handleiding op het Databricks-blog van 6 oktober 2026.",
-    "Stappen: dbt-databricks installeren, sources aanpassen naar catalog.schema.table, compileren, draaien, rij voor rij valideren met dbt-audit-helper, uitrollen met Lakeflow Jobs en daarna overschakelen.",
-    "In het voorbeeld gaven drie functies een fout: REGEXP_SUBSTR (wordt regexp_extract), DIV0 (wordt dbt_utils.safe_divide) en object_construct (wordt named_struct).",
-    "Incrementele modellen en snapshots vragen een aparte aanpak; historische snapshotdata moet je los migreren.",
-    "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
-    "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
-   ],
-   "terms": [
-    {
-     "term": "adapter",
-     "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks."
-    },
-    {
-     "term": "SQL-dialect",
-     "explanation": "De eigen variant van SQL die elk datawarehouse spreekt. De basis is gelijk, maar sommige functies heten of werken anders."
-    },
-    {
-     "term": "dbt_utils",
-     "explanation": "Een veelgebruikt dbt-pakket met kant-en-klare macro's en tests die op verschillende datawarehouses werken."
-    },
-    {
-     "term": "dbt-audit-helper",
-     "explanation": "Een dbt-pakket met macro's die twee tabellen rij voor rij vergelijken, zodat je ziet of een nieuwe versie dezelfde uitkomst geeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.45,
-    "why": "Praktische dbt-stappen, maar over migratie, een project dat je nu hebt gepauzeerd."
-   },
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
     "pts": -3
    }
   },
@@ -7272,6 +7316,10 @@
     "score": 0.45,
     "why": "Nieuw model en prijzen; je duimen gaan meer over hoe je AI inzet dan over modellen."
    },
+   "labels": [
+    "claude-modellen",
+    "claude-haiku"
+   ],
    "fb_why": {
     "by": "kind",
     "name": "aankondiging",
@@ -13642,56 +13690,25 @@
   }
  ],
  "runs": {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "tasks": {
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping: gisteren is niets gekozen; 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-12T04:14:32Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
    "uitleggen": {
     "status": "ok",
-    "summary": "Vers opgehaald; 10 artikelen uitgelegd (4 vol, 6 kort, 2 met voorbeeld) en 8 overgeslagen (5 zonder openen); daarna bij 20 oudere uitleggen labels en de Dataflow-verwijzing aangevuld.",
-    "finished_at": "2026-11-12T03:40:23Z",
+    "summary": "Vers opgehaald; 10 artikelen uitgelegd (3 vol, 7 kort, 2 met voorbeeld) en 2 overgeslagen zonder openen; daarna bij 17 oudere uitleggen labels en de Dataflow-verwijzing aangevuld.",
+    "finished_at": "2026-11-13T03:26:31Z",
     "problems": [
-     "Drie Fabric-blogpagina's (community.fabric.microsoft.com) gaven een fout; die drie korte en volle uitleggen steunen op de RSS-tekst plus de officiële Microsoft-documentatie.",
-     "Het LangChain-artikel over de GTM-agent was niet op te halen; als 'Niet te lezen' gemarkeerd zodat het volgende week terugkomt."
+     "Het Anthropic-artikel over self-hosted Managed Agents was niet direct te openen; die uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
+     "De pagina over Genie Migrate (GA) was niet direct te openen; de korte uitleg steunt op de officiële Databricks-documentatie."
     ],
     "counts": {
      "uitgelegd": 10,
-     "vol": 4,
-     "kort": 6,
+     "vol": 3,
+     "kort": 7,
      "met_voorbeeld": 2,
-     "overgeslagen": 8,
-     "overgeslagen_zonder_openen": 5,
-     "aangevuld": 20,
+     "overgeslagen": 2,
+     "overgeslagen_zonder_openen": 2,
+     "aangevuld": 17,
      "project_ref_gezet": 3
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt met 3 nieuwe artikelen, geen interesseverzoeken, 1 leerregel gemaakt (einde support), geen begrippen aangevuld: de 17 stukken zonder begrippen zijn korte uitleg zonder verhaal.",
-    "finished_at": "2026-11-12T05:14:02Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesse_verzoeken": 0,
-     "leerregels": 1,
-     "begrippen_aangevuld": 0
-    }
-   },
-   "inhalen": {
-    "status": "ok",
-    "summary": "niets in te halen",
-    "finished_at": "2026-11-12T06:28:11Z",
-    "problems": [],
-    "counts": {
-     "ingehaald": 0
     }
    }
   }
@@ -13753,7 +13770,9 @@
     "onelake-security": -15,
     "fabric-eventhouse": -15,
     "onelake-databricks": 1,
-    "fabric-mirroring": 1
+    "fabric-mirroring": 1,
+    "multi-agent": 2,
+    "human-in-the-loop": 2
    },
    "topic": {
     "dbt_analytics_engineering": 1,
