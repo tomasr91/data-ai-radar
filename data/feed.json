@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-13T03:13:27.417245Z",
+ "generated_at": "2026-11-13T03:24:02.071587Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-12T04:00:00Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-13T03:55:00Z",
  "last_successful_update": "2026-11-13T03:13:27.417245Z",
  "groups": [
   {
@@ -4604,7 +4604,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.6,
     "quality": 0.57,
     "feedback": -0.05,
@@ -4666,6 +4666,143 @@
     "by": "source",
     "name": "fabric_blog",
     "pts": -5
+   }
+  },
+  {
+   "id": "56bb11919377",
+   "title": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
+   "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T19:20:48Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Eclipse Aerospace leest twintig jaar vluchtdata in een eigen binair formaat nu direct in met een zelfgebouwde Spark-bron: Python als dunne laag, een Rust-decoder eronder. De tussenstap via AWS Lambda en Avro is weg.",
+   "personal_relevance": "Je leert hoe je een lastige bron één keer als nette Spark-bron vastlegt, zodat ingestion niet in losse scripts buiten het platform zit.",
+   "experiment": "Schrijf in Databricks Free Edition een Python-datasource die een openbaar CSV- of JSON-bestand (bijv. KNMI-daggegevens) leest, registreer hem met spark.dataSource.register en schrijf het resultaat als Delta-tabel in je Bronze-schema.",
+   "limitations": [
+    "Het is een klantverhaal op de Databricks-blog; de snelheidscijfers zijn alleen verhoudingen, zonder testopzet.",
+    "De blog zelf bevat geen code; die staat in de GitHub-repository.",
+    "Een Rust-decoder is pas nodig bij binaire formaten of veel volume; voor CSV of JSON is Python genoeg."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "PySpark custom data sources (Azure Databricks)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/pyspark/datasources"
+    }
+   ],
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": -0.11,
+    "fit": 0.15,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+   "story": [
+    "Eclipse Aerospace bouwt en vliegt kleine straalvliegtuigen. Het bedrijf heeft bijna twintig jaar vluchtmetingen: meer dan 3 TB, uit meer dan een miljoen vlieguren. Die data staat in eigen binaire formaten, die alleen met speciale decoders te lezen zijn. Vroeger zette een keten met AWS Lambda de bestanden eerst om naar Avro, en pas daarna kon Spark ermee werken.",
+    "Nu leest Spark de originele bestanden zelf. Daarvoor gebruikt het team de Python Data Source API: je schrijft een kleine Python-klasse die Spark vertelt hoe een bron eruitziet en hoe je hem leest. Daarna gebruik je hem als elke andere bron, met spark.read.format(...). Het lijkt op een dbt-macro: één keer vastleggen hoe iets werkt, en daarna overal hergebruiken.",
+    "Het eigenlijke ontleden gebeurt niet in Python, maar in een decoder die in Rust is geschreven. Python is alleen de dunne laag ertussen. Spark verdeelt de bestanden over de workers; elke worker start de Rust-decoder en krijgt de gegevens terug als Apache Arrow-blokken. Zo hoeft Python niet elke rij apart om te zetten. Volgens het team is dat ongeveer 2 keer sneller dan een Python-versie met PyArrow en bijna 20 keer sneller dan gewoon Python.",
+    "Wat levert het op? Een nieuw bestand staat volgens het artikel binnen een minuut als tabel klaar, en grote batches van een paar GB binnen twee minuten. Fouten bij het decoderen en slechte records blijven zichtbaar in Databricks, in plaats van verstopt in een losse Lambda-functie. Het voorbeeld staat met benchmarks op GitHub.",
+    "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken. Je hebt daarvoor geen Rust nodig: voor CSV of JSON van een open-data-API is een Python-reader al genoeg."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 12 november 2026 op de Databricks-blog, door Jack Yallop.",
+    "Eclipse Aerospace heeft bijna 20 jaar vluchtdata: meer dan 3 TB en meer dan 1 miljoen vlieguren, in eigen binaire formaten.",
+    "De oude keten gebruikte AWS Lambda, Avro en Glacier-opslag; de nieuwe leest de originele bestanden direct in een Spark-read.",
+    "Opbouw: PySpark custom data source (Python Data Source API) met een Rust-decoder (via PyO3/Maturin) die Apache Arrow RecordBatches teruggeeft.",
+    "Gemeld: ongeveer 2x sneller dan een pure-Python-versie met PyArrow en bijna 20x sneller dan Python zonder Arrow; geen absolute tijden of testomgeving genoemd.",
+    "Records zijn binnen een minuut na upload verwerkt; batches van meerdere GB parallel in minder dan twee minuten.",
+    "De Python Data Source API werkt vanaf Databricks Runtime 15.4 LTS en serverless environment 2."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een eigen Spark-bron voor een verzonnen binair formaat met vaste records van 12 bytes. Na registreren lees je hem als elke andere bron.",
+    "language": "python",
+    "code": "import struct\nfrom pyspark.sql.datasource import DataSource, DataSourceReader\n\nclass TelemetrieBron(DataSource):\n    @classmethod\n    def name(cls):\n        return \"telemetrie\"\n    def schema(self):\n        return \"meting int, seconde int, snelheid float\"\n    def reader(self, schema):\n        return TelemetrieLezer(self.options)\n\nclass TelemetrieLezer(DataSourceReader):\n    def __init__(self, options):\n        self.pad = options[\"path\"]\n    def read(self, partition):\n        data = open(self.pad, \"rb\").read()\n        for rec in struct.iter_unpack(\"<iif\", data):  # 12 bytes per meting\n            yield (rec[0], rec[1], round(rec[2], 1))\n\nspark.dataSource.register(TelemetrieBron)\nspark.read.format(\"telemetrie\").load(\"vlucht.bin\").show()",
+    "result": {
+     "columns": [
+      "meting",
+      "seconde",
+      "snelheid"
+     ],
+     "rows": [
+      [
+       1,
+       1200,
+       310.5
+      ],
+      [
+       2,
+       1260,
+       312.0
+      ],
+      [
+       3,
+       1320,
+       309.8
+      ]
+     ]
+    },
+    "note": "Verzonnen data, echt gedraaid met PySpark 4 lokaal. De klassen en register/format-aanroepen volgen de Databricks-documentatie; Eclipse doet het decoderen in Rust in plaats van met struct."
+   },
+   "terms": [
+    {
+     "term": "Python Data Source API",
+     "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...)."
+    },
+    {
+     "term": "Avro",
+     "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data."
+    },
+    {
+     "term": "Rust",
+     "explanation": "Een snelle programmeertaal, vergelijkbaar met C, die veel fouten met geheugen al bij het bouwen tegenhoudt."
+    },
+    {
+     "term": "Apache Arrow",
+     "explanation": "Een standaardformaat om tabellen kolom voor kolom in het geheugen te zetten, zodat programma's data uitwisselen zonder ze eerst om te zetten."
+    },
+    {
+     "term": "workers",
+     "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data."
+    }
+   ],
+   "learning": "Data ingestion",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.65,
+    "why": "Concreet ingestion-praktijkverhaal met architectuur, het soort praktische uitleg waar je eerder duimen voor gaf."
+   },
+   "labels": [
+    "python-data-source-api",
+    "custom-ingestion",
+    "apache-arrow"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "data_ingestion",
+    "pts": -11
+   },
+   "project_ref": {
+    "fase": 3,
+    "quote": "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken.",
+    "why": "Fase 3 gaat over openbare data met Python inlezen in Bronze."
    }
   },
   {
@@ -4906,6 +5043,53 @@
    "labels": [
     "agent-evals",
     "llm-als-rechter"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -5
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "05f1e3cef617",
+   "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
+   "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-12T00:00:00Z",
+   "fetched_at": "2026-11-13T03:13:29.038183Z",
+   "summary": "Anthropic vergelijkt Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2 voor kenniswerk en raadt Opus 5.5 op effort Medium aan als dagelijkse keuze; loopt het vast, zet dan eerst de effort hoger voordat je een zwaarder model kiest. Handig als je Claude voor analyse, rapporten of decks gebruikt; de tips (eindresultaat beschrijven, 'denk goed na' weglaten) gelden ook voor Claude Code.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.51,
+    "quality": 0.45,
+    "feedback": -0.05,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Anthropic: begin met Opus 5.5 op Medium, ga pas daarna omhoog",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.5,
+    "why": "Claude-keuzehulp voor kenniswerk, minder gericht op code dan je Claude Code-duimen."
+   },
+   "labels": [
+    "claude-modellen",
+    "claude-effort"
    ],
    "fb_why": {
     "by": "kind",
@@ -6007,6 +6191,114 @@
    }
   },
   {
+   "id": "334fd5b5e6c0",
+   "title": "How Block powers collaborative AI agents with Buzz and Unity Gateway",
+   "url": "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T14:59:06Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Block bouwde Buzz, een open-source werkruimte waar medewerkers agents aan een gesprek toevoegen en per agent het model kiezen; de modellen lopen via Databricks Unity Gateway. Interessant als voorbeeld van mensen die agentwerk zien en nakijken, maar het stuk geeft geen details over rechten, controles of resultaten.",
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_agents_rag",
+    "ai_on_data_platform"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 77,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.33,
+    "feedback": -0.06,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Block laat collega's en AI-agents samenwerken in één chatruimte",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.45,
+    "why": "Agentpraktijk zonder concrete aanpak, iets wat je eerder 'te vaag' noemde."
+   },
+   "labels": [
+    "unity-ai-gateway",
+    "multi-agent",
+    "human-in-the-loop"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "d6ea4662f2dc",
+   "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
+   "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T18:26:29Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Genie Migrate laat agents van Genie Code SQL uit T-SQL, Snowflake, Redshift, Oracle, BigQuery of Teradata omzetten naar Databricks SQL of notebooks, met per bestand een controle en een vergelijking naast elkaar. Handig voor teams die nog een oud datawarehouse naar Databricks willen verhuizen; de notebook-uitvoer is nog bèta.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks"
+   ],
+   "relevance_score": 77,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.37,
+    "feedback": -0.07,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
+     "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
+     "published_at": "2026-11-12T18:26:29Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie Migrate zet oude SQL met AI-agents om naar Databricks SQL",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.45,
+    "why": "Databricks-AI-functie, maar voor migraties die je nu niet doet; minder praktisch dan je dbt-duimen."
+   },
+   "labels": [
+    "genie-migrate",
+    "migratie-naar-databricks"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -7
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "f2cef2be2ab7",
    "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
@@ -6164,6 +6456,64 @@
     "name": "data_ingestion",
     "pts": -10
    }
+  },
+  {
+   "id": "c57e227522fd",
+   "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
+   "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T16:53:43Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Databricks wil met Lakehouse//RT (bèta) duizenden kleine query's per seconde, zoals die van AI-agents, direct op Delta-tabellen draaien, met fijnere autoscaling per node in plaats van een aparte laag zoals Apache Druid of Pinot. De besparingen (6 tot 10 keer lager) komen van Databricks en geselecteerde klanten, zonder onafhankelijke meting.",
+   "availability_status": "preview",
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.37,
+    "feedback": -0.07,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
+     "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
+     "published_at": "2026-11-12T16:53:43Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Lakehouse//RT: veel snelle query's direct op de lakehouse, in bèta",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.4,
+    "why": "Databricks-nieuws met vooral claims; je duimde eerder voor praktische stukken, niet voor productmarketing."
+   },
+   "labels": [
+    "lakehouse-rt",
+    "sql-warehouse-realtime"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -7
+   },
+   "diepte": "kort"
   },
   {
    "id": "d9a4007c6074",
@@ -6435,323 +6785,6 @@
     "pts": -1
    },
    "diepte": "kort"
-  },
-  {
-   "id": "9a1a77aea3de",
-   "title": "Running open-Jev in SQL on Databricks",
-   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-09-24T16:55:01Z",
-   "date_note": "Gepubliceerd op 24 september 2026; ruim een maand voor deze verwerking.",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Databricks laat zien hoe je een open beslismodel op een eigen GPU-endpoint zet en het met ai_query vanuit SQL aanroept. Het model kiest uit vaste opties, zoals goed of slecht.",
-   "personal_relevance": "Een goedkope manier om vrije tekst in Silver te labelen zonder dat de data Databricks verlaat.",
-   "experiment": "Draai het notebook uit het artikel in een proefwerkruimte en classificeer twintig zelfverzonnen recensies met ai_query. Vergelijk de uitkomst met je eigen oordeel.",
-   "limitations": [
-    "Geen cijfers over nauwkeurigheid, kosten of snelheid.",
-    "De modelnamen in het artikel zijn niet consequent gespeld; controleer het model en de licentie op GitHub.",
-    "Er is een GPU-endpoint nodig; dat kost geld zolang het aanstaat."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Notebook: SemIf-beslismodellen serveren",
-     "url": "https://docs.databricks.com/aws/en/notebooks/source/machine-learning/serve-semif-decision-models.html"
-    },
-    {
-     "label": "ai_query",
-     "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering",
-    "open_source_tools"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.09,
-    "source": 0.68,
-    "quality": 0.57,
-    "feedback": -0.03,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (handmatige run op verzoek)",
-   "processed_at": "2026-10-29T07:40:54Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Een klein open beslismodel draaien vanuit SQL op Databricks",
-   "story": [
-    "Databricks beschrijft een nieuw soort model: een beslismodel dat niet vrij tekst schrijft, maar kiest uit een vaste lijst opties. Het geeft daarbij per optie een kans. Zulke modellen zijn volgens Databricks snel en goedkoop, en dus bruikbaar op grote tabellen.",
-    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev. Een notebook downloadt het model en zet het op een serverless GPU-endpoint. Daarna roep je het vanuit SQL aan met ai_query. Dat werkt nu ook voor modellen met een eigen aanroepformaat. Je krijgt kolommen terug met de gekozen klasse en de kansen.",
-    "Het lijkt op een dbt-test met accepted_values, maar dan voor vrije tekst: het antwoord valt altijd in een vaste lijst. In het artikel classificeren ze hotelrecensies als goed of slecht.",
-    "Voor jou is dit interessant omdat het model binnen Databricks draait. Dan mag het in principe ook op werkdata, binnen de toegangsrechten. Het artikel geeft wel geen cijfers over nauwkeurigheid of kosten, en de SQL zelf staat er niet in."
-   ],
-   "key_facts": [
-    "Blog van Databricks van 24 september 2026.",
-    "Beslismodellen kiezen uit een vaste set opties en geven per optie een kans.",
-    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev; een notebook zet het op een GPU Model Serving-endpoint via AI Runtime en Express Deployments.",
-    "ai_query ondersteunt eigen model-API's, dus het model is vanuit SQL en vanuit Lakeflow-jobs aan te roepen.",
-    "Het voorbeeld classificeert hotelrecensies als goed of slecht.",
-    "Het artikel noemt geen cijfers over nauwkeurigheid, kosten of snelheid."
-   ],
-   "terms": [
-    {
-     "term": "ai_query",
-     "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren."
-    },
-    {
-     "term": "GPU-endpoint",
-     "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.65,
-    "why": "AI vanuit SQL op Databricks, zoals je duim bij 'AI in je dbt-model'."
-   },
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   }
-  },
-  {
-   "id": "3fd19a8cb4a2",
-   "title": "Claude Duet Safety, Privacy, and Security",
-   "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-23T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Claude Duet werkt door terwijl je weg bent. Anthropic legt uit welke controles eromheen staan: goedkeuring vooraf, een losse intentiecheck en een agent die nooit je wachtwoorden ziet.",
-   "personal_relevance": "Het ontwerp laat concreet zien hoe je een zelfstandige agent veilig maakt; dat patroon kun je hergebruiken als je agents op je dataplatform laat handelen.",
-   "experiment": "Teken voor een denkbeeldige agent die dbt-runs herstart welke acties vooraf goedkeuring vragen, welke verboden zijn en waar de inloggegevens staan. Gebruik de drie plekken uit dit artikel als checklist.",
-   "limitations": [
-    "Duet is een consumentenproduct in research preview en alleen in de VS te krijgen.",
-    "Het artikel noemt geen opslagregio's, bewaartermijnen of drempels van de classifiers.",
-    "Het stuk komt van Anthropic zelf; de effectiviteit van de controles is niet onafhankelijk gemeten."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Claude Duet Safety, Privacy, and Security",
-     "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security"
-    },
-    {
-     "label": "Introducing Claude Duet",
-     "url": "https://claude.com/en/resources/articles/claude-duet"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "agents",
-    "claude",
-    "kwaliteit"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.51,
-    "quality": 0.6,
-    "feedback": -0.04,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:29:34Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Zo houdt Anthropic een agent die zelf handelt in toom",
-   "story": [
-    "Anthropic beschrijft hoe het Claude Duet beveiligt. Duet is een agent op een computer in de cloud die doorwerkt als je de app sluit. Hij leest bijvoorbeeld je inbox, schrijft conceptantwoorden en draait vaste routines. Duet is een onderzoeksversie (research preview), eerst voor Pro- en Max-abonnees in de VS via een wachtlijst.",
-    "De taak van de agent is dus handelen in jouw apps. De controle zit op drie plekken. Bij belangrijke acties, zoals betalen, iets verwijderen of een gevoelig bericht sturen, toont Duet eerst de actie, de ontvangers en de volledige inhoud. Pas na jouw goedkeuring gaat het door. Sommige acties, zoals beleggen of geld overmaken tussen rekeningen, zijn altijd verboden.",
-    "Daarnaast kijkt een losse controle of elke actie past bij wat je vroeg. Die check is een uitbreiding van de classifier achter auto mode in Claude Code en draait buiten het model. Een verborgen instructie op een webpagina (prompt injection) kan de uitkomst dus niet beïnvloeden. Uitgaande berichten gaan ook langs een classifier die gevoelige gegevens herkent: inloggegevens en rekeningnummers gaan nooit mee, en voor gezondheids- of financiële gegevens is toestemming nodig.",
-    "Het meest leerzame deel gaat over geheimen. De agent ziet nooit je wachtwoorden of tokens. Zijn machine heeft alleen een plaatshouder; een proxy buiten die machine zet het echte toegangsbewijs er pas bij het verzoek in. Het lijkt op een portier die de sleutel bewaart en de deur zelf opent, zodat de bezorger de sleutel nooit in handen krijgt.",
-    "Je gebruikt Duet niet voor je werk, maar het ontwerp is een bruikbaar voorbeeld. Als je zelf agents bouwt op een dataplatform, kun je dezelfde scheiding toepassen: goedkeuring vóór onomkeerbare acties, een controle buiten het model en geheimen die de agent nooit ziet."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 23 oktober 2026; Claude Duet is een research preview, toegang via wachtlijst, eerst voor Pro- en Max-abonnees in de VS.",
-    "Vóór gevoelige berichten, betalingen of verwijderen toont Duet actie, bestemming en volledige inhoud en wacht op goedkeuring; beleggen, geld tussen rekeningen overmaken en andermans account gebruiken zijn altijd geblokkeerd.",
-    "Een intentiecheck, uitgebreid vanuit de auto mode-classifier van Claude Code, draait buiten het model zodat verborgen instructies op webpagina's de uitkomst niet kunnen veranderen.",
-    "Een aparte classifier controleert uitgaande berichten en geüploade bestanden: inloggegevens, volledige kaart- en rekeningnummers en ID-nummers worden nooit gedeeld; andere privégegevens vragen toestemming.",
-    "Inlogtokens: de machine van de agent heeft alleen een plaatshouder; een proxy buiten die machine voegt het echte toegangsbewijs toe bij het verzoek. De browser draait in een aparte virtuele machine.",
-    "Anthropic zegt dat de classifier soms dingen mist of onschuldige berichten tegenhoudt; daarom staat de goedkeuringsstap ernaast."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "research preview",
-     "explanation": "Een vroege testversie van een product die een bedrijf openstelt om te leren hoe mensen het gebruiken. Functies en regels kunnen nog veranderen."
-    },
-    {
-     "term": "classifier",
-     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
-    },
-    {
-     "term": "prompt injection",
-     "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf."
-    },
-    {
-     "term": "proxy",
-     "explanation": "Een tussenstation waar verzoeken langs gaan. Hier voegt de proxy het echte toegangsbewijs pas op het laatste moment toe, zodat de agent het nooit ziet."
-    },
-    {
-     "term": "auto mode",
-     "explanation": "Een modus in Claude Code waarin een aparte controle tool-aanroepen beoordeelt, zodat je minder vaak handmatig toestemming hoeft te geven."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.5,
-    "why": "Agentontwerp met controles, maar geen dbt- of dataplatformstuk zoals je meeste duimen."
-   },
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   }
-  },
-  {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
-   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
-   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
-   "limitations": [
-    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
-    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "What's coming? (Genie Ontology)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
-    },
-    {
-     "label": "Genie Code task for jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
-    },
-    {
-     "label": "Shared Serverless voor Git-mappen en bundels",
-     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "databricks_data_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.41,
-    "source": 1.0,
-    "quality": 0.68,
-    "feedback": 0.01,
-    "fit": 0.2,
-    "regel": -0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
-   "story": [
-    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
-    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
-    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
-    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
-   ],
-   "key_facts": [
-    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
-    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
-    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
-    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
-    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
-    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
-    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
-    "language": "text",
-    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
-    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
-   },
-   "terms": [
-    {
-     "term": "Declarative Automation Bundles",
-     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
-    },
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "pyproject.toml",
-     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-ontology",
-    "asset-bundles",
-    "databricks-weekoverzicht"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   },
-   "rule_why": [
-    {
-     "id": "einde-support",
-     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
-     "pts": -15
-    }
-   ]
   },
   {
    "id": "f29afd156725",
@@ -7245,153 +7278,6 @@
    ]
   },
   {
-   "id": "23d3cd62d490",
-   "title": "Smarter cost controls for serverless",
-   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T15:00:00Z",
-   "fetched_at": "2026-10-29T16:25:27.740167Z",
-   "summary": "Databricks geeft serverless compute objecten die je kunt taggen, afschermen en begrenzen. Kosten zie je per tag terug in system.billing.usage, en een job krijgt een maximale grootte.",
-   "personal_relevance": "Als je dbt of notebooks op serverless draait, zie je hiermee per team of laag wat het kost en kun je uitschieters begrenzen.",
-   "experiment": "Schrijf een query op system.billing.usage in een oefen- of testwerkruimte die de serverless kosten van de afgelopen 30 dagen per tag en per product optelt, en zet er een SQL-alert op.",
-   "limitations": [
-    "Tags en rate limits zijn Beta.",
-    "De blog bevat geen configuratievoorbeelden; de details staan in de documentatie.",
-    "Een te laag plafond maakt nachtelijke runs trager; meet eerst wat ze nu gebruiken."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Manage serverless compute (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/manage-serverless-compute"
-    },
-    {
-     "label": "Serverless billing system tables (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/serverless-billing"
-    },
-    {
-     "label": "Budgets (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/budgets"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "databricks",
-    "kwaliteit"
-   ],
-   "relevance_score": 67,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.49,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.08,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Serverless kosten per team: tags, budgetten en een plafond per job",
-   "story": [
-    "Bij serverless compute start je geen cluster meer. Daardoor was het lastig te zien wie wat kost, en om te begrenzen. Databricks werkt dat nu bij met serverless compute-objecten. Er is een standaardobject voor notebooks en Databricks Connect, en één voor jobs en pipelines.",
-    "Zo'n object werkt als een kostenplaats met een slot erop. Je zet er één keer een tag op, en elke DBU die erop draait, draagt die tag mee naar de facturatie. Met de rechten Can Use en Can Manage bepaal je wie het mag gebruiken. Haal je 'All Users' weg en zet je er een groep op, dan zien anderen serverless grijs in hun notebook.",
-    "Daarnaast kun je de snelheid van uitgeven begrenzen (rate limits). Dat doe je met maten S, M, L en XL; voor notebooks en jobs is dat een plafond voor het opschalen. In system.billing.usage zie je de kosten per gebruiker, product en tag. Budgetten in de accountconsole mailen je als een drempel wordt overschreden.",
-    "Voor nachtelijke dbt-runs op serverless kan dit helpen om per laag of per team te zien wat het kost. Let op de status: tags en rate limits zijn Beta, en gedeelde budgetten voor interactief werk komen nog."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 29 oktober 2026: het serverless-gebruik bij Databricks groeide het afgelopen jaar meer dan drie keer.",
-    "Serverless compute-tags (Beta): één tag op een serverless compute-object, en elke DBU draagt die tag mee naar de facturatie.",
-    "Serverless Compute Access Controls (algemeen beschikbaar): rechten Can Use en Can Manage; elke gebruiker begint met Can Use.",
-    "Rate limits (Beta, via de preview-instellingen): maten S, M, L en XL; voor notebooks en jobs een plafond voor autoscaling.",
-    "system.billing.usage splitst serverless DBU's uit per gebruiker, product en tag; budgetten met e-mailwaarschuwing zijn algemeen beschikbaar.",
-    "Gedeelde budgetten voor interactief werk, met een maximum per sessie, komen binnenkort."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "DBU",
-     "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent."
-    },
-    {
-     "term": "rate limits",
-     "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen."
-    },
-    {
-     "term": "system.billing.usage",
-     "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Praktisch Databricks-kostenstuk, buiten de AI-hoek van je meeste duimen."
-   },
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -8
-   }
-  },
-  {
-   "id": "827b239977de",
-   "title": "Detecting credential-driven attacks on Databricks",
-   "url": "https://www.databricks.com/blog/detecting-credential-driven-attacks-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-11T23:00:00Z",
-   "fetched_at": "2026-11-12T03:13:30.271950Z",
-   "summary": "Databricks beschrijft zes stappen van een aanval met gestolen tokens of service principal-gegevens, van snelle list-calls tot secrets uitlezen, en welke audit-events in system.access.audit dat verraden. Met een stappenplan om in te grijpen en tips voor preventie, zoals vervaldatums op tokens en least privilege op secret scopes.",
-   "availability_status": "onbekend",
-   "topics": [
-    "data_governance_privacy",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "kwaliteit",
-    "databricks"
-   ],
-   "relevance_score": 67,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.94,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.09,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T04:00:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Zo herken je een aanval met gestolen inloggegevens in Databricks",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.45,
-    "why": "Beveiliging voor beheerders; weinig raakvlak met je duimen voor dbt en context."
-   },
-   "labels": [
-    "databricks-beveiliging",
-    "audit-logs"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -9
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "e000e5cddc90",
    "title": "Build clearer, more expressive Real-Time Dashboards with new design and KPI capabilities (Generally Available)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-clearer-more-expressive-Real-Time-Dashboards-with-new/ba-p/5377578",
@@ -7434,53 +7320,6 @@
     "by": "source",
     "name": "fabric_blog",
     "pts": -5
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "95ae3c341206",
-   "title": "A builder’s guide to scaling Databricks Apps",
-   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T18:00:00Z",
-   "fetched_at": "2026-11-06T03:12:46.373805Z",
-   "summary": "Een praktische gids voor apps op Databricks Apps die groeien: zware taken naar jobs, vaste gegevens in Lakebase, instantiegroottes van Medium tot XLarge en een rekensom voor het aantal databaseverbindingen. Vooral handig als je zelf een app bouwt voor meer dan een handvol collega's.",
-   "availability_status": "onbekend",
-   "topics": [
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 63,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.69,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.09,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Databricks Apps voor veel gebruikers: zo plan je de schaal",
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.45,
-    "why": "Praktisch, maar over apps bouwen, wat buiten je dagelijkse dbt-werk ligt."
-   },
-   "labels": [
-    "databricks-apps",
-    "lakebase"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -9
    },
    "diepte": "kort"
   },
@@ -10314,7 +10153,6 @@
     "ceb4b784fbab",
     "a68aede0b61b",
     "560fbec0053e",
-    "94b4924597e5",
     "67b79f31be0e",
     "215f0a50b9ea",
     "5c7174c45ad1",
@@ -10392,9 +10230,7 @@
    {
     "title": "Genie haalt vanaf begin november zelf context uit je metric views en dashboards",
     "why": "Genie Ontology wordt begin november algemeen beschikbaar en staat dan standaard aan, met alleen snippets uit assets waar de gebruiker rechten op heeft. Het is goed om vooraf te weten welke metric views en dashboards Genie straks als context gebruikt.",
-    "article_ids": [
-     "94b4924597e5"
-    ]
+    "article_ids": []
    },
    {
     "title": "Agents leveren beter werk met een vaste lus van bouwen, testen en vergelijken",
@@ -10524,17 +10360,6 @@
    ]
   },
   {
-   "term": "ai_query",
-   "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "9a1a77aea3de",
-     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
-    }
-   ]
-  },
-  {
    "term": "Apache 2.0",
    "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven.",
    "refs": [
@@ -10542,6 +10367,17 @@
      "kind": "a",
      "id": "68a2bf1c5563",
      "title": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant"
+    }
+   ]
+  },
+  {
+   "term": "Apache Arrow",
+   "explanation": "Een standaardformaat om tabellen kolom voor kolom in het geheugen te zetten, zodat programma's data uitwisselen zonder ze eerst om te zetten.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "56bb11919377",
+     "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van"
     }
    ]
   },
@@ -10643,13 +10479,19 @@
    "refs": [
     {
      "kind": "a",
-     "id": "3fd19a8cb4a2",
-     "title": "Zo houdt Anthropic een agent die zelf handelt in toom"
-    },
-    {
-     "kind": "a",
      "id": "72dc169275f9",
      "title": "Claude Code leert je omgeving kennen voor de automatische modus"
+    }
+   ]
+  },
+  {
+   "term": "Avro",
+   "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "56bb11919377",
+     "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van"
     }
    ]
   },
@@ -10764,11 +10606,6 @@
      "kind": "a",
      "id": "62afb1e0ab94",
      "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
-    },
-    {
-     "kind": "a",
-     "id": "3fd19a8cb4a2",
-     "title": "Zo houdt Anthropic een agent die zelf handelt in toom"
     }
    ]
   },
@@ -11115,17 +10952,6 @@
    ]
   },
   {
-   "term": "DBU",
-   "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
-    }
-   ]
-  },
-  {
    "term": "declaratief",
    "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo.",
    "refs": [
@@ -11149,11 +10975,6 @@
      "kind": "v",
      "id": "release-pipeline-basis",
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
-    },
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "v",
@@ -11570,17 +11391,6 @@
    ]
   },
   {
-   "term": "GPU-endpoint",
-   "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "9a1a77aea3de",
-     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
-    }
-   ]
-  },
-  {
    "term": "grep",
    "explanation": "Een commando dat in de inhoud van bestanden zoekt naar een woord of patroon, zonder ze helemaal te openen.",
    "refs": [
@@ -11807,11 +11617,6 @@
    "term": "Lakeflow Jobs",
    "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
     {
      "kind": "a",
      "id": "0b4ae9670355",
@@ -12129,11 +11934,6 @@
      "kind": "a",
      "id": "308e572d49e4",
      "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
-    },
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "a",
@@ -12471,17 +12271,6 @@
    ]
   },
   {
-   "term": "prompt injection",
-   "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3fd19a8cb4a2",
-     "title": "Zo houdt Anthropic een agent die zelf handelt in toom"
-    }
-   ]
-  },
-  {
    "term": "prompt-injectie",
    "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf.",
    "refs": [
@@ -12504,17 +12293,6 @@
    ]
   },
   {
-   "term": "proxy",
-   "explanation": "Een tussenstation waar verzoeken langs gaan. Hier voegt de proxy het echte toegangsbewijs pas op het laatste moment toe, zodat de agent het nooit ziet.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3fd19a8cb4a2",
-     "title": "Zo houdt Anthropic een agent die zelf handelt in toom"
-    }
-   ]
-  },
-  {
    "term": "Publish to Power BI",
    "explanation": "Een functie van Databricks, nu in private preview, die een metric view als semantisch model in een Power BI-werkruimte zet, met de maatstaven als DAX-measures.",
    "refs": [
@@ -12526,13 +12304,13 @@
    ]
   },
   {
-   "term": "pyproject.toml",
-   "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft.",
+   "term": "Python Data Source API",
+   "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...).",
    "refs": [
     {
      "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
+     "id": "56bb11919377",
+     "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van"
     }
    ]
   },
@@ -12582,17 +12360,6 @@
      "kind": "a",
      "id": "560fbec0053e",
      "title": "Zoekindexen voor AI blijven nu vanzelf actueel"
-    }
-   ]
-  },
-  {
-   "term": "rate limits",
-   "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
     }
    ]
   },
@@ -12652,17 +12419,6 @@
    ]
   },
   {
-   "term": "research preview",
-   "explanation": "Een vroege testversie van een product die een bedrijf openstelt om te leren hoe mensen het gebruiken. Functies en regels kunnen nog veranderen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "3fd19a8cb4a2",
-     "title": "Zo houdt Anthropic een agent die zelf handelt in toom"
-    }
-   ]
-  },
-  {
    "term": "review queue",
    "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was.",
    "refs": [
@@ -12714,6 +12470,17 @@
      "kind": "v",
      "id": "eigen-performance-meten-vanuit-dbt-in-databricks",
      "title": "Waarom duurt dit dbt-model zo lang? Zo zoek je het uit"
+    }
+   ]
+  },
+  {
+   "term": "Rust",
+   "explanation": "Een snelle programmeertaal, vergelijkbaar met C, die veel fouten met geheugen al bij het bouwen tegenhoudt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "56bb11919377",
+     "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van"
     }
    ]
   },
@@ -12810,22 +12577,6 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
-    }
-   ]
-  },
-  {
-   "term": "serverless compute",
-   "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
     }
    ]
   },
@@ -13110,17 +12861,6 @@
    ]
   },
   {
-   "term": "system.billing.usage",
-   "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
-    }
-   ]
-  },
-  {
    "term": "system.query.history",
    "explanation": "Een systeemtabel in Databricks met een rij per query: wie, wanneer, hoe lang, hoeveel gelezen en waar de tijd zat.",
    "refs": [
@@ -13400,6 +13140,17 @@
      "kind": "a",
      "id": "215f0a50b9ea",
      "title": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten"
+    }
+   ]
+  },
+  {
+   "term": "workers",
+   "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "56bb11919377",
+     "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van"
     }
    ]
   },
@@ -13834,41 +13585,41 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 408,
+  "fetched_items": 608,
   "unique_after_dedupe": 573,
   "merged_duplicates": 28,
-  "shown": 78,
+  "shown": 77,
   "decisions": {
    "excluded": 196,
-   "included": 122,
+   "included": 116,
+   "area_cap": 3,
    "below_threshold": 106,
    "included_low": 3,
    "no_topic": 127,
-   "source_cap": 17,
-   "area_cap": 2
+   "source_cap": 22
   },
   "processing": {
-   "enriched": 78
+   "enriched": 77
   },
   "without_date": 0,
   "per_group": {
    "overig": 10,
    "ai_context": 21,
    "dbt": 6,
-   "claude": 16,
+   "claude": 17,
    "architectuur": 3,
    "agents": 15,
-   "databricks": 3,
-   "kwaliteit": 4
+   "databricks": 2,
+   "kwaliteit": 3
   },
   "per_source": {
-   "databricks_blog": 13,
+   "databricks_blog": 14,
    "dbt_labs_blog": 10,
-   "azure_databricks_release_notes": 4,
+   "azure_databricks_release_notes": 3,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_code_releases": 3,
-   "databricks_engineering_blog": 4,
+   "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
    "claude_blog": 12,
    "chris_webb": 1,
@@ -13920,9 +13671,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 153
+   "skipped_no_key": 148
   },
-  "queue_size": 38,
+  "queue_size": 33,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -14274,14 +14025,6 @@
     ]
    },
    {
-    "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
@@ -14469,6 +14212,14 @@
     "excluded_by": []
    },
    {
+    "title": "Azure Databricks: wat is er nieuw in week 43",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
+    "relevance_score": 74,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "How Ramp's internal AI agents crossed a million sessions",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/ramp-internal-ai-agents-million-sessions",
@@ -14481,7 +14232,7 @@
     "source_id": "databricks_blog",
     "url": "https://www.databricks.com/blog/enterprise-case-open-weight-models-databricks",
     "relevance_score": 74,
-    "decision": "area_cap",
+    "decision": "source_cap",
     "excluded_by": []
    },
    {
@@ -14493,19 +14244,19 @@
     "excluded_by": []
    },
    {
+    "title": "Running open-Jev in SQL on Databricks",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+    "relevance_score": 74,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Monitoring The Impact Of Full-Text Indexing On Semantic Model Refresh In Power BI",
     "source_id": "chris_webb",
     "url": "https://blog.crossjoin.co.uk/2026/10/18/monitoring-the-impact-of-full-text-indexing-on-semantic-model-refresh-in-power-bi/",
     "relevance_score": 74,
     "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "More visibility and control over Claude Enterprise for security teams",
-    "source_id": "claude_blog",
-    "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
-    "relevance_score": 74,
-    "decision": "source_cap",
     "excluded_by": []
    }
   ],
