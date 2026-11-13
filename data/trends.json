@@ -1,6 +1,6 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-12T05:13:33Z",
+ "generated_at": "2026-11-13T05:13:43Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
@@ -19,7 +19,8 @@
     "215f0a50b9ea",
     "5c7174c45ad1",
     "81204e04abb9",
-    "7737e173e31a"
+    "7737e173e31a",
+    "e89c62d75061"
    ],
    "topics": [
     "ai_context_engineering",
@@ -53,7 +54,7 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. Ook Anthropics advies voor modelkeuze past hierin: probeer mislukte taken opnieuw op een hogere effort, wat kan omdat je ziet of een taak gelukt is, en Curative laat een 'rechter' elk bericht van zijn agent nakijken. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "article_ids": [
     "8b7855abcc2d",
     "a9b6458ba033",
@@ -65,7 +66,9 @@
     "583b8d97bd5d",
     "77544766b84c",
     "4cc09a1d9883",
-    "86eab858089b"
+    "86eab858089b",
+    "d5f14a6242b0",
+    "3180dbea1b88"
    ],
    "topics": [
     "ai_evaluation_observability",
