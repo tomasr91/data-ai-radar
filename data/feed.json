@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-13T04:15:46.305751Z",
+ "generated_at": "2026-11-13T05:14:08.275471Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-13T04:10:00Z",
@@ -1350,7 +1350,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.02,
@@ -1701,7 +1701,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.03,
@@ -1793,7 +1793,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 0.68,
     "quality": 0.8,
     "feedback": -0.04,
@@ -2224,7 +2224,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.06,
@@ -4071,58 +4071,6 @@
    "diepte": "kort"
   },
   {
-   "id": "3180dbea1b88",
-   "title": "How Curative is building a national provider network with agents on Claude",
-   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-10T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Zorgverzekeraar Curative bouwde agent Gwen (Claude Opus) die per zorgverlener een contract onderhandelt met alleen een Python-runner als tool; een Haiku-'rechter' leest elk uitgaand bericht vóór verzending en een Sonnet-agent beoordeelt tarieven boven de standaard. Concreet patroon voor agents met controle, al zijn de cijfers door de leverancier gepubliceerd.",
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "ai_in_healthcare"
-   ],
-   "groups": [
-    "agents",
-    "claude",
-    "zorg"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.85,
-    "source": 0.51,
-    "quality": 0.5,
-    "feedback": -0.02,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:54:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Curative laat een Claude-agent zorgcontracten onderhandelen, met een rechter",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Agent met controle-stappen in de zorg, zoals je duim voor Databricks' zorgkennis voor AI-assistenten."
-   },
-   "labels": [
-    "llm-als-rechter",
-    "human-in-the-loop",
-    "ai-in-de-zorg"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -2
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "77544766b84c",
    "title": "Claude’s new auto eval tool",
    "url": "https://hamel.dev/blog/posts/claude-auto-evals/",
@@ -4336,6 +4284,58 @@
     "name": "databricks_data_engineering",
     "pts": -3
    }
+  },
+  {
+   "id": "3180dbea1b88",
+   "title": "How Curative is building a national provider network with agents on Claude",
+   "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-10T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Zorgverzekeraar Curative bouwde agent Gwen (Claude Opus) die per zorgverlener een contract onderhandelt met alleen een Python-runner als tool; een Haiku-'rechter' leest elk uitgaand bericht vóór verzending en een Sonnet-agent beoordeelt tarieven boven de standaard. Concreet patroon voor agents met controle, al zijn de cijfers door de leverancier gepubliceerd.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "agents",
+    "claude",
+    "zorg"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.85,
+    "source": 0.51,
+    "quality": 0.5,
+    "feedback": -0.02,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:54:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Curative laat een Claude-agent zorgcontracten onderhandelen, met een rechter",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Agent met controle-stappen in de zorg, zoals je duim voor Databricks' zorgkennis voor AI-assistenten."
+   },
+   "labels": [
+    "llm-als-rechter",
+    "human-in-the-loop",
+    "ai-in-de-zorg"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -2
+   },
+   "diepte": "kort"
   },
   {
    "id": "841d424db697",
@@ -4594,7 +4594,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.51,
     "quality": 0.48,
     "feedback": 0.01,
@@ -5346,7 +5346,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.51,
     "quality": 0.53,
     "feedback": -0.04,
@@ -5394,7 +5394,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.51,
     "quality": 0.45,
     "feedback": -0.05,
@@ -6775,7 +6775,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.98,
+    "recency": 0.97,
     "source": 0.85,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7347,7 +7347,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7417,7 +7417,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -10366,9 +10366,10 @@
     "215f0a50b9ea",
     "5c7174c45ad1",
     "81204e04abb9",
-    "7737e173e31a"
+    "7737e173e31a",
+    "e89c62d75061"
    ],
-   "generated_at": "2026-11-12T05:13:33Z"
+   "generated_at": "2026-11-13T05:13:43Z"
   },
   {
    "id": "geheugen-en-context-voor-agents",
@@ -10391,12 +10392,12 @@
     "4ade36aa9099",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-12T05:13:33Z"
+   "generated_at": "2026-11-13T05:13:43Z"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. Ook Anthropics advies voor modelkeuze past hierin: probeer mislukte taken opnieuw op een hogere effort, wat kan omdat je ziet of een taak gelukt is, en Curative laat een 'rechter' elk bericht van zijn agent nakijken. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
@@ -10416,9 +10417,11 @@
     "583b8d97bd5d",
     "77544766b84c",
     "4cc09a1d9883",
-    "86eab858089b"
+    "86eab858089b",
+    "d5f14a6242b0",
+    "3180dbea1b88"
    ],
-   "generated_at": "2026-11-12T05:13:33Z"
+   "generated_at": "2026-11-13T05:13:43Z"
   }
  ],
  "weekly": {
@@ -14276,14 +14279,6 @@
     ]
    },
    {
-    "title": "A Leader in Data Integration—six years running",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/A-Leader-in-Data-Integration-six-years-running/ba-p/5400776",
-    "relevance_score": 78,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Your apps can now open in Claude, and Claude can work in them",
     "source_id": "claude_blog",
     "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
@@ -14352,6 +14347,14 @@
      "minor_builds",
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "A Leader in Data Integration—six years running",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/A-Leader-in-Data-Integration-six-years-running/ba-p/5400776",
+    "relevance_score": 77,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "Use OneLake as native storage for Azure Databricks (Preview)",
@@ -14448,17 +14451,6 @@
     "excluded_by": []
    },
    {
-    "title": "v2.1.304",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
-    "relevance_score": 75,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "OneLake table APIs: Now with Iceberg writes, plus richer table metadata (Preview)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-table-APIs-Now-with-Iceberg-writes-plus-richer-table/ba-p/5391262",
@@ -14481,6 +14473,17 @@
     "relevance_score": 74,
     "decision": "area_cap",
     "excluded_by": []
+   },
+   {
+    "title": "v2.1.304",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
+    "relevance_score": 74,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
    },
    {
     "title": "How Ramp's internal AI agents crossed a million sessions",
