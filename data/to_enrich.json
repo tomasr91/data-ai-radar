@@ -1,7 +1,22 @@
 {
- "generated_at": "2026-11-13T07:51:51.369063Z",
+ "generated_at": "2026-11-13T08:47:46.530833Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "7a5707196999",
+   "title": "Use OneLake as native storage for Azure Databricks",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks/ba-p/5377939",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-13T08:01:45Z",
+   "excerpt": "Organizations increasingly use Microsoft Fabric and Azure Databricks together so teams can choose the tools that best fit their data engineering, analytics, and AI workloads while working from a common data foundation. OneLake external-location support for Azure Databricks Unity Catalog is now generally available in Microsoft Fabric, with OneLake Security enabled by default for Azure Databricks Storage items. On the Azure Databricks side, the feature is in preview. With this integration, supported Unity Catalog-managed data can be stored directly in OneLake. To understand the setup and supported scenarios, Connect Azure Databricks to a OneLake external location . Why this matters Data teams often need Azure Databricks and Microsoft Fabric in the same architecture. Without a shared storage approach, organizations may create copies of the same data for different platforms, introduce pipelines whose primary purpose is synchronization, and manage access independently across multiple storage locations. Using OneLake as managed storage for supported Unity Catalog objects gives organizations a common physical data foundation while preserving flexibility in the services used above it. Azur",
+   "preliminary_score": 78,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs"
+   ]
+  },
   {
    "id": "0b6411ed8e60",
    "title": "How Stripe Built Kai on Deep Agents in 1 Week",
