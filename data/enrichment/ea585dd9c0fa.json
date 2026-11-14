@@ -1,0 +1,89 @@
+{
+ "article_id": "ea585dd9c0fa",
+ "headline": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes",
+ "summary": "Advancing Analytics vergeleek drie beslismodellen op 300 klantgesprekken. Bij grove keuzes zijn ze even goed; bij fijne keuzes scoren Jev en OpenAI Decisions duidelijk hoger dan ai_decide in Databricks.",
+ "story": [
+  "Er komt een nieuw soort AI-model op: het beslismodel. Zo'n model schrijft geen tekst, maar kiest uit opties die jij vastlegt en zegt hoe zeker het is. Bev Manz van Advancing Analytics zette drie aanbieders naast elkaar: Jev van TypeSafe AI, ai_decide in Databricks en de Decisions API van OpenAI.",
+  "Ze gebruikte een openbare dataset met nagespeelde klantenservicegesprekken van een kledingwinkel. Elk model moest twee dingen doen. Eerst het onderwerp kiezen: grof uit 10 opties, en fijn uit 54. Daarna de volgende stap uit een draaiboek van 30 stappen. Elk model kreeg dezelfde 300 testgesprekken, een keer met alleen de regels (zero-shot) en een keer met vijf vergelijkbare voorbeelden erbij (few-shot).",
+  "Bij de grove keuze zijn de drie gelijk, rond 0,9 goed. Bij de fijne keuzes valt ai_decide terug: 0,70 tegen 0,79 bij de andere twee. Voor de volgende stap scoort ai_decide 0,39, Jev 0,56. Voorbeelden toevoegen helpt Jev het meest: die komt dan op 0,71. Bij ai_decide helpen voorbeelden nauwelijks.",
+  "Wat zit er achter ai_decide? Databricks zegt het niet. Manz zag dat ai_decide bijna altijd hetzelfde antwoordt als OpenJev, een open beslismodel dat Databricks ook aanbiedt. Zij denkt dus dat dat erachter zit. Dat is haar afleiding, geen verklaring van Databricks.",
+  "Voor jou is het verschil in waar de data heen gaat belangrijk. Bij ai_decide blijft de data in de Databricks-werkruimte; bij Jev en OpenAI gaat hij naar buiten. Met werkdata blijft dus alleen ai_decide over. Haar advies: ai_decide is prima voor grove keuzes in een batch-query, maar test fijne keuzes eerst zelf."
+ ],
+ "key_facts": [
+  "Blog van Bev Manz (Advancing Analytics), 13 november 2026.",
+  "Dataset: Action-Based Conversations Dataset (ABCD), ongeveer 10.000 nagespeelde klantenservicegesprekken; 300 testgesprekken per model.",
+  "Fijne onderwerpkeuze (54 opties): Jev 0,79, OpenAI Decisions 0,79, ai_decide 0,70; met voorbeelden 0,87, 0,86 en 0,73.",
+  "Volgende stap (30 opties): Jev 0,56, OpenAI 0,57, ai_decide 0,39; met voorbeelden 0,71, 0,63 en 0,43. Altijd de meest voorkomende stap gokken geeft 0,21.",
+  "ai_decide gaf op 150 gesprekken in 96% (grof) en 89% (fijn) hetzelfde antwoord als OpenJev; dat ai_decide op OpenJev draait is de afleiding van de auteur.",
+  "Kosten per 1.000 aanroepen: Jev $0,06-0,10, OpenAI $0,11-0,20, ai_decide maximaal ongeveer $0,55 als batch-query (ongeveer $3 los per aanroep).",
+  "ai_decide is in Beta, vraagt Databricks Runtime 15.4 LTS of hoger en werkt niet op SQL Classic (officiële documentatie)."
+ ],
+ "personal_relevance": "Classificeren van vrije tekst binnen Databricks mag met werkdata; dit laat zien waar ai_decide nu wel en niet goed genoeg voor is.",
+ "experiment": "Laat ai_decide op een openbare dataset (bijv. openbare productrecensies) een grove en een fijne categorie kiezen, en vergelijk de uitkomst met een handmatig gelabelde steekproef van 50 rijen.",
+ "limitations": [
+  "Eén nagespeelde dataset met wat rommelige labels; de auteur noemt het zelf een testsjabloon, geen eindoordeel.",
+  "De vragen zijn bijgesteld op fouten van Jev, wat Jev kan bevoordelen.",
+  "De snelheden zijn niet eerlijk te vergelijken: Jev en OpenAI via internet, ai_decide als batch in Databricks."
+ ],
+ "availability_status": "preview",
+ "official_docs": [
+  {
+   "label": "ai_decide (Azure Databricks)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_decide"
+  },
+  {
+   "label": "Artikel",
+   "url": "https://www.advancinganalytics.co.uk/blog/system-one-jev-ai_decide-or-decisions-api"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_evaluation_observability",
+  "databricks_data_engineering"
+ ],
+ "quality": {
+  "depth": 0.8,
+  "practicality": 0.65,
+  "novelty": 0.7
+ },
+ "development_key": "open-jev-beslismodellen-databricks",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.7,
+  "why": "Toetst een AI-functie in Databricks SQL met cijfers, zoals je duimen voor AI-functies in SQL en evals."
+ },
+ "labels": [
+  "beslismodellen",
+  "ai-functies-in-sql",
+  "agent-evals"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "beslismodel",
+   "explanation": "Een AI-model dat geen tekst schrijft maar kiest uit vaste opties die jij geeft, met per optie een kans. Handig om tekst snel en goedkoop in te delen."
+  },
+  {
+   "term": "zero-shot",
+   "explanation": "Je geeft het model alleen de opdracht en de regels, zonder voorbeelden van goede antwoorden."
+  },
+  {
+   "term": "few-shot",
+   "explanation": "Je geeft het model naast de opdracht een paar uitgewerkte voorbeelden, zodat het ziet wat een goed antwoord is."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo roep je ai_decide aan: je geeft de tekst (de 'state') en vaste vragen met toegestane antwoorden. Je krijgt per vraag de gekozen optie, de kansen en een zekerheid terug.",
+  "language": "sql",
+  "code": "SELECT ai_decide(\n  '{\"name\": \"TrailShell jacket\", \"description\": \"Lightweight waterproof hiking jacket made from recycled polyester.\"}',\n  '{\n    \"category\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Which product category best fits this item?\",\n      \"criteria\": {\n        \"outerwear\": \"Jackets, coats, and other protective outer layers\",\n        \"footwear\": \"Shoes, boots, and sandals\",\n        \"accessories\": \"Bags, hats, and other accessories\"\n      }\n    },\n    \"recycled_materials\": {\n      \"type\": \"noul\",\n      \"instructions\": \"Does the listing state that the product uses recycled materials?\"\n    }\n  }',\n  map('version', '1.0')\n) AS decision;",
+  "note": "Ingekort voorbeeld uit de officiële documentatie van ai_decide (Beta). Het antwoord is een VARIANT; in het voorbeeld daar kiest het model 'outerwear' met kans 0,95. Niet zelf gedraaid."
+ },
+ "format_version": 2,
+ "url": "https://www.advancinganalytics.co.uk/blog/system-one-jev-ai_decide-or-decisions-api",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-14T03:27:47Z",
+ "prompt_version": "taak-v2"
+}
