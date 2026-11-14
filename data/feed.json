@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T03:28:35.258502Z",
+ "generated_at": "2026-11-14T03:29:28.671525Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-14T03:28:00Z",
+ "last_article_added_at": "2026-11-14T03:28:38Z",
  "last_successful_update": "2026-11-14T03:13:12.926035Z",
  "groups": [
   {
@@ -621,6 +621,13 @@
      "title": "Running open-Jev in SQL on Databricks",
      "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
      "published_at": "2026-09-24T16:55:01Z",
+     "reason": "zelfde ontwikkeling"
+    },
+    {
+     "source_id": "huggingface_blog",
+     "title": "Decision Models in Hugging Face",
+     "url": "https://huggingface.co/blog/decision",
+     "published_at": "2026-11-10T00:00:00Z",
      "reason": "zelfde ontwikkeling"
     }
    ],
@@ -1888,6 +1895,113 @@
     "claude-code-subagents",
     "claude-code-kosten"
    ]
+  },
+  {
+   "id": "0b6411ed8e60",
+   "title": "How Stripe Built Kai on Deep Agents in 1 Week",
+   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-10T12:31:02Z",
+   "date_note": "Het artikel kwam op 10 november in de feed, maar de case is gepubliceerd op 3 augustus 2026.",
+   "fetched_at": "2026-11-10T20:23:17.126201Z",
+   "summary": "Stripe bouwde Kai, een agent voor niet-programmeurs die rapporten, dashboards en documenten maakt uit interne data. De les: met meer dan 150 skills tegelijk wordt de kwaliteit slechter, dus kiest Kai eerst skills en laadt pas dan tools.",
+   "personal_relevance": "Laat zien hoe je een agent met veel skills en tools beheersbaar houdt, precies het contextprobleem van een eigen data-agent.",
+   "experiment": "Maak in Claude Code drie kleine skills voor een openbare dataset (bijv. KNMI) en kijk of de juiste skill wordt gekozen als je tien varianten van een vraag stelt.",
+   "limitations": [
+    "Klantverhaal op de blog van LangChain, dus van de leverancier van het framework.",
+    "Geen informatie over evaluatie, rechten of geheugen naast samenvatten.",
+    "De case is van 3 augustus 2026, dus geen vers nieuws."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Artikel",
+     "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.84,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.02,
+    "fit": 0.1,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-14T03:28:38Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills",
+   "story": [
+    "Stripe zag dat veel medewerkers zelf agents wilden bouwen, net als ontwikkelaars met Claude Code. Maar een terminal, datatoegang en beveiliging waren voor niet-programmeurs te lastig. Daarom bouwde het AI-platformteam Kai: een chatomgeving die werkt als een codeeragent, maar dan voor iedereen. Kai is gekoppeld aan het interne datawarehouse, Slack en Google Suite.",
+    "Kai bestaat uit vier lagen. Onderop ligt Deep Agents van LangChain, dat de aanroepen naar het taalmodel regelt. Daarboven zit een eigen harness die Kai aan de beveiliging en diensten van Stripe koppelt. Dan een laag waarin teams eigen Kai-agents met eigen skills maken. Bovenop zit de chat. Eén engineer bouwde de eerste versie in ongeveer een week.",
+    "Twee keuzes zijn het onthouden waard. Python-code voor analyses en grafieken draait in een sandbox, maar de agent zelf draait erbuiten en roept die alleen aan. Zo kan gegenereerde code weinig kwaad. En bestanden staan in een virtueel bestandssysteem op S3, zodat ze tussen beurten bewaard blijven.",
+    "De grootste les gaat over context. Meer dan 100 teams leverden samen ruim 1.000 skills, en er zijn ruim 500 interne MCP-tools. Boven ongeveer 150 skills naast de systeemprompt werd Kai slechter. Daarom kiest het taalmodel eerst de skills, en bepalen die skills welke tools worden geladen. Een paar basisskills staan altijd aan.",
+    "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7: geef de agent niet alle tools tegelijk, maar laat een skill bepalen welke tools hij krijgt. Het artikel zegt wel niets over hoe Stripe de kwaliteit van antwoorden test of rechten regelt."
+   ],
+   "key_facts": [
+    "Kai draait op LangChain, LangGraph en het Deep Agents-harness; de eerste versie bouwde één engineer in ongeveer een week.",
+    "Ruim 1.000 skills van meer dan 100 teams, en meer dan 500 interne MCP-tools.",
+    "Boven ongeveer 150 skills naast de systeemprompt zag het team de kwaliteit dalen; daarom eerst skills kiezen, dan tools laden.",
+    "Na de open preview groeide Kai in ongeveer vier weken van 296 naar ruim 5.000 gebruikers; 83% van Stripe gebruikt het wekelijks, in meer dan 60.000 sessies.",
+    "Marketing (95%) en GTM (87%) gebruiken Kai vaker dan engineering.",
+    "Volgende stappen: skills vooraf filteren met RAG of een classifier, meer beveiligingsregels en gedeelde skills en sessies."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "skills",
+     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    },
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "Deep Agents",
+     "explanation": "Een open-source harness van LangChain om agents te bouwen die lange taken uitvoeren, met onder meer een bestandssysteem, plannen en samenvatten."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Concrete agentopbouw met skills en harness, zoals je dbt Wizard-duim; minder dicht bij dbt."
+   },
+   "labels": [
+    "agent-harness",
+    "agent-skills",
+    "agent-tooling"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -2
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7",
+    "why": "Laat zien hoe je bepaalt welke tools een eigen agent krijgt."
+   }
   },
   {
    "id": "68a2bf1c5563",
@@ -7056,134 +7170,6 @@
    "diepte": "kort"
   },
   {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
-   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
-   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
-   "limitations": [
-    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
-    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "What's coming? (Genie Ontology)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
-    },
-    {
-     "label": "Genie Code task for jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
-    },
-    {
-     "label": "Shared Serverless voor Git-mappen en bundels",
-     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "databricks_data_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 74,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.39,
-    "source": 1.0,
-    "quality": 0.68,
-    "feedback": 0.01,
-    "fit": 0.2,
-    "regel": -0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
-   "story": [
-    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
-    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
-    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
-    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
-   ],
-   "key_facts": [
-    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
-    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
-    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
-    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
-    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
-    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
-    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
-    "language": "text",
-    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
-    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
-   },
-   "terms": [
-    {
-     "term": "Declarative Automation Bundles",
-     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
-    },
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "pyproject.toml",
-     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-ontology",
-    "asset-bundles",
-    "databricks-weekoverzicht"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   },
-   "rule_why": [
-    {
-     "id": "einde-support",
-     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
-     "pts": -15
-    }
-   ]
-  },
-  {
    "id": "225ab7984001",
    "title": "Announcing support for Materialized views and streaming tables in Mirrored Azure Databricks catalog",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Announcing-support-for-Materialized-views-and-streaming-tables/ba-p/5377928",
@@ -10504,7 +10490,6 @@
     "ceb4b784fbab",
     "a68aede0b61b",
     "560fbec0053e",
-    "94b4924597e5",
     "67b79f31be0e",
     "215f0a50b9ea",
     "5c7174c45ad1",
@@ -10585,9 +10570,7 @@
    {
     "title": "Genie haalt vanaf begin november zelf context uit je metric views en dashboards",
     "why": "Genie Ontology wordt begin november algemeen beschikbaar en staat dan standaard aan, met alleen snippets uit assets waar de gebruiker rechten op heeft. Het is goed om vooraf te weten welke metric views en dashboards Genie straks als context gebruikt.",
-    "article_ids": [
-     "94b4924597e5"
-    ]
+    "article_ids": []
    },
    {
     "title": "Agents leveren beter werk met een vaste lus van bouwen, testen en vergelijken",
@@ -11334,14 +11317,20 @@
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
     },
     {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
-    {
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
+    }
+   ]
+  },
+  {
+   "term": "Deep Agents",
+   "explanation": "Een open-source harness van LangChain om agents te bouwen die lange taken uitvoeren, met onder meer een bestandssysteem, plannen en samenvatten.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "0b6411ed8e60",
+     "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
     }
    ]
   },
@@ -11785,6 +11774,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "0b6411ed8e60",
+     "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
+    },
+    {
+     "kind": "a",
      "id": "5b59c75a11e5",
      "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
     },
@@ -11991,11 +11985,6 @@
    "refs": [
     {
      "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
-    {
-     "kind": "a",
      "id": "0b4ae9670355",
      "title": "Een dbt-project overzetten naar Databricks in zeven stappen"
     }
@@ -12176,6 +12165,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "0b6411ed8e60",
+     "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
+    },
+    {
+     "kind": "a",
      "id": "656e0d953ae9",
      "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
     },
@@ -12193,11 +12187,6 @@
      "kind": "a",
      "id": "a68aede0b61b",
      "title": "Geef een AI-agent per veld synoniemen, voorbeeldwaarden en regels"
-    },
-    {
-     "kind": "a",
-     "id": "ceb4b784fbab",
-     "title": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen"
     }
    ]
   },
@@ -12300,11 +12289,6 @@
      "kind": "a",
      "id": "308e572d49e4",
      "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
-    },
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "a",
@@ -12680,17 +12664,6 @@
    ]
   },
   {
-   "term": "pyproject.toml",
-   "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    }
-   ]
-  },
-  {
    "term": "Python Data Source API",
    "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...).",
    "refs": [
@@ -12877,6 +12850,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "0b6411ed8e60",
+     "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
+    },
+    {
+     "kind": "a",
      "id": "5b59c75a11e5",
      "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
     },
@@ -12984,17 +12962,6 @@
    ]
   },
   {
-   "term": "serverless compute",
-   "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    }
-   ]
-  },
-  {
    "term": "service connection",
    "explanation": "Een opgeslagen verbinding in Azure DevOps met een andere dienst, zoals Azure. Pipelines gebruiken hem om in te loggen zonder dat er wachtwoorden in de code staan.",
    "refs": [
@@ -13087,6 +13054,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "0b6411ed8e60",
+     "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
+    },
+    {
+     "kind": "a",
      "id": "fae3fb7e9aa6",
      "title": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit"
     },
@@ -13104,11 +13076,6 @@
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
-    },
-    {
-     "kind": "a",
-     "id": "c63f36899b14",
-     "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
     }
    ]
   },
@@ -13884,54 +13851,26 @@
   }
  ],
  "runs": {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "tasks": {
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping: gisteren was er geen keuze gemaakt. 5 nieuwe keuzes klaargezet.",
-    "finished_at": "2026-11-13T04:14:50Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
-   "inhalen": {
-    "status": "ok",
-    "summary": "niets in te halen",
-    "finished_at": "2026-11-13T06:29:54Z",
-    "problems": [],
-    "counts": {}
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (3 nieuwe artikelen toegevoegd), geen verzoeken voor interesses, geen nieuwe leerregels, alle stukken hadden al begrippen",
-    "finished_at": "2026-11-13T05:14:05Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
-    }
-   },
    "uitleggen": {
     "status": "ok",
-    "summary": "Vers opgehaald; 10 artikelen uitgelegd (3 vol, 7 kort, 2 met voorbeeld) en 2 overgeslagen zonder openen; daarna bij 17 oudere uitleggen labels en de Dataflow-verwijzing aangevuld.",
-    "finished_at": "2026-11-13T03:26:31Z",
+    "summary": "Vers opgehaald; de lijst is op: 7 artikelen uitgelegd (2 vol, 5 kort, 1 met voorbeeld) en 18 overgeslagen, vooral Fabric-stukken buiten je stack; bij 1 oudere uitleg de labels aangevuld.",
+    "finished_at": "2026-11-14T03:29:11Z",
     "problems": [
-     "Het Anthropic-artikel over self-hosted Managed Agents was niet direct te openen; die uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
-     "De pagina over Genie Migrate (GA) was niet direct te openen; de korte uitleg steunt op de officiële Databricks-documentatie."
+     "Pagina's op community.fabric.microsoft.com gaven een fout; 3 Fabric-artikelen zijn als 'Niet te lezen' bewaard en komen over een week terug.",
+     "Het OneLake-artikel voor Azure Databricks is vergeleken via de officiële Databricks-documentatie en bleek dezelfde ontwikkeling als de uitleg van 6 november (dubbel)."
     ],
     "counts": {
-     "uitgelegd": 10,
-     "vol": 3,
-     "kort": 7,
-     "met_voorbeeld": 2,
-     "overgeslagen": 2,
-     "overgeslagen_zonder_openen": 2,
-     "aangevuld": 17,
-     "project_ref_gezet": 3
+     "uitgelegd": 7,
+     "vol": 2,
+     "kort": 5,
+     "met_voorbeeld": 1,
+     "overgeslagen": 18,
+     "overgeslagen_zonder_openen": 13,
+     "niet_te_lezen": 3,
+     "aangevuld": 1,
+     "project_ref_gezet": 1
     }
    }
   }
@@ -14032,17 +13971,17 @@
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
   "fetched_items": 631,
-  "unique_after_dedupe": 594,
-  "merged_duplicates": 30,
+  "unique_after_dedupe": 593,
+  "merged_duplicates": 31,
   "shown": 79,
   "decisions": {
    "excluded": 210,
    "included": 117,
+   "area_cap": 3,
    "no_topic": 132,
-   "below_threshold": 102,
+   "below_threshold": 99,
    "included_low": 3,
-   "source_cap": 28,
-   "area_cap": 2
+   "source_cap": 29
   },
   "processing": {
    "enriched": 79
@@ -14050,10 +13989,10 @@
   "without_date": 0,
   "per_group": {
    "overig": 10,
-   "ai_context": 23,
+   "ai_context": 22,
    "dbt": 6,
    "claude": 18,
-   "agents": 14,
+   "agents": 15,
    "architectuur": 3,
    "databricks": 2,
    "kwaliteit": 3
@@ -14062,17 +14001,17 @@
    "databricks_blog": 14,
    "simon_whiteley": 1,
    "dbt_labs_blog": 10,
-   "azure_databricks_release_notes": 4,
+   "azure_databricks_release_notes": 3,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_blog": 12,
+   "langchain_blog": 9,
    "claude_code_releases": 3,
    "dbt_core_releases": 1,
    "databricks_engineering_blog": 3,
    "chris_webb": 1,
    "hamel_husain": 1,
    "simon_willison": 3,
-   "langchain_blog": 8,
    "fabric_blog": 7,
    "sqlbi": 2,
    "powerbi_blog": 3
@@ -14118,9 +14057,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 143
+   "skipped_no_key": 140
   },
-  "queue_size": 18,
+  "queue_size": 0,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -14699,15 +14638,12 @@
     "excluded_by": []
    },
    {
-    "title": "v2.1.304",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.304",
+    "title": "Azure Databricks: wat is er nieuw in week 43",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
     "relevance_score": 74,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
+    "decision": "area_cap",
+    "excluded_by": []
    }
   ],
   "topics_without_source": [
