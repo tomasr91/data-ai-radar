@@ -1,0 +1,32 @@
+{
+ "diepte": "kort",
+ "article_id": "f75582ed9c57",
+ "headline": "Klantdata lezen waar hij staat in plaats van bestanden te kopiëren",
+ "summary": "Databricks legt uit waarom je klantdata beter via OpenSharing leest dan via SFTP-bestanden of API's: je leest de tabel waar hij staat, haalt alleen wijzigingen op via de change data feed en een backfill wordt een query. Handig als achtergrond bij ingestion; hoe je het opzet volgt pas in deel 2.",
+ "topics": [
+  "data_ingestion",
+  "databricks_data_engineering"
+ ],
+ "availability_status": "onbekend",
+ "quality": {
+  "depth": 0.4,
+  "practicality": 0.35,
+  "novelty": 0.4
+ },
+ "soort": "achtergrond",
+ "fit": {
+  "score": 0.45,
+  "why": "Ingestion-achtergrond zonder code; je duimen gaan vaker naar praktische stukken."
+ },
+ "labels": [
+  "opensharing",
+  "cdc"
+ ],
+ "project_ref": null,
+ "development_key": "opensharing-file-feeds",
+ "format_version": 2,
+ "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-and-api-feeds-opensharing-part-1-why",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-14T03:28:38Z",
+ "prompt_version": "taak-v3-kort"
+}

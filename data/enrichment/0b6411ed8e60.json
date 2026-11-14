@@ -1,0 +1,89 @@
+{
+ "article_id": "0b6411ed8e60",
+ "headline": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills",
+ "summary": "Stripe bouwde Kai, een agent voor niet-programmeurs die rapporten, dashboards en documenten maakt uit interne data. De les: met meer dan 150 skills tegelijk wordt de kwaliteit slechter, dus kiest Kai eerst skills en laadt pas dan tools.",
+ "story": [
+  "Stripe zag dat veel medewerkers zelf agents wilden bouwen, net als ontwikkelaars met Claude Code. Maar een terminal, datatoegang en beveiliging waren voor niet-programmeurs te lastig. Daarom bouwde het AI-platformteam Kai: een chatomgeving die werkt als een codeeragent, maar dan voor iedereen. Kai is gekoppeld aan het interne datawarehouse, Slack en Google Suite.",
+  "Kai bestaat uit vier lagen. Onderop ligt Deep Agents van LangChain, dat de aanroepen naar het taalmodel regelt. Daarboven zit een eigen harness die Kai aan de beveiliging en diensten van Stripe koppelt. Dan een laag waarin teams eigen Kai-agents met eigen skills maken. Bovenop zit de chat. Eén engineer bouwde de eerste versie in ongeveer een week.",
+  "Twee keuzes zijn het onthouden waard. Python-code voor analyses en grafieken draait in een sandbox, maar de agent zelf draait erbuiten en roept die alleen aan. Zo kan gegenereerde code weinig kwaad. En bestanden staan in een virtueel bestandssysteem op S3, zodat ze tussen beurten bewaard blijven.",
+  "De grootste les gaat over context. Meer dan 100 teams leverden samen ruim 1.000 skills, en er zijn ruim 500 interne MCP-tools. Boven ongeveer 150 skills naast de systeemprompt werd Kai slechter. Daarom kiest het taalmodel eerst de skills, en bepalen die skills welke tools worden geladen. Een paar basisskills staan altijd aan.",
+  "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7: geef de agent niet alle tools tegelijk, maar laat een skill bepalen welke tools hij krijgt. Het artikel zegt wel niets over hoe Stripe de kwaliteit van antwoorden test of rechten regelt."
+ ],
+ "key_facts": [
+  "Kai draait op LangChain, LangGraph en het Deep Agents-harness; de eerste versie bouwde één engineer in ongeveer een week.",
+  "Ruim 1.000 skills van meer dan 100 teams, en meer dan 500 interne MCP-tools.",
+  "Boven ongeveer 150 skills naast de systeemprompt zag het team de kwaliteit dalen; daarom eerst skills kiezen, dan tools laden.",
+  "Na de open preview groeide Kai in ongeveer vier weken van 296 naar ruim 5.000 gebruikers; 83% van Stripe gebruikt het wekelijks, in meer dan 60.000 sessies.",
+  "Marketing (95%) en GTM (87%) gebruiken Kai vaker dan engineering.",
+  "Volgende stappen: skills vooraf filteren met RAG of een classifier, meer beveiligingsregels en gedeelde skills en sessies."
+ ],
+ "personal_relevance": "Laat zien hoe je een agent met veel skills en tools beheersbaar houdt, precies het contextprobleem van een eigen data-agent.",
+ "experiment": "Maak in Claude Code drie kleine skills voor een openbare dataset (bijv. KNMI) en kijk of de juiste skill wordt gekozen als je tien varianten van een vraag stelt.",
+ "limitations": [
+  "Klantverhaal op de blog van LangChain, dus van de leverancier van het framework.",
+  "Geen informatie over evaluatie, rechten of geheugen naast samenvatten.",
+  "De case is van 3 augustus 2026, dus geen vers nieuws."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Artikel",
+   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents"
+  }
+ ],
+ "topics": [
+  "ai_agents_rag",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.7,
+  "practicality": 0.55,
+  "novelty": 0.55
+ },
+ "development_key": "stripe-kai-deep-agents",
+ "date_note": "Het artikel kwam op 10 november in de feed, maar de case is gepubliceerd op 3 augustus 2026.",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.6,
+  "why": "Concrete agentopbouw met skills en harness, zoals je dbt Wizard-duim; minder dicht bij dbt."
+ },
+ "labels": [
+  "agent-harness",
+  "agent-skills",
+  "agent-tooling"
+ ],
+ "project_ref": {
+  "fase": 7,
+  "quote": "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7",
+  "why": "Laat zien hoe je bepaalt welke tools een eigen agent krijgt."
+ },
+ "terms": [
+  {
+   "term": "harness",
+   "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+  },
+  {
+   "term": "skills",
+   "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+  },
+  {
+   "term": "sandbox",
+   "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+  },
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  },
+  {
+   "term": "Deep Agents",
+   "explanation": "Een open-source harness van LangChain om agents te bouwen die lange taken uitvoeren, met onder meer een bestandssysteem, plannen en samenvatten."
+  }
+ ],
+ "format_version": 2,
+ "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-14T03:28:38Z",
+ "prompt_version": "taak-v2"
+}
