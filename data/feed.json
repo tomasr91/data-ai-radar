@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T08:04:01.136139Z",
+ "generated_at": "2026-11-14T13:03:34.516341Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
  "last_successful_update": "2026-11-14T08:04:01.136139Z",
  "groups": [
@@ -421,8 +421,8 @@
   "5c7174c45ad1",
   "ea585dd9c0fa",
   "6ded4aa1cdcf",
-  "d2e9b967064a",
-  "c63f36899b14"
+  "68a2bf1c5563",
+  "d2e9b967064a"
  ],
  "articles": [
   {
@@ -467,15 +467,15 @@
     "ai_context",
     "databricks"
    ],
-   "relevance_score": 96,
+   "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.84,
+    "recency": 0.83,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
     "fit": 0.3,
-    "project": 0.05
+    "project": 0.06
    },
    "decision": "included",
    "processing_status": "enriched",
@@ -605,7 +605,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.96,
+    "recency": 0.95,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -717,7 +717,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -843,7 +843,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -927,7 +927,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.02,
@@ -1000,112 +1000,6 @@
    }
   },
   {
-   "id": "941b0ba5dad7",
-   "title": "Azure Databricks: wat is er nieuw in week 45",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-08T23:59:59Z",
-   "fetched_at": "2026-11-10T20:23:13.940839Z",
-   "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
-   "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
-   "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
-   "limitations": [
-    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
-    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes november 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering",
-    "cicd_data_deployment",
-    "metadata_lineage_catalogs"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig",
-    "kwaliteit"
-   ],
-   "relevance_score": 93,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.77,
-    "source": 1.0,
-    "quality": 0.62,
-    "feedback": -0.03,
-    "fit": 0.1,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:32:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
-   "story": [
-    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
-    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
-    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
-    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
-    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
-   ],
-   "key_facts": [
-    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
-    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
-    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
-    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
-    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
-    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "LTS",
-     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
-    },
-    {
-     "term": "Lakeflow Job",
-     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metastore",
-     "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."
-    },
-    {
-     "term": "ai_parse_document",
-     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.6,
-    "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."
-   },
-   "labels": [
-    "databricks-weekoverzicht",
-    "ai-functies-in-sql",
-    "lakeflow-jobs",
-    "genie-externe-kennis"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   },
-   "project_ref": {
-    "fase": 5,
-    "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
-    "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
-   }
-  },
-  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -1141,7 +1035,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.02,
@@ -1216,6 +1110,112 @@
     "fase": 7,
     "quote": "Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent",
     "why": "Fase 7 gebruikt dbt-artifacts als context voor een eigen data-agent."
+   }
+  },
+  {
+   "id": "941b0ba5dad7",
+   "title": "Azure Databricks: wat is er nieuw in week 45",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-08T23:59:59Z",
+   "fetched_at": "2026-11-10T20:23:13.940839Z",
+   "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
+   "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
+   "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
+   "limitations": [
+    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
+    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes november 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.76,
+    "source": 1.0,
+    "quality": 0.62,
+    "feedback": -0.03,
+    "fit": 0.1,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:32:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
+   "story": [
+    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
+    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
+    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
+    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
+    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
+   ],
+   "key_facts": [
+    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
+    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
+    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
+    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
+    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
+    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "LTS",
+     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    },
+    {
+     "term": "Lakeflow Job",
+     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "metastore",
+     "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."
+    },
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "ai-functies-in-sql",
+    "lakeflow-jobs",
+    "genie-externe-kennis"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
+    "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
    }
   },
   {
@@ -1370,7 +1370,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.72,
     "feedback": -0.02,
@@ -1513,6 +1513,139 @@
    }
   },
   {
+   "id": "68a2bf1c5563",
+   "title": "What's the difference between dbt and dbt OSS?",
+   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
+   "source_id": "dbt_developer_blog",
+   "published_at": "2026-09-16T00:00:00Z",
+   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
+   "fetched_at": "2026-10-28T20:32:37.744597Z",
+   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
+   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
+   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
+   "limitations": [
+    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
+    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
+    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "dbt licensing",
+     "url": "https://docs.getdbt.com/docs/dbt-licensing"
+    },
+    {
+     "label": "Licensing FAQ",
+     "url": "https://www.getdbt.com/licenses-faq"
+    },
+    {
+     "label": "dbt-autofix",
+     "url": "https://github.com/dbt-labs/dbt-autofix"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.05,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.04,
+    "fit": 0.2,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "dbt_developer_blog",
+     "title": "dbt v2.0 is GA",
+     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
+     "published_at": "2026-09-16T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
+   "story": [
+    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
+    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
+    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
+    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ. Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'?"
+   ],
+   "key_facts": [
+    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
+    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
+    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
+    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
+    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
+    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
+    "language": "bash",
+    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
+    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
+   },
+   "terms": [
+    {
+     "term": "Fusion-engine",
+     "explanation": "De nieuwe motor van dbt die je SQL zelf begrijpt; sinds dbt v2 heet die gewoon 'dbt'."
+    },
+    {
+     "term": "linting",
+     "explanation": "Automatisch je code nalopen op stijlregels en veelgemaakte fouten, zonder hem uit te voeren."
+    },
+    {
+     "term": "LSP",
+     "explanation": "Language Server Protocol: een standaard waarmee een editor aanvulling, foutmeldingen en uitleg krijgt van een taalserver."
+    },
+    {
+     "term": "Apache 2.0",
+     "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven."
+    },
+    {
+     "term": "dbt Mesh",
+     "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "Vervolg op dbt v2, waar je een duim omhoog bij gaf."
+   },
+   "labels": [
+    "dbt-v2",
+    "dbt-oss",
+    "dbt-release"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
+    "id": "681080ea70e4",
+    "v": 1,
+    "s": 70,
+    "pts": 4
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'",
+    "why": "Fase 4 richt dbt met dbt-databricks in."
+   }
+  },
+  {
    "id": "d2e9b967064a",
    "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
    "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
@@ -1544,7 +1677,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.78,
     "feedback": -0.02,
@@ -1729,7 +1862,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.68,
     "quality": 0.8,
     "feedback": -0.04,
@@ -1827,7 +1960,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.2
@@ -1930,7 +2063,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.83,
+    "recency": 0.82,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -2004,139 +2137,6 @@
    }
   },
   {
-   "id": "68a2bf1c5563",
-   "title": "What's the difference between dbt and dbt OSS?",
-   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
-   "source_id": "dbt_developer_blog",
-   "published_at": "2026-09-16T00:00:00Z",
-   "date_note": "Gepubliceerd op 16 september 2026; de radar ziet hem pas nu.",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "summary": "Sinds dbt v2 heet de Fusion-engine gewoon 'dbt' en dbt Core v2 heet 'dbt OSS'. Volgens dbt Labs is de gratis 'dbt' voor bijna iedereen de betere keus; dbt Core 1.13 is de laatste 1.x-versie met nieuwe functies.",
-   "personal_relevance": "Je gebruikt dbt Core; dit bepaalt welke dbt je na 1.13 installeert en welke licentievraag je intern moet stellen.",
-   "experiment": "Draai op een kopie van een openbaar oefenproject eerst dbt Core 1.12 met --use-v2-parser, en daarna pip install dbt. Noteer welke waarschuwingen en fouten verschijnen en of dbt-autofix ze oplost.",
-   "limitations": [
-    "De licentie van de gratis 'dbt' wordt in de post niet bij naam genoemd; laat de voorwaarden intern toetsen.",
-    "De post komt van dbt Labs zelf, dat ook betaalde functies verkoopt.",
-    "Niet elke adapter is al even volwassen in v2; check de Databricks-adapter vóór je overstapt."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "dbt licensing",
-     "url": "https://docs.getdbt.com/docs/dbt-licensing"
-    },
-    {
-     "label": "Licensing FAQ",
-     "url": "https://www.getdbt.com/licenses-faq"
-    },
-    {
-     "label": "dbt-autofix",
-     "url": "https://github.com/dbt-labs/dbt-autofix"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "overig"
-   ],
-   "relevance_score": 88,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.05,
-    "source": 0.68,
-    "quality": 0.63,
-    "feedback": 0.04,
-    "fit": 0.2,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "dbt_developer_blog",
-     "title": "dbt v2.0 is GA",
-     "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
-     "published_at": "2026-09-16T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "dbt Labs raadt de gratis 'dbt' aan boven de open-source variant",
-   "story": [
-    "Met dbt v2 zijn de namen veranderd. De Fusion-engine heet nu 'dbt', dbt Core v2 heet 'dbt OSS'. Joel Labes van dbt Labs legt uit wat het verschil is. Zijn advies: neem de gratis 'dbt', tenzij je bedrijf per se Apache 2.0-software eist.",
-    "Beide lezen dezelfde projectbestanden: dezelfde SQL en YAML. Het verschil zit in extra's. De gratis 'dbt' heeft SQL-begrip, linting en ondersteuning voor de taalserver (LSP) erbij, en je kunt er later betaalde functies als dbt Mesh aan toevoegen. 'dbt OSS' is volledig open source onder Apache 2.0, maar mist die extra's. Vergelijk het met dezelfde auto met of zonder navigatie: de motor is gelijk.",
-    "Je kunt ook mengen. Volgens de post ontwikkel je dan met de volledige 'dbt' en draai je 'dbt OSS' alleen in je uitrolomgevingen. Installeren gaat met pip install dbt of pip install dbt-oss. Het oude pip install dbt-core werkt nog, maar installeert dbt OSS.",
-    "Voor jouw dbt Core-projecten is de tijdlijn belangrijk. dbt Core 1.13 is de laatste kleine versie met echte nieuwe functies. Beveiligings- en compatibiliteitspatches blijven volgens dbt Labs naar verwachting 3 tot 5 jaar komen. Upgrade eerst naar 1.12 en test met de vlag --use-v2-parser. De precieze licentievoorwaarden van de gratis 'dbt' staan niet in de post; daarvoor verwijst hij naar een FAQ. Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'?"
-   ],
-   "key_facts": [
-    "Joel Labes (dbt Labs), 16 september 2026, bij de algemene beschikbaarheid van dbt v2.",
-    "De dbt Fusion engine heet nu 'dbt'; dbt Core v2 heet nu 'dbt OSS' (Apache 2.0).",
-    "Alleen in 'dbt': gratis SQL-begrip, linting en dbt LSP, plus optionele betaalde functies per zetel (dbt Mesh, dbt Catalog). 'dbt OSS' is 100% Apache 2.0.",
-    "Installatie: pip install dbt (aanbevolen), pip install dbt-oss, of het oude pip install dbt-core, dat dbt OSS installeert.",
-    "dbt Core 1.13 is de laatste minor release met betekenisvolle nieuwe functies; kritieke patches naar verwachting 3 tot 5 jaar.",
-    "Advies voor de overstap: eerst naar dbt Core 1.12, testen met --use-v2-parser, en hulp via dbt-autofix en de migratie-skills van dbt."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "De drie manieren om dbt v2 te installeren. Adapters hoef je niet meer apart te installeren; de driver wordt opgehaald op basis van je target.",
-    "language": "bash",
-    "code": "# Aanbevolen: de volledige dbt-distributie\npip install dbt\n\n# De open-source distributie\npip install dbt-oss\n\n# Oud commando, werkt nog en installeert dbt OSS\npip install dbt-core",
-    "note": "Overgenomen uit de post van Joel Labes. Mag je netwerk de CDN niet bereiken, dan installeer je een adapterpakket direct."
-   },
-   "terms": [
-    {
-     "term": "Fusion-engine",
-     "explanation": "De nieuwe motor van dbt die je SQL zelf begrijpt; sinds dbt v2 heet die gewoon 'dbt'."
-    },
-    {
-     "term": "linting",
-     "explanation": "Automatisch je code nalopen op stijlregels en veelgemaakte fouten, zonder hem uit te voeren."
-    },
-    {
-     "term": "LSP",
-     "explanation": "Language Server Protocol: een standaard waarmee een editor aanvulling, foutmeldingen en uitleg krijgt van een taalserver."
-    },
-    {
-     "term": "Apache 2.0",
-     "explanation": "Een open-sourcelicentie: je mag de software gratis gebruiken, aanpassen en verspreiden, ook binnen bedrijven."
-    },
-    {
-     "term": "dbt Mesh",
-     "explanation": "Betaalde functies van dbt om meerdere dbt-projecten aan elkaar te koppelen, zodat teams elkaars modellen kunnen gebruiken."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.7,
-    "why": "Vervolg op dbt v2, waar je een duim omhoog bij gaf."
-   },
-   "labels": [
-    "dbt-v2",
-    "dbt-oss",
-    "dbt-release"
-   ],
-   "fb_why": {
-    "by": "similar",
-    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
-    "id": "681080ea70e4",
-    "v": 1,
-    "s": 70,
-    "pts": 4
-   },
-   "project_ref": {
-    "fase": 4,
-    "quote": "Voor Dataflow speelt deze keuze in fase 4: kies je bij het inrichten van dbt de gratis 'dbt' of 'dbt OSS'",
-    "why": "Fase 4 richt dbt met dbt-databricks in."
-   }
-  },
-  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -2165,7 +2165,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.5,
     "feedback": 0.01,
@@ -2342,7 +2342,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.8,
     "quality": 0.53,
     "fit": 0.15
@@ -2662,7 +2662,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.22,
+    "recency": 0.21,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.04,
@@ -2997,7 +2997,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.07,
@@ -3307,7 +3307,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.05,
@@ -3415,7 +3415,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.06,
@@ -3556,7 +3556,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3875,7 +3875,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.01,
@@ -3978,7 +3978,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -4076,7 +4076,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.03,
@@ -4529,7 +4529,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.02,
@@ -4558,6 +4558,143 @@
     "pts": -2
    },
    "diepte": "kort"
+  },
+  {
+   "id": "56bb11919377",
+   "title": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
+   "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T19:20:48Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Eclipse Aerospace leest twintig jaar vluchtdata in een eigen binair formaat nu direct in met een zelfgebouwde Spark-bron: Python als dunne laag, een Rust-decoder eronder. De tussenstap via AWS Lambda en Avro is weg.",
+   "personal_relevance": "Je leert hoe je een lastige bron één keer als nette Spark-bron vastlegt, zodat ingestion niet in losse scripts buiten het platform zit.",
+   "experiment": "Schrijf in Databricks Free Edition een Python-datasource die een openbaar CSV- of JSON-bestand (bijv. KNMI-daggegevens) leest, registreer hem met spark.dataSource.register en schrijf het resultaat als Delta-tabel in je Bronze-schema.",
+   "limitations": [
+    "Het is een klantverhaal op de Databricks-blog; de snelheidscijfers zijn alleen verhoudingen, zonder testopzet.",
+    "De blog zelf bevat geen code; die staat in de GitHub-repository.",
+    "Een Rust-decoder is pas nodig bij binaire formaten of veel volume; voor CSV of JSON is Python genoeg."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "PySpark custom data sources (Azure Databricks)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/pyspark/datasources"
+    }
+   ],
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 0.85,
+    "recency": 0.92,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": -0.11,
+    "fit": 0.15,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+   "story": [
+    "Eclipse Aerospace bouwt en vliegt kleine straalvliegtuigen. Het bedrijf heeft bijna twintig jaar vluchtmetingen: meer dan 3 TB, uit meer dan een miljoen vlieguren. Die data staat in eigen binaire formaten, die alleen met speciale decoders te lezen zijn. Vroeger zette een keten met AWS Lambda de bestanden eerst om naar Avro, en pas daarna kon Spark ermee werken.",
+    "Nu leest Spark de originele bestanden zelf. Daarvoor gebruikt het team de Python Data Source API: je schrijft een kleine Python-klasse die Spark vertelt hoe een bron eruitziet en hoe je hem leest. Daarna gebruik je hem als elke andere bron, met spark.read.format(...). Het lijkt op een dbt-macro: één keer vastleggen hoe iets werkt, en daarna overal hergebruiken.",
+    "Het eigenlijke ontleden gebeurt niet in Python, maar in een decoder die in Rust is geschreven. Python is alleen de dunne laag ertussen. Spark verdeelt de bestanden over de workers; elke worker start de Rust-decoder en krijgt de gegevens terug als Apache Arrow-blokken. Zo hoeft Python niet elke rij apart om te zetten. Volgens het team is dat ongeveer 2 keer sneller dan een Python-versie met PyArrow en bijna 20 keer sneller dan gewoon Python.",
+    "Wat levert het op? Een nieuw bestand staat volgens het artikel binnen een minuut als tabel klaar, en grote batches van een paar GB binnen twee minuten. Fouten bij het decoderen en slechte records blijven zichtbaar in Databricks, in plaats van verstopt in een losse Lambda-functie. Het voorbeeld staat met benchmarks op GitHub.",
+    "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken. Je hebt daarvoor geen Rust nodig: voor CSV of JSON van een open-data-API is een Python-reader al genoeg."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 12 november 2026 op de Databricks-blog, door Jack Yallop.",
+    "Eclipse Aerospace heeft bijna 20 jaar vluchtdata: meer dan 3 TB en meer dan 1 miljoen vlieguren, in eigen binaire formaten.",
+    "De oude keten gebruikte AWS Lambda, Avro en Glacier-opslag; de nieuwe leest de originele bestanden direct in een Spark-read.",
+    "Opbouw: PySpark custom data source (Python Data Source API) met een Rust-decoder (via PyO3/Maturin) die Apache Arrow RecordBatches teruggeeft.",
+    "Gemeld: ongeveer 2x sneller dan een pure-Python-versie met PyArrow en bijna 20x sneller dan Python zonder Arrow; geen absolute tijden of testomgeving genoemd.",
+    "Records zijn binnen een minuut na upload verwerkt; batches van meerdere GB parallel in minder dan twee minuten.",
+    "De Python Data Source API werkt vanaf Databricks Runtime 15.4 LTS en serverless environment 2."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een eigen Spark-bron voor een verzonnen binair formaat met vaste records van 12 bytes. Na registreren lees je hem als elke andere bron.",
+    "language": "python",
+    "code": "import struct\nfrom pyspark.sql.datasource import DataSource, DataSourceReader\n\nclass TelemetrieBron(DataSource):\n    @classmethod\n    def name(cls):\n        return \"telemetrie\"\n    def schema(self):\n        return \"meting int, seconde int, snelheid float\"\n    def reader(self, schema):\n        return TelemetrieLezer(self.options)\n\nclass TelemetrieLezer(DataSourceReader):\n    def __init__(self, options):\n        self.pad = options[\"path\"]\n    def read(self, partition):\n        data = open(self.pad, \"rb\").read()\n        for rec in struct.iter_unpack(\"<iif\", data):  # 12 bytes per meting\n            yield (rec[0], rec[1], round(rec[2], 1))\n\nspark.dataSource.register(TelemetrieBron)\nspark.read.format(\"telemetrie\").load(\"vlucht.bin\").show()",
+    "result": {
+     "columns": [
+      "meting",
+      "seconde",
+      "snelheid"
+     ],
+     "rows": [
+      [
+       1,
+       1200,
+       310.5
+      ],
+      [
+       2,
+       1260,
+       312.0
+      ],
+      [
+       3,
+       1320,
+       309.8
+      ]
+     ]
+    },
+    "note": "Verzonnen data, echt gedraaid met PySpark 4 lokaal. De klassen en register/format-aanroepen volgen de Databricks-documentatie; Eclipse doet het decoderen in Rust in plaats van met struct."
+   },
+   "terms": [
+    {
+     "term": "Python Data Source API",
+     "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...)."
+    },
+    {
+     "term": "Avro",
+     "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data."
+    },
+    {
+     "term": "Rust",
+     "explanation": "Een snelle programmeertaal, vergelijkbaar met C, die veel fouten met geheugen al bij het bouwen tegenhoudt."
+    },
+    {
+     "term": "Apache Arrow",
+     "explanation": "Een standaardformaat om tabellen kolom voor kolom in het geheugen te zetten, zodat programma's data uitwisselen zonder ze eerst om te zetten."
+    },
+    {
+     "term": "workers",
+     "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data."
+    }
+   ],
+   "learning": "Data ingestion",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.65,
+    "why": "Concreet ingestion-praktijkverhaal met architectuur, het soort praktische uitleg waar je eerder duimen voor gaf."
+   },
+   "labels": [
+    "python-data-source-api",
+    "custom-ingestion",
+    "apache-arrow"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "data_ingestion",
+    "pts": -11
+   },
+   "project_ref": {
+    "fase": 3,
+    "quote": "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken.",
+    "why": "Fase 3 gaat over openbare data met Python inlezen in Bronze."
+   }
   },
   {
    "id": "841d424db697",
@@ -4659,6 +4796,171 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -2
+   }
+  },
+  {
+   "id": "f2cef2be2ab7",
+   "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
+   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-05T00:00:00Z",
+   "date_note": "De blog zegt 'nu beschikbaar in Databricks Runtime 19', maar een kopie van de release notes van Runtime 19 (GA sinds 23 juli 2026) noemt Spark 4.2.0.",
+   "fetched_at": "2026-11-05T03:13:46.521986Z",
+   "summary": "Apache Spark 4.3 brengt SCD type 2 via Auto CDC, snellere real-time streams met geheugen, en nieuwe SQL zoals JSON_TABLE en ASOF JOIN (preview).",
+   "personal_relevance": "SCD type 2 en CDC zijn kern van data ingestion, het onderwerp waar je nog bij de basis begint.",
+   "experiment": "Maak een klein verzonnen tabelletje met klantwijzigingen en bouw de geldig-van/geldig-tot-kolommen eerst zelf met LEAD, zoals in het voorbeeld. Probeer daarna in een testwerkruimte met Runtime 19 hoe Auto CDC dezelfde historie maakt, als die versie Spark 4.3 bevat.",
+   "limitations": [
+    "De blog geeft de exacte syntax van Auto CDC niet in de tekst; zoek die op in de documentatie.",
+    "Een kopie van de Runtime 19-release notes noemt Spark 4.2; welke runtimeversie Spark 4.3 bevat, is niet eenduidig.",
+    "ASOF JOIN en nanoseconde-timestamps zijn preview; er kunnen nog brekende wijzigingen komen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Databricks Runtime release notes",
+     "url": "https://docs.databricks.com/aws/en/release-notes/runtime/"
+    },
+    {
+     "label": "SPARK-56249: SCD Type 2 Auto CDC",
+     "url": "https://issues.apache.org/jira/browse/SPARK-56249"
+    },
+    {
+     "label": "SPARK-58092: SQL ASOF JOIN",
+     "url": "https://issues.apache.org/jira/browse/SPARK-58092"
+    }
+   ],
+   "topics": [
+    "databricks_data_engineering",
+    "data_ingestion",
+    "sql_spark_sql"
+   ],
+   "groups": [
+    "databricks"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 0.9,
+    "recency": 0.62,
+    "source": 0.85,
+    "quality": 0.73,
+    "feedback": -0.1,
+    "fit": 0.15,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-05T03:33:46Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
+     "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
+     "published_at": "2026-11-05T00:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
+   "story": [
+    "Databricks schrijft dat Apache Spark 4.3 nu in Databricks Runtime 19 zit. Meer dan 200 mensen werkten mee. Spark komt vanaf nu ook vaker uit: elk kwartaal een nieuwe versie, in plaats van elk halfjaar.",
+    "Voor jou is SCD type 2 met Auto CDC het interessantst. Verandert een klant van woonplaats, dan bewaart Spark de oude rij en maakt een nieuwe. Elke versie krijgt de kolommen __START_AT en __END_AT, zoals een paspoort met een geldig-van- en geldig-tot-datum. Spark verwerkt de wijzigingen in kleine stukjes (micro-batches) en voert per stukje een MERGE uit. Dat werkt in Python, SQL en via Spark Connect. Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
+    "Ook streaming wordt sneller met geheugen. In real-time mode kun je nu ook optellen per tijdvak, dubbele rijen weggooien en transformWithState gebruiken. Databricks meet bij drie testopstellingen een vertraging rond de 140 milliseconden voor 99 procent van de berichten. Het is een meting, geen garantie.",
+    "Voor SQL zijn er handige extra's. JSON_TABLE pakt een JSON-lijst uit tot rijen met kolommen. ASOF JOIN koppelt elke rij aan de laatst bekende waarde op dat moment, bijvoorbeeld een prijs op een tijdstip; dat is nog een preview. Daarnaast kan Spark kleine data nu zonder shuffle in één taak verwerken (Project Feather), maar dat moet je zelf aanzetten.",
+    "Let wel op de versie. Een kopie van de release notes van Databricks Runtime 19 noemt nog Spark 4.2. Controleer daarom in je eigen werkruimte welke runtime Spark 4.3 bevat, voordat je op deze functies bouwt."
+   ],
+   "key_facts": [
+    "Apache Spark 4.3 is aangekondigd op 5 november 2026; volgens Databricks beschikbaar in Databricks Runtime 19.",
+    "Spark krijgt vanaf 4.3 elk kwartaal een featurerelease, in plaats van elke zes maanden.",
+    "Meer dan 200 bijdragers losten meer dan 1.100 Jira-tickets op.",
+    "SCD type 2 via Auto CDC werkt in Python, SQL en Spark Connect; elke versie krijgt __START_AT en __END_AT. Het doel moet MERGE ondersteunen (Data Source V2 row-level operations); gewone Parquet kan dat niet.",
+    "Real-time mode ondersteunt nu streaming-aggregatie, dropDuplicates en transformWithState; gemeten P99-vertraging 136 ms, 139 ms en 141 ms bij drie testopstellingen.",
+    "Nieuw in SQL: JSON_TABLE, VARIANT-transformaties en ASOF JOIN (preview); nanoseconde-timestamps zijn een opt-in preview."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Het idee van SCD type 2: elke woonplaats van een klant blijft bewaard, met een geldig-van (__START_AT) en geldig-tot (__END_AT). Een lege __END_AT betekent: dit is de huidige versie.",
+    "language": "sql",
+    "code": "WITH klant_wijzigingen(klant_id, woonplaats, gewijzigd_op) AS (VALUES\n  (1, 'Utrecht',    DATE '2026-01-10'),\n  (1, 'Amersfoort', DATE '2026-05-02'),\n  (1, 'Zeist',      DATE '2026-09-15'),\n  (2, 'Delft',      DATE '2026-03-01'))\nSELECT\n  klant_id,\n  woonplaats,\n  gewijzigd_op AS __START_AT,\n  LEAD(gewijzigd_op) OVER (\n    PARTITION BY klant_id ORDER BY gewijzigd_op\n  ) AS __END_AT\nFROM klant_wijzigingen\nORDER BY klant_id, __START_AT;",
+    "result": {
+     "columns": [
+      "klant_id",
+      "woonplaats",
+      "__START_AT",
+      "__END_AT"
+     ],
+     "rows": [
+      [
+       1,
+       "Utrecht",
+       "2026-01-10",
+       "2026-05-02"
+      ],
+      [
+       1,
+       "Amersfoort",
+       "2026-05-02",
+       "2026-09-15"
+      ],
+      [
+       1,
+       "Zeist",
+       "2026-09-15",
+       null
+      ],
+      [
+       2,
+       "Delft",
+       "2026-03-01",
+       null
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; Auto CDC in Spark 4.3 maakt deze kolommen zelf, en de notatie daarvan staat in de documentatie."
+   },
+   "terms": [
+    {
+     "term": "SCD type 2",
+     "explanation": "Een manier om de geschiedenis van een rij te bewaren: bij een wijziging komt er een nieuwe versie bij, met een begin- en einddatum, in plaats van dat de oude waarde wordt overschreven."
+    },
+    {
+     "term": "Auto CDC",
+     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
+    },
+    {
+     "term": "micro-batches",
+     "explanation": "Kleine pakketjes nieuwe data die een stream één voor één verwerkt, in plaats van alles in één keer."
+    },
+    {
+     "term": "real-time mode",
+     "explanation": "Een modus van Spark Structured Streaming die records vrijwel direct doorgeeft, voor toepassingen die binnen een fractie van een seconde moeten reageren."
+    },
+    {
+     "term": "ASOF JOIN",
+     "explanation": "Een join die elke rij koppelt aan de laatst bekende rij uit de andere tabel op dat tijdstip, bijvoorbeeld de geldende prijs op het moment van een bestelling."
+    }
+   ],
+   "learning": "Data ingestion",
+   "soort": "release",
+   "fit": {
+    "score": 0.65,
+    "why": "Technische release met nieuwe SQL en CDC, zoals de Databricks-releases die je een duim gaf."
+   },
+   "labels": [
+    "spark-release",
+    "scd-type-2",
+    "auto-cdc"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "data_ingestion",
+    "pts": -10
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
+    "why": "Fase 4 gaat over historie bijhouden (SCD) met dbt snapshots."
    }
   },
   {
@@ -4992,171 +5294,6 @@
    }
   },
   {
-   "id": "f2cef2be2ab7",
-   "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
-   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T00:00:00Z",
-   "date_note": "De blog zegt 'nu beschikbaar in Databricks Runtime 19', maar een kopie van de release notes van Runtime 19 (GA sinds 23 juli 2026) noemt Spark 4.2.0.",
-   "fetched_at": "2026-11-05T03:13:46.521986Z",
-   "summary": "Apache Spark 4.3 brengt SCD type 2 via Auto CDC, snellere real-time streams met geheugen, en nieuwe SQL zoals JSON_TABLE en ASOF JOIN (preview).",
-   "personal_relevance": "SCD type 2 en CDC zijn kern van data ingestion, het onderwerp waar je nog bij de basis begint.",
-   "experiment": "Maak een klein verzonnen tabelletje met klantwijzigingen en bouw de geldig-van/geldig-tot-kolommen eerst zelf met LEAD, zoals in het voorbeeld. Probeer daarna in een testwerkruimte met Runtime 19 hoe Auto CDC dezelfde historie maakt, als die versie Spark 4.3 bevat.",
-   "limitations": [
-    "De blog geeft de exacte syntax van Auto CDC niet in de tekst; zoek die op in de documentatie.",
-    "Een kopie van de Runtime 19-release notes noemt Spark 4.2; welke runtimeversie Spark 4.3 bevat, is niet eenduidig.",
-    "ASOF JOIN en nanoseconde-timestamps zijn preview; er kunnen nog brekende wijzigingen komen."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Databricks Runtime release notes",
-     "url": "https://docs.databricks.com/aws/en/release-notes/runtime/"
-    },
-    {
-     "label": "SPARK-56249: SCD Type 2 Auto CDC",
-     "url": "https://issues.apache.org/jira/browse/SPARK-56249"
-    },
-    {
-     "label": "SPARK-58092: SQL ASOF JOIN",
-     "url": "https://issues.apache.org/jira/browse/SPARK-58092"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_ingestion",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 0.9,
-    "recency": 0.63,
-    "source": 0.85,
-    "quality": 0.73,
-    "feedback": -0.1,
-    "fit": 0.15,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-05T03:33:46Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
-     "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
-     "published_at": "2026-11-05T00:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)",
-   "story": [
-    "Databricks schrijft dat Apache Spark 4.3 nu in Databricks Runtime 19 zit. Meer dan 200 mensen werkten mee. Spark komt vanaf nu ook vaker uit: elk kwartaal een nieuwe versie, in plaats van elk halfjaar.",
-    "Voor jou is SCD type 2 met Auto CDC het interessantst. Verandert een klant van woonplaats, dan bewaart Spark de oude rij en maakt een nieuwe. Elke versie krijgt de kolommen __START_AT en __END_AT, zoals een paspoort met een geldig-van- en geldig-tot-datum. Spark verwerkt de wijzigingen in kleine stukjes (micro-batches) en voert per stukje een MERGE uit. Dat werkt in Python, SQL en via Spark Connect. Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
-    "Ook streaming wordt sneller met geheugen. In real-time mode kun je nu ook optellen per tijdvak, dubbele rijen weggooien en transformWithState gebruiken. Databricks meet bij drie testopstellingen een vertraging rond de 140 milliseconden voor 99 procent van de berichten. Het is een meting, geen garantie.",
-    "Voor SQL zijn er handige extra's. JSON_TABLE pakt een JSON-lijst uit tot rijen met kolommen. ASOF JOIN koppelt elke rij aan de laatst bekende waarde op dat moment, bijvoorbeeld een prijs op een tijdstip; dat is nog een preview. Daarnaast kan Spark kleine data nu zonder shuffle in één taak verwerken (Project Feather), maar dat moet je zelf aanzetten.",
-    "Let wel op de versie. Een kopie van de release notes van Databricks Runtime 19 noemt nog Spark 4.2. Controleer daarom in je eigen werkruimte welke runtime Spark 4.3 bevat, voordat je op deze functies bouwt."
-   ],
-   "key_facts": [
-    "Apache Spark 4.3 is aangekondigd op 5 november 2026; volgens Databricks beschikbaar in Databricks Runtime 19.",
-    "Spark krijgt vanaf 4.3 elk kwartaal een featurerelease, in plaats van elke zes maanden.",
-    "Meer dan 200 bijdragers losten meer dan 1.100 Jira-tickets op.",
-    "SCD type 2 via Auto CDC werkt in Python, SQL en Spark Connect; elke versie krijgt __START_AT en __END_AT. Het doel moet MERGE ondersteunen (Data Source V2 row-level operations); gewone Parquet kan dat niet.",
-    "Real-time mode ondersteunt nu streaming-aggregatie, dropDuplicates en transformWithState; gemeten P99-vertraging 136 ms, 139 ms en 141 ms bij drie testopstellingen.",
-    "Nieuw in SQL: JSON_TABLE, VARIANT-transformaties en ASOF JOIN (preview); nanoseconde-timestamps zijn een opt-in preview."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Het idee van SCD type 2: elke woonplaats van een klant blijft bewaard, met een geldig-van (__START_AT) en geldig-tot (__END_AT). Een lege __END_AT betekent: dit is de huidige versie.",
-    "language": "sql",
-    "code": "WITH klant_wijzigingen(klant_id, woonplaats, gewijzigd_op) AS (VALUES\n  (1, 'Utrecht',    DATE '2026-01-10'),\n  (1, 'Amersfoort', DATE '2026-05-02'),\n  (1, 'Zeist',      DATE '2026-09-15'),\n  (2, 'Delft',      DATE '2026-03-01'))\nSELECT\n  klant_id,\n  woonplaats,\n  gewijzigd_op AS __START_AT,\n  LEAD(gewijzigd_op) OVER (\n    PARTITION BY klant_id ORDER BY gewijzigd_op\n  ) AS __END_AT\nFROM klant_wijzigingen\nORDER BY klant_id, __START_AT;",
-    "result": {
-     "columns": [
-      "klant_id",
-      "woonplaats",
-      "__START_AT",
-      "__END_AT"
-     ],
-     "rows": [
-      [
-       1,
-       "Utrecht",
-       "2026-01-10",
-       "2026-05-02"
-      ],
-      [
-       1,
-       "Amersfoort",
-       "2026-05-02",
-       "2026-09-15"
-      ],
-      [
-       1,
-       "Zeist",
-       "2026-09-15",
-       null
-      ],
-      [
-       2,
-       "Delft",
-       "2026-03-01",
-       null
-      ]
-     ]
-    },
-    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; Auto CDC in Spark 4.3 maakt deze kolommen zelf, en de notatie daarvan staat in de documentatie."
-   },
-   "terms": [
-    {
-     "term": "SCD type 2",
-     "explanation": "Een manier om de geschiedenis van een rij te bewaren: bij een wijziging komt er een nieuwe versie bij, met een begin- en einddatum, in plaats van dat de oude waarde wordt overschreven."
-    },
-    {
-     "term": "Auto CDC",
-     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
-    },
-    {
-     "term": "micro-batches",
-     "explanation": "Kleine pakketjes nieuwe data die een stream één voor één verwerkt, in plaats van alles in één keer."
-    },
-    {
-     "term": "real-time mode",
-     "explanation": "Een modus van Spark Structured Streaming die records vrijwel direct doorgeeft, voor toepassingen die binnen een fractie van een seconde moeten reageren."
-    },
-    {
-     "term": "ASOF JOIN",
-     "explanation": "Een join die elke rij koppelt aan de laatst bekende rij uit de andere tabel op dat tijdstip, bijvoorbeeld de geldende prijs op het moment van een bestelling."
-    }
-   ],
-   "learning": "Data ingestion",
-   "soort": "release",
-   "fit": {
-    "score": 0.65,
-    "why": "Technische release met nieuwe SQL en CDC, zoals de Databricks-releases die je een duim gaf."
-   },
-   "labels": [
-    "spark-release",
-    "scd-type-2",
-    "auto-cdc"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "data_ingestion",
-    "pts": -10
-   },
-   "project_ref": {
-    "fase": 4,
-    "quote": "Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
-    "why": "Fase 4 gaat over historie bijhouden (SCD) met dbt snapshots."
-   }
-  },
-  {
    "id": "3b1aa647a1b3",
    "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
@@ -5198,7 +5335,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.6,
     "quality": 0.57,
     "feedback": -0.05,
@@ -5412,237 +5549,115 @@
    "diepte": "kort"
   },
   {
-   "id": "4ade36aa9099",
-   "title": "Agents Are Going Async",
-   "url": "https://www.langchain.com/blog/agents-are-going-async",
-   "source_id": "langchain_blog",
-   "published_at": "2026-11-05T20:03:27Z",
-   "fetched_at": "2026-11-06T03:12:48.949813Z",
-   "summary": "LangChain laat in Deep Agents subagents op de achtergrond werken, terwijl de hoofdagent (orchestrator) met je blijft praten en via vijf tools taken start, bijstuurt en ophaalt. Handig om te snappen hoe agents lange klussen verdelen; de meldingen zijn nog bèta.",
-   "availability_status": "preview",
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "agents",
-    "ai_context"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.66,
-    "source": 0.51,
-    "quality": 0.53,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-07T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Agents met achtergrondtaken: de hoofdagent blijft bereikbaar",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.6,
-    "why": "Agentpatroon met uitleg hoe het werkt, wat dichtbij je duimen voor agent-omgevingen ligt."
-   },
-   "labels": [
-    "async-subagents",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "8b7855abcc2d",
-   "title": "What Is Eval-Driven Development? How to Improve AI Agents",
-   "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
-   "source_id": "langchain_blog",
-   "published_at": "2026-11-09T18:57:45Z",
-   "fetched_at": "2026-11-10T20:23:17.126201Z",
-   "summary": "LangChain legt eval-driven development uit: beschrijf per gedrag wat goed is, schrijf de eval vóór je bouwt en vergelijk daarna per voorbeeld, niet alleen het gemiddelde. Een voorbeeld laat zien hoe een nieuwe tool een oude vraag ('hoe verbind ik met de VPN?') ten onrechte een ticket liet maken.",
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "agents"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.8,
-    "source": 0.51,
-    "quality": 0.45,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T03:40:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Eerst de eval, dan de wijziging: zo verbeter je een agent stap voor stap",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.6,
-    "why": "Evals voor agents, zoals je duim voor Claudes eval-hulp; wel een bekende methode."
-   },
-   "labels": [
-    "agent-evals",
-    "llm-als-rechter"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "56bb11919377",
-   "title": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
-   "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-12T19:20:48Z",
-   "fetched_at": "2026-11-13T03:13:29.332345Z",
-   "summary": "Eclipse Aerospace leest twintig jaar vluchtdata in een eigen binair formaat nu direct in met een zelfgebouwde Spark-bron: Python als dunne laag, een Rust-decoder eronder. De tussenstap via AWS Lambda en Avro is weg.",
-   "personal_relevance": "Je leert hoe je een lastige bron één keer als nette Spark-bron vastlegt, zodat ingestion niet in losse scripts buiten het platform zit.",
-   "experiment": "Schrijf in Databricks Free Edition een Python-datasource die een openbaar CSV- of JSON-bestand (bijv. KNMI-daggegevens) leest, registreer hem met spark.dataSource.register en schrijf het resultaat als Delta-tabel in je Bronze-schema.",
+   "id": "0b4ae9670355",
+   "title": "How to Repoint dbt ETL Pipelines to Databricks",
+   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T18:53:48Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Databricks laat stap voor stap zien hoe je een bestaand dbt-project naar Databricks verhuist. De kern: andere adapter, dialectfouten oplossen en per model uitkomsten vergelijken.",
+   "personal_relevance": "Een bruikbare checklist voor de laatste stap van je eigen migratie van SQL Server naar Databricks.",
+   "experiment": "Kies één model dat al op beide platforms draait. Vergelijk de uitkomsten met dbt-audit-helper en kijk of de match 100 procent is.",
    "limitations": [
-    "Het is een klantverhaal op de Databricks-blog; de snelheidscijfers zijn alleen verhoudingen, zonder testopzet.",
-    "De blog zelf bevat geen code; die staat in de GitHub-repository.",
-    "Een Rust-decoder is pas nodig bij binaire formaten of veel volume; voor CSV of JSON is Python genoeg."
+    "Het voorbeeld is sterk vereenvoudigd: één model uit twee bronnen.",
+    "Het gaat niet specifiek over T-SQL of SQL Server; je dialectfouten kunnen anders zijn.",
+    "Databricks schreef dit zelf; Lakebridge en Genie Code zijn eigen producten."
    ],
-   "availability_status": "beschikbaar",
+   "availability_status": "onbekend",
    "official_docs": [
     {
-     "label": "PySpark custom data sources (Azure Databricks)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/pyspark/datasources"
+     "label": "dbt-databricks adapter",
+     "url": "https://github.com/databricks/dbt-databricks"
+    },
+    {
+     "label": "dbt in Lakeflow Jobs",
+     "url": "https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows"
+    },
+    {
+     "label": "Lakebridge",
+     "url": "https://www.databricks.com/solutions/migration/lakebridge"
     }
    ],
    "topics": [
-    "data_ingestion",
-    "databricks_data_engineering"
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "sql_spark_sql"
    ],
    "groups": [
+    "dbt",
     "databricks"
    ],
-   "relevance_score": 79,
+   "relevance_score": 78,
    "score_parts": {
-    "topic": 0.85,
-    "recency": 0.93,
-    "source": 0.85,
-    "quality": 0.62,
-    "feedback": -0.11,
-    "fit": 0.15,
-    "project": 0.05
+    "topic": 1.0,
+    "recency": 0.15,
+    "source": 0.68,
+    "quality": 0.6,
+    "feedback": -0.03,
+    "fit": -0.05,
+    "project": 0.06
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:55:00Z",
-   "reading_minutes": 3,
+   "processed_at": "2026-10-29T06:45:00Z",
+   "reading_minutes": 2,
    "format_version": 2,
-   "headline": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+   "headline": "Een dbt-project overzetten naar Databricks in zeven stappen",
    "story": [
-    "Eclipse Aerospace bouwt en vliegt kleine straalvliegtuigen. Het bedrijf heeft bijna twintig jaar vluchtmetingen: meer dan 3 TB, uit meer dan een miljoen vlieguren. Die data staat in eigen binaire formaten, die alleen met speciale decoders te lezen zijn. Vroeger zette een keten met AWS Lambda de bestanden eerst om naar Avro, en pas daarna kon Spark ermee werken.",
-    "Nu leest Spark de originele bestanden zelf. Daarvoor gebruikt het team de Python Data Source API: je schrijft een kleine Python-klasse die Spark vertelt hoe een bron eruitziet en hoe je hem leest. Daarna gebruik je hem als elke andere bron, met spark.read.format(...). Het lijkt op een dbt-macro: één keer vastleggen hoe iets werkt, en daarna overal hergebruiken.",
-    "Het eigenlijke ontleden gebeurt niet in Python, maar in een decoder die in Rust is geschreven. Python is alleen de dunne laag ertussen. Spark verdeelt de bestanden over de workers; elke worker start de Rust-decoder en krijgt de gegevens terug als Apache Arrow-blokken. Zo hoeft Python niet elke rij apart om te zetten. Volgens het team is dat ongeveer 2 keer sneller dan een Python-versie met PyArrow en bijna 20 keer sneller dan gewoon Python.",
-    "Wat levert het op? Een nieuw bestand staat volgens het artikel binnen een minuut als tabel klaar, en grote batches van een paar GB binnen twee minuten. Fouten bij het decoderen en slechte records blijven zichtbaar in Databricks, in plaats van verstopt in een losse Lambda-functie. Het voorbeeld staat met benchmarks op GitHub.",
-    "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken. Je hebt daarvoor geen Rust nodig: voor CSV of JSON van een open-data-API is een Python-reader al genoeg."
+    "Databricks heeft een handleiding geschreven om een dbt-project van een ander datawarehouse naar Databricks te verhuizen. Het idee is simpel: je herschrijft geen modellen of tests. Je wisselt de adapter, past de bronnen aan en lost de verschillen in SQL-dialect op.",
+    "Het voorbeeld gaat over één feitentabel. Bij het eerste compileren gaven drie functies een fout, zoals DIV0 en REGEXP_SUBSTR. Die vervangen ze door een Databricks-variant of door een macro uit dbt_utils. Het is als een recept vertalen: de stappen blijven hetzelfde, alleen sommige ingrediënten heten anders.",
+    "Het nuttigste deel gaat over controleren. Met het package dbt-audit-helper vergelijken ze de uitkomst van het oude en nieuwe warehouse, rij voor rij. Ze herhalen dat tot de match 100 procent is. Daarna draait dbt als taak in Lakeflow Jobs.",
+    "Je migratie is al bijna klaar, dus de basis ken je. Maar de controlestap met audit-helper en het afsluitende stappenplan zijn handig als checklist voor de laatste modellen. Denk vooral aan incrementele modellen en snapshots: daarvoor waarschuwen de auteurs apart. Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven."
    ],
    "key_facts": [
-    "Gepubliceerd op 12 november 2026 op de Databricks-blog, door Jack Yallop.",
-    "Eclipse Aerospace heeft bijna 20 jaar vluchtdata: meer dan 3 TB en meer dan 1 miljoen vlieguren, in eigen binaire formaten.",
-    "De oude keten gebruikte AWS Lambda, Avro en Glacier-opslag; de nieuwe leest de originele bestanden direct in een Spark-read.",
-    "Opbouw: PySpark custom data source (Python Data Source API) met een Rust-decoder (via PyO3/Maturin) die Apache Arrow RecordBatches teruggeeft.",
-    "Gemeld: ongeveer 2x sneller dan een pure-Python-versie met PyArrow en bijna 20x sneller dan Python zonder Arrow; geen absolute tijden of testomgeving genoemd.",
-    "Records zijn binnen een minuut na upload verwerkt; batches van meerdere GB parallel in minder dan twee minuten.",
-    "De Python Data Source API werkt vanaf Databricks Runtime 15.4 LTS en serverless environment 2."
+    "Handleiding op het Databricks-blog van 6 oktober 2026.",
+    "Stappen: dbt-databricks installeren, sources aanpassen naar catalog.schema.table, compileren, draaien, rij voor rij valideren met dbt-audit-helper, uitrollen met Lakeflow Jobs en daarna overschakelen.",
+    "In het voorbeeld gaven drie functies een fout: REGEXP_SUBSTR (wordt regexp_extract), DIV0 (wordt dbt_utils.safe_divide) en object_construct (wordt named_struct).",
+    "Incrementele modellen en snapshots vragen een aparte aanpak; historische snapshotdata moet je los migreren.",
+    "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
+    "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
    ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Een eigen Spark-bron voor een verzonnen binair formaat met vaste records van 12 bytes. Na registreren lees je hem als elke andere bron.",
-    "language": "python",
-    "code": "import struct\nfrom pyspark.sql.datasource import DataSource, DataSourceReader\n\nclass TelemetrieBron(DataSource):\n    @classmethod\n    def name(cls):\n        return \"telemetrie\"\n    def schema(self):\n        return \"meting int, seconde int, snelheid float\"\n    def reader(self, schema):\n        return TelemetrieLezer(self.options)\n\nclass TelemetrieLezer(DataSourceReader):\n    def __init__(self, options):\n        self.pad = options[\"path\"]\n    def read(self, partition):\n        data = open(self.pad, \"rb\").read()\n        for rec in struct.iter_unpack(\"<iif\", data):  # 12 bytes per meting\n            yield (rec[0], rec[1], round(rec[2], 1))\n\nspark.dataSource.register(TelemetrieBron)\nspark.read.format(\"telemetrie\").load(\"vlucht.bin\").show()",
-    "result": {
-     "columns": [
-      "meting",
-      "seconde",
-      "snelheid"
-     ],
-     "rows": [
-      [
-       1,
-       1200,
-       310.5
-      ],
-      [
-       2,
-       1260,
-       312.0
-      ],
-      [
-       3,
-       1320,
-       309.8
-      ]
-     ]
-    },
-    "note": "Verzonnen data, echt gedraaid met PySpark 4 lokaal. De klassen en register/format-aanroepen volgen de Databricks-documentatie; Eclipse doet het decoderen in Rust in plaats van met struct."
-   },
    "terms": [
     {
-     "term": "Python Data Source API",
-     "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...)."
+     "term": "adapter",
+     "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks."
     },
     {
-     "term": "Avro",
-     "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data."
+     "term": "SQL-dialect",
+     "explanation": "De eigen variant van SQL die elk datawarehouse spreekt. De basis is gelijk, maar sommige functies heten of werken anders."
     },
     {
-     "term": "Rust",
-     "explanation": "Een snelle programmeertaal, vergelijkbaar met C, die veel fouten met geheugen al bij het bouwen tegenhoudt."
+     "term": "dbt_utils",
+     "explanation": "Een veelgebruikt dbt-pakket met kant-en-klare macro's en tests die op verschillende datawarehouses werken."
     },
     {
-     "term": "Apache Arrow",
-     "explanation": "Een standaardformaat om tabellen kolom voor kolom in het geheugen te zetten, zodat programma's data uitwisselen zonder ze eerst om te zetten."
+     "term": "dbt-audit-helper",
+     "explanation": "Een dbt-pakket met macro's die twee tabellen rij voor rij vergelijken, zodat je ziet of een nieuwe versie dezelfde uitkomst geeft."
     },
     {
-     "term": "workers",
-     "explanation": "De machines in een Spark-cluster die het eigenlijke werk doen; elke worker verwerkt een deel van de data."
+     "term": "Lakeflow Jobs",
+     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
     }
    ],
-   "learning": "Data ingestion",
-   "soort": "praktijk",
+   "soort": "praktisch",
    "fit": {
-    "score": 0.65,
-    "why": "Concreet ingestion-praktijkverhaal met architectuur, het soort praktische uitleg waar je eerder duimen voor gaf."
+    "score": 0.45,
+    "why": "Praktische dbt-stappen, maar over migratie, een project dat je nu hebt gepauzeerd."
    },
    "labels": [
-    "python-data-source-api",
-    "custom-ingestion",
-    "apache-arrow"
+    "migratie-naar-dbt",
+    "dbt-audit-helper"
    ],
    "fb_why": {
     "by": "topic",
-    "name": "data_ingestion",
-    "pts": -11
+    "name": "databricks_data_engineering",
+    "pts": -3
    },
    "project_ref": {
-    "fase": 3,
-    "quote": "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken.",
-    "why": "Fase 3 gaat over openbare data met Python inlezen in Bronze."
+    "fase": 4,
+    "quote": "Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven.",
+    "why": "Fase 4 richt dbt Core met dbt-databricks in."
    }
   },
   {
@@ -5682,7 +5697,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.4,
+    "recency": 0.39,
     "source": 0.51,
     "quality": 0.65,
     "feedback": -0.04,
@@ -5962,6 +5977,103 @@
    }
   },
   {
+   "id": "4ade36aa9099",
+   "title": "Agents Are Going Async",
+   "url": "https://www.langchain.com/blog/agents-are-going-async",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-05T20:03:27Z",
+   "fetched_at": "2026-11-06T03:12:48.949813Z",
+   "summary": "LangChain laat in Deep Agents subagents op de achtergrond werken, terwijl de hoofdagent (orchestrator) met je blijft praten en via vijf tools taken start, bijstuurt en ophaalt. Handig om te snappen hoe agents lange klussen verdelen; de meldingen zijn nog bèta.",
+   "availability_status": "preview",
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.65,
+    "source": 0.51,
+    "quality": 0.53,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-07T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Agents met achtergrondtaken: de hoofdagent blijft bereikbaar",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Agentpatroon met uitleg hoe het werkt, wat dichtbij je duimen voor agent-omgevingen ligt."
+   },
+   "labels": [
+    "async-subagents",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "8b7855abcc2d",
+   "title": "What Is Eval-Driven Development? How to Improve AI Agents",
+   "url": "https://www.langchain.com/blog/what-is-eval-driven-development",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-09T18:57:45Z",
+   "fetched_at": "2026-11-10T20:23:17.126201Z",
+   "summary": "LangChain legt eval-driven development uit: beschrijf per gedrag wat goed is, schrijf de eval vóór je bouwt en vergelijk daarna per voorbeeld, niet alleen het gemiddelde. Een voorbeeld laat zien hoe een nieuwe tool een oude vraag ('hoe verbind ik met de VPN?') ten onrechte een ticket liet maken.",
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.79,
+    "source": 0.51,
+    "quality": 0.45,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T03:40:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Eerst de eval, dan de wijziging: zo verbeter je een agent stap voor stap",
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Evals voor agents, zoals je duim voor Claudes eval-hulp; wel een bekende methode."
+   },
+   "labels": [
+    "agent-evals",
+    "llm-als-rechter"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "e89c62d75061",
    "title": "The Claude Tag guide for startups",
    "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
@@ -5981,7 +6093,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.38,
     "feedback": -0.03,
@@ -6032,7 +6144,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.97,
+    "recency": 0.96,
     "source": 0.85,
     "quality": 0.4,
     "feedback": -0.06,
@@ -6191,118 +6303,6 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -3
-   }
-  },
-  {
-   "id": "0b4ae9670355",
-   "title": "How to Repoint dbt ETL Pipelines to Databricks",
-   "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T18:53:48Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Databricks laat stap voor stap zien hoe je een bestaand dbt-project naar Databricks verhuist. De kern: andere adapter, dialectfouten oplossen en per model uitkomsten vergelijken.",
-   "personal_relevance": "Een bruikbare checklist voor de laatste stap van je eigen migratie van SQL Server naar Databricks.",
-   "experiment": "Kies één model dat al op beide platforms draait. Vergelijk de uitkomsten met dbt-audit-helper en kijk of de match 100 procent is.",
-   "limitations": [
-    "Het voorbeeld is sterk vereenvoudigd: één model uit twee bronnen.",
-    "Het gaat niet specifiek over T-SQL of SQL Server; je dialectfouten kunnen anders zijn.",
-    "Databricks schreef dit zelf; Lakebridge en Genie Code zijn eigen producten."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "dbt-databricks adapter",
-     "url": "https://github.com/databricks/dbt-databricks"
-    },
-    {
-     "label": "dbt in Lakeflow Jobs",
-     "url": "https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows"
-    },
-    {
-     "label": "Lakebridge",
-     "url": "https://www.databricks.com/solutions/migration/lakebridge"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "dbt",
-    "databricks"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.15,
-    "source": 0.68,
-    "quality": 0.6,
-    "feedback": -0.03,
-    "fit": -0.05,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-29T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Een dbt-project overzetten naar Databricks in zeven stappen",
-   "story": [
-    "Databricks heeft een handleiding geschreven om een dbt-project van een ander datawarehouse naar Databricks te verhuizen. Het idee is simpel: je herschrijft geen modellen of tests. Je wisselt de adapter, past de bronnen aan en lost de verschillen in SQL-dialect op.",
-    "Het voorbeeld gaat over één feitentabel. Bij het eerste compileren gaven drie functies een fout, zoals DIV0 en REGEXP_SUBSTR. Die vervangen ze door een Databricks-variant of door een macro uit dbt_utils. Het is als een recept vertalen: de stappen blijven hetzelfde, alleen sommige ingrediënten heten anders.",
-    "Het nuttigste deel gaat over controleren. Met het package dbt-audit-helper vergelijken ze de uitkomst van het oude en nieuwe warehouse, rij voor rij. Ze herhalen dat tot de match 100 procent is. Daarna draait dbt als taak in Lakeflow Jobs.",
-    "Je migratie is al bijna klaar, dus de basis ken je. Maar de controlestap met audit-helper en het afsluitende stappenplan zijn handig als checklist voor de laatste modellen. Denk vooral aan incrementele modellen en snapshots: daarvoor waarschuwen de auteurs apart. Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven."
-   ],
-   "key_facts": [
-    "Handleiding op het Databricks-blog van 6 oktober 2026.",
-    "Stappen: dbt-databricks installeren, sources aanpassen naar catalog.schema.table, compileren, draaien, rij voor rij valideren met dbt-audit-helper, uitrollen met Lakeflow Jobs en daarna overschakelen.",
-    "In het voorbeeld gaven drie functies een fout: REGEXP_SUBSTR (wordt regexp_extract), DIV0 (wordt dbt_utils.safe_divide) en object_construct (wordt named_struct).",
-    "Incrementele modellen en snapshots vragen een aparte aanpak; historische snapshotdata moet je los migreren.",
-    "Lakebridge kan dialect-SQL in een dbt-project automatisch omzetten en uitkomsten vergelijken.",
-    "Volgens het artikel draaien meer dan 3.000 organisaties dbt op Databricks."
-   ],
-   "terms": [
-    {
-     "term": "adapter",
-     "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks."
-    },
-    {
-     "term": "SQL-dialect",
-     "explanation": "De eigen variant van SQL die elk datawarehouse spreekt. De basis is gelijk, maar sommige functies heten of werken anders."
-    },
-    {
-     "term": "dbt_utils",
-     "explanation": "Een veelgebruikt dbt-pakket met kant-en-klare macro's en tests die op verschillende datawarehouses werken."
-    },
-    {
-     "term": "dbt-audit-helper",
-     "explanation": "Een dbt-pakket met macro's die twee tabellen rij voor rij vergelijken, zodat je ziet of een nieuwe versie dezelfde uitkomst geeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.45,
-    "why": "Praktische dbt-stappen, maar over migratie, een project dat je nu hebt gepauzeerd."
-   },
-   "labels": [
-    "migratie-naar-dbt",
-    "dbt-audit-helper"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   },
-   "project_ref": {
-    "fase": 4,
-    "quote": "Voor Dataflow zijn de eerste stappen ook bruikbaar in fase 4: dbt-databricks installeren en sources als catalog.schema.table schrijven.",
-    "why": "Fase 4 richt dbt Core met dbt-databricks in."
    }
   },
   {
@@ -6568,7 +6568,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.03,
@@ -6617,7 +6617,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.02,
@@ -6667,7 +6667,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.92,
+    "recency": 0.91,
     "source": 0.85,
     "quality": 0.33,
     "feedback": -0.06,
@@ -6824,7 +6824,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.4,
+    "recency": 0.39,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.06,
@@ -6991,7 +6991,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7140,7 +7140,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.01,
@@ -7394,7 +7394,7 @@
    "relevance_score": 71,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.16,
+    "recency": 0.15,
     "source": 0.68,
     "quality": 0.53,
     "feedback": -0.03,
@@ -7494,7 +7494,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -7586,7 +7586,7 @@
    "relevance_score": 68,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7634,7 +7634,7 @@
    "relevance_score": 64,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.6,
     "quality": 0.3,
     "feedback": -0.05,
@@ -7776,7 +7776,7 @@
    "relevance_score": 47,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.2,
@@ -14044,37 +14044,47 @@
   "phases": [
    {
     "fase": 1,
-    "name": "Fundament"
+    "name": "Fundament",
+    "status": "klaar"
    },
    {
     "fase": 2,
-    "name": "Unity Catalog"
+    "name": "Unity Catalog",
+    "status": "klaar"
    },
    {
     "fase": 3,
-    "name": "Ingestion en Bronze"
+    "name": "Ingestion en Bronze",
+    "status": "bezig"
    },
    {
     "fase": 4,
-    "name": "dbt Silver en Gold"
+    "name": "dbt Silver en Gold",
+    "status": "volgende"
    },
    {
     "fase": 5,
-    "name": "DAB en Jobs"
+    "name": "DAB en Jobs",
+    "status": "open"
    },
    {
     "fase": 6,
-    "name": "AI-integratie onderzoeken"
+    "name": "AI-integratie onderzoeken",
+    "status": "open"
    },
    {
     "fase": 7,
-    "name": "Eigen agent"
+    "name": "Eigen agent",
+    "status": "open"
    },
    {
     "fase": 8,
-    "name": "Uitbreiding en automatisering"
+    "name": "Uitbreiding en automatisering",
+    "status": "open"
    }
-  ]
+  ],
+  "stap": "3.4 KNMI-ophaalscript naar landing-volume",
+  "stap_op": "2026-11-13"
  },
  "interest_suggestions": [],
  "interest_log": [
@@ -14170,7 +14180,7 @@
    "data_governance_privacy": 0.42,
    "ai_context_engineering": 0.95,
    "claude_ai_development": 0.48,
-   "ai_agents_rag": 0.67,
+   "ai_agents_rag": 0.66,
    "data_architecture_modeling": 0.35,
    "data_ingestion": 0.16
   },
@@ -14180,7 +14190,7 @@
    "powerbi_blog": 0.31,
    "dbt_developer_blog": 0.69,
    "claude_code_releases": 0.29,
-   "azure_databricks_release_notes": 0.6,
+   "azure_databricks_release_notes": 0.59,
    "fabric_blog": -0.08,
    "chris_webb": 0.07,
    "claude_blog": 0.15
@@ -14246,7 +14256,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 409,
+  "fetched_items": 631,
   "unique_after_dedupe": 593,
   "merged_duplicates": 31,
   "shown": 79,
@@ -14359,7 +14369,7 @@
     "title": "Connect ChatGPT to Genie One with the Databricks Genie plugin",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-chatgpt-to-genie-one-with-the-databricks-genie-plugin",
-    "relevance_score": 86,
+    "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -14369,7 +14379,7 @@
     "title": "Connect Claude to Genie One with the Databricks Genie connector",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-claude-to-genie-one-with-the-databricks-genie-connector",
-    "relevance_score": 86,
+    "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -14379,7 +14389,7 @@
     "title": "Connect Grok Bot/Cursor to Genie One with the Databricks Genie plugin",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-grok-botcursor-to-genie-one-with-the-databricks-genie-plugin",
-    "relevance_score": 86,
+    "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -14657,17 +14667,6 @@
     ]
    },
    {
-    "title": "v2.1.317",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
@@ -14714,6 +14713,17 @@
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.317",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -14825,17 +14835,6 @@
     ]
    },
    {
-    "title": "v2.1.307",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307",
-    "relevance_score": 76,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Use OneLake as native storage for Azure Databricks (Preview)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Preview/ba-p/5377939",
@@ -14871,6 +14870,17 @@
     "title": "v2.1.310",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.310",
+    "relevance_score": 75,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.307",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307",
     "relevance_score": 75,
     "decision": "excluded",
     "excluded_by": [
