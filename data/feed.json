@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T05:14:38.947634Z",
+ "generated_at": "2026-11-14T06:29:13.372706Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -717,7 +717,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1265,7 +1265,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -2435,7 +2435,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 0.8,
     "quality": 0.63,
     "feedback": 0.01,
@@ -4076,7 +4076,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.03,
@@ -4706,7 +4706,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 1.0,
     "quality": 0.67,
     "fit": 0.2,
@@ -4826,7 +4826,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.51,
     "quality": 0.75,
     "feedback": -0.03,
@@ -4928,7 +4928,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.51,
     "quality": 0.48,
     "feedback": 0.01,
@@ -5381,7 +5381,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.02,
@@ -5784,7 +5784,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.51,
     "quality": 0.55,
     "feedback": 0.01,
@@ -5981,7 +5981,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.38,
     "feedback": -0.03,
@@ -6445,104 +6445,6 @@
    }
   },
   {
-   "id": "1ebe4563dc44",
-   "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
-   "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
-   "source_id": "sqlbi",
-   "published_at": "2026-10-22T07:30:36Z",
-   "fetched_at": "2026-11-01T11:05:57.559020Z",
-   "summary": "SQLBI heeft een MCP-server gemaakt waarmee een AI-assistent als Claude pakketten met DAX-functies zoekt en in een open Power BI Desktop-model installeert. Versie 0.1.0, open source, alleen voor Windows.",
-   "personal_relevance": "Een klein, concreet voorbeeld van hoe je Claude via MCP veilig iets laat wijzigen in een tool die je dagelijks gebruikt.",
-   "experiment": "Open op een Windows-machine een leeg Power BI Desktop-bestand met verzonnen data, koppel de DAX Lib MCP-server aan Claude, en laat hem één pakket zoeken, de README tonen en installeren. Let op welke stap om goedkeuring vraagt.",
-   "limitations": [
-    "Versie 0.1.0: vroeg stadium, alleen Windows x64.",
-    "Zonder versie krijg je de nieuwste release, en dat kan ook een prerelease zijn.",
-    "Werkt alleen met modellen die open staan in Power BI Desktop op dezelfde computer."
-   ],
-   "availability_status": "experimenteel",
-   "official_docs": [
-    {
-     "label": "Origineel artikel",
-     "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "claude_ai_development",
-    "open_source_tools"
-   ],
-   "groups": [
-    "overig",
-    "claude"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.32,
-    "source": 0.8,
-    "quality": 0.57,
-    "feedback": -0.03,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-04T04:05:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Vraag je AI-assistent om DAX-functies in je Power BI-model te zetten",
-   "story": [
-    "Eind 2025 begon SQLBI met DAX Lib, een openbare verzameling herbruikbare DAX-functies (user-defined functions). Tot nu toe moest je zo'n pakket met de hand in je model zetten. Marco Russo laat nu zien dat je dat aan je AI-assistent kunt vragen.",
-    "Dat kan via een nieuwe MCP-server. Zie die als een stekker tussen de assistent en twee dingen: de catalogus van DAX Lib en de Power BI Desktop-modellen die op je computer openstaan. De assistent kan pakketten zoeken, de uitleg (README) tonen, je open modellen opnoemen en een pakket installeren. De functies komen dan met hun eigen code, opmaak en commentaar in het model.",
-    "In de praktijk typ je gewone zinnen, zoals 'zoek pakketten die SVG-afbeeldingen maken' en daarna 'installeer DaxLib.SVG in het model Sales Report'. De installatie staat gemarkeerd als een stap die gegevens wijzigt. De meeste MCP-clients vragen daarom eerst om je goedkeuring. De assistent kiest ook niet zelf een pakket.",
-    "Er zijn grenzen. Het werkt alleen op Windows x64 en alleen met modellen die open staan in Power BI Desktop. Het model moet compatibiliteitsniveau 1702 of hoger hebben. De server slaat je bestand niet op en past bestaande functies niet aan; een functie met dezelfde naam wordt wel vervangen.",
-    "Interessant is vooral het patroon: een smalle MCP-server met een paar duidelijke tools, waarbij de stap die iets wijzigt om toestemming vraagt. Dat is een goed voorbeeld als je zelf tools voor een AI-assistent op je dataplatform ontwerpt."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 22 oktober 2026 door Marco Russo (SQLBI).",
-    "DAX Lib is een openbare repository met DAX user-defined functions, gelanceerd eind 2025.",
-    "De DAX Lib MCP-server versie 0.1.0 is beschikbaar, open source onder de MIT-licentie, zonder telemetrie.",
-    "Alleen Windows x64, met Node.js 18 of nieuwer; er zijn geen plannen voor macOS.",
-    "Werkt met MCP-clients die lokale (stdio) servers ondersteunen, zoals Claude, Codex, GitHub Copilot in VS Code en Cursor.",
-    "Vereist compatibiliteitsniveau 1702 of hoger; het installatiegereedschap is gemarkeerd als gegevenswijzigend, en de server slaat het bestand niet op."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo praat je met de assistent: drie gewone zinnen, van zoeken tot installeren. De laatste stap vraagt in de meeste clients eerst om je goedkeuring.",
-    "language": "text",
-    "code": "Search DAX Lib for packages that generate SVG images\nShow the README of DaxLib.SVG\nInstall DaxLib.SVG into the Sales Report model",
-    "note": "De drie voorbeeldprompts komen letterlijk uit het artikel. De installatie-instructies staan op docs.daxlib.org."
-   },
-   "terms": [
-    {
-     "term": "MCP-server",
-     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
-    },
-    {
-     "term": "user-defined functions",
-     "explanation": "Functies die je zelf schrijft en een naam geeft, zodat je dezelfde berekening op veel plekken kunt hergebruiken."
-    },
-    {
-     "term": "compatibiliteitsniveau",
-     "explanation": "Een versienummer van een Power BI-model dat bepaalt welke functies het model ondersteunt."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.5,
-    "why": "Praktische MCP-toepassing in Power BI; je duimen gaan vaker over dbt en Databricks dan over Power BI."
-   },
-   "labels": [
-    "dax-mcp",
-    "power-bi-ai"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -3
-   }
-  },
-  {
    "id": "fae3fb7e9aa6",
    "title": "DAX LLM Benchmark v2",
    "url": "https://www.sqlbi.com/blog/marco/2026/10/27/dax-llm-benchmark-v2/",
@@ -6852,6 +6754,104 @@
     "pts": -7
    },
    "diepte": "kort"
+  },
+  {
+   "id": "1ebe4563dc44",
+   "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
+   "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
+   "source_id": "sqlbi",
+   "published_at": "2026-10-22T07:30:36Z",
+   "fetched_at": "2026-11-01T11:05:57.559020Z",
+   "summary": "SQLBI heeft een MCP-server gemaakt waarmee een AI-assistent als Claude pakketten met DAX-functies zoekt en in een open Power BI Desktop-model installeert. Versie 0.1.0, open source, alleen voor Windows.",
+   "personal_relevance": "Een klein, concreet voorbeeld van hoe je Claude via MCP veilig iets laat wijzigen in een tool die je dagelijks gebruikt.",
+   "experiment": "Open op een Windows-machine een leeg Power BI Desktop-bestand met verzonnen data, koppel de DAX Lib MCP-server aan Claude, en laat hem één pakket zoeken, de README tonen en installeren. Let op welke stap om goedkeuring vraagt.",
+   "limitations": [
+    "Versie 0.1.0: vroeg stadium, alleen Windows x64.",
+    "Zonder versie krijg je de nieuwste release, en dat kan ook een prerelease zijn.",
+    "Werkt alleen met modellen die open staan in Power BI Desktop op dezelfde computer."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Origineel artikel",
+     "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "claude_ai_development",
+    "open_source_tools"
+   ],
+   "groups": [
+    "overig",
+    "claude"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.32,
+    "source": 0.8,
+    "quality": 0.57,
+    "feedback": -0.03,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-04T04:05:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Vraag je AI-assistent om DAX-functies in je Power BI-model te zetten",
+   "story": [
+    "Eind 2025 begon SQLBI met DAX Lib, een openbare verzameling herbruikbare DAX-functies (user-defined functions). Tot nu toe moest je zo'n pakket met de hand in je model zetten. Marco Russo laat nu zien dat je dat aan je AI-assistent kunt vragen.",
+    "Dat kan via een nieuwe MCP-server. Zie die als een stekker tussen de assistent en twee dingen: de catalogus van DAX Lib en de Power BI Desktop-modellen die op je computer openstaan. De assistent kan pakketten zoeken, de uitleg (README) tonen, je open modellen opnoemen en een pakket installeren. De functies komen dan met hun eigen code, opmaak en commentaar in het model.",
+    "In de praktijk typ je gewone zinnen, zoals 'zoek pakketten die SVG-afbeeldingen maken' en daarna 'installeer DaxLib.SVG in het model Sales Report'. De installatie staat gemarkeerd als een stap die gegevens wijzigt. De meeste MCP-clients vragen daarom eerst om je goedkeuring. De assistent kiest ook niet zelf een pakket.",
+    "Er zijn grenzen. Het werkt alleen op Windows x64 en alleen met modellen die open staan in Power BI Desktop. Het model moet compatibiliteitsniveau 1702 of hoger hebben. De server slaat je bestand niet op en past bestaande functies niet aan; een functie met dezelfde naam wordt wel vervangen.",
+    "Interessant is vooral het patroon: een smalle MCP-server met een paar duidelijke tools, waarbij de stap die iets wijzigt om toestemming vraagt. Dat is een goed voorbeeld als je zelf tools voor een AI-assistent op je dataplatform ontwerpt."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 22 oktober 2026 door Marco Russo (SQLBI).",
+    "DAX Lib is een openbare repository met DAX user-defined functions, gelanceerd eind 2025.",
+    "De DAX Lib MCP-server versie 0.1.0 is beschikbaar, open source onder de MIT-licentie, zonder telemetrie.",
+    "Alleen Windows x64, met Node.js 18 of nieuwer; er zijn geen plannen voor macOS.",
+    "Werkt met MCP-clients die lokale (stdio) servers ondersteunen, zoals Claude, Codex, GitHub Copilot in VS Code en Cursor.",
+    "Vereist compatibiliteitsniveau 1702 of hoger; het installatiegereedschap is gemarkeerd als gegevenswijzigend, en de server slaat het bestand niet op."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo praat je met de assistent: drie gewone zinnen, van zoeken tot installeren. De laatste stap vraagt in de meeste clients eerst om je goedkeuring.",
+    "language": "text",
+    "code": "Search DAX Lib for packages that generate SVG images\nShow the README of DaxLib.SVG\nInstall DaxLib.SVG into the Sales Report model",
+    "note": "De drie voorbeeldprompts komen letterlijk uit het artikel. De installatie-instructies staan op docs.daxlib.org."
+   },
+   "terms": [
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "user-defined functions",
+     "explanation": "Functies die je zelf schrijft en een naam geeft, zodat je dezelfde berekening op veel plekken kunt hergebruiken."
+    },
+    {
+     "term": "compatibiliteitsniveau",
+     "explanation": "Een versienummer van een Power BI-model dat bepaalt welke functies het model ondersteunt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.5,
+    "why": "Praktische MCP-toepassing in Power BI; je duimen gaan vaker over dbt en Databricks dan over Power BI."
+   },
+   "labels": [
+    "dax-mcp",
+    "power-bi-ai"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -3
+   }
   },
   {
    "id": "560fbec0053e",
@@ -7332,7 +7332,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.51,
     "quality": 0.37,
     "feedback": -0.02,
@@ -14098,6 +14098,15 @@
  "runs": {
   "date": "2026-11-14",
   "tasks": {
+   "inhalen": {
+    "status": "ok",
+    "summary": "niets in te halen",
+    "finished_at": "2026-11-14T06:28:56Z",
+    "problems": [],
+    "counts": {
+     "ingehaald": 0
+    }
+   },
    "verdiepen": {
     "status": "ok",
     "summary": "Verdieping 'Claude-agents in je eigen netwerk' geschreven (met quiz en begrippen) en 5 nieuwe keuzes klaargezet",
@@ -14169,7 +14178,7 @@
    "dbt_labs_blog": 0.91,
    "databricks_blog": 0.67,
    "powerbi_blog": 0.31,
-   "dbt_developer_blog": 0.7,
+   "dbt_developer_blog": 0.69,
    "claude_code_releases": 0.29,
    "azure_databricks_release_notes": 0.6,
    "fabric_blog": -0.08,
@@ -14178,7 +14187,7 @@
   },
   "kinds": {
    "praktijk": 0.73,
-   "praktisch": 0.28,
+   "praktisch": 0.27,
    "achtergrond": 0.7,
    "aankondiging": 0.48,
    "mening": 0.35,
@@ -14377,17 +14386,6 @@
     ]
    },
    {
-    "title": "v2.1.325",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
-    "relevance_score": 86,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Allow ChatGPT and Claude as partner platforms in context-based ingress policies",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-chatgpt-and-claude-as-partner-platforms-in-context-based-ingress-policies",
@@ -14414,6 +14412,17 @@
     "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.325",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
+    "relevance_score": 85,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    },
