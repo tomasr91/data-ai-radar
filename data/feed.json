@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T06:29:13.372706Z",
+ "generated_at": "2026-11-14T08:04:01.136139Z",
  "mode": "live",
- "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
- "last_successful_update": "2026-11-14T03:13:12.926035Z",
+ "last_successful_update": "2026-11-14T08:04:01.136139Z",
  "groups": [
   {
    "id": "dbt",
@@ -154,7 +154,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-14T03:13:12.958432Z"
+   "checked_at": "2026-11-14T08:04:01.177694Z"
   },
   {
    "id": "dbt_core_releases",
@@ -167,7 +167,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-14T03:13:13.268172Z"
+   "checked_at": "2026-11-14T08:04:01.556554Z"
   },
   {
    "id": "claude_code_releases",
@@ -180,7 +180,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-14T03:13:13.961822Z"
+   "checked_at": "2026-11-14T08:04:02.208468Z"
   },
   {
    "id": "anthropic_engineering",
@@ -193,7 +193,7 @@
    "status": "ok",
    "items": 29,
    "message": "29 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-14T03:13:14.271445Z"
+   "checked_at": "2026-11-14T08:04:02.546497Z"
   },
   {
    "id": "claude_blog",
@@ -206,7 +206,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-14T03:13:14.305242Z"
+   "checked_at": "2026-11-14T08:04:02.632420Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -219,7 +219,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-14T03:13:14.408763Z"
+   "checked_at": "2026-11-14T08:04:02.747402Z"
   },
   {
    "id": "databricks_blog",
@@ -232,7 +232,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-14T03:13:14.462626Z"
+   "checked_at": "2026-11-14T08:04:02.907162Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -245,7 +245,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-14T03:13:14.550875Z"
+   "checked_at": "2026-11-14T08:04:03.004512Z"
   },
   {
    "id": "azure_blog",
@@ -258,7 +258,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-14T03:13:14.762246Z"
+   "checked_at": "2026-11-14T08:04:03.073919Z"
   },
   {
    "id": "powerbi_blog",
@@ -271,7 +271,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-14T03:13:14.981084Z"
+   "checked_at": "2026-11-14T08:04:03.401374Z"
   },
   {
    "id": "fabric_blog",
@@ -284,7 +284,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-14T03:13:15.609362Z"
+   "checked_at": "2026-11-14T08:04:04.152073Z"
   },
   {
    "id": "sqlbi",
@@ -297,7 +297,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-14T03:13:15.990784Z"
+   "checked_at": "2026-11-14T08:04:04.682209Z"
   },
   {
    "id": "huggingface_blog",
@@ -310,7 +310,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-14T03:13:16.181078Z"
+   "checked_at": "2026-11-14T08:04:05.011441Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -323,7 +323,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-14T03:13:16.376630Z"
+   "checked_at": "2026-11-14T08:04:05.141758Z"
   },
   {
    "id": "simon_whiteley",
@@ -336,7 +336,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-14T03:13:16.753851Z"
+   "checked_at": "2026-11-14T08:04:05.292951Z"
   },
   {
    "id": "hamel_husain",
@@ -349,7 +349,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-14T03:13:16.954016Z"
+   "checked_at": "2026-11-14T08:04:05.511434Z"
   },
   {
    "id": "langchain_blog",
@@ -362,7 +362,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-14T03:13:17.139559Z"
+   "checked_at": "2026-11-14T08:04:05.682108Z"
   },
   {
    "id": "chip_huyen",
@@ -375,7 +375,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-14T03:13:17.287417Z"
+   "checked_at": "2026-11-14T08:04:05.809119Z"
   },
   {
    "id": "simon_willison",
@@ -388,7 +388,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-14T03:13:17.805464Z"
+   "checked_at": "2026-11-14T08:04:06.118361Z"
   },
   {
    "id": "chris_webb",
@@ -401,7 +401,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-14T03:13:17.864746Z"
+   "checked_at": "2026-11-14T08:04:06.201485Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -414,7 +414,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-14T03:13:18.104804Z"
+   "checked_at": "2026-11-14T08:04:06.516693Z"
   }
  ],
  "daily_top": [
@@ -605,7 +605,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.97,
+    "recency": 0.96,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -2551,7 +2551,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.06,
@@ -2880,7 +2880,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -2951,99 +2951,6 @@
     "fase": 7,
     "quote": "Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools",
     "why": "Fase 7 bouwt een eigen data-platform-agent met tools naar Databricks."
-   }
-  },
-  {
-   "id": "450468c3f304",
-   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
-   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-23T19:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Databricks liet AI-agents pipelines bouwen in twee stijlen. De beschrijvende stijl kostte veel minder rekenkracht, maar fouten bleven.",
-   "personal_relevance": "dbt is ook declaratief, dus dit zegt iets over hoe je AI je modellen laat schrijven.",
-   "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
-   "limitations": [
-    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
-    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
-    "Meer tokens betekent hogere AI-kosten per build."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_on_data_platform",
-    "data_architecture_modeling",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "databricks"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.85,
-    "quality": 0.8,
-    "feedback": -0.07,
-    "fit": 0.35
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Built for Agents: The Case for Spark Declarative Pipelines",
-     "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
-     "published_at": "2026-10-23T19:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Laat AI liever beschrijven wat je wilt dan hoe het moet",
-   "story": [
-    "Je kunt een pipeline op twee manieren schrijven. Stap voor stap, zoals een recept: pak de pan, doe er olie in, bak de ui. Of beschrijvend: je zegt wat je wilt eten, en de keuken bepaalt de volgorde. Dat tweede heet declaratief.",
-    "Databricks liet AI-agents honderden pipelines in beide stijlen bouwen. De declaratieve versies gebruikten veel minder rekentijd en waren ongeveer half zo lang. Ze kostten wel meer AI-tokens om te maken. En Spark kon vooraf controleren of alle kolommen bestonden.",
-    "Eén ding veranderde niet: in beide stijlen zat in bijna een derde van de pipelines een stille logische fout. De code draaide, maar de uitkomst klopte niet.",
-    "dbt is ook declaratief, dus de les geldt voor jou. Laat AI liever kleine, beschrijvende modellen schrijven. En vertrouw op je dbt-tests, want daar vang je de fouten die de AI wel maakt."
-   ],
-   "key_facts": [
-    "Engineering-blog van Databricks van 23 oktober 2026.",
-    "528 builds: 22 taken x 12 datasets x 2 aanpakken, gemaakt met Opus 4.8.",
-    "Clustertijd was ongeveer 34x lager bij Spark Declarative Pipelines (17 tegen 596 executor-seconden).",
-    "Mediaan code: 64 tegen 131 regels. Declaratief gebruikte ongeveer 2,3x meer LLM-tokens.",
-    "Stille logische fouten: 32,2% declaratief, 27,7% procedureel."
-   ],
-   "terms": [
-    {
-     "term": "declaratief",
-     "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
-    },
-    {
-     "term": "AI-agents",
-     "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
-    },
-    {
-     "term": "tokens",
-     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.85,
-    "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
-   },
-   "labels": [
-    "agents-bouwen-pipelines",
-    "declaratieve-pipelines"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -7
    }
   },
   {
@@ -3180,6 +3087,99 @@
    }
   },
   {
+   "id": "450468c3f304",
+   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-23T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks liet AI-agents pipelines bouwen in twee stijlen. De beschrijvende stijl kostte veel minder rekenkracht, maar fouten bleven.",
+   "personal_relevance": "dbt is ook declaratief, dus dit zegt iets over hoe je AI je modellen laat schrijven.",
+   "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
+   "limitations": [
+    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
+    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
+    "Meer tokens betekent hogere AI-kosten per build."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.34,
+    "source": 0.85,
+    "quality": 0.8,
+    "feedback": -0.07,
+    "fit": 0.35
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+     "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+     "published_at": "2026-10-23T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Laat AI liever beschrijven wat je wilt dan hoe het moet",
+   "story": [
+    "Je kunt een pipeline op twee manieren schrijven. Stap voor stap, zoals een recept: pak de pan, doe er olie in, bak de ui. Of beschrijvend: je zegt wat je wilt eten, en de keuken bepaalt de volgorde. Dat tweede heet declaratief.",
+    "Databricks liet AI-agents honderden pipelines in beide stijlen bouwen. De declaratieve versies gebruikten veel minder rekentijd en waren ongeveer half zo lang. Ze kostten wel meer AI-tokens om te maken. En Spark kon vooraf controleren of alle kolommen bestonden.",
+    "Eén ding veranderde niet: in beide stijlen zat in bijna een derde van de pipelines een stille logische fout. De code draaide, maar de uitkomst klopte niet.",
+    "dbt is ook declaratief, dus de les geldt voor jou. Laat AI liever kleine, beschrijvende modellen schrijven. En vertrouw op je dbt-tests, want daar vang je de fouten die de AI wel maakt."
+   ],
+   "key_facts": [
+    "Engineering-blog van Databricks van 23 oktober 2026.",
+    "528 builds: 22 taken x 12 datasets x 2 aanpakken, gemaakt met Opus 4.8.",
+    "Clustertijd was ongeveer 34x lager bij Spark Declarative Pipelines (17 tegen 596 executor-seconden).",
+    "Mediaan code: 64 tegen 131 regels. Declaratief gebruikte ongeveer 2,3x meer LLM-tokens.",
+    "Stille logische fouten: 32,2% declaratief, 27,7% procedureel."
+   ],
+   "terms": [
+    {
+     "term": "declaratief",
+     "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
+    },
+    {
+     "term": "AI-agents",
+     "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
+    },
+    {
+     "term": "tokens",
+     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.85,
+    "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
+   },
+   "labels": [
+    "agents-bouwen-pipelines",
+    "declaratieve-pipelines"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -7
+   }
+  },
+  {
    "id": "72dc169275f9",
    "title": "Claude Code: wat is er nieuw in week 43 (v2.1.304 t/m v2.1.310)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W43",
@@ -3212,7 +3212,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.39,
+    "recency": 0.38,
     "source": 0.8,
     "quality": 0.57,
     "fit": 0.2
@@ -4484,7 +4484,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.68,
     "quality": 0.43,
     "fit": 0.0
@@ -4662,128 +4662,6 @@
    }
   },
   {
-   "id": "308e572d49e4",
-   "title": "Azure Databricks: wat is er nieuw in week 44",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-01T23:59:59Z",
-   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
-   "fetched_at": "2026-11-06T03:12:45.337266Z",
-   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
-   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
-   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
-   "limitations": [
-    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
-    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
-    "AI Functions-rechten moet je via het accountteam laten aanzetten."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "Read and write XML files",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
-    },
-    {
-     "label": "Genie One MCP server",
-     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "databricks_data_engineering",
-    "data_ingestion"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.54,
-    "source": 1.0,
-    "quality": 0.67,
-    "fit": 0.2,
-    "regel": -0.15,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:28:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
-   "story": [
-    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
-    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
-    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
-    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
-    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
-   ],
-   "key_facts": [
-    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
-    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
-    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
-    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
-    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
-    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
-    "language": "sql",
-    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
-    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
-   },
-   "terms": [
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "Auto Loader",
-     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
-    },
-    {
-     "term": "OAuth",
-     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-mcp",
-    "metric-views",
-    "claude-code-databricks"
-   ],
-   "rule_why": [
-    {
-     "id": "einde-support",
-     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
-     "pts": -15
-    }
-   ],
-   "project_ref": {
-    "fase": 6,
-    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
-    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
-   }
-  },
-  {
    "id": "7fd7e06ab2f4",
    "title": "How the Claude Code team does code review",
    "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
@@ -4893,6 +4771,128 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -3
+   }
+  },
+  {
+   "id": "308e572d49e4",
+   "title": "Azure Databricks: wat is er nieuw in week 44",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-01T23:59:59Z",
+   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
+   "fetched_at": "2026-11-06T03:12:45.337266Z",
+   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
+   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
+   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
+   "limitations": [
+    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
+    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
+    "AI Functions-rechten moet je via het accountteam laten aanzetten."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
+    },
+    {
+     "label": "Read and write XML files",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
+    },
+    {
+     "label": "Genie One MCP server",
+     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering",
+    "data_ingestion"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.54,
+    "source": 1.0,
+    "quality": 0.67,
+    "fit": 0.2,
+    "regel": -0.15,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-02T03:28:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
+   "story": [
+    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
+    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
+    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
+    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
+    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
+   ],
+   "key_facts": [
+    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
+    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
+    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
+    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
+    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
+    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
+    "language": "sql",
+    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
+    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
+   },
+   "terms": [
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "Auto Loader",
+     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
+    },
+    {
+     "term": "OAuth",
+     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
+   },
+   "labels": [
+    "genie-mcp",
+    "metric-views",
+    "claude-code-databricks"
+   ],
+   "rule_why": [
+    {
+     "id": "einde-support",
+     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+     "pts": -15
+    }
+   ],
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
+    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
    }
   },
   {
@@ -6698,64 +6698,6 @@
    "diepte": "kort"
   },
   {
-   "id": "d6ea4662f2dc",
-   "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
-   "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-12T18:26:29Z",
-   "fetched_at": "2026-11-13T03:13:29.332345Z",
-   "summary": "Genie Migrate laat agents van Genie Code SQL uit T-SQL, Snowflake, Redshift, Oracle, BigQuery of Teradata omzetten naar Databricks SQL of notebooks, met per bestand een controle en een vergelijking naast elkaar. Handig voor teams die nog een oud datawarehouse naar Databricks willen verhuizen; de notebook-uitvoer is nog bèta.",
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.93,
-    "source": 0.85,
-    "quality": 0.37,
-    "feedback": -0.07,
-    "fit": -0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:50:00Z",
-   "reading_minutes": 1,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
-     "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
-     "published_at": "2026-11-12T18:26:29Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Genie Migrate zet oude SQL met AI-agents om naar Databricks SQL",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.45,
-    "why": "Databricks-AI-functie, maar voor migraties die je nu niet doet; minder praktisch dan je dbt-duimen."
-   },
-   "labels": [
-    "genie-migrate",
-    "migratie-naar-databricks"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -7
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "1ebe4563dc44",
    "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
    "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
@@ -6967,7 +6909,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.52,
+    "recency": 0.51,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.06,
@@ -7028,6 +6970,64 @@
     "name": "databricks_blog",
     "pts": -6
    }
+  },
+  {
+   "id": "d6ea4662f2dc",
+   "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
+   "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-12T18:26:29Z",
+   "fetched_at": "2026-11-13T03:13:29.332345Z",
+   "summary": "Genie Migrate laat agents van Genie Code SQL uit T-SQL, Snowflake, Redshift, Oracle, BigQuery of Teradata omzetten naar Databricks SQL of notebooks, met per bestand een controle en een vergelijking naast elkaar. Handig voor teams die nog een oud datawarehouse naar Databricks willen verhuizen; de notebook-uitvoer is nog bèta.",
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.93,
+    "source": 0.85,
+    "quality": 0.37,
+    "feedback": -0.07,
+    "fit": -0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Migrate Effortlessly to the Databricks Lakehouse with Genie Migrate, now Generally Available",
+     "url": "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
+     "published_at": "2026-11-12T18:26:29Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie Migrate zet oude SQL met AI-agents om naar Databricks SQL",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.45,
+    "why": "Databricks-AI-functie, maar voor migraties die je nu niet doet; minder praktisch dan je dbt-duimen."
+   },
+   "labels": [
+    "genie-migrate",
+    "migratie-naar-databricks"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -7
+   },
+   "diepte": "kort"
   },
   {
    "id": "d9a4007c6074",
@@ -7190,7 +7190,7 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.6,
     "quality": 0.43,
     "feedback": -0.05,
@@ -7255,7 +7255,7 @@
    "relevance_score": 73,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.68,
     "quality": 0.45,
     "feedback": -0.03,
@@ -7729,7 +7729,7 @@
    "relevance_score": 57,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.6,
     "quality": 0.33,
     "feedback": -0.05,
@@ -14246,7 +14246,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 631,
+  "fetched_items": 409,
   "unique_after_dedupe": 593,
   "merged_duplicates": 31,
   "shown": 79,
