@@ -22,7 +22,7 @@ Lees dit bestand en daarna alleen het bestand van jouw taak.
 
 ## Welke bestanden je mag aanpassen
 
-Alleen: `data/enrichment/`, `data/deepdives/`, `data/deepdive_options.json`, `data/trends.json`, `data/weekly.json`, `data/interest_suggestions.json`, `data/interest_log.json`, `data/interest_requests.json`, `data/leerregels.json`, `data/runs/`, `data/run-request`, en (alleen bij T's verzoeken in Overzicht) `context/interests.yml`. Nooit `app/`, `pipeline/`, `scripts/`, `.github/` of andere contextbestanden.
+Alleen: `data/enrichment/`, `data/deepdives/`, `data/deepdive_options.json`, `data/trends.json`, `data/weekly.json`, `data/interest_suggestions.json`, `data/interest_log.json`, `data/interest_requests.json`, `data/leerregels.json`, `data/voortgang.json`, `data/runs/`, `data/run-request`, en (alleen bij T's verzoeken in Overzicht) `context/interests.yml`. Nooit `app/`, `pipeline/`, `scripts/`, `.github/` of andere contextbestanden.
 
 ## Starten
 

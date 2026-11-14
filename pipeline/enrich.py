@@ -134,6 +134,17 @@ def rode_draad() -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
+def voortgang() -> dict:
+    """data/voortgang.json: hoe ver T is met de rode draad (scripts/dataflow_status.py). Leeg als het er niet is."""
+    import json
+    from .config import DATA
+    path = DATA / "voortgang.json"
+    try:
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    except json.JSONDecodeError:
+        return {}
+
+
 def validate_project_ref(data: dict) -> list:
     """project_ref: {"fase": n, "quote": "letterlijk stuk uit story of summary", "why": "..."} of null (geen verband)."""
     ref = data.get("project_ref")

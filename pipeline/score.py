@@ -32,6 +32,8 @@ RAW_QUALITY = 0.35
 
 
 PROJECT_BOOST = 0.05   # rode draad: 5 punten extra (T, 10-11-2026)
+# Hoe ver T is (data/voortgang.json): de fase waar hij nu aan werkt telt zwaarder, afgeronde fases lichter
+PROJECT_BOOST_BY_STATUS = {"bezig": 0.08, "volgende": 0.06, "klaar": 0.03}
 FIT_WEIGHT = 0.10   # Claudes "past bij jou": hooguit 10 punten erbij of eraf
 
 def match_certainty(n_hits: int) -> float:
@@ -90,6 +92,21 @@ def topic_score(topic_ids: list, topics: dict, related_weight: float, certainty:
     base = topics[best]["priority"] / 5 * certainty
     related = [t for t in direct if t != best and t in topics[best].get("related_topics", [])]
     return min(1.0, base + related_weight * 0.1 * len(related))
+
+
+_VG = None
+
+
+def fase_status(fase):
+    """'bezig', 'volgende', 'klaar', 'open' of None (geen voortgang bekend)."""
+    global _VG
+    if _VG is None:
+        from .enrich import voortgang
+        _VG = voortgang()
+    st = (_VG.get("fases") or {}).get(str(fase))
+    if st == "open" and _VG.get("huidig") and fase == _VG["huidig"] + 1:
+        return "volgende"
+    return st
 
 
 def score_article(article: dict, config, now=None, prefs=None, votes=None) -> dict:
@@ -173,8 +190,9 @@ def score_article(article: dict, config, now=None, prefs=None, votes=None) -> di
             total = min(1.0, max(0.0, total + rd))
     # Rode draad (context/rode-draad.yml): helpt dit artikel bij een fase van T's eigen project? Een beetje voorrang.
     if article.get("project_ref"):
-        parts["project"] = PROJECT_BOOST
-        total = min(1.0, total + PROJECT_BOOST)
+        boost = PROJECT_BOOST_BY_STATUS.get(fase_status(article["project_ref"].get("fase")), PROJECT_BOOST)
+        parts["project"] = boost
+        total = min(1.0, total + boost)
     best_priority = topics[topic_ids[0]]["priority"] if topic_ids else 0
 
     override = sc.get("exceptional_override", {})

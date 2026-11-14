@@ -844,8 +844,13 @@ class TestRodeDraad(unittest.TestCase):
         self.assertTrue(enrich.validate_project_ref({"story": story, "project_ref": {**ok, "quote": "staat er niet in maar is lang genoeg"}}))
         base = {"id": "p1", "title": "x", "url": "https://x", "source_id": "dbt_labs_blog", "published_at": "2026-11-09T00:00:00Z",
                 "processing_status": "enriched", "topics": ["dbt_analytics_engineering"], "quality": {"depth": .5, "practicality": .5, "novelty": .5}}
-        plain = score_article(dict(base), conf, now)["relevance_score"]
-        self.assertEqual(score_article(dict(base, project_ref=ok), conf, now)["relevance_score"] - plain, 5)
+        from pipeline import score as sm
+        old, sm._VG = sm._VG, {}   # zonder voortgang: 5 punten
+        try:
+            plain = score_article(dict(base), conf, now)["relevance_score"]
+            self.assertEqual(score_article(dict(base, project_ref=ok), conf, now)["relevance_score"] - plain, 5)
+        finally:
+            sm._VG = old
         a = {}
         enrich.attach(a, {"project_ref": None})
         self.assertTrue(a["project_checked"])
@@ -920,6 +925,56 @@ class TestLeerregels(unittest.TestCase):
         text = (Path(__file__).resolve().parent.parent / "taken" / "LEERREGELS.md").read_text(encoding="utf-8")
         self.assertIn("validate_rules.py", text)
         self.assertTrue((Path(__file__).resolve().parent.parent / "scripts" / "validate_rules.py").exists())
+
+
+class TestDataflowVoortgang(unittest.TestCase):
+    """Hoe ver T is met Dataflow (data/voortgang.json): de huidige fase krijgt meer voorrang."""
+
+    def repo(self, tmp, subjects, files=()):
+        import subprocess
+        r = Path(tmp) / "pdp"
+        r.mkdir()
+        run = lambda *a: subprocess.run(["git", "-C", str(r), *a], check=True, capture_output=True)
+        run("init", "-q")
+        for f in files:
+            (r / f).parent.mkdir(parents=True, exist_ok=True)
+            (r / f).write_text("x")
+        for i, s in enumerate(subjects):
+            (r / f"f{i}").write_text(s)
+            run("add", "-A")
+            run("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", s)
+        return r
+
+    def test_status_uit_commits_en_bestanden(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import dataflow_status as ds
+        with tempfile.TemporaryDirectory() as tmp:
+            st = ds.status(self.repo(tmp, ["Begin", "Fase 2: catalogus", "Fase 3.4: KNMI-ophaalscript naar landing-volume", "README bijgewerkt"]))
+            self.assertEqual(st["huidig"], 3)
+            self.assertEqual(st["stap"], "3.4 KNMI-ophaalscript naar landing-volume")
+            self.assertEqual([st["fases"][k] for k in "1234"], ["klaar", "klaar", "bezig", "open"])
+        with tempfile.TemporaryDirectory() as tmp:   # dbt-project zonder fase-commit: fase 4 begonnen
+            st = ds.status(self.repo(tmp, ["Fase 3: secret token https://x.cloud.databricks.com"], ["dbt/dbt_project.yml"]))
+            self.assertEqual((st["huidig"], st["stap"]), (4, ""))
+        with tempfile.TemporaryDirectory() as tmp:   # gevoelige stapnaam: alleen het nummer
+            self.assertEqual(ds.status(self.repo(tmp, ["Fase 3.1: token in /Volumes/x"]))["stap"], "3.1")
+
+    def test_voorrang_per_status(self):
+        from pipeline import score as sm
+        old = sm._VG
+        try:
+            sm._VG = {"huidig": 3, "fases": {"1": "klaar", "2": "klaar", "3": "bezig", "4": "open", "5": "open"}}
+            self.assertEqual([sm.fase_status(f) for f in (1, 3, 4, 5)], ["klaar", "bezig", "volgende", "open"])
+            conf, now = cfg.load(), datetime(2026, 11, 12, tzinfo=timezone.utc)
+            art = lambda f: {"id": "x1", "title": "Bronze laden", "url": "https://x", "source_id": "dbt_labs_blog",
+                             "published_at": "2026-11-09T00:00:00Z", "processing_status": "enriched", "topics": ["dbt_analytics_engineering"],
+                             "quality": {"depth": .5, "practicality": .5, "novelty": .5}, "project_ref": {"fase": f, "quote": "x" * 15, "why": "y"}}
+            pts = {f: score_article(art(f), conf, now)["score_parts"]["project"] for f in (1, 3, 4, 6)}
+            self.assertEqual(pts, {1: 0.03, 3: 0.08, 4: 0.06, 6: 0.05})
+            sm._VG = {}
+            self.assertEqual(score_article(art(3), conf, now)["score_parts"]["project"], 0.05)   # geen voortgang: zoals eerst
+        finally:
+            sm._VG = old
 
 
 class TestTrends(unittest.TestCase):

@@ -1613,7 +1613,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const prHit = (a, text) => !!(a.project_ref?.quote && (text || "").includes(a.project_ref.quote));
   function prNote(a) {
     const ph = (state.feed.rode_draad?.phases || []).find((x) => x.fase === a.project_ref.fase);
-    return `<p class="pr-note" title="${esc(a.project_ref.why || "")}">${esc(state.feed.rode_draad?.name || "Project")} · fase ${esc(a.project_ref.fase)}${ph ? ` · ${esc(ph.name)}` : ""}</p>`;
+    const where = { bezig: " · hier ben je nu", volgende: " · je volgende fase", klaar: " · al gedaan" }[ph?.status] || "";
+    return `<p class="pr-note" title="${esc(a.project_ref.why || "")}">${esc(state.feed.rode_draad?.name || "Project")} · fase ${esc(a.project_ref.fase)}${ph ? ` · ${esc(ph.name)}` : ""}${where}</p>`;
   }
   function renderArticle(a) {
     const mark = termMarker(a.terms);

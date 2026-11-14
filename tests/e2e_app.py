@@ -109,7 +109,7 @@ feed["feedback"] = {**{k: v for k, v in (feed.get("feedback") or {}).items() if 
 # Rode draad: verwijzing naar het project in de tekst
 _pr = [a for a in arts if a["processing_status"] == "enriched" and len(a.get("story") or []) >= 2 and a["id"] != _en["id"]][0]
 _pr["project_ref"] = {"fase": 4, "quote": _pr["story"][1][:30], "why": "Test-verband."}
-feed["rode_draad"] = {"name": "Dataflow", "phases": [{"fase": 4, "name": "dbt Silver en Gold"}]}
+feed["rode_draad"] = {"name": "Dataflow", "phases": [{"fase": 4, "name": "dbt Silver en Gold", "status": "bezig"}]}
 # Een artikel met korte uitleg (diepte: kort)
 _k = [a for a in arts if a["processing_status"] == "enriched" and a.get("format_version") == 2 and a["id"] not in (_en["id"], _pr["id"])][0]
 _k.update({"diepte": "kort", "story": [], "summary": "Kort-test samenvatting."})
@@ -648,7 +648,7 @@ with sync_playwright() as p:
     page.goto(url + "#a-" + _pr["id"])
     page.wait_for_selector("#reader .story p")
     check("   rode draad: de zin over het project gemarkeerd, met de fase eronder", page.locator("#reader .story p.pr-para").count() == 1
-          and "Dataflow · fase 4 · dbt Silver en Gold" in page.locator("#reader .pr-note").inner_text()
+          and "Dataflow · fase 4 · dbt Silver en Gold · hier ben je nu" in page.locator("#reader .pr-note").inner_text()
           and page.locator(f'.card[data-id="{_pr["id"]}"] .pr-note').count() == 0)
     page.click("#back")
     page.wait_for_selector("#reader", state="hidden")

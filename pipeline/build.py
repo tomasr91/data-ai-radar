@@ -35,6 +35,7 @@ from .enrich import TEXT_FIELDS, attach, enrich_new, load_cached, validate
 from .normalize import article_id, normalize, parse_date
 from .providers import archive as archive_provider, feeds, snapshot
 from .score import daily_top, score_article
+from . import score as score_mod
 
 SCHEMA_VERSION = 1
 DEFAULT_REPO = "tomasr91/data-ai-radar"  # op GitHub Actions komt dit uit GITHUB_REPOSITORY
@@ -483,7 +484,9 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "glossary": glossary(shown, deepdives),
         "interests": interests_mod.view(conf),
         "rode_draad": {"name": enrich_mod.rode_draad().get("name"),
-                       "phases": [{"fase": p["fase"], "name": p["name"]} for p in enrich_mod.rode_draad().get("phases", [])]},
+                       "phases": [{"fase": p["fase"], "name": p["name"], **({"status": score_mod.fase_status(p["fase"])} if score_mod.fase_status(p["fase"]) else {})}
+                                  for p in enrich_mod.rode_draad().get("phases", [])],
+                       **({"stap": enrich_mod.voortgang().get("stap"), "stap_op": enrich_mod.voortgang().get("stap_op")} if enrich_mod.voortgang().get("stap") else {})},
         "interest_suggestions": int_suggestions,
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
