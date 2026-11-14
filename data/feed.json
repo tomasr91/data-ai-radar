@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T17:47:48.784325Z",
+ "generated_at": "2026-11-14T17:51:30.546507Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -10662,45 +10662,26 @@
     "powerbi_semantic_models"
    ],
    "article_ids": [
+    "e89c62d75061",
     "656e0d953ae9",
     "6ded4aa1cdcf",
-    "4dcd7af26dab",
+    "5c7174c45ad1",
+    "7737e173e31a",
+    "215f0a50b9ea",
     "069e6a8001ed",
     "ceb4b784fbab",
+    "4dcd7af26dab",
     "a68aede0b61b",
-    "560fbec0053e",
-    "67b79f31be0e",
-    "215f0a50b9ea",
-    "5c7174c45ad1",
     "81204e04abb9",
-    "7737e173e31a",
-    "e89c62d75061"
+    "67b79f31be0e",
+    "560fbec0053e"
    ],
-   "generated_at": "2026-11-14T05:25:00Z"
-  },
-  {
-   "id": "geheugen-en-context-voor-agents",
-   "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen. Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "claude_ai_development"
-   ],
-   "article_ids": [
-    "0b6411ed8e60",
-    "f5c90621cdfb",
-    "6d403bbe9379",
-    "ea59c0428e23",
-    "471f6b1cbb07",
-    "ae2bc3c9f749",
-    "f29afd156725",
-    "72dc169275f9",
-    "d8887a09bc5e",
-    "4ade36aa9099",
-    "53acc8538264"
-   ],
-   "generated_at": "2026-11-14T05:25:00Z"
+   "generated_at": "2026-11-14T05:25:00Z",
+   "since": "2026-10-26",
+   "last": "2026-11-12",
+   "week": 5,
+   "prev_week": 1,
+   "status": "groeit"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
@@ -10715,22 +10696,48 @@
     "cicd_data_deployment"
    ],
    "article_ids": [
-    "8b7855abcc2d",
-    "a9b6458ba033",
     "d6ea4662f2dc",
+    "3180dbea1b88",
+    "8b7855abcc2d",
+    "d5f14a6242b0",
+    "86eab858089b",
+    "a9b6458ba033",
     "c63f36899b14",
     "d2e9b967064a",
-    "e7bf67f656d3",
-    "c33e4a9941ba",
-    "7fd7e06ab2f4",
-    "583b8d97bd5d",
-    "77544766b84c",
-    "4cc09a1d9883",
-    "86eab858089b",
-    "d5f14a6242b0",
-    "3180dbea1b88"
+    "e7bf67f656d3"
    ],
-   "generated_at": "2026-11-14T05:25:00Z"
+   "generated_at": "2026-11-14T05:25:00Z",
+   "since": "2026-10-27",
+   "last": "2026-11-12",
+   "week": 4,
+   "prev_week": 2,
+   "status": "groeit"
+  },
+  {
+   "id": "geheugen-en-context-voor-agents",
+   "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen. Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+   ],
+   "article_ids": [
+    "0b6411ed8e60",
+    "53acc8538264",
+    "d8887a09bc5e",
+    "4ade36aa9099",
+    "f5c90621cdfb",
+    "ea59c0428e23",
+    "471f6b1cbb07",
+    "72dc169275f9"
+   ],
+   "generated_at": "2026-11-14T05:25:00Z",
+   "since": "2026-10-25",
+   "last": "2026-11-10",
+   "week": 2,
+   "prev_week": 3,
+   "status": "speelt"
   }
  ],
  "weekly": {
@@ -14108,15 +14115,6 @@
  "runs": {
   "date": "2026-11-14",
   "tasks": {
-   "inhalen": {
-    "status": "ok",
-    "summary": "niets in te halen",
-    "finished_at": "2026-11-14T06:28:56Z",
-    "problems": [],
-    "counts": {
-     "ingehaald": 0
-    }
-   },
    "verdiepen": {
     "status": "ok",
     "summary": "Verdieping 'Claude-agents in je eigen netwerk' geschreven (met quiz en begrippen) en 5 nieuwe keuzes klaargezet",
@@ -14125,6 +14123,27 @@
     "counts": {
      "verdiepingen": 1,
      "keuzes": 5
+    }
+   },
+   "overzicht": {
+    "status": "ok",
+    "summary": "3 trends bijgewerkt (Stripe Kai en Genie Migrate toegevoegd), geen verzoeken voor interesses of leerregels, geen begrippen aan te vullen; geen Jouw week want het is zaterdag",
+    "finished_at": "2026-11-14T05:14:04Z",
+    "problems": [],
+    "counts": {
+     "trends": 3,
+     "interesses_aangepast": 0,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
+    }
+   },
+   "inhalen": {
+    "status": "ok",
+    "summary": "niets in te halen",
+    "finished_at": "2026-11-14T06:28:56Z",
+    "problems": [],
+    "counts": {
+     "ingehaald": 0
     }
    },
    "uitleggen": {
@@ -14145,18 +14164,6 @@
      "niet_te_lezen": 3,
      "aangevuld": 1,
      "project_ref_gezet": 1
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (Stripe Kai en Genie Migrate toegevoegd), geen verzoeken voor interesses of leerregels, geen begrippen aan te vullen; geen Jouw week want het is zaterdag",
-    "finished_at": "2026-11-14T05:14:04Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
     }
    }
   }
