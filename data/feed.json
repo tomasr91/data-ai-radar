@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T03:30:16.737324Z",
+ "generated_at": "2026-11-14T04:22:26.039525Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -930,7 +930,7 @@
     "recency": 0.42,
     "source": 0.85,
     "quality": 0.68,
-    "feedback": -0.03,
+    "feedback": -0.02,
     "fit": 0.4,
     "project": 0.05
    },
@@ -991,7 +991,7 @@
    "fb_why": {
     "by": "kind",
     "name": "praktijk",
-    "pts": -3
+    "pts": -2
    },
    "project_ref": {
     "fase": 7,
@@ -1035,7 +1035,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -1547,7 +1547,7 @@
     "recency": 0.42,
     "source": 0.85,
     "quality": 0.78,
-    "feedback": -0.03,
+    "feedback": -0.02,
     "fit": 0.3
    },
    "decision": "included",
@@ -1589,7 +1589,7 @@
    "fb_why": {
     "by": "kind",
     "name": "praktijk",
-    "pts": -3
+    "pts": -2
    }
   },
   {
@@ -1827,7 +1827,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.2
@@ -1930,7 +1930,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.84,
+    "recency": 0.83,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -2342,7 +2342,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.8,
     "quality": 0.53,
     "fit": 0.15
@@ -3556,7 +3556,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3978,7 +3978,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -5033,7 +5033,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 0.9,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.1,
@@ -5479,7 +5479,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.51,
     "quality": 0.45,
     "feedback": -0.04,
@@ -5505,6 +5505,55 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -4
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "e89c62d75061",
+   "title": "The Claude Tag guide for startups",
+   "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-12T00:00:00Z",
+   "fetched_at": "2026-11-13T03:13:29.038183Z",
+   "summary": "Een gids met ervaringen van acht startups met Claude Tag (bèta), waarmee je Claude in een Slack-kanaal aanroept: meldingen uitzoeken, een thread omzetten in een concept-PR, en datavragen beantwoorden op basis van vaste dbt-modellen en metrics. Alleen voor Team en Enterprise, en niet beschikbaar bij de HIPAA-configuratie of zero data retention.",
+   "availability_status": "preview",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.51,
+    "quality": 0.38,
+    "feedback": -0.03,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Zo zetten startups Claude in Slack in: van melding tot concept-PR",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.5,
+    "why": "Claude-werkwijze met een dbt-haakje, maar vooral startupvoorbeelden zonder techniek."
+   },
+   "labels": [
+    "claude-tag",
+    "claude-in-slack"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -3
    },
    "diepte": "kort"
   },
@@ -5540,7 +5589,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.11,
@@ -5962,55 +6011,6 @@
    }
   },
   {
-   "id": "e89c62d75061",
-   "title": "The Claude Tag guide for startups",
-   "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-12T00:00:00Z",
-   "fetched_at": "2026-11-13T03:13:29.038183Z",
-   "summary": "Een gids met ervaringen van acht startups met Claude Tag (bèta), waarmee je Claude in een Slack-kanaal aanroept: meldingen uitzoeken, een thread omzetten in een concept-PR, en datavragen beantwoorden op basis van vaste dbt-modellen en metrics. Alleen voor Team en Enterprise, en niet beschikbaar bij de HIPAA-configuratie of zero data retention.",
-   "availability_status": "preview",
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 78,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.9,
-    "source": 0.51,
-    "quality": 0.38,
-    "feedback": -0.03,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Zo zetten startups Claude in Slack in: van melding tot concept-PR",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.5,
-    "why": "Claude-werkwijze met een dbt-haakje, maar vooral startupvoorbeelden zonder techniek."
-   },
-   "labels": [
-    "claude-tag",
-    "claude-in-slack"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -3
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "078567da13b8",
    "title": "OpenAI and Databricks: Enterprise AI on your governed data",
    "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
@@ -6032,7 +6032,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.98,
+    "recency": 0.97,
     "source": 0.85,
     "quality": 0.4,
     "feedback": -0.06,
@@ -7140,7 +7140,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.01,
@@ -7494,7 +7494,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -7682,7 +7682,7 @@
    "relevance_score": 60,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.06,
@@ -7810,6 +7810,186 @@
   }
  ],
  "deepdives": [
+  {
+   "id": "claude-agents-in-eigen-netwerk",
+   "plan_id": "claude-agents-in-eigen-netwerk",
+   "headline": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten",
+   "summary": "Sinds 12 november kun je Claude Managed Agents in een private bèta helemaal zelf draaien: de agent-lus (harness), de sessiegeschiedenis, de sandbox en de sleutels. Alleen het model blijft buiten de deur. Maar bij elke vraag aan het model gaat het hele gesprek mee, inclusief wat de tools hebben gevonden. Voor zorgdata verandert de regel dus niet.",
+   "sections": [
+    {
+     "heading": "Waarom dit nu speelt",
+     "paragraphs": [
+      "Claude Managed Agents is de dienst van Anthropic waarin agents zelfstandig werken. Ze repareren bijvoorbeeld een kapotte build of zoeken meldingen uit. Zo'n agent draait vaak zonder dat iemand meekijkt, en hij heeft toegang tot interne systemen nodig.",
+      "Daarom willen bedrijven weten waar alles staat. Anthropic bood eerst al de mogelijkheid om alleen de sandbox zelf te hosten. Volgens Anthropic wilden sommige teams daarna de hele dienst in hun eigen omgeving, niet alleen de sandbox.",
+      "Op 12 november 2026 kwam die stap er: self-hosted Claude Managed Agents, als private bèta. Je vraagt toegang aan via het accountteam van Anthropic. De vraag voor jou is dus niet of je het morgen gebruikt, maar wat deze verdeling leert over agents en gevoelige data."
+     ]
+    },
+    {
+     "heading": "Uit welke onderdelen een agent bestaat",
+     "paragraphs": [
+      "Een agent is meer dan een model. Je kunt hem zien als een kantoor met een externe adviseur. Het model is de adviseur aan de telefoon: die denkt na en zegt wat de volgende stap is. Alles daaromheen is het kantoor.",
+      "Dat kantoor heeft vier delen. De agent-lus (harness) belt het model, krijgt een opdracht terug en houdt bij wat er gebeurd is. De sessiegeschiedenis is het dossier van elk gesprek. De sandbox is de werkplaats waar commando's en bestanden worden verwerkt; de workers zijn de programma's die dat werk daar uitvoeren. En dan zijn er de sleutels waarmee de agent bij andere systemen komt.",
+      "Bij de zelf gehoste versie draait bij jou een server die de API levert, de agent-lus draait en agents en sessies opslaat. Die gegevens staan in een eigen PostgreSQL-database. De server voert zelf nooit de shell- of bestandstools van een agent uit; dat doen de workers in je sandboxes."
+     ]
+    },
+    {
+     "heading": "Drie manieren om het te verdelen",
+     "paragraphs": [
+      "Anthropic biedt nu drie varianten. In de standaardvariant draait alles bij Anthropic: sandbox, dienst en model. In de tweede variant host je alleen de sandboxes zelf. In de derde host je sandboxes én dienst, en kies je zelf waar het model draait.",
+      "Het verschil tussen de tweede en derde variant is belangrijk. Bij alleen een eigen sandbox draait de agent-lus nog bij Anthropic. De documentatie zegt dat tool-invoer en -uitvoer dan nog steeds naar Anthropic gaan, zodat het model kan bepalen wat het daarna doet. Ook de skills en geheugenopslag staan dan bij Anthropic; jouw sandbox krijgt alleen een kopie per sessie.",
+      "Bij de volledig zelf gehoste variant blijven de geschiedenis, de sleutels en de logs bij jou. Voor het model kies je een aanbieder: de Claude API van Anthropic, Amazon Bedrock, Google, Microsoft Foundry of een eigen model-gateway. Volgens de documentatie is dat precies de reden om voor deze variant te kiezen: opslag in eigen huis, of inferentie via een andere aanbieder."
+     ]
+    },
+    {
+     "heading": "Wat er toch naar buiten gaat",
+     "paragraphs": [
+      "Hier zit de kern. Bij elke vraag aan het model stuurt de server het hele gesprek tot dan toe mee, inclusief tool-invoer en tool-resultaten. Leest een agent dus een tabel of bestand, dan gaat wat hij gelezen heeft mee naar het model. Dat het dossier bij jou staat, verandert daar niets aan.",
+      "Bij de Claude API gaan er ook drie ID's mee: van de sessie, de agent en de omgeving. Volgens de documentatie bevat zo'n ID geen naam of inhoud, maar wel het tijdstip waarop hij is gemaakt. Je kunt ze niet uitzetten. Daarnaast controleert de server elke 60 seconden of zijn sleutel nog werkt; die controle stuurt geen inhoud mee.",
+      "Wat de aanbieder met je vragen doet, hangt af van je afspraak met die aanbieder. Heeft je organisatie met Anthropic een afspraak over het niet bewaren van data (zero data retention, ZDR), dan geldt die volgens Anthropic ook hier. Kies je een andere aanbieder, dan geldt het contract met die partij. Anthropic zelf heeft geen toegang tot je server of zijn log."
+     ]
+    },
+    {
+     "heading": "Sleutels en netwerk: hoe de afscherming werkt",
+     "paragraphs": [
+      "Anthropic noemt vier principes. De agent-lus en de sandbox zijn gescheiden. Sleutels komen niet in de sandbox. Netwerktoegang is beperkt. En elke sessie laat een volledig spoor achter.",
+      "Het tweede principe werkt met een tussenstation buiten de sandbox. Roept de agent een MCP-tool of een ondersteunde API aan, dan zet een proxy daarbuiten pas de sleutel op het verzoek. Het lijkt op een receptie die namens jou belt, zonder dat jij het nummer ziet. Bij de zelf gehoste versie heet dat onderdeel de egress gateway, en het staat standaard uit. Let op: volgens Help Net Security beschermt dit alleen MCP-tools en ondersteunde API's, niet elke dienst die een agent bereikt.",
+      "Het derde principe is een toegestane lijst (allowlist). De lijst met MCP-servers is standaard leeg; de server weigert een agent die een niet-toegestane server noemt. Git-hosts en webtools staan ook uit tot je ze toestaat. Maar de shell in de sandbox heeft gewoon de netwerktoegang van de machine waarop de worker draait. Die afscherming regel je dus zelf, met je firewall.",
+      "Tot slot geldt: één installatie is voor één groep gebruikers met één vertrouwensniveau. Wil je twee niveaus scheiden, dan heb je twee installaties nodig, elk met een eigen database en workers."
+     ]
+    },
+    {
+     "heading": "Wat het betekent voor jouw stack en zorgdata",
+     "paragraphs": [
+      "Voor de regel 'externe AI alleen zonder werkdata' verandert er niets. Het model blijft een externe dienst, en alles wat de agent leest, gaat in de vraag mee. Een agent die bij zorgdata kan, stuurt die data dus naar buiten, ook als de rest van de opstelling in je eigen netwerk staat. Ook via Microsoft Foundry blijft het een model buiten Databricks.",
+      "Wat wel verandert, is wat je zelf in handen hebt. Het dossier, de sleutels en de logs blijven binnen. De logs kun je via OpenTelemetry naar je eigen monitoring sturen. Dat helpt bij een veiligheidsreview: je kunt laten zien welke hosts de agent mocht bereiken en wat hij precies deed.",
+      "Voor een zorgorganisatie past zo'n agent dus vooral bij werk zonder werkdata. Denk aan code in een testproject, dbt-documentatie van een openbaar voorbeeldproject of het repareren van een build. Werk met zorgdata hoort, volgens de huidige afspraken, bij de AI binnen Databricks. Let daarnaast op: de documentatie van Anthropic zegt dat Managed Agents niet in aanmerking komt voor HIPAA. Dat is een Amerikaanse regeling, maar het zegt iets over waar de dienst niet voor bedoeld is."
+     ]
+    }
+   ],
+   "experiment": "Bedenk een agent die de beschrijvingen in een openbaar dbt-voorbeeldproject bijwerkt (zoals jaffle_shop). Schrijf op papier de stappen uit: welke bestanden leest hij, welke tools roept hij aan, en welke tekst gaat bij elke stap mee naar het model. Schrijf daarna een instellingenbestand zoals in 'Zo ziet het eruit' met alleen de hosts die echt nodig zijn. Gebruik geen werkdata; de server zelf is een private bèta, dus dit blijft een denkoefening.",
+   "limitations": [
+    "Private bèta, alleen via het accountteam van Anthropic; je kunt het niet zelf even uitproberen.",
+    "Elke vraag aan het model bevat het gesprek en de tool-resultaten; zorgdata die de agent leest, gaat dus naar buiten.",
+    "Zelf hosten betekent zelf beveiligen, patchen en bijwerken; functies zoals de Files API, webhooks, geplande runs en de kant-en-klare Office- en PDF-skills ontbreken.",
+    "Volgens de documentatie komt Managed Agents niet in aanmerking voor HIPAA; controleer altijd de eigen privacy- en beveiligingsregels."
+   ],
+   "further_reading": [
+    {
+     "label": "Self-hosted Claude Managed Agents (Anthropic-documentatie, november 2026)",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted",
+     "note": "Het overzicht: de drie varianten, wat waar draait en wat je zelf moet beheren."
+    },
+    {
+     "label": "Data and access in self-hosted Claude Managed Agents (Anthropic-documentatie, november 2026)",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-data-and-access",
+     "note": "Geschreven voor een veiligheidsreview: welke verbindingen de server maakt, wat naar Anthropic gaat en hoe lang data blijft staan."
+    },
+    {
+     "label": "Differences from the hosted service (Anthropic-documentatie, november 2026)",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted/differences",
+     "note": "Welke functies ontbreken en hoe je MCP-servers, Git-hosts en webtools toestaat."
+    },
+    {
+     "label": "Self-hosted sandboxes (Anthropic-documentatie, november 2026)",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
+     "note": "Laat zien dat bij alleen een eigen sandbox de tool-resultaten nog naar Anthropic gaan."
+    },
+    {
+     "label": "Operate Claude Managed Agents inside your security perimeter (Anthropic, november 2026)",
+     "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
+     "note": "De aankondiging, met de vier ontwerpprincipes en de keuze uit modelaanbieders."
+    },
+    {
+     "label": "Self-hosted Claude Managed Agents keeps agent credentials in your environment (Help Net Security, november 2026)",
+     "url": "https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/",
+     "note": "Onafhankelijk verslag, met de kanttekening dat de sleutelproxy niet elke dienst afdekt."
+    }
+   ],
+   "currency_check": "Gecontroleerd op 14 november 2026 in de actuele Claude-documentatie (self-hosted overzicht, data en toegang, verschillen, self-hosted sandboxes) en de aankondiging van 12 november 2026, plus een nieuwsbericht van dezelfde dag. Alle bronnen komen uit november 2026. De naam Microsoft Foundry en de configuratiesleutels komen uit de documentatie. Niet opgenomen: details uit niet-officiële blogs, en uitspraken over prijzen of licentievoorwaarden, omdat de bronnen die niet geven.",
+   "topics": [
+    "claude_ai_development",
+    "data_governance_privacy",
+    "ai_agents_rag"
+   ],
+   "written_at": "2026-11-14T04:30:00Z",
+   "processed_by": "Claude (geplande taak)",
+   "quiz": [
+    {
+     "question": "Een agent op een volledig zelf gehoste server leest een tabel met zorgdata. Wat gebeurt er met die data?",
+     "options": [
+      "Niets: alles blijft in je eigen netwerk omdat de server bij jou draait",
+      "Het gaat mee in de volgende vraag aan het model, want tool-resultaten horen bij het gesprek",
+      "Alleen de ID's van sessie en agent gaan naar buiten",
+      "De egress gateway haalt de gevoelige data er automatisch uit"
+     ],
+     "answer": 1,
+     "explanation": "Bij elke modelaanroep stuurt de server het hele gesprek mee, inclusief tool-resultaten. Daarom blijft de regel 'geen werkdata naar externe AI' gelden."
+    },
+    {
+     "question": "Wat is het belangrijkste verschil tussen alleen een eigen sandbox en de volledig zelf gehoste variant?",
+     "options": [
+      "Bij alleen een eigen sandbox draaien agent-lus en sessiegeschiedenis nog bij Anthropic",
+      "Bij alleen een eigen sandbox draait het model in je eigen netwerk",
+      "Er is geen verschil; beide houden alles binnen",
+      "Bij de volledig zelf gehoste variant kun je geen MCP-tools gebruiken"
+     ],
+     "answer": 0,
+     "explanation": "Met alleen een eigen sandbox voer je de tools zelf uit, maar Anthropic draait de agent en krijgt tool-invoer en -uitvoer. Bij de volledige variant staan ook dienst, geschiedenis en sleutels bij jou."
+    },
+    {
+     "question": "Je hebt de MCP-allowlist netjes ingesteld. Waarom moet je toch nog naar je firewall kijken?",
+     "options": [
+      "Omdat de allowlist alleen voor webtools geldt",
+      "Omdat de server de allowlist pas na een herstart leest",
+      "Omdat de shell in de sandbox de netwerktoegang heeft van de machine waarop de worker draait",
+      "Omdat de firewall de sleutels in de sandbox moet bewaren"
+     ],
+     "answer": 2,
+     "explanation": "De allowlist regelt wat de server toestaat. Commando's in de sandbox gaan via de netwerktoegang van die machine, en die beperk je zelf."
+    }
+   ],
+   "showcase": {
+    "caption": "Zo zet je in het instellingenbestand van de zelf gehoste server welke MCP-servers, Git-hosts en webtools een agent mag gebruiken. Alles wat er niet in staat, is dicht.",
+    "language": "yaml",
+    "code": "mcp:\n  allowed_hostnames:\n    - mcp.example.com      # exact, geen wildcards of subdomeinen\n\ngit:\n  allowed_hostnames:\n    - github.com\n  allowed_push_refs:\n    - refs/heads/agent/    # alleen pushen naar agent-takken\n\nweb_tools:\n  enabled: true\n  allowed_domains: [docs.getdbt.com]",
+    "note": "Sleutels en structuur overgenomen uit de Claude-documentatie 'Differences from the hosted service' (november 2026); de hostnamen zijn voorbeelden. Volgens de documentatie weigert de server geen force pushes; bescherm takken daarom ook bij je Git-host."
+   },
+   "terms": [
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "workers",
+     "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox."
+    },
+    {
+     "term": "model-gateway",
+     "explanation": "Een eigen tussenstation waar alle vragen aan AI-modellen langs gaan, zodat je op één plek regelt welk model gebruikt wordt en wat er gelogd wordt."
+    },
+    {
+     "term": "zero data retention",
+     "explanation": "Een afspraak met een AI-aanbieder dat je vragen en antwoorden na verwerking niet worden opgeslagen."
+    },
+    {
+     "term": "egress gateway",
+     "explanation": "Een poortwachter voor uitgaand verkeer. Hier: het onderdeel dat een sleutel pas aan een verzoek toevoegt als het de sandbox al uit is."
+    },
+    {
+     "term": "allowlist",
+     "explanation": "Een lijst van wat wel mag, bijvoorbeeld welke servers een agent mag bereiken. Alles wat er niet op staat, wordt geweigerd."
+    },
+    {
+     "term": "HIPAA",
+     "explanation": "De Amerikaanse wet die regels geeft voor het beschermen van medische gegevens. In Nederland gelden de AVG en zorgspecifieke regels."
+    }
+   ],
+   "reading_minutes": 6
+  },
   {
    "id": "eigen-performance-meten-vanuit-dbt-in-databricks",
    "plan_id": "eigen-performance-meten-vanuit-dbt-in-databricks",
@@ -10409,28 +10589,17 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-13T04:14:36Z",
+  "generated_at": "2026-11-14T04:25:00Z",
   "options": [
    {
-    "id": "onelake-als-opslag-voor-databricks",
-    "title": "Databricks-tabellen in OneLake: wat verandert er voor Unity Catalog en Power BI?",
-    "question": "Wat betekent het als Azure Databricks zijn tabellen direct in OneLake opslaat, wie beheert dan rechten en opslag, en wanneer kies je hiervoor in plaats van je eigen opslagaccount?",
-    "why": "Microsoft meldt sinds 5 november dat Azure Databricks tabellen via een externe locatie in Unity Catalog direct in OneLake kan opslaan; dat raakt jouw combinatie van Databricks en Power BI (Fabric).",
+    "id": "toegang-op-attributen",
+    "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
+    "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
+    "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
     "topics": [
-     "data_architecture_modeling",
-     "databricks_data_engineering",
-     "powerbi_semantic_models"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "eigen-spark-bron-met-python",
-    "title": "Je eigen databron voor Spark schrijven met de Python Data Source API",
-    "question": "Hoe maak je van een bron zonder standaardkoppeling (een eigen bestandsformaat of een REST API) een gewone Spark-bron, en wanneer is dat beter dan een los Python-script dat eerst bestanden omzet?",
-    "why": "Eclipse Aerospace leest sinds kort zijn eigen binaire vluchtbestanden direct in Spark met deze API (12 november), en het past bij fase 3 van Dataflow: openbare data uit API's in Bronze krijgen.",
-    "topics": [
-     "data_ingestion",
-     "databricks_data_engineering"
+     "data_governance_privacy",
+     "metadata_lineage_catalogs",
+     "ai_in_healthcare"
     ],
     "area": "data_engineering"
    },
@@ -10447,13 +10616,23 @@
     "area": "context_agents"
    },
    {
-    "id": "claude-agents-in-eigen-netwerk",
-    "title": "Claude-agents in je eigen netwerk: wat blijft binnen, wat gaat naar buiten?",
-    "question": "Welke onderdelen van een agent (sandbox, sessiegeschiedenis, sleutels, tools, model) kun je zelf hosten, en wat betekent die verdeling voor gevoelige data zoals zorgdata?",
-    "why": "Anthropic laat bedrijven sinds 12 november (private bèta) ook de agentserver en sessiegeschiedenis van Claude Managed Agents zelf draaien; alleen de vragen aan het model gaan dan nog naar buiten.",
+    "id": "ai-functies-als-job-taak",
+    "title": "AI-functies als taak in een job: alleen nieuwe rijen door het model",
+    "question": "Hoe zet je ai_classify, ai_extract of ai_parse_document als vaste taak in een Lakeflow-job die alleen nieuwe of gewijzigde invoer verwerkt, en wanneer kies je dat in plaats van een AI-functie in een dbt-model?",
+    "why": "Databricks heeft sinds 4 november AI Function-taken voor jobs in bèta, en AI-functies in SQL werken vanaf januari 2027 alleen op Runtime 17.3 LTS en hoger; je gaf eerder een duim aan 'alleen nieuwe rijen naar het taalmodel'.",
+    "topics": [
+     "ai_on_data_platform",
+     "databricks_data_engineering"
+    ],
+    "area": "context_agents"
+   },
+   {
+    "id": "claude-model-en-effort-kiezen",
+    "title": "Zwaarder model of meer denktijd? Zo kies je model en effort bij Claude",
+    "question": "Wat doet de effort-instelling precies, wanneer zet je die hoger in plaats van een zwaarder model te kiezen, en wanneer geef je werk aan een subagent op een klein model?",
+    "why": "Addy Osmani adviseert (9 november) om bij problemen eerst de effort hoger te zetten en pas daarna een zwaarder model te kiezen; dat raakt hoe je Claude Code inzet voor je dbt-werk.",
     "topics": [
      "claude_ai_development",
-     "data_governance_privacy",
      "ai_agents_rag"
     ],
     "area": "claude"
@@ -10696,6 +10875,17 @@
      "kind": "a",
      "id": "941b0ba5dad7",
      "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    }
+   ]
+  },
+  {
+   "term": "allowlist",
+   "explanation": "Een lijst van wat wel mag, bijvoorbeeld welke servers een agent mag bereiken. Alles wat er niet op staat, wordt geweigerd.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
     }
    ]
   },
@@ -11449,6 +11639,17 @@
    ]
   },
   {
+   "term": "egress gateway",
+   "explanation": "Een poortwachter voor uitgaand verkeer. Hier: het onderdeel dat een sleutel pas aan een verzoek toevoegt als het de sandbox al uit is.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    }
+   ]
+  },
+  {
    "term": "embeddings",
    "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen.",
    "refs": [
@@ -11773,6 +11974,11 @@
    "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert.",
    "refs": [
     {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    },
+    {
      "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
@@ -11820,6 +12026,11 @@
    "term": "HIPAA",
    "explanation": "De Amerikaanse wet die regels geeft voor het beschermen van medische gegevens. In Nederland gelden de AVG en zorgspecifieke regels.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    },
     {
      "kind": "a",
      "id": "90ba3c46bbce",
@@ -12358,6 +12569,17 @@
    ]
   },
   {
+   "term": "model-gateway",
+   "explanation": "Een eigen tussenstation waar alle vragen aan AI-modellen langs gaan, zodat je op één plek regelt welk model gebruikt wordt en wat er gelogd wordt.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    }
+   ]
+  },
+  {
    "term": "monorepo",
    "explanation": "Eén grote repository waarin de code van veel projecten samen staat, in plaats van een repository per project.",
    "refs": [
@@ -12848,6 +13070,11 @@
    "term": "sandbox",
    "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    },
     {
      "kind": "a",
      "id": "0b6411ed8e60",
@@ -13545,6 +13772,11 @@
    "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox.",
    "refs": [
     {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    },
+    {
      "kind": "a",
      "id": "5b59c75a11e5",
      "title": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet"
@@ -13564,6 +13796,17 @@
      "kind": "v",
      "id": "release-pipeline-basis",
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
+    }
+   ]
+  },
+  {
+   "term": "zero data retention",
+   "explanation": "Een afspraak met een AI-aanbieder dat je vragen en antwoorden na verwerking niet worden opgeslagen.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "claude-agents-in-eigen-netwerk",
+     "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
     }
    ]
   },
@@ -13853,6 +14096,16 @@
  "runs": {
   "date": "2026-11-14",
   "tasks": {
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Verdieping 'Claude-agents in je eigen netwerk' geschreven (met quiz en begrippen) en 5 nieuwe keuzes klaargezet",
+    "finished_at": "2026-11-14T04:21:59Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 1,
+     "keuzes": 5
+    }
+   },
    "uitleggen": {
     "status": "ok",
     "summary": "Vers opgehaald; de lijst is op: 7 artikelen uitgelegd (2 vol, 5 kort, 1 met voorbeeld) en 18 overgeslagen, vooral Fabric-stukken buiten je stack; bij 1 oudere uitleg de labels aangevuld.",
@@ -14442,14 +14695,6 @@
     ]
    },
    {
-    "title": "Use OneLake as native storage for Azure Databricks",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks/ba-p/5377939",
-    "relevance_score": 78,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "v2.1.311",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
@@ -14475,6 +14720,14 @@
     "title": "A Leader in Data Integration—six years running",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/A-Leader-in-Data-Integration-six-years-running/ba-p/5400776",
+    "relevance_score": 77,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Use OneLake as native storage for Azure Databricks",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks/ba-p/5377939",
     "relevance_score": 77,
     "decision": "included",
     "excluded_by": []
