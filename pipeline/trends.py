@@ -6,7 +6,7 @@ techniek (niet een breed onderwerp als "AI-agents"). De pipeline controleert het
 zet alleen trends met genoeg artikelen die nog in de app staan in feed.json.
 """
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from .config import DATA
 
@@ -14,6 +14,19 @@ PATH = DATA / "trends.json"
 MAX_TRENDS = 3
 MIN_ARTICLES = 3
 MIN_SOURCES = 2
+WINDOW_DAYS = 21      # alleen artikelen van de laatste 3 weken tellen mee (T, 14-11-2026)
+FADING_DAYS = 10      # 10 dagen niets nieuws: "Zakt af"
+GONE_DAYS = 14        # 14 dagen niets nieuws: trend verdwijnt
+STATUS_ORDER = {"groeit": 0, "speelt": 1, "zakt af": 2}
+
+
+def _date(a):
+    for k in ("published_at", "processed_at", "fetched_at"):
+        try:
+            return datetime.fromisoformat(str(a.get(k) or "").replace("Z", "+00:00"))
+        except ValueError:
+            continue
+    return None
 
 
 def validate(data: dict, topic_ids: set) -> list:
@@ -49,10 +62,12 @@ def validate(data: dict, topic_ids: set) -> list:
     return p
 
 
-def load(topic_ids: set, shown: list, path=None) -> tuple:
-    """(trends voor de app, problemen). Artikelen die niet (meer) in de app staan vallen weg;
-    een trend met te weinig artikelen of bronnen daarna ook."""
+def load(topic_ids: set, shown: list, path=None, now=None) -> tuple:
+    """(trends voor de app, problemen). Alleen artikelen die in de app staan en van de laatste 21 dagen tellen;
+    een trend met te weinig artikelen of bronnen daarna, of zonder nieuw artikel in 14 dagen, valt weg.
+    Per trend berekend: sinds, laatst, aantal deze week en vorige week, status (groeit / speelt / zakt af)."""
     path = path or PATH
+    now = now or datetime.now(timezone.utc)
     if not path.exists():
         return [], []
     try:
@@ -65,9 +80,21 @@ def load(topic_ids: set, shown: list, path=None) -> tuple:
     by_id = {a["id"]: a for a in shown}
     out = []
     for t in data["trends"][:MAX_TRENDS]:
-        ids = [x for x in dict.fromkeys(t["article_ids"]) if x in by_id]
+        dated = [(x, _date(by_id[x])) for x in dict.fromkeys(t["article_ids"]) if x in by_id]
+        dated = sorted([(x, d) for x, d in dated if d and now - d <= timedelta(days=WINDOW_DAYS)], key=lambda xd: xd[1], reverse=True)
+        ids = [x for x, _ in dated]
         if len(ids) < MIN_ARTICLES or len({by_id[x]["source_id"] for x in ids}) < MIN_SOURCES:
             continue
+        last = dated[0][1]
+        if now - last > timedelta(days=GONE_DAYS):
+            continue
+        week = sum(1 for _, d in dated if now - d <= timedelta(days=7))
+        prev = sum(1 for _, d in dated if timedelta(days=7) < now - d <= timedelta(days=14))
+        status = "zakt af" if now - last > timedelta(days=FADING_DAYS) else "groeit" if week > prev and week >= 2 else "speelt" if week else "zakt af"
         out.append({"id": t["id"], "title": t["title"], "summary": t["summary"],
-                    "topics": t.get("topics", []), "article_ids": ids, "generated_at": data["generated_at"]})
+                    "topics": t.get("topics", []), "article_ids": ids, "generated_at": data["generated_at"],
+                    "since": dated[-1][1].strftime("%Y-%m-%d"), "last": last.strftime("%Y-%m-%d"),
+                    "week": week, "prev_week": prev, "status": status})
+    out.sort(key=lambda t: t["last"], reverse=True)
+    out.sort(key=lambda t: STATUS_ORDER[t["status"]])
     return out, []

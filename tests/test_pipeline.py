@@ -980,7 +980,7 @@ class TestDataflowVoortgang(unittest.TestCase):
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends
-        shown = [{"id": f"a{i}", "source_id": "s1" if i < 3 else "s2"} for i in range(5)]
+        shown = [{"id": f"a{i}", "source_id": "s1" if i < 3 else "s2", "published_at": "2026-10-28T00:00:00Z"} for i in range(5)]
         data = {"generated_at": "2026-10-29T06:00:00Z", "trends": [
             {"id": "goed", "title": "T", "summary": "S", "article_ids": ["a0", "a1", "a3"]},
             {"id": "een-bron", "title": "T", "summary": "S", "article_ids": ["a0", "a1", "a2"]},
@@ -988,10 +988,31 @@ class TestTrends(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "trends.json"
             path.write_text(json.dumps(data))
-            out, problems = trends.load(set(), shown, path)
+            out, problems = trends.load(set(), shown, path, now=datetime(2026, 10, 29, tzinfo=timezone.utc))
         self.assertEqual(problems, [])
         self.assertEqual([t["id"] for t in out], ["goed"])
         self.assertTrue(trends.validate({"generated_at": "x", "trends": [{"id": "a", "title": "t", "summary": "s", "article_ids": ["1"]}]}, set()))
+
+
+    def test_recentheid_status_en_venster(self):
+        from pipeline import trends
+        now = datetime(2026, 11, 14, 12, tzinfo=timezone.utc)
+        day = lambda n: (now - timedelta(days=n)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        shown = [{"id": k, "source_id": s, "published_at": day(n)} for k, s, n in
+                 [("n1", "s1", 1), ("n2", "s2", 2), ("n3", "s1", 3), ("o1", "s2", 9), ("old", "s1", 30),
+                  ("f1", "s1", 11), ("f2", "s2", 12), ("f3", "s1", 13), ("g1", "s1", 15), ("g2", "s2", 16), ("g3", "s1", 18)]]
+        data = {"generated_at": "2026-11-14T05:00:00Z", "trends": [
+            {"id": "zakt", "title": "T", "summary": "S", "article_ids": ["f1", "f2", "f3"]},
+            {"id": "groeit", "title": "T", "summary": "S", "article_ids": ["old", "o1", "n1", "n2", "n3"]},
+            {"id": "weg", "title": "T", "summary": "S", "article_ids": ["g1", "g2", "g3"]}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "trends.json"
+            path.write_text(json.dumps(data))
+            out, _ = trends.load(set(), shown, path, now=now)
+        self.assertEqual([(t["id"], t["status"]) for t in out], [("groeit", "groeit"), ("zakt", "zakt af")])   # 14+ dagen stil: weg
+        g = out[0]
+        self.assertEqual(g["article_ids"], ["n1", "n2", "n3", "o1"])   # ouder dan 21 dagen eruit, nieuwste eerst
+        self.assertEqual((g["since"], g["last"], g["week"], g["prev_week"]), ("2026-11-05", "2026-11-13", 3, 1))
 
 
 class TestPractice(unittest.TestCase):

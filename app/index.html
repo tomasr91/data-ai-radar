@@ -182,6 +182,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .wk-stats b { font-variant-numeric: tabular-nums; }
 .trend { cursor: default; margin-top: 14px; }
 .trend .meta .src { color: var(--accent2); }
+.trend.fading .meta .src { color: var(--muted); }
 .trend-more summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--accent2); font-family: var(--f-meta); font-size: 0.8rem; list-style: none; }
 .trend-more summary::-webkit-details-marker { display: none; }
 .trend-more summary::after { content: "▾"; margin-left: 6px; transition: transform .15s; }
@@ -805,11 +806,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function renderTrends() {
     const ts = state.feed.trends || [];
     if (!ts.length) return `<div class="empty" style="margin-top:14px"><h3>Nu geen trends</h3><p>Een trend verschijnt als minstens drie artikelen uit verschillende bronnen over dezelfde ontwikkeling gaan. Claude kijkt daar elke ochtend naar.</p></div>`;
-    return `<p class="pick-note">Waar meerdere bronnen nu tegelijk over schrijven.</p>` + ts.map((t) => {
+    return `` + ts.map((t) => {
       const arts = t.article_ids.map((id) => state.byId.get(id)).filter(Boolean);
       const srcs = new Set(arts.map((a) => a.source_id)).size;
-      return `<section class="trend card" data-trend="${esc(t.id)}">
-        <div class="meta"><span class="src">Dit speelt nu</span></div>
+      const d = (x) => x ? new Date(x + "T12:00:00Z").toLocaleDateString("nl-NL", { day: "numeric", month: "short", timeZone: TZ }).replace(".", "") : "";
+      const st = { groeit: "Groeit", speelt: "Speelt", "zakt af": "Zakt af" }[t.status] || "Dit speelt nu";
+      const when = t.since ? `Sinds ${d(t.since)} · laatste artikel ${d(t.last)}${t.week ? ` · ${t.week} deze week` : ""}` : "";
+      return `<section class="trend card${t.status === "zakt af" ? " fading" : ""}" data-trend="${esc(t.id)}">
+        <div class="meta"><span class="src">${st}</span>${when ? `<span>${when}</span>` : ""}</div>
         <h3>${esc(t.title)}</h3>
         <p class="sum">${esc(t.summary)}</p>
         <details class="trend-more"><summary>${arts.length} artikelen · ${srcs} bronnen</summary>

@@ -459,7 +459,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     fetched = [a.get("processed_at") or a["fetched_at"] for a in shown if a.get("processed_at") or a.get("fetched_at")]
     deepdives, invalid_deepdives = deepdives_mod.load_all(set(conf.topics))
     dd_options, invalid_options = deepdives_mod.load_options(set(conf.topics))
-    trends, invalid_trends = trends_mod.load(set(conf.topics), shown)
+    trends, invalid_trends = trends_mod.load(set(conf.topics), shown, now=now)
     weekly, invalid_weekly = weekly_mod.load(shown)
     int_suggestions, invalid_suggestions = interests_mod.load_suggestions(set(conf.topics))
     feed = {

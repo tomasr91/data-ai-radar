@@ -19,10 +19,12 @@ Lees eerst `taken/REGELS.md`. Deze taak doet alles wat over de feed als geheel g
 
 Een trend is een ontwikkeling of techniek waar nu meerdere bronnen tegelijk over schrijven, bijvoorbeeld "geheugen voor AI-agents" of "metric views als bron voor AI". Geen breed onderwerp als "AI-agents" of "Databricks".
 
-- Kijk naar de uitgelegde artikelen in `data/feed.json` van de **laatste 21 dagen**.
-- Een trend heeft **minstens 3 artikelen uit minstens 2 bronnen**. Hooguit **3 trends**; liever geen trend dan een geforceerde.
-- `title`: hooguit 80 tekens, zegt wat er speelt. `summary`: 2 of 3 korte zinnen: wat is de gemeenschappelijke lijn, en waarom komt het nu op. Alleen wat in de artikelen staat.
-- Een trend van gisteren die nog klopt, houd je met hetzelfde `id` en vul je aan.
+- Kijk naar de uitgelegde artikelen in `data/feed.json` van de **laatste 21 dagen** (op `published_at`). Oudere artikelen horen niet in `article_ids`; de pipeline laat ze ook weg.
+- Een trend heeft **minstens 3 artikelen uit minstens 2 bronnen** binnen die 21 dagen. Hooguit **3 trends**; liever geen trend dan een geforceerde.
+- **Geen overlap.** Twee trends die grotendeels over hetzelfde gaan (bijv. "context voor agents" en "geheugen voor agents"), voeg je samen tot één.
+- `title`: hooguit 80 tekens, zegt wat er speelt. `summary`: 2 of 3 korte zinnen: de gemeenschappelijke lijn, en **wat er de laatste week bij kwam** (het nieuwste artikel). Alleen wat in de artikelen staat.
+- Een trend van gisteren die nog klopt, houd je met hetzelfde `id`: haal artikelen ouder dan 21 dagen eruit, voeg nieuwe toe en werk de samenvatting bij.
+- In `data/feed.json` staat per trend `status` (groeit / speelt / zakt af) en `last`. Een trend die **afzakt** (10 dagen niets nieuws) vervang je liever door een nieuwe ontwikkeling als die er is. Na 14 dagen zonder nieuw artikel haalt de pipeline hem zelf weg.
 
 ```json
 {

@@ -67,7 +67,8 @@ _tr, _srcs = [], set()
 for _a in arts:
     if len(_tr) < 3 and (len(_tr) < 2 or _a["source_id"] not in _srcs or len(_srcs) > 1):
         _tr.append(_a["id"]); _srcs.add(_a["source_id"])
-feed["trends"] = [{"id": "test-trend", "title": "Testtrend", "summary": "Drie artikelen over hetzelfde.", "topics": [], "article_ids": _tr, "generated_at": "2026-10-29T06:00:00Z"}]
+feed["trends"] = [{"id": "test-trend", "title": "Testtrend", "summary": "Drie artikelen over hetzelfde.", "topics": [], "article_ids": _tr, "generated_at": "2026-10-29T06:00:00Z",
+                    "since": "2026-10-18", "last": "2026-10-28", "week": 2, "prev_week": 1, "status": "groeit"}]
 # Nagebootst weekoverzicht (Jouw week)
 from datetime import datetime as _dt, timezone as _tz  # noqa: E402
 feed["weekly"] = {"week": "2026-W44", "generated_at": _dt.now(_tz.utc).isoformat().replace("+00:00", "Z"),
@@ -194,6 +195,8 @@ with sync_playwright() as p:
     check("13. Trends toont de trend; artikelen ingeklapt tot je tikt", page.locator(".trend").count() == 1 and page.locator(".trend-list button").count() == len(_tr)
           and "Testtrend" in page.locator(".trend").inner_text() and not page.locator(".trend-list").first.is_visible()
           and f"{len(_tr)} artikelen" in page.locator(".trend-more summary").inner_text())
+    check("   trend toont status en datums", "Groeit" in page.locator(".trend .meta").inner_text()
+          and "Sinds 18 okt · laatste artikel 28 okt · 2 deze week" in page.locator(".trend .meta").inner_text(), page.locator(".trend .meta").inner_text())
     page.click(".trend-more summary")
     check("   tik op de regel klapt de artikelen uit", page.locator(".trend-list").first.is_visible())
     page.locator(".trend-list button").first.click()
