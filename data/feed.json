@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T13:03:34.516341Z",
+ "generated_at": "2026-11-14T17:47:48.784325Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -470,7 +470,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.83,
+    "recency": 0.82,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
@@ -605,7 +605,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -717,7 +717,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1148,7 +1148,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -1265,7 +1265,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -1465,7 +1465,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.02,
@@ -1765,7 +1765,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.57,
     "feedback": 0.01,
@@ -1960,7 +1960,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.2
@@ -2063,7 +2063,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.82,
+    "recency": 0.81,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -2251,7 +2251,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.02,
@@ -2342,7 +2342,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.8,
     "quality": 0.53,
     "fit": 0.15
@@ -2399,111 +2399,6 @@
    ]
   },
   {
-   "id": "6df581b9d8ed",
-   "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
-   "source_id": "claude_code_releases",
-   "published_at": "2026-11-01T23:59:59Z",
-   "date_note": "Weekoverzicht van releases tussen 26 en 31 oktober 2026; v2.1.311 en v2.1.314 zijn deels via een kopie van de releasetekst gelezen omdat de officiële pagina afgekapt was.",
-   "fetched_at": "2026-10-31T08:25:29.080612Z",
-   "summary": "Een nieuwe instelling houdt schrijfacties binnen je werkmappen, subagents krijgen een eigen denkniveau, en de snelle modus van Opus 4.8 verdwijnt op 30 november.",
-   "personal_relevance": "Met een schrijfgrens en een eigen denkniveau voor subagents kun je Claude Code veiliger en zuiniger op je dbt-repository loslaten.",
-   "experiment": "Zet in een testproject met een openbare dbt-voorbeeldrepository blockWritesOutsideWorkingDirectories aan en vraag Claude een bestand in een map ernaast aan te passen. Kijk hoe de weigering eruitziet.",
-   "limitations": [
-    "De release notes geven geen voorbeeldconfiguratie; de JSON hieronder volgt de naam van de instelling.",
-    "De bevestigde releases deze week zijn v2.1.311, .312, .314 en .316; v2.1.313 en .315 staan niet op de releasepagina."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Release v2.1.316",
-     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316"
-    },
-    {
-     "label": "Releases Claude Code",
-     "url": "https://github.com/anthropics/claude-code/releases"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "claude",
-    "ai_context"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.54,
-    "source": 0.8,
-    "quality": 0.63,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:27:35Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code kan nu nergens meer schrijven buiten je projectmap",
-   "story": [
-    "Claude Code kreeg deze week een harde grens voor schrijven. Met de nieuwe instelling `blockWritesOutsideWorkingDirectories` weigeren Write, Edit en NotebookEdit elk pad buiten je werkmappen. Dat geldt in elke toestemmingsmodus, ook als je verder alles automatisch laat goedkeuren (v2.1.314).",
-    "Je kunt het zien als een hek om je tuin. Claude mag binnen het hek alles verbouwen, maar kan niet per ongeluk in de schuur van de buren een bestand overschrijven. Werk je met meerdere dbt-projecten of een gedeelde configuratiemap naast je repository, dan blijft die zo buiten schot.",
-    "Ook subagents worden beter te sturen. Met `CLAUDE_CODE_SUBAGENT_EFFORT` stel je in hoe hard subagents nadenken als niets anders het zegt (v2.1.316). Eerder namen ze het niveau van je hoofdsessie over. Zo kun je een zoek-subagent zuinig laten werken, terwijl de hoofdsessie diep nadenkt. Daarnaast lopen er per sessie hooguit 24 prompt- en agent-hooks tegelijk, subagents meegeteld (v2.1.312).",
-    "Er is ook iets om op te letten. De snelle modus (fast mode) voor Opus 4.8 is sinds 30 oktober verouderd en verdwijnt op 30 november 2026. Daarna geeft zo'n verzoek een fout en valt het niet terug op gewone Opus 4.8. Wie de snelheid wil houden, stapt over op Opus 5.5.",
-    "Tot slot vat Claude in VS Code en de Code-tab van Claude Desktop een stilliggend gesprek van meer dan 200.000 tokens nu vanzelf samen (v2.1.314). Bij lange dbt-sessies scheelt dat context als je later verdergaat."
-   ],
-   "key_facts": [
-    "v2.1.314 (30 okt 2026): nieuwe instelling permissions.blockWritesOutsideWorkingDirectories; Write, Edit en NotebookEdit weigeren paden buiten de werkmappen, in elke toestemmingsmodus.",
-    "v2.1.314: idle compaction in VS Code en de Code-tab van Claude Desktop; een gesprek van 200K+ tokens dat stil ligt wordt samengevat.",
-    "v2.1.316 (31 okt 2026): nieuwe variabele CLAUDE_CODE_SUBAGENT_EFFORT bepaalt het effort-niveau van subagents als niets anders er een noemt, in plaats van dat van de sessie over te nemen.",
-    "v2.1.316: fast mode voor Opus 4.8 is verouderd per 30 oktober 2026 en wordt verwijderd op 30 november 2026; daarna geeft fast mode op Opus 4.8 een fout zonder terugval. Advies: overstappen op Opus 5.5.",
-    "v2.1.312 (27 okt 2026): prompt- en agent-hooks draaien hooguit 24 tegelijk per sessie (subagents meegeteld); een timeout onder 1 seconde telt als 1 seconde.",
-    "v2.1.311 (27 okt 2026): ultrathink draait in de terminal een beurt op xhigh effort op Opus 5.5; v2.1.316 voegt CLAUDE_CODE_DISABLE_ULTRATHINK toe om het sleutelwoord uit te zetten."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo zet je de schrijfgrens aan in .claude/settings.json en geef je subagents een eigen denkniveau.",
-    "language": "bash",
-    "code": "# .claude/settings.json in je project\ncat > .claude/settings.json <<'JSON'\n{\n  \"permissions\": {\n    \"blockWritesOutsideWorkingDirectories\": true\n  }\n}\nJSON\n\n# subagents zuiniger laten denken dan de hoofdsessie\nexport CLAUDE_CODE_SUBAGENT_EFFORT=medium\nclaude",
-    "note": "De namen van de instelling en de variabele komen uit de release notes van v2.1.314 en v2.1.316. De waarde true en het niveau medium zijn een aanname over de notatie; controleer die in de documentatie."
-   },
-   "terms": [
-    {
-     "term": "subagents",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    },
-    {
-     "term": "hooks",
-     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
-    },
-    {
-     "term": "fast mode",
-     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
-    },
-    {
-     "term": "tokens",
-     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.6,
-    "why": "Releasenotes over Claude Code-werkwijze; je duimen gaan vooral naar praktische AI-met-dbt-stukken."
-   },
-   "labels": [
-    "claude-code-sandbox",
-    "claude-code-subagents"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "656e0d953ae9",
    "title": "Announcing GA of Genie Ontology",
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
@@ -2551,7 +2446,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.06,
@@ -2736,6 +2631,111 @@
    }
   },
   {
+   "id": "6df581b9d8ed",
+   "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-01T23:59:59Z",
+   "date_note": "Weekoverzicht van releases tussen 26 en 31 oktober 2026; v2.1.311 en v2.1.314 zijn deels via een kopie van de releasetekst gelezen omdat de officiële pagina afgekapt was.",
+   "fetched_at": "2026-10-31T08:25:29.080612Z",
+   "summary": "Een nieuwe instelling houdt schrijfacties binnen je werkmappen, subagents krijgen een eigen denkniveau, en de snelle modus van Opus 4.8 verdwijnt op 30 november.",
+   "personal_relevance": "Met een schrijfgrens en een eigen denkniveau voor subagents kun je Claude Code veiliger en zuiniger op je dbt-repository loslaten.",
+   "experiment": "Zet in een testproject met een openbare dbt-voorbeeldrepository blockWritesOutsideWorkingDirectories aan en vraag Claude een bestand in een map ernaast aan te passen. Kijk hoe de weigering eruitziet.",
+   "limitations": [
+    "De release notes geven geen voorbeeldconfiguratie; de JSON hieronder volgt de naam van de instelling.",
+    "De bevestigde releases deze week zijn v2.1.311, .312, .314 en .316; v2.1.313 en .315 staan niet op de releasepagina."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Release v2.1.316",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316"
+    },
+    {
+     "label": "Releases Claude Code",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "claude",
+    "ai_context"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.53,
+    "source": 0.8,
+    "quality": 0.63,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-02T03:27:35Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code kan nu nergens meer schrijven buiten je projectmap",
+   "story": [
+    "Claude Code kreeg deze week een harde grens voor schrijven. Met de nieuwe instelling `blockWritesOutsideWorkingDirectories` weigeren Write, Edit en NotebookEdit elk pad buiten je werkmappen. Dat geldt in elke toestemmingsmodus, ook als je verder alles automatisch laat goedkeuren (v2.1.314).",
+    "Je kunt het zien als een hek om je tuin. Claude mag binnen het hek alles verbouwen, maar kan niet per ongeluk in de schuur van de buren een bestand overschrijven. Werk je met meerdere dbt-projecten of een gedeelde configuratiemap naast je repository, dan blijft die zo buiten schot.",
+    "Ook subagents worden beter te sturen. Met `CLAUDE_CODE_SUBAGENT_EFFORT` stel je in hoe hard subagents nadenken als niets anders het zegt (v2.1.316). Eerder namen ze het niveau van je hoofdsessie over. Zo kun je een zoek-subagent zuinig laten werken, terwijl de hoofdsessie diep nadenkt. Daarnaast lopen er per sessie hooguit 24 prompt- en agent-hooks tegelijk, subagents meegeteld (v2.1.312).",
+    "Er is ook iets om op te letten. De snelle modus (fast mode) voor Opus 4.8 is sinds 30 oktober verouderd en verdwijnt op 30 november 2026. Daarna geeft zo'n verzoek een fout en valt het niet terug op gewone Opus 4.8. Wie de snelheid wil houden, stapt over op Opus 5.5.",
+    "Tot slot vat Claude in VS Code en de Code-tab van Claude Desktop een stilliggend gesprek van meer dan 200.000 tokens nu vanzelf samen (v2.1.314). Bij lange dbt-sessies scheelt dat context als je later verdergaat."
+   ],
+   "key_facts": [
+    "v2.1.314 (30 okt 2026): nieuwe instelling permissions.blockWritesOutsideWorkingDirectories; Write, Edit en NotebookEdit weigeren paden buiten de werkmappen, in elke toestemmingsmodus.",
+    "v2.1.314: idle compaction in VS Code en de Code-tab van Claude Desktop; een gesprek van 200K+ tokens dat stil ligt wordt samengevat.",
+    "v2.1.316 (31 okt 2026): nieuwe variabele CLAUDE_CODE_SUBAGENT_EFFORT bepaalt het effort-niveau van subagents als niets anders er een noemt, in plaats van dat van de sessie over te nemen.",
+    "v2.1.316: fast mode voor Opus 4.8 is verouderd per 30 oktober 2026 en wordt verwijderd op 30 november 2026; daarna geeft fast mode op Opus 4.8 een fout zonder terugval. Advies: overstappen op Opus 5.5.",
+    "v2.1.312 (27 okt 2026): prompt- en agent-hooks draaien hooguit 24 tegelijk per sessie (subagents meegeteld); een timeout onder 1 seconde telt als 1 seconde.",
+    "v2.1.311 (27 okt 2026): ultrathink draait in de terminal een beurt op xhigh effort op Opus 5.5; v2.1.316 voegt CLAUDE_CODE_DISABLE_ULTRATHINK toe om het sleutelwoord uit te zetten."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo zet je de schrijfgrens aan in .claude/settings.json en geef je subagents een eigen denkniveau.",
+    "language": "bash",
+    "code": "# .claude/settings.json in je project\ncat > .claude/settings.json <<'JSON'\n{\n  \"permissions\": {\n    \"blockWritesOutsideWorkingDirectories\": true\n  }\n}\nJSON\n\n# subagents zuiniger laten denken dan de hoofdsessie\nexport CLAUDE_CODE_SUBAGENT_EFFORT=medium\nclaude",
+    "note": "De namen van de instelling en de variabele komen uit de release notes van v2.1.314 en v2.1.316. De waarde true en het niveau medium zijn een aanname over de notatie; controleer die in de documentatie."
+   },
+   "terms": [
+    {
+     "term": "subagents",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    },
+    {
+     "term": "hooks",
+     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+     "term": "fast mode",
+     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+    },
+    {
+     "term": "tokens",
+     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Releasenotes over Claude Code-werkwijze; je duimen gaan vooral naar praktische AI-met-dbt-stukken."
+   },
+   "labels": [
+    "claude-code-sandbox",
+    "claude-code-subagents"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
    "id": "a704112d6f8a",
    "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
    "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
@@ -2772,7 +2772,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.15,
+    "recency": 0.14,
     "source": 0.68,
     "quality": 0.78,
     "feedback": -0.04,
@@ -2997,7 +2997,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.07,
@@ -3415,7 +3415,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.06,
@@ -3556,7 +3556,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3784,7 +3784,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.07,
@@ -3978,7 +3978,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -4076,7 +4076,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.03,
@@ -4484,7 +4484,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.68,
     "quality": 0.43,
     "fit": 0.0
@@ -4529,7 +4529,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.02,
@@ -4591,7 +4591,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.92,
+    "recency": 0.91,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.11,
@@ -5120,7 +5120,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 1.0,
     "quality": 0.67,
     "fit": 0.2,
@@ -5230,7 +5230,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.56,
+    "recency": 0.55,
     "source": 0.51,
     "quality": 0.48,
     "feedback": 0.01,
@@ -5291,112 +5291,6 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
-   }
-  },
-  {
-   "id": "3b1aa647a1b3",
-   "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
-   "source_id": "fabric_blog",
-   "published_at": "2026-11-05T19:00:00Z",
-   "date_note": "Fabric-blog meldt GA op 5 november 2026; de Databricks-documentatie noemt de functie nog Beta.",
-   "fetched_at": "2026-11-06T03:12:47.625169Z",
-   "summary": "Unity Catalog kan OneLake gebruiken als opslagplek voor beheerde tabellen. Databricks blijft rekenen en beheren, Fabric leest dezelfde kopie.",
-   "personal_relevance": "Als Power BI of Fabric dezelfde data moet gebruiken als je Databricks-modellen, scheelt dit een kopie, maar de rechten moet je dubbel bewaken.",
-   "experiment": "Maak in een testomgeving een Fabric-werkruimte met een Azure Databricks Storage-item, koppel een testcatalog en schrijf een tabel met verzonnen data. Kijk daarna wie er in Fabric bij kan.",
-   "limitations": [
-    "Microsoft meldt GA, de Databricks-documentatie zegt nog Beta.",
-    "Rollen in de Fabric-werkruimte geven toegang langs Unity Catalog heen.",
-    "Meldingen van nieuwe bestanden (file events) werken niet op OneLake-paden."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Connect Azure Databricks to a OneLake external location",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-onelake"
-    },
-    {
-     "label": "Enable OneLake catalog federation (alleen lezen)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/query-federation/onelake"
-    }
-   ],
-   "topics": [
-    "data_architecture_modeling",
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "architectuur",
-    "overig",
-    "databricks",
-    "kwaliteit"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.65,
-    "source": 0.6,
-    "quality": 0.57,
-    "feedback": -0.05,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-06T03:21:27Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Databricks-tabellen kunnen nu fysiek in OneLake staan",
-   "story": [
-    "Microsoft meldt dat Azure Databricks zijn tabellen nu direct in OneLake kan opslaan. OneLake is de centrale dataopslag van Microsoft Fabric. Volgens de Fabric-blog is dit nu algemeen beschikbaar (GA) aan de Fabric-kant. OneLake-beveiliging staat daarbij standaard aan.",
-    "Het werkt met een externe locatie (external location) in Unity Catalog. Je maakt in Fabric een speciaal opslagitem aan, het Azure Databricks Storage-item. In Databricks maak je een opslagsleutel (storage credential) en een externe locatie die naar dat item wijst. Daarna geef je een catalog of schema die locatie als vaste opslagplek. Alles wat je daarin schrijft, landt in OneLake.",
-    "Vergelijk het met een gedeelde schuur. Databricks blijft de werkplaats met het gereedschap en de inventarislijst (Unity Catalog). Alleen de spullen zelf staan nu in de schuur van Fabric. Beheerde tabellen, volumes, views, materialized views en streaming tables blijven gewoon in Databricks beheerd.",
-    "Let wel op de rechten. Je moet ze aan twee kanten regelen: in Unity Catalog én in OneLake. De documentatie van Databricks waarschuwt dat iedereen met de rol Member, Contributor of Administrator in de Fabric-werkruimte de data kan lezen, schrijven en wissen, ook zonder rechten in Unity Catalog. Voor zorgdata is een aparte, kleine werkruimte dus belangrijk.",
-    "Voor jou is dit vooral interessant als Power BI of Fabric dezelfde data moet lezen als je dbt-modellen op Databricks. Dan hoef je geen kopieerpijplijn te bouwen. Maar de documentatie van Databricks noemt de functie op 6 november nog Beta, dus de twee kanten zijn het niet eens over de status."
-   ],
-   "key_facts": [
-    "Microsoft Fabric meldt op 5 november 2026 dat OneLake als externe locatie voor Azure Databricks Unity Catalog algemeen beschikbaar is aan de Fabric-kant.",
-    "OneLake Security staat standaard aan voor Azure Databricks Storage-items; beheerders geven per identiteit rechten om te ontdekken, lezen of schrijven.",
-    "Ondersteund: beheerde tabellen (Delta en Iceberg), volumes, views, materialized views en streaming tables.",
-    "Vereist: Databricks Runtime 18.1 of hoger of serverless compute, en een Fabric-werkruimte met toegewezen capaciteit.",
-    "Het pad gebruikt GUID's: abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/; namen worden geweigerd.",
-    "De Databricks-documentatie noemt de functie Beta en waarschuwt dat Member, Contributor en Administrator in de Fabric-werkruimte de data kunnen lezen, schrijven en wissen zonder Unity Catalog-rechten."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Na het koppelen geef je een catalog de OneLake-locatie als vaste opslagplek. Elke tabel die je daarin maakt, staat fysiek in OneLake.",
-    "language": "sql",
-    "code": "-- Catalog met de OneLake-locatie als beheerde opslag\nCREATE CATALOG my_onelake_catalog\nMANAGED LOCATION '<onelake_external_location_path>';\n\n-- Een gewone beheerde tabel\nCREATE TABLE my_onelake_catalog.default.my_table (\n  id INT,\n  name STRING,\n  created_at TIMESTAMP\n);\n\nINSERT INTO my_onelake_catalog.default.my_table\nVALUES (1, 'example', current_timestamp());",
-    "note": "Overgenomen uit de Azure Databricks-documentatie. Het pad heeft de vorm abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/. De externe locatie zelf maak je volgens de documentatie in de Catalog-UI."
-   },
-   "terms": [
-    {
-     "term": "OneLake",
-     "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt."
-    },
-    {
-     "term": "externe locatie",
-     "explanation": "Een verwijzing in Unity Catalog naar een plek in cloudopslag, samen met de sleutel om erbij te mogen. Zo regelt Unity Catalog wie daar mag lezen en schrijven."
-    },
-    {
-     "term": "storage credential",
-     "explanation": "Een opgeslagen sleutel in Unity Catalog, meestal een managed identity of service principal, waarmee Databricks bij cloudopslag mag."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.6,
-    "why": "Koppeling Databricks–Power BI-wereld, zoals je duim bij metric views; wel een aankondiging zonder praktijkverhaal."
-   },
-   "labels": [
-    "onelake-databricks",
-    "unity-catalog-external-locations"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "fabric_blog",
-    "pts": -5
    }
   },
   {
@@ -5518,7 +5412,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.02,
@@ -5547,6 +5441,112 @@
     "pts": -2
    },
    "diepte": "kort"
+  },
+  {
+   "id": "3b1aa647a1b3",
+   "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
+   "source_id": "fabric_blog",
+   "published_at": "2026-11-05T19:00:00Z",
+   "date_note": "Fabric-blog meldt GA op 5 november 2026; de Databricks-documentatie noemt de functie nog Beta.",
+   "fetched_at": "2026-11-06T03:12:47.625169Z",
+   "summary": "Unity Catalog kan OneLake gebruiken als opslagplek voor beheerde tabellen. Databricks blijft rekenen en beheren, Fabric leest dezelfde kopie.",
+   "personal_relevance": "Als Power BI of Fabric dezelfde data moet gebruiken als je Databricks-modellen, scheelt dit een kopie, maar de rechten moet je dubbel bewaken.",
+   "experiment": "Maak in een testomgeving een Fabric-werkruimte met een Azure Databricks Storage-item, koppel een testcatalog en schrijf een tabel met verzonnen data. Kijk daarna wie er in Fabric bij kan.",
+   "limitations": [
+    "Microsoft meldt GA, de Databricks-documentatie zegt nog Beta.",
+    "Rollen in de Fabric-werkruimte geven toegang langs Unity Catalog heen.",
+    "Meldingen van nieuwe bestanden (file events) werken niet op OneLake-paden."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Connect Azure Databricks to a OneLake external location",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-onelake"
+    },
+    {
+     "label": "Enable OneLake catalog federation (alleen lezen)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/query-federation/onelake"
+    }
+   ],
+   "topics": [
+    "data_architecture_modeling",
+    "powerbi_semantic_models",
+    "databricks_data_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "architectuur",
+    "overig",
+    "databricks",
+    "kwaliteit"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.64,
+    "source": 0.6,
+    "quality": 0.57,
+    "feedback": -0.05,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-06T03:21:27Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Databricks-tabellen kunnen nu fysiek in OneLake staan",
+   "story": [
+    "Microsoft meldt dat Azure Databricks zijn tabellen nu direct in OneLake kan opslaan. OneLake is de centrale dataopslag van Microsoft Fabric. Volgens de Fabric-blog is dit nu algemeen beschikbaar (GA) aan de Fabric-kant. OneLake-beveiliging staat daarbij standaard aan.",
+    "Het werkt met een externe locatie (external location) in Unity Catalog. Je maakt in Fabric een speciaal opslagitem aan, het Azure Databricks Storage-item. In Databricks maak je een opslagsleutel (storage credential) en een externe locatie die naar dat item wijst. Daarna geef je een catalog of schema die locatie als vaste opslagplek. Alles wat je daarin schrijft, landt in OneLake.",
+    "Vergelijk het met een gedeelde schuur. Databricks blijft de werkplaats met het gereedschap en de inventarislijst (Unity Catalog). Alleen de spullen zelf staan nu in de schuur van Fabric. Beheerde tabellen, volumes, views, materialized views en streaming tables blijven gewoon in Databricks beheerd.",
+    "Let wel op de rechten. Je moet ze aan twee kanten regelen: in Unity Catalog én in OneLake. De documentatie van Databricks waarschuwt dat iedereen met de rol Member, Contributor of Administrator in de Fabric-werkruimte de data kan lezen, schrijven en wissen, ook zonder rechten in Unity Catalog. Voor zorgdata is een aparte, kleine werkruimte dus belangrijk.",
+    "Voor jou is dit vooral interessant als Power BI of Fabric dezelfde data moet lezen als je dbt-modellen op Databricks. Dan hoef je geen kopieerpijplijn te bouwen. Maar de documentatie van Databricks noemt de functie op 6 november nog Beta, dus de twee kanten zijn het niet eens over de status."
+   ],
+   "key_facts": [
+    "Microsoft Fabric meldt op 5 november 2026 dat OneLake als externe locatie voor Azure Databricks Unity Catalog algemeen beschikbaar is aan de Fabric-kant.",
+    "OneLake Security staat standaard aan voor Azure Databricks Storage-items; beheerders geven per identiteit rechten om te ontdekken, lezen of schrijven.",
+    "Ondersteund: beheerde tabellen (Delta en Iceberg), volumes, views, materialized views en streaming tables.",
+    "Vereist: Databricks Runtime 18.1 of hoger of serverless compute, en een Fabric-werkruimte met toegewezen capaciteit.",
+    "Het pad gebruikt GUID's: abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/; namen worden geweigerd.",
+    "De Databricks-documentatie noemt de functie Beta en waarschuwt dat Member, Contributor en Administrator in de Fabric-werkruimte de data kunnen lezen, schrijven en wissen zonder Unity Catalog-rechten."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Na het koppelen geef je een catalog de OneLake-locatie als vaste opslagplek. Elke tabel die je daarin maakt, staat fysiek in OneLake.",
+    "language": "sql",
+    "code": "-- Catalog met de OneLake-locatie als beheerde opslag\nCREATE CATALOG my_onelake_catalog\nMANAGED LOCATION '<onelake_external_location_path>';\n\n-- Een gewone beheerde tabel\nCREATE TABLE my_onelake_catalog.default.my_table (\n  id INT,\n  name STRING,\n  created_at TIMESTAMP\n);\n\nINSERT INTO my_onelake_catalog.default.my_table\nVALUES (1, 'example', current_timestamp());",
+    "note": "Overgenomen uit de Azure Databricks-documentatie. Het pad heeft de vorm abfss://<WorkspaceID>@onelake.dfs.fabric.microsoft.com/<DatabricksStorageID>/Files/. De externe locatie zelf maak je volgens de documentatie in de Catalog-UI."
+   },
+   "terms": [
+    {
+     "term": "OneLake",
+     "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt."
+    },
+    {
+     "term": "externe locatie",
+     "explanation": "Een verwijzing in Unity Catalog naar een plek in cloudopslag, samen met de sleutel om erbij te mogen. Zo regelt Unity Catalog wie daar mag lezen en schrijven."
+    },
+    {
+     "term": "storage credential",
+     "explanation": "Een opgeslagen sleutel in Unity Catalog, meestal een managed identity of service principal, waarmee Databricks bij cloudopslag mag."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.6,
+    "why": "Koppeling Databricks–Power BI-wereld, zoals je duim bij metric views; wel een aankondiging zonder praktijkverhaal."
+   },
+   "labels": [
+    "onelake-databricks",
+    "unity-catalog-external-locations"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "fabric_blog",
+    "pts": -5
+   }
   },
   {
    "id": "0b4ae9670355",
@@ -5910,7 +5910,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.51,
     "quality": 0.62,
     "feedback": -0.04,
@@ -5996,7 +5996,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.65,
+    "recency": 0.64,
     "source": 0.51,
     "quality": 0.53,
     "feedback": -0.04,
@@ -6044,10 +6044,10 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.79,
+    "recency": 0.78,
     "source": 0.51,
     "quality": 0.45,
-    "feedback": -0.04,
+    "feedback": -0.05,
     "fit": 0.1
    },
    "decision": "included",
@@ -6069,7 +6069,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -4
+    "pts": -5
    },
    "diepte": "kort"
   },
@@ -6093,7 +6093,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.51,
     "quality": 0.38,
     "feedback": -0.03,
@@ -6119,58 +6119,6 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -3
-   },
-   "diepte": "kort"
-  },
-  {
-   "id": "078567da13b8",
-   "title": "OpenAI and Databricks: Enterprise AI on your governed data",
-   "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-13T15:30:00Z",
-   "fetched_at": "2026-11-14T03:13:14.462626Z",
-   "summary": "Databricks beschrijft drie manieren om OpenAI te gebruiken op data in Unity Catalog: vragen stellen in ChatGPT via een Genie-plugin, Codex laten lopen via Unity Gateway met budgetten en logboek, en eigen agents bouwen met GPT-modellen in Model Serving. Handig als overzicht van wat er rond OpenAI op Databricks bestaat; de status (preview of GA) per onderdeel staat er niet bij.",
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 78,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.96,
-    "source": 0.85,
-    "quality": 0.4,
-    "feedback": -0.06,
-    "fit": -0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-14T03:28:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "OpenAI-tools werken nu op je Databricks-data, via Genie en Unity Gateway",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.4,
-    "why": "Overzicht van een partnerschap met een andere AI-aanbieder; je duimen gaan vooral naar Claude en concrete Databricks-functies."
-   },
-   "labels": [
-    "unity-ai-gateway",
-    "genie-mcp",
-    "openai-op-databricks"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -6
    },
    "diepte": "kort"
   },
@@ -6351,7 +6299,7 @@
     "recency": 0.21,
     "source": 0.51,
     "quality": 0.65,
-    "feedback": -0.04,
+    "feedback": -0.05,
     "fit": 0.25
    },
    "decision": "included",
@@ -6441,7 +6389,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -4
+    "pts": -5
    }
   },
   {
@@ -6487,10 +6435,10 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.8,
     "quality": 0.58,
-    "feedback": -0.04,
+    "feedback": -0.05,
     "fit": 0.05
    },
    "decision": "included",
@@ -6546,7 +6494,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -4
+    "pts": -5
    }
   },
   {
@@ -6617,7 +6565,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.02,
@@ -6667,7 +6615,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 0.85,
     "quality": 0.33,
     "feedback": -0.06,
@@ -6689,6 +6637,58 @@
     "unity-ai-gateway",
     "multi-agent",
     "human-in-the-loop"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   },
+   "diepte": "kort"
+  },
+  {
+   "id": "078567da13b8",
+   "title": "OpenAI and Databricks: Enterprise AI on your governed data",
+   "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-13T15:30:00Z",
+   "fetched_at": "2026-11-14T03:13:14.462626Z",
+   "summary": "Databricks beschrijft drie manieren om OpenAI te gebruiken op data in Unity Catalog: vragen stellen in ChatGPT via een Genie-plugin, Codex laten lopen via Unity Gateway met budgetten en logboek, en eigen agents bouwen met GPT-modellen in Model Serving. Handig als overzicht van wat er rond OpenAI op Databricks bestaat; de status (preview of GA) per onderdeel staat er niet bij.",
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 77,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.4,
+    "feedback": -0.06,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-14T03:28:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "OpenAI-tools werken nu op je Databricks-data, via Genie en Unity Gateway",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.4,
+    "why": "Overzicht van een partnerschap met een andere AI-aanbieder; je duimen gaan vooral naar Claude en concrete Databricks-functies."
+   },
+   "labels": [
+    "unity-ai-gateway",
+    "genie-mcp",
+    "openai-op-databricks"
    ],
    "fb_why": {
     "by": "source",
@@ -6731,7 +6731,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.8,
     "quality": 0.57,
     "feedback": -0.03,
@@ -6909,7 +6909,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.51,
+    "recency": 0.5,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.06,
@@ -6991,7 +6991,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.92,
+    "recency": 0.91,
     "source": 0.85,
     "quality": 0.37,
     "feedback": -0.07,
@@ -7059,7 +7059,7 @@
     "recency": 0.2,
     "source": 1.0,
     "quality": 0.62,
-    "feedback": -0.04,
+    "feedback": -0.05,
     "fit": -0.05
    },
    "decision": "included",
@@ -7117,7 +7117,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -4
+    "pts": -5
    }
   },
   {
@@ -7190,7 +7190,7 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.6,
     "quality": 0.43,
     "feedback": -0.05,
@@ -7332,7 +7332,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.65,
+    "recency": 0.64,
     "source": 0.51,
     "quality": 0.37,
     "feedback": -0.02,
@@ -7494,7 +7494,7 @@
    "relevance_score": 69,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.79,
+    "recency": 0.78,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -7679,10 +7679,10 @@
    "groups": [
     "kwaliteit"
    ],
-   "relevance_score": 60,
+   "relevance_score": 59,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.06,
@@ -7729,7 +7729,7 @@
    "relevance_score": 57,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.62,
+    "recency": 0.61,
     "source": 0.6,
     "quality": 0.33,
     "feedback": -0.05,
@@ -7776,7 +7776,7 @@
    "relevance_score": 47,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.62,
+    "recency": 0.61,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.2,
@@ -14175,21 +14175,21 @@
    "dbt_analytics_engineering": 0.98,
    "cicd_data_deployment": 0.41,
    "ai_on_data_platform": 0.87,
-   "databricks_data_engineering": 0.65,
+   "databricks_data_engineering": 0.64,
    "powerbi_semantic_models": 0.38,
    "data_governance_privacy": 0.42,
    "ai_context_engineering": 0.95,
-   "claude_ai_development": 0.48,
+   "claude_ai_development": 0.47,
    "ai_agents_rag": 0.66,
    "data_architecture_modeling": 0.35,
    "data_ingestion": 0.16
   },
   "sources": {
-   "dbt_labs_blog": 0.91,
-   "databricks_blog": 0.67,
+   "dbt_labs_blog": 0.9,
+   "databricks_blog": 0.66,
    "powerbi_blog": 0.31,
    "dbt_developer_blog": 0.69,
-   "claude_code_releases": 0.29,
+   "claude_code_releases": 0.28,
    "azure_databricks_release_notes": 0.59,
    "fabric_blog": -0.08,
    "chris_webb": 0.07,
@@ -14198,7 +14198,7 @@
   "kinds": {
    "praktijk": 0.73,
    "praktisch": 0.27,
-   "achtergrond": 0.7,
+   "achtergrond": 0.69,
    "aankondiging": 0.48,
    "mening": 0.35,
    "release": 0.65
@@ -14237,7 +14237,7 @@
    },
    "kind": {
     "praktijk": -3,
-    "achtergrond": -4,
+    "achtergrond": -5,
     "aankondiging": -3
    }
   },
@@ -14406,26 +14406,6 @@
     ]
    },
    {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 85,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.325",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
@@ -14440,6 +14420,26 @@
     "title": "The agentic code converter is generally available for SQL conversion",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
+    "relevance_score": 84,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
+    "relevance_score": 84,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
     "relevance_score": 84,
     "decision": "excluded",
     "excluded_by": [
@@ -14505,16 +14505,6 @@
     "excluded_by": []
    },
    {
-    "title": "Metric view window measures are generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "AI Functions Unity Catalog permissions is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
@@ -14545,20 +14535,22 @@
     ]
    },
    {
-    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
-    "relevance_score": 82,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "dbt without the warehouse (or the bill): DuckDB end to end",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
     "relevance_score": 82,
     "decision": "source_cap",
     "excluded_by": []
+   },
+   {
+    "title": "Metric view window measures are generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/advanced-techniques#window-measures",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    },
    {
     "title": "v2.1.319",
@@ -14570,6 +14562,14 @@
      "minor_builds",
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+    "relevance_score": 81,
+    "decision": "source_cap",
+    "excluded_by": []
    },
    {
     "title": "dbt Charts: a new open-source language for dashboards that live inside your dbt repo",
@@ -14707,16 +14707,6 @@
     ]
    },
    {
-    "title": "AI Functions require Databricks Runtime 17.3 LTS or above",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#ai-functions-require-databricks-runtime-173-lts-or-above",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.317",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
@@ -14724,6 +14714,16 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "AI Functions require Databricks Runtime 17.3 LTS or above",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#ai-functions-require-databricks-runtime-173-lts-or-above",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
      "weekoverzicht"
     ]
    },
@@ -14851,14 +14851,6 @@
     "excluded_by": []
    },
    {
-    "title": "How Constellation is building a governed data foundation on Databricks",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks",
-    "relevance_score": 76,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Introducing Claude Meetings",
     "source_id": "claude_blog",
     "url": "https://claude.com/resources/articles/claude-meetings",
@@ -14905,6 +14897,14 @@
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Join-us-at-FABCON-SQLCON-2027-in-Atlanta-and-save/ba-p/5400304",
     "relevance_score": 75,
     "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "How Constellation is building a governed data foundation on Databricks",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks",
+    "relevance_score": 75,
+    "decision": "source_cap",
     "excluded_by": []
    },
    {
