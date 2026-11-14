@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T04:23:13.096011Z",
+ "generated_at": "2026-11-14T05:13:57.529586Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -470,7 +470,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
@@ -5509,55 +5509,6 @@
    "diepte": "kort"
   },
   {
-   "id": "e89c62d75061",
-   "title": "The Claude Tag guide for startups",
-   "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-12T00:00:00Z",
-   "fetched_at": "2026-11-13T03:13:29.038183Z",
-   "summary": "Een gids met ervaringen van acht startups met Claude Tag (bèta), waarmee je Claude in een Slack-kanaal aanroept: meldingen uitzoeken, een thread omzetten in een concept-PR, en datavragen beantwoorden op basis van vaste dbt-modellen en metrics. Alleen voor Team en Enterprise, en niet beschikbaar bij de HIPAA-configuratie of zero data retention.",
-   "availability_status": "preview",
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.9,
-    "source": 0.51,
-    "quality": 0.38,
-    "feedback": -0.03,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:50:00Z",
-   "reading_minutes": 1,
-   "format_version": 2,
-   "headline": "Zo zetten startups Claude in Slack in: van melding tot concept-PR",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.5,
-    "why": "Claude-werkwijze met een dbt-haakje, maar vooral startupvoorbeelden zonder techniek."
-   },
-   "labels": [
-    "claude-tag",
-    "claude-in-slack"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -3
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "56bb11919377",
    "title": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
    "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
@@ -6009,6 +5960,55 @@
     "name": "achtergrond",
     "pts": -4
    }
+  },
+  {
+   "id": "e89c62d75061",
+   "title": "The Claude Tag guide for startups",
+   "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-12T00:00:00Z",
+   "fetched_at": "2026-11-13T03:13:29.038183Z",
+   "summary": "Een gids met ervaringen van acht startups met Claude Tag (bèta), waarmee je Claude in een Slack-kanaal aanroept: meldingen uitzoeken, een thread omzetten in een concept-PR, en datavragen beantwoorden op basis van vaste dbt-modellen en metrics. Alleen voor Team en Enterprise, en niet beschikbaar bij de HIPAA-configuratie of zero data retention.",
+   "availability_status": "preview",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.51,
+    "quality": 0.38,
+    "feedback": -0.03,
+    "fit": 0.0
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T03:50:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "Zo zetten startups Claude in Slack in: van melding tot concept-PR",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.5,
+    "why": "Claude-werkwijze met een dbt-haakje, maar vooral startupvoorbeelden zonder techniek."
+   },
+   "labels": [
+    "claude-tag",
+    "claude-in-slack"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -3
+   },
+   "diepte": "kort"
   },
   {
    "id": "078567da13b8",
@@ -6585,7 +6585,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -6765,7 +6765,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.33,
     "feedback": -0.06,
@@ -7586,7 +7586,7 @@
    "relevance_score": 68,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.6,
     "quality": 0.37,
     "feedback": -0.07,
@@ -10676,18 +10676,19 @@
     "7737e173e31a",
     "e89c62d75061"
    ],
-   "generated_at": "2026-11-13T05:13:43Z"
+   "generated_at": "2026-11-14T05:25:00Z"
   },
   {
    "id": "geheugen-en-context-voor-agents",
    "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen. Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
    "topics": [
     "ai_context_engineering",
     "ai_agents_rag",
     "claude_ai_development"
    ],
    "article_ids": [
+    "0b6411ed8e60",
     "f5c90621cdfb",
     "6d403bbe9379",
     "ea59c0428e23",
@@ -10699,12 +10700,12 @@
     "4ade36aa9099",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-13T05:13:43Z"
+   "generated_at": "2026-11-14T05:25:00Z"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen, en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. Ook Anthropics advies voor modelkeuze past hierin: probeer mislukte taken opnieuw op een hogere effort, wat kan omdat je ziet of een taak gelukt is, en Curative laat een 'rechter' elk bericht van zijn agent nakijken. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
+   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen (en Databricks' Genie Migrate zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar), en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. Ook Anthropics advies voor modelkeuze past hierin: probeer mislukte taken opnieuw op een hogere effort, wat kan omdat je ziet of een taak gelukt is, en Curative laat een 'rechter' elk bericht van zijn agent nakijken. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
@@ -10716,6 +10717,7 @@
    "article_ids": [
     "8b7855abcc2d",
     "a9b6458ba033",
+    "d6ea4662f2dc",
     "c63f36899b14",
     "d2e9b967064a",
     "e7bf67f656d3",
@@ -10728,7 +10730,7 @@
     "d5f14a6242b0",
     "3180dbea1b88"
    ],
-   "generated_at": "2026-11-13T05:13:43Z"
+   "generated_at": "2026-11-14T05:25:00Z"
   }
  ],
  "weekly": {
@@ -14634,16 +14636,6 @@
     ]
    },
    {
-    "title": "External knowledge sources are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.317",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
@@ -14668,6 +14660,16 @@
     "title": "Run Claude Code and Codex in the SSH tunnel",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#run-claude-code-and-codex-in-the-ssh-tunnel",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "External knowledge sources are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
@@ -14837,14 +14839,6 @@
     "excluded_by": []
    },
    {
-    "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
-    "relevance_score": 76,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Introducing Claude Meetings",
     "source_id": "claude_blog",
     "url": "https://claude.com/resources/articles/claude-meetings",
@@ -14880,6 +14874,14 @@
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Join-us-at-FABCON-SQLCON-2027-in-Atlanta-and-save/ba-p/5400304",
     "relevance_score": 75,
     "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
+    "relevance_score": 75,
+    "decision": "source_cap",
     "excluded_by": []
    },
    {
