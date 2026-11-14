@@ -8,12 +8,12 @@ Lees eerst `taken/REGELS.md`. Deze taak schrijft per nieuw artikel de uitleg die
 1b. **Dataflow-voortgang.** Voeg `tomasr91/personal-data-platform` toe met add_repo (access **read**) en clone hem met `--depth 200` naast de radar. Draai `python scripts/dataflow_status.py <pad naar die clone>`: dat werkt `data/voortgang.json` bij. Controleer dat `stap` alleen een korte stapnaam is (geen paden, adressen of instellingen; anders maak je hem korter of leeg). Lukt toevoegen of clonen niet: sla deze stap over en ga door. **Uit die repository komt verder niets in de radar**: geen code, bestandsnamen of inhoud. Wijzig er niets in.
 2. **Context lezen.** `context/profile.md`, `context/tech-stack.md`, `context/projects.md`, `context/editorial-guide.md` de onderwerp-id's in `context/interests.yml` en `context/rode-draad.yml` en `data/voortgang.json` (zie **Dataflow**). De redactiegids is leidend. Lees ook `data/feedback.json` (zie **Feedback van T**) en `data/taste.json` (zie **Past bij jou**).
 3. **Werklijst.** Open `data/to_enrich.json`. Is `items` leeg: schrijf het taakverslag ("niets te verwerken") en stop.
-4. **Per artikel** (in volgorde): ga door tot je **10 artikelen** hebt uitgelegd (vol en kort samen) of de lijst op is (er staan er hooguit 40). T wil elke dag hooguit 10 nieuwe artikelen. Overslaan telt niet mee: zo vult het volgende artikel de plek op. Artikelen met `"volledig": true` tellen niet mee voor de 10. De werklijst staat al in de goede volgorde (actueel eerst, een ouder artikel met een hoge score mag voor). Kies per artikel **vol**, **kort** of **overslaan** (zie **Vol, kort of overslaan**). Staat bij een artikel `"volledig": true`, dan vroeg T zelf om de volle uitleg: altijd vol, en overschrijf het bestaande korte bestand.
+4. **Per artikel** (in volgorde): ga door tot je **10 artikelen** vol hebt uitgelegd of de lijst op is (er staan er hooguit 40). T wil elke dag hooguit 10 nieuwe artikelen. Overslaan telt niet mee: zo vult het volgende artikel de plek op. Artikelen met `"volledig": true` tellen niet mee voor de 10. De werklijst staat al in de goede volgorde (actueel eerst, een ouder artikel met een hoge score mag voor). Kies per artikel **vol** of **overslaan** (zie **Vol of overslaan**). Staat bij een artikel `"volledig": true`, dan vroeg T zelf om de volle uitleg: altijd vol, en overschrijf het bestaande korte bestand.
    0. Valt een artikel op titel en `excerpt` al **duidelijk** onder **overslaan** (buiten het vakgebied, dubbel)? Sla het dan over zonder de pagina te openen, met de regel als `reason`. Bij twijfel: openen.
-   1. Open de `url` en lees het artikel: bij vol het **volledige artikel**, bij kort mag je vlotter lezen. Uitleggen nooit alleen op titel of `excerpt`.
+   1. Open de `url` en lees het artikel: het **volledige artikel**. Uitleggen nooit alleen op titel of `excerpt`.
    2. Niet te lezen (betaalmuur, fout, geen inhoud)? Schrijf `data/enrichment/skipped/<id>.json` met `{"article_id", "url", "reason", "checked_at"}` en ga door. Begin `reason` dan met "Niet te lezen": zo'n artikel komt na een week nog één keer terug op de werklijst (staat er al een `skipped`-bestand, overschrijf het).
-   3. Moet het worden overgeslagen (zie **Vol, kort of overslaan**)? Ook een `skipped`-bestand, met de regel als `reason`.
-   4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder. Vol: met begrippen (`terms`) en waar het past een `showcase`. Kort: alleen de velden van **Korte uitleg**.
+   3. Moet het worden overgeslagen (zie **Vol of overslaan**)? Ook een `skipped`-bestand, met de regel als `reason`.
+   4. Anders: `data/enrichment/<id>.json` volgens **Formaat** hieronder. Met begrippen (`terms`) en waar het past een `showcase`.
    5. **Na elke 5 artikelen opslaan** (zie REGELS: tussendoor opslaan), commit `Uitleg: <aantal> artikelen`.
 5. **Aanvullen.** Staan er artikelen in `data/to_tag.json`: zet in hun `data/enrichment/<id>.json` alleen de ontbrekende velden `soort`, `fit`, `labels` en/of `project_ref` (de rest niet aanraken; bij `project_ref` mag je één zin aan het verhaal toevoegen, zie **Dataflow**). Hooguit 20, opslaan met commit `Aanvullen: <aantal> artikelen`.
 6. **Afronden.** Laatste artikelen opslaan, taakverslag `data/runs/<datum>-uitleggen.json` schrijven en opslaan.
@@ -70,48 +70,27 @@ T heeft nog beginnersniveau in data-ingestion, bundels en release pipelines, en 
 "terms": [{"term": "Auto Loader", "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."}]
 ```
 
-## Vol, kort of overslaan
+## Vol of overslaan
 
-T wil meer artikelen zien en kiest zelf wat hij leest (5-11-2026). Daarom:
+T wil **geen korte uitleg** meer (14-11-2026): een artikel krijgt een volle uitleg of het wordt overgeslagen. Maak geen bestanden met `"diepte": "kort"`.
 
 - **Vol**: de must-knows hieronder. Een volle uitleg zoals altijd.
-- **Kort**: wel binnen T's vakgebied, maar geen must-know: een kleine update, een preview, een klantverhaal met weinig aanpak, een kleinere Power BI- of Fabric-functie. Kort = een Nederlandse kop, twee zinnen samenvatting, `soort`, `fit` en `labels` (zie **Korte uitleg**). Wil T meer, dan tikt hij op "Volledig uitleggen".
-- **Overslaan** (met reden): buiten het vakgebied (bijv. een plugin voor financieel adviseurs), een nieuwe connector voor een bronsysteem (T wil die niet zien), dubbel (bijv. de video bij een artikel dat al is uitgelegd), niet te lezen, of pure marketing zonder inhoud.
+- **Overslaan** (met reden): al het andere. Buiten het vakgebied (bijv. een plugin voor financieel adviseurs), een nieuwe connector voor een bronsysteem, dubbel (bijv. de video bij een artikel dat al is uitgelegd), niet te lezen, pure marketing, en artikelen die geen must-know zijn (zie hieronder).
 
-Hieronder: wat **vol** krijgt. Wat daar niet onder valt maar wel binnen het vakgebied ligt, wordt **kort** (niet meer overslaan).
-
-## Korte uitleg
-
-```json
-{
-  "format_version": 2, "diepte": "kort",
-  "article_id": "<id>", "url": "<url>",
-  "headline": "Nederlandse kop, hooguit ongeveer 70 tekens",
-  "summary": "Twee zinnen: wat is het en voor wie is het handig.",
-  "topics": ["..."], "availability_status": "preview",
-  "quality": {"depth": 0.3, "practicality": 0.4, "novelty": 0.4},
-  "soort": "aankondiging", "fit": {"score": 0.5, "why": "..."}, "labels": ["..."], "project_ref": null,
-  "development_key": "korte-sleutel",
-  "processed_by": "Claude (geplande taak)", "processed_at": "2026-11-05T03:20:00Z", "prompt_version": "taak-v3-kort"
-}
-```
-
-Dezelfde regels: niets verzinnen, `quality` streng. Geen `story`, `key_facts`, `terms` of `showcase` nodig.
-
-## Wat vol krijgt (anders kort)
+## Wat vol krijgt (anders overslaan)
 
 Let op de **ondergrens per gebied** (`min_articles` bij `interest_areas` in `interests.yml`): de werklijst zet artikelen uit gebieden die te weinig in de app hebben (vaak Claude en nieuwe technologie) vooraan. Sla die niet over omdat ze minder bij dbt aansluiten; alleen om de regels hieronder.
 
-Een volle uitleg krijgen alleen de **must-knows**. Deze artikelen worden **kort** (niet vol):
+Een volle uitleg krijgen alleen de **must-knows**. Deze artikelen sla je over:
 
 - **Kleine updates**: een losse kleine functie, een UI-aanpassing, uitrol naar een extra regio, een nieuwe versie zonder inhoudelijke wijziging, een verzameloverzicht van veel kleine dingen.
-- **Nieuwe connectoren** voor bronsystemen (bijv. "X connector is available in Beta"): overslaan, niet kort. Een driver of koppeling tussen tools uit de eigen stack (bijv. Power BI ↔ Databricks) is géén connector in deze zin en mag wel.
+- **Nieuwe connectoren** voor bronsystemen (bijv. "X connector is available in Beta"). Een driver of koppeling tussen tools uit de eigen stack (bijv. Power BI ↔ Databricks) is géén connector in deze zin en mag wel.
 - **Klantverhalen zonder concrete aanpak**: het artikel moet noemen **welke tools** ze gebruiken en **wat de toepassing** is (wat bouwden ze, hoe werkt het). Alleen resultaten, citaten of marketing: overslaan.
-- **Power BI en Fabric**: vol alleen bij grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen. De rest kort.
+- **Power BI en Fabric**: vol alleen bij grote functies die algemeen beschikbaar worden, wijzigingen in de koppeling met Databricks, of functies die stoppen. De rest overslaan.
 
-**Opiniestukken mogen wel vol**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Een opinie van een niet-erkende auteur of zonder onderbouwing: kort. Een verkooppraatje of een stuk buiten het vakgebied (bijv. over sport of politiek): overslaan.
+**Opiniestukken mogen vol**, als de auteur een erkende vakpersoon is en de mening onderbouwd is (zie redactiegids §2, *Opiniestukken*). Zet dan `"article_type": "opinie"` en `"author"`. Anders overslaan.
 
-Twijfel je tussen vol en kort? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee: kort.
+Twijfel je? Vraag je af: "Moet T dit weten om zijn werk goed te blijven doen of een kans niet te missen?" Zo nee: overslaan.
 
 ## Feedback van T
 
@@ -145,7 +124,7 @@ Redenen bij 👍:
 
 T bouwt in zijn eigen tijd een persoonlijk data-engineering- en AI-platform: "Dataflow" (`context/rode-draad.yml`, 8 fases, van inrichting tot eigen agent). Hij wil artikelen daaraan kunnen ophangen.
 
-- Helpt een artikel **duidelijk** bij een fase (iets wat hij in die fase moet doen, kiezen of begrijpen)? Laat dat dan **in de tekst** aan bod komen: één zin in het verhaal (bij kort: in `summary`) die het verband concreet maakt, bijv. "Voor Dataflow is dit de manier om in fase 4 de historie van KNMI-metingen bij te houden." Zet daarna `project_ref`:
+- Helpt een artikel **duidelijk** bij een fase (iets wat hij in die fase moet doen, kiezen of begrijpen)? Laat dat dan **in de tekst** aan bod komen: één zin in het verhaal die het verband concreet maakt, bijv. "Voor Dataflow is dit de manier om in fase 4 de historie van KNMI-metingen bij te houden." Zet daarna `project_ref`:
   `"project_ref": {"fase": 4, "quote": "<die zin, of een stuk ervan van minstens 15 tekens, letterlijk>", "why": "Eén korte zin waarom."}`
 - Geen duidelijk verband? Zet `"project_ref": null`. Niet forceren: liever geen verwijzing dan een gezochte.
 - Let bij fase 1, 2, 5, 6 en 7 extra op wat wel en niet kan in **Databricks Free Edition**: dat is in het project een belangrijke vraag. Noem het als het artikel het zegt; verzin het niet.
