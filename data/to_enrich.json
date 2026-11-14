@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13T08:47:46.530833Z",
+ "generated_at": "2026-11-14T03:13:12.926035Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
   {
@@ -18,16 +18,43 @@
    ]
   },
   {
-   "id": "0b6411ed8e60",
-   "title": "How Stripe Built Kai on Deep Agents in 1 Week",
-   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
-   "source_id": "langchain_blog",
-   "source_name": "LangChain Blog",
-   "published_at": "2026-11-10T12:31:02Z",
-   "excerpt": "Learn how Stripe built Kai, a company-wide AI agent on LangChain, LangGraph, and Deep Agents, reaching 5,000 users in roughly 4 weeks.",
-   "preliminary_score": 42,
+   "id": "b8b78e99d0b7",
+   "title": "Apache Spark vs Apache Flink: which should you use?",
+   "url": "https://www.databricks.com/blog/spark-vs-flink",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-14T07:02:42Z",
+   "excerpt": "For most teams, Apache Spark™ is the better choice. Spark runs batch ETL, SQL analytics,...",
+   "preliminary_score": 59,
    "preliminary_topics": [
-    "open_source_tools"
+    "databricks_data_engineering",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "ea585dd9c0fa",
+   "title": "System One: Jev, ai_decide or Decisions API?",
+   "url": "https://www.advancinganalytics.co.uk/blog/system-one-jev-ai_decide-or-decisions-api",
+   "source_id": "simon_whiteley",
+   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
+   "published_at": "2026-11-13T13:35:10Z",
+   "excerpt": "Every day brings another System One release: a new TypeSafe AI Jev , ai_decide , OpenAI's Decisions API , Kev or OpenJev , each with a leaderboard of scores. They all do the same job: instead of writing an answer, they pick one from options you define and tell you how sure they are. New to System One models? This video walks through the basics and how to get started with Jev. This excercise started with a simple question someone asked me: when should we use Jev or Databricks' ai_decide? With OpenAI's new Decisions API, it becomes: Which hosted decision API should we use? The headline On easy calls all three are level. On fine-grained tasks, Jev and OpenAI's Decisions API stay level with each other and well ahead of ai_decide. Add examples to the prompt and Jev pulls ahead on the hardest job. Triage: broad intent Triage: exact case Next action Jev 0.87 0.79 0.56 Jev + examples 0.91 0.87 0.71 ai_decide 0.86 0.70 0.39 ai_decide + examples 0.91 0.73 0.43 OpenAI Decisions 0.88 0.79 0.57 OpenAI Decisions + examples 0.92 0.86 0.63 Data: accuracy on 300 unseen test chats ( the setup ) Scale: always guessing the most common next action scores 0.21 The setup The data. The Action-Based Conver",
+   "preliminary_score": 45,
+   "preliminary_topics": [
+    "databricks_data_engineering"
+   ]
+  },
+  {
+   "id": "078567da13b8",
+   "title": "OpenAI and Databricks: Enterprise AI on your governed data",
+   "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-13T15:30:00Z",
+   "excerpt": "Greg Brockman, co-founder and President of OpenAI, has a simple way to describe AI...",
+   "preliminary_score": 43,
+   "preliminary_topics": [
+    "databricks_data_engineering"
    ]
   },
   {
@@ -83,6 +110,19 @@
    ]
   },
   {
+   "id": "0b6411ed8e60",
+   "title": "How Stripe Built Kai on Deep Agents in 1 Week",
+   "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+   "source_id": "langchain_blog",
+   "source_name": "LangChain Blog",
+   "published_at": "2026-11-10T12:31:02Z",
+   "excerpt": "Learn how Stripe built Kai, a company-wide AI agent on LangChain, LangGraph, and Deep Agents, reaching 5,000 users in roughly 4 weeks.",
+   "preliminary_score": 41,
+   "preliminary_topics": [
+    "open_source_tools"
+   ]
+  },
+  {
    "id": "f75582ed9c57",
    "title": "Read, don't copy: replacing file and API feeds with OpenSharing - Part 1 (The Why)",
    "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-and-api-feeds-opensharing-part-1-why",
@@ -90,7 +130,7 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-06T22:10:00Z",
    "excerpt": "If you ingest data from your customers over SFTP or APIs, you have probably asked...",
-   "preliminary_score": 38,
+   "preliminary_score": 37,
    "preliminary_topics": [
     "data_ingestion"
    ]
@@ -130,7 +170,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-06T17:15:16Z",
    "excerpt": "Planning to join us at FABCON + SQLCON 2027? Register by November 13 to save $300 with early-access pricing, and use code MSCMTY to save an additional $200. Plus, a limited number of buy one, get one (BOGO) offers are available. Ask your account team or Fabric partner to find out how to get one. From March 8–12, 2027, FABCON + SQLCON brings the Microsoft data community together in Atlanta for five days of learning, connection, and hands-on experiences. Two conferences. One registration. FABCON + SQLCON brings together Microsoft Fabric, SQL, and Azure AI in one event. You can mix and match sessions and workshops across both conferences based on the topics most relevant to you. Whether you're exploring Microsoft Fabric, already scaling it in production, building with SQL, or looking at how AI is changing the data landscape, you'll have opportunities to: Hear directly from Microsoft and community experts. Explore expert-led sessions across Fabric, SQL, AI, analytics, data engineering, governance, Power BI, and more. Build practical skills through hands-on workshops. Learn from real-world customer experiences and implementation patterns. Connect with peers, Microsoft product experts, p",
-   "preliminary_score": 76,
+   "preliminary_score": 75,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "sql_spark_sql"
@@ -144,7 +184,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T20:00:00Z",
    "excerpt": "OneLake table APIs already let Iceberg-compatible engines discover and read tables in Microsoft Fabric. Today we're taking the next step with two additions: Iceberg REST Catalog (IRC) writes through the OneLake table endpoint, now available, and a new additional table metadata API, in preview, for adding descriptions and tags to tables and columns. Together, they make OneLake a place where any engine can not only read data, but also publish it, with the business context people and AI agents need to use it well. Write native Iceberg tables from the engines you already use Until now, the OneLake Iceberg endpoint supported read-only metadata operations. Now, IRC-compatible clients can create native Iceberg tables, commit new snapshots, and request short-lived storage credentials through the same endpoint they already use for reads. That means engines such as PyIceberg, Snowflake, and DuckDB can land results directly in OneLake using standard Iceberg tooling, with no custom connectors or copy jobs. Some of the supported Iceberg REST Catalog operations at the OneLake table endpoint include: Operation What it does Status List/get/check namespaces Discovers the schemas in a data item Avai",
-   "preliminary_score": 75,
+   "preliminary_score": 74,
    "preliminary_topics": [
     "ai_agents_rag",
     "powerbi_semantic_models",
@@ -182,20 +222,6 @@
    ]
   },
   {
-   "id": "33aba6cab6d1",
-   "title": "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Manage-once-reuse-everywhere-Introducing-variable-library/ba-p/5377349",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T18:20:11Z",
-   "excerpt": "Moving a real-time data pipeline from development to test to production should not mean reconfiguring every source and destination. Yet environment-specific connection details and destination references can make each release a manual, error-prone task. Variable library integration with Eventstream in Microsoft Fabric lets teams reuse the same eventstream definition across environments, with references that resolve to each environment's resources. What's new? Variable library integration with Eventstream is available in preview. For supported source connections and destination items, you can use variable library references instead of direct values. These references are preserved through Git integration and deployment pipelines, helping teams reuse an eventstream definition across workspaces with environment-specific configuration. How variable library integration works Variable library is an item type in Microsoft Fabric that provides a centralized way to define and manage configuration values at the workspace level. Instead of entering environment-specific connection details and item identifiers directly into an eventstream, a team creates variables in a variable library and refere",
-   "preliminary_score": 72,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "cicd_data_deployment"
-   ]
-  },
-  {
    "id": "6d9c0429baf2",
    "title": "Data Days: Learn, build, and connect with AI @Work",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Data-Days-Learn-build-and-connect-with-AI-Work/ba-p/5382446",
@@ -211,22 +237,6 @@
    ]
   },
   {
-   "id": "8490db033ef6",
-   "title": "Bringing Rust-native Spark compatibility to Microsoft OneLake with Sail and LakeSail",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Bringing-Rust-native-Spark-compatibility-to-Microsoft-OneLake/ba-p/5377595",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T17:48:58Z",
-   "excerpt": "Coauthor: Shehab Amin Microsoft OneLake gives every Microsoft Fabric tenant a single, unified data lake built on open formats. One copy of data, many engines: that is the promise, and it is what makes OneLake such a strong foundation for analytics and AI alike. This post looks at how Sail , the open-source distributed compute framework, and LakeSail Cloud , the managed platform for running Sail in production, connect natively to OneLake, and what that unlocks for teams running Spark and Python workloads on Fabric. Sail is a drop-in replacement for Apache Spark, rebuilt from the ground up in Rust, with Rust-native support for Delta Lake and Apache Iceberg out of the box. That makes it a natural fit for OneLake, where lakehouse tables are stored in exactly these open formats. Point Sail at a Fabric lakehouse and it reads and writes the same tables the rest of Fabric uses, with no data copies, no extra connectors to install, and no changes to existing Spark code. One engine for data and AI Sail implements the Spark Connect protocol, the gRPC interface that decouples Spark clients from the engine that executes their plans. Existing Spark SQL and DataFrame code targeting Spark 3.5 or 4.",
-   "preliminary_score": 70,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "databricks_data_engineering",
-    "sql_spark_sql",
-    "open_source_tools"
-   ]
-  },
-  {
    "id": "bca544cd94f7",
    "title": "OneLake: The file system for agent-first data engineering",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/OneLake-The-file-system-for-agent-first-data-engineering/ba-p/5383035",
@@ -238,20 +248,6 @@
    "preliminary_topics": [
     "ai_context_engineering",
     "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "2fe4fbe32c22",
-   "title": "Govern Fabric connections with admin APIs and data connection policies (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-Fabric-connections-with-admin-APIs-and-data-connection/ba-p/5383656",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-04T19:00:00Z",
-   "excerpt": "Co-author: Abhishek Narain Protect continuity, understand connection risk, and set tenant-wide guardrails Imagine that the person who built a business-critical pipeline has left your organization. The connection still exists, but nobody is sure who can manage it or whether its credentials will keep working. What begins as a handover problem quickly becomes a governance question: who owns your connections, where do they lead, and which identities should be allowed to use them? Microsoft Fabric brings these questions together through two complementary capabilities: Admin connection APIs give tenant administrators visibility and ownership-management tools across connection types. Data connection policies set preventive controls for cloud connections. Together, they support a practical sequence: restore responsibility, understand your connections, then enforce the authentication boundaries your organization needs. From recovery to prevention Keep work moving when a connection owner leaves A departure should not leave a connection without someone who can maintain it. When an existing connection has a single owner, a Fabric tenant administrator can use the admin connection APIs to grant ",
-   "preliminary_score": 64,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "ai_evaluation_observability"
    ]
   },
   {
@@ -281,6 +277,20 @@
    ]
   },
   {
+   "id": "2fe4fbe32c22",
+   "title": "Govern Fabric connections with admin APIs and data connection policies (Preview)",
+   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Govern-Fabric-connections-with-admin-APIs-and-data-connection/ba-p/5383656",
+   "source_id": "fabric_blog",
+   "source_name": "Microsoft Fabric Blog",
+   "published_at": "2026-11-04T19:00:00Z",
+   "excerpt": "Co-author: Abhishek Narain Protect continuity, understand connection risk, and set tenant-wide guardrails Imagine that the person who built a business-critical pipeline has left your organization. The connection still exists, but nobody is sure who can manage it or whether its credentials will keep working. What begins as a handover problem quickly becomes a governance question: who owns your connections, where do they lead, and which identities should be allowed to use them? Microsoft Fabric brings these questions together through two complementary capabilities: Admin connection APIs give tenant administrators visibility and ownership-management tools across connection types. Data connection policies set preventive controls for cloud connections. Together, they support a practical sequence: restore responsibility, understand your connections, then enforce the authentication boundaries your organization needs. From recovery to prevention Keep work moving when a connection owner leaves A departure should not leave a connection without someone who can maintain it. When an existing connection has a single owner, a Fabric tenant administrator can use the admin connection APIs to grant ",
+   "preliminary_score": 63,
+   "preliminary_topics": [
+    "powerbi_semantic_models",
+    "ai_evaluation_observability"
+   ]
+  },
+  {
    "id": "12d151d364ff",
    "title": "Share data and context across organizations with IQ Share (Preview)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Share-data-and-context-across-organizations-with-IQ-Share/ba-p/5378764",
@@ -288,24 +298,10 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-04T16:00:00Z",
    "excerpt": "The data needed to answer a business question rarely belongs to one organization. Enterprises depend on suppliers, software providers, research partners, and customers for information that complement their own. Yet getting that data into their workflow often means building another pipeline, maintaining another copy, and reconciling access across organizational boundaries. Even when the data arrives, its meaning can be left behind. Definitions, assumptions, and usage guidance are shared separately, leaving teams to reconstruct the context before they can put the data to work. With IQ Share in Microsoft Fabric, now in preview, organizations can share supported Fabric data items, along with context stored in lakehouse files, with recipients in other Fabric tenants. Data stays in the producer's tenant, recipients work in their own Fabric workspace, and producers retain control over access. Introducing IQ Share IQ Share brings cross-tenant data and context sharing into a Fabric item-based experience. In this preview, producers can share an entire Lakehouse, Warehouse, and Mirrored Items. For Lakehouses, markdown files can accompany the data with descriptions, business definitions, and i",
-   "preliminary_score": 62,
+   "preliminary_score": 61,
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "392fd68ef936",
-   "title": "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Strengthening-data-security-with-workspace-level-private/ba-p/5377347",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T21:00:00Z",
-   "excerpt": "Organizations that operate sensitive applications often keep them in networks with no route to the public internet. Applications in restricted networks need real-time analytics without a route to the public internet. Eventstream now supports workspace-level private links for custom endpoint sources (Preview), so those applications can send events to Microsoft Fabric over a private connection. Teams can bring sensitive operational data into real-time analytics without opening a public internet path for ingestion. The change is especially useful for in-house applications, services, and gateways that do not have a managed Eventstream connector. They can publish directly to a custom endpoint source through the workspace’s private connection, bringing these workloads into the same private networking model as supported connector-based sources. What is workspace-level private connectivity? Private Link is a network security feature of the Fabric platform that provides a private connection between a virtual network and Fabric. Data traffic travels over the Microsoft backbone network instead of the public internet. Workspace-level private links map an individual workspace to a virtual netwo",
-   "preliminary_score": 59,
-   "preliminary_topics": [
-    "powerbi_semantic_models",
-    "data_ingestion"
    ]
   },
   {
@@ -316,7 +312,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-09T21:32:00Z",
    "excerpt": "Coauthor - Artur Vieira Part 4 of a series on medallion architecture with Fabric Data Warehouse. Security should follow the layers, not fight them. In Part 1 we chose the pattern, in Part 2 we built the layers, and in Part 3 we covered the operating practices that keep them healthy. Security is the natural next step, because a medallion architecture already gives you something most platforms do not: three clearly different audiences. A medallion architecture creates clear boundaries between raw, refined, and curated data. Applying security and governance at those boundaries helps reduce unnecessary exposure, simplify access decisions, and give each audience the data it needs without opening every layer.. The following approach shows how to secure and govern a medallion pipeline in Fabric Data Warehouse. Why this matters Most access problems in analytics platforms are not dramatic breaches. They are cases of unnecessary access, such as an analyst who can read raw customer records because the entire warehouse was shared or a service account with more permissions than its task requires. A medallion architecture simplifies this work because each layer already signals a different level ",
-   "preliminary_score": 50,
+   "preliminary_score": 49,
    "preliminary_topics": [
     "data_architecture_modeling"
    ]
@@ -330,32 +326,6 @@
    "published_at": "2026-11-02T20:00:00Z",
    "excerpt": "Start with the question, not a blank dashboard Which transit stations are sending the most fans toward a stadium? How does that incoming demand compare with activity at the gates? Where are queues building? Answering these operational questions traditionally requires translating them into tables, queries, visualizations, and a dashboard layout. When you already know what you want to monitor, that setup can get in the way of the question you are trying to answer. Copilot in Microsoft Fabric can generate a Real-Time Dashboard from a natural-language description of the insights you want. Working with a selected database in an Eventhouse, it uses the tables in that database to create a dashboard tailored to your goal. Figure: Start generating a Real-Time Dashboard with Copilot from an Eventhouse database . Rather than beginning with an empty canvas and building each visual separately, you describe the operational view you need. Copilot helps create the initial dashboard, and you review and customize it for your team. Describe, refine, and create Copilot can already help you write KQL queries and edit individual dashboard tiles. With dashboard generation, you can start one level higher:",
    "preliminary_score": 46,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "1108578f6cfd",
-   "title": "Using Allow workspace settings editing policy in Fabric (Preview)",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Allow-workspace-settings-editing-policy-in-Fabric-Preview/ba-p/5377845",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T19:00:00Z",
-   "excerpt": "Your teams are ready to build. They know their data, understand their business, and need the freedom to manage the workspaces where ideas become solutions. As adoption grows, that freedom becomes even more valuable. So does the ability to protect the settings that matter most. A workspace admin role brings broad responsibility. But owning an analytics workspace shouldn't mean every administrator also needs authority over its encryption and networking. Organizations need a more precise way to share responsibility, without pulling everyday workspace management back into a central team's queue. At FabCon Barcelona, we introduced the Allow workspace settings editing policy, part of Microsoft Fabric policies, currently in preview. We're excited to give organizations finer control over sensitive workspace changes while keeping teams in charge of their day-to-day work. Now, you can delegate workspace ownership with clearer boundaries around who can change what, and where. Figure: Animated GIF - Configure and enforce network security through the Allow workspace settings editing policy. Put the right decisions in the right hands Fabric administrators can centrally define which workspace adm",
-   "preliminary_score": 45,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "42961f224d85",
-   "title": "Access versioned lakeFS data from Microsoft Fabric with Microsoft OneLake shortcuts",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Access-versioned-lakeFS-data-from-Microsoft-Fabric-with/ba-p/5377386",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-10-29T17:00:00Z",
-   "excerpt": "Coauthor: Iddo Avneri (Treeverse) Use a live branch for up-to-date analytics or pin a shortcut to an immutable commit when reproducibility matters. Data teams often need two seemingly conflicting things: immediate access to the latest data and the ability to return to the exact data behind an earlier analysis, report, or experiment. Maintaining both typically means creating snapshots, copying datasets, or building additional pipelines. That adds operational overhead and makes it harder to know which version of the data was used. Microsoft OneLake and lakeFS provide a simpler, complementary pattern for addressing this use case. OneLake shortcuts allow Microsoft Fabric lakehouses to reference data in external storage through a unified namespace. Because lakeFS exposes versioned data through an S3-compatible gateway , Fabric can access lakeFS-managed datasets by using a OneLake S3-compatible shortcut. The result: Fabric users can access either the current data on a lakeFS branch or an immutable version from a specific commit. This removes the need to create and maintain a separate pipeline for copying versioned data. Figure: Access lakeFS data from Microsoft Fabric using shortcuts to ",
-   "preliminary_score": 45,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
