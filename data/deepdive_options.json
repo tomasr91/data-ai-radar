@@ -1,27 +1,16 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-13T04:14:36Z",
+  "generated_at": "2026-11-14T04:25:00Z",
   "options": [
     {
-      "id": "onelake-als-opslag-voor-databricks",
-      "title": "Databricks-tabellen in OneLake: wat verandert er voor Unity Catalog en Power BI?",
-      "question": "Wat betekent het als Azure Databricks zijn tabellen direct in OneLake opslaat, wie beheert dan rechten en opslag, en wanneer kies je hiervoor in plaats van je eigen opslagaccount?",
-      "why": "Microsoft meldt sinds 5 november dat Azure Databricks tabellen via een externe locatie in Unity Catalog direct in OneLake kan opslaan; dat raakt jouw combinatie van Databricks en Power BI (Fabric).",
+      "id": "toegang-op-attributen",
+      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
+      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
+      "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
       "topics": [
-        "data_architecture_modeling",
-        "databricks_data_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "eigen-spark-bron-met-python",
-      "title": "Je eigen databron voor Spark schrijven met de Python Data Source API",
-      "question": "Hoe maak je van een bron zonder standaardkoppeling (een eigen bestandsformaat of een REST API) een gewone Spark-bron, en wanneer is dat beter dan een los Python-script dat eerst bestanden omzet?",
-      "why": "Eclipse Aerospace leest sinds kort zijn eigen binaire vluchtbestanden direct in Spark met deze API (12 november), en het past bij fase 3 van Dataflow: openbare data uit API's in Bronze krijgen.",
-      "topics": [
-        "data_ingestion",
-        "databricks_data_engineering"
+        "data_governance_privacy",
+        "metadata_lineage_catalogs",
+        "ai_in_healthcare"
       ],
       "area": "data_engineering"
     },
@@ -38,13 +27,23 @@
       "area": "context_agents"
     },
     {
-      "id": "claude-agents-in-eigen-netwerk",
-      "title": "Claude-agents in je eigen netwerk: wat blijft binnen, wat gaat naar buiten?",
-      "question": "Welke onderdelen van een agent (sandbox, sessiegeschiedenis, sleutels, tools, model) kun je zelf hosten, en wat betekent die verdeling voor gevoelige data zoals zorgdata?",
-      "why": "Anthropic laat bedrijven sinds 12 november (private bèta) ook de agentserver en sessiegeschiedenis van Claude Managed Agents zelf draaien; alleen de vragen aan het model gaan dan nog naar buiten.",
+      "id": "ai-functies-als-job-taak",
+      "title": "AI-functies als taak in een job: alleen nieuwe rijen door het model",
+      "question": "Hoe zet je ai_classify, ai_extract of ai_parse_document als vaste taak in een Lakeflow-job die alleen nieuwe of gewijzigde invoer verwerkt, en wanneer kies je dat in plaats van een AI-functie in een dbt-model?",
+      "why": "Databricks heeft sinds 4 november AI Function-taken voor jobs in bèta, en AI-functies in SQL werken vanaf januari 2027 alleen op Runtime 17.3 LTS en hoger; je gaf eerder een duim aan 'alleen nieuwe rijen naar het taalmodel'.",
+      "topics": [
+        "ai_on_data_platform",
+        "databricks_data_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-model-en-effort-kiezen",
+      "title": "Zwaarder model of meer denktijd? Zo kies je model en effort bij Claude",
+      "question": "Wat doet de effort-instelling precies, wanneer zet je die hoger in plaats van een zwaarder model te kiezen, en wanneer geef je werk aan een subagent op een klein model?",
+      "why": "Addy Osmani adviseert (9 november) om bij problemen eerst de effort hoger te zetten en pas daarna een zwaarder model te kiezen; dat raakt hoe je Claude Code inzet voor je dbt-werk.",
       "topics": [
         "claude_ai_development",
-        "data_governance_privacy",
         "ai_agents_rag"
       ],
       "area": "claude"
@@ -707,6 +706,64 @@
         "data_governance_privacy",
         "ai_in_healthcare",
         "ai_research_data"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "onelake-als-opslag-voor-databricks",
+      "title": "Databricks-tabellen in OneLake: wat verandert er voor Unity Catalog en Power BI?",
+      "question": "Wat betekent het als Azure Databricks zijn tabellen direct in OneLake opslaat, wie beheert dan rechten en opslag, en wanneer kies je hiervoor in plaats van je eigen opslagaccount?",
+      "why": "Microsoft meldt sinds 5 november dat Azure Databricks tabellen via een externe locatie in Unity Catalog direct in OneLake kan opslaan; dat raakt jouw combinatie van Databricks en Power BI (Fabric).",
+      "topics": [
+        "data_architecture_modeling",
+        "databricks_data_engineering",
+        "powerbi_semantic_models"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "eigen-spark-bron-met-python",
+      "title": "Je eigen databron voor Spark schrijven met de Python Data Source API",
+      "question": "Hoe maak je van een bron zonder standaardkoppeling (een eigen bestandsformaat of een REST API) een gewone Spark-bron, en wanneer is dat beter dan een los Python-script dat eerst bestanden omzet?",
+      "why": "Eclipse Aerospace leest sinds kort zijn eigen binaire vluchtbestanden direct in Spark met deze API (12 november), en het past bij fase 3 van Dataflow: openbare data uit API's in Bronze krijgen.",
+      "topics": [
+        "data_ingestion",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "context-vooraf-in-het-warehouse",
+      "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
+      "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
+      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
+      "topics": [
+        "ai_context_engineering",
+        "dbt_analytics_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-agents-in-eigen-netwerk",
+      "title": "Claude-agents in je eigen netwerk: wat blijft binnen, wat gaat naar buiten?",
+      "question": "Welke onderdelen van een agent (sandbox, sessiegeschiedenis, sleutels, tools, model) kun je zelf hosten, en wat betekent die verdeling voor gevoelige data zoals zorgdata?",
+      "why": "Anthropic laat bedrijven sinds 12 november (private bèta) ook de agentserver en sessiegeschiedenis van Claude Managed Agents zelf draaien; alleen de vragen aan het model gaan dan nog naar buiten.",
+      "topics": [
+        "claude_ai_development",
+        "data_governance_privacy",
+        "ai_agents_rag"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "bewakend-model-voor-agents",
+      "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
+      "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
+      "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
+      "topics": [
+        "ai_in_healthcare",
+        "ai_agents_rag"
       ],
       "area": "new_tech"
     }
