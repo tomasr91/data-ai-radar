@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-14T03:13:12.926035Z",
+ "generated_at": "2026-11-14T03:28:35.258502Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-13T04:10:00Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-14T03:28:00Z",
  "last_successful_update": "2026-11-14T03:13:12.926035Z",
  "groups": [
   {
@@ -419,8 +419,8 @@
  ],
  "daily_top": [
   "5c7174c45ad1",
+  "ea585dd9c0fa",
   "6ded4aa1cdcf",
-  "4dcd7af26dab",
   "d2e9b967064a",
   "c63f36899b14"
  ],
@@ -565,6 +565,114 @@
     "quote": "Voor Dataflow is dit iets voor fase 4",
     "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
    }
+  },
+  {
+   "id": "ea585dd9c0fa",
+   "title": "System One: Jev, ai_decide or Decisions API?",
+   "url": "https://www.advancinganalytics.co.uk/blog/system-one-jev-ai_decide-or-decisions-api",
+   "source_id": "simon_whiteley",
+   "published_at": "2026-11-13T13:35:10Z",
+   "fetched_at": "2026-11-14T03:13:16.753851Z",
+   "summary": "Advancing Analytics vergeleek drie beslismodellen op 300 klantgesprekken. Bij grove keuzes zijn ze even goed; bij fijne keuzes scoren Jev en OpenAI Decisions duidelijk hoger dan ai_decide in Databricks.",
+   "personal_relevance": "Classificeren van vrije tekst binnen Databricks mag met werkdata; dit laat zien waar ai_decide nu wel en niet goed genoeg voor is.",
+   "experiment": "Laat ai_decide op een openbare dataset (bijv. openbare productrecensies) een grove en een fijne categorie kiezen, en vergelijk de uitkomst met een handmatig gelabelde steekproef van 50 rijen.",
+   "limitations": [
+    "Eén nagespeelde dataset met wat rommelige labels; de auteur noemt het zelf een testsjabloon, geen eindoordeel.",
+    "De vragen zijn bijgesteld op fouten van Jev, wat Jev kan bevoordelen.",
+    "De snelheden zijn niet eerlijk te vergelijken: Jev en OpenAI via internet, ai_decide als batch in Databricks."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "ai_decide (Azure Databricks)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_decide"
+    },
+    {
+     "label": "Artikel",
+     "url": "https://www.advancinganalytics.co.uk/blog/system-one-jev-ai_decide-or-decisions-api"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_evaluation_observability",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 96,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.97,
+    "source": 0.85,
+    "quality": 0.72,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-14T03:27:47Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Running open-Jev in SQL on Databricks",
+     "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
+     "published_at": "2026-09-24T16:55:01Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes",
+   "story": [
+    "Er komt een nieuw soort AI-model op: het beslismodel. Zo'n model schrijft geen tekst, maar kiest uit opties die jij vastlegt en zegt hoe zeker het is. Bev Manz van Advancing Analytics zette drie aanbieders naast elkaar: Jev van TypeSafe AI, ai_decide in Databricks en de Decisions API van OpenAI.",
+    "Ze gebruikte een openbare dataset met nagespeelde klantenservicegesprekken van een kledingwinkel. Elk model moest twee dingen doen. Eerst het onderwerp kiezen: grof uit 10 opties, en fijn uit 54. Daarna de volgende stap uit een draaiboek van 30 stappen. Elk model kreeg dezelfde 300 testgesprekken, een keer met alleen de regels (zero-shot) en een keer met vijf vergelijkbare voorbeelden erbij (few-shot).",
+    "Bij de grove keuze zijn de drie gelijk, rond 0,9 goed. Bij de fijne keuzes valt ai_decide terug: 0,70 tegen 0,79 bij de andere twee. Voor de volgende stap scoort ai_decide 0,39, Jev 0,56. Voorbeelden toevoegen helpt Jev het meest: die komt dan op 0,71. Bij ai_decide helpen voorbeelden nauwelijks.",
+    "Wat zit er achter ai_decide? Databricks zegt het niet. Manz zag dat ai_decide bijna altijd hetzelfde antwoordt als OpenJev, een open beslismodel dat Databricks ook aanbiedt. Zij denkt dus dat dat erachter zit. Dat is haar afleiding, geen verklaring van Databricks.",
+    "Voor jou is het verschil in waar de data heen gaat belangrijk. Bij ai_decide blijft de data in de Databricks-werkruimte; bij Jev en OpenAI gaat hij naar buiten. Met werkdata blijft dus alleen ai_decide over. Haar advies: ai_decide is prima voor grove keuzes in een batch-query, maar test fijne keuzes eerst zelf."
+   ],
+   "key_facts": [
+    "Blog van Bev Manz (Advancing Analytics), 13 november 2026.",
+    "Dataset: Action-Based Conversations Dataset (ABCD), ongeveer 10.000 nagespeelde klantenservicegesprekken; 300 testgesprekken per model.",
+    "Fijne onderwerpkeuze (54 opties): Jev 0,79, OpenAI Decisions 0,79, ai_decide 0,70; met voorbeelden 0,87, 0,86 en 0,73.",
+    "Volgende stap (30 opties): Jev 0,56, OpenAI 0,57, ai_decide 0,39; met voorbeelden 0,71, 0,63 en 0,43. Altijd de meest voorkomende stap gokken geeft 0,21.",
+    "ai_decide gaf op 150 gesprekken in 96% (grof) en 89% (fijn) hetzelfde antwoord als OpenJev; dat ai_decide op OpenJev draait is de afleiding van de auteur.",
+    "Kosten per 1.000 aanroepen: Jev $0,06-0,10, OpenAI $0,11-0,20, ai_decide maximaal ongeveer $0,55 als batch-query (ongeveer $3 los per aanroep).",
+    "ai_decide is in Beta, vraagt Databricks Runtime 15.4 LTS of hoger en werkt niet op SQL Classic (officiële documentatie)."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo roep je ai_decide aan: je geeft de tekst (de 'state') en vaste vragen met toegestane antwoorden. Je krijgt per vraag de gekozen optie, de kansen en een zekerheid terug.",
+    "language": "sql",
+    "code": "SELECT ai_decide(\n  '{\"name\": \"TrailShell jacket\", \"description\": \"Lightweight waterproof hiking jacket made from recycled polyester.\"}',\n  '{\n    \"category\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Which product category best fits this item?\",\n      \"criteria\": {\n        \"outerwear\": \"Jackets, coats, and other protective outer layers\",\n        \"footwear\": \"Shoes, boots, and sandals\",\n        \"accessories\": \"Bags, hats, and other accessories\"\n      }\n    },\n    \"recycled_materials\": {\n      \"type\": \"noul\",\n      \"instructions\": \"Does the listing state that the product uses recycled materials?\"\n    }\n  }',\n  map('version', '1.0')\n) AS decision;",
+    "note": "Ingekort voorbeeld uit de officiële documentatie van ai_decide (Beta). Het antwoord is een VARIANT; in het voorbeeld daar kiest het model 'outerwear' met kans 0,95. Niet zelf gedraaid."
+   },
+   "terms": [
+    {
+     "term": "beslismodel",
+     "explanation": "Een AI-model dat geen tekst schrijft maar kiest uit vaste opties die jij geeft, met per optie een kans. Handig om tekst snel en goedkoop in te delen."
+    },
+    {
+     "term": "zero-shot",
+     "explanation": "Je geeft het model alleen de opdracht en de regels, zonder voorbeelden van goede antwoorden."
+    },
+    {
+     "term": "few-shot",
+     "explanation": "Je geeft het model naast de opdracht een paar uitgewerkte voorbeelden, zodat het ziet wat een goed antwoord is."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Toetst een AI-functie in Databricks SQL met cijfers, zoals je duimen voor AI-functies in SQL en evals."
+   },
+   "labels": [
+    "beslismodellen",
+    "ai-functies-in-sql",
+    "agent-evals"
+   ]
   },
   {
    "id": "6ded4aa1cdcf",
@@ -5789,6 +5897,58 @@
    "diepte": "kort"
   },
   {
+   "id": "078567da13b8",
+   "title": "OpenAI and Databricks: Enterprise AI on your governed data",
+   "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-13T15:30:00Z",
+   "fetched_at": "2026-11-14T03:13:14.462626Z",
+   "summary": "Databricks beschrijft drie manieren om OpenAI te gebruiken op data in Unity Catalog: vragen stellen in ChatGPT via een Genie-plugin, Codex laten lopen via Unity Gateway met budgetten en logboek, en eigen agents bouwen met GPT-modellen in Model Serving. Handig als overzicht van wat er rond OpenAI op Databricks bestaat; de status (preview of GA) per onderdeel staat er niet bij.",
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 78,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.4,
+    "feedback": -0.06,
+    "fit": -0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-14T03:28:00Z",
+   "reading_minutes": 1,
+   "format_version": 2,
+   "headline": "OpenAI-tools werken nu op je Databricks-data, via Genie en Unity Gateway",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.4,
+    "why": "Overzicht van een partnerschap met een andere AI-aanbieder; je duimen gaan vooral naar Claude en concrete Databricks-functies."
+   },
+   "labels": [
+    "unity-ai-gateway",
+    "genie-mcp",
+    "openai-op-databricks"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -6
+   },
+   "diepte": "kort"
+  },
+  {
    "id": "4255764d89d9",
    "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
    "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
@@ -6756,64 +6916,6 @@
    }
   },
   {
-   "id": "c57e227522fd",
-   "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
-   "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-12T16:53:43Z",
-   "fetched_at": "2026-11-13T03:13:29.332345Z",
-   "summary": "Databricks wil met Lakehouse//RT (bèta) duizenden kleine query's per seconde, zoals die van AI-agents, direct op Delta-tabellen draaien, met fijnere autoscaling per node in plaats van een aparte laag zoals Apache Druid of Pinot. De besparingen (6 tot 10 keer lager) komen van Databricks en geselecteerde klanten, zonder onafhankelijke meting.",
-   "availability_status": "preview",
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks"
-   ],
-   "relevance_score": 76,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.93,
-    "source": 0.85,
-    "quality": 0.37,
-    "feedback": -0.07,
-    "fit": -0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T03:50:00Z",
-   "reading_minutes": 1,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
-     "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
-     "published_at": "2026-11-12T16:53:43Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Lakehouse//RT: veel snelle query's direct op de lakehouse, in bèta",
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.4,
-    "why": "Databricks-nieuws met vooral claims; je duimde eerder voor praktische stukken, niet voor productmarketing."
-   },
-   "labels": [
-    "lakehouse-rt",
-    "sql-warehouse-realtime"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -7
-   },
-   "diepte": "kort"
-  },
-  {
    "id": "d9a4007c6074",
    "title": "Redesigning source control at Anthropic",
    "url": "https://www.anthropic.com/research/redesigning-source-control",
@@ -6954,36 +7056,43 @@
    "diepte": "kort"
   },
   {
-   "id": "9a1a77aea3de",
-   "title": "Running open-Jev in SQL on Databricks",
-   "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-09-24T16:55:01Z",
-   "date_note": "Gepubliceerd op 24 september 2026; ruim een maand voor deze verwerking.",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Databricks laat zien hoe je een open beslismodel op een eigen GPU-endpoint zet en het met ai_query vanuit SQL aanroept. Het model kiest uit vaste opties, zoals goed of slecht.",
-   "personal_relevance": "Een goedkope manier om vrije tekst in Silver te labelen zonder dat de data Databricks verlaat.",
-   "experiment": "Draai het notebook uit het artikel in een proefwerkruimte en classificeer twintig zelfverzonnen recensies met ai_query. Vergelijk de uitkomst met je eigen oordeel.",
+   "id": "94b4924597e5",
+   "title": "Azure Databricks: wat is er nieuw in week 43",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-10-25T23:59:59Z",
+   "fetched_at": "2026-10-28T20:21:52.418970Z",
+   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
+   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
+   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
    "limitations": [
-    "Geen cijfers over nauwkeurigheid, kosten of snelheid.",
-    "De modelnamen in het artikel zijn niet consequent gespeld; controleer het model en de licentie op GitHub.",
-    "Er is een GPU-endpoint nodig; dat kost geld zolang het aanstaat."
+    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
+    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
    ],
-   "availability_status": "onbekend",
+   "availability_status": "aangekondigd",
    "official_docs": [
     {
-     "label": "Notebook: SemIf-beslismodellen serveren",
-     "url": "https://docs.databricks.com/aws/en/notebooks/source/machine-learning/serve-semif-decision-models.html"
+     "label": "Azure Databricks release notes oktober 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
     },
     {
-     "label": "ai_query",
-     "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query"
+     "label": "What's coming? (Genie Ontology)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
+    },
+    {
+     "label": "Genie Code task for jobs",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
+    },
+    {
+     "label": "Shared Serverless voor Git-mappen en bundels",
+     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
     }
    ],
    "topics": [
     "ai_on_data_platform",
+    "ai_context_engineering",
     "databricks_data_engineering",
-    "open_source_tools"
+    "cicd_data_deployment"
    ],
    "groups": [
     "ai_context",
@@ -6993,53 +7102,86 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.08,
-    "source": 0.68,
-    "quality": 0.57,
-    "feedback": -0.03,
-    "fit": 0.15
+    "recency": 0.39,
+    "source": 1.0,
+    "quality": 0.68,
+    "feedback": 0.01,
+    "fit": 0.2,
+    "regel": -0.15
    },
    "decision": "included",
    "processing_status": "enriched",
-   "processed_by": "Claude (handmatige run op verzoek)",
-   "processed_at": "2026-10-29T07:40:54Z",
-   "reading_minutes": 2,
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T16:20:00Z",
+   "reading_minutes": 3,
    "format_version": 2,
-   "headline": "Een klein open beslismodel draaien vanuit SQL op Databricks",
+   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
    "story": [
-    "Databricks beschrijft een nieuw soort model: een beslismodel dat niet vrij tekst schrijft, maar kiest uit een vaste lijst opties. Het geeft daarbij per optie een kans. Zulke modellen zijn volgens Databricks snel en goedkoop, en dus bruikbaar op grote tabellen.",
-    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev. Een notebook downloadt het model en zet het op een serverless GPU-endpoint. Daarna roep je het vanuit SQL aan met ai_query. Dat werkt nu ook voor modellen met een eigen aanroepformaat. Je krijgt kolommen terug met de gekozen klasse en de kansen.",
-    "Het lijkt op een dbt-test met accepted_values, maar dan voor vrije tekst: het antwoord valt altijd in een vaste lijst. In het artikel classificeren ze hotelrecensies als goed of slecht.",
-    "Voor jou is dit interessant omdat het model binnen Databricks draait. Dan mag het in principe ook op werkdata, binnen de toegangsrechten. Het artikel geeft wel geen cijfers over nauwkeurigheid of kosten, en de SQL zelf staat er niet in."
+    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
+    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
+    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
+    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
    ],
    "key_facts": [
-    "Blog van Databricks van 24 september 2026.",
-    "Beslismodellen kiezen uit een vaste set opties en geven per optie een kans.",
-    "Het voorbeeld gebruikt het open-sourcemodel SemIf-OpenJev; een notebook zet het op een GPU Model Serving-endpoint via AI Runtime en Express Deployments.",
-    "ai_query ondersteunt eigen model-API's, dus het model is vanuit SQL en vanuit Lakeflow-jobs aan te roepen.",
-    "Het voorbeeld classificeert hotelrecensies als goed of slecht.",
-    "Het artikel noemt geen cijfers over nauwkeurigheid, kosten of snelheid."
+    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
+    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
+    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
+    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
+    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
+    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
+    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
    ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
+    "language": "text",
+    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
+    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
+   },
    "terms": [
     {
-     "term": "ai_query",
-     "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren."
+     "term": "Declarative Automation Bundles",
+     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
     },
     {
-     "term": "GPU-endpoint",
-     "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen."
+     "term": "serverless compute",
+     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
+    },
+    {
+     "term": "pyproject.toml",
+     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
+    },
+    {
+     "term": "Lakeflow Jobs",
+     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
     }
    ],
-   "soort": "praktisch",
+   "soort": "release",
    "fit": {
-    "score": 0.65,
-    "why": "AI vanuit SQL op Databricks, zoals je duim bij 'AI in je dbt-model'."
+    "score": 0.7,
+    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
    },
+   "labels": [
+    "genie-ontology",
+    "asset-bundles",
+    "databricks-weekoverzicht"
+   ],
    "fb_why": {
     "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   }
+    "name": "ai_context_engineering",
+    "pts": 1
+   },
+   "rule_why": [
+    {
+     "id": "einde-support",
+     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
+     "pts": -15
+    }
+   ]
   },
   {
    "id": "225ab7984001",
@@ -10362,6 +10504,7 @@
     "ceb4b784fbab",
     "a68aede0b61b",
     "560fbec0053e",
+    "94b4924597e5",
     "67b79f31be0e",
     "215f0a50b9ea",
     "5c7174c45ad1",
@@ -10442,7 +10585,9 @@
    {
     "title": "Genie haalt vanaf begin november zelf context uit je metric views en dashboards",
     "why": "Genie Ontology wordt begin november algemeen beschikbaar en staat dan standaard aan, met alleen snippets uit assets waar de gebruiker rechten op heeft. Het is goed om vooraf te weten welke metric views en dashboards Genie straks als context gebruikt.",
-    "article_ids": []
+    "article_ids": [
+     "94b4924597e5"
+    ]
    },
    {
     "title": "Agents leveren beter werk met een vaste lus van bouwen, testen en vergelijken",
@@ -10568,17 +10713,6 @@
      "kind": "a",
      "id": "941b0ba5dad7",
      "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
-    }
-   ]
-  },
-  {
-   "term": "ai_query",
-   "explanation": "Een SQL-functie in Databricks waarmee je per rij een AI-model aanroept, bijvoorbeeld om tekst te classificeren.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "9a1a77aea3de",
-     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
     }
    ]
   },
@@ -10742,6 +10876,17 @@
      "kind": "a",
      "id": "77544766b84c",
      "title": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen"
+    }
+   ]
+  },
+  {
+   "term": "beslismodel",
+   "explanation": "Een AI-model dat geen tekst schrijft maar kiest uit vaste opties die jij geeft, met per optie een kans. Handig om tekst snel en goedkoop in te delen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ea585dd9c0fa",
+     "title": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes"
     }
    ]
   },
@@ -11189,6 +11334,11 @@
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
     },
     {
+     "kind": "a",
+     "id": "94b4924597e5",
+     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
+    },
+    {
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
@@ -11455,6 +11605,17 @@
    ]
   },
   {
+   "term": "few-shot",
+   "explanation": "Je geeft het model naast de opdracht een paar uitgewerkte voorbeelden, zodat het ziet wat een goed antwoord is.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ea585dd9c0fa",
+     "title": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes"
+    }
+   ]
+  },
+  {
    "term": "fork",
    "explanation": "Een subagent die het gesprek tot nu toe meeneemt, in plaats van blanco te beginnen zoals een gewone subagent.",
    "refs": [
@@ -11593,17 +11754,6 @@
      "kind": "a",
      "id": "ae2bc3c9f749",
      "title": "Databricks werkt nu meerdere tabellen in één keer bij, of helemaal niet"
-    }
-   ]
-  },
-  {
-   "term": "GPU-endpoint",
-   "explanation": "Een adres waar een model op een grafische kaart (GPU) draait en aanvragen beantwoordt, zodat je het vanuit SQL of code kunt aanroepen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "9a1a77aea3de",
-     "title": "Een klein open beslismodel draaien vanuit SQL op Databricks"
     }
    ]
   },
@@ -11839,6 +11989,11 @@
    "term": "Lakeflow Jobs",
    "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "94b4924597e5",
+     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
+    },
     {
      "kind": "a",
      "id": "0b4ae9670355",
@@ -12145,6 +12300,11 @@
      "kind": "a",
      "id": "308e572d49e4",
      "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
+    },
+    {
+     "kind": "a",
+     "id": "94b4924597e5",
+     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "a",
@@ -12520,6 +12680,17 @@
    ]
   },
   {
+   "term": "pyproject.toml",
+   "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "94b4924597e5",
+     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
+    }
+   ]
+  },
+  {
    "term": "Python Data Source API",
    "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...).",
    "refs": [
@@ -12809,6 +12980,17 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
+    }
+   ]
+  },
+  {
+   "term": "serverless compute",
+   "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "94b4924597e5",
+     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     }
    ]
   },
@@ -13419,6 +13601,17 @@
    ]
   },
   {
+   "term": "zero-shot",
+   "explanation": "Je geeft het model alleen de opdracht en de regels, zonder voorbeelden van goede antwoorden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ea585dd9c0fa",
+     "title": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes"
+    }
+   ]
+  },
+  {
    "term": "Zerobus Ingest",
    "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft.",
    "refs": [
@@ -13838,26 +14031,26 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 409,
-  "unique_after_dedupe": 595,
-  "merged_duplicates": 29,
-  "shown": 78,
+  "fetched_items": 631,
+  "unique_after_dedupe": 594,
+  "merged_duplicates": 30,
+  "shown": 79,
   "decisions": {
    "excluded": 210,
-   "included": 116,
-   "area_cap": 2,
+   "included": 117,
    "no_topic": 132,
-   "below_threshold": 106,
+   "below_threshold": 102,
    "included_low": 3,
-   "source_cap": 26
+   "source_cap": 28,
+   "area_cap": 2
   },
   "processing": {
-   "enriched": 78
+   "enriched": 79
   },
   "without_date": 0,
   "per_group": {
    "overig": 10,
-   "ai_context": 22,
+   "ai_context": 23,
    "dbt": 6,
    "claude": 18,
    "agents": 14,
@@ -13867,14 +14060,15 @@
   },
   "per_source": {
    "databricks_blog": 14,
+   "simon_whiteley": 1,
    "dbt_labs_blog": 10,
-   "azure_databricks_release_notes": 3,
+   "azure_databricks_release_notes": 4,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 4,
    "claude_blog": 12,
    "claude_code_releases": 3,
    "dbt_core_releases": 1,
-   "databricks_engineering_blog": 4,
+   "databricks_engineering_blog": 3,
    "chris_webb": 1,
    "hamel_husain": 1,
    "simon_willison": 3,
@@ -13924,9 +14118,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 147
+   "skipped_no_key": 143
   },
-  "queue_size": 25,
+  "queue_size": 18,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -14451,6 +14645,14 @@
     "excluded_by": []
    },
    {
+    "title": "Lakehouse//RT: Scale real-time analytics, not your bill",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
+    "relevance_score": 76,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Introducing Claude Meetings",
     "source_id": "claude_blog",
     "url": "https://claude.com/resources/articles/claude-meetings",
@@ -14494,14 +14696,6 @@
     "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
     "relevance_score": 75,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Azure Databricks: wat is er nieuw in week 43",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-    "relevance_score": 74,
-    "decision": "area_cap",
     "excluded_by": []
    },
    {
