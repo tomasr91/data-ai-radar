@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-15T03:14:41.425302Z",
+ "generated_at": "2026-11-15T04:14:24.843169Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -470,7 +470,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.06,
@@ -605,7 +605,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -1219,128 +1219,6 @@
    }
   },
   {
-   "id": "d8887a09bc5e",
-   "title": "The components of agent memory",
-   "url": "https://www.anthropic.com/research/components-of-agent-memory",
-   "source_id": "anthropic_engineering",
-   "published_at": "2026-11-06T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.778789Z",
-   "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
-   "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
-   "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
-   "limitations": [
-    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
-    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
-    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Dreaming in Claude Managed Agents",
-     "url": "https://platform.claude.com/docs/en/managed-agents/dreams"
-    },
-    {
-     "label": "Geheugenmap in Managed Agents",
-     "url": "https://platform.claude.com/docs/en/managed-agents/memory"
-    },
-    {
-     "label": "Geheugen in Claude Code",
-     "url": "https://code.claude.com/docs/en/memory"
-    },
-    {
-     "label": "Knowledge wiki quickstart",
-     "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.64,
-    "source": 1.0,
-    "quality": 0.75,
-    "feedback": -0.04,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:48:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "langchain_blog",
-     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-     "published_at": "2026-10-28T17:28:42Z",
-     "reason": "zelfde ontwikkeling"
-    },
-    {
-     "source_id": "claude_blog",
-     "title": "The components of agent memory",
-     "url": "https://www.anthropic.com/research/components-of-agent-memory",
-     "published_at": "2026-11-06T00:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
-   "story": [
-    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
-    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
-    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
-    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
-    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
-   ],
-   "key_facts": [
-    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
-    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
-    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
-    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
-    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
-    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "dreaming",
-     "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."
-    },
-    {
-     "term": "transcripten",
-     "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."
-    },
-    {
-     "term": "MEMORY.md",
-     "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.75,
-    "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."
-   },
-   "labels": [
-    "agent-geheugen",
-    "llm-wiki",
-    "context-als-code"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   }
-  },
-  {
    "id": "a68aede0b61b",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
    "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
@@ -1510,6 +1388,128 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -2
+   }
+  },
+  {
+   "id": "d8887a09bc5e",
+   "title": "The components of agent memory",
+   "url": "https://www.anthropic.com/research/components-of-agent-memory",
+   "source_id": "anthropic_engineering",
+   "published_at": "2026-11-06T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.778789Z",
+   "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
+   "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
+   "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
+   "limitations": [
+    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
+    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
+    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Dreaming in Claude Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/dreams"
+    },
+    {
+     "label": "Geheugenmap in Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/memory"
+    },
+    {
+     "label": "Geheugen in Claude Code",
+     "url": "https://code.claude.com/docs/en/memory"
+    },
+    {
+     "label": "Knowledge wiki quickstart",
+     "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.63,
+    "source": 1.0,
+    "quality": 0.75,
+    "feedback": -0.04,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:48:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "langchain_blog",
+     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+     "published_at": "2026-10-28T17:28:42Z",
+     "reason": "zelfde ontwikkeling"
+    },
+    {
+     "source_id": "claude_blog",
+     "title": "The components of agent memory",
+     "url": "https://www.anthropic.com/research/components-of-agent-memory",
+     "published_at": "2026-11-06T00:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
+   "story": [
+    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
+    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
+    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
+    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
+    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
+   ],
+   "key_facts": [
+    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
+    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
+    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
+    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
+    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
+    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "dreaming",
+     "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."
+    },
+    {
+     "term": "transcripten",
+     "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."
+    },
+    {
+     "term": "MEMORY.md",
+     "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."
+   },
+   "labels": [
+    "agent-geheugen",
+    "llm-wiki",
+    "context-als-code"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
    }
   },
   {
@@ -1701,106 +1701,6 @@
    }
   },
   {
-   "id": "d5f14a6242b0",
-   "title": "Which Claude model should you build with?",
-   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
-   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
-   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
-   "limitations": [
-    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
-    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
-    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Choosing the right model",
-     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
-    }
-   ],
-   "topics": [
-    "claude_ai_development"
-   ],
-   "groups": [
-    "claude"
-   ],
-   "relevance_score": 89,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.74,
-    "source": 0.51,
-    "quality": 0.67,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T04:10:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "claude_blog",
-     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
-     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
-     "published_at": "2026-11-12T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
-   "story": [
-    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
-    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
-    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
-    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
-    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
-    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
-    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
-    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
-    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
-    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
-    "language": "text",
-    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
-    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
-   },
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "SWE-bench Pro",
-     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
-    },
-    {
-     "term": "subagent",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
-   },
-   "labels": [
-    "claude-modellen",
-    "claude-effort",
-    "claude-code-subagents",
-    "claude-code-kosten"
-   ]
-  },
-  {
    "id": "0b6411ed8e60",
    "title": "How Stripe Built Kai on Deep Agents in 1 Week",
    "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
@@ -1834,7 +1734,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -2257,6 +2157,106 @@
     "claude-code-mcp-taken",
     "claude-code-permissies",
     "claude-code-sandbox"
+   ]
+  },
+  {
+   "id": "d5f14a6242b0",
+   "title": "Which Claude model should you build with?",
+   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
+   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
+   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
+   "limitations": [
+    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
+    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
+    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Choosing the right model",
+     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+    }
+   ],
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.74,
+    "source": 0.51,
+    "quality": 0.67,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:10:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "claude_blog",
+     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
+     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+     "published_at": "2026-11-12T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "story": [
+    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
+    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
+    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
+    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
+    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
+    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
+    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
+    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
+    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
+    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
+    "language": "text",
+    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
+    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
+   },
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "SWE-bench Pro",
+     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
+    },
+    {
+     "term": "subagent",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
+   },
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
    ]
   },
   {
@@ -3937,7 +3937,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.03,
@@ -4410,7 +4410,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 0.9,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.1,
@@ -4555,7 +4555,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.5,
     "feedback": -0.02,
@@ -5852,7 +5852,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.38,
     "feedback": -0.03,
@@ -6700,7 +6700,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.4,
     "feedback": -0.02,
@@ -10348,7 +10348,7 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-14T04:25:00Z",
+  "generated_at": "2026-11-15T04:25:00Z",
   "options": [
    {
     "id": "toegang-op-attributen",
@@ -10363,33 +10363,33 @@
     "area": "data_engineering"
    },
    {
-    "id": "context-vooraf-in-het-warehouse",
-    "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
-    "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
-    "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
+    "id": "agent-geheugen-in-lagen",
+    "title": "Wat moet een data-agent onthouden? Geheugen in lagen en 'dreaming'",
+    "question": "Hoe bouw je het geheugen van een agent op in lagen (transcripten, notities, een wiki, een klein bestand dat altijd wordt ingeladen), en hoe houd je dat geheugen juist en klein, bijvoorbeeld met een aparte run die het na afloop opruimt?",
+    "why": "Trend 'Agents houden hun venster leeg': Anthropic beschreef op 6 november vier geheugenlagen en 'dreaming', een aparte run die het geheugen van een agent na afloop toetst en opruimt.",
     "topics": [
      "ai_context_engineering",
-     "dbt_analytics_engineering",
-     "ai_agents_rag"
+     "ai_agents_rag",
+     "claude_ai_development"
     ],
     "area": "context_agents"
    },
    {
-    "id": "ai-functies-als-job-taak",
-    "title": "AI-functies als taak in een job: alleen nieuwe rijen door het model",
-    "question": "Hoe zet je ai_classify, ai_extract of ai_parse_document als vaste taak in een Lakeflow-job die alleen nieuwe of gewijzigde invoer verwerkt, en wanneer kies je dat in plaats van een AI-functie in een dbt-model?",
-    "why": "Databricks heeft sinds 4 november AI Function-taken voor jobs in bèta, en AI-functies in SQL werken vanaf januari 2027 alleen op Runtime 17.3 LTS en hoger; je gaf eerder een duim aan 'alleen nieuwe rijen naar het taalmodel'.",
+    "id": "beslismodel-of-ai-classify",
+    "title": "Kiezen uit vaste opties: beslismodel, ai_classify of een gewone prompt?",
+    "question": "Wanneer laat je een AI-model kiezen uit opties die jij vastlegt (zoals ai_decide of ai_classify in Databricks) in plaats van een vrije prompt, en hoe meet je op een testset of het fijne keuzes goed genoeg maakt?",
+    "why": "In een test van Advancing Analytics (13 november) scoorden ai_decide en twee andere beslismodellen gelijk op grove keuzes, maar viel ai_decide terug bij fijne keuzes (0,70 tegen 0,79).",
     "topics": [
      "ai_on_data_platform",
-     "databricks_data_engineering"
+     "ai_evaluation_observability"
     ],
     "area": "context_agents"
    },
    {
-    "id": "claude-model-en-effort-kiezen",
-    "title": "Zwaarder model of meer denktijd? Zo kies je model en effort bij Claude",
-    "question": "Wat doet de effort-instelling precies, wanneer zet je die hoger in plaats van een zwaarder model te kiezen, en wanneer geef je werk aan een subagent op een klein model?",
-    "why": "Addy Osmani adviseert (9 november) om bij problemen eerst de effort hoger te zetten en pas daarna een zwaarder model te kiezen; dat raakt hoe je Claude Code inzet voor je dbt-werk.",
+    "id": "agents-samenwerken-via-git-en-database",
+    "title": "1.000 agents, één prikbord: samenwerken via Git en een database",
+    "question": "Hoe verdelen meerdere Claude-agents één groot klus via alleen Git en een gedeelde database (taken claimen, notities, een logboek), en wat kun je daarvan overnemen als je zelf met subagents in Claude Code werkt?",
+    "why": "Anthropic liet op 9 november 1.000 agents samen een formeel bewijs opbouwen, met als enige gereedschap Git en een Postgres-database met vijf tabellen als gedeeld prikbord.",
     "topics": [
      "claude_ai_development",
      "ai_agents_rag"
@@ -10397,12 +10397,12 @@
     "area": "claude"
    },
    {
-    "id": "bewakend-model-voor-agents",
-    "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
-    "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
-    "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
+    "id": "rag-op-onderzoeksdocumentatie",
+    "title": "Zoeken in onderzoeksdocumentatie met RAG: waar het meestal misgaat",
+    "question": "Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne (onderzoeks)documentatie, met opknippen, hybride zoeken en herrangschikken, en wanneer is RAG niet de juiste keuze?",
+    "why": "Kennisontsluiting van onderzoeksdocumentatie staat bij je project AI in de zorg, en Databricks AI Search kan sinds eind oktober ook streaming tables en materialized views als bron gebruiken.",
     "topics": [
-     "ai_in_healthcare",
+     "ai_research_data",
      "ai_agents_rag"
     ],
     "area": "new_tech"
@@ -13933,9 +13933,9 @@
    "azure_databricks_release_notes": 3,
    "anthropic_engineering": 2,
    "dbt_developer_blog": 2,
-   "claude_blog": 12,
    "langchain_blog": 9,
    "claude_code_releases": 3,
+   "claude_blog": 12,
    "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
    "chris_webb": 1,
