@@ -1,34 +1,31 @@
 {
- "checked_at": "2026-11-01T11:04:47.875712Z",
+ "checked_at": "2026-11-15T21:16:41.744829Z",
  "sources": [
   {
-   "id": "extra:https://blog.fabric.microsoft.com/en-us/blog/",
-   "url": "https://blog.fabric.microsoft.com/en-us/blog/",
-   "found": {
-    "feed_url": "https://blog.fabric.microsoft.com/en-us/blog/feed",
-    "items": 20,
-    "latest": "2026-10-29T21:00:00Z",
-    "sample_titles": [
-     "Strengthening data security with workspace-level private connectivity for custom endpoints for Eventstream (Preview)",
-     "Using Allow workspace settings editing policy in Fabric (Preview)",
-     "Manage once, reuse everywhere: Introducing variable library support for Eventstream (Preview)"
-    ],
-    "method": "rss"
-   },
-   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
-   "tried": 1
+   "id": "extra:https://www.startdataengineering.com/",
+   "url": "https://www.startdataengineering.com/",
+   "found": null,
+   "page": "ok",
+   "tried": 9
   },
   {
-   "id": "extra:https://www.sqlbi.com/articles/",
-   "url": "https://www.sqlbi.com/articles/",
+   "id": "extra:https://dataengineeringcentral.substack.com/",
+   "url": "https://dataengineeringcentral.substack.com/",
+   "found": null,
+   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
+   "tried": 9
+  },
+  {
+   "id": "extra:https://delta.io/blog/",
+   "url": "https://delta.io/blog/",
    "found": {
-    "feed_url": "https://feeds.feedburner.com/sqlbi_blog",
+    "feed_url": "https://delta.io/rss.xml",
     "items": 30,
-    "latest": "2026-10-27T11:00:00Z",
+    "latest": "2026-08-20T00:00:00Z",
     "sample_titles": [
-     "DAX LLM Benchmark v2.0 Trailer",
-     "DAX LLM Benchmark v2",
-     "Install DAX libraries into Power BI Desktop by asking your AI assistant"
+     "Advancing the Open Lakehouse with Apache Spark, the Delta Kernel, and the new UC Delta APIs",
+     "Introducing the UC Delta API",
+     "Strengthening Catalog-Managed Delta Tables with the Unity Catalog Delta APIs"
     ],
     "method": "rss"
    },
@@ -36,16 +33,98 @@
    "tried": 1
   },
   {
-   "id": "extra:https://www.sqlbi.com/",
-   "url": "https://www.sqlbi.com/",
+   "id": "extra:https://www.advancinganalytics.co.uk/blog",
+   "url": "https://www.advancinganalytics.co.uk/blog",
    "found": {
-    "feed_url": "https://feeds.feedburner.com/sqlbi_blog",
-    "items": 30,
-    "latest": "2026-10-27T11:00:00Z",
+    "feed_url": "https://www.advancinganalytics.co.uk/blog/rss.xml",
+    "items": 10,
+    "latest": "2026-11-13T13:35:10Z",
     "sample_titles": [
-     "DAX LLM Benchmark v2.0 Trailer",
-     "DAX LLM Benchmark v2",
-     "Install DAX libraries into Power BI Desktop by asking your AI assistant"
+     "System One: Jev, ai_decide or Decisions API?",
+     "My Story Into Data: Aoife O'Kane Hackett",
+     "Experimentation to Outcomes: How the Data & AI Landscape is Changing"
+    ],
+    "method": "rss"
+   },
+   "page": "ok",
+   "tried": 1
+  },
+  {
+   "id": "extra:https://dlthub.com/blog",
+   "url": "https://dlthub.com/blog",
+   "found": {
+    "feed_url": "https://dlthub.com/blog/rss.xml",
+    "items": 30,
+    "latest": "2026-11-12T00:00:00Z",
+    "sample_titles": [
+     "dltHub brings data and meaning into ClickHouse",
+     "dltHub on ClickHouse: the ClickHouse Agent walkthrough",
+     "Introducing performance optimization in dltHub"
+    ],
+    "method": "atom"
+   },
+   "page": "ok",
+   "tried": 1
+  },
+  {
+   "id": "extra:https://seattledataguy.substack.com/",
+   "url": "https://seattledataguy.substack.com/",
+   "found": null,
+   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
+   "tried": 9
+  },
+  {
+   "id": "extra:https://www.confessionsofadataguy.com/",
+   "url": "https://www.confessionsofadataguy.com/",
+   "found": {
+    "feed_url": "https://www.confessionsofadataguy.com/feed/",
+    "items": 10,
+    "latest": "2026-11-11T15:13:27Z",
+    "sample_titles": [
+     "From Engineer to CTO: The Skills That Actually Matter in the AI Era",
+     "Polars 2.0 vs DuckDB 2.0",
+     "Rust. AWS S3. Scripts. Python. Datetimes. Files. Etc."
+    ],
+    "method": "rss"
+   },
+   "page": "ok",
+   "tried": 1
+  },
+  {
+   "id": "extra:https://joereis.substack.com/",
+   "url": "https://joereis.substack.com/",
+   "found": null,
+   "page": "pagina niet bereikbaar: HTTP Error 403: Forbidden",
+   "tried": 9
+  },
+  {
+   "id": "extra:https://duckdb.org/news/",
+   "url": "https://duckdb.org/news/",
+   "found": {
+    "feed_url": "https://duckdb.org/feed.xml",
+    "items": 10,
+    "latest": "2026-11-12T00:00:00Z",
+    "sample_titles": [
+     "Local Analytics Doesn’t Need a Database Server",
+     "Ducks in a Column",
+     "How JetBrains Built Cross-Database Queries into DataGrip with DuckDB"
+    ],
+    "method": "atom"
+   },
+   "page": "ok",
+   "tried": 1
+  },
+  {
+   "id": "extra:https://www.ssp.sh/blog/",
+   "url": "https://www.ssp.sh/blog/",
+   "found": {
+    "feed_url": "https://www.ssp.sh/posts/index.xml",
+    "items": 30,
+    "latest": "2026-11-10T06:00:08Z",
+    "sample_titles": [
+     "Rust for Data Engineering",
+     "Building a Data Engineering Project in 20 Minutes",
+     "A Diary of a Data Engineer"
     ],
     "method": "rss"
    },
