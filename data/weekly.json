@@ -1,23 +1,35 @@
 {
-  "week": "2026-W44",
-  "generated_at": "2026-11-01T04:00:00Z",
-  "intro": "Een week waarin bijna elke bron hetzelfde zei: een AI-agent wordt betrouwbaar door vaste context en een vaste controle, niet door een slimmer model.",
+  "week": "2026-W46",
+  "generated_at": "2026-11-15T05:15:55Z",
+  "intro": "Een week waarin de platforms de context voor AI zelf gingen beheren, en waarin agents steeds vaker binnen de eigen omgeving en achter één poort draaien.",
   "highlights": [
     {
-      "title": "Vaste definities en context naast de data maken AI-antwoorden betrouwbaar",
-      "why": "AWS, Checkr en dbt Labs lieten zien dat een agent die uit vastgelegde maatstaven en beschrijvingen kiest veel minder vaak misrekent dan een agent die zelf SQL schrijft. Voor je AI-contextlaag betekent dat: leg maatstaven één keer vast in metric views of de dbt semantic layer, en voeg alleen context toe waar een test aantoonbaar faalt.",
-      "article_ids": ["4dcd7af26dab", "a68aede0b61b", "67b79f31be0e"]
+      "title": "Genie Ontology is algemeen beschikbaar en metric views komen in Power BI",
+      "why": "Genie haalt nu zelf begrippen uit dashboards, queries en Power BI-modellen, en metric views kunnen (in private preview) als Power BI-semantisch model worden gepubliceerd. Voor jou betekent dat: een maatstaf die je één keer in Unity Catalog vastlegt, kan straks zowel in je rapporten als in AI-antwoorden hetzelfde getal geven.",
+      "article_ids": [
+        "656e0d953ae9",
+        "5c7174c45ad1",
+        "6ded4aa1cdcf"
+      ]
     },
     {
-      "title": "Genie haalt vanaf begin november zelf context uit je metric views en dashboards",
-      "why": "Genie Ontology wordt begin november algemeen beschikbaar en staat dan standaard aan, met alleen snippets uit assets waar de gebruiker rechten op heeft. Het is goed om vooraf te weten welke metric views en dashboards Genie straks als context gebruikt.",
-      "article_ids": ["94b4924597e5", "382e049710f1"]
+      "title": "Agents draaien binnen je eigen grenzen: zelf hosten en via één gateway",
+      "why": "Claude Managed Agents kun je in een private bèta zelf hosten, en Block en OpenAI laten agents en modellen via Databricks Unity Gateway lopen, met budgetten en een logboek. De vragen aan het model zelf gaan nog steeds naar buiten, dus voor werkdata verandert de regel niet.",
+      "article_ids": [
+        "5b59c75a11e5",
+        "334fd5b5e6c0",
+        "078567da13b8"
+      ]
     },
     {
-      "title": "Agents leveren beter werk met een vaste lus van bouwen, testen en vergelijken",
-      "why": "dbt Labs zag dat Claude 5.5 dbt al kent en dat de fouten uit het proces komen; hun agent Wizard bouwt daarom alleen gewijzigde modellen, test ze en vergelijkt de data met productie. Bij Claude Code kun je hetzelfde inrichten met skills, korte uitvoer en een vaste controlestap.",
-      "article_ids": ["c63f36899b14", "c33e4a9941ba", "4cc09a1d9883"]
+      "title": "Claude Fable 5.2 is er, maar Opus 5.5 blijft het werkpaard",
+      "why": "Fable 5.2 scoort volgens Anthropic hoger op coderen en is bedoeld voor grote, open taken; voor dagelijks werk raadt Anthropic Opus 5.5 aan, met eerst een hogere effort als iets niet lukt. In Claude Code verandert er dus weinig, behalve dat je Fable als adviseur of regisseur kunt inzetten.",
+      "article_ids": [
+        "ffe8a09e969f",
+        "d5f14a6242b0",
+        "62afb1e0ab94"
+      ]
     }
   ],
-  "focus": "Probeer in een dbt-project met openbare data één gewijzigd model te bouwen met --defer, zoals in het artikel over dbt Wizard, en kijk hoeveel tijd en uitvoer het scheelt ten opzichte van een volledige build."
+  "focus": "Lees de verdieping 'Agent in eigen huis' en probeer in een testproject met openbare data in Claude Code de instelling permissions.denyInsteadOfPrompting uit bij een geplande taak, zodat die een niet-toegestane actie weigert in plaats van te blijven wachten."
 }
