@@ -1,6 +1,6 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-14T04:25:00Z",
+  "generated_at": "2026-11-15T04:25:00Z",
   "options": [
     {
       "id": "toegang-op-attributen",
@@ -15,33 +15,33 @@
       "area": "data_engineering"
     },
     {
-      "id": "context-vooraf-in-het-warehouse",
-      "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
-      "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
-      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
+      "id": "agent-geheugen-in-lagen",
+      "title": "Wat moet een data-agent onthouden? Geheugen in lagen en 'dreaming'",
+      "question": "Hoe bouw je het geheugen van een agent op in lagen (transcripten, notities, een wiki, een klein bestand dat altijd wordt ingeladen), en hoe houd je dat geheugen juist en klein, bijvoorbeeld met een aparte run die het na afloop opruimt?",
+      "why": "Trend 'Agents houden hun venster leeg': Anthropic beschreef op 6 november vier geheugenlagen en 'dreaming', een aparte run die het geheugen van een agent na afloop toetst en opruimt.",
       "topics": [
         "ai_context_engineering",
-        "dbt_analytics_engineering",
-        "ai_agents_rag"
+        "ai_agents_rag",
+        "claude_ai_development"
       ],
       "area": "context_agents"
     },
     {
-      "id": "ai-functies-als-job-taak",
-      "title": "AI-functies als taak in een job: alleen nieuwe rijen door het model",
-      "question": "Hoe zet je ai_classify, ai_extract of ai_parse_document als vaste taak in een Lakeflow-job die alleen nieuwe of gewijzigde invoer verwerkt, en wanneer kies je dat in plaats van een AI-functie in een dbt-model?",
-      "why": "Databricks heeft sinds 4 november AI Function-taken voor jobs in bèta, en AI-functies in SQL werken vanaf januari 2027 alleen op Runtime 17.3 LTS en hoger; je gaf eerder een duim aan 'alleen nieuwe rijen naar het taalmodel'.",
+      "id": "beslismodel-of-ai-classify",
+      "title": "Kiezen uit vaste opties: beslismodel, ai_classify of een gewone prompt?",
+      "question": "Wanneer laat je een AI-model kiezen uit opties die jij vastlegt (zoals ai_decide of ai_classify in Databricks) in plaats van een vrije prompt, en hoe meet je op een testset of het fijne keuzes goed genoeg maakt?",
+      "why": "In een test van Advancing Analytics (13 november) scoorden ai_decide en twee andere beslismodellen gelijk op grove keuzes, maar viel ai_decide terug bij fijne keuzes (0,70 tegen 0,79).",
       "topics": [
         "ai_on_data_platform",
-        "databricks_data_engineering"
+        "ai_evaluation_observability"
       ],
       "area": "context_agents"
     },
     {
-      "id": "claude-model-en-effort-kiezen",
-      "title": "Zwaarder model of meer denktijd? Zo kies je model en effort bij Claude",
-      "question": "Wat doet de effort-instelling precies, wanneer zet je die hoger in plaats van een zwaarder model te kiezen, en wanneer geef je werk aan een subagent op een klein model?",
-      "why": "Addy Osmani adviseert (9 november) om bij problemen eerst de effort hoger te zetten en pas daarna een zwaarder model te kiezen; dat raakt hoe je Claude Code inzet voor je dbt-werk.",
+      "id": "agents-samenwerken-via-git-en-database",
+      "title": "1.000 agents, één prikbord: samenwerken via Git en een database",
+      "question": "Hoe verdelen meerdere Claude-agents één groot klus via alleen Git en een gedeelde database (taken claimen, notities, een logboek), en wat kun je daarvan overnemen als je zelf met subagents in Claude Code werkt?",
+      "why": "Anthropic liet op 9 november 1.000 agents samen een formeel bewijs opbouwen, met als enige gereedschap Git en een Postgres-database met vijf tabellen als gedeeld prikbord.",
       "topics": [
         "claude_ai_development",
         "ai_agents_rag"
@@ -49,75 +49,18 @@
       "area": "claude"
     },
     {
-      "id": "bewakend-model-voor-agents",
-      "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
-      "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
-      "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
+      "id": "rag-op-onderzoeksdocumentatie",
+      "title": "Zoeken in onderzoeksdocumentatie met RAG: waar het meestal misgaat",
+      "question": "Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne (onderzoeks)documentatie, met opknippen, hybride zoeken en herrangschikken, en wanneer is RAG niet de juiste keuze?",
+      "why": "Kennisontsluiting van onderzoeksdocumentatie staat bij je project AI in de zorg, en Databricks AI Search kan sinds eind oktober ook streaming tables en materialized views als bron gebruiken.",
       "topics": [
-        "ai_in_healthcare",
+        "ai_research_data",
         "ai_agents_rag"
       ],
       "area": "new_tech"
     }
   ],
   "history": [
-    {
-      "id": "ingestion-basis",
-      "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
-      "question": "Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming), met welke Databricks-opties (Auto Loader, Lakeflow Connect, pipelines, COPY INTO)?",
-      "why": "Ingestion is nog beginnersterrein voor jou; deze week kwamen push-CDC met Zerobus en Spark 4.3 langs, en dit stuk geeft het bredere plaatje eronder.",
-      "topics": [
-        "data_ingestion",
-        "databricks_data_engineering"
-      ],
-      "area": "data_engineering",
-      "level": "beginner"
-    },
-    {
-      "id": "databricks-opslag-in-onelake",
-      "title": "Databricks-tabellen in OneLake: één kopie voor Databricks en Power BI?",
-      "question": "Hoe werkt het als Unity Catalog zijn tabellen via een externe locatie in OneLake opslaat, wat betekent dat voor Power BI en Fabric, en hoe regel je de rechten aan twee kanten goed?",
-      "why": "Microsoft meldde op 5 november dat OneLake als opslag voor Azure Databricks algemeen beschikbaar is, terwijl de Databricks-documentatie het nog Beta noemt en waarschuwt voor rechten via de Fabric-werkruimte.",
-      "topics": [
-        "data_architecture_modeling",
-        "powerbi_semantic_models",
-        "data_governance_privacy"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "een-agent-of-subagents",
-      "title": "Eén agent met skills of een team van subagents: wanneer kies je wat?",
-      "question": "Waarom werkt één agent met skills en een paar smalle tools vaak beter dan een verdeler met subagents, wanneer zijn subagents wel nuttig, en hoe stap je met evals stap voor stap over?",
-      "why": "Past bij de trend 'Agents houden hun venster leeg'; Anthropic beschreef hoe klanten hun subagents samenvoegden, en het raakt direct aan hoe je een assistent op dbt-metadata opzet.",
-      "topics": [
-        "ai_agents_rag",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "prompt-verbeteren-tegen-eval",
-      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
-      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
-      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
-      "topics": [
-        "claude_ai_development",
-        "ai_evaluation_observability"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "cdc-duwen-met-debezium",
-      "title": "Wijzigingen duwen in plaats van ophalen: CDC met Debezium en Zerobus",
-      "question": "Wat is het verschil tussen een pijplijn die data ophaalt en een bron die wijzigingen zelf naar buiten duwt, hoe werkt Debezium met de write-ahead log, en hoe maak je van 'minstens één keer' een schone silver-tabel?",
-      "why": "Databricks en NVIDIA bouwden deze week een Debezium-sink naar Zerobus Ingest, zodat wijzigingen uit Postgres zonder Kafka in Unity Catalog komen; een open-sourcepatroon dat ook bij afgeschermde netwerken past.",
-      "topics": [
-        "data_ingestion",
-        "open_source_tools"
-      ],
-      "area": "new_tech"
-    },
     {
       "id": "ingestion-basis",
       "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
@@ -752,6 +695,63 @@
       "topics": [
         "claude_ai_development",
         "data_governance_privacy",
+        "ai_agents_rag"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "bewakend-model-voor-agents",
+      "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
+      "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
+      "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
+      "topics": [
+        "ai_in_healthcare",
+        "ai_agents_rag"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "toegang-op-attributen",
+      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
+      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
+      "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
+      "topics": [
+        "data_governance_privacy",
+        "metadata_lineage_catalogs",
+        "ai_in_healthcare"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "context-vooraf-in-het-warehouse",
+      "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
+      "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
+      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
+      "topics": [
+        "ai_context_engineering",
+        "dbt_analytics_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "ai-functies-als-job-taak",
+      "title": "AI-functies als taak in een job: alleen nieuwe rijen door het model",
+      "question": "Hoe zet je ai_classify, ai_extract of ai_parse_document als vaste taak in een Lakeflow-job die alleen nieuwe of gewijzigde invoer verwerkt, en wanneer kies je dat in plaats van een AI-functie in een dbt-model?",
+      "why": "Databricks heeft sinds 4 november AI Function-taken voor jobs in bèta, en AI-functies in SQL werken vanaf januari 2027 alleen op Runtime 17.3 LTS en hoger; je gaf eerder een duim aan 'alleen nieuwe rijen naar het taalmodel'.",
+      "topics": [
+        "ai_on_data_platform",
+        "databricks_data_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-model-en-effort-kiezen",
+      "title": "Zwaarder model of meer denktijd? Zo kies je model en effort bij Claude",
+      "question": "Wat doet de effort-instelling precies, wanneer zet je die hoger in plaats van een zwaarder model te kiezen, en wanneer geef je werk aan een subagent op een klein model?",
+      "why": "Addy Osmani adviseert (9 november) om bij problemen eerst de effort hoger te zetten en pas daarna een zwaarder model te kiezen; dat raakt hoe je Claude Code inzet voor je dbt-werk.",
+      "topics": [
+        "claude_ai_development",
         "ai_agents_rag"
       ],
       "area": "claude"
