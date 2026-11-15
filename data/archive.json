@@ -5017,8 +5017,112 @@
    "published_raw": "Sun, 15 Nov 2026 18:00:52 +0000",
    "fetched_at": "2026-11-15T21:13:01.195856Z",
    "excerpt": "A couple of weeks ago I wrote this post about how you can use the new Send Email action in Dataflows Gen2 to send out email-based reports to a list of recipients. I did it by creating a parameterised Dataflow &#8211; which worked but the end result was slow and therefore expensive. So I started &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/11/15/report-bursting-with-dataflows-gen2-revisited-action-sequences/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Report Bursting With Dataflows Gen2 Revisited: Action Sequences</span> <span class=\"meta-nav\">&#8594;</span></a>"
+  },
+  "simon_spati:f49f6dcce187": {
+   "source_id": "simon_spati",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "published_raw": "Tue, 10 Nov 2026 08:00:08 +0200",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "excerpt": "<p>Graphs usually get a bad rap: &ldquo;what are they good for?&rdquo;, &ldquo;there&rsquo;s no schema&rdquo;. But there are also moments when they are superior to tables and other formats, and agents like them a lot. Typed graphs, meaning graphs with clear data types attached, help even more, especially with types that can be checked and verified. If you can define it declaratively, that helps collaboration by giving humans and agents a place to work together, but also data quality, as you can version it and extensively run tests (unit, end-to-end, etc.).</p>"
+  },
+  "simon_spati:873de8dc3ad7": {
+   "source_id": "simon_spati",
+   "title": "As Humans Write Less Code: Workloads Shift from Human to Agent Verification with Iterative Test Suites",
+   "url": "https://www.ssp.sh/blog/humans-write-less-code/",
+   "published_raw": "Tue, 03 Nov 2026 09:40:08 +0200",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "excerpt": "<p>Analysts, analytics engineers, and even business users are writing less SQL and Python by hand. They prompt an agent instead, and with the right context (data models, docs, a data catalog), the agent writes a decent query. Think of a BI tool shifting left and democratizing new context from data models and sources. This helps the agents better understand the business problem and write a more accurate SQL query.</p>\n<p>With more advanced tooling that automatically reviews or generates queries iteratively, the agents&rsquo; output gets higher in quality every time. The models get better, and we can add additional documentation from internal Confluence pages or data catalogs, and it will get even better.</p>"
+  },
+  "simon_spati:ba1374e28929": {
+   "source_id": "simon_spati",
+   "title": "Data Engineering Is the Cache Invalidation Problem Ft. Josh Wills",
+   "url": "https://www.ssp.sh/blog/cache-invalidation-problem-data-engineering/",
+   "published_raw": "Thu, 15 Oct 2026 06:40:08 +0200",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "excerpt": "<p>In this episode, we dive into how much models actually matter: more like a preference, like whether you use an iPhone or Android, than their capabilities. We talk about bare-metal disks when running Kubernetes, then move to agents and how data engineering becomes like being an emergency pilot in a plane, and how we automate away the boring work with no more database migrations or unit tests.</p>\n<p>We go into spiritual territory, where he feels in his gut whether a pipeline will work. Then we finish with where every data engineer or software engineer eventually wants to end up, as the field is evolving so fast: on a farm with beautiful flowers and no screen. This is interview #5. I hope you enjoy it.</p>"
+  },
+  "simon_spati:535fe328fa82": {
+   "source_id": "simon_spati",
+   "title": "Why We Need Yet Another (OSS) Semantic Layer",
+   "url": "https://www.ssp.sh/blog/why-yet-another-oss-sl/",
+   "published_raw": "Tue, 13 Oct 2026 06:40:08 +0200",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "excerpt": "<p>Most semantic layers come with a great declarative modeling language to define metrics and measures well<sup id=\"fnref:1\"><a href=\"#fn:1\" class=\"footnote-ref\" role=\"doc-noteref\">1</a></sup>, but very soon after, you start building wrappers around the semantic layer that enable agentic work and context engineering, that work well with harnesses and interfaces, and that allow flexible queries at runtime, without the need to rebuild or recalculate the measures in YAML.</p>\n<p>The other problem is that most data warehouse or analytics solutions basically lock you in with their proprietary semantic layer. The <a href=\"https://ossie.apache.org/\" target=\"_blank\" rel=\"noopener noreffer\">Open Semantic Interchange (OSI, new Apache Ossie)</a> standard, making it possible to convert definitions from Snowflake to the dbt semantic layer, will reduce this, but all the glue code you build on top is still tightly integrated into that very semantic layer, or you might get some of the capabilities mentioned above from that proprietary software. So you might be using an open data format, or an OSS business intelligence tool to integrate measures into your semantic layer, but if that semantic layer is not open, you might still be locked in.</p>"
+  },
+  "simon_spati:f556cda00e10": {
+   "source_id": "simon_spati",
+   "title": "A Year of Linux, a Month of Omarchy Quattro—Part 3",
+   "url": "https://www.ssp.sh/blog/omarchy-linux-quattro/",
+   "published_raw": "Sat, 19 Sep 2026 08:40:00 +0200",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "excerpt": "<p>This is my Part 3 about [[Omarchy]], after using it for more than a year full time, as my main daily driver first on Lenovo ThinkBook 14 AMD, and now <a href=\"https://x.com/sspaeti/status/1966052590988476910\" target=\"_blank\" rel=\"noopener noreffer\">TUXEDO InfinityBook</a>, for my business and personal use, replacing my MacBook Pro M1 after using macOS for 15 years.</p>\n<p>I am sharing the newest updates of the Quattro version, which onboarded a whole lot more people. One would say it went a little viral. It&rsquo;s everywhere on X and on socials. This is my take after using it for a month, comparing it to the previous versions, and showing what I like most, and maybe some things you should still be aware of.</p>"
+  },
+  "confessions_data_guy:d09e1fbd8c1e": {
+   "source_id": "confessions_data_guy",
+   "title": "From Engineer to CTO: The Skills That Actually Matter in the AI Era",
+   "url": "https://www.confessionsofadataguy.com/12805-2/",
+   "published_raw": "Wed, 11 Nov 2026 15:13:27 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>The post <a href=\"https://www.confessionsofadataguy.com/12805-2/\">From Engineer to CTO: The Skills That Actually Matter in the AI Era</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:25c88a738e9c": {
+   "source_id": "confessions_data_guy",
+   "title": "Polars 2.0 vs DuckDB 2.0",
+   "url": "https://www.confessionsofadataguy.com/polars-2-0-vs-duckdb-2-0/",
+   "published_raw": "Fri, 30 Oct 2026 16:22:56 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>If you&#8217;re curious where the future is going, check out my review of DuckDB 2.0 and Polars 2.0/2.1 &#8230; DuckDB is moving towards a more Client/Server architecture &#8230; Polars is just fixing core issues and moving towards a default streaming and spill-to-disk.</p>\n<p>The post <a href=\"https://www.confessionsofadataguy.com/polars-2-0-vs-duckdb-2-0/\">Polars 2.0 vs DuckDB 2.0</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:d229ffb04cfa": {
+   "source_id": "confessions_data_guy",
+   "title": "Rust. AWS S3. Scripts. Python. Datetimes. Files. Etc.",
+   "url": "https://www.confessionsofadataguy.com/rust-aws-s3-scripts-python-datetimes-files-etc/",
+   "published_raw": "Wed, 28 Oct 2026 19:26:05 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>I was recently sucked into doing something like a caveman &#8230; writing Rust by hand with the wonderful Zed IDE to solve a Python problem. Ahh &#8230; what a wonderful world we live in. It felt strangely good to do such things; it brought me back to the days pre-LLM when I would fight tooth [&#8230;]</p>\n<p>The post <a href=\"https://www.confessionsofadataguy.com/rust-aws-s3-scripts-python-datetimes-files-etc/\">Rust. AWS S3. Scripts. Python. Datetimes. Files. Etc.</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:5c95ad456d8b": {
+   "source_id": "confessions_data_guy",
+   "title": "Apache Airflow Just Got an AI Upgrade: Here’s How It Works",
+   "url": "https://www.confessionsofadataguy.com/apache-airflow-just-got-an-ai-upgrade-heres-how-it-works/",
+   "published_raw": "Thu, 22 Oct 2026 14:15:25 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>The post <a href=\"https://www.confessionsofadataguy.com/apache-airflow-just-got-an-ai-upgrade-heres-how-it-works/\">Apache Airflow Just Got an AI Upgrade: Here’s How It Works</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:76df883d5608": {
+   "source_id": "confessions_data_guy",
+   "title": "Delta Kernel (Rust) and the future of the Lakehouse.",
+   "url": "https://www.confessionsofadataguy.com/delta-kernel-rust-and-the-future-of-the-lakehouse/",
+   "published_raw": "Tue, 06 Oct 2026 21:08:35 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>I recently spent some time with my old love, that is, Rust; fawning over the old days when I learned to fight the borrow checker without my own two worn-out hands, no LLMs to do the work for me. I still think it&#8217;s probably one of the most fun languages to learn, for many reasons. [&#8230;]</p>\n<p>The post <a href=\"https://www.confessionsofadataguy.com/delta-kernel-rust-and-the-future-of-the-lakehouse/\">Delta Kernel (Rust) and the future of the Lakehouse.</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:3879319b6551": {
+   "source_id": "confessions_data_guy",
+   "title": "Why AI is a Mirror of Your Engineering Process",
+   "url": "https://www.confessionsofadataguy.com/why-ai-is-a-mirror-of-your-engineering-process/",
+   "published_raw": "Thu, 01 Oct 2026 14:39:38 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>The post <a href=\"https://www.confessionsofadataguy.com/why-ai-is-a-mirror-of-your-engineering-process/\">Why AI is a Mirror of Your Engineering Process</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:208424c10648": {
+   "source_id": "confessions_data_guy",
+   "title": "Databricks Model Serving: Everything You Need to Know",
+   "url": "https://www.confessionsofadataguy.com/databricks-model-serving-everything-you-need-to-know/",
+   "published_raw": "Thu, 01 Oct 2026 14:38:27 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>The post <a href=\"https://www.confessionsofadataguy.com/databricks-model-serving-everything-you-need-to-know/\">Databricks Model Serving: Everything You Need to Know</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
+  },
+  "confessions_data_guy:46a350ab1261": {
+   "source_id": "confessions_data_guy",
+   "title": "The Future of Data Engineering in the Age of AI",
+   "url": "https://www.confessionsofadataguy.com/the-future-of-data-engineering-in-the-age-of-ai/",
+   "published_raw": "Thu, 01 Oct 2026 14:37:04 +0000",
+   "fetched_at": "2026-11-15T21:23:10.519117Z",
+   "excerpt": "<p>The post <a href=\"https://www.confessionsofadataguy.com/the-future-of-data-engineering-in-the-age-of-ai/\">The Future of Data Engineering in the Age of AI</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
   }
  },
- "updated_at": "2026-11-15T21:12:54.875114Z",
+ "updated_at": "2026-11-15T21:23:05.564018Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }

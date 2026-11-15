@@ -1,5 +1,125 @@
 {
- "generated_at": "2026-11-15T21:14:59.274314Z",
+ "generated_at": "2026-11-15T21:23:05.564018Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
- "items": []
+ "items": [
+  {
+   "id": "f49f6dcce187",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "source_id": "simon_spati",
+   "source_name": "Simon Späti (ssp.sh)",
+   "published_at": "2026-11-10T06:00:08Z",
+   "excerpt": "Graphs usually get a bad rap: “what are they good for?”, “there’s no schema”. But there are also moments when they are superior to tables and other formats, and agents like them a lot. Typed graphs, meaning graphs with clear data types attached, help even more, especially with types that can be checked and verified. If you can define it declaratively, that helps collaboration by giving humans and agents a place to work together, but also data quality, as you can version it and extensively run tests (unit, end-to-end, etc.).",
+   "preliminary_score": 69,
+   "preliminary_topics": [
+    "ai_agents_rag",
+    "data_quality_observability"
+   ]
+  },
+  {
+   "id": "873de8dc3ad7",
+   "title": "As Humans Write Less Code: Workloads Shift from Human to Agent Verification with Iterative Test Suites",
+   "url": "https://www.ssp.sh/blog/humans-write-less-code/",
+   "source_id": "simon_spati",
+   "source_name": "Simon Späti (ssp.sh)",
+   "published_at": "2026-11-03T07:40:08Z",
+   "excerpt": "Analysts, analytics engineers, and even business users are writing less SQL and Python by hand. They prompt an agent instead, and with the right context (data models, docs, a data catalog), the agent writes a decent query. Think of a BI tool shifting left and democratizing new context from data models and sources. This helps the agents better understand the business problem and write a more accurate SQL query. With more advanced tooling that automatically reviews or generates queries iteratively, the agents’ output gets higher in quality every time. The models get better, and we can add additional documentation from internal Confluence pages or data catalogs, and it will get even better.",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "metadata_lineage_catalogs",
+    "sql_spark_sql"
+   ]
+  },
+  {
+   "id": "966a182dbe00",
+   "title": "Who Gets to Plant in the Gold Layer?",
+   "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
+   "source_id": "simon_whiteley",
+   "source_name": "Advancing Analytics (o.a. Simon Whiteley)",
+   "published_at": "2026-11-02T11:41:21Z",
+   "excerpt": "A well-built Gold layer should be the first place we look for an answer. Agreed definitions, reliable data and business logic we can reuse. Lovely jubbly, let’s use it!",
+   "preliminary_score": 51,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "77df1090e088",
+   "title": "Genie in Slack is now Generally Available: Governed AI cowork, right where work happens",
+   "url": "https://www.databricks.com/blog/genie-slack-now-generally-available-governed-ai-cowork-right-where-work-happens",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-12T15:00:00Z",
+   "excerpt": "Many business questions can’t be started and answered within the same conversation. ...",
+   "preliminary_score": 51,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "ad991551648f",
+   "title": "The new Genie: autonomous AI for complex enterprise work",
+   "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-11T16:00:00Z",
+   "excerpt": "AI assistants can run analyses and summarize meetings, but employees still manage...",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "b8bd8dd7742b",
+   "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
+   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "excerpt": "Thousands of teams use Genie Agents to turn deep operational questions into actionable outcomes every day...",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "e324a7f28492",
+   "title": "Genie with Genie Ontology Delivers 1.6× the Accuracy with Less than Half the Tokens",
+   "url": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "excerpt": "We developed a new enterprise data-agent benchmark in collaboration with Turing to...",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "efd6463de249",
+   "title": "Genie One: The AI cowork home for everyone",
+   "url": "https://www.databricks.com/blog/genie-one-ai-cowork-home-everyone",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "excerpt": "In today’s enterprise, work rarely stays in one application. A single task can involve...",
+   "preliminary_score": 50,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  },
+  {
+   "id": "d70b41a2c321",
+   "title": "Turn buying signals into pipeline with Sendoso gifts in Genie One",
+   "url": "https://www.databricks.com/blog/turn-buying-signals-pipeline-sendoso-gifts-genie-one",
+   "source_id": "databricks_blog",
+   "source_name": "Databricks Blog",
+   "published_at": "2026-11-09T17:29:00Z",
+   "excerpt": "From insight to action in Genie OneAI agents are only as useful as the actions they can take...",
+   "preliminary_score": 49,
+   "preliminary_topics": [
+    "ai_on_data_platform"
+   ]
+  }
+ ]
 }
