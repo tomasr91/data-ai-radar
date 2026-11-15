@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-15T04:15:12.675665Z",
+ "generated_at": "2026-11-15T05:14:49.908736Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -905,7 +905,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.84,
+    "recency": 0.83,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1148,7 +1148,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -2103,7 +2103,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.8,
     "quality": 0.53,
     "fit": 0.15
@@ -2190,7 +2190,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.2
@@ -3417,7 +3417,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3736,7 +3736,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.51,
+    "recency": 0.5,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.01,
@@ -3839,7 +3839,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -5072,7 +5072,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.43,
+    "recency": 0.42,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.02,
@@ -5803,7 +5803,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.51,
     "quality": 0.45,
     "feedback": -0.04,
@@ -6292,7 +6292,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.4,
+    "recency": 0.39,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -7091,7 +7091,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.51,
     "quality": 0.37,
     "feedback": -0.02,
@@ -7304,7 +7304,7 @@
    "relevance_score": 68,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.02,
@@ -10411,9 +10411,40 @@
  },
  "trends": [
   {
+   "id": "agents-verbeteren-door-te-meten",
+   "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
+   "summary": "dbt Labs zag dat dbt-skills bij de nieuwste Claude-modellen weinig uitmaakten, Ecolab liet elke gemigreerde tabel met data bewijzen, en Databricks' Genie Migrate (nu algemeen beschikbaar) zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar. LangChain noemt het 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld; met traces en evals koos het team ook zijn browsertools. Curative laat een 'rechter' elk bericht van zijn agent nakijken, en nieuw deze week vergeleek Advancing Analytics drie beslismodellen op 300 openbare testgesprekken: bij fijne keuzes scoorde ai_decide in Databricks duidelijk lager.",
+   "topics": [
+    "ai_evaluation_observability",
+    "claude_ai_development",
+    "data_quality_observability",
+    "ai_agents_rag",
+    "ai_on_data_platform",
+    "cicd_data_deployment"
+   ],
+   "article_ids": [
+    "ea585dd9c0fa",
+    "d6ea4662f2dc",
+    "3180dbea1b88",
+    "8b7855abcc2d",
+    "d5f14a6242b0",
+    "86eab858089b",
+    "a9b6458ba033",
+    "c63f36899b14",
+    "d2e9b967064a",
+    "e7bf67f656d3"
+   ],
+   "generated_at": "2026-11-15T05:14:30Z",
+   "since": "2026-10-27",
+   "last": "2026-11-13",
+   "week": 5,
+   "prev_week": 2,
+   "status": "groeit"
+  },
+  {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie Ontology is sinds 11 november algemeen beschikbaar en haalt context uit metric views, dashboards en Power BI-modellen, en Claude Data werkt met gecertificeerde metric-definities. dbt Labs voegt een kostenargument toe: context vooraf in het warehouse uitwerken, zoals een Gold-tabel, scheelde hen naar eigen zeggen meer dan de helft aan tokens.",
+   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie Ontology is sinds 11 november algemeen beschikbaar, Genie kan in bèta Power BI-measures als kennisbron gebruiken, Unity Catalog krijgt wiki's per tabel, en dbt Labs zegt meer dan de helft aan tokens te besparen door context vooraf in het warehouse klaar te zetten. Nieuw deze week: Anthropic's gids voor Claude Tag laat startups datavragen in Slack beantwoorden op basis van vaste dbt-modellen en metrics.",
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
@@ -10426,6 +10457,7 @@
     "6ded4aa1cdcf",
     "5c7174c45ad1",
     "7737e173e31a",
+    "941b0ba5dad7",
     "215f0a50b9ea",
     "069e6a8001ed",
     "ceb4b784fbab",
@@ -10435,47 +10467,17 @@
     "67b79f31be0e",
     "560fbec0053e"
    ],
-   "generated_at": "2026-11-14T05:25:00Z",
+   "generated_at": "2026-11-15T05:14:30Z",
    "since": "2026-10-26",
    "last": "2026-11-12",
-   "week": 5,
+   "week": 6,
    "prev_week": 1,
-   "status": "groeit"
-  },
-  {
-   "id": "agents-verbeteren-door-te-meten",
-   "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs bouwde voor Claude een vaste lus van compileren, testen en data vergelijken, Ecolab liet elke gemigreerde tabel met data bewijzen (en Databricks' Genie Migrate zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar), en LangChain bracht zijn codeeragent van 52,8 naar 66,5 procent met hetzelfde model, alleen door controles en haken rond de agent. Anthropic gaf Claude Code commando's die zelf evals bouwen en je prompt ertegen verbeteren; Hamel Husain vindt ze sterk in fouten vinden, maar mist eerst de foutanalyse. LangChain zet het nu op een rij als 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld. Ook Anthropics advies voor modelkeuze past hierin: probeer mislukte taken opnieuw op een hogere effort, wat kan omdat je ziet of een taak gelukt is, en Curative laat een 'rechter' elk bericht van zijn agent nakijken. De gemeenschappelijke lijn: geef een agent een toets die hij zelf draait, en verbeter op basis van gemeten fouten.",
-   "topics": [
-    "ai_evaluation_observability",
-    "claude_ai_development",
-    "data_quality_observability",
-    "ai_agents_rag",
-    "ai_on_data_platform",
-    "cicd_data_deployment"
-   ],
-   "article_ids": [
-    "d6ea4662f2dc",
-    "3180dbea1b88",
-    "8b7855abcc2d",
-    "d5f14a6242b0",
-    "86eab858089b",
-    "a9b6458ba033",
-    "c63f36899b14",
-    "d2e9b967064a",
-    "e7bf67f656d3"
-   ],
-   "generated_at": "2026-11-14T05:25:00Z",
-   "since": "2026-10-27",
-   "last": "2026-11-12",
-   "week": 4,
-   "prev_week": 2,
    "status": "groeit"
   },
   {
    "id": "geheugen-en-context-voor-agents",
    "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen. Daarnaast schuift lang werk naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft.",
+   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, zoeken begint met grep en glob, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Lang werk schuift naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft. Nieuwste voorbeeld: Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen.",
    "topics": [
     "ai_context_engineering",
     "ai_agents_rag",
@@ -10491,7 +10493,7 @@
     "471f6b1cbb07",
     "72dc169275f9"
    ],
-   "generated_at": "2026-11-14T05:25:00Z",
+   "generated_at": "2026-11-15T05:14:30Z",
    "since": "2026-10-25",
    "last": "2026-11-10",
    "week": 2,
