@@ -753,7 +753,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
      De app is een statische site en kan zelf niets in de repository zetten. Een keuze wordt
      daarom een GitHub-issue "Verdieping: <id>" dat je met één tik aanmaakt. De Claude-taak
      leest dat de volgende ochtend (scripts/next_deepdive.py). Alleen issues van de eigenaar tellen. */
-  const AREA_LABEL = { eigen: "Jouw lijst", data_engineering: "Data engineering", powerbi: "Power BI", context_agents: "Context & agents", claude: "Claude", new_tech: "Nieuwe technologie" };
+  const AREA_LABEL = { eigen: "Jouw lijst", data_engineering: "Data engineering", powerbi: "Power BI", ai_op_data: "AI op je data", context_agents: "Context & agents", claude: "Claude", new_tech: "Nieuwe technologie" };
   const repo = () => state.feed.repo || "tomasr91/data-ai-radar";
   // Bovenaan elk issue: een link terug naar de app. Na "Create" toont GitHub het issue; één tik en je bent terug.
   const backLink = (hash = "") => `**[↩ Terug naar de Data & AI Radar](${location.origin}${location.pathname}${hash ? "#" + hash : ""})**\n\n`;

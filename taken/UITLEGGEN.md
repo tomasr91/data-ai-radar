@@ -81,6 +81,8 @@ T wil **geen korte uitleg** meer (14-11-2026): een artikel krijgt een volle uitl
 
 Let op de **ondergrens per gebied** (`min_articles` bij `interest_areas` in `interests.yml`): de werklijst zet artikelen uit gebieden die te weinig in de app hebben (vaak Claude en nieuwe technologie) vooraan. Sla die niet over omdat ze minder bij dbt aansluiten; alleen om de regels hieronder.
 
+**Kerninteresse van T: AI-toepassingen op eigen data.** Laat een artikel zien hoe je een AI-toepassing bouwt of aanbiedt met data uit het eigen platform (tabellen uit Silver of Gold, een semantische laag, metric views, documenten in het lakehouse), dan is dat een must-know: vol uitleggen, `ai_on_data_platform` als **eerste** onderwerp in `topics`, en in het verhaal concreet maken uit welke laag de data komt en hoe de toepassing bij gebruikers komt. Gaat een artikel alleen over agents of modellen in het algemeen, zonder eigen data als invoer, dan hoort het daar niet bij.
+
 Een volle uitleg krijgen alleen de **must-knows**. Deze artikelen sla je over:
 
 - **Kleine updates**: een losse kleine functie, een UI-aanpassing, uitrol naar een extra regio, een nieuwe versie zonder inhoudelijke wijziging, een verzameloverzicht van veel kleine dingen.

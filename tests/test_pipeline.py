@@ -412,7 +412,7 @@ class TestInterests(unittest.TestCase):
         from pipeline import interests
         conf = cfg.load()
         v = interests.view(conf)
-        self.assertEqual({a["id"] for a in v["areas"]}, {"data_engineering", "powerbi", "context_agents", "claude", "new_tech"})
+        self.assertEqual({a["id"] for a in v["areas"]}, {"data_engineering", "powerbi", "ai_op_data", "context_agents", "claude", "new_tech"})
         self.assertTrue(all(t["area"] != "overig" for t in v["topics"]))
         self.assertTrue(any(t.get("learning") for t in v["topics"]))
         ok = {"generated_at": "2026-11-08T04:40:00Z", "suggestions": [
@@ -708,9 +708,9 @@ class TestBalance(unittest.TestCase):
         shown[15]["id"] = "liked0000000"
         kept = build.area_cap(list(shown), conf, {"liked0000000": {"v": 1}})
         agents = [a for a in kept if a["topics"] == ["ai_agents_rag"]]
-        self.assertEqual(len(agents), 3 + 1)                     # 30% van de feed die overblijft (8), plus het artikel met 👍
+        self.assertEqual(len(agents), 2 + 1)                     # 25% van de feed die overblijft, plus het artikel met 👍
         self.assertIn("liked0000000", [a["id"] for a in agents])
-        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 12)
+        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 13)
         self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 4)
         self.assertEqual(build.area_of({"topics": ["powerbi_semantic_models"]}, conf), "powerbi")   # Power BI telt niet als engineering
         self.assertGreater(build._age_days({"published_at": "2026-10-06T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)

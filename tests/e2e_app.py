@@ -417,7 +417,7 @@ with sync_playwright() as p:
     txt = page.locator("#reader").inner_text()
     check("   pagina toont voorstellen, onderwerpen per gebied, uitsluitingen en logboek", page.locator(".int-sugg").count() == 2
           and page.locator(".int-topic").count() == len(feed["interests"]["topics"]) and "Wat je niet wilt zien" in txt and "Test-wijziging" in (page.locator("#reader").text_content() or "") and "Recent aangepast" in txt
-          and "35%" in txt)
+          and "30%" in txt)
     eff = page.locator(".fb-eff").inner_text() if page.locator(".fb-eff").count() else ""
     check("   blok Wat de radar over je leerde: erbij en eruit", "Wat de radar over je leerde" in eff and "1</b> erbij" not in eff and "1 erbij, 1 eruit" in eff and "Erbij-test" in eff and "Eruit-test" in eff
           and page.locator('.fb-eff a[href="#a-%s"]' % _en["id"]).count() == 1)

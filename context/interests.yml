@@ -54,8 +54,8 @@ scoring:
 interest_areas:
   - id: data_engineering
     label: dbt, data engineering en data-architectuur
-    target_share: 0.35
-    min_articles: 12      # ondergrens in de app; Power BI telt hier niet meer mee (T, 15-11-2026: te weinig echt engineering)
+    target_share: 0.30
+    min_articles: 10      # ondergrens in de app; Power BI telt hier niet meer mee (T, 15-11-2026: meer echt engineering, maar ook weer niet te veel)
     queue_first: true     # op de werklijst voor de nacht gaan deze artikelen voor
     topics: [dbt_analytics_engineering, databricks_data_engineering, data_ingestion, data_architecture_modeling, sql_spark_sql, cicd_data_deployment, data_quality_observability, metadata_lineage_catalogs, data_governance_privacy]
   - id: powerbi
@@ -63,12 +63,20 @@ interest_areas:
     target_share: 0.05
     min_articles: 2
     topics: [powerbi_semantic_models]
+  - id: ai_op_data
+    label: AI-toepassingen op je eigen data
+    # T (15-11-2026): "erg geïnteresseerd in hoe we AI-toepassingen kunnen aanbieden met input van data
+    # uit onze medaillonarchitectuur". Vaste plek: eigen ondergrens, geen maximum, voorrang op de werklijst.
+    target_share: 0.15
+    min_articles: 6
+    queue_first: true
+    topics: [ai_on_data_platform]
   - id: context_agents
     label: Context engineering en AI-agents
-    target_share: 0.25
-    max_share: 0.30       # samen met Claude hooguit de helft van de feed (T, 15-11-2026)
+    target_share: 0.20
+    max_share: 0.25       # algemeen AI-nieuws: samen met Claude hooguit ongeveer 45% van de feed (T, 15-11-2026)
     min_articles: 6       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
-    topics: [ai_context_engineering, ai_agents_rag, ai_on_data_platform, ai_evaluation_observability]
+    topics: [ai_context_engineering, ai_agents_rag, ai_evaluation_observability]
   - id: claude
     label: Claude en AI-ondersteunde ontwikkeling
     target_share: 0.20
@@ -77,7 +85,7 @@ interest_areas:
     topics: [claude_ai_development]
   - id: new_tech
     label: Nieuwe technologieën en architectuurpatronen
-    target_share: 0.15
+    target_share: 0.10
     min_articles: 4       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
     topics: [open_source_tools, general_ai_trends, ai_in_healthcare, ai_research_data]
 
@@ -157,11 +165,16 @@ topics:
 
   - id: ai_on_data_platform
     name: AI op het dataplatform
-    description: AI toepassen op bestaande data en pipelines, binnen het eigen platform.
+    description: >-
+      AI-toepassingen aanbieden met data uit het eigen platform. Kerninteresse (T, 15-11-2026): hoe je
+      data uit de medaillonarchitectuur (vooral Silver en Gold) gebruikt als invoer voor AI: vragen stellen
+      aan tabellen (text-to-SQL), agents en RAG op eigen tabellen en documenten, semantische lagen en
+      metric views als bron voor AI, AI-functies in SQL en pipelines, en hoe je zo'n toepassing veilig
+      aanbiedt aan gebruikers (rechten, governance, kwaliteit). Liefst met concrete architectuur of aanpak.
     feed_group: ai_context
     enabled: true
     priority: 5
-    keywords: [AI functions, ai_query, model serving, LLM in SQL, AI-assisted data engineering, Databricks AI, dbt AI]
+    keywords: [AI functions, ai_query, model serving, LLM in SQL, AI-assisted data engineering, Databricks AI, dbt AI, text-to-SQL, Genie, AI/BI, vector search, Agent Bricks, Databricks Apps, RAG on structured data, AI on lakehouse, AI-ready data, gold layer, medallion]
     related_topics: [ai_context_engineering, databricks_data_engineering, ai_agents_rag]
 
   - id: ai_context_engineering

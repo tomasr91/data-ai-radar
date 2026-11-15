@@ -266,6 +266,45 @@ sources:
     fetch_method: rss
     verification: {status: verified, checked_on: "2026-10-28", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 28-10-2026). Dit is de bedrijfsblog van Advancing Analytics: ook artikelen van andere auteurs."}
 
+  - id: simon_spati
+    name: Simon Späti (ssp.sh)
+    url: https://www.ssp.sh/blog/
+    feed_url: https://www.ssp.sh/posts/index.xml
+    type: expert_blog
+    topics: [data_architecture_modeling, databricks_data_engineering, data_ingestion, open_source_tools]
+    priority: 4
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-15", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 15-11-2026): 30 items, laatste 10-11-2026."}
+
+  - id: confessions_data_guy
+    name: Confessions of a Data Guy
+    url: https://www.confessionsofadataguy.com/
+    feed_url: https://www.confessionsofadataguy.com/feed/
+    type: expert_blog
+    topics: [databricks_data_engineering, sql_spark_sql, data_ingestion, open_source_tools]
+    priority: 3
+    enabled: true
+    trust_level: medium
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-15", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 15-11-2026): 10 items, laatste 11-11-2026. Praktijk en meningen."}
+
+  - id: delta_lake_blog
+    name: Delta Lake blog
+    url: https://delta.io/blog/
+    feed_url: https://delta.io/rss.xml
+    type: vendor_blog
+    topics: [databricks_data_engineering, data_architecture_modeling, metadata_lineage_catalogs]
+    priority: 4
+    enabled: true
+    trust_level: high
+    language: en
+    fetch_method: rss
+    verification: {status: verified, checked_on: "2026-11-15", note: "Gevonden en gecontroleerd via GitHub Actions (feedonderzoek 15-11-2026): 30 items, laatste 20-08-2026. Publiceert weinig."}
+
   - id: hamel_husain
     name: Hamel Husain
     url: https://hamel.dev/blog/
