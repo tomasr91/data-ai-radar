@@ -810,30 +810,6 @@
    "fetched_at": "2026-10-28T20:21:52.729187Z",
    "excerpt": "<h2>2.0.4</h2>\n<p>Released September 16, 2026</p>"
   },
-  "dbt_core_releases:919815157444": {
-   "source_id": "dbt_core_releases",
-   "title": "v2.0.3",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.3",
-   "published_raw": "2026-09-16T01:44:18Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "excerpt": "<h2>2.0.3</h2>\n<p>Released September 15, 2026</p>\n<h3>Under the Hood</h3>\n<ul>\n<li>Add PyPI banner for dbt-oss mirroring the existing dbt-core banner, without the dbt-core namespace deprecation notice</li>\n</ul>\n<h3>Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/tauhidanjum\">@tauhidanjum</a></li>\n</ul>"
-  },
-  "dbt_core_releases:732d8401d608": {
-   "source_id": "dbt_core_releases",
-   "title": "v2.0.2",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.2",
-   "published_raw": "2026-09-15T19:08:48Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "excerpt": "<h2>2.0.2</h2>\n<p>Released September 15, 2026</p>\n<h3>Fixes</h3>\n<ul>\n<li>Restore the bundled docs UI in the Python wheel builds, so <code>dbt docs generate</code> produces a working docs site again for pip-installed dbt.</li>\n</ul>\n<h3>Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/mishamsk\">@mishamsk</a></li>\n</ul>"
-  },
-  "dbt_core_releases:b3e762809079": {
-   "source_id": "dbt_core_releases",
-   "title": "v2.0.2-test-pypi",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.2-test-pypi",
-   "published_raw": "2026-09-15T14:49:08Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "excerpt": "<h2>2.0.2</h2>\n<p>Released September 15, 2026</p>"
-  },
   "dbt_labs_blog:a68aede0b61b": {
    "source_id": "dbt_labs_blog",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
@@ -1713,30 +1689,6 @@
    "published_raw": "Wed, 14 Oct 2026 00:00:00 GMT",
    "fetched_at": "2026-10-28T20:32:37.744597Z",
    "excerpt": "Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft."
-  },
-  "dbt_developer_blog:841d424db697": {
-   "source_id": "dbt_developer_blog",
-   "title": "dbt_context_engineering: modeling the context your AI agents read",
-   "url": "https://docs.getdbt.com/blog/dbt-context-engineering",
-   "published_raw": "Wed, 16 Sep 2026 00:00:00 GMT",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "excerpt": "dbt-context-engineering is a new package, published by dbt, that helps you create AI ready data when you need it."
-  },
-  "dbt_developer_blog:68a2bf1c5563": {
-   "source_id": "dbt_developer_blog",
-   "title": "What's the difference between dbt and dbt OSS?",
-   "url": "https://docs.getdbt.com/blog/comparing-dbt-and-dbt-oss",
-   "published_raw": "Wed, 16 Sep 2026 00:00:00 GMT",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "excerpt": "The free distribution of dbt v2 is our default recommendation over dbt OSS: it has more capabilities, and its license permits the same real-world use cases for free, without ever paying or talking to dbt Labs."
-  },
-  "dbt_developer_blog:681080ea70e4": {
-   "source_id": "dbt_developer_blog",
-   "title": "dbt v2.0 is GA",
-   "url": "https://docs.getdbt.com/blog/dbt-v2-is-ga",
-   "published_raw": "Wed, 16 Sep 2026 00:00:00 GMT",
-   "fetched_at": "2026-10-28T20:32:37.744597Z",
-   "excerpt": "The dbt Fusion engine is entering General Availability with a new name: dbt. This complete rewrite lays the foundations for the next decade of progress."
   },
   "azure_databricks_release_notes:0452eb2115b1": {
    "source_id": "azure_databricks_release_notes",
@@ -5049,8 +5001,24 @@
    "published_raw": "Fri, 13 Nov 2026 16:06:29 GMT",
    "fetched_at": "2026-11-14T03:13:17.139559Z",
    "excerpt": "LangChain raises $300M Series C at a $3B valuation, led by CapitalG, to help every company own its intelligence with LangSmith, the agent engineering platform."
+  },
+  "sqlbi:662ccbc3afc4": {
+   "source_id": "sqlbi",
+   "title": "Opening your Microsoft Whiteboard boards in SQLBI Whiteboard",
+   "url": "https://www.sqlbi.com/blog/marco/2026/11/14/opening-your-microsoft-whiteboard-boards-in-sqlbi-whiteboard/",
+   "published_raw": "Sat, 14 Nov 2026 08:00:12 +0000",
+   "fetched_at": "2026-11-15T03:13:22.062541Z",
+   "excerpt": "<figure><img src=\"https://www.sqlbi.com/wp-content/uploads/opening-ms-whiteboard-thumbnail.png\" class=\"webfeedsFeaturedVisual\" /></figure>Microsoft retired the standalone Microsoft Whiteboard apps on October 16, 2026. You can now use the web version only with a work account; with a personal Microsoft account, you cannot use it at all. Boards not exported from your personal&#8230;"
+  },
+  "langchain_blog:f9f48169d93e": {
+   "source_id": "langchain_blog",
+   "title": "Goal Engineering",
+   "url": "https://www.langchain.com/blog/goal-engineering",
+   "published_raw": "Sat, 14 Nov 2026 16:00:01 GMT",
+   "fetched_at": "2026-11-15T03:13:22.938719Z",
+   "excerpt": "The future of agents is them taking on open ended goals and driving towards completion of those goals. Learn more."
   }
  },
- "updated_at": "2026-11-14T08:04:01.136139Z",
+ "updated_at": "2026-11-15T03:13:18.285710Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
