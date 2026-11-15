@@ -165,21 +165,28 @@ def _age_days(a, now) -> float:
 
 
 def area_cap(shown: list, conf, votes: dict) -> list:
-    """Hooguit AREA_MAX_FACTOR x de richtwaarde per gebied. De laagst scorende artikelen boven dat
-    maximum vallen af (decision area_cap); wat je 👍 gaf blijft altijd staan."""
-    n = len(shown)
-    keep, count = [], Counter()
+    """Hooguit max_share (of AREA_MAX_FACTOR x de richtwaarde) per gebied, gerekend over de feed die overblijft.
+    De laagst scorende artikelen boven dat maximum vallen af (decision area_cap); wat je 👍 gaf blijft altijd staan."""
     # max_share (vast maximum) gaat voor; anders AREA_MAX_FACTOR x de richtwaarde
     share = {x["id"]: x.get("max_share") or (AREA_MAX_FACTOR * x["target_share"] if x.get("target_share") else None)
              for x in conf.interests.get("interest_areas", [])}
-    for a in sorted(shown, key=lambda a: -a["relevance_score"]):
-        ar = area_of(a, conf)
-        mx = math.ceil(share[ar] * n) if share.get(ar) else None
-        if mx is not None and count[ar] >= mx and votes.get(a["id"], {}).get("v") != 1:
+    ranked = sorted(shown, key=lambda a: -a["relevance_score"])
+    n = len(shown)
+    while True:   # het maximum is een deel van wat overblijft: herhalen tot de feed niet meer krimpt
+        keep, count = [], Counter()
+        for a in ranked:
+            ar = area_of(a, conf)
+            mx = math.ceil(share[ar] * n) if share.get(ar) else None
+            if mx is not None and count[ar] >= mx and votes.get(a["id"], {}).get("v") != 1:
+                continue
+            count[ar] += 1
+            keep.append(a)
+        if len(keep) >= n:
+            break
+        n = len(keep)
+    for a in ranked:
+        if a not in keep:
             a["decision"] = "area_cap"
-            continue
-        count[ar] += 1
-        keep.append(a)
     return keep
 
 

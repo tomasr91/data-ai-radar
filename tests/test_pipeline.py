@@ -708,9 +708,9 @@ class TestBalance(unittest.TestCase):
         shown[15]["id"] = "liked0000000"
         kept = build.area_cap(list(shown), conf, {"liked0000000": {"v": 1}})
         agents = [a for a in kept if a["topics"] == ["ai_agents_rag"]]
-        self.assertEqual(len(agents), 6 + 1)                     # max_share 30% van 20 = 6, plus het artikel met 👍
+        self.assertEqual(len(agents), 3 + 1)                     # 30% van de feed die overblijft (8), plus het artikel met 👍
         self.assertIn("liked0000000", [a["id"] for a in agents])
-        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 9)
+        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 12)
         self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 4)
         self.assertEqual(build.area_of({"topics": ["powerbi_semantic_models"]}, conf), "powerbi")   # Power BI telt niet als engineering
         self.assertGreater(build._age_days({"published_at": "2026-10-06T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
