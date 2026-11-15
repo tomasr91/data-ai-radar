@@ -97,4 +97,13 @@ def load(topic_ids: set, shown: list, path=None, now=None) -> tuple:
                     "week": week, "prev_week": prev, "status": status})
     out.sort(key=lambda t: t["last"], reverse=True)
     out.sort(key=lambda t: STATUS_ORDER[t["status"]])
-    return out, []
+    # Hooguit één trend per hoofdonderwerp (eerste topic), en geen trend die voor de helft of meer dezelfde
+    # artikelen heeft als een sterkere: twee trends over bijna hetzelfde zeggen niets extra (T, 15-11-2026).
+    keep = []
+    for t in out:
+        main = (t["topics"] or [None])[0]
+        dup = any((main and main == (k["topics"] or [None])[0])
+                  or len(set(t["article_ids"]) & set(k["article_ids"])) * 2 >= len(t["article_ids"]) for k in keep)
+        if not dup:
+            keep.append(t)
+    return keep, []

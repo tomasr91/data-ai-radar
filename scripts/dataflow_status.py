@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "voortgang.json"
-FASE_RE = re.compile(r"^\s*fase\s+(\d+)(?:\.(\d+))?\s*[:\-–]?\s*(.*)$", re.I)
+FASE_RE = re.compile(r"^\s*fase\s+(\d+)(?:\.(\d+[a-z]?))?\s*[:\-–]?\s*(.*)$", re.I)
 SIGNALS = [   # (fase, glob): bestaat er iets, dan is die fase begonnen
     (2, "platform/terraform/catalog.tf"),
     (3, "ingestion/*/*.py"),

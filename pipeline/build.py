@@ -169,10 +169,12 @@ def area_cap(shown: list, conf, votes: dict) -> list:
     maximum vallen af (decision area_cap); wat je 👍 gaf blijft altijd staan."""
     n = len(shown)
     keep, count = [], Counter()
-    share = {x["id"]: x.get("target_share") for x in conf.interests.get("interest_areas", [])}
+    # max_share (vast maximum) gaat voor; anders AREA_MAX_FACTOR x de richtwaarde
+    share = {x["id"]: x.get("max_share") or (AREA_MAX_FACTOR * x["target_share"] if x.get("target_share") else None)
+             for x in conf.interests.get("interest_areas", [])}
     for a in sorted(shown, key=lambda a: -a["relevance_score"]):
         ar = area_of(a, conf)
-        mx = math.ceil(AREA_MAX_FACTOR * share[ar] * n) if share.get(ar) else None
+        mx = math.ceil(share[ar] * n) if share.get(ar) else None
         if mx is not None and count[ar] >= mx and votes.get(a["id"], {}).get("v") != 1:
             a["decision"] = "area_cap"
             continue
@@ -389,7 +391,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     # Weekoverzichten (zie digest.py) gaan voor: het zijn er hooguit een paar per week.
     # Gebieden onder hun ondergrens krijgen voorrang op de werklijst (na de weekoverzichten).
     have = Counter(area_of(a, conf) for a in arts if a["decision"] in INCLUDED and a["processing_status"] == "enriched")
-    under = {x["id"] for x in conf.interests.get("interest_areas", []) if have[x["id"]] < (x.get("min_articles") or 0)}
+    under = {x["id"] for x in conf.interests.get("interest_areas", []) if have[x["id"]] < (x.get("min_articles") or 0) or x.get("queue_first")}
     # Voorrang voor een gebied onder de ondergrens alleen bij een score boven de drempel: anders vult
     # marketing van een bron in dat gebied (bijv. "nu ook op Google Cloud") de werklijst.
     bar = conf.scoring.get("min_relevance_score", 0.6) * 100
@@ -426,6 +428,10 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         a.pop("canonical_url", None)
 
     # Alleen artikelen die Claude heeft uitgelegd komen in de app; de rest wacht op de werklijst.
+    # Geen korte uitleg meer (T, 14-11-2026): bestaande korte stukken vallen weg, behalve wat je 👍 gaf of volledig wilt.
+    for a in arts:
+        if a.get("diepte") == "kort" and a["decision"] in INCLUDED and fb_votes.get(a["id"], {}).get("v") != 1 and a["id"] not in wanted:
+            a["decision"] = "kort_vervallen"
     shown = sorted([a for a in arts if a["decision"] in INCLUDED
                     and a["processing_status"] == "enriched"],
                    key=lambda a: (-a["relevance_score"], a.get("published_at") or ""))

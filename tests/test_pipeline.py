@@ -412,7 +412,7 @@ class TestInterests(unittest.TestCase):
         from pipeline import interests
         conf = cfg.load()
         v = interests.view(conf)
-        self.assertEqual({a["id"] for a in v["areas"]}, {"data_engineering", "context_agents", "claude", "new_tech"})
+        self.assertEqual({a["id"] for a in v["areas"]}, {"data_engineering", "powerbi", "context_agents", "claude", "new_tech"})
         self.assertTrue(all(t["area"] != "overig" for t in v["topics"]))
         self.assertTrue(any(t.get("learning") for t in v["topics"]))
         ok = {"generated_at": "2026-11-08T04:40:00Z", "suggestions": [
@@ -708,10 +708,11 @@ class TestBalance(unittest.TestCase):
         shown[15]["id"] = "liked0000000"
         kept = build.area_cap(list(shown), conf, {"liked0000000": {"v": 1}})
         agents = [a for a in kept if a["topics"] == ["ai_agents_rag"]]
-        self.assertEqual(len(agents), 9 + 1)                     # 1,5 x 30% van 20 = 9, plus het artikel met 👍
+        self.assertEqual(len(agents), 6 + 1)                     # max_share 30% van 20 = 6, plus het artikel met 👍
         self.assertIn("liked0000000", [a["id"] for a in agents])
-        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 6)
+        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 9)
         self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 4)
+        self.assertEqual(build.area_of({"topics": ["powerbi_semantic_models"]}, conf), "powerbi")   # Power BI telt niet als engineering
         self.assertGreater(build._age_days({"published_at": "2026-10-06T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
         self.assertLessEqual(build._age_days({"published_at": "2026-10-28T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
 
@@ -1013,6 +1014,15 @@ class TestTrends(unittest.TestCase):
         g = out[0]
         self.assertEqual(g["article_ids"], ["n1", "n2", "n3", "o1"])   # ouder dan 21 dagen eruit, nieuwste eerst
         self.assertEqual((g["since"], g["last"], g["week"], g["prev_week"]), ("2026-11-05", "2026-11-13", 3, 1))
+        # hooguit één trend per hoofdonderwerp, en geen trend met vooral dezelfde artikelen
+        two = {"generated_at": "2026-11-14T05:00:00Z", "trends": [
+            {"id": "a", "title": "T", "summary": "S", "article_ids": ["n1", "n2", "n3", "o1"], "topics": ["x"]},
+            {"id": "zelfde-onderwerp", "title": "T", "summary": "S", "article_ids": ["f1", "f2", "f3"], "topics": ["x"]},
+            {"id": "zelfde-artikelen", "title": "T", "summary": "S", "article_ids": ["n1", "n2", "o1"], "topics": ["y"]}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "trends.json"
+            path.write_text(json.dumps(two))
+            self.assertEqual([t["id"] for t in trends.load({"x", "y"}, shown, path, now=now)[0]], ["a"])
 
 
 class TestPractice(unittest.TestCase):
