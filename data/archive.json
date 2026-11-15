@@ -802,14 +802,6 @@
    "fetched_at": "2026-10-28T20:21:52.729187Z",
    "excerpt": "<h2>2.0.5</h2>\n<p>Released September 18, 2026</p>\n<h3>Fixes</h3>\n<ul>\n<li>Both Legacy/Foundry BigQuery drivers now continue on ADBC.GetObjects 404/403. This fixes a possible usage of \"REPLACE TABLE\" instead of \"MERGE\" for incremental tables (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16331\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16331/hovercard\">#16331</a>)</li>\n</ul>\n<h3>Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/serramatutu\">@serramatutu</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16331\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16331/hovercard\">#16331</a>)</li>\n</ul>"
   },
-  "dbt_core_releases:3a948f12bcd4": {
-   "source_id": "dbt_core_releases",
-   "title": "v2.0.4",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.4",
-   "published_raw": "2026-09-16T07:12:29Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "excerpt": "<h2>2.0.4</h2>\n<p>Released September 16, 2026</p>"
-  },
   "dbt_labs_blog:a68aede0b61b": {
    "source_id": "dbt_labs_blog",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
@@ -5019,6 +5011,6 @@
    "excerpt": "The future of agents is them taking on open ended goals and driving towards completion of those goals. Learn more."
   }
  },
- "updated_at": "2026-11-15T03:13:18.285710Z",
+ "updated_at": "2026-11-15T08:28:11.529784Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
