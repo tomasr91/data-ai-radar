@@ -1,7 +1,71 @@
 {
- "generated_at": "2026-11-16T08:37:18.083491Z",
+ "generated_at": "2026-11-16T10:37:21.534137Z",
  "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
  "votes": [
+  {
+   "id": "49daca0e1c3d",
+   "title": "Rekenen in code, oordelen door het model: lessen uit een marketingagent",
+   "source_id": "",
+   "topics": [],
+   "soort": "praktijk",
+   "labels": [
+    "data-agent",
+    "agent-harness",
+    "human-in-the-loop"
+   ],
+   "score": 79,
+   "v": -1,
+   "r": null
+  },
+  {
+   "id": "5c7174c45ad1",
+   "title": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
+   "source_id": "databricks_blog",
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "metric-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "score": 96,
+   "v": 1,
+   "r": "praktisch"
+  },
+  {
+   "id": "86eab858089b",
+   "title": "Goede tools maken een agent 13 keer goedkoper, bleek bij LangChain",
+   "source_id": "",
+   "topics": [],
+   "soort": "praktijk",
+   "labels": [
+    "agent-tooling",
+    "agent-evals"
+   ],
+   "score": 78,
+   "v": -1,
+   "r": "te_vaag"
+  },
+  {
+   "id": "ffe8a09e969f",
+   "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+   "source_id": "claude_blog",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "claude-modellen",
+    "multi-agent"
+   ],
+   "score": 84,
+   "v": 1,
+   "r": null
+  },
   {
    "id": "941b0ba5dad7",
    "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
@@ -221,7 +285,7 @@
     "semantische-laag-ai",
     "agent-evals"
    ],
-   "score": 92,
+   "score": 91,
    "v": 1,
    "r": "meer_hiervan"
   },
@@ -273,23 +337,86 @@
    "score": 88,
    "v": 1,
    "r": null
-  },
-  {
-   "id": "681080ea70e4",
-   "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
-   "source_id": "dbt_developer_blog",
-   "topics": [
-    "dbt_analytics_engineering",
-    "ai_context_engineering"
-   ],
-   "soort": null,
-   "labels": [],
-   "score": null,
-   "v": 1,
-   "r": null
   }
  ],
  "reads": [
+  {
+   "id": "078567da13b8",
+   "title": "OpenAI-tools werken nu op je Databricks-data, via Genie en Unity Gateway",
+   "source_id": "",
+   "topics": [],
+   "soort": "aankondiging",
+   "labels": [
+    "unity-ai-gateway",
+    "genie-mcp",
+    "openai-op-databricks"
+   ],
+   "score": 83
+  },
+  {
+   "id": "56bb11919377",
+   "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+   "source_id": "databricks_blog",
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ],
+   "soort": "praktijk",
+   "labels": [
+    "python-data-source-api",
+    "custom-ingestion",
+    "apache-arrow"
+   ],
+   "score": 81
+  },
+  {
+   "id": "656e0d953ae9",
+   "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk",
+   "source_id": "databricks_blog",
+   "topics": [
+    "ai_context_engineering",
+    "ai_on_data_platform"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "genie-ontology",
+    "metric-views",
+    "genie-mcp"
+   ],
+   "score": 86
+  },
+  {
+   "id": "d5f14a6242b0",
+   "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "source_id": "claude_blog",
+   "topics": [
+    "claude_ai_development"
+   ],
+   "soort": "praktisch",
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
+   ],
+   "score": 88
+  },
+  {
+   "id": "ea585dd9c0fa",
+   "title": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes",
+   "source_id": "simon_whiteley",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_evaluation_observability"
+   ],
+   "soort": "praktisch",
+   "labels": [
+    "beslismodellen",
+    "ai-functies-in-sql",
+    "agent-evals"
+   ],
+   "score": 95
+  },
   {
    "id": "6eafeb6028b4",
    "title": "Keuzehulp: zo komt Databricks- of Snowflake-data in Fabric",
@@ -363,76 +490,6 @@
    "soort": "achtergrond",
    "labels": [],
    "score": 77
-  },
-  {
-   "id": "7fd7e06ab2f4",
-   "title": "Zo leest Claude bijna alle code van Claude Code na",
-   "source_id": "claude_blog",
-   "topics": [
-    "claude_ai_development",
-    "cicd_data_deployment"
-   ],
-   "soort": "praktijk",
-   "labels": [
-    "claude-code-pr-werkwijze",
-    "ai-code-review"
-   ],
-   "score": 82
-  },
-  {
-   "id": "a9b6458ba033",
-   "title": "Wat je Claude-agent deed, staat nu als tabel in Unity Catalog",
-   "source_id": "databricks_blog",
-   "topics": [
-    "ai_on_data_platform",
-    "claude_ai_development"
-   ],
-   "soort": "aankondiging",
-   "labels": [
-    "claude-tracing",
-    "mlflow-tracing",
-    "opentelemetry"
-   ],
-   "score": 89
-  },
-  {
-   "id": "ce8bd2396821",
-   "title": "Zes kleine agents met elk één taak, en een mens die tekent",
-   "source_id": "",
-   "topics": [],
-   "soort": "praktijk",
-   "labels": [
-    "multi-agent",
-    "human-in-the-loop"
-   ],
-   "score": 73
-  },
-  {
-   "id": "29e95692607d",
-   "title": "Fivetran en dbt zetten de context voor agents als gewone tabellen in je warehouse",
-   "source_id": "dbt_labs_blog",
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ],
-   "soort": null,
-   "labels": [],
-   "score": 79
-  },
-  {
-   "id": "b380b17e60f1",
-   "title": "Elke pull request zijn eigen kopie van de productiedatabase, in een minuut",
-   "source_id": "databricks_blog",
-   "topics": [
-    "cicd_data_deployment",
-    "databricks_data_engineering"
-   ],
-   "soort": "praktijk",
-   "labels": [
-    "lakebase",
-    "database-branching"
-   ],
-   "score": 82
   }
  ],
  "labels_in_use": [

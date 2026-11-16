@@ -1,6 +1,13 @@
 {
  "format_version": 1,
  "reads": {
+  "078567da13b8": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "source_id": "",
+   "title": "",
+   "topics": []
+  },
   "215f0a50b9ea": {
    "at": "2026-11-04T20:43:05.062194Z",
    "issue": 24,
@@ -46,6 +53,44 @@
     "ai_agents_rag",
     "claude_ai_development",
     "data_governance_privacy"
+   ]
+  },
+  "56bb11919377": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "python-data-source-api",
+    "custom-ingestion",
+    "apache-arrow"
+   ],
+   "s": 81,
+   "soort": "praktijk",
+   "source_id": "databricks_blog",
+   "text": "Eclipse Aerospace simplifies flight-data ingestion with Databricks Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van Eclipse Aerospace leest twintig jaar vluchtdata in een eigen binair formaat nu direct in met een zelfgebouwde Spark-bron: Python als dunne laag, een Rust-decoder eronder. De tussenstap via AWS Lambda en Avro is weg. Gepubliceerd op 12 november 2026 op de Databricks-blog, door Jack Yallop. Eclipse Aerospace heeft bijna 20 jaar vluchtdata: meer dan 3 TB en meer dan 1 miljoen vlieguren, in eigen binaire formaten. De oude keten gebruikte AWS Lambda, Avro en Glacier-opslag; de nieuwe leest de originele bestanden direct in een Spark-read. Opbouw: PySpark custom data source (Python Data Source API) met een Rust-decoder (via PyO3/Maturin) die Apache Arrow RecordBatche",
+   "title": "Eigen bestandsformaat inlezen? Maak er een gewone Spark-bron van",
+   "topics": [
+    "data_ingestion",
+    "databricks_data_engineering"
+   ]
+  },
+  "656e0d953ae9": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "genie-ontology",
+    "metric-views",
+    "genie-mcp"
+   ],
+   "s": 86,
+   "soort": "aankondiging",
+   "source_id": "databricks_blog",
+   "text": "Announcing GA of Genie Ontology Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk Databricks maakt Genie Ontology algemeen beschikbaar: een contextlaag die begrippen leert uit dashboards, queries en Power BI-modellen, en die combineert met definities die je zelf vastlegt. Via MCP kunnen ook Claude en ChatGPT die context gebruiken. Genie Ontology is algemeen beschikbaar (GA), aangekondigd op 11 november 2026. Ook GA: Genie Search (kennis uit documenten, tickets en wiki's), Ontology Snippets, organisatieoverzichten (eerst Workday), Unity Catalog Domains en Subdomains, en Unity Catalog Pages. Geleerde kennis komt uit dashboards, SQL-queries, notebooks en semantische modellen; Power BI als externe kennisbron is bèta, Tableau en Sigma volgen later. OntoRank weegt bronnen op au",
+   "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk",
+   "topics": [
+    "ai_context_engineering",
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
    ]
   },
   "6eafeb6028b4": {
@@ -109,6 +154,43 @@
    "title": "",
    "topics": []
   },
+  "d5f14a6242b0": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
+   ],
+   "s": 88,
+   "soort": "praktisch",
+   "source_id": "claude_blog",
+   "text": "Which Claude model should you build with? Eerst de effort hoger, pas daarna een zwaarder Claude-model Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model. Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog. Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output. SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high. Low met herhaling op high bij mislukking: ~97% geslaagd voor ~",
+   "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "topics": [
+    "claude_ai_development"
+   ]
+  },
+  "ea585dd9c0fa": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "beslismodellen",
+    "ai-functies-in-sql",
+    "agent-evals"
+   ],
+   "s": 95,
+   "soort": "praktisch",
+   "source_id": "simon_whiteley",
+   "text": "System One: Jev, ai_decide or Decisions API? Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes Advancing Analytics vergeleek drie beslismodellen op 300 klantgesprekken. Bij grove keuzes zijn ze even goed; bij fijne keuzes scoren Jev en OpenAI Decisions duidelijk hoger dan ai_decide in Databricks. Blog van Bev Manz (Advancing Analytics), 13 november 2026. Dataset: Action-Based Conversations Dataset (ABCD), ongeveer 10.000 nagespeelde klantenservicegesprekken; 300 testgesprekken per model. Fijne onderwerpkeuze (54 opties): Jev 0,79, OpenAI Decisions 0,79, ai_decide 0,70; met voorbeelden 0,87, 0,86 en 0,73. Volgende stap (30 opties): Jev 0,56, OpenAI 0,57, ai_decide 0,39; met voorbeelden 0,71, 0,63 en 0,43. Altijd de meest voorkomende stap gokken geeft 0,21. ai_dec",
+   "title": "Beslismodellen getest: ai_decide in Databricks blijft achter bij fijne keuzes",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_evaluation_observability",
+    "databricks_data_engineering"
+   ]
+  },
   "f2cef2be2ab7": {
    "at": "2026-11-10T20:23:10.680146Z",
    "issue": 25,
@@ -124,7 +206,7 @@
    ]
   }
  },
- "updated_at": "2026-11-11T14:41:24.387577Z",
+ "updated_at": "2026-11-16T10:37:19.892074Z",
  "votes": {
   "059023edac5d": {
    "at": "2026-11-01T13:40:09.196969Z",
@@ -177,6 +259,16 @@
    ],
    "v": 1
   },
+  "49daca0e1c3d": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "r": null,
+   "s": 79,
+   "source_id": "",
+   "title": "",
+   "topics": [],
+   "v": -1
+  },
   "5673f63258aa": {
    "at": "2026-11-10T20:23:10.680146Z",
    "issue": 29,
@@ -193,6 +285,28 @@
    "topics": [
     "powerbi_semantic_models",
     "data_governance_privacy"
+   ],
+   "v": 1
+  },
+  "5c7174c45ad1": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "metric-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "r": "praktisch",
+   "s": 96,
+   "soort": "aankondiging",
+   "source_id": "databricks_blog",
+   "text": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI Metric views uit Unity Catalog worden vanzelf een Power BI-model Databricks kan metric views nu publiceren als Power BI-semantisch model: dimensies worden kolommen en maatstaven worden DAX-measures. Het is nog een private preview. Publish to Power BI publiceert Unity Catalog metric views als Power BI-semantische modellen; status private preview, toegang via het Databricks-accountteam (blog van 10 november 2026). Elke metric view wordt één tabel; dimensies worden kolommen, maatstaven worden DAX-measures (bijv. roas = DIVIDE([total_revenue], [total_spend])). Publiceren kan vanuit Catalog Explorer of met een Power BI-taak in een Lakeflow Job. Standaard DirectQuery op Lakehouse//RT o",
+   "title": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "databricks_data_engineering"
    ],
    "v": 1
   },
@@ -234,6 +348,16 @@
     "claude_ai_development"
    ],
    "v": 1
+  },
+  "86eab858089b": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "r": "te_vaag",
+   "s": 78,
+   "source_id": "",
+   "title": "",
+   "topics": [],
+   "v": -1
   },
   "90ba3c46bbce": {
    "at": "2026-11-01T13:40:09.196969Z",
@@ -380,6 +504,25 @@
     "data_governance_privacy"
    ],
    "v": -1
+  },
+  "ffe8a09e969f": {
+   "at": "2026-11-16T10:37:19.892074Z",
+   "issue": 32,
+   "labels": [
+    "claude-modellen",
+    "multi-agent"
+   ],
+   "r": null,
+   "s": 84,
+   "soort": "aankondiging",
+   "source_id": "claude_blog",
+   "text": "Claude Fable 5.2 and Mythos 5.2 Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk. Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards. Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program. Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller. FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High eff",
+   "title": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "v": 1
   }
  }
 }
