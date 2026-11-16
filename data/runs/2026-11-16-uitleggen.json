@@ -1,0 +1,4 @@
+{"task": "uitleggen", "started_at": "2026-11-16T03:13:30Z", "finished_at": "2026-11-16T03:25:03Z",
+ "status": "mislukt", "summary": "Vers opgehaald, maar geen artikel uitgelegd: de artikelpagina's konden deze nacht niet worden geopend. 3 artikelen overgeslagen zonder openen; 10 blijven op de werklijst voor het inhalen.",
+ "counts": {"uitgelegd": 0, "met_voorbeeld": 0, "overgeslagen": 3, "overgeslagen_zonder_openen": 3, "aangevuld": 3, "op_werklijst_gebleven": 10},
+ "problems": ["Artikelpagina's openen lukte niet: elke WebFetch gaf 'PROVENANCE_REQUIRED: The permission request for this URL was not answered in time and was withdrawn.' Zonder het volledige artikel mag er niet worden uitgelegd; de 10 overige artikelen zijn niet als 'Niet te lezen' gemarkeerd en blijven op de werklijst.", "Dataflow-voortgang niet bijgewerkt: add_repo was niet beschikbaar en clonen gaf 'fatal: could not read Username for https://github.com: terminal prompts disabled'."]}
