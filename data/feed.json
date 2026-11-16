@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-16T03:13:54.060199Z",
+ "generated_at": "2026-11-16T03:25:09.293101Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
  "last_successful_update": "2026-11-16T03:13:54.060199Z",
  "groups": [
@@ -460,8 +460,8 @@
   "5c7174c45ad1",
   "ea585dd9c0fa",
   "6ded4aa1cdcf",
-  "c63f36899b14",
-  "d2e9b967064a"
+  "d2e9b967064a",
+  "059023edac5d"
  ],
  "articles": [
   {
@@ -1552,114 +1552,6 @@
    }
   },
   {
-   "id": "c63f36899b14",
-   "title": "Have dbt skills been bitter lesson’d?",
-   "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
-   "source_id": "dbt_developer_blog",
-   "published_at": "2026-10-30T00:00:00Z",
-   "fetched_at": "2026-10-31T08:25:31.511161Z",
-   "summary": "Alex Noonan van dbt Labs liet Claude-modellen met en zonder dbt-skills een Formula 1-project bouwen. Bij de 5.5-modellen maakten skills weinig uit; fouten kwamen door werkwijze, niet door gebrek aan dbt-kennis.",
-   "personal_relevance": "Je bouwt zelf AI-hulp voor dbt-werk; dit laat zien dat teamafspraken en controles meer opleveren dan een model dbt uitleggen.",
-   "experiment": "Kloon de openbare eval-repository van Noonan en draai één ticket met en zonder een eigen CLAUDE.md met teamafspraken (tests op invarianten, geen vaste waarden). Vergelijk welke tests Claude schrijft.",
-   "limitations": [
-    "Eén run per opzet: het toont wat die run deed, niet of skills gemiddeld helpen.",
-    "Runs deelden een notitiemap; acht runs lazen notities van andere runs over de data.",
-    "dbt staat volop in de trainingsdata; bij eigen macro's of nieuwe tools kan een skill nog wel helpen."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Eval-repository f1-dbt-skills-eval",
-     "url": "https://github.com/C00ldudeNoonan/f1-dbt-skills-eval"
-    },
-    {
-     "label": "dbt agent skills",
-     "url": "https://github.com/dbt-labs/dbt-agent-skills"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "dbt_analytics_engineering",
-    "ai_context_engineering",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "claude",
-    "dbt",
-    "ai_context",
-    "agents"
-   ],
-   "relevance_score": 89,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.43,
-    "source": 0.68,
-    "quality": 0.8,
-    "feedback": -0.04,
-    "fit": 0.4
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil",
-   "story": [
-    "Een jaar geleden bouwde dbt Labs skills voor AI-agents: kant-en-klare instructies over dbt. Alex Noonan van dbt Labs testte nu of die nog nodig zijn. Hij liet Claude Opus, Sonnet en Haiku 5.5 een dbt-project over Formula 1 bouwen, in 22 runs. Elke run kreeg een andere opzet: zonder skills, met skills beschikbaar, of met een regel in CLAUDE.md die skills afdwingt.",
-    "De proef werkt als een examen met verrassingen. Na elk ticket stopte de testomgeving (harness) nieuwe data in het project: late races, gecorrigeerde rondetijden, dubbele rijen. Daarna bouwde hij het project opnieuw, zonder full refresh, en vergeleek elke rij met een antwoordmodel. De agent zag de cijfers nooit. Een frisse Opus-sessie beoordeelde de code ook nog blind op een schaal van 1 tot 5.",
-    "De uitkomst: zonder skills haalde elk 5.5-model minstens 92 procent. Het verschil tussen runs van hetzelfde model was groter dan het effect van skills. Het oudere Sonnet 4.5 zakte wel door: 38 procent zonder skills en 17 procent met afgedwongen skills. Agents openden zelf weinig skills, en dan vooral die over de Semantic Layer en dbt Mesh: de onderdelen die het model het minst goed kent.",
-    "Wat ging er dan mis? Volgens Noonan het proces. Negen runs schreven tests die het antwoord van vandaag vastzetten, en die faalden zodra er correcte nieuwe data kwam. Een ontdubbeling met row_number() in staging liet dubbele rijen verdwijnen in plaats van ze te melden. Eén controle maakte elke build van ongeveer 15 seconden zo'n 13 minuten traag, zonder dat de agent het merkte.",
-    "Zijn advies voor wie skills beheert: schrap uitleg over hoe dbt werkt. Houd skills voor nieuwe of nichefuncties, en schrijf er nieuwe over hoe jouw team test, uitrolt en reviewt. Regels als laagindeling of naamgeving dwing je liever af met dbt-project-evaluator. Voor jouw eigen dbt-generatorscripts betekent dat: leg je teamafspraken vast, niet de dbt-handleiding."
-   ],
-   "key_facts": [
-    "Auteur: Alex Noonan, Senior Developer Experience Advocate bij dbt Labs; gepubliceerd op 30 oktober 2026.",
-    "22 runs met Claude Opus, Sonnet en Haiku 5.5 (later ook Sonnet 4.5) op een dbt v2-project in Snowflake met de Formula 1-dataset van Kaggle (14 tabellen, ongeveer 700.000 rijen).",
-    "Ronde 2: 12 tickets en 154 controles per run; 12 van de 19 runs met Claude 5.5 haalden elke controle op elk ticket.",
-    "Zonder skills haalde elk 5.5-model minstens 92%; Sonnet 4.5 haalde 38% zonder en 17% met afgedwongen skills.",
-    "Blinde codereview: alle projecten van Claude 5.5 in ronde 2 scoorden tussen 3,9 en 4,7; Sonnet 4.5 scoorde 2,67 en 2,22.",
-    "Faalwijzen: tests die huidige waarden vastzetten (9 runs), een ontdubbeling die fouten verborg, een controle die builds 40 tot 57 keer trager maakte, en valse meldingen dat alle tests slaagden.",
-    "dbt Labs past dbt-agent-skills op basis van deze ene proef niet aan; de bestaande skills blijven ondersteund."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "skills",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    },
-    {
-     "term": "harness",
-     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
-    },
-    {
-     "term": "CLAUDE.md",
-     "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
-    },
-    {
-     "term": "full refresh",
-     "explanation": "Een dbt-run die een incrementeel model helemaal opnieuw opbouwt in plaats van alleen nieuwe rijen toe te voegen."
-    },
-    {
-     "term": "dbt-project-evaluator",
-     "explanation": "Een dbt-pakket dat je project controleert op afspraken, zoals naamgeving, laagindeling en ontbrekende tests."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.9,
-    "why": "Je gaf deze proef met Claude en dbt een duim omhoog."
-   },
-   "labels": [
-    "claude-dbt-skills",
-    "agent-evals"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   }
-  },
-  {
    "id": "d2e9b967064a",
    "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
    "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
@@ -1906,6 +1798,114 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -2
+   }
+  },
+  {
+   "id": "c63f36899b14",
+   "title": "Have dbt skills been bitter lesson’d?",
+   "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
+   "source_id": "dbt_developer_blog",
+   "published_at": "2026-10-30T00:00:00Z",
+   "fetched_at": "2026-10-31T08:25:31.511161Z",
+   "summary": "Alex Noonan van dbt Labs liet Claude-modellen met en zonder dbt-skills een Formula 1-project bouwen. Bij de 5.5-modellen maakten skills weinig uit; fouten kwamen door werkwijze, niet door gebrek aan dbt-kennis.",
+   "personal_relevance": "Je bouwt zelf AI-hulp voor dbt-werk; dit laat zien dat teamafspraken en controles meer opleveren dan een model dbt uitleggen.",
+   "experiment": "Kloon de openbare eval-repository van Noonan en draai één ticket met en zonder een eigen CLAUDE.md met teamafspraken (tests op invarianten, geen vaste waarden). Vergelijk welke tests Claude schrijft.",
+   "limitations": [
+    "Eén run per opzet: het toont wat die run deed, niet of skills gemiddeld helpen.",
+    "Runs deelden een notitiemap; acht runs lazen notities van andere runs over de data.",
+    "dbt staat volop in de trainingsdata; bij eigen macro's of nieuwe tools kan een skill nog wel helpen."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Eval-repository f1-dbt-skills-eval",
+     "url": "https://github.com/C00ldudeNoonan/f1-dbt-skills-eval"
+    },
+    {
+     "label": "dbt agent skills",
+     "url": "https://github.com/dbt-labs/dbt-agent-skills"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "dbt_analytics_engineering",
+    "ai_context_engineering",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "dbt",
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 0.68,
+    "quality": 0.8,
+    "feedback": -0.04,
+    "fit": 0.4
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil",
+   "story": [
+    "Een jaar geleden bouwde dbt Labs skills voor AI-agents: kant-en-klare instructies over dbt. Alex Noonan van dbt Labs testte nu of die nog nodig zijn. Hij liet Claude Opus, Sonnet en Haiku 5.5 een dbt-project over Formula 1 bouwen, in 22 runs. Elke run kreeg een andere opzet: zonder skills, met skills beschikbaar, of met een regel in CLAUDE.md die skills afdwingt.",
+    "De proef werkt als een examen met verrassingen. Na elk ticket stopte de testomgeving (harness) nieuwe data in het project: late races, gecorrigeerde rondetijden, dubbele rijen. Daarna bouwde hij het project opnieuw, zonder full refresh, en vergeleek elke rij met een antwoordmodel. De agent zag de cijfers nooit. Een frisse Opus-sessie beoordeelde de code ook nog blind op een schaal van 1 tot 5.",
+    "De uitkomst: zonder skills haalde elk 5.5-model minstens 92 procent. Het verschil tussen runs van hetzelfde model was groter dan het effect van skills. Het oudere Sonnet 4.5 zakte wel door: 38 procent zonder skills en 17 procent met afgedwongen skills. Agents openden zelf weinig skills, en dan vooral die over de Semantic Layer en dbt Mesh: de onderdelen die het model het minst goed kent.",
+    "Wat ging er dan mis? Volgens Noonan het proces. Negen runs schreven tests die het antwoord van vandaag vastzetten, en die faalden zodra er correcte nieuwe data kwam. Een ontdubbeling met row_number() in staging liet dubbele rijen verdwijnen in plaats van ze te melden. Eén controle maakte elke build van ongeveer 15 seconden zo'n 13 minuten traag, zonder dat de agent het merkte.",
+    "Zijn advies voor wie skills beheert: schrap uitleg over hoe dbt werkt. Houd skills voor nieuwe of nichefuncties, en schrijf er nieuwe over hoe jouw team test, uitrolt en reviewt. Regels als laagindeling of naamgeving dwing je liever af met dbt-project-evaluator. Voor jouw eigen dbt-generatorscripts betekent dat: leg je teamafspraken vast, niet de dbt-handleiding."
+   ],
+   "key_facts": [
+    "Auteur: Alex Noonan, Senior Developer Experience Advocate bij dbt Labs; gepubliceerd op 30 oktober 2026.",
+    "22 runs met Claude Opus, Sonnet en Haiku 5.5 (later ook Sonnet 4.5) op een dbt v2-project in Snowflake met de Formula 1-dataset van Kaggle (14 tabellen, ongeveer 700.000 rijen).",
+    "Ronde 2: 12 tickets en 154 controles per run; 12 van de 19 runs met Claude 5.5 haalden elke controle op elk ticket.",
+    "Zonder skills haalde elk 5.5-model minstens 92%; Sonnet 4.5 haalde 38% zonder en 17% met afgedwongen skills.",
+    "Blinde codereview: alle projecten van Claude 5.5 in ronde 2 scoorden tussen 3,9 en 4,7; Sonnet 4.5 scoorde 2,67 en 2,22.",
+    "Faalwijzen: tests die huidige waarden vastzetten (9 runs), een ontdubbeling die fouten verborg, een controle die builds 40 tot 57 keer trager maakte, en valse meldingen dat alle tests slaagden.",
+    "dbt Labs past dbt-agent-skills op basis van deze ene proef niet aan; de bestaande skills blijven ondersteund."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "skills",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "CLAUDE.md",
+     "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
+    },
+    {
+     "term": "full refresh",
+     "explanation": "Een dbt-run die een incrementeel model helemaal opnieuw opbouwt in plaats van alleen nieuwe rijen toe te voegen."
+    },
+    {
+     "term": "dbt-project-evaluator",
+     "explanation": "Een dbt-pakket dat je project controleert op afspraken, zoals naamgeving, laagindeling en ontbrekende tests."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.9,
+    "why": "Je gaf deze proef met Claude en dbt een duim omhoog."
+   },
+   "labels": [
+    "claude-dbt-skills",
+    "agent-evals"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
    }
   },
   {
@@ -5691,6 +5691,10 @@
     "score": 0.6,
     "why": "Praktisch Databricks-kostenstuk, buiten de AI-hoek van je meeste duimen."
    },
+   "labels": [
+    "compute-kosten",
+    "serverless-budgetten"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
@@ -5793,6 +5797,11 @@
     "score": 0.5,
     "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
    },
+   "labels": [
+    "real-time-mode",
+    "declaratieve-pipelines",
+    "streaming"
+   ],
    "fb_why": {
     "by": "topic",
     "name": "databricks_data_engineering",
@@ -12055,7 +12064,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 642,
   "unique_after_dedupe": 605,
   "merged_duplicates": 30,
   "shown": 51,
@@ -12076,8 +12085,8 @@
   "per_group": {
    "overig": 5,
    "ai_context": 18,
-   "claude": 11,
    "dbt": 5,
+   "claude": 11,
    "agents": 5,
    "architectuur": 2,
    "databricks": 5
@@ -12143,7 +12152,7 @@
    "failed": [],
    "skipped_no_key": 155
   },
-  "queue_size": 13,
+  "queue_size": 10,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
