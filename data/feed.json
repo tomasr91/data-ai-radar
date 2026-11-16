@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-16T03:26:00.585365Z",
+ "generated_at": "2026-11-16T04:14:04.797008Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -756,7 +756,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1397,7 +1397,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -3492,91 +3492,6 @@
    }
   },
   {
-   "id": "215f0a50b9ea",
-   "title": "Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data",
-   "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
-   "source_id": "chris_webb",
-   "published_at": "2026-11-01T09:30:00Z",
-   "fetched_at": "2026-11-01T09:33:59.422669Z",
-   "summary": "Chris Webb vindt de koppeling van M365 Copilot met Power BI-modellen de makkelijkste en goedkoopste start voor vragen in gewone taal.",
-   "personal_relevance": "Je semantische modellen worden de bron voor vragen in gewone taal; dat maakt goede definities nog belangrijker.",
-   "experiment": "Zet synoniemen en AI-instructies in een oefenmodel met verzonnen data en kijk welke vragen Copilot daardoor beter beantwoordt.",
-   "limitations": [
-    "Webb werkt bij Microsoft; het stuk is geschreven vanuit dat perspectief.",
-    "Welke licentie precies nodig is, staat niet helemaal eenduidig in het stuk.",
-    "Copilot is een externe AI-dienst: alleen met data waarvoor dat binnen de interne regels is toegestaan."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "powerbi_semantic_models",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "overig",
-    "ai_context"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.48,
-    "source": 0.68,
-    "quality": 0.55,
-    "feedback": 0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:43:29Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
-   "story": [
-    "Chris Webb werkt bij Microsoft en schrijft al jaren over Power BI. Hij vindt dat organisaties die veel met Power BI werken hun 'chat met je data' moeten beginnen bij M365 Copilot. De koppeling van M365 Copilot en Cowork met semantische modellen is nu algemeen beschikbaar.",
-    "Zijn belangrijkste argument: er verandert alleen de voorkant. Gebruikers stellen hun vraag in Copilot, bijvoorbeeld in Excel of de browser, in plaats van in Power BI zelf. Het semantisch model met de bedrijfslogica blijft hetzelfde. Wat je eerder deed om het model klaar te maken voor AI, zoals synoniemen en AI-instructies, blijft dus nuttig.",
-    "Webb noemt ook de kosten. Volgens hem betaal je bij een Pro- of PPU-werkruimte niets extra voor de vragen, naast de licentie. Daarnaast kan Copilot cijfers combineren met mails en vergaderverslagen uit Work IQ, om uit te leggen waarom iets gebeurde.",
-    "Voor jou is de kern bekend: een goed semantisch model is de context voor AI. Let wel op zijn belang, want hij werkt bij Microsoft. En in de zorg mag Copilot alleen bij data waarvoor dat binnen de interne regels is toegestaan; Work IQ leest bovendien mails en verslagen mee. Databricks noemt hij niet."
-   ],
-   "key_facts": [
-    "Webb: organisaties die veel Power BI gebruiken, moeten 'chat met je data' beginnen met de M365 Copilot- en Cowork-koppeling met Power BI-semantische modellen.",
-    "Webb: de koppeling is aangekondigd in juli 2026 en nu algemeen beschikbaar.",
-    "Webb: eerdere AI-voorbereiding van het model, zoals synoniemen en AI-instructies, blijft relevant.",
-    "Webb: bij Pro- of PPU-werkruimten zijn er geen extra kosten voor de vragen naast de licentie; op capaciteit tellen alleen de CU's van de DAX-queries.",
-    "Webb noemt Fabric Data Agents en Ontologies krachtig, maar raadt ze niet aan als startpunt.",
-    "Gepubliceerd 1 november 2026."
-   ],
-   "article_type": "opinie",
-   "author": "Chris Webb, Microsoft-medewerker en al jaren een bekende Power BI-auteur en blogger",
-   "terms": [
-    {
-     "term": "M365 Copilot",
-     "explanation": "De AI-assistent van Microsoft in Office-programma's zoals Excel, Outlook en Teams."
-    },
-    {
-     "term": "Work IQ",
-     "explanation": "De laag in Microsoft 365 die werkcontext zoals mails en vergaderverslagen aan Copilot geeft."
-    },
-    {
-     "term": "PPU",
-     "explanation": "Premium Per User: een Power BI-licentie per persoon met Premium-functies, zonder dat je een hele capaciteit koopt."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.55,
-    "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
-   },
-   "labels": [
-    "copilot-power-bi",
-    "semantische-laag-ai"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "a9b6458ba033",
    "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
    "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
@@ -4018,6 +3933,91 @@
     "agent-evals",
     "claude-code-skills",
     "llm-als-rechter"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
+   "id": "215f0a50b9ea",
+   "title": "Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data",
+   "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
+   "source_id": "chris_webb",
+   "published_at": "2026-11-01T09:30:00Z",
+   "fetched_at": "2026-11-01T09:33:59.422669Z",
+   "summary": "Chris Webb vindt de koppeling van M365 Copilot met Power BI-modellen de makkelijkste en goedkoopste start voor vragen in gewone taal.",
+   "personal_relevance": "Je semantische modellen worden de bron voor vragen in gewone taal; dat maakt goede definities nog belangrijker.",
+   "experiment": "Zet synoniemen en AI-instructies in een oefenmodel met verzonnen data en kijk welke vragen Copilot daardoor beter beantwoordt.",
+   "limitations": [
+    "Webb werkt bij Microsoft; het stuk is geschreven vanuit dat perspectief.",
+    "Welke licentie precies nodig is, staat niet helemaal eenduidig in het stuk.",
+    "Copilot is een externe AI-dienst: alleen met data waarvoor dat binnen de interne regels is toegestaan."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "powerbi_semantic_models",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "overig",
+    "ai_context"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.48,
+    "source": 0.68,
+    "quality": 0.55,
+    "feedback": 0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak, inhaalrun)",
+   "processed_at": "2026-11-04T06:43:29Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Webb: begin met M365 Copilot als je met Power BI-data wilt chatten",
+   "story": [
+    "Chris Webb werkt bij Microsoft en schrijft al jaren over Power BI. Hij vindt dat organisaties die veel met Power BI werken hun 'chat met je data' moeten beginnen bij M365 Copilot. De koppeling van M365 Copilot en Cowork met semantische modellen is nu algemeen beschikbaar.",
+    "Zijn belangrijkste argument: er verandert alleen de voorkant. Gebruikers stellen hun vraag in Copilot, bijvoorbeeld in Excel of de browser, in plaats van in Power BI zelf. Het semantisch model met de bedrijfslogica blijft hetzelfde. Wat je eerder deed om het model klaar te maken voor AI, zoals synoniemen en AI-instructies, blijft dus nuttig.",
+    "Webb noemt ook de kosten. Volgens hem betaal je bij een Pro- of PPU-werkruimte niets extra voor de vragen, naast de licentie. Daarnaast kan Copilot cijfers combineren met mails en vergaderverslagen uit Work IQ, om uit te leggen waarom iets gebeurde.",
+    "Voor jou is de kern bekend: een goed semantisch model is de context voor AI. Let wel op zijn belang, want hij werkt bij Microsoft. En in de zorg mag Copilot alleen bij data waarvoor dat binnen de interne regels is toegestaan; Work IQ leest bovendien mails en verslagen mee. Databricks noemt hij niet."
+   ],
+   "key_facts": [
+    "Webb: organisaties die veel Power BI gebruiken, moeten 'chat met je data' beginnen met de M365 Copilot- en Cowork-koppeling met Power BI-semantische modellen.",
+    "Webb: de koppeling is aangekondigd in juli 2026 en nu algemeen beschikbaar.",
+    "Webb: eerdere AI-voorbereiding van het model, zoals synoniemen en AI-instructies, blijft relevant.",
+    "Webb: bij Pro- of PPU-werkruimten zijn er geen extra kosten voor de vragen naast de licentie; op capaciteit tellen alleen de CU's van de DAX-queries.",
+    "Webb noemt Fabric Data Agents en Ontologies krachtig, maar raadt ze niet aan als startpunt.",
+    "Gepubliceerd 1 november 2026."
+   ],
+   "article_type": "opinie",
+   "author": "Chris Webb, Microsoft-medewerker en al jaren een bekende Power BI-auteur en blogger",
+   "terms": [
+    {
+     "term": "M365 Copilot",
+     "explanation": "De AI-assistent van Microsoft in Office-programma's zoals Excel, Outlook en Teams."
+    },
+    {
+     "term": "Work IQ",
+     "explanation": "De laag in Microsoft 365 die werkcontext zoals mails en vergaderverslagen aan Copilot geeft."
+    },
+    {
+     "term": "PPU",
+     "explanation": "Premium Per User: een Power BI-licentie per persoon met Premium-functies, zonder dat je een hele capaciteit koopt."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.55,
+    "why": "Onderbouwde mening over semantische modellen als AI-context, een beetje zoals het Noonan-stuk dat je een duim gaf."
+   },
+   "labels": [
+    "copilot-power-bi",
+    "semantische-laag-ai"
    ],
    "fb_why": {
     "by": "topic",
@@ -8734,64 +8734,63 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-15T04:25:00Z",
+  "generated_at": "2026-11-16T04:13:48Z",
   "options": [
    {
-    "id": "toegang-op-attributen",
-    "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
-    "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
-    "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
+    "id": "push-cdc-met-zerobus",
+    "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
+    "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
+    "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
     "topics": [
-     "data_governance_privacy",
-     "metadata_lineage_catalogs",
-     "ai_in_healthcare"
+     "data_ingestion",
+     "databricks_data_engineering"
     ],
     "area": "data_engineering"
    },
    {
-    "id": "agent-geheugen-in-lagen",
-    "title": "Wat moet een data-agent onthouden? Geheugen in lagen en 'dreaming'",
-    "question": "Hoe bouw je het geheugen van een agent op in lagen (transcripten, notities, een wiki, een klein bestand dat altijd wordt ingeladen), en hoe houd je dat geheugen juist en klein, bijvoorbeeld met een aparte run die het na afloop opruimt?",
-    "why": "Trend 'Agents houden hun venster leeg': Anthropic beschreef op 6 november vier geheugenlagen en 'dreaming', een aparte run die het geheugen van een agent na afloop toetst en opruimt.",
+    "id": "kolom-lineage-impactanalyse",
+    "title": "Kolom-lineage gebruiken voor impactanalyse",
+    "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
+    "why": "De trend 'context voor AI-agents komt in het dataplatform zelf' leunt op metadata en lineage; weten wat lineage wel en niet ziet is daarvoor de basis.",
+    "topics": [
+     "metadata_lineage_catalogs",
+     "ai_context_engineering"
+    ],
+    "area": "data_engineering"
+   },
+   {
+    "id": "skills-kiezen-voordat-tools-laden",
+    "title": "Te veel gereedschap: hoe een agent kiest welke skills en tools hij laadt",
+    "question": "Waarom wordt een agent slechter als hij te veel skills of tools tegelijk ziet, en hoe laat je hem eerst kiezen wat hij nodig heeft?",
+    "why": "Stripe zag bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd en laat Kai daarom eerst skills kiezen; dat hoort bij de trend over geheugen en skills voor agents.",
     "topics": [
      "ai_context_engineering",
-     "ai_agents_rag",
-     "claude_ai_development"
+     "ai_agents_rag"
     ],
     "area": "context_agents"
    },
    {
-    "id": "beslismodel-of-ai-classify",
-    "title": "Kiezen uit vaste opties: beslismodel, ai_classify of een gewone prompt?",
-    "question": "Wanneer laat je een AI-model kiezen uit opties die jij vastlegt (zoals ai_decide of ai_classify in Databricks) in plaats van een vrije prompt, en hoe meet je op een testset of het fijne keuzes goed genoeg maakt?",
-    "why": "In een test van Advancing Analytics (13 november) scoorden ai_decide en twee andere beslismodellen gelijk op grove keuzes, maar viel ai_decide terug bij fijne keuzes (0,70 tegen 0,79).",
+    "id": "ai-extract-meten-en-verbeteren",
+    "title": "Eerst meten, dan repareren: velden uit documenten halen met ai_extract",
+    "question": "Hoe bouw je een vaste testset voor een AI-functie die velden uit documenten haalt, en hoe voorkom je dat een reparatie op één veld het totaal slechter maakt?",
+    "why": "Databricks liet zien hoe een vaste, door mensen gecontroleerde testset de fouten bij ai_extract flink verminderde; dat past bij de trend 'agents worden beter door meten'.",
     "topics": [
      "ai_on_data_platform",
-     "ai_evaluation_observability"
+     "ai_evaluation_observability",
+     "data_quality_observability"
     ],
-    "area": "context_agents"
+    "area": "ai_op_data"
    },
    {
-    "id": "agents-samenwerken-via-git-en-database",
-    "title": "1.000 agents, één prikbord: samenwerken via Git en een database",
-    "question": "Hoe verdelen meerdere Claude-agents één groot klus via alleen Git en een gedeelde database (taken claimen, notities, een logboek), en wat kun je daarvan overnemen als je zelf met subagents in Claude Code werkt?",
-    "why": "Anthropic liet op 9 november 1.000 agents samen een formeel bewijs opbouwen, met als enige gereedschap Git en een Postgres-database met vijf tabellen als gedeeld prikbord.",
+    "id": "claude-code-onbewaakt-laten-werken",
+    "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
+    "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
+    "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
     "topics": [
      "claude_ai_development",
-     "ai_agents_rag"
+     "cicd_data_deployment"
     ],
     "area": "claude"
-   },
-   {
-    "id": "rag-op-onderzoeksdocumentatie",
-    "title": "Zoeken in onderzoeksdocumentatie met RAG: waar het meestal misgaat",
-    "question": "Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne (onderzoeks)documentatie, met opknippen, hybride zoeken en herrangschikken, en wanneer is RAG niet de juiste keuze?",
-    "why": "Kennisontsluiting van onderzoeksdocumentatie staat bij je project AI in de zorg, en Databricks AI Search kan sinds eind oktober ook streaming tables en materialized views als bron gebruiken.",
-    "topics": [
-     "ai_research_data",
-     "ai_agents_rag"
-    ],
-    "area": "new_tech"
    }
   ]
  },
@@ -12073,8 +12072,8 @@
    "claude_code_releases": 3,
    "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
-   "chris_webb": 1,
    "hamel_husain": 1,
+   "chris_webb": 1,
    "fabric_blog": 1,
    "sqlbi": 2,
    "powerbi_blog": 1
