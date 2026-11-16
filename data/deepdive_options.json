@@ -1,126 +1,65 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-15T04:25:00Z",
+  "generated_at": "2026-11-16T04:13:48Z",
   "options": [
     {
-      "id": "toegang-op-attributen",
-      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
-      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
-      "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
-      "topics": [
-        "data_governance_privacy",
-        "metadata_lineage_catalogs",
-        "ai_in_healthcare"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "agent-geheugen-in-lagen",
-      "title": "Wat moet een data-agent onthouden? Geheugen in lagen en 'dreaming'",
-      "question": "Hoe bouw je het geheugen van een agent op in lagen (transcripten, notities, een wiki, een klein bestand dat altijd wordt ingeladen), en hoe houd je dat geheugen juist en klein, bijvoorbeeld met een aparte run die het na afloop opruimt?",
-      "why": "Trend 'Agents houden hun venster leeg': Anthropic beschreef op 6 november vier geheugenlagen en 'dreaming', een aparte run die het geheugen van een agent na afloop toetst en opruimt.",
-      "topics": [
-        "ai_context_engineering",
-        "ai_agents_rag",
-        "claude_ai_development"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "beslismodel-of-ai-classify",
-      "title": "Kiezen uit vaste opties: beslismodel, ai_classify of een gewone prompt?",
-      "question": "Wanneer laat je een AI-model kiezen uit opties die jij vastlegt (zoals ai_decide of ai_classify in Databricks) in plaats van een vrije prompt, en hoe meet je op een testset of het fijne keuzes goed genoeg maakt?",
-      "why": "In een test van Advancing Analytics (13 november) scoorden ai_decide en twee andere beslismodellen gelijk op grove keuzes, maar viel ai_decide terug bij fijne keuzes (0,70 tegen 0,79).",
-      "topics": [
-        "ai_on_data_platform",
-        "ai_evaluation_observability"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "agents-samenwerken-via-git-en-database",
-      "title": "1.000 agents, één prikbord: samenwerken via Git en een database",
-      "question": "Hoe verdelen meerdere Claude-agents één groot klus via alleen Git en een gedeelde database (taken claimen, notities, een logboek), en wat kun je daarvan overnemen als je zelf met subagents in Claude Code werkt?",
-      "why": "Anthropic liet op 9 november 1.000 agents samen een formeel bewijs opbouwen, met als enige gereedschap Git en een Postgres-database met vijf tabellen als gedeeld prikbord.",
-      "topics": [
-        "claude_ai_development",
-        "ai_agents_rag"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "rag-op-onderzoeksdocumentatie",
-      "title": "Zoeken in onderzoeksdocumentatie met RAG: waar het meestal misgaat",
-      "question": "Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne (onderzoeks)documentatie, met opknippen, hybride zoeken en herrangschikken, en wanneer is RAG niet de juiste keuze?",
-      "why": "Kennisontsluiting van onderzoeksdocumentatie staat bij je project AI in de zorg, en Databricks AI Search kan sinds eind oktober ook streaming tables en materialized views als bron gebruiken.",
-      "topics": [
-        "ai_research_data",
-        "ai_agents_rag"
-      ],
-      "area": "new_tech"
-    }
-  ],
-  "history": [
-    {
-      "id": "ingestion-basis",
-      "title": "Hoe komt data eigenlijk in Databricks? De basis van ingestion",
-      "question": "Wat gebeurt er tussen een bronsysteem en je bronze-laag, en welke manieren van inladen zijn er (batch, incrementeel, streaming)?",
-      "why": "Ingestion is nog beginnersterrein voor jou, en deze week werden Lakeflow-pipelines met verwerking in milliseconden algemeen beschikbaar; eerst de basis van full load, incrementeel en CDC.",
+      "id": "push-cdc-met-zerobus",
+      "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
+      "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
+      "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
       "topics": [
         "data_ingestion",
         "databricks_data_engineering"
       ],
-      "area": "data_engineering",
-      "level": "beginner"
+      "area": "data_engineering"
     },
     {
-      "id": "asset-bundles-basis",
-      "title": "Bundels: je Databricks-project als code uitrollen naar dev, test en prod",
-      "question": "Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?",
-      "why": "Sluit aan op de verdieping over release pipelines; Databricks noemt Asset Bundles sinds kort Declarative Automation Bundles en gebruikt ze in zijn Azure DevOps-voorbeeld.",
+      "id": "kolom-lineage-impactanalyse",
+      "title": "Kolom-lineage gebruiken voor impactanalyse",
+      "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
+      "why": "De trend 'context voor AI-agents komt in het dataplatform zelf' leunt op metadata en lineage; weten wat lineage wel en niet ziet is daarvoor de basis.",
       "topics": [
-        "cicd_data_deployment",
-        "databricks_data_engineering"
+        "metadata_lineage_catalogs",
+        "ai_context_engineering"
       ],
-      "area": "data_engineering",
-      "level": "beginner"
+      "area": "data_engineering"
     },
     {
-      "id": "tekst-klaarmaken-voor-ai-in-dbt",
-      "title": "Tekst in je warehouse klaarmaken voor AI, binnen je dbt-project",
-      "question": "Hoe knip je tekst op, maak je embeddings en houd je bij elk zoekresultaat de bron bij, met gewone dbt-modellen, en wat moet je daarbij testen?",
-      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs bracht hiervoor het pakket dbt_context_engineering uit.",
+      "id": "skills-kiezen-voordat-tools-laden",
+      "title": "Te veel gereedschap: hoe een agent kiest welke skills en tools hij laadt",
+      "question": "Waarom wordt een agent slechter als hij te veel skills of tools tegelijk ziet, en hoe laat je hem eerst kiezen wat hij nodig heeft?",
+      "why": "Stripe zag bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd en laat Kai daarom eerst skills kiezen; dat hoort bij de trend over geheugen en skills voor agents.",
       "topics": [
         "ai_context_engineering",
-        "ai_agents_rag",
-        "dbt_analytics_engineering"
+        "ai_agents_rag"
       ],
       "area": "context_agents"
     },
     {
-      "id": "agent-bewijst-eigen-werk",
-      "title": "Een AI-agent zijn werk laten bewijzen: tests, data vergelijken of traces?",
-      "question": "Welke manieren zijn er om een codeeragent zoals Claude Code zelf te laten aantonen dat zijn wijziging klopt, en wanneer kies je welke?",
-      "why": "De trend 'Agents worden beter door controles en metingen' laat zien dat dbt Labs, LangChain en Ecolab elk een eigen controlelus inbouwen.",
+      "id": "ai-extract-meten-en-verbeteren",
+      "title": "Eerst meten, dan repareren: velden uit documenten halen met ai_extract",
+      "question": "Hoe bouw je een vaste testset voor een AI-functie die velden uit documenten haalt, en hoe voorkom je dat een reparatie op één veld het totaal slechter maakt?",
+      "why": "Databricks liet zien hoe een vaste, door mensen gecontroleerde testset de fouten bij ai_extract flink verminderde; dat past bij de trend 'agents worden beter door meten'.",
       "topics": [
-        "claude_ai_development",
+        "ai_on_data_platform",
         "ai_evaluation_observability",
-        "dbt_analytics_engineering"
+        "data_quality_observability"
       ],
-      "area": "claude"
+      "area": "ai_op_data"
     },
     {
-      "id": "zorgkennis-als-skills",
-      "title": "Zorgkennis vastleggen voor AI-assistenten: wat Vital Skills laat zien",
-      "question": "Hoe leg je domeinkennis uit de zorg, zoals het samenstellen van cohorten, vast als skills, en wat moet je aanpassen aan Nederlandse regels zoals de AVG?",
-      "why": "Databricks bracht open-source zorgskills uit; een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform.",
+      "id": "claude-code-onbewaakt-laten-werken",
+      "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
+      "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
+      "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
       "topics": [
-        "ai_in_healthcare",
-        "open_source_tools",
-        "data_governance_privacy"
+        "claude_ai_development",
+        "cicd_data_deployment"
       ],
-      "area": "new_tech"
-    },
+      "area": "claude"
+    }
+  ],
+  "history": [
     {
       "id": "semantische-laag-als-ai-context",
       "title": "De semantische laag als geheugen voor AI",
@@ -763,6 +702,63 @@
       "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
       "topics": [
         "ai_in_healthcare",
+        "ai_agents_rag"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "toegang-op-attributen",
+      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
+      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
+      "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
+      "topics": [
+        "data_governance_privacy",
+        "metadata_lineage_catalogs",
+        "ai_in_healthcare"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "agent-geheugen-in-lagen",
+      "title": "Wat moet een data-agent onthouden? Geheugen in lagen en 'dreaming'",
+      "question": "Hoe bouw je het geheugen van een agent op in lagen (transcripten, notities, een wiki, een klein bestand dat altijd wordt ingeladen), en hoe houd je dat geheugen juist en klein, bijvoorbeeld met een aparte run die het na afloop opruimt?",
+      "why": "Trend 'Agents houden hun venster leeg': Anthropic beschreef op 6 november vier geheugenlagen en 'dreaming', een aparte run die het geheugen van een agent na afloop toetst en opruimt.",
+      "topics": [
+        "ai_context_engineering",
+        "ai_agents_rag",
+        "claude_ai_development"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "beslismodel-of-ai-classify",
+      "title": "Kiezen uit vaste opties: beslismodel, ai_classify of een gewone prompt?",
+      "question": "Wanneer laat je een AI-model kiezen uit opties die jij vastlegt (zoals ai_decide of ai_classify in Databricks) in plaats van een vrije prompt, en hoe meet je op een testset of het fijne keuzes goed genoeg maakt?",
+      "why": "In een test van Advancing Analytics (13 november) scoorden ai_decide en twee andere beslismodellen gelijk op grove keuzes, maar viel ai_decide terug bij fijne keuzes (0,70 tegen 0,79).",
+      "topics": [
+        "ai_on_data_platform",
+        "ai_evaluation_observability"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "agents-samenwerken-via-git-en-database",
+      "title": "1.000 agents, één prikbord: samenwerken via Git en een database",
+      "question": "Hoe verdelen meerdere Claude-agents één groot klus via alleen Git en een gedeelde database (taken claimen, notities, een logboek), en wat kun je daarvan overnemen als je zelf met subagents in Claude Code werkt?",
+      "why": "Anthropic liet op 9 november 1.000 agents samen een formeel bewijs opbouwen, met als enige gereedschap Git en een Postgres-database met vijf tabellen als gedeeld prikbord.",
+      "topics": [
+        "claude_ai_development",
+        "ai_agents_rag"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "rag-op-onderzoeksdocumentatie",
+      "title": "Zoeken in onderzoeksdocumentatie met RAG: waar het meestal misgaat",
+      "question": "Hoe bouw je een betrouwbare zoek- en antwoordfunctie op interne (onderzoeks)documentatie, met opknippen, hybride zoeken en herrangschikken, en wanneer is RAG niet de juiste keuze?",
+      "why": "Kennisontsluiting van onderzoeksdocumentatie staat bij je project AI in de zorg, en Databricks AI Search kan sinds eind oktober ook streaming tables en materialized views als bron gebruiken.",
+      "topics": [
+        "ai_research_data",
         "ai_agents_rag"
       ],
       "area": "new_tech"
