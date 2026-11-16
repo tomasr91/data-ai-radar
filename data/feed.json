@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-16T03:25:09.293101Z",
+ "generated_at": "2026-11-16T03:26:00.585365Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-14T03:28:38Z",
@@ -11917,53 +11917,23 @@
   }
  ],
  "runs": {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "tasks": {
-   "inhalen": {
-    "status": "ok",
-    "summary": "niets in te halen",
-    "finished_at": "2026-11-15T06:28:21Z",
-    "problems": [],
-    "counts": {
-     "ingehaald": 0
-    }
-   },
    "uitleggen": {
-    "status": "ok",
-    "summary": "Niets te verwerken: na vers ophalen (03:13 UTC) was de werklijst leeg en hadden alle 77 artikelen in de feed al een uitleg.",
-    "finished_at": "2026-11-15T03:14:20Z",
+    "status": "mislukt",
+    "summary": "Vers opgehaald, maar geen artikel uitgelegd: de artikelpagina's konden deze nacht niet worden geopend. 3 artikelen overgeslagen zonder openen; 10 blijven op de werklijst voor het inhalen.",
+    "finished_at": "2026-11-16T03:25:03Z",
     "problems": [
-     "Dataflow-voortgang niet bijgewerkt: de repository personal-data-platform kon niet worden toegevoegd of gecloned (geen add_repo beschikbaar, geen leestoegang)."
+     "Artikelpagina's openen lukte niet: elke WebFetch gaf 'PROVENANCE_REQUIRED: The permission request for this URL was not answered in time and was withdrawn.' Zonder het volledige artikel mag er niet worden uitgelegd; de 10 overige artikelen zijn niet als 'Niet te lezen' gemarkeerd en blijven op de werklijst.",
+     "Dataflow-voortgang niet bijgewerkt: add_repo was niet beschikbaar en clonen gaf 'fatal: could not read Username for https://github.com: terminal prompts disabled'."
     ],
     "counts": {
      "uitgelegd": 0,
      "met_voorbeeld": 0,
-     "overgeslagen": 0,
-     "aangevuld": 0
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping: gisteren is er niets gekozen; 5 nieuwe keuzes voor morgen klaargezet",
-    "finished_at": "2026-11-15T04:14:16Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (oude artikelen eruit, nieuwe erbij), geen verzoeken of leerregels te verwerken, geen begrippen aan te vullen (de stukken zonder begrippen hebben alleen een korte uitleg), Jouw week geschreven met 3 hoogtepunten en 1 voorstel voor je interesses.",
-    "finished_at": "2026-11-15T05:17:00Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0,
-     "hoogtepunten": 3,
-     "voorstellen": 1
+     "overgeslagen": 3,
+     "overgeslagen_zonder_openen": 3,
+     "aangevuld": 3,
+     "op_werklijst_gebleven": 10
     }
    }
   }
