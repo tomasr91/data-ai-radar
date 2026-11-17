@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-17T03:14:07.905979Z",
+ "generated_at": "2026-11-17T03:46:11.067421Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-14T03:28:38Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-17T03:45:41Z",
  "last_successful_update": "2026-11-17T03:14:07.905979Z",
  "groups": [
   {
@@ -457,13 +457,127 @@
   }
  ],
  "daily_top": [
+  "905562b7af62",
   "5c7174c45ad1",
+  "3e9bbba1efea",
   "ea585dd9c0fa",
-  "4dcd7af26dab",
-  "c63f36899b14",
-  "53acc8538264"
+  "c63f36899b14"
  ],
  "articles": [
+  {
+   "id": "905562b7af62",
+   "title": "Azure Databricks: wat is er nieuw in week 46",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-15T23:59:59Z",
+   "fetched_at": "2026-11-17T03:14:07.948789Z",
+   "summary": "In week 46 verandert de standaardinstelling voor nieuwe jobs-compute, komen asynchrone AI-functies voor grote batches documenten (Beta) en worden standalone pipelines op serverless algemeen beschikbaar. Genie in Slack en Teams en Genie Search zijn nu GA.",
+   "personal_relevance": "De nieuwe standaard voor jobs-compute en de asynchrone AI-functies raken direct hoe je jobs en documentverwerking inricht.",
+   "experiment": "Zet in een proefwerkruimte een kleine job met een parameter {{(job.start_time - 1.day).iso_date}} en laat een notebook die datum afdrukken. Kijk ook welke access mode nieuwe jobs-compute nu krijgt.",
+   "limitations": [
+    "De asynchrone AI-functies, datumrekenen en Genie ZeroOps zijn nog Beta.",
+    "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes november 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 99,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 1.0,
+    "quality": 0.65,
+    "feedback": -0.03,
+    "fit": 0.25,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder",
+   "story": [
+    "Eerst iets dat je zelf merkt: maak je in de interface nieuwe jobs-compute aan, dan staat de toegangsmodus (access mode) sinds 9 november standaard op Auto in plaats van Dedicated. Auto kiest Standard, behalve bij een ML-runtime, een GPU of een runtime onder 14.3. Bestaande jobs veranderen niet. Werkruimtes met het compliance security profile volgen in december.",
+    "Voor AI op je eigen data is er een asynchrone variant van de AI-functies (Beta). Je zet tot 50.000 verzoeken in een JSONL-bestand in een Unity Catalog-volume en laat ai_parse_document, ai_extract of ai_classify die op de achtergrond afwerken. Dat is handig als je een hele map documenten wilt omzetten naar tabellen in Silver, zonder dat een query urenlang openstaat. Een beheerder moet de preview eerst aanzetten.",
+    "Ook voor pipelines is er nieuws. Standalone materialized views en streaming tables maak en ververs je nu algemeen beschikbaar (GA) vanuit een notebook op serverless compute, met SQL of met de Python-decorators. In Lakeflow Jobs kun je in Beta rekenen met datums in parameters. Een job geeft dan bijvoorbeeld de datum van gisteren door aan een ophaalscript. Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+    "Verder breidt Genie flink uit. De Genie-apps voor Slack en Microsoft Teams en Genie Search zijn algemeen beschikbaar. Genie ZeroOps (Beta) bewaakt op de achtergrond jobs, pipelines en tabellen, zoekt bij een fout de oorzaak en stelt een oplossing voor. Pages, vastgelegde bedrijfsbegrippen per domein, zijn GA.",
+    "Kleiner, maar handig voor beveiliging: een service principal kan nu standaard namens zichzelf inloggen via OAuth zonder geheim (on-behalf-of, GA). Flows in pipelines krijgen in Beta eigen rechten in Unity Catalog."
+   ],
+   "key_facts": [
+    "9 november 2026: nieuwe jobs-compute in de UI krijgt standaard access mode Auto in plaats van Dedicated; bestaande jobs veranderen niet. Voor werkruimtes met compliance security profile geldt dit vanaf december 2026.",
+    "9 november 2026 (Beta): AI Functions Asynchronous API voert ai_parse_document, ai_extract of ai_classify asynchroon uit op tot 50.000 verzoeken uit een JSONL-bestand in een volume; aanzetten via de pagina Previews.",
+    "11 november 2026 (GA): standalone materialized views en streaming tables maken en verversen vanuit een notebook op serverless general compute, met spark.sql() of de Python-pipelinedecorators.",
+    "9 november 2026 (Beta): datumrekenen in Lakeflow Jobs-parameters, bijv. {{(job.start_time - 1.day).iso_date}} voor de dag vóór de start.",
+    "9 november 2026 (GA): Genie-app voor Slack, Genie-app in Microsoft Teams en Genie Search; 12 november (Beta): Genie ZeroOps; 11 november (GA): Pages.",
+    "12 november 2026 (GA): OAuth on-behalf-of voor service principals staat standaard aan; je hebt de rol Service Principal Manager nodig. Flows als securable in Unity Catalog is Beta."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo geef je een job de datum van de dag vóór de start mee als parameter. Een ophaalscript kan daarmee steeds precies één dag ophalen.",
+    "language": "text",
+    "code": "{{(job.start_time - 1.day).iso_date}}",
+    "note": "De notatie komt uit de release notes; het is Beta."
+   },
+   "terms": [
+    {
+     "term": "toegangsmodus",
+     "explanation": "De instelling van compute die bepaalt hoe gebruikers en rechten worden gescheiden: Standard deelt de compute veilig, Dedicated is voor één gebruiker of groep."
+    },
+    {
+     "term": "JSONL",
+     "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
+    },
+    {
+     "term": "streaming tables",
+     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    },
+    {
+     "term": "service principal",
+     "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+    },
+    {
+     "term": "Genie ZeroOps",
+     "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.75,
+    "why": "Weekoverzicht met wat je zelf moet weten, zoals je duim bij het weekoverzicht over AI-functies in SQL."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "lakeflow-jobs",
+    "ai-functies-in-sql",
+    "genie-zeroops"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+    "why": "Datumparameters in jobs passen bij het plannen van het dagelijkse ophalen."
+   }
+  },
   {
    "id": "5c7174c45ad1",
    "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
@@ -603,6 +717,110 @@
     "fase": 4,
     "quote": "Voor Dataflow is dit iets voor fase 4",
     "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
+   }
+  },
+  {
+   "id": "3e9bbba1efea",
+   "title": "Claude Code: wat is er nieuw in week 46 (v2.1.321 t/m v2.1.325)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W46",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-15T23:59:59Z",
+   "fetched_at": "2026-11-14T03:13:13.961822Z",
+   "summary": "Claude Code kan in een experimentele Code Mode zijn tools via JavaScript aanroepen. Bash-commando's in de sandbox volgen weer de gewone toestemmingsvragen, en Fable 5.2 is het nieuwe standaard-Fable-model.",
+   "personal_relevance": "De nieuwe toestemmingsregels veranderen hoe Claude Code in je projecten en geplande taken werkt.",
+   "experiment": "Werk Claude Code bij en laat het in een testproject een dbt-commando in de sandbox draaien. Kijk of het nu om toestemming vraagt, en probeer daarna de instelling autoAllowBashIfSandboxed.",
+   "limitations": [
+    "Code Mode is experimenteel; hoe het precies werkt staat in de documentatie die we hier niet konden openen.",
+    "De release notes van v2.1.321 en v2.1.322 waren alleen in het weekoverzicht te lezen, niet volledig."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Code releases",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    },
+    {
+     "label": "Code Mode",
+     "url": "https://code.claude.com/docs/en/code-mode"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "claude",
+    "ai_context"
+   ],
+   "relevance_score": 95,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.8,
+    "quality": 0.62,
+    "feedback": 0.01,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming",
+   "story": [
+    "De opvallendste nieuwe functie van deze week is Code Mode (v2.1.323). Claude roept zijn tools dan niet één voor één aan, maar schrijft een stukje JavaScript dat die tools aanroept. Het is experimenteel en staat uit tot je het zelf aanzet. Een organisatie kan het ook centraal uitzetten.",
+    "Belangrijker voor je dagelijkse werk is een wijziging in v2.1.325. Bash-commando's in de sandbox draaien niet meer vanzelf zonder vragen. Ze volgen weer de gewone toestemmingsregels. Wil je het oude gedrag, dan zet je sandbox.autoAllowBashIfSandboxed op true. Ook alleen-lezen git-commando's in een onbekende repository vragen nu eerst toestemming.",
+    "Diezelfde versie maakt geplande taken en /loop voorzichtiger. Ze vragen nu eerst toestemming voordat ze een skill draaien die eigen toegestane tools (allowed-tools) of hooks meebrengt. Een skill kan zo niet ongemerkt meer rechten krijgen dan je dacht.",
+    "Verder werd Claude Fable 5.2 in v2.1.321 het standaard-Fable-model, met een contextvenster van 1 miljoen tokens. Plugins kunnen sinds v2.1.323 aangeven met welke versies van Claude Code ze werken. Gebruik je Claude Code met dbt-skills en hooks, controleer dan na het bijwerken of je sandbox-commando's ineens om toestemming vragen."
+   ],
+   "key_facts": [
+    "v2.1.321: Claude Fable 5.2 (claude-fable-5-2) is het standaard-Fable-model, met 1M context en $8/$40 per miljoen tokens ($0,20 voor cache reads).",
+    "v2.1.322: fast mode op Vertex in de regio's global, us en eu.",
+    "v2.1.323: Code Mode, een experimentele opt-in waarin Claude JavaScript schrijft om zijn tools aan te roepen; plugins kunnen een ondersteund versiebereik van Claude Code opgeven.",
+    "v2.1.323: voor een onbekend model-ID gaat Claude Code nu uit van 1M context in plaats van 200K.",
+    "v2.1.325: gesandboxte Bash-commando's volgen standaard de gewone toestemmingsflow; sandbox.autoAllowBashIfSandboxed: true behoudt het oude gedrag.",
+    "v2.1.325: alleen-lezen git-commando's in onvertrouwde repositories vragen eerst; geplande taken en /loop vragen eerst bij skills met allowed-tools of hooks."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Met deze instelling in je settings.json draaien Bash-commando's in de sandbox weer zonder toestemmingsvraag, zoals vóór v2.1.325.",
+    "language": "json",
+    "code": "{\n  \"sandbox\": {\n    \"autoAllowBashIfSandboxed\": true\n  }\n}",
+    "note": "De release notes noemen de instelling als sandbox.autoAllowBashIfSandboxed: true; dit is dezelfde instelling in JSON-vorm."
+   },
+   "terms": [
+    {
+     "term": "Code Mode",
+     "explanation": "Een experimentele modus in Claude Code waarin Claude een stukje JavaScript schrijft dat zijn tools aanroept, in plaats van elke tool apart aan te roepen."
+    },
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "/loop",
+     "explanation": "Een commando in Claude Code dat een opdracht steeds opnieuw laat uitvoeren, bijvoorbeeld om iets in de gaten te houden."
+    },
+    {
+     "term": "contextvenster",
+     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.75,
+    "why": "Wijziging in sandbox en toestemming, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
+   },
+   "labels": [
+    "claude-code-sandbox",
+    "claude-code-permissies",
+    "claude-modellen"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
    }
   },
   {
@@ -752,7 +970,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -966,7 +1184,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.05,
@@ -1707,7 +1925,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.57,
     "fit": 0.35
@@ -2033,6 +2251,130 @@
    ]
   },
   {
+   "id": "f49f6dcce187",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-10T06:00:08Z",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
+   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
+   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
+   "limitations": [
+    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
+    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Omnigraph op GitHub",
+     "url": "https://github.com/ModernRelay/omnigraph"
+    },
+    {
+     "label": "Omnigraph-documentatie",
+     "url": "https://omnigraph.dev/docs"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "data_architecture_modeling",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "kwaliteit"
+   ],
+   "relevance_score": 87,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.71,
+    "source": 0.68,
+    "quality": 0.62,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
+   "story": [
+    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
+    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
+    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
+    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
+    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
+   ],
+   "key_facts": [
+    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
+    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
+    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
+    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
+    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
+    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+   "showcase": {
+    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
+    "language": "sql",
+    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
+    "result": {
+     "columns": [
+      "id",
+      "resultaat"
+     ],
+     "rows": [
+      [
+       1,
+       "{'sterren': 4}"
+      ],
+      [
+       2,
+       "{'sterren': NULL}"
+      ]
+     ]
+    },
+    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
+   },
+   "terms": [
+    {
+     "term": "getypeerde graaf",
+     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
+    },
+    {
+     "term": "knopen",
+     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
+    },
+    {
+     "term": "branch",
+     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
+    },
+    {
+     "term": "RDF",
+     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
+   },
+   "labels": [
+    "context-als-code",
+    "kennisgraaf",
+    "agent-context-laag"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
    "id": "656e0d953ae9",
    "title": "Announcing GA of Genie Ontology",
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
@@ -2335,6 +2677,102 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "b943cf926a94",
+   "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
+   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T18:30:00Z",
+   "fetched_at": "2026-11-17T03:14:09.981133Z",
+   "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
+   "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
+   "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
+   "limitations": [
+    "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
+    "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "healthlake-opensharing op GitHub",
+     "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_governance_privacy",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit",
+    "zorg"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.53,
+    "feedback": -0.05,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
+   "story": [
+    "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
+    "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
+    "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
+    "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 16 november 2026.",
+    "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
+    "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
+    "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
+    "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
+    "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "FHIR",
+     "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
+    },
+    {
+     "term": "Iceberg-tabellen",
+     "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
+    },
+    {
+     "term": "OpenSharing-server",
+     "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
+    },
+    {
+     "term": "Databricks App",
+     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
+   },
+   "labels": [
+    "ai-in-de-zorg",
+    "opensharing",
+    "genie-agents"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -5
    }
   },
   {
@@ -3584,7 +4022,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.06,
@@ -3746,6 +4184,91 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -4
+   }
+  },
+  {
+   "id": "06485ad2414b",
+   "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
+   "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T18:30:56Z",
+   "fetched_at": "2026-11-17T03:14:09.981133Z",
+   "summary": "Softwarebedrijf IFS Copperleaf bouwde met Genie One de interne assistent IONA op data uit bijna 30 systemen. Eigenaren uit de business leggen definities vast als skills en in Unity Catalog; een AI-raad keurt ze goed.",
+   "personal_relevance": "Laat zien hoe je AI op Gold-data zet zonder alles te modelleren, met eigenaarschap van definities bij de business.",
+   "experiment": "Kies drie begrippen uit een openbare dataset, zoals CBS-cijfers, en schrijf per begrip een definitie met eigenaar en de tabel waar het uit komt. Laat Claude daarna vragen beantwoorden met en zonder die definities.",
+   "limitations": [
+    "Klantverhaal van de leverancier: geen voorbeeldskill, configuratie of meting van juistheid.",
+    "Hoe 'activatie' en 'herhaald gebruik' gemeten zijn, staat er niet in."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.5,
+    "feedback": -0.07,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven",
+   "story": [
+    "IFS Copperleaf bouwde in tien maanden IONA: een assistent waarmee alle medewerkers in gewone taal vragen stellen over bedrijfsdata. De data komt uit bijna 30 systemen, zoals Salesforce, HubSpot, Jira en Confluence. Sinds juli 2026 gebruikt het hele bedrijf hem.",
+    "De les in de titel: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen. Daarvoor gebruiken ze Genie Ontology, een contextlaag die definities koppelt aan maatstaven, tabellen en dashboards. Zo snapt het systeem dat een verlenging in Salesforce en een record in de financiële prognose over dezelfde klant gaan.",
+    "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar de eigenaren in de business schrijven definities en regels als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden, en elke definitie heeft een eigenaar. Alleen financiën en de funnel van marketing naar sales zijn volledig gemodelleerd; de rest vraagt IONA direct op de ruwe data op.",
+    "Unity Catalog bepaalt wie wat mag zien, ook voor de AI. Ziet een antwoord er vreemd uit, dan toont IONA zijn redenering en de eigenaar van de data. Het bedrijf noemt 70 procent activatie, maar zegt niet hoe dat gemeten is. Voor jou is vooral de aanpak interessant: modelleer eerst de belangrijkste domeinen in Gold en laat de business de definities beheren."
+   ],
+   "key_facts": [
+    "Blog van Databricks en IFS Copperleaf, 16 november 2026.",
+    "IONA gebruikt Genie One als interface, Genie Ontology als contextlaag, skills voor definities en regels, en Unity Catalog voor toegang.",
+    "Data uit bijna 30 systemen, waaronder Salesforce, HubSpot, Confluence, Jira, Freshdesk, Gong en Google Analytics 4; tienduizenden tabellen.",
+    "Live voor het hele bedrijf sinds juli 2026, na tien maanden bouwen.",
+    "Alleen financiën en de marketing-naar-sales-funnel zijn volledig gemodelleerd; een AI Council keurt definities goed, elke definitie heeft een eigenaar.",
+    "Genoemde cijfers: 70% activatie, 68% herhaald gebruik in 30 dagen, 32 van 33 toegangstickets in één keer afgehandeld (met menselijke goedkeuring per wijziging)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "skills",
+     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    },
+    {
+     "term": "funnel",
+     "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Gaat over definities als context voor AI, zoals je duim bij 'synoniemen en regels per veld'; wel een klantverhaal met weinig techniek."
+   },
+   "labels": [
+    "genie-ontology",
+    "agent-context-laag",
+    "interne-ai-agents"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -7
    }
   },
   {
@@ -4171,7 +4694,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.02,
@@ -4980,118 +5503,6 @@
    }
   },
   {
-   "id": "7fd7e06ab2f4",
-   "title": "How the Claude Code team does code review",
-   "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-16T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Het Claude Code-team laat machines het meeste leeswerk doen. Mensen keuren alleen nog goed waar het risico het vraagt.",
-   "personal_relevance": "Een REVIEW.md en vaste controles laten Claude je dbt-wijzigingen nakijken volgens jouw eigen afspraken.",
-   "experiment": "Schrijf een REVIEW.md voor een eigen oefenproject in dbt (met verzonnen data) en laat /code-review een wijziging nakijken. Kijk of de bevindingen je regels volgen.",
-   "limitations": [
-    "Het proces is gebouwd voor een team met veel automatische tests, feature flags en snelle rollback; zonder die vangnetten werkt minder menselijke review niet.",
-    "Het team heeft nog geen automatische rem die strenger wordt als er meer fouten terugkomen.",
-    "Bij externe AI zoals Claude: alleen code zonder werk- of patiëntdata."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Code Review for Claude Code",
-     "url": "https://code.claude.com/docs/en/code-review"
-    },
-    {
-     "label": "Automatische beveiligingsreviews",
-     "url": "https://support.claude.com/en/articles/11932705-automated-security-reviews-in-claude-code"
-    },
-    {
-     "label": "Best practices Claude Code",
-     "url": "https://code.claude.com/docs/en/best-practices"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "cicd_data_deployment",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "claude",
-    "overig",
-    "agents"
-   ],
-   "relevance_score": 78,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.2,
-    "source": 0.51,
-    "quality": 0.75,
-    "feedback": -0.05,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:42:38Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Zo leest Claude bijna alle code van Claude Code na",
-   "story": [
-    "Claude schrijft ongeveer 90 procent van de code van Claude Code zelf. Daardoor kwamen er zoveel wijzigingen bij dat mensen niet meer alles regel voor regel konden lezen. Het team bouwde daarom een reviewproces waarin machines het meeste leeswerk doen. Het doel: de meeste wijzigingen gaan erin met hooguit één mens, zonder meer fouten.",
-    "Het werkt in lagen, een beetje zoals een spellingscontrole die al meekijkt terwijl je typt. Eerst moet Claude zijn eigen werk bewijzen: tests draaien en de uitkomst laten zien. Een subagent met een frisse blik leest de wijziging nog eens. Daarna kijkt een automatische review naar elke pull request, plus een aparte beveiligingscontrole. Openstaande bevindingen blokkeren het samenvoegen.",
-    "Hoeveel mensen moeten goedkeuren, hangt af van het risico van de wijziging, niet van wie hem maakte. Documentatie mag zonder mens erin als alle controles groen zijn. Gewone wijzigingen vragen één persoon, gevoelige plekken twee. Een goedkeuring door een agent telt nooit als die van een mens.",
-    "Wat je eraan hebt bij dbt: het team legt vast wat telt in een REVIEW.md naast CLAUDE.md. Zo'n bestand zegt hoe een fout eruitziet in jouw project. Steeds terugkerende reviewopmerkingen verhuizen daarheen, of naar een test of lintregel. Dat kun je ook doen voor je eigen dbt-afspraken.",
-    "Het team leerde ook dat een reviewer kan blijven zeuren. Eén wijziging ging een nacht lang meer dan vijftig rondes heen en weer. Nu stopt het na drie rondes en kijkt de reviewer daarna alleen naar het nieuwe deel."
-   ],
-   "key_facts": [
-    "Claude schrijft ongeveer 90 procent van de code van Claude Code.",
-    "Tussen juni en september 2026 verdubbelde het aantal samengevoegde pull requests ruim; het aandeel dat werd teruggedraaid daalde met meer dan 40 procent.",
-    "Code Review for Claude Code is algemeen beschikbaar op Team- en Enterprise-abonnementen; /code-review en /security-review draaien een lichtere versie lokaal.",
-    "Tijdens de research preview steeg het aandeel interne pull requests met inhoudelijke reviewopmerkingen van 16% naar 54%.",
-    "Drie risiconiveaus: laag (geen mens nodig als alles groen is), midden (één persoon), hoog (twee personen).",
-    "Na het werk aan te veel reviewrondes: 78% slaagt na één ronde (was 65%), gemiddeld 1,32 reviews (was 2,08)."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo zou een korte REVIEW.md voor een dbt-project eruit kunnen zien, volgens de tips uit het artikel: zeg hoe een fout eruitziet, beperk muggenzifterij, noem wat overgeslagen mag worden en vraag om bewijs.",
-    "language": "text",
-    "code": "# REVIEW.md\n\n## Hoe een fout er hier uitziet\n- Een model in gold verandert van grain zonder dat de naam of de docs dat zeggen.\n- Een join verdubbelt rijen (geen unique-test op de sleutel).\n\n## Overslaan\n- models/staging/_generated/  (gegenereerd door scripts)\n\n## Regels voor bevindingen\n- Hooguit 3 nits per review.\n- Noem altijd bestand en regel als bewijs.\n- Begin de samenvatting met het aantal bevindingen; zeg het eerlijk als er niets te doen is.",
-    "note": "Zelf opgesteld voorbeeld op basis van de tips in het artikel; REVIEW.md is gewone tekst zonder vaste notatie. De paden zijn verzonnen."
-   },
-   "terms": [
-    {
-     "term": "subagent",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    },
-    {
-     "term": "REVIEW.md",
-     "explanation": "Een bestand in je repository waarin de eigenaren van de code zeggen waar een AI-reviewer op moet letten en wat hij mag overslaan."
-    },
-    {
-     "term": "CLAUDE.md",
-     "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
-    },
-    {
-     "term": "lintregel",
-     "explanation": "Een automatische regel die code controleert op stijl of veelgemaakte fouten, zoals SQLFluff voor SQL."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktijkverhaal over werken met Claude Code, zoals je duim omhoog voor de Claude Code-schrijfgrenzen."
-   },
-   "labels": [
-    "claude-code-pr-werkwijze",
-    "ai-code-review"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -5
-   }
-  },
-  {
    "id": "4255764d89d9",
    "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
    "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
@@ -5812,151 +6223,6 @@
     "by": "topic",
     "name": "databricks_data_engineering",
     "pts": -9
-   }
-  },
-  {
-   "id": "e197b15d9798",
-   "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-05T12:48:00Z",
-   "fetched_at": "2026-11-06T03:12:46.373805Z",
-   "summary": "Debezium leest de wijzigingen uit een database en duwt ze via Zerobus Ingest rechtstreeks in Delta-tabellen. Er is geen Kafka nodig en de database hoeft geen inkomende verbindingen toe te staan.",
-   "personal_relevance": "Een concreet beeld van CDC van bron tot silver, precies het ingestion-onderwerp waar je nog in groeit.",
-   "experiment": "Bouw in DuckDB een kleine bronze-tabel met verzonnen wijzigingsberichten, inclusief een dubbel bericht en een delete, en maak daar met SQL de actuele stand van.",
-   "limitations": [
-    "Het artikel zegt niet of Zerobus Ingest preview of GA is en geeft geen cijfers over snelheid.",
-    "Berichten kunnen dubbel aankomen; je moet zelf ontdubbelen.",
-    "Je moet Debezium Server zelf naast de database draaien."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Debezium 3.7 release notes (Zerobus-sink)",
-     "url": "https://debezium.io/blog/2026/09/29/debezium-3-7-final-released/#databricks_zerobus_ingest_sink_adapter"
-    },
-    {
-     "label": "Handleiding: PostgreSQL-CDC met Debezium naar Databricks",
-     "url": "https://community.databricks.com/t5/technical-blog/how-to-stream-postgresql-cdc-into-databricks-with-debezium/ba-p/175646"
-    },
-    {
-     "label": "Zerobus Ingest-documentatie",
-     "url": "https://docs.databricks.com/aws/en/ingestion/zerobus-ingest"
-    }
-   ],
-   "topics": [
-    "data_ingestion",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 58,
-   "score_parts": {
-    "topic": 0.85,
-    "recency": 0.56,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.2,
-    "fit": 0.1
-   },
-   "decision": "included_low",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-06T03:21:27Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-     "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium",
-     "published_at": "2026-11-05T12:48:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
-   "story": [
-    "Databricks laat zien hoe je wijzigingen uit een database naar Unity Catalog stuurt zonder Kafka. Het open-sourceprogramma Debezium leest de wijzigingen. Een nieuwe koppeling (sink) duwt ze daarna rechtstreeks naar Zerobus Ingest. Engineers van Databricks en NVIDIA bouwden die sink. Hij zit in Debezium Server 3.7.",
-    "Het idee heet CDC: je neemt alleen de wijzigingen over, niet steeds de hele tabel. Debezium draait naast de database en leest het logboek waarin Postgres elke wijziging bijhoudt (de write-ahead log). Van elke wijziging maakt hij een bericht met de rij vóór en ná, en een code: nieuw, gewijzigd, verwijderd of eerste lading.",
-    "Het verschil zit in de richting. Normaal haalt een pijplijn data op bij de database. Hier duwt Debezium de data naar buiten, zoals een brief die je zelf op de post doet. Dat helpt bij databases in afgeschermde netwerken: die mogen vaak wel naar buiten bellen, maar niemand binnenlaten. En je hoeft geen Kafka-cluster te beheren.",
-    "In Unity Catalog komen de berichten eerst in een tabel waar alleen rijen bijkomen (append-only), je bronze-laag. Elke rij krijgt een unieke sleutel (idempotency_key) en de plek in het logboek. De sink garandeert dat elk bericht minstens één keer aankomt, dus soms dubbel. In silver gooi je dubbele berichten weg, zet je ze op volgorde en houd je per sleutel de laatste stand over. Dat kan met AUTO CDC of een MERGE.",
-    "Het artikel heeft zelf geen code. Een aparte handleiding op de Databricks Community toont de configuratie van Debezium Server en de AUTO CDC-stappen. Voor jou is dit vooral een heldere les in hoe CDC van begin tot eind werkt."
-   ],
-   "key_facts": [
-    "Blog van Databricks Engineering, 5 november 2026, door Victoria Bukta, Omkar Mehta en Wagner Santos.",
-    "De Zerobus Ingest-sink zit in Debezium Server 3.7 en is gebouwd door engineers van Databricks en NVIDIA.",
-    "Debezium leest bij PostgreSQL de write-ahead log; elk bericht bevat before- en after-beelden, een op-code (c, u, d, r), bronmetadata met de LSN en ts_ms.",
-    "Twee tabelvormen: typed (standaard, de kolommen van de bron) en envelope (negen vaste kolommen, JSON in VARIANT of Protobuf).",
-    "Levering is at-least-once; de idempotency_key is een SHA-256-hash waarop je ontdubbelt, maar die ordent of ontdubbelt de tabel niet zelf.",
-    "Zerobus Ingest schrijft append-only; voor de actuele stand is een aparte MERGE- of AUTO CDC-stap nodig."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Van bronze naar actuele stand: eerst dubbele berichten weg op idempotency_key, dan per klant het laatste bericht op logboekpositie, en verwijderde klanten eruit.",
-    "language": "sql",
-    "code": "WITH uniek AS (\n  SELECT * FROM bronze\n  QUALIFY ROW_NUMBER() OVER (\n    PARTITION BY idempotency_key ORDER BY source_position) = 1\n),\nlaatste AS (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY klant_id ORDER BY source_position DESC) AS rn\n  FROM uniek\n)\nSELECT klant_id, plaats, source_position\nFROM laatste\nWHERE rn = 1 AND operation <> 'd'\nORDER BY klant_id;",
-    "result": {
-     "columns": [
-      "klant_id",
-      "plaats",
-      "source_position"
-     ],
-     "rows": [
-      [
-       1,
-       "Arnhem",
-       120
-      ],
-      [
-       3,
-       "Delft",
-       140
-      ]
-     ]
-    },
-    "note": "Verzonnen data in DuckDB: zes berichten (c, c, u, dezelfde u nog eens, d, c). Zo werkt het idee in gewone SQL; in Databricks doe je dit met AUTO CDC of MERGE, zie de handleiding."
-   },
-   "terms": [
-    {
-     "term": "CDC",
-     "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel."
-    },
-    {
-     "term": "Zerobus Ingest",
-     "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
-    },
-    {
-     "term": "write-ahead log",
-     "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden."
-    },
-    {
-     "term": "append-only",
-     "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan."
-    },
-    {
-     "term": "AUTO CDC",
-     "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft."
-    }
-   ],
-   "learning": "Data ingestion",
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.6,
-    "why": "Uitleg van een ingestion-patroon met medaillonlagen; minder dbt dan je duimen omhoog, maar wel een leeronderwerp."
-   },
-   "labels": [
-    "cdc",
-    "zerobus-ingest",
-    "debezium"
-   ],
-   "fb_why": {
-    "by": "similar",
-    "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen",
-    "id": "e197b15d9798",
-    "v": -1,
-    "s": 84,
-    "pts": -20
    }
   }
  ],
@@ -8926,6 +9192,17 @@
    ]
   },
   {
+   "term": "/loop",
+   "explanation": "Een commando in Claude Code dat een opdracht steeds opnieuw laat uitvoeren, bijvoorbeeld om iets in de gaten te houden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "3e9bbba1efea",
+     "title": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming"
+    }
+   ]
+  },
+  {
    "term": "adapter",
    "explanation": "Het stuk van dbt dat de verbinding met één datawarehouse regelt en je modellen omzet naar de SQL van dat warehouse, zoals dbt-databricks.",
    "refs": [
@@ -9052,17 +9329,6 @@
    ]
   },
   {
-   "term": "append-only",
-   "explanation": "Een tabel waar alleen rijen bijkomen. Er wordt niets aangepast of gewist; de geschiedenis blijft dus staan.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    }
-   ]
-  },
-  {
    "term": "artifact",
    "explanation": "Een verzameling bestanden die een pipeline-run publiceert, zodat een latere stap, zoals de uitrol, ermee verder kan.",
    "refs": [
@@ -9088,11 +9354,6 @@
    "term": "AUTO CDC",
    "explanation": "Een functie die wijzigingen uit een bron (nieuw, gewijzigd, verwijderd) automatisch in een doeltabel verwerkt, zonder dat je zelf de MERGE-logica schrijft.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    },
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -9193,14 +9454,20 @@
    ]
   },
   {
-   "term": "CDC",
-   "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel.",
+   "term": "branch",
+   "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen.",
    "refs": [
     {
      "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    },
+     "id": "f49f6dcce187",
+     "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
+    }
+   ]
+  },
+  {
+   "term": "CDC",
+   "explanation": "Change data capture: alleen de wijzigingen uit een bronsysteem overnemen (nieuw, gewijzigd, verwijderd), in plaats van steeds de hele tabel.",
+   "refs": [
     {
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
@@ -9273,11 +9540,6 @@
      "title": "Claude Code in de cloud: elke taak een eigen machine en branch"
     },
     {
-     "kind": "a",
-     "id": "7fd7e06ab2f4",
-     "title": "Zo leest Claude bijna alle code van Claude Code na"
-    },
-    {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
@@ -9286,6 +9548,17 @@
      "kind": "a",
      "id": "c63f36899b14",
      "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
+    }
+   ]
+  },
+  {
+   "term": "Code Mode",
+   "explanation": "Een experimentele modus in Claude Code waarin Claude een stukje JavaScript schrijft dat zijn tools aanroept, in plaats van elke tool apart aan te roepen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "3e9bbba1efea",
+     "title": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming"
     }
    ]
   },
@@ -9328,6 +9601,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "3e9bbba1efea",
+     "title": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming"
+    },
+    {
+     "kind": "a",
      "id": "6d403bbe9379",
      "title": "Eén agent met skills werkt vaak beter dan een team van subagents"
     },
@@ -9368,6 +9646,17 @@
      "kind": "a",
      "id": "d2e9b967064a",
      "title": "Hoe Ecolab elke gemigreerde tabel met data bewees"
+    }
+   ]
+  },
+  {
+   "term": "Databricks App",
+   "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b943cf926a94",
+     "title": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One"
     }
    ]
   },
@@ -9843,6 +10132,17 @@
    ]
   },
   {
+   "term": "FHIR",
+   "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b943cf926a94",
+     "title": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One"
+    }
+   ]
+  },
+  {
    "term": "ForEach-sink",
    "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database.",
    "refs": [
@@ -9941,6 +10241,17 @@
    ]
   },
   {
+   "term": "funnel",
+   "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "06485ad2414b",
+     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
+    }
+   ]
+  },
+  {
    "term": "gateway",
    "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij.",
    "refs": [
@@ -9948,6 +10259,39 @@
      "kind": "a",
      "id": "62afb1e0ab94",
      "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    }
+   ]
+  },
+  {
+   "term": "Genie Ontology",
+   "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "06485ad2414b",
+     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
+    }
+   ]
+  },
+  {
+   "term": "Genie ZeroOps",
+   "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "905562b7af62",
+     "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
+    }
+   ]
+  },
+  {
+   "term": "getypeerde graaf",
+   "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "f49f6dcce187",
+     "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
     }
    ]
   },
@@ -10059,6 +10403,17 @@
    ]
   },
   {
+   "term": "Iceberg-tabellen",
+   "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b943cf926a94",
+     "title": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One"
+    }
+   ]
+  },
+  {
    "term": "idempotent",
    "explanation": "Een stap is idempotent als je hem vaker kunt draaien met dezelfde uitkomst. Handig als een load mislukt en je hem opnieuw start.",
    "refs": [
@@ -10126,6 +10481,28 @@
      "kind": "a",
      "id": "fa55dbcedb33",
      "title": "Databricks kent nu UNIQUE: sneller rekenen als je de data vertrouwt"
+    }
+   ]
+  },
+  {
+   "term": "JSONL",
+   "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "905562b7af62",
+     "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
+    }
+   ]
+  },
+  {
+   "term": "knopen",
+   "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "f49f6dcce187",
+     "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
     }
    ]
   },
@@ -10224,17 +10601,6 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
-    }
-   ]
-  },
-  {
-   "term": "lintregel",
-   "explanation": "Een automatische regel die code controleert op stijl of veelgemaakte fouten, zoals SQLFluff voor SQL.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "7fd7e06ab2f4",
-     "title": "Zo leest Claude bijna alle code van Claude Code na"
     }
    ]
   },
@@ -10583,6 +10949,17 @@
    ]
   },
   {
+   "term": "OpenSharing-server",
+   "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b943cf926a94",
+     "title": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One"
+    }
+   ]
+  },
+  {
    "term": "OpenTelemetry",
    "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen.",
    "refs": [
@@ -10813,6 +11190,17 @@
    ]
   },
   {
+   "term": "RDF",
+   "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "f49f6dcce187",
+     "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
+    }
+   ]
+  },
+  {
    "term": "real-time mode",
    "explanation": "Een modus van Spark Structured Streaming die records vrijwel direct doorgeeft, voor toepassingen die binnen een fractie van een seconde moeten reageren.",
    "refs": [
@@ -10873,17 +11261,6 @@
    ]
   },
   {
-   "term": "REVIEW.md",
-   "explanation": "Een bestand in je repository waarin de eigenaren van de code zeggen waar een AI-reviewer op moet letten en wat hij mag overslaan.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "7fd7e06ab2f4",
-     "title": "Zo leest Claude bijna alle code van Claude Code na"
-    }
-   ]
-  },
-  {
    "term": "RFID",
    "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen.",
    "refs": [
@@ -10931,6 +11308,11 @@
    "term": "sandbox",
    "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "3e9bbba1efea",
+     "title": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming"
+    },
     {
      "kind": "v",
      "id": "claude-agents-in-eigen-netwerk",
@@ -11076,6 +11458,11 @@
    "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline.",
    "refs": [
     {
+     "kind": "a",
+     "id": "905562b7af62",
+     "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
+    },
+    {
      "kind": "v",
      "id": "asset-bundles-basis",
      "title": "Bundels: je Databricks-project als code naar dev, test en prod"
@@ -11143,6 +11530,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "06485ad2414b",
+     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
+    },
+    {
+     "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
     },
@@ -11160,11 +11552,6 @@
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
-    },
-    {
-     "kind": "a",
-     "id": "c63f36899b14",
-     "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
     }
    ]
   },
@@ -11239,6 +11626,11 @@
    "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt.",
    "refs": [
     {
+     "kind": "a",
+     "id": "905562b7af62",
+     "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
+    },
+    {
      "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
@@ -11264,11 +11656,6 @@
      "kind": "a",
      "id": "d5f14a6242b0",
      "title": "Eerst de effort hoger, pas daarna een zwaarder Claude-model"
-    },
-    {
-     "kind": "a",
-     "id": "7fd7e06ab2f4",
-     "title": "Zo leest Claude bijna alle code van Claude Code na"
     },
     {
      "kind": "v",
@@ -11388,6 +11775,17 @@
      "kind": "v",
      "id": "eigen-apache-ossie-en-samenwerking-dbt-databricks-en-pow",
      "title": "Ossie, dbt, metric views en Power BI: wie praat met wie?"
+    }
+   ]
+  },
+  {
+   "term": "toegangsmodus",
+   "explanation": "De instelling van compute die bepaalt hoe gebruikers en rechten worden gescheiden: Standard deelt de compute veilig, Dedicated is voor één gebruiker of groep.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "905562b7af62",
+     "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
     }
    ]
   },
@@ -11615,17 +12013,6 @@
    ]
   },
   {
-   "term": "write-ahead log",
-   "explanation": "Het logboek waarin een database elke wijziging opschrijft voordat die in de tabel komt. CDC-tools lezen dat logboek om wijzigingen te vinden.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
-    }
-   ]
-  },
-  {
    "term": "zero data retention",
    "explanation": "Een afspraak met een AI-aanbieder dat je vragen en antwoorden na verwerking niet worden opgeslagen.",
    "refs": [
@@ -11655,11 +12042,6 @@
      "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
-    },
-    {
-     "kind": "a",
-     "id": "e197b15d9798",
-     "title": "Wijzigingen uit Postgres naar Unity Catalog, zonder Kafka ertussen"
     },
     {
      "kind": "a",
@@ -12087,42 +12469,42 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 669,
   "unique_after_dedupe": 628,
   "merged_duplicates": 34,
-  "shown": 51,
+  "shown": 54,
   "decisions": {
    "excluded": 217,
-   "area_cap": 15,
+   "area_cap": 16,
    "included": 100,
    "no_topic": 139,
-   "below_threshold": 114,
+   "below_threshold": 113,
    "kort_vervallen": 34,
-   "source_cap": 8,
-   "included_low": 1
+   "source_cap": 9
   },
   "processing": {
-   "enriched": 51
+   "enriched": 54
   },
   "without_date": 0,
   "per_group": {
+   "ai_context": 22,
    "overig": 5,
-   "ai_context": 18,
    "claude": 11,
    "dbt": 5,
    "architectuur": 2,
    "agents": 5,
-   "databricks": 5
+   "databricks": 4
   },
   "per_source": {
-   "databricks_blog": 12,
+   "azure_databricks_release_notes": 4,
+   "databricks_blog": 13,
+   "claude_code_releases": 4,
    "simon_whiteley": 1,
    "dbt_labs_blog": 10,
-   "azure_databricks_release_notes": 3,
    "anthropic_engineering": 1,
    "dbt_developer_blog": 2,
-   "claude_code_releases": 3,
-   "claude_blog": 8,
+   "claude_blog": 7,
+   "simon_spati": 1,
    "dbt_core_releases": 1,
    "langchain_blog": 1,
    "databricks_engineering_blog": 3,
@@ -12173,9 +12555,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 164
+   "skipped_no_key": 159
   },
-  "queue_size": 20,
+  "queue_size": 11,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -12194,14 +12576,6 @@
     "excluded_by": [
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Azure Databricks: wat is er nieuw in week 46",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
-    "relevance_score": 87,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Introducing full-text search for DAX",
@@ -12607,6 +12981,14 @@
     "excluded_by": [
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "How the Claude Code team does code review",
+    "source_id": "claude_blog",
+    "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+    "relevance_score": 78,
+    "decision": "area_cap",
+    "excluded_by": []
    },
    {
     "title": "How Curative is building a national provider network with agents on Claude",
