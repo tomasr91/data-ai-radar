@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-17T03:46:11.067421Z",
+ "generated_at": "2026-11-17T03:47:59.722859Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-17T03:45:41Z",
+ "last_article_added_at": "2026-11-17T03:47:31Z",
  "last_successful_update": "2026-11-17T03:14:07.905979Z",
  "groups": [
   {
@@ -1485,6 +1485,115 @@
    }
   },
   {
+   "id": "ee8f41fce441",
+   "title": "Teach Genie One your workflows: The ultimate guide for skills in Genie One",
+   "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T17:00:00Z",
+   "fetched_at": "2026-11-16T03:13:55.413043Z",
+   "summary": "Databricks legt uit hoe je in Genie One een skill maakt: een SKILL.md met naam, beschrijving en stappen. Via Unity Gateway Skills (Beta) wordt een skill een object in Unity Catalog, met rechten en audit.",
+   "personal_relevance": "Zelfde idee als skills in Claude Code, nu als beheerd object in Unity Catalog naast je Gold-data.",
+   "experiment": "Schrijf een SKILL.md voor een vaste controle die je vaak doet, bijvoorbeeld 'vergelijk het aantal rijen in Silver en Gold per dag', en test hem in Claude Code op een openbare dataset.",
+   "limitations": [
+    "Unity Gateway Skills is Beta; voor skills in Genie One zelf noemt het artikel geen status.",
+    "Het artikel beschrijft de SKILL.md niet verder dan naam en beschrijving."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Skills in Genie One",
+     "url": "https://docs.databricks.com/aws/en/genie-one/chat"
+    },
+    {
+     "label": "Unity Gateway Skills",
+     "url": "https://docs.databricks.com/aws/en/agents/uc-skills"
+    },
+    {
+     "label": "Agent Skills-formaat",
+     "url": "https://agentskills.io"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.6,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
+   "story": [
+    "Elk team heeft vaste recepten, zoals hoe financiën een maandrapport maakt. In Genie One leg je zo'n recept vast als skill: de stappen, de controles en de vorm van het resultaat. Genie Ontology weet wat begrippen betekenen; een skill weet hoe je een taak aanpakt.",
+    "Een skill is een map in je werkruimte met een SKILL.md. Bovenaan staan een naam en een beschrijving. Genie One leest alleen die beschrijving om te bepalen of de skill bij een vraag past, en laadt pas dan de rest. Extra bestanden, zoals een sjabloon of een voorbeeld van een goed resultaat, leest hij alleen als een stap erom vraagt. Het formaat is de open standaard Agent Skills, dezelfde opbouw als skills in Claude Code.",
+    "Je hoeft de skill niet zelf te schrijven. Je beschrijft je werkwijze in het gesprek, Genie One stelt vragen en schrijft de skill. Gaat iets mis, dan verbeter je hem in het chatgesprek. In het voorbeeld van het artikel leerde de skill zo twee regels: alleen maanden met volledige data, en regels onder 50.000 dollar overslaan.",
+    "Delen gaat via Unity Gateway Skills, nu in Beta. Een gepubliceerde skill is dan een object in Unity Catalog, met dezelfde rechten, tags en audit als een tabel. Hij draait met de rechten van wie hem gebruikt, en elke agent die MCP ondersteunt kan hem ook gebruiken. Je kunt een skill ook inplannen; leg dan vast wat hij doet als er niemand is om een tussenstap goed te keuren."
+   ],
+   "key_facts": [
+    "Blog van Databricks (Noah Solomon), 16 november 2026.",
+    "Een skill is een map met een SKILL.md; die begint met een naam en een beschrijving, waarmee Genie One bepaalt of de skill relevant is. Hulpbestanden worden alleen gelezen als een stap ze nodig heeft.",
+    "Skills gebruiken het open Agent Skills-formaat (agentskills.io) en staan in Genie One onder Customizations > Skills.",
+    "Via Unity Gateway Skills (Beta) wordt een gepubliceerde skill een Unity Catalog-object met rechten, tags en audit; elke MCP-agent kan hem gebruiken.",
+    "Skills kunnen ingepland worden; resultaten komen in een chatthread en per e-mail.",
+    "Voorbeeld: een maandelijkse handelsrapportage-skill die cijfers ophaalt, kanalen toetst aan regels, afwijkingen onderzoekt en een rapport schrijft."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo ziet het begin van een skill eruit. De beschrijving bovenaan bepaalt wanneer Genie One de skill laadt; de stappen eronder volgt hij pas dan.",
+    "language": "text",
+    "code": "---\nname: maandrapport-handel\ndescription: Gebruik bij vragen om het maandelijkse handelsrapport, bijvoorbeeld 'maak ons handelsrapport van vorige maand'.\n---\n\n# Maandrapport handel\n\n1. Haal de cijfers van vorige maand op. Gebruik alleen maanden met volledige data.\n2. Toets elk kanaal aan de regels; sla regels onder 50.000 dollar over.\n3. Onderzoek afwijkingen en zoek context.\n4. Schrijf het rapport volgens sjabloon.md.",
+    "note": "De opbouw (naam en beschrijving bovenaan) volgt het Agent Skills-formaat; de inhoud is nagebouwd op het voorbeeld uit het artikel."
+   },
+   "terms": [
+    {
+     "term": "SKILL.md",
+     "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill."
+    },
+    {
+     "term": "Agent Skills",
+     "explanation": "Een open standaard voor skills: een map met een SKILL.md en hulpbestanden, die verschillende AI-assistenten kunnen lezen."
+    },
+    {
+     "term": "Unity Gateway Skills",
+     "explanation": "Een functie van Databricks, nu in Beta, die een skill publiceert als object in Unity Catalog, met rechten en audit zoals bij een tabel."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Skills als vaste werkwijze voor AI, zoals je duim bij 'Self-service met Claude werkt alleen op goedgekeurde dbt-modellen'."
+   },
+   "labels": [
+    "agent-skills",
+    "skills-standaard",
+    "genie-one"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
+   }
+  },
+  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -2680,6 +2789,95 @@
    }
   },
   {
+   "id": "b8bd8dd7742b",
+   "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
+   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Genie Agents kunnen in Public Preview documenten in Unity Catalog-volumes doorzoeken, naast je tabellen en metric views. MCP-koppelingen naar onder meer Slack en GitHub zijn algemeen beschikbaar.",
+   "personal_relevance": "Precies je kerninteresse: een AI-toepassing op Gold-tabellen én documenten in je lakehouse, binnen Unity Catalog-rechten.",
+   "experiment": "Zet een paar openbare pdf's (bijvoorbeeld CBS-publicaties) in een volume, lees ze met ai_parse_document en kijk wat de uitkomst is. Combineer daarna in een Genie Agent die documenten met een tabel uit dezelfde bron.",
+   "limitations": [
+    "De documentfunctie is Public Preview; limieten voor aantal of grootte van bestanden staan er niet in.",
+    "Klantcijfers in het artikel zijn eigen claims zonder meting; geen configuratie of code."
+   ],
+   "availability_status": "preview",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.76,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": -0.05,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
+   "story": [
+    "Een Genie Agent beantwoordde tot nu toe vooral vragen over tabellen. Nu kan hij ook documenten gebruiken die in een Unity Catalog-volume staan, zoals pdf's, presentaties en afbeeldingen. Dat is in Public Preview. In één gesprek combineer je zo cijfers uit Gold met uitleg uit rapporten.",
+    "Onder de motorkap leest ai_parse_document de bestanden en herkent tabellen, figuren en kopteksten. De inhoud wordt geïndexeerd, zonder dat je zelf een aparte vectorindex bouwt. Bij een vraag haalt de agent de passende stukken op, zet ze in zijn context en rekent daarnaast met de tabellen. Het antwoord noemt de pagina waar het vandaan komt.",
+    "Voor de cijfers leunt de agent op metric views: maatstaven, dimensies, beschrijvingen en synoniemen die je één keer vastlegt. Daarnaast geef je voorbeeldquery's en instructies, en een set vragen met de juiste SQL. Die set draait na elke wijziging opnieuw, zodat je ziet of iets slechter werd. Dat lijkt op dbt-tests, maar dan voor de antwoorden van de agent.",
+    "Gebruikers zien alleen bestanden waar ze in Unity Catalog recht op hebben. De agent komt bij gebruikers via Genie One, Slack, API's of Genie MCP. Native MCP-koppelingen naar Slack, Google Drive, GitHub en Microsoft 365 zijn algemeen beschikbaar; de beheerder kiest per agent welke tools mogen. Een voorbeeld uit het artikel: een agent bevestigt in de data dat het aantal klinische studies daalt, en haalt daarna de redenen uit verslagen van artsen."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 11 november 2026.",
+    "Analyse van ongestructureerde documenten in Unity Catalog-volumes: Public Preview. Native MCP-connectoren: GA. OpenSharing voor Genie Agents en Genie Clean Rooms: Beta.",
+    "Bestanden worden gelezen met ai_parse_document (tabellen, figuren, kop- en voetteksten) en geïndexeerd; antwoorden noemen de pagina.",
+    "Nauwkeurigheid komt uit metric views, SQL-expressies, voorbeeldquery's, instructies en benchmarks met gouden SQL-vragen die na wijzigingen opnieuw draaien.",
+    "Gebruikers zien alleen bestanden waar ze in Unity Catalog toegang toe hebben; connectoren lopen via Unity Gateway.",
+    "MCP-connectoren onder meer naar Slack, Google Drive, Gmail, Atlassian, GitHub en Microsoft 365; app-data via Lakeflow Connect (Salesforce, Workday, SAP, Marketo)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    },
+    {
+     "term": "vectorindex",
+     "explanation": "Een zoekindex op embeddings, waarmee je stukken tekst vindt die qua betekenis op een vraag lijken."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "Genie MCP",
+     "explanation": "Een MCP-server van Databricks waarmee andere AI-assistenten Genie en Genie Agents kunnen aanroepen."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "AI op eigen tabellen en documenten met metric views, zoals je duim bij 'AI in je dbt-model'."
+   },
+   "labels": [
+    "genie-agents",
+    "rag-op-delta",
+    "metric-views"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -5
+   }
+  },
+  {
    "id": "b943cf926a94",
    "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
    "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
@@ -3058,6 +3256,87 @@
     "name": "praktijk",
     "pts": -5
    }
+  },
+  {
+   "id": "966a182dbe00",
+   "title": "Who Gets to Plant in the Gold Layer?",
+   "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
+   "source_id": "simon_whiteley",
+   "published_at": "2026-11-02T11:41:21Z",
+   "fetched_at": "2026-11-02T14:36:05.422340Z",
+   "summary": "Martin McMillan van Advancing Analytics stelt een presentatielaag op Gold voor waarin analisten zelf bouwen. Wat breed bruikbaar blijkt, zetten engineers na review in Gold.",
+   "personal_relevance": "Een concreet model voor wie wat mag in Gold, nu ook AI-assistenten op die laag leunen.",
+   "experiment": "Teken voor je eigen platform (zonder werkdata, alleen de structuur) waar analistenlogica nu zit en welke stap nodig is om één veelgebruikte definitie naar Gold te halen.",
+   "limitations": [
+    "Advancing Analytics is een adviesbureau met een investering van Databricks Ventures; het stuk leunt op Databricks-functies.",
+    "Het is een werkwijze, geen gemeten resultaat."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "data_architecture_modeling",
+    "ai_on_data_platform",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "architectuur",
+    "ai_context",
+    "kwaliteit"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.48,
+    "source": 0.85,
+    "quality": 0.58,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
+   "story": [
+    "Als het datateam het te druk heeft, bouwen analisten hun eigen logica in Power BI of een los semantisch model. Martin McMillan, consultant bij Advancing Analytics, noemt dat schaduwlogica: het draait wel, maar niemand van het platform ziet het. Hij wil die logica zichtbaar maken in plaats van verbieden.",
+    "Zijn voorstel is een presentatielaag (ook wel platinum) bovenop Gold. Analisten krijgen daar in Databricks een eigen ontwikkelplek met de juiste rechten. Ze beginnen dun, met een view die één op één over Gold-tabellen ligt, en kopiëren geen data. Ze werken in notebooks, met de bedrijfsregels in Markdown naast de code.",
+    "Engineers kijken die producten na op prestaties, veiligheid en onderhoudbaarheid. Blijkt een definitie breed bruikbaar, dan bouwen ze die na in Gold en gebruikt de presentatielaag hem vandaar. De richting blijft zo altijd dezelfde: de presentatielaag leunt op Gold, nooit andersom. Unity Catalog en de releaseprocedure zorgen dat niemand direct in productie wijzigt.",
+    "Volgens McMillan is dit ook belangrijk voor AI. Genie en metric views gebruiken deze laag, en een agent moet weten of een maatstaf voor één team geldt of voor het hele bedrijf. Beschrijvingen, tags en certificering in Unity Catalog geven dat aan. Het lijkt op hoe je in dbt een sandbox-schema naast je productiemodellen houdt, maar dan met een vaste route naar Gold."
+   ],
+   "key_facts": [
+    "Blog van Martin McMillan (Senior Consultant Data Intelligence, Advancing Analytics), 2 november 2026.",
+    "Kernpunt: 'Gold eerst', met ruimte om te onderzoeken en een ondersteunde route om Gold te verbeteren.",
+    "De presentatielaag gebruikt Gold; Gold hangt nooit af van de presentatielaag.",
+    "Analisten bouwen in een ontwikkelplek met rechten; engineers reviewen; brede definities gaan na review naar Gold. Directe wijzigingen in productie blokkeer je met Unity Catalog en werkruimterechten.",
+    "Gezag van een tabel komt uit afspraken, eigenaarschap en validatie, zichtbaar via beschrijvingen, tags en certificering in Unity Catalog.",
+    "Hij noemt Lakeflow Jobs, metric views, Genie Agents, Genie Ontology en Delta Sharing, en waarschuwt dat Data Vault-structuren in Silver vaak omgezet moeten worden voor BI."
+   ],
+   "article_type": "opinie",
+   "author": "Martin McMillan, Senior Consultant Data Intelligence bij Advancing Analytics, met ervaring in semantische modellen, Power BI en Databricks",
+   "terms": [
+    {
+     "term": "schaduwlogica",
+     "explanation": "Berekeningen en koppelingen die buiten het dataplatform worden gebouwd, bijvoorbeeld in een Power BI-model, zodat het datateam ze niet ziet of beheert."
+    },
+    {
+     "term": "presentatielaag",
+     "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen."
+    },
+    {
+     "term": "certificering",
+     "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.65,
+    "why": "Over de medaillonlaag en vaste definities, zoals je duim bij 'metric views worden vanzelf een Power BI-model'."
+   },
+   "labels": [
+    "presentatielaag",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ]
   },
   {
    "id": "fa55dbcedb33",
@@ -4087,6 +4366,113 @@
    }
   },
   {
+   "id": "873de8dc3ad7",
+   "title": "As Humans Write Less Code: Workloads Shift from Human to Agent Verification with Iterative Test Suites",
+   "url": "https://www.ssp.sh/blog/humans-write-less-code/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-03T07:40:08Z",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "summary": "Simon Späti betoogt dat agents snel metrics en dashboards maken, maar dat controleren duur blijft. Hij pleit voor alle datalogica op één plek in Git, controles al tijdens het bouwen, en vijf lagen tests.",
+   "personal_relevance": "Raakt aan hoe je dbt-tests inzet nu Claude steeds vaker je SQL schrijft.",
+   "experiment": "Laat Claude Code bij een dbt-model op openbare data eerst een unit test met verwachte uitkomst schrijven, en pas daarna het model. Kijk of de test een fout vangt die je er zelf in stopt.",
+   "limitations": [
+    "Het stuk verscheen ook bij Metabase en gebruikt die tool als voorbeeld; Späti werkt samen met Metabase.",
+    "Het blijft vooral bij principes; hoe je de iteratieve testsuite precies bouwt, staat er niet in."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "dbt v1.8 (unit tests)",
+     "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.8"
+    },
+    {
+     "label": "Anthropic: evals voor AI-agents",
+     "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "data_quality_observability",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "dbt",
+    "kwaliteit",
+    "agents"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.5,
+    "source": 0.68,
+    "quality": 0.53,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Späti: als agents de SQL schrijven, wordt controleren het echte werk",
+   "story": [
+    "Analisten en analytics engineers typen steeds minder SQL zelf; een agent schrijft het. Volgens Simon Späti verschuift daardoor het werk. Iets maken is goedkoop geworden, controleren of het klopt niet. Hij vergelijkt het met een raadsel dat makkelijk te verzinnen is maar moeilijk na te rekenen.",
+    "Zijn eerste advies: zet alle datalogica op één plek. Transformaties, metricdefinities en dashboards horen in één repository, met één commit. Dan kun je ze samen controleren. De vorm mag verschillen, zoals dbt-SQL naast LookML, zolang een compiler of controletool ze kan nalopen.",
+    "Zijn tweede advies: schuif controles naar voren. Nu draaien de meeste controles pas als de data al berekend is. Späti wil ze al tijdens het schrijven, in een linter, en hard tijdens het bouwen. Hij noemt vijf lagen: linting, een compiler die de hele lineage controleert, unit tests, integratietests en end-to-end tests op vaste testdata. Veel smalle tests werken volgens hem beter dan één kwaliteitscijfer.",
+    "Agents kunnen die tests ook zelf schrijven en randgevallen zoeken; eerst de test, dan de code. Mensen blijven nodig voor het gevoel dat een uitkomst 'niet klopt'. Voor jou sluit dit aan bij dbt: unit tests sinds 1.8 en model contracts doen precies dat controleren tijdens het bouwen. Let wel: het stuk verscheen ook op de blog van Metabase en noemt diens functies als voorbeeld."
+   ],
+   "key_facts": [
+    "Blog van Simon Späti, 3 november 2026; ook verschenen op de blog van Metabase.",
+    "Kernpunt: controle is het knelpunt in BI met agents, niet het schrijven van query's.",
+    "Advies: zet ETL, metrics en dashboards in één declaratieve, geversioneerde plek met één lineage-graaf.",
+    "Vijf testlagen: linting, compiler (hele lineage), unit tests, integratietests en end-to-end tests op vaste testdata.",
+    "Hij noemt dbt unit tests (sinds v1.8) en model contracts, SQLMesh met semantische diffs, sqlglot, en Transform tests in Metabase v65.",
+    "Hij laat open vragen staan, zoals hoe je testen deterministisch maakt en of taalmodellen resultaten kunnen controleren."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+   "showcase": {
+    "caption": "Zo ziet een dbt unit test eruit: vaste invoerrijen en de uitkomst die je verwacht. dbt draait hem tijdens het bouwen, nog voordat het model echte data raakt.",
+    "language": "yaml",
+    "code": "unit_tests:\n  - name: omzet_telt_alleen_betaalde_orders\n    model: fct_omzet_per_dag\n    given:\n      - input: ref('stg_orders')\n        rows:\n          - {order_id: 1, dag: 2026-11-01, bedrag: 100, status: betaald}\n          - {order_id: 2, dag: 2026-11-01, bedrag: 50, status: geannuleerd}\n    expect:\n      rows:\n        - {dag: 2026-11-01, omzet: 100}",
+    "note": "De notatie staat in de dbt-documentatie (unit tests, sinds 1.8); het artikel zelf bevat geen code."
+   },
+   "terms": [
+    {
+     "term": "linter",
+     "explanation": "Een programma dat code tijdens het schrijven naloopt op fouten en afspraken, zoals SQLFluff voor SQL."
+    },
+    {
+     "term": "model contracts",
+     "explanation": "Een afspraak in dbt over de kolommen en types van een model. dbt laat het bouwen mislukken als het model zich er niet aan houdt."
+    },
+    {
+     "term": "end-to-end tests",
+     "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren."
+    },
+    {
+     "term": "LookML",
+     "explanation": "De modelleertaal van Looker waarin je maatstaven en verbanden tussen tabellen vastlegt."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Controleren van AI-werk in dbt, zoals je duim bij de proef van dbt Labs met Claude; wel algemeen en zonder code."
+   },
+   "labels": [
+    "agent-evals",
+    "dbt-unit-tests",
+    "shift-left"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "dbt_analytics_engineering",
+    "pts": 1
+   }
+  },
+  {
    "id": "62afb1e0ab94",
    "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
    "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
@@ -4927,6 +5313,88 @@
    }
   },
   {
+   "id": "ad991551648f",
+   "title": "The new Genie: autonomous AI for complex enterprise work",
+   "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T16:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Databricks presenteert de nieuwe Genie: een agent die taken op een schema of na een signaal uitvoert, voortgang bijhoudt en om goedkeuring vraagt. Erbij komen Genie Search en uitbreidingen van Genie Agents.",
+   "personal_relevance": "Een agent die op je eigen Gold-data en definities handelt, met goedkeuring en rechten via Unity Catalog.",
+   "experiment": "Bedenk één terugkerende controle op openbare data (bijvoorbeeld 'meld als het aantal KNMI-metingen per dag zakt') en schrijf uit welke data, welke goedkeuring en welke controle een agent daarvoor nodig heeft.",
+   "limitations": [
+    "Lanceringsstuk zonder status, prijs of technische details over de werking.",
+    "De benchmarkclaim is door Databricks zelf gemeten en niet onderbouwd."
+   ],
+   "availability_status": "aangekondigd",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.76,
+    "source": 0.85,
+    "quality": 0.52,
+    "feedback": -0.05,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring",
+   "story": [
+    "Tot nu toe beantwoordde Genie vooral vragen over data. Databricks introduceert nu een Genie die zelf langere taken uitvoert. Je geeft hem een opdracht en toegang tot tools. Hij houdt de voortgang bij, vraagt om ontbrekende informatie en handelt als er iets nieuws binnenkomt.",
+    "Zo'n taak kan op een schema draaien of starten op een signaal, bijvoorbeeld als een maatstaf zakt. Een voorbeeld uit het artikel: claims bewaken op fraudepatronen, een dossier samenstellen en het naar de juiste afdeling sturen als een segment buiten de grenzen valt. Voor de context leunt Genie op Genie Ontology (definities en verbanden) en een persoonlijk geheugen.",
+    "De data komt uit tabellen in het lakehouse, dashboards, notebooks, bestanden in Unity Catalog-volumes en externe apps via MCP. Genie werkt met de identiteit van de gebruiker, dus met diens rechten in Unity Catalog. Beheerders bepalen welke tools en koppelingen mogen en welke acties eerst goedgekeurd moeten worden. Elke actie wordt vastgelegd, en er zijn budgetten per gebruiker.",
+    "Het is vooral een lanceringsstuk. Databricks claimt dat Genie 91 procent van de taken goed deed, 1,6 keer zo vaak als een niet-genoemde andere agent, maar geeft geen methode. Een status (GA of preview) en prijs staan er niet bij. Voor jou telt vooral de richting: de agent werkt op je eigen tabellen en definities, dus hoe goed je Gold en metric views zijn, bepaalt hoe goed hij werkt."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 11 november 2026.",
+    "Nieuw: een autonome Genie die lange taken op een schema of na een trigger uitvoert, voortgang bijhoudt en om goedkeuring vraagt; plus Genie Search.",
+    "Context komt uit Genie Ontology (met OntoRank) en een persoonlijk geheugen; data uit lakehouse-tabellen, dashboards, notebooks, Unity Catalog-volumes, geïndexeerde apps en MCP-bronnen.",
+    "Genie werkt met de identiteit en rechten van de gebruiker; skills staan in Unity Catalog en draaien met de rechten van wie ze aanroept.",
+    "Beheer via Unity Gateway: toegang, tools, goedkeuringen, budgetten en tracing.",
+    "Claim van Databricks: 91% van de taakruns goed, 1,6 keer een frontier-agent, met minder dan de helft van de tokens; zonder methodebeschrijving. Geen status of prijs genoemd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Agents op eigen data spreken je aan, maar dit is een aankondiging zonder details; je gaf 'te vaag' bij vergelijkbare stukken."
+   },
+   "labels": [
+    "genie-one",
+    "data-agent",
+    "human-in-the-loop"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -5
+   }
+  },
+  {
    "id": "56bb11919377",
    "title": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
    "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
@@ -5061,128 +5529,6 @@
     "fase": 3,
     "quote": "Voor Dataflow is dit een manier om in fase 3 een eigen Python-lezer voor openbare data als gewone Spark-bron in Bronze te gebruiken.",
     "why": "Fase 3 gaat over openbare data met Python inlezen in Bronze."
-   }
-  },
-  {
-   "id": "308e572d49e4",
-   "title": "Azure Databricks: wat is er nieuw in week 44",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-01T23:59:59Z",
-   "date_note": "Weekoverzicht van release notes van 26 tot en met 30 oktober 2026.",
-   "fetched_at": "2026-11-06T03:12:45.337266Z",
-   "summary": "Wie het bèta-adres van de Genie One MCP-server gebruikt, moet overstappen. Verder: XML inlezen is GA, Claude Code logt zonder eigen OAuth-app in, en metric views kunnen naar elkaar verwijzen.",
-   "personal_relevance": "Gebruik je Genie via MCP, dan moet je vóór 30 november overstappen; de XML-ondersteuning en metric view-relaties raken direct je ingestion en semantische laag.",
-   "experiment": "Maak een klein verzonnen XML-bestand met een paar <bestelling>-elementen, zet het in een testvolume en lees het met read_files en rowTag => 'bestelling'. Probeer daarna schema_of_xml op één element.",
-   "limitations": [
-    "De Genie-documentatie noemde eerder 31 oktober als einddatum; de release note van deze week noemt 30 november.",
-    "De volledige syntax van metric view-relaties staat niet in de release note, alleen het patroon.",
-    "AI Functions-rechten moet je via het accountteam laten aanzetten."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "Read and write XML files",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/query/formats/xml"
-    },
-    {
-     "label": "Genie One MCP server",
-     "url": "https://learn.microsoft.com/en-us/azure/Databricks/agents/mcp-tools/genie-mcp"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "databricks_data_engineering",
-    "data_ingestion"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.47,
-    "source": 1.0,
-    "quality": 0.67,
-    "fit": 0.2,
-    "regel": -0.15,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-02T03:28:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie One MCP: het oude bèta-adres stopt op 30 november",
-   "story": [
-    "Eerst iets om zelf te doen. Het bèta-adres van de Genie One MCP-server (`/api/2.0/mcp/genie`) stopt op 30 november 2026. Daarna mislukken verzoeken naar dat adres. De opvolger is de algemeen beschikbare (GA) MCP `system.ai.genie_one_mcp`, die je via Unity Gateway aanroept en met MCP-beleid kunt afschermen.",
-    "Voor het inlezen van data is er goed nieuws. Databricks kan XML-bestanden nu officieel (GA) inlezen met Auto Loader, `read_files` en `COPY INTO`, in batch en als stream. Je geeft met `rowTag` aan welk XML-element één rij is, zoals je bij een CSV zegt wat één regel is. Met `from_xml` en `schema_of_xml` haal je XML uit een tekstkolom.",
-    "AI-tools komen makkelijker binnen. ChatGPT, Codex, Claude, Claude Code en Cursor kunnen nu verbinden met de MCP-servers van Databricks via standaard OAuth-apps (GA). Een accountbeheerder hoeft daarvoor geen eigen OAuth-app meer te maken. Daarnaast kunnen metastore-beheerders met Unity Catalog-rechten op het `system.ai`-schema bepalen wie welke AI-functies mag draaien (GA, aan te zetten via het accountteam).",
-    "Voor de semantische laag is er een bèta: relaties tussen metric views. Met `ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP` leg je vast hoe twee metric views koppelen, inclusief kardinaliteit en joinvoorwaarde. Een AI-assistent of BI-tool kan dan zelf het goede joinpad kiezen. Dat vraagt Databricks Runtime 19 of een SQL warehouse.",
-    "Tot slot: Lakeflow Jobs tonen nu prestatiecijfers per job, met een knop die Genie Code opent om trage queries te verbeteren (GA). Bestanden in Unity Catalog-volumes kun je direct in de werkruimte bewerken (GA). Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden."
-   ],
-   "key_facts": [
-    "Genie One MCP Beta-endpoint https://<workspace>/api/2.0/mcp/genie: end of life op 30 november 2026; daarna falen verzoeken. Opvolger: GA-MCP system.ai.genie_one_mcp via Unity Gateway.",
-    "Native XML-ondersteuning GA (29 okt 2026): inlezen met Auto Loader, read_files en COPY INTO, batch en streaming; SQL-functies from_xml en schema_of_xml.",
-    "Standaard OAuth-apps voor externe AI-agents GA (27 okt 2026): ChatGPT, Codex, Claude, Claude Code en Cursor verbinden met Azure Databricks MCP-servers zonder dat een beheerder een OAuth-app maakt.",
-    "AI Functions Unity Catalog-rechten GA (27 okt 2026): rechten op schema system.ai bepalen wie taakgerichte AI-functies mag draaien; aanzetten via het Databricks-accountteam.",
-    "Relaties tussen metric views in bèta (30 okt 2026): ALTER VIEW ... ADD CONSTRAINT ... RELATIONSHIP met kardinaliteit en joinvoorwaarde; vereist Databricks Runtime 19+ of een SQL warehouse.",
-    "Improved Lakeflow Performance Observability GA (26 okt 2026) en bestanden bewerken in Unity Catalog-volumes GA (27 okt 2026)."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo lees je XML in met read_files: rowTag zegt welk element één rij wordt. rescuedDataColumn vangt velden op die niet in het schema passen.",
-    "language": "sql",
-    "code": "SELECT * FROM read_files(\n  '/Volumes/<catalog>/<schema>/<volume>/reviews_xml',\n  format => 'xml',\n  rowTag => 'review',\n  rescuedDataColumn => '_rescued_data'\n);",
-    "note": "Letterlijk uit de officiële documentatie (Read and write XML files); zonder resultaat, omdat dit alleen op Databricks draait."
-   },
-   "terms": [
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "Auto Loader",
-     "explanation": "Een functie in Databricks die nieuwe bestanden in cloudopslag vanzelf ziet en ze stap voor stap inleest, zonder dat je bijhoudt wat al verwerkt is."
-    },
-    {
-     "term": "OAuth",
-     "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releases met MCP en metric views, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-mcp",
-    "metric-views",
-    "claude-code-databricks"
-   ],
-   "rule_why": [
-    {
-     "id": "einde-support",
-     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
-     "pts": -15
-    }
-   ],
-   "project_ref": {
-    "fase": 6,
-    "quote": "Voor Dataflow is dit nuttig in fase 6: Claude Code kan nu zonder eigen OAuth-app met de MCP-servers van Databricks verbinden",
-    "why": "Fase 6 onderzoekt hoe Claude Code via MCP met Databricks werkt."
    }
   },
   {
@@ -5503,137 +5849,6 @@
    }
   },
   {
-   "id": "4255764d89d9",
-   "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
-   "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-05T20:00:00Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Met NEAREST BY zoek je in Databricks SQL voor elke rij de dichtstbijzijnde rijen op vectorgelijkenis. Dat is bedoeld voor grote batches, zoals ontdubbelen of records aan elkaar koppelen.",
-   "personal_relevance": "Ontdubbelen en records koppelen is dagelijks Silver-werk; dit brengt embeddings daarvoor gewoon in SQL.",
-   "experiment": "Maak in een testwerkruimte een tabel met verzonnen productnamen in een paar spellingen, bereken embeddings met een AI-functie en zoek met EXACT NEAREST 3 BY SIMILARITY welke namen bij elkaar horen.",
-   "limitations": [
-    "Status (preview of GA) staat niet in de blog of de documentatie.",
-    "Bedoeld voor batches; voor één snelle vraag is het niet ontworpen.",
-    "De prestatiecijfers komen van Databricks zelf."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "NEAREST BY clause",
-     "url": "https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-nearest-by"
-    },
-    {
-     "label": "vector_search function",
-     "url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_search"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "sql_spark_sql",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 77,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.12,
-    "source": 0.68,
-    "quality": 0.73,
-    "feedback": -0.02,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Databricks zoekt vectoren nu met een gewone SQL-join",
-   "story": [
-    "Vectorzoeken kende je vooral van chatbots: één vraag, snel een paar antwoorden. Databricks heeft het nu ook als SQL-join, NEAREST BY. Voor elke rij in de ene tabel krijg je de k rijen uit een andere tabel die er het meest op lijken. Het werkt vanaf Databricks Runtime 18 LTS en in Databricks SQL.",
-    "Je schrijft een join met APPROX of EXACT, het aantal resultaten, en BY SIMILARITY of BY DISTANCE met een functie als vector_cosine_similarity. Met EXACT krijg je gegarandeerd de echte top-k. Met APPROX mag de optimizer een index gebruiken. Die index is een Delta-tabel met clusters; bestanden die er na de laatste verversing bij kwamen, worden gewoon doorzocht. Een verouderde index is dan trager, maar niet minder goed.",
-    "Het is gebouwd voor veel rijen tegelijk, niet voor één snelle vraag. Volgens Databricks ontdubbelde een self-join van 10 miljoen records in minuten. Denk aan semantisch ontdubbelen, classificeren of het koppelen van records die net anders gespeld zijn (entity resolution).",
-    "Voor jouw platform kan dit een stap in de Silver-laag worden: dubbele of bijna-dubbele records vinden met embeddings, direct in SQL. Let wel: de blog en de documentatie noemen geen status als preview of algemeen beschikbaar."
-   ],
-   "key_facts": [
-    "Databricks Engineering Blog, 5 oktober 2026 (bijgewerkt 9 oktober).",
-    "Syntax: {INNER | LEFT [OUTER]} JOIN doel {APPROX | EXACT} NEAREST [n] BY {DISTANCE | SIMILARITY} expressie; n tussen 1 en 100.000, standaard 1.",
-    "Werkt in Databricks SQL en Databricks Runtime 18 LTS en hoger.",
-    "Nieuwe vectorfuncties: vector_inner_product, vector_cosine_similarity, vector_l2_distance, vector_norm, vector_normalize, vector_sum en vector_avg.",
-    "De vectorindex is een IVF-index in een liquid-clustered Delta-tabel; met EXACT verandert een index de uitkomst niet.",
-    "Databricks meldt: een self-join van 10 miljoen records voor ontdubbelen in minuten; 1 miljoen vragen tegen 1 miljard vectoren in minuten."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zoek voor één vraagvector de drie producten die er het meest op lijken.",
-    "language": "sql",
-    "code": "SELECT t.product_id, t.name\nFROM (SELECT ARRAY(1.0f, 0.0f, 0.0f) AS embedding) q\nINNER JOIN products t\n  APPROX NEAREST 3 BY SIMILARITY vector_cosine_similarity(q.embedding, t.embedding);",
-    "result": {
-     "columns": [
-      "product_id",
-      "name"
-     ],
-     "rows": [
-      [
-       "P1",
-       "Trail running shoes"
-      ],
-      [
-       "P2",
-       "Hiking boots"
-      ],
-      [
-       "P5",
-       "Running shoes"
-      ]
-     ]
-    },
-    "note": "Voorbeeld en uitkomst overgenomen uit de officiële documentatie (NEAREST BY clause); niet zelf gedraaid, dit werkt alleen in Databricks."
-   },
-   "terms": [
-    {
-     "term": "NEAREST BY",
-     "explanation": "Een SQL-join in Databricks die bij elke rij de k meest gelijkende rijen uit een andere tabel zoekt, op basis van vectoren."
-    },
-    {
-     "term": "embeddings",
-     "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen."
-    },
-    {
-     "term": "top-k",
-     "explanation": "De k beste resultaten, bijvoorbeeld de 5 rijen die het meest op een zoekvraag lijken."
-    },
-    {
-     "term": "entity resolution",
-     "explanation": "Records herkennen die over hetzelfde ding gaan, ook als ze net anders gespeld of opgeslagen zijn."
-    },
-    {
-     "term": "LTS",
-     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "AI-functie in Databricks SQL; je duimen gaan vaker over AI-context dan over vectorzoeken."
-   },
-   "labels": [
-    "vector-search-sql",
-    "nearest-by"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -2
-   }
-  },
-  {
    "id": "1ebe4563dc44",
    "title": "Install DAX libraries into Power BI Desktop by asking your AI assistant",
    "url": "https://www.sqlbi.com/blog/marco/2026/10/22/install-dax-libraries-into-power-bi-desktop-by-asking-your-ai-assistant/",
@@ -5887,343 +6102,6 @@
     "pts": 1
    },
    "diepte": "kort"
-  },
-  {
-   "id": "94b4924597e5",
-   "title": "Azure Databricks: wat is er nieuw in week 43",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W43",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-10-25T23:59:59Z",
-   "fetched_at": "2026-10-28T20:21:52.418970Z",
-   "summary": "Week 43 bij Azure Databricks: Genie Ontology gaat begin november standaard aan, een Genie Code-taak in een job is algemeen beschikbaar en bundels krijgen één gedeelde Python-omgeving.",
-   "personal_relevance": "Genie gaat straks zelf context uit je metric views halen; dat raakt direct je project voor een AI-contextlaag.",
-   "experiment": "Maak in een testworkspace een kleine metric view en een dashboard op openbare data, en vraag Genie One na begin november iets waarvoor die definities nodig zijn. Kijk welke snippets het gebruikt.",
-   "limitations": [
-    "De aankondiging van Genie Ontology noemt geen manier om het uit te zetten; vraag dat na voordat het in een workspace met zorgdata aangaat.",
-    "Een Genie Code-taak handelt zonder menselijke controle; houd de opdracht klein en controleer de uitkomst."
-   ],
-   "availability_status": "aangekondigd",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    },
-    {
-     "label": "What's coming? (Genie Ontology)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/whats-coming"
-    },
-    {
-     "label": "Genie Code task for jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/genie-code"
-    },
-    {
-     "label": "Shared Serverless voor Git-mappen en bundels",
-     "url": "https://learn.microsoft.com/azure/databricks/compute/serverless/notebooks/shared-serverless"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "databricks_data_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 73,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.33,
-    "source": 1.0,
-    "quality": 0.68,
-    "feedback": 0.01,
-    "fit": 0.2,
-    "regel": -0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T16:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie haalt vanaf november zelf context uit je metric views en dashboards",
-   "story": [
-    "Eerst iets om te weten: begin november gaat Genie Ontology standaard aan en wordt het algemeen beschikbaar (GA). Genie haalt dan zelf zakelijke context uit metric views, dashboards, SQL-query's en Genie Agents. Genie One en Genie Code zoeken bij een vraag de best passende stukjes op, alleen uit wat de gebruiker mag zien. De aankondiging noemt geen knop om het uit te zetten. Check dus vooraf wat er in die bronnen staat.",
-    "Ook nieuw: een Genie Code-taak in Lakeflow Jobs is sinds 21 oktober GA. Je zet een opdracht in gewone taal als stap in een job, bijvoorbeeld 'vat de fouten van vannacht samen'. De agent kan uitvoer van eerdere taken lezen en tools aanroepen. Let op: goedkeuren gebeurt altijd automatisch en dat kun je niet uitzetten. Een AI-classificatie blokkeert alleen acties die buiten de opdracht vallen. De documentatie zegt zelf dat dit geen beveiligingsgrens is.",
-    "Voor bundels (in de documentatie nu Declarative Automation Bundles) komt Shared Serverless in bèta. Notebooks en bestanden in één bundel delen dan serverless compute en één Python-omgeving. Die omgeving staat in een pyproject.toml in de hoofdmap, net als de requirements van een gewoon Python-project. Ook serverless jobtaken kunnen sinds 22 oktober (bèta) hun omgeving uit zo'n bestand halen. Zo heb je één plek voor je pakketversies.",
-    "Tot slot zijn de systeemtabellen voor Lakeflow-pipelines GA: pipelines en pipeline_update_timeline. Daarmee kun je met SQL zien welke pipelines er zijn en hoe hun runs verliepen. Kleinere notes van deze week, zoals een bèta-filter tegen jailbreaks in MCP-aanroepen en nieuwe connectoren, laten we hier weg."
-   ],
-   "key_facts": [
-    "Genie Ontology snippets worden begin november 2026 algemeen beschikbaar en staan dan standaard aan (aankondiging op 'What's coming').",
-    "Genie Ontology haalt context uit metric views, dashboards, SQL-query's en Genie Agents; Genie One en Genie Code gebruiken alleen snippets uit assets waar de gebruiker rechten op heeft.",
-    "Genie Code-taken in Lakeflow Jobs: GA sinds 21 oktober 2026; auto-approve staat altijd aan en is niet uit te zetten voor jobtaken.",
-    "Vanaf november 2026 staan Genie Code-taken in jobs standaard aan voor workspaces met het compliance security profile.",
-    "Shared Serverless voor bundels: bèta sinds 22 oktober 2026; vereist serverless-omgevingsversie 5 of hoger en de preview Project-Scoped Shared Compute.",
-    "Serverless jobomgevingen uit pyproject.toml: bèta sinds 22 oktober 2026.",
-    "Systeemtabellen pipelines en pipeline_update_timeline voor Lakeflow-pipelines: GA sinds 21 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet de gedeelde Python-omgeving van een bundel eruit: één pyproject.toml in de hoofdmap. Alle notebooks in de bundel gebruiken dezelfde pakketten.",
-    "language": "text",
-    "code": "[project]\nname = \"my-project\"\nversion = \"0.1.0\"\ndependencies = [\n  \"simplejson==3.18.1\",\n]\n\n[tool.databricks.environment]\nenvironment_version = \"5\"",
-    "note": "Letterlijk voorbeeld uit de documentatie over Shared Serverless. In een notebook voeg je een pakket toe met %uv add <pakket>; dat werkt pyproject.toml en uv.lock bij."
-   },
-   "terms": [
-    {
-     "term": "Declarative Automation Bundles",
-     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
-    },
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "pyproject.toml",
-     "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft."
-    },
-    {
-     "term": "Lakeflow Jobs",
-     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-releaseweek met Genie-context, zoals je duim voor metric view-relaties."
-   },
-   "labels": [
-    "genie-ontology",
-    "asset-bundles",
-    "databricks-weekoverzicht"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   },
-   "rule_why": [
-    {
-     "id": "einde-support",
-     "text": "Geen nieuws over iets dat niet meer ondersteund wordt; nieuwe functies wel",
-     "pts": -15
-    }
-   ]
-  },
-  {
-   "id": "23d3cd62d490",
-   "title": "Smarter cost controls for serverless",
-   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T15:00:00Z",
-   "fetched_at": "2026-10-29T16:25:27.740167Z",
-   "summary": "Databricks geeft serverless compute objecten die je kunt taggen, afschermen en begrenzen. Kosten zie je per tag terug in system.billing.usage, en een job krijgt een maximale grootte.",
-   "personal_relevance": "Als je dbt of notebooks op serverless draait, zie je hiermee per team of laag wat het kost en kun je uitschieters begrenzen.",
-   "experiment": "Schrijf een query op system.billing.usage in een oefen- of testwerkruimte die de serverless kosten van de afgelopen 30 dagen per tag en per product optelt, en zet er een SQL-alert op.",
-   "limitations": [
-    "Tags en rate limits zijn Beta.",
-    "De blog bevat geen configuratievoorbeelden; de details staan in de documentatie.",
-    "Een te laag plafond maakt nachtelijke runs trager; meet eerst wat ze nu gebruiken."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Manage serverless compute (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/manage-serverless-compute"
-    },
-    {
-     "label": "Serverless billing system tables (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/serverless-billing"
-    },
-    {
-     "label": "Budgets (Azure)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/budgets"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "databricks",
-    "kwaliteit"
-   ],
-   "relevance_score": 66,
-   "score_parts": {
-    "topic": 0.8,
-    "recency": 0.4,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.07,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Serverless kosten per team: tags, budgetten en een plafond per job",
-   "story": [
-    "Bij serverless compute start je geen cluster meer. Daardoor was het lastig te zien wie wat kost, en om te begrenzen. Databricks werkt dat nu bij met serverless compute-objecten. Er is een standaardobject voor notebooks en Databricks Connect, en één voor jobs en pipelines.",
-    "Zo'n object werkt als een kostenplaats met een slot erop. Je zet er één keer een tag op, en elke DBU die erop draait, draagt die tag mee naar de facturatie. Met de rechten Can Use en Can Manage bepaal je wie het mag gebruiken. Haal je 'All Users' weg en zet je er een groep op, dan zien anderen serverless grijs in hun notebook.",
-    "Daarnaast kun je de snelheid van uitgeven begrenzen (rate limits). Dat doe je met maten S, M, L en XL; voor notebooks en jobs is dat een plafond voor het opschalen. In system.billing.usage zie je de kosten per gebruiker, product en tag. Budgetten in de accountconsole mailen je als een drempel wordt overschreden.",
-    "Voor nachtelijke dbt-runs op serverless kan dit helpen om per laag of per team te zien wat het kost. Let op de status: tags en rate limits zijn Beta, en gedeelde budgetten voor interactief werk komen nog."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 29 oktober 2026: het serverless-gebruik bij Databricks groeide het afgelopen jaar meer dan drie keer.",
-    "Serverless compute-tags (Beta): één tag op een serverless compute-object, en elke DBU draagt die tag mee naar de facturatie.",
-    "Serverless Compute Access Controls (algemeen beschikbaar): rechten Can Use en Can Manage; elke gebruiker begint met Can Use.",
-    "Rate limits (Beta, via de preview-instellingen): maten S, M, L en XL; voor notebooks en jobs een plafond voor autoscaling.",
-    "system.billing.usage splitst serverless DBU's uit per gebruiker, product en tag; budgetten met e-mailwaarschuwing zijn algemeen beschikbaar.",
-    "Gedeelde budgetten voor interactief werk, met een maximum per sessie, komen binnenkort."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "serverless compute",
-     "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."
-    },
-    {
-     "term": "DBU",
-     "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent."
-    },
-    {
-     "term": "rate limits",
-     "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen."
-    },
-    {
-     "term": "system.billing.usage",
-     "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Praktisch Databricks-kostenstuk, buiten de AI-hoek van je meeste duimen."
-   },
-   "labels": [
-    "compute-kosten",
-    "serverless-budgetten"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -7
-   }
-  },
-  {
-   "id": "903131b53f30",
-   "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-29T22:30:04Z",
-   "fetched_at": "2026-10-30T06:06:02.852195Z",
-   "summary": "Real-time mode in Spark Declarative Pipelines (Lakeflow) is algemeen beschikbaar, op classic en serverless compute. Data stroomt dan continu door in plaats van in kleine batches.",
-   "personal_relevance": "Goed om te weten welke opties er zijn, al vraagt jouw analytische werk zelden om milliseconden.",
-   "experiment": "Bouw in een oefenwerkruimte een kleine pipeline met synthetische events (bijv. uit de rate-source), eerst als gewone stream en daarna in real-time mode, en vergelijk de vertraging.",
-   "limitations": [
-    "De snelheidscijfers zijn claims van Databricks zelf.",
-    "Een continu draaiende pipeline kost doorlopend compute; dat past niet bij elk budget.",
-    "De blog noemt niet welke bronnen, sinks en bewerkingen ondersteund worden; zie de documentatie."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Use real-time mode in Lakeflow pipelines",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/ldp/real-time"
-    },
-    {
-     "label": "Release notes oktober 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october"
-    }
-   ],
-   "topics": [
-    "databricks_data_engineering",
-    "sql_spark_sql"
-   ],
-   "groups": [
-    "databricks"
-   ],
-   "relevance_score": 62,
-   "score_parts": {
-    "topic": 0.85,
-    "recency": 0.41,
-    "source": 0.85,
-    "quality": 0.48,
-    "feedback": -0.09,
-    "fit": 0.0
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:20:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-     "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
-     "published_at": "2026-10-29T22:30:04Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar",
-   "story": [
-    "Databricks maakt real-time mode (RTM) algemeen beschikbaar in Spark Declarative Pipelines, in Azure Databricks Lakeflow-pipelines geheten. Het werkt op classic en serverless compute. Volgens Databricks is de vertraging van begin tot eind dan zo laag als vijf milliseconden.",
-    "Het verschil zit in hoe data door de stappen loopt. Gewoon streamen werkt in kleine batches (micro-batches): de bus vertrekt pas als hij vol is of de tijd om is. In real-time mode draaien alle stappen tegelijk en gaat elke rij direct door, zoals een lopende band. Je zet de pipeline op continuous, zet spark.databricks.streaming.realTimeMode.enabled op true en geeft een update flow de trigger RealTime.",
-    "Databricks noemt toepassingen als fraudedetectie en live aanbevelingen. Via een ForEach-sink schrijf je naar een operationele database, zoals Lakebase. De pipeline regelt zelf afhankelijkheden, herstel na fouten en datakwaliteitsregels.",
-    "Voor een analytisch platform met nachtelijke dbt-runs is dit zelden nodig. Het is vooral goed om te weten dat je voor echte realtime-toepassingen geen aparte engine als Flink meer hoeft te zetten. De snelheidsclaims komen van Databricks zelf."
-   ],
-   "key_facts": [
-    "Real-time mode in Lakeflow-pipelines (Spark Declarative Pipelines) is algemeen beschikbaar sinds 29 oktober 2026, op classic en serverless compute.",
-    "Volgens de release notes: end-to-end-latentie vanaf ongeveer vijf milliseconden.",
-    "Inschakelen: pipeline op continuous, spark.databricks.streaming.realTimeMode.enabled op true, en een @dp.update_flow met pipelines.trigger 'RealTime' naar een sink van dp.create_sink().",
-    "Databricks claimt tot 92% sneller dan gespecialiseerde engines zoals Flink, gemeten op feature-berekeningen van klanten.",
-    "De Databricks Feature Store meldt een p99-latentie van 200 ms van Kafka naar de online store.",
-    "Op de roadmap: meerdere RTM-flows in één pipeline, automatische afstemming van partities en een eigen Lakebase-sink."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "real-time mode",
-     "explanation": "Een stand van Spark-streaming waarin elke rij direct door alle stappen gaat, in plaats van te wachten op een kleine batch. Bedoeld voor vertragingen van milliseconden."
-    },
-    {
-     "term": "micro-batches",
-     "explanation": "Kleine pakketjes data die streaming steeds na een korte tijd tegelijk verwerkt, zoals een bus die op vaste tijden vertrekt."
-    },
-    {
-     "term": "ForEach-sink",
-     "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database."
-    },
-    {
-     "term": "Lakebase",
-     "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.5,
-    "why": "Databricks-functie voor streaming; je duimen gaan meer over dbt en AI-context dan over ingestion."
-   },
-   "labels": [
-    "real-time-mode",
-    "declaratieve-pipelines",
-    "streaming"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -9
-   }
   }
  ],
  "deepdives": [
@@ -9247,6 +9125,17 @@
    ]
   },
   {
+   "term": "Agent Skills",
+   "explanation": "Een open standaard voor skills: een map met een SKILL.md en hulpbestanden, die verschillende AI-assistenten kunnen lezen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ee8f41fce441",
+     "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog"
+    }
+   ]
+  },
+  {
    "term": "AGENTS.md",
    "explanation": "Een afsprakenbestand voor AI-codeertools. Claude Code leest het als er geen CLAUDE.md is, of je importeert het vanuit CLAUDE.md met @AGENTS.md.",
    "refs": [
@@ -9272,6 +9161,11 @@
    "term": "ai_parse_document",
    "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "b8bd8dd7742b",
+     "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes"
+    },
     {
      "kind": "a",
      "id": "941b0ba5dad7",
@@ -9374,11 +9268,6 @@
      "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
-    },
-    {
-     "kind": "a",
-     "id": "308e572d49e4",
-     "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
     }
    ]
   },
@@ -9472,6 +9361,17 @@
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC"
+    }
+   ]
+  },
+  {
+   "term": "certificering",
+   "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "966a182dbe00",
+     "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug"
     }
    ]
   },
@@ -9797,17 +9697,6 @@
    ]
   },
   {
-   "term": "DBU",
-   "explanation": "Databricks Unit: de eenheid waarin Databricks rekenkracht afrekent.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
-    }
-   ]
-  },
-  {
    "term": "declaratief",
    "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo.",
    "refs": [
@@ -9831,11 +9720,6 @@
      "kind": "v",
      "id": "release-pipeline-basis",
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
-    },
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "v",
@@ -9988,11 +9872,17 @@
      "kind": "a",
      "id": "6ded4aa1cdcf",
      "title": "Zet context voor agents in je warehouse: de helft minder tokens"
-    },
+    }
+   ]
+  },
+  {
+   "term": "end-to-end tests",
+   "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren.",
+   "refs": [
     {
      "kind": "a",
-     "id": "4255764d89d9",
-     "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
+     "id": "873de8dc3ad7",
+     "title": "Späti: als agents de SQL schrijven, wordt controleren het echte werk"
     }
    ]
   },
@@ -10004,17 +9894,6 @@
      "kind": "a",
      "id": "81204e04abb9",
      "title": "LangChain geeft zijn data-agent vier lagen context, vanuit dbt"
-    }
-   ]
-  },
-  {
-   "term": "entity resolution",
-   "explanation": "Records herkennen die over hetzelfde ding gaan, ook als ze net anders gespeld of opgeslagen zijn.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "4255764d89d9",
-     "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
     }
    ]
   },
@@ -10143,17 +10022,6 @@
    ]
   },
   {
-   "term": "ForEach-sink",
-   "explanation": "Een uitgang van een streaming-pipeline die elke rij naar een eigen bestemming schrijft, zoals een operationele database.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "903131b53f30",
-     "title": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar"
-    }
-   ]
-  },
-  {
    "term": "fork",
    "explanation": "Een subagent die het gesprek tot nu toe meeneemt, in plaats van blanco te beginnen zoals een gewone subagent.",
    "refs": [
@@ -10263,9 +10131,25 @@
    ]
   },
   {
+   "term": "Genie MCP",
+   "explanation": "Een MCP-server van Databricks waarmee andere AI-assistenten Genie en Genie Agents kunnen aanroepen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b8bd8dd7742b",
+     "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes"
+    }
+   ]
+  },
+  {
    "term": "Genie Ontology",
    "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "ad991551648f",
+     "title": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring"
+    },
     {
      "kind": "a",
      "id": "06485ad2414b",
@@ -10518,17 +10402,6 @@
    ]
   },
   {
-   "term": "Lakebase",
-   "explanation": "De serverless Postgres-database van Databricks, voor apps en agents die snel losse rijen moeten lezen en schrijven.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "903131b53f30",
-     "title": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar"
-    }
-   ]
-  },
-  {
    "term": "Lakeflow Connect",
    "explanation": "Het deel van Databricks met kant-en-klare koppelingen naar databases, apps en bestandsbronnen, die data incrementeel in Unity Catalog laden.",
    "refs": [
@@ -10559,11 +10432,6 @@
    "term": "Lakeflow Jobs",
    "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
     {
      "kind": "a",
      "id": "0b4ae9670355",
@@ -10605,6 +10473,17 @@
    ]
   },
   {
+   "term": "linter",
+   "explanation": "Een programma dat code tijdens het schrijven naloopt op fouten en afspraken, zoals SQLFluff voor SQL.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "873de8dc3ad7",
+     "title": "Späti: als agents de SQL schrijven, wordt controleren het echte werk"
+    }
+   ]
+  },
+  {
    "term": "LLM-as-judge",
    "explanation": "Een taalmodel dat de antwoorden van een ander model beoordeelt. Handig bij veel antwoorden, maar het kan dezelfde fouten maken.",
    "refs": [
@@ -10626,6 +10505,17 @@
    ]
   },
   {
+   "term": "LookML",
+   "explanation": "De modelleertaal van Looker waarin je maatstaven en verbanden tussen tabellen vastlegt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "873de8dc3ad7",
+     "title": "Späti: als agents de SQL schrijven, wordt controleren het echte werk"
+    }
+   ]
+  },
+  {
    "term": "LTS",
    "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie.",
    "refs": [
@@ -10633,11 +10523,6 @@
      "kind": "a",
      "id": "941b0ba5dad7",
      "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
-    },
-    {
-     "kind": "a",
-     "id": "4255764d89d9",
-     "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
     }
    ]
   },
@@ -10680,6 +10565,16 @@
    "refs": [
     {
      "kind": "a",
+     "id": "ee8f41fce441",
+     "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog"
+    },
+    {
+     "kind": "a",
+     "id": "ad991551648f",
+     "title": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring"
+    },
+    {
+     "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
     },
@@ -10692,16 +10587,6 @@
      "kind": "a",
      "id": "6ded4aa1cdcf",
      "title": "Zet context voor agents in je warehouse: de helft minder tokens"
-    },
-    {
-     "kind": "a",
-     "id": "308e572d49e4",
-     "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
-    },
-    {
-     "kind": "a",
-     "id": "a68aede0b61b",
-     "title": "Geef een AI-agent per veld synoniemen, voorbeeldwaarden en regels"
     }
    ]
   },
@@ -10792,6 +10677,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "b8bd8dd7742b",
+     "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes"
+    },
+    {
+     "kind": "a",
      "id": "656e0d953ae9",
      "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
     },
@@ -10799,16 +10689,6 @@
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
      "title": "dbt semantic layer of metric views: waar leg je je maatstaven vast?"
-    },
-    {
-     "kind": "a",
-     "id": "308e572d49e4",
-     "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
-    },
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
     },
     {
      "kind": "a",
@@ -10841,11 +10721,6 @@
      "kind": "a",
      "id": "f2cef2be2ab7",
      "title": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)"
-    },
-    {
-     "kind": "a",
-     "id": "903131b53f30",
-     "title": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar"
     }
    ]
   },
@@ -10857,6 +10732,17 @@
      "kind": "a",
      "id": "a9b6458ba033",
      "title": "Wat je Claude-agent deed, staat nu als tabel in Unity Catalog"
+    }
+   ]
+  },
+  {
+   "term": "model contracts",
+   "explanation": "Een afspraak in dbt over de kolommen en types van een model. dbt laat het bouwen mislukken als het model zich er niet aan houdt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "873de8dc3ad7",
+     "title": "Späti: als agents de SQL schrijven, wordt controleren het echte werk"
     }
    ]
   },
@@ -10879,28 +10765,6 @@
      "kind": "v",
      "id": "claude-agents-in-eigen-netwerk",
      "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
-    }
-   ]
-  },
-  {
-   "term": "NEAREST BY",
-   "explanation": "Een SQL-join in Databricks die bij elke rij de k meest gelijkende rijen uit een andere tabel zoekt, op basis van vectoren.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "4255764d89d9",
-     "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
-    }
-   ]
-  },
-  {
-   "term": "OAuth",
-   "explanation": "Een standaard manier om een app toegang te geven tot een dienst zonder je wachtwoord te delen. De app krijgt een tijdelijk toegangsbewijs (token) met beperkte rechten.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "308e572d49e4",
-     "title": "Genie One MCP: het oude bèta-adres stopt op 30 november"
     }
    ]
   },
@@ -11075,6 +10939,17 @@
    ]
   },
   {
+   "term": "presentatielaag",
+   "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "966a182dbe00",
+     "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug"
+    }
+   ]
+  },
+  {
    "term": "PreToolUse",
    "explanation": "Het moment in Claude Code vlak voordat een tool wordt aangeroepen. Een hook op dit moment kan de aanroep nog blokkeren.",
    "refs": [
@@ -11124,17 +10999,6 @@
    ]
   },
   {
-   "term": "pyproject.toml",
-   "explanation": "Een bestand in de hoofdmap van een Python-project waarin staat welke pakketten en versies het project nodig heeft.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    }
-   ]
-  },
-  {
    "term": "Python Data Source API",
    "explanation": "Een manier in Spark om met een kleine Python-klasse een eigen bron te maken, die je daarna leest met spark.read.format(...).",
    "refs": [
@@ -11179,17 +11043,6 @@
    ]
   },
   {
-   "term": "rate limits",
-   "explanation": "Een grens aan hoe snel iets mag gaan of hoeveel het mag gebruiken, zodat kosten niet ongemerkt oplopen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
-    }
-   ]
-  },
-  {
    "term": "RDF",
    "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object.",
    "refs": [
@@ -11208,11 +11061,6 @@
      "kind": "a",
      "id": "f2cef2be2ab7",
      "title": "Spark 4.3 houdt de geschiedenis van een rij zelf bij (SCD type 2)"
-    },
-    {
-     "kind": "a",
-     "id": "903131b53f30",
-     "title": "Lakeflow-pipelines verwerken nu data in milliseconden, algemeen beschikbaar"
     }
    ]
   },
@@ -11352,6 +11200,17 @@
    ]
   },
   {
+   "term": "schaduwlogica",
+   "explanation": "Berekeningen en koppelingen die buiten het dataplatform worden gebouwd, bijvoorbeeld in een Power BI-model, zodat het datateam ze niet ziet of beheert.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "966a182dbe00",
+     "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug"
+    }
+   ]
+  },
+  {
    "term": "scorer",
    "explanation": "De naam voor een beoordelaar in MLflow: code of een AI-oordeel dat per antwoord bepaalt of het goed is.",
    "refs": [
@@ -11423,22 +11282,6 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
-    }
-   ]
-  },
-  {
-   "term": "serverless compute",
-   "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "94b4924597e5",
-     "title": "Genie haalt vanaf november zelf context uit je metric views en dashboards"
-    },
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
     }
    ]
   },
@@ -11517,6 +11360,11 @@
    "term": "SKILL.md",
    "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "ee8f41fce441",
+     "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog"
+    },
     {
      "kind": "v",
      "id": "claude-code-skills-hooks-subagents",
@@ -11719,17 +11567,6 @@
    ]
   },
   {
-   "term": "system.billing.usage",
-   "explanation": "Een systeemtabel in Databricks met het verbruik per gebruiker, product en tag, om kosten te analyseren.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "23d3cd62d490",
-     "title": "Serverless kosten per team: tags, budgetten en een plafond per job"
-    }
-   ]
-  },
-  {
    "term": "system.query.history",
    "explanation": "Een systeemtabel in Databricks met een rij per query: wie, wanneer, hoe lang, hoeveel gelezen en waar de tijd zat.",
    "refs": [
@@ -11816,17 +11653,6 @@
    ]
   },
   {
-   "term": "top-k",
-   "explanation": "De k beste resultaten, bijvoorbeeld de 5 rijen die het meest op een zoekvraag lijken.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "4255764d89d9",
-     "title": "Databricks zoekt vectoren nu met een gewone SQL-join"
-    }
-   ]
-  },
-  {
    "term": "TPC-DS",
    "explanation": "Een bekende standaardset met tabellen en queries om de snelheid van datawarehouses te meten en te vergelijken.",
    "refs": [
@@ -11871,6 +11697,17 @@
    ]
   },
   {
+   "term": "Unity Gateway Skills",
+   "explanation": "Een functie van Databricks, nu in Beta, die een skill publiceert als object in Unity Catalog, met rechten en audit zoals bij een tabel.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "ee8f41fce441",
+     "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog"
+    }
+   ]
+  },
+  {
    "term": "upstream",
    "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen.",
    "refs": [
@@ -11900,6 +11737,17 @@
      "kind": "v",
      "id": "release-pipeline-basis",
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
+    }
+   ]
+  },
+  {
+   "term": "vectorindex",
+   "explanation": "Een zoekindex op embeddings, waarmee je stukken tekst vindt die qua betekenis op een vraag lijken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "b8bd8dd7742b",
+     "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes"
     }
    ]
   },
@@ -12475,12 +12323,12 @@
   "shown": 54,
   "decisions": {
    "excluded": 217,
-   "area_cap": 16,
+   "area_cap": 18,
    "included": 100,
    "no_topic": 139,
-   "below_threshold": 113,
+   "below_threshold": 108,
    "kort_vervallen": 34,
-   "source_cap": 9
+   "source_cap": 12
   },
   "processing": {
    "enriched": 54
@@ -12490,24 +12338,24 @@
    "ai_context": 22,
    "overig": 5,
    "claude": 11,
-   "dbt": 5,
-   "architectuur": 2,
+   "dbt": 6,
+   "architectuur": 3,
    "agents": 5,
-   "databricks": 4
+   "databricks": 2
   },
   "per_source": {
-   "azure_databricks_release_notes": 4,
-   "databricks_blog": 13,
+   "azure_databricks_release_notes": 2,
+   "databricks_blog": 14,
    "claude_code_releases": 4,
-   "simon_whiteley": 1,
+   "simon_whiteley": 2,
    "dbt_labs_blog": 10,
    "anthropic_engineering": 1,
    "dbt_developer_blog": 2,
    "claude_blog": 7,
-   "simon_spati": 1,
+   "simon_spati": 2,
    "dbt_core_releases": 1,
    "langchain_blog": 1,
-   "databricks_engineering_blog": 3,
+   "databricks_engineering_blog": 2,
    "hamel_husain": 1,
    "chris_webb": 1,
    "fabric_blog": 1,
@@ -12555,9 +12403,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 159
+   "skipped_no_key": 154
   },
-  "queue_size": 11,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -12916,6 +12764,14 @@
     ]
    },
    {
+    "title": "Azure Databricks: wat is er nieuw in week 44",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W44",
+    "relevance_score": 79,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "v2.1.318",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
@@ -13075,6 +12931,14 @@
     "excluded_by": []
    },
    {
+    "title": "NEAREST BY Join: Scaling Vector Search in Databricks Runtime",
+    "source_id": "databricks_engineering_blog",
+    "url": "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime",
+    "relevance_score": 77,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
     "source_id": "langchain_blog",
     "url": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
@@ -13113,27 +12977,6 @@
     "relevance_score": 77,
     "decision": "kort_vervallen",
     "excluded_by": []
-   },
-   {
-    "title": "Genie agentic capabilities are now processed in South Korea",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#genie-agentic-capabilities-are-now-processed-in-south-korea",
-    "relevance_score": 76,
-    "decision": "excluded",
-    "excluded_by": [
-     "mini_updates",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie One enhancements",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#genie-one-enhancements",
-    "relevance_score": 76,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
    }
   ],
   "topics_without_source": [
