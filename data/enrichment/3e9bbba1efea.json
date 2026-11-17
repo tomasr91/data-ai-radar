@@ -1,0 +1,89 @@
+{
+ "format_version": 2,
+ "article_id": "3e9bbba1efea",
+ "url": "https://github.com/anthropics/claude-code/releases?week=2026-W46",
+ "headline": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming",
+ "summary": "Claude Code kan in een experimentele Code Mode zijn tools via JavaScript aanroepen. Bash-commando's in de sandbox volgen weer de gewone toestemmingsvragen, en Fable 5.2 is het nieuwe standaard-Fable-model.",
+ "story": [
+  "De opvallendste nieuwe functie van deze week is Code Mode (v2.1.323). Claude roept zijn tools dan niet één voor één aan, maar schrijft een stukje JavaScript dat die tools aanroept. Het is experimenteel en staat uit tot je het zelf aanzet. Een organisatie kan het ook centraal uitzetten.",
+  "Belangrijker voor je dagelijkse werk is een wijziging in v2.1.325. Bash-commando's in de sandbox draaien niet meer vanzelf zonder vragen. Ze volgen weer de gewone toestemmingsregels. Wil je het oude gedrag, dan zet je sandbox.autoAllowBashIfSandboxed op true. Ook alleen-lezen git-commando's in een onbekende repository vragen nu eerst toestemming.",
+  "Diezelfde versie maakt geplande taken en /loop voorzichtiger. Ze vragen nu eerst toestemming voordat ze een skill draaien die eigen toegestane tools (allowed-tools) of hooks meebrengt. Een skill kan zo niet ongemerkt meer rechten krijgen dan je dacht.",
+  "Verder werd Claude Fable 5.2 in v2.1.321 het standaard-Fable-model, met een contextvenster van 1 miljoen tokens. Plugins kunnen sinds v2.1.323 aangeven met welke versies van Claude Code ze werken. Gebruik je Claude Code met dbt-skills en hooks, controleer dan na het bijwerken of je sandbox-commando's ineens om toestemming vragen."
+ ],
+ "key_facts": [
+  "v2.1.321: Claude Fable 5.2 (claude-fable-5-2) is het standaard-Fable-model, met 1M context en $8/$40 per miljoen tokens ($0,20 voor cache reads).",
+  "v2.1.322: fast mode op Vertex in de regio's global, us en eu.",
+  "v2.1.323: Code Mode, een experimentele opt-in waarin Claude JavaScript schrijft om zijn tools aan te roepen; plugins kunnen een ondersteund versiebereik van Claude Code opgeven.",
+  "v2.1.323: voor een onbekend model-ID gaat Claude Code nu uit van 1M context in plaats van 200K.",
+  "v2.1.325: gesandboxte Bash-commando's volgen standaard de gewone toestemmingsflow; sandbox.autoAllowBashIfSandboxed: true behoudt het oude gedrag.",
+  "v2.1.325: alleen-lezen git-commando's in onvertrouwde repositories vragen eerst; geplande taken en /loop vragen eerst bij skills met allowed-tools of hooks."
+ ],
+ "personal_relevance": "De nieuwe toestemmingsregels veranderen hoe Claude Code in je projecten en geplande taken werkt.",
+ "experiment": "Werk Claude Code bij en laat het in een testproject een dbt-commando in de sandbox draaien. Kijk of het nu om toestemming vraagt, en probeer daarna de instelling autoAllowBashIfSandboxed.",
+ "limitations": [
+  "Code Mode is experimenteel; hoe het precies werkt staat in de documentatie die we hier niet konden openen.",
+  "De release notes van v2.1.321 en v2.1.322 waren alleen in het weekoverzicht te lezen, niet volledig."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Claude Code releases",
+   "url": "https://github.com/anthropics/claude-code/releases"
+  },
+  {
+   "label": "Code Mode",
+   "url": "https://code.claude.com/docs/en/code-mode"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.7,
+  "novelty": 0.6
+ },
+ "development_key": "claude-code-week-46-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "release",
+ "fit": {
+  "score": 0.75,
+  "why": "Wijziging in sandbox en toestemming, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
+ },
+ "labels": [
+  "claude-code-sandbox",
+  "claude-code-permissies",
+  "claude-modellen"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "Code Mode",
+   "explanation": "Een experimentele modus in Claude Code waarin Claude een stukje JavaScript schrijft dat zijn tools aanroept, in plaats van elke tool apart aan te roepen."
+  },
+  {
+   "term": "sandbox",
+   "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+  },
+  {
+   "term": "/loop",
+   "explanation": "Een commando in Claude Code dat een opdracht steeds opnieuw laat uitvoeren, bijvoorbeeld om iets in de gaten te houden."
+  },
+  {
+   "term": "contextvenster",
+   "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+  }
+ ],
+ "showcase": {
+  "caption": "Met deze instelling in je settings.json draaien Bash-commando's in de sandbox weer zonder toestemmingsvraag, zoals vóór v2.1.325.",
+  "language": "json",
+  "code": "{\n  \"sandbox\": {\n    \"autoAllowBashIfSandboxed\": true\n  }\n}",
+  "note": "De release notes noemen de instelling als sandbox.autoAllowBashIfSandboxed: true; dit is dezelfde instelling in JSON-vorm."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:45:41Z",
+ "prompt_version": "taak-v3"
+}

@@ -1,0 +1,96 @@
+{
+ "format_version": 2,
+ "article_id": "905562b7af62",
+ "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
+ "headline": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder",
+ "summary": "In week 46 verandert de standaardinstelling voor nieuwe jobs-compute, komen asynchrone AI-functies voor grote batches documenten (Beta) en worden standalone pipelines op serverless algemeen beschikbaar. Genie in Slack en Teams en Genie Search zijn nu GA.",
+ "story": [
+  "Eerst iets dat je zelf merkt: maak je in de interface nieuwe jobs-compute aan, dan staat de toegangsmodus (access mode) sinds 9 november standaard op Auto in plaats van Dedicated. Auto kiest Standard, behalve bij een ML-runtime, een GPU of een runtime onder 14.3. Bestaande jobs veranderen niet. Werkruimtes met het compliance security profile volgen in december.",
+  "Voor AI op je eigen data is er een asynchrone variant van de AI-functies (Beta). Je zet tot 50.000 verzoeken in een JSONL-bestand in een Unity Catalog-volume en laat ai_parse_document, ai_extract of ai_classify die op de achtergrond afwerken. Dat is handig als je een hele map documenten wilt omzetten naar tabellen in Silver, zonder dat een query urenlang openstaat. Een beheerder moet de preview eerst aanzetten.",
+  "Ook voor pipelines is er nieuws. Standalone materialized views en streaming tables maak en ververs je nu algemeen beschikbaar (GA) vanuit een notebook op serverless compute, met SQL of met de Python-decorators. In Lakeflow Jobs kun je in Beta rekenen met datums in parameters. Een job geeft dan bijvoorbeeld de datum van gisteren door aan een ophaalscript. Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+  "Verder breidt Genie flink uit. De Genie-apps voor Slack en Microsoft Teams en Genie Search zijn algemeen beschikbaar. Genie ZeroOps (Beta) bewaakt op de achtergrond jobs, pipelines en tabellen, zoekt bij een fout de oorzaak en stelt een oplossing voor. Pages, vastgelegde bedrijfsbegrippen per domein, zijn GA.",
+  "Kleiner, maar handig voor beveiliging: een service principal kan nu standaard namens zichzelf inloggen via OAuth zonder geheim (on-behalf-of, GA). Flows in pipelines krijgen in Beta eigen rechten in Unity Catalog."
+ ],
+ "key_facts": [
+  "9 november 2026: nieuwe jobs-compute in de UI krijgt standaard access mode Auto in plaats van Dedicated; bestaande jobs veranderen niet. Voor werkruimtes met compliance security profile geldt dit vanaf december 2026.",
+  "9 november 2026 (Beta): AI Functions Asynchronous API voert ai_parse_document, ai_extract of ai_classify asynchroon uit op tot 50.000 verzoeken uit een JSONL-bestand in een volume; aanzetten via de pagina Previews.",
+  "11 november 2026 (GA): standalone materialized views en streaming tables maken en verversen vanuit een notebook op serverless general compute, met spark.sql() of de Python-pipelinedecorators.",
+  "9 november 2026 (Beta): datumrekenen in Lakeflow Jobs-parameters, bijv. {{(job.start_time - 1.day).iso_date}} voor de dag vóór de start.",
+  "9 november 2026 (GA): Genie-app voor Slack, Genie-app in Microsoft Teams en Genie Search; 12 november (Beta): Genie ZeroOps; 11 november (GA): Pages.",
+  "12 november 2026 (GA): OAuth on-behalf-of voor service principals staat standaard aan; je hebt de rol Service Principal Manager nodig. Flows als securable in Unity Catalog is Beta."
+ ],
+ "personal_relevance": "De nieuwe standaard voor jobs-compute en de asynchrone AI-functies raken direct hoe je jobs en documentverwerking inricht.",
+ "experiment": "Zet in een proefwerkruimte een kleine job met een parameter {{(job.start_time - 1.day).iso_date}} en laat een notebook die datum afdrukken. Kijk ook welke access mode nieuwe jobs-compute nu krijgt.",
+ "limitations": [
+  "De asynchrone AI-functies, datumrekenen en Genie ZeroOps zijn nog Beta.",
+  "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Azure Databricks release notes november 2026",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+  }
+ ],
+ "topics": [
+  "databricks_data_engineering",
+  "ai_on_data_platform",
+  "cicd_data_deployment"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.75,
+  "novelty": 0.6
+ },
+ "development_key": "databricks-week-46-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "release",
+ "fit": {
+  "score": 0.75,
+  "why": "Weekoverzicht met wat je zelf moet weten, zoals je duim bij het weekoverzicht over AI-functies in SQL."
+ },
+ "labels": [
+  "databricks-weekoverzicht",
+  "lakeflow-jobs",
+  "ai-functies-in-sql",
+  "genie-zeroops"
+ ],
+ "project_ref": {
+  "fase": 5,
+  "quote": "Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+  "why": "Datumparameters in jobs passen bij het plannen van het dagelijkse ophalen."
+ },
+ "terms": [
+  {
+   "term": "toegangsmodus",
+   "explanation": "De instelling van compute die bepaalt hoe gebruikers en rechten worden gescheiden: Standard deelt de compute veilig, Dedicated is voor één gebruiker of groep."
+  },
+  {
+   "term": "JSONL",
+   "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
+  },
+  {
+   "term": "streaming tables",
+   "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+  },
+  {
+   "term": "service principal",
+   "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+  },
+  {
+   "term": "Genie ZeroOps",
+   "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo geef je een job de datum van de dag vóór de start mee als parameter. Een ophaalscript kan daarmee steeds precies één dag ophalen.",
+  "language": "text",
+  "code": "{{(job.start_time - 1.day).iso_date}}",
+  "note": "De notatie komt uit de release notes; het is Beta."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:45:41Z",
+ "prompt_version": "taak-v3"
+}

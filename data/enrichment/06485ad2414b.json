@@ -1,0 +1,71 @@
+{
+ "format_version": 2,
+ "article_id": "06485ad2414b",
+ "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+ "headline": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven",
+ "summary": "Softwarebedrijf IFS Copperleaf bouwde met Genie One de interne assistent IONA op data uit bijna 30 systemen. Eigenaren uit de business leggen definities vast als skills en in Unity Catalog; een AI-raad keurt ze goed.",
+ "story": [
+  "IFS Copperleaf bouwde in tien maanden IONA: een assistent waarmee alle medewerkers in gewone taal vragen stellen over bedrijfsdata. De data komt uit bijna 30 systemen, zoals Salesforce, HubSpot, Jira en Confluence. Sinds juli 2026 gebruikt het hele bedrijf hem.",
+  "De les in de titel: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen. Daarvoor gebruiken ze Genie Ontology, een contextlaag die definities koppelt aan maatstaven, tabellen en dashboards. Zo snapt het systeem dat een verlenging in Salesforce en een record in de financiële prognose over dezelfde klant gaan.",
+  "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar de eigenaren in de business schrijven definities en regels als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden, en elke definitie heeft een eigenaar. Alleen financiën en de funnel van marketing naar sales zijn volledig gemodelleerd; de rest vraagt IONA direct op de ruwe data op.",
+  "Unity Catalog bepaalt wie wat mag zien, ook voor de AI. Ziet een antwoord er vreemd uit, dan toont IONA zijn redenering en de eigenaar van de data. Het bedrijf noemt 70 procent activatie, maar zegt niet hoe dat gemeten is. Voor jou is vooral de aanpak interessant: modelleer eerst de belangrijkste domeinen in Gold en laat de business de definities beheren."
+ ],
+ "key_facts": [
+  "Blog van Databricks en IFS Copperleaf, 16 november 2026.",
+  "IONA gebruikt Genie One als interface, Genie Ontology als contextlaag, skills voor definities en regels, en Unity Catalog voor toegang.",
+  "Data uit bijna 30 systemen, waaronder Salesforce, HubSpot, Confluence, Jira, Freshdesk, Gong en Google Analytics 4; tienduizenden tabellen.",
+  "Live voor het hele bedrijf sinds juli 2026, na tien maanden bouwen.",
+  "Alleen financiën en de marketing-naar-sales-funnel zijn volledig gemodelleerd; een AI Council keurt definities goed, elke definitie heeft een eigenaar.",
+  "Genoemde cijfers: 70% activatie, 68% herhaald gebruik in 30 dagen, 32 van 33 toegangstickets in één keer afgehandeld (met menselijke goedkeuring per wijziging)."
+ ],
+ "personal_relevance": "Laat zien hoe je AI op Gold-data zet zonder alles te modelleren, met eigenaarschap van definities bij de business.",
+ "experiment": "Kies drie begrippen uit een openbare dataset, zoals CBS-cijfers, en schrijf per begrip een definitie met eigenaar en de tabel waar het uit komt. Laat Claude daarna vragen beantwoorden met en zonder die definities.",
+ "limitations": [
+  "Klantverhaal van de leverancier: geen voorbeeldskill, configuratie of meting van juistheid.",
+  "Hoe 'activatie' en 'herhaald gebruik' gemeten zijn, staat er niet in."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_context_engineering",
+  "data_governance_privacy"
+ ],
+ "quality": {
+  "depth": 0.45,
+  "practicality": 0.55,
+  "novelty": 0.5
+ },
+ "development_key": "genie-one-klantverhalen-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.6,
+  "why": "Gaat over definities als context voor AI, zoals je duim bij 'synoniemen en regels per veld'; wel een klantverhaal met weinig techniek."
+ },
+ "labels": [
+  "genie-ontology",
+  "agent-context-laag",
+  "interne-ai-agents"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "Genie Ontology",
+   "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+  },
+  {
+   "term": "skills",
+   "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+  },
+  {
+   "term": "funnel",
+   "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:45:41Z",
+ "prompt_version": "taak-v3"
+}

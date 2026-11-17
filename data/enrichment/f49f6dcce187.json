@@ -1,0 +1,108 @@
+{
+ "format_version": 2,
+ "article_id": "f49f6dcce187",
+ "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+ "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
+ "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
+ "story": [
+  "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
+  "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
+  "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
+  "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
+  "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
+ ],
+ "key_facts": [
+  "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
+  "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
+  "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
+  "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
+  "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
+  "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
+ ],
+ "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
+ "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
+ "limitations": [
+  "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
+  "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "Omnigraph op GitHub",
+   "url": "https://github.com/ModernRelay/omnigraph"
+  },
+  {
+   "label": "Omnigraph-documentatie",
+   "url": "https://omnigraph.dev/docs"
+  }
+ ],
+ "topics": [
+  "ai_context_engineering",
+  "data_quality_observability",
+  "data_architecture_modeling"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.4,
+  "novelty": 0.7
+ },
+ "development_key": "context-als-code-graaf",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "opinie",
+ "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+ "soort": "mening",
+ "fit": {
+  "score": 0.6,
+  "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
+ },
+ "labels": [
+  "context-als-code",
+  "kennisgraaf",
+  "agent-context-laag"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "getypeerde graaf",
+   "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
+  },
+  {
+   "term": "knopen",
+   "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
+  },
+  {
+   "term": "branch",
+   "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
+  },
+  {
+   "term": "RDF",
+   "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
+  "language": "sql",
+  "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
+  "result": {
+   "columns": [
+    "id",
+    "resultaat"
+   ],
+   "rows": [
+    [
+     1,
+     "{'sterren': 4}"
+    ],
+    [
+     2,
+     "{'sterren': NULL}"
+    ]
+   ]
+  },
+  "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:45:41Z",
+ "prompt_version": "taak-v3"
+}

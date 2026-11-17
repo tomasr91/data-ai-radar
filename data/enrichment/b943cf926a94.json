@@ -1,0 +1,80 @@
+{
+ "format_version": 2,
+ "article_id": "b943cf926a94",
+ "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
+ "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
+ "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
+ "story": [
+  "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
+  "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
+  "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
+  "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
+ ],
+ "key_facts": [
+  "Blog van Databricks, 16 november 2026.",
+  "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
+  "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
+  "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
+  "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
+  "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
+ ],
+ "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
+ "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
+ "limitations": [
+  "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
+  "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "healthlake-opensharing op GitHub",
+   "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_in_healthcare",
+  "data_governance_privacy"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.4,
+  "novelty": 0.6
+ },
+ "development_key": "healthlake-opensharing-genie",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.6,
+  "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
+ },
+ "labels": [
+  "ai-in-de-zorg",
+  "opensharing",
+  "genie-agents"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "FHIR",
+   "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
+  },
+  {
+   "term": "Iceberg-tabellen",
+   "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
+  },
+  {
+   "term": "OpenSharing-server",
+   "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
+  },
+  {
+   "term": "Databricks App",
+   "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:45:41Z",
+ "prompt_version": "taak-v3"
+}
