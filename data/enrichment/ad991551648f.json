@@ -1,0 +1,67 @@
+{
+ "format_version": 2,
+ "article_id": "ad991551648f",
+ "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
+ "headline": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring",
+ "summary": "Databricks presenteert de nieuwe Genie: een agent die taken op een schema of na een signaal uitvoert, voortgang bijhoudt en om goedkeuring vraagt. Erbij komen Genie Search en uitbreidingen van Genie Agents.",
+ "story": [
+  "Tot nu toe beantwoordde Genie vooral vragen over data. Databricks introduceert nu een Genie die zelf langere taken uitvoert. Je geeft hem een opdracht en toegang tot tools. Hij houdt de voortgang bij, vraagt om ontbrekende informatie en handelt als er iets nieuws binnenkomt.",
+  "Zo'n taak kan op een schema draaien of starten op een signaal, bijvoorbeeld als een maatstaf zakt. Een voorbeeld uit het artikel: claims bewaken op fraudepatronen, een dossier samenstellen en het naar de juiste afdeling sturen als een segment buiten de grenzen valt. Voor de context leunt Genie op Genie Ontology (definities en verbanden) en een persoonlijk geheugen.",
+  "De data komt uit tabellen in het lakehouse, dashboards, notebooks, bestanden in Unity Catalog-volumes en externe apps via MCP. Genie werkt met de identiteit van de gebruiker, dus met diens rechten in Unity Catalog. Beheerders bepalen welke tools en koppelingen mogen en welke acties eerst goedgekeurd moeten worden. Elke actie wordt vastgelegd, en er zijn budgetten per gebruiker.",
+  "Het is vooral een lanceringsstuk. Databricks claimt dat Genie 91 procent van de taken goed deed, 1,6 keer zo vaak als een niet-genoemde andere agent, maar geeft geen methode. Een status (GA of preview) en prijs staan er niet bij. Voor jou telt vooral de richting: de agent werkt op je eigen tabellen en definities, dus hoe goed je Gold en metric views zijn, bepaalt hoe goed hij werkt."
+ ],
+ "key_facts": [
+  "Blog van Databricks, 11 november 2026.",
+  "Nieuw: een autonome Genie die lange taken op een schema of na een trigger uitvoert, voortgang bijhoudt en om goedkeuring vraagt; plus Genie Search.",
+  "Context komt uit Genie Ontology (met OntoRank) en een persoonlijk geheugen; data uit lakehouse-tabellen, dashboards, notebooks, Unity Catalog-volumes, geïndexeerde apps en MCP-bronnen.",
+  "Genie werkt met de identiteit en rechten van de gebruiker; skills staan in Unity Catalog en draaien met de rechten van wie ze aanroept.",
+  "Beheer via Unity Gateway: toegang, tools, goedkeuringen, budgetten en tracing.",
+  "Claim van Databricks: 91% van de taakruns goed, 1,6 keer een frontier-agent, met minder dan de helft van de tokens; zonder methodebeschrijving. Geen status of prijs genoemd."
+ ],
+ "personal_relevance": "Een agent die op je eigen Gold-data en definities handelt, met goedkeuring en rechten via Unity Catalog.",
+ "experiment": "Bedenk één terugkerende controle op openbare data (bijvoorbeeld 'meld als het aantal KNMI-metingen per dag zakt') en schrijf uit welke data, welke goedkeuring en welke controle een agent daarvoor nodig heeft.",
+ "limitations": [
+  "Lanceringsstuk zonder status, prijs of technische details over de werking.",
+  "De benchmarkclaim is door Databricks zelf gemeten en niet onderbouwd."
+ ],
+ "availability_status": "aangekondigd",
+ "official_docs": [],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_agents_rag",
+  "databricks_data_engineering"
+ ],
+ "quality": {
+  "depth": 0.45,
+  "practicality": 0.45,
+  "novelty": 0.65
+ },
+ "development_key": "genie-autonoom-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.55,
+  "why": "Agents op eigen data spreken je aan, maar dit is een aankondiging zonder details; je gaf 'te vaag' bij vergelijkbare stukken."
+ },
+ "labels": [
+  "genie-one",
+  "data-agent",
+  "human-in-the-loop"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "Genie Ontology",
+   "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+  },
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:47:31Z",
+ "prompt_version": "taak-v3"
+}

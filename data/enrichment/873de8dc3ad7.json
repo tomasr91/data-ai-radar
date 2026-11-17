@@ -1,0 +1,91 @@
+{
+ "format_version": 2,
+ "article_id": "873de8dc3ad7",
+ "url": "https://www.ssp.sh/blog/humans-write-less-code/",
+ "headline": "Späti: als agents de SQL schrijven, wordt controleren het echte werk",
+ "summary": "Simon Späti betoogt dat agents snel metrics en dashboards maken, maar dat controleren duur blijft. Hij pleit voor alle datalogica op één plek in Git, controles al tijdens het bouwen, en vijf lagen tests.",
+ "story": [
+  "Analisten en analytics engineers typen steeds minder SQL zelf; een agent schrijft het. Volgens Simon Späti verschuift daardoor het werk. Iets maken is goedkoop geworden, controleren of het klopt niet. Hij vergelijkt het met een raadsel dat makkelijk te verzinnen is maar moeilijk na te rekenen.",
+  "Zijn eerste advies: zet alle datalogica op één plek. Transformaties, metricdefinities en dashboards horen in één repository, met één commit. Dan kun je ze samen controleren. De vorm mag verschillen, zoals dbt-SQL naast LookML, zolang een compiler of controletool ze kan nalopen.",
+  "Zijn tweede advies: schuif controles naar voren. Nu draaien de meeste controles pas als de data al berekend is. Späti wil ze al tijdens het schrijven, in een linter, en hard tijdens het bouwen. Hij noemt vijf lagen: linting, een compiler die de hele lineage controleert, unit tests, integratietests en end-to-end tests op vaste testdata. Veel smalle tests werken volgens hem beter dan één kwaliteitscijfer.",
+  "Agents kunnen die tests ook zelf schrijven en randgevallen zoeken; eerst de test, dan de code. Mensen blijven nodig voor het gevoel dat een uitkomst 'niet klopt'. Voor jou sluit dit aan bij dbt: unit tests sinds 1.8 en model contracts doen precies dat controleren tijdens het bouwen. Let wel: het stuk verscheen ook op de blog van Metabase en noemt diens functies als voorbeeld."
+ ],
+ "key_facts": [
+  "Blog van Simon Späti, 3 november 2026; ook verschenen op de blog van Metabase.",
+  "Kernpunt: controle is het knelpunt in BI met agents, niet het schrijven van query's.",
+  "Advies: zet ETL, metrics en dashboards in één declaratieve, geversioneerde plek met één lineage-graaf.",
+  "Vijf testlagen: linting, compiler (hele lineage), unit tests, integratietests en end-to-end tests op vaste testdata.",
+  "Hij noemt dbt unit tests (sinds v1.8) en model contracts, SQLMesh met semantische diffs, sqlglot, en Transform tests in Metabase v65.",
+  "Hij laat open vragen staan, zoals hoe je testen deterministisch maakt en of taalmodellen resultaten kunnen controleren."
+ ],
+ "personal_relevance": "Raakt aan hoe je dbt-tests inzet nu Claude steeds vaker je SQL schrijft.",
+ "experiment": "Laat Claude Code bij een dbt-model op openbare data eerst een unit test met verwachte uitkomst schrijven, en pas daarna het model. Kijk of de test een fout vangt die je er zelf in stopt.",
+ "limitations": [
+  "Het stuk verscheen ook bij Metabase en gebruikt die tool als voorbeeld; Späti werkt samen met Metabase.",
+  "Het blijft vooral bij principes; hoe je de iteratieve testsuite precies bouwt, staat er niet in."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "dbt v1.8 (unit tests)",
+   "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.8"
+  },
+  {
+   "label": "Anthropic: evals voor AI-agents",
+   "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+  }
+ ],
+ "topics": [
+  "data_quality_observability",
+  "dbt_analytics_engineering",
+  "ai_evaluation_observability"
+ ],
+ "quality": {
+  "depth": 0.5,
+  "practicality": 0.6,
+  "novelty": 0.5
+ },
+ "development_key": "agent-verificatie-testsuites",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "opinie",
+ "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+ "soort": "mening",
+ "fit": {
+  "score": 0.6,
+  "why": "Controleren van AI-werk in dbt, zoals je duim bij de proef van dbt Labs met Claude; wel algemeen en zonder code."
+ },
+ "labels": [
+  "agent-evals",
+  "dbt-unit-tests",
+  "shift-left"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "linter",
+   "explanation": "Een programma dat code tijdens het schrijven naloopt op fouten en afspraken, zoals SQLFluff voor SQL."
+  },
+  {
+   "term": "model contracts",
+   "explanation": "Een afspraak in dbt over de kolommen en types van een model. dbt laat het bouwen mislukken als het model zich er niet aan houdt."
+  },
+  {
+   "term": "end-to-end tests",
+   "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren."
+  },
+  {
+   "term": "LookML",
+   "explanation": "De modelleertaal van Looker waarin je maatstaven en verbanden tussen tabellen vastlegt."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo ziet een dbt unit test eruit: vaste invoerrijen en de uitkomst die je verwacht. dbt draait hem tijdens het bouwen, nog voordat het model echte data raakt.",
+  "language": "yaml",
+  "code": "unit_tests:\n  - name: omzet_telt_alleen_betaalde_orders\n    model: fct_omzet_per_dag\n    given:\n      - input: ref('stg_orders')\n        rows:\n          - {order_id: 1, dag: 2026-11-01, bedrag: 100, status: betaald}\n          - {order_id: 2, dag: 2026-11-01, bedrag: 50, status: geannuleerd}\n    expect:\n      rows:\n        - {dag: 2026-11-01, omzet: 100}",
+  "note": "De notatie staat in de dbt-documentatie (unit tests, sinds 1.8); het artikel zelf bevat geen code."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:47:31Z",
+ "prompt_version": "taak-v3"
+}

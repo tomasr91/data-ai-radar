@@ -1,0 +1,75 @@
+{
+ "format_version": 2,
+ "article_id": "b8bd8dd7742b",
+ "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
+ "headline": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
+ "summary": "Genie Agents kunnen in Public Preview documenten in Unity Catalog-volumes doorzoeken, naast je tabellen en metric views. MCP-koppelingen naar onder meer Slack en GitHub zijn algemeen beschikbaar.",
+ "story": [
+  "Een Genie Agent beantwoordde tot nu toe vooral vragen over tabellen. Nu kan hij ook documenten gebruiken die in een Unity Catalog-volume staan, zoals pdf's, presentaties en afbeeldingen. Dat is in Public Preview. In één gesprek combineer je zo cijfers uit Gold met uitleg uit rapporten.",
+  "Onder de motorkap leest ai_parse_document de bestanden en herkent tabellen, figuren en kopteksten. De inhoud wordt geïndexeerd, zonder dat je zelf een aparte vectorindex bouwt. Bij een vraag haalt de agent de passende stukken op, zet ze in zijn context en rekent daarnaast met de tabellen. Het antwoord noemt de pagina waar het vandaan komt.",
+  "Voor de cijfers leunt de agent op metric views: maatstaven, dimensies, beschrijvingen en synoniemen die je één keer vastlegt. Daarnaast geef je voorbeeldquery's en instructies, en een set vragen met de juiste SQL. Die set draait na elke wijziging opnieuw, zodat je ziet of iets slechter werd. Dat lijkt op dbt-tests, maar dan voor de antwoorden van de agent.",
+  "Gebruikers zien alleen bestanden waar ze in Unity Catalog recht op hebben. De agent komt bij gebruikers via Genie One, Slack, API's of Genie MCP. Native MCP-koppelingen naar Slack, Google Drive, GitHub en Microsoft 365 zijn algemeen beschikbaar; de beheerder kiest per agent welke tools mogen. Een voorbeeld uit het artikel: een agent bevestigt in de data dat het aantal klinische studies daalt, en haalt daarna de redenen uit verslagen van artsen."
+ ],
+ "key_facts": [
+  "Blog van Databricks, 11 november 2026.",
+  "Analyse van ongestructureerde documenten in Unity Catalog-volumes: Public Preview. Native MCP-connectoren: GA. OpenSharing voor Genie Agents en Genie Clean Rooms: Beta.",
+  "Bestanden worden gelezen met ai_parse_document (tabellen, figuren, kop- en voetteksten) en geïndexeerd; antwoorden noemen de pagina.",
+  "Nauwkeurigheid komt uit metric views, SQL-expressies, voorbeeldquery's, instructies en benchmarks met gouden SQL-vragen die na wijzigingen opnieuw draaien.",
+  "Gebruikers zien alleen bestanden waar ze in Unity Catalog toegang toe hebben; connectoren lopen via Unity Gateway.",
+  "MCP-connectoren onder meer naar Slack, Google Drive, Gmail, Atlassian, GitHub en Microsoft 365; app-data via Lakeflow Connect (Salesforce, Workday, SAP, Marketo)."
+ ],
+ "personal_relevance": "Precies je kerninteresse: een AI-toepassing op Gold-tabellen én documenten in je lakehouse, binnen Unity Catalog-rechten.",
+ "experiment": "Zet een paar openbare pdf's (bijvoorbeeld CBS-publicaties) in een volume, lees ze met ai_parse_document en kijk wat de uitkomst is. Combineer daarna in een Genie Agent die documenten met een tabel uit dezelfde bron.",
+ "limitations": [
+  "De documentfunctie is Public Preview; limieten voor aantal of grootte van bestanden staan er niet in.",
+  "Klantcijfers in het artikel zijn eigen claims zonder meting; geen configuratie of code."
+ ],
+ "availability_status": "preview",
+ "official_docs": [],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_agents_rag",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.65,
+  "novelty": 0.6
+ },
+ "development_key": "genie-agents-documenten-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.7,
+  "why": "AI op eigen tabellen en documenten met metric views, zoals je duim bij 'AI in je dbt-model'."
+ },
+ "labels": [
+  "genie-agents",
+  "rag-op-delta",
+  "metric-views"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "ai_parse_document",
+   "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+  },
+  {
+   "term": "vectorindex",
+   "explanation": "Een zoekindex op embeddings, waarmee je stukken tekst vindt die qua betekenis op een vraag lijken."
+  },
+  {
+   "term": "metric views",
+   "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+  },
+  {
+   "term": "Genie MCP",
+   "explanation": "Een MCP-server van Databricks waarmee andere AI-assistenten Genie en Genie Agents kunnen aanroepen."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:47:31Z",
+ "prompt_version": "taak-v3"
+}

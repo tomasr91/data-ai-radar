@@ -1,0 +1,94 @@
+{
+ "format_version": 2,
+ "article_id": "ee8f41fce441",
+ "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one",
+ "headline": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
+ "summary": "Databricks legt uit hoe je in Genie One een skill maakt: een SKILL.md met naam, beschrijving en stappen. Via Unity Gateway Skills (Beta) wordt een skill een object in Unity Catalog, met rechten en audit.",
+ "story": [
+  "Elk team heeft vaste recepten, zoals hoe financiën een maandrapport maakt. In Genie One leg je zo'n recept vast als skill: de stappen, de controles en de vorm van het resultaat. Genie Ontology weet wat begrippen betekenen; een skill weet hoe je een taak aanpakt.",
+  "Een skill is een map in je werkruimte met een SKILL.md. Bovenaan staan een naam en een beschrijving. Genie One leest alleen die beschrijving om te bepalen of de skill bij een vraag past, en laadt pas dan de rest. Extra bestanden, zoals een sjabloon of een voorbeeld van een goed resultaat, leest hij alleen als een stap erom vraagt. Het formaat is de open standaard Agent Skills, dezelfde opbouw als skills in Claude Code.",
+  "Je hoeft de skill niet zelf te schrijven. Je beschrijft je werkwijze in het gesprek, Genie One stelt vragen en schrijft de skill. Gaat iets mis, dan verbeter je hem in het chatgesprek. In het voorbeeld van het artikel leerde de skill zo twee regels: alleen maanden met volledige data, en regels onder 50.000 dollar overslaan.",
+  "Delen gaat via Unity Gateway Skills, nu in Beta. Een gepubliceerde skill is dan een object in Unity Catalog, met dezelfde rechten, tags en audit als een tabel. Hij draait met de rechten van wie hem gebruikt, en elke agent die MCP ondersteunt kan hem ook gebruiken. Je kunt een skill ook inplannen; leg dan vast wat hij doet als er niemand is om een tussenstap goed te keuren."
+ ],
+ "key_facts": [
+  "Blog van Databricks (Noah Solomon), 16 november 2026.",
+  "Een skill is een map met een SKILL.md; die begint met een naam en een beschrijving, waarmee Genie One bepaalt of de skill relevant is. Hulpbestanden worden alleen gelezen als een stap ze nodig heeft.",
+  "Skills gebruiken het open Agent Skills-formaat (agentskills.io) en staan in Genie One onder Customizations > Skills.",
+  "Via Unity Gateway Skills (Beta) wordt een gepubliceerde skill een Unity Catalog-object met rechten, tags en audit; elke MCP-agent kan hem gebruiken.",
+  "Skills kunnen ingepland worden; resultaten komen in een chatthread en per e-mail.",
+  "Voorbeeld: een maandelijkse handelsrapportage-skill die cijfers ophaalt, kanalen toetst aan regels, afwijkingen onderzoekt en een rapport schrijft."
+ ],
+ "personal_relevance": "Zelfde idee als skills in Claude Code, nu als beheerd object in Unity Catalog naast je Gold-data.",
+ "experiment": "Schrijf een SKILL.md voor een vaste controle die je vaak doet, bijvoorbeeld 'vergelijk het aantal rijen in Silver en Gold per dag', en test hem in Claude Code op een openbare dataset.",
+ "limitations": [
+  "Unity Gateway Skills is Beta; voor skills in Genie One zelf noemt het artikel geen status.",
+  "Het artikel beschrijft de SKILL.md niet verder dan naam en beschrijving."
+ ],
+ "availability_status": "preview",
+ "official_docs": [
+  {
+   "label": "Skills in Genie One",
+   "url": "https://docs.databricks.com/aws/en/genie-one/chat"
+  },
+  {
+   "label": "Unity Gateway Skills",
+   "url": "https://docs.databricks.com/aws/en/agents/uc-skills"
+  },
+  {
+   "label": "Agent Skills-formaat",
+   "url": "https://agentskills.io"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_context_engineering",
+  "ai_agents_rag"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.65,
+  "novelty": 0.55
+ },
+ "development_key": "genie-one-skills",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.7,
+  "why": "Skills als vaste werkwijze voor AI, zoals je duim bij 'Self-service met Claude werkt alleen op goedgekeurde dbt-modellen'."
+ },
+ "labels": [
+  "agent-skills",
+  "skills-standaard",
+  "genie-one"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "SKILL.md",
+   "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill."
+  },
+  {
+   "term": "Agent Skills",
+   "explanation": "Een open standaard voor skills: een map met een SKILL.md en hulpbestanden, die verschillende AI-assistenten kunnen lezen."
+  },
+  {
+   "term": "Unity Gateway Skills",
+   "explanation": "Een functie van Databricks, nu in Beta, die een skill publiceert als object in Unity Catalog, met rechten en audit zoals bij een tabel."
+  },
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo ziet het begin van een skill eruit. De beschrijving bovenaan bepaalt wanneer Genie One de skill laadt; de stappen eronder volgt hij pas dan.",
+  "language": "text",
+  "code": "---\nname: maandrapport-handel\ndescription: Gebruik bij vragen om het maandelijkse handelsrapport, bijvoorbeeld 'maak ons handelsrapport van vorige maand'.\n---\n\n# Maandrapport handel\n\n1. Haal de cijfers van vorige maand op. Gebruik alleen maanden met volledige data.\n2. Toets elk kanaal aan de regels; sla regels onder 50.000 dollar over.\n3. Onderzoek afwijkingen en zoek context.\n4. Schrijf het rapport volgens sjabloon.md.",
+  "note": "De opbouw (naam en beschrijving bovenaan) volgt het Agent Skills-formaat; de inhoud is nagebouwd op het voorbeeld uit het artikel."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:47:31Z",
+ "prompt_version": "taak-v3"
+}

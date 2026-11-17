@@ -1,0 +1,72 @@
+{
+ "format_version": 2,
+ "article_id": "966a182dbe00",
+ "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
+ "headline": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
+ "summary": "Martin McMillan van Advancing Analytics stelt een presentatielaag op Gold voor waarin analisten zelf bouwen. Wat breed bruikbaar blijkt, zetten engineers na review in Gold.",
+ "story": [
+  "Als het datateam het te druk heeft, bouwen analisten hun eigen logica in Power BI of een los semantisch model. Martin McMillan, consultant bij Advancing Analytics, noemt dat schaduwlogica: het draait wel, maar niemand van het platform ziet het. Hij wil die logica zichtbaar maken in plaats van verbieden.",
+  "Zijn voorstel is een presentatielaag (ook wel platinum) bovenop Gold. Analisten krijgen daar in Databricks een eigen ontwikkelplek met de juiste rechten. Ze beginnen dun, met een view die één op één over Gold-tabellen ligt, en kopiëren geen data. Ze werken in notebooks, met de bedrijfsregels in Markdown naast de code.",
+  "Engineers kijken die producten na op prestaties, veiligheid en onderhoudbaarheid. Blijkt een definitie breed bruikbaar, dan bouwen ze die na in Gold en gebruikt de presentatielaag hem vandaar. De richting blijft zo altijd dezelfde: de presentatielaag leunt op Gold, nooit andersom. Unity Catalog en de releaseprocedure zorgen dat niemand direct in productie wijzigt.",
+  "Volgens McMillan is dit ook belangrijk voor AI. Genie en metric views gebruiken deze laag, en een agent moet weten of een maatstaf voor één team geldt of voor het hele bedrijf. Beschrijvingen, tags en certificering in Unity Catalog geven dat aan. Het lijkt op hoe je in dbt een sandbox-schema naast je productiemodellen houdt, maar dan met een vaste route naar Gold."
+ ],
+ "key_facts": [
+  "Blog van Martin McMillan (Senior Consultant Data Intelligence, Advancing Analytics), 2 november 2026.",
+  "Kernpunt: 'Gold eerst', met ruimte om te onderzoeken en een ondersteunde route om Gold te verbeteren.",
+  "De presentatielaag gebruikt Gold; Gold hangt nooit af van de presentatielaag.",
+  "Analisten bouwen in een ontwikkelplek met rechten; engineers reviewen; brede definities gaan na review naar Gold. Directe wijzigingen in productie blokkeer je met Unity Catalog en werkruimterechten.",
+  "Gezag van een tabel komt uit afspraken, eigenaarschap en validatie, zichtbaar via beschrijvingen, tags en certificering in Unity Catalog.",
+  "Hij noemt Lakeflow Jobs, metric views, Genie Agents, Genie Ontology en Delta Sharing, en waarschuwt dat Data Vault-structuren in Silver vaak omgezet moeten worden voor BI."
+ ],
+ "personal_relevance": "Een concreet model voor wie wat mag in Gold, nu ook AI-assistenten op die laag leunen.",
+ "experiment": "Teken voor je eigen platform (zonder werkdata, alleen de structuur) waar analistenlogica nu zit en welke stap nodig is om één veelgebruikte definitie naar Gold te halen.",
+ "limitations": [
+  "Advancing Analytics is een adviesbureau met een investering van Databricks Ventures; het stuk leunt op Databricks-functies.",
+  "Het is een werkwijze, geen gemeten resultaat."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [],
+ "topics": [
+  "data_architecture_modeling",
+  "data_governance_privacy",
+  "ai_on_data_platform"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.7,
+  "novelty": 0.5
+ },
+ "development_key": "gold-laag-bijdragen-analisten",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "opinie",
+ "author": "Martin McMillan, Senior Consultant Data Intelligence bij Advancing Analytics, met ervaring in semantische modellen, Power BI en Databricks",
+ "soort": "mening",
+ "fit": {
+  "score": 0.65,
+  "why": "Over de medaillonlaag en vaste definities, zoals je duim bij 'metric views worden vanzelf een Power BI-model'."
+ },
+ "labels": [
+  "presentatielaag",
+  "vaste-metric-definities",
+  "semantische-laag"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "schaduwlogica",
+   "explanation": "Berekeningen en koppelingen die buiten het dataplatform worden gebouwd, bijvoorbeeld in een Power BI-model, zodat het datateam ze niet ziet of beheert."
+  },
+  {
+   "term": "presentatielaag",
+   "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen."
+  },
+  {
+   "term": "certificering",
+   "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-17T03:47:31Z",
+ "prompt_version": "taak-v3"
+}
