@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T07:01:02.335765Z",
- "mode": "live",
- "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "generated_at": "2026-11-18T09:12:54.894872Z",
+ "mode": "partial",
+ "mode_note": "22 van 24 feeds opgehaald; zie bronstatus.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
- "last_successful_update": "2026-11-18T03:13:13.598873Z",
+ "last_successful_update": "2026-11-18T09:12:54.894872Z",
  "groups": [
   {
    "id": "dbt",
@@ -159,7 +159,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-18T03:13:13.666494Z"
+   "checked_at": "2026-11-18T09:12:54.932024Z"
   },
   {
    "id": "dbt_core_releases",
@@ -169,10 +169,10 @@
    "trust_level": "high",
    "priority": 4,
    "fetch_method": "github_releases",
-   "status": "ok",
-   "items": 10,
-   "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-18T03:13:13.795585Z"
+   "status": "failed",
+   "items": 0,
+   "message": "HTTP 403 bij https://github.com/dbt-labs/dbt-core/releases.atom",
+   "checked_at": "2026-11-18T09:12:55.207078Z"
   },
   {
    "id": "claude_code_releases",
@@ -182,10 +182,10 @@
    "trust_level": "high",
    "priority": 4,
    "fetch_method": "github_releases",
-   "status": "ok",
-   "items": 10,
-   "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-18T03:13:14.449629Z"
+   "status": "failed",
+   "items": 0,
+   "message": "HTTP 403 bij https://github.com/anthropics/claude-code/releases.atom",
+   "checked_at": "2026-11-18T09:12:55.251712Z"
   },
   {
    "id": "anthropic_engineering",
@@ -198,7 +198,7 @@
    "status": "ok",
    "items": 29,
    "message": "29 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-18T03:13:14.840768Z"
+   "checked_at": "2026-11-18T09:12:55.296453Z"
   },
   {
    "id": "claude_blog",
@@ -211,7 +211,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-18T03:13:14.919001Z"
+   "checked_at": "2026-11-18T09:12:55.330825Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -224,7 +224,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-18T03:13:14.949402Z"
+   "checked_at": "2026-11-18T09:12:55.445891Z"
   },
   {
    "id": "databricks_blog",
@@ -237,7 +237,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-18T03:13:14.995001Z"
+   "checked_at": "2026-11-18T09:12:55.495762Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -250,7 +250,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-18T03:13:15.046099Z"
+   "checked_at": "2026-11-18T09:12:55.557359Z"
   },
   {
    "id": "azure_blog",
@@ -263,7 +263,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-18T03:13:15.105303Z"
+   "checked_at": "2026-11-18T09:12:55.737214Z"
   },
   {
    "id": "powerbi_blog",
@@ -276,7 +276,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-18T03:13:16.512644Z"
+   "checked_at": "2026-11-18T09:12:55.954141Z"
   },
   {
    "id": "fabric_blog",
@@ -289,7 +289,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-18T03:13:17.260764Z"
+   "checked_at": "2026-11-18T09:12:56.602115Z"
   },
   {
    "id": "sqlbi",
@@ -302,7 +302,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-18T03:13:17.774119Z"
+   "checked_at": "2026-11-18T09:12:57.013715Z"
   },
   {
    "id": "huggingface_blog",
@@ -315,7 +315,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-18T03:13:18.060306Z"
+   "checked_at": "2026-11-18T09:12:57.237312Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -328,7 +328,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-18T03:13:18.169475Z"
+   "checked_at": "2026-11-18T09:12:57.521747Z"
   },
   {
    "id": "simon_whiteley",
@@ -341,7 +341,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-18T03:13:18.281693Z"
+   "checked_at": "2026-11-18T09:12:57.706781Z"
   },
   {
    "id": "simon_spati",
@@ -354,7 +354,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.ssp.sh/posts/index.xml",
-   "checked_at": "2026-11-18T03:13:18.435468Z"
+   "checked_at": "2026-11-18T09:12:57.924182Z"
   },
   {
    "id": "confessions_data_guy",
@@ -367,7 +367,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.confessionsofadataguy.com/feed/",
-   "checked_at": "2026-11-18T03:13:19.521418Z"
+   "checked_at": "2026-11-18T09:13:01.157559Z"
   },
   {
    "id": "delta_lake_blog",
@@ -380,7 +380,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://delta.io/rss.xml",
-   "checked_at": "2026-11-18T03:13:19.919544Z"
+   "checked_at": "2026-11-18T09:13:02.867240Z"
   },
   {
    "id": "hamel_husain",
@@ -393,7 +393,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-18T03:13:20.096252Z"
+   "checked_at": "2026-11-18T09:13:03.252799Z"
   },
   {
    "id": "langchain_blog",
@@ -406,7 +406,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-18T03:13:20.149697Z"
+   "checked_at": "2026-11-18T09:13:03.397264Z"
   },
   {
    "id": "chip_huyen",
@@ -419,7 +419,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-18T03:13:20.264704Z"
+   "checked_at": "2026-11-18T09:13:03.498047Z"
   },
   {
    "id": "simon_willison",
@@ -432,7 +432,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-18T03:13:20.766541Z"
+   "checked_at": "2026-11-18T09:13:04.063022Z"
   },
   {
    "id": "chris_webb",
@@ -445,7 +445,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-18T03:13:20.824651Z"
+   "checked_at": "2026-11-18T09:13:04.127409Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -458,7 +458,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-18T03:13:21.028462Z"
+   "checked_at": "2026-11-18T09:13:04.215565Z"
   }
  ],
  "daily_top": [
@@ -1063,7 +1063,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.72,
+    "recency": 0.71,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1368,115 +1368,6 @@
    }
   },
   {
-   "id": "ee8f41fce441",
-   "title": "Teach Genie One your workflows: The ultimate guide for skills in Genie One",
-   "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-16T17:00:00Z",
-   "fetched_at": "2026-11-16T03:13:55.413043Z",
-   "summary": "Databricks legt uit hoe je in Genie One een skill maakt: een SKILL.md met naam, beschrijving en stappen. Via Unity Gateway Skills (Beta) wordt een skill een object in Unity Catalog, met rechten en audit.",
-   "personal_relevance": "Zelfde idee als skills in Claude Code, nu als beheerd object in Unity Catalog naast je Gold-data.",
-   "experiment": "Schrijf een SKILL.md voor een vaste controle die je vaak doet, bijvoorbeeld 'vergelijk het aantal rijen in Silver en Gold per dag', en test hem in Claude Code op een openbare dataset.",
-   "limitations": [
-    "Unity Gateway Skills is Beta; voor skills in Genie One zelf noemt het artikel geen status.",
-    "Het artikel beschrijft de SKILL.md niet verder dan naam en beschrijving."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Skills in Genie One",
-     "url": "https://docs.databricks.com/aws/en/genie-one/chat"
-    },
-    {
-     "label": "Unity Gateway Skills",
-     "url": "https://docs.databricks.com/aws/en/agents/uc-skills"
-    },
-    {
-     "label": "Agent Skills-formaat",
-     "url": "https://agentskills.io"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "ai_context",
-    "agents"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.92,
-    "source": 0.85,
-    "quality": 0.6,
-    "feedback": -0.04,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:47:31Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
-   "story": [
-    "Elk team heeft vaste recepten, zoals hoe financiën een maandrapport maakt. In Genie One leg je zo'n recept vast als skill: de stappen, de controles en de vorm van het resultaat. Genie Ontology weet wat begrippen betekenen; een skill weet hoe je een taak aanpakt.",
-    "Een skill is een map in je werkruimte met een SKILL.md. Bovenaan staan een naam en een beschrijving. Genie One leest alleen die beschrijving om te bepalen of de skill bij een vraag past, en laadt pas dan de rest. Extra bestanden, zoals een sjabloon of een voorbeeld van een goed resultaat, leest hij alleen als een stap erom vraagt. Het formaat is de open standaard Agent Skills, dezelfde opbouw als skills in Claude Code.",
-    "Je hoeft de skill niet zelf te schrijven. Je beschrijft je werkwijze in het gesprek, Genie One stelt vragen en schrijft de skill. Gaat iets mis, dan verbeter je hem in het chatgesprek. In het voorbeeld van het artikel leerde de skill zo twee regels: alleen maanden met volledige data, en regels onder 50.000 dollar overslaan.",
-    "Delen gaat via Unity Gateway Skills, nu in Beta. Een gepubliceerde skill is dan een object in Unity Catalog, met dezelfde rechten, tags en audit als een tabel. Hij draait met de rechten van wie hem gebruikt, en elke agent die MCP ondersteunt kan hem ook gebruiken. Je kunt een skill ook inplannen; leg dan vast wat hij doet als er niemand is om een tussenstap goed te keuren."
-   ],
-   "key_facts": [
-    "Blog van Databricks (Noah Solomon), 16 november 2026.",
-    "Een skill is een map met een SKILL.md; die begint met een naam en een beschrijving, waarmee Genie One bepaalt of de skill relevant is. Hulpbestanden worden alleen gelezen als een stap ze nodig heeft.",
-    "Skills gebruiken het open Agent Skills-formaat (agentskills.io) en staan in Genie One onder Customizations > Skills.",
-    "Via Unity Gateway Skills (Beta) wordt een gepubliceerde skill een Unity Catalog-object met rechten, tags en audit; elke MCP-agent kan hem gebruiken.",
-    "Skills kunnen ingepland worden; resultaten komen in een chatthread en per e-mail.",
-    "Voorbeeld: een maandelijkse handelsrapportage-skill die cijfers ophaalt, kanalen toetst aan regels, afwijkingen onderzoekt en een rapport schrijft."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo ziet het begin van een skill eruit. De beschrijving bovenaan bepaalt wanneer Genie One de skill laadt; de stappen eronder volgt hij pas dan.",
-    "language": "text",
-    "code": "---\nname: maandrapport-handel\ndescription: Gebruik bij vragen om het maandelijkse handelsrapport, bijvoorbeeld 'maak ons handelsrapport van vorige maand'.\n---\n\n# Maandrapport handel\n\n1. Haal de cijfers van vorige maand op. Gebruik alleen maanden met volledige data.\n2. Toets elk kanaal aan de regels; sla regels onder 50.000 dollar over.\n3. Onderzoek afwijkingen en zoek context.\n4. Schrijf het rapport volgens sjabloon.md.",
-    "note": "De opbouw (naam en beschrijving bovenaan) volgt het Agent Skills-formaat; de inhoud is nagebouwd op het voorbeeld uit het artikel."
-   },
-   "terms": [
-    {
-     "term": "SKILL.md",
-     "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill."
-    },
-    {
-     "term": "Agent Skills",
-     "explanation": "Een open standaard voor skills: een map met een SKILL.md en hulpbestanden, die verschillende AI-assistenten kunnen lezen."
-    },
-    {
-     "term": "Unity Gateway Skills",
-     "explanation": "Een functie van Databricks, nu in Beta, die een skill publiceert als object in Unity Catalog, met rechten en audit zoals bij een tabel."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Skills als vaste werkwijze voor AI, zoals je duim bij 'Self-service met Claude werkt alleen op goedgekeurde dbt-modellen'."
-   },
-   "labels": [
-    "agent-skills",
-    "skills-standaard",
-    "genie-one"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -1708,6 +1599,115 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
+    "pts": -4
+   }
+  },
+  {
+   "id": "ee8f41fce441",
+   "title": "Teach Genie One your workflows: The ultimate guide for skills in Genie One",
+   "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T17:00:00Z",
+   "fetched_at": "2026-11-16T03:13:55.413043Z",
+   "summary": "Databricks legt uit hoe je in Genie One een skill maakt: een SKILL.md met naam, beschrijving en stappen. Via Unity Gateway Skills (Beta) wordt een skill een object in Unity Catalog, met rechten en audit.",
+   "personal_relevance": "Zelfde idee als skills in Claude Code, nu als beheerd object in Unity Catalog naast je Gold-data.",
+   "experiment": "Schrijf een SKILL.md voor een vaste controle die je vaak doet, bijvoorbeeld 'vergelijk het aantal rijen in Silver en Gold per dag', en test hem in Claude Code op een openbare dataset.",
+   "limitations": [
+    "Unity Gateway Skills is Beta; voor skills in Genie One zelf noemt het artikel geen status.",
+    "Het artikel beschrijft de SKILL.md niet verder dan naam en beschrijving."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Skills in Genie One",
+     "url": "https://docs.databricks.com/aws/en/genie-one/chat"
+    },
+    {
+     "label": "Unity Gateway Skills",
+     "url": "https://docs.databricks.com/aws/en/agents/uc-skills"
+    },
+    {
+     "label": "Agent Skills-formaat",
+     "url": "https://agentskills.io"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.92,
+    "source": 0.85,
+    "quality": 0.6,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
+   "story": [
+    "Elk team heeft vaste recepten, zoals hoe financiën een maandrapport maakt. In Genie One leg je zo'n recept vast als skill: de stappen, de controles en de vorm van het resultaat. Genie Ontology weet wat begrippen betekenen; een skill weet hoe je een taak aanpakt.",
+    "Een skill is een map in je werkruimte met een SKILL.md. Bovenaan staan een naam en een beschrijving. Genie One leest alleen die beschrijving om te bepalen of de skill bij een vraag past, en laadt pas dan de rest. Extra bestanden, zoals een sjabloon of een voorbeeld van een goed resultaat, leest hij alleen als een stap erom vraagt. Het formaat is de open standaard Agent Skills, dezelfde opbouw als skills in Claude Code.",
+    "Je hoeft de skill niet zelf te schrijven. Je beschrijft je werkwijze in het gesprek, Genie One stelt vragen en schrijft de skill. Gaat iets mis, dan verbeter je hem in het chatgesprek. In het voorbeeld van het artikel leerde de skill zo twee regels: alleen maanden met volledige data, en regels onder 50.000 dollar overslaan.",
+    "Delen gaat via Unity Gateway Skills, nu in Beta. Een gepubliceerde skill is dan een object in Unity Catalog, met dezelfde rechten, tags en audit als een tabel. Hij draait met de rechten van wie hem gebruikt, en elke agent die MCP ondersteunt kan hem ook gebruiken. Je kunt een skill ook inplannen; leg dan vast wat hij doet als er niemand is om een tussenstap goed te keuren."
+   ],
+   "key_facts": [
+    "Blog van Databricks (Noah Solomon), 16 november 2026.",
+    "Een skill is een map met een SKILL.md; die begint met een naam en een beschrijving, waarmee Genie One bepaalt of de skill relevant is. Hulpbestanden worden alleen gelezen als een stap ze nodig heeft.",
+    "Skills gebruiken het open Agent Skills-formaat (agentskills.io) en staan in Genie One onder Customizations > Skills.",
+    "Via Unity Gateway Skills (Beta) wordt een gepubliceerde skill een Unity Catalog-object met rechten, tags en audit; elke MCP-agent kan hem gebruiken.",
+    "Skills kunnen ingepland worden; resultaten komen in een chatthread en per e-mail.",
+    "Voorbeeld: een maandelijkse handelsrapportage-skill die cijfers ophaalt, kanalen toetst aan regels, afwijkingen onderzoekt en een rapport schrijft."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo ziet het begin van een skill eruit. De beschrijving bovenaan bepaalt wanneer Genie One de skill laadt; de stappen eronder volgt hij pas dan.",
+    "language": "text",
+    "code": "---\nname: maandrapport-handel\ndescription: Gebruik bij vragen om het maandelijkse handelsrapport, bijvoorbeeld 'maak ons handelsrapport van vorige maand'.\n---\n\n# Maandrapport handel\n\n1. Haal de cijfers van vorige maand op. Gebruik alleen maanden met volledige data.\n2. Toets elk kanaal aan de regels; sla regels onder 50.000 dollar over.\n3. Onderzoek afwijkingen en zoek context.\n4. Schrijf het rapport volgens sjabloon.md.",
+    "note": "De opbouw (naam en beschrijving bovenaan) volgt het Agent Skills-formaat; de inhoud is nagebouwd op het voorbeeld uit het artikel."
+   },
+   "terms": [
+    {
+     "term": "SKILL.md",
+     "explanation": "Het bestand in een skillmap met de naam, een korte beschrijving en de instructies van de skill."
+    },
+    {
+     "term": "Agent Skills",
+     "explanation": "Een open standaard voor skills: een map met een SKILL.md en hulpbestanden, die verschillende AI-assistenten kunnen lezen."
+    },
+    {
+     "term": "Unity Gateway Skills",
+     "explanation": "Een functie van Databricks, nu in Beta, die een skill publiceert als object in Unity Catalog, met rechten en audit zoals bij een tabel."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Skills als vaste werkwijze voor AI, zoals je duim bij 'Self-service met Claude werkt alleen op goedgekeurde dbt-modellen'."
+   },
+   "labels": [
+    "agent-skills",
+    "skills-standaard",
+    "genie-one"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
     "pts": -4
    }
   },
@@ -2453,7 +2453,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -2537,7 +2537,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.8,
     "quality": 0.63,
     "feedback": 0.01,
@@ -2959,7 +2959,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -3330,7 +3330,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.05,
@@ -4004,7 +4004,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.8,
     "quality": 0.57,
     "fit": 0.2
@@ -4286,7 +4286,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.48,
+    "recency": 0.47,
     "source": 0.68,
     "quality": 0.53,
     "feedback": 0.01,
@@ -4510,91 +4510,6 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -5
-   }
-  },
-  {
-   "id": "06485ad2414b",
-   "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
-   "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-16T18:30:56Z",
-   "fetched_at": "2026-11-17T03:14:09.981133Z",
-   "summary": "Softwarebedrijf IFS Copperleaf bouwde met Genie One de interne assistent IONA op data uit bijna 30 systemen. Eigenaren uit de business leggen definities vast als skills en in Unity Catalog; een AI-raad keurt ze goed.",
-   "personal_relevance": "Laat zien hoe je AI op Gold-data zet zonder alles te modelleren, met eigenaarschap van definities bij de business.",
-   "experiment": "Kies drie begrippen uit een openbare dataset, zoals CBS-cijfers, en schrijf per begrip een definitie met eigenaar en de tabel waar het uit komt. Laat Claude daarna vragen beantwoorden met en zonder die definities.",
-   "limitations": [
-    "Klantverhaal van de leverancier: geen voorbeeldskill, configuratie of meting van juistheid.",
-    "Hoe 'activatie' en 'herhaald gebruik' gemeten zijn, staat er niet in."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "ai_context",
-    "kwaliteit"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.93,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.07,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven",
-   "story": [
-    "IFS Copperleaf bouwde in tien maanden IONA: een assistent waarmee alle medewerkers in gewone taal vragen stellen over bedrijfsdata. De data komt uit bijna 30 systemen, zoals Salesforce, HubSpot, Jira en Confluence. Sinds juli 2026 gebruikt het hele bedrijf hem.",
-    "De les in de titel: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen. Daarvoor gebruiken ze Genie Ontology, een contextlaag die definities koppelt aan maatstaven, tabellen en dashboards. Zo snapt het systeem dat een verlenging in Salesforce en een record in de financiële prognose over dezelfde klant gaan.",
-    "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar de eigenaren in de business schrijven definities en regels als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden, en elke definitie heeft een eigenaar. Alleen financiën en de funnel van marketing naar sales zijn volledig gemodelleerd; de rest vraagt IONA direct op de ruwe data op.",
-    "Unity Catalog bepaalt wie wat mag zien, ook voor de AI. Ziet een antwoord er vreemd uit, dan toont IONA zijn redenering en de eigenaar van de data. Het bedrijf noemt 70 procent activatie, maar zegt niet hoe dat gemeten is. Voor jou is vooral de aanpak interessant: modelleer eerst de belangrijkste domeinen in Gold en laat de business de definities beheren."
-   ],
-   "key_facts": [
-    "Blog van Databricks en IFS Copperleaf, 16 november 2026.",
-    "IONA gebruikt Genie One als interface, Genie Ontology als contextlaag, skills voor definities en regels, en Unity Catalog voor toegang.",
-    "Data uit bijna 30 systemen, waaronder Salesforce, HubSpot, Confluence, Jira, Freshdesk, Gong en Google Analytics 4; tienduizenden tabellen.",
-    "Live voor het hele bedrijf sinds juli 2026, na tien maanden bouwen.",
-    "Alleen financiën en de marketing-naar-sales-funnel zijn volledig gemodelleerd; een AI Council keurt definities goed, elke definitie heeft een eigenaar.",
-    "Genoemde cijfers: 70% activatie, 68% herhaald gebruik in 30 dagen, 32 van 33 toegangstickets in één keer afgehandeld (met menselijke goedkeuring per wijziging)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Genie Ontology",
-     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
-    },
-    {
-     "term": "skills",
-     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
-    },
-    {
-     "term": "funnel",
-     "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Gaat over definities als context voor AI, zoals je duim bij 'synoniemen en regels per veld'; wel een klantverhaal met weinig techniek."
-   },
-   "labels": [
-    "genie-ontology",
-    "agent-context-laag",
-    "interne-ai-agents"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -7
    }
   },
   {
@@ -5091,6 +5006,91 @@
    }
   },
   {
+   "id": "06485ad2414b",
+   "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
+   "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T18:30:56Z",
+   "fetched_at": "2026-11-17T03:14:09.981133Z",
+   "summary": "Softwarebedrijf IFS Copperleaf bouwde met Genie One de interne assistent IONA op data uit bijna 30 systemen. Eigenaren uit de business leggen definities vast als skills en in Unity Catalog; een AI-raad keurt ze goed.",
+   "personal_relevance": "Laat zien hoe je AI op Gold-data zet zonder alles te modelleren, met eigenaarschap van definities bij de business.",
+   "experiment": "Kies drie begrippen uit een openbare dataset, zoals CBS-cijfers, en schrijf per begrip een definitie met eigenaar en de tabel waar het uit komt. Laat Claude daarna vragen beantwoorden met en zonder die definities.",
+   "limitations": [
+    "Klantverhaal van de leverancier: geen voorbeeldskill, configuratie of meting van juistheid.",
+    "Hoe 'activatie' en 'herhaald gebruik' gemeten zijn, staat er niet in."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.92,
+    "source": 0.85,
+    "quality": 0.5,
+    "feedback": -0.07,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven",
+   "story": [
+    "IFS Copperleaf bouwde in tien maanden IONA: een assistent waarmee alle medewerkers in gewone taal vragen stellen over bedrijfsdata. De data komt uit bijna 30 systemen, zoals Salesforce, HubSpot, Jira en Confluence. Sinds juli 2026 gebruikt het hele bedrijf hem.",
+    "De les in de titel: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen. Daarvoor gebruiken ze Genie Ontology, een contextlaag die definities koppelt aan maatstaven, tabellen en dashboards. Zo snapt het systeem dat een verlenging in Salesforce en een record in de financiële prognose over dezelfde klant gaan.",
+    "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar de eigenaren in de business schrijven definities en regels als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden, en elke definitie heeft een eigenaar. Alleen financiën en de funnel van marketing naar sales zijn volledig gemodelleerd; de rest vraagt IONA direct op de ruwe data op.",
+    "Unity Catalog bepaalt wie wat mag zien, ook voor de AI. Ziet een antwoord er vreemd uit, dan toont IONA zijn redenering en de eigenaar van de data. Het bedrijf noemt 70 procent activatie, maar zegt niet hoe dat gemeten is. Voor jou is vooral de aanpak interessant: modelleer eerst de belangrijkste domeinen in Gold en laat de business de definities beheren."
+   ],
+   "key_facts": [
+    "Blog van Databricks en IFS Copperleaf, 16 november 2026.",
+    "IONA gebruikt Genie One als interface, Genie Ontology als contextlaag, skills voor definities en regels, en Unity Catalog voor toegang.",
+    "Data uit bijna 30 systemen, waaronder Salesforce, HubSpot, Confluence, Jira, Freshdesk, Gong en Google Analytics 4; tienduizenden tabellen.",
+    "Live voor het hele bedrijf sinds juli 2026, na tien maanden bouwen.",
+    "Alleen financiën en de marketing-naar-sales-funnel zijn volledig gemodelleerd; een AI Council keurt definities goed, elke definitie heeft een eigenaar.",
+    "Genoemde cijfers: 70% activatie, 68% herhaald gebruik in 30 dagen, 32 van 33 toegangstickets in één keer afgehandeld (met menselijke goedkeuring per wijziging)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "skills",
+     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    },
+    {
+     "term": "funnel",
+     "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Gaat over definities als context voor AI, zoals je duim bij 'synoniemen en regels per veld'; wel een klantverhaal met weinig techniek."
+   },
+   "labels": [
+    "genie-ontology",
+    "agent-context-laag",
+    "interne-ai-agents"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -7
+   }
+  },
+  {
    "id": "e991fd350bcd",
    "title": "Branch, sync, serve: What our Lakebase Hackathon taught us about building on Lakebase",
    "url": "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase",
@@ -5141,7 +5141,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.98,
+    "recency": 0.97,
     "source": 0.85,
     "quality": 0.55,
     "feedback": -0.07,
@@ -12634,14 +12634,18 @@
  "runs": {
   "date": "2026-11-18",
   "tasks": {
-   "verdiepen": {
+   "uitleggen": {
     "status": "ok",
-    "summary": "Verdieping over meten en verbeteren met ai_extract geschreven (issue #34) en 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-18T04:27:28Z",
-    "problems": [],
+    "summary": "Ingehaald om 07:27: de werklijst was leeg, dus niets meer te verwerken. Eerder vannacht: 2 artikelen vol uitgelegd en 19 overgeslagen.",
+    "finished_at": "2026-11-18T06:28:05Z",
+    "problems": [
+     "Dataflow-voortgang opnieuw niet bijgewerkt: add_repo is niet beschikbaar en clonen van tomasr91/personal-data-platform werd geweigerd. Stap volgens de taak overgeslagen."
+    ],
     "counts": {
-     "verdiepingen": 1,
-     "keuzes": 5
+     "uitgelegd": 0,
+     "overgeslagen": 0,
+     "eerder_vannacht_uitgelegd": 2,
+     "eerder_vannacht_overgeslagen": 19
     }
    },
    "overzicht": {
@@ -12670,18 +12674,14 @@
      "uitgelegd": 0
     }
    },
-   "uitleggen": {
+   "verdiepen": {
     "status": "ok",
-    "summary": "Ingehaald om 07:27: de werklijst was leeg, dus niets meer te verwerken. Eerder vannacht: 2 artikelen vol uitgelegd en 19 overgeslagen.",
-    "finished_at": "2026-11-18T06:28:05Z",
-    "problems": [
-     "Dataflow-voortgang opnieuw niet bijgewerkt: add_repo is niet beschikbaar en clonen van tomasr91/personal-data-platform werd geweigerd. Stap volgens de taak overgeslagen."
-    ],
+    "summary": "Verdieping over meten en verbeteren met ai_extract geschreven (issue #34) en 5 nieuwe keuzes klaargezet",
+    "finished_at": "2026-11-18T04:27:28Z",
+    "problems": [],
     "counts": {
-     "uitgelegd": 0,
-     "overgeslagen": 0,
-     "eerder_vannacht_uitgelegd": 2,
-     "eerder_vannacht_overgeslagen": 19
+     "verdiepingen": 1,
+     "keuzes": 5
     }
    }
   }
@@ -12729,8 +12729,8 @@
  ],
  "feedback": {
   "topics": {
-   "dbt_analytics_engineering": 0.98,
-   "cicd_data_deployment": 0.4,
+   "dbt_analytics_engineering": 0.97,
+   "cicd_data_deployment": 0.39,
    "ai_on_data_platform": 0.89,
    "databricks_data_engineering": 0.67,
    "powerbi_semantic_models": 0.61,
@@ -12757,7 +12757,7 @@
   "kinds": {
    "praktijk": 0.57,
    "praktisch": 0.41,
-   "achtergrond": 0.68,
+   "achtergrond": 0.67,
    "aankondiging": 0.87,
    "mening": 0.34,
    "release": 0.63
@@ -12822,15 +12822,15 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 711,
-  "unique_after_dedupe": 657,
+  "fetched_items": 459,
+  "unique_after_dedupe": 656,
   "merged_duplicates": 47,
   "shown": 54,
   "decisions": {
    "excluded": 226,
    "area_cap": 18,
    "included": 107,
-   "no_topic": 142,
+   "no_topic": 141,
    "below_threshold": 117,
    "kort_vervallen": 34,
    "source_cap": 13
@@ -12957,16 +12957,6 @@
     "excluded_by": []
    },
    {
-    "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-    "relevance_score": 84,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
@@ -13027,9 +13017,9 @@
     ]
    },
    {
-    "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
+    "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
     "relevance_score": 83,
     "decision": "excluded",
     "excluded_by": [
@@ -13111,6 +13101,16 @@
     "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -13214,14 +13214,6 @@
     ]
    },
    {
-    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
-    "relevance_score": 81,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "dbt without the warehouse (or the bill): DuckDB end to end",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
@@ -13301,6 +13293,14 @@
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Build-and-operate-intelligent-apps-with-Microsoft-Fabric-New/ba-p/5423020",
     "relevance_score": 80,
     "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
+    "relevance_score": 80,
+    "decision": "source_cap",
     "excluded_by": []
    },
    {
