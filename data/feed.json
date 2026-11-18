@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T04:28:40.856495Z",
+ "generated_at": "2026-11-18T05:14:30.936543Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -862,7 +862,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -2409,7 +2409,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.68,
+    "recency": 0.67,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -3969,7 +3969,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.18,
+    "recency": 0.17,
     "source": 0.68,
     "quality": 0.75,
     "feedback": -0.04,
@@ -4817,7 +4817,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -5542,7 +5542,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.1,
@@ -9276,9 +9276,57 @@
  },
  "trends": [
   {
+   "id": "context-voor-agents-in-dataplatform",
+   "title": "Context voor AI-agents komt in het dataplatform zelf",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen in metric views, beschrijvingen bij dbt-modellen en definities in Genie Ontology, dat sinds 11 november algemeen beschikbaar is. Constellation en IFS Copperleaf laten zien dat de echte vraag is wie de betekenis bepaalt: bij IFS schrijven bedrijfseigenaren de definities en keurt een AI Council ze goed. Nieuw deze week: Genie One leert vaste werkwijzen als skill in Unity Catalog, en Ashley Warren bouwt de semantische laag uit losse metric views die met relaties aan elkaar hangen.",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "metadata_lineage_catalogs",
+    "powerbi_semantic_models"
+   ],
+   "article_ids": [
+    "06485ad2414b",
+    "ee8f41fce441",
+    "656e0d953ae9",
+    "6ded4aa1cdcf",
+    "5c7174c45ad1",
+    "941b0ba5dad7",
+    "215f0a50b9ea"
+   ],
+   "generated_at": "2026-11-18T05:25:00Z",
+   "since": "2026-11-01",
+   "last": "2026-11-16",
+   "week": 4,
+   "prev_week": 2,
+   "status": "groeit"
+  },
+  {
+   "id": "veilige-agents-sandbox-en-gateway",
+   "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
+   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap, Anthropic liet 1.000 agents werken in eigen virtuele machines zonder internet achter één gateway, Claude Managed Agents draait sinds 12 november (private bèta) in je eigen netwerk met sleutels buiten de sandbox, en bij Databricks regelt Unity Gateway budgetten en logboek voor modellen van onder meer OpenAI. Nieuw deze week: in Claude Code vragen sandbox-commando's weer om toestemming, en geplande taken vragen dat ook voor skills met eigen rechten.",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "article_ids": [
+    "3e9bbba1efea",
+    "5b59c75a11e5",
+    "62afb1e0ab94",
+    "6df581b9d8ed"
+   ],
+   "generated_at": "2026-11-18T05:25:00Z",
+   "since": "2026-11-01",
+   "last": "2026-11-15",
+   "week": 2,
+   "prev_week": 1,
+   "status": "groeit"
+  },
+  {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs zag dat dbt-skills bij de nieuwste Claude-modellen weinig uitmaakten, Ecolab liet elke gemigreerde tabel met data bewijzen, en Databricks' Genie Migrate (nu algemeen beschikbaar) zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar. LangChain noemt het 'eval-driven development': schrijf de eval vóór je bouwt en vergelijk per voorbeeld; met traces en evals koos het team ook zijn browsertools. Curative laat een 'rechter' elk bericht van zijn agent nakijken, en nieuw deze week vergeleek Advancing Analytics drie beslismodellen op 300 openbare testgesprekken: bij fijne keuzes scoorde ai_decide in Databricks duidelijk lager.",
+   "summary": "dbt Labs zag dat dbt-skills bij de nieuwste Claude-modellen weinig uitmaakten, en Databricks' Genie Migrate zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar. LangChain schrijft de eval vóór de wijziging en laat experts hele gesprekken beoordelen, Curative laat een 'rechter' elk bericht van zijn agent nakijken, en Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven. Nieuwste: Advancing Analytics vergeleek drie beslismodellen op 300 openbare testgesprekken; bij fijne keuzes scoorde ai_decide in Databricks duidelijk lager.",
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
@@ -9291,59 +9339,15 @@
     "ea585dd9c0fa",
     "d5f14a6242b0",
     "a9b6458ba033",
+    "873de8dc3ad7",
     "c63f36899b14"
    ],
-   "generated_at": "2026-11-16T05:20:00Z",
+   "generated_at": "2026-11-18T05:25:00Z",
    "since": "2026-10-30",
    "last": "2026-11-13",
    "week": 1,
    "prev_week": 1,
    "status": "speelt"
-  },
-  {
-   "id": "context-voor-agents-in-dataplatform",
-   "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Okta, KOHO, Checkr, LangChain en een team bij AWS leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen, beschrijvingen bij dbt-modellen en per veld synoniemen en voorbeeldwaarden. De platforms volgen: Genie Ontology is sinds 11 november algemeen beschikbaar, Genie kan in bèta Power BI-measures als kennisbron gebruiken, Unity Catalog krijgt wiki's per tabel, en dbt Labs zegt meer dan de helft aan tokens te besparen door context vooraf in het warehouse klaar te zetten. Nieuw deze week: Anthropic's gids voor Claude Tag laat startups datavragen in Slack beantwoorden op basis van vaste dbt-modellen en metrics.",
-   "topics": [
-    "ai_context_engineering",
-    "dbt_analytics_engineering",
-    "metadata_lineage_catalogs",
-    "powerbi_semantic_models"
-   ],
-   "article_ids": [
-    "656e0d953ae9",
-    "6ded4aa1cdcf",
-    "5c7174c45ad1",
-    "941b0ba5dad7",
-    "215f0a50b9ea"
-   ],
-   "generated_at": "2026-11-16T05:20:00Z",
-   "since": "2026-11-01",
-   "last": "2026-11-11",
-   "week": 2,
-   "prev_week": 2,
-   "status": "speelt"
-  },
-  {
-   "id": "geheugen-en-context-voor-agents",
-   "title": "Agents houden hun venster leeg: geheugen, skills en werk op de achtergrond",
-   "summary": "LangChain, Databricks en Anthropic werken aan dezelfde vraag: hoe onthoudt een agent veel zonder zijn contextvenster vol te stoppen? Grote resultaten gaan naar bestanden, zoeken begint met grep en glob, skills laden pas als ze nodig zijn, en Anthropic laat een aparte run na afloop het geheugen opruimen ('dreaming'). Lang werk schuift naar de achtergrond: subagents in LangChain Deep Agents en MCP-taken in Claude Code werken door terwijl de hoofdagent bereikbaar blijft. Nieuwste voorbeeld: Stripe merkte bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd; daarom kiest Kai eerst de skills, en die bepalen welke tools worden geladen.",
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering",
-    "claude_ai_development"
-   ],
-   "article_ids": [
-    "0b6411ed8e60",
-    "53acc8538264",
-    "d8887a09bc5e"
-   ],
-   "generated_at": "2026-11-16T05:20:00Z",
-   "since": "2026-11-06",
-   "last": "2026-11-10",
-   "week": 0,
-   "prev_week": 3,
-   "status": "zakt af"
   }
  ],
  "weekly": {
@@ -12961,26 +12965,6 @@
     ]
    },
    {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
@@ -13015,6 +12999,26 @@
     "title": "Genie Search is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-search-is-now-generally-available",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -13080,16 +13084,6 @@
     "title": "AI Functions Unity Catalog permissions is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie Migrate can convert T-SQL to Lakeflow pipelines (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-can-convert-t-sql-to-lakeflow-pipelines-beta",
     "relevance_score": 81,
     "decision": "excluded",
     "excluded_by": [
@@ -13173,6 +13167,16 @@
     "title": "External knowledge sources are in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Migrate can convert T-SQL to Lakeflow pipelines (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-can-convert-t-sql-to-lakeflow-pipelines-beta",
     "relevance_score": 80,
     "decision": "excluded",
     "excluded_by": [
