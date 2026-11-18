@@ -1,0 +1,121 @@
+{
+ "article_id": "5f169cda52b7",
+ "headline": "Warren: bouw je semantische laag uit losse metric views met relaties",
+ "summary": "Ashley Warren van Advancing Analytics vindt dat AI-vragen vragen om losse metric views per gebeurtenis, die je met relaties aan elkaar koppelt. Niet één groot model.",
+ "story": [
+  "Ashley Warren, analytics consultant bij Advancing Analytics, vindt de relaties tussen metric views (relationships) een van de belangrijkste nieuwe functies van Databricks. Volgens haar worden ze de hoeksteen van de semantische laag nu gebruikers vragen stellen aan een AI-assistent in plaats van rapporten te lezen.",
+  "Haar argument begint bij hoe mensen vragen stellen. Een vraag springt vaak van het ene bedrijfsdomein naar het andere. Haar voorbeeld: slechte klantenservice, een contract dat niet verlengd wordt, en wat dat financieel kost. Een klassiek BI-model vangt dat door alles in één groot model te stoppen. Warren vindt dat zo'n monoliet traag wordt en kwetsbaar, omdat alles ervan afhangt.",
+  "Haar alternatief: leg elke bedrijfsgebeurtenis vast in een eigen metric view, zoals een feitentabel, met korrel (grain), dimensies, berekeningen en een beschrijving wanneer je hem gebruikt. Relaties zeggen daarna als metadata hoe views samenhangen: welke kolommen, en met welke verhouding (cardinality). Een assistent als Genie stelt dan pas bij de vraag de juiste combinatie samen. Vóór de relaties moest Genie zelf raden hoe views koppelden, en dat ging volgens haar soms mis.",
+  "Voor AI-toepassingen op je eigen Gold-laag is dit een bruikbaar ontwerpidee: kleine metric views per feit, met relaties ertussen, in plaats van één alles-in-één-model zoals in Power BI. Voor Dataflow is dit iets voor fase 7: relaties tussen metric views zijn Unity Catalog-metadata die je eigen agent als context kan lezen.",
+  "Het blijft wel een mening. Warren geeft geen code, geen meting en ook geen status van de functie. In de documentatie staat dat relaties in Beta zijn en dat Databricks niet controleert of de opgegeven verhouding klopt. Hoe de functie zelf werkt, lees je in de eerdere uitleg over relaties tussen metric views."
+ ],
+ "key_facts": [
+  "Warren: analytics verschuift van vaste rapporten naar vragen in gewone taal, met tools als Genie One en Genie Agents.",
+  "Warren: vragen die over domeinen heen gaan, duwen klassieke modellen naar één groot model dat traag en kwetsbaar wordt.",
+  "Warren: definieer elke bedrijfsgebeurtenis apart als metric view en koppel ze met relaties, zodat Genie de context pas bij de vraag samenstelt.",
+  "Warren: zonder expliciete relaties moest Genie raden hoe metric views samenhingen, en die gok was soms fout.",
+  "Relaties tussen metric views zijn volgens de documentatie in Beta, vereisen Runtime 19 of een SQL warehouse en worden niet tegen de data gecontroleerd.",
+  "Het artikel verscheen op 17 november 2026 en bevat geen code."
+ ],
+ "personal_relevance": "Het geeft een ontwerpkeuze voor hoe je Gold-feiten aanbiedt aan een AI-assistent.",
+ "experiment": "Maak in een testomgeving twee kleine metric views op openbare data (bijv. CBS-cijfers per gemeente en KNMI-metingen per gemeente), leg er een MANY TO ONE-relatie tussen en kijk of Genie een vraag over beide goed beantwoordt, met en zonder relatie.",
+ "limitations": [
+  "Een mening zonder meting of code; de winst ten opzichte van één groot model wordt niet aangetoond.",
+  "De auteur werkt bij een Databricks-partner.",
+  "Relaties zijn in Beta en worden niet gecontroleerd: een foute verhouding stuurt een assistent de verkeerde kant op."
+ ],
+ "availability_status": "preview",
+ "official_docs": [
+  {
+   "label": "Metric view relationships (Databricks-documentatie)",
+   "url": "https://docs.databricks.com/aws/en/uc-semantics/metric-views/relationships"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "data_architecture_modeling",
+  "ai_context_engineering"
+ ],
+ "quality": {
+  "depth": 0.45,
+  "practicality": 0.6,
+  "novelty": 0.5
+ },
+ "development_key": "uc-metric-view-relationships-okt-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "opinie",
+ "author": "Ashley Warren, Senior Analytics Consultant bij Advancing Analytics (Databricks-partner)",
+ "soort": "mening",
+ "fit": {
+  "score": 0.65,
+  "why": "Over metric views als vaste definities voor AI, zoals je duim omhoog bij metric views naar Power BI, maar zonder code."
+ },
+ "labels": [
+  "metric-views",
+  "semantische-laag-ai",
+  "genie-one"
+ ],
+ "project_ref": {
+  "fase": 7,
+  "quote": "relaties tussen metric views zijn Unity Catalog-metadata die je eigen agent als context kan lezen",
+  "why": "In fase 7 gebruikt je agent Unity Catalog-metadata als context."
+ },
+ "terms": [
+  {
+   "term": "metric view",
+   "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+  },
+  {
+   "term": "relationships",
+   "explanation": "Metadata die vastlegt hoe twee metric views samenhangen: op welke kolommen en met welke verhouding. Een tool mag die join gebruiken, maar hij ligt niet vast."
+  },
+  {
+   "term": "cardinality",
+   "explanation": "De verhouding tussen twee tabellen, zoals veel-op-één: veel bestellingen horen bij één klant. Bepaalt of een som dubbel kan tellen."
+  },
+  {
+   "term": "grain",
+   "explanation": "Wat één rij in een tabel voorstelt, bijvoorbeeld één klacht of één klant per maand."
+  },
+  {
+   "term": "semantische laag",
+   "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
+  }
+ ],
+ "showcase": {
+  "caption": "Waarom de verhouding telt. Elke gebeurtenis (klachten, contracten) wordt eerst op zijn eigen korrel per klant geteld en pas daarna gekoppeld. Wie eerst joint en dan optelt, krijgt 44.000 aan contractwaarde in plaats van 25.000, omdat klant K1 drie klachten heeft.",
+  "language": "sql",
+  "code": "-- Elke gebeurtenis apart op zijn eigen korrel,\n-- daarna koppelen via de relatie (klant_id)\nWITH k AS (SELECT klant_id, COUNT(*) AS klachten\n           FROM klachten GROUP BY klant_id),\n     c AS (SELECT klant_id, SUM(contractwaarde) AS contractwaarde\n           FROM contracten GROUP BY klant_id)\nSELECT c.klant_id, COALESCE(k.klachten, 0) AS klachten, c.contractwaarde\nFROM c LEFT JOIN k USING (klant_id)\nORDER BY c.klant_id;",
+  "result": {
+   "columns": [
+    "klant_id",
+    "klachten",
+    "contractwaarde"
+   ],
+   "rows": [
+    [
+     "K1",
+     3,
+     12000
+    ],
+    [
+     "K2",
+     1,
+     8000
+    ],
+    [
+     "K3",
+     0,
+     5000
+    ]
+   ]
+  },
+  "note": "Zo werkt het idee in gewone SQL. In Databricks leg je de relatie vast met ALTER VIEW ... ADD CONSTRAINT ... MANY TO ONE RELATIONSHIP TO ...; die notatie staat in de documentatie."
+ },
+ "format_version": 2,
+ "url": "https://www.advancinganalytics.co.uk/blog/why-databricks-metric-view-relationships-form-the-cornerstone-of-the-semantic-layer-in-the-agentic-era",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-18T03:26:52Z",
+ "prompt_version": "taak-v2"
+}

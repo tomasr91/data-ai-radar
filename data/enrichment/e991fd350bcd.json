@@ -1,0 +1,132 @@
+{
+ "article_id": "e991fd350bcd",
+ "headline": "Lakebase-hackathon: Gold-tabellen als zoekindex en databases per test",
+ "summary": "Elf klantteams bouwden op Lakebase, de Postgres-database van Databricks. Ze gebruikten vooral branches om veilig te testen en gesynchroniseerde tabellen om lakehousedata snel aan apps en agents te geven.",
+ "story": [
+  "Databricks liet elf klantteams een week bouwen op Lakebase, de beheerde Postgres-database naast het lakehouse. De projecten laten zien waar die database voor dient. Markel gebruikte bijvoorbeeld beheerde Gold-tabellen via Lakebase als zoekbron voor schadeclaims, in plaats van een aparte zoekindex zoals Elasticsearch.",
+  "Drie functies kwamen steeds terug. Branches zijn kopieën van een database die je in seconden maakt, zoals een branch in Git; er wordt pas iets gekopieerd als je wijzigt (copy-on-write). Gesynchroniseerde tabellen (synced tables) zetten een Unity Catalog-tabel als alleen-lezen kopie in Postgres, een vorm van reverse ETL. Andersom zet Lakehouse Sync wijzigingen in Postgres terug in Delta-tabellen.",
+  "Het eerste spoor ging over branches. Bij Lyft probeerde een agent acties uit op een kopie van productie, ongeveer zes seconden per kopie. Zo loste hij 10 van 11 verzonnen supportachterstanden binnen de regels op, tegen 2 van 11 als hij vooraf alles plande. CIBC maakte per pull request een kopie van een database met gemaskeerde persoonsgegevens, met een eigen Databricks App als preview.",
+  "Het tweede spoor koppelde Lakebase aan het lakehouse, en daar zitten de AI-toepassingen op eigen data. Data Axle bouwde een prijsadvies voor ruim 18.000 vakantiewoningen. Het combineert zoeken op betekenis met pgvector en zoeken op woorden met BM25, en voegt de twee lijsten samen met Reciprocal Rank Fusion. Een ingebouwde Genie-agent onthoudt eerdere gesprekken. Sobeys liet drie agents samenwerken voor recepten, producten zoeken en allergieën controleren.",
+  "Voor jou is het tweede spoor het interessantst: data uit Gold die via een gesynchroniseerde tabel snel genoeg is voor een app of agent. Let wel: dit zijn hackathonprojecten van een week, beschreven door Databricks zelf. Het artikel geeft geen code."
+ ],
+ "key_facts": [
+  "Het artikel (17 november 2026) beschrijft elf klantprojecten uit de Lakebase-hackathon, in twee sporen.",
+  "Lakebase is beheerde Postgres met opslag los van compute, onder beheer van Unity Catalog.",
+  "Branches zijn copy-on-write en worden snel gemaakt zonder invloed op productie; synced tables zetten Unity Catalog-tabellen als alleen-lezen tabellen in Postgres.",
+  "Lyft: een agent testte acties op een kopie van productie (ca. zes seconden per kopie) en loste 10 van 11 synthetische achterstanden op, tegen 2 van 11 met vooraf plannen.",
+  "Markel verving een aparte zoekindex door Gold-tabellen die via Lakebase worden geserveerd, voor onder meer schadeclaims zoeken.",
+  "Data Axle (PriceWise): hybride zoeken met pgvector en BM25 samengevoegd met Reciprocal Rank Fusion, PostGIS binnen 20 mijl, een Genie-agent met geheugen en antwoorden vanaf 4 ms, voor ruim 18.000 woningen."
+ ],
+ "personal_relevance": "Het laat zien hoe Gold-data snel genoeg wordt voor een app of agent, zonder aparte zoekindex.",
+ "experiment": "Bouw in DuckDB of Postgres een mini-zoekfunctie op een openbare dataset (bijv. CBS-gemeentenamen met beschrijvingen): één lijst op woorden, één op embeddings, en voeg ze samen met Reciprocal Rank Fusion.",
+ "limitations": [
+  "Hackathonprojecten van een week; niets zegt dat ze in productie draaien.",
+  "Databricks beschrijft zijn eigen product; de cijfers zijn niet onafhankelijk gecontroleerd.",
+  "Het artikel geeft geen code of kosten."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "Lakebase branches",
+   "url": "https://docs.databricks.com/aws/en/oltp/projects/branches"
+  },
+  {
+   "label": "Synced tables",
+   "url": "https://docs.databricks.com/aws/en/oltp/projects/sync-tables"
+  },
+  {
+   "label": "Lakebase Change Data Feed",
+   "url": "https://docs.databricks.com/aws/en/oltp/projects/lakebase-cdf"
+  },
+  {
+   "label": "Postgres-extensies in Lakebase",
+   "url": "https://docs.databricks.com/aws/en/oltp/projects/extensions"
+  },
+  {
+   "label": "Lakehouse Sync",
+   "url": "https://www.databricks.com/blog/announcing-native-lakehouse-sync"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "databricks_data_engineering",
+  "ai_agents_rag"
+ ],
+ "quality": {
+  "depth": 0.6,
+  "practicality": 0.55,
+  "novelty": 0.5
+ },
+ "development_key": "lakebase-hackathon-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.5,
+  "why": "Praktijkverhalen met tools erbij, maar kort per project; eerdere vage praktijkstukken kregen een duim omlaag."
+ },
+ "labels": [
+  "lakebase",
+  "database-branching",
+  "rag-op-delta"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "copy-on-write",
+   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
+  },
+  {
+   "term": "synced tables",
+   "explanation": "Tabellen uit Unity Catalog die Databricks als alleen-lezen kopie in een Lakebase-database bijhoudt, zodat een app ze snel kan opvragen."
+  },
+  {
+   "term": "reverse ETL",
+   "explanation": "Data uit je analyseplatform terugzetten in een operationeel systeem of app, de omgekeerde richting van gewoon laden."
+  },
+  {
+   "term": "pgvector",
+   "explanation": "Een uitbreiding voor Postgres die embeddings opslaat en zoekt op betekenis, zodat je geen aparte vectordatabase nodig hebt."
+  },
+  {
+   "term": "Reciprocal Rank Fusion",
+   "explanation": "Een eenvoudige manier om twee zoekresultatenlijsten samen te voegen: elk resultaat krijgt punten op basis van zijn plek in elke lijst."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo voeg je twee zoeklijsten samen met Reciprocal Rank Fusion: een resultaat dat in beide lijsten hoog staat, wint. Hier staan verzonnen vakantiewoningen.",
+  "language": "sql",
+  "code": "-- Reciprocal Rank Fusion: elke lijst geeft 1 / (60 + rang)\nWITH alle AS (\n  SELECT id, rang FROM vector_hits   -- zoeken op betekenis\n  UNION ALL\n  SELECT id, rang FROM tekst_hits    -- zoeken op woorden (BM25)\n)\nSELECT id,\n       ROUND(SUM(1.0 / (60 + rang)), 4) AS rrf_score\nFROM alle\nGROUP BY id\nORDER BY rrf_score DESC;",
+  "result": {
+   "columns": [
+    "id",
+    "rrf_score"
+   ],
+   "rows": [
+    [
+     "huisje-aan-zee",
+     0.0325
+    ],
+    [
+     "loft-centrum",
+     0.0323
+    ],
+    [
+     "chalet-bos",
+     0.0161
+    ],
+    [
+     "boerderij",
+     0.0159
+    ]
+   ]
+  },
+  "note": "Zo werkt het idee in gewone SQL. De constante 60 is een gebruikelijke keuze; hoe PriceWise het precies deed, staat niet in het artikel."
+ },
+ "format_version": 2,
+ "url": "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase",
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-18T03:26:52Z",
+ "prompt_version": "taak-v2"
+}
