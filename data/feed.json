@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T05:14:30.936543Z",
+ "generated_at": "2026-11-18T05:15:13.311497Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -77,6 +77,11 @@
   "ai_evaluation_observability": {
    "name": "Evaluatie en observability van AI",
    "priority": 4,
+   "group": "agents"
+  },
+  "veilige_agents": {
+   "name": "Veilige agents: sandbox, rechten en gateways",
+   "priority": 3,
    "group": "agents"
   },
   "claude_ai_development": {
@@ -5018,7 +5023,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.51,
     "quality": 0.57,
     "feedback": -0.02,
@@ -12435,6 +12440,13 @@
     "area": "context_agents"
    },
    {
+    "id": "veilige_agents",
+    "name": "Veilige agents: sandbox, rechten en gateways",
+    "description": "Hoe je AI-agents veilig laat werken: afgeschermde sandboxes, minste rechten, sleutels buiten de agent, en één gateway die modelaanroepen, budgetten en logboeken regelt. Ook zelf hosten van agentdiensten en wat er dan nog naar buiten gaat.",
+    "priority": 3,
+    "area": "context_agents"
+   },
+   {
     "id": "claude_ai_development",
     "name": "Claude en AI-ondersteunde ontwikkeling",
     "description": "Alleen Claude en het eigen ecosysteem; andere LLM-aanbieders zijn geen eigen interessegebied. Nieuwe Claude-modellen, Claude Code en agentic coding, skills, hooks, subagents en projectinstructies, werken met grote repositories, codereview en refactoring, en Claude praktisch inzetten bij dbt, data engineering en context engineering. Ook werkwijzen, niet alleen nieuwe functies.",
@@ -12547,7 +12559,7 @@
     "name": "Kleine updates en verzameloverzichten"
    }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-18"
  },
  "rode_draad": {
   "name": "Dataflow",
@@ -12596,17 +12608,12 @@
   "stap": "3.7b CBS-ophaalscript (Mac) met upload naar landing-volume",
   "stap_op": "2026-11-15"
  },
- "interest_suggestions": [
-  {
-   "id": "veilige-agents",
-   "kind": "nieuw",
-   "name": "Veilige agents: sandbox, rechten en gateways",
-   "description": "Hoe je AI-agents veilig laat werken: afgeschermde sandboxes, minste rechten, sleutels buiten de agent, en één gateway die modelaanroepen, budgetten en logboeken regelt. Ook zelf hosten van agentdiensten en wat er dan nog naar buiten gaat.",
-   "why": "Deze week gingen 5 artikelen hierover (Claude Managed Agents zelf hosten, Unity Gateway bij Block en OpenAI, 1.000 agents in afgeschermde machines, nieuwe weigerinstelling in Claude Code), je vroeg er een verdieping over aan en je gaf een 👍 aan 'Claude Code kan nu nergens meer schrijven buiten je projectmap'.",
-   "generated_at": "2026-11-15T05:15:55Z"
-  }
- ],
+ "interest_suggestions": [],
  "interest_log": [
+  {
+   "at": "2026-11-18T05:30:00Z",
+   "text": "Nieuw onderwerp 'Veilige agents: sandbox, rechten en gateways' toegevoegd als 'interessant', bij Context engineering en AI-agents (jouw ja op het voorstel)."
+  },
   {
    "at": "2026-11-04T05:13:37Z",
    "text": "Databricks en data engineering: van 'kernonderwerp' naar 'zeer relevant' (jouw verzoek)."
@@ -12635,6 +12642,20 @@
     "counts": {
      "verdiepingen": 1,
      "keuzes": 5
+    }
+   },
+   "overzicht": {
+    "status": "ok",
+    "summary": "3 trends bijgewerkt (nieuw: veilige agents, vervangt de afzakkende trend over geheugen), nieuw onderwerp 'Veilige agents' toegevoegd na jouw ja; geen begrippen aan te vullen.",
+    "finished_at": "2026-11-18T05:14:52Z",
+    "problems": [
+     "Het nieuwe onderwerp 'veilige_agents' heeft nog geen bron die het expliciet volgt (waarschuwing van de contextcontrole); bronnen mag deze taak niet aanpassen."
+    ],
+    "counts": {
+     "trends": 3,
+     "interesses_aangepast": 1,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
     }
    },
    "uitleggen": {
@@ -12986,6 +13007,16 @@
     ]
    },
    {
+    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Genie Ontology is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
@@ -12999,6 +13030,36 @@
     "title": "Genie Search is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-search-is-now-generally-available",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Provision Claude desktop with MDM using Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#provision-claude-desktop-with-mdm-using-unity-gateway",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Provision Claude desktop with MDM using Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#provision-claude-desktop-with-mdm-using-unity-gateway",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -13377,9 +13438,9 @@
     "excluded_by": []
    },
    {
-    "title": "Run Claude Code and Codex in the SSH tunnel",
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#run-claude-code-and-codex-in-the-ssh-tunnel",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
@@ -13387,54 +13448,18 @@
     ]
    },
    {
-    "title": "Upcoming removal of AI Functions support on older runtimes",
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#upcoming-removal-of-ai-functions-support-on-older-runtimes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#screen-mcp-tool-calls-and-results-for-jailbreaks-beta",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Unity Catalog wikis are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#unity-catalog-wikis-are-in-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.326",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.326",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Fabric Influencers Spotlight: October 2026",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Fabric-Influencers-Spotlight-October-2026/ba-p/5420043",
-    "relevance_score": 77,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
-    "title": "Building live intelligence: Databricks AI Search supports Streaming Tables, Materialized Views, and Managed tables using Iceberg",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views",
-    "relevance_score": 77,
-    "decision": "source_cap",
-    "excluded_by": []
    }
   ],
   "topics_without_source": [
+   "veilige_agents",
    "ai_in_healthcare",
    "ai_research_data",
    "general_ai_trends"
