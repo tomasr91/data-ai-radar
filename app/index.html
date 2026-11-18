@@ -522,6 +522,14 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
     pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
   };
+  // Opmerking bij een artikel (los van de duim); gaat mee met versturen; radar:anote
+  const anote = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:anote") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:anote", JSON.stringify(d)); } catch {} },
+    get(id) { return this.all()[id]; },
+    set(id, v) { const d = this.all(); if (v) d[id] = v; else delete d[id]; this.save(d); },
+    pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent && v.n.trim()); },
+  };
   // Leerregels die je met ✕ weghaalt gaan mee met de verstuurbalk ("rules_off"); radar:rules_off
   const rulesOff = {
     all() { try { return JSON.parse(localStorage.getItem("radar:rules_off") || "{}"); } catch { return {}; } },
@@ -873,8 +881,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
       const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
       const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
-      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>`
-        + `<p class="to-note"><a href="#opmerking">Opmerking aan Claude</a></p>` + sb;
+      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
     }
     $("#content").innerHTML = html;
   }
@@ -1499,7 +1506,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ${!reasons ? "" : mine.v === 1 ? `<div class="fb-reasons">${rbtns(FB_UP, Object.keys(FB_UP), mine)}</div>`
         : `<div class="fb-reasons fb-group"><span class="lbl">Dit artikel</span>${rbtns(FB_DOWN, FB_DOWN_ARTICLE, mine)}</div>
            <div class="fb-reasons fb-group"><span class="lbl">Dit onderwerp</span>${rbtns(FB_DOWN, FB_DOWN_TOPIC, mine)}</div>`}
-      ${mine ? `<input class="fb-why-in" id="fb-why" type="text" maxlength="200" autocomplete="off" placeholder="Waarom? (optioneel)" aria-label="Waarom?" value="${esc(mine.n || "")}">` : ""}`;
+      <input class="fb-why-in" id="fb-why" type="text" maxlength="200" autocomplete="off" placeholder="Opmerking voor Claude (optioneel)" aria-label="Opmerking voor Claude" value="${esc(anote.get(a.id)?.n ?? mine?.n ?? "")}">`;
   }
   function rbtns(map, keys, mine) {
     return keys.map((k) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${map[k]}</button>`).join("");
@@ -1521,8 +1528,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
   function fbSummary(items, rd, ni = 0) {
     const ne = explain.pending().length, nr = rulesOff.pending().length + upOff.pending().length;
+    const no = anote.pending().filter(([id]) => !fb.get(id) || fb.get(id).sent).length;
     return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : "",
       ne ? `${ne} volledig uitleggen` : "",
+      no ? plural(no, "opmerking", "opmerkingen") : "",
       nr ? `${plural(nr, "regel", "regels")} weggehaald` : "",
       ni ? `${plural(ni, "wijziging", "wijzigingen")} in je interesses` : ""].filter(Boolean).join(", ");
   }
@@ -1531,20 +1540,22 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function fbIssueUrl(items, rd = []) {
     const di = intStore.get(), ni = intPending(di), ip = ni ? intParts(di) : null;
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
+    const notes = anote.pending().filter(([id]) => !items.some(([vid]) => vid === id));
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}${v.n ? ` — "${v.n}"` : ""}`)
+      .concat(notes.map(([, x]) => `- 💬 ${x.title} — "${x.n.trim()}"`))
       .concat(rulesOff.pending().map(([id]) => `- ✕ Leerregel weggehaald: ${id}`))
       .concat(upOff.pending().map(([, v]) => `- ✕ Uitgangspunt weggehaald: ${v.text || ""}`))
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
       .concat(explain.pending().map(([, x]) => `- 🔎 Volledig uitleggen: ${x.title}`))
       .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.n ? { n: v.n } : {}), ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(rulesOff.pending().length ? { rules_off: rulesOff.pending().map(([id]) => id) } : {}), ...(upOff.pending().length ? { uitgangspunten_off: upOff.pending().map(([id]) => id) } : {}), ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.n ? { n: v.n } : {}), ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(notes.length ? { notes: notes.map(([id, x]) => ({ id, n: x.n.trim() })) } : {}), ...(rulesOff.pending().length ? { rules_off: rulesOff.pending().map(([id]) => id) } : {}), ...(upOff.pending().length ? { uitgangspunten_off: upOff.pending().map(([id]) => id) } : {}), ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
-    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && !upOff.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && !upOff.pending().length && !anote.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
     const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
     if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
     return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
@@ -1554,6 +1565,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const ex = explain.all(); Object.values(ex).forEach((v) => { v.sent = true; }); explain.save(ex);
     const ro = rulesOff.all(); Object.values(ro).forEach((v) => { v.sent = true; }); rulesOff.save(ro);
     const uo = upOff.all(); Object.values(uo).forEach((v) => { v.sent = true; }); upOff.save(uo);
+    const an = anote.all(); Object.values(an).forEach((v) => { v.sent = true; }); anote.save(an);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
     const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
     intStore.save({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: di.sentAnswers });
@@ -1784,10 +1796,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (e.target.closest("#fb-send")) { markSent(); setTimeout(() => { if (location.hash === "#week") renderWeek(); }, 300); return; }
       fbClick(e); quizClick(e); askClick(e);
     };
-    r.oninput = (e) => {   // toelichting bij de duim ("Waarom?"): bewaren zodra je typt, gaat mee met versturen
+    r.oninput = (e) => {   // opmerking bij het artikel (met of zonder duim): bewaren zodra je typt, gaat mee met versturen
       const inp = e.target.closest("#fb-why"); if (!inp) return;
-      const id = inp.closest("#fb")?.dataset.id, cur = id && fb.get(id); if (!cur) return;
-      fb.set(id, { ...cur, n: inp.value.slice(0, 200), sent: false });
+      const id = inp.closest("#fb")?.dataset.id; if (!id) return;
+      const a = state.byId.get(id), n = inp.value.slice(0, 200), cur = fb.get(id);
+      anote.set(id, n.trim() ? { n, title: a?.headline || a?.title || "", at: new Date().toISOString(), sent: false } : null);
+      if (cur) fb.set(id, { ...cur, n, sent: false });
     };
     const af = $("#ask-form", r);
     if (af) af.onsubmit = (e) => { e.preventDefault(); askOpen($("#ask-q", r).value); };

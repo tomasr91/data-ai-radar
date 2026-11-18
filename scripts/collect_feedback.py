@@ -38,6 +38,24 @@ def _req(url, token=None, method="GET", data=None):
         return json.load(r) if r.status != 204 else None
 
 
+def parse_notes(body: str) -> list:
+    """Opmerkingen bij een artikel zonder duim ("notes": [{"id", "n"}])."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return []
+    out = []
+    for x in data.get("notes", []) if isinstance(data.get("notes"), list) else []:
+        if not isinstance(x, dict):
+            continue
+        aid = str(x.get("id", ""))
+        note = re.sub(r"\s+", " ", str(x.get("n") or "")).strip()[:rules.NOTE_MAX]
+        if re.fullmatch(r"[0-9a-f]{12}", aid) and note:
+            out.append({"id": aid, "n": note})
+    return out
+
+
 def parse_votes(body: str) -> list:
     """Stemmen uit het JSON-blok in de issuetekst; ongeldige regels vallen weg."""
     m = BLOCK_RE.search(body or "")
@@ -172,6 +190,17 @@ def main():
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
                 **_learn_fields(a, prev, v.get("s")),
             }
+        notes = parse_notes(issue.get("body", ""))
+        for x in notes:   # opmerking zonder duim: Claude maakt er 's nachts een uitgangspunt of leerregel van
+            a = articles.get(x["id"], {})
+            prev = store["notes"].get(x["id"], {})
+            store["notes"][x["id"]] = {
+                "n": x["n"], "at": now, "issue": issue["number"],
+                "title": a.get("headline") or a.get("title") or prev.get("title", ""),
+                "topics": a.get("topics") or prev.get("topics", []),
+                "labels": a.get("labels") or prev.get("labels", []),
+                **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
+            }
         reads = parse_reads(issue.get("body", ""))
         for rid in reads:
             a = articles.get(rid, {})
@@ -210,7 +239,9 @@ def main():
         print(f"Feedback: issue #{issue['number']}: {len(votes)} beoordelingen, {len(reads)} gelezen")
         if token:
             msg = (f"Verwerkt: {len(votes)} beoordeling(en) en {len(reads)} gelezen artikel(en). De radar houdt er vanaf nu rekening mee."
-                   if votes or reads else "Geen leesbare beoordelingen gevonden in dit issue.")
+                   if votes or reads else "Geen leesbare beoordelingen gevonden in dit issue." if not notes else "")
+            if notes:
+                msg += f" {len(notes)} opmerking(en) bij artikelen: Claude verwerkt die vannacht."
             if req:
                 msg += " De wijzigingen in je interesses verwerkt Claude vannacht."
             _req(f"{API}/repos/{repo}/issues/{issue['number']}/comments", token, "POST", {"body": msg})

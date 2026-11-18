@@ -41,6 +41,7 @@ def load(path=None) -> dict:
     data.setdefault("format_version", 1)
     data.setdefault("votes", {})
     data.setdefault("reads", {})
+    data.setdefault("notes", {})   # opmerkingen bij een artikel zonder duim (app, vanaf 18-11-2026)
     return data
 
 

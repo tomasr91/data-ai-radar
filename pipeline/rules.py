@@ -58,7 +58,7 @@ def validate(rule) -> list:
         p.append("minstens één trefwoord of label")
     elif len(kw) > 12 or any(len(_norm(k)) < 4 for k in kw):
         p.append("keywords: hooguit 12, elk minstens 4 tekens (geen losse korte woorden)")
-    if not rule.get("van"):
+    if not rule.get("van"):   # id van een duim, "o-<artikel>-<datum>" bij een opmerking, of "opmerking-<datum>"
         p.append("van: id van de duim waaruit de regel komt")
     return p
 
@@ -112,5 +112,10 @@ def write_todo(fb_data: dict, data: dict) -> int:
         if v.get("n") and vid not in done:
             items.append({"id": vid, "v": v.get("v"), "r": v.get("r"), "note": v["n"], "title": v.get("title", ""),
                           "topics": v.get("topics", [])[:2], "labels": v.get("labels", []), "soort": v.get("soort")})
+    for aid, x in sorted(fb_data.get("notes", {}).items(), key=lambda kv: kv[1].get("at", "")):
+        nid = f"o-{aid}-{x.get('at', '')[:10]}"   # opmerking zonder duim; nieuwe opmerking = nieuw item
+        if x.get("n") and nid not in done:
+            items.append({"id": nid, "v": None, "r": None, "note": x["n"], "title": x.get("title", ""),
+                          "topics": x.get("topics", [])[:2], "labels": x.get("labels", []), "soort": x.get("soort")})
     TODO.write_text(json.dumps({"items": items[:15]}, ensure_ascii=False, indent=1), encoding="utf-8")
     return len(items)

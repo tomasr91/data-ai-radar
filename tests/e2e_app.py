@@ -249,6 +249,7 @@ with sync_playwright() as p:
 
     # 14. Duimpje
     check("14. duimpjes onderaan het artikel", page.locator("#fb [data-vote]").count() == 2)
+    check("   opmerkingveld staat er ook zonder duim", page.locator("#fb-why").count() == 1)
     page.click('#fb [data-vote="-1"]')
     page.click('#fb [data-reason="te_basic"]')
     page.fill("#fb-why", "Einde  support van versies")
@@ -277,6 +278,16 @@ with sync_playwright() as p:
     page.evaluate("location.reload()")
     page.wait_for_selector(".card")
     check("   terug naar de feed", page.locator(".card").count() == len(arts))
+    # Opmerking bij een artikel zonder duim
+    page.evaluate("localStorage.removeItem('radar:anote')")
+    page.locator(f'.card[data-id="{enriched["id"]}"]').click()
+    page.wait_for_selector("#fb-why")
+    page.fill("#fb-why", "Dit soort stukken wil ik vaker")
+    page.click("#back"); page.wait_for_selector("#reader", state="hidden")
+    _b = unquote(page.locator("#fb-send").get_attribute("href") or "") if page.locator("#fb-send").count() else ""
+    check("   opmerking zonder duim gaat mee met versturen", "1 opmerking" in _b and f'"notes":[{{"id":"{enriched["id"]}","n":"Dit soort stukken wil ik vaker"}}]' in _b
+          and '"votes":[]' in _b, _b[-250:])
+    page.evaluate("localStorage.removeItem('radar:anote')"); page.evaluate("location.reload()"); page.wait_for_selector(".card")
 
     # 20. Lampje bij leeronderwerpen
     lamps = page.locator(".card .lamp").count()
@@ -461,10 +472,6 @@ with sync_playwright() as p:
     check("   uitgangspunt weghalen: weg uit de lijst, klaar om te versturen", page.locator("#up-sec li").count() == len(feed["uitgangspunten"]) - 1
           and "1 wijziging" in page.locator("#int-to-send").inner_text())
     page.evaluate("localStorage.removeItem('radar:up_off')")
-    page.goto(url); page.wait_for_selector(".card")
-    page.click(".to-note a"); page.wait_for_selector("#int-note")
-    check("   link 'Opmerking aan Claude' onder Actueel opent het veld", page.evaluate("document.activeElement && document.activeElement.id") == "int-note")
-    page.goto(url + "#interesses"); page.wait_for_selector("#int-note")
     rl = page.locator(".fb-eff .rule-list li")
     check("   Jouw regels: tekst, aantal artikelen en twijfel/verouderd", rl.count() == 2 and "Minder: Einde van support voor versies" in rl.nth(0).inner_text()
           and "raakt nu 2 artikelen" in rl.nth(0).inner_text() and "raakt al een tijd niets meer" in rl.nth(1).inner_text() and "met twijfel" in rl.nth(1).inner_text())

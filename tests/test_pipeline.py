@@ -911,6 +911,9 @@ class TestLeerregels(unittest.TestCase):
             try:
                 self.assertEqual(rules.write_todo(fb, data), 1)
                 self.assertEqual(json.loads(rules.TODO.read_text())["items"][0]["id"], "bbbbbbbbbbbb")
+                fb["notes"] = {"dddddddddddd": {"n": "meer hiervan", "at": "2026-11-18T10:00:00Z", "title": "X"}}
+                self.assertEqual(rules.write_todo(fb, data), 2)
+                self.assertEqual(json.loads(rules.TODO.read_text())["items"][1]["id"], "o-dddddddddddd-2026-11-18")
             finally:
                 rules.TODO = old
 
@@ -920,6 +923,8 @@ class TestLeerregels(unittest.TestCase):
         body = '```json\n{"votes": [{"id": "0123456789ab", "v": -1, "r": null, "n": "  Einde  support\\n van versies  "}], "rules_off": ["einde-support", "Fout id"]}\n```'
         self.assertEqual(cf.parse_votes(body)[0]["n"], "Einde support van versies")
         self.assertEqual(cf.parse_rules_off(body), ["einde-support"])
+        nb = '```json\n{"votes": [], "notes": [{"id": "0123456789ab", "n": "  vaker  dit "}, {"id": "x", "n": "fout"}, {"id": "0123456789ac", "n": " "}]}\n```'
+        self.assertEqual(cf.parse_notes(nb), [{"id": "0123456789ab", "n": "vaker dit"}])
         self.assertNotIn("n", cf.parse_votes('```json\n{"votes": [{"id": "0123456789ab", "v": 1}]}\n```')[0])
 
     def test_validate_script_en_taak(self):

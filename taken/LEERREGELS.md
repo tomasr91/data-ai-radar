@@ -2,7 +2,11 @@
 
 T kan bij een 👍 of 👎 in eigen woorden zeggen waarom ("Waarom?"). Jij zet dat om in een **leerregel** die ook nieuwe artikelen raakt. Het scoren zelf is vaste code (`pipeline/rules.py`); jij schrijft alleen de regels.
 
-Je mag hiervoor **alleen** `data/leerregels.json` aanpassen.
+Je mag hiervoor **alleen** `data/leerregels.json` en `context/uitgangspunten.md` aanpassen.
+
+`data/notes_todo.json` bevat twee soorten items:
+- **toelichting bij een duim** (`v` is 1 of -1): zoals hieronder.
+- **opmerking bij een artikel zonder duim** (`v` is `null`, `id` begint met `o-`): T zegt iets over dit artikel, bijv. "dit soort stukken wil ik vaker" of "dit is geen nieuws voor mij". Bepaal de richting uit de tekst. Gaat het over een **soort** artikel: een regel in `context/uitgangspunten.md` (onder het passende kopje, kort, samenvoegen; zie de regels in `taken/OVERZICHT.md`), en als het aan vaste woorden te herkennen is ook een leerregel. Gaat het alleen over dit ene artikel (bijv. "goede uitleg"): niets, `null`.
 
 ## Stappen
 
