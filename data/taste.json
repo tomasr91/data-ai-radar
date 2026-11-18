@@ -1,7 +1,58 @@
 {
- "generated_at": "2026-11-18T12:19:47.773545Z",
+ "generated_at": "2026-11-18T13:19:35.344005Z",
  "note": "Zie taken/UITLEGGEN.md, 'Past bij jou'. v: 1 = duim omhoog, -1 = duim omlaag; r = reden.",
  "votes": [
+  {
+   "id": "ad991551648f",
+   "title": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring",
+   "source_id": "",
+   "topics": [],
+   "soort": "aankondiging",
+   "labels": [
+    "genie-one",
+    "data-agent",
+    "human-in-the-loop"
+   ],
+   "score": 81,
+   "v": 1,
+   "r": null
+  },
+  {
+   "id": "b8bd8dd7742b",
+   "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
+   "source_id": "databricks_blog",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag"
+   ],
+   "soort": "aankondiging",
+   "labels": [
+    "genie-agents",
+    "rag-op-delta",
+    "metric-views"
+   ],
+   "score": 86,
+   "v": 1,
+   "r": null
+  },
+  {
+   "id": "ee8f41fce441",
+   "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
+   "source_id": "databricks_blog",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering"
+   ],
+   "soort": "praktisch",
+   "labels": [
+    "agent-skills",
+    "skills-standaard",
+    "genie-one"
+   ],
+   "score": 90,
+   "v": 1,
+   "r": "praktisch"
+  },
   {
    "id": "49daca0e1c3d",
    "title": "Rekenen in code, oordelen door het model: lessen uit een marketingagent",
@@ -267,7 +318,7 @@
     "claude-dbt-skills",
     "agent-evals"
    ],
-   "score": 92,
+   "score": 91,
    "v": 1,
    "r": null
   },
@@ -288,58 +339,25 @@
    "score": 91,
    "v": 1,
    "r": "meer_hiervan"
-  },
-  {
-   "id": "ab3aa67e0549",
-   "title": "Metric views leggen nu vast hoe ze aan elkaar koppelen",
-   "source_id": "azure_databricks_release_notes",
-   "topics": [
-    "ai_context_engineering",
-    "data_architecture_modeling"
-   ],
-   "soort": null,
-   "labels": [],
-   "score": 86,
-   "v": 1,
-   "r": null
-  },
-  {
-   "id": "ceb4b784fbab",
-   "title": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
-   "source_id": "dbt_labs_blog",
-   "topics": [
-    "ai_on_data_platform",
-    "dbt_analytics_engineering"
-   ],
-   "soort": "praktijk",
-   "labels": [
-    "claude-code-self-service",
-    "dbt-mcp",
-    "claude-code-skills"
-   ],
-   "score": 95,
-   "v": 1,
-   "r": null
-  },
-  {
-   "id": "412d4b1345c3",
-   "title": "AI in je dbt-model: stuur alleen nieuwe rijen naar het taalmodel",
-   "source_id": "dbt_labs_blog",
-   "topics": [
-    "ai_on_data_platform",
-    "dbt_analytics_engineering"
-   ],
-   "soort": "praktisch",
-   "labels": [
-    "ai-functies-in-sql",
-    "incrementele-modellen"
-   ],
-   "score": 87,
-   "v": 1,
-   "r": null
   }
  ],
  "reads": [
+  {
+   "id": "966a182dbe00",
+   "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
+   "source_id": "simon_whiteley",
+   "topics": [
+    "data_architecture_modeling",
+    "ai_on_data_platform"
+   ],
+   "soort": "mening",
+   "labels": [
+    "presentatielaag",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "score": 85
+  },
   {
    "id": "078567da13b8",
    "title": "OpenAI-tools werken nu op je Databricks-data, via Genie en Unity Gateway",
@@ -478,18 +496,6 @@
     "claude-code-databricks"
    ],
    "score": 94
-  },
-  {
-   "id": "3fd19a8cb4a2",
-   "title": "Zo houdt Anthropic een agent die zelf handelt in toom",
-   "source_id": "claude_blog",
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development"
-   ],
-   "soort": "achtergrond",
-   "labels": [],
-   "score": 76
   }
  ],
  "labels_in_use": [

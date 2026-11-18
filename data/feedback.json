@@ -123,6 +123,25 @@
     "ai_evaluation_observability"
    ]
   },
+  "966a182dbe00": {
+   "at": "2026-11-18T13:19:33.398431Z",
+   "issue": 35,
+   "labels": [
+    "presentatielaag",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "s": 85,
+   "soort": "mening",
+   "source_id": "simon_whiteley",
+   "text": "Who Gets to Plant in the Gold Layer? McMillan: geef analisten een eigen tuin naast Gold, met een weg terug Martin McMillan van Advancing Analytics stelt een presentatielaag op Gold voor waarin analisten zelf bouwen. Wat breed bruikbaar blijkt, zetten engineers na review in Gold. Blog van Martin McMillan (Senior Consultant Data Intelligence, Advancing Analytics), 2 november 2026. Kernpunt: 'Gold eerst', met ruimte om te onderzoeken en een ondersteunde route om Gold te verbeteren. De presentatielaag gebruikt Gold; Gold hangt nooit af van de presentatielaag. Analisten bouwen in een ontwikkelplek met rechten; engineers reviewen; brede definities gaan na review naar Gold. Directe wijzigingen in productie blokkeer je met Unity Catalog en werkruimterechten. Gezag van een tabel komt uit afspraken,",
+   "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
+   "topics": [
+    "data_architecture_modeling",
+    "ai_on_data_platform",
+    "data_governance_privacy"
+   ]
+  },
   "a9b6458ba033": {
    "at": "2026-11-04T20:43:05.062194Z",
    "issue": 24,
@@ -206,7 +225,7 @@
    ]
   }
  },
- "updated_at": "2026-11-16T10:38:17.981129Z",
+ "updated_at": "2026-11-18T13:19:33.398431Z",
  "votes": {
   "059023edac5d": {
    "at": "2026-11-01T13:40:09.196969Z",
@@ -425,6 +444,37 @@
    ],
    "v": 1
   },
+  "ad991551648f": {
+   "at": "2026-11-18T13:19:33.398431Z",
+   "issue": 35,
+   "r": null,
+   "s": 81,
+   "source_id": "",
+   "title": "",
+   "topics": [],
+   "v": 1
+  },
+  "b8bd8dd7742b": {
+   "at": "2026-11-18T13:19:33.398431Z",
+   "issue": 35,
+   "labels": [
+    "genie-agents",
+    "rag-op-delta",
+    "metric-views"
+   ],
+   "r": null,
+   "s": 86,
+   "soort": "aankondiging",
+   "source_id": "databricks_blog",
+   "text": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work Genie Agents lezen nu ook pdf's en documenten uit je volumes Genie Agents kunnen in Public Preview documenten in Unity Catalog-volumes doorzoeken, naast je tabellen en metric views. MCP-koppelingen naar onder meer Slack en GitHub zijn algemeen beschikbaar. Blog van Databricks, 11 november 2026. Analyse van ongestructureerde documenten in Unity Catalog-volumes: Public Preview. Native MCP-connectoren: GA. OpenSharing voor Genie Agents en Genie Clean Rooms: Beta. Bestanden worden gelezen met ai_parse_document (tabellen, figuren, kop- en voetteksten) en geïndexeerd; antwoorden noemen de pagina. Nauwkeurigheid komt uit metric views, SQL-expressies, voorbeeldquery's, instructies en benchmarks met",
+   "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "v": 1
+  },
   "c33e4a9941ba": {
    "at": "2026-11-01T08:07:53.022655Z",
    "issue": 11,
@@ -504,6 +554,27 @@
     "data_governance_privacy"
    ],
    "v": -1
+  },
+  "ee8f41fce441": {
+   "at": "2026-11-18T13:19:33.398431Z",
+   "issue": 35,
+   "labels": [
+    "agent-skills",
+    "skills-standaard",
+    "genie-one"
+   ],
+   "r": "praktisch",
+   "s": 90,
+   "soort": "praktisch",
+   "source_id": "databricks_blog",
+   "text": "Teach Genie One your workflows: The ultimate guide for skills in Genie One Leer Genie One je vaste werkwijze met een skill in Unity Catalog Databricks legt uit hoe je in Genie One een skill maakt: een SKILL.md met naam, beschrijving en stappen. Via Unity Gateway Skills (Beta) wordt een skill een object in Unity Catalog, met rechten en audit. Blog van Databricks (Noah Solomon), 16 november 2026. Een skill is een map met een SKILL.md; die begint met een naam en een beschrijving, waarmee Genie One bepaalt of de skill relevant is. Hulpbestanden worden alleen gelezen als een stap ze nodig heeft. Skills gebruiken het open Agent Skills-formaat (agentskills.io) en staan in Genie One onder Customizations > Skills. Via Unity Gateway Skills (Beta) wordt een gepubliceerde skill een Unity Catalog-objec",
+   "title": "Leer Genie One je vaste werkwijze met een skill in Unity Catalog",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "v": 1
   },
   "ffe8a09e969f": {
    "at": "2026-11-16T10:37:19.892074Z",
