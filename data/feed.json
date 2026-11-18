@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T05:15:13.311497Z",
+ "generated_at": "2026-11-18T06:28:23.224091Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -503,7 +503,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -760,7 +760,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.01,
@@ -1512,7 +1512,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -1636,7 +1636,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -1848,7 +1848,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.5,
     "feedback": 0.01,
@@ -1936,7 +1936,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.72,
     "feedback": -0.04,
@@ -2088,85 +2088,6 @@
     "ai-functies-in-sql",
     "incrementele-modellen"
    ]
-  },
-  {
-   "id": "069e6a8001ed",
-   "title": "What Okta learned governing context for AI agents at scale",
-   "url": "https://www.getdbt.com/blog/okta-ai-agent-context-governance",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T20:01:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Okta legt de context voor AI-agents vast naast de datamodellen in dbt. Elke wijziging gaat via een pull request.",
-   "personal_relevance": "Dit is bijna precies je eigen plan voor een AI-contextlaag op dbt.",
-   "experiment": "Schrijf voor drie Gold-modellen zo'n agent-blok. Geef alleen die definities (geen data) plus een vraag aan een AI, en vergelijk het antwoord met en zonder het blok.",
-   "limitations": [
-    "Okta noemt geen meetbare resultaten; het effect is niet met cijfers onderbouwd.",
-    "Van Agents Schema en de gebruikte dbt-functies is geen beschikbaarheidsstatus genoemd.",
-    "Gebouwd op Snowflake Cortex; de vertaling naar Databricks moet je zelf maken."
-   ],
-   "availability_status": "experimenteel",
-   "topics": [
-    "ai_context_engineering",
-    "dbt_analytics_engineering",
-    "ai_agents_rag",
-    "metadata_lineage_catalogs"
-   ],
-   "groups": [
-    "ai_context",
-    "dbt",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.35,
-    "source": 0.85,
-    "quality": 0.8,
-    "feedback": -0.04,
-    "fit": 0.3
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Okta zet het spiekbriefje van AI-agents in dbt",
-   "story": [
-    "Een AI-agent is zo goed als het spiekbriefje dat je hem meegeeft. Bij Okta lagen die spiekbriefjes eerst verspreid over losse instellingen. Niemand zag wie wat had aangepast, en alle instructies stonden in één groot blok.",
-    "Okta verhuisde alles naar dbt, in drie lagen. In de YAML van elk model staat nu een eigen blok voor agents: waarvoor de tabel wel en niet bedoeld is. Daarnaast zijn er Markdown-bestanden met bedrijfsbrede feiten. En de definities van maatstaven staan in de semantische laag van dbt.",
-    "Het slimme is dat context en model nu naast elkaar staan. Verandert een model, dan zie je meteen of het spiekbriefje ook moet veranderen. En een fout antwoord herstel je met een gewone pull request.",
-    "Dit lijkt sterk op je eigen plan voor een AI-contextlaag, alleen draait Okta op Snowflake. Je generatorscripts maken al metadata-YAML, dus zo'n agent-blok past daar goed bij. Okta noemt wel geen meetbare resultaten."
-   ],
-   "key_facts": [
-    "Verslag van een talk van Okta op dbt Summit 2026.",
-    "Okta zag drie problemen: context versnipperd over Snowflake en dbt, geen controleerbare geschiedenis, en alle instructies in één blok.",
-    "Drie lagen in dbt: een 'agent'-blok in model- en kolom-YAML, Markdown-bestanden met bedrijfsbrede feiten en routeringsregels, en semantische views in de semantic layer van dbt.",
-    "De context gaat naar een open metadatastandaard (Agents Schema), die Claude via MCP leest.",
-    "Er worden geen meetresultaten genoemd."
-   ],
-   "terms": [
-    {
-     "term": "semantische laag",
-     "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.8,
-    "why": "Context voor agents vastleggen in dbt, zoals je duim bij synoniemen en regels per veld."
-   },
-   "labels": [
-    "agent-context-laag",
-    "context-als-code"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -4
-   }
   },
   {
    "id": "53acc8538264",
@@ -2501,6 +2422,85 @@
    }
   },
   {
+   "id": "069e6a8001ed",
+   "title": "What Okta learned governing context for AI agents at scale",
+   "url": "https://www.getdbt.com/blog/okta-ai-agent-context-governance",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:01:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Okta legt de context voor AI-agents vast naast de datamodellen in dbt. Elke wijziging gaat via een pull request.",
+   "personal_relevance": "Dit is bijna precies je eigen plan voor een AI-contextlaag op dbt.",
+   "experiment": "Schrijf voor drie Gold-modellen zo'n agent-blok. Geef alleen die definities (geen data) plus een vraag aan een AI, en vergelijk het antwoord met en zonder het blok.",
+   "limitations": [
+    "Okta noemt geen meetbare resultaten; het effect is niet met cijfers onderbouwd.",
+    "Van Agents Schema en de gebruikte dbt-functies is geen beschikbaarheidsstatus genoemd.",
+    "Gebouwd op Snowflake Cortex; de vertaling naar Databricks moet je zelf maken."
+   ],
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_context_engineering",
+    "dbt_analytics_engineering",
+    "ai_agents_rag",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.35,
+    "source": 0.85,
+    "quality": 0.8,
+    "feedback": -0.04,
+    "fit": 0.3
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Okta zet het spiekbriefje van AI-agents in dbt",
+   "story": [
+    "Een AI-agent is zo goed als het spiekbriefje dat je hem meegeeft. Bij Okta lagen die spiekbriefjes eerst verspreid over losse instellingen. Niemand zag wie wat had aangepast, en alle instructies stonden in één groot blok.",
+    "Okta verhuisde alles naar dbt, in drie lagen. In de YAML van elk model staat nu een eigen blok voor agents: waarvoor de tabel wel en niet bedoeld is. Daarnaast zijn er Markdown-bestanden met bedrijfsbrede feiten. En de definities van maatstaven staan in de semantische laag van dbt.",
+    "Het slimme is dat context en model nu naast elkaar staan. Verandert een model, dan zie je meteen of het spiekbriefje ook moet veranderen. En een fout antwoord herstel je met een gewone pull request.",
+    "Dit lijkt sterk op je eigen plan voor een AI-contextlaag, alleen draait Okta op Snowflake. Je generatorscripts maken al metadata-YAML, dus zo'n agent-blok past daar goed bij. Okta noemt wel geen meetbare resultaten."
+   ],
+   "key_facts": [
+    "Verslag van een talk van Okta op dbt Summit 2026.",
+    "Okta zag drie problemen: context versnipperd over Snowflake en dbt, geen controleerbare geschiedenis, en alle instructies in één blok.",
+    "Drie lagen in dbt: een 'agent'-blok in model- en kolom-YAML, Markdown-bestanden met bedrijfsbrede feiten en routeringsregels, en semantische views in de semantic layer van dbt.",
+    "De context gaat naar een open metadatastandaard (Agents Schema), die Claude via MCP leest.",
+    "Er worden geen meetresultaten genoemd."
+   ],
+   "terms": [
+    {
+     "term": "semantische laag",
+     "explanation": "Een laag waarin maatstaven zoals omzet één keer vastliggen, met de juiste berekening en joins. Tools en AI vragen het getal daar op in plaats van zelf SQL te schrijven."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.8,
+    "why": "Context voor agents vastleggen in dbt, zoals je duim bij synoniemen en regels per veld."
+   },
+   "labels": [
+    "agent-context-laag",
+    "context-als-code"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -4
+   }
+  },
+  {
    "id": "6df581b9d8ed",
    "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
@@ -2740,104 +2740,6 @@
    }
   },
   {
-   "id": "b8bd8dd7742b",
-   "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
-   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-11T15:00:00Z",
-   "fetched_at": "2026-11-12T03:13:30.271950Z",
-   "summary": "Genie Agents kunnen in Public Preview documenten in Unity Catalog-volumes doorzoeken, naast je tabellen en metric views. MCP-koppelingen naar onder meer Slack en GitHub zijn algemeen beschikbaar.",
-   "personal_relevance": "Precies je kerninteresse: een AI-toepassing op Gold-tabellen én documenten in je lakehouse, binnen Unity Catalog-rechten.",
-   "experiment": "Zet een paar openbare pdf's (bijvoorbeeld CBS-publicaties) in een volume, lees ze met ai_parse_document en kijk wat de uitkomst is. Combineer daarna in een Genie Agent die documenten met een tabel uit dezelfde bron.",
-   "limitations": [
-    "De documentfunctie is Public Preview; limieten voor aantal of grootte van bestanden staan er niet in.",
-    "Klantcijfers in het artikel zijn eigen claims zonder meting; geen configuratie of code."
-   ],
-   "availability_status": "preview",
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "agents"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.72,
-    "source": 0.85,
-    "quality": 0.62,
-    "feedback": -0.05,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:47:31Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
-     "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
-     "published_at": "2026-11-11T15:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
-   "story": [
-    "Een Genie Agent beantwoordde tot nu toe vooral vragen over tabellen. Nu kan hij ook documenten gebruiken die in een Unity Catalog-volume staan, zoals pdf's, presentaties en afbeeldingen. Dat is in Public Preview. In één gesprek combineer je zo cijfers uit Gold met uitleg uit rapporten.",
-    "Onder de motorkap leest ai_parse_document de bestanden en herkent tabellen, figuren en kopteksten. De inhoud wordt geïndexeerd, zonder dat je zelf een aparte vectorindex bouwt. Bij een vraag haalt de agent de passende stukken op, zet ze in zijn context en rekent daarnaast met de tabellen. Het antwoord noemt de pagina waar het vandaan komt.",
-    "Voor de cijfers leunt de agent op metric views: maatstaven, dimensies, beschrijvingen en synoniemen die je één keer vastlegt. Daarnaast geef je voorbeeldquery's en instructies, en een set vragen met de juiste SQL. Die set draait na elke wijziging opnieuw, zodat je ziet of iets slechter werd. Dat lijkt op dbt-tests, maar dan voor de antwoorden van de agent.",
-    "Gebruikers zien alleen bestanden waar ze in Unity Catalog recht op hebben. De agent komt bij gebruikers via Genie One, Slack, API's of Genie MCP. Native MCP-koppelingen naar Slack, Google Drive, GitHub en Microsoft 365 zijn algemeen beschikbaar; de beheerder kiest per agent welke tools mogen. Een voorbeeld uit het artikel: een agent bevestigt in de data dat het aantal klinische studies daalt, en haalt daarna de redenen uit verslagen van artsen."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 11 november 2026.",
-    "Analyse van ongestructureerde documenten in Unity Catalog-volumes: Public Preview. Native MCP-connectoren: GA. OpenSharing voor Genie Agents en Genie Clean Rooms: Beta.",
-    "Bestanden worden gelezen met ai_parse_document (tabellen, figuren, kop- en voetteksten) en geïndexeerd; antwoorden noemen de pagina.",
-    "Nauwkeurigheid komt uit metric views, SQL-expressies, voorbeeldquery's, instructies en benchmarks met gouden SQL-vragen die na wijzigingen opnieuw draaien.",
-    "Gebruikers zien alleen bestanden waar ze in Unity Catalog toegang toe hebben; connectoren lopen via Unity Gateway.",
-    "MCP-connectoren onder meer naar Slack, Google Drive, Gmail, Atlassian, GitHub en Microsoft 365; app-data via Lakeflow Connect (Salesforce, Workday, SAP, Marketo)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "ai_parse_document",
-     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
-    },
-    {
-     "term": "vectorindex",
-     "explanation": "Een zoekindex op embeddings, waarmee je stukken tekst vindt die qua betekenis op een vraag lijken."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    },
-    {
-     "term": "Genie MCP",
-     "explanation": "Een MCP-server van Databricks waarmee andere AI-assistenten Genie en Genie Agents kunnen aanroepen."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.7,
-    "why": "AI op eigen tabellen en documenten met metric views, zoals je duim bij 'AI in je dbt-model'."
-   },
-   "labels": [
-    "genie-agents",
-    "rag-op-delta",
-    "metric-views"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -5
-   }
-  },
-  {
    "id": "e355f3b1aafd",
    "title": "dbt v1.13.0b1",
    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
@@ -2981,7 +2883,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.78,
     "feedback": -0.05,
@@ -3294,6 +3196,104 @@
     "fase": 7,
     "quote": "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7",
     "why": "Laat zien hoe je bepaalt welke tools een eigen agent krijgt."
+   }
+  },
+  {
+   "id": "b8bd8dd7742b",
+   "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
+   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T15:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Genie Agents kunnen in Public Preview documenten in Unity Catalog-volumes doorzoeken, naast je tabellen en metric views. MCP-koppelingen naar onder meer Slack en GitHub zijn algemeen beschikbaar.",
+   "personal_relevance": "Precies je kerninteresse: een AI-toepassing op Gold-tabellen én documenten in je lakehouse, binnen Unity Catalog-rechten.",
+   "experiment": "Zet een paar openbare pdf's (bijvoorbeeld CBS-publicaties) in een volume, lees ze met ai_parse_document en kijk wat de uitkomst is. Combineer daarna in een Genie Agent die documenten met een tabel uit dezelfde bron.",
+   "limitations": [
+    "De documentfunctie is Public Preview; limieten voor aantal of grootte van bestanden staan er niet in.",
+    "Klantcijfers in het artikel zijn eigen claims zonder meting; geen configuratie of code."
+   ],
+   "availability_status": "preview",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.72,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": -0.05,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
+     "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work",
+     "published_at": "2026-11-11T15:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie Agents lezen nu ook pdf's en documenten uit je volumes",
+   "story": [
+    "Een Genie Agent beantwoordde tot nu toe vooral vragen over tabellen. Nu kan hij ook documenten gebruiken die in een Unity Catalog-volume staan, zoals pdf's, presentaties en afbeeldingen. Dat is in Public Preview. In één gesprek combineer je zo cijfers uit Gold met uitleg uit rapporten.",
+    "Onder de motorkap leest ai_parse_document de bestanden en herkent tabellen, figuren en kopteksten. De inhoud wordt geïndexeerd, zonder dat je zelf een aparte vectorindex bouwt. Bij een vraag haalt de agent de passende stukken op, zet ze in zijn context en rekent daarnaast met de tabellen. Het antwoord noemt de pagina waar het vandaan komt.",
+    "Voor de cijfers leunt de agent op metric views: maatstaven, dimensies, beschrijvingen en synoniemen die je één keer vastlegt. Daarnaast geef je voorbeeldquery's en instructies, en een set vragen met de juiste SQL. Die set draait na elke wijziging opnieuw, zodat je ziet of iets slechter werd. Dat lijkt op dbt-tests, maar dan voor de antwoorden van de agent.",
+    "Gebruikers zien alleen bestanden waar ze in Unity Catalog recht op hebben. De agent komt bij gebruikers via Genie One, Slack, API's of Genie MCP. Native MCP-koppelingen naar Slack, Google Drive, GitHub en Microsoft 365 zijn algemeen beschikbaar; de beheerder kiest per agent welke tools mogen. Een voorbeeld uit het artikel: een agent bevestigt in de data dat het aantal klinische studies daalt, en haalt daarna de redenen uit verslagen van artsen."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 11 november 2026.",
+    "Analyse van ongestructureerde documenten in Unity Catalog-volumes: Public Preview. Native MCP-connectoren: GA. OpenSharing voor Genie Agents en Genie Clean Rooms: Beta.",
+    "Bestanden worden gelezen met ai_parse_document (tabellen, figuren, kop- en voetteksten) en geïndexeerd; antwoorden noemen de pagina.",
+    "Nauwkeurigheid komt uit metric views, SQL-expressies, voorbeeldquery's, instructies en benchmarks met gouden SQL-vragen die na wijzigingen opnieuw draaien.",
+    "Gebruikers zien alleen bestanden waar ze in Unity Catalog toegang toe hebben; connectoren lopen via Unity Gateway.",
+    "MCP-connectoren onder meer naar Slack, Google Drive, Gmail, Atlassian, GitHub en Microsoft 365; app-data via Lakeflow Connect (Salesforce, Workday, SAP, Marketo)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    },
+    {
+     "term": "vectorindex",
+     "explanation": "Een zoekindex op embeddings, waarmee je stukken tekst vindt die qua betekenis op een vraag lijken."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "Genie MCP",
+     "explanation": "Een MCP-server van Databricks waarmee andere AI-assistenten Genie en Genie Agents kunnen aanroepen."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "AI op eigen tabellen en documenten met metric views, zoals je duim bij 'AI in je dbt-model'."
+   },
+   "labels": [
+    "genie-agents",
+    "rag-op-delta",
+    "metric-views"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -5
    }
   },
   {
@@ -3629,7 +3629,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -5248,6 +5248,109 @@
    }
   },
   {
+   "id": "ffe8a09e969f",
+   "title": "Claude Fable 5.2 and Mythos 5.2",
+   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
+   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
+   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
+   "limitations": [
+    "Alle benchmarks zijn van Anthropic zelf.",
+    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
+    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Fable 5.2 (modeldocumentatie)",
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
+    },
+    {
+     "label": "Advisor in Claude Code",
+     "url": "https://code.claude.com/docs/en/advisor"
+    },
+    {
+     "label": "Multi-agent orchestration",
+     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+    },
+    {
+     "label": "System card",
+     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.63,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T04:00:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+   "story": [
+    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
+    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
+    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
+    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
+    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
+   ],
+   "key_facts": [
+    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
+    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
+    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
+    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
+    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
+    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "fast mode",
+     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+    },
+    {
+     "term": "Orchestrator",
+     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
+   },
+   "labels": [
+    "claude-modellen",
+    "multi-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -1
+   }
+  },
+  {
    "id": "f2cef2be2ab7",
    "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
@@ -5286,7 +5389,7 @@
    "groups": [
     "databricks"
    ],
-   "relevance_score": 81,
+   "relevance_score": 80,
    "score_parts": {
     "topic": 0.9,
     "recency": 0.52,
@@ -5410,109 +5513,6 @@
     "fase": 4,
     "quote": "Voor Dataflow is dit in fase 4 een alternatief voor dbt snapshots om de historie van rijen bij te houden.",
     "why": "Fase 4 gaat over historie bijhouden (SCD) met dbt snapshots."
-   }
-  },
-  {
-   "id": "ffe8a09e969f",
-   "title": "Claude Fable 5.2 and Mythos 5.2",
-   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
-   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
-   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
-   "limitations": [
-    "Alle benchmarks zijn van Anthropic zelf.",
-    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
-    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Fable 5.2 (modeldocumentatie)",
-     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
-    },
-    {
-     "label": "Advisor in Claude Code",
-     "url": "https://code.claude.com/docs/en/advisor"
-    },
-    {
-     "label": "Multi-agent orchestration",
-     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
-    },
-    {
-     "label": "System card",
-     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.63,
-    "source": 0.51,
-    "quality": 0.6,
-    "feedback": -0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T04:00:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
-   "story": [
-    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
-    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
-    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
-    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
-    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
-   ],
-   "key_facts": [
-    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
-    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
-    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
-    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
-    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
-    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "fast mode",
-     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
-    },
-    {
-     "term": "Orchestrator",
-     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
-   },
-   "labels": [
-    "claude-modellen",
-    "multi-agent"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -1
    }
   },
   {
@@ -12659,20 +12659,17 @@
     }
    },
    "uitleggen": {
-    "status": "deels",
-    "summary": "2 artikelen vol uitgelegd (allebei met voorbeeld en via WebSearch geopend), 19 overgeslagen (17 zonder openen): vooral Fabric-aankondigingen rond Ignite, marketing, dubbel nieuws en kleine updates.",
-    "finished_at": "2026-11-18T03:27:18Z",
+    "status": "ok",
+    "summary": "Ingehaald om 07:27: de werklijst was leeg, dus niets meer te verwerken. Eerder vannacht: 2 artikelen vol uitgelegd en 19 overgeslagen.",
+    "finished_at": "2026-11-18T06:28:05Z",
     "problems": [
-     "Dataflow-voortgang niet bijgewerkt: add_repo was niet beschikbaar in deze sessie en clonen van tomasr91/personal-data-platform mislukte ('could not read Username for https://github.com: terminal prompts disabled').",
-     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); vier artikelen zijn via WebSearch-links geopend (pas met de uitgebreide zoekmodus gevonden)."
+     "Dataflow-voortgang opnieuw niet bijgewerkt: add_repo is niet beschikbaar en clonen van tomasr91/personal-data-platform werd geweigerd. Stap volgens de taak overgeslagen."
     ],
     "counts": {
-     "uitgelegd": 2,
-     "overgeslagen": 19,
-     "met_voorbeeld": 2,
-     "via_websearch": 4,
-     "overgeslagen_zonder_openen": 17,
-     "op_werklijst_gelaten": 0
+     "uitgelegd": 0,
+     "overgeslagen": 0,
+     "eerder_vannacht_uitgelegd": 2,
+     "eerder_vannacht_overgeslagen": 19
     }
    }
   }
@@ -12705,7 +12702,7 @@
    "dbt_labs_blog": 0.89,
    "databricks_blog": 0.85,
    "powerbi_blog": 0.3,
-   "dbt_developer_blog": 0.68,
+   "dbt_developer_blog": 0.67,
    "claude_code_releases": 0.27,
    "azure_databricks_release_notes": 0.58,
    "fabric_blog": -0.08,
@@ -13017,16 +13014,6 @@
     ]
    },
    {
-    "title": "Genie Ontology is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Genie Search is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-search-is-now-generally-available",
@@ -13145,6 +13132,16 @@
     "title": "AI Functions Unity Catalog permissions is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#ai-functions-unity-catalog-permissions-is-now-generally-available",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Ontology is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
     "relevance_score": 81,
     "decision": "excluded",
     "excluded_by": [
