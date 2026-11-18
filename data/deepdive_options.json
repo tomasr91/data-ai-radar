@@ -1,7 +1,42 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-16T04:13:48Z",
+  "generated_at": "2026-11-18T04:27:14Z",
   "options": [
+    {
+      "id": "begrippen-door-eigenaren",
+      "title": "Wie legt de betekenis vast? Bedrijfsbegrippen voor AI laten beheren",
+      "question": "Hoe organiseer je dat eigenaren in de organisatie de definities en regels voor een AI-assistent schrijven en goedkeuren, en waar leg je die vast naast je dbt-modellen en Unity Catalog?",
+      "why": "IFS Copperleaf liet deze week de business zelf definities schrijven voor Genie Ontology, met een 'AI Council' die ze goedkeurt; dat past bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+      "topics": [
+        "ai_context_engineering",
+        "data_governance_privacy",
+        "metadata_lineage_catalogs"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "gold-serveren-via-lakebase",
+      "title": "Gold-data snel naar een app of agent: synced tables in Lakebase",
+      "question": "Wat is Lakebase, hoe zet een synced table een Gold-tabel als snelle kopie in Postgres, en wanneer kies je dat in plaats van een SQL-warehouse of een aparte zoekindex?",
+      "why": "In de Lakebase-hackathon van 17 november gebruikten teams Gold-tabellen via Lakebase als zoekbron voor apps en agents, zelfs in plaats van Elasticsearch.",
+      "topics": [
+        "ai_on_data_platform",
+        "databricks_data_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "toegangsmodus-van-compute",
+      "title": "Standard, Dedicated of Auto: welke toegangsmodus krijgt je compute?",
+      "question": "Wat is de toegangsmodus (access mode) van compute in Databricks, wat is het verschil tussen Standard en Dedicated, en wat betekent het dat nieuwe jobs nu standaard op Auto staan?",
+      "why": "Sinds 9 november krijgt nieuwe jobs-compute standaard de toegangsmodus Auto in plaats van Dedicated; goed om te snappen wat er dan voor je gekozen wordt.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_governance_privacy"
+      ],
+      "area": "data_engineering"
+    },
     {
       "id": "push-cdc-met-zerobus",
       "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
@@ -12,40 +47,6 @@
         "databricks_data_engineering"
       ],
       "area": "data_engineering"
-    },
-    {
-      "id": "kolom-lineage-impactanalyse",
-      "title": "Kolom-lineage gebruiken voor impactanalyse",
-      "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
-      "why": "De trend 'context voor AI-agents komt in het dataplatform zelf' leunt op metadata en lineage; weten wat lineage wel en niet ziet is daarvoor de basis.",
-      "topics": [
-        "metadata_lineage_catalogs",
-        "ai_context_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "skills-kiezen-voordat-tools-laden",
-      "title": "Te veel gereedschap: hoe een agent kiest welke skills en tools hij laadt",
-      "question": "Waarom wordt een agent slechter als hij te veel skills of tools tegelijk ziet, en hoe laat je hem eerst kiezen wat hij nodig heeft?",
-      "why": "Stripe zag bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd en laat Kai daarom eerst skills kiezen; dat hoort bij de trend over geheugen en skills voor agents.",
-      "topics": [
-        "ai_context_engineering",
-        "ai_agents_rag"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "ai-extract-meten-en-verbeteren",
-      "title": "Eerst meten, dan repareren: velden uit documenten halen met ai_extract",
-      "question": "Hoe bouw je een vaste testset voor een AI-functie die velden uit documenten haalt, en hoe voorkom je dat een reparatie op één veld het totaal slechter maakt?",
-      "why": "Databricks liet zien hoe een vaste, door mensen gecontroleerde testset de fouten bij ai_extract flink verminderde; dat past bij de trend 'agents worden beter door meten'.",
-      "topics": [
-        "ai_on_data_platform",
-        "ai_evaluation_observability",
-        "data_quality_observability"
-      ],
-      "area": "ai_op_data"
     },
     {
       "id": "claude-code-onbewaakt-laten-werken",
@@ -61,29 +62,6 @@
   ],
   "history": [
     {
-      "id": "semantische-laag-als-ai-context",
-      "title": "De semantische laag als geheugen voor AI",
-      "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en waar leg je ze vast: dbt, metric views in Unity Catalog of Power BI?",
-      "why": "Deze week zat een AI-agent bij AWS 3,5 miljoen dollar naast zonder vaste definities, en metric views in Databricks kregen window measures.",
-      "topics": [
-        "ai_context_engineering",
-        "dbt_analytics_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "geheugen-voor-ai-agents",
-      "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
-      "question": "Hoe onthoudt een AI-agent iets tussen taken zonder zijn contextvenster vol te stoppen, en welke soorten geheugen zijn er?",
-      "why": "Databricks bracht agent memory pipelines uit in Beta, en LangChain schreef deze week drie stukken over geheugen en context.",
-      "topics": [
-        "ai_agents_rag",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
       "id": "claude-code-skills-hooks-subagents",
       "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
       "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
@@ -93,41 +71,6 @@
         "ai_agents_rag"
       ],
       "area": "claude"
-    },
-    {
-      "id": "datacontracten",
-      "title": "Datacontracten tussen bron en model",
-      "question": "Wat zijn datacontracten, welk probleem lossen ze op, en hoe verschillen ze van model contracts en tests in dbt?",
-      "why": "Past bij de migratie: vaste afspraken voorkomen dat een wijziging in een bronsysteem stilletjes je modellen breekt.",
-      "topics": [
-        "data_quality_observability",
-        "dbt_analytics_engineering",
-        "data_architecture_modeling"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "open-tabelformaten",
-      "title": "Delta, Iceberg en het open lakehouse",
-      "question": "Wat is het verschil tussen Delta en Iceberg, en waarom maakt de catalogus steeds meer uit dan het formaat?",
-      "why": "Databricks ondersteunt nu transacties over Delta- én Iceberg-tabellen, en schreef over wat een catalogus 'open' maakt.",
-      "topics": [
-        "databricks_data_engineering",
-        "data_architecture_modeling",
-        "metadata_lineage_catalogs"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "geheugen-voor-ai-agents",
-      "title": "Geheugen voor AI-agents: wat onthoud je, en waar?",
-      "question": "Welke soorten geheugen heeft een AI-agent (werkgeheugen, samenvattingen, blijvend geheugen), hoe werken ze, en wanneer kies je een bestand, een vectorstore of een geheugenpipeline zoals in Databricks?",
-      "why": "Trend 'Agents houden hun venster leeg': LangChain schreef deze week twee stukken over geheugen en retrieval, en Databricks test geheugenpipelines.",
-      "topics": [
-        "ai_agents_rag",
-        "ai_context_engineering"
-      ],
-      "area": "context_agents"
     },
     {
       "id": "agents-uitrollen-als-code",
@@ -762,6 +705,62 @@
         "ai_agents_rag"
       ],
       "area": "new_tech"
+    },
+    {
+      "id": "push-cdc-met-zerobus",
+      "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
+      "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
+      "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
+      "topics": [
+        "data_ingestion",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "kolom-lineage-impactanalyse",
+      "title": "Kolom-lineage gebruiken voor impactanalyse",
+      "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
+      "why": "De trend 'context voor AI-agents komt in het dataplatform zelf' leunt op metadata en lineage; weten wat lineage wel en niet ziet is daarvoor de basis.",
+      "topics": [
+        "metadata_lineage_catalogs",
+        "ai_context_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "skills-kiezen-voordat-tools-laden",
+      "title": "Te veel gereedschap: hoe een agent kiest welke skills en tools hij laadt",
+      "question": "Waarom wordt een agent slechter als hij te veel skills of tools tegelijk ziet, en hoe laat je hem eerst kiezen wat hij nodig heeft?",
+      "why": "Stripe zag bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd en laat Kai daarom eerst skills kiezen; dat hoort bij de trend over geheugen en skills voor agents.",
+      "topics": [
+        "ai_context_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "ai-extract-meten-en-verbeteren",
+      "title": "Eerst meten, dan repareren: velden uit documenten halen met ai_extract",
+      "question": "Hoe bouw je een vaste testset voor een AI-functie die velden uit documenten haalt, en hoe voorkom je dat een reparatie op één veld het totaal slechter maakt?",
+      "why": "Databricks liet zien hoe een vaste, door mensen gecontroleerde testset de fouten bij ai_extract flink verminderde; dat past bij de trend 'agents worden beter door meten'.",
+      "topics": [
+        "ai_on_data_platform",
+        "ai_evaluation_observability",
+        "data_quality_observability"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "claude-code-onbewaakt-laten-werken",
+      "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
+      "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
+      "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
+      "topics": [
+        "claude_ai_development",
+        "cicd_data_deployment"
+      ],
+      "area": "claude"
     }
   ]
 }
