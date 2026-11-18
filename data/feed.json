@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T03:28:05.507087Z",
+ "generated_at": "2026-11-18T04:27:55.571157Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -1188,7 +1188,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -2203,7 +2203,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.8,
     "quality": 0.53,
     "feedback": 0.01,
@@ -2296,7 +2296,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.51,
     "quality": 0.67,
     "feedback": 0.01,
@@ -3218,7 +3218,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -3525,7 +3525,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.29,
+    "recency": 0.28,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -4915,7 +4915,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -5452,7 +5452,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -6196,10 +6196,10 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 0.51,
     "quality": 0.4,
-    "feedback": 0.01,
+    "feedback": 0.02,
     "fit": -0.1
    },
    "decision": "included",
@@ -6224,12 +6224,216 @@
     "id": "5673f63258aa",
     "v": 1,
     "s": 81,
-    "pts": 1
+    "pts": 2
    },
    "diepte": "kort"
   }
  ],
  "deepdives": [
+  {
+   "id": "ai-extract-meten-en-verbeteren",
+   "plan_id": "ai-extract-meten-en-verbeteren",
+   "headline": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract",
+   "summary": "Wie met ai_extract velden uit pdf's haalt, wil fouten snel repareren. Een team van Databricks liet zien dat dat zonder vaste testset misgaat: een reparatie die één veld bijna halveerde, gaf in totaal juist meer fouten. Dit stuk laat zien hoe je een testset met grondwaarheid opbouwt, hoe je eerlijk telt, en hoe je een wijziging pas doorvoert als die echt beter is.",
+   "sections": [
+    {
+     "heading": "Het probleem met losse reparaties",
+     "paragraphs": [
+      "Stel: je laat AI tientallen velden uit pdf's halen, zoals een ordernummer, een datum en een revisie. Een collega ziet dat één veld vaak fout gaat. Je past de instructie aan, draait een paar documenten opnieuw, en het ziet er beter uit. Klaar? Waarschijnlijk niet.",
+      "Een team van Databricks beschreef in oktober 2026 precies dit. Ze haalden ongeveer 40 velden uit bestelformulieren van partners, in tientallen verschillende opmaken. Losse reparaties werkten slecht om twee redenen. Een wijziging die één veld beter maakt, kan andere velden slechter maken. En een taalmodel geeft niet elke keer exact hetzelfde antwoord, dus een verbetering kan ook gewoon toeval zijn.",
+      "Het is als een recept bijstellen door één hap te proeven. Misschien is de saus nu beter, maar je weet niet of de rest van het bord er onder lijdt, of dat je gewoon een goede hap had."
+     ]
+    },
+    {
+     "heading": "Hoe het team zijn pijplijn had opgebouwd",
+     "paragraphs": [
+      "De opzet lijkt op een medaillonarchitectuur. Documenten kwamen in cloudopslag binnen en werden met Auto Loader in een declaratieve pipeline (Lakeflow) ingelezen. In bronze las ai_parse_document de pdf. In silver haalde ai_extract de velden eruit. In gold stond een materialized view voor gebruikers.",
+      "Mensen controleerden de uitkomsten in een Databricks App: ze verbeterden foute waarden en keurden ze goed. Die goedgekeurde waarden waren eerst alleen bedoeld voor het werkproces. Het team zag dat ze ook iets anders waren: een grondwaarheid (ground truth), dus antwoorden waarvan je zeker weet dat ze kloppen.",
+      "Daarvan maakten ze een vaste testset: enkele honderden pdf's met veel verschillende opmaken, steeds dezelfde. Elke nieuwe versie van de instructie draaide op precies die set. Zo vergelijk je appels met appels, net als bij een dbt-test die altijd op dezelfde data draait."
+     ]
+    },
+    {
+     "heading": "Eerlijk tellen: fouten, dekking en ruis",
+     "paragraphs": [
+      "Het team keek niet naar één getal. Ze maten de score per veld en in totaal, per soort document, en hoeveel de uitkomst wisselt tussen runs. Twee keuzes daarin zijn makkelijk te missen.",
+      "De eerste is dekking (coverage): welk deel van de velden die in de grondwaarheid een waarde hebben, krijgt ook een voorspelling. Tel je alleen velden waar beide kanten iets ingevuld hebben, dan lijkt een model dat moeilijke velden leeg laat beter dan het is. Bij het veld revision leek de winst zo minder dan 3 punten. Wie alle fouten telde, ook terecht lege antwoorden, zag het aantal fouten ongeveer halveren.",
+      "De tweede is de ruisvloer (noise floor). Draai de huidige instelling 3 tot 5 keer op de testset en reken het gemiddelde en de spreiding uit. Het team stelt voor een verbetering pas te geloven als die groter is dan twee keer die spreiding. Elke kandidaat kreeg daarna een oordeel: BETTER, WORSE, of iets ertussen, zoals SUSPECT (de score stijgt, maar de dekking daalt) of INCONCLUSIVE.",
+      "Dit sluit aan bij wat Hamel Husain en Shreya Shankar foutanalyse noemen. Voordat je meet, kijk je eerst zelf naar fouten en groepeer je ze in soorten. Pas dan weet je welke velden en welke documenten je testset moet bevatten."
+     ]
+    },
+    {
+     "heading": "Vier knoppen, en hoe je de juiste kiest",
+     "paragraphs": [
+      "Het team onderscheidde vier plekken om iets te verbeteren. Het schema: per veld een type, een beschrijving en eventueel een vaste lijst waarden, bijvoorbeeld 'geef leeg terug als het veld ontbreekt'. De algemene instructie: regels over het hele document, zoals welke bron voorgaat en welke delen je overslaat. Gewone code: hoofdletters, voorloopnullen en vaste vertalingen regel je achteraf in SQL. En precision mode, een stand van ai_extract voor lange documenten, herhaalde regels en grote schema's.",
+      "De les: kies de knop op basis van de diagnose. Is een veld slecht gedefinieerd, pas dan schema of instructie aan. Gaat het mis door de opbouw van het document, zoals herhaalde orderregels of tabellen over meerdere pagina's, dan helpt precision mode. Laat het model het document lezen en laat code de opmaak netjes maken.",
+      "ai_extract kan in versie 2.1 ook per veld een bronvermelding (citation) en een zekerheidsscore (confidence score) teruggeven. Het team gebruikte de bronvermelding om te zien of een fout echt van het model kwam of van een verschil van mening bij het controleren. De zekerheidsscore gebruikten ze om te bepalen wat een mens eerst moet nakijken, niet als harde kwaliteitsgrens."
+     ]
+    },
+    {
+     "heading": "Waarom één veld repareren het totaal kan schaden",
+     "paragraphs": [
+      "Het sprekendste resultaat ging over het veld revision. Een extra regel alleen in het schema gaf 49% minder fouten op dat veld. Maar over alle velden samen kwamen er 9% méér fouten bij. Het model ging waarden verzinnen in andere velden, zoals regels over leverschema's. Die wijziging ging dus niet live.",
+      "De verklaring: het model leest het schema als één geheel. Een wijziging aan één veld is daarom nooit een proef met één veld. Je moet altijd naar het totaal kijken, net zoals je na een wijziging aan één dbt-model alle tests draait en niet alleen die van dat model.",
+      "Wat wél werkte: regels per veld uit de algemene instructie halen en in de beschrijvingen van het schema zetten. De instructie werd zo minder dan half zo lang. Dat gaf 16% minder fouten in totaal. Precision mode alleen gaf 24% minder fouten, vooral doordat het model minder verzon in herhaalde regels. Samen kwam het op 32% minder fouten, en 64% minder bij revision. Twee velden werden bij de herschreven instructie juist slechter; die gingen naar een volgende ronde."
+     ]
+    },
+    {
+     "heading": "Versies, aliassen en wie op de knop drukt",
+     "paragraphs": [
+      "Om wijzigingen netjes te beheren gebruikte het team de MLflow Prompt Registry. Dat is een plek in Unity Catalog waar je een instructie (prompt) bewaart met een vast versienummer. Een versie verandert nooit meer. Daarnaast heb je een alias: een naam die naar een versie wijst, zoals een bordje dat je kunt verhangen. Volgens de documentatie is de Prompt Registry nu in bèta.",
+      "Het team bewaarde schema en instructie altijd samen, omdat de beschrijvingen in het schema net zoveel invloed hebben als de instructie zelf. Ze gebruikten de alias @prod voor de goedgekeurde versie en @candidate voor de versie die getest werd. Doorvoeren betekende alleen de alias @prod verhangen; de pipeline pakte bij de volgende run vanzelf de nieuwe versie, zonder codewijziging. Terugdraaien ging net zo: de alias terugzetten.",
+      "Belangrijk: de beslissing bleef bij een mens. Ook als het totaal beter was, kon een zware achteruitgang op één veld een kandidaat tegenhouden. En wie een INCONCLUSIVE-oordeel toch doorzette, moest de reden opschrijven."
+     ]
+    },
+    {
+     "heading": "Wat betekent dit voor jou",
+     "paragraphs": [
+      "Je werkt nu niet met bestelformulieren, maar het patroon is breder. Elke AI-toepassing op je platform heeft dezelfde vraag: wordt het na deze wijziging echt beter? Dat geldt voor ai_extract op documenten, maar ook voor de AI-contextlaag, waar je beschrijvingen of antwoorden over datasets wilt verbeteren.",
+      "De bouwstenen ken je al. Een vaste testset is een tabel met verwachte waarden, net als een seed in dbt. Fouten en dekking tel je in gewone SQL. Het verschil met een dbt-test is dat je meerdere runs nodig hebt om ruis van echte winst te scheiden. In Databricks kun je de vergelijking ook als code-scorer in MLflow vastleggen, zodat dezelfde controle later in productie meekijkt.",
+      "Bij zorgdata telt nog iets. ai_extract verwerkt documenten volgens de documentatie binnen de beveiligingsgrens van Databricks, maar de functie is niet in elke regio beschikbaar. Bespreek dat vooraf, en bouw je eerste testset met openbare of verzonnen documenten."
+     ]
+    }
+   ],
+   "experiment": "Zoek 20 openbare pdf's met dezelfde soort inhoud, bijvoorbeeld jaarverslagen of besluiten van een overheidssite. Vul zelf voor 5 velden de juiste waarden in een tabel in. Laat ai_extract (versie 2.1) die velden halen, draai dat 3 keer en tel per veld de fouten en de dekking met de SQL hierboven. Pas daarna één veldbeschrijving in het schema aan en kijk of het totaal echt beter wordt dan de spreiding tussen je drie runs.",
+   "limitations": [
+    "De cijfers komen uit één project van Databricks zelf, met bestelformulieren; bij andere documenten kan het anders uitpakken.",
+    "Het blog geeft alleen procentuele veranderingen, geen absolute nauwkeurigheid, en noemt geen kosten van precision mode.",
+    "Elke testrun en elke herhaling kost rekentijd; met 3 tot 5 runs per kandidaat loopt dat bij honderden pdf's op.",
+    "ai_extract is niet in elke Azure-regio beschikbaar; controleer dat en de afspraken over zorgdata voordat je echte documenten gebruikt."
+   ],
+   "further_reading": [
+    {
+     "label": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry (Databricks, oktober 2026)",
+     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+     "note": "De bron van dit stuk, met de oordelen per kandidaat en de tabel met alle uitkomsten."
+    },
+    {
+     "label": "ai_extract function (Microsoft Learn, bijgewerkt oktober 2026)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract",
+     "note": "De actuele syntax van versie 2.1, met schema's, precision mode, bronvermeldingen, zekerheidsscores en de grenzen van de functie."
+    },
+    {
+     "label": "Prompt Registry (Microsoft Learn, bijgewerkt oktober 2026)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/mlflow3/genai/prompt-version-mgmt/prompt-registry/",
+     "note": "Hoe versies en aliassen werken, met voorbeelden van register_prompt, set_prompt_alias en load_prompt."
+    },
+    {
+     "label": "Why is error analysis so important in LLM evals? (Hamel Husain en Shreya Shankar, bijgewerkt september 2026)",
+     "url": "https://hamel.dev/blog/posts/evals-faq/why-is-error-analysis-so-important-in-llm-evals-and-how-is-it-performed.html",
+     "note": "Hoe je fouten eerst zelf leest en in soorten groepeert, voordat je toetsen vastlegt."
+    },
+    {
+     "label": "Code-based scorers (Databricks-documentatie, bijgewerkt oktober 2026)",
+     "url": "https://docs.databricks.com/aws/mlflow3/genai/eval-monitor/custom-scorers",
+     "note": "Overzicht van eigen beoordelaars in Python, die je zowel bij testen als in productie gebruikt."
+    }
+   ],
+   "currency_check": "Gecontroleerd op 18 november 2026. De praktijkcijfers komen uit het Databricks-blog van 27 oktober 2026. Syntax en grenzen van ai_extract komen uit de documentatie van 22 oktober 2026 (versie 2.1 is aanbevolen; versie 1 met labels is legacy en bewust niet gebruikt). De Prompt Registry-documentatie (8 oktober 2026, MLflow 3, bèta) bevestigt versies en aliassen. Genie Code, dat het blog noemt om meten en verbeteren te automatiseren, is niet uitgewerkt omdat ik daar geen documentatie over heb gelezen.",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_evaluation_observability",
+    "data_quality_observability"
+   ],
+   "written_at": "2026-11-18T04:26:19Z",
+   "processed_by": "Claude (geplande taak)",
+   "quiz": [
+    {
+     "question": "Waarom ging de schemawijziging voor het veld revision niet live, terwijl die de fouten op dat veld met 49% verlaagde?",
+     "options": [
+      "Omdat de verbetering kleiner was dan de ruisvloer",
+      "Omdat het totaal aantal fouten over alle velden juist steeg",
+      "Omdat precision mode hetzelfde effect had",
+      "Omdat de grondwaarheid voor dat veld niet klopte"
+     ],
+     "answer": 1,
+     "explanation": "Het model leest het schema als geheel. De wijziging liet het model waarden verzinnen in andere velden, waardoor er in totaal 9% meer fouten kwamen."
+    },
+    {
+     "question": "Waarom meet het team ook dekking, en niet alleen de score op velden waar beide kanten iets ingevuld hebben?",
+     "options": [
+      "Omdat een model dat moeilijke velden leeg laat anders beter lijkt dan het is",
+      "Omdat dekking de kosten van een run laat zien",
+      "Omdat lege velden altijd fout zijn"
+     ],
+     "answer": 0,
+     "explanation": "Tel je alleen gevulde velden, dan verdwijnen lege antwoorden uit de berekening. Een model kan zo hoog scoren door juist het moeilijke over te slaan."
+    },
+    {
+     "question": "Een veld gaat vooral mis in documenten met lange tabellen over meerdere pagina's. Welke knop ligt volgens het stuk het meest voor de hand?",
+     "options": [
+      "De beschrijving van dat veld in het schema aanpassen",
+      "De opmaak achteraf in SQL corrigeren",
+      "Precision mode aanzetten",
+      "De zekerheidsscore als grens gebruiken"
+     ],
+     "answer": 2,
+     "explanation": "Problemen door de opbouw van het document vragen om precision mode. Schema en instructie helpen vooral als een veld slecht gedefinieerd is."
+    }
+   ],
+   "showcase": {
+    "caption": "Fouten en dekking per veld voor vijf documenten. Bij revisie lijkt de score 1,0 als je alleen gevulde velden telt, maar er zijn 3 fouten: één verzonnen waarde en twee keer leeg waar wel iets stond.",
+    "language": "sql",
+    "code": "SELECT\n  veld,\n  COUNT(*) FILTER (WHERE verwacht IS DISTINCT FROM voorspeld) AS fouten,\n  ROUND(AVG(CASE WHEN verwacht = voorspeld THEN 1.0 ELSE 0 END)\n        FILTER (WHERE verwacht IS NOT NULL AND voorspeld IS NOT NULL), 2) AS score_alleen_gevuld,\n  ROUND(AVG(CASE WHEN voorspeld IS NOT NULL THEN 1.0 ELSE 0 END)\n        FILTER (WHERE verwacht IS NOT NULL), 2) AS dekking\nFROM uitkomst   -- per document en veld: verwacht (goedgekeurd) en voorspeld (ai_extract)\nGROUP BY veld\nORDER BY veld;",
+    "result": {
+     "columns": [
+      "veld",
+      "fouten",
+      "score_alleen_gevuld",
+      "dekking"
+     ],
+     "rows": [
+      [
+       "revisie",
+       3,
+       1.0,
+       0.33
+      ],
+      [
+       "totaal",
+       1,
+       0.8,
+       1.0
+      ]
+     ]
+    },
+    "note": "Dit is het meetidee in gewone SQL. In het blog liep de vergelijking via een eigen weergave met goedgekeurde waarden en MLflow; die code staat er niet volledig bij."
+   },
+   "terms": [
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    },
+    {
+     "term": "grondwaarheid",
+     "explanation": "Antwoorden waarvan je zeker weet dat ze kloppen, meestal door een mens gecontroleerd. Je vergelijkt de uitkomst van een AI daarmee."
+    },
+    {
+     "term": "dekking",
+     "explanation": "Welk deel van de velden die echt een waarde hebben, ook een voorspelling krijgt. Laat zien of een model moeilijke velden overslaat."
+    },
+    {
+     "term": "ruisvloer",
+     "explanation": "Hoeveel een uitkomst vanzelf schommelt als je dezelfde instelling een paar keer draait. Een verbetering moet daar duidelijk boven zitten."
+    },
+    {
+     "term": "precision mode",
+     "explanation": "Een stand van ai_extract voor lange documenten, herhaalde regels en grote of diep geneste schema's."
+    },
+    {
+     "term": "Prompt Registry",
+     "explanation": "Een onderdeel van MLflow waarin je prompts met vaste versienummers in Unity Catalog bewaart en met aliassen naar een versie wijst."
+    },
+    {
+     "term": "alias",
+     "explanation": "Een naam die naar één versie wijst, zoals @prod. Door de alias te verhangen gebruik je een andere versie zonder codewijziging."
+    },
+    {
+     "term": "foutanalyse",
+     "explanation": "Zelf een reeks echte gesprekken of uitkomsten lezen en noteren wat er misgaat, voordat je toetsen vastlegt."
+    }
+   ],
+   "reading_minutes": 7
+  },
   {
    "id": "claude-agents-in-eigen-netwerk",
    "plan_id": "claude-agents-in-eigen-netwerk",
@@ -9009,8 +9213,43 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-16T04:13:48Z",
+  "generated_at": "2026-11-18T04:27:14Z",
   "options": [
+   {
+    "id": "begrippen-door-eigenaren",
+    "title": "Wie legt de betekenis vast? Bedrijfsbegrippen voor AI laten beheren",
+    "question": "Hoe organiseer je dat eigenaren in de organisatie de definities en regels voor een AI-assistent schrijven en goedkeuren, en waar leg je die vast naast je dbt-modellen en Unity Catalog?",
+    "why": "IFS Copperleaf liet deze week de business zelf definities schrijven voor Genie Ontology, met een 'AI Council' die ze goedkeurt; dat past bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+    "topics": [
+     "ai_context_engineering",
+     "data_governance_privacy",
+     "metadata_lineage_catalogs"
+    ],
+    "area": "context_agents"
+   },
+   {
+    "id": "gold-serveren-via-lakebase",
+    "title": "Gold-data snel naar een app of agent: synced tables in Lakebase",
+    "question": "Wat is Lakebase, hoe zet een synced table een Gold-tabel als snelle kopie in Postgres, en wanneer kies je dat in plaats van een SQL-warehouse of een aparte zoekindex?",
+    "why": "In de Lakebase-hackathon van 17 november gebruikten teams Gold-tabellen via Lakebase als zoekbron voor apps en agents, zelfs in plaats van Elasticsearch.",
+    "topics": [
+     "ai_on_data_platform",
+     "databricks_data_engineering",
+     "ai_agents_rag"
+    ],
+    "area": "ai_op_data"
+   },
+   {
+    "id": "toegangsmodus-van-compute",
+    "title": "Standard, Dedicated of Auto: welke toegangsmodus krijgt je compute?",
+    "question": "Wat is de toegangsmodus (access mode) van compute in Databricks, wat is het verschil tussen Standard en Dedicated, en wat betekent het dat nieuwe jobs nu standaard op Auto staan?",
+    "why": "Sinds 9 november krijgt nieuwe jobs-compute standaard de toegangsmodus Auto in plaats van Dedicated; goed om te snappen wat er dan voor je gekozen wordt.",
+    "topics": [
+     "databricks_data_engineering",
+     "data_governance_privacy"
+    ],
+    "area": "data_engineering"
+   },
    {
     "id": "push-cdc-met-zerobus",
     "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
@@ -9021,40 +9260,6 @@
      "databricks_data_engineering"
     ],
     "area": "data_engineering"
-   },
-   {
-    "id": "kolom-lineage-impactanalyse",
-    "title": "Kolom-lineage gebruiken voor impactanalyse",
-    "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
-    "why": "De trend 'context voor AI-agents komt in het dataplatform zelf' leunt op metadata en lineage; weten wat lineage wel en niet ziet is daarvoor de basis.",
-    "topics": [
-     "metadata_lineage_catalogs",
-     "ai_context_engineering"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "skills-kiezen-voordat-tools-laden",
-    "title": "Te veel gereedschap: hoe een agent kiest welke skills en tools hij laadt",
-    "question": "Waarom wordt een agent slechter als hij te veel skills of tools tegelijk ziet, en hoe laat je hem eerst kiezen wat hij nodig heeft?",
-    "why": "Stripe zag bij zijn agent Kai dat het boven ongeveer 150 skills slechter werd en laat Kai daarom eerst skills kiezen; dat hoort bij de trend over geheugen en skills voor agents.",
-    "topics": [
-     "ai_context_engineering",
-     "ai_agents_rag"
-    ],
-    "area": "context_agents"
-   },
-   {
-    "id": "ai-extract-meten-en-verbeteren",
-    "title": "Eerst meten, dan repareren: velden uit documenten halen met ai_extract",
-    "question": "Hoe bouw je een vaste testset voor een AI-functie die velden uit documenten haalt, en hoe voorkom je dat een reparatie op één veld het totaal slechter maakt?",
-    "why": "Databricks liet zien hoe een vaste, door mensen gecontroleerde testset de fouten bij ai_extract flink verminderde; dat past bij de trend 'agents worden beter door meten'.",
-    "topics": [
-     "ai_on_data_platform",
-     "ai_evaluation_observability",
-     "data_quality_observability"
-    ],
-    "area": "ai_op_data"
    },
    {
     "id": "claude-code-onbewaakt-laten-werken",
@@ -9279,6 +9484,11 @@
    "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft.",
    "refs": [
     {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
+    },
+    {
      "kind": "a",
      "id": "b8bd8dd7742b",
      "title": "Genie Agents lezen nu ook pdf's en documenten uit je volumes"
@@ -9287,6 +9497,17 @@
      "kind": "a",
      "id": "941b0ba5dad7",
      "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    }
+   ]
+  },
+  {
+   "term": "alias",
+   "explanation": "Een naam die naar één versie wijst, zoals @prod. Door de alias te verhangen gebruik je een andere versie zonder codewijziging.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
     }
    ]
   },
@@ -9879,6 +10100,17 @@
    ]
   },
   {
+   "term": "dekking",
+   "explanation": "Welk deel van de velden die echt een waarde hebben, ook een voorspelling krijgt. Laat zien of een model moeilijke velden overslaat.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
+    }
+   ]
+  },
+  {
    "term": "deletion vectors",
    "explanation": "Een manier waarop Delta verwijderde of gewijzigde rijen markeert in plaats van hele bestanden te herschrijven. Maakt wijzigingen sneller.",
    "refs": [
@@ -10165,6 +10397,11 @@
    "explanation": "Zelf een reeks echte gesprekken of uitkomsten lezen en noteren wat er misgaat, voordat je toetsen vastlegt.",
    "refs": [
     {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
+    },
+    {
      "kind": "a",
      "id": "77544766b84c",
      "title": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen"
@@ -10299,6 +10536,17 @@
      "kind": "a",
      "id": "f49f6dcce187",
      "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
+    }
+   ]
+  },
+  {
+   "term": "grondwaarheid",
+   "explanation": "Antwoorden waarvan je zeker weet dat ze kloppen, meestal door een mens gecontroleerd. Je vergelijkt de uitkomst van een AI daarmee.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
     }
    ]
   },
@@ -11073,6 +11321,17 @@
    ]
   },
   {
+   "term": "precision mode",
+   "explanation": "Een stand van ai_extract voor lange documenten, herhaalde regels en grote of diep geneste schema's.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
+    }
+   ]
+  },
+  {
    "term": "presentatielaag",
    "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen.",
    "refs": [
@@ -11118,6 +11377,17 @@
      "kind": "a",
      "id": "e7bf67f656d3",
      "title": "Verbeter een AI-toepassing pas als je eerst meet"
+    }
+   ]
+  },
+  {
+   "term": "Prompt Registry",
+   "explanation": "Een onderdeel van MLflow waarin je prompts met vaste versienummers in Unity Catalog bewaart en met aliassen naar een versie wijst.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
     }
    ]
   },
@@ -11283,6 +11553,17 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
+    }
+   ]
+  },
+  {
+   "term": "ruisvloer",
+   "explanation": "Hoeveel een uitkomst vanzelf schommelt als je dezelfde instelling een paar keer draait. Een verbetering moet daar duidelijk boven zitten.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-extract-meten-en-verbeteren",
+     "title": "Eerst meten, dan repareren: betere velden uit documenten met ai_extract"
     }
    ]
   },
@@ -12358,6 +12639,16 @@
      "overgeslagen_zonder_openen": 17,
      "op_werklijst_gelaten": 0
     }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Verdieping over meten en verbeteren met ai_extract geschreven (issue #34) en 5 nieuwe keuzes klaargezet",
+    "finished_at": "2026-11-18T04:27:28Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 1,
+     "keuzes": 5
+    }
    }
   }
  },
@@ -12420,6 +12711,8 @@
     "onelake-security": -14,
     "fabric-eventhouse": -14,
     "multi-agent": 1,
+    "unity-ai-gateway": 1,
+    "openai-op-databricks": 1,
     "copilot-power-bi": 1,
     "python-data-source-api": 1,
     "custom-ingestion": 1,
