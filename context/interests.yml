@@ -3,7 +3,7 @@
 # Prioriteit = hoe zwaar een onderwerp meetelt bij de selectie, niet hoe belangrijk het in het algemeen is.
 
 schema_version: 1
-updated: "2026-11-04"
+updated: "2026-11-18"
 
 priority_levels:
   5:
@@ -76,7 +76,7 @@ interest_areas:
     target_share: 0.20
     max_share: 0.25       # algemeen AI-nieuws: samen met Claude hooguit ongeveer 45% van de feed (T, 15-11-2026)
     min_articles: 6       # ondergrens in de app, ook als je feedback dit gebied minder laat scoren
-    topics: [ai_context_engineering, ai_agents_rag, ai_evaluation_observability]
+    topics: [ai_context_engineering, ai_agents_rag, ai_evaluation_observability, veilige_agents]
   - id: claude
     label: Claude en AI-ondersteunde ontwikkeling
     target_share: 0.20
@@ -222,6 +222,18 @@ topics:
     priority: 4
     keywords: [evals, LLM evaluation, agent evaluation, tracing, LLM observability, MLflow tracing, LLM as a judge, guardrails, hallucination]
     related_topics: [ai_agents_rag, data_quality_observability]
+
+  - id: veilige_agents
+    name: "Veilige agents: sandbox, rechten en gateways"
+    description: >-
+      Hoe je AI-agents veilig laat werken: afgeschermde sandboxes, minste rechten, sleutels
+      buiten de agent, en één gateway die modelaanroepen, budgetten en logboeken regelt.
+      Ook zelf hosten van agentdiensten en wat er dan nog naar buiten gaat.
+    feed_group: agents
+    enabled: true
+    priority: 3
+    keywords: [agent sandbox, sandboxed agents, least privilege, AI Gateway, Unity Gateway, Claude Managed Agents, self-hosted agents, credential proxy, egress allowlist, permission mode, sandbox permissions]
+    related_topics: [ai_agents_rag, claude_ai_development, data_governance_privacy, ai_evaluation_observability]
 
   - id: claude_ai_development
     name: Claude en AI-ondersteunde ontwikkeling
