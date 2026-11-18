@@ -959,7 +959,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (act === "open") {
       box.innerHTML = `<div class="later-form"><h2 style="font-size:1.05rem;margin:0">Later bekijken</h2>
         <input id="later-t" type="text" maxlength="100" value="${esc(box.dataset.title)}" aria-label="Onderwerp">
-        <textarea id="later-n" rows="2" maxlength="400" placeholder="Notitie (optioneel): waar ben je benieuwd naar?" aria-label="Notitie"></textarea>
+        <textarea id="later-n" rows="2" maxlength="400" placeholder="Notitie: waar ben je benieuwd naar?" aria-label="Notitie"></textarea>
         <div class="row"><button type="button" class="btn" data-later="save">Op mijn lijst</button><button type="button" class="btn ghost" data-later="cancel">Annuleren</button></div></div>`;
       const t = $("#later-t", box); t.focus(); t.select();
     } else if (act === "save") {
@@ -1002,7 +1002,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const laterNewBtn = () => `<div id="later-new"><button type="button" class="btn ghost later-add" data-later-new="open">＋ Notitie</button></div>`;
   const laterNewForm = () => `<div id="later-new" class="later-form later-item">
       <input id="later-new-t" type="text" maxlength="100" placeholder="Onderwerp" aria-label="Onderwerp">
-      <textarea id="later-new-n" rows="3" maxlength="400" placeholder="Notitie (optioneel)" aria-label="Notitie"></textarea>
+      <textarea id="later-new-n" rows="3" maxlength="400" placeholder="Notitie" aria-label="Notitie"></textarea>
       <div class="row"><button type="button" class="btn" data-later-new="save">Op mijn lijst</button><button type="button" class="btn ghost" data-later-new="cancel">Annuleren</button></div></div>`;
   function laterNewClick(e) {
     const act = e.target.closest("[data-later-new]")?.dataset.laterNew; if (!act) return false;
