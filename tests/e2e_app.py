@@ -51,6 +51,8 @@ def check(name, cond, detail=""):
 # als de app stuk is, niet omdat er 's nachts nieuwe data bij kwam. Opnieuw vastleggen: zie tests/fixtures/README.md.
 feed = json.loads((ROOT / "tests" / "fixtures" / "feed.json").read_text(encoding="utf-8"))
 arts = feed["articles"]
+feed["uitgangspunten"] = [{"id": "aaaaaaaa", "kop": "Wel interessant", "text": "AI op Gold"},
+                          {"id": "bbbbbbbb", "kop": "Niet interessant", "text": "Einde van support"}]
 feed["leerregels"] = [{"id": "einde-support", "text": "Einde van support voor versies", "richting": -1, "sterkte": 1.0, "hits": 2},
                       {"id": "twijfel-regel", "text": "Marketingpraat", "richting": -1, "sterkte": 0.5, "hits": 0, "stale": True}]
 sys.path.insert(0, str(ROOT))
@@ -453,6 +455,16 @@ with sync_playwright() as p:
     page.goto(url + "#interesses")
     page.wait_for_selector("#reader .int-topic")
     check("   na versturen: niets meer klaar, voorstel op 'verstuurd'", page.locator("#int-to-send").count() == 0 and "Verstuurd: ja" in page.locator('.int-sugg[data-sugg="data-contracts"]').inner_text())
+    check("   Opmerking aan Claude staat bovenaan en Uitgangspunten met kopjes", page.locator("#int-note-sec h2").inner_text() == "Opmerking aan Claude"
+          and page.locator("#up-sec li").count() == len(feed["uitgangspunten"]) and page.locator("#up-sec h3").count() == 2)
+    page.click(f'[data-up-off="{feed["uitgangspunten"][0]["id"]}"]')
+    check("   uitgangspunt weghalen: weg uit de lijst, klaar om te versturen", page.locator("#up-sec li").count() == len(feed["uitgangspunten"]) - 1
+          and "1 wijziging" in page.locator("#int-to-send").inner_text())
+    page.evaluate("localStorage.removeItem('radar:up_off')")
+    page.goto(url); page.wait_for_selector(".card")
+    page.click(".to-note a"); page.wait_for_selector("#int-note")
+    check("   link 'Opmerking aan Claude' onder Actueel opent het veld", page.evaluate("document.activeElement && document.activeElement.id") == "int-note")
+    page.goto(url + "#interesses"); page.wait_for_selector("#int-note")
     rl = page.locator(".fb-eff .rule-list li")
     check("   Jouw regels: tekst, aantal artikelen en twijfel/verouderd", rl.count() == 2 and "Minder: Einde van support voor versies" in rl.nth(0).inner_text()
           and "raakt nu 2 artikelen" in rl.nth(0).inner_text() and "raakt al een tijd niets meer" in rl.nth(1).inner_text() and "met twijfel" in rl.nth(1).inner_text())

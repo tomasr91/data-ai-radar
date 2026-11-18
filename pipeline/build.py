@@ -25,6 +25,7 @@ from .digest import weekly_digests
 from . import feedback as feedback_mod
 from . import learn as learn_mod
 from . import rules as rules_mod
+from . import uitgangspunten as up_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
 from .terms import glossary
@@ -504,6 +505,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "interest_log": interests_mod.load_log(),
         "runs": runs_mod.latest(),
         "leerregels": rules_mod.view(rules_data, arts, now.strftime("%Y-%m-%d")),
+        "uitgangspunten": up_mod.load(),
         "feedback": {**{k: v for k, v in fb_prefs.items() if k not in ("model", "rules")}, "weight": 1.0, "updated_at": fb_data.get("updated_at"),
                      **learn_mod.summary(fb_data, fb_prefs["model"], now),
                      "effect": feedback_effect(arts, shown, conf, now)},

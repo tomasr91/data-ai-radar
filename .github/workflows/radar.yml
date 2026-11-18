@@ -94,6 +94,7 @@ jobs:
           [ -f data/interest_requests.json ] && git add data/interest_requests.json
           [ -f data/explain_requests.json ] && git add data/explain_requests.json
           [ -f data/leerregels.json ] && git add data/leerregels.json
+          [ -f context/uitgangspunten.md ] && git add context/uitgangspunten.md
           if git diff --cached --quiet; then
             echo "Geen wijzigingen."
           else

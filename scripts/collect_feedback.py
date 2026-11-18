@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from pipeline import feedback, rules  # noqa: E402
+from pipeline import feedback, rules, uitgangspunten  # noqa: E402
 from pipeline.build import DEFAULT_REPO  # noqa: E402
 
 TITLE_RE = re.compile(r"^\s*Feedback:", re.I)
@@ -85,6 +85,17 @@ def parse_explain(body: str) -> list:
         return []
     ids = data.get("explain", [])
     return list(dict.fromkeys(str(x) for x in ids if re.fullmatch(r"[0-9a-f]{12}", str(x)))) if isinstance(ids, list) else []
+
+
+def parse_ids(body: str, key: str, pattern: str) -> list:
+    """Lijst met id's uit het JSON-blok (bijv. "uitgangspunten_off"), alleen als ze aan het patroon voldoen."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return []
+    ids = data.get(key, [])
+    return list(dict.fromkeys(str(x) for x in ids if re.fullmatch(pattern, str(x)))) if isinstance(ids, list) else []
 
 
 def parse_rules_off(body: str) -> list:
@@ -180,6 +191,9 @@ def main():
                 if r.get("id") in off:
                     r["active"] = False
             rules.save(rd)
+        uoff = parse_ids(issue.get("body", ""), "uitgangspunten_off", r"[0-9a-f]{8}")
+        if uoff:   # T haalde een uitgangspunt weg (✕ in de app): meteen uit context/uitgangspunten.md
+            uitgangspunten.remove(uoff)
         ask = parse_explain(issue.get("body", ""))
         if ask:   # "Volledig uitleggen": de werklijst zet ze vooraan (pipeline/build.py)
             path = ROOT / "data" / "explain_requests.json"

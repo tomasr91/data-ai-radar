@@ -978,6 +978,26 @@ class TestDataflowVoortgang(unittest.TestCase):
             sm._VG = old
 
 
+class TestUitgangspunten(unittest.TestCase):
+    def test_lezen_en_weghalen(self):
+        from pipeline import uitgangspunten as up
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "u.md"
+            p.write_text("# U\n\nInleiding.\n\n## Wel interessant\n\n- AI op Gold\n\n## Niet interessant\n\n- Einde support\n- Kleine updates\n")
+            items = up.load(p)
+            self.assertEqual([(x["kop"], x["text"]) for x in items], [("Wel interessant", "AI op Gold"), ("Niet interessant", "Einde support"), ("Niet interessant", "Kleine updates")])
+            self.assertEqual(up.remove([items[1]["id"], "deadbeef"], p), 1)
+            self.assertEqual([x["text"] for x in up.load(p)], ["AI op Gold", "Kleine updates"])
+            self.assertIn("## Niet interessant", p.read_text())
+        self.assertLessEqual(len(up.load()), up.MAX_LINES)   # het echte bestand blijft kort
+
+    def test_collect_feedback_off(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import collect_feedback as cf
+        body = '```json\n{"votes": [], "uitgangspunten_off": ["a1b2c3d4", "fout"]}\n```'
+        self.assertEqual(cf.parse_ids(body, "uitgangspunten_off", r"[0-9a-f]{8}"), ["a1b2c3d4"])
+
+
 class TestTrends(unittest.TestCase):
     def test_only_trends_with_enough_articles_and_sources(self):
         from pipeline import trends

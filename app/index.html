@@ -326,6 +326,8 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .int-topic .fb-reasons, .int-sugg .fb-reasons { margin-top: 8px; }
 .int-topic .fb-reasons button { height: 28px; padding: 0 11px; font-size: 0.76rem; }
 .int-lamp { display: inline-block; width: 8px; height: 10px; color: #f5d547; }
+.to-note { text-align: center; margin: 18px 0 8px; font-family: var(--f-meta); font-size: 0.82rem; }
+.to-note a { color: var(--accent2); text-decoration: none; display: inline-block; padding: 12px; }
 .int-note { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; resize: vertical; min-height: 70px; }
 .int-excl summary { cursor: pointer; font-weight: 650; }
 .int-excl ul { margin: 8px 0 0; color: var(--muted); }
@@ -524,6 +526,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const rulesOff = {
     all() { try { return JSON.parse(localStorage.getItem("radar:rules_off") || "{}"); } catch { return {}; } },
     save(d) { try { localStorage.setItem("radar:rules_off", JSON.stringify(d)); } catch {} },
+    pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
+  };
+  // Uitgangspunten die je met ✕ weghaalt (context/uitgangspunten.md); gaan mee met versturen; radar:up_off
+  const upOff = {
+    all() { try { return JSON.parse(localStorage.getItem("radar:up_off") || "{}"); } catch { return {}; } },
+    save(d) { try { localStorage.setItem("radar:up_off", JSON.stringify(d)); } catch {} },
     pending() { return Object.entries(this.all()).filter(([, v]) => !v.sent); },
   };
   /* ---- Volledig uitleggen ----
@@ -865,7 +873,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
       const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
       const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
-      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
+      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>`
+        + `<p class="to-note"><a href="#opmerking">Opmerking aan Claude</a></p>` + sb;
     }
     $("#content").innerHTML = html;
   }
@@ -1045,7 +1054,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   function intSendBar() {
-    const n = intPending(intStore.get()) + rulesOff.pending().length;
+    const n = intPending(intStore.get()) + rulesOff.pending().length + upOff.pending().length;
     return n ? `<a class="fb-send" href="#" id="int-to-send"><span>${n} wijziging${n === 1 ? "" : "en"} klaar · versturen doe je op Actueel</span><b>Naar Actueel ›</b></a>` : "";
   }
   const INT_LAMP = `<svg class="int-lamp" viewBox="0 0 12 15" aria-label="leeronderwerp" role="img"><path fill="currentColor" d="M6 .8a4.4 4.4 0 0 0-2.6 8c.4.3.6.7.6 1.2v.3h4v-.3c0-.5.2-.9.6-1.2A4.4 4.4 0 0 0 6 .8Z"/><path d="M4.4 11.9h3.2M4.9 13.5h2.2" stroke="currentColor" stroke-width=".6" stroke-linecap="round" fill="none"/></svg>`;
@@ -1097,15 +1106,23 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     openReader(`<div class="bar"><div class="wrap"><button class="icon-btn" type="button" id="back" aria-label="Terug"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 6.5 10l6 6"/></svg></button><span class="crumb">Mijn interesses</span></div></div>
       <article class="full wrap"><h1>Mijn interesses</h1>
       <div id="int-send-wrap">${intSendBar()}</div>
+      <section class="int-sec" id="int-note-sec"><h2>Opmerking aan Claude</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Wat vind je wel of niet interessant? Bijv. nieuws over einde van support hoef ik niet">${esc(d.note)}</textarea></section>
       ${sugg ? `<section class="int-sec"><h2>Voorstellen van Claude</h2>${sugg}</section>` : ""}
+      ${upBlock()}
       <section class="int-sec"><h2>Jouw onderwerpen</h2>${areas}</section>
       ${fbEffectBlock()}
-      <section class="int-sec"><h2>In je eigen woorden</h2><textarea class="int-note" id="int-note" maxlength="1000" placeholder="Bijv. meer over Fabric, minder over AI-onderzoek">${esc(d.note)}</textarea></section>
       <section class="int-sec int-excl"><details><summary>Wat je niet wilt zien (${I.excluded.length})</summary><ul>${I.excluded.map((x) => `<li>${esc(x.name)}</li>`).join("")}</ul></details></section>
       ${log ? `<section class="int-sec int-excl"><details><summary>Recent aangepast</summary><ul class="int-log">${log}</ul></details></section>` : ""}
       </article>`);
     const note = $("#int-note");
     if (note) note.oninput = () => { const x = intStore.get(); x.note = note.value; intStore.save(x); $("#int-send-wrap").innerHTML = intSendBar(); };
+  }
+  function upBlock() {
+    const off = upOff.all(), all = (state.feed.uitgangspunten || []).filter((x) => !off[x.id]);
+    if (!all.length) return "";
+    const koppen = [...new Set(all.map((x) => x.kop))];
+    return `<section class="int-sec" id="up-sec"><h2>Uitgangspunten</h2>${koppen.map((k) => `<h3>${esc(k)}</h3><ul class="rule-list">${all.filter((x) => x.kop === k)
+      .map((x) => `<li><span>${esc(x.text)}</span><button type="button" data-up-off="${esc(x.id)}" aria-label="Uitgangspunt weghalen">✕</button></li>`).join("")}</ul>`).join("")}</section>`;
   }
   function intClick(e) {
     if (e.target.closest("#int-to-send")) {
@@ -1503,7 +1520,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
   function fbSummary(items, rd, ni = 0) {
-    const ne = explain.pending().length, nr = rulesOff.pending().length;
+    const ne = explain.pending().length, nr = rulesOff.pending().length + upOff.pending().length;
     return [items.length ? plural(items.length, "beoordeling", "beoordelingen") : "", rd.length ? `${rd.length} gelezen` : "",
       ne ? `${ne} volledig uitleggen` : "",
       nr ? `${plural(nr, "regel", "regels")} weggehaald` : "",
@@ -1516,17 +1533,18 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const label = (v) => (v.v === 1 ? "👍" : "👎") + (v.r ? ` (${(FB_UP[v.r] || FB_DOWN[v.r] || v.r).toLowerCase()})` : "");
     const lines = items.map(([id, v]) => `- ${label(v)} ${v.title || id}${v.n ? ` — "${v.n}"` : ""}`)
       .concat(rulesOff.pending().map(([id]) => `- ✕ Leerregel weggehaald: ${id}`))
+      .concat(upOff.pending().map(([, v]) => `- ✕ Uitgangspunt weggehaald: ${v.text || ""}`))
       .concat(rd.length ? [`- 📖 ${plural(rd.length, "artikel", "artikelen")} helemaal gelezen`] : [])
       .concat(explain.pending().map(([, x]) => `- 🔎 Volledig uitleggen: ${x.title}`))
       .concat(ip ? ["", "Interesses (Claude verwerkt dit vannacht):", ...ip.lines] : []).join("\n");
-    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.n ? { n: v.n } : {}), ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(rulesOff.pending().length ? { rules_off: rulesOff.pending().map(([id]) => id) } : {}), ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
+    const block = JSON.stringify({ votes: items.map(([id, v]) => ({ id, v: v.v, r: v.r || null, ...(v.n ? { n: v.n } : {}), ...(v.s != null ? { s: v.s } : {}) })), reads: rd, ...(rulesOff.pending().length ? { rules_off: rulesOff.pending().map(([id]) => id) } : {}), ...(upOff.pending().length ? { uitgangspunten_off: upOff.pending().map(([id]) => id) } : {}), ...(explain.pending().length ? { explain: explain.pending().map(([id]) => id) } : {}), ...(ip ? { interests: ip.data } : {}) });
     const body = backLink() + `Beoordelingen uit de Data & AI Radar. GitHub Actions verwerkt dit automatisch en sluit het issue.\n\n${lines}\n\n\`\`\`json\n${block}\n\`\`\``;
     const title = `Feedback: ${fbSummary(items, rd, ni)}`;
     return `https://github.com/${repo()}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   }
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
-    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && !upOff.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
     const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
     if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
     return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
@@ -1535,6 +1553,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const d = fb.all(); Object.values(d).forEach((v) => { v.sent = true; }); fb.save(d);
     const ex = explain.all(); Object.values(ex).forEach((v) => { v.sent = true; }); explain.save(ex);
     const ro = rulesOff.all(); Object.values(ro).forEach((v) => { v.sent = true; }); rulesOff.save(ro);
+    const uo = upOff.all(); Object.values(uo).forEach((v) => { v.sent = true; }); upOff.save(uo);
     const r = reads.all(); Object.entries(r).forEach(([k, v]) => { if (k.startsWith("a-")) v.sent = true; }); reads.save(r);
     const di = intStore.get(); Object.assign(di.sentAnswers, di.answers);
     intStore.save({ answers: {}, changes: {}, learn: {}, follow: {}, note: "", sentAnswers: di.sentAnswers });
@@ -1752,6 +1771,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (eb) { const box = eb.closest("#explain"), id = box.dataset.id, a = state.byId.get(id), d = explain.all();
         d[id] = { title: a?.headline || a?.title || id, at: new Date().toISOString(), sent: false }; explain.save(d);
         box.outerHTML = explainBlock(a || { id }); return; }
+      const uo = e.target.closest("[data-up-off]");
+      if (uo) { const d = upOff.all(), x = (state.feed.uitgangspunten || []).find((y) => y.id === uo.dataset.upOff);
+        d[uo.dataset.upOff] = { at: new Date().toISOString(), text: x?.text || "", sent: false }; upOff.save(d);
+        const sec = $("#up-sec"); if (sec) sec.outerHTML = upBlock();
+        const w = $("#int-send-wrap"); if (w) w.innerHTML = intSendBar(); return; }
       const ro = e.target.closest("[data-rule-off]");
       if (ro) { const d = rulesOff.all(); d[ro.dataset.ruleOff] = { at: new Date().toISOString(), sent: false }; rulesOff.save(d);
         const sec = ro.closest(".fb-eff"); if (sec) sec.outerHTML = fbEffectBlock();
@@ -1792,6 +1816,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     }
     if (h === "begrippen") { renderGlossaryPage(); return; }
     if (h === "interesses") { renderInterests(); return; }
+    if (h === "opmerking") { renderInterests(); const n = $("#int-note"); if (n) { n.scrollIntoView({ block: "center" }); n.focus(); } return; }
     if (h === "backup") { renderBackup(); return; }
     if (h === "week" && state.feed.weekly) { renderWeek(); return; }
     if (h.startsWith("v-") && state.ddById.has(h.slice(2))) { renderDeepdive(state.ddById.get(h.slice(2))); return; }
