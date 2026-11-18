@@ -1506,7 +1506,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       ${!reasons ? "" : mine.v === 1 ? `<div class="fb-reasons">${rbtns(FB_UP, Object.keys(FB_UP), mine)}</div>`
         : `<div class="fb-reasons fb-group"><span class="lbl">Dit artikel</span>${rbtns(FB_DOWN, FB_DOWN_ARTICLE, mine)}</div>
            <div class="fb-reasons fb-group"><span class="lbl">Dit onderwerp</span>${rbtns(FB_DOWN, FB_DOWN_TOPIC, mine)}</div>`}
-      <input class="fb-why-in" id="fb-why" type="text" maxlength="200" autocomplete="off" placeholder="Opmerking voor Claude (optioneel)" aria-label="Opmerking voor Claude" value="${esc(anote.get(a.id)?.n ?? mine?.n ?? "")}">`;
+      <input class="fb-why-in" id="fb-why" type="text" maxlength="200" autocomplete="off" placeholder="Opmerking voor Claude" aria-label="Opmerking voor Claude" value="${esc(anote.get(a.id)?.n ?? mine?.n ?? "")}">`;
   }
   function rbtns(map, keys, mine) {
     return keys.map((k) => `<button type="button" data-reason="${k}" aria-pressed="${mine.r === k}">${map[k]}</button>`).join("");
