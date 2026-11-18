@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T06:29:09.716616Z",
+ "generated_at": "2026-11-18T07:01:02.335765Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -975,7 +975,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -1295,7 +1295,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.05,
@@ -1408,7 +1408,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1752,7 +1752,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.39,
+    "recency": 0.38,
     "source": 0.68,
     "quality": 0.8,
     "feedback": -0.04,
@@ -2039,7 +2039,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.57,
     "fit": 0.35
@@ -3595,96 +3595,6 @@
    }
   },
   {
-   "id": "e7bf67f656d3",
-   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-27T18:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
-   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
-   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
-   "limitations": [
-    "Resultaten uit één project.",
-    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
-    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "ai_extract (documentatie)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 84,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.34,
-    "source": 0.85,
-    "quality": 0.75,
-    "feedback": -0.04,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
-     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
-     "published_at": "2026-10-27T18:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
-   "story": [
-    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
-    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
-    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
-    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
-   ],
-   "key_facts": [
-    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
-    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
-    "Alle verbeteringen samen gaven 32% minder fouten.",
-    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
-   ],
-   "terms": [
-    {
-     "term": "prompt",
-     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktische aanpak met evals en een testset, zoals de meetbare AI-stukken die je duimde."
-   },
-   "labels": [
-    "agent-evals",
-    "ai-documentextractie"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "fa55dbcedb33",
    "title": "Declare and optimize with UNIQUE constraints on Databricks",
    "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
@@ -4155,6 +4065,96 @@
    ]
   },
   {
+   "id": "e7bf67f656d3",
+   "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+   "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T18:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks laat zien hoe je AI die velden uit pdf's haalt stap voor stap beter maakt: met een vaste testset en versiebeheer.",
+   "personal_relevance": "Meten met een vaste testset is de basis voor elke AI-toepassing die je bouwt.",
+   "experiment": "Neem 20 openbare pdf's, bijvoorbeeld van een overheidssite. Laat ai_extract 5 velden halen, controleer de antwoorden zelf en meet wat één promptwijziging doet.",
+   "limitations": [
+    "Resultaten uit één project.",
+    "Prijs en beschikbaarheid van precision mode staan er niet bij.",
+    "Een betere score op één veld kan elders meer fouten geven. Kijk altijd naar het totaal."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "ai_extract (documentatie)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_extract"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.34,
+    "source": 0.85,
+    "quality": 0.75,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "From spot fixes to measured gains: improving document extraction accuracy with ai_extract and MLflow Prompt Registry",
+     "url": "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt",
+     "published_at": "2026-10-27T18:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Verbeter een AI-toepassing pas als je eerst meet",
+   "story": [
+    "Een team van Databricks liet AI ongeveer veertig velden uit bestel-pdf's halen. Die pdf's hadden tientallen verschillende opmaken. De eerste resultaten waren matig, en losse reparaties hielpen soms op de ene plek maar braken iets op een andere.",
+    "Daarom gingen ze eerst meten. Ze legden een vaste set pdf's apart, met door een mens gecontroleerde antwoorden. Elke aanpassing aan de prompt moest daarop beter scoren voordat hij live ging. Het is als koken voor een vaste jury: pas als het gemiddelde echt beter is, komt het nieuwe recept op de kaart.",
+    "Met die aanpak daalde het aantal fouten flink. Ze zagen ook hoe misleidend één veld kan zijn: een reparatie die op één veld veel fouten oploste, gaf in totaal juist meer fouten.",
+    "Dit principe geldt voor elke AI-toepassing op je platform, ook voor een AI-contextlaag. Leg eerst een kleine, vaste testset aan. Dan weet je bij elke wijziging of het echt beter wordt."
+   ],
+   "key_facts": [
+    "Engineering-blog van Databricks van 27 oktober 2026, over ongeveer 40 velden uit order-pdf's met ai_extract.",
+    "Prompts en schema's werden samen geversioneerd in MLflow Prompt Registry, met aliassen als @prod en @candidate.",
+    "Alle verbeteringen samen gaven 32% minder fouten.",
+    "Een aanpassing alleen in het schema gaf 49% minder fouten op één veld, maar 9% meer fouten in totaal."
+   ],
+   "terms": [
+    {
+     "term": "prompt",
+     "explanation": "De instructie en tekst die je aan een taalmodel geeft."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktische aanpak met evals en een testset, zoals de meetbare AI-stukken die je duimde."
+   },
+   "labels": [
+    "agent-evals",
+    "ai-documentextractie"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
+   }
+  },
+  {
    "id": "90ba3c46bbce",
    "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
    "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
@@ -4184,7 +4184,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.06,
@@ -12695,6 +12695,38 @@
    "hits": 4
   }
  ],
+ "uitgangspunten": [
+  {
+   "id": "002d22e8",
+   "kop": "Wel interessant",
+   "text": "Hoe je AI-toepassingen aanbiedt met data uit de medaillonarchitectuur (Silver en Gold als invoer voor AI)."
+  },
+  {
+   "id": "20b11be1",
+   "kop": "Wel interessant",
+   "text": "Concrete aanpak of architectuur: welke tools, wat ze bouwden en hoe het werkt."
+  },
+  {
+   "id": "1bbf50be",
+   "kop": "Niet interessant",
+   "text": "Korte nieuwtjes en kleine updates: een losse kleine functie, UI-aanpassing of uitrol naar een extra regio."
+  },
+  {
+   "id": "b72f3cd5",
+   "kop": "Niet interessant",
+   "text": "Aankondigingen over einde van support of versies die stoppen."
+  },
+  {
+   "id": "66112b33",
+   "kop": "Niet interessant",
+   "text": "Klantverhalen met alleen resultaten of marketing, zonder concrete aanpak."
+  },
+  {
+   "id": "e2fcd117",
+   "kop": "Twijfelgevallen",
+   "text": "Power BI en Fabric: alleen bij grote functies die algemeen beschikbaar worden, de koppeling met Databricks, of functies die stoppen."
+  }
+ ],
  "feedback": {
   "topics": {
    "dbt_analytics_engineering": 0.98,
@@ -12797,9 +12829,9 @@
   "decisions": {
    "excluded": 226,
    "area_cap": 18,
-   "included": 108,
+   "included": 107,
    "no_topic": 142,
-   "below_threshold": 116,
+   "below_threshold": 117,
    "kort_vervallen": 34,
    "source_cap": 13
   },
