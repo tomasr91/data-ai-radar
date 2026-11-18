@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T03:27:23.576319Z",
+ "generated_at": "2026-11-18T03:28:05.507087Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
@@ -12340,25 +12340,23 @@
   }
  ],
  "runs": {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "tasks": {
    "uitleggen": {
     "status": "deels",
-    "summary": "10 artikelen vol uitgelegd (5 met voorbeeld, alle 10 via WebSearch geopend), 8 overgeslagen (5 zonder openen); 2 artikelen blijven op de werklijst.",
-    "finished_at": "2026-11-17T03:47:49Z",
+    "summary": "2 artikelen vol uitgelegd (allebei met voorbeeld en via WebSearch geopend), 19 overgeslagen (17 zonder openen): vooral Fabric-aankondigingen rond Ignite, marketing, dubbel nieuws en kleine updates.",
+    "finished_at": "2026-11-18T03:27:18Z",
     "problems": [
      "Dataflow-voortgang niet bijgewerkt: add_repo was niet beschikbaar in deze sessie en clonen van tomasr91/personal-data-platform mislukte ('could not read Username for https://github.com: terminal prompts disabled').",
-     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); artikelen zijn via WebSearch-links geopend.",
-     "LangChain 'From tasks to goals' was niet via WebSearch te vinden en blijft op de werklijst.",
-     "Claude Code-releasepagina's op GitHub en de Code Mode-documentatie waren niet te openen; het weekoverzicht is gebaseerd op releases.sh en de excerpt."
+     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); vier artikelen zijn via WebSearch-links geopend (pas met de uitgebreide zoekmodus gevonden)."
     ],
     "counts": {
-     "uitgelegd": 10,
-     "overgeslagen": 8,
-     "met_voorbeeld": 5,
-     "via_websearch": 10,
-     "overgeslagen_zonder_openen": 5,
-     "op_werklijst_gelaten": 2
+     "uitgelegd": 2,
+     "overgeslagen": 19,
+     "met_voorbeeld": 2,
+     "via_websearch": 4,
+     "overgeslagen_zonder_openen": 17,
+     "op_werklijst_gelaten": 0
     }
    }
   }
