@@ -1,42 +1,34 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-18T05:25:00Z",
+ "generated_at": "2026-11-19T05:30:00Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen in metric views, beschrijvingen bij dbt-modellen en definities in Genie Ontology, dat sinds 11 november algemeen beschikbaar is. Constellation en IFS Copperleaf laten zien dat de echte vraag is wie de betekenis bepaalt: bij IFS schrijven bedrijfseigenaren de definities en keurt een AI Council ze goed. Nieuw deze week: Genie One leert vaste werkwijzen als skill in Unity Catalog, en Ashley Warren bouwt de semantische laag uit losse metric views die met relaties aan elkaar hangen.",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology (sinds 11 november GA), metric views die vanzelf een Power BI-model worden, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. Chris Webb zegt hetzelfde voor Power BI: alleen de voorkant verandert, het semantisch model blijft de bron. Nieuw deze week: de Genie-app voor Teams is GA en haalt zijn betekenis uit Genie Ontology en metric views, met de rechten van wie de vraag stelt.",
    "article_ids": [
-    "5f169cda52b7",
-    "06485ad2414b",
+    "655888c78c57",
     "ee8f41fce441",
-    "8729d3afe359",
-    "e89c62d75061",
     "656e0d953ae9",
     "6ded4aa1cdcf",
     "5c7174c45ad1",
-    "7737e173e31a",
-    "941b0ba5dad7",
     "215f0a50b9ea"
    ],
    "topics": [
     "ai_context_engineering",
+    "ai_on_data_platform",
     "dbt_analytics_engineering",
-    "metadata_lineage_catalogs",
     "powerbi_semantic_models"
    ]
   },
   {
    "id": "veilige-agents-sandbox-en-gateway",
    "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
-   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap, Anthropic liet 1.000 agents werken in eigen virtuele machines zonder internet achter één gateway, Claude Managed Agents draait sinds 12 november (private bèta) in je eigen netwerk met sleutels buiten de sandbox, en bij Databricks regelt Unity Gateway budgetten en logboek voor modellen van onder meer OpenAI. Nieuw deze week: in Claude Code vragen sandbox-commando's weer om toestemming, en geplande taken vragen dat ook voor skills met eigen rechten.",
+   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap en sandbox-commando's vragen weer om toestemming, en Anthropic liet 1.000 agents samenwerken via alleen Git en een Postgres-database. Nieuw deze week: Unity Gateway Insights zet de sporen van coding agents als gewone tabel in Unity Catalog, met grants en row filters, en zoekt daarin waar tokens weglekken.",
    "article_ids": [
+    "233bf8a439eb",
     "3e9bbba1efea",
-    "078567da13b8",
-    "5b59c75a11e5",
-    "334fd5b5e6c0",
     "62afb1e0ab94",
-    "94b7888e188f",
     "6df581b9d8ed"
    ],
    "topics": [
@@ -48,16 +40,13 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "dbt Labs zag dat dbt-skills bij de nieuwste Claude-modellen weinig uitmaakten, en Databricks' Genie Migrate zet bij het omzetten van oude SQL per bestand een controle en een vergelijking naast elkaar. LangChain schrijft de eval vóór de wijziging en laat experts hele gesprekken beoordelen, Curative laat een 'rechter' elk bericht van zijn agent nakijken, en Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven. Nieuwste: Advancing Analytics vergeleek drie beslismodellen op 300 openbare testgesprekken; bij fijne keuzes scoorde ai_decide in Databricks duidelijk lager.",
+   "summary": "dbt Labs zag dat de nieuwste Claude-modellen dbt al kennen en dat het proces het verschil maakt, Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven, en wat een Claude-agent deed staat nu als tabel in Unity Catalog. Advancing Analytics vergeleek beslismodellen op 300 openbare testgesprekken; ai_decide scoorde lager bij fijne keuzes. Nieuw deze week: het Claude Code-team laat Claude zijn eigen werk bewijzen met end-to-end-, property- en differential tests, en Claude testte Claude Docs met een 'chaos loop' tegen vooraf vastgelegde regels.",
    "article_ids": [
+    "069078b2b4e3",
+    "760c502508bd",
     "ea585dd9c0fa",
-    "d6ea4662f2dc",
-    "3180dbea1b88",
-    "8b7855abcc2d",
     "d5f14a6242b0",
-    "86eab858089b",
     "a9b6458ba033",
-    "2e0fb69e7f67",
     "873de8dc3ad7",
     "c63f36899b14"
    ],
@@ -65,9 +54,7 @@
     "ai_evaluation_observability",
     "claude_ai_development",
     "data_quality_observability",
-    "ai_agents_rag",
-    "ai_on_data_platform",
-    "cicd_data_deployment"
+    "ai_agents_rag"
    ]
   }
  ]
