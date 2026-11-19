@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-19T03:34:22.447556Z",
+ "generated_at": "2026-11-19T03:35:11.752852Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-19T03:55:00Z",
+ "last_article_added_at": "2026-11-19T04:05:00Z",
  "last_successful_update": "2026-11-19T03:13:30.195491Z",
  "groups": [
   {
@@ -4454,6 +4454,113 @@
    }
   },
   {
+   "id": "760c502508bd",
+   "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
+   "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-17T00:00:00Z",
+   "fetched_at": "2026-11-19T03:13:31.924707Z",
+   "summary": "Een Anthropic-engineer liet een Claude Code-sessie met subagents twee weken een testomgeving overbelasten, de telemetrie lezen en zelf fixes bouwen. Resultaat: 60 serverfouten op ongeveer 2 miljard verzoeken.",
+   "personal_relevance": "Het laat zien hoe je Claude een lang, zelfstandig verbeterproces laat doen met duidelijke grenzen: meten, vaste regels en een mens bij onomkeerbare stappen.",
+   "experiment": "Laat Claude Code op een klein dbt-project met openbare data trage modellen zoeken via de run_results.json, één verbetering voorstellen en die alleen doorvoeren als een vergelijking van oude en nieuwe tabel geen verschil geeft.",
+   "limitations": [
+    "Een verslag van Anthropic over een eigen product; niet onafhankelijk gecontroleerd.",
+    "Geen code of configuratie in het artikel.",
+    "De kostenschatting voor kleinere diensten is volgens de auteur zelf niet getest."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "A harness for every task: dynamic workflows in Claude Code (over goal drift)",
+     "url": "https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/"
+    },
+    {
+     "label": "Claude Code-documentatie",
+     "url": "https://code.claude.com/docs"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.9,
+    "source": 0.51,
+    "quality": 0.63,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T04:05:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering",
+   "story": [
+    "Twee weken voor de lancering van Claude Docs draaide de dienst nog op één server voor een paar duizend interne gebruikers. Vivek Nair liet daarom een Claude Code-sessie een kopie van productie (staging) belasten met meer dan een miljoen nep-documenten per dag. Claude maakte onderdelen expres kapot en repareerde wat omviel: een 'chaos loop'. De sessie stuurde gemiddeld 11 subagents aan, op het drukste moment 30.",
+    "Elke ronde ging hetzelfde. Een testscript zette één functie onder maximale druk. Claude las de telemetrie via de Datadog MCP, kwam met een paar opties en een advies, en bouwde de fix. Makkelijk terug te draaien wijzigingen voerde Claude zelf door; wijzigingen aan het schema of de opslag van documenten moest de engineer eerst goedkeuren. Een aparte sessie reviewde de wijziging, daarna ging die naar staging en begon de test opnieuw. Claude moest twee vaste regels (invarianten) bewaken: documenten openen bijna meteen, en een bevestigde wijziging gaat nooit verloren.",
+    "Het werkte omdat de dienst meetbaar was. Elke databasequery meldde zijn naam en hoeveel rijen hij las tegenover hoeveel hij teruggaf; zo vond Claude slechte query's. Een voorbeeld: één groot document gebruikte 3 GB geheugen. Claude's eerste fix bleek de verkeerde cache te raken en werd teruggedraaid. Fijnere metingen lieten zien dat elke toetsaanslag het document meerdere keren kopieerde; met copy-on-write zakte het naar ongeveer 180 MB. Het team koos bewust Rust en weinig bibliotheken, zodat al het geheugen te herleiden was.",
+    "De uitkomst: meer dan 4,6 miljoen documenten in de eerste week, ongeveer 2 miljard verzoeken met 60 serverfouten en geen enkele terugdraaiing. De geschatte geheugenbehoefte ging van meer dan 500 naar ongeveer 50 pods. De rekenkosten waren ongeveer 125.000 dollar aan modelgebruik, volgens de auteur de helft te veel achteraf. Voor een kleinere dienst schat hij 3.000 tot 10.000 dollar, maar dat heeft hij niet getest.",
+    "De lessen gaan ook op voor datawerk: geef Claude direct toegang tot je meetgegevens, schrijf vooraf de regels op die nooit mogen breken, en laat een mens beslissen over alles wat moeilijk terug te draaien is. Bij een pijplijn zou dat betekenen: Claude mag een query herschrijven en opnieuw testen, maar een schemawijziging in Silver vraagt jouw akkoord."
+   ],
+   "key_facts": [
+    "Claude Docs werd gelanceerd op 16 september 2026; de chaos loop begon op 4 september.",
+    "De Claude Code-sessie stuurde gemiddeld 11 en op het hoogtepunt 30 subagents aan en las telemetrie via de Datadog MCP.",
+    "Geteste scenario's: 10 miljoen nieuwe documenten per dag, 22.000 verbindingen die tegelijk opnieuw verbinden, een server die stopt tijdens het laden.",
+    "Wijzigingen aan schema of opslag vroegen goedkeuring van een mens; makkelijk terug te draaien wijzigingen niet.",
+    "Meer dan 4,6 miljoen documenten tot 22 september; ongeveer 2 miljard verzoeken met 60 serverfouten; 629 keer naar productie uitgerold in september zonder terugdraaiing.",
+    "Geheugen van één groot document ging van ongeveer 3 GB naar ongeveer 180 MB; de geschatte behoefte van meer dan 500 naar ongeveer 50 pods.",
+    "Kosten: ongeveer 125.000 dollar aan modelgebruik tegen catalogusprijs (Claude Fable 5.2).",
+    "7 van de 10 geoefende scenario's gebeurden echt in productie; de fixes stonden klaar achter schakelaars (runtime flags)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "staging",
+     "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert."
+    },
+    {
+     "term": "subagents",
+     "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context."
+    },
+    {
+     "term": "telemetrie",
+     "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte."
+    },
+    {
+     "term": "invarianten",
+     "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren."
+    },
+    {
+     "term": "copy-on-write",
+     "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Concreet verhaal over Claude die lang zelfstandig werkt, maar over webinfrastructuur in plaats van data."
+   },
+   "labels": [
+    "multi-agent",
+    "human-in-the-loop",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -4
+   }
+  },
+  {
    "id": "a704112d6f8a",
    "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
    "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
@@ -6141,7 +6248,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.33,
+    "recency": 0.32,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -9888,6 +9995,17 @@
    ]
   },
   {
+   "term": "copy-on-write",
+   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    }
+   ]
+  },
+  {
    "term": "DAG",
    "explanation": "Directed acyclic graph: de kaart van alle dbt-modellen en hoe ze van elkaar afhangen. dbt bepaalt er de volgorde van bouwen mee.",
    "refs": [
@@ -10784,8 +10902,13 @@
   },
   {
    "term": "invarianten",
-   "explanation": "Regels over de data die altijd moeten gelden, zoals 'omzet is nooit negatief', in plaats van vaste waarden van vandaag.",
+   "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    },
     {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
@@ -11939,6 +12062,17 @@
    ]
   },
   {
+   "term": "staging",
+   "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    }
+   ]
+  },
+  {
    "term": "Stop-hook",
    "explanation": "Een hook in Claude Code die draait op het moment dat Claude wil stoppen, bijvoorbeeld om eerst een controle af te dwingen.",
    "refs": [
@@ -12005,8 +12139,13 @@
   },
   {
    "term": "subagents",
-   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting.",
+   "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    },
     {
      "kind": "a",
      "id": "6d403bbe9379",
@@ -12081,6 +12220,17 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
+    }
+   ]
+  },
+  {
+   "term": "telemetrie",
+   "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
     }
    ]
   },
@@ -12650,56 +12800,23 @@
   }
  ],
  "runs": {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "tasks": {
    "uitleggen": {
-    "status": "ok",
-    "summary": "Ingehaald om 07:27: de werklijst was leeg, dus niets meer te verwerken. Eerder vannacht: 2 artikelen vol uitgelegd en 19 overgeslagen.",
-    "finished_at": "2026-11-18T06:28:05Z",
+    "status": "deels",
+    "summary": "5 artikelen vol uitgelegd (2 met voorbeeld), 2 overgeslagen; 2 Fabric-artikelen waren niet bereikbaar en blijven op de werklijst.",
+    "finished_at": "2026-11-19T03:34:42Z",
     "problems": [
-     "Dataflow-voortgang opnieuw niet bijgewerkt: add_repo is niet beschikbaar en clonen van tomasr91/personal-data-platform werd geweigerd. Stap volgens de taak overgeslagen."
+     "personal-data-platform kon niet worden toegevoegd of gecloned: add_repo was niet beschikbaar in deze sessie en git clone gaf 'could not read Username for https://github.com'. Dataflow-voortgang niet bijgewerkt.",
+     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); 5 artikelen geopend via een link uit WebSearch.",
+     "'OneLake: The unified foundation for data, context, governance, and AI' (9f74702ac72e) en 'Bringing trusted Fabric IQ context to wherever people and agents work' (3c6506d1a8d8): de zoeklink gaf een fout van de site (client_error) en het originele adres werd geweigerd; ze blijven op de werklijst."
     ],
     "counts": {
-     "uitgelegd": 0,
-     "overgeslagen": 0,
-     "eerder_vannacht_uitgelegd": 2,
-     "eerder_vannacht_overgeslagen": 19
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Verdieping over meten en verbeteren met ai_extract geschreven (issue #34) en 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-18T04:27:28Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 1,
-     "keuzes": 5
-    }
-   },
-   "inhalen": {
-    "status": "ok",
-    "summary": "Uitleggen ingehaald: de werklijst was al leeg, dus alleen een nieuw verslag; verdiepen en overzicht waren al klaar.",
-    "finished_at": "2026-11-18T06:28:13Z",
-    "problems": [
-     "Dataflow-voortgang kon niet worden bijgewerkt: geen toegang tot tomasr91/personal-data-platform."
-    ],
-    "counts": {
-     "ingehaald": 1,
-     "uitgelegd": 0
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (nieuw: veilige agents, vervangt de afzakkende trend over geheugen), nieuw onderwerp 'Veilige agents' toegevoegd na jouw ja; geen begrippen aan te vullen.",
-    "finished_at": "2026-11-18T05:14:52Z",
-    "problems": [
-     "Het nieuwe onderwerp 'veilige_agents' heeft nog geen bron die het expliciet volgt (waarschuwing van de contextcontrole); bronnen mag deze taak niet aanpassen."
-    ],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 1,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
+     "uitgelegd": 5,
+     "overgeslagen": 2,
+     "met_voorbeeld": 2,
+     "via_websearch": 5,
+     "niet_bereikbaar": 2
     }
    }
   }
@@ -12865,24 +12982,24 @@
   "fetched_items": 740,
   "unique_after_dedupe": 685,
   "merged_duplicates": 48,
-  "shown": 54,
+  "shown": 55,
   "decisions": {
    "excluded": 243,
-   "area_cap": 22,
-   "included": 106,
+   "area_cap": 21,
+   "included": 107,
    "no_topic": 147,
-   "below_threshold": 121,
+   "below_threshold": 120,
    "kort_vervallen": 33,
-   "source_cap": 13
+   "source_cap": 14
   },
   "processing": {
-   "enriched": 54
+   "enriched": 55
   },
   "without_date": 0,
   "per_group": {
    "ai_context": 22,
    "overig": 5,
-   "claude": 11,
+   "claude": 12,
    "dbt": 6,
    "architectuur": 3,
    "agents": 5,
@@ -12894,7 +13011,7 @@
    "claude_code_releases": 4,
    "dbt_labs_blog": 10,
    "simon_whiteley": 2,
-   "claude_blog": 6,
+   "claude_blog": 7,
    "anthropic_engineering": 1,
    "dbt_developer_blog": 2,
    "simon_spati": 2,
@@ -12955,9 +13072,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 172
+   "skipped_no_key": 171
   },
-  "queue_size": 4,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
