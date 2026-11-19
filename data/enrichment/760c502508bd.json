@@ -1,0 +1,92 @@
+{
+ "format_version": 2,
+ "article_id": "760c502508bd",
+ "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
+ "headline": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering",
+ "summary": "Een Anthropic-engineer liet een Claude Code-sessie met subagents twee weken een testomgeving overbelasten, de telemetrie lezen en zelf fixes bouwen. Resultaat: 60 serverfouten op ongeveer 2 miljard verzoeken.",
+ "story": [
+  "Twee weken voor de lancering van Claude Docs draaide de dienst nog op één server voor een paar duizend interne gebruikers. Vivek Nair liet daarom een Claude Code-sessie een kopie van productie (staging) belasten met meer dan een miljoen nep-documenten per dag. Claude maakte onderdelen expres kapot en repareerde wat omviel: een 'chaos loop'. De sessie stuurde gemiddeld 11 subagents aan, op het drukste moment 30.",
+  "Elke ronde ging hetzelfde. Een testscript zette één functie onder maximale druk. Claude las de telemetrie via de Datadog MCP, kwam met een paar opties en een advies, en bouwde de fix. Makkelijk terug te draaien wijzigingen voerde Claude zelf door; wijzigingen aan het schema of de opslag van documenten moest de engineer eerst goedkeuren. Een aparte sessie reviewde de wijziging, daarna ging die naar staging en begon de test opnieuw. Claude moest twee vaste regels (invarianten) bewaken: documenten openen bijna meteen, en een bevestigde wijziging gaat nooit verloren.",
+  "Het werkte omdat de dienst meetbaar was. Elke databasequery meldde zijn naam en hoeveel rijen hij las tegenover hoeveel hij teruggaf; zo vond Claude slechte query's. Een voorbeeld: één groot document gebruikte 3 GB geheugen. Claude's eerste fix bleek de verkeerde cache te raken en werd teruggedraaid. Fijnere metingen lieten zien dat elke toetsaanslag het document meerdere keren kopieerde; met copy-on-write zakte het naar ongeveer 180 MB. Het team koos bewust Rust en weinig bibliotheken, zodat al het geheugen te herleiden was.",
+  "De uitkomst: meer dan 4,6 miljoen documenten in de eerste week, ongeveer 2 miljard verzoeken met 60 serverfouten en geen enkele terugdraaiing. De geschatte geheugenbehoefte ging van meer dan 500 naar ongeveer 50 pods. De rekenkosten waren ongeveer 125.000 dollar aan modelgebruik, volgens de auteur de helft te veel achteraf. Voor een kleinere dienst schat hij 3.000 tot 10.000 dollar, maar dat heeft hij niet getest.",
+  "De lessen gaan ook op voor datawerk: geef Claude direct toegang tot je meetgegevens, schrijf vooraf de regels op die nooit mogen breken, en laat een mens beslissen over alles wat moeilijk terug te draaien is. Bij een pijplijn zou dat betekenen: Claude mag een query herschrijven en opnieuw testen, maar een schemawijziging in Silver vraagt jouw akkoord."
+ ],
+ "key_facts": [
+  "Claude Docs werd gelanceerd op 16 september 2026; de chaos loop begon op 4 september.",
+  "De Claude Code-sessie stuurde gemiddeld 11 en op het hoogtepunt 30 subagents aan en las telemetrie via de Datadog MCP.",
+  "Geteste scenario's: 10 miljoen nieuwe documenten per dag, 22.000 verbindingen die tegelijk opnieuw verbinden, een server die stopt tijdens het laden.",
+  "Wijzigingen aan schema of opslag vroegen goedkeuring van een mens; makkelijk terug te draaien wijzigingen niet.",
+  "Meer dan 4,6 miljoen documenten tot 22 september; ongeveer 2 miljard verzoeken met 60 serverfouten; 629 keer naar productie uitgerold in september zonder terugdraaiing.",
+  "Geheugen van één groot document ging van ongeveer 3 GB naar ongeveer 180 MB; de geschatte behoefte van meer dan 500 naar ongeveer 50 pods.",
+  "Kosten: ongeveer 125.000 dollar aan modelgebruik tegen catalogusprijs (Claude Fable 5.2).",
+  "7 van de 10 geoefende scenario's gebeurden echt in productie; de fixes stonden klaar achter schakelaars (runtime flags)."
+ ],
+ "personal_relevance": "Het laat zien hoe je Claude een lang, zelfstandig verbeterproces laat doen met duidelijke grenzen: meten, vaste regels en een mens bij onomkeerbare stappen.",
+ "experiment": "Laat Claude Code op een klein dbt-project met openbare data trage modellen zoeken via de run_results.json, één verbetering voorstellen en die alleen doorvoeren als een vergelijking van oude en nieuwe tabel geen verschil geeft.",
+ "limitations": [
+  "Een verslag van Anthropic over een eigen product; niet onafhankelijk gecontroleerd.",
+  "Geen code of configuratie in het artikel.",
+  "De kostenschatting voor kleinere diensten is volgens de auteur zelf niet getest."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "A harness for every task: dynamic workflows in Claude Code (over goal drift)",
+   "url": "https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/"
+  },
+  {
+   "label": "Claude Code-documentatie",
+   "url": "https://code.claude.com/docs"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "ai_agents_rag",
+  "ai_evaluation_observability"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.45,
+  "novelty": 0.7
+ },
+ "development_key": "claude-docs-chaos-loop-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.6,
+  "why": "Concreet verhaal over Claude die lang zelfstandig werkt, maar over webinfrastructuur in plaats van data."
+ },
+ "labels": [
+  "multi-agent",
+  "human-in-the-loop",
+  "agent-harness"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "staging",
+   "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert."
+  },
+  {
+   "term": "subagents",
+   "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context."
+  },
+  {
+   "term": "telemetrie",
+   "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte."
+  },
+  {
+   "term": "invarianten",
+   "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren."
+  },
+  {
+   "term": "copy-on-write",
+   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-19T04:05:00Z",
+ "prompt_version": "taak-v2"
+}
