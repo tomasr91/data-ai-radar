@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-18T21:10:41.661801Z",
- "mode": "partial",
- "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "generated_at": "2026-11-19T03:13:30.195491Z",
+ "mode": "live",
+ "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-18T03:26:52Z",
- "last_successful_update": "2026-11-18T09:12:54.894872Z",
+ "last_successful_update": "2026-11-19T03:13:30.195491Z",
  "groups": [
   {
    "id": "dbt",
@@ -159,7 +159,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-18T09:12:54.932024Z"
+   "checked_at": "2026-11-19T03:13:30.244157Z"
   },
   {
    "id": "dbt_core_releases",
@@ -169,10 +169,10 @@
    "trust_level": "high",
    "priority": 4,
    "fetch_method": "github_releases",
-   "status": "failed",
-   "items": 0,
-   "message": "HTTP 403 bij https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-18T09:12:55.207078Z"
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
+   "checked_at": "2026-11-19T03:13:30.923256Z"
   },
   {
    "id": "claude_code_releases",
@@ -182,10 +182,10 @@
    "trust_level": "high",
    "priority": 4,
    "fetch_method": "github_releases",
-   "status": "failed",
-   "items": 0,
-   "message": "HTTP 403 bij https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-18T09:12:55.251712Z"
+   "status": "ok",
+   "items": 10,
+   "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
+   "checked_at": "2026-11-19T03:13:31.533687Z"
   },
   {
    "id": "anthropic_engineering",
@@ -198,7 +198,7 @@
    "status": "ok",
    "items": 29,
    "message": "29 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-18T09:12:55.296453Z"
+   "checked_at": "2026-11-19T03:13:31.861700Z"
   },
   {
    "id": "claude_blog",
@@ -211,7 +211,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-18T09:12:55.330825Z"
+   "checked_at": "2026-11-19T03:13:31.924707Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -224,7 +224,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-18T09:12:55.445891Z"
+   "checked_at": "2026-11-19T03:13:32.045643Z"
   },
   {
    "id": "databricks_blog",
@@ -237,7 +237,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-18T09:12:55.495762Z"
+   "checked_at": "2026-11-19T03:13:32.204856Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -250,7 +250,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-18T09:12:55.557359Z"
+   "checked_at": "2026-11-19T03:13:32.375959Z"
   },
   {
    "id": "azure_blog",
@@ -263,7 +263,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-18T09:12:55.737214Z"
+   "checked_at": "2026-11-19T03:13:32.518344Z"
   },
   {
    "id": "powerbi_blog",
@@ -276,7 +276,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-18T09:12:55.954141Z"
+   "checked_at": "2026-11-19T03:13:34.968801Z"
   },
   {
    "id": "fabric_blog",
@@ -289,7 +289,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-18T09:12:56.602115Z"
+   "checked_at": "2026-11-19T03:13:35.861803Z"
   },
   {
    "id": "sqlbi",
@@ -302,7 +302,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-18T09:12:57.013715Z"
+   "checked_at": "2026-11-19T03:13:36.692795Z"
   },
   {
    "id": "huggingface_blog",
@@ -315,7 +315,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-18T09:12:57.237312Z"
+   "checked_at": "2026-11-19T03:13:36.949290Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -328,7 +328,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-18T09:12:57.521747Z"
+   "checked_at": "2026-11-19T03:13:37.032631Z"
   },
   {
    "id": "simon_whiteley",
@@ -341,7 +341,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-18T09:12:57.706781Z"
+   "checked_at": "2026-11-19T03:13:37.163881Z"
   },
   {
    "id": "simon_spati",
@@ -354,7 +354,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.ssp.sh/posts/index.xml",
-   "checked_at": "2026-11-18T09:12:57.924182Z"
+   "checked_at": "2026-11-19T03:13:37.282320Z"
   },
   {
    "id": "confessions_data_guy",
@@ -367,7 +367,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.confessionsofadataguy.com/feed/",
-   "checked_at": "2026-11-18T09:13:01.157559Z"
+   "checked_at": "2026-11-19T03:13:38.215263Z"
   },
   {
    "id": "delta_lake_blog",
@@ -380,7 +380,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://delta.io/rss.xml",
-   "checked_at": "2026-11-18T09:13:02.867240Z"
+   "checked_at": "2026-11-19T03:13:38.505013Z"
   },
   {
    "id": "hamel_husain",
@@ -393,7 +393,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-18T09:13:03.252799Z"
+   "checked_at": "2026-11-19T03:13:38.622854Z"
   },
   {
    "id": "langchain_blog",
@@ -406,7 +406,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-18T09:13:03.397264Z"
+   "checked_at": "2026-11-19T03:13:38.808297Z"
   },
   {
    "id": "chip_huyen",
@@ -419,7 +419,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-18T09:13:03.498047Z"
+   "checked_at": "2026-11-19T03:13:38.924560Z"
   },
   {
    "id": "simon_willison",
@@ -432,7 +432,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-18T09:13:04.063022Z"
+   "checked_at": "2026-11-19T03:13:39.097193Z"
   },
   {
    "id": "chris_webb",
@@ -445,7 +445,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-18T09:13:04.127409Z"
+   "checked_at": "2026-11-19T03:13:39.150916Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -458,7 +458,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-18T09:13:04.215565Z"
+   "checked_at": "2026-11-19T03:13:39.411670Z"
   }
  ],
  "daily_top": [
@@ -475,7 +475,7 @@
    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
    "source_id": "azure_databricks_release_notes",
    "published_at": "2026-11-15T23:59:59Z",
-   "fetched_at": "2026-11-18T03:13:13.666494Z",
+   "fetched_at": "2026-11-19T03:13:30.244157Z",
    "summary": "In week 46 verandert de standaardinstelling voor nieuwe jobs-compute, komen asynchrone AI-functies voor grote batches documenten (Beta) en worden standalone pipelines op serverless algemeen beschikbaar. Genie in Slack en Teams en Genie Search zijn nu GA.",
    "personal_relevance": "De nieuwe standaard voor jobs-compute en de asynchrone AI-functies raken direct hoe je jobs en documentverwerking inricht.",
    "experiment": "Zet in een proefwerkruimte een kleine job met een parameter {{(job.start_time - 1.day).iso_date}} en laat een notebook die datum afdrukken. Kijk ook welke access mode nieuwe jobs-compute nu krijgt.",
@@ -503,7 +503,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -628,7 +628,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -760,7 +760,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.01,
@@ -951,7 +951,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -1063,7 +1063,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -1408,7 +1408,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -1636,7 +1636,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -1946,7 +1946,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.34,
+    "recency": 0.33,
     "source": 0.85,
     "quality": 0.57,
     "fit": 0.35
@@ -2103,130 +2103,6 @@
    }
   },
   {
-   "id": "f49f6dcce187",
-   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
-   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
-   "source_id": "simon_spati",
-   "published_at": "2026-11-10T06:00:08Z",
-   "fetched_at": "2026-11-15T21:23:09.589085Z",
-   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
-   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
-   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
-   "limitations": [
-    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
-    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Omnigraph op GitHub",
-     "url": "https://github.com/ModernRelay/omnigraph"
-    },
-    {
-     "label": "Omnigraph-documentatie",
-     "url": "https://omnigraph.dev/docs"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "data_architecture_modeling",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "kwaliteit"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.65,
-    "source": 0.68,
-    "quality": 0.62,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
-   "story": [
-    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
-    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
-    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
-    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
-    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
-   ],
-   "key_facts": [
-    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
-    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
-    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
-    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
-    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
-    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
-   "showcase": {
-    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
-    "language": "sql",
-    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
-    "result": {
-     "columns": [
-      "id",
-      "resultaat"
-     ],
-     "rows": [
-      [
-       1,
-       "{'sterren': 4}"
-      ],
-      [
-       2,
-       "{'sterren': NULL}"
-      ]
-     ]
-    },
-    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
-   },
-   "terms": [
-    {
-     "term": "getypeerde graaf",
-     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
-    },
-    {
-     "term": "knopen",
-     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
-    },
-    {
-     "term": "branch",
-     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
-    },
-    {
-     "term": "RDF",
-     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.6,
-    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
-   },
-   "labels": [
-    "context-als-code",
-    "kennisgraaf",
-    "agent-context-laag"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "a68aede0b61b",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
    "url": "https://www.getdbt.com/blog/checkr-ai-context-metrics-investigation",
@@ -2351,7 +2227,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.34,
+    "recency": 0.33,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -2495,6 +2371,130 @@
    ]
   },
   {
+   "id": "f49f6dcce187",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-10T06:00:08Z",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
+   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
+   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
+   "limitations": [
+    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
+    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Omnigraph op GitHub",
+     "url": "https://github.com/ModernRelay/omnigraph"
+    },
+    {
+     "label": "Omnigraph-documentatie",
+     "url": "https://omnigraph.dev/docs"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "data_architecture_modeling",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "kwaliteit"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.64,
+    "source": 0.68,
+    "quality": 0.62,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
+   "story": [
+    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
+    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
+    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
+    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
+    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
+   ],
+   "key_facts": [
+    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
+    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
+    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
+    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
+    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
+    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+   "showcase": {
+    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
+    "language": "sql",
+    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
+    "result": {
+     "columns": [
+      "id",
+      "resultaat"
+     ],
+     "rows": [
+      [
+       1,
+       "{'sterren': 4}"
+      ],
+      [
+       2,
+       "{'sterren': NULL}"
+      ]
+     ]
+    },
+    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
+   },
+   "terms": [
+    {
+     "term": "getypeerde graaf",
+     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
+    },
+    {
+     "term": "knopen",
+     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
+    },
+    {
+     "term": "branch",
+     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
+    },
+    {
+     "term": "RDF",
+     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
+   },
+   "labels": [
+    "context-als-code",
+    "kennisgraaf",
+    "agent-context-laag"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
    "id": "656e0d953ae9",
    "title": "Announcing GA of Genie Ontology",
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
@@ -2542,7 +2542,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -2655,7 +2655,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -2839,99 +2839,6 @@
    }
   },
   {
-   "id": "450468c3f304",
-   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
-   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-23T19:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Databricks liet AI-agents pipelines bouwen in twee stijlen. De beschrijvende stijl kostte veel minder rekenkracht, maar fouten bleven.",
-   "personal_relevance": "dbt is ook declaratief, dus dit zegt iets over hoe je AI je modellen laat schrijven.",
-   "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
-   "limitations": [
-    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
-    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
-    "Meer tokens betekent hogere AI-kosten per build."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_on_data_platform",
-    "data_architecture_modeling",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "databricks"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.27,
-    "source": 0.85,
-    "quality": 0.8,
-    "feedback": -0.06,
-    "fit": 0.35
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Built for Agents: The Case for Spark Declarative Pipelines",
-     "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
-     "published_at": "2026-10-23T19:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Laat AI liever beschrijven wat je wilt dan hoe het moet",
-   "story": [
-    "Je kunt een pipeline op twee manieren schrijven. Stap voor stap, zoals een recept: pak de pan, doe er olie in, bak de ui. Of beschrijvend: je zegt wat je wilt eten, en de keuken bepaalt de volgorde. Dat tweede heet declaratief.",
-    "Databricks liet AI-agents honderden pipelines in beide stijlen bouwen. De declaratieve versies gebruikten veel minder rekentijd en waren ongeveer half zo lang. Ze kostten wel meer AI-tokens om te maken. En Spark kon vooraf controleren of alle kolommen bestonden.",
-    "Eén ding veranderde niet: in beide stijlen zat in bijna een derde van de pipelines een stille logische fout. De code draaide, maar de uitkomst klopte niet.",
-    "dbt is ook declaratief, dus de les geldt voor jou. Laat AI liever kleine, beschrijvende modellen schrijven. En vertrouw op je dbt-tests, want daar vang je de fouten die de AI wel maakt."
-   ],
-   "key_facts": [
-    "Engineering-blog van Databricks van 23 oktober 2026.",
-    "528 builds: 22 taken x 12 datasets x 2 aanpakken, gemaakt met Opus 4.8.",
-    "Clustertijd was ongeveer 34x lager bij Spark Declarative Pipelines (17 tegen 596 executor-seconden).",
-    "Mediaan code: 64 tegen 131 regels. Declaratief gebruikte ongeveer 2,3x meer LLM-tokens.",
-    "Stille logische fouten: 32,2% declaratief, 27,7% procedureel."
-   ],
-   "terms": [
-    {
-     "term": "declaratief",
-     "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
-    },
-    {
-     "term": "AI-agents",
-     "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
-    },
-    {
-     "term": "tokens",
-     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.85,
-    "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
-   },
-   "labels": [
-    "agents-bouwen-pipelines",
-    "declaratieve-pipelines"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -6
-   }
-  },
-  {
    "id": "d2e9b967064a",
    "title": "How Ecolab used an AI migration agent to shrink 84,000 lines of legacy SQL by 6x",
    "url": "https://www.getdbt.com/blog/ecolab-ai-agent-legacy-sql-migration",
@@ -3039,7 +2946,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.34,
+    "recency": 0.33,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -3310,7 +3217,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.05,
@@ -3479,6 +3386,99 @@
     "fase": 7,
     "quote": "Voor Dataflow is dat in fase 7 een goed startpunt: één agent met een paar read-only datatools",
     "why": "Fase 7 bouwt een eigen data-platform-agent met tools naar Databricks."
+   }
+  },
+  {
+   "id": "450468c3f304",
+   "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-23T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Databricks liet AI-agents pipelines bouwen in twee stijlen. De beschrijvende stijl kostte veel minder rekenkracht, maar fouten bleven.",
+   "personal_relevance": "dbt is ook declaratief, dus dit zegt iets over hoe je AI je modellen laat schrijven.",
+   "experiment": "Laat een AI met een openbare dataset (geen werkdata) twee versies van hetzelfde model schrijven: een dbt-model en een procedureel PySpark-script. Vergelijk lengte, leesbaarheid en of je tests slagen.",
+   "limitations": [
+    "Benchmark van Databricks zelf; de 34x geldt voor deze builds.",
+    "Stille logische fouten blijven bestaan. De dry run vindt alleen structurele fouten.",
+    "Meer tokens betekent hogere AI-kosten per build."
+   ],
+   "availability_status": "beschikbaar",
+   "topics": [
+    "ai_on_data_platform",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.27,
+    "source": 0.85,
+    "quality": 0.8,
+    "feedback": -0.06,
+    "fit": 0.35
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+     "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+     "published_at": "2026-10-23T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Laat AI liever beschrijven wat je wilt dan hoe het moet",
+   "story": [
+    "Je kunt een pipeline op twee manieren schrijven. Stap voor stap, zoals een recept: pak de pan, doe er olie in, bak de ui. Of beschrijvend: je zegt wat je wilt eten, en de keuken bepaalt de volgorde. Dat tweede heet declaratief.",
+    "Databricks liet AI-agents honderden pipelines in beide stijlen bouwen. De declaratieve versies gebruikten veel minder rekentijd en waren ongeveer half zo lang. Ze kostten wel meer AI-tokens om te maken. En Spark kon vooraf controleren of alle kolommen bestonden.",
+    "Eén ding veranderde niet: in beide stijlen zat in bijna een derde van de pipelines een stille logische fout. De code draaide, maar de uitkomst klopte niet.",
+    "dbt is ook declaratief, dus de les geldt voor jou. Laat AI liever kleine, beschrijvende modellen schrijven. En vertrouw op je dbt-tests, want daar vang je de fouten die de AI wel maakt."
+   ],
+   "key_facts": [
+    "Engineering-blog van Databricks van 23 oktober 2026.",
+    "528 builds: 22 taken x 12 datasets x 2 aanpakken, gemaakt met Opus 4.8.",
+    "Clustertijd was ongeveer 34x lager bij Spark Declarative Pipelines (17 tegen 596 executor-seconden).",
+    "Mediaan code: 64 tegen 131 regels. Declaratief gebruikte ongeveer 2,3x meer LLM-tokens.",
+    "Stille logische fouten: 32,2% declaratief, 27,7% procedureel."
+   ],
+   "terms": [
+    {
+     "term": "declaratief",
+     "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
+    },
+    {
+     "term": "AI-agents",
+     "explanation": "AI-toepassingen die zelf stappen zetten om een taak af te ronden, zoals zoeken, tools aanroepen en hun resultaat controleren."
+    },
+    {
+     "term": "tokens",
+     "explanation": "De stukjes tekst waarin een taalmodel rekent. Meer tokens betekent meer kosten en vaak een tragere agent."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.85,
+    "why": "Je gaf dit stuk over agents en declaratieve pipelines een duim omhoog."
+   },
+   "labels": [
+    "agents-bouwen-pipelines",
+    "declaratieve-pipelines"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -6
    }
   },
   {
@@ -3718,7 +3718,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.48,
+    "recency": 0.47,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3866,7 +3866,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.48,
+    "recency": 0.47,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.06,
@@ -3989,7 +3989,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -4339,7 +4339,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.31,
+    "recency": 0.3,
     "source": 0.8,
     "quality": 0.57,
     "fit": 0.2
@@ -4427,7 +4427,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.52,
     "feedback": -0.02,
@@ -4794,109 +4794,6 @@
    }
   },
   {
-   "id": "ffe8a09e969f",
-   "title": "Claude Fable 5.2 and Mythos 5.2",
-   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
-   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
-   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
-   "limitations": [
-    "Alle benchmarks zijn van Anthropic zelf.",
-    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
-    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Fable 5.2 (modeldocumentatie)",
-     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
-    },
-    {
-     "label": "Advisor in Claude Code",
-     "url": "https://code.claude.com/docs/en/advisor"
-    },
-    {
-     "label": "Multi-agent orchestration",
-     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
-    },
-    {
-     "label": "System card",
-     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 82,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.61,
-    "source": 0.51,
-    "quality": 0.6,
-    "feedback": -0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-12T04:00:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
-   "story": [
-    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
-    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
-    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
-    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
-    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
-   ],
-   "key_facts": [
-    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
-    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
-    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
-    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
-    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
-    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "fast mode",
-     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
-    },
-    {
-     "term": "Orchestrator",
-     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
-   },
-   "labels": [
-    "claude-modellen",
-    "multi-agent"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -1
-   }
-  },
-  {
    "id": "62afb1e0ab94",
    "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
    "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
@@ -4997,113 +4894,6 @@
    }
   },
   {
-   "id": "5b59c75a11e5",
-   "title": "Operate Claude Managed Agents inside your security perimeter",
-   "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-12T00:00:00Z",
-   "date_note": "Het originele Anthropic-artikel kon niet worden geopend; de uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
-   "fetched_at": "2026-11-13T03:13:29.038183Z",
-   "summary": "Anthropic laat bedrijven Claude Managed Agents zelf hosten: de agentserver, de sessiegeschiedenis, de sandboxes en de sleutels blijven in de eigen cloud of het eigen datacenter. Alleen de modelaanroepen gaan nog naar buiten. Het is een private bèta.",
-   "personal_relevance": "Het laat zien welke delen van een agent je binnen je eigen muren kunt houden, en welk deel (de prompts naar het model) altijd naar buiten gaat.",
-   "experiment": "Teken voor een eigen agentidee (bijv. een agent die dbt-documentatie in een testproject bijwerkt) wat er in deze opzet waar zou draaien: harness, sandbox, sleutels, logs en model. Markeer welke stappen data naar buiten sturen. Gebruik alleen verzonnen voorbeelddata.",
-   "limitations": [
-    "Private bèta voor bedrijven via het accountteam; niet om zelf even te proberen.",
-    "De prompts en antwoorden gaan nog steeds naar een model buiten je netwerk.",
-    "Je beheert, patcht en beveiligt server, database en firewall zelf, en een aantal functies van de gehoste dienst ontbreekt."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Verschillen met de gehoste dienst",
-     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted/differences"
-    },
-    {
-     "label": "Help Net Security over de lancering",
-     "url": "https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "claude",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 82,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.71,
-    "source": 0.51,
-    "quality": 0.57,
-    "feedback": -0.01,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T04:05:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet",
-   "story": [
-    "Claude Managed Agents is de dienst van Anthropic die agents laat draaien die zelfstandig werken, bijvoorbeeld builds repareren of meldingen uitzoeken. Tot nu toe kon je alleen de sandbox zelf hosten: de plek waar de agent code en commando's uitvoert. De rest, zoals de sessiegeschiedenis en de sleutels, beheerde Anthropic. Sinds 12 november kan een bedrijf ook die rest zelf draaien, in een private bèta.",
-    "Hoe ziet dat eruit? Bij jou draaien de agentserver, een PostgreSQL-database met de sessiegeschiedenis en de workers waar de tools draaien. Sleutels kunnen in je eigen secret manager blijven. Het enige wat naar buiten gaat, zijn de vragen aan het model zelf. Die kun je naar Anthropic sturen, maar ook naar Amazon Bedrock, Google, Microsoft Foundry of een eigen gateway.",
-    "De opzet scheidt de harness van de sandbox. De harness is het deel dat Claude aanroept en de geschiedenis bijhoudt; de sandbox is alleen de werkplaats. Sleutels komen nooit in de sandbox: een proxy daarbuiten zet de sleutel pas op het verzoek als de agent een MCP-tool of een ondersteunde API aanroept. Het lijkt op een balie die namens jou belt, zonder dat jij het nummer kent. Daarnaast bepaal je per omgeving naar welke hosts een agent mag, en elke stap wordt gelogd en is te exporteren via OpenTelemetry.",
-    "Zelf hosten betekent ook zelf beheren, en niet alles werkt hetzelfde. Volgens de documentatie zijn onder meer de Files API, webhooks, geplande runs en de kant-en-klare skills voor Word, PDF, PowerPoint en Excel er niet. MCP-servers, Git-hosts en webtools staan standaard uit tot je ze in een instellingenbestand toestaat.",
-    "Voor een zorgorganisatie is dit vooral een verschuiving in wat binnen blijft: geschiedenis, sleutels en logs. De prompts zelf gaan nog steeds naar een model buiten de deur. Daarmee blijft de regel staan dat werkdata niet naar externe AI mag."
-   ],
-   "key_facts": [
-    "Aangekondigd op 12 november 2026; self-hosted Claude Managed Agents is een private bèta, toegang via het Anthropic-accountteam.",
-    "Bij de klant draaien de Managed Agents-server, een PostgreSQL-database met sessiegeschiedenis en de workers met de sandbox; credentials kunnen in de eigen secret manager.",
-    "Modelaanroepen gaan naar Anthropic, Amazon Bedrock, Google, Microsoft Foundry of een eigen model-gateway.",
-    "Credentials komen niet in de sandbox; een proxy voegt ze toe bij MCP-tools en ondersteunde API-aanroepen. Andere diensten zijn daar niet door beschermd.",
-    "Niet beschikbaar op de eigen server: cloud-omgevingen, de Files API, webhooks, geplande runs en de kant-en-klare skills docx, pdf, pptx en xlsx.",
-    "MCP-servers, Git-hosts en webtools staan standaard uit; je zet ze aan met een allowlist in het instellingenbestand. Logs zijn te exporteren via OpenTelemetry."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "sandbox",
-     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
-    },
-    {
-     "term": "harness",
-     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
-    },
-    {
-     "term": "secret manager",
-     "explanation": "Een beveiligde kluis voor wachtwoorden en sleutels, zodat programma's ze kunnen opvragen zonder dat ze in code of bestanden staan."
-    },
-    {
-     "term": "workers",
-     "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox."
-    },
-    {
-     "term": "OpenTelemetry",
-     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "Claude-agentnieuws met veiligheidsdetails, zoals je sandbox-duim, maar ver van je eigen dbt-werk."
-   },
-   "labels": [
-    "claude-managed-agents",
-    "agent-sandbox",
-    "agent-beveiliging"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "aankondiging",
-    "pts": -1
-   }
-  },
-  {
    "id": "06485ad2414b",
    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
@@ -5130,7 +4920,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.85,
     "quality": 0.5,
     "feedback": -0.07,
@@ -5239,7 +5029,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 0.85,
     "quality": 0.55,
     "feedback": -0.07,
@@ -5374,7 +5164,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.09,
+    "recency": 0.08,
     "source": 0.85,
     "quality": 0.68,
     "fit": 0.15
@@ -5430,6 +5220,216 @@
    ]
   },
   {
+   "id": "ffe8a09e969f",
+   "title": "Claude Fable 5.2 and Mythos 5.2",
+   "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic brengt Claude Fable 5.2 en Mythos 5.2 uit voor de zwaarste technische taken. Fable 5.2 scoort hoger dan Opus 5.5 op coderen en zoeken, soms voor minder geld per taak, maar Anthropic raadt Opus 5.5 nog steeds aan voor dagelijks werk.",
+   "personal_relevance": "Bij een grote klus in Claude Code, zoals het herschrijven van je dbt-generatorscripts, kan Fable de moeite waard zijn; voor dagelijks werk blijft Opus 5.5 het advies.",
+   "experiment": "Laat in Claude Code dezelfde opdracht op een openbare dbt-voorbeeldrepository (bijv. jaffle_shop) uitvoeren met Opus 5.5 en met Fable 5.2, en vergelijk resultaat, tijd en verbruik.",
+   "limitations": [
+    "Alle benchmarks zijn van Anthropic zelf.",
+    "Duurder per token dan Opus 5.5; goedkoper per taak alleen als het minder tokens nodig heeft.",
+    "Fable gebruikt 30 dagen dataretentie; nooit werk- of patiëntdata gebruiken."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Fable 5.2 (modeldocumentatie)",
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview"
+    },
+    {
+     "label": "Advisor in Claude Code",
+     "url": "https://code.claude.com/docs/en/advisor"
+    },
+    {
+     "label": "Multi-agent orchestration",
+     "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+    },
+    {
+     "label": "System card",
+     "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.61,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-12T04:00:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Fable 5.2: sterker en goedkoper per taak, Opus blijft de werkpaard",
+   "story": [
+    "Anthropic heeft op 9 november twee nieuwe modellen uitgebracht: Claude Fable 5.2 en Claude Mythos 5.2. Het zijn dezelfde modellen met andere beveiliging. Fable heeft strenge filters op cyber- en biologietaken en is voor iedereen. Mythos mist een deel van die filters en is alleen voor geverifieerde organisaties in cybersecurity en biomedisch onderzoek.",
+    "Fable 5.2 is beter in coderen, redeneren en het lezen van grafieken dan Fable 5.1 en Opus 5.5. Op de codeertest FrontierCode 2.0 haalt het 49 procent, tegen 45,5 bij Opus 5.5. Opvallend is de prijs per taak. Een token kost het dubbele van Opus, maar Fable heeft vaak minder nodig. Op dezelfde codeertest haalt het op 'high' bijna dezelfde score als Opus 5.5, voor ongeveer de helft van de kosten per taak.",
+    "Hoe zet je het in? Anthropic noemt twee rollen. Als adviseur (Advisor) vraagt een kleiner model zoals Sonnet of Haiku Fable alleen om raad bij een lastig probleem. Als regisseur (Orchestrator) verdeelt Fable het werk en geeft eenvoudige taken aan kleinere modellen. Zo betaal je het dure model alleen voor het denkwerk. In Claude Code en de Claude-apps staat de inspanning (effort) standaard op medium, en er is een snellere fast mode tegen een hogere prijs.",
+    "Voor je dagelijkse werk met Claude Code verandert er weinig: Anthropic raadt Opus 5.5 aan als werkpaard voor de meeste code- en kennistaken. Fable is voor grote, open taken, zoals een migratie van een complete dienst of een lang onderzoek. Pro- en Team-gebruikers mogen Fable gebruiken tot de helft van hun weeklimiet.",
+    "Let wel: alle cijfers komen van Anthropic zelf. En Fable bewaart gegevens 30 dagen voor veiligheidscontrole, tenzij je organisatie een uitzondering heeft. Werkdata hoort daar sowieso niet in."
+   ],
+   "key_facts": [
+    "Claude Fable 5.2 en Mythos 5.2 verschenen op 9 november 2026; het zijn dezelfde onderliggende modellen met andere safeguards.",
+    "Mythos 5.2 is alleen beschikbaar voor organisaties in het Cyber Verification Program of Life Sciences Verification Program.",
+    "Prijs: $8 per miljoen inputtokens en $40 per miljoen outputtokens (Opus 5.5: $4 / $20); fast mode $16 / $80, tot 2,5 keer sneller.",
+    "FrontierCode 2.0: Fable 5.2 49,1% (Xhigh), Opus 5.5 45,5%; op High effort 45,3% voor ongeveer de helft van de kosten per taak.",
+    "Contextvenster 1M tokens, max. output 128K; standaard effort medium in Claude-apps en Claude Code; API-naam claude-fable-5-2.",
+    "Anthropic raadt Opus 5.5 aan als dagelijks werkpaard; Fable is inbegrepen tot 50% van de wekelijkse limiet voor Pro en standaard Team-seats. Fable vereist 30 dagen dataretentie, tenzij Anthropic anders toestaat."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "fast mode",
+     "explanation": "Een modus waarin hetzelfde model sneller antwoordt, tegen een hogere prijs per token."
+    },
+    {
+     "term": "Orchestrator",
+     "explanation": "Een rol waarin één model het werk opdeelt en deeltaken aan andere (vaak kleinere) modellen of agents geeft, en de resultaten samenvoegt."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-nieuws, maar een modelrelease zonder dbt-toepassing; je duimen gaan vooral naar praktische Claude-stukken."
+   },
+   "labels": [
+    "claude-modellen",
+    "multi-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -1
+   }
+  },
+  {
+   "id": "5b59c75a11e5",
+   "title": "Operate Claude Managed Agents inside your security perimeter",
+   "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-12T00:00:00Z",
+   "date_note": "Het originele Anthropic-artikel kon niet worden geopend; de uitleg steunt op de officiële documentatie en een nieuwsbericht van dezelfde dag.",
+   "fetched_at": "2026-11-13T03:13:29.038183Z",
+   "summary": "Anthropic laat bedrijven Claude Managed Agents zelf hosten: de agentserver, de sessiegeschiedenis, de sandboxes en de sleutels blijven in de eigen cloud of het eigen datacenter. Alleen de modelaanroepen gaan nog naar buiten. Het is een private bèta.",
+   "personal_relevance": "Het laat zien welke delen van een agent je binnen je eigen muren kunt houden, en welk deel (de prompts naar het model) altijd naar buiten gaat.",
+   "experiment": "Teken voor een eigen agentidee (bijv. een agent die dbt-documentatie in een testproject bijwerkt) wat er in deze opzet waar zou draaien: harness, sandbox, sleutels, logs en model. Markeer welke stappen data naar buiten sturen. Gebruik alleen verzonnen voorbeelddata.",
+   "limitations": [
+    "Private bèta voor bedrijven via het accountteam; niet om zelf even te proberen.",
+    "De prompts en antwoorden gaan nog steeds naar een model buiten je netwerk.",
+    "Je beheert, patcht en beveiligt server, database en firewall zelf, en een aantal functies van de gehoste dienst ontbreekt."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Verschillen met de gehoste dienst",
+     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted/differences"
+    },
+    {
+     "label": "Help Net Security over de lancering",
+     "url": "https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "claude",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.7,
+    "source": 0.51,
+    "quality": 0.57,
+    "feedback": -0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:05:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude-agents draaien nu in je eigen netwerk; alleen het model niet",
+   "story": [
+    "Claude Managed Agents is de dienst van Anthropic die agents laat draaien die zelfstandig werken, bijvoorbeeld builds repareren of meldingen uitzoeken. Tot nu toe kon je alleen de sandbox zelf hosten: de plek waar de agent code en commando's uitvoert. De rest, zoals de sessiegeschiedenis en de sleutels, beheerde Anthropic. Sinds 12 november kan een bedrijf ook die rest zelf draaien, in een private bèta.",
+    "Hoe ziet dat eruit? Bij jou draaien de agentserver, een PostgreSQL-database met de sessiegeschiedenis en de workers waar de tools draaien. Sleutels kunnen in je eigen secret manager blijven. Het enige wat naar buiten gaat, zijn de vragen aan het model zelf. Die kun je naar Anthropic sturen, maar ook naar Amazon Bedrock, Google, Microsoft Foundry of een eigen gateway.",
+    "De opzet scheidt de harness van de sandbox. De harness is het deel dat Claude aanroept en de geschiedenis bijhoudt; de sandbox is alleen de werkplaats. Sleutels komen nooit in de sandbox: een proxy daarbuiten zet de sleutel pas op het verzoek als de agent een MCP-tool of een ondersteunde API aanroept. Het lijkt op een balie die namens jou belt, zonder dat jij het nummer kent. Daarnaast bepaal je per omgeving naar welke hosts een agent mag, en elke stap wordt gelogd en is te exporteren via OpenTelemetry.",
+    "Zelf hosten betekent ook zelf beheren, en niet alles werkt hetzelfde. Volgens de documentatie zijn onder meer de Files API, webhooks, geplande runs en de kant-en-klare skills voor Word, PDF, PowerPoint en Excel er niet. MCP-servers, Git-hosts en webtools staan standaard uit tot je ze in een instellingenbestand toestaat.",
+    "Voor een zorgorganisatie is dit vooral een verschuiving in wat binnen blijft: geschiedenis, sleutels en logs. De prompts zelf gaan nog steeds naar een model buiten de deur. Daarmee blijft de regel staan dat werkdata niet naar externe AI mag."
+   ],
+   "key_facts": [
+    "Aangekondigd op 12 november 2026; self-hosted Claude Managed Agents is een private bèta, toegang via het Anthropic-accountteam.",
+    "Bij de klant draaien de Managed Agents-server, een PostgreSQL-database met sessiegeschiedenis en de workers met de sandbox; credentials kunnen in de eigen secret manager.",
+    "Modelaanroepen gaan naar Anthropic, Amazon Bedrock, Google, Microsoft Foundry of een eigen model-gateway.",
+    "Credentials komen niet in de sandbox; een proxy voegt ze toe bij MCP-tools en ondersteunde API-aanroepen. Andere diensten zijn daar niet door beschermd.",
+    "Niet beschikbaar op de eigen server: cloud-omgevingen, de Files API, webhooks, geplande runs en de kant-en-klare skills docx, pdf, pptx en xlsx.",
+    "MCP-servers, Git-hosts en webtools staan standaard uit; je zet ze aan met een allowlist in het instellingenbestand. Logs zijn te exporteren via OpenTelemetry."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "secret manager",
+     "explanation": "Een beveiligde kluis voor wachtwoorden en sleutels, zodat programma's ze kunnen opvragen zonder dat ze in code of bestanden staan."
+    },
+    {
+     "term": "workers",
+     "explanation": "Hier: de machines die het werk van de agent uitvoeren, zoals commando's en bestandsbewerkingen in de sandbox."
+    },
+    {
+     "term": "OpenTelemetry",
+     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-agentnieuws met veiligheidsdetails, zoals je sandbox-duim, maar ver van je eigen dbt-werk."
+   },
+   "labels": [
+    "claude-managed-agents",
+    "agent-sandbox",
+    "agent-beveiliging"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -1
+   }
+  },
+  {
    "id": "f2cef2be2ab7",
    "title": "Introducing Apache Spark® 4.3 - Now available in Databricks Runtime 19",
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19",
@@ -5468,7 +5468,7 @@
    "groups": [
     "databricks"
    ],
-   "relevance_score": 81,
+   "relevance_score": 80,
    "score_parts": {
     "topic": 0.9,
     "recency": 0.5,
@@ -5623,10 +5623,10 @@
    "groups": [
     "databricks"
    ],
-   "relevance_score": 80,
+   "relevance_score": 79,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.1,
@@ -5984,7 +5984,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.51,
     "quality": 0.48,
     "feedback": 0.01,
@@ -6196,7 +6196,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.19,
+    "recency": 0.18,
     "source": 0.51,
     "quality": 0.75,
     "feedback": -0.05,
@@ -6299,7 +6299,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.8,
     "quality": 0.57,
     "feedback": -0.01,
@@ -6488,7 +6488,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 0.51,
     "quality": 0.4,
     "feedback": 0.02,
@@ -6561,7 +6561,7 @@
    "relevance_score": 66,
    "score_parts": {
     "topic": 0.8,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.07,
@@ -9670,28 +9670,6 @@
  },
  "trends": [
   {
-   "id": "veilige-agents-sandbox-en-gateway",
-   "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
-   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap, Anthropic liet 1.000 agents werken in eigen virtuele machines zonder internet achter één gateway, Claude Managed Agents draait sinds 12 november (private bèta) in je eigen netwerk met sleutels buiten de sandbox, en bij Databricks regelt Unity Gateway budgetten en logboek voor modellen van onder meer OpenAI. Nieuw deze week: in Claude Code vragen sandbox-commando's weer om toestemming, en geplande taken vragen dat ook voor skills met eigen rechten.",
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag",
-    "data_governance_privacy"
-   ],
-   "article_ids": [
-    "3e9bbba1efea",
-    "5b59c75a11e5",
-    "62afb1e0ab94",
-    "6df581b9d8ed"
-   ],
-   "generated_at": "2026-11-18T05:25:00Z",
-   "since": "2026-11-01",
-   "last": "2026-11-15",
-   "week": 2,
-   "prev_week": 1,
-   "status": "groeit"
-  },
-  {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
    "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: goedgekeurde berekeningen in metric views, beschrijvingen bij dbt-modellen en definities in Genie Ontology, dat sinds 11 november algemeen beschikbaar is. Constellation en IFS Copperleaf laten zien dat de echte vraag is wie de betekenis bepaalt: bij IFS schrijven bedrijfseigenaren de definities en keurt een AI Council ze goed. Nieuw deze week: Genie One leert vaste werkwijzen als skill in Unity Catalog, en Ashley Warren bouwt de semantische laag uit losse metric views die met relaties aan elkaar hangen.",
@@ -9715,6 +9693,28 @@
    "last": "2026-11-16",
    "week": 2,
    "prev_week": 4,
+   "status": "speelt"
+  },
+  {
+   "id": "veilige-agents-sandbox-en-gateway",
+   "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
+   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap, Anthropic liet 1.000 agents werken in eigen virtuele machines zonder internet achter één gateway, Claude Managed Agents draait sinds 12 november (private bèta) in je eigen netwerk met sleutels buiten de sandbox, en bij Databricks regelt Unity Gateway budgetten en logboek voor modellen van onder meer OpenAI. Nieuw deze week: in Claude Code vragen sandbox-commando's weer om toestemming, en geplande taken vragen dat ook voor skills met eigen rechten.",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "article_ids": [
+    "3e9bbba1efea",
+    "5b59c75a11e5",
+    "62afb1e0ab94",
+    "6df581b9d8ed"
+   ],
+   "generated_at": "2026-11-18T05:25:00Z",
+   "since": "2026-11-01",
+   "last": "2026-11-15",
+   "week": 1,
+   "prev_week": 2,
    "status": "speelt"
   },
   {
@@ -13336,16 +13336,16 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 710,
-  "unique_after_dedupe": 656,
-  "merged_duplicates": 47,
+  "fetched_items": 479,
+  "unique_after_dedupe": 685,
+  "merged_duplicates": 48,
   "shown": 58,
   "decisions": {
-   "excluded": 226,
+   "excluded": 243,
    "area_cap": 17,
-   "included": 110,
-   "no_topic": 141,
-   "below_threshold": 119,
+   "included": 111,
+   "no_topic": 147,
+   "below_threshold": 124,
    "kort_vervallen": 33,
    "source_cap": 10
   },
@@ -13429,9 +13429,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 170
+   "skipped_no_key": 176
   },
-  "queue_size": 3,
+  "queue_size": 9,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -13448,6 +13448,17 @@
     "relevance_score": 86,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.328",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
+    "relevance_score": 86,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -13527,17 +13538,6 @@
     "relevance_score": 83,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.325",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -13653,17 +13653,20 @@
     ]
    },
    {
+    "title": "v2.1.325",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
-    "relevance_score": 82,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
     "relevance_score": 82,
     "decision": "source_cap",
     "excluded_by": []
@@ -13707,6 +13710,14 @@
     ]
    },
    {
+    "title": "Ship AI agents like tables: dbt materializations for Snowflake CoWork",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
+    "relevance_score": 81,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
     "title": "dbt without the warehouse (or the bill): DuckDB end to end",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/dbt-duckdb-warehouse-free-data-transformation",
@@ -13728,26 +13739,6 @@
     "title": "Genie Code CLI is in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Allow partner platforms in context-based ingress policies",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-partner-platforms-in-context-based-ingress-policies",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "External knowledge sources are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
     "relevance_score": 80,
     "decision": "excluded",
     "excluded_by": [
@@ -13789,14 +13780,6 @@
     "url": "https://www.getdbt.com/blog/dbt-charts-open-source-dashboard-yaml",
     "relevance_score": 80,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Advancing Catalog Interoperability with Unity Catalog and Google Cloud’s Borderless Lakehouse",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse",
-    "relevance_score": 80,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -13866,6 +13849,26 @@
     ]
    },
    {
+    "title": "Allow partner platforms in context-based ingress policies",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-partner-platforms-in-context-based-ingress-policies",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "External knowledge sources are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.1.319",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
@@ -13924,6 +13927,14 @@
     "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
     "relevance_score": 79,
     "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Advancing Catalog Interoperability with Unity Catalog and Google Cloud’s Borderless Lakehouse",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse",
+    "relevance_score": 79,
+    "decision": "included",
     "excluded_by": []
    },
    {
@@ -14003,17 +14014,6 @@
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.317",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    }
