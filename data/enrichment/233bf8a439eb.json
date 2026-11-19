@@ -1,0 +1,124 @@
+{
+ "format_version": 2,
+ "article_id": "233bf8a439eb",
+ "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights",
+ "headline": "Genie zoekt in de sporen van je coding agents waar tokens weglekken",
+ "summary": "Unity Gateway Insights laat Genie de traces van Claude Code, Codex en Copilot doorzoeken op verspilling: falende MCP-tools, dure modellen voor simpel werk en herhaald werk dat een skill kan worden.",
+ "story": [
+  "Databricks introduceert Unity Gateway Insights. Laten je ontwikkelaars hun coding agents (Claude Code, Codex of GitHub Copilot) via Unity Gateway lopen, dan maakt Insights een rapport over de afgelopen dag, 7 dagen of 30 dagen. Het rapport zegt waar tokens weglekken en wat je eraan kunt doen.",
+  "Zo werkt het. Start een ontwikkelaar zijn agent met de ug CLI, dan zet die de tracing van de agent aan via OpenTelemetry. Elk spoor (trace) komt in één gedeelde tracetabel: een Delta-tabel in Unity Catalog. Insights neemt een steekproef van sessies, groepeert ze in werkstromen naar soort werk en zoekt per werkstroom naar falende MCP-tools, te volle context, dure frontier-modellen voor eenvoudige taken en werk dat steeds terugkomt. Genie schrijft daarvoor zelf de SQL, en met Genie Ontology gebruikt het rapport je eigen projectnamen en begrippen.",
+  "Het rapport vergelijkt per werkstroom het aandeel sessies met het aandeel tokens. Een werkstroom met 10% van de sessies en 35% van de tokens is de eerste plek om te kijken. Verspilling wordt op kosten gerangschikt. Eenvoudige taken die op een duur model draaien, kun je met Smart Routing naar een goedkoper model sturen. Voor werk dat in minstens drie sessies of bij twee engineers terugkomt, schrijft Insights een prompt waarmee je er een gedeelde skill van maakt. Bij elke bevinding kun je de voorbeeldsessies openen en met Genie doorvragen, bijvoorbeeld welke MCP-server de meeste tokens verspilde en wie de eigenaar is.",
+  "Databricks gebruikte het op de eigen uitrol naar duizenden engineers. Zeven kleine bugs in MCP-servers kostten 499.000 dollar aan tokens en 12.000 uur wachten; ze oplossen kostte ongeveer een uur. Opnieuw afspelen van sessies liet zien dat Opus 5 geen winst gaf boven het goedkopere Opus 4.8. Dit zijn cijfers van Databricks zelf, niet van klanten.",
+  "Interessant aan de opzet is dat de traces gewone governed data zijn: alleen de eigenaar van de tabel kan ze eerst lezen, daarna geef je toegang met grants en row filters in Unity Catalog. Je analyseert AI-gebruik dus met dezelfde middelen als elke andere tabel. Het artikel noemt geen status (preview of GA) en geen tabelnamen."
+ ],
+ "key_facts": [
+  "Unity Gateway Insights is aangekondigd op 18 november 2026; de status (preview of GA) staat niet in het artikel.",
+  "Rapporten over de laatste 1, 7 of 30 dagen, via AI Gateway > Observability > Insights; hooguit 10 eigen vragen per rapport.",
+  "Werkt voor Claude Code, Codex en GitHub Copilot die met de ug CLI zijn gestart; traces gaan via OpenTelemetry naar een tracetabel (Delta) in Unity Catalog.",
+  "Soorten verspilling: MCP-fouten, frontier-modellen voor eenvoudige taken (oplossing: Smart Routing) en herhaald werk (minstens 3 sessies of 2 engineers) dat een skill kan worden.",
+  "Databricks intern: 7 MCP-bugs kostten 499.000 dollar aan tokens en 12.000 uur wachten, in ongeveer een uur opgelost; geschatte besparing 1,2 miljoen dollar per jaar.",
+  "Toegang tot traces loopt via Unity Catalog-grants en row filters; Insights leest de tabel op zijn plek, zonder export."
+ ],
+ "personal_relevance": "Als je team Claude Code gaat gebruiken op Databricks, laat dit zien hoe je agentgebruik meet en goedkoper maakt met je eigen dataplatform.",
+ "experiment": "Zet een kleine tabel met verzonnen agentsessies (werkstroom, model, tokens, aantal toolfouten) in een schema en vraag Genie welke werkstroom het meest kost per sessie; vergelijk het antwoord met je eigen SQL.",
+ "limitations": [
+  "Alleen cijfers van Databricks zelf; geen klantresultaten.",
+  "Status en precieze tabelnamen staan niet in het artikel.",
+  "Werkt alleen als het verkeer van de agents via Unity Gateway en de ug CLI loopt."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "Unity Gateway Insights (Databricks-documentatie)",
+   "url": "https://docs.databricks.com/aws/en/ai-gateway/insights"
+  },
+  {
+   "label": "Unified trace table",
+   "url": "https://docs.databricks.com/aws/en/ai-gateway/unified-trace-table"
+  },
+  {
+   "label": "ug CLI voor coding agents",
+   "url": "https://docs.databricks.com/aws/en/ai-gateway/coding-agent-ug-cli"
+  }
+ ],
+ "topics": [
+  "ai_evaluation_observability",
+  "veilige_agents",
+  "claude_ai_development"
+ ],
+ "quality": {
+  "depth": 0.65,
+  "practicality": 0.55,
+  "novelty": 0.7
+ },
+ "development_key": "unity-gateway-insights-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.6,
+  "why": "Over agents meten en goedkoper maken, verwant aan je duim bij de Claude Code-sandbox, maar meer beheer dan dataplatform."
+ },
+ "labels": [
+  "unity-ai-gateway",
+  "claude-tracing",
+  "agent-tooling"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "OpenTelemetry",
+   "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+  },
+  {
+   "term": "MCP",
+   "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+  },
+  {
+   "term": "frontier-modellen",
+   "explanation": "De sterkste en duurste AI-modellen van dit moment. Voor eenvoudige taken zijn ze vaak onnodig duur."
+  },
+  {
+   "term": "Smart Routing",
+   "explanation": "Een functie van Unity Gateway die een vraag naar een goedkoper model stuurt als de taak eenvoudig genoeg is."
+  },
+  {
+   "term": "row filters",
+   "explanation": "Een regel in Unity Catalog die bepaalt welke rijen van een tabel iemand mag zien."
+  }
+ ],
+ "showcase": {
+  "caption": "De eerste vraag uit het rapport, nagebouwd in gewone SQL: welke werkstroom gebruikt veel meer tokens dan zijn aandeel in de sessies?",
+  "language": "sql",
+  "code": "SELECT\n  werkstroom,\n  ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 0)        AS pct_sessies,\n  ROUND(100.0 * SUM(tokens) / SUM(SUM(tokens)) OVER (), 0)  AS pct_tokens\nFROM sessies\nGROUP BY werkstroom\nORDER BY pct_tokens - pct_sessies DESC;",
+  "result": {
+   "columns": [
+    "werkstroom",
+    "pct_sessies",
+    "pct_tokens"
+   ],
+   "rows": [
+    [
+     "pipeline-debuggen",
+     10.0,
+     58.0
+    ],
+    [
+     "dbt-modellen",
+     50.0,
+     31.0
+    ],
+    [
+     "docs-schrijven",
+     40.0,
+     11.0
+    ]
+   ]
+  },
+  "note": "Insights laat Genie deze SQL zelf schrijven op de tracetabel; de echte kolomnamen staan niet in het artikel. Dit laat alleen het idee zien."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-19T03:40:00Z",
+ "prompt_version": "taak-v2"
+}

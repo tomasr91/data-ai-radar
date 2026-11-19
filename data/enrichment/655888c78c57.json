@@ -1,0 +1,97 @@
+{
+ "format_version": 2,
+ "article_id": "655888c78c57",
+ "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel",
+ "headline": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel",
+ "summary": "Collega's kunnen in Microsoft Teams vragen stellen aan je Databricks-data via de Genie-app, nu GA. Genie werkt ook in Copilot Cowork, Excel en Copilot Studio, steeds met de rechten van de vrager.",
+ "story": [
+  "Databricks zet een rij koppelingen met Microsoft-tools op een rij. De belangrijkste: de Genie-app voor Microsoft Teams is algemeen beschikbaar (GA). Collega's sturen Genie een bericht of noemen hem in een kanaal, en krijgen in dezelfde draad een antwoord, met grafiek als dat past. Ze kunnen ook een vaste analyse inplannen of een bestand meesturen.",
+  "Zo werkt het. Elke vraag in Teams draait als de persoon die hem stelt. Genie gebruikt dus alleen data waar die persoon in Unity Catalog bij mag. De vraag wordt in de Databricks-werkruimte verwerkt; de dienst tussen Teams en Databricks bewaart geen vragen of antwoorden. Genie haalt zijn kennis uit Genie Ontology (vaste definities, metric views en geleerde context), en via Unity Gateway regel je welke MCP-tools Genie mag gebruiken en welke acties eerst goedkeuring vragen.",
+  "Daarnaast: in Copilot Cowork en Copilot Chat stuurt Copilot datavragen door naar Genie One in plaats van zelf te zoeken. In Excel stel je via de Azure Databricks Excel Add-in een vraag in gewone taal, laad je resultaten in je werkblad, maak je live draaitabellen op metric views en schrijf je ingevulde waarden terug naar een Databricks-tabel. In Copilot Studio voeg je een Genie Agent toe als tool via de connector voor Power Platform. Voor deze drie noemt het artikel geen status.",
+  "Dit is precies het patroon 'AI op je eigen data bij de gebruiker brengen': je Gold-tabellen en metric views zijn de bron, Genie Ontology geeft de betekenis, en de gebruiker vraagt het in Teams of Excel, met zijn eigen rechten. Voor een zorgorganisatie is dat laatste belangrijk: wie geen toegang heeft tot een tabel, krijgt die data ook niet via Genie te zien.",
+  "Instellen in Teams doet een Databricks-beheerder: app toevoegen en standaard-zichtbaarheid van antwoorden kiezen. Met Private Link is ook een ingress-regel op accountniveau nodig. Gebruikers loggen de eerste keer in en kiezen een werkruimte."
+ ],
+ "key_facts": [
+  "De Databricks Genie-app voor Microsoft Teams is algemeen beschikbaar (GA); hij werkt ook in Microsoft 365 Copilot.",
+  "Elke vraag draait onder de identiteit van de vrager, met diens Unity Catalog-rechten; de routeringsdienst tussen Teams en Databricks slaat geen vragen of antwoorden op.",
+  "Genie Ontology is algemeen beschikbaar (GA).",
+  "Excel Add-in: vragen in gewone taal, live draaitabellen op metric views en tabellen, geplande verversing en terugschrijven naar Databricks-tabellen; status niet genoemd.",
+  "Copilot Cowork en Chat sturen datavragen door naar Genie One via de Azure Databricks Genie-plugin; status niet genoemd.",
+  "Copilot Studio: Genie Agents als tool via de Azure Databricks-connector voor Power Platform; status niet genoemd.",
+  "Koppeling met Work IQ via MCP komt 'binnenkort'.",
+  "Artikel van 18 november 2026."
+ ],
+ "personal_relevance": "Dit is de kortste weg van jouw Gold-laag naar collega's die in Teams of Excel werken, zonder dat zij rechten krijgen die ze niet al hadden.",
+ "experiment": "Maak in een testwerkruimte een Genie Agent op een openbare dataset (bijv. CBS-cijfers) met een metric view, en kijk in de Excel Add-in of een draaitabel op die metric view dezelfde getallen geeft als Genie in gewone taal.",
+ "limitations": [
+  "Alleen de Teams-app en Genie Ontology hebben volgens het artikel een GA-status.",
+  "Hoe tokens en rechten bij Cowork en Excel technisch lopen, staat er niet in.",
+  "Terugschrijven vanuit Excel naar tabellen vraagt om goede afspraken over wie wat mag wijzigen."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Genie-app voor Microsoft Teams",
+   "url": "https://docs.databricks.com/aws/en/integrations/msft-teams"
+  },
+  {
+   "label": "Azure Databricks Excel Add-in",
+   "url": "https://docs.databricks.com/aws/en/integrations/excel/"
+  },
+  {
+   "label": "Azure Databricks-connector voor Power Platform",
+   "url": "https://docs.databricks.com/aws/en/integrations/msft-power-platform/"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "powerbi_semantic_models",
+  "data_governance_privacy"
+ ],
+ "quality": {
+  "depth": 0.5,
+  "practicality": 0.7,
+  "novelty": 0.55
+ },
+ "development_key": "genie-microsoft-teams-excel-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "aankondiging",
+ "fit": {
+  "score": 0.7,
+  "why": "Genie op je eigen data bij gebruikers, zoals je duimen bij Genie Agents en metric views naar Power BI."
+ },
+ "labels": [
+  "genie-one",
+  "genie-agents",
+  "metric-views",
+  "genie-ontology"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "Genie Ontology",
+   "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+  },
+  {
+   "term": "Genie One",
+   "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+  },
+  {
+   "term": "Genie Agent",
+   "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team."
+  },
+  {
+   "term": "metric views",
+   "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+  },
+  {
+   "term": "Private Link",
+   "explanation": "Een privéverbinding in Azure waardoor verkeer naar een dienst niet over het openbare internet gaat."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-19T03:55:00Z",
+ "prompt_version": "taak-v2"
+}

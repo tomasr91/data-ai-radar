@@ -1,0 +1,87 @@
+{
+ "format_version": 2,
+ "article_id": "9121446d3c08",
+ "url": "https://www.databricks.com/blog/how-aumovio-centralized-ai-access-databricks-unity-gateway",
+ "headline": "AUMOVIO zet alle AI-modellen achter één gateway met vaste aliassen",
+ "summary": "Autotoeleverancier AUMOVIO laat al zijn apps AI-modellen aanroepen via Databricks Unity Gateway, met eigen aliasnamen, inloggen via Entra ID, Terraform en kosten per kostenplaats.",
+ "story": [
+  "Bij AUMOVIO had elk team een eigen manier om taalmodellen aan te roepen: direct bij een aanbieder of via een eigen gateway. Daardoor was onduidelijk wie welk model gebruikte en wat het kostte. Een taskforce van security, privacy, business en IT koos voor één centrale gateway: Databricks Unity Gateway, omdat hun dataplatform 1ADP al op Databricks draait.",
+  "De kern is een lijst met vaste aliasnamen, zoals 1adp-*. Een app roept altijd de alias aan, niet het model zelf. Achter de alias bepaalt de gateway welk model antwoordt: een model dat Databricks host, Google Vertex AI, Azure OpenAI of AWS Bedrock. Wissel je van model of aanbieder, dan hoeft geen app te veranderen. Het lijkt op een view in je Gold-laag: gebruikers lezen de view, jij mag de tabel erachter vervangen.",
+  "Alles staat als code in Terraform: welke endpoints achter een alias zitten, in welke volgorde wordt teruggevallen (fallback) als een aanbieder hapert, de limieten en de beveiligingsregels (guardrails) per endpoint. Wijzigingen gaan via een gereviewde pull request. Inloggen loopt via Microsoft Entra ID met token exchange, zonder losse API-sleutels; wie uit dienst gaat, verliest vanzelf toegang. Het opslaan van volledige vragen en antwoorden in inference tables staat standaard uit en gaat alleen aan met een goedgekeurde reden.",
+  "Wat ze er zelf bovenop bouwden, is vooral data-engineering. Gebruikers koppelen hun verbruik aan een kostenplaats of project; pijplijnen combineren de tokencijfers van de gateway met Databricks system tables, en dashboards tonen per model en per team het verbruik en de kosten. Een eigen AI-app voor medewerkers draait op dezelfde gateway, en ontwikkelaars kunnen hun coding agents via een OpenAI-compatibel endpoint aansluiten.",
+  "Cijfers geeft het artikel niet. De volgende stap is agents delen binnen projecten en ze via MCP aan kennisbronnen koppelen. De open vragen die ze zelf noemen: wat mag een agent ophalen, welke tools mag hij gebruiken en onder wiens rechten werkt hij."
+ ],
+ "key_facts": [
+  "AUMOVIO koos Databricks Unity Gateway als centrale route voor alle toegang tot taalmodellen; het dataplatform 1ADP draait al op Databricks.",
+  "Apps roepen vaste aliassen aan (1adp-*) die naar Databricks-modellen, Google Vertex AI, Azure OpenAI of AWS Bedrock verwijzen.",
+  "Endpoints, fallback-volgorde, limieten en guardrails staan in Terraform en wijzigen via gereviewde pull requests.",
+  "Toegang via Microsoft Entra ID met token exchange, zonder aparte accounts of API-sleutels.",
+  "Payload-logging in inference tables staat standaard uit en gaat alleen aan met een goedgekeurde reden.",
+  "Kosten per kostenplaats of project door tokenverbruik te combineren met Databricks system tables.",
+  "Het artikel (18 november 2026) noemt geen cijfers over resultaten."
+ ],
+ "personal_relevance": "Als jouw organisatie AI breder gaat aanbieden, is dit een concreet en controleerbaar ontwerp: één ingang, rechten via Entra ID en kosten als gewone data.",
+ "experiment": "Schrijf met verzonnen verbruiksregels (gebruiker, kostenplaats, model, tokens) een klein dbt-model dat de kosten per kostenplaats en model per week optelt, zoals AUMOVIO doet met de gatewaycijfers.",
+ "limitations": [
+  "Geen cijfers over kosten, gebruik of besparing.",
+  "Klantverhaal op de blog van Databricks.",
+  "Hoe de guardrails werken en welke regels ze gebruiken, staat er niet in."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Unity Gateway (productpagina)",
+   "url": "https://www.databricks.com/product/artificial-intelligence/unity-gateway"
+  }
+ ],
+ "topics": [
+  "veilige_agents",
+  "ai_on_data_platform",
+  "databricks_data_engineering"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.55,
+  "novelty": 0.45
+ },
+ "development_key": "aumovio-unity-gateway-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktijk",
+ "fit": {
+  "score": 0.5,
+  "why": "Praktijkverhaal met tools en opzet, maar over beheer van modeltoegang, niet over AI op je eigen data."
+ },
+ "labels": [
+  "unity-ai-gateway",
+  "interne-ai-agents",
+  "compute-kosten"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "alias",
+   "explanation": "Een naam die naar één versie wijst, zoals @prod. Door de alias te verhangen gebruik je een andere versie zonder codewijziging."
+  },
+  {
+   "term": "Terraform",
+   "explanation": "Een tool om infrastructuur als code te beschrijven. Je legt in tekstbestanden vast wat er moet bestaan, en Terraform zorgt dat het zo wordt ingericht."
+  },
+  {
+   "term": "guardrails",
+   "explanation": "Beveiligingsregels rond een AI-model, bijvoorbeeld filters die gevoelige gegevens of ongewenste antwoorden tegenhouden."
+  },
+  {
+   "term": "token exchange",
+   "explanation": "Inloggen waarbij een app zijn bestaande bedrijfstoken inruilt voor een token van een andere dienst, zonder apart wachtwoord of API-sleutel."
+  },
+  {
+   "term": "inference tables",
+   "explanation": "Tabellen in Databricks waarin de vragen en antwoorden van een model-endpoint worden opgeslagen, zodat je ze later kunt bekijken."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-19T03:50:00Z",
+ "prompt_version": "taak-v2"
+}

@@ -1,0 +1,120 @@
+{
+ "format_version": 2,
+ "article_id": "069078b2b4e3",
+ "url": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
+ "headline": "Zo laat het Claude Code-team Claude zijn eigen werk bewijzen",
+ "summary": "Addy Osmani beschrijft hoe het team dat Claude Code bouwt agentwerk controleert: drie soorten tests, een verify-skill, een checklist die afgaat op de diff en regels die een wijziging zelf niet kan aanpassen.",
+ "story": [
+  "Bij het team van Claude Code schrijft en reviewt Claude ongeveer 90% van de code. Addy Osmani legt uit waarom dat kan: controles (verificatie) die Claude zelf draait. Zonder zulke controles kun je maar één of twee agents tegelijk laten werken, omdat jij alles moet nakijken. Met controles worden het er tientallen.",
+  "Het team noemt drie soorten tests. Bovenaan staan end-to-end tests: ze doorlopen een echte gebruikersstap en melden precies welke stap faalde, niet alleen een time-out. Property tests stellen een regel die nooit mag breken, zoals 'heen en terug vertalen geeft hetzelfde terug' of 'twee keer draaien doet hetzelfde als één keer' (idempotent), en laten een bibliotheek als Hypothesis duizenden invoerwaarden proberen. Differential tests draaien het oude en het nieuwe systeem op dezelfde invoer en melden elk verschil, handig bij een migratie.",
+  "Daarnaast een paar vaste afspraken. Hoe je de app start en test, staat in een skill met de naam verify in .claude/skills/, en Claude gebruikt die voor elke commit. Faalt een controle na drie rondes nog steeds, dan stopt Claude en haalt een mens erbij. Een checklist met 39 punten heeft per punt een trigger die je in de diff ziet; Claude controleert alleen de punten die passen, meestal 3 tot 10. De reviewer leest REVIEW.md van de hoofdbranch, zodat een wijziging haar eigen regels niet kan aanpassen. Elke commit krijgt een stempel hoe hij gecontroleerd is, ook 'none'.",
+  "Ook de controles zelf worden gecontroleerd. Het team houdt bij hoeveel samengevoegde wijzigingen werden teruggedraaid, meet per stap hoeveel bugs de reviewer vindt, en stopt met bijstellen als dat alleen nog de test zou 'leren'. Een flaky test mag Claude niet overslaan of opnieuw laten draaien tot hij slaagt; lukt de oorzaak niet, dan gaat de test eruit met de reden erbij.",
+  "Voor dbt-werk zijn dezelfde ideeën direct bruikbaar. Een differential test is wat je doet als je een model herschrijft en de oude en nieuwe tabel vergelijkt. Een property test past bij een macro of Python-generator die metadata-YAML maakt. Een eigen verify-skill kan Claude laten weten hoe het dbt build en de tests op een dev-schema draait."
+ ],
+ "key_facts": [
+  "Ongeveer 90% van de code van het Claude Code-team wordt door Claude geschreven en gereviewd.",
+  "Een aparte beoordelaar met een rubric verbeterde in interne tests het taaksucces met tot 10 punten.",
+  "Drie soorten tests: end-to-end (hoogste prioriteit), property tests (bijv. met fast-check, Hypothesis of proptest) en differential tests.",
+  "Een skill met de naam verify in .claude/skills/ legt vast hoe de app gestart en getest wordt; Claude gebruikt hem voor het committen.",
+  "Na drie mislukte rondes stopt Claude en haalt een mens erbij.",
+  "Checklist met 39 punten, elk met een trigger in de diff; per wijziging worden meestal 3 tot 10 punten gecontroleerd.",
+  "REVIEW.md wordt gelezen van de basis- of hoofdbranch, nooit uit de wijziging zelf.",
+  "Een commit-poort kent drie standen: off, observe en enforce.",
+  "Artikel van Addy Osmani op claude.dev, 16 november 2026."
+ ],
+ "personal_relevance": "Je laat Claude steeds meer dbt- en Python-werk doen; dit is de manier om dat werk te vertrouwen zonder alles zelf na te lopen.",
+ "experiment": "Schrijf een verify-skill voor een klein dbt-project op openbare data: laat Claude daarmee dbt build op een dev-schema draaien en een oude en nieuwe versie van één model vergelijken (differential test).",
+ "limitations": [
+  "Geen code in het artikel; de werkwijze is beschreven, niet als kant-en-klaar voorbeeld.",
+  "Het 90%-cijfer en de 10 punten zijn interne cijfers van Anthropic.",
+  "Het team bouwt software, geen datapijplijnen; de vertaling naar dbt moet je zelf maken."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Code Review aanpassen met REVIEW.md",
+   "url": "https://code.claude.com/docs/en/code-review-customize"
+  },
+  {
+   "label": "Hooks in Claude Code",
+   "url": "https://code.claude.com/docs/en/hooks"
+  },
+  {
+   "label": "Hypothesis (property tests in Python)",
+   "url": "https://hypothesis.readthedocs.io/en/latest/"
+  },
+  {
+   "label": "Building verification loops in Claude Code with skills",
+   "url": "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills"
+  }
+ ],
+ "topics": [
+  "claude_ai_development",
+  "ai_evaluation_observability",
+  "data_quality_observability"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.75,
+  "novelty": 0.65
+ },
+ "development_key": "claude-code-verificatie-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.75,
+  "why": "Praktische Claude Code-werkwijze, zoals je duim bij dbt Labs' proef dat het proces het verschil maakt."
+ },
+ "labels": [
+  "agent-evals",
+  "claude-code-skills",
+  "claude-code-pr-werkwijze"
+ ],
+ "project_ref": null,
+ "terms": [
+  {
+   "term": "end-to-end tests",
+   "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren."
+  },
+  {
+   "term": "Property tests",
+   "explanation": "Tests waarin je een regel opschrijft die altijd moet gelden. Een bibliotheek probeert daarna duizenden invoerwaarden om de regel te breken."
+  },
+  {
+   "term": "Differential tests",
+   "explanation": "Tests die het oude en het nieuwe systeem op dezelfde invoer draaien en elk verschil in uitkomst melden."
+  },
+  {
+   "term": "idempotent",
+   "explanation": "Twee keer uitvoeren geeft hetzelfde resultaat als één keer. Belangrijk bij opnieuw laden of opnieuw proberen."
+  },
+  {
+   "term": "flaky test",
+   "explanation": "Een test die soms slaagt en soms faalt zonder dat de code veranderde, bijvoorbeeld door timing."
+  }
+ ],
+ "showcase": {
+  "caption": "Een property test met Hypothesis: de regel is 'een rij wegschrijven en teruglezen geeft dezelfde velden'. Hypothesis zoekt zelf een invoer die de regel breekt.",
+  "language": "python",
+  "code": "from hypothesis import given, strategies as st\n\ndef naar_regel(velden):        # schrijf een rij weg\n    return \";\".join(velden)\n\ndef uit_regel(regel):          # lees de rij terug\n    return regel.split(\";\")\n\n@given(st.lists(st.text(), min_size=1))\ndef test_heen_en_terug(velden):\n    assert uit_regel(naar_regel(velden)) == velden\n\ntest_heen_en_terug()",
+  "result": {
+   "columns": [
+    "uitkomst van Hypothesis"
+   ],
+   "rows": [
+    [
+     "AssertionError"
+    ],
+    [
+     "Failing test case: test_heen_en_terug(velden=[';'])"
+    ]
+   ]
+  },
+  "note": "Het artikel bevat geen code; dit voorbeeld laat het idee van een round-trip-property zien. Hypothesis vond zelf een veld met een puntkomma, iets wat een handgeschreven test makkelijk mist."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-19T03:45:00Z",
+ "prompt_version": "taak-v2"
+}
