@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-19T05:15:04.953933Z",
+ "generated_at": "2026-11-19T06:33:35.122197Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -951,7 +951,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -2005,7 +2005,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.99,
+    "recency": 0.98,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -2933,7 +2933,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -3046,7 +3046,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -3608,7 +3608,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.05,
@@ -4491,7 +4491,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.63,
     "feedback": -0.04,
@@ -5222,7 +5222,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.68,
     "quality": 0.53,
     "feedback": 0.01,
@@ -6245,7 +6245,7 @@
     "claude",
     "agents"
    ],
-   "relevance_score": 77,
+   "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.32,
@@ -13174,7 +13174,7 @@
    "powerbi_semantic_models": 0.6,
    "data_governance_privacy": 0.4,
    "data_architecture_modeling": 0.64,
-   "ai_context_engineering": 0.98,
+   "ai_context_engineering": 0.97,
    "claude_ai_development": 0.71,
    "ai_agents_rag": 0.89,
    "data_ingestion": 0.23,
@@ -13357,7 +13357,7 @@
    "failed": [],
    "skipped_no_key": 171
   },
-  "queue_size": 3,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -13568,17 +13568,6 @@
     ]
    },
    {
-    "title": "v2.1.323",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.325",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
@@ -13649,6 +13638,17 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.323",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
     ]
    },
    {
