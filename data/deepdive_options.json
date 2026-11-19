@@ -1,63 +1,66 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-18T04:27:14Z",
+  "generated_at": "2026-11-19T04:22:14Z",
   "options": [
     {
-      "id": "begrippen-door-eigenaren",
-      "title": "Wie legt de betekenis vast? Bedrijfsbegrippen voor AI laten beheren",
-      "question": "Hoe organiseer je dat eigenaren in de organisatie de definities en regels voor een AI-assistent schrijven en goedkeuren, en waar leg je die vast naast je dbt-modellen en Unity Catalog?",
-      "why": "IFS Copperleaf liet deze week de business zelf definities schrijven voor Genie Ontology, met een 'AI Council' die ze goedkeurt; dat past bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+      "id": "datacontracten",
+      "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
+      "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
+      "why": "Na de verdieping over wie begrippen beheert, is dit de volgende stap: afspraken met de eigenaren van bronsystemen zoals HiX en AFAS over wat er binnenkomt.",
+      "topics": [
+        "data_quality_observability",
+        "dbt_analytics_engineering",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "open-tabelformaten",
+      "title": "Delta, Iceberg en het open lakehouse: waarom de catalogus het verschil maakt",
+      "question": "Wat is het verschil tussen Delta en Iceberg, en waarom wordt de catalogus belangrijker dan het bestandsformaat?",
+      "why": "Deze maand konden Databricks-tabellen fysiek in OneLake gaan staan, en las Databricks Iceberg-tabellen uit AWS HealthLake via een share in Unity Catalog.",
+      "topics": [
+        "data_architecture_modeling",
+        "databricks_data_engineering",
+        "metadata_lineage_catalogs"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "skills-als-object-in-unity-catalog",
+      "title": "Werkwijzen als skill in Unity Catalog: hoe beheer je wat een agent doet?",
+      "question": "Hoe leg je een vaste werkwijze vast als skill voor Genie One, hoe deel je die via Unity Catalog, en wat is het verschil met definities in Genie Ontology?",
+      "why": "Databricks liet op 16 november zien hoe Genie One skills leert en deelt via Unity Gateway Skills (Beta); dat hoort bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
       "topics": [
         "ai_context_engineering",
-        "data_governance_privacy",
-        "metadata_lineage_catalogs"
+        "ai_agents_rag",
+        "ai_on_data_platform"
       ],
       "area": "context_agents"
     },
     {
-      "id": "gold-serveren-via-lakebase",
-      "title": "Gold-data snel naar een app of agent: synced tables in Lakebase",
-      "question": "Wat is Lakebase, hoe zet een synced table een Gold-tabel als snelle kopie in Postgres, en wanneer kies je dat in plaats van een SQL-warehouse of een aparte zoekindex?",
-      "why": "In de Lakebase-hackathon van 17 november gebruikten teams Gold-tabellen via Lakebase als zoekbron voor apps en agents, zelfs in plaats van Elasticsearch.",
-      "topics": [
-        "ai_on_data_platform",
-        "databricks_data_engineering",
-        "ai_agents_rag"
-      ],
-      "area": "ai_op_data"
-    },
-    {
-      "id": "toegangsmodus-van-compute",
-      "title": "Standard, Dedicated of Auto: welke toegangsmodus krijgt je compute?",
-      "question": "Wat is de toegangsmodus (access mode) van compute in Databricks, wat is het verschil tussen Standard en Dedicated, en wat betekent het dat nieuwe jobs nu standaard op Auto staan?",
-      "why": "Sinds 9 november krijgt nieuwe jobs-compute standaard de toegangsmodus Auto in plaats van Dedicated; goed om te snappen wat er dan voor je gekozen wordt.",
-      "topics": [
-        "databricks_data_engineering",
-        "data_governance_privacy"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "push-cdc-met-zerobus",
-      "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
-      "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
-      "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
-      "topics": [
-        "data_ingestion",
-        "databricks_data_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "claude-code-onbewaakt-laten-werken",
-      "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
-      "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
-      "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
+      "id": "verify-skill-voor-dbt-werk",
+      "title": "Laat Claude Code zijn dbt-werk zelf bewijzen met een verify-skill",
+      "question": "Hoe geef je Claude Code controles mee (zoals property- en differential tests) zodat het zelf bewijst dat een dbt-wijziging klopt, en wanneer haalt het een mens erbij?",
+      "why": "Addy Osmani beschreef deze week hoe het Claude Code-team Claude zijn werk laat bewijzen met een verify-skill; dat past bij de trend 'agents worden beter door controles en metingen'.",
       "topics": [
         "claude_ai_development",
-        "cicd_data_deployment"
+        "data_quality_observability",
+        "ai_evaluation_observability"
       ],
       "area": "claude"
+    },
+    {
+      "id": "fhir-zorgdata-voor-ai",
+      "title": "FHIR uitgelegd: hoe maak je klinische data bevraagbaar voor AI?",
+      "question": "Wat is de zorgstandaard FHIR, hoe ziet FHIR-data eruit als tabellen in een lakehouse, en waar let je op als een AI-laag erop vragen beantwoordt?",
+      "why": "Databricks liet op 16 november zien hoe je FHIR-data uit AWS HealthLake via Unity Catalog met Genie One bevraagt; dat raakt je project over AI op zorg- en onderzoeksdata.",
+      "topics": [
+        "ai_in_healthcare",
+        "data_governance_privacy",
+        "ai_on_data_platform"
+      ],
+      "area": "new_tech"
     }
   ],
   "history": [
@@ -81,65 +84,6 @@
         "cicd_data_deployment",
         "ai_agents_rag",
         "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "kolom-lineage-impactanalyse",
-      "title": "Kolom-lineage gebruiken voor impactanalyse",
-      "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
-      "why": "Bij KOHO en Under Armour bleek lineage de basis om AI veilig op dbt-modellen te laten draaien.",
-      "topics": [
-        "metadata_lineage_catalogs",
-        "ai_context_engineering",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "claude-code-veilig-op-dataprojecten",
-      "title": "Claude Code veilig laten werken: permissies, sandbox en auto mode",
-      "question": "Hoe bepaal je wat Claude Code zelf mag doen in een dataproject, hoe werken permissieregels, de sandbox en auto mode samen, en hoe houd je werkdata buiten bereik?",
-      "why": "Claude Code kreeg in week 43 een begeleide setup voor auto mode en een telemetrie-event voor elke tegengehouden actie.",
-      "topics": [
-        "claude_ai_development",
-        "data_governance_privacy"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "arrow-en-adbc",
-      "title": "Arrow en ADBC: waarom data in kolommen sneller tussen tools reist",
-      "question": "Wat is Apache Arrow, hoe verschilt ADBC van ODBC en JDBC, en wat merk je ervan in dbt v2, Databricks en Power BI?",
-      "why": "dbt v2 en Power BI gebruiken ADBC, en Columnar vertelde deze week welke typeproblemen dat oplevert.",
-      "topics": [
-        "open_source_tools",
-        "sql_spark_sql",
-        "dbt_analytics_engineering"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "joins-in-de-semantische-laag",
-      "title": "Joins in de semantische laag: vaste joins, relaties en dubbeltellingen",
-      "question": "Wanneer leg je een join vast in een metric view, wanneer als relatie, en hoe voorkom je dat een AI-assistent of BI-tool getallen dubbel telt?",
-      "why": "Trend 'Metric views en de semantische laag worden code': Databricks kan sinds deze week relaties tussen metric views vastleggen, met de verhouding erbij.",
-      "topics": [
-        "data_architecture_modeling",
-        "ai_context_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "dbt-lokaal-testen-met-duckdb",
-      "title": "dbt lokaal testen met DuckDB naast Databricks: wat kan wel en wat niet",
-      "question": "Hoe gebruik je de ingebouwde DuckDB-adapter van dbt v2 om modellen, macro's en tests snel lokaal te proberen, en waar wijkt dat af van Databricks?",
-      "why": "dbt v2 heeft nu een ingebouwde DuckDB-adapter, wat lokaal oefenen en testen zonder warehouse-kosten mogelijk maakt.",
-      "topics": [
-        "dbt_analytics_engineering",
-        "cicd_data_deployment",
-        "sql_spark_sql"
       ],
       "area": "data_engineering"
     },
@@ -750,6 +694,63 @@
         "data_quality_observability"
       ],
       "area": "ai_op_data"
+    },
+    {
+      "id": "claude-code-onbewaakt-laten-werken",
+      "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
+      "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
+      "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
+      "topics": [
+        "claude_ai_development",
+        "cicd_data_deployment"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "begrippen-door-eigenaren",
+      "title": "Wie legt de betekenis vast? Bedrijfsbegrippen voor AI laten beheren",
+      "question": "Hoe organiseer je dat eigenaren in de organisatie de definities en regels voor een AI-assistent schrijven en goedkeuren, en waar leg je die vast naast je dbt-modellen en Unity Catalog?",
+      "why": "IFS Copperleaf liet deze week de business zelf definities schrijven voor Genie Ontology, met een 'AI Council' die ze goedkeurt; dat past bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+      "topics": [
+        "ai_context_engineering",
+        "data_governance_privacy",
+        "metadata_lineage_catalogs"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "gold-serveren-via-lakebase",
+      "title": "Gold-data snel naar een app of agent: synced tables in Lakebase",
+      "question": "Wat is Lakebase, hoe zet een synced table een Gold-tabel als snelle kopie in Postgres, en wanneer kies je dat in plaats van een SQL-warehouse of een aparte zoekindex?",
+      "why": "In de Lakebase-hackathon van 17 november gebruikten teams Gold-tabellen via Lakebase als zoekbron voor apps en agents, zelfs in plaats van Elasticsearch.",
+      "topics": [
+        "ai_on_data_platform",
+        "databricks_data_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "toegangsmodus-van-compute",
+      "title": "Standard, Dedicated of Auto: welke toegangsmodus krijgt je compute?",
+      "question": "Wat is de toegangsmodus (access mode) van compute in Databricks, wat is het verschil tussen Standard en Dedicated, en wat betekent het dat nieuwe jobs nu standaard op Auto staan?",
+      "why": "Sinds 9 november krijgt nieuwe jobs-compute standaard de toegangsmodus Auto in plaats van Dedicated; goed om te snappen wat er dan voor je gekozen wordt.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_governance_privacy"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "push-cdc-met-zerobus",
+      "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
+      "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
+      "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
+      "topics": [
+        "data_ingestion",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering"
     },
     {
       "id": "claude-code-onbewaakt-laten-werken",
