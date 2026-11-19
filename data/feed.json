@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-19T06:33:35.122197Z",
+ "generated_at": "2026-11-19T06:34:26.553022Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -13085,18 +13085,32 @@
      "keuzes": 5
     }
    },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ingehaald: werklijst afgewerkt op 2 onbereikbare Fabric-artikelen na; 1 artikel overgeslagen.",
+    "finished_at": "2026-11-19T06:33:29Z",
+    "problems": [
+     "'OneLake: The unified foundation for data, context, governance, and AI' (9f74702ac72e) en 'Bringing trusted Fabric IQ context to wherever people and agents work' (3c6506d1a8d8): WebFetch weigerde het adres (PROVENANCE_REQUIRED) en WebSearch gaf geen link naar hetzelfde artikel; ze blijven op de werklijst.",
+     "personal-data-platform kon niet worden gecloned (geen toegang in deze sessie); Dataflow-voortgang niet bijgewerkt."
+    ],
+    "counts": {
+     "taken_ingehaald": 1,
+     "overgeslagen": 1,
+     "niet_bereikbaar": 2
+    }
+   },
    "uitleggen": {
     "status": "deels",
-    "summary": "5 artikelen vol uitgelegd (2 met voorbeeld), 2 overgeslagen; 2 Fabric-artikelen waren niet bereikbaar en blijven op de werklijst.",
-    "finished_at": "2026-11-19T03:34:42Z",
+    "summary": "5 artikelen vol uitgelegd (2 met voorbeeld), 3 overgeslagen (1 in de inhaalronde); 2 Fabric-artikelen waren ook bij het inhalen niet bereikbaar en blijven op de werklijst.",
+    "finished_at": "2026-11-19T06:33:29Z",
     "problems": [
      "personal-data-platform kon niet worden toegevoegd of gecloned: add_repo was niet beschikbaar in deze sessie en git clone gaf 'could not read Username for https://github.com'. Dataflow-voortgang niet bijgewerkt.",
      "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); 5 artikelen geopend via een link uit WebSearch.",
-     "'OneLake: The unified foundation for data, context, governance, and AI' (9f74702ac72e) en 'Bringing trusted Fabric IQ context to wherever people and agents work' (3c6506d1a8d8): de zoeklink gaf een fout van de site (client_error) en het originele adres werd geweigerd; ze blijven op de werklijst."
+     "'OneLake: The unified foundation for data, context, governance, and AI' (9f74702ac72e) en 'Bringing trusted Fabric IQ context to wherever people and agents work' (3c6506d1a8d8): WebFetch weigerde het adres (PROVENANCE_REQUIRED) en WebSearch gaf geen link naar hetzelfde artikel; ze blijven op de werklijst."
     ],
     "counts": {
      "uitgelegd": 5,
-     "overgeslagen": 2,
+     "overgeslagen": 3,
      "met_voorbeeld": 2,
      "via_websearch": 5,
      "niet_bereikbaar": 2
