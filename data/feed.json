@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-19T03:35:11.752852Z",
+ "generated_at": "2026-11-19T04:22:45.500375Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -503,7 +503,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -760,7 +760,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.01,
@@ -1074,7 +1074,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -1436,7 +1436,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -1547,7 +1547,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -1893,7 +1893,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.98,
+    "recency": 0.97,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -2418,7 +2418,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.51,
     "quality": 0.67,
     "feedback": 0.01,
@@ -2705,7 +2705,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.8,
     "quality": 0.53,
     "fit": 0.15
@@ -5123,7 +5123,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -5328,7 +5328,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -5520,7 +5520,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -6364,6 +6364,196 @@
   }
  ],
  "deepdives": [
+  {
+   "id": "begrippen-door-eigenaren",
+   "plan_id": "begrippen-door-eigenaren",
+   "headline": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren",
+   "summary": "Een AI-assistent is pas betrouwbaar als iemand vastlegt wat jullie begrippen betekenen, en iemand anders dat goedkeurt. Databricks heeft daar nu Pages, domeinen en certificering voor, en dbt kan eigenaren en beschrijvingen meesturen. Dit stuk laat zien hoe je de rollen verdeelt en waar elk stukje betekenis woont.",
+   "sections": [
+    {
+     "heading": "Schone data is niet genoeg",
+     "paragraphs": [
+      "Deze week vertelde IFS Copperleaf hoe het zijn interne assistent IONA bouwde, op data uit bijna 30 systemen. De les in hun verhaal: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen, zoals wanneer een klant 'verlengd' is.",
+      "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar eigenaren uit de business schrijven de definities en regels, als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden. Elke definitie heeft een eigenaar.",
+      "Ze hebben ook niet alles gemodelleerd. Alleen financiën en de funnel van marketing naar sales zijn volledig uitgewerkt. Voor de rest vraagt IONA de ruwe data op. Dat is een klantverhaal van de leverancier, zonder voorbeelden van de definities zelf. Maar de vraag die het oproept geldt overal: wie bepaalt wat een getal betekent?"
+     ]
+    },
+    {
+     "heading": "Drie rollen: betekenis, bouw en goedkeuring",
+     "paragraphs": [
+      "Het helpt om drie taken uit elkaar te halen. De eigenaar bepaalt wat een begrip betekent. De bouwer vertaalt dat naar een berekening in dbt of een metric view. De goedkeurder zegt: dit is nu de officiële versie. Vergelijk het met een woordenboek: een vakexpert schrijft het lemma, een redacteur zet het in de juiste vorm en de hoofdredactie geeft het vrij.",
+      "Op het forum van Databricks kwam daar in oktober een discussie over. Databricks-partner Venkat stelt een nieuwe rol voor, de semantic steward. Die bewaakt niet of data klopt, maar of een begrip overal hetzelfde betekent. Volgens hem moet governance verder gaan dan juiste data, naar juiste betekenis.",
+      "Niet iedereen vindt een aparte rol nodig. Een andere partner, Aravind, vindt het vooral zinvol als meerdere domeinen en AI-toepassingen dezelfde maatstaven delen. In een kleinere organisatie kunnen bestaande rollen het doen: de eigenaar uit de business bepaalt de betekenis, de data steward en de analytics engineer bouwen het. Een derde deelnemer zegt dat dit werk nu in een grijze zone valt, tussen analytics engineers en de eigenaren in de business.",
+      "Dat zijn meningen van mensen uit het veld, geen vaste methode. Maar de verdeling van Aravind past goed bij een team zoals het jouwe. De betekenis hoort bij de afdeling die het begrip gebruikt. De berekening hoort bij het datateam, met de gewone review via pull requests."
+     ]
+    },
+    {
+     "heading": "Waar woont de betekenis in Databricks?",
+     "paragraphs": [
+      "Databricks bundelt dit onder Unity Catalog semantics. Daarin zitten metric views voor berekeningen, domeinen om data per bedrijfsonderdeel te ordenen, en Pages voor begrippen. Samen vormen ze de gemodelleerde kennis van Genie Ontology: de context die je zelf vastlegt en beheert, naast wat Genie zelf leert uit je dashboards en queries.",
+      "Een Page is een vastgelegde, officiële uitleg van één bedrijfsbegrip. Hij hoort bij een domein en heeft een eigenaar, synoniemen, een beschrijving, een tekst, gekoppelde objecten (zoals tabellen) en bronnen. Genie One geeft een Page voorrang boven wat hij zelf geleerd heeft, en noemt de Page als bron in zijn antwoord.",
+      "Het mooie is dat de rollen al in het product zitten. Gewone gebruikers mogen een concept schrijven, maar niet publiceren. Een Page manager publiceert binnen zijn domein; daarvoor heeft hij het recht MANAGE PAGES. Een curator bouwt de domeinen op en mag als enige een Page certificeren. Een domein heeft bovendien velden voor een zakelijke eigenaar (Business owner) en een technische eigenaar.",
+      "Domeinen draaien op een governed tag: een tag met vaste regels over wie hem mag zetten. Een tabel hoort bij een domein als hij die tag heeft. Zet je de tag op een schema of catalogus, dan erven de tabellen erin hem. Een nieuw domein is eerst een concept dat alleen curators zien, tot iemand het publiceert."
+     ]
+    },
+    {
+     "heading": "Certificering als stempel van goedkeuring",
+     "paragraphs": [
+      "Goedkeuren maak je zichtbaar met certificering. Dat is een systeemtag, system.certification_status, met twee waarden: certified of deprecated. In de werkruimte zie je dan een vinkje of een verbodsteken. Het werkt op tabellen, views, functies, dashboards, Genie Agents en meer.",
+      "Je zet de tag in de interface of met SQL, bijvoorbeeld SET TAG ON TABLE main.sales.transactions `system.certification_status` = `certified`. Daarvoor heb je het recht ASSIGN op die tag nodig, plus eigenaarschap of APPLY TAG op het object. Zo kun je regelen dat alleen de goedkeurders het stempel mogen zetten.",
+      "Voor AI telt dat stempel echt mee. Volgens de documentatie van Genie Ontology wegen gemodelleerde kennis, gecertificeerde objecten en ingerichte Genie Agents meestal zwaarder dan geleerde kennis. Wat Genie zelf leert, kun je niet direct aanpassen. Wil je dat veranderen, dan pas je de bron aan of leg je het begrip vast als gemodelleerde kennis.",
+      "Oude of half-afgemaakte tabellen houd je buiten de antwoorden door de rechten te beperken. Genie ziet namelijk alleen wat de gebruiker zelf mag zien. Een tabel met deprecated erop helpt als signaal, maar wie er rechten op heeft, kan er nog steeds antwoorden uit krijgen."
+     ]
+    },
+    {
+     "heading": "Wat je vanuit dbt meestuurt",
+     "paragraphs": [
+      "Jouw berekeningen staan in dbt, dus een deel van de betekenis ook. dbt heeft daarvoor groepen (groups): een set modellen met een eigenaar, met een naam of e-mailadres. Elk model hoort bij hooguit één groep. Met access bepaal je of andere groepen het model mogen gebruiken: private betekent alleen binnen de eigen groep.",
+      "Beschrijvingen schrijf je al in YAML. Met persist_docs zet dbt ze als commentaar op de tabel en de kolommen in Databricks. Daar kan Genie ze lezen. Met databricks_tags zet dbt tags op tabellen en kolommen. Let op: dbt voegt tags alleen toe en haalt ze nooit weg. Sinds dbt-databricks 1.12 worden tags uit dbt_project.yml en uit het model samengevoegd.",
+      "Zo ontstaat een logische verdeling. De tekst van een begrip staat op een Page, beheerd door de eigenaar uit de business. De berekening staat in dbt of in een metric view, beheerd door het datateam via pull requests. Het stempel certified zet de goedkeurder pas als beide kloppen. Dat is een voorstel, geen vaste werkwijze van Databricks of dbt."
+     ]
+    },
+    {
+     "heading": "Wat betekent dit voor jouw projecten?",
+     "paragraphs": [
+      "In je project over metadata en vindbaarheid staat als open vraag: wie is eigenaar van definities? Dit stuk geeft geen antwoord voor jouw organisatie, maar wel een vorm. Per begrip één eigenaar uit de afdeling die het gebruikt, één bouwer in het datateam, en een kleine groep die goedkeurt.",
+      "Begin klein, zoals IFS Copperleaf deed met financiën. Kies één domein waar nu discussie is over getallen. Leg daar vijf begrippen vast, met eigenaar, synoniemen en de tabel waar het getal uit komt. Certificeer pas als de eigenaar akkoord is. Daarna merk je snel of je assistent betere antwoorden geeft.",
+      "Let bij zorgdata op twee dingen. Volgens de documentatie mag je geen persoonsgegevens of gereguleerde data in de naam, beschrijving, synoniemen of tekst van een Page zetten, omdat die data wereldwijd gekopieerd kan worden. En op werkruimtes met het compliance security profile zijn Pages alleen beschikbaar bij bepaalde standaarden, zoals HIPAA. Controleer dat met jullie beheerder voordat je begint."
+     ]
+    }
+   ],
+   "experiment": "Neem een openbare dataset, bijvoorbeeld cijfers van het CBS, en kies drie begrippen. Schrijf per begrip een korte kaart: eigenaar, betekenis, synoniemen en de tabel waar het uit komt, en laat een collega die als eigenaar speelt het via een pull request goedkeuren. Heb je een eigen testschema met verzonnen tabellen, zet dan op de ene tabel certified en op een bijna gelijke tabel deprecated, en kijk welke Genie kiest bij een vraag.",
+   "limitations": [
+    "Het verhaal van IFS Copperleaf is een klantverhaal van Databricks, zonder voorbeelden van definities of een meting van de juistheid.",
+    "Rollen en goedkeuring kosten tijd van mensen buiten het datateam; zonder die tijd blijven Pages leeg of verouderen ze.",
+    "Pages mogen geen persoonsgegevens of gereguleerde data bevatten, en op werkruimtes met het compliance security profile zijn ze niet altijd beschikbaar.",
+    "Tags die dbt zet, haalt dbt niet meer weg; opruimen moet in Databricks zelf of met een post-hook."
+   ],
+   "further_reading": [
+    {
+     "label": "Unity Catalog semantics (Databricks-documentatie, bekeken november 2026)",
+     "url": "https://learn.microsoft.com/azure/databricks/business-semantics/",
+     "note": "Kort overzicht van metric views, domeinen, Pages, wiki's en certificering, en hoe ze samen de gemodelleerde kennis vormen."
+    },
+    {
+     "label": "Pages (Databricks-documentatie, bekeken november 2026)",
+     "url": "https://docs.databricks.com/aws/en/uc-semantics/pages",
+     "note": "De rollen consumer, Page manager en curator, het publiceren van concepten en de regels over gevoelige data."
+    },
+    {
+     "label": "Domains and subdomains (Databricks-documentatie, bekeken november 2026)",
+     "url": "https://docs.databricks.com/en/uc-semantics/domains",
+     "note": "Hoe domeinen op governed tags draaien, wie ze maakt en welke rechten daarbij horen."
+    },
+    {
+     "label": "Flag data as certified or deprecated (Microsoft Learn, september 2026)",
+     "url": "https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/certify-deprecate-data",
+     "note": "De systeemtag voor certificering, de benodigde rechten en de SQL om hem te zetten."
+    },
+    {
+     "label": "Genie Ontology (Databricks-documentatie, bekeken november 2026)",
+     "url": "https://docs.databricks.com/aws/en/genie/genie-ontology",
+     "note": "Hoe Genie geleerde en gemodelleerde kennis tegen elkaar afweegt en waarom certificering meetelt."
+    },
+    {
+     "label": "Add groups to your DAG (dbt-documentatie, bekeken november 2026)",
+     "url": "https://docs.getdbt.com/docs/build/groups",
+     "note": "De YAML voor groepen met een eigenaar en hoe access de modellen afschermt."
+    },
+    {
+     "label": "Databricks configurations (dbt-documentatie, v1.12)",
+     "url": "https://docs.getdbt.com/reference/resource-configs/databricks-configs?version=1.12",
+     "note": "databricks_tags op tabellen en kolommen, en de wijziging in 1.12 waarbij tags worden samengevoegd."
+    },
+    {
+     "label": "Do we need a new role: the semantic steward? (Databricks Community, oktober 2026)",
+     "url": "https://community.databricks.com/t5/data-governance/do-we-need-a-new-role-in-data-organizations-the-semantic-steward/td-p/174346",
+     "note": "Discussie tussen Databricks-partners over wie de betekenis van begrippen beheert, met voor- en tegenargumenten."
+    }
+   ],
+   "currency_check": "Gecontroleerd op 19 november 2026 in de actuele documentatie van Azure Databricks (Unity Catalog semantics, Pages, Domains, certificering, Genie Ontology) en van dbt (groups, dbt-databricks v1.12). De bronnen komen uit september tot november 2026; Genie Ontology is sinds 11 november 2026 algemeen beschikbaar. De documentatie noemt geen status voor Pages en domeinen; wiki's (Beta), automatisch taggen (Beta) en de nog niet uitgebrachte Ontology Manager heb ik bewust weggelaten. Het blog van IFS Copperleaf kon ik niet opnieuw openen; de feiten erover komen uit de eerdere uitleg van dat artikel in de radar.",
+   "topics": [
+    "ai_context_engineering",
+    "data_governance_privacy",
+    "metadata_lineage_catalogs",
+    "dbt_analytics_engineering"
+   ],
+   "written_at": "2026-11-19T04:21:27Z",
+   "processed_by": "Claude (geplande taak)",
+   "quiz": [
+    {
+     "question": "Waarom is het handig om de eigenaar van een begrip en de bouwer van de berekening uit elkaar te halen?",
+     "options": [
+      "Omdat de afdeling die het begrip gebruikt het best weet wat het betekent, en het datateam het best weet hoe je het betrouwbaar berekent",
+      "Omdat dbt niet toestaat dat één persoon zowel beschrijvingen als modellen schrijft",
+      "Omdat Genie alleen definities gebruikt die door twee verschillende mensen zijn ingevoerd"
+     ],
+     "answer": 0,
+     "explanation": "De betekenis hoort bij de business, de berekening bij het datateam. Dat is een verdeling die in het stuk wordt voorgesteld; dbt en Genie dwingen het zelf niet af."
+    },
+    {
+     "question": "Een tabel staat op deprecated, maar een collega krijgt er via Genie toch een antwoord uit. Hoe kan dat?",
+     "options": [
+      "Deprecated werkt alleen op dashboards, niet op tabellen",
+      "Genie leest de systeemtags niet",
+      "Deprecated is een signaal; wie rechten op de tabel heeft, kan er nog antwoorden uit krijgen. Wil je hem echt buiten beeld houden, dan beperk je de rechten"
+     ],
+     "answer": 2,
+     "explanation": "Certificering weegt mee bij het kiezen van een bron, maar Genie volgt de rechten van de gebruiker. Wat je echt niet wilt laten gebruiken, scherm je af met rechten in Unity Catalog."
+    },
+    {
+     "question": "Genie heeft zelf een verkeerde uitleg van 'actieve klant' geleerd uit een oud dashboard. Wat is de juiste aanpak?",
+     "options": [
+      "Het geleerde stukje direct in Genie aanpassen",
+      "Het begrip vastleggen als gemodelleerde kennis, bijvoorbeeld op een Page, of het oude dashboard verbeteren",
+      "Een extra beschrijving in dbt zetten; die overschrijft altijd wat Genie leerde"
+     ],
+     "answer": 1,
+     "explanation": "Geleerde kennis kun je niet direct bewerken. Je past de bron aan of legt het begrip zelf vast; gemodelleerde kennis weegt meestal zwaarder."
+    }
+   ],
+   "showcase": {
+    "caption": "Eigenaarschap en betekenis vastleggen in dbt: een groep met een eigenaar, een model in die groep, en beschrijvingen en een tag die dbt naar Unity Catalog stuurt.",
+    "language": "yaml",
+    "code": "# models/gold/_groups.yml\ngroups:\n  - name: financien\n    description: \"Modellen van het domein Financiën.\"\n    owner:\n      email: eigenaar-financien@voorbeeld.nl\n    config:\n      meta:\n        data_owner: Afdeling Financiën\n\n# models/gold/financien/_financien.yml\nmodels:\n  - name: fct_declaraties\n    description: >\n      Eén rij per ingediende declaratie. Het begrip\n      'gedeclareerd bedrag' staat op de Page van Financiën.\n    config:\n      group: financien\n      access: public\n      persist_docs:\n        relation: true\n        columns: true\n      databricks_tags:\n        eigenaar_team: financien\n    columns:\n      - name: gedeclareerd_bedrag\n        description: \"Bedrag in euro's, zoals vastgesteld door Financiën.\"\n",
+    "note": "De notatie voor groups, access en databricks_tags komt uit de documentatie van dbt (v1.10 en later) en dbt-databricks. Certificeren en een Page aanmaken doe je niet in dbt maar in Unity Catalog. Of een tag een model in een domein zet, hangt af van de governed tag van dat domein."
+   },
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "Pages",
+     "explanation": "Pagina's in Unity Catalog met de officiële uitleg van één bedrijfsbegrip, met eigenaar, synoniemen en gekoppelde tabellen. Genie gebruikt ze als gezaghebbende bron."
+    },
+    {
+     "term": "curator",
+     "explanation": "De rol in Unity Catalog die domeinen opbouwt, Pages beheert en als enige een Page mag certificeren."
+    },
+    {
+     "term": "governed tag",
+     "explanation": "Een tag in Unity Catalog met vaste regels over welke waarden mogen en wie hem mag zetten. Domeinen en certificering draaien erop."
+    },
+    {
+     "term": "certificering",
+     "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
+    },
+    {
+     "term": "semantic steward",
+     "explanation": "Een voorgestelde rol die bewaakt dat een begrip, zoals omzet, overal hetzelfde betekent, naast de data steward die bewaakt of data klopt."
+    },
+    {
+     "term": "persist_docs",
+     "explanation": "Een instelling in dbt die beschrijvingen uit je YAML als commentaar op de tabel en kolommen in het dataplatform zet."
+    },
+    {
+     "term": "skills",
+     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    }
+   ],
+   "reading_minutes": 7
+  },
   {
    "id": "ai-extract-meten-en-verbeteren",
    "plan_id": "ai-extract-meten-en-verbeteren",
@@ -9347,64 +9537,67 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-18T04:27:14Z",
+  "generated_at": "2026-11-19T04:22:14Z",
   "options": [
    {
-    "id": "begrippen-door-eigenaren",
-    "title": "Wie legt de betekenis vast? Bedrijfsbegrippen voor AI laten beheren",
-    "question": "Hoe organiseer je dat eigenaren in de organisatie de definities en regels voor een AI-assistent schrijven en goedkeuren, en waar leg je die vast naast je dbt-modellen en Unity Catalog?",
-    "why": "IFS Copperleaf liet deze week de business zelf definities schrijven voor Genie Ontology, met een 'AI Council' die ze goedkeurt; dat past bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+    "id": "datacontracten",
+    "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
+    "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
+    "why": "Na de verdieping over wie begrippen beheert, is dit de volgende stap: afspraken met de eigenaren van bronsystemen zoals HiX en AFAS over wat er binnenkomt.",
+    "topics": [
+     "data_quality_observability",
+     "dbt_analytics_engineering",
+     "data_architecture_modeling"
+    ],
+    "area": "data_engineering"
+   },
+   {
+    "id": "open-tabelformaten",
+    "title": "Delta, Iceberg en het open lakehouse: waarom de catalogus het verschil maakt",
+    "question": "Wat is het verschil tussen Delta en Iceberg, en waarom wordt de catalogus belangrijker dan het bestandsformaat?",
+    "why": "Deze maand konden Databricks-tabellen fysiek in OneLake gaan staan, en las Databricks Iceberg-tabellen uit AWS HealthLake via een share in Unity Catalog.",
+    "topics": [
+     "data_architecture_modeling",
+     "databricks_data_engineering",
+     "metadata_lineage_catalogs"
+    ],
+    "area": "data_engineering"
+   },
+   {
+    "id": "skills-als-object-in-unity-catalog",
+    "title": "Werkwijzen als skill in Unity Catalog: hoe beheer je wat een agent doet?",
+    "question": "Hoe leg je een vaste werkwijze vast als skill voor Genie One, hoe deel je die via Unity Catalog, en wat is het verschil met definities in Genie Ontology?",
+    "why": "Databricks liet op 16 november zien hoe Genie One skills leert en deelt via Unity Gateway Skills (Beta); dat hoort bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
     "topics": [
      "ai_context_engineering",
-     "data_governance_privacy",
-     "metadata_lineage_catalogs"
+     "ai_agents_rag",
+     "ai_on_data_platform"
     ],
     "area": "context_agents"
    },
    {
-    "id": "gold-serveren-via-lakebase",
-    "title": "Gold-data snel naar een app of agent: synced tables in Lakebase",
-    "question": "Wat is Lakebase, hoe zet een synced table een Gold-tabel als snelle kopie in Postgres, en wanneer kies je dat in plaats van een SQL-warehouse of een aparte zoekindex?",
-    "why": "In de Lakebase-hackathon van 17 november gebruikten teams Gold-tabellen via Lakebase als zoekbron voor apps en agents, zelfs in plaats van Elasticsearch.",
-    "topics": [
-     "ai_on_data_platform",
-     "databricks_data_engineering",
-     "ai_agents_rag"
-    ],
-    "area": "ai_op_data"
-   },
-   {
-    "id": "toegangsmodus-van-compute",
-    "title": "Standard, Dedicated of Auto: welke toegangsmodus krijgt je compute?",
-    "question": "Wat is de toegangsmodus (access mode) van compute in Databricks, wat is het verschil tussen Standard en Dedicated, en wat betekent het dat nieuwe jobs nu standaard op Auto staan?",
-    "why": "Sinds 9 november krijgt nieuwe jobs-compute standaard de toegangsmodus Auto in plaats van Dedicated; goed om te snappen wat er dan voor je gekozen wordt.",
-    "topics": [
-     "databricks_data_engineering",
-     "data_governance_privacy"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "push-cdc-met-zerobus",
-    "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
-    "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
-    "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
-    "topics": [
-     "data_ingestion",
-     "databricks_data_engineering"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "claude-code-onbewaakt-laten-werken",
-    "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
-    "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
-    "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
+    "id": "verify-skill-voor-dbt-werk",
+    "title": "Laat Claude Code zijn dbt-werk zelf bewijzen met een verify-skill",
+    "question": "Hoe geef je Claude Code controles mee (zoals property- en differential tests) zodat het zelf bewijst dat een dbt-wijziging klopt, en wanneer haalt het een mens erbij?",
+    "why": "Addy Osmani beschreef deze week hoe het Claude Code-team Claude zijn werk laat bewijzen met een verify-skill; dat past bij de trend 'agents worden beter door controles en metingen'.",
     "topics": [
      "claude_ai_development",
-     "cicd_data_deployment"
+     "data_quality_observability",
+     "ai_evaluation_observability"
     ],
     "area": "claude"
+   },
+   {
+    "id": "fhir-zorgdata-voor-ai",
+    "title": "FHIR uitgelegd: hoe maak je klinische data bevraagbaar voor AI?",
+    "question": "Wat is de zorgstandaard FHIR, hoe ziet FHIR-data eruit als tabellen in een lakehouse, en waar let je op als een AI-laag erop vragen beantwoordt?",
+    "why": "Databricks liet op 16 november zien hoe je FHIR-data uit AWS HealthLake via Unity Catalog met Genie One bevraagt; dat raakt je project over AI op zorg- en onderzoeksdata.",
+    "topics": [
+     "ai_in_healthcare",
+     "data_governance_privacy",
+     "ai_on_data_platform"
+    ],
+    "area": "new_tech"
    }
   ]
  },
@@ -9841,6 +10034,11 @@
    "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron.",
    "refs": [
     {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    },
+    {
      "kind": "a",
      "id": "966a182dbe00",
      "title": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug"
@@ -10002,6 +10200,17 @@
      "kind": "a",
      "id": "760c502508bd",
      "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    }
+   ]
+  },
+  {
+   "term": "curator",
+   "explanation": "De rol in Unity Catalog die domeinen opbouwt, Pages beheert en als enige een Page mag certificeren.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
     }
    ]
   },
@@ -10689,6 +10898,11 @@
    "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen.",
    "refs": [
     {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    },
+    {
      "kind": "a",
      "id": "655888c78c57",
      "title": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel"
@@ -10719,6 +10933,17 @@
      "kind": "a",
      "id": "f49f6dcce187",
      "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
+    }
+   ]
+  },
+  {
+   "term": "governed tag",
+   "explanation": "Een tag in Unity Catalog met vaste regels over welke waarden mogen en wie hem mag zetten. Domeinen en certificering draaien erop.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
     }
    ]
   },
@@ -11437,6 +11662,17 @@
    ]
   },
   {
+   "term": "Pages",
+   "explanation": "Pagina's in Unity Catalog met de officiële uitleg van één bedrijfsbegrip, met eigenaar, synoniemen en gekoppelde tabellen. Genie gebruikt ze als gezaghebbende bron.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    }
+   ]
+  },
+  {
    "term": "parser",
    "explanation": "Het onderdeel van dbt dat je projectbestanden inleest en omzet in een overzicht van modellen en hun verbanden, voordat er iets draait.",
    "refs": [
@@ -11466,6 +11702,17 @@
      "kind": "v",
      "id": "evals-ai-assistent",
      "title": "Hoe weet je of je AI-assistent goede antwoorden geeft?"
+    }
+   ]
+  },
+  {
+   "term": "persist_docs",
+   "explanation": "Een instelling in dbt die beschrijvingen uit je YAML als commentaar op de tabel en kolommen in het dataplatform zet.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
     }
    ]
   },
@@ -11847,6 +12094,17 @@
    ]
   },
   {
+   "term": "semantic steward",
+   "explanation": "Een voorgestelde rol die bewaakt dat een begrip, zoals omzet, overal hetzelfde betekent, naast de data steward die bewaakt of data klopt.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    }
+   ]
+  },
+  {
    "term": "semantisch model",
    "explanation": "In dbt de beschrijving bij een model van zijn sleutels (entiteiten), dimensies en metrics, zodat MetricFlow weet hoe tabellen samenhangen.",
    "refs": [
@@ -11980,6 +12238,11 @@
    "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak.",
    "refs": [
     {
+     "kind": "v",
+     "id": "begrippen-door-eigenaren",
+     "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    },
+    {
      "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
@@ -11998,11 +12261,6 @@
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
-    },
-    {
-     "kind": "a",
-     "id": "c63f36899b14",
-     "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
     }
    ]
   },
@@ -13074,7 +13332,7 @@
    "failed": [],
    "skipped_no_key": 171
   },
-  "queue_size": 2,
+  "queue_size": 3,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
