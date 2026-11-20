@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-20T03:20:21.892929Z",
+ "generated_at": "2026-11-20T04:14:26.410253Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -2618,7 +2618,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -2837,7 +2837,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -3143,7 +3143,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.32,
+    "recency": 0.31,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -3422,7 +3422,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -4297,7 +4297,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.04,
@@ -4397,7 +4397,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.63,
     "feedback": -0.04,
@@ -5314,7 +5314,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.4,
+    "recency": 0.39,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -5775,7 +5775,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.1,
@@ -9537,13 +9537,24 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-19T04:22:14Z",
+  "generated_at": "2026-11-20T04:13:54Z",
   "options": [
+   {
+    "id": "dbt-alleen-bouwen-wat-veranderd-is",
+    "title": "dbt alleen laten bouwen wat veranderd is: hoe werkt dat?",
+    "question": "Hoe bepaalt dbt welke modellen nieuwe brondata hebben en dus opnieuw gebouwd moeten worden, en wat kan daarvan in dbt Core en wat alleen in het dbt-platform?",
+    "why": "Virgin Media O2 bespaarde zo ongeveer 30 procent rekenkosten met dbt State; je gaf dat artikel een duim omhoog omdat het bij je stack past.",
+    "topics": [
+     "dbt_analytics_engineering",
+     "cicd_data_deployment"
+    ],
+    "area": "data_engineering"
+   },
    {
     "id": "datacontracten",
     "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
     "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
-    "why": "Na de verdieping over wie begrippen beheert, is dit de volgende stap: afspraken met de eigenaren van bronsystemen zoals HiX en AFAS over wat er binnenkomt.",
+    "why": "Gisteren niet gekozen, maar nog steeds de logische stap na de verdieping over wie begrippen beheert: afspraken met de eigenaren van bronsystemen over wat er binnenkomt.",
     "topics": [
      "data_quality_observability",
      "dbt_analytics_engineering",
@@ -9552,50 +9563,38 @@
     "area": "data_engineering"
    },
    {
-    "id": "open-tabelformaten",
-    "title": "Delta, Iceberg en het open lakehouse: waarom de catalogus het verschil maakt",
-    "question": "Wat is het verschil tussen Delta en Iceberg, en waarom wordt de catalogus belangrijker dan het bestandsformaat?",
-    "why": "Deze maand konden Databricks-tabellen fysiek in OneLake gaan staan, en las Databricks Iceberg-tabellen uit AWS HealthLake via een share in Unity Catalog.",
+    "id": "gold-data-via-genie-in-teams-en-excel",
+    "title": "Gold-data via Genie in Teams en Excel: wat regel je vooraf?",
+    "question": "Hoe brengt Genie antwoorden uit je Gold-tabellen en metric views naar Teams en Excel, hoe werken de rechten van de vrager, en wat moet je als datateam vooraf inrichten?",
+    "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': de Genie-app voor Teams is deze week algemeen beschikbaar en werkt met de rechten van wie de vraag stelt.",
     "topics": [
-     "data_architecture_modeling",
-     "databricks_data_engineering",
-     "metadata_lineage_catalogs"
+     "ai_on_data_platform",
+     "data_governance_privacy",
+     "powerbi_semantic_models"
     ],
-    "area": "data_engineering"
+    "area": "ai_op_data"
    },
    {
-    "id": "skills-als-object-in-unity-catalog",
-    "title": "Werkwijzen als skill in Unity Catalog: hoe beheer je wat een agent doet?",
-    "question": "Hoe leg je een vaste werkwijze vast als skill voor Genie One, hoe deel je die via Unity Catalog, en wat is het verschil met definities in Genie Ontology?",
-    "why": "Databricks liet op 16 november zien hoe Genie One skills leert en deelt via Unity Gateway Skills (Beta); dat hoort bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
-    "topics": [
-     "ai_context_engineering",
-     "ai_agents_rag",
-     "ai_on_data_platform"
-    ],
-    "area": "context_agents"
-   },
-   {
-    "id": "verify-skill-voor-dbt-werk",
-    "title": "Laat Claude Code zijn dbt-werk zelf bewijzen met een verify-skill",
-    "question": "Hoe geef je Claude Code controles mee (zoals property- en differential tests) zodat het zelf bewijst dat een dbt-wijziging klopt, en wanneer haalt het een mens erbij?",
-    "why": "Addy Osmani beschreef deze week hoe het Claude Code-team Claude zijn werk laat bewijzen met een verify-skill; dat past bij de trend 'agents worden beter door controles en metingen'.",
+    "id": "sporen-van-coding-agents-analyseren",
+    "title": "Sporen van coding agents als tabel: zien waar tokens weglekken",
+    "question": "Hoe leg je de sporen (traces) van coding agents zoals Claude Code vast als gewone tabel, en hoe vind je daarin falende tools, te volle context en terugkerend werk?",
+    "why": "Trend 'Agents veilig laten werken': Unity Gateway Insights zet de sporen van coding agents in Unity Catalog; Databricks vond zo zeven kleine MCP-bugs die veel tokens kostten.",
     "topics": [
      "claude_ai_development",
-     "data_quality_observability",
-     "ai_evaluation_observability"
+     "ai_evaluation_observability",
+     "veilige_agents"
     ],
     "area": "claude"
    },
    {
-    "id": "fhir-zorgdata-voor-ai",
-    "title": "FHIR uitgelegd: hoe maak je klinische data bevraagbaar voor AI?",
-    "question": "Wat is de zorgstandaard FHIR, hoe ziet FHIR-data eruit als tabellen in een lakehouse, en waar let je op als een AI-laag erop vragen beantwoordt?",
-    "why": "Databricks liet op 16 november zien hoe je FHIR-data uit AWS HealthLake via Unity Catalog met Genie One bevraagt; dat raakt je project over AI op zorg- en onderzoeksdata.",
+    "id": "getypeerde-graaf-als-code",
+    "title": "Een getypeerde kennisgraaf als code: houdt agentdata geldig",
+    "question": "Wat is een getypeerde graaf, hoe verschilt die van tabellen met joins, en hoe helpen schema en vooraf gecontroleerde query's in Git om data die agents schrijven geldig te houden?",
+    "why": "Simon Späti beschreef deze maand 'context als code' met een getypeerde graaf; het raakt je leerdoel kennisrepresentatie en knowledge graphs.",
     "topics": [
-     "ai_in_healthcare",
-     "data_governance_privacy",
-     "ai_on_data_platform"
+     "open_source_tools",
+     "ai_context_engineering",
+     "data_architecture_modeling"
     ],
     "area": "new_tech"
    }
