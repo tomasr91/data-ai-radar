@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-20T06:34:17.710068Z",
+ "generated_at": "2026-11-20T08:40:56.669323Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -628,7 +628,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -763,7 +763,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.72,
+    "recency": 0.71,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -1782,7 +1782,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.84,
+    "recency": 0.83,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -2005,7 +2005,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -2301,112 +2301,6 @@
    }
   },
   {
-   "id": "d5f14a6242b0",
-   "title": "Which Claude model should you build with?",
-   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
-   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
-   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
-   "limitations": [
-    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
-    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
-    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Choosing the right model",
-     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
-    }
-   ],
-   "topics": [
-    "claude_ai_development"
-   ],
-   "groups": [
-    "claude"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.57,
-    "source": 0.51,
-    "quality": 0.67,
-    "feedback": 0.01,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T04:10:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "claude_blog",
-     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
-     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
-     "published_at": "2026-11-12T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
-   "story": [
-    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
-    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
-    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
-    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
-    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
-    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
-    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
-    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
-    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
-    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
-    "language": "text",
-    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
-    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
-   },
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "SWE-bench Pro",
-     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
-    },
-    {
-     "term": "subagent",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
-   },
-   "labels": [
-    "claude-modellen",
-    "claude-effort",
-    "claude-code-subagents",
-    "claude-code-kosten"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "claude_ai_development",
-    "pts": 1
-   }
-  },
-  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -2663,6 +2557,112 @@
     "by": "kind",
     "name": "praktijk",
     "pts": -4
+   }
+  },
+  {
+   "id": "d5f14a6242b0",
+   "title": "Which Claude model should you build with?",
+   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
+   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
+   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
+   "limitations": [
+    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
+    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
+    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Choosing the right model",
+     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+    }
+   ],
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.57,
+    "source": 0.51,
+    "quality": 0.67,
+    "feedback": 0.01,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:10:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "claude_blog",
+     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
+     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+     "published_at": "2026-11-12T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "story": [
+    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
+    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
+    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
+    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
+    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
+    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
+    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
+    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
+    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
+    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
+    "language": "text",
+    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
+    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
+   },
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "SWE-bench Pro",
+     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
+    },
+    {
+     "term": "subagent",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
+   },
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
    }
   },
   {
@@ -3867,163 +3867,6 @@
    ]
   },
   {
-   "id": "a9b6458ba033",
-   "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
-   "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-03T21:00:00Z",
-   "fetched_at": "2026-11-04T03:13:56.920613Z",
-   "summary": "Claude stuurt zelf sporen (traces) van elke model- en toolaanroep naar Databricks MLflow. Ze komen in Unity Catalog-tabellen terecht, met de gewone rechten en op te vragen met SQL. De functie is in publieke bèta.",
-   "personal_relevance": "Als je een AI-assistent op je dbt-metadata bouwt, krijg je zo het controlespoor in je eigen catalogus, met dezelfde rechten als de rest van je data.",
-   "experiment": "Maak in een testworkspace een MLflow-experiment met opslag in Unity Catalog, laat een klein script met de Anthropic SDK drie vragen over verzonnen data stellen, en zoek daarna met SQL welke spans het langst duurden. Gebruik geen werkdata, want Claude is een externe dienst.",
-   "limitations": [
-    "Publieke bèta: gedrag en tabelvorm kunnen nog veranderen.",
-    "De blog bevat geen code; de exacte stappen staan in de Claude- en Databricks-handleidingen.",
-    "Met de inhoudsmodus 'full' komen prompts en antwoorden in de tabellen; regel dus goed wie erbij kan."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Claude OpenTelemetry-gids",
-     "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry"
-    },
-    {
-     "label": "Traces opslaan in Unity Catalog",
-     "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/trace-unity-catalog"
-    },
-    {
-     "label": "Issues detecteren in traces",
-     "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/observe-with-traces/analyze-traces"
-    },
-    {
-     "label": "Zerobus OpenTelemetry instellen",
-     "url": "https://docs.databricks.com/aws/en/ingestion/opentelemetry/configure"
-    },
-    {
-     "label": "MLflow-blog: Claude-agents tracen via OpenTelemetry",
-     "url": "https://mlflow.org/blog/claude-otel-tracing"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "claude_ai_development",
-    "ai_evaluation_observability",
-    "metadata_lineage_catalogs"
-   ],
-   "groups": [
-    "ai_context",
-    "claude",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 84,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.44,
-    "source": 0.85,
-    "quality": 0.68,
-    "feedback": -0.04,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-04T03:55:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
-     "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
-     "published_at": "2026-11-03T21:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Wat je Claude-agent deed, staat nu als tabel in Unity Catalog",
-   "story": [
-    "Een agent kan een geloofwaardig antwoord geven en toch een belangrijke bron missen. Om dat te zien, moet je terugkijken wat hij deed. Claude kan dat spoor nu met ingebouwde meetpunten naar Databricks MLflow sturen. Dat geldt voor de Anthropic SDK's, de Messages API en Claude Managed Agents.",
-    "Het werkt zo: Claude maakt bij elke modelaanroep en elke toolaanroep een span, een soort regel in een logboek met begin, eind en details. Die spans gaan via de open standaard OTLP naar Databricks. Daar neemt Zerobus Ingest ze aan en schrijft ze in Unity Catalog-tabellen die aan een MLflow-experiment hangen. Je stelt in het experiment de catalog en het schema in.",
-    "Omdat de sporen gewone tabellen zijn, bepalen de rechten in Unity Catalog wie ze mag zien. Je kunt ze ook met SQL bevragen, bijvoorbeeld om agentruns te vinden die dezelfde tool steeds opnieuw aanroepen. De inhoud van prompts en antwoorden wordt alleen bewaard als je de inhoudsmodus op 'full' zet. Dat is een bewuste keuze, zeker als er gevoelige gegevens in kunnen zitten.",
-    "Het artikel laat ook zien wat je daarna kunt doen. MLflow Issues (bèta) zoekt terugkerende fouten, zoals herhaalde zoekopdrachten of ontbrekende toolargumenten. Domeinexperts kunnen in een beoordelingsrij (review queue) traces nakijken en het goede antwoord geven. En met agentevaluatie vergelijk je oude en nieuwe instructies op dezelfde vragen.",
-    "Let op de status: de koppeling is publieke bèta, en de blog zelf bevat nog een ontbrekende link en aangekondigde code die er niet staat. Voor de echte stappen heb je de gelinkte handleidingen nodig."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 3 november 2026 door Yuki Watanabe (Databricks Engineering).",
-    "De OpenTelemetry-integratie van Claude Platform met Databricks MLflow is Public Beta; MLflow Issues is Beta.",
-    "Ondersteund: de Anthropic SDK's, de Messages API en Claude Managed Agents; Claude Code en de Claude Agent SDK ondersteunen OpenTelemetry ook.",
-    "Spans gaan via OTLP naar Zerobus Ingest en worden opgeslagen in Unity Catalog-tabellen die aan een MLflow-experiment gekoppeld zijn.",
-    "Inputs en outputs worden alleen vastgelegd als de content mode op 'full' staat.",
-    "Voor de export geef je workspace-ID, regio en de spans-tabel op, plus een tabelgebonden OAuth-token volgens de Zerobus-gids."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Omdat de sporen in tabellen staan, vind je met gewone SQL agentruns die dezelfde tool steeds opnieuw aanroepen, een van de problemen die het artikel noemt.",
-    "language": "sql",
-    "code": "SELECT trace_id, tool,\n       COUNT(*)     AS aantal,\n       SUM(duur_ms) AS totaal_ms\nFROM spans\nWHERE soort = 'tool_call'\nGROUP BY trace_id, tool\nHAVING COUNT(*) > 1\nORDER BY trace_id, tool;",
-    "result": {
-     "columns": [
-      "trace_id",
-      "tool",
-      "aantal",
-      "totaal_ms"
-     ],
-     "rows": [
-      [
-       "run-1",
-       "lees_bestand",
-       2,
-       175
-      ],
-      [
-       "run-2",
-       "zoek_documentatie",
-       3,
-       913
-      ]
-     ]
-    },
-    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; de echte kolomnamen van de spans-tabel in Unity Catalog staan in de Databricks-documentatie."
-   },
-   "terms": [
-    {
-     "term": "span",
-     "explanation": "Eén stap in een spoor (trace): bijvoorbeeld één modelaanroep of één toolaanroep, met begin, eind en details."
-    },
-    {
-     "term": "OTLP",
-     "explanation": "OpenTelemetry Protocol: de afgesproken manier om sporen en meetgegevens te versturen, zodat elk systeem dat het ondersteunt ze kan ontvangen."
-    },
-    {
-     "term": "Zerobus Ingest",
-     "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
-    },
-    {
-     "term": "MLflow",
-     "explanation": "Een open-source platform, ingebouwd in Databricks, om AI-modellen en agents te volgen, te testen en te beheren."
-    },
-    {
-     "term": "review queue",
-     "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.7,
-    "why": "Databricks-functie voor AI-agents, in de lijn van je duimen voor 'Databricks geeft AI-assistenten zorgkennis mee'."
-   },
-   "labels": [
-    "claude-tracing",
-    "mlflow-tracing",
-    "opentelemetry"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "fa55dbcedb33",
    "title": "Declare and optimize with UNIQUE constraints on Databricks",
    "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks",
@@ -4190,7 +4033,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.62,
+    "recency": 0.61,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -4743,7 +4586,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.29,
+    "recency": 0.28,
     "source": 0.8,
     "quality": 0.57,
     "fit": 0.2
@@ -4895,6 +4738,163 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -5
+   }
+  },
+  {
+   "id": "a9b6458ba033",
+   "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
+   "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-03T21:00:00Z",
+   "fetched_at": "2026-11-04T03:13:56.920613Z",
+   "summary": "Claude stuurt zelf sporen (traces) van elke model- en toolaanroep naar Databricks MLflow. Ze komen in Unity Catalog-tabellen terecht, met de gewone rechten en op te vragen met SQL. De functie is in publieke bèta.",
+   "personal_relevance": "Als je een AI-assistent op je dbt-metadata bouwt, krijg je zo het controlespoor in je eigen catalogus, met dezelfde rechten als de rest van je data.",
+   "experiment": "Maak in een testworkspace een MLflow-experiment met opslag in Unity Catalog, laat een klein script met de Anthropic SDK drie vragen over verzonnen data stellen, en zoek daarna met SQL welke spans het langst duurden. Gebruik geen werkdata, want Claude is een externe dienst.",
+   "limitations": [
+    "Publieke bèta: gedrag en tabelvorm kunnen nog veranderen.",
+    "De blog bevat geen code; de exacte stappen staan in de Claude- en Databricks-handleidingen.",
+    "Met de inhoudsmodus 'full' komen prompts en antwoorden in de tabellen; regel dus goed wie erbij kan."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Claude OpenTelemetry-gids",
+     "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry"
+    },
+    {
+     "label": "Traces opslaan in Unity Catalog",
+     "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/trace-unity-catalog"
+    },
+    {
+     "label": "Issues detecteren in traces",
+     "url": "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/observe-with-traces/analyze-traces"
+    },
+    {
+     "label": "Zerobus OpenTelemetry instellen",
+     "url": "https://docs.databricks.com/aws/en/ingestion/opentelemetry/configure"
+    },
+    {
+     "label": "MLflow-blog: Claude-agents tracen via OpenTelemetry",
+     "url": "https://mlflow.org/blog/claude-otel-tracing"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "claude_ai_development",
+    "ai_evaluation_observability",
+    "metadata_lineage_catalogs"
+   ],
+   "groups": [
+    "ai_context",
+    "claude",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.44,
+    "source": 0.85,
+    "quality": 0.68,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-04T03:55:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
+     "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
+     "published_at": "2026-11-03T21:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Wat je Claude-agent deed, staat nu als tabel in Unity Catalog",
+   "story": [
+    "Een agent kan een geloofwaardig antwoord geven en toch een belangrijke bron missen. Om dat te zien, moet je terugkijken wat hij deed. Claude kan dat spoor nu met ingebouwde meetpunten naar Databricks MLflow sturen. Dat geldt voor de Anthropic SDK's, de Messages API en Claude Managed Agents.",
+    "Het werkt zo: Claude maakt bij elke modelaanroep en elke toolaanroep een span, een soort regel in een logboek met begin, eind en details. Die spans gaan via de open standaard OTLP naar Databricks. Daar neemt Zerobus Ingest ze aan en schrijft ze in Unity Catalog-tabellen die aan een MLflow-experiment hangen. Je stelt in het experiment de catalog en het schema in.",
+    "Omdat de sporen gewone tabellen zijn, bepalen de rechten in Unity Catalog wie ze mag zien. Je kunt ze ook met SQL bevragen, bijvoorbeeld om agentruns te vinden die dezelfde tool steeds opnieuw aanroepen. De inhoud van prompts en antwoorden wordt alleen bewaard als je de inhoudsmodus op 'full' zet. Dat is een bewuste keuze, zeker als er gevoelige gegevens in kunnen zitten.",
+    "Het artikel laat ook zien wat je daarna kunt doen. MLflow Issues (bèta) zoekt terugkerende fouten, zoals herhaalde zoekopdrachten of ontbrekende toolargumenten. Domeinexperts kunnen in een beoordelingsrij (review queue) traces nakijken en het goede antwoord geven. En met agentevaluatie vergelijk je oude en nieuwe instructies op dezelfde vragen.",
+    "Let op de status: de koppeling is publieke bèta, en de blog zelf bevat nog een ontbrekende link en aangekondigde code die er niet staat. Voor de echte stappen heb je de gelinkte handleidingen nodig."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 3 november 2026 door Yuki Watanabe (Databricks Engineering).",
+    "De OpenTelemetry-integratie van Claude Platform met Databricks MLflow is Public Beta; MLflow Issues is Beta.",
+    "Ondersteund: de Anthropic SDK's, de Messages API en Claude Managed Agents; Claude Code en de Claude Agent SDK ondersteunen OpenTelemetry ook.",
+    "Spans gaan via OTLP naar Zerobus Ingest en worden opgeslagen in Unity Catalog-tabellen die aan een MLflow-experiment gekoppeld zijn.",
+    "Inputs en outputs worden alleen vastgelegd als de content mode op 'full' staat.",
+    "Voor de export geef je workspace-ID, regio en de spans-tabel op, plus een tabelgebonden OAuth-token volgens de Zerobus-gids."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Omdat de sporen in tabellen staan, vind je met gewone SQL agentruns die dezelfde tool steeds opnieuw aanroepen, een van de problemen die het artikel noemt.",
+    "language": "sql",
+    "code": "SELECT trace_id, tool,\n       COUNT(*)     AS aantal,\n       SUM(duur_ms) AS totaal_ms\nFROM spans\nWHERE soort = 'tool_call'\nGROUP BY trace_id, tool\nHAVING COUNT(*) > 1\nORDER BY trace_id, tool;",
+    "result": {
+     "columns": [
+      "trace_id",
+      "tool",
+      "aantal",
+      "totaal_ms"
+     ],
+     "rows": [
+      [
+       "run-1",
+       "lees_bestand",
+       2,
+       175
+      ],
+      [
+       "run-2",
+       "zoek_documentatie",
+       3,
+       913
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. Zo werkt het idee in gewone SQL; de echte kolomnamen van de spans-tabel in Unity Catalog staan in de Databricks-documentatie."
+   },
+   "terms": [
+    {
+     "term": "span",
+     "explanation": "Eén stap in een spoor (trace): bijvoorbeeld één modelaanroep of één toolaanroep, met begin, eind en details."
+    },
+    {
+     "term": "OTLP",
+     "explanation": "OpenTelemetry Protocol: de afgesproken manier om sporen en meetgegevens te versturen, zodat elk systeem dat het ondersteunt ze kan ontvangen."
+    },
+    {
+     "term": "Zerobus Ingest",
+     "explanation": "Een dienst van Databricks die veel kleine berichten snel aanneemt en direct in Unity Catalog-tabellen schrijft."
+    },
+    {
+     "term": "MLflow",
+     "explanation": "Een open-source platform, ingebouwd in Databricks, om AI-modellen en agents te volgen, te testen en te beheren."
+    },
+    {
+     "term": "review queue",
+     "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "Databricks-functie voor AI-agents, in de lijn van je duimen voor 'Databricks geeft AI-assistenten zorgkennis mee'."
+   },
+   "labels": [
+    "claude-tracing",
+    "mlflow-tracing",
+    "opentelemetry"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
    }
   },
   {
@@ -13184,7 +13184,7 @@
    "data_architecture_modeling": 0.63,
    "ai_context_engineering": 0.97,
    "claude_ai_development": 0.71,
-   "ai_agents_rag": 0.89,
+   "ai_agents_rag": 0.88,
    "data_ingestion": 0.23,
    "ai_evaluation_observability": 0.08
   },
@@ -13203,7 +13203,7 @@
   "kinds": {
    "praktijk": 0.56,
    "praktisch": 0.64,
-   "achtergrond": 0.67,
+   "achtergrond": 0.66,
    "aankondiging": 0.96,
    "mening": 0.4,
    "release": 0.62
