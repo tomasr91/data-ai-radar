@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-20T05:14:01.411064Z",
+ "generated_at": "2026-11-20T05:14:50.418856Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -13059,14 +13059,16 @@
  "runs": {
   "date": "2026-11-20",
   "tasks": {
-   "verdiepen": {
+   "overzicht": {
     "status": "ok",
-    "summary": "Gisteren is geen verdieping gekozen, dus vandaag geen verdieping; 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-20T04:14:15Z",
+    "summary": "3 trends bijgewerkt (één te oud artikel eruit), geen verzoeken voor interesses, geen leerregels te doen, geen begrippen aangevuld: alleen een kort stuk zonder verhaal had er nog geen",
+    "finished_at": "2026-11-20T05:13:58Z",
     "problems": [],
     "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
+     "trends": 3,
+     "interesse_verzoeken": 0,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
     }
    },
    "uitleggen": {
@@ -13082,6 +13084,16 @@
      "uitgelegd": 0,
      "overgeslagen": 3,
      "niet_bereikbaar": 7
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Gisteren is geen verdieping gekozen, dus vandaag geen verdieping; 5 nieuwe keuzes klaargezet",
+    "finished_at": "2026-11-20T04:14:15Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5
     }
    }
   }
