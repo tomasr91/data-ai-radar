@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-20T05:14:50.418856Z",
+ "generated_at": "2026-11-20T06:34:17.710068Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -1893,7 +1893,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -3116,85 +3116,6 @@
    }
   },
   {
-   "id": "059023edac5d",
-   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
-   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T20:02:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets veranderd was. Dat scheelde ongeveer 30 procent rekenkosten.",
-   "personal_relevance": "Minder rekenen betekent op Databricks direct lagere kosten.",
-   "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
-   "limitations": [
-    "Gemeten op BigQuery, niet op Databricks.",
-    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
-    "Sommige packages werkten nog niet met dbt v2."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "dbt_analytics_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "overig"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.31,
-    "source": 0.85,
-    "quality": 0.65,
-    "feedback": -0.05,
-    "fit": 0.4
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
-   "story": [
-    "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Zo werkt een gewone dbt-run: elk model wordt opnieuw gebouwd. Met dbt State kijkt dbt eerst welke modellen nieuwe brondata hebben, en bouwt alleen die.",
-    "Virgin Media O2 deed dat en bespaarde ongeveer 30 procent aan rekenkosten. Runs werden ongeveer 35 procent sneller. Ze gebruikten daarvoor dbt v2, een nieuw herschreven versie van dbt.",
-    "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou haalbaar is, hangt af van waar je runs draaien. Het artikel zegt niet of dbt State ook in dbt Core werkt. En de cijfers komen van BigQuery, niet van Databricks."
-   ],
-   "key_facts": [
-    "Verslag van een talk op dbt Summit 2026.",
-    "Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13.",
-    "Over de hele migratie: ongeveer 30% lagere rekenkosten en 35% snellere runs.",
-    "Ze gebruikten dbt v2, een herschreven dbt-engine in Rust."
-   ],
-   "terms": [
-    {
-     "term": "dbt State",
-     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
-    },
-    {
-     "term": "dbt v2",
-     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.9,
-    "why": "Je gaf dit stuk een duim omhoog: past bij je stack."
-   },
-   "labels": [
-    "dbt-state",
-    "slimme-rebuilds",
-    "compute-kosten"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -5
-   }
-  },
-  {
    "id": "6df581b9d8ed",
    "title": "Claude Code: wat is er nieuw in week 44 (v2.1.311 t/m v2.1.316)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W44",
@@ -3231,7 +3152,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.8,
     "quality": 0.63,
     "feedback": 0.01,
@@ -3529,7 +3450,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -3786,6 +3707,85 @@
    }
   },
   {
+   "id": "059023edac5d",
+   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
+   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:02:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets veranderd was. Dat scheelde ongeveer 30 procent rekenkosten.",
+   "personal_relevance": "Minder rekenen betekent op Databricks direct lagere kosten.",
+   "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
+   "limitations": [
+    "Gemeten op BigQuery, niet op Databricks.",
+    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
+    "Sommige packages werkten nog niet met dbt v2."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.31,
+    "source": 0.85,
+    "quality": 0.65,
+    "feedback": -0.05,
+    "fit": 0.4
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
+   "story": [
+    "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Zo werkt een gewone dbt-run: elk model wordt opnieuw gebouwd. Met dbt State kijkt dbt eerst welke modellen nieuwe brondata hebben, en bouwt alleen die.",
+    "Virgin Media O2 deed dat en bespaarde ongeveer 30 procent aan rekenkosten. Runs werden ongeveer 35 procent sneller. Ze gebruikten daarvoor dbt v2, een nieuw herschreven versie van dbt.",
+    "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou haalbaar is, hangt af van waar je runs draaien. Het artikel zegt niet of dbt State ook in dbt Core werkt. En de cijfers komen van BigQuery, niet van Databricks."
+   ],
+   "key_facts": [
+    "Verslag van een talk op dbt Summit 2026.",
+    "Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13.",
+    "Over de hele migratie: ongeveer 30% lagere rekenkosten en 35% snellere runs.",
+    "Ze gebruikten dbt v2, een herschreven dbt-engine in Rust."
+   ],
+   "terms": [
+    {
+     "term": "dbt State",
+     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+     "term": "dbt v2",
+     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.9,
+    "why": "Je gaf dit stuk een duim omhoog: past bij je stack."
+   },
+   "labels": [
+    "dbt-state",
+    "slimme-rebuilds",
+    "compute-kosten"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -5
+   }
+  },
+  {
    "id": "966a182dbe00",
    "title": "Who Gets to Plant in the Gold Layer?",
    "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
@@ -3813,7 +3813,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.42,
+    "recency": 0.41,
     "source": 0.85,
     "quality": 0.58,
     "fit": 0.15
@@ -3919,7 +3919,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.04,
@@ -4067,7 +4067,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.45,
+    "recency": 0.44,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.06,
@@ -13059,6 +13059,19 @@
  "runs": {
   "date": "2026-11-20",
   "tasks": {
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen opnieuw geprobeerd: de 7 open artikelen waren nog steeds niet te openen, dus er is niets uitgelegd; verdiepen en overzicht waren al klaar.",
+    "finished_at": "2026-11-20T06:34:03Z",
+    "problems": [
+     "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch gaf de artikelen niet terug; ze blijven op de werklijst.",
+     "Dataflow-voortgang niet bijgewerkt: add_repo niet beschikbaar en clonen van personal-data-platform geweigerd."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "niet_bereikbaar": 7
+    }
+   },
    "overzicht": {
     "status": "ok",
     "summary": "3 trends bijgewerkt (één te oud artikel eruit), geen verzoeken voor interesses, geen leerregels te doen, geen begrippen aangevuld: alleen een kort stuk zonder verhaal had er nog geen",
@@ -13073,12 +13086,13 @@
    },
    "uitleggen": {
     "status": "deels",
-    "summary": "Geen artikelen uitgelegd: 3 overgeslagen zonder openen en 7 artikelen waren vannacht niet te openen; die blijven op de werklijst.",
-    "finished_at": "2026-11-20T03:20:07Z",
+    "summary": "Geen artikelen uitgelegd: 3 overgeslagen zonder openen; 7 artikelen waren vannacht en bij het inhalen (07:28) niet te openen en blijven op de werklijst.",
+    "finished_at": "2026-11-20T06:34:03Z",
     "problems": [
      "Vers ophalen aangevraagd; de feed was om 03:13 UTC bijgewerkt.",
      "Dataflow-voortgang niet bijgewerkt: de tool add_repo was in deze sessie niet beschikbaar en git clone van tomasr91/personal-data-platform faalde ('could not read Username for https://github.com: terminal prompts disabled').",
-     "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch op de exacte titel gaf het artikel zelf niet terug: Genie Migrate for Serverless, Genie free tier partners, Bulk migrate dashboards met Genie Code, Genie ZeroOps public beta, Genie One Accuracy, OneLake unified foundation, Fabric IQ context. Ze blijven op de werklijst."
+     "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch op de exacte titel gaf het artikel zelf niet terug: Genie Migrate for Serverless, Genie free tier partners, Bulk migrate dashboards met Genie Code, Genie ZeroOps public beta, Genie One Accuracy, OneLake unified foundation, Fabric IQ context. Ze blijven op de werklijst.",
+     "Inhalen 07:28: opnieuw weigerde WebFetch alle 7 adressen (PROVENANCE_REQUIRED, 'permission request not answered') en WebSearch op de exacte titels gaf de artikelen zelf niet terug; git clone van personal-data-platform werd ook nu geweigerd."
     ],
     "counts": {
      "uitgelegd": 0,
@@ -13178,7 +13192,7 @@
    "dbt_labs_blog": 0.89,
    "databricks_blog": 0.96,
    "powerbi_blog": 0.29,
-   "dbt_developer_blog": 0.67,
+   "dbt_developer_blog": 0.66,
    "claude_code_releases": 0.27,
    "azure_databricks_release_notes": 0.57,
    "fabric_blog": -0.07,
@@ -13494,26 +13508,6 @@
     ]
    },
    {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
@@ -13533,14 +13527,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
-    "relevance_score": 82,
-    "decision": "area_cap",
-    "excluded_by": []
    },
    {
     "title": "Metric view window measures are generally available",
@@ -13593,6 +13579,26 @@
     ]
    },
    {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect GitHub Copilot CLI and GitHub Copilot in Visual Studio Code with Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#connect-github-copilot-cli-and-github-copilot-in-visual-studio-code-with-unity-gateway",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
@@ -13627,6 +13633,14 @@
     "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
     "relevance_score": 81,
     "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+    "relevance_score": 81,
+    "decision": "area_cap",
     "excluded_by": []
    },
    {
@@ -13813,17 +13827,6 @@
     ]
    },
    {
-    "title": "v2.1.319",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "dbt v1.12.7",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.12.7",
@@ -13899,6 +13902,17 @@
     "title": "v2.1.318",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.319",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
