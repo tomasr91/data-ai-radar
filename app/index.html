@@ -135,6 +135,7 @@ h2.sec { font-size: 0.74rem; font-family: var(--f-meta); font-weight: 500; text-
 .fb-float b { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--accent2); color: #1a1205; font-weight: 600; }
 .cards.has-float { padding-bottom: 72px; }
 .term { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-decoration: underline dotted var(--muted); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.no-new { margin: 4px 0 10px; color: var(--muted); font-size: .88rem; text-align: center; }
 .term.new { color: var(--accent2); text-decoration-color: var(--accent2); }   /* nog niet bekeken */
 .term-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--surface); border-top: 2px solid var(--accent2); padding: 16px 20px calc(18px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 30px rgba(0,0,0,.45); }
 .term-sheet[hidden] { display: none; }
@@ -653,7 +654,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed, m = MODE[f.mode] || MODE.partial;
     const ok = f.sources.filter((s) => s.status === "ok").length;
     const fine = f.mode === "live" && ok === f.sources.length;
-    const updIso = newestAdded(f) || f.last_article_added_at || f.last_successful_update || f.generated_at;
+    // Tijd en lampje gaan over de laatste geslaagde bijwerking, niet over het nieuwste artikel.
+    const updIso = f.last_successful_update || f.generated_at;
     const upd = fmtDateTime(updIso);
     const ud = new Date(updIso);
     const day = ud.toLocaleDateString("nl-NL", { day: "numeric", month: "short", timeZone: TZ });
@@ -663,7 +665,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const ageDays = Math.round((Date.parse(dayKey(new Date()) + "T00:00:00Z") - Date.parse(dayKey(ud) + "T00:00:00Z")) / 864e5);
     const dotColor = f.mode === "demo" || f.mode === "stale" || ageDays > 7 ? "var(--bad)" : ageDays <= 0 ? "var(--ok)" : "var(--warn)";
     $("#upd").innerHTML = `<span class="dot" style="background:${dotColor}"></span><span><span>${esc(day)}</span><span>${esc(time)}</span></span>`;   // alleen bolletje + datum/tijd, rechts
-    $("#upd").title = $("#upd").ariaLabel = `Nieuwe artikelen toegevoegd op ${upd}`;
+    $("#upd").title = $("#upd").ariaLabel = `Bijgewerkt op ${upd}`;
     const st = $("#status");
     st.hidden = fine;
     if (!fine) {
@@ -740,6 +742,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       return Date.parse(prev) || 0;
     } catch { return 0; }
   })();
+  // "Geen nieuwe artikelen": bij de laatste bijwerking kwam er geen artikel bij.
+  function noNewNote() {
+    const f = state.feed, upd = f.last_successful_update || f.generated_at;
+    const last = (f.articles || []).map(addedAt).filter(Boolean).sort((x, y) => Date.parse(y) - Date.parse(x))[0];
+    const day = (iso) => new Date(iso).toLocaleDateString("sv-SE", { timeZone: TZ });
+    return upd && (!last || day(last) < day(upd)) ? `<p class="no-new">Geen nieuwe artikelen</p>` : "";
+  }
   const isNew = (a) => visit && Date.parse(addedAt(a) || "") > visit;
   const isRead = (key) => !!reads.all()[key];
   function card(a) {
@@ -881,7 +890,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
       const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
       const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
-      const sb = fbSendBar(); html += weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
+      const sb = fbSendBar(); html += noNewNote() + weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
     }
     $("#content").innerHTML = html;
   }
