@@ -1,12 +1,23 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-19T04:22:14Z",
+  "generated_at": "2026-11-20T04:13:54Z",
   "options": [
+    {
+      "id": "dbt-alleen-bouwen-wat-veranderd-is",
+      "title": "dbt alleen laten bouwen wat veranderd is: hoe werkt dat?",
+      "question": "Hoe bepaalt dbt welke modellen nieuwe brondata hebben en dus opnieuw gebouwd moeten worden, en wat kan daarvan in dbt Core en wat alleen in het dbt-platform?",
+      "why": "Virgin Media O2 bespaarde zo ongeveer 30 procent rekenkosten met dbt State; je gaf dat artikel een duim omhoog omdat het bij je stack past.",
+      "topics": [
+        "dbt_analytics_engineering",
+        "cicd_data_deployment"
+      ],
+      "area": "data_engineering"
+    },
     {
       "id": "datacontracten",
       "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
       "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
-      "why": "Na de verdieping over wie begrippen beheert, is dit de volgende stap: afspraken met de eigenaren van bronsystemen zoals HiX en AFAS over wat er binnenkomt.",
+      "why": "Gisteren niet gekozen, maar nog steeds de logische stap na de verdieping over wie begrippen beheert: afspraken met de eigenaren van bronsystemen over wat er binnenkomt.",
       "topics": [
         "data_quality_observability",
         "dbt_analytics_engineering",
@@ -15,50 +26,38 @@
       "area": "data_engineering"
     },
     {
-      "id": "open-tabelformaten",
-      "title": "Delta, Iceberg en het open lakehouse: waarom de catalogus het verschil maakt",
-      "question": "Wat is het verschil tussen Delta en Iceberg, en waarom wordt de catalogus belangrijker dan het bestandsformaat?",
-      "why": "Deze maand konden Databricks-tabellen fysiek in OneLake gaan staan, en las Databricks Iceberg-tabellen uit AWS HealthLake via een share in Unity Catalog.",
+      "id": "gold-data-via-genie-in-teams-en-excel",
+      "title": "Gold-data via Genie in Teams en Excel: wat regel je vooraf?",
+      "question": "Hoe brengt Genie antwoorden uit je Gold-tabellen en metric views naar Teams en Excel, hoe werken de rechten van de vrager, en wat moet je als datateam vooraf inrichten?",
+      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': de Genie-app voor Teams is deze week algemeen beschikbaar en werkt met de rechten van wie de vraag stelt.",
       "topics": [
-        "data_architecture_modeling",
-        "databricks_data_engineering",
-        "metadata_lineage_catalogs"
+        "ai_on_data_platform",
+        "data_governance_privacy",
+        "powerbi_semantic_models"
       ],
-      "area": "data_engineering"
+      "area": "ai_op_data"
     },
     {
-      "id": "skills-als-object-in-unity-catalog",
-      "title": "Werkwijzen als skill in Unity Catalog: hoe beheer je wat een agent doet?",
-      "question": "Hoe leg je een vaste werkwijze vast als skill voor Genie One, hoe deel je die via Unity Catalog, en wat is het verschil met definities in Genie Ontology?",
-      "why": "Databricks liet op 16 november zien hoe Genie One skills leert en deelt via Unity Gateway Skills (Beta); dat hoort bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
-      "topics": [
-        "ai_context_engineering",
-        "ai_agents_rag",
-        "ai_on_data_platform"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "verify-skill-voor-dbt-werk",
-      "title": "Laat Claude Code zijn dbt-werk zelf bewijzen met een verify-skill",
-      "question": "Hoe geef je Claude Code controles mee (zoals property- en differential tests) zodat het zelf bewijst dat een dbt-wijziging klopt, en wanneer haalt het een mens erbij?",
-      "why": "Addy Osmani beschreef deze week hoe het Claude Code-team Claude zijn werk laat bewijzen met een verify-skill; dat past bij de trend 'agents worden beter door controles en metingen'.",
+      "id": "sporen-van-coding-agents-analyseren",
+      "title": "Sporen van coding agents als tabel: zien waar tokens weglekken",
+      "question": "Hoe leg je de sporen (traces) van coding agents zoals Claude Code vast als gewone tabel, en hoe vind je daarin falende tools, te volle context en terugkerend werk?",
+      "why": "Trend 'Agents veilig laten werken': Unity Gateway Insights zet de sporen van coding agents in Unity Catalog; Databricks vond zo zeven kleine MCP-bugs die veel tokens kostten.",
       "topics": [
         "claude_ai_development",
-        "data_quality_observability",
-        "ai_evaluation_observability"
+        "ai_evaluation_observability",
+        "veilige_agents"
       ],
       "area": "claude"
     },
     {
-      "id": "fhir-zorgdata-voor-ai",
-      "title": "FHIR uitgelegd: hoe maak je klinische data bevraagbaar voor AI?",
-      "question": "Wat is de zorgstandaard FHIR, hoe ziet FHIR-data eruit als tabellen in een lakehouse, en waar let je op als een AI-laag erop vragen beantwoordt?",
-      "why": "Databricks liet op 16 november zien hoe je FHIR-data uit AWS HealthLake via Unity Catalog met Genie One bevraagt; dat raakt je project over AI op zorg- en onderzoeksdata.",
+      "id": "getypeerde-graaf-als-code",
+      "title": "Een getypeerde kennisgraaf als code: houdt agentdata geldig",
+      "question": "Wat is een getypeerde graaf, hoe verschilt die van tabellen met joins, en hoe helpen schema en vooraf gecontroleerde query's in Git om data die agents schrijven geldig te houden?",
+      "why": "Simon Späti beschreef deze maand 'context als code' met een getypeerde graaf; het raakt je leerdoel kennisrepresentatie en knowledge graphs.",
       "topics": [
-        "ai_in_healthcare",
-        "data_governance_privacy",
-        "ai_on_data_platform"
+        "open_source_tools",
+        "ai_context_engineering",
+        "data_architecture_modeling"
       ],
       "area": "new_tech"
     }
@@ -111,18 +110,6 @@
       "area": "context_agents"
     },
     {
-      "id": "synthetische-data-voor-ai-proeven",
-      "title": "Synthetische data maken voor AI-proeven in de zorg",
-      "question": "Hoe maak je verzonnen data die realistisch genoeg is om AI-toepassingen op te testen, zonder dat er iets van echte patiënten in terechtkomt?",
-      "why": "Elk experiment in de radar vraagt om verzonnen of openbare data, en het project AI in de zorg heeft een veilige proeftuin nodig.",
-      "topics": [
-        "ai_in_healthcare",
-        "data_governance_privacy",
-        "ai_research_data"
-      ],
-      "area": "new_tech"
-    },
-    {
       "id": "asset-bundles-basis",
       "title": "Bundles: je Databricks-project als code uitrollen, vanaf de basis",
       "question": "Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?",
@@ -169,30 +156,6 @@
         "data_architecture_modeling"
       ],
       "area": "data_engineering"
-    },
-    {
-      "id": "synthetische-data-voor-ai-proeven",
-      "title": "Synthetische data maken voor AI-proeven in de zorg",
-      "question": "Hoe maak je verzonnen data die realistisch genoeg is om AI-toepassingen op te testen, zonder dat er iets van echte patiënten in terechtkomt?",
-      "why": "Elk experiment in de radar vraagt om verzonnen of openbare data, en het project AI in de zorg heeft een veilige proeftuin nodig.",
-      "topics": [
-        "ai_in_healthcare",
-        "data_governance_privacy",
-        "ai_research_data"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "cdc-en-incrementeel-laden",
-      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
-      "question": "Hoe laad je alleen wat er veranderd is, en hoe ga je om met updates en verwijderingen uit de bron?",
-      "why": "Deze week gebruikten zowel Keep als Snorkel AI wijzigingsregistratie (CDC) om data binnen seconden of minuten bij te houden; dit is de basis daaronder.",
-      "topics": [
-        "data_ingestion",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering",
-      "level": "beginner"
     },
     {
       "id": "release-pipeline-basis",
@@ -275,18 +238,6 @@
         "ai_agents_rag"
       ],
       "area": "context_agents"
-    },
-    {
-      "id": "claude-traces-in-unity-catalog",
-      "title": "Terugkijken wat je Claude-agent deed: traces als tabel in Unity Catalog",
-      "question": "Wat zijn traces en spans, hoe komen die van Claude via OpenTelemetry in Databricks MLflow terecht, en hoe gebruik je ze met SQL om fouten van een agent te vinden?",
-      "why": "Sinds 3 november kan Claude zijn traces in bèta naar Unity Catalog sturen; past bij de trend 'Agents worden beter door controles en metingen'.",
-      "topics": [
-        "claude_ai_development",
-        "ai_evaluation_observability",
-        "ai_on_data_platform"
-      ],
-      "area": "claude"
     },
     {
       "id": "zorgkennis-als-skills",
@@ -407,18 +358,6 @@
       "area": "claude"
     },
     {
-      "id": "synthetische-data-voor-experimenten",
-      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
-      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
-      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
-      "topics": [
-        "data_governance_privacy",
-        "ai_in_healthcare",
-        "ai_research_data"
-      ],
-      "area": "new_tech"
-    },
-    {
       "id": "declaratieve-pipelines-naast-dbt",
       "title": "Declaratieve pipelines in Databricks naast dbt: wie doet wat?",
       "question": "Wat zijn Spark Declarative Pipelines, hoe verschillen ze van een stap-voor-stap-pipeline en van dbt, en wanneer kies je welke voor inlezen en transformeren?",
@@ -502,18 +441,6 @@
       "area": "data_engineering"
     },
     {
-      "id": "context-vooraf-in-het-warehouse",
-      "title": "Context vooraf in het warehouse: waarom een agent dan minder tokens nodig heeft",
-      "question": "Waar gaan de tokens van een data-agent naartoe, en hoe verlaag je de kosten door context vooraf in dbt-modellen en tabellen uit te werken in plaats van alles via MCP-tools op te halen?",
-      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': dbt Labs zegt (11 november) meer dan de helft aan tokens te besparen door context eerst in het warehouse uit te werken.",
-      "topics": [
-        "ai_context_engineering",
-        "dbt_analytics_engineering",
-        "ai_agents_rag"
-      ],
-      "area": "context_agents"
-    },
-    {
       "id": "claude-agents-in-eigen-netwerk",
       "title": "Claude-agents in je eigen netwerk: wat blijft binnen, wat gaat naar buiten?",
       "question": "Welke onderdelen van een agent (sandbox, sessiegeschiedenis, sleutels, tools, model) kun je zelf hosten, en wat betekent die verdeling voor gevoelige data zoals zorgdata?",
@@ -524,29 +451,6 @@
         "ai_agents_rag"
       ],
       "area": "claude"
-    },
-    {
-      "id": "bewakend-model-voor-agents",
-      "title": "Een controleur vóór de verzendknop: agents met een bewakend model",
-      "question": "Hoe werkt een tweede model dat elke actie of elk uitgaand bericht van een agent controleert vóórdat het weggaat, en wanneer is dat genoeg en wanneer moet er toch een mens meekijken?",
-      "why": "Zorgverzekeraar Curative laat een Claude-agent contracten onderhandelen waarbij een klein 'rechter'-model elk uitgaand bericht vóór verzending leest; een concreet patroon voor agents in de zorg.",
-      "topics": [
-        "ai_in_healthcare",
-        "ai_agents_rag"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "toegang-op-attributen",
-      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
-      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van classificatie-tags in plaats van per tabel, en hoe ziet dat eruit voor zorgdata zonder echte data te gebruiken?",
-      "why": "Bij je project AI in de zorg is de open vraag welke data naar welke omgeving mag; toegang op basis van tags is de manier om dat per kolom vast te leggen, ook voor agents die data lezen.",
-      "topics": [
-        "data_governance_privacy",
-        "metadata_lineage_catalogs",
-        "ai_in_healthcare"
-      ],
-      "area": "data_engineering"
     },
     {
       "id": "context-vooraf-in-het-warehouse",
@@ -651,17 +555,6 @@
       "area": "new_tech"
     },
     {
-      "id": "push-cdc-met-zerobus",
-      "title": "Wijzigingen laten binnenduwen: CDC met Debezium en Zerobus Ingest",
-      "question": "Wat is het verschil tussen data ophalen (pull) en data laten binnenduwen (push), hoe werkt CDC met Debezium en Zerobus Ingest naar Unity Catalog, en wanneer kies je dat boven Lakeflow Connect of Auto Loader?",
-      "why": "Databricks liet deze maand zien hoe Debezium wijzigingen uit Postgres zonder Kafka rechtstreeks in Unity Catalog duwt; dat bouwt voort op je basis over ingestion en CDC.",
-      "topics": [
-        "data_ingestion",
-        "databricks_data_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
       "id": "kolom-lineage-impactanalyse",
       "title": "Kolom-lineage gebruiken voor impactanalyse",
       "question": "Hoe zie je vooraf wat er breekt als je een kolom wijzigt, wat zien Unity Catalog en dbt daarvan wel en niet, en hoe gebruik je lineage als context voor AI?",
@@ -694,17 +587,6 @@
         "data_quality_observability"
       ],
       "area": "ai_op_data"
-    },
-    {
-      "id": "claude-code-onbewaakt-laten-werken",
-      "title": "Claude Code onbewaakt laten werken: rechten, hooks en geplande taken",
-      "question": "Hoe stel je Claude Code in voor geplande of achtergrondtaken zodat hij niet blijft hangen op vragen en geen acties doet die je niet wilt?",
-      "why": "Claude Code kreeg in week 45 permissions.denyInsteadOfPrompting, MCP-taken op de achtergrond en een waarschuwing bij /schedule; precies de instellingen voor onbewaakte taken zoals de nachttaken van deze radar.",
-      "topics": [
-        "claude_ai_development",
-        "cicd_data_deployment"
-      ],
-      "area": "claude"
     },
     {
       "id": "begrippen-door-eigenaren",
@@ -762,6 +644,66 @@
         "cicd_data_deployment"
       ],
       "area": "claude"
+    },
+    {
+      "id": "datacontracten",
+      "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
+      "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
+      "why": "Na de verdieping over wie begrippen beheert, is dit de volgende stap: afspraken met de eigenaren van bronsystemen zoals HiX en AFAS over wat er binnenkomt.",
+      "topics": [
+        "data_quality_observability",
+        "dbt_analytics_engineering",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "open-tabelformaten",
+      "title": "Delta, Iceberg en het open lakehouse: waarom de catalogus het verschil maakt",
+      "question": "Wat is het verschil tussen Delta en Iceberg, en waarom wordt de catalogus belangrijker dan het bestandsformaat?",
+      "why": "Deze maand konden Databricks-tabellen fysiek in OneLake gaan staan, en las Databricks Iceberg-tabellen uit AWS HealthLake via een share in Unity Catalog.",
+      "topics": [
+        "data_architecture_modeling",
+        "databricks_data_engineering",
+        "metadata_lineage_catalogs"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "skills-als-object-in-unity-catalog",
+      "title": "Werkwijzen als skill in Unity Catalog: hoe beheer je wat een agent doet?",
+      "question": "Hoe leg je een vaste werkwijze vast als skill voor Genie One, hoe deel je die via Unity Catalog, en wat is het verschil met definities in Genie Ontology?",
+      "why": "Databricks liet op 16 november zien hoe Genie One skills leert en deelt via Unity Gateway Skills (Beta); dat hoort bij de trend 'context voor AI-agents komt in het dataplatform zelf'.",
+      "topics": [
+        "ai_context_engineering",
+        "ai_agents_rag",
+        "ai_on_data_platform"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "verify-skill-voor-dbt-werk",
+      "title": "Laat Claude Code zijn dbt-werk zelf bewijzen met een verify-skill",
+      "question": "Hoe geef je Claude Code controles mee (zoals property- en differential tests) zodat het zelf bewijst dat een dbt-wijziging klopt, en wanneer haalt het een mens erbij?",
+      "why": "Addy Osmani beschreef deze week hoe het Claude Code-team Claude zijn werk laat bewijzen met een verify-skill; dat past bij de trend 'agents worden beter door controles en metingen'.",
+      "topics": [
+        "claude_ai_development",
+        "data_quality_observability",
+        "ai_evaluation_observability"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "fhir-zorgdata-voor-ai",
+      "title": "FHIR uitgelegd: hoe maak je klinische data bevraagbaar voor AI?",
+      "question": "Wat is de zorgstandaard FHIR, hoe ziet FHIR-data eruit als tabellen in een lakehouse, en waar let je op als een AI-laag erop vragen beantwoordt?",
+      "why": "Databricks liet op 16 november zien hoe je FHIR-data uit AWS HealthLake via Unity Catalog met Genie One bevraagt; dat raakt je project over AI op zorg- en onderzoeksdata.",
+      "topics": [
+        "ai_in_healthcare",
+        "data_governance_privacy",
+        "ai_on_data_platform"
+      ],
+      "area": "new_tech"
     }
   ]
 }
