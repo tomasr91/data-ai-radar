@@ -1,9 +1,9 @@
 {
  "task": "uitleggen",
  "started_at": "2026-11-20T03:13:04Z",
- "finished_at": "2026-11-20T03:20:07Z",
+ "finished_at": "2026-11-20T06:34:03Z",
  "status": "deels",
- "summary": "Geen artikelen uitgelegd: 3 overgeslagen zonder openen en 7 artikelen waren vannacht niet te openen; die blijven op de werklijst.",
+ "summary": "Geen artikelen uitgelegd: 3 overgeslagen zonder openen; 7 artikelen waren vannacht en bij het inhalen (07:28) niet te openen en blijven op de werklijst.",
  "counts": {
   "uitgelegd": 0,
   "overgeslagen": 3,
@@ -12,6 +12,7 @@
  "problems": [
   "Vers ophalen aangevraagd; de feed was om 03:13 UTC bijgewerkt.",
   "Dataflow-voortgang niet bijgewerkt: de tool add_repo was in deze sessie niet beschikbaar en git clone van tomasr91/personal-data-platform faalde ('could not read Username for https://github.com: terminal prompts disabled').",
-  "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch op de exacte titel gaf het artikel zelf niet terug: Genie Migrate for Serverless, Genie free tier partners, Bulk migrate dashboards met Genie Code, Genie ZeroOps public beta, Genie One Accuracy, OneLake unified foundation, Fabric IQ context. Ze blijven op de werklijst."
+  "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch op de exacte titel gaf het artikel zelf niet terug: Genie Migrate for Serverless, Genie free tier partners, Bulk migrate dashboards met Genie Code, Genie ZeroOps public beta, Genie One Accuracy, OneLake unified foundation, Fabric IQ context. Ze blijven op de werklijst.",
+  "Inhalen 07:28: opnieuw weigerde WebFetch alle 7 adressen (PROVENANCE_REQUIRED, 'permission request not answered') en WebSearch op de exacte titels gaf de artikelen zelf niet terug; git clone van personal-data-platform werd ook nu geweigerd."
  ]
 }

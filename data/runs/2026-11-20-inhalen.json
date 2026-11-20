@@ -1,0 +1,15 @@
+{
+ "task": "inhalen",
+ "started_at": "2026-11-20T06:28:06Z",
+ "finished_at": "2026-11-20T06:34:03Z",
+ "status": "deels",
+ "summary": "Uitleggen opnieuw geprobeerd: de 7 open artikelen waren nog steeds niet te openen, dus er is niets uitgelegd; verdiepen en overzicht waren al klaar.",
+ "counts": {
+  "ingehaald": 0,
+  "niet_bereikbaar": 7
+ },
+ "problems": [
+  "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch gaf de artikelen niet terug; ze blijven op de werklijst.",
+  "Dataflow-voortgang niet bijgewerkt: add_repo niet beschikbaar en clonen van personal-data-platform geweigerd."
+ ]
+}
