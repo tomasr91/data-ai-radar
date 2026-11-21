@@ -1,0 +1,55 @@
+{
+  "format_version": 2,
+  "article_id": "21441ea29c3f",
+  "url": "https://www.databricks.com/blog/introducing-genie-migrate-serverless",
+  "headline": "Genie zet je jobs en notebooks over naar serverless, met een terugweg",
+  "summary": "Genie Migrate for Serverless (bèta) bekijkt welke jobs en notebooks naar serverless kunnen, stelt elke wijziging voor als diff en test eerst op een kopie. Jobs uit een bundel kan het nog niet aan.",
+  "story": [
+    "Databricks heeft een agent gemaakt die werk van klassieke clusters overzet naar serverless. Hij heet Genie Migrate for Serverless en is sinds 19 november in bèta. Je start hem in Genie met /compute migrate op een job of notebook.",
+    "De agent werkt in drie stappen. Eerst kijkt hij welke jobs en notebooks klaar zijn voor serverless, welke een beheerder nodig hebben en welke nog niet kunnen. Daarna stelt hij de wijzigingen voor als diff, naast elkaar: de clusterinstelling, de bibliotheken, de Spark-instellingen en code die niet werkt met Spark Connect. Je keurt elke wijziging zelf goed of af.",
+    "Vergelijk het met verhuizen met een verhuislijst. Je ziet per doos waar hij heen gaat, en twijfelgevallen blijven staan tot jij beslist. Zo gooit de agent een Spark-instelling die serverless niet kent niet weg, maar legt hij die aan jou voor.",
+    "Pas daarna past hij de wijziging toe, en dan op een kopie van de job. De oorspronkelijke job blijft draaien. Je start de kopie zelf; keur je goed, dan neemt de oorspronkelijke job de nieuwe opzet over, met hetzelfde job-ID, schema en dezelfde rechten. Voor veel jobs tegelijk is er een commandogroep in de Databricks CLI.",
+    "Er zitten nog duidelijke grenzen aan. Jobs die je met een bundel (asset bundle) beheert en notebooks in een Git-map kan de agent nog niet migreren. De controle vooraf is alleen een statische check: de agent draait je werk niet echt. En data die een testrun al naar een productietabel schreef, maakt terugdraaien niet ongedaan."
+  ],
+  "key_facts": [
+    "Genie Migrate for Serverless is in bèta en volgens Databricks vanaf 19 november 2026 beschikbaar; aanzetten via de preview-instellingen van de werkruimte.",
+    "Start in Genie met /compute migrate op een job of notebook; bulkmigratie via de commandogroep compute-migrations in de Databricks CLI (versie 1.24.0 of hoger), alleen voor jobs.",
+    "Drie stappen: beoordelen (klaar, beheerder nodig, nog niet klaar), vertalen als diff (compute, omgeving en bibliotheken, Spark-instellingen, code die niet werkt met Spark Connect) en toepassen op een gekloonde job.",
+    "Na goedkeuring van een handmatige eerste run neemt de oorspronkelijke job de nieuwe opzet over en houdt hij job-ID, schema en rechten.",
+    "Nog niet ondersteund: jobs beheerd met Databricks Asset Bundles en notebooks in een Git-map ('coming soon'); controle in een sandbox met vergelijking van uitkomsten volgt later.",
+    "De samenvatting van het blog noemt terugdraaien binnen 30 dagen; de tekst zelf zegt alleen dat terugdraaien 'in a few clicks' kan."
+  ],
+  "personal_relevance": "Wie jobs nog op klassieke clusters draait, krijgt hiermee een gecontroleerde route naar serverless, maar nog niet voor jobs uit een bundel.",
+  "experiment": "Zet in een testwerkruimte de bèta aan en laat /compute migrate een eenvoudige job op een klassiek cluster beoordelen; bekijk welke Spark-instellingen en bibliotheken hij als twijfelgeval aanwijst. Gebruik alleen openbare of verzonnen data.",
+  "limitations": [
+    "Jobs uit een asset bundle en notebooks in een Git-map worden nog niet ondersteund.",
+    "De controle vooraf draait je werk niet; pas de eerste run laat zien of het echt werkt.",
+    "Terugdraaien herstelt geen data die een testrun al naar productietabellen schreef."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {"label": "Serverless-migratie (Azure Databricks)", "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/migration"},
+    {"label": "Verbinden met serverless compute (Azure Databricks)", "url": "https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/"},
+    {"label": "Video: Classic to serverless on Databricks", "url": "https://www.youtube.com/watch?v=VLbq5qG1sWY"}
+  ],
+  "topics": ["databricks_data_engineering", "cicd_data_deployment"],
+  "quality": {"depth": 0.6, "practicality": 0.5, "novelty": 0.6},
+  "development_key": "genie-migrate-serverless-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {"score": 0.45, "why": "Databricks-agent met een duidelijke werkwijze, maar voor een migratie; minder dicht bij je duimen voor Genie op eigen data en dbt."},
+  "labels": ["genie-migrate", "serverless-migratie", "lakeflow-jobs"],
+  "project_ref": null,
+  "terms": [
+    {"term": "serverless", "explanation": "Rekenkracht die Databricks zelf start en beheert. Je kiest geen cluster, je betaalt alleen voor wat je gebruikt."},
+    {"term": "diff", "explanation": "Een overzicht van wat er precies veranderd is tussen twee versies, regel voor regel."},
+    {"term": "Spark Connect", "explanation": "Een manier waarop je code via een netwerkverbinding met Spark praat, los van het cluster zelf. Sommige oudere Spark-functies werken daarmee niet."},
+    {"term": "Databricks CLI", "explanation": "Het opdrachtregelprogramma van Databricks. Je gebruikt het om bundels te controleren, uit te rollen en te draaien, ook vanuit een pipeline."},
+    {"term": "asset bundle", "explanation": "Een Databricks-project beschreven als code (YAML plus bestanden), zodat je jobs en pipelines op dezelfde manier naar dev, test en prod uitrolt."}
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-21T03:21:07Z",
+  "prompt_version": "taak-v2"
+}
