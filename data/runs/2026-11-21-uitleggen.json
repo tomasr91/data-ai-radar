@@ -1,9 +1,9 @@
 {
  "task": "uitleggen",
  "started_at": "2026-11-21T03:13:06Z",
- "finished_at": "2026-11-21T03:21:25Z",
+ "finished_at": "2026-11-21T06:34:21Z",
  "status": "deels",
- "summary": "1 artikel vol uitgelegd (via WebSearch geopend, zonder voorbeeld), 1 overgeslagen zonder openen; 7 artikelen waren niet bereikbaar en blijven op de werklijst.",
+ "summary": "1 artikel vol uitgelegd, 1 overgeslagen; 7 artikelen bleven ook bij de inhaalpoging (07:27) onbereikbaar en staan nog op de werklijst.",
  "counts": {
   "uitgelegd": 1,
   "overgeslagen": 1,
@@ -14,6 +14,7 @@
  "problems": [
   "add_repo was in deze sessie niet beschikbaar als tool; de clone van personal-data-platform stond er al en is bijgewerkt met --depth 200, dus de Dataflow-voortgang is wel bijgewerkt (fase 5, zonder stapnaam).",
   "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: permission request not answered in time).",
-  "Via WebSearch niet gevonden of niet als hetzelfde artikel in de resultaten, dus blijven op de werklijst: a196e7487b06 (Genie free tier partners), f4a1778578b7 (bulk migrate dashboards), beff442b3034 (reference architectures), 408df9c189db (Genie ZeroOps public beta), 9204ea2d5973 (Genie One accuracy), 9f74702ac72e (OneLake Ignite), 3c6506d1a8d8 (Fabric IQ context)."
+  "Via WebSearch niet gevonden of niet als hetzelfde artikel in de resultaten, dus blijven op de werklijst: a196e7487b06 (Genie free tier partners), f4a1778578b7 (bulk migrate dashboards), beff442b3034 (reference architectures), 408df9c189db (Genie ZeroOps public beta), 9204ea2d5973 (Genie One accuracy), 9f74702ac72e (OneLake Ignite), 3c6506d1a8d8 (Fabric IQ context).",
+  "Inhaalpoging 06:28 UTC: WebFetch weigerde opnieuw alle 7 adressen (PROVENANCE_REQUIRED) en WebSearch op exacte titel gaf geen link naar hetzelfde artikel; ze blijven op de werklijst."
  ]
 }
