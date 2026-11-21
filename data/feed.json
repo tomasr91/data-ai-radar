@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-21T05:14:27.710830Z",
+ "generated_at": "2026-11-21T05:15:09.746727Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-19T04:05:00Z",
@@ -12877,23 +12877,6 @@
  "runs": {
   "date": "2026-11-21",
   "tasks": {
-   "uitleggen": {
-    "status": "deels",
-    "summary": "1 artikel vol uitgelegd (via WebSearch geopend, zonder voorbeeld), 1 overgeslagen zonder openen; 7 artikelen waren niet bereikbaar en blijven op de werklijst.",
-    "finished_at": "2026-11-21T03:21:25Z",
-    "problems": [
-     "add_repo was in deze sessie niet beschikbaar als tool; de clone van personal-data-platform stond er al en is bijgewerkt met --depth 200, dus de Dataflow-voortgang is wel bijgewerkt (fase 5, zonder stapnaam).",
-     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: permission request not answered in time).",
-     "Via WebSearch niet gevonden of niet als hetzelfde artikel in de resultaten, dus blijven op de werklijst: a196e7487b06 (Genie free tier partners), f4a1778578b7 (bulk migrate dashboards), beff442b3034 (reference architectures), 408df9c189db (Genie ZeroOps public beta), 9204ea2d5973 (Genie One accuracy), 9f74702ac72e (OneLake Ignite), 3c6506d1a8d8 (Fabric IQ context)."
-    ],
-    "counts": {
-     "uitgelegd": 1,
-     "overgeslagen": 1,
-     "met_voorbeeld": 0,
-     "via_websearch": 1,
-     "niet_bereikbaar": 7
-    }
-   },
    "overzicht": {
     "status": "ok",
     "summary": "Geen nieuwe artikelen sinds gisteren: de 3 trends blijven staan, geen verzoeken voor interesses of leerregels, en geen stukken waar begrippen bij konden.",
@@ -12914,6 +12897,23 @@
     "counts": {
      "verdiepingen": 0,
      "keuzes": 5
+    }
+   },
+   "uitleggen": {
+    "status": "deels",
+    "summary": "1 artikel vol uitgelegd (via WebSearch geopend, zonder voorbeeld), 1 overgeslagen zonder openen; 7 artikelen waren niet bereikbaar en blijven op de werklijst.",
+    "finished_at": "2026-11-21T03:21:25Z",
+    "problems": [
+     "add_repo was in deze sessie niet beschikbaar als tool; de clone van personal-data-platform stond er al en is bijgewerkt met --depth 200, dus de Dataflow-voortgang is wel bijgewerkt (fase 5, zonder stapnaam).",
+     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: permission request not answered in time).",
+     "Via WebSearch niet gevonden of niet als hetzelfde artikel in de resultaten, dus blijven op de werklijst: a196e7487b06 (Genie free tier partners), f4a1778578b7 (bulk migrate dashboards), beff442b3034 (reference architectures), 408df9c189db (Genie ZeroOps public beta), 9204ea2d5973 (Genie One accuracy), 9f74702ac72e (OneLake Ignite), 3c6506d1a8d8 (Fabric IQ context)."
+    ],
+    "counts": {
+     "uitgelegd": 1,
+     "overgeslagen": 1,
+     "met_voorbeeld": 0,
+     "via_websearch": 1,
+     "niet_bereikbaar": 7
     }
    }
   }
