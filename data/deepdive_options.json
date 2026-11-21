@@ -1,7 +1,19 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-20T04:13:54Z",
+  "generated_at": "2026-11-21T04:14:22Z",
   "options": [
+    {
+      "id": "presentatielaag-naast-gold",
+      "title": "Een presentatielaag naast Gold: analisten laten bouwen met een weg terug",
+      "question": "Hoe geef je analisten een eigen plek bovenop Gold om maatstaven te bouwen, zonder schaduwlogica, en hoe komt een goede definitie daarna via review in Gold terecht?",
+      "why": "Martin McMillan (Advancing Analytics) stelde op 2 november zo'n laag voor, met rechten en certificering in Unity Catalog, en noemt het belangrijk voor Genie en metric views.",
+      "topics": [
+        "data_architecture_modeling",
+        "data_governance_privacy",
+        "powerbi_semantic_models"
+      ],
+      "area": "data_engineering"
+    },
     {
       "id": "dbt-alleen-bouwen-wat-veranderd-is",
       "title": "dbt alleen laten bouwen wat veranderd is: hoe werkt dat?",
@@ -14,52 +26,40 @@
       "area": "data_engineering"
     },
     {
-      "id": "datacontracten",
-      "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
-      "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
-      "why": "Gisteren niet gekozen, maar nog steeds de logische stap na de verdieping over wie begrippen beheert: afspraken met de eigenaren van bronsystemen over wat er binnenkomt.",
-      "topics": [
-        "data_quality_observability",
-        "dbt_analytics_engineering",
-        "data_architecture_modeling"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "gold-data-via-genie-in-teams-en-excel",
-      "title": "Gold-data via Genie in Teams en Excel: wat regel je vooraf?",
-      "question": "Hoe brengt Genie antwoorden uit je Gold-tabellen en metric views naar Teams en Excel, hoe werken de rechten van de vrager, en wat moet je als datateam vooraf inrichten?",
-      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': de Genie-app voor Teams is deze week algemeen beschikbaar en werkt met de rechten van wie de vraag stelt.",
+      "id": "genie-zoekt-in-documenten-uit-volumes",
+      "title": "Genie laten antwoorden uit pdf's in je volumes: hoe werkt dat?",
+      "question": "Hoe leest en indexeert een Genie Agent documenten uit een Unity Catalog-volume, hoe combineert hij die met tabellen en metric views, en hoe controleer je of de antwoorden kloppen?",
+      "why": "Sinds 11 november kunnen Genie Agents in Public Preview documenten uit volumes gebruiken; je gaf dat artikel een duim omhoog.",
       "topics": [
         "ai_on_data_platform",
-        "data_governance_privacy",
-        "powerbi_semantic_models"
+        "ai_agents_rag",
+        "data_governance_privacy"
       ],
       "area": "ai_op_data"
     },
     {
-      "id": "sporen-van-coding-agents-analyseren",
-      "title": "Sporen van coding agents als tabel: zien waar tokens weglekken",
-      "question": "Hoe leg je de sporen (traces) van coding agents zoals Claude Code vast als gewone tabel, en hoe vind je daarin falende tools, te volle context en terugkerend werk?",
-      "why": "Trend 'Agents veilig laten werken': Unity Gateway Insights zet de sporen van coding agents in Unity Catalog; Databricks vond zo zeven kleine MCP-bugs die veel tokens kostten.",
+      "id": "agent-harness-uitgelegd",
+      "title": "Wat zit er in een agent-harness? Lessen uit Stripe's Kai",
+      "question": "Wat doet een harness rond een taalmodel (plannen, sandbox voor code, bestanden tussen beurten bewaren, tools koppelen), en welke onderdelen heb je nodig voor een eigen data-agent?",
+      "why": "Stripe bouwde Kai in ongeveer een week op Deep Agents van LangChain, met code in een sandbox en een virtueel bestandssysteem; dat past bij je plan voor een eigen agent.",
+      "topics": [
+        "ai_agents_rag",
+        "veilige_agents",
+        "ai_context_engineering"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "differential-en-property-tests-voor-dbt",
+      "title": "Property- en differential tests: Claude zijn dbt-werk laten bewijzen",
+      "question": "Wat zijn property tests en differential tests, hoe pas je ze toe op dbt-modellen en macro's, en hoe laat je Claude ze zelf draaien voordat jij nakijkt?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen': het Claude Code-team beschreef op 16 november hoe Claude zo zijn eigen werk controleert.",
       "topics": [
         "claude_ai_development",
         "ai_evaluation_observability",
-        "veilige_agents"
+        "dbt_analytics_engineering"
       ],
       "area": "claude"
-    },
-    {
-      "id": "getypeerde-graaf-als-code",
-      "title": "Een getypeerde kennisgraaf als code: houdt agentdata geldig",
-      "question": "Wat is een getypeerde graaf, hoe verschilt die van tabellen met joins, en hoe helpen schema en vooraf gecontroleerde query's in Git om data die agents schrijven geldig te houden?",
-      "why": "Simon Späti beschreef deze maand 'context als code' met een getypeerde graaf; het raakt je leerdoel kennisrepresentatie en knowledge graphs.",
-      "topics": [
-        "open_source_tools",
-        "ai_context_engineering",
-        "data_architecture_modeling"
-      ],
-      "area": "new_tech"
     }
   ],
   "history": [
@@ -702,6 +702,65 @@
         "ai_in_healthcare",
         "data_governance_privacy",
         "ai_on_data_platform"
+      ],
+      "area": "new_tech"
+    },
+    {
+      "id": "dbt-alleen-bouwen-wat-veranderd-is",
+      "title": "dbt alleen laten bouwen wat veranderd is: hoe werkt dat?",
+      "question": "Hoe bepaalt dbt welke modellen nieuwe brondata hebben en dus opnieuw gebouwd moeten worden, en wat kan daarvan in dbt Core en wat alleen in het dbt-platform?",
+      "why": "Virgin Media O2 bespaarde zo ongeveer 30 procent rekenkosten met dbt State; je gaf dat artikel een duim omhoog omdat het bij je stack past.",
+      "topics": [
+        "dbt_analytics_engineering",
+        "cicd_data_deployment"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "datacontracten",
+      "title": "Datacontracten: vaste afspraken tussen bronsysteem en dbt-model",
+      "question": "Wat is een datacontract, welk probleem lost het op, en hoe verschilt het van dbt model contracts en tests?",
+      "why": "Gisteren niet gekozen, maar nog steeds de logische stap na de verdieping over wie begrippen beheert: afspraken met de eigenaren van bronsystemen over wat er binnenkomt.",
+      "topics": [
+        "data_quality_observability",
+        "dbt_analytics_engineering",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "gold-data-via-genie-in-teams-en-excel",
+      "title": "Gold-data via Genie in Teams en Excel: wat regel je vooraf?",
+      "question": "Hoe brengt Genie antwoorden uit je Gold-tabellen en metric views naar Teams en Excel, hoe werken de rechten van de vrager, en wat moet je als datateam vooraf inrichten?",
+      "why": "Trend 'Context voor AI-agents komt in het dataplatform zelf': de Genie-app voor Teams is deze week algemeen beschikbaar en werkt met de rechten van wie de vraag stelt.",
+      "topics": [
+        "ai_on_data_platform",
+        "data_governance_privacy",
+        "powerbi_semantic_models"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "sporen-van-coding-agents-analyseren",
+      "title": "Sporen van coding agents als tabel: zien waar tokens weglekken",
+      "question": "Hoe leg je de sporen (traces) van coding agents zoals Claude Code vast als gewone tabel, en hoe vind je daarin falende tools, te volle context en terugkerend werk?",
+      "why": "Trend 'Agents veilig laten werken': Unity Gateway Insights zet de sporen van coding agents in Unity Catalog; Databricks vond zo zeven kleine MCP-bugs die veel tokens kostten.",
+      "topics": [
+        "claude_ai_development",
+        "ai_evaluation_observability",
+        "veilige_agents"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "getypeerde-graaf-als-code",
+      "title": "Een getypeerde kennisgraaf als code: houdt agentdata geldig",
+      "question": "Wat is een getypeerde graaf, hoe verschilt die van tabellen met joins, en hoe helpen schema en vooraf gecontroleerde query's in Git om data die agents schrijven geldig te houden?",
+      "why": "Simon Späti beschreef deze maand 'context als code' met een getypeerde graaf; het raakt je leerdoel kennisrepresentatie en knowledge graphs.",
+      "topics": [
+        "open_source_tools",
+        "ai_context_engineering",
+        "data_architecture_modeling"
       ],
       "area": "new_tech"
     }
