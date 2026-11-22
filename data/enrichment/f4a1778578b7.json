@@ -1,0 +1,103 @@
+{
+  "format_version": 2,
+  "article_id": "f4a1778578b7",
+  "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
+  "headline": "Genie Code zet een hele map Power BI-rapporten in één keer om naar AI/BI",
+  "summary": "Met /importBI zet Genie Code nu een hele map Tableau- of Power BI-rapporten in één run om naar AI/BI Dashboards, inclusief metric views. Algemeen beschikbaar.",
+  "story": [
+    "Genie Code, de AI-assistent in Databricks, kon al één Power BI- of Tableau-rapport omzetten naar een AI/BI Dashboard. Nu kan dat voor een hele map tegelijk. Volgens Databricks is deze bulkmigratie algemeen beschikbaar (GA).",
+    "Zo werkt het. Je exporteert elk rapport naar een bestand: voor Power BI een .pbit-sjabloon of .tmdl, voor Tableau een werkmap met de bijbehorende databron. Die bestanden zet je in een map in een Unity Catalog-volume (volume). In een concept-dashboard typ je in Genie Code /importBI met het pad naar die map. De agent somt de rapporten op, vraagt naar de doelcatalogus en het doelschema, en zet elk rapport in de wachtrij. Een statuskaart toont per rapport Queued, Running of Completed.",
+    "Per rapport doorloopt de agent een vaste reeks: het bestand lezen en beoordelen, de semantische laag in kaart brengen, metric views maken, de dashboardpagina's bouwen en controleren. Bij Power BI komen die metric views direct in Unity Catalog; bij Tableau blijven ze eerst binnen het dashboard en kun je ze later naar Unity Catalog promoveren. De agent gebruikt waar het kan bestaande tabellen en views, maar pakt soms 'de dichtstbijzijnde tabel'. Controleer dus waar elk dashboard naar wijst, of noem de brontabellen zelf in je opdracht.",
+    "Het controleren laat Databricks bij jou. 'Completed' betekent alleen dat de run klaar is, niet dat elk visual klopt. De aanbevolen aanpak: maak een schermafbeelding van het originele rapport met vaste filters, zet dezelfde filters in het nieuwe dashboard, upload de schermafbeelding en laat Genie Code elk getal vergelijken. Een verschil kan ook uit versheid van data, standaardfilters of een andere rekenwijze komen, dus kijk eerst waar het vandaan komt.",
+    "Voor wie Power BI gebruikt, is het interessantste bijproduct de metric views: de maatstaven uit je Power BI-model komen zo als vaste definities in de catalogus, waar ook Genie en andere AI-toepassingen ze kunnen lezen. Of je je rapporten echt wilt verhuizen, is een andere vraag; ook alleen de metric views laten bouwen is mogelijk."
+  ],
+  "key_facts": [
+    "Bulkmigratie met /importBI in Genie Code is algemeen beschikbaar (GA), aangekondigd op 19 november 2026.",
+    "Ondersteunde bestanden: .twb, .twbx, .tds, .tdsx (Tableau) en .pbit, .tmdl (Power BI).",
+    "Bulkruns lezen alleen uit een map in een Unity Catalog-volume; slepen in de chat werkt alleen voor één rapport.",
+    "Voorwaarde: 'partner-powered AI features' staan aan op account- én werkruimteniveau.",
+    "Power BI-imports maken Unity Catalog-metric views; Tableau-imports maken eerst lokale metric views die je kunt promoveren.",
+    "Rapporten worden een paar tegelijk verwerkt, elk als eigen achtergrondtaak; elk antwoord van Genie Code is in één stap ongedaan te maken.",
+    "Optioneel: een alleen-lezen MCP-koppeling naar Tableau of Power BI om getallen te checken, in te richten via het Databricks-accountteam.",
+    "Het artikel noemt geen limieten voor aantal of grootte van bestanden; die staan in de documentatie."
+  ],
+  "personal_relevance": "Een snelle route om de maatstaven uit bestaande Power BI-modellen als metric views in Unity Catalog te krijgen, waar AI ze ook kan gebruiken.",
+  "experiment": "Exporteer een Power BI-rapport op een openbare dataset als .pbit, zet het in een volume en laat /importBI alleen de metric views bouwen. Vergelijk de maatstaven met je DAX.",
+  "limitations": [
+    "De agent kan een andere tabel kiezen dan het origineel gebruikte; altijd de bronnen nalopen.",
+    "Completed betekent niet dat alle visuals kloppen; reken op een tweede ronde bijsturen.",
+    "Vereist dat partner-powered AI-functies aanstaan, wat in een organisatie met strenge regels niet vanzelfsprekend is.",
+    "De MCP-controle tegen het live rapport moet via het Databricks-accountteam worden ingericht."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Import BI files using Genie Code",
+      "url": "https://docs.databricks.com/dashboards/manage/import-bi"
+    },
+    {
+      "label": "Bulkimport en limieten",
+      "url": "https://docs.databricks.com/dashboards/manage/import-bi#import-multiple-files-in-bulk"
+    },
+    {
+      "label": "Partner-powered AI features",
+      "url": "https://docs.databricks.com/databricks-ai/partner-powered"
+    },
+    {
+      "label": "Unity Catalog Semantics Patterns (GitHub)",
+      "url": "https://github.com/databricks-solutions/uc-semantics-patterns"
+    }
+  ],
+  "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling",
+    "ai_on_data_platform"
+  ],
+  "quality": {
+    "depth": 0.65,
+    "practicality": 0.7,
+    "novelty": 0.5
+  },
+  "development_key": "genie-code-importbi-bulk-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "praktisch",
+  "fit": {
+    "score": 0.6,
+    "why": "Raakt Power BI en metric views zoals je duim bij 'metric views worden een Power BI-model', maar dan de andere kant op."
+  },
+  "labels": [
+    "metric-views",
+    "power-bi-migratie",
+    "genie-code"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "Genie Code",
+      "explanation": "De AI-assistent in Databricks die in notebooks, dashboards en de editor code en objecten voor je maakt en aanpast."
+    },
+    {
+      "term": "volume",
+      "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen."
+    },
+    {
+      "term": "metric views",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+      "term": ".tmdl",
+      "explanation": "Bestand in TMDL (Tabular Model Definition Language): de tekstnotatie waarin je een Power BI-semantisch model als bestanden beschrijft."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo start je een bulkmigratie in Genie Code, vanuit een concept-dashboard. Daarna vraagt de agent naar catalogus en schema.",
+    "language": "text",
+    "code": "/importBI /Volumes/finance/bi/reports\n\n# of in gewone taal:\nMigrate every Power BI report in /Volumes/finance/bi/reports to AI/BI Dashboards\n\n# bronnen vastleggen, zodat de agent geen andere tabel kiest:\nUse prod.finance.table1, prod.finance.table2 and prod.finance.mv_revenue as the source for this report",
+    "note": "Commando en voorbeeldopdrachten komen uit het artikel; paden en tabelnamen zijn voorbeelden van Databricks."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-22T03:30:38Z",
+  "prompt_version": "taak-v2"
+}
