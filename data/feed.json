@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-22T03:32:00.442573Z",
+ "generated_at": "2026-11-22T04:14:51.730694Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-22T03:30:38Z",
@@ -2667,7 +2667,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.29,
+    "recency": 0.28,
     "source": 0.85,
     "quality": 0.57,
     "fit": 0.35
@@ -4737,7 +4737,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.78,
+    "recency": 0.77,
     "source": 0.51,
     "quality": 0.63,
     "feedback": -0.04,
@@ -5555,7 +5555,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.85,
     "quality": 0.52,
     "feedback": -0.02,
@@ -9515,8 +9515,20 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-21T04:14:22Z",
+  "generated_at": "2026-11-22T04:30:00Z",
   "options": [
+   {
+    "id": "jobs-starten-na-andere-jobs",
+    "title": "Jobs laten starten als een andere job klaar is: orkestratie in Lakeflow Jobs",
+    "question": "Hoe laat je de ene job starten zodra een andere klaar is in plaats van op een vaste tijd, welke andere triggers zijn er, en hoe zet je zo een dbt-job achter een ingestion-job?",
+    "why": "Sinds 3 november kan een Lakeflow Job in bèta starten zodra andere jobs klaar zijn, ook over werkruimtes heen; dat past bij fase 5 van Dataflow, waar de dbt-job na de ingestion-job moet draaien.",
+    "topics": [
+     "databricks_data_engineering",
+     "data_ingestion",
+     "cicd_data_deployment"
+    ],
+    "area": "data_engineering"
+   },
    {
     "id": "presentatielaag-naast-gold",
     "title": "Een presentatielaag naast Gold: analisten laten bouwen met een weg terug",
@@ -9530,25 +9542,14 @@
     "area": "data_engineering"
    },
    {
-    "id": "dbt-alleen-bouwen-wat-veranderd-is",
-    "title": "dbt alleen laten bouwen wat veranderd is: hoe werkt dat?",
-    "question": "Hoe bepaalt dbt welke modellen nieuwe brondata hebben en dus opnieuw gebouwd moeten worden, en wat kan daarvan in dbt Core en wat alleen in het dbt-platform?",
-    "why": "Virgin Media O2 bespaarde zo ongeveer 30 procent rekenkosten met dbt State; je gaf dat artikel een duim omhoog omdat het bij je stack past.",
-    "topics": [
-     "dbt_analytics_engineering",
-     "cicd_data_deployment"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "genie-zoekt-in-documenten-uit-volumes",
-    "title": "Genie laten antwoorden uit pdf's in je volumes: hoe werkt dat?",
-    "question": "Hoe leest en indexeert een Genie Agent documenten uit een Unity Catalog-volume, hoe combineert hij die met tabellen en metric views, en hoe controleer je of de antwoorden kloppen?",
-    "why": "Sinds 11 november kunnen Genie Agents in Public Preview documenten uit volumes gebruiken; je gaf dat artikel een duim omhoog.",
+    "id": "ai-verrijking-als-incrementeel-dbt-model",
+    "title": "AI-verrijking als incrementeel dbt-model: alleen nieuwe rijen naar het taalmodel",
+    "question": "Hoe roep je een AI-functie aan vanuit een dbt-model op je Silver- of Gold-laag, waarom moet dat incrementeel, en hoe test je de antwoorden met gewone dbt-tests?",
+    "why": "Op dbt Summit liet Google zien waarom je AI-stappen nooit in een full refresh draait, en vanaf januari 2027 werken AI Functions in SQL alleen nog op Runtime 17.3 LTS en hoger.",
     "topics": [
      "ai_on_data_platform",
-     "ai_agents_rag",
-     "data_governance_privacy"
+     "dbt_analytics_engineering",
+     "data_quality_observability"
     ],
     "area": "ai_op_data"
    },
@@ -9565,14 +9566,14 @@
     "area": "context_agents"
    },
    {
-    "id": "differential-en-property-tests-voor-dbt",
-    "title": "Property- en differential tests: Claude zijn dbt-werk laten bewijzen",
-    "question": "Wat zijn property tests en differential tests, hoe pas je ze toe op dbt-modellen en macro's, en hoe laat je Claude ze zelf draaien voordat jij nakijkt?",
-    "why": "Past bij de trend 'Agents worden beter door controles en metingen': het Claude Code-team beschreef op 16 november hoe Claude zo zijn eigen werk controleert.",
+    "id": "chaos-loop-met-claude",
+    "title": "Claude laten zoeken waar je systeem breekt: de chaos loop",
+    "question": "Hoe werkt een chaos loop waarin Claude een testomgeving onder druk zet, de metingen leest en fixes voorstelt, welke vaste regels en goedkeuringen heb je nodig, en hoe zou dat er voor een datapijplijn uitzien?",
+    "why": "Past bij de trend 'Agents worden beter door controles en metingen': Anthropic beschreef op 17 november hoe Claude Code Claude Docs twee weken expres liet stukgaan vóór de lancering.",
     "topics": [
      "claude_ai_development",
      "ai_evaluation_observability",
-     "dbt_analytics_engineering"
+     "veilige_agents"
     ],
     "area": "claude"
    }
@@ -13327,7 +13328,7 @@
     "title": "Relationships between metric views (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#relationships-between-metric-views-beta",
-    "relevance_score": 86,
+    "relevance_score": 85,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
