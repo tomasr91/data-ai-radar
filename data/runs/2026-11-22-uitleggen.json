@@ -1,9 +1,9 @@
 {
  "task": "uitleggen",
  "started_at": "2026-11-22T03:13:02Z",
- "finished_at": "2026-11-22T03:30:59Z",
+ "finished_at": "2026-11-22T06:45:00Z",
  "status": "deels",
- "summary": "1 artikel vol uitgelegd (met voorbeeld, via WebSearch geopend); 7 artikelen waren niet bereikbaar en blijven op de werklijst.",
+ "summary": "1 artikel vol uitgelegd (met voorbeeld); 7 artikelen waren ook bij de inhaalrun niet bereikbaar en blijven op de werklijst.",
  "counts": {
   "uitgelegd": 1,
   "overgeslagen": 0,
@@ -14,6 +14,7 @@
  "problems": [
   "add_repo was niet beschikbaar in deze sessie (geen tool gevonden via ToolSearch); de bestaande clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
   "WebFetch weigerde alle 8 artikeladressen (PROVENANCE_REQUIRED: permission request not answered in time).",
-  "Via WebSearch op exacte titel en site alleen 'Bulk migrate your dashboards to AI/BI with Genie Code' gevonden; de andere 7 (a196e7487b06, 9cdcaec08381, beff442b3034, 408df9c189db, 9204ea2d5973, 9f74702ac72e, 3c6506d1a8d8) gaven geen link naar hetzelfde artikel en blijven op de werklijst."
+  "Via WebSearch op exacte titel en site alleen 'Bulk migrate your dashboards to AI/BI with Genie Code' gevonden; de andere 7 (a196e7487b06, 9cdcaec08381, beff442b3034, 408df9c189db, 9204ea2d5973, 9f74702ac72e, 3c6506d1a8d8) gaven geen link naar hetzelfde artikel en blijven op de werklijst.",
+  "Inhaalrun (06:28Z): WebFetch weigerde opnieuw alle 7 adressen (PROVENANCE_REQUIRED); WebSearch op exacte titel gaf voor geen van de 7 een link naar hetzelfde artikel. Dataflow-voortgang opnieuw gecontroleerd: fase 5, geen wijziging."
  ]
 }
