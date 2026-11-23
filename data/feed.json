@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-23T05:14:54.806823Z",
+ "generated_at": "2026-11-23T06:35:40.045577Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-23T03:23:10Z",
@@ -463,8 +463,8 @@
  ],
  "daily_top": [
   "216eab677a97",
-  "905562b7af62",
   "9fa51654bab7",
+  "905562b7af62",
   "3e9bbba1efea",
   "5c7174c45ad1"
  ],
@@ -573,120 +573,6 @@
     "fase": 5,
     "quote": "Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren.",
     "why": "Statement timeouts zijn in te stellen in een bundel, het onderwerp van fase 5."
-   }
-  },
-  {
-   "id": "905562b7af62",
-   "title": "Azure Databricks: wat is er nieuw in week 46",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-15T23:59:59Z",
-   "fetched_at": "2026-11-19T03:13:30.244157Z",
-   "summary": "In week 46 verandert de standaardinstelling voor nieuwe jobs-compute, komen asynchrone AI-functies voor grote batches documenten (Beta) en worden standalone pipelines op serverless algemeen beschikbaar. Genie in Slack en Teams en Genie Search zijn nu GA.",
-   "personal_relevance": "De nieuwe standaard voor jobs-compute en de asynchrone AI-functies raken direct hoe je jobs en documentverwerking inricht.",
-   "experiment": "Zet in een proefwerkruimte een kleine job met een parameter {{(job.start_time - 1.day).iso_date}} en laat een notebook die datum afdrukken. Kijk ook welke access mode nieuwe jobs-compute nu krijgt.",
-   "limitations": [
-    "De asynchrone AI-functies, datumrekenen en Genie ZeroOps zijn nog Beta.",
-    "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes november 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig"
-   ],
-   "relevance_score": 99,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.7,
-    "source": 1.0,
-    "quality": 0.65,
-    "feedback": -0.03,
-    "fit": 0.25,
-    "project": 0.08
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder",
-   "story": [
-    "Eerst iets dat je zelf merkt: maak je in de interface nieuwe jobs-compute aan, dan staat de toegangsmodus (access mode) sinds 9 november standaard op Auto in plaats van Dedicated. Auto kiest Standard, behalve bij een ML-runtime, een GPU of een runtime onder 14.3. Bestaande jobs veranderen niet. Werkruimtes met het compliance security profile volgen in december.",
-    "Voor AI op je eigen data is er een asynchrone variant van de AI-functies (Beta). Je zet tot 50.000 verzoeken in een JSONL-bestand in een Unity Catalog-volume en laat ai_parse_document, ai_extract of ai_classify die op de achtergrond afwerken. Dat is handig als je een hele map documenten wilt omzetten naar tabellen in Silver, zonder dat een query urenlang openstaat. Een beheerder moet de preview eerst aanzetten.",
-    "Ook voor pipelines is er nieuws. Standalone materialized views en streaming tables maak en ververs je nu algemeen beschikbaar (GA) vanuit een notebook op serverless compute, met SQL of met de Python-decorators. In Lakeflow Jobs kun je in Beta rekenen met datums in parameters. Een job geeft dan bijvoorbeeld de datum van gisteren door aan een ophaalscript. Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
-    "Verder breidt Genie flink uit. De Genie-apps voor Slack en Microsoft Teams en Genie Search zijn algemeen beschikbaar. Genie ZeroOps (Beta) bewaakt op de achtergrond jobs, pipelines en tabellen, zoekt bij een fout de oorzaak en stelt een oplossing voor. Pages, vastgelegde bedrijfsbegrippen per domein, zijn GA.",
-    "Kleiner, maar handig voor beveiliging: een service principal kan nu standaard namens zichzelf inloggen via OAuth zonder geheim (on-behalf-of, GA). Flows in pipelines krijgen in Beta eigen rechten in Unity Catalog."
-   ],
-   "key_facts": [
-    "9 november 2026: nieuwe jobs-compute in de UI krijgt standaard access mode Auto in plaats van Dedicated; bestaande jobs veranderen niet. Voor werkruimtes met compliance security profile geldt dit vanaf december 2026.",
-    "9 november 2026 (Beta): AI Functions Asynchronous API voert ai_parse_document, ai_extract of ai_classify asynchroon uit op tot 50.000 verzoeken uit een JSONL-bestand in een volume; aanzetten via de pagina Previews.",
-    "11 november 2026 (GA): standalone materialized views en streaming tables maken en verversen vanuit een notebook op serverless general compute, met spark.sql() of de Python-pipelinedecorators.",
-    "9 november 2026 (Beta): datumrekenen in Lakeflow Jobs-parameters, bijv. {{(job.start_time - 1.day).iso_date}} voor de dag vóór de start.",
-    "9 november 2026 (GA): Genie-app voor Slack, Genie-app in Microsoft Teams en Genie Search; 12 november (Beta): Genie ZeroOps; 11 november (GA): Pages.",
-    "12 november 2026 (GA): OAuth on-behalf-of voor service principals staat standaard aan; je hebt de rol Service Principal Manager nodig. Flows als securable in Unity Catalog is Beta."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo geef je een job de datum van de dag vóór de start mee als parameter. Een ophaalscript kan daarmee steeds precies één dag ophalen.",
-    "language": "text",
-    "code": "{{(job.start_time - 1.day).iso_date}}",
-    "note": "De notatie komt uit de release notes; het is Beta."
-   },
-   "terms": [
-    {
-     "term": "toegangsmodus",
-     "explanation": "De instelling van compute die bepaalt hoe gebruikers en rechten worden gescheiden: Standard deelt de compute veilig, Dedicated is voor één gebruiker of groep."
-    },
-    {
-     "term": "JSONL",
-     "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
-    },
-    {
-     "term": "streaming tables",
-     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
-    },
-    {
-     "term": "service principal",
-     "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
-    },
-    {
-     "term": "Genie ZeroOps",
-     "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.75,
-    "why": "Weekoverzicht met wat je zelf moet weten, zoals je duim bij het weekoverzicht over AI-functies in SQL."
-   },
-   "labels": [
-    "databricks-weekoverzicht",
-    "lakeflow-jobs",
-    "ai-functies-in-sql",
-    "genie-zeroops"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   },
-   "project_ref": {
-    "fase": 5,
-    "quote": "Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
-    "why": "Datumparameters in jobs passen bij het plannen van het dagelijkse ophalen."
    }
   },
   {
@@ -820,6 +706,120 @@
     "fase": 6,
     "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
     "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+   }
+  },
+  {
+   "id": "905562b7af62",
+   "title": "Azure Databricks: wat is er nieuw in week 46",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W46",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-15T23:59:59Z",
+   "fetched_at": "2026-11-19T03:13:30.244157Z",
+   "summary": "In week 46 verandert de standaardinstelling voor nieuwe jobs-compute, komen asynchrone AI-functies voor grote batches documenten (Beta) en worden standalone pipelines op serverless algemeen beschikbaar. Genie in Slack en Teams en Genie Search zijn nu GA.",
+   "personal_relevance": "De nieuwe standaard voor jobs-compute en de asynchrone AI-functies raken direct hoe je jobs en documentverwerking inricht.",
+   "experiment": "Zet in een proefwerkruimte een kleine job met een parameter {{(job.start_time - 1.day).iso_date}} en laat een notebook die datum afdrukken. Kijk ook welke access mode nieuwe jobs-compute nu krijgt.",
+   "limitations": [
+    "De asynchrone AI-functies, datumrekenen en Genie ZeroOps zijn nog Beta.",
+    "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes november 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 98,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.7,
+    "source": 1.0,
+    "quality": 0.65,
+    "feedback": -0.03,
+    "fit": 0.25,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder",
+   "story": [
+    "Eerst iets dat je zelf merkt: maak je in de interface nieuwe jobs-compute aan, dan staat de toegangsmodus (access mode) sinds 9 november standaard op Auto in plaats van Dedicated. Auto kiest Standard, behalve bij een ML-runtime, een GPU of een runtime onder 14.3. Bestaande jobs veranderen niet. Werkruimtes met het compliance security profile volgen in december.",
+    "Voor AI op je eigen data is er een asynchrone variant van de AI-functies (Beta). Je zet tot 50.000 verzoeken in een JSONL-bestand in een Unity Catalog-volume en laat ai_parse_document, ai_extract of ai_classify die op de achtergrond afwerken. Dat is handig als je een hele map documenten wilt omzetten naar tabellen in Silver, zonder dat een query urenlang openstaat. Een beheerder moet de preview eerst aanzetten.",
+    "Ook voor pipelines is er nieuws. Standalone materialized views en streaming tables maak en ververs je nu algemeen beschikbaar (GA) vanuit een notebook op serverless compute, met SQL of met de Python-decorators. In Lakeflow Jobs kun je in Beta rekenen met datums in parameters. Een job geeft dan bijvoorbeeld de datum van gisteren door aan een ophaalscript. Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+    "Verder breidt Genie flink uit. De Genie-apps voor Slack en Microsoft Teams en Genie Search zijn algemeen beschikbaar. Genie ZeroOps (Beta) bewaakt op de achtergrond jobs, pipelines en tabellen, zoekt bij een fout de oorzaak en stelt een oplossing voor. Pages, vastgelegde bedrijfsbegrippen per domein, zijn GA.",
+    "Kleiner, maar handig voor beveiliging: een service principal kan nu standaard namens zichzelf inloggen via OAuth zonder geheim (on-behalf-of, GA). Flows in pipelines krijgen in Beta eigen rechten in Unity Catalog."
+   ],
+   "key_facts": [
+    "9 november 2026: nieuwe jobs-compute in de UI krijgt standaard access mode Auto in plaats van Dedicated; bestaande jobs veranderen niet. Voor werkruimtes met compliance security profile geldt dit vanaf december 2026.",
+    "9 november 2026 (Beta): AI Functions Asynchronous API voert ai_parse_document, ai_extract of ai_classify asynchroon uit op tot 50.000 verzoeken uit een JSONL-bestand in een volume; aanzetten via de pagina Previews.",
+    "11 november 2026 (GA): standalone materialized views en streaming tables maken en verversen vanuit een notebook op serverless general compute, met spark.sql() of de Python-pipelinedecorators.",
+    "9 november 2026 (Beta): datumrekenen in Lakeflow Jobs-parameters, bijv. {{(job.start_time - 1.day).iso_date}} voor de dag vóór de start.",
+    "9 november 2026 (GA): Genie-app voor Slack, Genie-app in Microsoft Teams en Genie Search; 12 november (Beta): Genie ZeroOps; 11 november (GA): Pages.",
+    "12 november 2026 (GA): OAuth on-behalf-of voor service principals staat standaard aan; je hebt de rol Service Principal Manager nodig. Flows als securable in Unity Catalog is Beta."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo geef je een job de datum van de dag vóór de start mee als parameter. Een ophaalscript kan daarmee steeds precies één dag ophalen.",
+    "language": "text",
+    "code": "{{(job.start_time - 1.day).iso_date}}",
+    "note": "De notatie komt uit de release notes; het is Beta."
+   },
+   "terms": [
+    {
+     "term": "toegangsmodus",
+     "explanation": "De instelling van compute die bepaalt hoe gebruikers en rechten worden gescheiden: Standard deelt de compute veilig, Dedicated is voor één gebruiker of groep."
+    },
+    {
+     "term": "JSONL",
+     "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
+    },
+    {
+     "term": "streaming tables",
+     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    },
+    {
+     "term": "service principal",
+     "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+    },
+    {
+     "term": "Genie ZeroOps",
+     "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.75,
+    "why": "Weekoverzicht met wat je zelf moet weten, zoals je duim bij het weekoverzicht over AI-functies in SQL."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "lakeflow-jobs",
+    "ai-functies-in-sql",
+    "genie-zeroops"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
+    "why": "Datumparameters in jobs passen bij het plannen van het dagelijkse ophalen."
    }
   },
   {
@@ -2725,112 +2725,6 @@
    ]
   },
   {
-   "id": "d5f14a6242b0",
-   "title": "Which Claude model should you build with?",
-   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
-   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
-   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
-   "limitations": [
-    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
-    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
-    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Choosing the right model",
-     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
-    }
-   ],
-   "topics": [
-    "claude_ai_development"
-   ],
-   "groups": [
-    "claude"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.49,
-    "source": 0.51,
-    "quality": 0.67,
-    "feedback": 0.01,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-13T04:10:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "claude_blog",
-     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
-     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
-     "published_at": "2026-11-12T00:00:00Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
-   "story": [
-    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
-    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
-    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
-    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
-    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
-    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
-    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
-    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
-    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
-    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
-    "language": "text",
-    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
-    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
-   },
-   "terms": [
-    {
-     "term": "effort",
-     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
-    },
-    {
-     "term": "SWE-bench Pro",
-     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
-    },
-    {
-     "term": "subagent",
-     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
-   },
-   "labels": [
-    "claude-modellen",
-    "claude-effort",
-    "claude-code-subagents",
-    "claude-code-kosten"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "claude_ai_development",
-    "pts": 1
-   }
-  },
-  {
    "id": "233bf8a439eb",
    "title": "Introducing Unity Gateway Insights",
    "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights",
@@ -3352,6 +3246,112 @@
    }
   },
   {
+   "id": "d5f14a6242b0",
+   "title": "Which Claude model should you build with?",
+   "url": "https://claude.dev/blog/which-claude-model-should-you-build-with/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Addy Osmani legt uit hoe je kiest tussen Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2: begin met Opus 5.5 op medium, zet bij problemen eerst de effort hoger, en geef eenvoudig zoek- en leeswerk aan subagents op een klein model.",
+   "personal_relevance": "Je gebruikt Claude Code: met de juiste effort en goedkope subagents voor leeswerk betaal je minder zonder dat je werk slechter wordt.",
+   "experiment": "Maak in een testproject .claude/agents/log-reader.md met model: haiku, laat Claude Code een dbt build op een speelproject met verzonnen data draaien, en vraag de subagent om de fouten samen te vatten. Vergelijk met /usage wat het kost tegenover dezelfde vraag aan het hoofdmodel.",
+   "limitations": [
+    "De benchmarkcijfers komen van Anthropic zelf, op hun eigen tests.",
+    "Prijzen en standaardinstellingen veranderen vaak; controleer de actuele documentatie.",
+    "Op Bedrock en andere clouds verwijst de alias haiku nog naar Haiku 4.5."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Choosing the right model",
+     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+    }
+   ],
+   "topics": [
+    "claude_ai_development"
+   ],
+   "groups": [
+    "claude"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.49,
+    "source": 0.51,
+    "quality": 0.67,
+    "feedback": 0.01,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-13T04:10:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "claude_blog",
+     "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
+     "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+     "published_at": "2026-11-12T00:00:00Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Eerst de effort hoger, pas daarna een zwaarder Claude-model",
+   "story": [
+    "Anthropic heeft nu vier algemene modellen: Haiku 5.5, Sonnet 5.5, Opus 5.5 en Fable 5.2. Op de ontwikkelaarsblog geeft Addy Osmani een eenvoudige regel om te kiezen. Begin met Opus 5.5 op effort medium, de standaard in Claude Code. Ga omlaag naar Sonnet voor afgebakend werk, of naar Haiku voor veel kleine taken. Ga alleen omhoog naar Fable voor de zwaarste en langste klussen.",
+    "Het belangrijkste advies: draai eerst aan de effort-knop, niet aan het model. Effort bepaalt hoe lang het model nadenkt. Op SWE-bench Pro scoorde Opus 5.5 op medium ongeveer 2,5 punt lager dan op high, voor ongeveer 70 procent van de kosten. Een stap hoger, naar xhigh, gaf nog maar 1,4 punt meer voor 2,5 keer de kosten. Het is als een auto: vaak is een andere versnelling genoeg voordat je een grotere motor nodig hebt.",
+    "Ook slim: begin laag en probeer alleen mislukte taken opnieuw op high. Zo haalde Opus 5.5 ongeveer 97 procent voor zo'n 17 cent per taak, tegen 95,3 procent voor 29 cent als alles op high draaide. Dat werkt omdat je kunt zien of een taak gelukt is, bijvoorbeeld aan een test die slaagt. Daarom staat 'laat het model zijn werk controleren' bovenaan de lijst van wat je eerst probeert.",
+    "Voor Claude Code is het advies concreet: laat een subagent op Haiku zoeken, tests draaien of logs lezen, want daar zie je fouten snel. Houd codewijzigingen en oordelen bij het hoofdmodel. Je legt dat vast in een klein Markdown-bestand met model: haiku. Het voorbeeld hieronder komt uit het artikel. Bij dbt-werk zou zo'n subagent de uitvoer van dbt build kunnen lezen en per fout model de eerste foutregel geven.",
+    "Tot slot raadt Osmani aan om op je eigen werk te meten. Neem echte taken met een controleerbaar resultaat, draai ze op twee of drie effort-niveaus en zet de score af tegen de kosten. Houd een opzet met meerdere modellen alleen als die beter scoort dan één model alleen."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 9 november 2026 door Addy Osmani op de claude.dev-blog.",
+    "Prijzen per miljoen tokens (input/output): Haiku 5.5 $0,10/$0,50 tot 100K, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20, Fable 5.2 $8/$40; alle vier 1M context en 128K output.",
+    "SWE-bench Pro (Opus 5.5): medium ~2,5 punt lager dan high voor ~70% van de kosten; low ~8 punt lager voor ~een derde; xhigh ~1,4 punt hoger voor 2,5x de kosten van high.",
+    "Low met herhaling op high bij mislukking: ~97% geslaagd voor ~$0,17 per taak; alles op high: 95,3% voor ~$0,29.",
+    "Escalatievolgorde: eerst het model laten verifiëren, dan effort één stap omhoog, dan een groter model.",
+    "In Claude Code verwijst de alias haiku naar Haiku 5.5 vanaf v2.1.293 op de Anthropic API; CLAUDE_CODE_SUBAGENT_MODEL zet het standaardmodel voor subagents."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een subagent voor Claude Code die alleen logs leest, op het goedkope Haiku-model. Je zet dit bestand in .claude/agents/log-reader.md.",
+    "language": "text",
+    "code": "---\nname: log-reader\ndescription: Reads test output and logs, and reports each failing case. Use after a test run.\ntools: Read, Grep, Glob, Bash\nmodel: haiku\n---\n\nRead the logs you're given. For each failure, report the file, the test name and the first error line. Don't edit any files.",
+    "note": "Letterlijk uit het artikel. Er is geen uitvoer: de subagent meldt per fout het bestand, de testnaam en de eerste foutregel."
+   },
+   "terms": [
+    {
+     "term": "effort",
+     "explanation": "Een instelling die bepaalt hoe lang en grondig het model nadenkt: meer effort geeft vaak betere antwoorden, maar kost meer tokens en tijd."
+    },
+    {
+     "term": "SWE-bench Pro",
+     "explanation": "Een test met echte programmeertaken uit softwareprojecten. Een model slaagt als de bijbehorende tests daarna goed gaan."
+    },
+    {
+     "term": "subagent",
+     "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch Claude Code-stuk over subagents en kosten, in de lijn van je duimen voor Claude Code-uitleg."
+   },
+   "labels": [
+    "claude-modellen",
+    "claude-effort",
+    "claude-code-subagents",
+    "claude-code-kosten"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
+   }
+  },
+  {
    "id": "f49f6dcce187",
    "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
    "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
@@ -3389,7 +3389,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.53,
+    "recency": 0.52,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -4876,7 +4876,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.73,
+    "recency": 0.72,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.04,
@@ -6014,7 +6014,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.27,
+    "recency": 0.26,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -13094,21 +13094,38 @@
    },
    "uitleggen": {
     "status": "deels",
-    "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend), 0 overgeslagen; 9 artikelen bleven op de werklijst omdat de pagina's niet te openen waren.",
-    "finished_at": "2026-11-23T03:23:25Z",
+    "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend); 9 artikelen blijven op de werklijst, ook na een tweede poging bij het inhalen, omdat de pagina's niet te openen waren.",
+    "finished_at": "2026-11-23T06:35:23Z",
     "problems": [
      "Vers ophalen aangevraagd; de feed werd binnen een paar minuten opnieuw opgehaald.",
      "Dataflow: fase 5 bezig, zonder stapnaam.",
      "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: toestemming niet op tijd beantwoord).",
      "Via WebSearch niet gevonden, blijven op de werklijst: Genie free tier voor partners, LangChain knowledge factory, Databricks-referentiearchitecturen, Chris Webb over Fabric semantic views, Genie ZeroOps public beta, Genie One accuracy, OneLake (Ignite) en Fabric IQ (Ignite).",
      "Claude Code week 47 blijft op de werklijst: de release-pagina's waren niet te openen en de officiële changelog bevatte v2.1.326 t/m v2.1.330 nog niet.",
-     "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen."
+     "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen.",
+     "Inhalen (07:27): opnieuw geprobeerd; WebFetch weigerde de artikeladressen weer (PROVENANCE_REQUIRED) en WebSearch vond de artikelen zelf niet. Van Claude Code week 47 was alleen v2.1.329 volledig te lezen; v2.1.326 t/m v2.1.328 waren geblokkeerd en v2.1.330 stond nog niet op de releasepagina."
     ],
     "counts": {
      "uitgelegd": 2,
      "overgeslagen": 0,
      "met_voorbeeld": 1,
      "via_websearch": 1,
+     "niet_bereikbaar": 9
+    }
+   },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak: opnieuw geprobeerd, maar de 9 artikelen op de werklijst waren nog steeds niet te openen, dus er is niets nieuws uitgelegd.",
+    "finished_at": "2026-11-23T06:35:23Z",
+    "problems": [
+     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); via WebSearch werden de artikelen zelf niet gevonden.",
+     "Claude Code week 47: alleen v2.1.329 te lezen, de rest geblokkeerd of nog niet gepubliceerd.",
+     "Dataflow: fase 5 bezig, geen nieuwe stapnaam; voortgang ongewijzigd."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "uitgelegd": 0,
+     "overgeslagen": 0,
      "niet_bereikbaar": 9
     }
    },
@@ -13580,14 +13597,6 @@
     "excluded_by": []
    },
    {
-    "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
-    "source_id": "claude_blog",
-    "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
-    "relevance_score": 81,
-    "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Genie Code CLI is in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
@@ -13721,6 +13730,14 @@
     "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
     "source_id": "databricks_blog",
     "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+    "relevance_score": 80,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+    "source_id": "claude_blog",
+    "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
     "relevance_score": 80,
     "decision": "area_cap",
     "excluded_by": []
@@ -13909,17 +13926,6 @@
     ]
    },
    {
-    "title": "v2.1.319",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "On-premises data gateway November 2026 release",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/On-premises-data-gateway-November-2026-release/ba-p/5430005",
@@ -13957,6 +13963,17 @@
     "title": "v2.1.318",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.319",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
