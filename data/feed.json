@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-23T03:23:50.598038Z",
+ "generated_at": "2026-11-23T04:14:15.131343Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-23T03:23:10Z",
@@ -3523,7 +3523,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -4081,7 +4081,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -4498,7 +4498,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.39,
+    "recency": 0.38,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.04,
@@ -4646,7 +4646,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.39,
+    "recency": 0.38,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.06,
@@ -4769,7 +4769,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -9561,8 +9561,20 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-22T04:30:00Z",
+  "generated_at": "2026-11-23T04:13:46Z",
   "options": [
+   {
+    "id": "unique-constraints-met-rely",
+    "title": "UNIQUE-constraints met RELY: wanneer mag de optimizer je data vertrouwen?",
+    "question": "Wat doen UNIQUE- en primary key-constraints in Databricks als ze niet worden gecontroleerd, wat verandert er met RELY, en hoe zorg je met dbt-tests dat die belofte echt klopt voordat je hem aanzet?",
+    "why": "Databricks voegde op 3 november UNIQUE-constraints toe; met RELY kan een query tot 12 keer sneller worden, maar klopt de data niet, dan krijg je zonder foutmelding een fout antwoord.",
+    "topics": [
+     "sql_spark_sql",
+     "data_quality_observability",
+     "dbt_analytics_engineering"
+    ],
+    "area": "data_engineering"
+   },
    {
     "id": "jobs-starten-na-andere-jobs",
     "title": "Jobs laten starten als een andere job klaar is: orkestratie in Lakeflow Jobs",
@@ -9572,18 +9584,6 @@
      "databricks_data_engineering",
      "data_ingestion",
      "cicd_data_deployment"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "presentatielaag-naast-gold",
-    "title": "Een presentatielaag naast Gold: analisten laten bouwen met een weg terug",
-    "question": "Hoe geef je analisten een eigen plek bovenop Gold om maatstaven te bouwen, zonder schaduwlogica, en hoe komt een goede definitie daarna via review in Gold terecht?",
-    "why": "Martin McMillan (Advancing Analytics) stelde op 2 november zo'n laag voor, met rechten en certificering in Unity Catalog, en noemt het belangrijk voor Genie en metric views.",
-    "topics": [
-     "data_architecture_modeling",
-     "data_governance_privacy",
-     "powerbi_semantic_models"
     ],
     "area": "data_engineering"
    },
@@ -9600,26 +9600,25 @@
     "area": "ai_op_data"
    },
    {
-    "id": "agent-harness-uitgelegd",
-    "title": "Wat zit er in een agent-harness? Lessen uit Stripe's Kai",
-    "question": "Wat doet een harness rond een taalmodel (plannen, sandbox voor code, bestanden tussen beurten bewaren, tools koppelen), en welke onderdelen heb je nodig voor een eigen data-agent?",
-    "why": "Stripe bouwde Kai in ongeveer een week op Deep Agents van LangChain, met code in een sandbox en een virtueel bestandssysteem; dat past bij je plan voor een eigen agent.",
+    "id": "mcp-voor-data",
+    "title": "MCP voor data: hoe een agent veilig bij andere systemen komt",
+    "question": "Wat is het Model Context Protocol, hoe koppel je een MCP-server aan een Genie Agent via Unity Gateway, en welke rechten en controles heb je nodig zodat de agent niet meer mag dan de gebruiker?",
+    "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway': sinds week 47 zijn MCP-tools in Genie Agents GA, met externe MCP-servers die in Unity Gateway zijn geregistreerd.",
     "topics": [
      "ai_agents_rag",
      "veilige_agents",
-     "ai_context_engineering"
+     "data_governance_privacy"
     ],
     "area": "context_agents"
    },
    {
-    "id": "chaos-loop-met-claude",
-    "title": "Claude laten zoeken waar je systeem breekt: de chaos loop",
-    "question": "Hoe werkt een chaos loop waarin Claude een testomgeving onder druk zet, de metingen leest en fixes voorstelt, welke vaste regels en goedkeuringen heb je nodig, en hoe zou dat er voor een datapijplijn uitzien?",
-    "why": "Past bij de trend 'Agents worden beter door controles en metingen': Anthropic beschreef op 17 november hoe Claude Code Claude Docs twee weken expres liet stukgaan vóór de lancering.",
+    "id": "claude-model-en-effort-kiezen",
+    "title": "Eerst de effort, dan het model: Claude slim inzetten voor dbt-werk",
+    "question": "Hoe kies je tussen Haiku, Sonnet, Opus en Fable en tussen effort-niveaus, wanneer laat je een subagent op een klein model zoeken of logs lezen, en hoe meet je op je eigen taken wat het oplevert tegen de kosten?",
+    "why": "Addy Osmani gaf op 9 november een keuzeregel: eerst de effort-knop, pas daarna een zwaarder model, en subagents op Haiku voor zoeken en tests; dat is direct toe te passen op je werk met Claude Code.",
     "topics": [
      "claude_ai_development",
-     "ai_evaluation_observability",
-     "veilige_agents"
+     "ai_evaluation_observability"
     ],
     "area": "claude"
    }
@@ -13074,6 +13073,16 @@
      "met_voorbeeld": 1,
      "via_websearch": 1,
      "niet_bereikbaar": 9
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen was; 5 nieuwe keuzes klaargezet.",
+    "finished_at": "2026-11-23T04:14:04Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5
     }
    }
   }
