@@ -1,0 +1,113 @@
+{
+ "format_version": 2,
+ "article_id": "9fa51654bab7",
+ "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+ "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
+ "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
+ "story": [
+  "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
+  "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
+  "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
+  "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
+  "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
+ ],
+ "key_facts": [
+  "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
+  "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
+  "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
+  "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
+  "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
+  "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
+ ],
+ "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
+ "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
+ "limitations": [
+  "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
+  "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
+  "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
+ ],
+ "availability_status": "onbekend",
+ "official_docs": [
+  {
+   "label": "Artikel op het MotherDuck-blog",
+   "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
+  },
+  {
+   "label": "MotherDuck MCP-server instellen",
+   "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
+  },
+  {
+   "label": "MotherDuck Dives",
+   "url": "https://motherduck.com/docs/key-tasks/dives/"
+  }
+ ],
+ "topics": [
+  "ai_agents_rag",
+  "ai_context_engineering",
+  "data_quality_observability",
+  "claude_ai_development"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.6,
+  "novelty": 0.55
+ },
+ "development_key": "agentic-analyse-zonder-datateam-spati",
+ "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
+ "exceptional": false,
+ "article_type": "opinie",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.65,
+  "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
+ },
+ "labels": [
+  "data-agent",
+  "human-in-the-loop",
+  "duckdb-mcp",
+  "agentic-analyse"
+ ],
+ "project_ref": {
+  "fase": 6,
+  "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
+  "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+ },
+ "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
+ "terms": [
+  {
+   "term": "MCP-server",
+   "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+  },
+  {
+   "term": "MotherDuck",
+   "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
+  },
+  {
+   "term": "INFORMATION_SCHEMA",
+   "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
+  }
+ ],
+ "showcase": {
+  "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
+  "language": "sql",
+  "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
+  "result": {
+   "columns": [
+    "rijen",
+    "goed_gelezen",
+    "kwijt"
+   ],
+   "rows": [
+    [
+     6,
+     4,
+     2
+    ]
+   ]
+  },
+  "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-23T03:23:10Z",
+ "prompt_version": "taak-v3"
+}

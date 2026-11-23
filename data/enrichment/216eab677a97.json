@@ -1,0 +1,92 @@
+{
+ "format_version": 2,
+ "article_id": "216eab677a97",
+ "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47",
+ "headline": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen",
+ "summary": "In week 47 worden MCP-tools in Genie Agents en de Genie Code CLI algemeen beschikbaar. Skills uit Unity Catalog kun je in bèta delen, en service policies beoordelen antwoorden nu standaard al tijdens het streamen.",
+ "story": [
+  "Eerst twee dingen waar je zelf op moet letten. Gebruik je service policies (regels die modeluitvoer controleren), dan beoordelen die nu standaard tijdens het streamen, ook bestaande policies. Tekst die al naar de gebruiker is gegaan, kan dan niet meer worden teruggehaald. Wil je dat het hele antwoord eerst wordt gecontroleerd, kies dan Full response evaluation. Daarnaast vraagt de GitHub-app van Azure Databricks binnenkort schrijfrechten op pull requests, zodat Genie Code en Genie ZeroOps pull requests voor je kunnen maken.",
+  "Voor AI op je eigen data is het grootste nieuws dat MCP-tools in Genie Agents algemeen beschikbaar (GA) zijn. Een maker van een agent kan nu externe MCP-servers koppelen die in Unity Gateway zijn geregistreerd, naast de connectoren van Databricks zelf. Het werkt als een stekkerdoos: de agent beantwoordt vragen uit je tabellen en metric views, en kan via zo'n stekker ook een ander systeem raadplegen. Ook de Genie Code CLI, de codeeragent in de terminal, is nu GA. Beheerders houden één budget bij voor de CLI en de werkruimte samen.",
+  "Skills worden deelbaar. Een aanbieder kan skills uit Unity Catalog in bèta toevoegen aan een share in OpenSharing of aan een vermelding in de Azure Databricks Marketplace. Een ontvanger op Databricks krijgt dan alleen-lezen toegang tot elke gedeelde skill. Zo kan een team een vaste werkwijze voor een agent één keer vastleggen en aan anderen geven, net als een tabel.",
+  "Ook governance gaat een stap verder. Governed tags op een brontabel gaan in bèta nu ook mee naar afgeleide tabellen en views op klassieke compute met Runtime 19 of hoger, niet alleen op serverless. En service policies kunnen in bèta ook de invoer voor embeddings controleren: gevoelige data maskeren of het verzoek weigeren voordat het model draait.",
+  "Tot slot een paar dingen voor het platform zelf. Een maximale looptijd voor queries per SQL-warehouse (statement timeout) is GA en stel je in via het veld statement_timeout, onder meer in een bundel. Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren. Verder kun je de bewaartermijn van systeemtabellen nu zelf kiezen (GA), en zijn de Lakebase streaming sink en versie 2 van ai_forecast algemeen beschikbaar."
+ ],
+ "key_facts": [
+  "Week 47 (16–22 november 2026), gedrag gewijzigd: modeluitvoer-policies in service policies evalueren standaard tijdens het streamen, ook bestaande policies; vrijgegeven tekst kan niet worden teruggeroepen. Full response evaluation buffert het antwoord (streaming responses: Beta).",
+  "Week 47, aangekondigd: de Azure Databricks GitHub-app gaat Read and write access to pull requests vragen, zodat Genie Code en Genie ZeroOps pull requests kunnen maken en beheren.",
+  "Week 47 (GA): MCP tools in Genie Agents; makers kunnen externe MCP-servers koppelen die in Unity Gateway zijn geregistreerd, naast connectoren van Databricks.",
+  "Week 47 (GA): Genie Code CLI, beheerd zoals Genie Code in de werkruimte, met één Genie Code-budget voor CLI en werkruimte (bèta sinds 6 oktober 2026).",
+  "Week 47 (Beta): Unity Catalog agent skills delen via OpenSharing-shares en Azure Databricks Marketplace; Databricks-naar-Databricks-ontvangers krijgen alleen-lezen toegang. Governed tag propagation werkt nu ook op klassieke compute met Databricks Runtime 19 of hoger (Beta). Service policies op embedding-invoer (Beta).",
+  "Week 47 (GA): warehouse-level statement timeouts via statement_timeout in de SQL warehouses API, SDK's, Terraform of bundels; bewaartermijn systeemtabellen instelbaar van 30 tot 3.650 dagen (eerste 395 dagen gratis); Lakebase streaming sink met Trigger.AvailableNow() op serverless; ai_forecast versie 2."
+ ],
+ "personal_relevance": "MCP-tools in Genie Agents en deelbare skills maken het makkelijker om een agent op je eigen Gold-data aan andere systemen en teams te koppelen.",
+ "experiment": "Kijk in een proefwerkruimte welke externe MCP-servers in Unity Gateway staan en koppel er één aan een Genie Agent op een kleine openbare dataset. Stel daarna een vraag die zowel de tabel als de MCP-tool nodig heeft, zonder werkdata.",
+ "limitations": [
+  "Skills delen, tag-propagatie op klassieke compute en policies op embeddings zijn nog bèta.",
+  "Dit overzicht is gemaakt uit de korte teksten van de release notes; details per functie staan in de documentatie.",
+  "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Azure Databricks release notes (week 47)",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "ai_agents_rag",
+  "data_governance_privacy",
+  "databricks_data_engineering"
+ ],
+ "quality": {
+  "depth": 0.55,
+  "practicality": 0.7,
+  "novelty": 0.6
+ },
+ "development_key": "databricks-week-47-2026",
+ "date_note": "De release notes in de werklijst noemen geen datum per melding; alle meldingen vallen in week 47 (16–22 november 2026).",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "release",
+ "fit": {
+  "score": 0.75,
+  "why": "Weekoverzicht met nieuwe Genie- en agentfuncties, zoals je duimen bij de Genie Agents- en weekoverzichtartikelen."
+ },
+ "labels": [
+  "databricks-weekoverzicht",
+  "genie-mcp",
+  "agent-skills",
+  "service-policies"
+ ],
+ "project_ref": {
+  "fase": 5,
+  "quote": "Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren.",
+  "why": "Statement timeouts zijn in te stellen in een bundel, het onderwerp van fase 5."
+ },
+ "terms": [
+  {
+   "term": "service policies",
+   "explanation": "Regels in Databricks die verzoeken aan en antwoorden van een model controleren, bijvoorbeeld gevoelige data maskeren of onveilige inhoud weigeren."
+  },
+  {
+   "term": "MCP-servers",
+   "explanation": "Programmaatjes die tools aanbieden via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+  },
+  {
+   "term": "OpenSharing",
+   "explanation": "Het open deelprotocol van Databricks waarmee je tabellen en nu ook skills aan een ander deelt zonder kopie te maken."
+  },
+  {
+   "term": "Governed tags",
+   "explanation": "Tags in Unity Catalog met vaste regels over welke waarden mogen en wie ze mag zetten. Domeinen en certificering draaien erop."
+  },
+  {
+   "term": "embeddings",
+   "explanation": "Rijen getallen die de betekenis van een tekst vastleggen, zodat je teksten op betekenis kunt vergelijken en zoeken."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-23T03:23:10Z",
+ "prompt_version": "taak-v3"
+}
