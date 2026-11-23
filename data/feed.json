@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-23T03:13:05.264491Z",
+ "generated_at": "2026-11-23T03:23:50.598038Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-22T03:30:38Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-23T03:23:10Z",
  "last_successful_update": "2026-11-23T03:13:05.264491Z",
  "groups": [
   {
@@ -462,13 +462,119 @@
   }
  ],
  "daily_top": [
+  "216eab677a97",
   "905562b7af62",
-  "4dcd7af26dab",
+  "9fa51654bab7",
   "3e9bbba1efea",
-  "5c7174c45ad1",
-  "069078b2b4e3"
+  "5c7174c45ad1"
  ],
  "articles": [
+  {
+   "id": "216eab677a97",
+   "title": "Azure Databricks: wat is er nieuw in week 47",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-22T23:59:59Z",
+   "date_note": "De release notes in de werklijst noemen geen datum per melding; alle meldingen vallen in week 47 (16–22 november 2026).",
+   "fetched_at": "2026-11-21T03:13:26.098771Z",
+   "summary": "In week 47 worden MCP-tools in Genie Agents en de Genie Code CLI algemeen beschikbaar. Skills uit Unity Catalog kun je in bèta delen, en service policies beoordelen antwoorden nu standaard al tijdens het streamen.",
+   "personal_relevance": "MCP-tools in Genie Agents en deelbare skills maken het makkelijker om een agent op je eigen Gold-data aan andere systemen en teams te koppelen.",
+   "experiment": "Kijk in een proefwerkruimte welke externe MCP-servers in Unity Gateway staan en koppel er één aan een Genie Agent op een kleine openbare dataset. Stel daarna een vraag die zowel de tabel als de MCP-tool nodig heeft, zonder werkdata.",
+   "limitations": [
+    "Skills delen, tag-propagatie op klassieke compute en policies op embeddings zijn nog bèta.",
+    "Dit overzicht is gemaakt uit de korte teksten van de release notes; details per functie staan in de documentatie.",
+    "Of deze functies in Databricks Free Edition werken, staat niet in de release notes."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes (week 47)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "kwaliteit",
+    "databricks"
+   ],
+   "relevance_score": 100,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.99,
+    "source": 1.0,
+    "quality": 0.62,
+    "fit": 0.25,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-23T03:23:10Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen",
+   "story": [
+    "Eerst twee dingen waar je zelf op moet letten. Gebruik je service policies (regels die modeluitvoer controleren), dan beoordelen die nu standaard tijdens het streamen, ook bestaande policies. Tekst die al naar de gebruiker is gegaan, kan dan niet meer worden teruggehaald. Wil je dat het hele antwoord eerst wordt gecontroleerd, kies dan Full response evaluation. Daarnaast vraagt de GitHub-app van Azure Databricks binnenkort schrijfrechten op pull requests, zodat Genie Code en Genie ZeroOps pull requests voor je kunnen maken.",
+    "Voor AI op je eigen data is het grootste nieuws dat MCP-tools in Genie Agents algemeen beschikbaar (GA) zijn. Een maker van een agent kan nu externe MCP-servers koppelen die in Unity Gateway zijn geregistreerd, naast de connectoren van Databricks zelf. Het werkt als een stekkerdoos: de agent beantwoordt vragen uit je tabellen en metric views, en kan via zo'n stekker ook een ander systeem raadplegen. Ook de Genie Code CLI, de codeeragent in de terminal, is nu GA. Beheerders houden één budget bij voor de CLI en de werkruimte samen.",
+    "Skills worden deelbaar. Een aanbieder kan skills uit Unity Catalog in bèta toevoegen aan een share in OpenSharing of aan een vermelding in de Azure Databricks Marketplace. Een ontvanger op Databricks krijgt dan alleen-lezen toegang tot elke gedeelde skill. Zo kan een team een vaste werkwijze voor een agent één keer vastleggen en aan anderen geven, net als een tabel.",
+    "Ook governance gaat een stap verder. Governed tags op een brontabel gaan in bèta nu ook mee naar afgeleide tabellen en views op klassieke compute met Runtime 19 of hoger, niet alleen op serverless. En service policies kunnen in bèta ook de invoer voor embeddings controleren: gevoelige data maskeren of het verzoek weigeren voordat het model draait.",
+    "Tot slot een paar dingen voor het platform zelf. Een maximale looptijd voor queries per SQL-warehouse (statement timeout) is GA en stel je in via het veld statement_timeout, onder meer in een bundel. Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren. Verder kun je de bewaartermijn van systeemtabellen nu zelf kiezen (GA), en zijn de Lakebase streaming sink en versie 2 van ai_forecast algemeen beschikbaar."
+   ],
+   "key_facts": [
+    "Week 47 (16–22 november 2026), gedrag gewijzigd: modeluitvoer-policies in service policies evalueren standaard tijdens het streamen, ook bestaande policies; vrijgegeven tekst kan niet worden teruggeroepen. Full response evaluation buffert het antwoord (streaming responses: Beta).",
+    "Week 47, aangekondigd: de Azure Databricks GitHub-app gaat Read and write access to pull requests vragen, zodat Genie Code en Genie ZeroOps pull requests kunnen maken en beheren.",
+    "Week 47 (GA): MCP tools in Genie Agents; makers kunnen externe MCP-servers koppelen die in Unity Gateway zijn geregistreerd, naast connectoren van Databricks.",
+    "Week 47 (GA): Genie Code CLI, beheerd zoals Genie Code in de werkruimte, met één Genie Code-budget voor CLI en werkruimte (bèta sinds 6 oktober 2026).",
+    "Week 47 (Beta): Unity Catalog agent skills delen via OpenSharing-shares en Azure Databricks Marketplace; Databricks-naar-Databricks-ontvangers krijgen alleen-lezen toegang. Governed tag propagation werkt nu ook op klassieke compute met Databricks Runtime 19 of hoger (Beta). Service policies op embedding-invoer (Beta).",
+    "Week 47 (GA): warehouse-level statement timeouts via statement_timeout in de SQL warehouses API, SDK's, Terraform of bundels; bewaartermijn systeemtabellen instelbaar van 30 tot 3.650 dagen (eerste 395 dagen gratis); Lakebase streaming sink met Trigger.AvailableNow() op serverless; ai_forecast versie 2."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "service policies",
+     "explanation": "Regels in Databricks die verzoeken aan en antwoorden van een model controleren, bijvoorbeeld gevoelige data maskeren of onveilige inhoud weigeren."
+    },
+    {
+     "term": "MCP-servers",
+     "explanation": "Programmaatjes die tools aanbieden via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "OpenSharing",
+     "explanation": "Het open deelprotocol van Databricks waarmee je tabellen en nu ook skills aan een ander deelt zonder kopie te maken."
+    },
+    {
+     "term": "Governed tags",
+     "explanation": "Tags in Unity Catalog met vaste regels over welke waarden mogen en wie ze mag zetten. Domeinen en certificering draaien erop."
+    },
+    {
+     "term": "embeddings",
+     "explanation": "Rijen getallen die de betekenis van een tekst vastleggen, zodat je teksten op betekenis kunt vergelijken en zoeken."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.75,
+    "why": "Weekoverzicht met nieuwe Genie- en agentfuncties, zoals je duimen bij de Genie Agents- en weekoverzichtartikelen."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "genie-mcp",
+    "agent-skills",
+    "service-policies"
+   ],
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren.",
+    "why": "Statement timeouts zijn in te stellen in een bundel, het onderwerp van fase 5."
+   }
+  },
   {
    "id": "905562b7af62",
    "title": "Azure Databricks: wat is er nieuw in week 46",
@@ -581,6 +687,139 @@
     "fase": 5,
     "quote": "Voor Dataflow kun je in fase 5 zo een job steeds de data van de vorige dag laten ophalen.",
     "why": "Datumparameters in jobs passen bij het plannen van het dagelijkse ophalen."
+   }
+  },
+  {
+   "id": "9fa51654bab7",
+   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
+   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-20T04:40:08Z",
+   "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
+   "fetched_at": "2026-11-23T03:13:10.530143Z",
+   "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
+   "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
+   "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
+   "limitations": [
+    "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
+    "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
+    "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Artikel op het MotherDuck-blog",
+     "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
+    },
+    {
+     "label": "MotherDuck MCP-server instellen",
+     "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
+    },
+    {
+     "label": "MotherDuck Dives",
+     "url": "https://motherduck.com/docs/key-tasks/dives/"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "agents",
+    "ai_context",
+    "claude",
+    "kwaliteit"
+   ],
+   "relevance_score": 99,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.86,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.03,
+    "fit": 0.15,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-23T03:23:10Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
+   "story": [
+    "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
+    "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
+    "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
+    "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
+    "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
+   ],
+   "key_facts": [
+    "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
+    "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
+    "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
+    "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
+    "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
+    "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
+   "showcase": {
+    "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
+    "language": "sql",
+    "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
+    "result": {
+     "columns": [
+      "rijen",
+      "goed_gelezen",
+      "kwijt"
+     ],
+     "rows": [
+      [
+       6,
+       4,
+       2
+      ]
+     ]
+    },
+    "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
+   },
+   "terms": [
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "MotherDuck",
+     "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
+    },
+    {
+     "term": "INFORMATION_SCHEMA",
+     "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.65,
+    "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
+   },
+   "labels": [
+    "data-agent",
+    "human-in-the-loop",
+    "duckdb-mcp",
+    "agentic-analyse"
+   ],
+   "fb_why": {
+    "by": "label",
+    "name": "human-in-the-loop",
+    "pts": 3
+   },
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
+    "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
    }
   },
   {
@@ -5733,6 +5972,111 @@
    }
   },
   {
+   "id": "fae3fb7e9aa6",
+   "title": "DAX LLM Benchmark v2",
+   "url": "https://www.sqlbi.com/blog/marco/2026/10/27/dax-llm-benchmark-v2/",
+   "source_id": "sqlbi",
+   "published_at": "2026-10-27T10:45:53Z",
+   "fetched_at": "2026-11-01T11:05:57.559020Z",
+   "summary": "SQLBI testte met DAXBench v2 hoe goed taalmodellen DAX schrijven. Zes recente modellen van drie leveranciers scoren 90 tot 96 procent.",
+   "personal_relevance": "Je schrijft DAX in Power BI; dit zegt hoe ver je een AI-assistent kunt vertrouwen, en dat je eigen testen nodig blijven.",
+   "experiment": "Kies drie DAX-maatstaven die je zelf goed kent en beschrijf ze in gewone taal, zonder werkdata. Laat Claude ze schrijven op een openbaar voorbeeldmodel (zoals Contoso) en vergelijk de uitkomsten met je eigen versie.",
+   "limitations": [
+    "De scores per model staan alleen in de grafieken op daxbench.com, niet in de tekst van het artikel.",
+    "De auteurs zeggen zelf dat de tests niet perfect zijn; ervaring in de praktijk telt zwaarder.",
+    "SQLBI verkoopt zelf DAX-cursussen en -tools."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "DAXBench",
+     "url": "https://www.daxbench.com/"
+    },
+    {
+     "label": "Methodologie",
+     "url": "https://www.daxbench.com/methodology"
+    },
+    {
+     "label": "Where we stand on AI and DAX in 2026",
+     "url": "https://www.sqlbi.com/blog/marco/2026/09/22/where-we-stand-on-ai-and-dax-in-2026/"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "overig",
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.27,
+    "source": 0.8,
+    "quality": 0.58,
+    "feedback": -0.04,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-05T03:34:43Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "sqlbi",
+     "title": "Optimizing DAX with AI",
+     "url": "https://www.sqlbi.com/articles/optimizing-dax-with-ai/",
+     "published_at": "2026-11-02T20:00:41Z",
+     "reason": "zelfde ontwikkeling"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit",
+   "story": [
+    "Marco Russo van SQLBI heeft samen met Maxim Anatsko een nieuwe versie gemaakt van DAXBench. Dat is een toets die meet hoe goed taalmodellen DAX schrijven en begrijpen. De nieuwe versie heeft meer opgaven uit de praktijk, van makkelijk tot moeilijk.",
+    "De toets werkt als een examen zonder herkansing. Elk model krijgt één opdracht en mag nadenken, maar niet zelf testen of opnieuw proberen. Het krijgt ook geen skills mee. Daarna past de toets de DAX toe op een model, meestal een variant van Contoso, en draait een testquery. Alleen een goede uitkomst telt; nette code die het verkeerde antwoord geeft, krijgt geen punten.",
+    "De uitkomst: zes modellen van drie leveranciers, uitgebracht in augustus en september 2026, scoren tussen 90 en 96 procent. Elke opgave werd door minstens één model opgelost. Russo vindt dat de generatie van een model meer uitmaakt dan de leverancier. Open-source modellen lopen achter, maar volgen dezelfde lijn.",
+    "Russo vindt DAX leren wel nog steeds zinvol. Wie de DAX kan lezen, ziet hoe een bedrijfsregel echt is uitgewerkt. Een beschrijving in gewone taal kan dubbelzinnig zijn, een formule niet. Zijn advies: gebruik de toets om een modelgeneratie te kiezen en kosten te sturen, maar test altijd op je eigen semantische modellen."
+   ],
+   "key_facts": [
+    "DAXBench v2 is gepubliceerd op 27 oktober 2026 door Marco Russo (SQLBI) met Maxim Anatsko, die versie 1 in december 2025 uitbracht.",
+    "Elke test is één opdracht met het standaard redeneerniveau, zonder herhalen, zelf testen of skills.",
+    "De score telt geslaagde taken, juistheid van de uitkomst en juiste syntax; een fout antwoord krijgt geen punten.",
+    "Stand van 18 oktober 2026: zes modellen van drie leveranciers (uitgebracht augustus en september 2026) scoren 90% tot 96%.",
+    "Russo: de modelgeneratie telt meer dan de leverancier; kleine scoreverschillen doen er in dagelijks gebruik weinig toe.",
+    "Russo: de tests raken bijna verzadigd; een versie 2.1 of 3.0 is mogelijk nodig."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "DAXBench",
+     "explanation": "Een openbare toets van SQLBI en Maxim Anatsko die meet hoe goed taalmodellen DAX-formules schrijven, door de uitkomst echt na te rekenen."
+    },
+    {
+     "term": "skills",
+     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.55,
+    "why": "Over hoe goed AI code schrijft, zoals de dbt Labs-proef met Claude; wel Power BI in plaats van dbt."
+   },
+   "labels": [
+    "dax-benchmark",
+    "power-bi-ai"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   }
+  },
+  {
    "id": "0b4ae9670355",
    "title": "How to Repoint dbt ETL Pipelines to Databricks",
    "url": "https://www.databricks.com/blog/how-repoint-dbt-etl-pipelines-databricks",
@@ -9888,6 +10232,17 @@
    ]
   },
   {
+   "term": "DAXBench",
+   "explanation": "Een openbare toets van SQLBI en Maxim Anatsko die meet hoe goed taalmodellen DAX-formules schrijven, door de uitkomst echt na te rekenen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "fae3fb7e9aa6",
+     "title": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit"
+    }
+   ]
+  },
+  {
    "term": "dbt Information Schema",
    "explanation": "Een set views over de bestanden die dbt na elke run maakt (zoals de manifest). Een agent kan daarin snel opzoeken welke modellen, kolommen en tests er zijn.",
    "refs": [
@@ -10182,8 +10537,13 @@
   },
   {
    "term": "embeddings",
-   "explanation": "Een rij getallen die de betekenis van een tekst weergeeft. Teksten met een vergelijkbare betekenis krijgen getallen die dicht bij elkaar liggen.",
+   "explanation": "Rijen getallen die de betekenis van een tekst vastleggen, zodat je teksten op betekenis kunt vergelijken en zoeken.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "216eab677a97",
+     "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
+    },
     {
      "kind": "a",
      "id": "6ded4aa1cdcf",
@@ -10555,6 +10915,17 @@
    ]
   },
   {
+   "term": "Governed tags",
+   "explanation": "Tags in Unity Catalog met vaste regels over welke waarden mogen en wie ze mag zetten. Domeinen en certificering draaien erop.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "216eab677a97",
+     "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
+    }
+   ]
+  },
+  {
    "term": "grondwaarheid",
    "explanation": "Antwoorden waarvan je zeker weet dat ze kloppen, meestal door een mens gecontroleerd. Je vergelijkt de uitkomst van een AI daarmee.",
    "refs": [
@@ -10696,6 +11067,17 @@
      "kind": "v",
      "id": "cdc-en-incrementeel-laden",
      "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC"
+    }
+   ]
+  },
+  {
+   "term": "INFORMATION_SCHEMA",
+   "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9fa51654bab7",
+     "title": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt"
     }
    ]
   },
@@ -10965,6 +11347,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "9fa51654bab7",
+     "title": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt"
+    },
+    {
+     "kind": "a",
      "id": "53acc8538264",
      "title": "Claude Code laat lange MCP-taken op de achtergrond lopen"
     },
@@ -10972,6 +11359,17 @@
      "kind": "a",
      "id": "1ebe4563dc44",
      "title": "Vraag je AI-assistent om DAX-functies in je Power BI-model te zetten"
+    }
+   ]
+  },
+  {
+   "term": "MCP-servers",
+   "explanation": "Programmaatjes die tools aanbieden via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "216eab677a97",
+     "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
     }
    ]
   },
@@ -11132,6 +11530,17 @@
    ]
   },
   {
+   "term": "MotherDuck",
+   "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9fa51654bab7",
+     "title": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt"
+    }
+   ]
+  },
+  {
    "term": "OneLake",
    "explanation": "De centrale dataopslag van Microsoft Fabric. Alle Fabric-onderdelen lezen en schrijven daar, zodat je één kopie van de data hebt.",
    "refs": [
@@ -11172,6 +11581,17 @@
      "kind": "a",
      "id": "656e0d953ae9",
      "title": "Genie Ontology is GA: agents leren je bedrijfsbegrippen uit je werk"
+    }
+   ]
+  },
+  {
+   "term": "OpenSharing",
+   "explanation": "Het open deelprotocol van Databricks waarmee je tabellen en nu ook skills aan een ander deelt zonder kopie te maken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "216eab677a97",
+     "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
     }
    ]
   },
@@ -11717,6 +12137,17 @@
    ]
   },
   {
+   "term": "service policies",
+   "explanation": "Regels in Databricks die verzoeken aan en antwoorden van een model controleren, bijvoorbeeld gevoelige data maskeren of onveilige inhoud weigeren.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "216eab677a97",
+     "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
+    }
+   ]
+  },
+  {
    "term": "service principal",
    "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline.",
    "refs": [
@@ -11797,6 +12228,11 @@
     },
     {
      "kind": "a",
+     "id": "fae3fb7e9aa6",
+     "title": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit"
+    },
+    {
+     "kind": "a",
      "id": "6d403bbe9379",
      "title": "Eén agent met skills werkt vaak beter dan een team van subagents"
     },
@@ -11804,11 +12240,6 @@
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
-    },
-    {
-     "kind": "a",
-     "id": "c63f36899b14",
-     "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
     }
    ]
   },
@@ -12623,63 +13054,26 @@
   }
  ],
  "runs": {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "tasks": {
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen opnieuw geprobeerd: de 7 overgebleven artikelen waren nog steeds niet bereikbaar en blijven op de werklijst; verdiepen en overzicht waren al klaar.",
-    "finished_at": "2026-11-22T06:45:00Z",
-    "problems": [
-     "WebFetch weigerde alle 7 artikeladressen (PROVENANCE_REQUIRED) en WebSearch op exacte titel vond geen link naar dezelfde artikelen."
-    ],
-    "counts": {
-     "ingehaald": 0,
-     "uitgelegd": 0,
-     "niet_bereikbaar": 7
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen was; 5 nieuwe keuzes klaargezet",
-    "finished_at": "2026-11-22T04:14:43Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
    "uitleggen": {
     "status": "deels",
-    "summary": "1 artikel vol uitgelegd (met voorbeeld); 7 artikelen waren ook bij de inhaalrun niet bereikbaar en blijven op de werklijst.",
-    "finished_at": "2026-11-22T06:45:00Z",
+    "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend), 0 overgeslagen; 9 artikelen bleven op de werklijst omdat de pagina's niet te openen waren.",
+    "finished_at": "2026-11-23T03:23:25Z",
     "problems": [
-     "add_repo was niet beschikbaar in deze sessie (geen tool gevonden via ToolSearch); de bestaande clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
-     "WebFetch weigerde alle 8 artikeladressen (PROVENANCE_REQUIRED: permission request not answered in time).",
-     "Via WebSearch op exacte titel en site alleen 'Bulk migrate your dashboards to AI/BI with Genie Code' gevonden; de andere 7 (a196e7487b06, 9cdcaec08381, beff442b3034, 408df9c189db, 9204ea2d5973, 9f74702ac72e, 3c6506d1a8d8) gaven geen link naar hetzelfde artikel en blijven op de werklijst.",
-     "Inhaalrun (06:28Z): WebFetch weigerde opnieuw alle 7 adressen (PROVENANCE_REQUIRED); WebSearch op exacte titel gaf voor geen van de 7 een link naar hetzelfde artikel. Dataflow-voortgang opnieuw gecontroleerd: fase 5, geen wijziging."
+     "Vers ophalen aangevraagd; de feed werd binnen een paar minuten opnieuw opgehaald.",
+     "Dataflow: fase 5 bezig, zonder stapnaam.",
+     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: toestemming niet op tijd beantwoord).",
+     "Via WebSearch niet gevonden, blijven op de werklijst: Genie free tier voor partners, LangChain knowledge factory, Databricks-referentiearchitecturen, Chris Webb over Fabric semantic views, Genie ZeroOps public beta, Genie One accuracy, OneLake (Ignite) en Fabric IQ (Ignite).",
+     "Claude Code week 47 blijft op de werklijst: de release-pagina's waren niet te openen en de officiële changelog bevatte v2.1.326 t/m v2.1.330 nog niet.",
+     "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen."
     ],
     "counts": {
-     "uitgelegd": 1,
+     "uitgelegd": 2,
      "overgeslagen": 0,
      "met_voorbeeld": 1,
      "via_websearch": 1,
-     "niet_bereikbaar": 7
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (1 nieuw artikel), geen interesseverzoeken of leerregels, geen begrippen aangevuld, Jouw week met 3 hoogtepunten en 1 voorstel",
-    "finished_at": "2026-11-22T05:15:14Z",
-    "problems": [
-     "Begrippen: het enige stuk zonder terms (5673f63258aa) is een korte uitleg zonder verhaal, dus er is geen tekst om begrippen in aan te wijzen."
-    ],
-    "counts": {
-     "trends": 3,
-     "interesse_verzoeken": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0,
-     "weekhoogtepunten": 3,
-     "voorstellen": 1
+     "niet_bereikbaar": 9
     }
    }
   }
@@ -12847,35 +13241,36 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 769,
   "unique_after_dedupe": 711,
   "merged_duplicates": 51,
-  "shown": 52,
+  "shown": 55,
   "decisions": {
    "excluded": 258,
-   "area_cap": 23,
-   "included": 106,
+   "area_cap": 22,
+   "included": 108,
    "no_topic": 154,
-   "below_threshold": 121,
+   "below_threshold": 120,
    "kort_vervallen": 33,
    "source_cap": 15,
    "area_minimum": 1
   },
   "processing": {
-   "enriched": 52
+   "enriched": 55
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 22,
+   "ai_context": 23,
+   "agents": 5,
    "claude": 11,
-   "overig": 5,
+   "overig": 6,
    "dbt": 6,
    "architectuur": 3,
-   "agents": 4,
    "databricks": 1
   },
   "per_source": {
-   "azure_databricks_release_notes": 2,
+   "azure_databricks_release_notes": 3,
+   "simon_spati": 3,
    "dbt_labs_blog": 10,
    "claude_code_releases": 3,
    "databricks_blog": 15,
@@ -12884,13 +13279,12 @@
    "anthropic_engineering": 1,
    "dbt_developer_blog": 2,
    "databricks_engineering_blog": 2,
-   "simon_spati": 2,
    "dbt_core_releases": 1,
    "langchain_blog": 1,
    "hamel_husain": 1,
    "chris_webb": 1,
    "fabric_blog": 1,
-   "sqlbi": 1,
+   "sqlbi": 2,
    "powerbi_blog": 1
   },
   "date_flags": [
@@ -12941,9 +13335,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 175
+   "skipped_no_key": 173
   },
-  "queue_size": 11,
+  "queue_size": 9,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -12953,14 +13347,6 @@
   "threshold": 60,
   "max_per_source": 12,
   "not_shown": [
-   {
-    "title": "Azure Databricks: wat is er nieuw in week 47",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47",
-    "relevance_score": 88,
-    "decision": "included",
-    "excluded_by": []
-   },
    {
     "title": "MCP tools in Genie Agents are generally available",
     "source_id": "azure_databricks_release_notes",
@@ -13518,6 +13904,17 @@
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.318",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.318",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    }

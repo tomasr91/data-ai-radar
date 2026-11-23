@@ -1,27 +1,7 @@
 {
- "generated_at": "2026-11-23T03:13:05.264491Z",
+ "generated_at": "2026-11-23T03:23:50.598038Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "216eab677a97",
-   "title": "Azure Databricks: wat is er nieuw in week 47",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47",
-   "source_id": "azure_databricks_release_notes",
-   "source_name": "Azure Databricks release notes",
-   "published_at": "2026-11-22T23:59:59Z",
-   "excerpt": "Weekoverzicht van 30 release notes. Genie Code CLI is now generally available: Genie Code CLI is now generally available and managed the same way as Genie Code in the workspace. Admins manage one Genie Code budget across the CLI and the workspace, and users can apply their free · Governed tag propagation supports classic compute (Beta): Governed tag propagation now supports classic compute running Databricks Runtime 19 or above, in addition to serverless compute. Governed tags on a source propagate to the tables and views derived fro · Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta): Providers can add Unity Catalog agent skills to OpenSharing shares and Azure Databricks Marketplace listings. Databricks-to-Databricks recipients get read-only access to each shared skill in the catal · IP functions will soon be available by default for workspaces with the compliance security profile enabled: IP functions will be available by default for workspaces with the compliance security profile enabled. Use IP functions to work with IP addresses and CIDR blocks, including joins on IP addresses and C · Smart Routing now supports external models for coding agents (Beta): In the Unity Gateway Managed Configuration beta, Smart Routing can route coding-agent subagents to external models behind a model provider service. Add them to models.sources , alongside system.ai mod · Analyze agent usage and find wasted tokens with Unity Gateway Insights (Beta): You can now generate Unity Gateway Insights reports that show what people use agents for and where tokens go to waste. Genie Code builds each report from a sample of sessions in the unified trace tabl · Configurable retention for system tables is generally available: Account admins can set an account-wide retention period from 30 to 3,650 days for supported system tables. The first 395 days of retention are free. Data retained for more than 395 days incurs Databri · Configure materialization TTLs for individual OpenSharing recipients: You can now set the materialization time to live (TTL) for each open sharing recipient, overriding the metastore default. See Configure a recipient materialization TTL . · Evaluate streaming responses incrementally with service policies (Beta): Model output policies default to streaming evaluation, including existing policies. Released text can't be recalled. Select Full response evaluation to buffer the response. See Streaming responses (Be · Service policies protect embedding inputs (Beta): You can now apply service policies to single or batch embedding inputs to mask sensitive data or deny requests that contain it, and to reject unsafe content before the model runs. See Embedding input · JDBC Unity Catalog connections are now available by default for workspaces with the compliance security profile enabled: JDBC Unity Catalog connections, including support for SSL certificates, are now available by default for workspaces with the compliance security profile enabled. Use JDBC Unity Catalog connections to · Lakebase streaming sink is generally available: The Lakebase streaming sink is generally available. It now supports Trigger.AvailableNow() on serverless jobs and notebooks. In Databricks Runtime 19 and above, it also supports merge strategies and a · TIMERANGE_NOW() on the Lakewatch query page uses the selected time range: On the Lakewatch query page, TIMERANGE_NOW() now returns the end of the selected time range instead of the current time, so you can test a detection rule's predicates against historical data. See Refe · Azure Databricks on Azure Government is available in Beta: A new Azure Databricks environment in Azure Government is now available in Beta to all customers. Don't process Controlled Unclassified Information (CUI), and don't run production workloads. See Azure · OAuth authentication for webhook destinations will soon be available by default for workspaces with the compliance security profile enabled: Starting on or after December 20, 2026, OAuth authentication for webhook destinations will be available by default for workspaces with the compliance security profile enabled, subject to the requireme · MCP tools in Genie Agents are generally available: MCP tools in Genie Agents are now generally available. Authors can attach external MCP servers registered in Unity Gateway, in addition to Databricks-provided connectors, and the Agent mode APIs suppo · Lakebase now available in four additional regions: Lakebase is now available in the following regions: westus3 (West US 3) canadaeast (Canada East) switzerlandnorth (Switzerland North) australiasoutheast (Australia Southeast) For the full list of supp · Warehouse-level statement timeouts are now generally available: Warehouse-level statement timeouts are now generally available. Set the timeout with the statement_timeout field in the SQL warehouses API, Databricks SDKs, Terraform, or Declarative Automation Bundle · The Azure Databricks GitHub app will request permission to create and manage pull requests: In an upcoming change, the Azure Databricks GitHub app will request Read and write access to pull requests , so that tools like Genie Code and Genie ZeroOps can create and manage pull requests for you · Manage Lakewatch with the Databricks CLI (Beta): You can now manage Lakewatch from the command line with the lakewatch command group in the Databricks CLI. Use it to create and manage datasources, parsers, and detection rules, and to update per-cata · Databricks-to-Databricks Delta Sharing across regulatory domains is now generally available: Databricks-to-Databricks Delta Sharing across regulatory domains is now generally available. Commercial workspaces can share with AWS GovCloud, AWS GovCloud DoD, and Azure China. Sharing between Azure · ai_forecast version 2 is now generally available: Version 2 of the ai_forecast function is now generally available in Databricks SQL. A research-optimized time series foundation model po",
-   "preliminary_score": 88,
-   "preliminary_topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "claude_ai_development",
-    "databricks_data_engineering",
-    "metadata_lineage_catalogs",
-    "cicd_data_deployment",
-    "sql_spark_sql",
-    "veilige_agents"
-   ]
-  },
   {
    "id": "e7332a78bea8",
    "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
@@ -89,19 +69,6 @@
    "preliminary_score": 57,
    "preliminary_topics": [
     "powerbi_semantic_models"
-   ]
-  },
-  {
-   "id": "9fa51654bab7",
-   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
-   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
-   "source_id": "simon_spati",
-   "source_name": "Simon Späti (ssp.sh)",
-   "published_at": "2026-11-20T04:40:08Z",
-   "excerpt": "Let’s say you are new to data analytics and need a report or data analysis of a file, multiple files, or a query from a data warehouse. How do you start? What do you do? The common path is probably to ask ChatGPT or use the chatbox available, paste the exported CSV into Excel, and make some edits. But how do you share it, schedule it, and have a central pipeline for all, not manually in a spreadsheet function, and how would you scale the Excel sheet if it’s slow to crunch a lot of data?",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "ai_agents_rag"
    ]
   },
   {
