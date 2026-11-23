@@ -786,14 +786,6 @@
    "fetched_at": "2026-10-28T20:21:52.729187Z",
    "excerpt": "<h2>dbt-core 1.11.16 - October 14, 2026</h2>\n<h3>Fixes</h3>\n<ul>\n<li>Bare wildcard FQN selectors (e.g. <code>-s \"f_*\"</code>) now match nested models regardless of subfolder depth (<a href=\"https://github.com/dbt-labs/dbt-core/issues/\">#</a>)</li>\n<li>Include <code>semantic_manifest.json</code> in the artifact set uploaded by <code>--upload-to-artifacts-ingest-api</code>, matching other run artifacts (<a href=\"https://github.com/dbt-labs/dbt-core/issues/N/A\">#N/A</a>)</li>\n<li>Validate that tarball package download locations stay within the dbt downloads directory (<a href=\"https://github.com/dbt-labs/dbt-core/issues/\">#</a>)</li>\n</ul>\n<h3>Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/ash2shukla\">@ash2shukla</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/\">#</a>)</li>\n<li><a href=\"https://github.com/ayshukla\">@ayshukla</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/N/A\">#N/A</a>)</li>\n<li><a href=\"https://github.com/itsnamangoyal\">@itsnamangoyal</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/\">#</a>)</li>\n</ul>"
   },
-  "dbt_core_releases:4fdc49511e68": {
-   "source_id": "dbt_core_releases",
-   "title": "v2.0.0-dev.41-test-pypi",
-   "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi",
-   "published_raw": "2026-09-23T14:17:54Z",
-   "fetched_at": "2026-10-28T20:21:52.729187Z",
-   "excerpt": "<h2>2.0.0-dev.41</h2>\n<p>Released September 23, 2026</p>\n<h3>Features</h3>\n<ul>\n<li>[Lake Compute] Read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, declaration-aware validation, and <code>dbt debug</code> attach parity. Existing fs <code>catalogs.yml</code> entries continue to use <code>type: unity</code>. Existing local Unity attach options in <code>config.lakecompute</code> must move to <code>config.duckdb</code>; Lake Compute access is read-only and Unity model writes are unsupported.</li>\n</ul>\n<h3>Fixes</h3>\n<ul>\n<li>Fix modules.re functions silently dropping keyword arguments (flags=, maxsplit=, count=) (<a href=\"https://github.com/dbt-labs/dbt-core/issues/15508\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/15508/hovercard\">#15508</a>)</li>\n<li>Emit only changed columns in Databricks column-tag alter diffs (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16246\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16246/hovercard\">#16246</a>)</li>\n<li>Emit only changed keys in Databricks relation-tag SET TAGS diffs (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16248\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16248/hovercard\">#16248</a>)</li>\n<li>Implement TableRepr methods index_of_value_in_column and count_occurrences_of_value_in_column to fix Fusion panic in dbt_utils.get_query_results_as_dict()</li>\n<li>Copy config.group onto the top-level group for source and singular tests, matching dbt-core (<a href=\"https://github.com/dbt-labs/dbt-core/issues/15930\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/15930/hovercard\">#15930</a>)</li>\n<li>Make insert_gateway_label idempotent so gateway host resolution no-ops when the label is already present, instead of relying on a caller-side guard</li>\n<li>Set tags on operation nodes so on-run-start/on-run-end hooks are discoverable when running dbt-core with --use-v2-parser (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16310\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16310/hovercard\">#16310</a>)</li>\n</ul>\n<h3>Under the Hood</h3>\n<ul>\n<li>Add PyPI banner for dbt-oss mirroring the existing dbt-core banner, without the dbt-core namespace deprecation notice</li>\n<li>Update the release workflow's maturin wheel build to target the Python 3.10 abi3 floor</li>\n</ul>\n<h3>Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/Jules-G1\">@Jules-G1</a></li>\n<li><a href=\"https://github.com/aiguofer\">@aiguofer</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16310\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16310/hovercard\">#16310</a>)</li>\n<li><a href=\"https://github.com/ash2shukla\">@ash2shukla</a></li>\n<li><a href=\"https://github.com/larspettermadsstuen\">@larspettermadsstuen</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/15930\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/15930/hovercard\">#15930</a>)</li>\n<li><a href=\"https://github.com/sd-db\">@sd-db</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/16246\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16246/hovercard\">#16246</a>, <a href=\"https://github.com/dbt-labs/dbt-core/issues/16248\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/16248/hovercard\">#16248</a>)</li>\n<li><a href=\"https://github.com/srchilukoori\">@srchilukoori</a> (<a href=\"https://github.com/dbt-labs/dbt-core/issues/15508\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dbt-labs/dbt/issues/15508/hovercard\">#15508</a>)</li>\n<li><a href=\"https://github.com/tauhidanjum\">@tauhidanjum</a></li>\n<li><a href=\"https://github.com/vincent.chan\">@vincent.chan</a></li>\n</ul>"
-  },
   "dbt_labs_blog:a68aede0b61b": {
    "source_id": "dbt_labs_blog",
    "title": "How Checkr cut an hours-long metrics investigation to minutes by engineering AI context on dbt and Omni",
@@ -1057,14 +1049,6 @@
    "published_raw": "Thu, 24 Sep 2026 16:55:01 GMT",
    "fetched_at": "2026-10-28T20:21:54.094217Z",
    "excerpt": "Over the weekend, “System One” decision models such as Jev have launched, which are..."
-  },
-  "databricks_engineering_blog:09da01b66fd3": {
-   "source_id": "databricks_engineering_blog",
-   "title": "How I built agent-based security reviews on Databricks",
-   "url": "https://www.databricks.com/blog/how-i-built-agent-based-security-reviews-databricks",
-   "published_raw": "Thu, 24 Sep 2026 02:00:00 GMT",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "excerpt": "We already had automation in parts of our security review process. It was useful,..."
   },
   "data_engineering_weekly:e06abf0dd7f8": {
    "source_id": "data_engineering_weekly",
@@ -1569,14 +1553,6 @@
    "published_raw": "Mon, 28 Sep 2026 08:37:14 GMT",
    "fetched_at": "2026-10-28T20:32:35.549018Z",
    "excerpt": "<div class=\"hs-featured-image-wrapper\"> \n <a href=\"https://www.advancinganalytics.co.uk/blog/genie-zeroops-your-self-healing-agent\" title=\"\" class=\"hs-featured-image-link\"> <img src=\"https://www.advancinganalytics.co.uk/hubfs/1782483541869-1.jpg\" alt=\"Databricks Genie ZeroOps: Your Self-Healing Agent?\" class=\"hs-featured-image\" style=\"width:auto !important; max-width:50%; float:left; margin:0 15px 15px 0;\"> </a> \n</div> \n<h2>Introduction</h2> \n<p>There was so many announcements back at Databricks Data + AI Summit 2026, you'd be forgiven for getting announcement fatigue. Here at Advancing Analytics, we are incredibly excited about Genie Ontology, check out our <a href=\"https://youtu.be/voZXeHP2qWQ?si=Br3Fy9jViNj6WsLu\">videos for more</a>, but I&nbsp;also believe Genie ZeroOps is another game changer ready to shake up Data Engineering!</p>"
-  },
-  "simon_whiteley:d42c8ee569e4": {
-   "source_id": "simon_whiteley",
-   "title": "Jev: The Smarter, Cheaper Way to Do Enterprise AI Automation?",
-   "url": "https://www.advancinganalytics.co.uk/blog/jev-the-smarter-cheaper-way-to-do-enterprise-ai-automation",
-   "published_raw": "Wed, 23 Sep 2026 12:18:06 GMT",
-   "fetched_at": "2026-10-28T20:32:35.549018Z",
-   "excerpt": "<div class=\"hs-featured-image-wrapper\"> \n <a href=\"https://www.advancinganalytics.co.uk/blog/jev-the-smarter-cheaper-way-to-do-enterprise-ai-automation\" title=\"\" class=\"hs-featured-image-link\"> <img src=\"https://www.advancinganalytics.co.uk/hubfs/AI-Generated%20Media/Images/Enterprise%20AI%20Automation%20Conference%20Room%20Abstract%20Shapes.png\" alt=\"Jev: The Smarter, Cheaper Way to Do Enterprise AI Automation?\" class=\"hs-featured-image\" style=\"width:auto !important; max-width:50%; float:left; margin:0 15px 15px 0;\"> </a> \n</div> \n<h2 style=\"font-size: 36px; text-align: justify; font-weight: normal;\"><span style=\"color: #aa2923;\">The Era of Mathematical Certainty: What Used to Work</span></h2> \n<p style=\"text-align: justify;\"><span>For years in data science, if you wanted deterministic reliability for classification tasks, you built a custom BERT model. I've always appreciated BERT because it gave us deterministic, repeatable classifications; it didn't hallucinate outside its label space, and with enough training data it could get remarkably accurate. But getting there meant dealing with the heavy MLOps lift of custom training pipelines, expensive data labelling, and continuous fine-tuning.</span></p>"
   },
   "hamel_husain:48ac9eccb51b": {
    "source_id": "hamel_husain",
@@ -2793,14 +2769,6 @@
    "published_raw": "Mon, 05 Oct 2026 20:00:41 +0000",
    "fetched_at": "2026-11-01T11:05:57.559020Z",
    "excerpt": "<figure><img src=\"https://www.sqlbi.com/wp-content/uploads/C0309-01-contract-before-dax.png\" class=\"webfeedsFeaturedVisual\" /></figure>Defining the right contract is a key activity for a DAX developer using AI. In this article, we introduce the concept of a contract through simple examples. Contract. As a DAX developer, you will use this term frequently; indeed, when&#8230;"
-  },
-  "sqlbi:dfe94ab9214a": {
-   "source_id": "sqlbi",
-   "title": "Start using DAX with AI",
-   "url": "https://www.sqlbi.com/tv/start-using-dax-with-ai/",
-   "published_raw": "Wed, 23 Sep 2026 10:00:42 +0000",
-   "fetched_at": "2026-11-01T11:05:57.559020Z",
-   "excerpt": "<figure><img src=\"https://i3.ytimg.com/vi/KtO0BRKHBv4/maxresdefault.jpg\" class=\"webfeedsFeaturedVisual\" /></figure>The time has come: in 2026, using AI to write DAX has started to be effective. Latest news and the new courses are at https://www.sqlbi.com/ai/ We also created three new video courses that should not become obsolete in two weeks!&#8230;"
   },
   "data_engineering_weekly:4268bd1909e6": {
    "source_id": "data_engineering_weekly",
@@ -6161,8 +6129,32 @@
    "published_raw": "Sat, 21 Nov 2026 16:45:08 GMT",
    "fetched_at": "2026-11-22T03:13:35.267480Z",
    "excerpt": "The knowledge factory is how LangChain keeps its agents' company knowledge current: agents flag what's missing, and a curator agent fixes it in the background."
+  },
+  "simon_spati:822292303df4": {
+   "source_id": "simon_spati",
+   "title": "We didn't really want to write a book. But we wanted to write that book—Cynthia Dunlop (Show Your Workflow #2)",
+   "url": "https://www.ssp.sh/blog/cynthia-dunlop-writing-books/",
+   "published_raw": "Sun, 22 Nov 2026 18:00:00 +0200",
+   "fetched_at": "2026-11-23T03:13:10.530143Z",
+   "excerpt": "<p>Cynthia went from a literature grad program to explaining C/C++ runtime error detection tools in about three weeks. Since then, she has co-authored six books, with the latest one an ambitious 6-month &ldquo;weekend project&rdquo;. That makes her the perfect guest for the show. I asked her all the questions that make writing so unique: how she ended up writing so many books, how she keeps going, what her writing process is, where her ideas come from, and much more.</p>"
+  },
+  "simon_spati:9fa51654bab7": {
+   "source_id": "simon_spati",
+   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
+   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+   "published_raw": "Fri, 20 Nov 2026 06:40:08 +0200",
+   "fetched_at": "2026-11-23T03:13:10.530143Z",
+   "excerpt": "<p>Let&rsquo;s say you are new to data analytics and need a report or data analysis of a file, multiple files, or a query from a data warehouse. How do you start? What do you do? The common path is probably to ask ChatGPT or use the chatbox available, paste the exported CSV into Excel, and make some edits. But how do you share it, schedule it, and have a central pipeline for all, not manually in a spreadsheet function, and how would you scale the Excel sheet if it&rsquo;s slow to crunch a lot of data?</p>"
+  },
+  "chris_webb:d380e24c1978": {
+   "source_id": "chris_webb",
+   "title": "Combining Fabric Semantic Views",
+   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
+   "published_raw": "Sun, 22 Nov 2026 17:09:43 +0000",
+   "fetched_at": "2026-11-23T03:13:13.044105Z",
+   "excerpt": "One of the most interesting things about Fabric semantic views (announced this week at Ignite) is the way you can combine multiple semantic views together, allowing you to reuse semantic modelling and metrics easily. This has been a long-standing ask for Power BI semantic models and while composite models were created to solve this problem, &#8230; <a href=\"https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/\" class=\"more-link\">Continue reading <span class=\"screen-reader-text\">Combining Fabric Semantic Views</span> <span class=\"meta-nav\">&#8594;</span></a>"
   }
  },
- "updated_at": "2026-11-22T08:52:51.216937Z",
+ "updated_at": "2026-11-23T03:13:05.264491Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }

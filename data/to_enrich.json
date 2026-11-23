@@ -1,7 +1,41 @@
 {
- "generated_at": "2026-11-22T08:52:51.216937Z",
+ "generated_at": "2026-11-23T03:13:05.264491Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
+  {
+   "id": "216eab677a97",
+   "title": "Azure Databricks: wat is er nieuw in week 47",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W47",
+   "source_id": "azure_databricks_release_notes",
+   "source_name": "Azure Databricks release notes",
+   "published_at": "2026-11-22T23:59:59Z",
+   "excerpt": "Weekoverzicht van 30 release notes. Genie Code CLI is now generally available: Genie Code CLI is now generally available and managed the same way as Genie Code in the workspace. Admins manage one Genie Code budget across the CLI and the workspace, and users can apply their free · Governed tag propagation supports classic compute (Beta): Governed tag propagation now supports classic compute running Databricks Runtime 19 or above, in addition to serverless compute. Governed tags on a source propagate to the tables and views derived fro · Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta): Providers can add Unity Catalog agent skills to OpenSharing shares and Azure Databricks Marketplace listings. Databricks-to-Databricks recipients get read-only access to each shared skill in the catal · IP functions will soon be available by default for workspaces with the compliance security profile enabled: IP functions will be available by default for workspaces with the compliance security profile enabled. Use IP functions to work with IP addresses and CIDR blocks, including joins on IP addresses and C · Smart Routing now supports external models for coding agents (Beta): In the Unity Gateway Managed Configuration beta, Smart Routing can route coding-agent subagents to external models behind a model provider service. Add them to models.sources , alongside system.ai mod · Analyze agent usage and find wasted tokens with Unity Gateway Insights (Beta): You can now generate Unity Gateway Insights reports that show what people use agents for and where tokens go to waste. Genie Code builds each report from a sample of sessions in the unified trace tabl · Configurable retention for system tables is generally available: Account admins can set an account-wide retention period from 30 to 3,650 days for supported system tables. The first 395 days of retention are free. Data retained for more than 395 days incurs Databri · Configure materialization TTLs for individual OpenSharing recipients: You can now set the materialization time to live (TTL) for each open sharing recipient, overriding the metastore default. See Configure a recipient materialization TTL . · Evaluate streaming responses incrementally with service policies (Beta): Model output policies default to streaming evaluation, including existing policies. Released text can't be recalled. Select Full response evaluation to buffer the response. See Streaming responses (Be · Service policies protect embedding inputs (Beta): You can now apply service policies to single or batch embedding inputs to mask sensitive data or deny requests that contain it, and to reject unsafe content before the model runs. See Embedding input · JDBC Unity Catalog connections are now available by default for workspaces with the compliance security profile enabled: JDBC Unity Catalog connections, including support for SSL certificates, are now available by default for workspaces with the compliance security profile enabled. Use JDBC Unity Catalog connections to · Lakebase streaming sink is generally available: The Lakebase streaming sink is generally available. It now supports Trigger.AvailableNow() on serverless jobs and notebooks. In Databricks Runtime 19 and above, it also supports merge strategies and a · TIMERANGE_NOW() on the Lakewatch query page uses the selected time range: On the Lakewatch query page, TIMERANGE_NOW() now returns the end of the selected time range instead of the current time, so you can test a detection rule's predicates against historical data. See Refe · Azure Databricks on Azure Government is available in Beta: A new Azure Databricks environment in Azure Government is now available in Beta to all customers. Don't process Controlled Unclassified Information (CUI), and don't run production workloads. See Azure · OAuth authentication for webhook destinations will soon be available by default for workspaces with the compliance security profile enabled: Starting on or after December 20, 2026, OAuth authentication for webhook destinations will be available by default for workspaces with the compliance security profile enabled, subject to the requireme · MCP tools in Genie Agents are generally available: MCP tools in Genie Agents are now generally available. Authors can attach external MCP servers registered in Unity Gateway, in addition to Databricks-provided connectors, and the Agent mode APIs suppo · Lakebase now available in four additional regions: Lakebase is now available in the following regions: westus3 (West US 3) canadaeast (Canada East) switzerlandnorth (Switzerland North) australiasoutheast (Australia Southeast) For the full list of supp · Warehouse-level statement timeouts are now generally available: Warehouse-level statement timeouts are now generally available. Set the timeout with the statement_timeout field in the SQL warehouses API, Databricks SDKs, Terraform, or Declarative Automation Bundle · The Azure Databricks GitHub app will request permission to create and manage pull requests: In an upcoming change, the Azure Databricks GitHub app will request Read and write access to pull requests , so that tools like Genie Code and Genie ZeroOps can create and manage pull requests for you · Manage Lakewatch with the Databricks CLI (Beta): You can now manage Lakewatch from the command line with the lakewatch command group in the Databricks CLI. Use it to create and manage datasources, parsers, and detection rules, and to update per-cata · Databricks-to-Databricks Delta Sharing across regulatory domains is now generally available: Databricks-to-Databricks Delta Sharing across regulatory domains is now generally available. Commercial workspaces can share with AWS GovCloud, AWS GovCloud DoD, and Azure China. Sharing between Azure · ai_forecast version 2 is now generally available: Version 2 of the ai_forecast function is now generally available in Databricks SQL. A research-optimized time series foundation model po",
+   "preliminary_score": 88,
+   "preliminary_topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "databricks_data_engineering",
+    "metadata_lineage_catalogs",
+    "cicd_data_deployment",
+    "sql_spark_sql",
+    "veilige_agents"
+   ]
+  },
+  {
+   "id": "e7332a78bea8",
+   "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
+   "source_id": "claude_code_releases",
+   "source_name": "Claude Code releases (GitHub)",
+   "published_at": "2026-11-22T23:59:59Z",
+   "excerpt": "Weekoverzicht van 5 releases (v2.1.326 t/m v2.1.330). v2.1.326: What's changed Added support for turning on Code Mode while agent teams are enabled; if you already turned it on, sessions with teams on now start in Code Mode Added a startup warning when an --allowe · v2.1.327: What's changed Added a confirmation before /install-github-app changes a repository Added claude mcp add-json - to read the server's JSON from stdin, so tokens can stay off the command line; no · v2.1.328: What's changed Added auto mode for Claude Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude apps gateway; interactive sessions with no permission m · v2.1.329: What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed · v2.1.330: What's changed Added sign-in to organizations managed in Anthropic's Enterprise Admin Console: after claude auth login , Claude Code applies the organization's settings and uses its cloud provider or . Release notes: https://github.com/anthropics/claude-code/releases/tag/v2.1.326, https://github.com/anthropics/claude-code/releases/tag/v2.1.327, https://github.com/anthropics/claude-code/releases/tag/v2.1.328, https://github.com/anthropics/claude-code/releases/tag/v2.1.329, https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
+   "preliminary_score": 86,
+   "preliminary_topics": [
+    "ai_context_engineering",
+    "claude_ai_development"
+   ]
+  },
   {
    "id": "a196e7487b06",
    "title": "How partners use Genie's free tier on Azure Databricks",
@@ -10,7 +44,7 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-19T18:00:00Z",
    "excerpt": "Every Azure Databricks user gets $10 of free Genie usage each month, usage that many...",
-   "preliminary_score": 71,
+   "preliminary_score": 70,
    "preliminary_topics": [
     "ai_on_data_platform",
     "databricks_data_engineering"
@@ -24,7 +58,7 @@
    "source_name": "LangChain Blog",
    "published_at": "2026-11-21T16:45:08Z",
    "excerpt": "The knowledge factory is how LangChain keeps its agents' company knowledge current: agents flag what's missing, and a curator agent fixes it in the background.",
-   "preliminary_score": 71,
+   "preliminary_score": 70,
    "preliminary_topics": [
     "ai_agents_rag",
     "open_source_tools"
@@ -38,10 +72,36 @@
    "source_name": "Databricks Blog",
    "published_at": "2026-11-20T14:48:28Z",
    "excerpt": "Why we built itMost Databricks architecture talks used to start with the same slide: ingestion on the left...",
-   "preliminary_score": 59,
+   "preliminary_score": 58,
    "preliminary_topics": [
     "databricks_data_engineering",
     "data_ingestion"
+   ]
+  },
+  {
+   "id": "d380e24c1978",
+   "title": "Combining Fabric Semantic Views",
+   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
+   "source_id": "chris_webb",
+   "source_name": "Chris Webb's BI Blog",
+   "published_at": "2026-11-22T17:09:43Z",
+   "excerpt": "One of the most interesting things about Fabric semantic views (announced this week at Ignite) is the way you can combine multiple semantic views together, allowing you to reuse semantic modelling and metrics easily. This has been a long-standing ask for Power BI semantic models and while composite models were created to solve this problem, … Continue reading Combining Fabric Semantic Views →",
+   "preliminary_score": 57,
+   "preliminary_topics": [
+    "powerbi_semantic_models"
+   ]
+  },
+  {
+   "id": "9fa51654bab7",
+   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
+   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+   "source_id": "simon_spati",
+   "source_name": "Simon Späti (ssp.sh)",
+   "published_at": "2026-11-20T04:40:08Z",
+   "excerpt": "Let’s say you are new to data analytics and need a report or data analysis of a file, multiple files, or a query from a data warehouse. How do you start? What do you do? The common path is probably to ask ChatGPT or use the chatbox available, paste the exported CSV into Excel, and make some edits. But how do you share it, schedule it, and have a central pipeline for all, not manually in a spreadsheet function, and how would you scale the Excel sheet if it’s slow to crunch a lot of data?",
+   "preliminary_score": 54,
+   "preliminary_topics": [
+    "ai_agents_rag"
    ]
   },
   {
@@ -92,7 +152,7 @@
    "source_name": "Microsoft Fabric Blog",
    "published_at": "2026-11-17T22:18:17Z",
    "excerpt": "If you haven’t already, read Arun Ulag’s Ignite blog post to learn how Microsoft is bringing together databases, analytics, and intelligent applications across Azure and Microsoft Fabric. Over the past year, AI has moved from answering questions to doing the work. As the 2026 Microsoft Work Trend Index shows, people are now handing entire tasks to agents and directing several at once. Those agents plan, decide, and act across systems, with less human review at every step. Fabric IQ helps turn your organization's business knowledge into an advantage for people and agents. As agents take on more responsibility, that knowledge matters more than which model they run on. Every organization can use the same frontier models. What sets yours apart is its context layer: the definitions, metrics, relationships, and rules that describe how your business actually works. When you connect that context with knowledge from across the organization, people and agents can uncover insights and take informed action that reflects how the business operates. The organizations seeing results treat business context as shared infrastructure, built once and reused by every agent. Today at Microsoft Ignite 202",
-   "preliminary_score": 50,
+   "preliminary_score": 49,
    "preliminary_topics": [
     "powerbi_semantic_models"
    ]
