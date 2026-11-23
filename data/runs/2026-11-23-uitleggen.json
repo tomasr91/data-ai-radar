@@ -1,9 +1,9 @@
 {
  "task": "uitleggen",
  "started_at": "2026-11-23T03:12:43Z",
- "finished_at": "2026-11-23T03:23:25Z",
+ "finished_at": "2026-11-23T06:35:23Z",
  "status": "deels",
- "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend), 0 overgeslagen; 9 artikelen bleven op de werklijst omdat de pagina's niet te openen waren.",
+ "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend); 9 artikelen blijven op de werklijst, ook na een tweede poging bij het inhalen, omdat de pagina's niet te openen waren.",
  "counts": {
   "uitgelegd": 2,
   "overgeslagen": 0,
@@ -17,6 +17,7 @@
   "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: toestemming niet op tijd beantwoord).",
   "Via WebSearch niet gevonden, blijven op de werklijst: Genie free tier voor partners, LangChain knowledge factory, Databricks-referentiearchitecturen, Chris Webb over Fabric semantic views, Genie ZeroOps public beta, Genie One accuracy, OneLake (Ignite) en Fabric IQ (Ignite).",
   "Claude Code week 47 blijft op de werklijst: de release-pagina's waren niet te openen en de officiële changelog bevatte v2.1.326 t/m v2.1.330 nog niet.",
-  "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen."
+  "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen.",
+  "Inhalen (07:27): opnieuw geprobeerd; WebFetch weigerde de artikeladressen weer (PROVENANCE_REQUIRED) en WebSearch vond de artikelen zelf niet. Van Claude Code week 47 was alleen v2.1.329 volledig te lezen; v2.1.326 t/m v2.1.328 waren geblokkeerd en v2.1.330 stond nog niet op de releasepagina."
  ]
 }
