@@ -1,19 +1,19 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-22T05:13:40Z",
+ "generated_at": "2026-11-23T05:13:46Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology (sinds 11 november GA), metric views die vanzelf een Power BI-model worden, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. De Genie-app voor Teams is GA en haalt zijn betekenis uit Genie Ontology en metric views, met de rechten van wie de vraag stelt. Nieuw deze week: Genie Code zet met /importBI een hele map Power BI-rapporten om en maakt de maatstaven daarbij als metric views in Unity Catalog, waar AI ze ook kan lezen.",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology, vaste werkwijzen als skill in Unity Catalog, metric views die vanzelf een Power BI-model worden, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. Genie Code zet met /importBI hele mappen Power BI-rapporten om en maakt de maatstaven als metric views. Nieuw deze week: skills uit Unity Catalog zijn in bèta te delen via OpenSharing of de Marketplace, en MCP-tools in Genie Agents zijn GA.",
    "article_ids": [
+    "216eab677a97",
     "f4a1778578b7",
     "655888c78c57",
     "ee8f41fce441",
     "656e0d953ae9",
     "6ded4aa1cdcf",
-    "5c7174c45ad1",
-    "215f0a50b9ea"
+    "5c7174c45ad1"
    ],
    "topics": [
     "ai_context_engineering",
@@ -25,12 +25,13 @@
   {
    "id": "veilige-agents-sandbox-en-gateway",
    "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
-   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code kreeg een harde grens voor schrijven buiten je projectmap en sandbox-commando's vragen weer om toestemming, en Anthropic liet 1.000 agents samenwerken via alleen Git en een Postgres-database. Nieuw deze week: Unity Gateway Insights zet de sporen van coding agents als gewone tabel in Unity Catalog, met grants en row filters, en zoekt daarin waar tokens weglekken.",
+   "summary": "Anthropic, Databricks en Stripe werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code weigert met denyInsteadOfPrompting acties die niet vooraf zijn toegestaan, en sandbox-commando's vragen weer om toestemming; Genie werkt met de rechten van de gebruiker en beheerders kiezen welke acties eerst goedgekeurd moeten worden; Stripe laat gegenereerde code in een sandbox draaien, buiten de agent zelf. Nieuwste stuk: Unity Gateway Insights zet de sporen van coding agents als gewone tabel in Unity Catalog, met grants en row filters, en zoekt daarin waar tokens weglekken.",
    "article_ids": [
     "233bf8a439eb",
     "3e9bbba1efea",
-    "62afb1e0ab94",
-    "6df581b9d8ed"
+    "ad991551648f",
+    "0b6411ed8e60",
+    "53acc8538264"
    ],
    "topics": [
     "claude_ai_development",
@@ -41,10 +42,11 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven, en wat een Claude-agent deed staat nu als tabel in Unity Catalog. Advancing Analytics vergeleek beslismodellen op 300 openbare testgesprekken; ai_decide scoorde lager bij fijne keuzes. Nieuw deze week: het Claude Code-team laat Claude zijn eigen werk bewijzen met end-to-end-, property- en differential tests, en Claude testte Claude Docs met een 'chaos loop' tegen vooraf vastgelegde regels.",
+   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven, en wat een Claude-agent deed staat nu als tabel in Unity Catalog. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, en het Claude Code-team laat Claude zijn eigen werk bewijzen met tests. Nieuw deze week: in een voorbeeld van Späti las een eerste run de datums in een bestand verkeerd en raakte 61 procent van de rijen kwijt; pas een controle op het jaar ervoor bracht dat aan het licht.",
    "article_ids": [
-    "069078b2b4e3",
+    "9fa51654bab7",
     "760c502508bd",
+    "069078b2b4e3",
     "ea585dd9c0fa",
     "d5f14a6242b0",
     "a9b6458ba033",
