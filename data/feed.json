@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T05:14:36.142690Z",
+ "generated_at": "2026-11-24T06:33:29.425632Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
@@ -742,7 +742,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -1097,7 +1097,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1306,7 +1306,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.01,
@@ -2232,7 +2232,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.67,
+    "recency": 0.66,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2796,7 +2796,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -4869,7 +4869,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -4982,7 +4982,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -5471,7 +5471,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.06,
@@ -5946,7 +5946,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.04,
@@ -6176,7 +6176,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.36,
+    "recency": 0.35,
     "source": 0.68,
     "quality": 0.53,
     "feedback": 0.01,
@@ -13808,6 +13808,29 @@
      "begrippen_aangevuld": 0
     }
    },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen is; 5 nieuwe keuzes klaargezet.",
+    "finished_at": "2026-11-24T04:14:47Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5
+    }
+   },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak: de 2 overgebleven Fabric-artikelen opnieuw geprobeerd, maar ze waren weer niet bereikbaar; verdiepen en overzicht waren al klaar.",
+    "finished_at": "2026-11-24T06:33:11Z",
+    "problems": [
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar via WebSearch of WebFetch; blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar via WebSearch of WebFetch; blijft op de werklijst."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "onbereikbaar": 2
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "9 artikelen vol uitgelegd (3 met voorbeeld, alle via WebSearch geopend), 7 overgeslagen (4 zonder openen); 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
@@ -13817,7 +13840,8 @@
      "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); alle gelezen artikelen zijn via WebSearch geopend.",
      "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
      "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
-     "Claude Code week 47: de release notes van 2.1.326 en 2.1.330 en het einde van 2.1.328/2.1.329 waren niet volledig leesbaar."
+     "Claude Code week 47: de release notes van 2.1.326 en 2.1.330 en het einde van 2.1.328/2.1.329 waren niet volledig leesbaar.",
+     "Inhaalrun 07:27: beide Fabric-artikelen opnieuw geprobeerd (WebSearch vond ze niet, WebFetch gaf PROVENANCE_REQUIRED); ze blijven op de werklijst."
     ],
     "counts": {
      "uitgelegd": 9,
@@ -13826,16 +13850,6 @@
      "via_websearch": 9,
      "zonder_openen_overgeslagen": 4,
      "onbereikbaar": 2
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen is; 5 nieuwe keuzes klaargezet.",
-    "finished_at": "2026-11-24T04:14:47Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
     }
    }
   }
@@ -13920,7 +13934,7 @@
    "dbt_labs_blog": 0.87,
    "databricks_blog": 0.95,
    "powerbi_blog": 0.28,
-   "dbt_developer_blog": 0.65,
+   "dbt_developer_blog": 0.64,
    "claude_code_releases": 0.26,
    "azure_databricks_release_notes": 0.55,
    "fabric_blog": -0.07,
@@ -14447,14 +14461,6 @@
     "excluded_by": []
    },
    {
-    "title": "Operate Claude Managed Agents inside your security perimeter",
-    "source_id": "claude_blog",
-    "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-    "relevance_score": 80,
-    "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Agent memory pipelines are in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
@@ -14541,6 +14547,14 @@
     "title": "Claude Code in the cloud: a field guide to cloud sessions",
     "source_id": "claude_blog",
     "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
+    "relevance_score": 79,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Operate Claude Managed Agents inside your security perimeter",
+    "source_id": "claude_blog",
+    "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
     "relevance_score": 79,
     "decision": "area_cap",
     "excluded_by": []
