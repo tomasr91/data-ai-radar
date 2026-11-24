@@ -1,0 +1,76 @@
+{
+  "format_version": 2,
+  "article_id": "a53e25c34fef",
+  "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
+  "headline": "Tags uit Unity Catalog reizen mee naar andere tools via Iceberg",
+  "summary": "Databricks voegt 'catalog labels' toe aan de Iceberg REST-API, zodat tags uit Unity Catalog ook in andere catalogi, engines en agents te lezen zijn. In Unity Catalog heet dat Tag Exchange (bèta).",
+  "story": [
+    "Databricks werkte met de Apache Iceberg-gemeenschap aan een kleine maar slimme uitbreiding: catalog labels. Daarmee kan een catalogus zijn tags meegeven aan andere tools, via de Iceberg REST Catalog-API. Unity Catalog doet dat onder de naam Tag Exchange, nu in bèta.",
+    "Een catalog label is een simpel paar van sleutel en waarde, zoals domain=customer_support. Het staat op een tabel of kolom. Als een andere tool een tabel opvraagt via de REST-API, krijgt hij die labels mee in het antwoord. De standaard legt alleen het formaat vast, niet welke woorden je gebruikt. Elke ontvangende tool bepaalt zelf wat hij ermee doet.",
+    "Het voorbeeld laat zien waarom dat handig is. Een databeheerder zet op de tabel support_cases het domein en de tag 'gecertificeerd', en op een kolom het label 'samenvatting van een supportzaak'. Een agent in een andere tool kiest dan de juiste tabel op domein en certificering, en vindt via het kolomlabel de samenvattingen. Een governance-tool kan een label voor gevoelige data koppelen aan een eigen maskeerregel.",
+    "Voor jouw werk is dit interessant omdat tags in Unity Catalog nu niet meer achterblijven als data een andere engine in gaat. Wie metadata als context voor AI gebruikt, krijgt die context zo ook buiten Databricks. Voor Dataflow is het hooguit handig om je fase 2 nog eens langs te lopen: tags die je daar zette, kunnen zo later meereizen."
+  ],
+  "key_facts": [
+    "Aangekondigd op 24 november 2026 door Databricks.",
+    "Catalog labels zijn sleutel-waardeparen op tabel- en kolomniveau in een optioneel veld 'labels' in het LoadTable-antwoord van de Iceberg REST Catalog-API.",
+    "Unity Catalog stelt zijn tabel- en kolomtags beschikbaar als catalog labels via Tag Exchange, nu in bèta; aanzetten via 'Tag Exchange via Iceberg REST Catalog' in de Previews-portal.",
+    "PyIceberg krijgt ondersteuning voor catalog labels in de volgende release, 0.13.",
+    "Genoemd als partijen achter het idee: onder meer Google Cloud, Salesforce, ClickHouse, Atlan, Collibra, DataHub en Immuta.",
+    "Of de wijziging al in een uitgebrachte versie van de Iceberg-specificatie zit, staat niet in het artikel."
+  ],
+  "personal_relevance": "Tags en certificering die je in Unity Catalog zet, worden zo bruikbare context voor agents en tools buiten Databricks.",
+  "experiment": "Zet in je Free Edition-catalogus twee tags op een tabel en een kolom en kijk of de Previews-portal Tag Exchange aanbiedt. Zo ja: lees de tabel daarna met PyIceberg (vanaf 0.13) en bekijk de labels.",
+  "limitations": [
+    "Tag Exchange is in bèta; of het in Azure Databricks of Free Edition beschikbaar is, zegt het artikel niet.",
+    "De codevoorbeelden in het artikel waren niet leesbaar; de precieze API-vorm staat in de documentatie.",
+    "Hoe ontvangende tools labels interpreteren, regelt de standaard niet."
+  ],
+  "availability_status": "preview",
+  "official_docs": [],
+  "topics": [
+    "metadata_lineage_catalogs",
+    "data_governance_privacy",
+    "ai_context_engineering"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.5,
+    "novelty": 0.8
+  },
+  "development_key": "uc-catalog-labels-iceberg-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.65,
+    "why": "Unity Catalog-metadata als context voor agents, zoals je duimen bij Genie Ontology en synoniemen per veld."
+  },
+  "labels": [
+    "catalog-labels",
+    "iceberg-rest-catalog",
+    "agent-context-laag"
+  ],
+  "project_ref": {
+    "fase": 2,
+    "quote": "handig om je fase 2 nog eens langs te lopen",
+    "why": "Fase 2 gaat over tags en beschrijvingen in Unity Catalog; die kunnen via catalog labels meereizen."
+  },
+  "terms": [
+    {
+      "term": "catalog labels",
+      "explanation": "Sleutel-waardeparen op een tabel of kolom die een catalogus via de Iceberg REST-API meegeeft aan andere tools, zodat tags niet achterblijven."
+    },
+    {
+      "term": "Iceberg REST Catalog-API",
+      "explanation": "Een open standaard waarmee engines een catalogus vragen welke tabellen er zijn en waar hun bestanden staan, los van de leverancier."
+    },
+    {
+      "term": "Tag Exchange",
+      "explanation": "De functie in Unity Catalog die tabel- en kolomtags als catalog labels doorgeeft via de Iceberg REST-API."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:27:44Z",
+  "prompt_version": "taak-v2"
+}

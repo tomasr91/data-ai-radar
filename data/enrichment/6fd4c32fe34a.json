@@ -1,0 +1,92 @@
+{
+  "format_version": 2,
+  "article_id": "6fd4c32fe34a",
+  "url": "https://huggingface.co/blog/agentic-evals",
+  "headline": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents",
+  "summary": "Een stappenplan van Hugging Face voor een eigen agent-eval: van een smalle claim via controles op valsspelen tot rapporteren met pass@k en pass^k.",
+  "story": [
+    "Hugging Face schreef een uitgebreide handleiding voor het bouwen van een test voor AI-agents (agentic evaluation). De aanleiding: kleine fouten in een test verschuiven de uitkomst flink. In een audit van Terminal-Bench scheelde de score tot bijna 30 procentpunt, alleen doordat het harnas om hetzelfde model anders was.",
+    "De onderdelen zijn steeds dezelfde. Een taak geeft de opdracht. Het harnas zet model en tools in een vaste omgeving. Een verifier beoordeelt de eindtoestand, dus wat er echt is opgeslagen, niet wat de agent zegt. Elke poging laat een spoor (trace) achter dat je later naleest.",
+    "Het voorbeeld is een natuurkundetaak: pieken fitten in een spectrum. Eerst draaien de auteurs drie controles: de echte oplossing moet slagen, een agent die niets doet moet zakken, en een sluiproute moet zakken. Die sluiproute slaagde toch op alle 8 taken, zonder echt te fitten. Daarom kwamen er extra controles per piek bij. Zo'n 'kan de test bedrogen worden?'-check is het nuttigste idee uit het stuk.",
+    "Daarna meet je op twee manieren. Pass@k telt een taak als geslaagd als minstens één van k pogingen goed is. Pass^k vraagt dat alle pogingen goed zijn. Bij gpt-oss-120b was dat 7 van 8 tegen 1 van 8: het model kan het, maar niet betrouwbaar. Voor een data-assistent die collega's één keer iets vragen, is pass^k de eerlijke maat.",
+    "Tot slot vraagt onderhoud aandacht. Leg elke correctie vast: wat er mis was, hoe je het vond en of oude scores nog vergelijkbaar zijn. Voor je eigen evals voor een AI-assistent op dbt-metadata kun je dit stappenplan bijna letterlijk volgen, met verzonnen data waarvan je het goede antwoord kent."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 23 november 2026 door Avijit Ghosh, Ben Burtenshaw en Irene Solaiman (Hugging Face).",
+    "Een Terminal-Bench-audit (ICML 2026) vond tot 29,9 procentpunt verschil in nauwkeurigheid als alleen het harnas veranderde.",
+    "Controles voor een eval: de referentieoplossing slaagt, een agent die niets doet zakt, een sluiproute zakt; in het voorbeeld slaagde de sluiproute op alle 8 taken, waarna fitcontroles per piek zijn toegevoegd.",
+    "gpt-oss-120b haalde 11 van 24 pogingen (8 taken x 3); pass@3 was 7/8 taken, pass^3 1/8 taken; gemiddelde 0,46 met een standaardfout van ongeveer 0,11.",
+    "Terminal-Bench 2.1 herstelde 28 van 89 taken na meldingen van gebruikers; OpenAI vond in een audit van SWE-bench Verified problemen in 59,4% van 138 onderzochte taken.",
+    "Volgens het stuk wordt 98,2% van de scores van model-benchmarks door maar één partij gerapporteerd."
+  ],
+  "personal_relevance": "Als je een AI-assistent op je eigen data wilt testen, geeft dit stappenplan je een manier om te voorkomen dat je test zelf de fout is.",
+  "experiment": "Maak vijf vragen over een verzonnen dbt-project met een vast goed antwoord. Laat Claude ze elk drie keer beantwoorden en reken pass@3 en pass^3 uit. Voeg daarna één 'sluiproute'-vraag toe en kijk of je controle die vangt.",
+  "limitations": [
+    "Het tweede deel van het stuk (latere stappen en de bijlage met commando's) was niet volledig letterlijk te lezen.",
+    "Het voorbeeld is een natuurkundetaak; vertalen naar data-vragen moet je zelf doen.",
+    "Het stuk gaat over open evals op de Hugging Face Hub; voor interne evals met werkdata gelden andere afwegingen."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Harbor-documentatie",
+      "url": "https://docs.harborframework.com/"
+    },
+    {
+      "label": "raman-lab dataset",
+      "url": "https://huggingface.co/datasets/burtenshaw/raman-lab"
+    },
+    {
+      "label": "Agent traces op de Hub",
+      "url": "https://huggingface.co/docs/hub/en/agent-traces"
+    }
+  ],
+  "topics": [
+    "ai_evaluation_observability",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.6,
+    "novelty": 0.6
+  },
+  "development_key": "agentic-evals-huggingface-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "praktisch",
+  "fit": {
+    "score": 0.55,
+    "why": "Praktisch over evals, een onderwerp uit je profiel, maar met een natuurkundevoorbeeld in plaats van data; nog geen duimen bij evals."
+  },
+  "labels": [
+    "agent-evals",
+    "benchmark-kwaliteit"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "harnas",
+      "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+      "term": "verifier",
+      "explanation": "Het deel van een test dat na afloop controleert of de agent het goed deed, door te kijken naar wat er echt is opgeslagen of veranderd."
+    },
+    {
+      "term": "Pass@k",
+      "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
+    },
+    {
+      "term": "Pass^k",
+      "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
+    },
+    {
+      "term": "trace",
+      "explanation": "Een spoor van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt het om fouten te zoeken."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:27:44Z",
+  "prompt_version": "taak-v2"
+}

@@ -1,0 +1,89 @@
+{
+  "format_version": 2,
+  "article_id": "408df9c189db",
+  "url": "https://www.databricks.com/blog/genie-zeroops-now-public-beta-autonomous-agent-fixes-data-pipelines-lessons-80000-customer",
+  "headline": "Genie ZeroOps zoekt zelf de oorzaak van kapotte pipelines, nu in bèta",
+  "summary": "De agent van Databricks die pipelines bewaakt en reparaties voorstelt, is publieke bèta. Nieuw: een gedeelde inbox, eigen instructies en een pull request met één klik.",
+  "story": [
+    "Databricks zette Genie ZeroOps open als publieke bèta. Het is een agent die jobs, pipelines en tabellen bewaakt en bij een probleem zelf de oorzaak zoekt. Volgens Databricks is hij verbeterd op basis van meer dan 80.000 problemen bij klanten in de besloten testfase. De belangrijkste les: meer dan de helft van die problemen vroeg kennis die alleen het eigen bedrijf heeft.",
+    "De agent werkt in vijf stappen. Hij ziet harde fouten in jobs en stille problemen, zoals een tabel die te laat of te leeg is. Dan onderzoekt hij logs, code, metadata van tabellen en herkomst (lineage), en draait SQL-query's om de oorzaak te vinden. Een voorgestelde oplossing test hij eerst in een sandbox met unittests en een proefrun (dry run). Daarna stuurt hij een melding naar Slack, Teams of PagerDuty.",
+    "Nieuw in deze bèta is dat een team samenwerkt in één gedeelde inbox. Je geeft de agent eigen instructies mee, zoals 'deze bron valt vaak even uit' of 'gebruik deze naamgeving'. Bij jobs die in Git staan maakt hij met één klik een pull request. ZeroOps wijzigt nooit zelf code of data zonder jouw goedkeuring, en houdt zich aan de rechten in Unity Catalog.",
+    "Voor Dataflow past dit bij fase 8, waar je monitoring en foutdiagnose van je jobs regelt. Nu je in fase 5 je eerste DAB-job bouwt, is het goed om te weten dat zo'n agent bestaat. Of ZeroOps in Free Edition of op Azure werkt, staat niet in het artikel. De documentatie die het noemt is die voor AWS."
+  ],
+  "key_facts": [
+    "Genie ZeroOps is sinds 19 november 2026 publieke bèta; een workspacebeheerder zet het aan via de Previews-pagina.",
+    "Gebaseerd op meer dan 80.000 echte problemen bij honderden klanten in de besloten testfase; meer dan de helft vroeg organisatie-specifieke kennis.",
+    "Vijf stappen: detecteren, onderzoeken (logs, code, tabelmetadata, lineage, SQL), verifiëren (unittests en dry runs in een sandbox), melden (Slack, Teams, PagerDuty) en herstellen (voorstel, of automatisch een pull request bij Git-jobs).",
+    "Nieuw in de bèta: gedeelde inbox, meldingen met filters, eigen agentinstructies en pull requests met één klik.",
+    "Volgens Databricks wijzigt ZeroOps nooit code of data zonder directe goedkeuring, volgt het de rechten in Unity Catalog en worden persoonsgegevens (PII) uit meldingen gehaald.",
+    "Het artikel noemt geen prijs en zegt niets over Azure of Free Edition; de gelinkte documentatie is die voor AWS."
+  ],
+  "personal_relevance": "Het laat zien welke informatie een agent nodig heeft om pipelinefouten te diagnosticeren: precies de bouwstenen voor je eigen platformagent later.",
+  "experiment": "Kijk in de Previews-pagina van je Free Edition-workspace of Genie ZeroOps erbij staat. Zo ja: laat je KNMI-job bewust falen (bijvoorbeeld een verkeerde kolomnaam) en bekijk welke oorzaak en welk voorstel ZeroOps geeft.",
+  "limitations": [
+    "De cijfers en de werkwijze komen van Databricks zelf; onafhankelijke metingen ontbreken.",
+    "Beschikbaarheid op Azure en in Free Edition is niet bevestigd.",
+    "De les over 80.000 problemen wordt niet verder onderbouwd met een verdeling of voorbeelden."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Genie ZeroOps: aan de slag",
+      "url": "https://docs.databricks.com/aws/en/zeroops/get-started"
+    },
+    {
+      "label": "Gegevensverwerking door ZeroOps",
+      "url": "https://docs.databricks.com/aws/en/zeroops/#data-processing"
+    }
+  ],
+  "topics": [
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "ai_on_data_platform"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.6,
+    "novelty": 0.6
+  },
+  "development_key": "genie-zeroops",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.65,
+    "why": "Een Genie-agent die zelf werk doet met goedkeuring, zoals je duim omhoog bij Genie als agent voor lange taken."
+  },
+  "labels": [
+    "genie-zeroops",
+    "foutanalyse",
+    "human-in-the-loop"
+  ],
+  "project_ref": {
+    "fase": 8,
+    "quote": "Voor Dataflow past dit bij fase 8, waar je monitoring en foutdiagnose van je jobs regelt",
+    "why": "Fase 8 gaat over monitoring en foutdiagnose met een agent."
+  },
+  "terms": [
+    {
+      "term": "Genie ZeroOps",
+      "explanation": "Een Genie-functie in Beta die jobs, pipelines en tabellen bewaakt, bij fouten of kwaliteitsproblemen de oorzaak zoekt en een oplossing voorstelt."
+    },
+    {
+      "term": "dry run",
+      "explanation": "Een proefrun: je laat iets draaien zonder het echt toe te passen, om te zien of het zou werken."
+    },
+    {
+      "term": "sandbox",
+      "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+      "term": "lineage",
+      "explanation": "De herkomst van data: uit welke tabellen en stappen een tabel of kolom is ontstaan, en waar hij weer naartoe gaat."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:28:34Z",
+  "prompt_version": "taak-v2"
+}

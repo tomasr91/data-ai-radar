@@ -1,0 +1,120 @@
+{
+  "format_version": 2,
+  "article_id": "9204ea2d5973",
+  "url": "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context",
+  "headline": "Genie One rekent pas goed met vaste definities én teamagents samen",
+  "summary": "Databricks testte Genie One op 125 verzekeringsvragen. Alleen tabellen: 64% goed. Met metric views, certificering en teamagents samen: 95%.",
+  "story": [
+    "Databricks testte hoe nauwkeurig Genie One is op een verzonnen autoverzekeraar. De vraag: helpen goed ingerichte teamagents, of een beheerde laag met vaste definities in Unity Catalog? Het antwoord: allebei, maar voor verschillende vragen. Met alleen tabellen beantwoordde Genie One 64% van 125 vragen goed. Met agents en de beheerde laag samen was dat 95%.",
+    "De beheerde laag bestond uit vier onderdelen. Gecertificeerde metric views leggen elke maatstaf één keer vast, zoals drie versies van de schadequote (loss ratio). Certificering markeert de echte tabellen en zet kopieën als 'verouderd'. Domeinen en subdomeinen scheiden gedeelde feiten van teamkennis. Pages leggen in gewone taal uit wanneer je welke definitie gebruikt. Daarnaast hadden vier teamagents eigen regels, voorbeeldvragen en pdf's.",
+    "De uitkomsten laten zien wie wat oplost. Bij vragen over definities scoorde de beheerde laag 100%, ook zonder agents. Bij vragen die een document én data nodig hadden, deden de agents het werk: 92% tegen 42% zonder agents. Een valkuil: beantwoordt Genie One een vraag zelf, zonder naar een agent door te sturen, dan gebruikt hij de regels van die agent niet. Bij definities was dat 93% goed via een agent en maar 34% zonder.",
+    "Het sterkste argument zit in onderhoud. Toen het underwritingteam juridische kosten aan de schadequote toevoegde, pasten de onderzoekers één metric view en één zin op een Page aan. Alle 12 betrokken antwoorden veranderden mee. Zonder beheerde laag hadden ze zeven plekken in vier agents moeten aanpassen. Voor je AI-contextlaag is dit een sterk pleidooi om definities in metric views vast te leggen, niet in losse instructies per assistent.",
+    "Wel is dit een test van Databricks zelf, op verzonnen data. Twee AI-beoordelaars van verschillende modelfamilies stelden vast of een antwoord goed was. Een kleinere controle bij een verzonnen winkelketen liet hetzelfde patroon zien: van 54% naar 82%."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 19 november 2026; test met een verzonnen autoverzekeraar (8.000 polissen, 7.482 claims), 125 vragen met antwoorden die los in SQL zijn berekend.",
+    "Nauwkeurigheid over alle 125 vragen: alleen tabellen 64%, teamagents 83%, beheerde laag zonder agents 83%, agents plus beheerde laag 95%.",
+    "Definitievragen: 100% met de beheerde laag (met of zonder agents); vragen met document plus data: 92% met agents, 42% met alleen de beheerde laag, 97% samen.",
+    "Bij definitievragen via een teamagent 93% goed, zonder doorsturen 34%; met de beheerde laag in beide gevallen 100%.",
+    "Na een definitiewijziging (juridische kosten toegevoegd) volstond één aanpassing in een metric view en één zin in een Page; alle 12 betrokken antwoorden volgden.",
+    "Elke vraag is 3 keer gesteld; twee AI-beoordelaars uit verschillende modelfamilies waren het eens over 95 tot 99% van de antwoorden. Genie Ontology is algemeen beschikbaar."
+  ],
+  "personal_relevance": "Dit onderbouwt met cijfers waarom definities in metric views en Pages horen als je AI wilt laten antwoorden op data uit Gold.",
+  "experiment": "Maak in Free Edition een metric view met twee definities van één maatstaf op verzonnen data. Stel Genie dezelfde vraag met en zonder metric view en tel hoe vaak het antwoord klopt bij drie pogingen.",
+  "limitations": [
+    "Onderzoek door Databricks zelf, op verzonnen data van één soort bedrijf.",
+    "Nauwkeurigheid is bepaald door AI-beoordelaars met vaste regels, niet door mensen.",
+    "Voor de meeste genoemde onderdelen (Pages, domeinen, certificering) noemt het artikel geen status."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Metric views",
+      "url": "https://docs.databricks.com/uc-semantics/metric-views/"
+    },
+    {
+      "label": "Domeinen en subdomeinen",
+      "url": "https://docs.databricks.com/uc-semantics/domains"
+    },
+    {
+      "label": "Pages",
+      "url": "https://docs.databricks.com/uc-semantics/pages"
+    },
+    {
+      "label": "Genie Ontology-documentatie",
+      "url": "https://docs.databricks.com/aws/en/genie/genie-ontology"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "ai_evaluation_observability"
+  ],
+  "quality": {
+    "depth": 0.9,
+    "practicality": 0.8,
+    "novelty": 0.7
+  },
+  "development_key": "genie-one-nauwkeurigheid-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.85,
+    "why": "Vaste definities als context voor Genie, met cijfers; lijkt sterk op je duimen bij Noonan, synoniemen per veld en metric views."
+  },
+  "labels": [
+    "genie-one",
+    "metric-views",
+    "vaste-metric-definities",
+    "agent-evals"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "Genie One",
+      "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+    },
+    {
+      "term": "metric views",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+      "term": "Certificering",
+      "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
+    },
+    {
+      "term": "Pages",
+      "explanation": "Pagina's in Unity Catalog met de officiële uitleg van één bedrijfsbegrip, met eigenaar, synoniemen en gekoppelde tabellen. Genie gebruikt ze als gezaghebbende bron."
+    }
+  ],
+  "showcase": {
+    "caption": "Waarom één vaste definitie telt: dezelfde schadequote, berekend zoals Finance en zoals Underwriting (met juridische kosten). Het getal en de stijging verschillen per definitie.",
+    "language": "sql",
+    "code": "SELECT c.jaar,\n  ROUND(SUM(schade) / SUM(verdiende_premie), 3) AS loss_ratio_finance,\n  ROUND(SUM(schade + juridische_kosten) / SUM(verdiende_premie), 3) AS loss_ratio_underwriting\nFROM claims c\nJOIN premie p USING (jaar, kwartaal)\nGROUP BY c.jaar\nORDER BY c.jaar;",
+    "result": {
+      "columns": [
+        "jaar",
+        "loss_ratio_finance",
+        "loss_ratio_underwriting"
+      ],
+      "rows": [
+        [
+          2024,
+          0.568,
+          0.615
+        ],
+        [
+          2025,
+          0.583,
+          0.659
+        ]
+      ]
+    },
+    "note": "Zo werkt het idee in gewone SQL; in Databricks leg je elke definitie vast als maatstaf in een metric view (YAML), zie de documentatie. De precieze formules uit de test van Databricks staan niet in het artikel."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:28:34Z",
+  "prompt_version": "taak-v2"
+}
