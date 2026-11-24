@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T03:28:55.986675Z",
+ "generated_at": "2026-11-24T03:29:43.936218Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
@@ -13792,65 +13792,26 @@
   }
  ],
  "runs": {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "tasks": {
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (veilige agents weer met genoeg artikelen); geen interesseverzoeken of toelichtingen; geen begrippen nodig.",
-    "finished_at": "2026-11-23T05:14:07Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
-    }
-   },
    "uitleggen": {
     "status": "deels",
-    "summary": "2 artikelen vol uitgelegd (1 met voorbeeld, 1 via WebSearch geopend); 9 artikelen blijven op de werklijst, ook na een tweede poging bij het inhalen, omdat de pagina's niet te openen waren.",
-    "finished_at": "2026-11-23T06:35:23Z",
+    "summary": "9 artikelen vol uitgelegd (3 met voorbeeld, alle via WebSearch geopend), 7 overgeslagen (4 zonder openen); 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
+    "finished_at": "2026-11-24T03:28:50Z",
     "problems": [
-     "Vers ophalen aangevraagd; de feed werd binnen een paar minuten opnieuw opgehaald.",
-     "Dataflow: fase 5 bezig, zonder stapnaam.",
-     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED: toestemming niet op tijd beantwoord).",
-     "Via WebSearch niet gevonden, blijven op de werklijst: Genie free tier voor partners, LangChain knowledge factory, Databricks-referentiearchitecturen, Chris Webb over Fabric semantic views, Genie ZeroOps public beta, Genie One accuracy, OneLake (Ignite) en Fabric IQ (Ignite).",
-     "Claude Code week 47 blijft op de werklijst: de release-pagina's waren niet te openen en de officiële changelog bevatte v2.1.326 t/m v2.1.330 nog niet.",
-     "Azure Databricks week 47 is uitgelegd uit de excerpt van het weekoverzicht; de pagina zelf was niet te openen.",
-     "Inhalen (07:27): opnieuw geprobeerd; WebFetch weigerde de artikeladressen weer (PROVENANCE_REQUIRED) en WebSearch vond de artikelen zelf niet. Van Claude Code week 47 was alleen v2.1.329 volledig te lezen; v2.1.326 t/m v2.1.328 waren geblokkeerd en v2.1.330 stond nog niet op de releasepagina."
+     "add_repo was in deze sessie niet beschikbaar als tool; de privé-repository stond al gekloond, dus de Dataflow-stap is wel uitgevoerd.",
+     "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); alle gelezen artikelen zijn via WebSearch geopend.",
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
+     "Claude Code week 47: de release notes van 2.1.326 en 2.1.330 en het einde van 2.1.328/2.1.329 waren niet volledig leesbaar."
     ],
     "counts": {
-     "uitgelegd": 2,
-     "overgeslagen": 0,
-     "met_voorbeeld": 1,
-     "via_websearch": 1,
-     "niet_bereikbaar": 9
-    }
-   },
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen ontbrak: opnieuw geprobeerd, maar de 9 artikelen op de werklijst waren nog steeds niet te openen, dus er is niets nieuws uitgelegd.",
-    "finished_at": "2026-11-23T06:35:23Z",
-    "problems": [
-     "WebFetch weigerde alle artikeladressen (PROVENANCE_REQUIRED); via WebSearch werden de artikelen zelf niet gevonden.",
-     "Claude Code week 47: alleen v2.1.329 te lezen, de rest geblokkeerd of nog niet gepubliceerd.",
-     "Dataflow: fase 5 bezig, geen nieuwe stapnaam; voortgang ongewijzigd."
-    ],
-    "counts": {
-     "ingehaald": 0,
-     "uitgelegd": 0,
-     "overgeslagen": 0,
-     "niet_bereikbaar": 9
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen was; 5 nieuwe keuzes klaargezet.",
-    "finished_at": "2026-11-23T04:14:04Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
+     "uitgelegd": 9,
+     "overgeslagen": 7,
+     "met_voorbeeld": 3,
+     "via_websearch": 9,
+     "zonder_openen_overgeslagen": 4,
+     "onbereikbaar": 2
     }
    }
   }
