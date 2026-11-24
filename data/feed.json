@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T03:13:08.613617Z",
+ "generated_at": "2026-11-24T03:27:05.314240Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-23T03:23:10Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-24T03:26:39Z",
  "last_successful_update": "2026-11-24T03:13:08.613617Z",
  "groups": [
   {
@@ -465,8 +465,8 @@
   "216eab677a97",
   "9fa51654bab7",
   "905562b7af62",
-  "3e9bbba1efea",
-  "5c7174c45ad1"
+  "d380e24c1978",
+  "3e9bbba1efea"
  ],
  "articles": [
   {
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -823,6 +823,134 @@
    }
   },
   {
+   "id": "d380e24c1978",
+   "title": "Combining Fabric Semantic Views",
+   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
+   "source_id": "chris_webb",
+   "published_at": "2026-11-22T17:09:43Z",
+   "fetched_at": "2026-11-23T03:13:13.044105Z",
+   "summary": "Chris Webb laat zien hoe je in Fabric twee semantic views combineert tot één Power BI-model, met een nieuwe maatstaf die over beide heen rekent.",
+   "personal_relevance": "Herbruikbare maatstaven over modellen heen raken direct aan je Power BI-werk en aan de vraag waar je definities vastlegt: in Fabric of in Unity Catalog.",
+   "experiment": "Volg Webbs voorbeeld in een Fabric-proefomgeving met twee kleine verzonnen tabellen (verkoop en targets) en kijk of de gecombineerde maatstaf in een rapport hetzelfde getal geeft als een handmatige berekening.",
+   "limitations": [
+    "De functie is net aangekondigd; de status (preview of GA) staat niet in de post.",
+    "Webb werkt bij Microsoft; de post is wel een eigen proef met concrete stappen.",
+    "Of semantic views ook met data uit Databricks of Unity Catalog werken, zegt de post niet."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Fabric semantic views (overzicht)",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-overview"
+    },
+    {
+     "label": "Een view hergebruiken in een ander lakehouse",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-consume#reuse-a-view-in-another-lakehouse"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling"
+   ],
+   "groups": [
+    "overig",
+    "architectuur"
+   ],
+   "relevance_score": 94,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.93,
+    "source": 0.68,
+    "quality": 0.7,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:26:39Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren",
+   "story": [
+    "Microsoft kondigde op Ignite de Fabric semantic views aan. Chris Webb, die bij Microsoft in het Fabric CAT-team werkt, liet een week later zien wat hij er het mooiste aan vindt: je kunt ze combineren. Zo hergebruik je tabellen, relaties en maatstaven uit een bestaand model, zonder data of definities te kopiëren.",
+    "Een semantic view beschrijf je in YAML: welke tabellen erin zitten, hoe ze samenhangen en welke maatstaven er zijn, in DAX. Fabric maakt daar een Direct Lake-model van. In Webbs voorbeeld beschrijft de ene view de verkoop, met de maatstaf SalesAmount. Een tweede view beschrijft de targets, met SalesTarget. Beide staan in een eigen lakehouse.",
+    "Dan komt de truc. In een derde lakehouse maakt hij snelkoppelingen (shortcuts) naar de tabellen en naar de twee views. De nieuwe view voegt alleen één relatie toe, van targets naar medewerker, en één maatstaf: SalesPctTarget, met DIVIDE([SalesAmount],[SalesTarget]). Het resultaat is één model met alles uit beide views erin. Een rapport erop rekent over beide lakehouses heen.",
+    "Webb vindt dit een oplossing voor een oud probleem. Samengestelde modellen (composite models) moesten maatstaven al herbruikbaar maken, maar dat lukte volgens hem nooit echt. Voor jou lijkt het op metric views in Unity Catalog: één keer definiëren, overal hergebruiken. Het verschil is dat dit binnen Fabric leeft. Webb noemt het zelf nog 'heel vroeg', en een lezer kreeg het combineren niet meteen werkend."
+   ],
+   "key_facts": [
+    "Fabric semantic views zijn aangekondigd op Microsoft Ignite in november 2026; de post is van 22 november 2026.",
+    "Een semantic view wordt in YAML beschreven met datasets, relationships en metrics; de metrics in het voorbeeld zijn in DAX.",
+    "Elke semantic view levert een Direct Lake semantisch model op.",
+    "Je combineert views door in een nieuw lakehouse shortcuts naar de tabellen en naar bestaande semantic views te maken; de nieuwe view voegt alleen extra relaties en metrics toe.",
+    "Voorbeeldmaatstaf: SalesPctTarget = DIVIDE([SalesAmount],[SalesTarget]), die maatstaven uit beide onderliggende views gebruikt.",
+    "Webb: 'It's still very early days for semantic views'; een lezer meldde problemen, waarop Webb zei dat hij soms het model moest verwijderen en opnieuw publiceren."
+   ],
+   "article_type": "opinie",
+   "author": "Chris Webb, Fabric CAT-team bij Microsoft, bekende Power BI-blogger",
+   "showcase": {
+    "caption": "Wat de gecombineerde view uitrekent: verkoop en targets komen uit twee verschillende tabellen, en via de medewerker reken je het percentage van het target uit.",
+    "language": "sql",
+    "code": "SELECT e.Name,\n  s.SalesAmount,\n  t.SalesTarget,\n  ROUND(s.SalesAmount / t.SalesTarget, 2) AS SalesPctTarget\nFROM employee e\nJOIN (SELECT EmployeeID, SUM(SalesAmount) AS SalesAmount\n      FROM sales GROUP BY EmployeeID) s USING (EmployeeID)\nJOIN (SELECT EmployeeID, SUM(SalesTarget) AS SalesTarget\n      FROM targets GROUP BY EmployeeID) t USING (EmployeeID)\nORDER BY e.Name;",
+    "result": {
+     "columns": [
+      "Name",
+      "SalesAmount",
+      "SalesTarget",
+      "SalesPctTarget"
+     ],
+     "rows": [
+      [
+       "Anna",
+       2000,
+       2500,
+       0.8
+      ],
+      [
+       "Bram",
+       1500,
+       1200,
+       1.25
+      ],
+      [
+       "Chris",
+       1100,
+       1000,
+       1.1
+      ]
+     ]
+    },
+    "note": "Zo werkt het idee in gewone SQL. In een semantic view schrijf je dit als YAML met DAX-maatstaven, zoals DIVIDE([SalesAmount],[SalesTarget]); die notatie staat in de Fabric-documentatie."
+   },
+   "terms": [
+    {
+     "term": "semantic views",
+     "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van."
+    },
+    {
+     "term": "Direct Lake",
+     "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron."
+    },
+    {
+     "term": "shortcuts",
+     "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren."
+    },
+    {
+     "term": "composite models",
+     "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch stuk over herbruikbare maatstaven richting Power BI, zoals je duim omhoog bij metric views als Power BI-model."
+   },
+   "labels": [
+    "fabric-semantic-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ]
+  },
+  {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
    "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
@@ -1008,6 +1136,225 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "e7332a78bea8",
+   "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-22T23:59:59Z",
+   "date_note": "Releasedata volgens GitHub; bij 2.1.328 noemt een andere bron 18 november in plaats van 19 november.",
+   "fetched_at": "2026-11-21T03:13:27.194317Z",
+   "summary": "In week 47 kreeg Claude Code een strengere /code-review, auto mode bij cloudaanbieders, hooks die bij een fout blokkeren en een veiligere manier om MCP-servers toe te voegen.",
+   "personal_relevance": "Als je Claude Code inzet voor dbt-pull requests, geeft /code-review nu minder ruis en kun je MCP-tokens buiten je shellgeschiedenis houden.",
+   "experiment": "Laat /code-review los op een branch van je Dataflow-repository met een bewust foutje in een dbt-model, en kijk of de bevinding het label Important krijgt en of stijlpunten wegblijven.",
+   "limitations": [
+    "De release notes van 2.1.326 en 2.1.330 en het einde van de lijsten van 2.1.328 en 2.1.329 waren niet volledig te lezen; dit overzicht kan wijzigingen missen.",
+    "De strengere /code-review geldt volgens de notes 'op de meeste modellen', niet op alle."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Code releases op GitHub",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "veilige_agents"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.8,
+    "quality": 0.6,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:25:07Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code laat /code-review alleen nog echte bugs melden",
+   "story": [
+    "Claude Code bracht in week 47 vijf versies uit, van 2.1.326 tot en met 2.1.330. De opvallendste wijziging zit in /code-review. Op de meeste modellen meldt die nu alleen nog bugs en overtredingen van je CLAUDE.md, en elke bevinding krijgt een label: Important, Pre-existing of Nit. Zonder doel bekijkt hij de hele branch tegenover de standaardbranch.",
+    "Ook het toevoegen van MCP-servers werd veiliger. Met claude mcp add-json en een streepje aan het eind leest Claude Code de instellingen van de server uit de invoer (stdin). Een token hoeft dan niet meer in je commandoregel te staan, waar het in je geschiedenis blijft hangen.",
+    "Daarnaast kregen hooks een strengere stand. Een hook is een stukje code dat op een vast moment draait, bijvoorbeeld vlak voor een tool. Voor hooks die een MCP-tool aanroepen kun je nu \"onFailure\": \"block\" zetten: mislukt de hook, dan gaat de actie niet door. Een nieuw venster bij het vertrouwen van een map laat zien waar de hooks van die map staan.",
+    "Verder werkt auto mode nu ook voor Opus 4.6 en Sonnet 4.6 via Amazon Bedrock, Google Cloud en Microsoft Foundry. Auto mode is de stand waarin een classificatiemodel per stap beslist of Claude die zonder vragen mag zetten. En /status toont nu een lijst van kapotte skills, agents en instellingen die niets doen. Bij dbt-werk is dat handig: een kapotte skill of een hook die nooit afgaat, zie je zo meteen."
+   ],
+   "key_facts": [
+    "v2.1.327 (17 november): claude mcp add-json <name> - leest de JSON van de server uit stdin, zodat tokens buiten de commandoregel blijven.",
+    "v2.1.327: /status toont kapotte agent-, skill-, command- en output-style-bestanden, genegeerde permissie-instellingen en hook-matchers die nooit raken.",
+    "v2.1.328 (18/19 november): auto mode voor Claude Opus 4.6 en Sonnet 4.6 op Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry en de Claude apps gateway.",
+    "v2.1.328: \"onFailure\": \"block\" voor mcp_tool-hooks, zoals al bestond voor command- en HTTP-hooks.",
+    "v2.1.328: /code-review meldt op de meeste modellen alleen bugs en CLAUDE.md-overtredingen en markeert elke bevinding als Important, Pre-existing of Nit.",
+    "v2.1.329 (19 november): trust-venster toont waar de hooks van een map zijn vastgelegd; /code-review zonder doel bekijkt de hele branch tegenover de standaardbranch."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo voeg je een MCP-server toe zonder dat het token in je commandoregel of shellgeschiedenis belandt: de instellingen komen uit een bestand via stdin.",
+    "language": "bash",
+    "code": "# instellingen van de server (met token) staan in een lokaal bestand dat niet in git staat\ncat mijn-mcp-server.json | claude mcp add-json mijn-server -",
+    "note": "De notatie 'claude mcp add-json <name> -' komt uit de release notes van v2.1.327; de vorm van de JSON staat in de MCP-documentatie van Claude Code. Dit werkt niet binnen een lopende Claude Code-sessie."
+   },
+   "terms": [
+    {
+     "term": "hooks",
+     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+     "term": "auto mode",
+     "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
+    },
+    {
+     "term": "MCP-servers",
+     "explanation": "Programma's die via het Model Context Protocol tools en databronnen aanbieden aan een AI-assistent, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "stdin",
+     "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Release-overzicht van Claude Code met veiligheidswijzigingen, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
+   },
+   "labels": [
+    "claude-code-permissies",
+    "claude-code-pr-werkwijze",
+    "claude-code-mcp-taken"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
+   }
+  },
+  {
+   "id": "89fabf4c9972",
+   "title": "The enterprise guide to securing coding agents",
+   "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-23T00:00:00Z",
+   "fetched_at": "2026-11-24T03:13:09.863129Z",
+   "summary": "Een gids van Anthropic voor beveiligers: welke vragen je een coding agent stelt en hoe je Claude Code vastzet met regels, hooks, een sandbox en centrale instellingen.",
+   "personal_relevance": "Zodra je Claude Code naast Databricks gebruikt, bepalen deze regels of een sleutel of werkbestand per ongeluk buiten je project terechtkomt.",
+   "experiment": "Zet in de Claude Code-instellingen van je Dataflow-project een Deny-regel op het lezen van je Databricks-configuratiebestand en zet de sandbox aan. Vraag Claude daarna dat bestand te lezen en kijk in /status welke regels gelden.",
+   "limitations": [
+    "De gids is van Anthropic zelf; de meeste cijfers komen uit eigen onderzoek of door Anthropic betaald onderzoek.",
+    "Het tweede deel van de gids (sandbox-instellingen, cloudsessies, pilotplan) was niet volledig letterlijk te lezen; die details zijn hier weggelaten.",
+    "Veel centrale beheerfuncties gelden voor Team- en Enterprise-abonnementen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Permissies in Claude Code",
+     "url": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+     "label": "Hooks",
+     "url": "https://code.claude.com/docs/en/hooks"
+    },
+    {
+     "label": "Managed settings",
+     "url": "https://code.claude.com/docs/en/managed-settings"
+    },
+    {
+     "label": "Sandboxing en netwerkisolatie",
+     "url": "https://code.claude.com/docs/en/sandboxing#network-isolation"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "veilige_agents"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.67,
+    "feedback": -0.04,
+    "fit": 0.1,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:25:54Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen",
+   "story": [
+    "Anthropic publiceerde een uitgebreide gids voor beveiligers die Claude Code in hun organisatie willen uitrollen. De kern: vertrouw niet alleen op het oordeel van het model, maar zet er vaste grenzen omheen. De gids begint met zes vragen voor elke coding agent, zoals 'Is de schade begrensd door de omgeving?' en 'Kun je een incident achteraf reconstrueren?'.",
+    "De grenzen werken in lagen. De eerste laag zijn permissieregels: Allow, Ask en Deny. Claude Code kijkt eerst naar Deny, dan naar Ask en pas dan naar Allow. Een Allow-regel kan dus nooit een gat in een verbod slaan. Claude Code knipt een shellcommando ook in stukken voordat het draait, zodat 'git status && curl ...' niet meelift op een regel die alleen 'git status' toestaat.",
+    "Daarna komen hooks, stukjes code die op een vast moment draaien. Een hook op het moment PreToolUse kan bijvoorbeeld een commit tegenhouden waar een wachtwoord in staat. Hooks uit centrale instellingen (managed settings) draaien op elke machine en een ontwikkelaar kan ze niet weghalen. Let wel op: standaard laat een mislukte hook de actie door. Voor harde regels zet je onFailure op \"block\".",
+    "De laatste laag is de sandbox: een afgeschermde omgeving per shellcommando. Daarin kan een commando alleen bestanden in de projectmap wijzigen en alleen sites op een vaste lijst (allowlist) bereiken. De gids raadt aan dat verplicht te maken. Verder: geen vaste sleutels in de omgeving van de agent, een eigen identiteit voor CI/CD, en een mens die onomkeerbare stappen goedkeurt, zoals een migratie van een productiedatabase.",
+    "Voor Dataflow sluit dit aan op fase 6, waar je uitzoekt hoe je Claude Code veilig inzet: een Deny-regel op je Databricks-configuratie en een verplichte sandbox zijn daar een goed begin. De cijfers in de gids komen vooral van Anthropic zelf. Zo zou auto mode 89% van de gevaarlijke commando's tegenhouden, tegen 13,6% bij menselijke controle."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 23 november 2026, voor beheerders van Claude Team en Enterprise; dezelfde lokale maatregelen gelden via AWS, Google Cloud en Azure.",
+    "Permissieregels: Claude Code controleert eerst Deny, dan Ask, dan Allow; een Deny-regel in managed settings kan door geen gebruiker of project worden opgeheven.",
+    "Hooks uit managed settings draaien op elke machine; allowManagedHooksOnly blokkeert hooks van gebruikers, projecten en plugins. Standaard laat een mislukte hook de actie door, tenzij onFailure op \"block\" staat.",
+    "De sandbox beperkt elk shellcommando op OS-niveau tot de projectmap en tot sites op de allowlist; beheerders kunnen hem verplicht maken.",
+    "Volgens een Anthropic-studie (augustus 2026, 1.053 betaalde testers) ving menselijke controle 13,6% van de gevaarlijke commando's en blokkeerde auto mode 89% van dezelfde commando's.",
+    "Salesforce meldt na de overstap op Claude Code 79% meer samengevoegde pull requests per ontwikkelaar en 5% minder incidenten."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "PreToolUse",
+     "explanation": "Het moment in Claude Code vlak voordat een tool wordt aangeroepen. Een hook op dit moment kan de aanroep nog blokkeren."
+    },
+    {
+     "term": "managed settings",
+     "explanation": "Instellingen voor Claude Code die een beheerder centraal uitrolt. Ze gaan voor op wat een gebruiker of project zelf instelt."
+    },
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "allowlist",
+     "explanation": "Een lijst van wat wel mag, bijvoorbeeld welke servers een agent mag bereiken. Alles wat er niet op staat, wordt geweigerd."
+    },
+    {
+     "term": "auto mode",
+     "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.6,
+    "why": "Gaat over grenzen voor Claude Code, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
+   },
+   "labels": [
+    "claude-code-permissies",
+    "claude-code-sandbox",
+    "claude-enterprise-beheer"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow sluit dit aan op fase 6, waar je uitzoekt hoe je Claude Code veilig inzet",
+    "why": "Fase 6 draait om de vraag hoe je Claude Code en MCP veilig gebruikt."
    }
   },
   {
@@ -2860,6 +3207,202 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -3
+   }
+  },
+  {
+   "id": "9cdcaec08381",
+   "title": "How to build a knowledge factory for AI agents",
+   "url": "https://www.langchain.com/blog/knowledge-factory",
+   "source_id": "langchain_blog",
+   "published_at": "2026-11-21T16:45:08Z",
+   "fetched_at": "2026-11-22T03:13:35.267480Z",
+   "summary": "LangChain-oprichter Harrison Chase beschrijft een 'kennisfabriek': agents melden ontbrekende of foute kennis, en een aparte curator-agent werkt die 's nachts bij.",
+   "personal_relevance": "Het geeft een werkwijze om je AI-contextlaag op dbt en Unity Catalog bij te houden met hulp van de agent zelf.",
+   "experiment": "Geef een agent in Claude Code bij je Dataflow-project een opdracht om ontbrekende kolombeschrijvingen in je dbt-YAML in een apart bestand te noteren in plaats van te raden. Bekijk na een paar vragen of die lijst klopt.",
+   "limitations": [
+    "Opiniestuk zonder metingen of code; of de aanpak werkt, laat het artikel niet zien.",
+    "Chase is oprichter van LangChain en noemt vooral eigen producten (LangSmith, Context Hub).",
+    "Hoe je fouten van de curator-agent zelf opspoort, beschrijft het stuk niet."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Deep Agents skills-formaat",
+     "url": "https://docs.langchain.com/oss/python/deepagents/skills"
+    },
+    {
+     "label": "Open Knowledge Format (OKF)",
+     "url": "https://github.com/open-knowledge-format/open-knowledge-format"
+    },
+    {
+     "label": "Introducing Context Hub",
+     "url": "https://www.langchain.com/blog/introducing-context-hub"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.89,
+    "source": 0.51,
+    "quality": 0.53,
+    "feedback": 0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:25:54Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt",
+   "story": [
+    "Harrison Chase, oprichter van LangChain, vindt dat bedrijven met AI vooral een kennisprobleem hebben. Niet het model of de hoeveelheid context ontbreekt, maar vastgelegde kennis: hoe het bedrijf werkt, wat een maatstaf betekent en waar de data staat. Zijn antwoord noemt hij een kennisfabriek (knowledge factory): een systeem dat die kennis verzamelt, bijhoudt en aan agents geeft.",
+    "Chase deelt die kennis in drie soorten in. Werkinstructies als skills: hoe je een taak op de manier van het bedrijf doet. Domeinkennis: definities en regels, zoals hoe je ARR berekent. En toegangsinstructies: welke bron je gebruikt en hoe je die bevraagt. Bij die laatste raadt hij af om data te kopiëren als de bron compleet en actueel is. Beschrijf liever waar de data staat, bijvoorbeeld in Databricks.",
+    "Het werkt als een lus. Een agent die iets mist of iets fouts vindt, meldt dat met een speciaal hulpmiddel en stelt eventueel een verbetering voor. Een aparte curator-agent draait 's nachts. Hij leest die meldingen, de sporen (traces) van gesprekken en bronnen als Notion en Slack, en past de kennis aan. In het voorbeeld ziet een rapportage-agent dat een kolom in BigQuery is hernoemd. 's Nachts past de curator twee skills aan: de kolomnaam en de vaste kop van rapporten.",
+    "Voor jouw contextlaag op dbt en Unity Catalog is dit een bruikbaar idee: laat een agent melden welke beschrijving of definitie ontbreekt, in plaats van dat iemand alles vooraf invult. Het stuk is wel een visie zonder cijfers of code. Chase zegt zelf dat er nog geen standaard bestaat voor waar je de kennis opslaat. En hij verkoopt zelf de hulpmiddelen ervoor, zoals LangSmith."
+   ],
+   "key_facts": [
+    "Chase: het ontbrekende stuk voor AI in bedrijven is kennis, niet betere modellen of meer context.",
+    "Drie soorten kennis volgens Chase: skills (hoe je het werk doet), domeinkennis (hoe het bedrijf werkt) en toegangsinstructies (waar actuele data staat en hoe je die bevraagt).",
+    "Agents krijgen een hulpmiddel om ontbrekende of foute kennis te melden; een curator-agent werkt de kennis volgens een schema bij op basis van meldingen, traces en bronnen als Notion en Slack.",
+    "Chase raadt af het bijhouden aan de gebruikende agents zelf over te laten: dat geeft volgens hem tegenstrijdigheden.",
+    "Opslag kan als skills in GitHub, een bestand in Notion, OKF in LangSmith Context Hub of een kennisgraaf in Neo4j; volgens Chase is er nog geen standaard.",
+    "Gepubliceerd op 21 november 2026; het stuk bevat geen code en geen meetresultaten."
+   ],
+   "article_type": "opinie",
+   "author": "Harrison Chase, oprichter en CEO van LangChain",
+   "terms": [
+    {
+     "term": "skills",
+     "explanation": "Mappen met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "traces",
+     "explanation": "Sporen van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt ze om fouten te zoeken en het systeem te verbeteren."
+    },
+    {
+     "term": "curator-agent",
+     "explanation": "Een agent die op de achtergrond kennis beheert: hij leest meldingen en gesprekken en past de vastgelegde kennis voor andere agents aan."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.55,
+    "why": "Over context voor agents, zoals je duimen bij dbt Wizard en synoniemen per veld, maar zonder code; een eerder vaag LangChain-stuk kreeg een duim omlaag."
+   },
+   "labels": [
+    "agent-context-laag",
+    "agent-geheugen",
+    "agent-skills"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
+  },
+  {
+   "id": "e277391e1ad3",
+   "title": "Introducing Claude Ship",
+   "url": "https://claude.com/resources/articles/introducing-claude-ship",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-23T00:00:00Z",
+   "fetched_at": "2026-11-24T03:13:09.863129Z",
+   "summary": "Anthropic bundelt Code Review met twee nieuwe agents in bèta: PR Steward houdt een pull request groen, Claude Approvals keurt goed wat het teambeleid toestaat.",
+   "personal_relevance": "Het laat zien hoe je goedkeuring van data-code per soort wijziging kunt regelen, al werkt het alleen met GitHub en niet met Azure DevOps.",
+   "experiment": "Schrijf voor je Dataflow-repository op papier een goedkeuringsbeleid: welke soorten wijzigingen (documentatie, tests, een Silver-model, een Gold-model) zou je door Claude laten goedkeuren en welke niet? Vergelijk dat met de voorbeelden in de documentatie.",
+   "limitations": [
+    "Het formaat van het beleidsbestand staat niet in de aankondiging, alleen in de documentatie.",
+    "Alleen GitHub; Azure DevOps wordt niet genoemd.",
+    "Anthropic zegt zelf dat Claude Ship bugs en beveiligingsproblemen kan missen."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Claude Ship-documentatie",
+     "url": "https://code.claude.com/docs/en/claude-ship"
+    },
+    {
+     "label": "Code Review instellen",
+     "url": "https://code.claude.com/docs/en/code-review-setup"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "claude",
+    "overig"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.51,
+    "quality": 0.6,
+    "feedback": -0.01,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:26:39Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels",
+   "story": [
+    "Anthropic introduceerde Claude Ship: een set agents die een pull request door review, reparatie en goedkeuring loodst. Het bestaat uit drie delen. Code Review was al algemeen beschikbaar. PR Steward en Claude Approvals zijn nieuw en in bèta, voor Claude Team en Enterprise op GitHub.",
+    "Code Review bekijkt een pull request vanuit meerdere invalshoeken, controleert zijn eigen bevindingen en zet ze bij de pull request. Per repository kies je Quick, Standard of Deep. PR Steward pakt daarna falende CI-checks, mergeconflicten en reviewcommentaar op. Na elke push legt hij in een reactie uit wat hij veranderde en hoe je dat terugdraait. Met '@claude stop' zet je hem stil. PR Steward is gemaakt om nooit zelf goed te keuren of samen te voegen.",
+    "Dat doet Claude Approvals. Je team schrijft een beleid als bestand in de repository. Anthropic vergelijkt het met een slimmer CODEOWNERS-bestand: routinewijzigingen mag Claude zelf goedkeuren, voor andere gevallen blijft een mens nodig. Anthropic raadt aan het eerst alleen te laten meekijken (observe-only) en het daarna pas via branch protection verplicht te maken.",
+    "Voor een datateam is het idee interessant: een kleine wijziging in een dbt-model kan zo sneller door, terwijl een wijziging in een Gold-model langs een mens blijft gaan. Er zijn wel grenzen. Alleen GitHub wordt ondersteund, dus niet Azure DevOps. En organisaties met de HIPAA-configuratie, zero data retention of eigen encryptiesleutels kunnen het niet gebruiken."
+   ],
+   "key_facts": [
+    "Aangekondigd op 23 november 2026; Code Review is algemeen beschikbaar, PR Steward en Claude Approvals zijn in bèta.",
+    "Beschikbaar voor Claude Team en Enterprise, alleen voor repositories op GitHub.",
+    "PR Steward lost falende CI-checks, mergeconflicten en reviewcommentaar op, legt na elke push uit wat hij deed en is ontworpen om niet goed te keuren of samen te voegen.",
+    "Claude Approvals volgt een beleidsbestand in de repository en start zodra dat bestand op de standaardbranch staat; aanbevolen start is observe-only.",
+    "Gebruik wordt per token betaald; beheerders kunnen bestedingslimieten zetten voor Code Review en PR Steward. Het commando /ship in Claude Code pusht, opent de pull request en laat die reviewen.",
+    "Niet beschikbaar bij zero data retention, de HIPAA-configuratie of door de klant beheerde encryptiesleutels."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "CODEOWNERS",
+     "explanation": "Een bestand in een GitHub-repository dat vastlegt wie welke mappen of bestanden moet goedkeuren voordat een wijziging erin mag."
+    },
+    {
+     "term": "branch protection",
+     "explanation": "Regels op een branch in GitHub, zoals 'eerst een goedkeuring' of 'alle checks groen', voordat iemand iets mag samenvoegen."
+    },
+    {
+     "term": "observe-only",
+     "explanation": "Een proefstand waarin een systeem alleen meekijkt en laat zien wat het zou beslissen, zonder echt iets tegen te houden."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Claude-aankondiging over pull requests; je duimde vergelijkbare Claude Code-stukken omhoog, maar dit vraagt GitHub en een Team-abonnement."
+   },
+   "labels": [
+    "claude-code-pr-werkwijze",
+    "ai-code-review",
+    "claude-ship"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "aankondiging",
+    "pts": -1
    }
   },
   {
@@ -5554,113 +6097,6 @@
    }
   },
   {
-   "id": "760c502508bd",
-   "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
-   "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-17T00:00:00Z",
-   "fetched_at": "2026-11-19T03:13:31.924707Z",
-   "summary": "Een Anthropic-engineer liet een Claude Code-sessie met subagents twee weken een testomgeving overbelasten, de telemetrie lezen en zelf fixes bouwen. Resultaat: 60 serverfouten op ongeveer 2 miljard verzoeken.",
-   "personal_relevance": "Het laat zien hoe je Claude een lang, zelfstandig verbeterproces laat doen met duidelijke grenzen: meten, vaste regels en een mens bij onomkeerbare stappen.",
-   "experiment": "Laat Claude Code op een klein dbt-project met openbare data trage modellen zoeken via de run_results.json, één verbetering voorstellen en die alleen doorvoeren als een vergelijking van oude en nieuwe tabel geen verschil geeft.",
-   "limitations": [
-    "Een verslag van Anthropic over een eigen product; niet onafhankelijk gecontroleerd.",
-    "Geen code of configuratie in het artikel.",
-    "De kostenschatting voor kleinere diensten is volgens de auteur zelf niet getest."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "A harness for every task: dynamic workflows in Claude Code (over goal drift)",
-     "url": "https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/"
-    },
-    {
-     "label": "Claude Code-documentatie",
-     "url": "https://code.claude.com/docs"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.7,
-    "source": 0.51,
-    "quality": 0.63,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T04:05:00Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering",
-   "story": [
-    "Twee weken voor de lancering van Claude Docs draaide de dienst nog op één server voor een paar duizend interne gebruikers. Vivek Nair liet daarom een Claude Code-sessie een kopie van productie (staging) belasten met meer dan een miljoen nep-documenten per dag. Claude maakte onderdelen expres kapot en repareerde wat omviel: een 'chaos loop'. De sessie stuurde gemiddeld 11 subagents aan, op het drukste moment 30.",
-    "Elke ronde ging hetzelfde. Een testscript zette één functie onder maximale druk. Claude las de telemetrie via de Datadog MCP, kwam met een paar opties en een advies, en bouwde de fix. Makkelijk terug te draaien wijzigingen voerde Claude zelf door; wijzigingen aan het schema of de opslag van documenten moest de engineer eerst goedkeuren. Een aparte sessie reviewde de wijziging, daarna ging die naar staging en begon de test opnieuw. Claude moest twee vaste regels (invarianten) bewaken: documenten openen bijna meteen, en een bevestigde wijziging gaat nooit verloren.",
-    "Het werkte omdat de dienst meetbaar was. Elke databasequery meldde zijn naam en hoeveel rijen hij las tegenover hoeveel hij teruggaf; zo vond Claude slechte query's. Een voorbeeld: één groot document gebruikte 3 GB geheugen. Claude's eerste fix bleek de verkeerde cache te raken en werd teruggedraaid. Fijnere metingen lieten zien dat elke toetsaanslag het document meerdere keren kopieerde; met copy-on-write zakte het naar ongeveer 180 MB. Het team koos bewust Rust en weinig bibliotheken, zodat al het geheugen te herleiden was.",
-    "De uitkomst: meer dan 4,6 miljoen documenten in de eerste week, ongeveer 2 miljard verzoeken met 60 serverfouten en geen enkele terugdraaiing. De geschatte geheugenbehoefte ging van meer dan 500 naar ongeveer 50 pods. De rekenkosten waren ongeveer 125.000 dollar aan modelgebruik, volgens de auteur de helft te veel achteraf. Voor een kleinere dienst schat hij 3.000 tot 10.000 dollar, maar dat heeft hij niet getest.",
-    "De lessen gaan ook op voor datawerk: geef Claude direct toegang tot je meetgegevens, schrijf vooraf de regels op die nooit mogen breken, en laat een mens beslissen over alles wat moeilijk terug te draaien is. Bij een pijplijn zou dat betekenen: Claude mag een query herschrijven en opnieuw testen, maar een schemawijziging in Silver vraagt jouw akkoord."
-   ],
-   "key_facts": [
-    "Claude Docs werd gelanceerd op 16 september 2026; de chaos loop begon op 4 september.",
-    "De Claude Code-sessie stuurde gemiddeld 11 en op het hoogtepunt 30 subagents aan en las telemetrie via de Datadog MCP.",
-    "Geteste scenario's: 10 miljoen nieuwe documenten per dag, 22.000 verbindingen die tegelijk opnieuw verbinden, een server die stopt tijdens het laden.",
-    "Wijzigingen aan schema of opslag vroegen goedkeuring van een mens; makkelijk terug te draaien wijzigingen niet.",
-    "Meer dan 4,6 miljoen documenten tot 22 september; ongeveer 2 miljard verzoeken met 60 serverfouten; 629 keer naar productie uitgerold in september zonder terugdraaiing.",
-    "Geheugen van één groot document ging van ongeveer 3 GB naar ongeveer 180 MB; de geschatte behoefte van meer dan 500 naar ongeveer 50 pods.",
-    "Kosten: ongeveer 125.000 dollar aan modelgebruik tegen catalogusprijs (Claude Fable 5.2).",
-    "7 van de 10 geoefende scenario's gebeurden echt in productie; de fixes stonden klaar achter schakelaars (runtime flags)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "staging",
-     "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert."
-    },
-    {
-     "term": "subagents",
-     "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context."
-    },
-    {
-     "term": "telemetrie",
-     "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte."
-    },
-    {
-     "term": "invarianten",
-     "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren."
-    },
-    {
-     "term": "copy-on-write",
-     "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Concreet verhaal over Claude die lang zelfstandig werkt, maar over webinfrastructuur in plaats van data."
-   },
-   "labels": [
-    "multi-agent",
-    "human-in-the-loop",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -4
-   }
-  },
-  {
    "id": "ffe8a09e969f",
    "title": "Claude Fable 5.2 and Mythos 5.2",
    "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
@@ -5965,111 +6401,6 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -1
-   }
-  },
-  {
-   "id": "fae3fb7e9aa6",
-   "title": "DAX LLM Benchmark v2",
-   "url": "https://www.sqlbi.com/blog/marco/2026/10/27/dax-llm-benchmark-v2/",
-   "source_id": "sqlbi",
-   "published_at": "2026-10-27T10:45:53Z",
-   "fetched_at": "2026-11-01T11:05:57.559020Z",
-   "summary": "SQLBI testte met DAXBench v2 hoe goed taalmodellen DAX schrijven. Zes recente modellen van drie leveranciers scoren 90 tot 96 procent.",
-   "personal_relevance": "Je schrijft DAX in Power BI; dit zegt hoe ver je een AI-assistent kunt vertrouwen, en dat je eigen testen nodig blijven.",
-   "experiment": "Kies drie DAX-maatstaven die je zelf goed kent en beschrijf ze in gewone taal, zonder werkdata. Laat Claude ze schrijven op een openbaar voorbeeldmodel (zoals Contoso) en vergelijk de uitkomsten met je eigen versie.",
-   "limitations": [
-    "De scores per model staan alleen in de grafieken op daxbench.com, niet in de tekst van het artikel.",
-    "De auteurs zeggen zelf dat de tests niet perfect zijn; ervaring in de praktijk telt zwaarder.",
-    "SQLBI verkoopt zelf DAX-cursussen en -tools."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "DAXBench",
-     "url": "https://www.daxbench.com/"
-    },
-    {
-     "label": "Methodologie",
-     "url": "https://www.daxbench.com/methodology"
-    },
-    {
-     "label": "Where we stand on AI and DAX in 2026",
-     "url": "https://www.sqlbi.com/blog/marco/2026/09/22/where-we-stand-on-ai-and-dax-in-2026/"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "overig",
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 76,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.25,
-    "source": 0.8,
-    "quality": 0.58,
-    "feedback": -0.04,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-05T03:34:43Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "sqlbi",
-     "title": "Optimizing DAX with AI",
-     "url": "https://www.sqlbi.com/articles/optimizing-dax-with-ai/",
-     "published_at": "2026-11-02T20:00:41Z",
-     "reason": "zelfde ontwikkeling"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit",
-   "story": [
-    "Marco Russo van SQLBI heeft samen met Maxim Anatsko een nieuwe versie gemaakt van DAXBench. Dat is een toets die meet hoe goed taalmodellen DAX schrijven en begrijpen. De nieuwe versie heeft meer opgaven uit de praktijk, van makkelijk tot moeilijk.",
-    "De toets werkt als een examen zonder herkansing. Elk model krijgt één opdracht en mag nadenken, maar niet zelf testen of opnieuw proberen. Het krijgt ook geen skills mee. Daarna past de toets de DAX toe op een model, meestal een variant van Contoso, en draait een testquery. Alleen een goede uitkomst telt; nette code die het verkeerde antwoord geeft, krijgt geen punten.",
-    "De uitkomst: zes modellen van drie leveranciers, uitgebracht in augustus en september 2026, scoren tussen 90 en 96 procent. Elke opgave werd door minstens één model opgelost. Russo vindt dat de generatie van een model meer uitmaakt dan de leverancier. Open-source modellen lopen achter, maar volgen dezelfde lijn.",
-    "Russo vindt DAX leren wel nog steeds zinvol. Wie de DAX kan lezen, ziet hoe een bedrijfsregel echt is uitgewerkt. Een beschrijving in gewone taal kan dubbelzinnig zijn, een formule niet. Zijn advies: gebruik de toets om een modelgeneratie te kiezen en kosten te sturen, maar test altijd op je eigen semantische modellen."
-   ],
-   "key_facts": [
-    "DAXBench v2 is gepubliceerd op 27 oktober 2026 door Marco Russo (SQLBI) met Maxim Anatsko, die versie 1 in december 2025 uitbracht.",
-    "Elke test is één opdracht met het standaard redeneerniveau, zonder herhalen, zelf testen of skills.",
-    "De score telt geslaagde taken, juistheid van de uitkomst en juiste syntax; een fout antwoord krijgt geen punten.",
-    "Stand van 18 oktober 2026: zes modellen van drie leveranciers (uitgebracht augustus en september 2026) scoren 90% tot 96%.",
-    "Russo: de modelgeneratie telt meer dan de leverancier; kleine scoreverschillen doen er in dagelijks gebruik weinig toe.",
-    "Russo: de tests raken bijna verzadigd; een versie 2.1 of 3.0 is mogelijk nodig."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "DAXBench",
-     "explanation": "Een openbare toets van SQLBI en Maxim Anatsko die meet hoe goed taalmodellen DAX-formules schrijven, door de uitkomst echt na te rekenen."
-    },
-    {
-     "term": "skills",
-     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.55,
-    "why": "Over hoe goed AI code schrijft, zoals de dbt Labs-proef met Claude; wel Power BI in plaats van dbt."
-   },
-   "labels": [
-    "dax-benchmark",
-    "power-bi-ai"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
    }
   },
   {
@@ -9659,7 +9990,6 @@
    ],
    "article_ids": [
     "9fa51654bab7",
-    "760c502508bd",
     "069078b2b4e3",
     "ea585dd9c0fa",
     "d5f14a6242b0",
@@ -9670,7 +10000,7 @@
    "since": "2026-11-03",
    "last": "2026-11-20",
    "week": 1,
-   "prev_week": 3,
+   "prev_week": 2,
    "status": "speelt"
   },
   {
@@ -9717,8 +10047,7 @@
     "why": "Het Claude Code-team laat Claude elke commit bewijzen met end-to-end-, property- en differential tests en een verify-skill, en Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven. Hoe meer dbt-werk je aan Claude geeft, hoe meer je tests en vaste regels het nakijken moeten overnemen.",
     "article_ids": [
      "069078b2b4e3",
-     "873de8dc3ad7",
-     "760c502508bd"
+     "873de8dc3ad7"
     ]
    },
    {
@@ -9879,6 +10208,11 @@
    "explanation": "Een lijst van wat wel mag, bijvoorbeeld welke servers een agent mag bereiken. Alles wat er niet op staat, wordt geweigerd.",
    "refs": [
     {
+     "kind": "a",
+     "id": "89fabf4c9972",
+     "title": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen"
+    },
+    {
      "kind": "v",
      "id": "claude-agents-in-eigen-netwerk",
      "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
@@ -9957,6 +10291,22 @@
    ]
   },
   {
+   "term": "auto mode",
+   "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "89fabf4c9972",
+     "title": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen"
+    },
+    {
+     "kind": "a",
+     "id": "e7332a78bea8",
+     "title": "Claude Code laat /code-review alleen nog echte bugs melden"
+    }
+   ]
+  },
+  {
    "term": "Avro",
    "explanation": "Een compact bestandsformaat voor rijen met een vast schema, vaak gebruikt als tussenformaat bij het uitwisselen van data.",
    "refs": [
@@ -10019,6 +10369,17 @@
      "kind": "a",
      "id": "f49f6dcce187",
      "title": "Späti: een getypeerde graaf als code houdt agentdata geldig"
+    }
+   ]
+  },
+  {
+   "term": "branch protection",
+   "explanation": "Regels op een branch in GitHub, zoals 'eerst een goedkeuring' of 'alle checks groen', voordat iemand iets mag samenvoegen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "e277391e1ad3",
+     "title": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels"
     }
    ]
   },
@@ -10121,6 +10482,17 @@
    ]
   },
   {
+   "term": "CODEOWNERS",
+   "explanation": "Een bestand in een GitHub-repository dat vastlegt wie welke mappen of bestanden moet goedkeuren voordat een wijziging erin mag.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "e277391e1ad3",
+     "title": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels"
+    }
+   ]
+  },
+  {
    "term": "cohorten",
    "explanation": "Groepen patiënten met een gemeenschappelijk kenmerk, bijvoorbeeld een diagnose in een bepaalde periode, die je samen onderzoekt.",
    "refs": [
@@ -10139,6 +10511,17 @@
      "kind": "a",
      "id": "1ebe4563dc44",
      "title": "Vraag je AI-assistent om DAX-functies in je Power BI-model te zetten"
+    }
+   ]
+  },
+  {
+   "term": "composite models",
+   "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d380e24c1978",
+     "title": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren"
     }
    ]
   },
@@ -10175,17 +10558,6 @@
    ]
   },
   {
-   "term": "copy-on-write",
-   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    }
-   ]
-  },
-  {
    "term": "curator",
    "explanation": "De rol in Unity Catalog die domeinen opbouwt, Pages beheert en als enige een Page mag certificeren.",
    "refs": [
@@ -10193,6 +10565,17 @@
      "kind": "v",
      "id": "begrippen-door-eigenaren",
      "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    }
+   ]
+  },
+  {
+   "term": "curator-agent",
+   "explanation": "Een agent die op de achtergrond kennis beheert: hij leest meldingen en gesprekken en past de vastgelegde kennis voor andere agents aan.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9cdcaec08381",
+     "title": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt"
     }
    ]
   },
@@ -10248,17 +10631,6 @@
      "kind": "v",
      "id": "asset-bundles-basis",
      "title": "Bundels: je Databricks-project als code naar dev, test en prod"
-    }
-   ]
-  },
-  {
-   "term": "DAXBench",
-   "explanation": "Een openbare toets van SQLBI en Maxim Anatsko die meet hoe goed taalmodellen DAX-formules schrijven, door de uitkomst echt na te rekenen.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "fae3fb7e9aa6",
-     "title": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit"
     }
    ]
   },
@@ -10482,6 +10854,17 @@
      "kind": "a",
      "id": "069078b2b4e3",
      "title": "Zo laat het Claude Code-team Claude zijn eigen werk bewijzen"
+    }
+   ]
+  },
+  {
+   "term": "Direct Lake",
+   "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d380e24c1978",
+     "title": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren"
     }
    ]
   },
@@ -11043,6 +11426,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "e7332a78bea8",
+     "title": "Claude Code laat /code-review alleen nog echte bugs melden"
+    },
+    {
+     "kind": "a",
      "id": "6df581b9d8ed",
      "title": "Claude Code kan nu nergens meer schrijven buiten je projectmap"
     },
@@ -11136,13 +11524,8 @@
   },
   {
    "term": "invarianten",
-   "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren.",
+   "explanation": "Regels over de data die altijd moeten gelden, zoals 'omzet is nooit negatief', in plaats van vaste waarden van vandaag.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    },
     {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
@@ -11309,6 +11692,17 @@
    ]
   },
   {
+   "term": "managed settings",
+   "explanation": "Instellingen voor Claude Code die een beheerder centraal uitrolt. Ze gaan voor op wat een gebruiker of project zelf instelt.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "89fabf4c9972",
+     "title": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen"
+    }
+   ]
+  },
+  {
    "term": "materialization",
    "explanation": "De manier waarop dbt een model in het warehouse bouwt, zoals view, table of incremental. Je kunt ook eigen materializations schrijven.",
    "refs": [
@@ -11384,8 +11778,13 @@
   },
   {
    "term": "MCP-servers",
-   "explanation": "Programmaatjes die tools aanbieden via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken.",
+   "explanation": "Programma's die via het Model Context Protocol tools en databronnen aanbieden aan een AI-assistent, zoals een stekker die op veel apparaten past.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "e7332a78bea8",
+     "title": "Claude Code laat /code-review alleen nog echte bugs melden"
+    },
     {
      "kind": "a",
      "id": "216eab677a97",
@@ -11557,6 +11956,17 @@
      "kind": "a",
      "id": "9fa51654bab7",
      "title": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt"
+    }
+   ]
+  },
+  {
+   "term": "observe-only",
+   "explanation": "Een proefstand waarin een systeem alleen meekijkt en laat zien wat het zou beslissen, zonder echt iets tegen te houden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "e277391e1ad3",
+     "title": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels"
     }
    ]
   },
@@ -11784,6 +12194,11 @@
    "term": "PreToolUse",
    "explanation": "Het moment in Claude Code vlak voordat een tool wordt aangeroepen. Een hook op dit moment kan de aanroep nog blokkeren.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "89fabf4c9972",
+     "title": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen"
+    },
     {
      "kind": "v",
      "id": "claude-code-skills-hooks-subagents",
@@ -12033,6 +12448,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "89fabf4c9972",
+     "title": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen"
+    },
+    {
+     "kind": "a",
      "id": "3e9bbba1efea",
      "title": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming"
     },
@@ -12089,6 +12509,17 @@
      "kind": "v",
      "id": "begrippen-door-eigenaren",
      "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
+    }
+   ]
+  },
+  {
+   "term": "semantic views",
+   "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d380e24c1978",
+     "title": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren"
     }
    ]
   },
@@ -12195,6 +12626,17 @@
    ]
   },
   {
+   "term": "shortcuts",
+   "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "d380e24c1978",
+     "title": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren"
+    }
+   ]
+  },
+  {
    "term": "sjabloon",
    "explanation": "Een kant-en-klaar startproject voor een bundel, met de mappen en YAML al ingevuld. Je kiest het bij databricks bundle init.",
    "refs": [
@@ -12234,8 +12676,13 @@
   },
   {
    "term": "skills",
-   "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak.",
+   "explanation": "Mappen met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "9cdcaec08381",
+     "title": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt"
+    },
     {
      "kind": "v",
      "id": "begrippen-door-eigenaren",
@@ -12245,11 +12692,6 @@
      "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
-    },
-    {
-     "kind": "a",
-     "id": "fae3fb7e9aa6",
-     "title": "Nieuwe AI-modellen schrijven goede DAX, welke leverancier maakt weinig uit"
     },
     {
      "kind": "a",
@@ -12319,13 +12761,13 @@
    ]
   },
   {
-   "term": "staging",
-   "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert.",
+   "term": "stdin",
+   "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel.",
    "refs": [
     {
      "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+     "id": "e7332a78bea8",
+     "title": "Claude Code laat /code-review alleen nog echte bugs melden"
     }
    ]
   },
@@ -12396,13 +12838,8 @@
   },
   {
    "term": "subagents",
-   "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context.",
+   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    },
     {
      "kind": "a",
      "id": "6d403bbe9379",
@@ -12477,17 +12914,6 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
-    }
-   ]
-  },
-  {
-   "term": "telemetrie",
-   "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
     }
    ]
   },
@@ -12569,6 +12995,17 @@
      "kind": "v",
      "id": "evals-ai-assistent",
      "title": "Hoe weet je of je AI-assistent goede antwoorden geeft?"
+    }
+   ]
+  },
+  {
+   "term": "traces",
+   "explanation": "Sporen van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt ze om fouten te zoeken en het systeem te verbeteren.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "9cdcaec08381",
+     "title": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt"
     }
    ]
   },
@@ -13040,7 +13477,9 @@
     "name": "Uitbreiding en automatisering",
     "status": "open"
    }
-  ]
+  ],
+  "stap": "5.1 eerste DAB-job knmi_ingestion",
+  "stap_op": "2026-11-23"
  },
  "interest_suggestions": [
   {
@@ -13301,29 +13740,29 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 795,
   "unique_after_dedupe": 735,
   "merged_duplicates": 53,
-  "shown": 55,
+  "shown": 58,
   "decisions": {
    "excluded": 266,
    "area_cap": 22,
    "included": 110,
    "no_topic": 161,
-   "below_threshold": 127,
+   "below_threshold": 125,
    "kort_vervallen": 33,
-   "source_cap": 15,
+   "source_cap": 17,
    "area_minimum": 1
   },
   "processing": {
-   "enriched": 55
+   "enriched": 58
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 23,
+   "ai_context": 24,
    "agents": 5,
-   "claude": 11,
    "overig": 6,
+   "claude": 13,
    "dbt": 6,
    "architectuur": 3,
    "databricks": 1
@@ -13331,20 +13770,20 @@
   "per_source": {
    "azure_databricks_release_notes": 3,
    "simon_spati": 3,
+   "chris_webb": 2,
    "dbt_labs_blog": 10,
-   "claude_code_releases": 3,
+   "claude_code_releases": 4,
+   "claude_blog": 7,
    "databricks_blog": 15,
    "simon_whiteley": 2,
-   "claude_blog": 6,
    "dbt_developer_blog": 2,
    "anthropic_engineering": 1,
    "databricks_engineering_blog": 2,
+   "langchain_blog": 2,
    "dbt_core_releases": 1,
    "hamel_husain": 1,
-   "langchain_blog": 1,
-   "chris_webb": 1,
    "fabric_blog": 1,
-   "sqlbi": 2,
+   "sqlbi": 1,
    "powerbi_blog": 1
   },
   "date_flags": [
@@ -13395,9 +13834,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 182
+   "skipped_no_key": 177
   },
-  "queue_size": 18,
+  "queue_size": 10,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_deepdive_options": [],
@@ -13407,14 +13846,6 @@
   "threshold": 60,
   "max_per_source": 12,
   "not_shown": [
-   {
-    "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
-    "relevance_score": 86,
-    "decision": "included",
-    "excluded_by": []
-   },
    {
     "title": "Relationships between metric views (Beta)",
     "source_id": "azure_databricks_release_notes",
@@ -13573,6 +14004,14 @@
     "url": "https://www.getdbt.com/blog/obie-insurance-month-end-close-dbt-state-lakehouse",
     "relevance_score": 81,
     "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
+    "source_id": "claude_blog",
+    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
+    "relevance_score": 81,
+    "decision": "area_cap",
     "excluded_by": []
    },
    {
