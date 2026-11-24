@@ -1,100 +1,7 @@
 {
- "generated_at": "2026-11-24T03:27:05.314240Z",
+ "generated_at": "2026-11-24T03:28:55.986675Z",
  "instructions": "Zie taken/UITLEGGEN.md. Schrijf per artikel data/enrichment/<id>.json.",
  "items": [
-  {
-   "id": "6fd4c32fe34a",
-   "title": "How to build and maintain an agentic evaluation",
-   "url": "https://huggingface.co/blog/agentic-evals",
-   "source_id": "huggingface_blog",
-   "source_name": "Hugging Face Blog",
-   "published_at": "2026-11-23T00:00:00Z",
-   "excerpt": "",
-   "preliminary_score": 54,
-   "preliminary_topics": [
-    "ai_agents_rag"
-   ]
-  },
-  {
-   "id": "a53e25c34fef",
-   "title": "Sharing catalog metadata across data platforms, engines, and agents",
-   "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-24T01:30:00Z",
-   "excerpt": "We’re excited to announce support for catalog labels – a new capability in the Apache...",
-   "preliminary_score": 49,
-   "preliminary_topics": [
-    "metadata_lineage_catalogs"
-   ]
-  },
-  {
-   "id": "beff442b3034",
-   "title": "Interactive Databricks Reference Architectures Across 70 Industries",
-   "url": "https://www.databricks.com/blog/interactive-databricks-reference-architectures-across-70-industries",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-20T14:48:28Z",
-   "excerpt": "Why we built itMost Databricks architecture talks used to start with the same slide: ingestion on the left...",
-   "preliminary_score": 58,
-   "preliminary_topics": [
-    "databricks_data_engineering",
-    "data_ingestion"
-   ]
-  },
-  {
-   "id": "072458d77f66",
-   "title": "Announcing General Availability of native Lakebase Postgres sink for Spark Structured Streaming",
-   "url": "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-23T16:32:10Z",
-   "excerpt": "Low-latency use cases like fraud detection, live personalization, and real-time feature...",
-   "preliminary_score": 45,
-   "preliminary_topics": [
-    "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "408df9c189db",
-   "title": "Genie ZeroOps, now in public beta: An autonomous agent that fixes data pipelines, with lessons from 80,000 customer issues",
-   "url": "https://www.databricks.com/blog/genie-zeroops-now-public-beta-autonomous-agent-fixes-data-pipelines-lessons-80000-customer",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-19T21:30:00Z",
-   "excerpt": "In June we introduced Genie ZeroOps, an autonomous agent that detects, investigates,...",
-   "preliminary_score": 52,
-   "preliminary_topics": [
-    "ai_on_data_platform"
-   ]
-  },
-  {
-   "id": "9204ea2d5973",
-   "title": "Genie One Accuracy: Why Curated Agents Need Governed Context",
-   "url": "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context",
-   "source_id": "databricks_blog",
-   "source_name": "Databricks Blog",
-   "published_at": "2026-11-19T20:15:41Z",
-   "excerpt": "Ask Finance and Underwriting whether the loss ratio improved from 2024 to 2025, and...",
-   "preliminary_score": 52,
-   "preliminary_topics": [
-    "ai_on_data_platform"
-   ]
-  },
-  {
-   "id": "611d70231e8b",
-   "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-23T18:00:00Z",
-   "excerpt": "Coauthor - Artur Vieira Part 5 of a series on medallion architecture with Fabric Data Warehouse Measure first, then tune the layer that is actually slow The first four posts covered how to choose a pattern, build the Bronze, Silver, and Gold layers, establish operating rules, and secure each layer for its audience. This final post explains how to identify the source of performance issues and keep pipelines responsive as data volumes and usage grow. Fabric Data Warehouse manages caching, statistics, compaction, and V-Order by default, so you do not manage indexes or distributions as you would in a traditional warehouse. Effective tuning therefore starts with accurate measurement and workload patterns that allow the engine to operate efficiently. Use the following layer-by-layer approach to assess performance. Why this matters In a medallion pipeline, a slow dashboard is not necessarily caused by the Gold layer. The cause might be a cold cache immediately after a refresh, oversized string columns in Silver, or thousands of small files created by a Bronze load. Identifying the affected layer first helps you focus tuning work where it will improve the user experience. The layers help h",
-   "preliminary_score": 80,
-   "preliminary_topics": [
-    "ai_on_data_platform",
-    "data_architecture_modeling"
-   ]
-  },
   {
    "id": "9f74702ac72e",
    "title": "OneLake: The unified foundation for data, context, governance, and AI",
@@ -107,19 +14,6 @@
    "preliminary_topics": [
     "powerbi_semantic_models",
     "databricks_data_engineering"
-   ]
-  },
-  {
-   "id": "f6a28382bfa7",
-   "title": "Enable Azure Blob Storage Events Without Compromising Your Tenant Private Links Policy",
-   "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Enable-Azure-Blob-Storage-Events-Without-Compromising-Your/ba-p/5408564",
-   "source_id": "fabric_blog",
-   "source_name": "Microsoft Fabric Blog",
-   "published_at": "2026-11-23T20:00:00Z",
-   "excerpt": "Learn how to keep Microsoft Fabric tenant private links enabled while allowing approved Azure Blob Storage events through workspace Resource Instance Rules.",
-   "preliminary_score": 53,
-   "preliminary_topics": [
-    "powerbi_semantic_models"
    ]
   },
   {
