@@ -7,6 +7,7 @@ tussen vol uitleggen en overslaan. T kan regels in de app weghalen.
 ## Wel interessant
 
 - Hoe je AI-toepassingen aanbiedt met data uit de medaillonarchitectuur (Silver en Gold als invoer voor AI).
+- AI en analytics engineering samen: goede analytics (dbt, tests, semantische laag, metrics) als basis voor AI, en AI die analytics engineering sterker maakt.
 - Concrete aanpak of architectuur: welke tools, wat ze bouwden en hoe het werkt.
 - Unity Catalog: altijd, ook samenwerking met andere catalogi en engines; alleen niet als het puur over een opzet op een andere cloud gaat zonder iets bruikbaars voor Azure.
 - Fabric waar het Power BI raakt: nieuwe Power BI-functies, semantische modellen en Direct Lake, licenties en capaciteit.

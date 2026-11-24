@@ -710,8 +710,9 @@ class TestBalance(unittest.TestCase):
         agents = [a for a in kept if a["topics"] == ["ai_agents_rag"]]
         self.assertEqual(len(agents), 2 + 1)                     # 25% van de feed die overblijft, plus het artikel met 👍
         self.assertIn("liked0000000", [a["id"] for a in agents])
-        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 13)
-        self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 4)
+        self.assertEqual(sum(a["decision"] == "area_cap" for a in shown), 15)
+        # engineering (richtwaarde 20% sinds 24-11-2026) vult ook hooguit 1,5 x zijn deel
+        self.assertEqual(len([a for a in kept if a["topics"] == ["dbt_analytics_engineering"]]), 2)
         self.assertEqual(build.area_of({"topics": ["powerbi_semantic_models"]}, conf), "powerbi")   # Power BI telt niet als engineering
         self.assertGreater(build._age_days({"published_at": "2026-10-06T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)
         self.assertLessEqual(build._age_days({"published_at": "2026-10-28T00:00:00Z"}, now), build.QUEUE_MAX_AGE_DAYS)

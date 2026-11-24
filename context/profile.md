@@ -29,6 +29,7 @@ Dit bestand beschrijft wie ik ben, wat ik al weet en hoe de Data & AI Radar uitl
 ### Waar ik mij verder in wil ontwikkelen
 Vooral: hoe moderne data-engineeringtechnieken en AI elkaar versterken.
 - `[bekend]` Kerninteresse (15-11-2026): hoe we AI-toepassingen kunnen aanbieden met data uit onze medaillonarchitectuur als invoer (Silver/Gold als bron voor AI).
+- `[bekend]` Kerninteresse (24-11-2026): waar AI en analytics engineering elkaar versterken, en hoe AI verder kan met goede analytics (dbt-modellen, tests, semantische laag, metrics) als basis. Minder puur data engineering.
 - `[bekend]` Context engineering.
 - `[bekend]` AI-agents en toolgebruik (o.a. MCP).
 - `[bekend]` RAG: embeddings, chunking en retrieval.
