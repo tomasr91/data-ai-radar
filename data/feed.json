@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T03:29:43.936218Z",
+ "generated_at": "2026-11-24T04:14:55.955490Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
@@ -978,7 +978,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 1.0,
+    "recency": 0.99,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -2091,7 +2091,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3693,7 +3693,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -4229,130 +4229,6 @@
    }
   },
   {
-   "id": "f49f6dcce187",
-   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
-   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
-   "source_id": "simon_spati",
-   "published_at": "2026-11-10T06:00:08Z",
-   "fetched_at": "2026-11-15T21:23:09.589085Z",
-   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
-   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
-   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
-   "limitations": [
-    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
-    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Omnigraph op GitHub",
-     "url": "https://github.com/ModernRelay/omnigraph"
-    },
-    {
-     "label": "Omnigraph-documentatie",
-     "url": "https://omnigraph.dev/docs"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "data_architecture_modeling",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "kwaliteit"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.5,
-    "source": 0.68,
-    "quality": 0.62,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
-   "story": [
-    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
-    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
-    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
-    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
-    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
-   ],
-   "key_facts": [
-    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
-    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
-    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
-    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
-    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
-    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
-   "showcase": {
-    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
-    "language": "sql",
-    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
-    "result": {
-     "columns": [
-      "id",
-      "resultaat"
-     ],
-     "rows": [
-      [
-       1,
-       "{'sterren': 4}"
-      ],
-      [
-       2,
-       "{'sterren': NULL}"
-      ]
-     ]
-    },
-    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
-   },
-   "terms": [
-    {
-     "term": "getypeerde graaf",
-     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
-    },
-    {
-     "term": "knopen",
-     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
-    },
-    {
-     "term": "branch",
-     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
-    },
-    {
-     "term": "RDF",
-     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.6,
-    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
-   },
-   "labels": [
-    "context-als-code",
-    "kennisgraaf",
-    "agent-context-laag"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "e355f3b1aafd",
    "title": "dbt v1.13.0b1",
    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.13.0b1",
@@ -4819,6 +4695,130 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 2
+   }
+  },
+  {
+   "id": "f49f6dcce187",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-10T06:00:08Z",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
+   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
+   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
+   "limitations": [
+    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
+    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Omnigraph op GitHub",
+     "url": "https://github.com/ModernRelay/omnigraph"
+    },
+    {
+     "label": "Omnigraph-documentatie",
+     "url": "https://omnigraph.dev/docs"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "data_architecture_modeling",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "kwaliteit"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.5,
+    "source": 0.68,
+    "quality": 0.62,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
+   "story": [
+    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
+    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
+    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
+    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
+    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
+   ],
+   "key_facts": [
+    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
+    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
+    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
+    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
+    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
+    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+   "showcase": {
+    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
+    "language": "sql",
+    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
+    "result": {
+     "columns": [
+      "id",
+      "resultaat"
+     ],
+     "rows": [
+      [
+       1,
+       "{'sterren': 4}"
+      ],
+      [
+       2,
+       "{'sterren': NULL}"
+      ]
+     ]
+    },
+    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
+   },
+   "terms": [
+    {
+     "term": "getypeerde graaf",
+     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
+    },
+    {
+     "term": "knopen",
+     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
+    },
+    {
+     "term": "branch",
+     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
+    },
+    {
+     "term": "RDF",
+     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
+   },
+   "labels": [
+    "context-als-code",
+    "kennisgraaf",
+    "agent-context-laag"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
    }
   },
   {
@@ -6775,7 +6775,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.51,
     "quality": 0.4,
     "feedback": 0.02,
@@ -10128,66 +10128,63 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-23T04:13:46Z",
+  "generated_at": "2026-11-24T04:14:24Z",
   "options": [
    {
-    "id": "unique-constraints-met-rely",
-    "title": "UNIQUE-constraints met RELY: wanneer mag de optimizer je data vertrouwen?",
-    "question": "Wat doen UNIQUE- en primary key-constraints in Databricks als ze niet worden gecontroleerd, wat verandert er met RELY, en hoe zorg je met dbt-tests dat die belofte echt klopt voordat je hem aanzet?",
-    "why": "Databricks voegde op 3 november UNIQUE-constraints toe; met RELY kan een query tot 12 keer sneller worden, maar klopt de data niet, dan krijg je zonder foutmelding een fout antwoord.",
+    "id": "toegang-op-attributen",
+    "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
+    "question": "Hoe regel je toegang tot gevoelige kolommen op basis van tags en classificatie in plaats van per tabel, en hoe werkt dat in Unity Catalog?",
+    "why": "Databricks liet op 24 november zien dat tags uit Unity Catalog via Iceberg (Tag Exchange, bèta) meereizen naar andere tools; daarmee wordt een goed tagbeleid nog belangrijker.",
     "topics": [
-     "sql_spark_sql",
+     "data_governance_privacy",
+     "metadata_lineage_catalogs"
+    ],
+    "area": "data_engineering"
+   },
+   {
+    "id": "datakwaliteit-monitoren",
+    "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
+    "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks daar zelf voor naast dbt-tests?",
+    "why": "Genie ZeroOps, dat zelf de oorzaak van kapotte pipelines zoekt, is sinds 19 november publieke bèta; goed om eerst te snappen hoe monitoring en afwijkingsdetectie werken.",
+    "topics": [
      "data_quality_observability",
+     "databricks_data_engineering",
      "dbt_analytics_engineering"
     ],
     "area": "data_engineering"
    },
    {
-    "id": "jobs-starten-na-andere-jobs",
-    "title": "Jobs laten starten als een andere job klaar is: orkestratie in Lakeflow Jobs",
-    "question": "Hoe laat je de ene job starten zodra een andere klaar is in plaats van op een vaste tijd, welke andere triggers zijn er, en hoe zet je zo een dbt-job achter een ingestion-job?",
-    "why": "Sinds 3 november kan een Lakeflow Job in bèta starten zodra andere jobs klaar zijn, ook over werkruimtes heen; dat past bij fase 5 van Dataflow, waar de dbt-job na de ingestion-job moet draaien.",
+    "id": "agents-eerlijk-testen",
+    "title": "Agents eerlijk testen: smalle claims, valsspelen en pass@k tegenover pass^k",
+    "question": "Hoe zet je een eerlijke test op voor een agent die meerdere stappen zet, hoe voorkom je dat hij de test 'wint' zonder de taak te doen, en wat zeggen pass@k en pass^k?",
+    "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Hugging Face publiceerde op 23 november een stappenplan voor zo'n agent-eval.",
     "topics": [
-     "databricks_data_engineering",
-     "data_ingestion",
-     "cicd_data_deployment"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "ai-verrijking-als-incrementeel-dbt-model",
-    "title": "AI-verrijking als incrementeel dbt-model: alleen nieuwe rijen naar het taalmodel",
-    "question": "Hoe roep je een AI-functie aan vanuit een dbt-model op je Silver- of Gold-laag, waarom moet dat incrementeel, en hoe test je de antwoorden met gewone dbt-tests?",
-    "why": "Op dbt Summit liet Google zien waarom je AI-stappen nooit in een full refresh draait, en vanaf januari 2027 werken AI Functions in SQL alleen nog op Runtime 17.3 LTS en hoger.",
-    "topics": [
-     "ai_on_data_platform",
-     "dbt_analytics_engineering",
-     "data_quality_observability"
-    ],
-    "area": "ai_op_data"
-   },
-   {
-    "id": "mcp-voor-data",
-    "title": "MCP voor data: hoe een agent veilig bij andere systemen komt",
-    "question": "Wat is het Model Context Protocol, hoe koppel je een MCP-server aan een Genie Agent via Unity Gateway, en welke rechten en controles heb je nodig zodat de agent niet meer mag dan de gebruiker?",
-    "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway': sinds week 47 zijn MCP-tools in Genie Agents GA, met externe MCP-servers die in Unity Gateway zijn geregistreerd.",
-    "topics": [
-     "ai_agents_rag",
-     "veilige_agents",
-     "data_governance_privacy"
+     "ai_evaluation_observability",
+     "ai_agents_rag"
     ],
     "area": "context_agents"
    },
    {
-    "id": "claude-model-en-effort-kiezen",
-    "title": "Eerst de effort, dan het model: Claude slim inzetten voor dbt-werk",
-    "question": "Hoe kies je tussen Haiku, Sonnet, Opus en Fable en tussen effort-niveaus, wanneer laat je een subagent op een klein model zoeken of logs lezen, en hoe meet je op je eigen taken wat het oplevert tegen de kosten?",
-    "why": "Addy Osmani gaf op 9 november een keuzeregel: eerst de effort-knop, pas daarna een zwaarder model, en subagents op Haiku voor zoeken en tests; dat is direct toe te passen op je werk met Claude Code.",
+    "id": "pull-requests-met-claude-ship",
+    "title": "Claude Ship: pull requests laten reviewen en goedkeuren volgens teamregels",
+    "question": "Wat doen Code Review, PR Steward en Claude Approvals in Claude Ship, hoe leg je vast wat een agent zelf mag goedkeuren, en wat betekent dat voor een dbt-repo met een release pipeline?",
+    "why": "Anthropic kondigde Claude Ship op 23 november aan, met twee nieuwe agents in bèta die een pull request groen houden en goedkeuren wat het teambeleid toestaat.",
     "topics": [
      "claude_ai_development",
-     "ai_evaluation_observability"
+     "cicd_data_deployment"
     ],
     "area": "claude"
+   },
+   {
+    "id": "ai-functies-op-grote-batches",
+    "title": "AI-functies in SQL op grote batches documenten: wat verandert er met asynchroon?",
+    "question": "Wanneer draai je AI-functies in Databricks SQL synchroon en wanneer asynchroon, hoe verwerk je zo een grote batch documenten, en waar let je op bij kosten en runtimeversies?",
+    "why": "De release notes van week 46 noemen asynchrone AI-functies voor grote batches documenten (bèta), en AI-functies stoppen in januari op runtimes onder 17.3 LTS.",
+    "topics": [
+     "ai_on_data_platform",
+     "databricks_data_engineering"
+    ],
+    "area": "ai_op_data"
    }
   ]
  },
