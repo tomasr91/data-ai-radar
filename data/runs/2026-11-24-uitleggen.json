@@ -1,0 +1,22 @@
+{
+ "task": "uitleggen",
+ "started_at": "2026-11-24T03:12:45Z",
+ "finished_at": "2026-11-24T03:28:50Z",
+ "status": "deels",
+ "summary": "9 artikelen vol uitgelegd (3 met voorbeeld, alle via WebSearch geopend), 7 overgeslagen (4 zonder openen); 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
+ "counts": {
+  "uitgelegd": 9,
+  "overgeslagen": 7,
+  "met_voorbeeld": 3,
+  "via_websearch": 9,
+  "zonder_openen_overgeslagen": 4,
+  "onbereikbaar": 2
+ },
+ "problems": [
+  "add_repo was in deze sessie niet beschikbaar als tool; de privé-repository stond al gekloond, dus de Dataflow-stap is wel uitgevoerd.",
+  "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); alle gelezen artikelen zijn via WebSearch geopend.",
+  "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
+  "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
+  "Claude Code week 47: de release notes van 2.1.326 en 2.1.330 en het einde van 2.1.328/2.1.329 waren niet volledig leesbaar."
+ ]
+}
