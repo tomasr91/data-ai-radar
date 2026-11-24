@@ -1,0 +1,85 @@
+{
+  "format_version": 2,
+  "article_id": "e7332a78bea8",
+  "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
+  "headline": "Claude Code laat /code-review alleen nog echte bugs melden",
+  "summary": "In week 47 kreeg Claude Code een strengere /code-review, auto mode bij cloudaanbieders, hooks die bij een fout blokkeren en een veiligere manier om MCP-servers toe te voegen.",
+  "story": [
+    "Claude Code bracht in week 47 vijf versies uit, van 2.1.326 tot en met 2.1.330. De opvallendste wijziging zit in /code-review. Op de meeste modellen meldt die nu alleen nog bugs en overtredingen van je CLAUDE.md, en elke bevinding krijgt een label: Important, Pre-existing of Nit. Zonder doel bekijkt hij de hele branch tegenover de standaardbranch.",
+    "Ook het toevoegen van MCP-servers werd veiliger. Met claude mcp add-json en een streepje aan het eind leest Claude Code de instellingen van de server uit de invoer (stdin). Een token hoeft dan niet meer in je commandoregel te staan, waar het in je geschiedenis blijft hangen.",
+    "Daarnaast kregen hooks een strengere stand. Een hook is een stukje code dat op een vast moment draait, bijvoorbeeld vlak voor een tool. Voor hooks die een MCP-tool aanroepen kun je nu \"onFailure\": \"block\" zetten: mislukt de hook, dan gaat de actie niet door. Een nieuw venster bij het vertrouwen van een map laat zien waar de hooks van die map staan.",
+    "Verder werkt auto mode nu ook voor Opus 4.6 en Sonnet 4.6 via Amazon Bedrock, Google Cloud en Microsoft Foundry. Auto mode is de stand waarin een classificatiemodel per stap beslist of Claude die zonder vragen mag zetten. En /status toont nu een lijst van kapotte skills, agents en instellingen die niets doen. Bij dbt-werk is dat handig: een kapotte skill of een hook die nooit afgaat, zie je zo meteen."
+  ],
+  "key_facts": [
+    "v2.1.327 (17 november): claude mcp add-json <name> - leest de JSON van de server uit stdin, zodat tokens buiten de commandoregel blijven.",
+    "v2.1.327: /status toont kapotte agent-, skill-, command- en output-style-bestanden, genegeerde permissie-instellingen en hook-matchers die nooit raken.",
+    "v2.1.328 (18/19 november): auto mode voor Claude Opus 4.6 en Sonnet 4.6 op Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry en de Claude apps gateway.",
+    "v2.1.328: \"onFailure\": \"block\" voor mcp_tool-hooks, zoals al bestond voor command- en HTTP-hooks.",
+    "v2.1.328: /code-review meldt op de meeste modellen alleen bugs en CLAUDE.md-overtredingen en markeert elke bevinding als Important, Pre-existing of Nit.",
+    "v2.1.329 (19 november): trust-venster toont waar de hooks van een map zijn vastgelegd; /code-review zonder doel bekijkt de hele branch tegenover de standaardbranch."
+  ],
+  "personal_relevance": "Als je Claude Code inzet voor dbt-pull requests, geeft /code-review nu minder ruis en kun je MCP-tokens buiten je shellgeschiedenis houden.",
+  "experiment": "Laat /code-review los op een branch van je Dataflow-repository met een bewust foutje in een dbt-model, en kijk of de bevinding het label Important krijgt en of stijlpunten wegblijven.",
+  "limitations": [
+    "De release notes van 2.1.326 en 2.1.330 en het einde van de lijsten van 2.1.328 en 2.1.329 waren niet volledig te lezen; dit overzicht kan wijzigingen missen.",
+    "De strengere /code-review geldt volgens de notes 'op de meeste modellen', niet op alle."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Claude Code releases op GitHub",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "veilige_agents"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.7,
+    "novelty": 0.5
+  },
+  "development_key": "claude-code-week-47-2026",
+  "date_note": "Releasedata volgens GitHub; bij 2.1.328 noemt een andere bron 18 november in plaats van 19 november.",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "release",
+  "fit": {
+    "score": 0.6,
+    "why": "Release-overzicht van Claude Code met veiligheidswijzigingen, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
+  },
+  "labels": [
+    "claude-code-permissies",
+    "claude-code-pr-werkwijze",
+    "claude-code-mcp-taken"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "hooks",
+      "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+      "term": "auto mode",
+      "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
+    },
+    {
+      "term": "MCP-servers",
+      "explanation": "Programma's die via het Model Context Protocol tools en databronnen aanbieden aan een AI-assistent, zoals een stekker die op veel apparaten past."
+    },
+    {
+      "term": "stdin",
+      "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel."
+    }
+  ],
+  "showcase": {
+    "caption": "Zo voeg je een MCP-server toe zonder dat het token in je commandoregel of shellgeschiedenis belandt: de instellingen komen uit een bestand via stdin.",
+    "language": "bash",
+    "code": "# instellingen van de server (met token) staan in een lokaal bestand dat niet in git staat\ncat mijn-mcp-server.json | claude mcp add-json mijn-server -",
+    "note": "De notatie 'claude mcp add-json <name> -' komt uit de release notes van v2.1.327; de vorm van de JSON staat in de MCP-documentatie van Claude Code. Dit werkt niet binnen een lopende Claude Code-sessie."
+  },
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:25:07Z",
+  "prompt_version": "taak-v2"
+}

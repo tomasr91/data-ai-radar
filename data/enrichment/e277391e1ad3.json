@@ -1,0 +1,80 @@
+{
+  "format_version": 2,
+  "article_id": "e277391e1ad3",
+  "url": "https://claude.com/resources/articles/introducing-claude-ship",
+  "headline": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels",
+  "summary": "Anthropic bundelt Code Review met twee nieuwe agents in bèta: PR Steward houdt een pull request groen, Claude Approvals keurt goed wat het teambeleid toestaat.",
+  "story": [
+    "Anthropic introduceerde Claude Ship: een set agents die een pull request door review, reparatie en goedkeuring loodst. Het bestaat uit drie delen. Code Review was al algemeen beschikbaar. PR Steward en Claude Approvals zijn nieuw en in bèta, voor Claude Team en Enterprise op GitHub.",
+    "Code Review bekijkt een pull request vanuit meerdere invalshoeken, controleert zijn eigen bevindingen en zet ze bij de pull request. Per repository kies je Quick, Standard of Deep. PR Steward pakt daarna falende CI-checks, mergeconflicten en reviewcommentaar op. Na elke push legt hij in een reactie uit wat hij veranderde en hoe je dat terugdraait. Met '@claude stop' zet je hem stil. PR Steward is gemaakt om nooit zelf goed te keuren of samen te voegen.",
+    "Dat doet Claude Approvals. Je team schrijft een beleid als bestand in de repository. Anthropic vergelijkt het met een slimmer CODEOWNERS-bestand: routinewijzigingen mag Claude zelf goedkeuren, voor andere gevallen blijft een mens nodig. Anthropic raadt aan het eerst alleen te laten meekijken (observe-only) en het daarna pas via branch protection verplicht te maken.",
+    "Voor een datateam is het idee interessant: een kleine wijziging in een dbt-model kan zo sneller door, terwijl een wijziging in een Gold-model langs een mens blijft gaan. Er zijn wel grenzen. Alleen GitHub wordt ondersteund, dus niet Azure DevOps. En organisaties met de HIPAA-configuratie, zero data retention of eigen encryptiesleutels kunnen het niet gebruiken."
+  ],
+  "key_facts": [
+    "Aangekondigd op 23 november 2026; Code Review is algemeen beschikbaar, PR Steward en Claude Approvals zijn in bèta.",
+    "Beschikbaar voor Claude Team en Enterprise, alleen voor repositories op GitHub.",
+    "PR Steward lost falende CI-checks, mergeconflicten en reviewcommentaar op, legt na elke push uit wat hij deed en is ontworpen om niet goed te keuren of samen te voegen.",
+    "Claude Approvals volgt een beleidsbestand in de repository en start zodra dat bestand op de standaardbranch staat; aanbevolen start is observe-only.",
+    "Gebruik wordt per token betaald; beheerders kunnen bestedingslimieten zetten voor Code Review en PR Steward. Het commando /ship in Claude Code pusht, opent de pull request en laat die reviewen.",
+    "Niet beschikbaar bij zero data retention, de HIPAA-configuratie of door de klant beheerde encryptiesleutels."
+  ],
+  "personal_relevance": "Het laat zien hoe je goedkeuring van data-code per soort wijziging kunt regelen, al werkt het alleen met GitHub en niet met Azure DevOps.",
+  "experiment": "Schrijf voor je Dataflow-repository op papier een goedkeuringsbeleid: welke soorten wijzigingen (documentatie, tests, een Silver-model, een Gold-model) zou je door Claude laten goedkeuren en welke niet? Vergelijk dat met de voorbeelden in de documentatie.",
+  "limitations": [
+    "Het formaat van het beleidsbestand staat niet in de aankondiging, alleen in de documentatie.",
+    "Alleen GitHub; Azure DevOps wordt niet genoemd.",
+    "Anthropic zegt zelf dat Claude Ship bugs en beveiligingsproblemen kan missen."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Claude Ship-documentatie",
+      "url": "https://code.claude.com/docs/en/claude-ship"
+    },
+    {
+      "label": "Code Review instellen",
+      "url": "https://code.claude.com/docs/en/code-review-setup"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "cicd_data_deployment"
+  ],
+  "quality": {
+    "depth": 0.6,
+    "practicality": 0.5,
+    "novelty": 0.7
+  },
+  "development_key": "claude-ship-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.55,
+    "why": "Claude-aankondiging over pull requests; je duimde vergelijkbare Claude Code-stukken omhoog, maar dit vraagt GitHub en een Team-abonnement."
+  },
+  "labels": [
+    "claude-code-pr-werkwijze",
+    "ai-code-review",
+    "claude-ship"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "CODEOWNERS",
+      "explanation": "Een bestand in een GitHub-repository dat vastlegt wie welke mappen of bestanden moet goedkeuren voordat een wijziging erin mag."
+    },
+    {
+      "term": "branch protection",
+      "explanation": "Regels op een branch in GitHub, zoals 'eerst een goedkeuring' of 'alle checks groen', voordat iemand iets mag samenvoegen."
+    },
+    {
+      "term": "observe-only",
+      "explanation": "Een proefstand waarin een systeem alleen meekijkt en laat zien wat het zou beslissen, zonder echt iets tegen te houden."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:26:39Z",
+  "prompt_version": "taak-v2"
+}

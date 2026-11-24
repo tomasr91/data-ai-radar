@@ -1,0 +1,101 @@
+{
+  "format_version": 2,
+  "article_id": "89fabf4c9972",
+  "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents",
+  "headline": "Anthropic: beveilig een coding agent met harde grenzen, niet met vertrouwen",
+  "summary": "Een gids van Anthropic voor beveiligers: welke vragen je een coding agent stelt en hoe je Claude Code vastzet met regels, hooks, een sandbox en centrale instellingen.",
+  "story": [
+    "Anthropic publiceerde een uitgebreide gids voor beveiligers die Claude Code in hun organisatie willen uitrollen. De kern: vertrouw niet alleen op het oordeel van het model, maar zet er vaste grenzen omheen. De gids begint met zes vragen voor elke coding agent, zoals 'Is de schade begrensd door de omgeving?' en 'Kun je een incident achteraf reconstrueren?'.",
+    "De grenzen werken in lagen. De eerste laag zijn permissieregels: Allow, Ask en Deny. Claude Code kijkt eerst naar Deny, dan naar Ask en pas dan naar Allow. Een Allow-regel kan dus nooit een gat in een verbod slaan. Claude Code knipt een shellcommando ook in stukken voordat het draait, zodat 'git status && curl ...' niet meelift op een regel die alleen 'git status' toestaat.",
+    "Daarna komen hooks, stukjes code die op een vast moment draaien. Een hook op het moment PreToolUse kan bijvoorbeeld een commit tegenhouden waar een wachtwoord in staat. Hooks uit centrale instellingen (managed settings) draaien op elke machine en een ontwikkelaar kan ze niet weghalen. Let wel op: standaard laat een mislukte hook de actie door. Voor harde regels zet je onFailure op \"block\".",
+    "De laatste laag is de sandbox: een afgeschermde omgeving per shellcommando. Daarin kan een commando alleen bestanden in de projectmap wijzigen en alleen sites op een vaste lijst (allowlist) bereiken. De gids raadt aan dat verplicht te maken. Verder: geen vaste sleutels in de omgeving van de agent, een eigen identiteit voor CI/CD, en een mens die onomkeerbare stappen goedkeurt, zoals een migratie van een productiedatabase.",
+    "Voor Dataflow sluit dit aan op fase 6, waar je uitzoekt hoe je Claude Code veilig inzet: een Deny-regel op je Databricks-configuratie en een verplichte sandbox zijn daar een goed begin. De cijfers in de gids komen vooral van Anthropic zelf. Zo zou auto mode 89% van de gevaarlijke commando's tegenhouden, tegen 13,6% bij menselijke controle."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 23 november 2026, voor beheerders van Claude Team en Enterprise; dezelfde lokale maatregelen gelden via AWS, Google Cloud en Azure.",
+    "Permissieregels: Claude Code controleert eerst Deny, dan Ask, dan Allow; een Deny-regel in managed settings kan door geen gebruiker of project worden opgeheven.",
+    "Hooks uit managed settings draaien op elke machine; allowManagedHooksOnly blokkeert hooks van gebruikers, projecten en plugins. Standaard laat een mislukte hook de actie door, tenzij onFailure op \"block\" staat.",
+    "De sandbox beperkt elk shellcommando op OS-niveau tot de projectmap en tot sites op de allowlist; beheerders kunnen hem verplicht maken.",
+    "Volgens een Anthropic-studie (augustus 2026, 1.053 betaalde testers) ving menselijke controle 13,6% van de gevaarlijke commando's en blokkeerde auto mode 89% van dezelfde commando's.",
+    "Salesforce meldt na de overstap op Claude Code 79% meer samengevoegde pull requests per ontwikkelaar en 5% minder incidenten."
+  ],
+  "personal_relevance": "Zodra je Claude Code naast Databricks gebruikt, bepalen deze regels of een sleutel of werkbestand per ongeluk buiten je project terechtkomt.",
+  "experiment": "Zet in de Claude Code-instellingen van je Dataflow-project een Deny-regel op het lezen van je Databricks-configuratiebestand en zet de sandbox aan. Vraag Claude daarna dat bestand te lezen en kijk in /status welke regels gelden.",
+  "limitations": [
+    "De gids is van Anthropic zelf; de meeste cijfers komen uit eigen onderzoek of door Anthropic betaald onderzoek.",
+    "Het tweede deel van de gids (sandbox-instellingen, cloudsessies, pilotplan) was niet volledig letterlijk te lezen; die details zijn hier weggelaten.",
+    "Veel centrale beheerfuncties gelden voor Team- en Enterprise-abonnementen."
+  ],
+  "availability_status": "beschikbaar",
+  "official_docs": [
+    {
+      "label": "Permissies in Claude Code",
+      "url": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "label": "Hooks",
+      "url": "https://code.claude.com/docs/en/hooks"
+    },
+    {
+      "label": "Managed settings",
+      "url": "https://code.claude.com/docs/en/managed-settings"
+    },
+    {
+      "label": "Sandboxing en netwerkisolatie",
+      "url": "https://code.claude.com/docs/en/sandboxing#network-isolation"
+    }
+  ],
+  "topics": [
+    "veilige_agents",
+    "claude_ai_development"
+  ],
+  "quality": {
+    "depth": 0.8,
+    "practicality": 0.7,
+    "novelty": 0.5
+  },
+  "development_key": "claude-code-beveiligingsgids-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "nieuws",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.6,
+    "why": "Gaat over grenzen voor Claude Code, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
+  },
+  "labels": [
+    "claude-code-permissies",
+    "claude-code-sandbox",
+    "claude-enterprise-beheer"
+  ],
+  "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow sluit dit aan op fase 6, waar je uitzoekt hoe je Claude Code veilig inzet",
+    "why": "Fase 6 draait om de vraag hoe je Claude Code en MCP veilig gebruikt."
+  },
+  "terms": [
+    {
+      "term": "PreToolUse",
+      "explanation": "Het moment in Claude Code vlak voordat een tool wordt aangeroepen. Een hook op dit moment kan de aanroep nog blokkeren."
+    },
+    {
+      "term": "managed settings",
+      "explanation": "Instellingen voor Claude Code die een beheerder centraal uitrolt. Ze gaan voor op wat een gebruiker of project zelf instelt."
+    },
+    {
+      "term": "sandbox",
+      "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+      "term": "allowlist",
+      "explanation": "Een lijst van wat wel mag, bijvoorbeeld welke servers een agent mag bereiken. Alles wat er niet op staat, wordt geweigerd."
+    },
+    {
+      "term": "auto mode",
+      "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:25:54Z",
+  "prompt_version": "taak-v2"
+}

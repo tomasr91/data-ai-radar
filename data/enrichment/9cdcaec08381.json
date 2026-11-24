@@ -1,0 +1,85 @@
+{
+  "format_version": 2,
+  "article_id": "9cdcaec08381",
+  "url": "https://www.langchain.com/blog/knowledge-factory",
+  "headline": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt",
+  "summary": "LangChain-oprichter Harrison Chase beschrijft een 'kennisfabriek': agents melden ontbrekende of foute kennis, en een aparte curator-agent werkt die 's nachts bij.",
+  "story": [
+    "Harrison Chase, oprichter van LangChain, vindt dat bedrijven met AI vooral een kennisprobleem hebben. Niet het model of de hoeveelheid context ontbreekt, maar vastgelegde kennis: hoe het bedrijf werkt, wat een maatstaf betekent en waar de data staat. Zijn antwoord noemt hij een kennisfabriek (knowledge factory): een systeem dat die kennis verzamelt, bijhoudt en aan agents geeft.",
+    "Chase deelt die kennis in drie soorten in. Werkinstructies als skills: hoe je een taak op de manier van het bedrijf doet. Domeinkennis: definities en regels, zoals hoe je ARR berekent. En toegangsinstructies: welke bron je gebruikt en hoe je die bevraagt. Bij die laatste raadt hij af om data te kopiëren als de bron compleet en actueel is. Beschrijf liever waar de data staat, bijvoorbeeld in Databricks.",
+    "Het werkt als een lus. Een agent die iets mist of iets fouts vindt, meldt dat met een speciaal hulpmiddel en stelt eventueel een verbetering voor. Een aparte curator-agent draait 's nachts. Hij leest die meldingen, de sporen (traces) van gesprekken en bronnen als Notion en Slack, en past de kennis aan. In het voorbeeld ziet een rapportage-agent dat een kolom in BigQuery is hernoemd. 's Nachts past de curator twee skills aan: de kolomnaam en de vaste kop van rapporten.",
+    "Voor jouw contextlaag op dbt en Unity Catalog is dit een bruikbaar idee: laat een agent melden welke beschrijving of definitie ontbreekt, in plaats van dat iemand alles vooraf invult. Het stuk is wel een visie zonder cijfers of code. Chase zegt zelf dat er nog geen standaard bestaat voor waar je de kennis opslaat. En hij verkoopt zelf de hulpmiddelen ervoor, zoals LangSmith."
+  ],
+  "key_facts": [
+    "Chase: het ontbrekende stuk voor AI in bedrijven is kennis, niet betere modellen of meer context.",
+    "Drie soorten kennis volgens Chase: skills (hoe je het werk doet), domeinkennis (hoe het bedrijf werkt) en toegangsinstructies (waar actuele data staat en hoe je die bevraagt).",
+    "Agents krijgen een hulpmiddel om ontbrekende of foute kennis te melden; een curator-agent werkt de kennis volgens een schema bij op basis van meldingen, traces en bronnen als Notion en Slack.",
+    "Chase raadt af het bijhouden aan de gebruikende agents zelf over te laten: dat geeft volgens hem tegenstrijdigheden.",
+    "Opslag kan als skills in GitHub, een bestand in Notion, OKF in LangSmith Context Hub of een kennisgraaf in Neo4j; volgens Chase is er nog geen standaard.",
+    "Gepubliceerd op 21 november 2026; het stuk bevat geen code en geen meetresultaten."
+  ],
+  "personal_relevance": "Het geeft een werkwijze om je AI-contextlaag op dbt en Unity Catalog bij te houden met hulp van de agent zelf.",
+  "experiment": "Geef een agent in Claude Code bij je Dataflow-project een opdracht om ontbrekende kolombeschrijvingen in je dbt-YAML in een apart bestand te noteren in plaats van te raden. Bekijk na een paar vragen of die lijst klopt.",
+  "limitations": [
+    "Opiniestuk zonder metingen of code; of de aanpak werkt, laat het artikel niet zien.",
+    "Chase is oprichter van LangChain en noemt vooral eigen producten (LangSmith, Context Hub).",
+    "Hoe je fouten van de curator-agent zelf opspoort, beschrijft het stuk niet."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Deep Agents skills-formaat",
+      "url": "https://docs.langchain.com/oss/python/deepagents/skills"
+    },
+    {
+      "label": "Open Knowledge Format (OKF)",
+      "url": "https://github.com/open-knowledge-format/open-knowledge-format"
+    },
+    {
+      "label": "Introducing Context Hub",
+      "url": "https://www.langchain.com/blog/introducing-context-hub"
+    }
+  ],
+  "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.5,
+    "novelty": 0.6
+  },
+  "development_key": "kennisfabriek-agents-nov-2026",
+  "date_note": "",
+  "exceptional": false,
+  "article_type": "opinie",
+  "author": "Harrison Chase, oprichter en CEO van LangChain",
+  "soort": "mening",
+  "fit": {
+    "score": 0.55,
+    "why": "Over context voor agents, zoals je duimen bij dbt Wizard en synoniemen per veld, maar zonder code; een eerder vaag LangChain-stuk kreeg een duim omlaag."
+  },
+  "labels": [
+    "agent-context-laag",
+    "agent-geheugen",
+    "agent-skills"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "skills",
+      "explanation": "Mappen met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+      "term": "traces",
+      "explanation": "Sporen van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt ze om fouten te zoeken en het systeem te verbeteren."
+    },
+    {
+      "term": "curator-agent",
+      "explanation": "Een agent die op de achtergrond kennis beheert: hij leest meldingen en gesprekken en past de vastgelegde kennis voor andere agents aan."
+    }
+  ],
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-24T03:25:54Z",
+  "prompt_version": "taak-v2"
+}
