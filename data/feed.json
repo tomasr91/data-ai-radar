@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T11:39:26.259699Z",
+ "generated_at": "2026-11-24T12:29:36.951854Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
  "last_successful_update": "2026-11-24T11:39:26.259699Z",
  "groups": [
@@ -859,7 +859,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.92,
+    "recency": 0.91,
     "source": 0.68,
     "quality": 0.7,
     "fit": 0.2
@@ -5589,7 +5589,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.07,
+    "recency": 0.06,
     "source": 0.85,
     "quality": 0.68,
     "feedback": 0.01,
@@ -10300,6 +10300,46 @@
    }
   ]
  },
+ "inspiratie": [
+  {
+   "date": "2026-11-24",
+   "written_at": "2026-11-24T12:40:00Z",
+   "ideas": [
+    {
+     "cat": "zelf",
+     "naam": "Je dbt-project als context voor je coding agent",
+     "wat": "De open-source dbt MCP-server geeft een AI-agent toegang tot je modellen, lineage, tests en documentatie, en kan dbt-commando's uitvoeren.",
+     "waarom": "De agent hoeft niet meer te raden hoe je project in elkaar zit. Hij ziet welke modellen ergens van afhangen voordat hij iets aanpast.",
+     "tech": "dbt MCP-server, MCP, Claude Code of een andere coding agent",
+     "link": "https://github.com/dbt-labs/dbt-mcp"
+    },
+    {
+     "cat": "zelf",
+     "naam": "Kwaliteitsregels uit gewone zinnen",
+     "wat": "Databricks Labs DQX maakt datakwaliteitsregels uit een datacontract (ODCS), ook uit verwachtingen die in gewone taal zijn opgeschreven; een LLM zet die om in checks.",
+     "waarom": "Wie de data kent, schrijft op wat er moet kloppen, zonder zelf tests te bouwen. Contract en checks blijven samen in versiebeheer.",
+     "tech": "DQX, Open Data Contract Standard, Databricks",
+     "link": "https://databrickslabs.github.io/dqx/docs/guide/data_contract_quality_rules_generation"
+    },
+    {
+     "cat": "product",
+     "naam": "Capaciteit 72 uur vooruit, met uitleg in gewone taal",
+     "wat": "GE HealthCare voorspelt met CareIntellect for Operations tot 72 uur vooruit waar knelpunten in bedden en doorstroom ontstaan, en stelt acties voor. Eigen variant: een voorspelmodel op je gold-laag, met een LLM alleen als uitleglaag.",
+     "waarom": "Van brandjes blussen naar vooruit plannen van ontslag, opnames en personeel. Het rekenwerk blijft bij een gewoon voorspelmodel; de AI legt alleen uit.",
+     "tech": "Tijdreeksmodel, Databricks, LLM als uitleglaag",
+     "link": "https://www.gehealthcare.com/en/about/newsroom/press-releases/ge-healthcare-announces-careintellect-for-operations-helping-health-systems-optimize-resources-and-expand-access-to-care"
+    },
+    {
+     "cat": "product",
+     "naam": "Protocolvraagbaak die laat zien welke protocollen schuren",
+     "wat": "HSBC bouwde een assistent die medewerkers direct antwoord geeft op vragen over interne regels. Ze merkten: hoe meer vragen over één regel, hoe eerder die regel herschreven moet worden.",
+     "waarom": "In een ziekenhuis kan zo'n vraagbaak voor protocollen en werkinstructies ook een signaal geven: welke protocollen zijn onduidelijk en verdienen een herziening.",
+     "tech": "Zoeken in documenten (RAG), vragenlog als dataset, Power BI",
+     "link": "https://cloud.google.com/blog/products/ai-machine-learning/hsbc-builds-an-internal-chatbot-to-answer-questions-on-policies"
+    }
+   ]
+  }
+ ],
  "glossary": [
   {
    "term": ".claude/rules",
@@ -14018,7 +14058,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 795,
   "unique_after_dedupe": 735,
   "merged_duplicates": 53,
   "shown": 60,
@@ -14118,6 +14158,7 @@
   "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
+  "invalid_inspiratie": [],
   "invalid_deepdive_options": [],
   "invalid_trends": [],
   "invalid_weekly": [],
@@ -14167,17 +14208,6 @@
     ]
    },
    {
-    "title": "v2.1.328",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.329",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
@@ -14202,6 +14232,17 @@
     "title": "v2.1.327",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.328",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
