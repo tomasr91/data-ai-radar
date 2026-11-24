@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T04:15:44.916406Z",
+ "generated_at": "2026-11-24T05:13:42.753598Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
@@ -1744,7 +1744,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.52,
+    "recency": 0.51,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -10192,7 +10192,7 @@
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology, vaste werkwijzen als skill in Unity Catalog, metric views die vanzelf een Power BI-model worden, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. Genie Code zet met /importBI hele mappen Power BI-rapporten om en maakt de maatstaven als metric views. Nieuw deze week: skills uit Unity Catalog zijn in bèta te delen via OpenSharing of de Marketplace, en MCP-tools in Genie Agents zijn GA.",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology en metric views, vaste werkwijzen als skill in Unity Catalog, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. In een test van Databricks beantwoordde Genie One met vaste definities én teamagents 95% van de vragen goed, tegen 64% met alleen tabellen; Harrison Chase van LangChain wil dat een curator-agent die kennis 's nachts bijhoudt. Nieuwste stuk: met Tag Exchange (bèta) gaan tags uit Unity Catalog via Iceberg mee naar andere tools, zodat die context ook buiten Databricks werkt.",
    "topics": [
     "ai_context_engineering",
     "ai_on_data_platform",
@@ -10200,7 +10200,10 @@
     "powerbi_semantic_models"
    ],
    "article_ids": [
+    "a53e25c34fef",
     "216eab677a97",
+    "9cdcaec08381",
+    "9204ea2d5973",
     "f4a1778578b7",
     "655888c78c57",
     "ee8f41fce441",
@@ -10208,17 +10211,41 @@
     "6ded4aa1cdcf",
     "5c7174c45ad1"
    ],
-   "generated_at": "2026-11-23T05:13:46Z",
+   "generated_at": "2026-11-24T05:13:10Z",
    "since": "2026-11-10",
-   "last": "2026-11-22",
-   "week": 3,
+   "last": "2026-11-24",
+   "week": 6,
    "prev_week": 4,
-   "status": "speelt"
+   "status": "groeit"
+  },
+  {
+   "id": "veilige-agents-sandbox-en-gateway",
+   "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
+   "summary": "Anthropic en Databricks werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code weigert met denyInsteadOfPrompting acties die niet vooraf zijn toegestaan, Genie werkt met de rechten van de gebruiker, en Unity Gateway Insights zet de sporen van coding agents als tabel in Unity Catalog. Nieuw deze week: een gids van Anthropic raadt harde grenzen in lagen aan (Deny-regels, hooks en een verplichte sandbox), en hooks kunnen met onFailure \"block\" een actie tegenhouden als de hook zelf misgaat.",
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "data_governance_privacy"
+   ],
+   "article_ids": [
+    "89fabf4c9972",
+    "e7332a78bea8",
+    "233bf8a439eb",
+    "3e9bbba1efea",
+    "ad991551648f",
+    "53acc8538264"
+   ],
+   "generated_at": "2026-11-24T05:13:10Z",
+   "since": "2026-11-08",
+   "last": "2026-11-23",
+   "week": 3,
+   "prev_week": 2,
+   "status": "groeit"
   },
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven, en wat een Claude-agent deed staat nu als tabel in Unity Catalog. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, en het Claude Code-team laat Claude zijn eigen werk bewijzen met tests. Nieuw deze week: in een voorbeeld van Späti las een eerste run de datums in een bestand verkeerd en raakte 61 procent van de rijen kwijt; pas een controle op het jaar ervoor bracht dat aan het licht.",
+   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven; in zijn voorbeeld raakte een eerste run 61 procent van de rijen kwijt tot een controle op het jaar dat liet zien. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, en het Claude Code-team laat Claude zijn eigen werk bewijzen met tests. Nieuw deze week: Hugging Face laat zien hoe je een eerlijke test voor agents bouwt, met een controle of de test te bedriegen is en pass^k als maat voor betrouwbaarheid.",
    "topics": [
     "ai_evaluation_observability",
     "claude_ai_development",
@@ -10226,39 +10253,16 @@
     "ai_agents_rag"
    ],
    "article_ids": [
+    "6fd4c32fe34a",
     "9fa51654bab7",
     "069078b2b4e3",
     "ea585dd9c0fa",
-    "d5f14a6242b0",
-    "a9b6458ba033",
-    "873de8dc3ad7"
+    "d5f14a6242b0"
    ],
-   "generated_at": "2026-11-23T05:13:46Z",
-   "since": "2026-11-03",
-   "last": "2026-11-20",
-   "week": 1,
-   "prev_week": 2,
-   "status": "speelt"
-  },
-  {
-   "id": "veilige-agents-sandbox-en-gateway",
-   "title": "Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway",
-   "summary": "Anthropic, Databricks en Stripe werken aan dezelfde vraag: hoe laat je een agent zelfstandig werken zonder dat hij te veel mag? Claude Code weigert met denyInsteadOfPrompting acties die niet vooraf zijn toegestaan, en sandbox-commando's vragen weer om toestemming; Genie werkt met de rechten van de gebruiker en beheerders kiezen welke acties eerst goedgekeurd moeten worden; Stripe laat gegenereerde code in een sandbox draaien, buiten de agent zelf. Nieuwste stuk: Unity Gateway Insights zet de sporen van coding agents als gewone tabel in Unity Catalog, met grants en row filters, en zoekt daarin waar tokens weglekken.",
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag",
-    "data_governance_privacy"
-   ],
-   "article_ids": [
-    "233bf8a439eb",
-    "3e9bbba1efea",
-    "ad991551648f",
-    "53acc8538264"
-   ],
-   "generated_at": "2026-11-23T05:13:46Z",
-   "since": "2026-11-08",
-   "last": "2026-11-18",
-   "week": 1,
+   "generated_at": "2026-11-24T05:13:10Z",
+   "since": "2026-11-09",
+   "last": "2026-11-23",
+   "week": 2,
    "prev_week": 2,
    "status": "speelt"
   }
@@ -13791,16 +13795,6 @@
  "runs": {
   "date": "2026-11-24",
   "tasks": {
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen is; 5 nieuwe keuzes klaargezet.",
-    "finished_at": "2026-11-24T04:14:47Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
    "uitleggen": {
     "status": "deels",
     "summary": "9 artikelen vol uitgelegd (3 met voorbeeld, alle via WebSearch geopend), 7 overgeslagen (4 zonder openen); 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
@@ -13819,6 +13813,16 @@
      "via_websearch": 9,
      "zonder_openen_overgeslagen": 4,
      "onbereikbaar": 2
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen is; 5 nieuwe keuzes klaargezet.",
+    "finished_at": "2026-11-24T04:14:47Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5
     }
    }
   }
