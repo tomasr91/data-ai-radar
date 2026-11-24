@@ -1613,7 +1613,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     } else return;
     box.innerHTML = fbBlock(a || { id });
   }
-  const READ_MIN_SEND = 5;   // alleen gelezen (zonder duimpjes)? Pas vanaf 5 de knop tonen
   const plural = (n, one, more) => `${n} ${n === 1 ? one : more}`;
   function fbSummary(items, rd, ni = 0) {
     const ne = explain.pending().length, nr = rulesOff.pending().length + upOff.pending().length;
@@ -1646,7 +1645,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
   function fbSendBar(always) {
     const items = fb.pending(), rd = reads.pendingArticles().filter((id) => !fb.get(id)), ni = intPending(intStore.get());
-    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && !upOff.pending().length && !anote.pending().length && !insp.pending().length && (rd.length < (always ? 1 : READ_MIN_SEND))) return "";
+    if (!items.length && !ni && !explain.pending().length && !rulesOff.pending().length && !upOff.pending().length && !anote.pending().length && !insp.pending().length) return "";   // gelezen gaat alleen mee met andere feedback
     const href = esc(fbIssueUrl(items, rd)), sum = esc(fbSummary(items, rd, ni));
     if (!always) return `<a class="fb-send fb-float" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum}</span><b>Versturen</b></a>`;
     return `<a class="fb-send" id="fb-send" href="${href}" target="_blank" rel="noopener"><span>${sum} klaar om te versturen</span><b>Versturen ›</b></a>`;
