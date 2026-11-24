@@ -8,7 +8,7 @@
   const ROUND = 10;
   const fmtW = w => (Number.isInteger(w) ? w : w.toFixed(1).replace(".", ",")) + "%";
   const pct = x => Math.round(x * 100) + "%";
-  const SHORT = { ccaof: "Associate", ccdvf: "Developer", ccarf: "Architect F", ccarp: "Architect P" };
+  const SHORT = { ccaof: "Associate", ccdvf: "Developer", dbtae: "dbt", ccarf: "Architect F", ccarp: "Architect P" };
 
   const ui = { view: "home", scope: null, cur: null, recent: [], round: [], retry: null, retryDone: null, roundMs: [], curMs: [], allWhy: false, pickOpen: false,
     open: {}, confirm: null, importText: "", importMsg: null, exportOpen: false, reportOpen: false, reportText: "", reportDone: null, explain: false };
@@ -44,7 +44,7 @@
   /* ---------------- startscherm ---------------- */
   function vHome() {
     const c = cert(), ex = c.exam || {};
-    const facts = [c.code, ex.items && ex.items + " vragen", ex.minutes && ex.minutes + " min", ex.cut && "slaaggrens " + ex.cut + " (schaalscore)"].filter(Boolean).join(" · ");
+    const facts = [c.code, ex.items && ex.items + " vragen", ex.minutes && ex.minutes + " min", ex.cut && "slaaggrens " + ex.cut + (ex.cutPct ? "%" : " (schaalscore)")].filter(Boolean).join(" · ");
     let body;
     if (!c.questions.length) {
       body = `<div class="notice">De oefenvragen voor deze certificering zijn nog niet gemaakt. Hieronder staan de onderwerpen uit de officiële examengids, zodat je ziet wat er getoetst wordt.</div>

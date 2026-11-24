@@ -174,4 +174,67 @@
       { id: "d7", n: 7, name: "Developer Productivity & Operational Enablement", weight: 7, subs: [sub("d7.1","Configure Claude tools and environments for teams (e.g., Claude Code)"), sub("d7.2","Improve developer workflows using AI-assisted tooling"), sub("d7.3","Support debugging and operational issue resolution")] }
     ]
   });
+
+  /* ---------- dbt Analytics Engineering (dbt Labs) ----------
+     Examen over dbt Core 1.11 (sinds 20 mei 2026). De studiegids geeft geen wegingen: de weging hieronder is een
+     schatting naar het aantal leerdoelen per onderwerp. Domein 8 is geen examenstof: verschillen in dbt v2 (T werkt met v2). */
+  Academy.defineCert({
+    id: "dbtae", status: "active", code: "dbt AE", name: "dbt Analytics Engineering Certification", short: "dbt",
+    audience: "Analytics engineers die modellen bouwen, testen en onderhouden met dbt. Aanbevolen: goede SQL-kennis en minstens 6 maanden ervaring met dbt.",
+    exam: { items: 65, minutes: 120, cut: 65, cutPct: true, fee: "$200 USD",
+      format: "Multiple choice, invullen, koppelen, hotspot, lijst opbouwen en DOMC; elke vraag telt even zwaar",
+      delivery: "Online, met toezicht (Caveon-browser)", validity: "2 jaar",
+      report: "Geslaagd bij 65% of meer. Er zitten ongemarkeerde onderzoeksvragen tussen die niet meetellen." },
+    guideVersion: "Studiegids dbt Core 1.11 (examen sinds 20 mei 2026)",
+    verifiedOn: "24 november 2026",
+    sources: [
+      { label: "Examenpagina (versie 1.11)", url: "https://www.getdbt.com/certifications/analytics-engineer-certification-exam-version-1-11" },
+      { label: "Officiële studiegids (1.11)", url: "https://www.getdbt.com/dbt-assets/certifications/dbt-certificate-study-guide-version-1-11" },
+      { label: "dbt-documentatie", url: "https://docs.getdbt.com" },
+      { label: "Upgraden naar dbt v2", url: "https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v2" }
+    ],
+    domains: [
+      { id: "d1", n: 1, name: "Developing and optimizing dbt models", nl: "Modellen bouwen en optimaliseren", weight: 40, subs: [
+        sb("d1.1", "Identifying and verifying any raw object dependencies", "Bronnen (sources) vastleggen en controleren"),
+        sb("d1.2", "Understanding core dbt materializations", "Materializations: view, table, incremental, ephemeral"),
+        sb("d1.3", "Conceptualizing modularity and how to incorporate DRY principles", "Modulair werken en DRY"),
+        sb("d1.4", "Using commands such as build, run, test, docs, show, snapshot, and seed", "Commando's: build, run, test, docs, show, snapshot, seed"),
+        sb("d1.5", "Creating a logical flow of models and building clean DAGs", "Een logische DAG en selectie"),
+        sb("d1.6", "Defining configurations in dbt_project.yml", "Configuratie in dbt_project.yml"),
+        sb("d1.7", "Using dbt Packages", "dbt-packages"),
+        sb("d1.8", "Creating Python Models", "Python-modellen"),
+        sb("d1.9", "Providing access to users to models with the grants config", "Rechten met grants"),
+        sb("d1.10", "Creating snapshots in YAML", "Snapshots in YAML"),
+        sb("d1.11", "Selecting the optimal incremental strategy based on a dataset's characteristics", "De juiste incremental strategy kiezen"),
+        sb("d1.12", "Validating model logic and schema definitions in dry-runs using the --empty flag", "Droog testen met --empty"),
+        sb("d1.13", "Running models in sample mode using the --sample flag", "Steekproef draaien met --sample"),
+        sb("d1.14", "Understanding advanced dbt materializations such as microbatch", "Microbatch")] },
+      { id: "d2", n: 2, name: "Managing dbt models governance", nl: "Governance van modellen", weight: 10, subs: [
+        sb("d2.1", "Adding contracts to models to ensure the shape of models", "Model contracts"),
+        sb("d2.2", "Creating different versions of our models and deprecating the old ones", "Modelversies en uitfaseren"),
+        sb("d2.3", "Defining constraints in YAML to enforce data integrity at the platform level", "Constraints in YAML")] },
+      { id: "d3", n: 3, name: "Debugging data modeling errors", nl: "Fouten in modellen debuggen", weight: 15, subs: [
+        sb("d3.1", "Understanding logged error messages", "Foutmeldingen lezen"),
+        sb("d3.2", "Troubleshooting using compiled code", "Debuggen met gecompileerde SQL"),
+        sb("d3.3", "Troubleshooting .yml compilation errors", "YAML-fouten oplossen"),
+        sb("d3.4", "Developing and implementing a fix and testing it prior to merging", "Een fix maken en testen vóór de merge"),
+        sb("d3.5", "Managing dbt behavior with flags", "Gedrag sturen met flags")] },
+      { id: "d4", n: 4, name: "Troubleshooting and optimizing dbt pipelines", nl: "Pipelines debuggen en optimaliseren", weight: 8, subs: [
+        sb("d4.1", "Troubleshooting and managing failure points in the DAG", "Faalpunten in de DAG"),
+        sb("d4.2", "Using dbt clone", "dbt clone")] },
+      { id: "d5", n: 5, name: "Implementing dbt tests", nl: "Tests", weight: 10, subs: [
+        sb("d5.1", "Using generic, singular, custom, custom generic, and unit tests", "Soorten tests, ook unit tests"),
+        sb("d5.2", "Testing assumptions for dbt models and sources", "Aannames testen: severity, where, store_failures"),
+        sb("d5.3", "Implementing various testing steps in the workflow", "Tests in je workflow en CI")] },
+      { id: "d6", n: 6, name: "Implementing and maintaining external dependencies", nl: "Externe afhankelijkheden", weight: 7, subs: [
+        sb("d6.1", "Implementing dbt exposures", "Exposures"),
+        sb("d6.2", "Implementing source freshness", "Source freshness")] },
+      { id: "d7", n: 7, name: "Leveraging the dbt state", nl: "Werken met state", weight: 7, subs: [
+        sb("d7.1", "Understanding state and state selection", "State en state-selectie, defer"),
+        sb("d7.2", "Using dbt retry", "dbt retry")] },
+      { id: "d8", n: 8, name: "dbt v2 (geen examenstof)", nl: "Wat er anders is in dbt v2, voor je werk", weight: 3, subs: [
+        sb("d8.1", "Upgrading to dbt v2", "Upgraden en strengere validatie"),
+        sb("d8.2", "New and changed behavior in dbt v2", "Nieuw en anders in v2")] }
+    ]
+  });
 })();

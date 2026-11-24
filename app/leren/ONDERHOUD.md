@@ -1,4 +1,4 @@
-# Claude-examen (tabblad Leren): onderhoud
+# Examens (tabblad Leren): onderhoud
 
 Het Claude-examen (Claude Certification Academy) staat sinds 31 oktober 2026 in deze map en draait in de Radar onder **Leren**. Het oude artifact op claude.ai blijft voorlopig bestaan als reserve, maar wordt niet meer bijgewerkt.
 
@@ -15,6 +15,13 @@ Het Claude-examen (Claude Certification Academy) staat sinds 31 oktober 2026 in 
 
 Een nieuw inhoudsbestand moet ook als `<script>` in `index.html` staan, vóór `js/core.js`.
 
+## dbt Analytics Engineering (`dbtae`, sinds 24 november 2026)
+
+- Examen van dbt Labs over **dbt Core 1.11** (65 vragen, 2 uur, slagen bij 65%). Bronnen: de examenpagina en de studiegids op getdbt.com (staan in `registry.js`).
+- De studiegids geeft **geen wegingen**; de wegingen in `registry.js` zijn een schatting naar het aantal leerdoelen.
+- T werkt met **dbt v2**. Uitleg noemt verschillen onder "In v2"; domein 8 (`d8`) is geen examenstof maar v2-kennis voor het werk. Bron: docs.getdbt.com, "Upgrading to v2".
+- Vragen: `content/dbtae/questions-1.js` (domein 1) en `questions-2.js` (domein 2–8); uitleg: `content/dbtae/modules-1.js`.
+
 ## Opslag en meldingen
 
 - **Voortgang**: in de browser (`localStorage`, sleutel `cca-academy-v2`). Export/import via "Voortgang en back-up".
@@ -25,6 +32,7 @@ Een nieuw inhoudsbestand moet ook als `<script>` in `index.html` staan, vóór `
 1. Lees de open issues met titel `Examenmelding:` van de eigenaar. Beoordeel elke melding; pas de vraag aan als de melding klopt.
 2. Controleer de officiële bronnen (examengidsen op anthropic-partners.skilljar.com) tegen `content/registry.js`: gidsversie, aantal vragen, tijd, slaaggrens, domeinen en wegingen.
 3. Controleer productfeiten in vragen en uitleg tegen support.claude.com, docs.claude.com / platform.claude.com, code.claude.com en de Anthropic-nieuwspagina. Zoek ook naar nieuwe functies die in de examenstof horen.
+3b. **dbt**: vergelijk de examenpagina en studiegids van dbt Labs (versie, aantal vragen, tijd, slaaggrens, onderwerpen) met `registry.js` (`dbtae`). Komt er een nieuwe examenversie, pas de onderwerpen aan. Controleer feiten tegen docs.getdbt.com, ook wat er in dbt v2 verandert (domein 8 en de regels "In v2").
 4. Pas aan wat nodig is. Zet `verifiedOn` in `registry.js` op de datum van vandaag.
 5. Controleer: `node scripts/validate_leren.js` moet 0 fouten geven (unieke id's, antwoorden binnen bereik, één antwoord bij `t:"s"`, minstens twee bij `t:"m"`, `w` even lang als `o`, elk subonderwerp heeft vragen, juiste antwoord niet systematisch het langste).
 6. Commit alleen bestanden in `app/leren/`, met `Closes #<n>` per verwerkte melding op een eigen regel. Push naar `main`; GitHub Actions zet het binnen een minuut online.
