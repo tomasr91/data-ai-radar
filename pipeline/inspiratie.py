@@ -13,7 +13,7 @@ DIR = DATA / "inspiratie"
 KEEP_DAYS = 14
 CATS = {"zelf": 2, "product": 2}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-MAX = {"naam": 70, "wat": 260, "waarom": 260, "tech": 120}
+MAX = {"kort": 24, "naam": 70, "wat": 260, "waarom": 260, "tech": 120}
 
 
 def _iso_ok(v) -> bool:
@@ -76,7 +76,7 @@ def load_all(now=None, keep_days=KEEP_DAYS, folder=None):
             bad.append({"file": f.name, "problems": problems})
         elif data["date"] >= cutoff:
             good.append({"date": data["date"], "written_at": data["written_at"],
-                         "ideas": [{k: x[k] for k in ["cat", "naam", "wat", "waarom", "tech", "link"] if x.get(k)}
+                         "ideas": [{k: x[k] for k in ["cat", "kort", "naam", "wat", "waarom", "tech", "link"] if x.get(k)}
                                    for x in data["ideas"]]})
     good.sort(key=lambda x: x["date"], reverse=True)
     return good, bad

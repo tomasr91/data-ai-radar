@@ -22,6 +22,7 @@ T werkt op het snijvlak van BI, analytics engineering en data engineering in een
 
 ## Per idee
 
+- `kort`: label op de kaart, 2 tot 4 woorden (hooguit 24 tekens).
 - `naam`: korte, herkenbare titel (hooguit 70 tekens).
 - `wat`: wat is het, één of twee zinnen.
 - `waarom`: de waarde of het probleem dat het oplost, één of twee zinnen.
