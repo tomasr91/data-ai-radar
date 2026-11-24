@@ -1,0 +1,23 @@
+{"date": "2026-11-24", "written_at": "2026-11-24T12:40:00Z", "processed_by": "claude",
+ "ideas": [
+  {"cat": "zelf", "naam": "Je dbt-project als context voor je coding agent",
+   "wat": "De open-source dbt MCP-server geeft een AI-agent toegang tot je modellen, lineage, tests en documentatie, en kan dbt-commando's uitvoeren.",
+   "waarom": "De agent hoeft niet meer te raden hoe je project in elkaar zit. Hij ziet welke modellen ergens van afhangen voordat hij iets aanpast.",
+   "tech": "dbt MCP-server, MCP, Claude Code of een andere coding agent",
+   "link": "https://github.com/dbt-labs/dbt-mcp"},
+  {"cat": "zelf", "naam": "Kwaliteitsregels uit gewone zinnen",
+   "wat": "Databricks Labs DQX maakt datakwaliteitsregels uit een datacontract (ODCS), ook uit verwachtingen die in gewone taal zijn opgeschreven; een LLM zet die om in checks.",
+   "waarom": "Wie de data kent, schrijft op wat er moet kloppen, zonder zelf tests te bouwen. Contract en checks blijven samen in versiebeheer.",
+   "tech": "DQX, Open Data Contract Standard, Databricks",
+   "link": "https://databrickslabs.github.io/dqx/docs/guide/data_contract_quality_rules_generation"},
+  {"cat": "product", "naam": "Capaciteit 72 uur vooruit, met uitleg in gewone taal",
+   "wat": "GE HealthCare voorspelt met CareIntellect for Operations tot 72 uur vooruit waar knelpunten in bedden en doorstroom ontstaan, en stelt acties voor. Eigen variant: een voorspelmodel op je gold-laag, met een LLM alleen als uitleglaag.",
+   "waarom": "Van brandjes blussen naar vooruit plannen van ontslag, opnames en personeel. Het rekenwerk blijft bij een gewoon voorspelmodel; de AI legt alleen uit.",
+   "tech": "Tijdreeksmodel, Databricks, LLM als uitleglaag",
+   "link": "https://www.gehealthcare.com/en/about/newsroom/press-releases/ge-healthcare-announces-careintellect-for-operations-helping-health-systems-optimize-resources-and-expand-access-to-care"},
+  {"cat": "product", "naam": "Protocolvraagbaak die laat zien welke protocollen schuren",
+   "wat": "HSBC bouwde een assistent die medewerkers direct antwoord geeft op vragen over interne regels. Ze merkten: hoe meer vragen over één regel, hoe eerder die regel herschreven moet worden.",
+   "waarom": "In een ziekenhuis kan zo'n vraagbaak voor protocollen en werkinstructies ook een signaal geven: welke protocollen zijn onduidelijk en verdienen een herziening.",
+   "tech": "Zoeken in documenten (RAG), vragenlog als dataset, Power BI",
+   "link": "https://cloud.google.com/blog/products/ai-machine-learning/hsbc-builds-an-internal-chatbot-to-answer-questions-on-policies"}
+ ]}

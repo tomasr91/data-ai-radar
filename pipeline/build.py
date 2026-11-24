@@ -28,6 +28,7 @@ from . import rules as rules_mod
 from . import uitgangspunten as up_mod
 from . import trends as trends_mod
 from . import weekly as weekly_mod
+from . import inspiratie as insp_mod
 from .terms import glossary
 from . import interests as interests_mod
 from . import runs as runs_mod
@@ -475,6 +476,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
     dd_options, invalid_options = deepdives_mod.load_options(set(conf.topics))
     trends, invalid_trends = trends_mod.load(set(conf.topics), shown, now=now)
     weekly, invalid_weekly = weekly_mod.load(shown)
+    inspiratie, invalid_insp = insp_mod.load_all(now=now)
     int_suggestions, invalid_suggestions = interests_mod.load_suggestions(set(conf.topics))
     feed = {
         "schema_version": SCHEMA_VERSION,
@@ -495,6 +497,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
         "deepdive_options": dd_options,
         "trends": trends,
         "weekly": weekly,
+        "inspiratie": inspiratie,
         "glossary": glossary(shown, deepdives),
         "interests": interests_mod.view(conf),
         "rode_draad": {"name": enrich_mod.rode_draad().get("name"),
@@ -525,6 +528,7 @@ def build(provider_name: str, out_path, max_enrich: int = 15, now=None, conf=Non
             "queue_size": len(queue),
             "invalid_enrichment": invalid_cache,
             "invalid_deepdives": invalid_deepdives,
+            "invalid_inspiratie": invalid_insp,
             "invalid_deepdive_options": invalid_options,
             "invalid_trends": invalid_trends,
             "invalid_weekly": invalid_weekly,

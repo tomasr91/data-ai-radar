@@ -1205,3 +1205,39 @@ class TestPublishedFeed(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestInspiratie(unittest.TestCase):
+    def _card(self, **kw):
+        ideas = [{"cat": c, "naam": f"Idee {i}", "wat": "w", "waarom": "x"} for i, c in enumerate(["zelf", "zelf", "product", "product"], 1)]
+        return {"date": "2026-11-24", "written_at": "2026-11-24T04:00:00Z", "ideas": ideas, **kw}
+
+    def test_valid(self):
+        from pipeline import inspiratie
+        self.assertEqual(inspiratie.validate(self._card(), "2026-11-24"), [])
+
+    def test_wrong_mix_and_link(self):
+        from pipeline import inspiratie
+        c = self._card()
+        c["ideas"][1]["cat"] = "product"
+        c["ideas"][0]["link"] = "http://x"
+        p = inspiratie.validate(c, "2026-11-24")
+        self.assertTrue(any("2 ideeën" in x for x in p) and any("https" in x for x in p))
+
+    def test_load_keeps_14_days(self):
+        import tempfile
+        from datetime import datetime, timezone
+        from pathlib import Path
+        from pipeline import inspiratie
+        with tempfile.TemporaryDirectory() as d:
+            for day in ["2026-11-01", "2026-11-24"]:
+                Path(d, day + ".json").write_text(json.dumps(self._card(date=day)), encoding="utf-8")
+            good, bad = inspiratie.load_all(now=datetime(2026, 11, 24, 12, tzinfo=timezone.utc), folder=Path(d))
+        self.assertEqual([c["date"] for c in good], ["2026-11-24"])
+        self.assertEqual(bad, [])
+
+    def test_collect_parses_votes(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import collect_feedback as cf
+        body = '```json\n{"votes": [], "inspiratie": [{"id": "2026-11-24-1", "v": 1, "naam": "Idee"}, {"id": "bad", "v": 1}]}\n```'
+        self.assertEqual(cf.parse_inspiratie(body), [{"id": "2026-11-24-1", "v": 1, "naam": "Idee"}])

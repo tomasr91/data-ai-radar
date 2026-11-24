@@ -66,6 +66,12 @@ def main(argv):
                 print(f"FOUT deepdive_options.json: {pr}")
             if opts:
                 print(f"{len(opts['options'])} keuzes voor morgen gecontroleerd")
+        from pipeline import inspiratie as insp_mod
+        igood, iwrong = insp_mod.load_all(keep_days=100000)
+        for w in iwrong:
+            bad += 1
+            print(f"FOUT inspiratie/{w['file']}: " + "; ".join(w["problems"]))
+        print(f"{len(igood) + len(iwrong)} inspiratiekaarten gecontroleerd")
         from pipeline import trends as trends_mod
         if trends_mod.PATH.exists():
             try:

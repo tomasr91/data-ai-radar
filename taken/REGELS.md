@@ -5,7 +5,7 @@ De radar draait 's nachts in vier korte taken. Elke taak heeft een eigen bestand
 | Tijd (Nederland) | Taak | Bestand |
 |---|---|---|
 | 04:12 | Uitleggen: nieuwe artikelen | `taken/UITLEGGEN.md` |
-| 05:12 | Verdiepen: verdieping(en) en 5 keuzes voor morgen | `taken/VERDIEPEN.md` |
+| 05:12 | Verdiepen: verdieping(en) en 5 keuzes voor morgen; daarna op werkdagen Inspiratie | `taken/VERDIEPEN.md`, `taken/INSPIRATIE.md` |
 | 06:12 | Overzicht: trends, interesses, begrippen aanvullen, zondag Jouw week | `taken/OVERZICHT.md` |
 | 07:27 | Inhalen: alleen wat vannacht nog ontbreekt | `taken/INHALEN.md` |
 
@@ -22,7 +22,7 @@ Lees dit bestand en daarna alleen het bestand van jouw taak.
 
 ## Welke bestanden je mag aanpassen
 
-Alleen: `data/enrichment/`, `data/deepdives/`, `data/deepdive_options.json`, `data/trends.json`, `data/weekly.json`, `data/interest_suggestions.json`, `data/interest_log.json`, `data/interest_requests.json`, `data/leerregels.json`, `data/voortgang.json`, `data/runs/`, `data/run-request`, en (alleen bij T's verzoeken in Overzicht) `context/interests.yml` en `context/uitgangspunten.md`. Nooit `app/`, `pipeline/`, `scripts/`, `.github/` of andere contextbestanden.
+Alleen: `data/enrichment/`, `data/deepdives/`, `data/inspiratie/`, `data/deepdive_options.json`, `data/trends.json`, `data/weekly.json`, `data/interest_suggestions.json`, `data/interest_log.json`, `data/interest_requests.json`, `data/leerregels.json`, `data/voortgang.json`, `data/runs/`, `data/run-request`, en (alleen bij T's verzoeken in Overzicht) `context/interests.yml` en `context/uitgangspunten.md`. Nooit `app/`, `pipeline/`, `scripts/`, `.github/` of andere contextbestanden.
 
 ## Starten
 

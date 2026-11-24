@@ -733,6 +733,34 @@ with sync_playwright() as p:
         check(f"9. {label}: uitleg in plaats van crash", "kon niet worden geladen" in txt and not errs, txt[:80])
         pg.close()
         srv.shutdown()
+
+    # 11. Inspiratie: kaart tussen de artikelen, opent met 4 ideeën, duim gaat mee met versturen
+    _f2 = json.loads(json.dumps(feed))
+    _f2["inspiratie"] = [{"date": "2026-11-24", "written_at": "2026-11-24T12:00:00Z", "ideas": [
+        {"cat": c, "naam": f"Idee {i}", "wat": "Wat het is.", "waarom": "Waarom het telt.", "tech": "dbt", **({"link": "https://example.org/x"} if i == 1 else {})}
+        for i, c in enumerate(["zelf", "zelf", "product", "product"], 1)]}]
+    srv, u = serve(site(json.dumps(_f2)))
+    pg = browser.new_page(**phone)
+    errs = []
+    pg.on("pageerror", lambda e: errs.append(str(e)))
+    pg.route("**/fonts.g*/**", lambda r: r.abort())
+    pg.goto(u)
+    pg.wait_for_selector(".card")
+    ic = pg.locator('.card[data-insp="2026-11-24"]')
+    check("11. inspiratiekaart staat tussen de artikelen, met label", ic.count() == 1 and "inspiratie" in ic.inner_text().lower()
+          and pg.locator(".cards > .card").count() == len(arts) + 1)
+    ic.click()
+    pg.wait_for_selector("#insp-page")
+    txt = pg.locator("#insp-page").inner_text()
+    check("   opent met 4 ideeën in twee blokken", pg.locator(".insp-idea").count() == 4 and "Zelf engineeren met AI" in txt and "AI-toepassingen voor de zorg" in txt)
+    check("   link alleen waar die er is", pg.locator(".insp-idea a").count() == 1)
+    pg.locator('.insp-idea').first.locator('[data-iv="1"]').click()
+    href = pg.locator("#insp-send #fb-send").get_attribute("href") or ""
+    from urllib.parse import unquote
+    check("   duim gaat mee met versturen", "2026-11-24-1" in unquote(href) and "inspiratie" in unquote(href))
+    check("   geen JavaScript-fouten bij inspiratie", not errs, "; ".join(errs))
+    pg.close()
+    srv.shutdown()
     browser.close()
 
 failed = [r for r in results if not r[1]]

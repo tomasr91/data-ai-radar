@@ -56,6 +56,23 @@ def parse_notes(body: str) -> list:
     return out
 
 
+def parse_inspiratie(body: str) -> list:
+    """Duimpjes per inspiratie-idee ("inspiratie": [{"id": "<datum>-<n>", "v": 1|-1, "naam"}])."""
+    m = BLOCK_RE.search(body or "")
+    try:
+        data = json.loads(m.group(1)) if m else {}
+    except json.JSONDecodeError:
+        return []
+    out = []
+    for x in data.get("inspiratie", []) if isinstance(data.get("inspiratie"), list) else []:
+        if not isinstance(x, dict):
+            continue
+        iid, v = str(x.get("id", "")), x.get("v")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}-[1-4]", iid) and v in (1, -1):
+            out.append({"id": iid, "v": v, "naam": re.sub(r"\s+", " ", str(x.get("naam") or "")).strip()[:80]})
+    return out
+
+
 def parse_votes(body: str) -> list:
     """Stemmen uit het JSON-blok in de issuetekst; ongeldige regels vallen weg."""
     m = BLOCK_RE.search(body or "")
@@ -201,6 +218,8 @@ def main():
                 "labels": a.get("labels") or prev.get("labels", []),
                 **({"soort": a.get("soort") or prev.get("soort")} if (a.get("soort") or prev.get("soort")) else {}),
             }
+        for x in parse_inspiratie(issue.get("body", "")):   # Claude houdt er bij de volgende inspiratie rekening mee
+            store["inspiratie"][x["id"]] = {"v": x["v"], "naam": x["naam"], "at": now, "issue": issue["number"]}
         reads = parse_reads(issue.get("body", ""))
         for rid in reads:
             a = articles.get(rid, {})
