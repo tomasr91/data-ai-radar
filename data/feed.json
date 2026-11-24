@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T06:33:29.425632Z",
+ "generated_at": "2026-11-24T11:39:26.259699Z",
  "mode": "live",
- "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
- "last_successful_update": "2026-11-24T03:13:08.613617Z",
+ "last_successful_update": "2026-11-24T11:39:26.259699Z",
  "groups": [
   {
    "id": "dbt",
@@ -159,7 +159,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-24T03:13:08.676940Z"
+   "checked_at": "2026-11-24T11:39:26.303178Z"
   },
   {
    "id": "dbt_core_releases",
@@ -172,7 +172,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-24T03:13:08.963447Z"
+   "checked_at": "2026-11-24T11:39:26.566394Z"
   },
   {
    "id": "claude_code_releases",
@@ -185,7 +185,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-24T03:13:09.472465Z"
+   "checked_at": "2026-11-24T11:39:27.532236Z"
   },
   {
    "id": "anthropic_engineering",
@@ -198,7 +198,7 @@
    "status": "ok",
    "items": 29,
    "message": "29 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-24T03:13:09.820088Z"
+   "checked_at": "2026-11-24T11:39:28.107543Z"
   },
   {
    "id": "claude_blog",
@@ -211,7 +211,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-24T03:13:09.863129Z"
+   "checked_at": "2026-11-24T11:39:28.203185Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -224,7 +224,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-24T03:13:09.897649Z"
+   "checked_at": "2026-11-24T11:39:28.366086Z"
   },
   {
    "id": "databricks_blog",
@@ -237,7 +237,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-24T03:13:09.971931Z"
+   "checked_at": "2026-11-24T11:39:28.525150Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -250,7 +250,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-24T03:13:10.037323Z"
+   "checked_at": "2026-11-24T11:39:28.705407Z"
   },
   {
    "id": "azure_blog",
@@ -263,7 +263,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-24T03:13:10.118696Z"
+   "checked_at": "2026-11-24T11:39:28.815203Z"
   },
   {
    "id": "powerbi_blog",
@@ -276,7 +276,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-24T03:13:10.220315Z"
+   "checked_at": "2026-11-24T11:39:29.176374Z"
   },
   {
    "id": "fabric_blog",
@@ -289,7 +289,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-24T03:13:11.015021Z"
+   "checked_at": "2026-11-24T11:39:30.044954Z"
   },
   {
    "id": "sqlbi",
@@ -302,7 +302,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-24T03:13:11.827966Z"
+   "checked_at": "2026-11-24T11:39:30.956170Z"
   },
   {
    "id": "huggingface_blog",
@@ -315,7 +315,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-24T03:13:12.019420Z"
+   "checked_at": "2026-11-24T11:39:31.228340Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -328,7 +328,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-24T03:13:12.115344Z"
+   "checked_at": "2026-11-24T11:39:31.470219Z"
   },
   {
    "id": "simon_whiteley",
@@ -341,7 +341,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-24T03:13:12.278294Z"
+   "checked_at": "2026-11-24T11:39:31.734423Z"
   },
   {
    "id": "simon_spati",
@@ -354,7 +354,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.ssp.sh/posts/index.xml",
-   "checked_at": "2026-11-24T03:13:12.456414Z"
+   "checked_at": "2026-11-24T11:39:31.995177Z"
   },
   {
    "id": "confessions_data_guy",
@@ -367,7 +367,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.confessionsofadataguy.com/feed/",
-   "checked_at": "2026-11-24T03:13:13.446000Z"
+   "checked_at": "2026-11-24T11:39:32.949308Z"
   },
   {
    "id": "delta_lake_blog",
@@ -380,7 +380,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://delta.io/rss.xml",
-   "checked_at": "2026-11-24T03:13:13.709915Z"
+   "checked_at": "2026-11-24T11:39:33.635019Z"
   },
   {
    "id": "hamel_husain",
@@ -393,7 +393,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-24T03:13:14.080974Z"
+   "checked_at": "2026-11-24T11:39:33.950541Z"
   },
   {
    "id": "langchain_blog",
@@ -406,7 +406,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-24T03:13:14.268117Z"
+   "checked_at": "2026-11-24T11:39:34.193744Z"
   },
   {
    "id": "chip_huyen",
@@ -419,7 +419,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-24T03:13:14.376235Z"
+   "checked_at": "2026-11-24T11:39:34.376623Z"
   },
   {
    "id": "simon_willison",
@@ -432,7 +432,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-24T03:13:14.654753Z"
+   "checked_at": "2026-11-24T11:39:34.733362Z"
   },
   {
    "id": "chris_webb",
@@ -445,7 +445,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-24T03:13:14.814682Z"
+   "checked_at": "2026-11-24T11:39:34.908218Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -458,13 +458,13 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-24T03:13:15.155351Z"
+   "checked_at": "2026-11-24T11:39:35.162061Z"
   }
  ],
  "daily_top": [
   "216eab677a97",
-  "9fa51654bab7",
   "905562b7af62",
+  "9fa51654bab7",
   "d380e24c1978",
   "3e9bbba1efea"
  ],
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -573,139 +573,6 @@
     "fase": 5,
     "quote": "Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren.",
     "why": "Statement timeouts zijn in te stellen in een bundel, het onderwerp van fase 5."
-   }
-  },
-  {
-   "id": "9fa51654bab7",
-   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
-   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
-   "source_id": "simon_spati",
-   "published_at": "2026-11-20T04:40:08Z",
-   "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
-   "fetched_at": "2026-11-23T03:13:10.530143Z",
-   "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
-   "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
-   "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
-   "limitations": [
-    "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
-    "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
-    "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Artikel op het MotherDuck-blog",
-     "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
-    },
-    {
-     "label": "MotherDuck MCP-server instellen",
-     "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
-    },
-    {
-     "label": "MotherDuck Dives",
-     "url": "https://motherduck.com/docs/key-tasks/dives/"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering",
-    "claude_ai_development",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "agents",
-    "ai_context",
-    "claude",
-    "kwaliteit"
-   ],
-   "relevance_score": 99,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.82,
-    "source": 0.68,
-    "quality": 0.63,
-    "feedback": 0.03,
-    "fit": 0.15,
-    "project": 0.06
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-23T03:23:10Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
-   "story": [
-    "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
-    "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
-    "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
-    "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
-    "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
-   ],
-   "key_facts": [
-    "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
-    "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
-    "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
-    "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
-    "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
-    "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
-   "showcase": {
-    "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
-    "language": "sql",
-    "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
-    "result": {
-     "columns": [
-      "rijen",
-      "goed_gelezen",
-      "kwijt"
-     ],
-     "rows": [
-      [
-       6,
-       4,
-       2
-      ]
-     ]
-    },
-    "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
-   },
-   "terms": [
-    {
-     "term": "MCP-server",
-     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
-    },
-    {
-     "term": "MotherDuck",
-     "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
-    },
-    {
-     "term": "INFORMATION_SCHEMA",
-     "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.65,
-    "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
-   },
-   "labels": [
-    "data-agent",
-    "human-in-the-loop",
-    "duckdb-mcp",
-    "agentic-analyse"
-   ],
-   "fb_why": {
-    "by": "label",
-    "name": "human-in-the-loop",
-    "pts": 3
-   },
-   "project_ref": {
-    "fase": 6,
-    "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
-    "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
    }
   },
   {
@@ -823,6 +690,139 @@
    }
   },
   {
+   "id": "9fa51654bab7",
+   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
+   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-20T04:40:08Z",
+   "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
+   "fetched_at": "2026-11-23T03:13:10.530143Z",
+   "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
+   "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
+   "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
+   "limitations": [
+    "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
+    "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
+    "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Artikel op het MotherDuck-blog",
+     "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
+    },
+    {
+     "label": "MotherDuck MCP-server instellen",
+     "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
+    },
+    {
+     "label": "MotherDuck Dives",
+     "url": "https://motherduck.com/docs/key-tasks/dives/"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "agents",
+    "ai_context",
+    "claude",
+    "kwaliteit"
+   ],
+   "relevance_score": 98,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.81,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.03,
+    "fit": 0.15,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-23T03:23:10Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
+   "story": [
+    "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
+    "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
+    "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
+    "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
+    "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
+   ],
+   "key_facts": [
+    "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
+    "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
+    "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
+    "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
+    "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
+    "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
+   "showcase": {
+    "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
+    "language": "sql",
+    "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
+    "result": {
+     "columns": [
+      "rijen",
+      "goed_gelezen",
+      "kwijt"
+     ],
+     "rows": [
+      [
+       6,
+       4,
+       2
+      ]
+     ]
+    },
+    "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
+   },
+   "terms": [
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "MotherDuck",
+     "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
+    },
+    {
+     "term": "INFORMATION_SCHEMA",
+     "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.65,
+    "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
+   },
+   "labels": [
+    "data-agent",
+    "human-in-the-loop",
+    "duckdb-mcp",
+    "agentic-analyse"
+   ],
+   "fb_why": {
+    "by": "label",
+    "name": "human-in-the-loop",
+    "pts": 3
+   },
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
+    "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+   }
+  },
+  {
    "id": "d380e24c1978",
    "title": "Combining Fabric Semantic Views",
    "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
@@ -859,7 +859,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.68,
     "quality": 0.7,
     "fit": 0.2
@@ -978,7 +978,7 @@
    "relevance_score": 94,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.99,
+    "recency": 0.98,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1097,7 +1097,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1218,7 +1218,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -1407,7 +1407,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -1520,7 +1520,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.04,
@@ -1629,7 +1629,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 1.0,
     "quality": 0.62,
     "feedback": -0.03,
@@ -1879,7 +1879,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -1987,7 +1987,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.05,
@@ -2356,7 +2356,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.05,
@@ -2429,106 +2429,6 @@
    }
   },
   {
-   "id": "6fd4c32fe34a",
-   "title": "How to build and maintain an agentic evaluation",
-   "url": "https://huggingface.co/blog/agentic-evals",
-   "source_id": "huggingface_blog",
-   "published_at": "2026-11-23T00:00:00Z",
-   "fetched_at": "2026-11-24T03:13:12.019420Z",
-   "summary": "Een stappenplan van Hugging Face voor een eigen agent-eval: van een smalle claim via controles op valsspelen tot rapporteren met pass@k en pass^k.",
-   "personal_relevance": "Als je een AI-assistent op je eigen data wilt testen, geeft dit stappenplan je een manier om te voorkomen dat je test zelf de fout is.",
-   "experiment": "Maak vijf vragen over een verzonnen dbt-project met een vast goed antwoord. Laat Claude ze elk drie keer beantwoorden en reken pass@3 en pass^3 uit. Voeg daarna één 'sluiproute'-vraag toe en kijk of je controle die vangt.",
-   "limitations": [
-    "Het tweede deel van het stuk (latere stappen en de bijlage met commando's) was niet volledig letterlijk te lezen.",
-    "Het voorbeeld is een natuurkundetaak; vertalen naar data-vragen moet je zelf doen.",
-    "Het stuk gaat over open evals op de Hugging Face Hub; voor interne evals met werkdata gelden andere afwegingen."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Harbor-documentatie",
-     "url": "https://docs.harborframework.com/"
-    },
-    {
-     "label": "raman-lab dataset",
-     "url": "https://huggingface.co/datasets/burtenshaw/raman-lab"
-    },
-    {
-     "label": "Agent traces op de Hub",
-     "url": "https://huggingface.co/docs/hub/en/agent-traces"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "agents"
-   ],
-   "relevance_score": 89,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.94,
-    "source": 0.51,
-    "quality": 0.67,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:27:44Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents",
-   "story": [
-    "Hugging Face schreef een uitgebreide handleiding voor het bouwen van een test voor AI-agents (agentic evaluation). De aanleiding: kleine fouten in een test verschuiven de uitkomst flink. In een audit van Terminal-Bench scheelde de score tot bijna 30 procentpunt, alleen doordat het harnas om hetzelfde model anders was.",
-    "De onderdelen zijn steeds dezelfde. Een taak geeft de opdracht. Het harnas zet model en tools in een vaste omgeving. Een verifier beoordeelt de eindtoestand, dus wat er echt is opgeslagen, niet wat de agent zegt. Elke poging laat een spoor (trace) achter dat je later naleest.",
-    "Het voorbeeld is een natuurkundetaak: pieken fitten in een spectrum. Eerst draaien de auteurs drie controles: de echte oplossing moet slagen, een agent die niets doet moet zakken, en een sluiproute moet zakken. Die sluiproute slaagde toch op alle 8 taken, zonder echt te fitten. Daarom kwamen er extra controles per piek bij. Zo'n 'kan de test bedrogen worden?'-check is het nuttigste idee uit het stuk.",
-    "Daarna meet je op twee manieren. Pass@k telt een taak als geslaagd als minstens één van k pogingen goed is. Pass^k vraagt dat alle pogingen goed zijn. Bij gpt-oss-120b was dat 7 van 8 tegen 1 van 8: het model kan het, maar niet betrouwbaar. Voor een data-assistent die collega's één keer iets vragen, is pass^k de eerlijke maat.",
-    "Tot slot vraagt onderhoud aandacht. Leg elke correctie vast: wat er mis was, hoe je het vond en of oude scores nog vergelijkbaar zijn. Voor je eigen evals voor een AI-assistent op dbt-metadata kun je dit stappenplan bijna letterlijk volgen, met verzonnen data waarvan je het goede antwoord kent."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 23 november 2026 door Avijit Ghosh, Ben Burtenshaw en Irene Solaiman (Hugging Face).",
-    "Een Terminal-Bench-audit (ICML 2026) vond tot 29,9 procentpunt verschil in nauwkeurigheid als alleen het harnas veranderde.",
-    "Controles voor een eval: de referentieoplossing slaagt, een agent die niets doet zakt, een sluiproute zakt; in het voorbeeld slaagde de sluiproute op alle 8 taken, waarna fitcontroles per piek zijn toegevoegd.",
-    "gpt-oss-120b haalde 11 van 24 pogingen (8 taken x 3); pass@3 was 7/8 taken, pass^3 1/8 taken; gemiddelde 0,46 met een standaardfout van ongeveer 0,11.",
-    "Terminal-Bench 2.1 herstelde 28 van 89 taken na meldingen van gebruikers; OpenAI vond in een audit van SWE-bench Verified problemen in 59,4% van 138 onderzochte taken.",
-    "Volgens het stuk wordt 98,2% van de scores van model-benchmarks door maar één partij gerapporteerd."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "harnas",
-     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
-    },
-    {
-     "term": "verifier",
-     "explanation": "Het deel van een test dat na afloop controleert of de agent het goed deed, door te kijken naar wat er echt is opgeslagen of veranderd."
-    },
-    {
-     "term": "Pass@k",
-     "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
-    },
-    {
-     "term": "Pass^k",
-     "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
-    },
-    {
-     "term": "trace",
-     "explanation": "Een spoor van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt het om fouten te zoeken."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.55,
-    "why": "Praktisch over evals, een onderwerp uit je profiel, maar met een natuurkundevoorbeeld in plaats van data; nog geen duimen bij evals."
-   },
-   "labels": [
-    "agent-evals",
-    "benchmark-kwaliteit"
-   ]
-  },
-  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -2564,7 +2464,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -2642,6 +2542,106 @@
    }
   },
   {
+   "id": "6fd4c32fe34a",
+   "title": "How to build and maintain an agentic evaluation",
+   "url": "https://huggingface.co/blog/agentic-evals",
+   "source_id": "huggingface_blog",
+   "published_at": "2026-11-23T00:00:00Z",
+   "fetched_at": "2026-11-24T03:13:12.019420Z",
+   "summary": "Een stappenplan van Hugging Face voor een eigen agent-eval: van een smalle claim via controles op valsspelen tot rapporteren met pass@k en pass^k.",
+   "personal_relevance": "Als je een AI-assistent op je eigen data wilt testen, geeft dit stappenplan je een manier om te voorkomen dat je test zelf de fout is.",
+   "experiment": "Maak vijf vragen over een verzonnen dbt-project met een vast goed antwoord. Laat Claude ze elk drie keer beantwoorden en reken pass@3 en pass^3 uit. Voeg daarna één 'sluiproute'-vraag toe en kijk of je controle die vangt.",
+   "limitations": [
+    "Het tweede deel van het stuk (latere stappen en de bijlage met commando's) was niet volledig letterlijk te lezen.",
+    "Het voorbeeld is een natuurkundetaak; vertalen naar data-vragen moet je zelf doen.",
+    "Het stuk gaat over open evals op de Hugging Face Hub; voor interne evals met werkdata gelden andere afwegingen."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Harbor-documentatie",
+     "url": "https://docs.harborframework.com/"
+    },
+    {
+     "label": "raman-lab dataset",
+     "url": "https://huggingface.co/datasets/burtenshaw/raman-lab"
+    },
+    {
+     "label": "Agent traces op de Hub",
+     "url": "https://huggingface.co/docs/hub/en/agent-traces"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.93,
+    "source": 0.51,
+    "quality": 0.67,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:27:44Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents",
+   "story": [
+    "Hugging Face schreef een uitgebreide handleiding voor het bouwen van een test voor AI-agents (agentic evaluation). De aanleiding: kleine fouten in een test verschuiven de uitkomst flink. In een audit van Terminal-Bench scheelde de score tot bijna 30 procentpunt, alleen doordat het harnas om hetzelfde model anders was.",
+    "De onderdelen zijn steeds dezelfde. Een taak geeft de opdracht. Het harnas zet model en tools in een vaste omgeving. Een verifier beoordeelt de eindtoestand, dus wat er echt is opgeslagen, niet wat de agent zegt. Elke poging laat een spoor (trace) achter dat je later naleest.",
+    "Het voorbeeld is een natuurkundetaak: pieken fitten in een spectrum. Eerst draaien de auteurs drie controles: de echte oplossing moet slagen, een agent die niets doet moet zakken, en een sluiproute moet zakken. Die sluiproute slaagde toch op alle 8 taken, zonder echt te fitten. Daarom kwamen er extra controles per piek bij. Zo'n 'kan de test bedrogen worden?'-check is het nuttigste idee uit het stuk.",
+    "Daarna meet je op twee manieren. Pass@k telt een taak als geslaagd als minstens één van k pogingen goed is. Pass^k vraagt dat alle pogingen goed zijn. Bij gpt-oss-120b was dat 7 van 8 tegen 1 van 8: het model kan het, maar niet betrouwbaar. Voor een data-assistent die collega's één keer iets vragen, is pass^k de eerlijke maat.",
+    "Tot slot vraagt onderhoud aandacht. Leg elke correctie vast: wat er mis was, hoe je het vond en of oude scores nog vergelijkbaar zijn. Voor je eigen evals voor een AI-assistent op dbt-metadata kun je dit stappenplan bijna letterlijk volgen, met verzonnen data waarvan je het goede antwoord kent."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 23 november 2026 door Avijit Ghosh, Ben Burtenshaw en Irene Solaiman (Hugging Face).",
+    "Een Terminal-Bench-audit (ICML 2026) vond tot 29,9 procentpunt verschil in nauwkeurigheid als alleen het harnas veranderde.",
+    "Controles voor een eval: de referentieoplossing slaagt, een agent die niets doet zakt, een sluiproute zakt; in het voorbeeld slaagde de sluiproute op alle 8 taken, waarna fitcontroles per piek zijn toegevoegd.",
+    "gpt-oss-120b haalde 11 van 24 pogingen (8 taken x 3); pass@3 was 7/8 taken, pass^3 1/8 taken; gemiddelde 0,46 met een standaardfout van ongeveer 0,11.",
+    "Terminal-Bench 2.1 herstelde 28 van 89 taken na meldingen van gebruikers; OpenAI vond in een audit van SWE-bench Verified problemen in 59,4% van 138 onderzochte taken.",
+    "Volgens het stuk wordt 98,2% van de scores van model-benchmarks door maar één partij gerapporteerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "harnas",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "verifier",
+     "explanation": "Het deel van een test dat na afloop controleert of de agent het goed deed, door te kijken naar wat er echt is opgeslagen of veranderd."
+    },
+    {
+     "term": "Pass@k",
+     "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
+    },
+    {
+     "term": "Pass^k",
+     "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
+    },
+    {
+     "term": "trace",
+     "explanation": "Een spoor van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt het om fouten te zoeken."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.55,
+    "why": "Praktisch over evals, een onderwerp uit je profiel, maar met een natuurkundevoorbeeld in plaats van data; nog geen duimen bij evals."
+   },
+   "labels": [
+    "agent-evals",
+    "benchmark-kwaliteit"
+   ]
+  },
+  {
    "id": "c63f36899b14",
    "title": "Have dbt skills been bitter lesson’d?",
    "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
@@ -2682,7 +2682,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.29,
+    "recency": 0.28,
     "source": 0.68,
     "quality": 0.8,
     "feedback": -0.03,
@@ -2912,7 +2912,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3118,7 +3118,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.5,
     "feedback": 0.01,
@@ -3216,7 +3216,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.57,
     "feedback": 0.01,
@@ -3315,7 +3315,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -3386,145 +3386,6 @@
    }
   },
   {
-   "id": "233bf8a439eb",
-   "title": "Introducing Unity Gateway Insights",
-   "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-18T22:42:36Z",
-   "fetched_at": "2026-11-19T03:13:32.204856Z",
-   "summary": "Unity Gateway Insights laat Genie de traces van Claude Code, Codex en Copilot doorzoeken op verspilling: falende MCP-tools, dure modellen voor simpel werk en herhaald werk dat een skill kan worden.",
-   "personal_relevance": "Als je team Claude Code gaat gebruiken op Databricks, laat dit zien hoe je agentgebruik meet en goedkoper maakt met je eigen dataplatform.",
-   "experiment": "Zet een kleine tabel met verzonnen agentsessies (werkstroom, model, tokens, aantal toolfouten) in een schema en vraag Genie welke werkstroom het meest kost per sessie; vergelijk het antwoord met je eigen SQL.",
-   "limitations": [
-    "Alleen cijfers van Databricks zelf; geen klantresultaten.",
-    "Status en precieze tabelnamen staan niet in het artikel.",
-    "Werkt alleen als het verkeer van de agents via Unity Gateway en de ug CLI loopt."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Unity Gateway Insights (Databricks-documentatie)",
-     "url": "https://docs.databricks.com/aws/en/ai-gateway/insights"
-    },
-    {
-     "label": "Unified trace table",
-     "url": "https://docs.databricks.com/aws/en/ai-gateway/unified-trace-table"
-    },
-    {
-     "label": "ug CLI voor coding agents",
-     "url": "https://docs.databricks.com/aws/en/ai-gateway/coding-agent-ug-cli"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_evaluation_observability",
-    "veilige_agents"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.77,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T03:40:00Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Genie zoekt in de sporen van je coding agents waar tokens weglekken",
-   "story": [
-    "Databricks introduceert Unity Gateway Insights. Laten je ontwikkelaars hun coding agents (Claude Code, Codex of GitHub Copilot) via Unity Gateway lopen, dan maakt Insights een rapport over de afgelopen dag, 7 dagen of 30 dagen. Het rapport zegt waar tokens weglekken en wat je eraan kunt doen.",
-    "Zo werkt het. Start een ontwikkelaar zijn agent met de ug CLI, dan zet die de tracing van de agent aan via OpenTelemetry. Elk spoor (trace) komt in één gedeelde tracetabel: een Delta-tabel in Unity Catalog. Insights neemt een steekproef van sessies, groepeert ze in werkstromen naar soort werk en zoekt per werkstroom naar falende MCP-tools, te volle context, dure frontier-modellen voor eenvoudige taken en werk dat steeds terugkomt. Genie schrijft daarvoor zelf de SQL, en met Genie Ontology gebruikt het rapport je eigen projectnamen en begrippen.",
-    "Het rapport vergelijkt per werkstroom het aandeel sessies met het aandeel tokens. Een werkstroom met 10% van de sessies en 35% van de tokens is de eerste plek om te kijken. Verspilling wordt op kosten gerangschikt. Eenvoudige taken die op een duur model draaien, kun je met Smart Routing naar een goedkoper model sturen. Voor werk dat in minstens drie sessies of bij twee engineers terugkomt, schrijft Insights een prompt waarmee je er een gedeelde skill van maakt. Bij elke bevinding kun je de voorbeeldsessies openen en met Genie doorvragen, bijvoorbeeld welke MCP-server de meeste tokens verspilde en wie de eigenaar is.",
-    "Databricks gebruikte het op de eigen uitrol naar duizenden engineers. Zeven kleine bugs in MCP-servers kostten 499.000 dollar aan tokens en 12.000 uur wachten; ze oplossen kostte ongeveer een uur. Opnieuw afspelen van sessies liet zien dat Opus 5 geen winst gaf boven het goedkopere Opus 4.8. Dit zijn cijfers van Databricks zelf, niet van klanten.",
-    "Interessant aan de opzet is dat de traces gewone governed data zijn: alleen de eigenaar van de tabel kan ze eerst lezen, daarna geef je toegang met grants en row filters in Unity Catalog. Je analyseert AI-gebruik dus met dezelfde middelen als elke andere tabel. Het artikel noemt geen status (preview of GA) en geen tabelnamen."
-   ],
-   "key_facts": [
-    "Unity Gateway Insights is aangekondigd op 18 november 2026; de status (preview of GA) staat niet in het artikel.",
-    "Rapporten over de laatste 1, 7 of 30 dagen, via AI Gateway > Observability > Insights; hooguit 10 eigen vragen per rapport.",
-    "Werkt voor Claude Code, Codex en GitHub Copilot die met de ug CLI zijn gestart; traces gaan via OpenTelemetry naar een tracetabel (Delta) in Unity Catalog.",
-    "Soorten verspilling: MCP-fouten, frontier-modellen voor eenvoudige taken (oplossing: Smart Routing) en herhaald werk (minstens 3 sessies of 2 engineers) dat een skill kan worden.",
-    "Databricks intern: 7 MCP-bugs kostten 499.000 dollar aan tokens en 12.000 uur wachten, in ongeveer een uur opgelost; geschatte besparing 1,2 miljoen dollar per jaar.",
-    "Toegang tot traces loopt via Unity Catalog-grants en row filters; Insights leest de tabel op zijn plek, zonder export."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "De eerste vraag uit het rapport, nagebouwd in gewone SQL: welke werkstroom gebruikt veel meer tokens dan zijn aandeel in de sessies?",
-    "language": "sql",
-    "code": "SELECT\n  werkstroom,\n  ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 0)        AS pct_sessies,\n  ROUND(100.0 * SUM(tokens) / SUM(SUM(tokens)) OVER (), 0)  AS pct_tokens\nFROM sessies\nGROUP BY werkstroom\nORDER BY pct_tokens - pct_sessies DESC;",
-    "result": {
-     "columns": [
-      "werkstroom",
-      "pct_sessies",
-      "pct_tokens"
-     ],
-     "rows": [
-      [
-       "pipeline-debuggen",
-       10.0,
-       58.0
-      ],
-      [
-       "dbt-modellen",
-       50.0,
-       31.0
-      ],
-      [
-       "docs-schrijven",
-       40.0,
-       11.0
-      ]
-     ]
-    },
-    "note": "Insights laat Genie deze SQL zelf schrijven op de tracetabel; de echte kolomnamen staan niet in het artikel. Dit laat alleen het idee zien."
-   },
-   "terms": [
-    {
-     "term": "OpenTelemetry",
-     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "frontier-modellen",
-     "explanation": "De sterkste en duurste AI-modellen van dit moment. Voor eenvoudige taken zijn ze vaak onnodig duur."
-    },
-    {
-     "term": "Smart Routing",
-     "explanation": "Een functie van Unity Gateway die een vraag naar een goedkoper model stuurt als de taak eenvoudig genoeg is."
-    },
-    {
-     "term": "row filters",
-     "explanation": "Een regel in Unity Catalog die bepaalt welke rijen van een tabel iemand mag zien."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.6,
-    "why": "Over agents meten en goedkoper maken, verwant aan je duim bij de Claude Code-sandbox, maar meer beheer dan dataplatform."
-   },
-   "labels": [
-    "unity-ai-gateway",
-    "claude-tracing",
-    "agent-tooling"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "f4a1778578b7",
    "title": "Bulk migrate your dashboards to AI/BI with Genie Code",
    "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
@@ -3572,7 +3433,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -3693,7 +3554,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -3789,7 +3650,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -3878,7 +3739,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.72,
     "feedback": -0.04,
@@ -3973,7 +3834,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -4060,7 +3921,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.8,
     "quality": 0.53,
     "feedback": 0.01,
@@ -4153,7 +4014,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.51,
     "quality": 0.67,
     "feedback": 0.01,
@@ -4226,6 +4087,145 @@
     "by": "topic",
     "name": "claude_ai_development",
     "pts": 1
+   }
+  },
+  {
+   "id": "233bf8a439eb",
+   "title": "Introducing Unity Gateway Insights",
+   "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-18T22:42:36Z",
+   "fetched_at": "2026-11-19T03:13:32.204856Z",
+   "summary": "Unity Gateway Insights laat Genie de traces van Claude Code, Codex en Copilot doorzoeken op verspilling: falende MCP-tools, dure modellen voor simpel werk en herhaald werk dat een skill kan worden.",
+   "personal_relevance": "Als je team Claude Code gaat gebruiken op Databricks, laat dit zien hoe je agentgebruik meet en goedkoper maakt met je eigen dataplatform.",
+   "experiment": "Zet een kleine tabel met verzonnen agentsessies (werkstroom, model, tokens, aantal toolfouten) in een schema en vraag Genie welke werkstroom het meest kost per sessie; vergelijk het antwoord met je eigen SQL.",
+   "limitations": [
+    "Alleen cijfers van Databricks zelf; geen klantresultaten.",
+    "Status en precieze tabelnamen staan niet in het artikel.",
+    "Werkt alleen als het verkeer van de agents via Unity Gateway en de ug CLI loopt."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Unity Gateway Insights (Databricks-documentatie)",
+     "url": "https://docs.databricks.com/aws/en/ai-gateway/insights"
+    },
+    {
+     "label": "Unified trace table",
+     "url": "https://docs.databricks.com/aws/en/ai-gateway/unified-trace-table"
+    },
+    {
+     "label": "ug CLI voor coding agents",
+     "url": "https://docs.databricks.com/aws/en/ai-gateway/coding-agent-ug-cli"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability",
+    "veilige_agents"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.76,
+    "source": 0.85,
+    "quality": 0.63,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T03:40:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Genie zoekt in de sporen van je coding agents waar tokens weglekken",
+   "story": [
+    "Databricks introduceert Unity Gateway Insights. Laten je ontwikkelaars hun coding agents (Claude Code, Codex of GitHub Copilot) via Unity Gateway lopen, dan maakt Insights een rapport over de afgelopen dag, 7 dagen of 30 dagen. Het rapport zegt waar tokens weglekken en wat je eraan kunt doen.",
+    "Zo werkt het. Start een ontwikkelaar zijn agent met de ug CLI, dan zet die de tracing van de agent aan via OpenTelemetry. Elk spoor (trace) komt in één gedeelde tracetabel: een Delta-tabel in Unity Catalog. Insights neemt een steekproef van sessies, groepeert ze in werkstromen naar soort werk en zoekt per werkstroom naar falende MCP-tools, te volle context, dure frontier-modellen voor eenvoudige taken en werk dat steeds terugkomt. Genie schrijft daarvoor zelf de SQL, en met Genie Ontology gebruikt het rapport je eigen projectnamen en begrippen.",
+    "Het rapport vergelijkt per werkstroom het aandeel sessies met het aandeel tokens. Een werkstroom met 10% van de sessies en 35% van de tokens is de eerste plek om te kijken. Verspilling wordt op kosten gerangschikt. Eenvoudige taken die op een duur model draaien, kun je met Smart Routing naar een goedkoper model sturen. Voor werk dat in minstens drie sessies of bij twee engineers terugkomt, schrijft Insights een prompt waarmee je er een gedeelde skill van maakt. Bij elke bevinding kun je de voorbeeldsessies openen en met Genie doorvragen, bijvoorbeeld welke MCP-server de meeste tokens verspilde en wie de eigenaar is.",
+    "Databricks gebruikte het op de eigen uitrol naar duizenden engineers. Zeven kleine bugs in MCP-servers kostten 499.000 dollar aan tokens en 12.000 uur wachten; ze oplossen kostte ongeveer een uur. Opnieuw afspelen van sessies liet zien dat Opus 5 geen winst gaf boven het goedkopere Opus 4.8. Dit zijn cijfers van Databricks zelf, niet van klanten.",
+    "Interessant aan de opzet is dat de traces gewone governed data zijn: alleen de eigenaar van de tabel kan ze eerst lezen, daarna geef je toegang met grants en row filters in Unity Catalog. Je analyseert AI-gebruik dus met dezelfde middelen als elke andere tabel. Het artikel noemt geen status (preview of GA) en geen tabelnamen."
+   ],
+   "key_facts": [
+    "Unity Gateway Insights is aangekondigd op 18 november 2026; de status (preview of GA) staat niet in het artikel.",
+    "Rapporten over de laatste 1, 7 of 30 dagen, via AI Gateway > Observability > Insights; hooguit 10 eigen vragen per rapport.",
+    "Werkt voor Claude Code, Codex en GitHub Copilot die met de ug CLI zijn gestart; traces gaan via OpenTelemetry naar een tracetabel (Delta) in Unity Catalog.",
+    "Soorten verspilling: MCP-fouten, frontier-modellen voor eenvoudige taken (oplossing: Smart Routing) en herhaald werk (minstens 3 sessies of 2 engineers) dat een skill kan worden.",
+    "Databricks intern: 7 MCP-bugs kostten 499.000 dollar aan tokens en 12.000 uur wachten, in ongeveer een uur opgelost; geschatte besparing 1,2 miljoen dollar per jaar.",
+    "Toegang tot traces loopt via Unity Catalog-grants en row filters; Insights leest de tabel op zijn plek, zonder export."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "De eerste vraag uit het rapport, nagebouwd in gewone SQL: welke werkstroom gebruikt veel meer tokens dan zijn aandeel in de sessies?",
+    "language": "sql",
+    "code": "SELECT\n  werkstroom,\n  ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 0)        AS pct_sessies,\n  ROUND(100.0 * SUM(tokens) / SUM(SUM(tokens)) OVER (), 0)  AS pct_tokens\nFROM sessies\nGROUP BY werkstroom\nORDER BY pct_tokens - pct_sessies DESC;",
+    "result": {
+     "columns": [
+      "werkstroom",
+      "pct_sessies",
+      "pct_tokens"
+     ],
+     "rows": [
+      [
+       "pipeline-debuggen",
+       10.0,
+       58.0
+      ],
+      [
+       "dbt-modellen",
+       50.0,
+       31.0
+      ],
+      [
+       "docs-schrijven",
+       40.0,
+       11.0
+      ]
+     ]
+    },
+    "note": "Insights laat Genie deze SQL zelf schrijven op de tracetabel; de echte kolomnamen staan niet in het artikel. Dit laat alleen het idee zien."
+   },
+   "terms": [
+    {
+     "term": "OpenTelemetry",
+     "explanation": "Een open standaard om meetgegevens, logs en sporen (traces) van software te versturen, zodat elk monitoringhulpmiddel ze kan lezen."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "frontier-modellen",
+     "explanation": "De sterkste en duurste AI-modellen van dit moment. Voor eenvoudige taken zijn ze vaak onnodig duur."
+    },
+    {
+     "term": "Smart Routing",
+     "explanation": "Een functie van Unity Gateway die een vraag naar een goedkoper model stuurt als de taak eenvoudig genoeg is."
+    },
+    {
+     "term": "row filters",
+     "explanation": "Een regel in Unity Catalog die bepaalt welke rijen van een tabel iemand mag zien."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.6,
+    "why": "Over agents meten en goedkoper maken, verwant aan je duim bij de Claude Code-sandbox, maar meer beheer dan dataplatform."
+   },
+   "labels": [
+    "unity-ai-gateway",
+    "claude-tracing",
+    "agent-tooling"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
    }
   },
   {
@@ -4465,7 +4465,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.78,
     "feedback": -0.05,
@@ -4541,7 +4541,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -4735,7 +4735,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -5197,7 +5197,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.03,
@@ -5282,7 +5282,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.26,
+    "recency": 0.25,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -6273,7 +6273,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.85,
     "quality": 0.52,
     "feedback": -0.02,
@@ -6378,10 +6378,10 @@
     "claude",
     "agents"
    ],
-   "relevance_score": 80,
+   "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -6579,7 +6579,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.2,
+    "recency": 0.19,
     "source": 0.8,
     "quality": 0.57,
     "feedback": -0.01,
@@ -6839,7 +6839,7 @@
    "relevance_score": 72,
    "score_parts": {
     "topic": 0.85,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.1,
@@ -13938,14 +13938,14 @@
    "claude_code_releases": 0.26,
    "azure_databricks_release_notes": 0.55,
    "fabric_blog": -0.07,
-   "claude_blog": 0.48,
+   "claude_blog": 0.47,
    "chris_webb": 0.07,
    "simon_whiteley": 0.15
   },
   "kinds": {
    "praktijk": 0.54,
-   "praktisch": 0.62,
-   "achtergrond": 0.65,
+   "praktisch": 0.61,
+   "achtergrond": 0.64,
    "aankondiging": 0.95,
    "mening": 0.38,
    "release": 0.6
@@ -14018,7 +14018,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 795,
+  "fetched_items": 479,
   "unique_after_dedupe": 735,
   "merged_duplicates": 53,
   "shown": 60,
@@ -14276,16 +14276,6 @@
     ]
    },
    {
-    "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Introducing full-text search for DAX",
     "source_id": "sqlbi",
     "url": "https://www.sqlbi.com/articles/introducing-full-text-search-for-dax/",
@@ -14410,6 +14400,16 @@
     ]
    },
    {
+    "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.1.325",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
@@ -14419,14 +14419,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
-    "relevance_score": 80,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
@@ -14512,6 +14504,14 @@
     ]
    },
    {
+    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
+    "relevance_score": 79,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer",
@@ -14557,14 +14557,6 @@
     "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
     "relevance_score": 79,
     "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Power BI at Ignite: Building on the momentum",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-at-Ignite-Building-on-the-momentum/ba-p/5422974",
-    "relevance_score": 79,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -14677,6 +14669,14 @@
     "excluded_by": [
      "mini_updates"
     ]
+   },
+   {
+    "title": "Power BI at Ignite: Building on the momentum",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-at-Ignite-Building-on-the-momentum/ba-p/5422974",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
