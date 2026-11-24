@@ -571,7 +571,7 @@ with sync_playwright() as p:
     fr = page.frame_locator("#leren-frame")
     fr.locator(".cert").first.wait_for(timeout=15000)
     certs = fr.locator(".cert").all_inner_texts()
-    check("17. Leren toont alleen examens met vragen: Associate en Developer", certs == ["Associate", "Developer"], str(certs))
+    check("17. Leren toont alleen examens met vragen: Associate, Developer en dbt", certs == ["Associate", "Developer", "dbt"], str(certs))
     fr.locator('[data-act="start"]').first.click()
     fr.locator(".q .opt").first.wait_for(timeout=5000)
     for i in range(fr.locator(".q .opt").count()):
