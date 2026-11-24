@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-24T13:03:59.970946Z",
+ "generated_at": "2026-11-24T13:09:38.248895Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-24T03:28:34Z",
@@ -609,7 +609,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -821,134 +821,6 @@
     "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
     "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
    }
-  },
-  {
-   "id": "d380e24c1978",
-   "title": "Combining Fabric Semantic Views",
-   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
-   "source_id": "chris_webb",
-   "published_at": "2026-11-22T17:09:43Z",
-   "fetched_at": "2026-11-23T03:13:13.044105Z",
-   "summary": "Chris Webb laat zien hoe je in Fabric twee semantic views combineert tot één Power BI-model, met een nieuwe maatstaf die over beide heen rekent.",
-   "personal_relevance": "Herbruikbare maatstaven over modellen heen raken direct aan je Power BI-werk en aan de vraag waar je definities vastlegt: in Fabric of in Unity Catalog.",
-   "experiment": "Volg Webbs voorbeeld in een Fabric-proefomgeving met twee kleine verzonnen tabellen (verkoop en targets) en kijk of de gecombineerde maatstaf in een rapport hetzelfde getal geeft als een handmatige berekening.",
-   "limitations": [
-    "De functie is net aangekondigd; de status (preview of GA) staat niet in de post.",
-    "Webb werkt bij Microsoft; de post is wel een eigen proef met concrete stappen.",
-    "Of semantic views ook met data uit Databricks of Unity Catalog werken, zegt de post niet."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Fabric semantic views (overzicht)",
-     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-overview"
-    },
-    {
-     "label": "Een view hergebruiken in een ander lakehouse",
-     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-consume#reuse-a-view-in-another-lakehouse"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "data_architecture_modeling"
-   ],
-   "groups": [
-    "overig",
-    "architectuur"
-   ],
-   "relevance_score": 94,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.91,
-    "source": 0.68,
-    "quality": 0.7,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:26:39Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren",
-   "story": [
-    "Microsoft kondigde op Ignite de Fabric semantic views aan. Chris Webb, die bij Microsoft in het Fabric CAT-team werkt, liet een week later zien wat hij er het mooiste aan vindt: je kunt ze combineren. Zo hergebruik je tabellen, relaties en maatstaven uit een bestaand model, zonder data of definities te kopiëren.",
-    "Een semantic view beschrijf je in YAML: welke tabellen erin zitten, hoe ze samenhangen en welke maatstaven er zijn, in DAX. Fabric maakt daar een Direct Lake-model van. In Webbs voorbeeld beschrijft de ene view de verkoop, met de maatstaf SalesAmount. Een tweede view beschrijft de targets, met SalesTarget. Beide staan in een eigen lakehouse.",
-    "Dan komt de truc. In een derde lakehouse maakt hij snelkoppelingen (shortcuts) naar de tabellen en naar de twee views. De nieuwe view voegt alleen één relatie toe, van targets naar medewerker, en één maatstaf: SalesPctTarget, met DIVIDE([SalesAmount],[SalesTarget]). Het resultaat is één model met alles uit beide views erin. Een rapport erop rekent over beide lakehouses heen.",
-    "Webb vindt dit een oplossing voor een oud probleem. Samengestelde modellen (composite models) moesten maatstaven al herbruikbaar maken, maar dat lukte volgens hem nooit echt. Voor jou lijkt het op metric views in Unity Catalog: één keer definiëren, overal hergebruiken. Het verschil is dat dit binnen Fabric leeft. Webb noemt het zelf nog 'heel vroeg', en een lezer kreeg het combineren niet meteen werkend."
-   ],
-   "key_facts": [
-    "Fabric semantic views zijn aangekondigd op Microsoft Ignite in november 2026; de post is van 22 november 2026.",
-    "Een semantic view wordt in YAML beschreven met datasets, relationships en metrics; de metrics in het voorbeeld zijn in DAX.",
-    "Elke semantic view levert een Direct Lake semantisch model op.",
-    "Je combineert views door in een nieuw lakehouse shortcuts naar de tabellen en naar bestaande semantic views te maken; de nieuwe view voegt alleen extra relaties en metrics toe.",
-    "Voorbeeldmaatstaf: SalesPctTarget = DIVIDE([SalesAmount],[SalesTarget]), die maatstaven uit beide onderliggende views gebruikt.",
-    "Webb: 'It's still very early days for semantic views'; een lezer meldde problemen, waarop Webb zei dat hij soms het model moest verwijderen en opnieuw publiceren."
-   ],
-   "article_type": "opinie",
-   "author": "Chris Webb, Fabric CAT-team bij Microsoft, bekende Power BI-blogger",
-   "showcase": {
-    "caption": "Wat de gecombineerde view uitrekent: verkoop en targets komen uit twee verschillende tabellen, en via de medewerker reken je het percentage van het target uit.",
-    "language": "sql",
-    "code": "SELECT e.Name,\n  s.SalesAmount,\n  t.SalesTarget,\n  ROUND(s.SalesAmount / t.SalesTarget, 2) AS SalesPctTarget\nFROM employee e\nJOIN (SELECT EmployeeID, SUM(SalesAmount) AS SalesAmount\n      FROM sales GROUP BY EmployeeID) s USING (EmployeeID)\nJOIN (SELECT EmployeeID, SUM(SalesTarget) AS SalesTarget\n      FROM targets GROUP BY EmployeeID) t USING (EmployeeID)\nORDER BY e.Name;",
-    "result": {
-     "columns": [
-      "Name",
-      "SalesAmount",
-      "SalesTarget",
-      "SalesPctTarget"
-     ],
-     "rows": [
-      [
-       "Anna",
-       2000,
-       2500,
-       0.8
-      ],
-      [
-       "Bram",
-       1500,
-       1200,
-       1.25
-      ],
-      [
-       "Chris",
-       1100,
-       1000,
-       1.1
-      ]
-     ]
-    },
-    "note": "Zo werkt het idee in gewone SQL. In een semantic view schrijf je dit als YAML met DAX-maatstaven, zoals DIVIDE([SalesAmount],[SalesTarget]); die notatie staat in de Fabric-documentatie."
-   },
-   "terms": [
-    {
-     "term": "semantic views",
-     "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van."
-    },
-    {
-     "term": "Direct Lake",
-     "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron."
-    },
-    {
-     "term": "shortcuts",
-     "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren."
-    },
-    {
-     "term": "composite models",
-     "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktisch stuk over herbruikbare maatstaven richting Power BI, zoals je duim omhoog bij metric views als Power BI-model."
-   },
-   "labels": [
-    "fabric-semantic-views",
-    "vaste-metric-definities",
-    "semantische-laag"
-   ]
   },
   {
    "id": "a53e25c34fef",
@@ -1187,6 +1059,134 @@
    }
   },
   {
+   "id": "d380e24c1978",
+   "title": "Combining Fabric Semantic Views",
+   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
+   "source_id": "chris_webb",
+   "published_at": "2026-11-22T17:09:43Z",
+   "fetched_at": "2026-11-23T03:13:13.044105Z",
+   "summary": "Chris Webb laat zien hoe je in Fabric twee semantic views combineert tot één Power BI-model, met een nieuwe maatstaf die over beide heen rekent.",
+   "personal_relevance": "Herbruikbare maatstaven over modellen heen raken direct aan je Power BI-werk en aan de vraag waar je definities vastlegt: in Fabric of in Unity Catalog.",
+   "experiment": "Volg Webbs voorbeeld in een Fabric-proefomgeving met twee kleine verzonnen tabellen (verkoop en targets) en kijk of de gecombineerde maatstaf in een rapport hetzelfde getal geeft als een handmatige berekening.",
+   "limitations": [
+    "De functie is net aangekondigd; de status (preview of GA) staat niet in de post.",
+    "Webb werkt bij Microsoft; de post is wel een eigen proef met concrete stappen.",
+    "Of semantic views ook met data uit Databricks of Unity Catalog werken, zegt de post niet."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Fabric semantic views (overzicht)",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-overview"
+    },
+    {
+     "label": "Een view hergebruiken in een ander lakehouse",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-consume#reuse-a-view-in-another-lakehouse"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling"
+   ],
+   "groups": [
+    "overig",
+    "architectuur"
+   ],
+   "relevance_score": 93,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.91,
+    "source": 0.68,
+    "quality": 0.7,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:26:39Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren",
+   "story": [
+    "Microsoft kondigde op Ignite de Fabric semantic views aan. Chris Webb, die bij Microsoft in het Fabric CAT-team werkt, liet een week later zien wat hij er het mooiste aan vindt: je kunt ze combineren. Zo hergebruik je tabellen, relaties en maatstaven uit een bestaand model, zonder data of definities te kopiëren.",
+    "Een semantic view beschrijf je in YAML: welke tabellen erin zitten, hoe ze samenhangen en welke maatstaven er zijn, in DAX. Fabric maakt daar een Direct Lake-model van. In Webbs voorbeeld beschrijft de ene view de verkoop, met de maatstaf SalesAmount. Een tweede view beschrijft de targets, met SalesTarget. Beide staan in een eigen lakehouse.",
+    "Dan komt de truc. In een derde lakehouse maakt hij snelkoppelingen (shortcuts) naar de tabellen en naar de twee views. De nieuwe view voegt alleen één relatie toe, van targets naar medewerker, en één maatstaf: SalesPctTarget, met DIVIDE([SalesAmount],[SalesTarget]). Het resultaat is één model met alles uit beide views erin. Een rapport erop rekent over beide lakehouses heen.",
+    "Webb vindt dit een oplossing voor een oud probleem. Samengestelde modellen (composite models) moesten maatstaven al herbruikbaar maken, maar dat lukte volgens hem nooit echt. Voor jou lijkt het op metric views in Unity Catalog: één keer definiëren, overal hergebruiken. Het verschil is dat dit binnen Fabric leeft. Webb noemt het zelf nog 'heel vroeg', en een lezer kreeg het combineren niet meteen werkend."
+   ],
+   "key_facts": [
+    "Fabric semantic views zijn aangekondigd op Microsoft Ignite in november 2026; de post is van 22 november 2026.",
+    "Een semantic view wordt in YAML beschreven met datasets, relationships en metrics; de metrics in het voorbeeld zijn in DAX.",
+    "Elke semantic view levert een Direct Lake semantisch model op.",
+    "Je combineert views door in een nieuw lakehouse shortcuts naar de tabellen en naar bestaande semantic views te maken; de nieuwe view voegt alleen extra relaties en metrics toe.",
+    "Voorbeeldmaatstaf: SalesPctTarget = DIVIDE([SalesAmount],[SalesTarget]), die maatstaven uit beide onderliggende views gebruikt.",
+    "Webb: 'It's still very early days for semantic views'; een lezer meldde problemen, waarop Webb zei dat hij soms het model moest verwijderen en opnieuw publiceren."
+   ],
+   "article_type": "opinie",
+   "author": "Chris Webb, Fabric CAT-team bij Microsoft, bekende Power BI-blogger",
+   "showcase": {
+    "caption": "Wat de gecombineerde view uitrekent: verkoop en targets komen uit twee verschillende tabellen, en via de medewerker reken je het percentage van het target uit.",
+    "language": "sql",
+    "code": "SELECT e.Name,\n  s.SalesAmount,\n  t.SalesTarget,\n  ROUND(s.SalesAmount / t.SalesTarget, 2) AS SalesPctTarget\nFROM employee e\nJOIN (SELECT EmployeeID, SUM(SalesAmount) AS SalesAmount\n      FROM sales GROUP BY EmployeeID) s USING (EmployeeID)\nJOIN (SELECT EmployeeID, SUM(SalesTarget) AS SalesTarget\n      FROM targets GROUP BY EmployeeID) t USING (EmployeeID)\nORDER BY e.Name;",
+    "result": {
+     "columns": [
+      "Name",
+      "SalesAmount",
+      "SalesTarget",
+      "SalesPctTarget"
+     ],
+     "rows": [
+      [
+       "Anna",
+       2000,
+       2500,
+       0.8
+      ],
+      [
+       "Bram",
+       1500,
+       1200,
+       1.25
+      ],
+      [
+       "Chris",
+       1100,
+       1000,
+       1.1
+      ]
+     ]
+    },
+    "note": "Zo werkt het idee in gewone SQL. In een semantic view schrijf je dit als YAML met DAX-maatstaven, zoals DIVIDE([SalesAmount],[SalesTarget]); die notatie staat in de Fabric-documentatie."
+   },
+   "terms": [
+    {
+     "term": "semantic views",
+     "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van."
+    },
+    {
+     "term": "Direct Lake",
+     "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron."
+    },
+    {
+     "term": "shortcuts",
+     "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren."
+    },
+    {
+     "term": "composite models",
+     "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch stuk over herbruikbare maatstaven richting Power BI, zoals je duim omhoog bij metric views als Power BI-model."
+   },
+   "labels": [
+    "fabric-semantic-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ]
+  },
+  {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
    "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
@@ -1306,7 +1306,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.01,
@@ -2232,7 +2232,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -10307,6 +10307,7 @@
    "ideas": [
     {
      "cat": "zelf",
+     "kort": "dbt als agent-context",
      "naam": "Je dbt-project als context voor je coding agent",
      "wat": "De open-source dbt MCP-server geeft een AI-agent toegang tot je modellen, lineage, tests en documentatie, en kan dbt-commando's uitvoeren.",
      "waarom": "De agent hoeft niet meer te raden hoe je project in elkaar zit. Hij ziet welke modellen ergens van afhangen voordat hij iets aanpast.",
@@ -10315,6 +10316,7 @@
     },
     {
      "cat": "zelf",
+     "kort": "Checks uit gewone taal",
      "naam": "Kwaliteitsregels uit gewone zinnen",
      "wat": "Databricks Labs DQX maakt datakwaliteitsregels uit een datacontract (ODCS), ook uit verwachtingen die in gewone taal zijn opgeschreven; een LLM zet die om in checks.",
      "waarom": "Wie de data kent, schrijft op wat er moet kloppen, zonder zelf tests te bouwen. Contract en checks blijven samen in versiebeheer.",
@@ -10323,6 +10325,7 @@
     },
     {
      "cat": "product",
+     "kort": "Bedden 72 uur vooruit",
      "naam": "Capaciteit 72 uur vooruit, met uitleg in gewone taal",
      "wat": "GE HealthCare voorspelt met CareIntellect for Operations tot 72 uur vooruit waar knelpunten in bedden en doorstroom ontstaan, en stelt acties voor. Eigen variant: een voorspelmodel op je gold-laag, met een LLM alleen als uitleglaag.",
      "waarom": "Van brandjes blussen naar vooruit plannen van ontslag, opnames en personeel. Het rekenwerk blijft bij een gewoon voorspelmodel; de AI legt alleen uit.",
@@ -10331,6 +10334,7 @@
     },
     {
      "cat": "product",
+     "kort": "Protocolvraagbaak",
      "naam": "Protocolvraagbaak die laat zien welke protocollen schuren",
      "wat": "HSBC bouwde een assistent die medewerkers direct antwoord geeft op vragen over interne regels. Ze merkten: hoe meer vragen over één regel, hoe eerder die regel herschreven moet worden.",
      "waarom": "In een ziekenhuis kan zo'n vraagbaak voor protocollen en werkinstructies ook een signaal geven: welke protocollen zijn onduidelijk en verdienen een herziening.",
@@ -14088,8 +14092,8 @@
   "per_source": {
    "azure_databricks_release_notes": 3,
    "simon_spati": 3,
-   "chris_webb": 2,
    "databricks_blog": 17,
+   "chris_webb": 2,
    "dbt_labs_blog": 10,
    "claude_code_releases": 4,
    "claude_blog": 7,
