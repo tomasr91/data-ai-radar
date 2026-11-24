@@ -82,10 +82,12 @@ De harde uitsluitingen staan als `excluded_topics` in `interests.yml`.
 
 | Interessegebied | Richtpercentage |
 |---|---|
-| dbt, data engineering en data-architectuur | 30% |
-| Context engineering en AI-agents | 30% |
+| AI en analytics engineering op je eigen data | 25% |
+| dbt, data engineering en data-architectuur | 20% |
+| Context engineering en AI-agents | 20% |
 | Claude en AI-ondersteunde ontwikkeling | 20% |
-| Nieuwe technologieën en architectuurpatronen | 20% |
+| Nieuwe technologieën en architectuurpatronen | 10% |
+| Power BI en semantische modellen | 5% |
 
 ## 5. Hoe de AI mijn kennisniveau gebruikt
 
