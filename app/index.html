@@ -1092,7 +1092,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
           <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button>${src ? `<a class="later-src" href="#${esc(x.from.key)}" aria-label="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}" title="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h6.5L16 7v9.5H6z"/><path d="M12.5 3.5V7H16M8.5 10.5h5M8.5 13.5h5"/></svg></a>` : ""}</div></article>`;
       }).join("")}</div>
-      ${canChoose ? `<p class="pick-note">Tik je op Verdiepen, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je titel en omschrijving komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
+      `;
   }
 
   // Eigen notitie op Later, los van een artikel
