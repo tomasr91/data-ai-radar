@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T05:14:33.233446Z",
+ "generated_at": "2026-11-25T06:28:55.584700Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -1314,7 +1314,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1448,7 +1448,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.03,
@@ -1992,7 +1992,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -2577,7 +2577,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.99,
+    "recency": 0.98,
     "source": 0.68,
     "quality": 0.47,
     "feedback": 0.01,
@@ -2785,7 +2785,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.05
@@ -3573,7 +3573,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3919,7 +3919,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -4103,7 +4103,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -4991,85 +4991,6 @@
    }
   },
   {
-   "id": "059023edac5d",
-   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
-   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T20:02:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets veranderd was. Dat scheelde ongeveer 30 procent rekenkosten.",
-   "personal_relevance": "Minder rekenen betekent op Databricks direct lagere kosten.",
-   "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
-   "limitations": [
-    "Gemeten op BigQuery, niet op Databricks.",
-    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
-    "Sommige packages werkten nog niet met dbt v2."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "dbt_analytics_engineering",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "overig"
-   ],
-   "relevance_score": 84,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.25,
-    "source": 0.85,
-    "quality": 0.65,
-    "feedback": -0.05,
-    "fit": 0.4
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
-   "story": [
-    "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Zo werkt een gewone dbt-run: elk model wordt opnieuw gebouwd. Met dbt State kijkt dbt eerst welke modellen nieuwe brondata hebben, en bouwt alleen die.",
-    "Virgin Media O2 deed dat en bespaarde ongeveer 30 procent aan rekenkosten. Runs werden ongeveer 35 procent sneller. Ze gebruikten daarvoor dbt v2, een nieuw herschreven versie van dbt.",
-    "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou haalbaar is, hangt af van waar je runs draaien. Het artikel zegt niet of dbt State ook in dbt Core werkt. En de cijfers komen van BigQuery, niet van Databricks."
-   ],
-   "key_facts": [
-    "Verslag van een talk op dbt Summit 2026.",
-    "Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13.",
-    "Over de hele migratie: ongeveer 30% lagere rekenkosten en 35% snellere runs.",
-    "Ze gebruikten dbt v2, een herschreven dbt-engine in Rust."
-   ],
-   "terms": [
-    {
-     "term": "dbt State",
-     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
-    },
-    {
-     "term": "dbt v2",
-     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.9,
-    "why": "Je gaf dit stuk een duim omhoog: past bij je stack."
-   },
-   "labels": [
-    "dbt-state",
-    "slimme-rebuilds",
-    "compute-kosten"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -5
-   }
-  },
-  {
    "id": "f49f6dcce187",
    "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
    "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
@@ -5618,6 +5539,85 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -4
+   }
+  },
+  {
+   "id": "059023edac5d",
+   "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
+   "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T20:02:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'. Het is een verslag van een talk op dbt Summit 2026; de feeddatum kan een herpublicatie zijn.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Virgin Media O2 liet dbt modellen overslaan waaraan niets veranderd was. Dat scheelde ongeveer 30 procent rekenkosten.",
+   "personal_relevance": "Minder rekenen betekent op Databricks direct lagere kosten.",
+   "experiment": "Tel voor één nachtelijke run hoeveel modellen echt nieuwe brondata kregen. Dat getal laat zien hoeveel je in theorie kunt besparen.",
+   "limitations": [
+    "Gemeten op BigQuery, niet op Databricks.",
+    "Eerst was veel opruimwerk nodig (technische schuld) voordat het goed werkte.",
+    "Sommige packages werkten nog niet met dbt v2."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.24,
+    "source": 0.85,
+    "quality": 0.65,
+    "feedback": -0.05,
+    "fit": 0.4
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "dbt hoeft niet elke nacht alles opnieuw te bouwen",
+   "story": [
+    "Stel dat je elke ochtend alle kamers schoonmaakt, ook als er niemand is geweest. Zo werkt een gewone dbt-run: elk model wordt opnieuw gebouwd. Met dbt State kijkt dbt eerst welke modellen nieuwe brondata hebben, en bouwt alleen die.",
+    "Virgin Media O2 deed dat en bespaarde ongeveer 30 procent aan rekenkosten. Runs werden ongeveer 35 procent sneller. Ze gebruikten daarvoor dbt v2, een nieuw herschreven versie van dbt.",
+    "Je gebruikt dbt Core en het dbt-platform naast elkaar. Of deze besparing voor jou haalbaar is, hangt af van waar je runs draaien. Het artikel zegt niet of dbt State ook in dbt Core werkt. En de cijfers komen van BigQuery, niet van Databricks."
+   ],
+   "key_facts": [
+    "Verslag van een talk op dbt Summit 2026.",
+    "Bij één job met 1.424 modellen ging de looptijd van ongeveer 1 uur 53 naar 1 uur 13.",
+    "Over de hele migratie: ongeveer 30% lagere rekenkosten en 35% snellere runs.",
+    "Ze gebruikten dbt v2, een herschreven dbt-engine in Rust."
+   ],
+   "terms": [
+    {
+     "term": "dbt State",
+     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+     "term": "dbt v2",
+     "explanation": "De herschreven versie van dbt met een nieuwe engine die je SQL begrijpt en sneller werkt."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.9,
+    "why": "Je gaf dit stuk een duim omhoog: past bij je stack."
+   },
+   "labels": [
+    "dbt-state",
+    "slimme-rebuilds",
+    "compute-kosten"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -5
    }
   },
   {
@@ -14879,6 +14879,20 @@
      "inspiratie": 1
     }
    },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak nog (deels gelukt); de 2 overgebleven Fabric-artikelen bleven ook nu onbereikbaar en staan nog op de werklijst, verder was alles klaar.",
+    "finished_at": "2026-11-25T06:28:37Z",
+    "problems": [
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): via WebSearch gevonden, maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): via WebSearch gevonden (ook nieuw blogadres), maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
+     "add_repo was in deze sessie niet beschikbaar als tool; de repository stond al gekloond en is bijgewerkt."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "onbereikbaar": 2
+    }
+   },
    "overzicht": {
     "status": "ok",
     "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
@@ -15211,17 +15225,6 @@
     ]
    },
    {
-    "title": "v2.1.329",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.330",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
@@ -15257,6 +15260,17 @@
     "title": "v2.1.328",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.329",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -15311,14 +15325,6 @@
     "excluded_by": [
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Introducing full-text search for DAX",
-    "source_id": "sqlbi",
-    "url": "https://www.sqlbi.com/articles/introducing-full-text-search-for-dax/",
-    "relevance_score": 81,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
@@ -15408,6 +15414,14 @@
      "minor_builds",
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "Introducing full-text search for DAX",
+    "source_id": "sqlbi",
+    "url": "https://www.sqlbi.com/articles/introducing-full-text-search-for-dax/",
+    "relevance_score": 80,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "How Obie Insurance cut its month-end close from 25 hours to 2 with dbt State and a lake house rebuild",
@@ -15637,16 +15651,6 @@
     ]
    },
    {
-    "title": "External knowledge sources are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.321",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
@@ -15701,16 +15705,6 @@
     "excluded_by": []
    },
    {
-    "title": "Power BI November 2026 Feature Summary",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-November-2026-Feature-Summary/ba-p/5414287",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "mini_updates"
-    ]
-   },
-   {
     "title": "Power BI at Ignite: Building on the momentum",
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-at-Ignite-Building-on-the-momentum/ba-p/5422974",
@@ -15732,6 +15726,26 @@
     "title": "Databricks-provided MCP connectors in Genie One and Genie Code will soon be enabled by default for workspaces with the compliance security profile enabled",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#databricks-provided-mcp-connectors-in-genie-one-and-genie-code-will-soon-be-enabled-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "External knowledge sources are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Migrate can convert T-SQL to Lakeflow pipelines (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-can-convert-t-sql-to-lakeflow-pipelines-beta",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
