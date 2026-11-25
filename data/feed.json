@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T03:23:13.190830Z",
+ "generated_at": "2026-11-25T03:24:04.447643Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-25T03:45:00Z",
+ "last_article_added_at": "2026-11-25T03:22:00Z",
  "last_successful_update": "2026-11-25T03:13:30.758144Z",
  "groups": [
   {
@@ -882,7 +882,7 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:45:00Z",
+   "processed_at": "2026-11-25T03:22:00Z",
    "reading_minutes": 3,
    "format_version": 2,
    "headline": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord",
@@ -2586,7 +2586,7 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:45:00Z",
+   "processed_at": "2026-11-25T03:22:00Z",
    "reading_minutes": 3,
    "format_version": 2,
    "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
@@ -2901,7 +2901,7 @@
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:45:00Z",
+   "processed_at": "2026-11-25T03:22:00Z",
    "reading_minutes": 3,
    "format_version": 2,
    "headline": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id",
@@ -14802,62 +14802,24 @@
   }
  ],
  "runs": {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "tasks": {
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt met 6 nieuwe artikelen; geen verzoeken voor je interesses en geen toelichtingen voor leerregels; geen begrippen aangevuld (het enige stuk zonder begrippen is een korte melding zonder verhaal).",
-    "finished_at": "2026-11-24T05:13:42Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "nieuwe_trendartikelen": 6,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping geschreven omdat er gisteren niets gekozen is; 5 nieuwe keuzes klaargezet.",
-    "finished_at": "2026-11-24T04:14:47Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5
-    }
-   },
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen ontbrak: de 2 overgebleven Fabric-artikelen opnieuw geprobeerd, maar ze waren weer niet bereikbaar; verdiepen en overzicht waren al klaar.",
-    "finished_at": "2026-11-24T06:33:11Z",
-    "problems": [
-     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar via WebSearch of WebFetch; blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar via WebSearch of WebFetch; blijft op de werklijst."
-    ],
-    "counts": {
-     "ingehaald": 0,
-     "onbereikbaar": 2
-    }
-   },
    "uitleggen": {
     "status": "deels",
-    "summary": "9 artikelen vol uitgelegd (3 met voorbeeld, alle via WebSearch geopend), 7 overgeslagen (4 zonder openen); 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
-    "finished_at": "2026-11-24T03:28:50Z",
+    "summary": "3 artikelen vol uitgelegd (1 met voorbeeld, alle 3 via WebSearch geopend), 3 overgeslagen zonder openen; de 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
+    "finished_at": "2026-11-25T03:23:07Z",
     "problems": [
-     "add_repo was in deze sessie niet beschikbaar als tool; de privé-repository stond al gekloond, dus de Dataflow-stap is wel uitgevoerd.",
-     "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); alle gelezen artikelen zijn via WebSearch geopend.",
-     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet bereikbaar, ook niet via WebSearch (client_error); blijft op de werklijst.",
-     "Claude Code week 47: de release notes van 2.1.326 en 2.1.330 en het einde van 2.1.328/2.1.329 waren niet volledig leesbaar.",
-     "Inhaalrun 07:27: beide Fabric-artikelen opnieuw geprobeerd (WebSearch vond ze niet, WebFetch gaf PROVENANCE_REQUIRED); ze blijven op de werklijst."
+     "add_repo was in deze sessie niet beschikbaar als tool; de privé-repository stond al gekloond en is bijgewerkt, dus de Dataflow-stap is wel uitgevoerd.",
+     "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); de gelezen artikelen zijn via WebSearch geopend.",
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): wel gevonden via WebSearch, maar de site gaf client_error; blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): wel gevonden via WebSearch, maar de site gaf client_error; blijft op de werklijst."
     ],
     "counts": {
-     "uitgelegd": 9,
-     "overgeslagen": 7,
-     "met_voorbeeld": 3,
-     "via_websearch": 9,
-     "zonder_openen_overgeslagen": 4,
+     "uitgelegd": 3,
+     "overgeslagen": 3,
+     "met_voorbeeld": 1,
+     "via_websearch": 3,
+     "zonder_openen_overgeslagen": 3,
      "onbereikbaar": 2
     }
    }
