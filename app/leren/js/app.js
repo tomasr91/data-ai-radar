@@ -48,9 +48,9 @@
     const sorted = ids.filter(id => seen(id)).concat(ids.filter(id => !seen(id)));
     return `<div class="courses">${sorted.map(id => {
       const c = A.certs[id], pr = C.progress(id), started = seen(id) > 0;
-      return `<button class="course" data-act="cert" data-id="${id}">
+      return `<div class="course"><button class="c-main" data-act="go" data-id="${id}" aria-label="${esc(c.name)}: oefenen">
         <span class="c-top"><span class="c-name"><b>${esc(c.name)}</b><span class="small muted">${esc([c.code, c.questions.length + " vragen"].filter(Boolean).join(" · "))}</span></span><span class="c-pct">${started ? pct(pr.pct) : "Nieuw"}</span></span>
-        ${meter(pr)}</button>`; }).join("")}</div>`;
+        ${meter(pr)}</button><button class="c-topics" data-act="cert" data-id="${id}">Kies onderwerp ›</button></div>`; }).join("")}</div>`;
   }
 
   /* ---------------- startscherm ---------------- */
@@ -184,7 +184,7 @@
     const rt = ui.retryDone, learning = learningCount(), r = C.progress().pct;
     const missed = [], seen = new Set(); items.forEach(x => { if ((!x.ok || x.guess) && !seen.has(x.qid)) { seen.add(x.qid); missed.push(x.qid); } });
     return `${head()}
-      <div class="pbar"><button class="btn ghost" data-act="home">← Startscherm</button><span class="where">${esc(scopeLabel(ui.scope))}</span></div>
+      <div class="pbar"><button class="btn ghost" data-act="home">← Terug</button><span class="where">${esc(scopeLabel(ui.scope))}</span></div>
       <div class="card round">
         <span class="eyebrow">Ronde klaar</span>
         <div class="ready"><span class="big">${ok} van ${items.length}</span><span>meteen goed${rt ? `<br><span class="small muted">herkansing: ${rt.ok} van ${rt.n} goed</span>` : ""}</span></div>
@@ -204,7 +204,7 @@
     if (!ui.ready) return;   // nog niet hersteld: niets overschrijven
     try {
       if (ui.view !== "practice" && ui.view !== "round") { localStorage.removeItem(ROUND_KEY); return; }
-      localStorage.setItem(ROUND_KEY, JSON.stringify({ at: Date.now(), cert: C.state.activeCert, view: ui.view, scope: ui.scope, cur: ui.cur,
+      localStorage.setItem(ROUND_KEY, JSON.stringify({ at: Date.now(), cert: C.state.activeCert, view: ui.view, from: ui.from, scope: ui.scope, cur: ui.cur,
         recent: ui.recent, round: ui.round, retry: ui.retry, retryDone: ui.retryDone, roundMs: ui.roundMs }));
     } catch (e) {}
   }
@@ -215,7 +215,7 @@
       const qm = C.qmap(A.certs[r.cert]);
       if (r.view === "practice" && !(r.cur && qm[r.cur.qid])) { localStorage.removeItem(ROUND_KEY); return false; }
       C.state.activeCert = r.cert;
-      Object.assign(ui, { view: r.view, scope: r.scope, cur: r.cur, recent: r.recent || [], round: r.round || [], retry: r.retry || null,
+      Object.assign(ui, { view: r.view, from: r.from, scope: r.scope, cur: r.cur, recent: r.recent || [], round: r.round || [], retry: r.retry || null,
         retryDone: r.retryDone || null, roundMs: r.roundMs || [], curMs: [] });
       return true;
     } catch (e) { return false; }
@@ -227,6 +227,7 @@
   }
   function resetRound() { ui.round = []; ui.retry = null; ui.retryDone = null; ui.roundMs = []; }
   function start(kind, id) {
+    ui.from = ui.view === "overview" ? "overview" : "home";   // waar 'Stoppen' naartoe gaat
     ui.scope = kind === "all" || kind === "weak" || kind === "hard" ? { kind } : { kind, id };
     ui.recent = []; resetRound();
     newQuestion(); ui.view = "practice"; render(); toTop(".pbar");
@@ -282,7 +283,9 @@
   const H = {
     cert: el => setCert(el.dataset.id),
     overview: () => { ui.view = "overview"; try { history.replaceState(null, "", location.pathname); } catch (e) {} render(); toTop(); },
-    home: () => { ui.view = "home"; render(); toTop(); },
+    home: () => { ui.view = ui.from === "overview" ? "overview" : "home"; render(); toTop(); },
+    // Kaart in het overzicht: direct oefenen, zonder tussenscherm (T, 25-11-2026)
+    go: el => { C.state.activeCert = el.dataset.id; C.save(); try { history.replaceState(null, "", "#" + el.dataset.id); } catch (e) {} start("weak"); },
     start: el => start(el.dataset.kind, el.dataset.id),
     toggle: el => { ui.open[el.dataset.id] = !ui.open[el.dataset.id]; render(); },
     check, next, nextround: nextRound,

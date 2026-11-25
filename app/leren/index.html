@@ -69,7 +69,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .save.browser i { background: #C0902A; }
 .save.none i { background: var(--bad); }
 .courses { display: grid; gap: 10px; }
-.course { display: grid; gap: 10px; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--paper); border-radius: 12px; padding: 14px; color: var(--ink); font: inherit; cursor: pointer; }
+.course { border: 1px solid var(--line); background: var(--paper); border-radius: 12px; overflow: hidden; }
+.course .c-main { display: grid; gap: 10px; width: 100%; text-align: left; border: 0; background: transparent; padding: 14px 14px 10px; color: var(--ink); font: inherit; cursor: pointer; }
+.course .c-topics { display: block; margin: 0 0 0 auto; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 0.8rem; padding: 0 14px 10px; cursor: pointer; }
 .course .c-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
 .course .c-name { display: grid; gap: 3px; min-width: 0; }
 .course .c-name b { font-size: 1rem; line-height: 1.3; }

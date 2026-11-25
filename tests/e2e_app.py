@@ -583,8 +583,12 @@ with sync_playwright() as p:
     fr.locator(".course").first.wait_for(timeout=15000)
     certs = [fr.locator(".course b").nth(i).inner_text() for i in range(fr.locator(".course").count())]
     check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 4 and any("Databricks" in c for c in certs) and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
-    fr.locator(".course").first.click()
-    check("   een cursus openen geeft het startscherm met terugknop", fr.locator('[data-act="overview"]').count() == 1)
+    fr.locator(".course .c-main").first.click()
+    check("   tik op een cursus: direct een vraag, zonder tussenscherm", fr.locator('[data-act="check"]').count() == 1)
+    fr.locator('[data-act="home"]').click()
+    check("   Stoppen gaat terug naar het overzicht", fr.locator(".course").count() == 4)
+    fr.locator(".course .c-topics").first.click()
+    check("   'Kies onderwerp' geeft het startscherm met terugknop", fr.locator('[data-act="overview"]').count() == 1)
     fr.locator('[data-act="start"]').first.click()
     fr.locator(".q .opt").first.wait_for(timeout=5000)
     for i in range(fr.locator(".q .opt").count()):
@@ -676,7 +680,7 @@ with sync_playwright() as p:
     h = page.evaluate("document.getElementById('leren-frame').getBoundingClientRect().height")
     check("   venster groeit mee met de inhoud", h > 500, str(h))
     if fr.locator(".course").count():
-        fr.locator(".course").first.click()
+        fr.locator(".course .c-topics").first.click()
     home = fr.locator("#app").inner_text()
     check("   rustig startscherm: geen uitleg, titel of opslagmelding", all(x not in home for x in ["Hoe werkt het herhalen", "Gebaseerd op", "Claude Certification Academy", "Rondes van 10"]) and "Begin met oefenen" in home and "Back-up" not in home)
     page.click('#seg-view button[data-v="actueel"]')
@@ -787,8 +791,7 @@ with sync_playwright() as p:
     pg.goto(u); pg.wait_for_selector("#seg-view")
     pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
     fr = pg.frame_locator("#leren-frame")
-    fr.locator(".course").first.click()
-    fr.locator('[data-act="start"][data-kind="weak"]').click()
+    fr.locator(".course .c-main").first.click()
     for _ in range(2):
         for i in range(fr.locator(".q .opt").count()):
             if fr.locator('[data-act="check"]').is_enabled():
