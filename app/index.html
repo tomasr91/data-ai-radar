@@ -1082,11 +1082,12 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
         const act = dd ? `<a class="btn" href="#v-${esc(dd.id)}">Lees de verdieping ›</a>`
           : chosen.has(x.id) ? `<span class="pill verdieping">morgen</span>`
           : canChoose ? `<a class="btn" href="${esc(laterIssueUrl(x))}" target="_blank" rel="noopener" data-later-pick="${esc(x.id)}">Maak hier een verdieping van</a>` : "";
+        const src = x.from && (x.from.kind === "v" ? state.ddById.has(x.from.id) : state.byId.has(x.from.id));
         return `<article class="card later-item" data-later-edit="${esc(x.id)}" tabindex="0" role="button" aria-label="${esc(x.title)} bewerken">
-          <div class="meta"><span class="src"><span class="card-date">${esc(fmtDate(x.at))}</span>${x.from?.title ? `Gezien in: ${esc(x.from.title)}` : ""}</span><span class="pill">later</span></div>
+          <div class="meta"><span class="src">${esc(fmtDate(x.at))}</span></div>
           <h3>${esc(x.title)}</h3>
           ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
-          <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></article>`;
+          <div class="later-acts">${act}${src ? `<a class="btn ghost" href="#${esc(x.from.key)}">${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"} ›</a>` : ""}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></article>`;
       }).join("")}</div>
       ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je titel en omschrijving komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
   }
