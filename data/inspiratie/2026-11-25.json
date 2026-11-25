@@ -1,0 +1,43 @@
+{
+ "date": "2026-11-25",
+ "written_at": "2026-11-25T04:15:14Z",
+ "processed_by": "claude",
+ "ideas": [
+  {
+   "cat": "zelf",
+   "kort": "dbt als Markdown voor AI",
+   "naam": "Je dbt-project als Markdown die een AI goed kan lezen",
+   "wat": "dbt-skillz is een open-source Python-pakket dat een dbt-project omzet in documentatie in Markdown, bedoeld om door AI gelezen te worden.",
+   "waarom": "Een coding agent of assistent krijgt zo in één keer een leesbaar overzicht van je modellen, zonder dat hij zelf door alle YAML- en SQL-bestanden hoeft te zoeken.",
+   "tech": "dbt, Python, Markdown, coding agent",
+   "link": "https://pypi.org/project/dbt-skillz/"
+  },
+  {
+   "cat": "zelf",
+   "kort": "Je data-agent toetsen",
+   "naam": "Een eigen toetsset voor vragen in gewone taal aan je gold-laag",
+   "wat": "Leg vragen vast met het juiste antwoord of de juiste SQL, en laat je data-assistent er elke week op los. SQLyzr is een onderzoeksplatform dat zulke text-to-SQL-uitkomsten tot in detail vergelijkt en analyseert.",
+   "waarom": "Je ziet per soort vraag waar de assistent fout gaat, in plaats van op gevoel te beslissen of hij goed genoeg is. Klein te beginnen met verzonnen vragen.",
+   "tech": "Text-to-SQL, toetsset in een Delta-tabel, Databricks job",
+   "link": "https://arxiv.org/pdf/2604.21214"
+  },
+  {
+   "cat": "product",
+   "kort": "AI-verslag verpleging",
+   "naam": "Spraak-naar-verslag voor verpleegkundigen, niet alleen voor artsen",
+   "wat": "Ambient AI luistert mee en zet het gesprek om in een conceptverslag. Ambience Healthcare kwam in juni 2026 met een pakket voor verpleging in de kliniek.",
+   "waarom": "Verpleegkundigen besteden veel tijd aan vastleggen. Een datateam kan meten of zo'n hulpmiddel echt tijd scheelt, met gegevens over het gebruik in plaats van inhoud uit het dossier.",
+   "tech": "Spraakherkenning, LLM, koppeling met het EPD, Power BI voor gebruiksmeting",
+   "link": "https://hitconsultant.net/2026/06/23/ambience-healthcare-launches-inpatient-nursing-suite/"
+  },
+  {
+   "cat": "product",
+   "kort": "Documenten sorteren",
+   "naam": "Inkomende documenten sorteren zoals een verzekeraar claims verwerkt",
+   "wat": "Een Noordse verzekeraar automatiseerde met EY de verwerking van claims. In een ziekenhuis kan hetzelfde idee werken voor de administratie: inkomende facturen en formulieren herkennen, de velden eruit halen en naar het juiste team sturen.",
+   "waarom": "Minder handwerk bij terugkerende documenten, en een mens kijkt alleen nog naar de twijfelgevallen.",
+   "tech": "ai_parse_document, ai_extract en ai_classify in Databricks SQL",
+   "link": "https://www.ey.com/en_nl/insights/financial-services/emeia/how-a-nordic-insurance-company-automated-claims-processing"
+  }
+ ]
+}
