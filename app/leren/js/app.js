@@ -16,7 +16,7 @@
   const cert = () => C.cert();
   // Balk met drie kleuren, van sterk (links) naar zwak: zit erin · nog herhalen · nog oefenen; de rest is nieuw.
   const w = (n, t) => (t ? (n / t) * 100 : 0).toFixed(2) + "%";
-  const meter = (p, label) => `<div class="meter" role="img" aria-label="${esc(label || legendText(p))}"><span class="m" style="width:${w(p.mastered, p.total)}"></span><span class="r" style="width:${w(p.repeat, p.total)}"></span><span class="p" style="width:${w(p.practise, p.total)}"></span></div>`;
+  const meter = (p, label) => `<div class="meter" role="img" aria-label="${esc(label || legendText(p))}"><span class="m" style="width:${w(p.mastered, p.total)}"></span><span class="r" style="width:${w(p.repeat, p.total)}"></span></div>`;   // fout/gegokt niet in de balk (T, 25-11-2026)
   const legendText = p => `${p.mastered} zit erin, ${p.repeat} nog herhalen, ${p.practise} nog oefenen, ${p.unseen} nieuw`;
   const legend = p => `<p class="legend"><span><i class="m"></i>${p.mastered} zit erin</span><span><i class="r"></i>${p.repeat} nog herhalen</span><span><i class="p"></i>${p.practise} nog oefenen</span><span><i></i>${p.unseen} nieuw</span></p>`;
   const statMeter = s => meter(s);
