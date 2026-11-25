@@ -233,11 +233,10 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .explain .btn { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-add { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-list { margin-top: 10px; display: grid; gap: 10px; }
-.later-item { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent2); border-radius: var(--r); padding: 12px 14px; }
-.later-item h3 { margin: 0 0 4px; font-size: 1.02rem; line-height: 1.3; }
-.later-item .later-note { margin: 0 0 6px; font-family: var(--f-read); line-height: 1.55; }
-.later-item .from { display: block; margin-bottom: 10px; font-family: var(--f-meta); font-size: 0.76rem; color: var(--muted); }
-.later-item .from a { color: var(--muted); }
+.later-list .card .sum { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.later-list .card .meta .src { font-weight: 400; color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.later-list .later-form.card { cursor: default; }
+.later-hint { margin: 0; font-size: 0.82rem; color: var(--muted); }
 .later-acts { display: flex; flex-wrap: wrap; gap: 8px; }
 .later-acts .btn { height: 36px; padding: 0 12px; font-size: 0.86rem; }
 .later-acts .btn.ghost { color: var(--muted); border-color: var(--line); }
@@ -1039,6 +1038,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     save(d) { try { localStorage.setItem("radar:later", JSON.stringify(d)); } catch {} },
     add(item) { const d = this.all().filter((x) => x.id !== item.id); d.unshift(item); this.save(d); },
     remove(id) { this.save(this.all().filter((x) => x.id !== id)); },
+    update(id, patch) { this.save(this.all().map((x) => (x.id === id ? { ...x, ...patch } : x))); },
     fromDoc(key) { return this.all().find((x) => x.from?.key === key); },
   };
   const slug = (t) => "eigen-" + (t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 50).replace(/-+$/, "") || "onderwerp");
@@ -1053,8 +1053,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const act = e.target.closest("[data-later]")?.dataset.later; if (!act) return false;
     if (act === "open") {
       box.innerHTML = `<div class="later-form"><h2 style="font-size:1.05rem;margin:0">Later bekijken</h2>
-        <input id="later-t" type="text" maxlength="100" value="${esc(box.dataset.title)}" aria-label="Onderwerp">
-        <textarea id="later-n" rows="2" maxlength="400" placeholder="Notitie: waar ben je benieuwd naar?" aria-label="Notitie"></textarea>
+        <input id="later-t" type="text" maxlength="100" value="${esc(box.dataset.title)}" placeholder="Titel" aria-label="Titel">
+        <textarea id="later-n" rows="3" maxlength="600" placeholder="Omschrijving" aria-label="Omschrijving"></textarea>
         <div class="row"><button type="button" class="btn" data-later="save">Op mijn lijst</button><button type="button" class="btn ghost" data-later="cancel">Annuleren</button></div></div>`;
       const t = $("#later-t", box); t.focus(); t.select();
     } else if (act === "save") {
@@ -1077,27 +1077,25 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const items = later.all();
     const written = new Map((state.feed.deepdives || []).map((d) => [d.plan_id || d.id, d]));
     const chosen = new Set(state.chosen || []);
-    return `<p class="pick-note">Wat je nog wilt bekijken. Maak er een verdieping van, of tik op Klaar als je het gezien hebt.</p>
-      <div class="later-list">${items.map((x) => {
+    return `<div class="later-list">${items.map((x) => {
         const dd = written.get(x.id);
         const act = dd ? `<a class="btn" href="#v-${esc(dd.id)}">Lees de verdieping ›</a>`
           : chosen.has(x.id) ? `<span class="pill verdieping">morgen</span>`
           : canChoose ? `<a class="btn" href="${esc(laterIssueUrl(x))}" target="_blank" rel="noopener" data-later-pick="${esc(x.id)}">Maak hier een verdieping van</a>` : "";
-        const fromLink = x.from && (x.from.kind === "a" ? state.byId.has(x.from.id) : state.ddById.has(x.from.id))
-          ? `<a href="#${esc(x.from.key)}">${esc(x.from.title)}</a>` : esc(x.from?.title || "");
-        return `<div class="later-item" data-later-id="${esc(x.id)}"><h3>${esc(x.title)}</h3>
-          ${x.note ? `<p class="later-note">${esc(x.note)}</p>` : ""}
-          <span class="from">${fromLink ? `Gezien in: ${fromLink} · ` : ""}${esc(fmtDate(x.at))}</span>
-          <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></div>`;
+        return `<article class="card later-item" data-later-edit="${esc(x.id)}" tabindex="0" role="button" aria-label="${esc(x.title)} bewerken">
+          <div class="meta"><span class="src"><span class="card-date">${esc(fmtDate(x.at))}</span>${x.from?.title ? `Gezien in: ${esc(x.from.title)}` : ""}</span><span class="pill">later</span></div>
+          <h3>${esc(x.title)}</h3>
+          ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
+          <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></article>`;
       }).join("")}</div>
-      ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je onderwerp en notitie komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
+      ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je titel en omschrijving komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
   }
 
   // Eigen notitie op Later, los van een artikel
   const laterNewBtn = () => `<div id="later-new"><button type="button" class="btn ghost later-add" data-later-new="open">＋ Notitie</button></div>`;
   const laterNewForm = () => `<div id="later-new" class="later-form later-item">
-      <input id="later-new-t" type="text" maxlength="100" placeholder="Onderwerp" aria-label="Onderwerp">
-      <textarea id="later-new-n" rows="3" maxlength="400" placeholder="Notitie" aria-label="Notitie"></textarea>
+      <input id="later-new-t" type="text" maxlength="100" placeholder="Titel" aria-label="Titel">
+      <textarea id="later-new-n" rows="3" maxlength="600" placeholder="Omschrijving" aria-label="Omschrijving"></textarea>
       <div class="row"><button type="button" class="btn" data-later-new="save">Op mijn lijst</button><button type="button" class="btn ghost" data-later-new="cancel">Annuleren</button></div></div>`;
   function laterNewClick(e) {
     const act = e.target.closest("[data-later-new]")?.dataset.laterNew; if (!act) return false;
@@ -1109,6 +1107,33 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       later.add({ id: slug(title), title, note: $("#later-new-n").value.trim(), at: new Date().toISOString() });
       renderList();
     }
+    return true;
+  }
+  // Tik op een kaart op Later: direct bewerken (titel en omschrijving). Het id blijft hetzelfde,
+  // zodat een al aangevraagde verdieping gekoppeld blijft.
+  function laterEditForm(x) {
+    const sent = (state.feed.deepdives || []).some((d) => (d.plan_id || d.id) === x.id) || (state.chosen || []).includes(x.id);
+    return `<div class="card later-form" data-later-form="${esc(x.id)}">
+      <input class="le-t" type="text" maxlength="100" value="${esc(x.title)}" placeholder="Titel" aria-label="Titel">
+      <textarea class="le-n" rows="4" maxlength="600" placeholder="Omschrijving" aria-label="Omschrijving">${esc(x.note || "")}</textarea>
+      ${sent ? `<p class="later-hint">De verdieping is al aangevraagd; die houdt de oude tekst.</p>` : ""}
+      <div class="row"><button type="button" class="btn" data-le="save">Opslaan</button><button type="button" class="btn ghost" data-le="cancel">Annuleren</button></div></div>`;
+  }
+  function laterEditClick(e) {
+    const form = e.target.closest("[data-later-form]");
+    if (form) {
+      const act = e.target.closest("[data-le]")?.dataset.le; if (!act) return true;
+      if (act === "save") {
+        const title = $(".le-t", form).value.trim(); if (!title) { $(".le-t", form).focus(); return true; }
+        later.update(form.dataset.laterForm, { title, note: $(".le-n", form).value.trim() });
+      }
+      renderList(); return true;
+    }
+    const card = e.target.closest("[data-later-edit]");
+    if (!card || e.target.closest("a, button")) return false;
+    const x = later.all().find((y) => y.id === card.dataset.laterEdit); if (!x) return false;
+    card.outerHTML = laterEditForm(x);
+    const t = $(`[data-later-form="${CSS.escape(x.id)}"] .le-n`); t.focus(); t.setSelectionRange(t.value.length, t.value.length);
     return true;
   }
   function renderLaterTab() {
@@ -1947,7 +1972,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   const openCard = (el) => { state.cameFromList = true; location.hash = el.dataset.insp ? "i-" + el.dataset.insp : el.dataset.dd ? "v-" + el.dataset.dd : "a-" + el.dataset.id; };
   $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id],[data-dd],[data-insp]"); if (el) openCard(el); });
   $("#content").addEventListener("click", (e) => {
-    if (laterNewClick(e)) return;
+    if (laterNewClick(e) || laterEditClick(e)) return;
     const done = e.target.closest("[data-later-done]");
     if (done) { later.remove(done.dataset.laterDone); renderList(); return; }
     const pick = e.target.closest("[data-later-pick]");

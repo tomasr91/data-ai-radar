@@ -419,6 +419,17 @@ with sync_playwright() as p:
     _li = page.locator(".later-item").first.inner_text() if page.locator(".later-item").count() else ""
     check("   eigen notitie toevoegen op Later, zonder artikel", "Eigen notitie-test" in _li and "Even uitzoeken." in _li and "Gezien in" not in _li
           and page.locator("[data-later-pick]").count() == 1)
+    check("   Later ziet eruit als een kaart met label", page.locator(".later-item.card .pill").first.inner_text() == "later")
+    page.locator(".later-item h3").first.click()
+    check("   tikken op de kaart opent direct bewerken", page.locator("[data-later-form] .le-t").count() == 1
+          and page.locator("[data-later-form] .le-n").input_value() == "Even uitzoeken.")
+    page.fill("[data-later-form] .le-t", "Eigen titel aangepast")
+    page.fill("[data-later-form] .le-n", "Even uitzoeken. En nog iets erbij.")
+    page.click('[data-le="save"]')
+    _li = page.locator(".later-item").first.inner_text()
+    _st = page.evaluate("JSON.parse(localStorage.getItem('radar:later'))[0]")
+    check("   bewerken bewaart titel en omschrijving, id blijft gelijk", "Eigen titel aangepast" in _li and "En nog iets erbij." in _li
+          and _st["id"] == "eigen-eigen-notitie-test", str(_st))
     page.click("[data-later-done]")
     page.evaluate("localStorage.setItem('radar:view','actueel'); localStorage.setItem('radar:ddTab','alle')")
     page.evaluate("(() => { try { sessionStorage.clear(); } catch (e) {} })()")
