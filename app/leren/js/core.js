@@ -111,13 +111,13 @@
      Per vraag één van vier toestanden (Radar, 31-10-2026):
      zit erin = beheerst (bak 2+) · nog herhalen = laatst goed, nog niet beheerst ·
      nog oefenen = laatst fout of gegokt · nieuw = nog niet gehad.
-     Het percentage is 'zit erin' gedeeld door alle vragen: geen halve punten. */
+     Het percentage: 'zit erin' telt volledig, 'nog herhalen' voor de helft (T, 25-11-2026). */
   function progress(certId, scope) {
     const c = cert(certId), st = cs(certId), qs = pool(c, scope, st);
     const out = { total: qs.length, mastered: 0, repeat: 0, practise: 0, unseen: 0 };
     qs.forEach(q => { const x = st.q[q.id];
       if (!x || !x.n) out.unseen++; else if (x.b >= MASTERED) out.mastered++; else if (x.ok) out.repeat++; else out.practise++; });
-    out.pct = out.total ? out.mastered / out.total : 0;
+    out.pct = out.total ? (out.mastered + out.repeat / 2) / out.total : 0;
     return out;
   }
 
