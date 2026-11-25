@@ -184,7 +184,30 @@
   }
 
   /* ---------------- render ---------------- */
-  function render() { app.innerHTML = ui.view === "practice" ? vPractice() : ui.view === "round" ? vRound() : vHome(); }
+  function render() { app.innerHTML = ui.view === "practice" ? vPractice() : ui.view === "round" ? vRound() : vHome(); saveRound(); }
+  /* Lopende ronde bewaren op dit toestel (T, 25-11-2026): een telefoon laadt de pagina soms opnieuw als hij even
+     verborgen was. Bij opnieuw openen ga je verder bij dezelfde vraag. Ouder dan 3 uur = weggooien. */
+  const ROUND_KEY = "cca-round", ROUND_MAX_AGE = 3 * 3600 * 1000;
+  function saveRound() {
+    if (!ui.ready) return;   // nog niet hersteld: niets overschrijven
+    try {
+      if (ui.view !== "practice" && ui.view !== "round") { localStorage.removeItem(ROUND_KEY); return; }
+      localStorage.setItem(ROUND_KEY, JSON.stringify({ at: Date.now(), cert: C.state.activeCert, view: ui.view, scope: ui.scope, cur: ui.cur,
+        recent: ui.recent, round: ui.round, retry: ui.retry, retryDone: ui.retryDone, roundMs: ui.roundMs }));
+    } catch (e) {}
+  }
+  function restoreRound() {
+    try {
+      const r = JSON.parse(localStorage.getItem(ROUND_KEY) || "null");
+      if (!r || Date.now() - r.at > ROUND_MAX_AGE || !A.certs[r.cert]) { localStorage.removeItem(ROUND_KEY); return false; }
+      const qm = C.qmap(A.certs[r.cert]);
+      if (r.view === "practice" && !(r.cur && qm[r.cur.qid])) { localStorage.removeItem(ROUND_KEY); return false; }
+      C.state.activeCert = r.cert;
+      Object.assign(ui, { view: r.view, scope: r.scope, cur: r.cur, recent: r.recent || [], round: r.round || [], retry: r.retry || null,
+        retryDone: r.retryDone || null, roundMs: r.roundMs || [], curMs: [] });
+      return true;
+    } catch (e) { return false; }
+  }
   function setCert(id) {
     C.state.activeCert = id; C.save(); ui.view = "home"; ui.confirm = null; ui.importMsg = null;
     try { history.replaceState(null, "", "#" + id); } catch (e) {}
@@ -329,6 +352,7 @@
   C.init().then(() => {
     ui.ready = true;
     if (h && A.certs[h]) C.state.activeCert = h;
+    if (restoreRound()) { render(); return; }
     if (!A.certs[C.state.activeCert]) C.state.activeCert = "ccaof";
     if (ui.view === "home") render();
   });

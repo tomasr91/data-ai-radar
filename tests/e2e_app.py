@@ -775,6 +775,27 @@ with sync_playwright() as p:
     check("   geen JavaScript-fouten bij inspiratie", not errs, "; ".join(errs))
     pg.close()
     srv.shutdown()
+
+    # 12. Leren: lopende ronde blijft bewaard als de pagina opnieuw laadt
+    srv, u = serve(site())
+    pg = browser.new_page(**phone)
+    pg.route("**/fonts.g*/**", lambda r: r.abort())
+    pg.goto(u); pg.wait_for_selector("#seg-view")
+    pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
+    fr = pg.frame_locator("#leren-frame")
+    fr.locator('[data-act="start"][data-kind="weak"]').click()
+    for _ in range(2):
+        fr.locator(".opt").first.click(); fr.locator('[data-act="check"]').click(); fr.locator('[data-act="next"]').click()
+    dots = fr.locator(".pbar").inner_html()
+    pg.reload(); pg.wait_for_selector("#seg-view"); pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
+    fr = pg.frame_locator("#leren-frame"); fr.locator('[data-act="check"]').wait_for(timeout=3000)
+    check("12. Leren: na herladen verder in dezelfde ronde", fr.locator(".pbar").inner_html() == dots)
+    fr.locator('[data-act="home"]').click()
+    pg.reload(); pg.wait_for_selector("#seg-view"); pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
+    fr = pg.frame_locator("#leren-frame"); fr.locator('[data-act="start"][data-kind="weak"]').wait_for(timeout=3000)
+    check("   na Stoppen begint Leren weer op het startscherm", fr.locator('[data-act="check"]').count() == 0)
+    pg.close()
+    srv.shutdown()
     browser.close()
 
 failed = [r for r in results if not r[1]]
