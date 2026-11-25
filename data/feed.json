@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T10:31:51.244564Z",
+ "generated_at": "2026-11-25T19:02:08.438655Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
  "last_successful_update": "2026-11-25T10:31:51.244564Z",
  "groups": [
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.87,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -621,7 +621,7 @@
    "relevance_score": 98,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.77,
+    "recency": 0.76,
     "source": 0.68,
     "quality": 0.63,
     "feedback": 0.03,
@@ -742,7 +742,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -870,10 +870,10 @@
     "ai_context",
     "agents"
    ],
-   "relevance_score": 97,
+   "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -972,7 +972,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.68,
     "quality": 0.7,
     "fit": 0.2
@@ -1091,7 +1091,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1210,7 +1210,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.74,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1666,7 +1666,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.02,
@@ -1767,7 +1767,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.87,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -1880,7 +1880,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.87,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.03,
@@ -1989,7 +1989,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -2122,7 +2122,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.56,
+    "recency": 0.55,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -2238,7 +2238,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2369,7 +2369,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.76,
+    "recency": 0.75,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -2655,271 +2655,6 @@
    }
   },
   {
-   "id": "6fd4c32fe34a",
-   "title": "How to build and maintain an agentic evaluation",
-   "url": "https://huggingface.co/blog/agentic-evals",
-   "source_id": "huggingface_blog",
-   "published_at": "2026-11-23T00:00:00Z",
-   "fetched_at": "2026-11-24T03:13:12.019420Z",
-   "summary": "Een stappenplan van Hugging Face voor een eigen agent-eval: van een smalle claim via controles op valsspelen tot rapporteren met pass@k en pass^k.",
-   "personal_relevance": "Als je een AI-assistent op je eigen data wilt testen, geeft dit stappenplan je een manier om te voorkomen dat je test zelf de fout is.",
-   "experiment": "Maak vijf vragen over een verzonnen dbt-project met een vast goed antwoord. Laat Claude ze elk drie keer beantwoorden en reken pass@3 en pass^3 uit. Voeg daarna één 'sluiproute'-vraag toe en kijk of je controle die vangt.",
-   "limitations": [
-    "Het tweede deel van het stuk (latere stappen en de bijlage met commando's) was niet volledig letterlijk te lezen.",
-    "Het voorbeeld is een natuurkundetaak; vertalen naar data-vragen moet je zelf doen.",
-    "Het stuk gaat over open evals op de Hugging Face Hub; voor interne evals met werkdata gelden andere afwegingen."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Harbor-documentatie",
-     "url": "https://docs.harborframework.com/"
-    },
-    {
-     "label": "raman-lab dataset",
-     "url": "https://huggingface.co/datasets/burtenshaw/raman-lab"
-    },
-    {
-     "label": "Agent traces op de Hub",
-     "url": "https://huggingface.co/docs/hub/en/agent-traces"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "agents"
-   ],
-   "relevance_score": 88,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.89,
-    "source": 0.51,
-    "quality": 0.67,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:27:44Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents",
-   "story": [
-    "Hugging Face schreef een uitgebreide handleiding voor het bouwen van een test voor AI-agents (agentic evaluation). De aanleiding: kleine fouten in een test verschuiven de uitkomst flink. In een audit van Terminal-Bench scheelde de score tot bijna 30 procentpunt, alleen doordat het harnas om hetzelfde model anders was.",
-    "De onderdelen zijn steeds dezelfde. Een taak geeft de opdracht. Het harnas zet model en tools in een vaste omgeving. Een verifier beoordeelt de eindtoestand, dus wat er echt is opgeslagen, niet wat de agent zegt. Elke poging laat een spoor (trace) achter dat je later naleest.",
-    "Het voorbeeld is een natuurkundetaak: pieken fitten in een spectrum. Eerst draaien de auteurs drie controles: de echte oplossing moet slagen, een agent die niets doet moet zakken, en een sluiproute moet zakken. Die sluiproute slaagde toch op alle 8 taken, zonder echt te fitten. Daarom kwamen er extra controles per piek bij. Zo'n 'kan de test bedrogen worden?'-check is het nuttigste idee uit het stuk.",
-    "Daarna meet je op twee manieren. Pass@k telt een taak als geslaagd als minstens één van k pogingen goed is. Pass^k vraagt dat alle pogingen goed zijn. Bij gpt-oss-120b was dat 7 van 8 tegen 1 van 8: het model kan het, maar niet betrouwbaar. Voor een data-assistent die collega's één keer iets vragen, is pass^k de eerlijke maat.",
-    "Tot slot vraagt onderhoud aandacht. Leg elke correctie vast: wat er mis was, hoe je het vond en of oude scores nog vergelijkbaar zijn. Voor je eigen evals voor een AI-assistent op dbt-metadata kun je dit stappenplan bijna letterlijk volgen, met verzonnen data waarvan je het goede antwoord kent."
-   ],
-   "key_facts": [
-    "Gepubliceerd op 23 november 2026 door Avijit Ghosh, Ben Burtenshaw en Irene Solaiman (Hugging Face).",
-    "Een Terminal-Bench-audit (ICML 2026) vond tot 29,9 procentpunt verschil in nauwkeurigheid als alleen het harnas veranderde.",
-    "Controles voor een eval: de referentieoplossing slaagt, een agent die niets doet zakt, een sluiproute zakt; in het voorbeeld slaagde de sluiproute op alle 8 taken, waarna fitcontroles per piek zijn toegevoegd.",
-    "gpt-oss-120b haalde 11 van 24 pogingen (8 taken x 3); pass@3 was 7/8 taken, pass^3 1/8 taken; gemiddelde 0,46 met een standaardfout van ongeveer 0,11.",
-    "Terminal-Bench 2.1 herstelde 28 van 89 taken na meldingen van gebruikers; OpenAI vond in een audit van SWE-bench Verified problemen in 59,4% van 138 onderzochte taken.",
-    "Volgens het stuk wordt 98,2% van de scores van model-benchmarks door maar één partij gerapporteerd."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "harnas",
-     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
-    },
-    {
-     "term": "verifier",
-     "explanation": "Het deel van een test dat na afloop controleert of de agent het goed deed, door te kijken naar wat er echt is opgeslagen of veranderd."
-    },
-    {
-     "term": "Pass@k",
-     "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
-    },
-    {
-     "term": "Pass^k",
-     "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
-    },
-    {
-     "term": "trace",
-     "explanation": "Een spoor van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt het om fouten te zoeken."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.55,
-    "why": "Praktisch over evals, een onderwerp uit je profiel, maar met een natuurkundevoorbeeld in plaats van data; nog geen duimen bij evals."
-   },
-   "labels": [
-    "agent-evals",
-    "benchmark-kwaliteit"
-   ]
-  },
-  {
-   "id": "7038e65ffad2",
-   "title": "Data Modeling Best Practices for an Agentic CDP, Part 1: The Data Foundation",
-   "url": "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-24T19:36:52Z",
-   "fetched_at": "2026-11-25T03:13:32.399378Z",
-   "summary": "Databricks laat zien hoe je klantdata modelleert zodat een agent per persoon kan beslissen: identiteit één keer koppelen na Silver, daarna Gold op één vaste klant-id.",
-   "personal_relevance": "Een concreet patroon voor een Gold-laag die een agent kan vertrouwen: één sleutel, koppelregels als data en toestemming als tabel.",
-   "experiment": "Maak in DuckDB een verzonnen klantentabel uit drie bronnen, koppel ze met een harde regel op genormaliseerde e-mail en schrijf een kleine id_graph met regel en bron per koppeling.",
-   "limitations": [
-    "Het stuk komt van Databricks en verwijst steeds naar CustomerLake; er staan geen metingen of klantresultaten in.",
-    "De status (GA of preview) van CustomerLake en de genoemde agents staat er niet in.",
-    "De zes vragen die een agent per persoon moet beantwoorden, volgen pas in deel 2."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Streaming tables",
-     "url": "https://docs.databricks.com/aws/en/ldp/concepts/streaming-tables"
-    },
-    {
-     "label": "Tags in Unity Catalog",
-     "url": "https://docs.databricks.com/aws/en/database-objects/tags"
-    },
-    {
-     "label": "Spark Declarative Pipelines",
-     "url": "https://docs.databricks.com/aws/en/ldp/"
-    },
-    {
-     "label": "Introducing CustomerLake",
-     "url": "https://www.databricks.com/blog/introducing-customerlake-agentic-cdp"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "data_architecture_modeling",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "databricks"
-   ],
-   "relevance_score": 88,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.97,
-    "source": 0.85,
-    "quality": 0.6,
-    "feedback": -0.05,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:22:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id",
-   "story": [
-    "Een agent die marketing doet, beslist per persoon en binnen seconden. Stuur je deze klant een prijsalert, of kost de korting meer dan hij oplevert? Databricks schrijft dat zo'n agent dezelfde basis nodig heeft als een gewoon klantdataplatform (CDP). Alleen wordt een gat in de data nu net zo snel een foute beslissing.",
-    "De kern is één regel: koppel identiteiten één keer, ná Silver en vóór Gold. In Silver maak je e-mails, telefoonnummers en adressen eerst schoon, maar je koppelt nog niets. Daarna voegt een aparte stap records uit webshop, app en kassa samen tot één persoon. Eerst met harde regels (zelfde e-mail, zelfde telefoon), daarna met kansberekening (probabilistic matching) voor de gaten. Elke persoon krijgt een vaste canonical_id, en een id_graph legt per koppeling vast welke regel en welke zekerheid erachter zit.",
-    "Die koppeltabel noemt de auteur de belangrijkste tabel die je bouwt. Het advies: stel scherp af op precisie, want een gedeeld gezinsadres kan twee mensen ten onrechte samenvoegen. Leg ook per kenmerk vast welke bron wint (survivorship), en laat mensen steekproeven van koppelingen controleren. Bouwen kan met SQL-regels plus een open-source matcher als Splink of Zingg, of met de eigen agents van CustomerLake.",
-    "Gold bestaat dan uit drie soorten tabellen op die ene id: een klanttabel, 1-op-1-tabellen met kenmerken (modelscores, toestemming, levensfase) en 1-op-veel-tabellen met gedrag per gebeurtenis. Geef elke Gold-tabel een vlag 'batch' of 'event' als Unity Catalog-tag, en bouw eventtabellen als streaming tables. Reken tijdvensters tegen een vaste peildatum, zodat een herhaalde run hetzelfde antwoord geeft. En zet reacties op campagnes terug in Bronze, met een controlegroep, zodat je meet wat werkt.",
-    "Voor jou is dit vooral een goed voorbeeld van Gold als invoer voor AI, ook buiten marketing. Het patroon van één vaste sleutel, een controleerbare koppeltabel en toestemming als gewone tabel past ook bij andere domeinen. Let wel: het stuk is van Databricks zelf en wijst steeds naar hun product CustomerLake. Resultaten of klantcijfers staan er niet in."
-   ],
-   "key_facts": [
-    "Deel 1 van 2, door Ashrit Kulkarni, gepubliceerd op 24 november 2026.",
-    "Advies: identity resolution op één plek, na Silver en vóór Gold, met een vaste canonical_id en een controleerbare id_graph.",
-    "Gold bestaat uit een klanttabel, 1-op-1-kenmerkentabellen en 1-op-veel-gedragstabellen per gebeurtenis.",
-    "Elke Gold-tabel krijgt een vlag batch of event als Unity Catalog-tag; eventtabellen worden streaming tables in Spark Declarative Pipelines.",
-    "Genoemde opties voor koppelen: SQL-regels met Splink of Zingg, of CustomerLake Profile Agents.",
-    "Een geplande sync van doelgroepen kan in CustomerLake volgens het artikel tot elke minuut; de status van CustomerLake staat er niet in."
-   ],
-   "showcase": {
-    "caption": "De eerste, harde koppelregel: maak e-mail schoon en geef elke unieke e-mail één klant-id. Zo worden zes bronrecords drie personen.",
-    "language": "sql",
-    "code": "WITH genormaliseerd AS (\n  SELECT bron, bron_id, lower(trim(email)) AS email\n  FROM silver_klanten\n),\ncanoniek AS (\n  SELECT email,\n         'C' || lpad(CAST(row_number() OVER (ORDER BY email) AS VARCHAR), 3, '0') AS canonical_id\n  FROM (SELECT DISTINCT email FROM genormaliseerd)\n)\nSELECT c.canonical_id, g.bron, g.bron_id, 'exact e-mail' AS regel\nFROM genormaliseerd g JOIN canoniek c USING (email)\nORDER BY c.canonical_id, g.bron;",
-    "result": {
-     "columns": [
-      "canonical_id",
-      "bron",
-      "bron_id",
-      "regel"
-     ],
-     "rows": [
-      [
-       "C001",
-       "app",
-       "A-903",
-       "exact e-mail"
-      ],
-      [
-       "C001",
-       "kassa",
-       "K-55",
-       "exact e-mail"
-      ],
-      [
-       "C001",
-       "webshop",
-       "W-17",
-       "exact e-mail"
-      ],
-      [
-       "C002",
-       "app",
-       "A-904",
-       "exact e-mail"
-      ],
-      [
-       "C002",
-       "webshop",
-       "W-18",
-       "exact e-mail"
-      ],
-      [
-       "C003",
-       "kassa",
-       "K-56",
-       "exact e-mail"
-      ]
-     ]
-    },
-    "note": "Dit is alleen het idee in gewone SQL. Een row_number-id is niet vast: het artikel raadt aan de id te bewaren en samenvoegingen en splitsingen vast te leggen."
-   },
-   "terms": [
-    {
-     "term": "probabilistic matching",
-     "explanation": "Records koppelen op waarschijnlijkheid in plaats van een exacte gelijke waarde, bijvoorbeeld bij bijna gelijke namen en adressen. Elke koppeling krijgt een score."
-    },
-    {
-     "term": "canonical_id",
-     "explanation": "Eén vaste id per persoon die alle id's uit losse bronnen vervangt. Alle Gold-tabellen gebruiken die als sleutel."
-    },
-    {
-     "term": "id_graph",
-     "explanation": "Een tabel die vastlegt welke bron-id's bij welke persoon horen, met per koppeling de regel en de zekerheid. Zo kun je een koppeling uitleggen en terugdraaien."
-    },
-    {
-     "term": "survivorship",
-     "explanation": "De regel welke bron 'wint' als bronnen een ander adres of telefoonnummer hebben, bijvoorbeeld de nieuwste of de meest betrouwbare."
-    },
-    {
-     "term": "streaming tables",
-     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.65,
-    "why": "Gold als basis voor een agent, zoals je duimen voor Genie Agents en metric views; wel minder praktisch dan je dbt-stukken."
-   },
-   "labels": [
-    "identity-resolution",
-    "gold-als-ai-bron",
-    "data-agent"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -5
-   }
-  },
-  {
    "id": "6ff348e652c9",
    "title": "Three LLM inflection points in twelve months",
    "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
@@ -2955,7 +2690,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.98,
+    "recency": 0.96,
     "source": 0.68,
     "quality": 0.47,
     "feedback": 0.01,
@@ -3133,6 +2868,271 @@
    }
   },
   {
+   "id": "6fd4c32fe34a",
+   "title": "How to build and maintain an agentic evaluation",
+   "url": "https://huggingface.co/blog/agentic-evals",
+   "source_id": "huggingface_blog",
+   "published_at": "2026-11-23T00:00:00Z",
+   "fetched_at": "2026-11-24T03:13:12.019420Z",
+   "summary": "Een stappenplan van Hugging Face voor een eigen agent-eval: van een smalle claim via controles op valsspelen tot rapporteren met pass@k en pass^k.",
+   "personal_relevance": "Als je een AI-assistent op je eigen data wilt testen, geeft dit stappenplan je een manier om te voorkomen dat je test zelf de fout is.",
+   "experiment": "Maak vijf vragen over een verzonnen dbt-project met een vast goed antwoord. Laat Claude ze elk drie keer beantwoorden en reken pass@3 en pass^3 uit. Voeg daarna één 'sluiproute'-vraag toe en kijk of je controle die vangt.",
+   "limitations": [
+    "Het tweede deel van het stuk (latere stappen en de bijlage met commando's) was niet volledig letterlijk te lezen.",
+    "Het voorbeeld is een natuurkundetaak; vertalen naar data-vragen moet je zelf doen.",
+    "Het stuk gaat over open evals op de Hugging Face Hub; voor interne evals met werkdata gelden andere afwegingen."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Harbor-documentatie",
+     "url": "https://docs.harborframework.com/"
+    },
+    {
+     "label": "raman-lab dataset",
+     "url": "https://huggingface.co/datasets/burtenshaw/raman-lab"
+    },
+    {
+     "label": "Agent traces op de Hub",
+     "url": "https://huggingface.co/docs/hub/en/agent-traces"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents"
+   ],
+   "relevance_score": 87,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.87,
+    "source": 0.51,
+    "quality": 0.67,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:27:44Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents",
+   "story": [
+    "Hugging Face schreef een uitgebreide handleiding voor het bouwen van een test voor AI-agents (agentic evaluation). De aanleiding: kleine fouten in een test verschuiven de uitkomst flink. In een audit van Terminal-Bench scheelde de score tot bijna 30 procentpunt, alleen doordat het harnas om hetzelfde model anders was.",
+    "De onderdelen zijn steeds dezelfde. Een taak geeft de opdracht. Het harnas zet model en tools in een vaste omgeving. Een verifier beoordeelt de eindtoestand, dus wat er echt is opgeslagen, niet wat de agent zegt. Elke poging laat een spoor (trace) achter dat je later naleest.",
+    "Het voorbeeld is een natuurkundetaak: pieken fitten in een spectrum. Eerst draaien de auteurs drie controles: de echte oplossing moet slagen, een agent die niets doet moet zakken, en een sluiproute moet zakken. Die sluiproute slaagde toch op alle 8 taken, zonder echt te fitten. Daarom kwamen er extra controles per piek bij. Zo'n 'kan de test bedrogen worden?'-check is het nuttigste idee uit het stuk.",
+    "Daarna meet je op twee manieren. Pass@k telt een taak als geslaagd als minstens één van k pogingen goed is. Pass^k vraagt dat alle pogingen goed zijn. Bij gpt-oss-120b was dat 7 van 8 tegen 1 van 8: het model kan het, maar niet betrouwbaar. Voor een data-assistent die collega's één keer iets vragen, is pass^k de eerlijke maat.",
+    "Tot slot vraagt onderhoud aandacht. Leg elke correctie vast: wat er mis was, hoe je het vond en of oude scores nog vergelijkbaar zijn. Voor je eigen evals voor een AI-assistent op dbt-metadata kun je dit stappenplan bijna letterlijk volgen, met verzonnen data waarvan je het goede antwoord kent."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 23 november 2026 door Avijit Ghosh, Ben Burtenshaw en Irene Solaiman (Hugging Face).",
+    "Een Terminal-Bench-audit (ICML 2026) vond tot 29,9 procentpunt verschil in nauwkeurigheid als alleen het harnas veranderde.",
+    "Controles voor een eval: de referentieoplossing slaagt, een agent die niets doet zakt, een sluiproute zakt; in het voorbeeld slaagde de sluiproute op alle 8 taken, waarna fitcontroles per piek zijn toegevoegd.",
+    "gpt-oss-120b haalde 11 van 24 pogingen (8 taken x 3); pass@3 was 7/8 taken, pass^3 1/8 taken; gemiddelde 0,46 met een standaardfout van ongeveer 0,11.",
+    "Terminal-Bench 2.1 herstelde 28 van 89 taken na meldingen van gebruikers; OpenAI vond in een audit van SWE-bench Verified problemen in 59,4% van 138 onderzochte taken.",
+    "Volgens het stuk wordt 98,2% van de scores van model-benchmarks door maar één partij gerapporteerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "harnas",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "verifier",
+     "explanation": "Het deel van een test dat na afloop controleert of de agent het goed deed, door te kijken naar wat er echt is opgeslagen of veranderd."
+    },
+    {
+     "term": "Pass@k",
+     "explanation": "Een maat bij AI-tests: een vraag telt als geslaagd als het antwoord minstens één keer in k pogingen goed is."
+    },
+    {
+     "term": "Pass^k",
+     "explanation": "Een strengere maat: het antwoord moet in alle k pogingen goed zijn. Die telt als gebruikers één keer vragen en op het antwoord vertrouwen."
+    },
+    {
+     "term": "trace",
+     "explanation": "Een spoor van wat een AI-agent stap voor stap deed: welke vragen, toolaanroepen en antwoorden. Je gebruikt het om fouten te zoeken."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.55,
+    "why": "Praktisch over evals, een onderwerp uit je profiel, maar met een natuurkundevoorbeeld in plaats van data; nog geen duimen bij evals."
+   },
+   "labels": [
+    "agent-evals",
+    "benchmark-kwaliteit"
+   ]
+  },
+  {
+   "id": "7038e65ffad2",
+   "title": "Data Modeling Best Practices for an Agentic CDP, Part 1: The Data Foundation",
+   "url": "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-24T19:36:52Z",
+   "fetched_at": "2026-11-25T03:13:32.399378Z",
+   "summary": "Databricks laat zien hoe je klantdata modelleert zodat een agent per persoon kan beslissen: identiteit één keer koppelen na Silver, daarna Gold op één vaste klant-id.",
+   "personal_relevance": "Een concreet patroon voor een Gold-laag die een agent kan vertrouwen: één sleutel, koppelregels als data en toestemming als tabel.",
+   "experiment": "Maak in DuckDB een verzonnen klantentabel uit drie bronnen, koppel ze met een harde regel op genormaliseerde e-mail en schrijf een kleine id_graph met regel en bron per koppeling.",
+   "limitations": [
+    "Het stuk komt van Databricks en verwijst steeds naar CustomerLake; er staan geen metingen of klantresultaten in.",
+    "De status (GA of preview) van CustomerLake en de genoemde agents staat er niet in.",
+    "De zes vragen die een agent per persoon moet beantwoorden, volgen pas in deel 2."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Streaming tables",
+     "url": "https://docs.databricks.com/aws/en/ldp/concepts/streaming-tables"
+    },
+    {
+     "label": "Tags in Unity Catalog",
+     "url": "https://docs.databricks.com/aws/en/database-objects/tags"
+    },
+    {
+     "label": "Spark Declarative Pipelines",
+     "url": "https://docs.databricks.com/aws/en/ldp/"
+    },
+    {
+     "label": "Introducing CustomerLake",
+     "url": "https://www.databricks.com/blog/introducing-customerlake-agentic-cdp"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 87,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.85,
+    "quality": 0.6,
+    "feedback": -0.05,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:22:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id",
+   "story": [
+    "Een agent die marketing doet, beslist per persoon en binnen seconden. Stuur je deze klant een prijsalert, of kost de korting meer dan hij oplevert? Databricks schrijft dat zo'n agent dezelfde basis nodig heeft als een gewoon klantdataplatform (CDP). Alleen wordt een gat in de data nu net zo snel een foute beslissing.",
+    "De kern is één regel: koppel identiteiten één keer, ná Silver en vóór Gold. In Silver maak je e-mails, telefoonnummers en adressen eerst schoon, maar je koppelt nog niets. Daarna voegt een aparte stap records uit webshop, app en kassa samen tot één persoon. Eerst met harde regels (zelfde e-mail, zelfde telefoon), daarna met kansberekening (probabilistic matching) voor de gaten. Elke persoon krijgt een vaste canonical_id, en een id_graph legt per koppeling vast welke regel en welke zekerheid erachter zit.",
+    "Die koppeltabel noemt de auteur de belangrijkste tabel die je bouwt. Het advies: stel scherp af op precisie, want een gedeeld gezinsadres kan twee mensen ten onrechte samenvoegen. Leg ook per kenmerk vast welke bron wint (survivorship), en laat mensen steekproeven van koppelingen controleren. Bouwen kan met SQL-regels plus een open-source matcher als Splink of Zingg, of met de eigen agents van CustomerLake.",
+    "Gold bestaat dan uit drie soorten tabellen op die ene id: een klanttabel, 1-op-1-tabellen met kenmerken (modelscores, toestemming, levensfase) en 1-op-veel-tabellen met gedrag per gebeurtenis. Geef elke Gold-tabel een vlag 'batch' of 'event' als Unity Catalog-tag, en bouw eventtabellen als streaming tables. Reken tijdvensters tegen een vaste peildatum, zodat een herhaalde run hetzelfde antwoord geeft. En zet reacties op campagnes terug in Bronze, met een controlegroep, zodat je meet wat werkt.",
+    "Voor jou is dit vooral een goed voorbeeld van Gold als invoer voor AI, ook buiten marketing. Het patroon van één vaste sleutel, een controleerbare koppeltabel en toestemming als gewone tabel past ook bij andere domeinen. Let wel: het stuk is van Databricks zelf en wijst steeds naar hun product CustomerLake. Resultaten of klantcijfers staan er niet in."
+   ],
+   "key_facts": [
+    "Deel 1 van 2, door Ashrit Kulkarni, gepubliceerd op 24 november 2026.",
+    "Advies: identity resolution op één plek, na Silver en vóór Gold, met een vaste canonical_id en een controleerbare id_graph.",
+    "Gold bestaat uit een klanttabel, 1-op-1-kenmerkentabellen en 1-op-veel-gedragstabellen per gebeurtenis.",
+    "Elke Gold-tabel krijgt een vlag batch of event als Unity Catalog-tag; eventtabellen worden streaming tables in Spark Declarative Pipelines.",
+    "Genoemde opties voor koppelen: SQL-regels met Splink of Zingg, of CustomerLake Profile Agents.",
+    "Een geplande sync van doelgroepen kan in CustomerLake volgens het artikel tot elke minuut; de status van CustomerLake staat er niet in."
+   ],
+   "showcase": {
+    "caption": "De eerste, harde koppelregel: maak e-mail schoon en geef elke unieke e-mail één klant-id. Zo worden zes bronrecords drie personen.",
+    "language": "sql",
+    "code": "WITH genormaliseerd AS (\n  SELECT bron, bron_id, lower(trim(email)) AS email\n  FROM silver_klanten\n),\ncanoniek AS (\n  SELECT email,\n         'C' || lpad(CAST(row_number() OVER (ORDER BY email) AS VARCHAR), 3, '0') AS canonical_id\n  FROM (SELECT DISTINCT email FROM genormaliseerd)\n)\nSELECT c.canonical_id, g.bron, g.bron_id, 'exact e-mail' AS regel\nFROM genormaliseerd g JOIN canoniek c USING (email)\nORDER BY c.canonical_id, g.bron;",
+    "result": {
+     "columns": [
+      "canonical_id",
+      "bron",
+      "bron_id",
+      "regel"
+     ],
+     "rows": [
+      [
+       "C001",
+       "app",
+       "A-903",
+       "exact e-mail"
+      ],
+      [
+       "C001",
+       "kassa",
+       "K-55",
+       "exact e-mail"
+      ],
+      [
+       "C001",
+       "webshop",
+       "W-17",
+       "exact e-mail"
+      ],
+      [
+       "C002",
+       "app",
+       "A-904",
+       "exact e-mail"
+      ],
+      [
+       "C002",
+       "webshop",
+       "W-18",
+       "exact e-mail"
+      ],
+      [
+       "C003",
+       "kassa",
+       "K-56",
+       "exact e-mail"
+      ]
+     ]
+    },
+    "note": "Dit is alleen het idee in gewone SQL. Een row_number-id is niet vast: het artikel raadt aan de id te bewaren en samenvoegingen en splitsingen vast te leggen."
+   },
+   "terms": [
+    {
+     "term": "probabilistic matching",
+     "explanation": "Records koppelen op waarschijnlijkheid in plaats van een exacte gelijke waarde, bijvoorbeeld bij bijna gelijke namen en adressen. Elke koppeling krijgt een score."
+    },
+    {
+     "term": "canonical_id",
+     "explanation": "Eén vaste id per persoon die alle id's uit losse bronnen vervangt. Alle Gold-tabellen gebruiken die als sleutel."
+    },
+    {
+     "term": "id_graph",
+     "explanation": "Een tabel die vastlegt welke bron-id's bij welke persoon horen, met per koppeling de regel en de zekerheid. Zo kun je een koppeling uitleggen en terugdraaien."
+    },
+    {
+     "term": "survivorship",
+     "explanation": "De regel welke bron 'wint' als bronnen een ander adres of telefoonnummer hebben, bijvoorbeeld de nieuwste of de meest betrouwbare."
+    },
+    {
+     "term": "streaming tables",
+     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Gold als basis voor een agent, zoals je duimen voor Genie Agents en metric views; wel minder praktisch dan je dbt-stukken."
+   },
+   "labels": [
+    "identity-resolution",
+    "gold-als-ai-bron",
+    "data-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -5
+   }
+  },
+  {
    "id": "a704112d6f8a",
    "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
    "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
@@ -3169,7 +3169,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.09,
+    "recency": 0.08,
     "source": 0.68,
     "quality": 0.78,
     "feedback": -0.06,
@@ -3573,7 +3573,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.65,
+    "recency": 0.64,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3684,7 +3684,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.72,
+    "recency": 0.7,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -3752,134 +3752,6 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -4
-   }
-  },
-  {
-   "id": "f4a1778578b7",
-   "title": "Bulk migrate your dashboards to AI/BI with Genie Code",
-   "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-19T16:00:00Z",
-   "fetched_at": "2026-11-20T03:13:44.690161Z",
-   "summary": "Met /importBI zet Genie Code nu een hele map Tableau- of Power BI-rapporten in één run om naar AI/BI Dashboards, inclusief metric views. Algemeen beschikbaar.",
-   "personal_relevance": "Een snelle route om de maatstaven uit bestaande Power BI-modellen als metric views in Unity Catalog te krijgen, waar AI ze ook kan gebruiken.",
-   "experiment": "Exporteer een Power BI-rapport op een openbare dataset als .pbit, zet het in een volume en laat /importBI alleen de metric views bouwen. Vergelijk de maatstaven met je DAX.",
-   "limitations": [
-    "De agent kan een andere tabel kiezen dan het origineel gebruikte; altijd de bronnen nalopen.",
-    "Completed betekent niet dat alle visuals kloppen; reken op een tweede ronde bijsturen.",
-    "Vereist dat partner-powered AI-functies aanstaan, wat in een organisatie met strenge regels niet vanzelfsprekend is.",
-    "De MCP-controle tegen het live rapport moet via het Databricks-accountteam worden ingericht."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Import BI files using Genie Code",
-     "url": "https://docs.databricks.com/dashboards/manage/import-bi"
-    },
-    {
-     "label": "Bulkimport en limieten",
-     "url": "https://docs.databricks.com/dashboards/manage/import-bi#import-multiple-files-in-bulk"
-    },
-    {
-     "label": "Partner-powered AI features",
-     "url": "https://docs.databricks.com/databricks-ai/partner-powered"
-    },
-    {
-     "label": "Unity Catalog Semantics Patterns (GitHub)",
-     "url": "https://github.com/databricks-solutions/uc-semantics-patterns"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "data_architecture_modeling",
-    "ai_on_data_platform"
-   ],
-   "groups": [
-    "overig",
-    "architectuur",
-    "ai_context"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.75,
-    "source": 0.85,
-    "quality": 0.62,
-    "feedback": -0.03,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-22T03:30:38Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Bulk migrate your dashboards to AI/BI with Genie Code",
-     "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
-     "published_at": "2026-11-19T16:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Genie Code zet een hele map Power BI-rapporten in één keer om naar AI/BI",
-   "story": [
-    "Genie Code, de AI-assistent in Databricks, kon al één Power BI- of Tableau-rapport omzetten naar een AI/BI Dashboard. Nu kan dat voor een hele map tegelijk. Volgens Databricks is deze bulkmigratie algemeen beschikbaar (GA).",
-    "Zo werkt het. Je exporteert elk rapport naar een bestand: voor Power BI een .pbit-sjabloon of .tmdl, voor Tableau een werkmap met de bijbehorende databron. Die bestanden zet je in een map in een Unity Catalog-volume (volume). In een concept-dashboard typ je in Genie Code /importBI met het pad naar die map. De agent somt de rapporten op, vraagt naar de doelcatalogus en het doelschema, en zet elk rapport in de wachtrij. Een statuskaart toont per rapport Queued, Running of Completed.",
-    "Per rapport doorloopt de agent een vaste reeks: het bestand lezen en beoordelen, de semantische laag in kaart brengen, metric views maken, de dashboardpagina's bouwen en controleren. Bij Power BI komen die metric views direct in Unity Catalog; bij Tableau blijven ze eerst binnen het dashboard en kun je ze later naar Unity Catalog promoveren. De agent gebruikt waar het kan bestaande tabellen en views, maar pakt soms 'de dichtstbijzijnde tabel'. Controleer dus waar elk dashboard naar wijst, of noem de brontabellen zelf in je opdracht.",
-    "Het controleren laat Databricks bij jou. 'Completed' betekent alleen dat de run klaar is, niet dat elk visual klopt. De aanbevolen aanpak: maak een schermafbeelding van het originele rapport met vaste filters, zet dezelfde filters in het nieuwe dashboard, upload de schermafbeelding en laat Genie Code elk getal vergelijken. Een verschil kan ook uit versheid van data, standaardfilters of een andere rekenwijze komen, dus kijk eerst waar het vandaan komt.",
-    "Voor wie Power BI gebruikt, is het interessantste bijproduct de metric views: de maatstaven uit je Power BI-model komen zo als vaste definities in de catalogus, waar ook Genie en andere AI-toepassingen ze kunnen lezen. Of je je rapporten echt wilt verhuizen, is een andere vraag; ook alleen de metric views laten bouwen is mogelijk."
-   ],
-   "key_facts": [
-    "Bulkmigratie met /importBI in Genie Code is algemeen beschikbaar (GA), aangekondigd op 19 november 2026.",
-    "Ondersteunde bestanden: .twb, .twbx, .tds, .tdsx (Tableau) en .pbit, .tmdl (Power BI).",
-    "Bulkruns lezen alleen uit een map in een Unity Catalog-volume; slepen in de chat werkt alleen voor één rapport.",
-    "Voorwaarde: 'partner-powered AI features' staan aan op account- én werkruimteniveau.",
-    "Power BI-imports maken Unity Catalog-metric views; Tableau-imports maken eerst lokale metric views die je kunt promoveren.",
-    "Rapporten worden een paar tegelijk verwerkt, elk als eigen achtergrondtaak; elk antwoord van Genie Code is in één stap ongedaan te maken.",
-    "Optioneel: een alleen-lezen MCP-koppeling naar Tableau of Power BI om getallen te checken, in te richten via het Databricks-accountteam.",
-    "Het artikel noemt geen limieten voor aantal of grootte van bestanden; die staan in de documentatie."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo start je een bulkmigratie in Genie Code, vanuit een concept-dashboard. Daarna vraagt de agent naar catalogus en schema.",
-    "language": "text",
-    "code": "/importBI /Volumes/finance/bi/reports\n\n# of in gewone taal:\nMigrate every Power BI report in /Volumes/finance/bi/reports to AI/BI Dashboards\n\n# bronnen vastleggen, zodat de agent geen andere tabel kiest:\nUse prod.finance.table1, prod.finance.table2 and prod.finance.mv_revenue as the source for this report",
-    "note": "Commando en voorbeeldopdrachten komen uit het artikel; paden en tabelnamen zijn voorbeelden van Databricks."
-   },
-   "terms": [
-    {
-     "term": "Genie Code",
-     "explanation": "De AI-assistent in Databricks die in notebooks, dashboards en de editor code en objecten voor je maakt en aanpast."
-    },
-    {
-     "term": "volume",
-     "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    },
-    {
-     "term": ".tmdl",
-     "explanation": "Bestand in TMDL (Tabular Model Definition Language): de tekstnotatie waarin je een Power BI-semantisch model als bestanden beschrijft."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Raakt Power BI en metric views zoals je duim bij 'metric views worden een Power BI-model', maar dan de andere kant op."
-   },
-   "labels": [
-    "metric-views",
-    "power-bi-migratie",
-    "genie-code"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -3
    }
   },
   {
@@ -4412,7 +4284,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.73,
+    "recency": 0.71,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -4510,6 +4382,134 @@
    }
   },
   {
+   "id": "f4a1778578b7",
+   "title": "Bulk migrate your dashboards to AI/BI with Genie Code",
+   "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-19T16:00:00Z",
+   "fetched_at": "2026-11-20T03:13:44.690161Z",
+   "summary": "Met /importBI zet Genie Code nu een hele map Tableau- of Power BI-rapporten in één run om naar AI/BI Dashboards, inclusief metric views. Algemeen beschikbaar.",
+   "personal_relevance": "Een snelle route om de maatstaven uit bestaande Power BI-modellen als metric views in Unity Catalog te krijgen, waar AI ze ook kan gebruiken.",
+   "experiment": "Exporteer een Power BI-rapport op een openbare dataset als .pbit, zet het in een volume en laat /importBI alleen de metric views bouwen. Vergelijk de maatstaven met je DAX.",
+   "limitations": [
+    "De agent kan een andere tabel kiezen dan het origineel gebruikte; altijd de bronnen nalopen.",
+    "Completed betekent niet dat alle visuals kloppen; reken op een tweede ronde bijsturen.",
+    "Vereist dat partner-powered AI-functies aanstaan, wat in een organisatie met strenge regels niet vanzelfsprekend is.",
+    "De MCP-controle tegen het live rapport moet via het Databricks-accountteam worden ingericht."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Import BI files using Genie Code",
+     "url": "https://docs.databricks.com/dashboards/manage/import-bi"
+    },
+    {
+     "label": "Bulkimport en limieten",
+     "url": "https://docs.databricks.com/dashboards/manage/import-bi#import-multiple-files-in-bulk"
+    },
+    {
+     "label": "Partner-powered AI features",
+     "url": "https://docs.databricks.com/databricks-ai/partner-powered"
+    },
+    {
+     "label": "Unity Catalog Semantics Patterns (GitHub)",
+     "url": "https://github.com/databricks-solutions/uc-semantics-patterns"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling",
+    "ai_on_data_platform"
+   ],
+   "groups": [
+    "overig",
+    "architectuur",
+    "ai_context"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.74,
+    "source": 0.85,
+    "quality": 0.62,
+    "feedback": -0.03,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-22T03:30:38Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Bulk migrate your dashboards to AI/BI with Genie Code",
+     "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code",
+     "published_at": "2026-11-19T16:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie Code zet een hele map Power BI-rapporten in één keer om naar AI/BI",
+   "story": [
+    "Genie Code, de AI-assistent in Databricks, kon al één Power BI- of Tableau-rapport omzetten naar een AI/BI Dashboard. Nu kan dat voor een hele map tegelijk. Volgens Databricks is deze bulkmigratie algemeen beschikbaar (GA).",
+    "Zo werkt het. Je exporteert elk rapport naar een bestand: voor Power BI een .pbit-sjabloon of .tmdl, voor Tableau een werkmap met de bijbehorende databron. Die bestanden zet je in een map in een Unity Catalog-volume (volume). In een concept-dashboard typ je in Genie Code /importBI met het pad naar die map. De agent somt de rapporten op, vraagt naar de doelcatalogus en het doelschema, en zet elk rapport in de wachtrij. Een statuskaart toont per rapport Queued, Running of Completed.",
+    "Per rapport doorloopt de agent een vaste reeks: het bestand lezen en beoordelen, de semantische laag in kaart brengen, metric views maken, de dashboardpagina's bouwen en controleren. Bij Power BI komen die metric views direct in Unity Catalog; bij Tableau blijven ze eerst binnen het dashboard en kun je ze later naar Unity Catalog promoveren. De agent gebruikt waar het kan bestaande tabellen en views, maar pakt soms 'de dichtstbijzijnde tabel'. Controleer dus waar elk dashboard naar wijst, of noem de brontabellen zelf in je opdracht.",
+    "Het controleren laat Databricks bij jou. 'Completed' betekent alleen dat de run klaar is, niet dat elk visual klopt. De aanbevolen aanpak: maak een schermafbeelding van het originele rapport met vaste filters, zet dezelfde filters in het nieuwe dashboard, upload de schermafbeelding en laat Genie Code elk getal vergelijken. Een verschil kan ook uit versheid van data, standaardfilters of een andere rekenwijze komen, dus kijk eerst waar het vandaan komt.",
+    "Voor wie Power BI gebruikt, is het interessantste bijproduct de metric views: de maatstaven uit je Power BI-model komen zo als vaste definities in de catalogus, waar ook Genie en andere AI-toepassingen ze kunnen lezen. Of je je rapporten echt wilt verhuizen, is een andere vraag; ook alleen de metric views laten bouwen is mogelijk."
+   ],
+   "key_facts": [
+    "Bulkmigratie met /importBI in Genie Code is algemeen beschikbaar (GA), aangekondigd op 19 november 2026.",
+    "Ondersteunde bestanden: .twb, .twbx, .tds, .tdsx (Tableau) en .pbit, .tmdl (Power BI).",
+    "Bulkruns lezen alleen uit een map in een Unity Catalog-volume; slepen in de chat werkt alleen voor één rapport.",
+    "Voorwaarde: 'partner-powered AI features' staan aan op account- én werkruimteniveau.",
+    "Power BI-imports maken Unity Catalog-metric views; Tableau-imports maken eerst lokale metric views die je kunt promoveren.",
+    "Rapporten worden een paar tegelijk verwerkt, elk als eigen achtergrondtaak; elk antwoord van Genie Code is in één stap ongedaan te maken.",
+    "Optioneel: een alleen-lezen MCP-koppeling naar Tableau of Power BI om getallen te checken, in te richten via het Databricks-accountteam.",
+    "Het artikel noemt geen limieten voor aantal of grootte van bestanden; die staan in de documentatie."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo start je een bulkmigratie in Genie Code, vanuit een concept-dashboard. Daarna vraagt de agent naar catalogus en schema.",
+    "language": "text",
+    "code": "/importBI /Volumes/finance/bi/reports\n\n# of in gewone taal:\nMigrate every Power BI report in /Volumes/finance/bi/reports to AI/BI Dashboards\n\n# bronnen vastleggen, zodat de agent geen andere tabel kiest:\nUse prod.finance.table1, prod.finance.table2 and prod.finance.mv_revenue as the source for this report",
+    "note": "Commando en voorbeeldopdrachten komen uit het artikel; paden en tabelnamen zijn voorbeelden van Databricks."
+   },
+   "terms": [
+    {
+     "term": "Genie Code",
+     "explanation": "De AI-assistent in Databricks die in notebooks, dashboards en de editor code en objecten voor je maakt en aanpast."
+    },
+    {
+     "term": "volume",
+     "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": ".tmdl",
+     "explanation": "Bestand in TMDL (Tabular Model Definition Language): de tekstnotatie waarin je een Power BI-semantisch model als bestanden beschrijft."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Raakt Power BI en metric views zoals je duim bij 'metric views worden een Power BI-model', maar dan de andere kant op."
+   },
+   "labels": [
+    "metric-views",
+    "power-bi-migratie",
+    "genie-code"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -3
+   }
+  },
+  {
    "id": "9cdcaec08381",
    "title": "How to build a knowledge factory for AI agents",
    "url": "https://www.langchain.com/blog/knowledge-factory",
@@ -4550,7 +4550,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.83,
+    "recency": 0.82,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -4646,7 +4646,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.87,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -5028,7 +5028,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -5480,7 +5480,7 @@
     "recency": 0.24,
     "source": 0.85,
     "quality": 0.65,
-    "feedback": -0.04,
+    "feedback": -0.05,
     "fit": 0.35
    },
    "decision": "included",
@@ -5538,7 +5538,7 @@
    "fb_why": {
     "by": "source",
     "name": "databricks_blog",
-    "pts": -4
+    "pts": -5
    }
   },
   {
@@ -6062,7 +6062,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.09,
+    "recency": 0.08,
     "source": 0.51,
     "quality": 0.77,
     "feedback": 0.01,
@@ -6456,7 +6456,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.48,
+    "recency": 0.47,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -6527,102 +6527,6 @@
     "fase": 7,
     "quote": "Voor Dataflow is dat tweestapspatroon bruikbaar bij de eigen agent in fase 7",
     "why": "Laat zien hoe je bepaalt welke tools een eigen agent krijgt."
-   }
-  },
-  {
-   "id": "b943cf926a94",
-   "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
-   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-16T18:30:00Z",
-   "fetched_at": "2026-11-17T03:14:09.981133Z",
-   "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
-   "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
-   "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
-   "limitations": [
-    "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
-    "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "healthlake-opensharing op GitHub",
-     "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "data_governance_privacy",
-    "ai_in_healthcare"
-   ],
-   "groups": [
-    "ai_context",
-    "kwaliteit",
-    "zorg"
-   ],
-   "relevance_score": 82,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.65,
-    "source": 0.85,
-    "quality": 0.53,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
-   "story": [
-    "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
-    "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
-    "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
-    "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 16 november 2026.",
-    "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
-    "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
-    "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
-    "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
-    "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "FHIR",
-     "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
-    },
-    {
-     "term": "Iceberg-tabellen",
-     "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
-    },
-    {
-     "term": "OpenSharing-server",
-     "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
-    },
-    {
-     "term": "Databricks App",
-     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
-   },
-   "labels": [
-    "ai-in-de-zorg",
-    "opensharing",
-    "genie-agents"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
    }
   },
   {
@@ -6711,6 +6615,102 @@
     "v": 0,
     "s": 78,
     "pts": 2
+   }
+  },
+  {
+   "id": "b943cf926a94",
+   "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
+   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T18:30:00Z",
+   "fetched_at": "2026-11-17T03:14:09.981133Z",
+   "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
+   "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
+   "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
+   "limitations": [
+    "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
+    "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "healthlake-opensharing op GitHub",
+     "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_governance_privacy",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit",
+    "zorg"
+   ],
+   "relevance_score": 81,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.64,
+    "source": 0.85,
+    "quality": 0.53,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
+   "story": [
+    "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
+    "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
+    "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
+    "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 16 november 2026.",
+    "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
+    "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
+    "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
+    "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
+    "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "FHIR",
+     "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
+    },
+    {
+     "term": "Iceberg-tabellen",
+     "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
+    },
+    {
+     "term": "OpenSharing-server",
+     "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
+    },
+    {
+     "term": "Databricks App",
+     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
+   },
+   "labels": [
+    "ai-in-de-zorg",
+    "opensharing",
+    "genie-agents"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
    }
   },
   {
@@ -6848,7 +6848,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.51,
+    "recency": 0.5,
     "source": 0.85,
     "quality": 0.52,
     "feedback": -0.02,
@@ -7407,7 +7407,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.38,
+    "recency": 0.37,
     "source": 0.6,
     "quality": 0.57,
     "feedback": -0.04,
@@ -7513,7 +7513,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.09,
+    "recency": 0.08,
     "source": 0.68,
     "quality": 0.6,
     "feedback": -0.02,
@@ -7626,7 +7626,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -7708,7 +7708,7 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.38,
+    "recency": 0.37,
     "source": 0.51,
     "quality": 0.4,
     "feedback": 0.02,
@@ -11003,8 +11003,8 @@
    "generated_at": "2026-11-25T05:20:00Z",
    "since": "2026-11-10",
    "last": "2026-11-24",
-   "week": 7,
-   "prev_week": 3,
+   "week": 6,
+   "prev_week": 2,
    "status": "groeit"
   },
   {
@@ -11053,7 +11053,7 @@
    "since": "2026-11-08",
    "last": "2026-11-23",
    "week": 3,
-   "prev_week": 2,
+   "prev_week": 1,
    "status": "groeit"
   }
  ],
@@ -14977,20 +14977,20 @@
  "feedback": {
   "topics": {
    "dbt_analytics_engineering": 0.96,
-   "cicd_data_deployment": 0.37,
+   "cicd_data_deployment": 0.36,
    "ai_on_data_platform": 0.97,
-   "databricks_data_engineering": 0.64,
-   "powerbi_semantic_models": 0.63,
+   "databricks_data_engineering": 0.63,
+   "powerbi_semantic_models": 0.62,
    "data_governance_privacy": 0.38,
-   "data_architecture_modeling": 0.61,
+   "data_architecture_modeling": 0.6,
    "ai_context_engineering": 0.97,
    "claude_ai_development": 0.68,
-   "ai_agents_rag": 0.87,
+   "ai_agents_rag": 0.86,
    "data_ingestion": 0.21,
-   "ai_evaluation_observability": 0.08
+   "ai_evaluation_observability": 0.07
   },
   "sources": {
-   "dbt_labs_blog": 0.87,
+   "dbt_labs_blog": 0.86,
    "databricks_blog": 0.95,
    "powerbi_blog": 0.28,
    "dbt_developer_blog": 0.64,
@@ -15077,16 +15077,16 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 813,
   "unique_after_dedupe": 753,
   "merged_duplicates": 53,
   "shown": 67,
   "decisions": {
    "excluded": 273,
    "area_cap": 14,
-   "included": 121,
+   "included": 120,
    "no_topic": 166,
-   "below_threshold": 123,
+   "below_threshold": 124,
    "kort_vervallen": 33,
    "source_cap": 23
   },
@@ -15111,9 +15111,9 @@
    "dbt_labs_blog": 10,
    "claude_code_releases": 4,
    "simon_whiteley": 2,
-   "huggingface_blog": 1,
    "simon_willison": 1,
    "anthropic_engineering": 1,
+   "huggingface_blog": 1,
    "databricks_engineering_blog": 3,
    "dbt_developer_blog": 2,
    "langchain_blog": 2,
@@ -15198,7 +15198,7 @@
     "title": "MCP tools in Genie Agents are generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#mcp-tools-in-genie-agents-are-generally-available",
-    "relevance_score": 85,
+    "relevance_score": 84,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -15286,36 +15286,6 @@
     ]
    },
    {
-    "title": "Connect ChatGPT to Genie One with the Databricks Genie plugin",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-chatgpt-to-genie-one-with-the-databricks-genie-plugin",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Connect Claude to Genie One with the Databricks Genie connector",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-claude-to-genie-one-with-the-databricks-genie-connector",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Connect Grok Bot/Cursor to Genie One with the Databricks Genie plugin",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-grok-botcursor-to-genie-one-with-the-databricks-genie-plugin",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.327",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
@@ -15385,6 +15355,36 @@
     ]
    },
    {
+    "title": "Connect ChatGPT to Genie One with the Databricks Genie plugin",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-chatgpt-to-genie-one-with-the-databricks-genie-plugin",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect Claude to Genie One with the Databricks Genie connector",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-claude-to-genie-one-with-the-databricks-genie-connector",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Connect Grok Bot/Cursor to Genie One with the Databricks Genie plugin",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-grok-botcursor-to-genie-one-with-the-databricks-genie-plugin",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Allow ChatGPT and Claude as partner platforms in context-based ingress policies",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-chatgpt-and-claude-as-partner-platforms-in-context-based-ingress-policies",
@@ -15401,17 +15401,6 @@
     "relevance_score": 80,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.325",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -15531,6 +15520,17 @@
     "title": "v2.1.323",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.325",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -15662,17 +15662,6 @@
     ]
    },
    {
-    "title": "v2.1.332",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
-    "relevance_score": 78,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
@@ -15749,6 +15738,17 @@
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.319",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    }
