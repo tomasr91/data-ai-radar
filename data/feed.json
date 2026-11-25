@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T19:02:08.438655Z",
+ "generated_at": "2026-11-25T19:07:39.755991Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -873,7 +873,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.92,
+    "recency": 0.91,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -14849,6 +14849,44 @@
  "runs": {
   "date": "2026-11-25",
   "tasks": {
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak nog (deels gelukt); de 2 overgebleven Fabric-artikelen bleven ook nu onbereikbaar en staan nog op de werklijst, verder was alles klaar.",
+    "finished_at": "2026-11-25T06:28:37Z",
+    "problems": [
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): via WebSearch gevonden, maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): via WebSearch gevonden (ook nieuw blogadres), maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
+     "add_repo was in deze sessie niet beschikbaar als tool; de repository stond al gekloond en is bijgewerkt."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "onbereikbaar": 2
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen verdieping (niets gekozen); 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt",
+    "finished_at": "2026-11-25T04:15:22Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5,
+     "inspiratie": 1
+    }
+   },
+   "overzicht": {
+    "status": "ok",
+    "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
+    "finished_at": "2026-11-25T05:13:43Z",
+    "problems": [],
+    "counts": {
+     "trends": 3,
+     "trends_bijgewerkt": 2,
+     "interesses_aangepast": 0,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "3 artikelen vol uitgelegd (1 met voorbeeld, alle 3 via WebSearch geopend), 3 overgeslagen zonder openen; de 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
@@ -14866,44 +14904,6 @@
      "via_websearch": 3,
      "zonder_openen_overgeslagen": 3,
      "onbereikbaar": 2
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping (niets gekozen); 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt",
-    "finished_at": "2026-11-25T04:15:22Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5,
-     "inspiratie": 1
-    }
-   },
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen ontbrak nog (deels gelukt); de 2 overgebleven Fabric-artikelen bleven ook nu onbereikbaar en staan nog op de werklijst, verder was alles klaar.",
-    "finished_at": "2026-11-25T06:28:37Z",
-    "problems": [
-     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): via WebSearch gevonden, maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): via WebSearch gevonden (ook nieuw blogadres), maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
-     "add_repo was in deze sessie niet beschikbaar als tool; de repository stond al gekloond en is bijgewerkt."
-    ],
-    "counts": {
-     "ingehaald": 0,
-     "onbereikbaar": 2
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
-    "finished_at": "2026-11-25T05:13:43Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "trends_bijgewerkt": 2,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
     }
    }
   }
@@ -15013,7 +15013,7 @@
   "reads": 18,
   "offset": 0.0,
   "weight": 1.0,
-  "updated_at": "2026-11-24T13:02:50.105524Z",
+  "updated_at": "2026-11-25T19:07:37.957873Z",
   "levels": {
    "label": {
     "power-bi-oap": 1,
