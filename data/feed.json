@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T04:16:20.212359Z",
+ "generated_at": "2026-11-25T05:13:42.703549Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -972,7 +972,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.68,
     "quality": 0.7,
     "fit": 0.2
@@ -1091,7 +1091,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1553,7 +1553,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -2469,7 +2469,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.05,
@@ -3476,7 +3476,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.85,
     "quality": 0.57,
     "feedback": 0.01,
@@ -5556,7 +5556,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.25,
+    "recency": 0.24,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.04,
@@ -5648,7 +5648,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.33,
+    "recency": 0.32,
     "source": 0.85,
     "quality": 0.58,
     "fit": 0.15
@@ -7708,7 +7708,7 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.39,
+    "recency": 0.38,
     "source": 0.51,
     "quality": 0.4,
     "feedback": 0.02,
@@ -10980,7 +10980,7 @@
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology en metric views, vaste werkwijzen als skill in Unity Catalog, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. In een test van Databricks beantwoordde Genie One met vaste definities én teamagents 95% van de vragen goed, tegen 64% met alleen tabellen; Harrison Chase van LangChain wil dat een curator-agent die kennis 's nachts bijhoudt. Nieuwste stuk: met Tag Exchange (bèta) gaan tags uit Unity Catalog via Iceberg mee naar andere tools, zodat die context ook buiten Databricks werkt.",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology en metric views, vaste werkwijzen als skill in Unity Catalog, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. In een test van Databricks beantwoordde Genie One met vaste definities én teamagents 95% van de vragen goed, tegen 64% met alleen tabellen; met Tag Exchange (bèta) gaan tags uit Unity Catalog via Iceberg mee naar andere tools. Nieuwste stuk: een MCP-server kan nu zelf skills meeleveren aan Claude (publieke bèta), zodat werkinstructies met de server mee worden bijgewerkt en Claude ze pas inleest als de taak erom vraagt.",
    "topics": [
     "ai_context_engineering",
     "ai_on_data_platform",
@@ -10989,6 +10989,7 @@
    ],
    "article_ids": [
     "a53e25c34fef",
+    "44f76c8bfa0f",
     "216eab677a97",
     "9cdcaec08381",
     "9204ea2d5973",
@@ -10999,11 +11000,36 @@
     "6ded4aa1cdcf",
     "5c7174c45ad1"
    ],
-   "generated_at": "2026-11-24T05:13:10Z",
+   "generated_at": "2026-11-25T05:20:00Z",
    "since": "2026-11-10",
    "last": "2026-11-24",
-   "week": 6,
+   "week": 7,
    "prev_week": 3,
+   "status": "groeit"
+  },
+  {
+   "id": "agents-verbeteren-door-te-meten",
+   "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
+   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven; in zijn voorbeeld raakte een eerste run 61 procent van de rijen kwijt tot een controle op het jaar dat liet zien. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, het Claude Code-team laat Claude zijn eigen werk bewijzen met tests, en Hugging Face laat zien hoe je een eerlijke test voor agents bouwt met pass^k als maat. Nieuw: Simon Willison ziet dat coding agents een doel zelf oplossen als ze de juiste tools krijgen; zo bouwde Fable zelf een manier om schermafdrukken te maken om een fout in Safari te vinden.",
+   "topics": [
+    "ai_evaluation_observability",
+    "claude_ai_development",
+    "data_quality_observability",
+    "ai_agents_rag"
+   ],
+   "article_ids": [
+    "6ff348e652c9",
+    "6fd4c32fe34a",
+    "9fa51654bab7",
+    "069078b2b4e3",
+    "ea585dd9c0fa",
+    "d5f14a6242b0"
+   ],
+   "generated_at": "2026-11-25T05:20:00Z",
+   "since": "2026-11-09",
+   "last": "2026-11-24",
+   "week": 3,
+   "prev_week": 2,
    "status": "groeit"
   },
   {
@@ -11023,36 +11049,12 @@
     "ad991551648f",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-24T05:13:10Z",
+   "generated_at": "2026-11-25T05:20:00Z",
    "since": "2026-11-08",
    "last": "2026-11-23",
    "week": 3,
    "prev_week": 2,
    "status": "groeit"
-  },
-  {
-   "id": "agents-verbeteren-door-te-meten",
-   "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven; in zijn voorbeeld raakte een eerste run 61 procent van de rijen kwijt tot een controle op het jaar dat liet zien. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, en het Claude Code-team laat Claude zijn eigen werk bewijzen met tests. Nieuw deze week: Hugging Face laat zien hoe je een eerlijke test voor agents bouwt, met een controle of de test te bedriegen is en pass^k als maat voor betrouwbaarheid.",
-   "topics": [
-    "ai_evaluation_observability",
-    "claude_ai_development",
-    "data_quality_observability",
-    "ai_agents_rag"
-   ],
-   "article_ids": [
-    "6fd4c32fe34a",
-    "9fa51654bab7",
-    "069078b2b4e3",
-    "ea585dd9c0fa",
-    "d5f14a6242b0"
-   ],
-   "generated_at": "2026-11-24T05:13:10Z",
-   "since": "2026-11-09",
-   "last": "2026-11-23",
-   "week": 2,
-   "prev_week": 2,
-   "status": "speelt"
   }
  ],
  "weekly": {
