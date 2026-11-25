@@ -1,0 +1,101 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-25T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "44f76c8bfa0f",
+  "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+  "headline": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord",
+  "summary": "Een MCP-server kan Claude nu skills meegeven (bèta), lange taken op de achtergrond draaien en midden in een actie om toestemming vragen (beide GA).",
+  "story": [
+    "Anthropic breidt uit wat een MCP-server met Claude kan. Tot nu toe bood zo'n server vooral tools: acties die Claude mag uitvoeren. Nu kan de server ook skills meeleveren, lange taken op de achtergrond draaien en de gebruiker midden in een actie iets vragen. Het doel is dat Claude een server meer gebruikt als een collega-agent.",
+    "Skills over MCP is de grootste verandering, en staat in publieke bèta. Een server publiceert naast zijn tools ook skills: werkinstructies en vaste werkwijzen, soms op maat van jouw organisatie. Claude leest een skill pas in als de taak erom vraagt, zodat de context klein blijft. De skill wordt bijgewerkt met de server, dus gebruikers hoeven niets apart te installeren. Shopify en HubSpot doen al mee.",
+    "Twee andere onderdelen zijn nu algemeen beschikbaar. Met taken (tasks) draait een server een lange klus op de achtergrond, terwijl Claude doorwerkt en later het resultaat ophaalt. Met elicitation pauzeert een server midden in een aanroep om de gebruiker via een formulier of link iets te vragen. Supabase vraagt zo om akkoord voordat het destructieve SQL uitvoert of een betaald project aanmaakt. Bestanden direct naar een server sturen, buiten het contextvenster om, komt binnenkort.",
+    "Voor Dataflow is dit interessant voor fase 7: je eigen MCP-server naar Databricks kan straks zelf een skill meeleveren met je werkwijze, bijvoorbeeld hoe Claude je dbt-artifacts moet lezen. En elicitation is precies het mechanisme om een agent eerst toestemming te laten vragen voordat hij iets wijzigt. Dat zijn allebei onderdelen van de open MCP-standaard, dus ze werken ook in andere clients die het ondersteunen.",
+    "Let op waar het geldt. Het artikel noemt Claude en Claude Code, voor Pro, Max en Ultra. Team-organisaties moeten skills over MCP eerst laten aanzetten door een beheerder, en voor Enterprise komt het nog. Over de API of andere producten zegt het artikel niets."
+  ],
+  "key_facts": [
+    "Gepubliceerd op 24 november 2026.",
+    "Skills over MCP: publieke bèta in Claude en Claude Code; standaard aan voor Pro, Max en Ultra, voor Team na inschakelen door een beheerder, voor Enterprise 'binnenkort'.",
+    "Tasks en Elicitation: algemeen beschikbaar in Claude en Claude Code voor Pro, Max en Ultra; uitrol naar Team en Enterprise loopt.",
+    "File Uploads (bestanden naar een MCP-server zonder het contextvenster) komt 'binnenkort'.",
+    "Voorbeelden: Shopify en HubSpot (skills), ZoomInfo (tasks), Supabase, Railway en GitHub (elicitation).",
+    "Volgens het artikel: meer dan 700 miljoen SDK-downloads per maand voor MCP en meer dan 10.000 MCP-connectoren voor Claude."
+  ],
+  "personal_relevance": "Je eigen MCP-server kan straks je werkwijze als skill meeleveren, en elicitation is een kant-en-klare manier om acties eerst te laten goedkeuren.",
+  "experiment": "Lees de MCP-extensie voor skills en zet in een klein test-MCP-servertje één skill die uitlegt hoe Claude een openbare dbt-manifest.json moet lezen; kijk in Claude Code of de skill pas laadt als je ernaar vraagt.",
+  "limitations": [
+    "Skills over MCP is nog bèta en voor Enterprise nog niet beschikbaar.",
+    "Het artikel noemt alleen Claude en Claude Code; ondersteuning in de API staat er niet in.",
+    "Een server die skills meelevert bepaalt mee hoe Claude werkt: kies alleen servers die je vertrouwt."
+  ],
+  "availability_status": "preview",
+  "official_docs": [
+    {
+      "label": "Skills over MCP (extensie)",
+      "url": "https://modelcontextprotocol.io/extensions/skills/overview"
+    },
+    {
+      "label": "Tasks (extensie)",
+      "url": "https://modelcontextprotocol.io/extensions/tasks/overview"
+    },
+    {
+      "label": "Elicitation (specificatie)",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation"
+    },
+    {
+      "label": "Skills van MCP-servers in Claude Code",
+      "url": "https://code.claude.com/docs/en/mcp#use-skills-from-mcp-servers"
+    },
+    {
+      "label": "MCP-taken voor serverbouwers",
+      "url": "https://code.claude.com/docs/en/mcp#mcp-tasks-for-server-authors"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_context_engineering",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.7,
+    "novelty": 0.7
+  },
+  "development_key": "mcp-skills-tasks-elicitation-nov-2026",
+  "soort": "aankondiging",
+  "fit": {
+    "score": 0.75,
+    "why": "Skills en MCP in Claude, zoals je duimen voor skills in Unity Catalog en Claude Code-wijzigingen."
+  },
+  "labels": [
+    "agent-skills",
+    "claude-code-mcp-taken",
+    "human-in-the-loop"
+  ],
+  "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dit interessant voor fase 7",
+    "why": "In fase 7 bouw je een eigen MCP-server; die kan nu skills meeleveren en om akkoord vragen."
+  },
+  "terms": [
+    {
+      "term": "MCP-server",
+      "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+      "term": "skills",
+      "explanation": "Mappen met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+      "term": "elicitation",
+      "explanation": "Een MCP-functie waarmee een server midden in een actie de gebruiker iets vraagt, via een formulier of link, en daarna verdergaat. Handig voor akkoord vóór een risicovolle stap."
+    },
+    {
+      "term": "contextvenster",
+      "explanation": "De hoeveelheid tekst die een AI-model tegelijk kan 'zien'. Alles wat erin staat kost ruimte en geld."
+    }
+  ]
+}

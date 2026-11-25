@@ -1,0 +1,76 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-25T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "6ff348e652c9",
+  "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+  "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
+  "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
+  "story": [
+    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
+    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
+    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
+    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
+    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
+  ],
+  "key_facts": [
+    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
+    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
+    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
+    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
+    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
+    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
+  ],
+  "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
+  "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
+  "limitations": [
+    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
+    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Video van de keynote",
+      "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
+    },
+    {
+      "label": "Claude Fable is relentlessly proactive",
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
+    }
+  ],
+  "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+  ],
+  "quality": {
+    "depth": 0.5,
+    "practicality": 0.4,
+    "novelty": 0.5
+  },
+  "development_key": "willison-inflection-points-nov-2026",
+  "article_type": "opinie",
+  "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
+  "soort": "mening",
+  "fit": {
+    "score": 0.6,
+    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
+  },
+  "labels": [
+    "claude-modellen",
+    "agent-harness"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "coding agents",
+      "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
+    },
+    {
+      "term": "Codex",
+      "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
+    }
+  ]
+}

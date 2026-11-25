@@ -1,0 +1,149 @@
+{
+  "format_version": 2,
+  "processed_by": "Claude (geplande taak)",
+  "processed_at": "2026-11-25T03:45:00Z",
+  "prompt_version": "taak-v2",
+  "date_note": "",
+  "exceptional": false,
+  "article_id": "7038e65ffad2",
+  "url": "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation",
+  "headline": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id",
+  "summary": "Databricks laat zien hoe je klantdata modelleert zodat een agent per persoon kan beslissen: identiteit één keer koppelen na Silver, daarna Gold op één vaste klant-id.",
+  "story": [
+    "Een agent die marketing doet, beslist per persoon en binnen seconden. Stuur je deze klant een prijsalert, of kost de korting meer dan hij oplevert? Databricks schrijft dat zo'n agent dezelfde basis nodig heeft als een gewoon klantdataplatform (CDP). Alleen wordt een gat in de data nu net zo snel een foute beslissing.",
+    "De kern is één regel: koppel identiteiten één keer, ná Silver en vóór Gold. In Silver maak je e-mails, telefoonnummers en adressen eerst schoon, maar je koppelt nog niets. Daarna voegt een aparte stap records uit webshop, app en kassa samen tot één persoon. Eerst met harde regels (zelfde e-mail, zelfde telefoon), daarna met kansberekening (probabilistic matching) voor de gaten. Elke persoon krijgt een vaste canonical_id, en een id_graph legt per koppeling vast welke regel en welke zekerheid erachter zit.",
+    "Die koppeltabel noemt de auteur de belangrijkste tabel die je bouwt. Het advies: stel scherp af op precisie, want een gedeeld gezinsadres kan twee mensen ten onrechte samenvoegen. Leg ook per kenmerk vast welke bron wint (survivorship), en laat mensen steekproeven van koppelingen controleren. Bouwen kan met SQL-regels plus een open-source matcher als Splink of Zingg, of met de eigen agents van CustomerLake.",
+    "Gold bestaat dan uit drie soorten tabellen op die ene id: een klanttabel, 1-op-1-tabellen met kenmerken (modelscores, toestemming, levensfase) en 1-op-veel-tabellen met gedrag per gebeurtenis. Geef elke Gold-tabel een vlag 'batch' of 'event' als Unity Catalog-tag, en bouw eventtabellen als streaming tables. Reken tijdvensters tegen een vaste peildatum, zodat een herhaalde run hetzelfde antwoord geeft. En zet reacties op campagnes terug in Bronze, met een controlegroep, zodat je meet wat werkt.",
+    "Voor jou is dit vooral een goed voorbeeld van Gold als invoer voor AI, ook buiten marketing. Het patroon van één vaste sleutel, een controleerbare koppeltabel en toestemming als gewone tabel past ook bij andere domeinen. Let wel: het stuk is van Databricks zelf en wijst steeds naar hun product CustomerLake. Resultaten of klantcijfers staan er niet in."
+  ],
+  "key_facts": [
+    "Deel 1 van 2, door Ashrit Kulkarni, gepubliceerd op 24 november 2026.",
+    "Advies: identity resolution op één plek, na Silver en vóór Gold, met een vaste canonical_id en een controleerbare id_graph.",
+    "Gold bestaat uit een klanttabel, 1-op-1-kenmerkentabellen en 1-op-veel-gedragstabellen per gebeurtenis.",
+    "Elke Gold-tabel krijgt een vlag batch of event als Unity Catalog-tag; eventtabellen worden streaming tables in Spark Declarative Pipelines.",
+    "Genoemde opties voor koppelen: SQL-regels met Splink of Zingg, of CustomerLake Profile Agents.",
+    "Een geplande sync van doelgroepen kan in CustomerLake volgens het artikel tot elke minuut; de status van CustomerLake staat er niet in."
+  ],
+  "personal_relevance": "Een concreet patroon voor een Gold-laag die een agent kan vertrouwen: één sleutel, koppelregels als data en toestemming als tabel.",
+  "experiment": "Maak in DuckDB een verzonnen klantentabel uit drie bronnen, koppel ze met een harde regel op genormaliseerde e-mail en schrijf een kleine id_graph met regel en bron per koppeling.",
+  "limitations": [
+    "Het stuk komt van Databricks en verwijst steeds naar CustomerLake; er staan geen metingen of klantresultaten in.",
+    "De status (GA of preview) van CustomerLake en de genoemde agents staat er niet in.",
+    "De zes vragen die een agent per persoon moet beantwoorden, volgen pas in deel 2."
+  ],
+  "availability_status": "onbekend",
+  "official_docs": [
+    {
+      "label": "Streaming tables",
+      "url": "https://docs.databricks.com/aws/en/ldp/concepts/streaming-tables"
+    },
+    {
+      "label": "Tags in Unity Catalog",
+      "url": "https://docs.databricks.com/aws/en/database-objects/tags"
+    },
+    {
+      "label": "Spark Declarative Pipelines",
+      "url": "https://docs.databricks.com/aws/en/ldp/"
+    },
+    {
+      "label": "Introducing CustomerLake",
+      "url": "https://www.databricks.com/blog/introducing-customerlake-agentic-cdp"
+    }
+  ],
+  "topics": [
+    "ai_on_data_platform",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+  ],
+  "quality": {
+    "depth": 0.7,
+    "practicality": 0.6,
+    "novelty": 0.5
+  },
+  "development_key": "customerlake-agentic-cdp-nov-2026",
+  "soort": "achtergrond",
+  "fit": {
+    "score": 0.65,
+    "why": "Gold als basis voor een agent, zoals je duimen voor Genie Agents en metric views; wel minder praktisch dan je dbt-stukken."
+  },
+  "labels": [
+    "identity-resolution",
+    "gold-als-ai-bron",
+    "data-agent"
+  ],
+  "project_ref": null,
+  "terms": [
+    {
+      "term": "probabilistic matching",
+      "explanation": "Records koppelen op waarschijnlijkheid in plaats van een exacte gelijke waarde, bijvoorbeeld bij bijna gelijke namen en adressen. Elke koppeling krijgt een score."
+    },
+    {
+      "term": "canonical_id",
+      "explanation": "Eén vaste id per persoon die alle id's uit losse bronnen vervangt. Alle Gold-tabellen gebruiken die als sleutel."
+    },
+    {
+      "term": "id_graph",
+      "explanation": "Een tabel die vastlegt welke bron-id's bij welke persoon horen, met per koppeling de regel en de zekerheid. Zo kun je een koppeling uitleggen en terugdraaien."
+    },
+    {
+      "term": "survivorship",
+      "explanation": "De regel welke bron 'wint' als bronnen een ander adres of telefoonnummer hebben, bijvoorbeeld de nieuwste of de meest betrouwbare."
+    },
+    {
+      "term": "streaming tables",
+      "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    }
+  ],
+  "showcase": {
+    "caption": "De eerste, harde koppelregel: maak e-mail schoon en geef elke unieke e-mail één klant-id. Zo worden zes bronrecords drie personen.",
+    "language": "sql",
+    "code": "WITH genormaliseerd AS (\n  SELECT bron, bron_id, lower(trim(email)) AS email\n  FROM silver_klanten\n),\ncanoniek AS (\n  SELECT email,\n         'C' || lpad(CAST(row_number() OVER (ORDER BY email) AS VARCHAR), 3, '0') AS canonical_id\n  FROM (SELECT DISTINCT email FROM genormaliseerd)\n)\nSELECT c.canonical_id, g.bron, g.bron_id, 'exact e-mail' AS regel\nFROM genormaliseerd g JOIN canoniek c USING (email)\nORDER BY c.canonical_id, g.bron;",
+    "result": {
+      "columns": [
+        "canonical_id",
+        "bron",
+        "bron_id",
+        "regel"
+      ],
+      "rows": [
+        [
+          "C001",
+          "app",
+          "A-903",
+          "exact e-mail"
+        ],
+        [
+          "C001",
+          "kassa",
+          "K-55",
+          "exact e-mail"
+        ],
+        [
+          "C001",
+          "webshop",
+          "W-17",
+          "exact e-mail"
+        ],
+        [
+          "C002",
+          "app",
+          "A-904",
+          "exact e-mail"
+        ],
+        [
+          "C002",
+          "webshop",
+          "W-18",
+          "exact e-mail"
+        ],
+        [
+          "C003",
+          "kassa",
+          "K-56",
+          "exact e-mail"
+        ]
+      ]
+    },
+    "note": "Dit is alleen het idee in gewone SQL. Een row_number-id is niet vast: het artikel raadt aan de id te bewaren en samenvoegingen en splitsingen vast te leggen."
+  }
+}
