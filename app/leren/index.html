@@ -68,6 +68,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .save.account i { background: var(--good); }
 .save.browser i { background: #C0902A; }
 .save.none i { background: var(--bad); }
+.courses { display: grid; gap: 10px; }
+.course { display: grid; gap: 10px; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--paper); border-radius: 12px; padding: 14px; color: var(--ink); font: inherit; cursor: pointer; }
+.course .c-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.course .c-name { display: grid; gap: 3px; min-width: 0; }
+.course .c-name b { font-size: 1rem; line-height: 1.3; }
+.course .c-pct { font-family: var(--mono, ui-monospace, monospace); font-weight: 650; white-space: nowrap; }
+.crumbs { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; min-width: 0; }
+.crumbs .btn { flex: none; }
+.crumb-name { color: var(--muted); font-size: 0.86rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .certs { display: flex; gap: 4px; padding: 4px; background: var(--sunk); border-radius: 10px; overflow-x: auto; scrollbar-width: none; }
 .certs::-webkit-scrollbar { display: none; }
 .cert { border: 0; background: transparent; padding: 7px 12px; border-radius: 7px; font-weight: 600; font-size: 0.86rem; color: var(--muted); white-space: nowrap; flex: 1 0 auto; }

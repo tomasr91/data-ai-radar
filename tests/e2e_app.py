@@ -580,9 +580,11 @@ with sync_playwright() as p:
     page.click('#seg-view button[data-v="leren"]')
     page.wait_for_selector("#leren-frame")
     fr = page.frame_locator("#leren-frame")
-    fr.locator(".cert").first.wait_for(timeout=15000)
-    certs = fr.locator(".cert").all_inner_texts()
-    check("17. Leren toont alleen examens met vragen: Associate, Developer en dbt", certs == ["Associate", "Developer", "dbt"], str(certs))
+    fr.locator(".course").first.wait_for(timeout=15000)
+    certs = [fr.locator(".course b").nth(i).inner_text() for i in range(fr.locator(".course").count())]
+    check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 3 and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
+    fr.locator(".course").first.click()
+    check("   een cursus openen geeft het startscherm met terugknop", fr.locator('[data-act="overview"]').count() == 1)
     fr.locator('[data-act="start"]').first.click()
     fr.locator(".q .opt").first.wait_for(timeout=5000)
     for i in range(fr.locator(".q .opt").count()):
@@ -673,6 +675,8 @@ with sync_playwright() as p:
     check("   examen in het donkere Radar-thema", bg == "rgb(15, 18, 23)", bg)
     h = page.evaluate("document.getElementById('leren-frame').getBoundingClientRect().height")
     check("   venster groeit mee met de inhoud", h > 500, str(h))
+    if fr.locator(".course").count():
+        fr.locator(".course").first.click()
     home = fr.locator("#app").inner_text()
     check("   rustig startscherm: geen uitleg, titel of opslagmelding", all(x not in home for x in ["Hoe werkt het herhalen", "Gebaseerd op", "Claude Certification Academy", "Rondes van 10"]) and "Begin met oefenen" in home and "Back-up" not in home)
     page.click('#seg-view button[data-v="actueel"]')
@@ -783,17 +787,22 @@ with sync_playwright() as p:
     pg.goto(u); pg.wait_for_selector("#seg-view")
     pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
     fr = pg.frame_locator("#leren-frame")
+    fr.locator(".course").first.click()
     fr.locator('[data-act="start"][data-kind="weak"]').click()
     for _ in range(2):
-        fr.locator(".opt").first.click(); fr.locator('[data-act="check"]').click(); fr.locator('[data-act="next"]').click()
+        for i in range(fr.locator(".q .opt").count()):
+            if fr.locator('[data-act="check"]').is_enabled():
+                break
+            fr.locator(".q .opt").nth(i).click()
+        fr.locator('[data-act="check"]').click(); fr.locator('[data-act="next"]').click()
     dots = fr.locator(".pbar").inner_html()
     pg.reload(); pg.wait_for_selector("#seg-view"); pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
     fr = pg.frame_locator("#leren-frame"); fr.locator('[data-act="check"]').wait_for(timeout=3000)
     check("12. Leren: na herladen verder in dezelfde ronde", fr.locator(".pbar").inner_html() == dots)
     fr.locator('[data-act="home"]').click()
     pg.reload(); pg.wait_for_selector("#seg-view"); pg.click('#seg-view button[data-v="leren"]'); pg.wait_for_selector("#leren-frame")
-    fr = pg.frame_locator("#leren-frame"); fr.locator('[data-act="start"][data-kind="weak"]').wait_for(timeout=3000)
-    check("   na Stoppen begint Leren weer op het startscherm", fr.locator('[data-act="check"]').count() == 0)
+    fr = pg.frame_locator("#leren-frame"); fr.locator(".course").first.wait_for(timeout=3000)
+    check("   na Stoppen begint Leren weer bij het overzicht", fr.locator('[data-act="check"]').count() == 0)
     pg.close()
     srv.shutdown()
     browser.close()

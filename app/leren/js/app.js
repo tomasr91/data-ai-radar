@@ -34,11 +34,23 @@
   const learningCount = () => cert().questions.filter(q => C.inLearning(C.cs().q[q.id])).length;
 
   /* ---------------- kop ---------------- */
+  const courseIds = () => A.order.filter(id => A.certs[id].questions.length);
   function head() {
-    // In de Radar: alleen de keuze van de certificering (zonder titel, opslagmelding of nog lege certificeringen).
-    const ids = A.order.filter(id => A.certs[id].questions.length);
-    if (ids.length && !ids.includes(C.state.activeCert)) C.state.activeCert = ids[0];
-    return ids.length > 1 ? `<nav class="certs" aria-label="Certificering">${ids.map(id => { const c = A.certs[id]; return `<button class="cert" data-act="cert" data-id="${id}" aria-pressed="${id === C.state.activeCert}">${SHORT[id] || c.short}</button>`; }).join("")}</nav>` : "";
+    // Op het startscherm van een cursus: terug naar het overzicht. Tijdens oefenen geen kop (daar staat 'Stoppen').
+    if (ui.view !== "home" || courseIds().length < 2) return "";
+    return `<nav class="crumbs"><button class="btn ghost" data-act="overview">← Alle cursussen</button><span class="crumb-name">${esc(cert().name)}</span></nav>`;
+  }
+
+  /* ---------------- overzicht van alle cursussen (T, 25-11-2026) ----------------
+     Eén kaart per cursus met voortgang; begonnen cursussen eerst. */
+  function vOverview() {
+    const ids = courseIds(), seen = id => C.stats(id, { kind: "all" }).seen;
+    const sorted = ids.filter(id => seen(id)).concat(ids.filter(id => !seen(id)));
+    return `<div class="courses">${sorted.map(id => {
+      const c = A.certs[id], pr = C.progress(id), started = seen(id) > 0;
+      return `<button class="course" data-act="cert" data-id="${id}">
+        <span class="c-top"><span class="c-name"><b>${esc(c.name)}</b><span class="small muted">${esc([c.code, c.questions.length + " vragen"].filter(Boolean).join(" · "))}</span></span><span class="c-pct">${started ? pct(pr.pct) : "Nieuw"}</span></span>
+        ${meter(pr)}</button>`; }).join("")}</div>`;
   }
 
   /* ---------------- startscherm ---------------- */
@@ -184,7 +196,7 @@
   }
 
   /* ---------------- render ---------------- */
-  function render() { app.innerHTML = ui.view === "practice" ? vPractice() : ui.view === "round" ? vRound() : vHome(); saveRound(); }
+  function render() { app.innerHTML = ui.view === "practice" ? vPractice() : ui.view === "round" ? vRound() : ui.view === "overview" ? vOverview() : vHome(); saveRound(); }
   /* Lopende ronde bewaren op dit toestel (T, 25-11-2026): een telefoon laadt de pagina soms opnieuw als hij even
      verborgen was. Bij opnieuw openen ga je verder bij dezelfde vraag. Ouder dan 3 uur = weggooien. */
   const ROUND_KEY = "cca-round", ROUND_MAX_AGE = 3 * 3600 * 1000;
@@ -269,6 +281,7 @@
 
   const H = {
     cert: el => setCert(el.dataset.id),
+    overview: () => { ui.view = "overview"; try { history.replaceState(null, "", location.pathname); } catch (e) {} render(); toTop(); },
     home: () => { ui.view = "home"; render(); toTop(); },
     start: el => start(el.dataset.kind, el.dataset.id),
     toggle: el => { ui.open[el.dataset.id] = !ui.open[el.dataset.id]; render(); },
@@ -348,11 +361,14 @@
   });
   let h = ""; try { h = (location.hash || "").slice(1); } catch (e) {}
   if (h && A.certs[h]) C.state.activeCert = h;
+  // Zonder cursus in het adres: eerst het overzicht (bij één cursus direct die cursus).
+  if (!(h && A.certs[h]) && courseIds().length > 1) ui.view = "overview";
   render();
   C.init().then(() => {
     ui.ready = true;
     if (h && A.certs[h]) C.state.activeCert = h;
     if (restoreRound()) { render(); return; }
+    if (ui.view === "overview") { render(); return; }
     if (!A.certs[C.state.activeCert]) C.state.activeCert = "ccaof";
     if (ui.view === "home") render();
   });
