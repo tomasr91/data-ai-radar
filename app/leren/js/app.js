@@ -8,7 +8,7 @@
   const ROUND = 10;
   const fmtW = w => (Number.isInteger(w) ? w : w.toFixed(1).replace(".", ",")) + "%";
   const pct = x => Math.round(x * 100) + "%";
-  const SHORT = { ccaof: "Associate", ccdvf: "Developer", dbtae: "dbt", ccarf: "Architect F", ccarp: "Architect P" };
+  const SHORT = { ccaof: "Associate", ccdvf: "Developer", dbtae: "dbt", dbxdea: "Databricks", ccarf: "Architect F", ccarp: "Architect P" };
 
   const ui = { view: "home", scope: null, cur: null, recent: [], round: [], retry: null, retryDone: null, roundMs: [], curMs: [], allWhy: false, pickOpen: false,
     open: {}, confirm: null, importText: "", importMsg: null, exportOpen: false, reportOpen: false, reportText: "", reportDone: null, explain: false };

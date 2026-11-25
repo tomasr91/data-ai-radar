@@ -582,7 +582,7 @@ with sync_playwright() as p:
     fr = page.frame_locator("#leren-frame")
     fr.locator(".course").first.wait_for(timeout=15000)
     certs = [fr.locator(".course b").nth(i).inner_text() for i in range(fr.locator(".course").count())]
-    check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 3 and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
+    check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 4 and any("Databricks" in c for c in certs) and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
     fr.locator(".course").first.click()
     check("   een cursus openen geeft het startscherm met terugknop", fr.locator('[data-act="overview"]').count() == 1)
     fr.locator('[data-act="start"]').first.click()

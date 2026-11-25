@@ -237,4 +237,63 @@
         sb("d8.2", "New and changed behavior in dbt v2", "Nieuw en anders in v2")] }
     ]
   });
+
+  /* ---------- Databricks Certified Data Engineer Associate ----------
+     Examen sinds 4 mei 2026, examengids bijgewerkt 6 augustus 2026. Wegingen uit de officiële gids.
+     De gids noemt geen slaaggrens. */
+  Academy.defineCert({
+    id: "dbxdea", status: "active", code: "DB DEA", name: "Databricks Certified Data Engineer Associate", short: "Databricks",
+    audience: "Data engineers die basistaken uitvoeren op het Databricks-platform. Aanbevolen: ongeveer 6 maanden ervaring met Databricks.",
+    exam: { items: 45, minutes: 90, fee: "$200 USD", format: "Meerkeuze (45 vragen die meetellen, plus maximaal 10 ongemarkeerde)",
+      delivery: "Online met toezicht of in een testcentrum", validity: "2 jaar",
+      report: "De examengids noemt geen slaaggrens." },
+    guideVersion: "Examengids Data Engineer Associate (examen sinds 4 mei 2026, gids bijgewerkt 6 augustus 2026)",
+    verifiedOn: "25 november 2026",
+    sources: [
+      { label: "Officiële examengids (augustus 2026)", url: "https://www.databricks.com/sites/default/files/2026-10/Databricks-Certified-Data-Engineer-Associate-Exam-Guide-August-2026.pdf" },
+      { label: "Databricks-documentatie", url: "https://docs.databricks.com" }
+    ],
+    domains: [
+      { id: "d1", n: 1, name: "Databricks Intelligence Platform", nl: "Het platform", weight: 6, subs: [
+        sb("d1.1", "Core platform components: architecture, Delta Lake, Unity Catalog", "Onderdelen: architectuur, Delta Lake, Unity Catalog"),
+        sb("d1.2", "Compute services: characteristics, limits, cost and choosing the right one", "Compute kiezen")] },
+      { id: "d2", n: 2, name: "Data Ingestion and Loading", nl: "Data binnenhalen en laden", weight: 21, subs: [
+        sb("d2.1", "Batch, streaming and incremental ingestion", "Batch, streaming en incrementeel"),
+        sb("d2.2", "COPY INTO into Unity Catalog tables", "COPY INTO"),
+        sb("d2.3", "Auto Loader with schema enforcement and evolution", "Auto Loader en schema-evolutie"),
+        sb("d2.4", "Lakeflow Connect for enterprise ingestion", "Lakeflow Connect"),
+        sb("d2.5", "Landing data with JDBC/ODBC or REST, orchestrated by Lakeflow Jobs", "JDBC, ODBC en REST"),
+        sb("d2.6", "Choosing the right ingestion method", "De juiste manier kiezen"),
+        sb("d2.7", "Semi-structured and unstructured data (e.g. JSON)", "JSON en geneste data")] },
+      { id: "d3", n: 3, name: "Data Transformation and Modeling", nl: "Transformeren en modelleren", weight: 22, subs: [
+        sb("d3.1", "Cleaning bronze data and writing silver tables", "Bronze opschonen naar silver"),
+        sb("d3.2", "Joins and set operations", "Joins en set-operaties"),
+        sb("d3.3", "Column and row manipulation", "Kolommen en rijen bewerken"),
+        sb("d3.4", "Deduplication and aggregations", "Ontdubbelen en aggregeren"),
+        sb("d3.5", "Basic Spark tuning", "Spark-instellingen"),
+        sb("d3.6", "Gold-layer objects: materialized views, views, streaming tables, tables", "Objecten in de gold-laag"),
+        sb("d3.7", "Data quality checks and validation rules", "Datakwaliteit en expectations")] },
+      { id: "d4", n: 4, name: "Working with Lakeflow Jobs", nl: "Lakeflow Jobs", weight: 16, subs: [
+        sb("d4.1", "Control flow: retries, conditional tasks, branching, looping", "Retries, voorwaarden en lussen"),
+        sb("d4.2", "Task types and DAG dependencies", "Soorten taken en afhankelijkheden"),
+        sb("d4.3", "Schedules and trigger types", "Schema's en triggers"),
+        sb("d4.4", "Time-based versus data-driven triggers", "Op tijd of op data starten")] },
+      { id: "d5", n: 5, name: "Implementing CI/CD", nl: "CI/CD", weight: 10, subs: [
+        sb("d5.1", "Git workflows in the workspace", "Git in de workspace"),
+        sb("d5.2", "Bundle variables and target overrides", "Variabelen en targets in bundles"),
+        sb("d5.3", "Deploying bundles across dev, test and prod", "Uitrollen naar dev, test en prod"),
+        sb("d5.4", "Databricks CLI in CI/CD", "De Databricks CLI")] },
+      { id: "d6", n: 6, name: "Troubleshooting, Monitoring, and Optimization", nl: "Problemen oplossen en optimaliseren", weight: 10, subs: [
+        sb("d6.1", "Job performance trends and run history", "Looptijden en trends"),
+        sb("d6.2", "Monitoring pipeline health", "Gezondheid van jobs en pipelines"),
+        sb("d6.3", "Skew, shuffle and spill in the Spark UI", "Skew, shuffle en spill"),
+        sb("d6.4", "Liquid Clustering and predictive optimization", "Liquid Clustering en predictive optimization"),
+        sb("d6.5", "Cluster start failures, library conflicts, out-of-memory", "Startfouten, libraries en geheugen")] },
+      { id: "d7", n: 7, name: "Governance and Security", nl: "Governance en beveiliging", weight: 15, subs: [
+        sb("d7.1", "Managed versus external tables in Unity Catalog", "Managed en external tables"),
+        sb("d7.2", "Access control with GRANT and REVOKE", "Rechten: GRANT en REVOKE"),
+        sb("d7.3", "Column masks and row filters", "Kolommaskers en rijfilters"),
+        sb("d7.4", "ABAC policies with governed tags", "ABAC-policies")] }
+    ]
+  });
 })();
