@@ -237,8 +237,11 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .later-list .card .meta .src { font-weight: 400; color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .later-list .later-form.card { cursor: default; }
 .later-hint { margin: 0; font-size: 0.82rem; color: var(--muted); }
-.later-acts { display: flex; flex-wrap: wrap; gap: 8px; }
-.later-acts .btn { height: 36px; padding: 0 12px; font-size: 0.86rem; }
+.later-acts { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.later-acts .btn { height: 30px; padding: 0 10px; font-size: 0.8rem; }
+.later-src { margin-left: auto; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 999px; color: var(--muted); }
+.later-src:hover { color: var(--accent2); }
+.later-src svg { width: 19px; height: 19px; }
 .later-acts .btn.ghost { color: var(--muted); border-color: var(--line); }
 .later-form { display: grid; gap: 8px; }
 .later-form input, .later-form textarea { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; }
@@ -1087,7 +1090,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           <div class="meta"><span class="src">${esc(fmtDate(x.at))}</span></div>
           <h3>${esc(x.title)}</h3>
           ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
-          <div class="later-acts">${act}${src ? `<a class="btn ghost" href="#${esc(x.from.key)}">${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"} ›</a>` : ""}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button></div></article>`;
+          <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button>${src ? `<a class="later-src" href="#${esc(x.from.key)}" aria-label="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}" title="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h6.5L16 7v9.5H6z"/><path d="M12.5 3.5V7H16M8.5 10.5h5M8.5 13.5h5"/></svg></a>` : ""}</div></article>`;
       }).join("")}</div>
       ${canChoose ? `<p class="pick-note">Maak je er een verdieping van, dan opent GitHub. Claude schrijft hem vannacht, naast je gewone keuze, en morgenochtend staat hij er met het label <b>jouw voorstel</b>. Je titel en omschrijving komen in een openbaar issue: zet er niets van je werk in.</p>` : ""}`;
   }

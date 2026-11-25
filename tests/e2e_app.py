@@ -405,7 +405,7 @@ with sync_playwright() as p:
     page.click('#later a[href="#lijst"]')
     page.wait_for_selector(".later-item")
     item = page.locator(".later-item").inner_text()
-    check("   lijst staat op het tabje Later, met notitie en knop naar het artikel", "dbt project evaluator" in item and "silver-laag" in item and "Naar artikel" in item and "Gezien in" not in item
+    check("   lijst staat op het tabje Later, met notitie en knop naar het artikel", "dbt project evaluator" in item and "silver-laag" in item and page.locator(".later-item .later-src").count() == 1 and "Gezien in" not in item
           and page.locator('#seg-dd button[aria-pressed="true"]').inner_text() == "Later" and page.locator(".card.opt").count() == 0)
     href = unquote(page.locator("[data-later-pick]").get_attribute("href") or "")
     check("   verdieping maken opent een issue 'Verdieping: eigen-...'", "title=Verdieping: eigen-dbt-project-evaluator" in href and "Onderwerp: dbt project evaluator" in href
@@ -417,7 +417,7 @@ with sync_playwright() as p:
     page.fill("#later-new-n", "Even uitzoeken.")
     page.click('[data-later-new="save"]')
     _li = page.locator(".later-item").first.inner_text() if page.locator(".later-item").count() else ""
-    check("   eigen notitie toevoegen op Later, zonder artikel", "Eigen notitie-test" in _li and "Even uitzoeken." in _li and "Naar artikel" not in _li
+    check("   eigen notitie toevoegen op Later, zonder artikel", "Eigen notitie-test" in _li and "Even uitzoeken." in _li and page.locator(".later-item .later-src").count() == 0
           and page.locator("[data-later-pick]").count() == 1)
     check("   Later ziet eruit als een kaart, zonder label", page.locator(".later-item.card").count() == 1 and page.locator(".later-item .pill").count() == 0)
     page.locator(".later-item h3").first.click()
