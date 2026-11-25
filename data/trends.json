@@ -1,12 +1,13 @@
 {
  "format_version": 1,
- "generated_at": "2026-11-24T05:13:10Z",
+ "generated_at": "2026-11-25T05:20:00Z",
  "trends": [
   {
    "id": "context-voor-agents-in-dataplatform",
    "title": "Context voor AI-agents komt in het dataplatform zelf",
-   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology en metric views, vaste werkwijzen als skill in Unity Catalog, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. In een test van Databricks beantwoordde Genie One met vaste definities én teamagents 95% van de vragen goed, tegen 64% met alleen tabellen; Harrison Chase van LangChain wil dat een curator-agent die kennis 's nachts bijhoudt. Nieuwste stuk: met Tag Exchange (bèta) gaan tags uit Unity Catalog via Iceberg mee naar andere tools, zodat die context ook buiten Databricks werkt.",
+   "summary": "Steeds meer teams leggen de kennis die een AI-agent nodig heeft vast naast de data: definities in Genie Ontology en metric views, vaste werkwijzen als skill in Unity Catalog, en context in het warehouse waarmee dbt Labs naar eigen zeggen de helft van de tokens bespaarde. In een test van Databricks beantwoordde Genie One met vaste definities én teamagents 95% van de vragen goed, tegen 64% met alleen tabellen; met Tag Exchange (bèta) gaan tags uit Unity Catalog via Iceberg mee naar andere tools. Nieuwste stuk: een MCP-server kan nu zelf skills meeleveren aan Claude (publieke bèta), zodat werkinstructies met de server mee worden bijgewerkt en Claude ze pas inleest als de taak erom vraagt.",
    "article_ids": [
+    "44f76c8bfa0f",
     "a53e25c34fef",
     "9cdcaec08381",
     "216eab677a97",
@@ -46,8 +47,9 @@
   {
    "id": "agents-verbeteren-door-te-meten",
    "title": "Agents worden beter door controles en metingen, niet door meer uitleg",
-   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven; in zijn voorbeeld raakte een eerste run 61 procent van de rijen kwijt tot een controle op het jaar dat liet zien. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, en het Claude Code-team laat Claude zijn eigen werk bewijzen met tests. Nieuw deze week: Hugging Face laat zien hoe je een eerlijke test voor agents bouwt, met een controle of de test te bedriegen is en pass^k als maat voor betrouwbaarheid.",
+   "summary": "Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven; in zijn voorbeeld raakte een eerste run 61 procent van de rijen kwijt tot een controle op het jaar dat liet zien. Advancing Analytics vond dat ai_decide lager scoorde bij fijne keuzes, het Claude Code-team laat Claude zijn eigen werk bewijzen met tests, en Hugging Face laat zien hoe je een eerlijke test voor agents bouwt met pass^k als maat. Nieuw: Simon Willison ziet dat coding agents een doel zelf oplossen als ze de juiste tools krijgen; zo bouwde Fable zelf een manier om schermafdrukken te maken om een fout in Safari te vinden.",
    "article_ids": [
+    "6ff348e652c9",
     "6fd4c32fe34a",
     "9fa51654bab7",
     "069078b2b4e3",
