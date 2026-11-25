@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T03:13:30.758144Z",
+ "generated_at": "2026-11-25T03:23:13.190830Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
- "last_article_added_at": "2026-11-24T03:28:34Z",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "last_article_added_at": "2026-11-25T03:45:00Z",
  "last_successful_update": "2026-11-25T03:13:30.758144Z",
  "groups": [
   {
@@ -465,8 +465,8 @@
   "216eab677a97",
   "905562b7af62",
   "9fa51654bab7",
-  "d380e24c1978",
-  "3e9bbba1efea"
+  "44f76c8bfa0f",
+  "d380e24c1978"
  ],
  "articles": [
   {
@@ -820,6 +820,119 @@
     "fase": 6,
     "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
     "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+   }
+  },
+  {
+   "id": "44f76c8bfa0f",
+   "title": "MCP servers can now ship skills, run tasks, and more with Claude",
+   "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-24T00:00:00Z",
+   "fetched_at": "2026-11-25T03:13:32.238226Z",
+   "summary": "Een MCP-server kan Claude nu skills meegeven (bèta), lange taken op de achtergrond draaien en midden in een actie om toestemming vragen (beide GA).",
+   "personal_relevance": "Je eigen MCP-server kan straks je werkwijze als skill meeleveren, en elicitation is een kant-en-klare manier om acties eerst te laten goedkeuren.",
+   "experiment": "Lees de MCP-extensie voor skills en zet in een klein test-MCP-servertje één skill die uitlegt hoe Claude een openbare dbt-manifest.json moet lezen; kijk in Claude Code of de skill pas laadt als je ernaar vraagt.",
+   "limitations": [
+    "Skills over MCP is nog bèta en voor Enterprise nog niet beschikbaar.",
+    "Het artikel noemt alleen Claude en Claude Code; ondersteuning in de API staat er niet in.",
+    "Een server die skills meelevert bepaalt mee hoe Claude werkt: kies alleen servers die je vertrouwt."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Skills over MCP (extensie)",
+     "url": "https://modelcontextprotocol.io/extensions/skills/overview"
+    },
+    {
+     "label": "Tasks (extensie)",
+     "url": "https://modelcontextprotocol.io/extensions/tasks/overview"
+    },
+    {
+     "label": "Elicitation (specificatie)",
+     "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation"
+    },
+    {
+     "label": "Skills van MCP-servers in Claude Code",
+     "url": "https://code.claude.com/docs/en/mcp#use-skills-from-mcp-servers"
+    },
+    {
+     "label": "MCP-taken voor serverbouwers",
+     "url": "https://code.claude.com/docs/en/mcp#mcp-tasks-for-server-authors"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_context_engineering",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "ai_context",
+    "agents"
+   ],
+   "relevance_score": 97,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.95,
+    "source": 0.51,
+    "quality": 0.63,
+    "fit": 0.25,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord",
+   "story": [
+    "Anthropic breidt uit wat een MCP-server met Claude kan. Tot nu toe bood zo'n server vooral tools: acties die Claude mag uitvoeren. Nu kan de server ook skills meeleveren, lange taken op de achtergrond draaien en de gebruiker midden in een actie iets vragen. Het doel is dat Claude een server meer gebruikt als een collega-agent.",
+    "Skills over MCP is de grootste verandering, en staat in publieke bèta. Een server publiceert naast zijn tools ook skills: werkinstructies en vaste werkwijzen, soms op maat van jouw organisatie. Claude leest een skill pas in als de taak erom vraagt, zodat de context klein blijft. De skill wordt bijgewerkt met de server, dus gebruikers hoeven niets apart te installeren. Shopify en HubSpot doen al mee.",
+    "Twee andere onderdelen zijn nu algemeen beschikbaar. Met taken (tasks) draait een server een lange klus op de achtergrond, terwijl Claude doorwerkt en later het resultaat ophaalt. Met elicitation pauzeert een server midden in een aanroep om de gebruiker via een formulier of link iets te vragen. Supabase vraagt zo om akkoord voordat het destructieve SQL uitvoert of een betaald project aanmaakt. Bestanden direct naar een server sturen, buiten het contextvenster om, komt binnenkort.",
+    "Voor Dataflow is dit interessant voor fase 7: je eigen MCP-server naar Databricks kan straks zelf een skill meeleveren met je werkwijze, bijvoorbeeld hoe Claude je dbt-artifacts moet lezen. En elicitation is precies het mechanisme om een agent eerst toestemming te laten vragen voordat hij iets wijzigt. Dat zijn allebei onderdelen van de open MCP-standaard, dus ze werken ook in andere clients die het ondersteunen.",
+    "Let op waar het geldt. Het artikel noemt Claude en Claude Code, voor Pro, Max en Ultra. Team-organisaties moeten skills over MCP eerst laten aanzetten door een beheerder, en voor Enterprise komt het nog. Over de API of andere producten zegt het artikel niets."
+   ],
+   "key_facts": [
+    "Gepubliceerd op 24 november 2026.",
+    "Skills over MCP: publieke bèta in Claude en Claude Code; standaard aan voor Pro, Max en Ultra, voor Team na inschakelen door een beheerder, voor Enterprise 'binnenkort'.",
+    "Tasks en Elicitation: algemeen beschikbaar in Claude en Claude Code voor Pro, Max en Ultra; uitrol naar Team en Enterprise loopt.",
+    "File Uploads (bestanden naar een MCP-server zonder het contextvenster) komt 'binnenkort'.",
+    "Voorbeelden: Shopify en HubSpot (skills), ZoomInfo (tasks), Supabase, Railway en GitHub (elicitation).",
+    "Volgens het artikel: meer dan 700 miljoen SDK-downloads per maand voor MCP en meer dan 10.000 MCP-connectoren voor Claude."
+   ],
+   "terms": [
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "skills",
+     "explanation": "Mappen met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "elicitation",
+     "explanation": "Een MCP-functie waarmee een server midden in een actie de gebruiker iets vraagt, via een formulier of link, en daarna verdergaat. Handig voor akkoord vóór een risicovolle stap."
+    },
+    {
+     "term": "contextvenster",
+     "explanation": "De hoeveelheid tekst die een AI-model tegelijk kan 'zien'. Alles wat erin staat kost ruimte en geld."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.75,
+    "why": "Skills en MCP in Claude, zoals je duimen voor skills in Unity Catalog en Claude Code-wijzigingen."
+   },
+   "labels": [
+    "agent-skills",
+    "claude-code-mcp-taken",
+    "human-in-the-loop"
+   ],
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow is dit interessant voor fase 7",
+    "why": "In fase 7 bouw je een eigen MCP-server; die kan nu skills meeleveren en om akkoord vragen."
    }
   },
   {
@@ -2429,6 +2542,97 @@
    }
   },
   {
+   "id": "6ff348e652c9",
+   "title": "Three LLM inflection points in twelve months",
+   "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+   "source_id": "simon_willison",
+   "published_at": "2026-11-24T23:02:07Z",
+   "fetched_at": "2026-11-25T03:13:36.837278Z",
+   "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
+   "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
+   "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
+   "limitations": [
+    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
+    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Video van de keynote",
+     "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
+    },
+    {
+     "label": "Claude Fable is relentlessly proactive",
+     "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.99,
+    "source": 0.68,
+    "quality": 0.47,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
+   "story": [
+    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
+    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
+    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
+    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
+    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
+   ],
+   "key_facts": [
+    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
+    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
+    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
+    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
+    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
+    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
+   "terms": [
+    {
+     "term": "coding agents",
+     "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
+    },
+    {
+     "term": "Codex",
+     "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
+   },
+   "labels": [
+    "claude-modellen",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
+   }
+  },
+  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -2640,6 +2844,171 @@
     "agent-evals",
     "benchmark-kwaliteit"
    ]
+  },
+  {
+   "id": "7038e65ffad2",
+   "title": "Data Modeling Best Practices for an Agentic CDP, Part 1: The Data Foundation",
+   "url": "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-24T19:36:52Z",
+   "fetched_at": "2026-11-25T03:13:32.399378Z",
+   "summary": "Databricks laat zien hoe je klantdata modelleert zodat een agent per persoon kan beslissen: identiteit één keer koppelen na Silver, daarna Gold op één vaste klant-id.",
+   "personal_relevance": "Een concreet patroon voor een Gold-laag die een agent kan vertrouwen: één sleutel, koppelregels als data en toestemming als tabel.",
+   "experiment": "Maak in DuckDB een verzonnen klantentabel uit drie bronnen, koppel ze met een harde regel op genormaliseerde e-mail en schrijf een kleine id_graph met regel en bron per koppeling.",
+   "limitations": [
+    "Het stuk komt van Databricks en verwijst steeds naar CustomerLake; er staan geen metingen of klantresultaten in.",
+    "De status (GA of preview) van CustomerLake en de genoemde agents staat er niet in.",
+    "De zes vragen die een agent per persoon moet beantwoorden, volgen pas in deel 2."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Streaming tables",
+     "url": "https://docs.databricks.com/aws/en/ldp/concepts/streaming-tables"
+    },
+    {
+     "label": "Tags in Unity Catalog",
+     "url": "https://docs.databricks.com/aws/en/database-objects/tags"
+    },
+    {
+     "label": "Spark Declarative Pipelines",
+     "url": "https://docs.databricks.com/aws/en/ldp/"
+    },
+    {
+     "label": "Introducing CustomerLake",
+     "url": "https://www.databricks.com/blog/introducing-customerlake-agentic-cdp"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_architecture_modeling",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "databricks"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.98,
+    "source": 0.85,
+    "quality": 0.6,
+    "feedback": -0.05,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:45:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id",
+   "story": [
+    "Een agent die marketing doet, beslist per persoon en binnen seconden. Stuur je deze klant een prijsalert, of kost de korting meer dan hij oplevert? Databricks schrijft dat zo'n agent dezelfde basis nodig heeft als een gewoon klantdataplatform (CDP). Alleen wordt een gat in de data nu net zo snel een foute beslissing.",
+    "De kern is één regel: koppel identiteiten één keer, ná Silver en vóór Gold. In Silver maak je e-mails, telefoonnummers en adressen eerst schoon, maar je koppelt nog niets. Daarna voegt een aparte stap records uit webshop, app en kassa samen tot één persoon. Eerst met harde regels (zelfde e-mail, zelfde telefoon), daarna met kansberekening (probabilistic matching) voor de gaten. Elke persoon krijgt een vaste canonical_id, en een id_graph legt per koppeling vast welke regel en welke zekerheid erachter zit.",
+    "Die koppeltabel noemt de auteur de belangrijkste tabel die je bouwt. Het advies: stel scherp af op precisie, want een gedeeld gezinsadres kan twee mensen ten onrechte samenvoegen. Leg ook per kenmerk vast welke bron wint (survivorship), en laat mensen steekproeven van koppelingen controleren. Bouwen kan met SQL-regels plus een open-source matcher als Splink of Zingg, of met de eigen agents van CustomerLake.",
+    "Gold bestaat dan uit drie soorten tabellen op die ene id: een klanttabel, 1-op-1-tabellen met kenmerken (modelscores, toestemming, levensfase) en 1-op-veel-tabellen met gedrag per gebeurtenis. Geef elke Gold-tabel een vlag 'batch' of 'event' als Unity Catalog-tag, en bouw eventtabellen als streaming tables. Reken tijdvensters tegen een vaste peildatum, zodat een herhaalde run hetzelfde antwoord geeft. En zet reacties op campagnes terug in Bronze, met een controlegroep, zodat je meet wat werkt.",
+    "Voor jou is dit vooral een goed voorbeeld van Gold als invoer voor AI, ook buiten marketing. Het patroon van één vaste sleutel, een controleerbare koppeltabel en toestemming als gewone tabel past ook bij andere domeinen. Let wel: het stuk is van Databricks zelf en wijst steeds naar hun product CustomerLake. Resultaten of klantcijfers staan er niet in."
+   ],
+   "key_facts": [
+    "Deel 1 van 2, door Ashrit Kulkarni, gepubliceerd op 24 november 2026.",
+    "Advies: identity resolution op één plek, na Silver en vóór Gold, met een vaste canonical_id en een controleerbare id_graph.",
+    "Gold bestaat uit een klanttabel, 1-op-1-kenmerkentabellen en 1-op-veel-gedragstabellen per gebeurtenis.",
+    "Elke Gold-tabel krijgt een vlag batch of event als Unity Catalog-tag; eventtabellen worden streaming tables in Spark Declarative Pipelines.",
+    "Genoemde opties voor koppelen: SQL-regels met Splink of Zingg, of CustomerLake Profile Agents.",
+    "Een geplande sync van doelgroepen kan in CustomerLake volgens het artikel tot elke minuut; de status van CustomerLake staat er niet in."
+   ],
+   "showcase": {
+    "caption": "De eerste, harde koppelregel: maak e-mail schoon en geef elke unieke e-mail één klant-id. Zo worden zes bronrecords drie personen.",
+    "language": "sql",
+    "code": "WITH genormaliseerd AS (\n  SELECT bron, bron_id, lower(trim(email)) AS email\n  FROM silver_klanten\n),\ncanoniek AS (\n  SELECT email,\n         'C' || lpad(CAST(row_number() OVER (ORDER BY email) AS VARCHAR), 3, '0') AS canonical_id\n  FROM (SELECT DISTINCT email FROM genormaliseerd)\n)\nSELECT c.canonical_id, g.bron, g.bron_id, 'exact e-mail' AS regel\nFROM genormaliseerd g JOIN canoniek c USING (email)\nORDER BY c.canonical_id, g.bron;",
+    "result": {
+     "columns": [
+      "canonical_id",
+      "bron",
+      "bron_id",
+      "regel"
+     ],
+     "rows": [
+      [
+       "C001",
+       "app",
+       "A-903",
+       "exact e-mail"
+      ],
+      [
+       "C001",
+       "kassa",
+       "K-55",
+       "exact e-mail"
+      ],
+      [
+       "C001",
+       "webshop",
+       "W-17",
+       "exact e-mail"
+      ],
+      [
+       "C002",
+       "app",
+       "A-904",
+       "exact e-mail"
+      ],
+      [
+       "C002",
+       "webshop",
+       "W-18",
+       "exact e-mail"
+      ],
+      [
+       "C003",
+       "kassa",
+       "K-56",
+       "exact e-mail"
+      ]
+     ]
+    },
+    "note": "Dit is alleen het idee in gewone SQL. Een row_number-id is niet vast: het artikel raadt aan de id te bewaren en samenvoegingen en splitsingen vast te leggen."
+   },
+   "terms": [
+    {
+     "term": "probabilistic matching",
+     "explanation": "Records koppelen op waarschijnlijkheid in plaats van een exacte gelijke waarde, bijvoorbeeld bij bijna gelijke namen en adressen. Elke koppeling krijgt een score."
+    },
+    {
+     "term": "canonical_id",
+     "explanation": "Eén vaste id per persoon die alle id's uit losse bronnen vervangt. Alle Gold-tabellen gebruiken die als sleutel."
+    },
+    {
+     "term": "id_graph",
+     "explanation": "Een tabel die vastlegt welke bron-id's bij welke persoon horen, met per koppeling de regel en de zekerheid. Zo kun je een koppeling uitleggen en terugdraaien."
+    },
+    {
+     "term": "survivorship",
+     "explanation": "De regel welke bron 'wint' als bronnen een ander adres of telefoonnummer hebben, bijvoorbeeld de nieuwste of de meest betrouwbare."
+    },
+    {
+     "term": "streaming tables",
+     "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Gold als basis voor een agent, zoals je duimen voor Genie Agents en metric views; wel minder praktisch dan je dbt-stukken."
+   },
+   "labels": [
+    "identity-resolution",
+    "gold-als-ai-bron",
+    "data-agent"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -5
+   }
   },
   {
    "id": "c63f36899b14",
@@ -6087,7 +6456,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -6452,113 +6821,6 @@
    }
   },
   {
-   "id": "760c502508bd",
-   "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
-   "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-17T00:00:00Z",
-   "fetched_at": "2026-11-19T03:13:31.924707Z",
-   "summary": "Een Anthropic-engineer liet een Claude Code-sessie met subagents twee weken een testomgeving overbelasten, de telemetrie lezen en zelf fixes bouwen. Resultaat: 60 serverfouten op ongeveer 2 miljard verzoeken.",
-   "personal_relevance": "Het laat zien hoe je Claude een lang, zelfstandig verbeterproces laat doen met duidelijke grenzen: meten, vaste regels en een mens bij onomkeerbare stappen.",
-   "experiment": "Laat Claude Code op een klein dbt-project met openbare data trage modellen zoeken via de run_results.json, één verbetering voorstellen en die alleen doorvoeren als een vergelijking van oude en nieuwe tabel geen verschil geeft.",
-   "limitations": [
-    "Een verslag van Anthropic over een eigen product; niet onafhankelijk gecontroleerd.",
-    "Geen code of configuratie in het artikel.",
-    "De kostenschatting voor kleinere diensten is volgens de auteur zelf niet getest."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "A harness for every task: dynamic workflows in Claude Code (over goal drift)",
-     "url": "https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/"
-    },
-    {
-     "label": "Claude Code-documentatie",
-     "url": "https://code.claude.com/docs"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.67,
-    "source": 0.51,
-    "quality": 0.63,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T04:05:00Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering",
-   "story": [
-    "Twee weken voor de lancering van Claude Docs draaide de dienst nog op één server voor een paar duizend interne gebruikers. Vivek Nair liet daarom een Claude Code-sessie een kopie van productie (staging) belasten met meer dan een miljoen nep-documenten per dag. Claude maakte onderdelen expres kapot en repareerde wat omviel: een 'chaos loop'. De sessie stuurde gemiddeld 11 subagents aan, op het drukste moment 30.",
-    "Elke ronde ging hetzelfde. Een testscript zette één functie onder maximale druk. Claude las de telemetrie via de Datadog MCP, kwam met een paar opties en een advies, en bouwde de fix. Makkelijk terug te draaien wijzigingen voerde Claude zelf door; wijzigingen aan het schema of de opslag van documenten moest de engineer eerst goedkeuren. Een aparte sessie reviewde de wijziging, daarna ging die naar staging en begon de test opnieuw. Claude moest twee vaste regels (invarianten) bewaken: documenten openen bijna meteen, en een bevestigde wijziging gaat nooit verloren.",
-    "Het werkte omdat de dienst meetbaar was. Elke databasequery meldde zijn naam en hoeveel rijen hij las tegenover hoeveel hij teruggaf; zo vond Claude slechte query's. Een voorbeeld: één groot document gebruikte 3 GB geheugen. Claude's eerste fix bleek de verkeerde cache te raken en werd teruggedraaid. Fijnere metingen lieten zien dat elke toetsaanslag het document meerdere keren kopieerde; met copy-on-write zakte het naar ongeveer 180 MB. Het team koos bewust Rust en weinig bibliotheken, zodat al het geheugen te herleiden was.",
-    "De uitkomst: meer dan 4,6 miljoen documenten in de eerste week, ongeveer 2 miljard verzoeken met 60 serverfouten en geen enkele terugdraaiing. De geschatte geheugenbehoefte ging van meer dan 500 naar ongeveer 50 pods. De rekenkosten waren ongeveer 125.000 dollar aan modelgebruik, volgens de auteur de helft te veel achteraf. Voor een kleinere dienst schat hij 3.000 tot 10.000 dollar, maar dat heeft hij niet getest.",
-    "De lessen gaan ook op voor datawerk: geef Claude direct toegang tot je meetgegevens, schrijf vooraf de regels op die nooit mogen breken, en laat een mens beslissen over alles wat moeilijk terug te draaien is. Bij een pijplijn zou dat betekenen: Claude mag een query herschrijven en opnieuw testen, maar een schemawijziging in Silver vraagt jouw akkoord."
-   ],
-   "key_facts": [
-    "Claude Docs werd gelanceerd op 16 september 2026; de chaos loop begon op 4 september.",
-    "De Claude Code-sessie stuurde gemiddeld 11 en op het hoogtepunt 30 subagents aan en las telemetrie via de Datadog MCP.",
-    "Geteste scenario's: 10 miljoen nieuwe documenten per dag, 22.000 verbindingen die tegelijk opnieuw verbinden, een server die stopt tijdens het laden.",
-    "Wijzigingen aan schema of opslag vroegen goedkeuring van een mens; makkelijk terug te draaien wijzigingen niet.",
-    "Meer dan 4,6 miljoen documenten tot 22 september; ongeveer 2 miljard verzoeken met 60 serverfouten; 629 keer naar productie uitgerold in september zonder terugdraaiing.",
-    "Geheugen van één groot document ging van ongeveer 3 GB naar ongeveer 180 MB; de geschatte behoefte van meer dan 500 naar ongeveer 50 pods.",
-    "Kosten: ongeveer 125.000 dollar aan modelgebruik tegen catalogusprijs (Claude Fable 5.2).",
-    "7 van de 10 geoefende scenario's gebeurden echt in productie; de fixes stonden klaar achter schakelaars (runtime flags)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "staging",
-     "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert."
-    },
-    {
-     "term": "subagents",
-     "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context."
-    },
-    {
-     "term": "telemetrie",
-     "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte."
-    },
-    {
-     "term": "invarianten",
-     "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren."
-    },
-    {
-     "term": "copy-on-write",
-     "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Concreet verhaal over Claude die lang zelfstandig werkt, maar over webinfrastructuur in plaats van data."
-   },
-   "labels": [
-    "multi-agent",
-    "human-in-the-loop",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -4
-   }
-  },
-  {
    "id": "ad991551648f",
    "title": "The new Genie: autonomous AI for complex enterprise work",
    "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
@@ -6647,111 +6909,6 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -2
-   }
-  },
-  {
-   "id": "efe52b80d045",
-   "title": "Claude Code in the cloud: a field guide to cloud sessions",
-   "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
-   "source_id": "claude_blog",
-   "published_at": "2026-10-06T00:00:00Z",
-   "fetched_at": "2026-11-01T11:05:55.569159Z",
-   "summary": "Een cloudsessie draait Claude Code op een eigen virtuele machine. Je laptop mag dicht, en het werk eindigt als branch die je kunt nakijken.",
-   "personal_relevance": "Je kunt losse klussen aan je eigen code (zonder werkdata) laten doorlopen terwijl je iets anders doet.",
-   "experiment": "Start met claude --cloud één kleine taak op een openbaar of eigen oefenrepo met verzonnen data, met een commando dat bewijst dat het klaar is. Kijk daarna de branch na.",
-   "limitations": [
-    "De VM kan niet bij je eigen netwerk, VPN of lokale databases.",
-    "Gegevens in de sessie gaan naar Anthropic; dus nooit werk- of patiëntdata.",
-    "Parallelle sessies weten niets van elkaar en kunnen botsen bij het samenvoegen."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Code on the web (cloudsessies)",
-     "url": "https://code.claude.com/docs/en/claude-code-on-the-web"
-    },
-    {
-     "label": "Cloud environments",
-     "url": "https://code.claude.com/docs/en/cloud-environments"
-    },
-    {
-     "label": "Web quickstart",
-     "url": "https://code.claude.com/docs/en/web-quickstart"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "claude",
-    "overig"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.08,
-    "source": 0.51,
-    "quality": 0.67,
-    "feedback": 0.02,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak, inhaalrun)",
-   "processed_at": "2026-11-04T06:43:29Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code in de cloud: elke taak een eigen machine en branch",
-   "story": [
-    "Een gewone Claude Code-sessie hangt aan je laptop. Klapt die dicht, dan stopt het werk. Twee sessies in dezelfde map kunnen elkaars bestanden raken. Een cloudsessie lost dat op: elke taak krijgt een eigen virtuele machine (VM) met een kopie van je repository op een nieuwe branch.",
-    "Het werkt een beetje als een uitzendkracht met een eigen bureau. Je geeft een duidelijke opdracht mee, hij werkt los van jou en levert een branch op die je kunt nakijken. Je GitHub-sleutel komt nooit op die machine. Een tussenstation houdt hem vast en geeft de sessie alleen recht om naar zijn eigen branch te pushen.",
-    "Starten kan vanuit de browser, de app op je telefoon of de terminal met claude --cloud. Met claude --teleport haal je een sessie terug naar je eigen terminal. Een setupscript installeert eenmalig wat nodig is, zodat volgende sessies snel starten. Afspraken en commando's moeten in de repository staan, bijvoorbeeld in CLAUDE.md, want je persoonlijke instellingen gaan niet mee.",
-    "Voor dbt-werk is dit handig bij losse klussen, zoals documentatie bijwerken of een test repareren. Let wel op: de machine kan niet bij je eigen netwerk. Een sessie die je Databricks-werkruimte of werkdata nodig heeft, hoort daar dus niet thuis. Met werkdata mag het sowieso niet."
-   ],
-   "key_facts": [
-    "Cloudsessies zitten in Pro, Max, Team en Enterprise, zonder aparte rekenkosten; ze tellen mee in dezelfde gebruikslimieten.",
-    "Elke taak krijgt een eigen VM van ongeveer 4 vCPU's, 16 GB geheugen en 30 GB schijf.",
-    "claude --cloud kloont je GitHub-remote op de huidige branch; push lokale commits dus eerst.",
-    "Met organisaties die Zero Data Retention gebruiken staan cloudsessies uit.",
-    "Een setupscript moet binnen ongeveer vijf minuten klaar zijn om in de cache te komen; de cache wordt ongeveer elke zeven dagen opnieuw gebouwd.",
-    "Auteur Addy Osmani, gepubliceerd 6 oktober 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo plan je lokaal, bouw je in de cloud en haal je het werk terug naar je terminal.",
-    "language": "bash",
-    "code": "claude --permission-mode plan\n# plan opslaan in docs/migration-plan.md, committen en pushen\nclaude --cloud \"Execute the migration plan in docs/migration-plan.md\"\n\n# later: sessie terughalen naar je eigen terminal\nclaude --teleport",
-    "note": "Commando's letterlijk uit het artikel."
-   },
-   "terms": [
-    {
-     "term": "virtuele machine",
-     "explanation": "Een computer die als software op een grotere computer draait. Je kunt hem snel aanmaken en weer weggooien."
-    },
-    {
-     "term": "setupscript",
-     "explanation": "Een script dat bij het opstarten van een omgeving draait om alles te installeren wat nodig is."
-    },
-    {
-     "term": "CLAUDE.md",
-     "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies."
-    }
-   ],
-   "learning": "Release pipelines, bundles en uitrol",
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.65,
-    "why": "Praktische Claude Code-uitleg, zoals je duim omhoog voor de schrijfgrenzen van Claude Code."
-   },
-   "labels": [
-    "claude-code-cloud",
-    "claude-code-sandbox"
-   ],
-   "fb_why": {
-    "by": "label",
-    "name": "claude-code-sandbox",
-    "pts": 2
    }
   },
   {
@@ -6855,91 +7012,6 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -1
-   }
-  },
-  {
-   "id": "06485ad2414b",
-   "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
-   "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-16T18:30:56Z",
-   "fetched_at": "2026-11-17T03:14:09.981133Z",
-   "summary": "Softwarebedrijf IFS Copperleaf bouwde met Genie One de interne assistent IONA op data uit bijna 30 systemen. Eigenaren uit de business leggen definities vast als skills en in Unity Catalog; een AI-raad keurt ze goed.",
-   "personal_relevance": "Laat zien hoe je AI op Gold-data zet zonder alles te modelleren, met eigenaarschap van definities bij de business.",
-   "experiment": "Kies drie begrippen uit een openbare dataset, zoals CBS-cijfers, en schrijf per begrip een definitie met eigenaar en de tabel waar het uit komt. Laat Claude daarna vragen beantwoorden met en zonder die definities.",
-   "limitations": [
-    "Klantverhaal van de leverancier: geen voorbeeldskill, configuratie of meting van juistheid.",
-    "Hoe 'activatie' en 'herhaald gebruik' gemeten zijn, staat er niet in."
-   ],
-   "availability_status": "beschikbaar",
-   "topics": [
-    "ai_on_data_platform",
-    "ai_context_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "ai_context",
-    "kwaliteit"
-   ],
-   "relevance_score": 79,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.66,
-    "source": 0.85,
-    "quality": 0.5,
-    "feedback": -0.07,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven",
-   "story": [
-    "IFS Copperleaf bouwde in tien maanden IONA: een assistent waarmee alle medewerkers in gewone taal vragen stellen over bedrijfsdata. De data komt uit bijna 30 systemen, zoals Salesforce, HubSpot, Jira en Confluence. Sinds juli 2026 gebruikt het hele bedrijf hem.",
-    "De les in de titel: schone data was niet genoeg. De AI moest ook weten wat begrippen betekenen. Daarvoor gebruiken ze Genie Ontology, een contextlaag die definities koppelt aan maatstaven, tabellen en dashboards. Zo snapt het systeem dat een verlenging in Salesforce en een record in de financiële prognose over dezelfde klant gaan.",
-    "Opvallend is wie die betekenis vastlegt. Niet het datateam, maar de eigenaren in de business schrijven definities en regels als skills of in Unity Catalog. Een 'AI Council' keurt ze goed voordat ze voor iedereen gelden, en elke definitie heeft een eigenaar. Alleen financiën en de funnel van marketing naar sales zijn volledig gemodelleerd; de rest vraagt IONA direct op de ruwe data op.",
-    "Unity Catalog bepaalt wie wat mag zien, ook voor de AI. Ziet een antwoord er vreemd uit, dan toont IONA zijn redenering en de eigenaar van de data. Het bedrijf noemt 70 procent activatie, maar zegt niet hoe dat gemeten is. Voor jou is vooral de aanpak interessant: modelleer eerst de belangrijkste domeinen in Gold en laat de business de definities beheren."
-   ],
-   "key_facts": [
-    "Blog van Databricks en IFS Copperleaf, 16 november 2026.",
-    "IONA gebruikt Genie One als interface, Genie Ontology als contextlaag, skills voor definities en regels, en Unity Catalog voor toegang.",
-    "Data uit bijna 30 systemen, waaronder Salesforce, HubSpot, Confluence, Jira, Freshdesk, Gong en Google Analytics 4; tienduizenden tabellen.",
-    "Live voor het hele bedrijf sinds juli 2026, na tien maanden bouwen.",
-    "Alleen financiën en de marketing-naar-sales-funnel zijn volledig gemodelleerd; een AI Council keurt definities goed, elke definitie heeft een eigenaar.",
-    "Genoemde cijfers: 70% activatie, 68% herhaald gebruik in 30 dagen, 32 van 33 toegangstickets in één keer afgehandeld (met menselijke goedkeuring per wijziging)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Genie Ontology",
-     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
-    },
-    {
-     "term": "skills",
-     "explanation": "Pakketjes met instructies, en soms scripts, die een AI-assistent bij een bepaalde taak laadt. Zo werkt hij volgens jouw vaste aanpak."
-    },
-    {
-     "term": "funnel",
-     "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.6,
-    "why": "Gaat over definities als context voor AI, zoals je duim bij 'synoniemen en regels per veld'; wel een klantverhaal met weinig techniek."
-   },
-   "labels": [
-    "genie-ontology",
-    "agent-context-laag",
-    "interne-ai-agents"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -7
    }
   },
   {
@@ -11002,8 +11074,7 @@
     "why": "Het Claude Code-team laat Claude elke commit bewijzen met end-to-end-, property- en differential tests en een verify-skill, en Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven. Hoe meer dbt-werk je aan Claude geeft, hoe meer je tests en vaste regels het nakijken moeten overnemen.",
     "article_ids": [
      "069078b2b4e3",
-     "873de8dc3ad7",
-     "760c502508bd"
+     "873de8dc3ad7"
     ]
    },
    {
@@ -11367,6 +11438,17 @@
    ]
   },
   {
+   "term": "canonical_id",
+   "explanation": "Eén vaste id per persoon die alle id's uit losse bronnen vervangt. Alle Gold-tabellen gebruiken die als sleutel.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "7038e65ffad2",
+     "title": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id"
+    }
+   ]
+  },
+  {
    "term": "catalog labels",
    "explanation": "Sleutel-waardeparen op een tabel of kolom die een catalogus via de Iceberg REST-API meegeeft aan andere tools, zodat tags niet achterblijven.",
    "refs": [
@@ -11458,11 +11540,6 @@
    "explanation": "Een bestand in je project dat Claude Code bij elke sessie inleest, met vaste afspraken en instructies.",
    "refs": [
     {
-     "kind": "a",
-     "id": "efe52b80d045",
-     "title": "Claude Code in de cloud: elke taak een eigen machine en branch"
-    },
-    {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
@@ -11493,6 +11570,28 @@
      "kind": "a",
      "id": "e277391e1ad3",
      "title": "Claude Ship reviewt, repareert en keurt pull requests goed volgens jouw regels"
+    }
+   ]
+  },
+  {
+   "term": "Codex",
+   "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "6ff348e652c9",
+     "title": "Willison: drie keer in één jaar werden coding agents écht beter"
+    }
+   ]
+  },
+  {
+   "term": "coding agents",
+   "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "6ff348e652c9",
+     "title": "Willison: drie keer in één jaar werden coding agents écht beter"
     }
    ]
   },
@@ -11531,8 +11630,13 @@
   },
   {
    "term": "contextvenster",
-   "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen.",
+   "explanation": "De hoeveelheid tekst die een AI-model tegelijk kan 'zien'. Alles wat erin staat kost ruimte en geld.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "44f76c8bfa0f",
+     "title": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord"
+    },
     {
      "kind": "a",
      "id": "3e9bbba1efea",
@@ -11558,17 +11662,6 @@
      "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
-    }
-   ]
-  },
-  {
-   "term": "copy-on-write",
-   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
     }
    ]
   },
@@ -11976,6 +12069,17 @@
    ]
   },
   {
+   "term": "elicitation",
+   "explanation": "Een MCP-functie waarmee een server midden in een actie de gebruiker iets vraagt, via een formulier of link, en daarna verdergaat. Handig voor akkoord vóór een risicovolle stap.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "44f76c8bfa0f",
+     "title": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord"
+    }
+   ]
+  },
+  {
    "term": "embeddings",
    "explanation": "Rijen getallen die de betekenis van een tekst vastleggen, zodat je teksten op betekenis kunt vergelijken en zoeken.",
    "refs": [
@@ -12273,17 +12377,6 @@
    ]
   },
   {
-   "term": "funnel",
-   "explanation": "De stappen die een klant doorloopt, van eerste contact tot verkoop. Je meet per stap hoeveel er doorgaan.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "06485ad2414b",
-     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
-    }
-   ]
-  },
-  {
    "term": "Genie Agent",
    "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team.",
    "refs": [
@@ -12350,11 +12443,6 @@
      "kind": "a",
      "id": "ad991551648f",
      "title": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring"
-    },
-    {
-     "kind": "a",
-     "id": "06485ad2414b",
-     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
     }
    ]
   },
@@ -12553,6 +12641,17 @@
    ]
   },
   {
+   "term": "id_graph",
+   "explanation": "Een tabel die vastlegt welke bron-id's bij welke persoon horen, met per koppeling de regel en de zekerheid. Zo kun je een koppeling uitleggen en terugdraaien.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "7038e65ffad2",
+     "title": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id"
+    }
+   ]
+  },
+  {
    "term": "idempotent",
    "explanation": "Twee keer uitvoeren geeft hetzelfde resultaat als één keer. Belangrijk bij opnieuw laden of opnieuw proberen.",
    "refs": [
@@ -12619,13 +12718,8 @@
   },
   {
    "term": "invarianten",
-   "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren.",
+   "explanation": "Regels over de data die altijd moeten gelden, zoals 'omzet is nooit negatief', in plaats van vaste waarden van vandaag.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    },
     {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
@@ -12869,6 +12963,11 @@
    "term": "MCP-server",
    "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "44f76c8bfa0f",
+     "title": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord"
+    },
     {
      "kind": "a",
      "id": "9fa51654bab7",
@@ -13365,6 +13464,17 @@
    ]
   },
   {
+   "term": "probabilistic matching",
+   "explanation": "Records koppelen op waarschijnlijkheid in plaats van een exacte gelijke waarde, bijvoorbeeld bij bijna gelijke namen en adressen. Elke koppeling krijgt een score.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "7038e65ffad2",
+     "title": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id"
+    }
+   ]
+  },
+  {
    "term": "progressive disclosure",
    "explanation": "Informatie pas laden als die nodig is: eerst een korte beschrijving, de details pas als de taak erom vraagt.",
    "refs": [
@@ -13745,17 +13855,6 @@
    ]
   },
   {
-   "term": "setupscript",
-   "explanation": "Een script dat bij het opstarten van een omgeving draait om alles te installeren wat nodig is.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "efe52b80d045",
-     "title": "Claude Code in de cloud: elke taak een eigen machine en branch"
-    }
-   ]
-  },
-  {
    "term": "severity",
    "explanation": "Hoe zwaar een melding telt in dbt: warn geeft alleen een waarschuwing, error laat de run mislukken.",
    "refs": [
@@ -13821,6 +13920,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "44f76c8bfa0f",
+     "title": "MCP-servers leveren nu zelf skills mee aan Claude, en vragen om akkoord"
+    },
+    {
+     "kind": "a",
      "id": "9cdcaec08381",
      "title": "Chase: een agent leert pas echt als iemand zijn kennis bijhoudt"
     },
@@ -13828,11 +13932,6 @@
      "kind": "v",
      "id": "begrippen-door-eigenaren",
      "title": "Wie bepaalt wat 'omzet' betekent? Begrippen voor AI laten beheren"
-    },
-    {
-     "kind": "a",
-     "id": "06485ad2414b",
-     "title": "IFS Copperleaf laat bedrijfseigenaren de begrippen voor hun AI schrijven"
     },
     {
      "kind": "a",
@@ -13902,17 +14001,6 @@
    ]
   },
   {
-   "term": "staging",
-   "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    }
-   ]
-  },
-  {
    "term": "stdin",
    "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel.",
    "refs": [
@@ -13949,6 +14037,11 @@
    "term": "streaming tables",
    "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "7038e65ffad2",
+     "title": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id"
+    },
     {
      "kind": "a",
      "id": "905562b7af62",
@@ -13990,13 +14083,8 @@
   },
   {
    "term": "subagents",
-   "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context.",
+   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting.",
    "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
-    },
     {
      "kind": "a",
      "id": "6d403bbe9379",
@@ -14033,6 +14121,17 @@
      "kind": "v",
      "id": "eigen-materialized-view-en-table-verschil-in-databricks",
      "title": "Materialized view of tabel in Databricks: wie houdt de data bij?"
+    }
+   ]
+  },
+  {
+   "term": "survivorship",
+   "explanation": "De regel welke bron 'wint' als bronnen een ander adres of telefoonnummer hebben, bijvoorbeeld de nieuwste of de meest betrouwbare.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "7038e65ffad2",
+     "title": "Klantdata voor agents: koppel identiteit na Silver, bouw Gold op één id"
     }
    ]
   },
@@ -14082,17 +14181,6 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
-    }
-   ]
-  },
-  {
-   "term": "telemetrie",
-   "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "760c502508bd",
-     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
     }
    ]
   },
@@ -14300,17 +14388,6 @@
      "kind": "a",
      "id": "6fd4c32fe34a",
      "title": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents"
-    }
-   ]
-  },
-  {
-   "term": "virtuele machine",
-   "explanation": "Een computer die als software op een grotere computer draait. Je kunt hem snel aanmaken en weer weggooien.",
-   "refs": [
-    {
-     "kind": "a",
-     "id": "efe52b80d045",
-     "title": "Claude Code in de cloud: elke taak een eigen machine en branch"
     }
    ]
   },
@@ -14955,18 +15032,18 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 479,
+  "fetched_items": 812,
   "unique_after_dedupe": 752,
   "merged_duplicates": 53,
   "shown": 67,
   "decisions": {
    "excluded": 273,
-   "area_cap": 13,
-   "included": 125,
+   "area_cap": 14,
+   "included": 122,
    "no_topic": 165,
    "below_threshold": 122,
    "kort_vervallen": 33,
-   "source_cap": 21
+   "source_cap": 23
   },
   "processing": {
    "enriched": 67
@@ -14975,20 +15052,21 @@
   "per_group": {
    "ai_context": 30,
    "agents": 6,
-   "overig": 7,
    "claude": 15,
+   "overig": 7,
    "dbt": 6,
    "architectuur": 3
   },
   "per_source": {
    "azure_databricks_release_notes": 4,
    "simon_spati": 3,
+   "claude_blog": 8,
    "chris_webb": 2,
    "databricks_blog": 18,
    "claude_code_releases": 4,
-   "claude_blog": 9,
    "dbt_labs_blog": 10,
    "simon_whiteley": 2,
+   "simon_willison": 1,
    "huggingface_blog": 1,
    "dbt_developer_blog": 2,
    "anthropic_engineering": 1,
@@ -15048,9 +15126,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 179
+   "skipped_no_key": 176
   },
-  "queue_size": 8,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_inspiratie": [],
@@ -15080,14 +15158,6 @@
     "excluded_by": [
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Three LLM inflection points in twelve months",
-    "source_id": "simon_willison",
-    "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
-    "relevance_score": 84,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "The agentic code converter is generally available for SQL conversion",
@@ -15217,6 +15287,14 @@
     "url": "https://www.sqlbi.com/articles/introducing-full-text-search-for-dax/",
     "relevance_score": 81,
     "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
+    "source_id": "claude_blog",
+    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
+    "relevance_score": 81,
+    "decision": "area_cap",
     "excluded_by": []
    },
    {
@@ -15466,6 +15544,22 @@
     "excluded_by": []
    },
    {
+    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+    "relevance_score": 79,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Claude Code in the cloud: a field guide to cloud sessions",
+    "source_id": "claude_blog",
+    "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
+    "relevance_score": 79,
+    "decision": "area_cap",
+    "excluded_by": []
+   },
+   {
     "title": "Operate Claude Managed Agents inside your security perimeter",
     "source_id": "claude_blog",
     "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
@@ -15610,27 +15704,6 @@
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie Migrate can convert T-SQL to Lakeflow pipelines (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-can-convert-t-sql-to-lakeflow-pipelines-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.319",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    }
