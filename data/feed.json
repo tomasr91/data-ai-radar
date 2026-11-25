@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T20:12:54.067339Z",
+ "generated_at": "2026-11-25T20:18:51.585532Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -3133,115 +3133,6 @@
    }
   },
   {
-   "id": "a704112d6f8a",
-   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
-   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T16:00:00Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
-   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
-   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
-   "limitations": [
-    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
-    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
-    "databricks-dbt-factory is een open-source project, geen product van Databricks."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "databricks-dbt-factory (GitHub)",
-     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "data_quality_observability",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "databricks",
-    "kwaliteit",
-    "overig"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.08,
-    "source": 0.68,
-    "quality": 0.78,
-    "feedback": -0.06,
-    "fit": 0.25,
-    "project": 0.08
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
-   "story": [
-    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
-    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
-    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
-    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
-   ],
-   "key_facts": [
-    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
-    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
-    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
-    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
-    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
-    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "ingestion time",
-     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
-    },
-    {
-     "term": "queryplan",
-     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
-    },
-    {
-     "term": "upstream",
-     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
-    },
-    {
-     "term": "dbt-manifest",
-     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
-    },
-    {
-     "term": "RFID",
-     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.75,
-    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
-   },
-   "labels": [
-    "incrementele-modellen",
-    "dbt-op-databricks-jobs",
-    "compute-kosten"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -6
-   },
-   "project_ref": {
-    "fase": 5,
-    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
-    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
-   }
-  },
-  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -3752,6 +3643,115 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -4
+   }
+  },
+  {
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
+   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
+   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
+   "limitations": [
+    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
+    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
+    "databricks-dbt-factory is een open-source project, geen product van Databricks."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "databricks-dbt-factory (GitHub)",
+     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "databricks",
+    "kwaliteit",
+    "overig"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.08,
+    "source": 0.68,
+    "quality": 0.78,
+    "feedback": -0.06,
+    "fit": 0.25,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T09:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
+   "story": [
+    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
+    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
+    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
+   ],
+   "key_facts": [
+    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
+    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
+    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
+    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
+    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
+    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "ingestion time",
+     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
+    },
+    {
+     "term": "queryplan",
+     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
+    },
+    {
+     "term": "upstream",
+     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
+    },
+    {
+     "term": "dbt-manifest",
+     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
+    },
+    {
+     "term": "RFID",
+     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.75,
+    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
+   },
+   "labels": [
+    "incrementele-modellen",
+    "dbt-op-databricks-jobs",
+    "compute-kosten"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -6
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
+    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
    }
   },
   {
@@ -14849,6 +14849,30 @@
  "runs": {
   "date": "2026-11-25",
   "tasks": {
+   "overzicht": {
+    "status": "ok",
+    "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
+    "finished_at": "2026-11-25T05:13:43Z",
+    "problems": [],
+    "counts": {
+     "trends": 3,
+     "trends_bijgewerkt": 2,
+     "interesses_aangepast": 0,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen verdieping (niets gekozen); 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt",
+    "finished_at": "2026-11-25T04:15:22Z",
+    "problems": [],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5,
+     "inspiratie": 1
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "3 artikelen vol uitgelegd (1 met voorbeeld, alle 3 via WebSearch geopend), 3 overgeslagen zonder openen; de 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
@@ -14868,17 +14892,6 @@
      "onbereikbaar": 2
     }
    },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping (niets gekozen); 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt",
-    "finished_at": "2026-11-25T04:15:22Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5,
-     "inspiratie": 1
-    }
-   },
    "inhalen": {
     "status": "deels",
     "summary": "Uitleggen ontbrak nog (deels gelukt); de 2 overgebleven Fabric-artikelen bleven ook nu onbereikbaar en staan nog op de werklijst, verder was alles klaar.",
@@ -14891,19 +14904,6 @@
     "counts": {
      "ingehaald": 0,
      "onbereikbaar": 2
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
-    "finished_at": "2026-11-25T05:13:43Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "trends_bijgewerkt": 2,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
     }
    }
   }
@@ -15114,8 +15114,8 @@
    "simon_willison": 1,
    "anthropic_engineering": 1,
    "huggingface_blog": 1,
-   "databricks_engineering_blog": 3,
    "dbt_developer_blog": 2,
+   "databricks_engineering_blog": 3,
    "langchain_blog": 2,
    "dbt_core_releases": 1,
    "hamel_husain": 1,
@@ -15539,14 +15539,6 @@
     ]
    },
    {
-    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
@@ -15660,6 +15652,14 @@
      "minor_builds",
      "weekoverzicht"
     ]
+   },
+   {
+    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
    },
    {
     "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
