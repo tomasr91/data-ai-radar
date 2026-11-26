@@ -66,13 +66,14 @@
     } else {
       if (ui.ready) C.newMilestones(); // legt bij de eerste keer al behaalde mijlpalen stil vast
       const all = C.stats(null, { kind: "all" }), pr = C.progress(), r = pr.pct, last = C.lastMilestone(), hard = C.hardCount(), learning = learningCount();
-      body = `<div class="card start">
+      const topicsOnly = courseIds().length > 1;   // via 'Kies onderwerp': direct de onderwerpen, zonder grote balk (T, 26-11-2026)
+      body = `${topicsOnly ? "" : `<div class="card start">
           <div class="ready"><span class="big">${pct(r)}</span></div>
           ${meter(pr)}
           ${last ? `<p class="small ms-line">✓ ${msText(last)}</p>` : ""}
           <button class="btn primary wide" data-act="start" data-kind="weak">${all.seen ? "Verder oefenen" : "Begin met oefenen"}</button>
-        </div>
-        <details class="pick" ${ui.pickOpen ? "open" : ""}><summary>Kies zelf wat je oefent</summary>
+        </div>`}
+        <details class="pick${topicsOnly ? " flat" : ""}" ${ui.pickOpen || topicsOnly ? "open" : ""}><summary>Kies zelf wat je oefent</summary>
           <div class="card"><div class="topics">
             <button class="srow top-row" data-act="start" data-kind="all"><span><b>Alle onderwerpen gemengd</b><br><span class="small muted">volgens de examenweging</span></span><span class="cnt">${all.mastered}/${all.total}</span></button>
             ${hard ? `<button class="srow top-row" data-act="start" data-kind="hard"><span><b>Lastige vragen</b><br><span class="small muted">vaker fout, gegokt of nog in de leerfase</span></span><span class="cnt">${hard}</span></button>` : ""}

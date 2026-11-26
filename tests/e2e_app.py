@@ -680,7 +680,7 @@ with sync_playwright() as p:
     if fr.locator(".course").count():
         fr.locator(".course .c-topics").first.click()
     home = fr.locator("#app").inner_text()
-    check("   rustig startscherm: geen uitleg, titel of opslagmelding", all(x not in home for x in ["Hoe werkt het herhalen", "Gebaseerd op", "Claude Certification Academy", "Rondes van 10"]) and "Begin met oefenen" in home and "Back-up" not in home)
+    check("   Kies onderwerp: direct de onderwerpen, geen grote balk", all(x not in home for x in ["Hoe werkt het herhalen", "Gebaseerd op", "Claude Certification Academy", "Rondes van 10"]) and "Alle onderwerpen gemengd" in home and fr.locator(".big").count() == 0 and "Back-up" not in home)
     page.click('#seg-view button[data-v="actueel"]')
     check("   terug naar Actueel werkt", page.locator(".card[data-id]").count() == len(arts) and page.locator("#leren").is_hidden())
     page.click('#seg-view button[data-v="leren"]')
