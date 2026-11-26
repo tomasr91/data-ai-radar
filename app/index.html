@@ -2018,7 +2018,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       if (isRead(key)) { reads.unmark(key); toast("Gemarkeerd als ongelezen"); } else { reads.mark(key); toast("Gemarkeerd als gelezen"); }
       try { navigator.vibrate?.(15); } catch {}
       renderList();
-    }, 550);
+    }, 1000);
   });
   const pressCancel = (e) => {
     if (!pressStart) return;

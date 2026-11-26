@@ -814,11 +814,11 @@ with sync_playwright() as p:
     pg.goto(u); pg.wait_for_selector(".card[data-id]")
     c0 = pg.locator(".card[data-id]").first; cid = c0.get_attribute("data-id")
     box = c0.bounding_box(); x, y = box["x"] + box["width"] / 2, box["y"] + 20
-    pg.mouse.move(x, y); pg.mouse.down(); pg.wait_for_timeout(750); pg.mouse.up()
+    pg.mouse.move(x, y); pg.mouse.down(); pg.wait_for_timeout(1200); pg.mouse.up()
     pg.wait_for_timeout(100)
     check("13. lang indrukken markeert als gelezen, zonder het artikel te openen", pg.evaluate(f"!!JSON.parse(localStorage.getItem('radar:read')||'{{}}')['a-{cid}']")
           and pg.locator("#reader").is_hidden() and "gelezen" in (pg.locator("#toast").inner_text() or ""))
-    pg.mouse.move(x, y); pg.mouse.down(); pg.wait_for_timeout(750); pg.mouse.up(); pg.wait_for_timeout(100)
+    pg.mouse.move(x, y); pg.mouse.down(); pg.wait_for_timeout(1200); pg.mouse.up(); pg.wait_for_timeout(100)
     check("   nog eens lang indrukken: weer ongelezen", not pg.evaluate(f"!!JSON.parse(localStorage.getItem('radar:read')||'{{}}')['a-{cid}']"))
     pg.close()
     srv.shutdown()
