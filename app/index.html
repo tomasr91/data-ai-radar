@@ -484,7 +484,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <button type="button" data-v="date">Nieuw</button><button type="button" data-v="trends">Trends</button>
     </div>
     <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
-      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button>
+      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="insp">Inspiratie</button><button type="button" data-v="morgen">Morgen</button>
     </div>
   </div>
 </div>
@@ -667,7 +667,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Binnen een sessie onthoudt de app wel waar je was.
       state.sort = store.session("sort") === "trends" ? "trends" : "date";
       state.view = ["verdieping", "leren", "notities"].includes(store.session("view")) ? store.session("view") : "actueel";
-      state.ddTab = store.session("ddTab") === "morgen" ? "morgen" : "alle";
+      state.ddTab = ["morgen", "insp"].includes(store.session("ddTab")) ? store.session("ddTab") : "alle";
       renderStatus();
       renderSeg();
       updateMenuDot();
@@ -806,25 +806,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <h3>4 ideeën met AI</h3>
       <div class="insp-grid">${c.ideas.map((x) => `<span><i aria-hidden="true">${icon[x.cat] || "•"}</i>${esc(lbl(x))}</span>`).join("")}</div>
     </article>`;
-  }
-  // Kaarten tussen de artikelen: op "Nieuw" op hun datum, anders alleen de nieuwste als 4e kaart.
-  function withInsp(list, cards) {
-    const all = state.feed.inspiratie || [];
-    if (!all.length || state.group !== "all" || state.q) return cards;
-    const out = [...cards];
-    if (state.sort === "date") {
-      const t = (iso) => Date.parse(iso || "") || 0;
-      [...all].sort((a, b) => t(a.written_at) - t(b.written_at)).forEach((c) => {
-        let i = list.findIndex((a) => t(addedAt(a)) < t(c.written_at));
-        if (i < 0) i = list.length;
-        const pos = out.findIndex((h) => h.idx === i);
-        out.splice(pos < 0 ? out.length : pos, 0, { idx: -1, html: inspCard(c) });
-      });
-    } else {
-      const pos = out.findIndex((h) => h.idx === 3);
-      out.splice(pos < 0 ? out.length : pos, 0, { idx: -1, html: inspCard(all[0]) });
-    }
-    return out;
   }
   function renderInsp(c) {
     reads.mark("i-" + c.date);
@@ -971,7 +952,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.view === "notities") { $("#content").innerHTML = renderLaterTab(); loadChosen(); return; }   // eigen tabblad (T, 26-11-2026)
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
+      const insp = [...(f.inspiratie || [])].sort((a, b) => (b.date > a.date ? 1 : -1));
       $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
+        : state.ddTab === "insp" ? (insp.length ? `<div class="cards">${insp.map(inspCard).join("")}</div>` + fbSendBar() : `<div class="empty"><h3>Nog geen inspiratie</h3></div>`)   // eigen tabje i.p.v. tussen de artikelen (T, 26-11-2026)
         : dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
@@ -987,7 +970,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     } else {
       // Op "Nieuw": eerst wat sinds je laatste bezoek binnenkwam, daarna een scheidslijn "Eerder"
       const nNew = state.sort === "date" ? list.filter(isNew).length : 0;
-      const cards = withInsp(list, list.map((a, i) => ({ idx: i, html: (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a) }))).map((h) => h.html).join("");
+      const cards = list.map((a, i) => (nNew && i === nNew && i < list.length ? `<div class="since-line"><span>Eerder</span></div>` : "") + card(a)).join("");
       const sb = fbSendBar(); html += noNewNote() + weekBar() + `<div class="cards${sb ? " has-float" : ""}">${cards}</div>` + sb;
     }
     $("#content").innerHTML = html;
