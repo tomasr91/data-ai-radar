@@ -413,6 +413,24 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 .insp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; margin-top: 6px; font-size: 0.8rem; line-height: 1.3; color: var(--ink); }
 .insp-grid span { display: flex; gap: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; align-items: baseline; min-width: 0; }
 .insp-grid i { font-style: normal; font-size: 0.8rem; }
+.insp-day { margin: 14px 0 2px; font-family: var(--f-meta); font-size: 0.74rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.insp-day:first-child { margin-top: 2px; }
+.insp-row { border-bottom: 1px solid var(--line); }
+.insp-row summary { list-style: none; display: flex; gap: 10px; align-items: center; padding: 10px 0; cursor: pointer; }
+.insp-row summary::-webkit-details-marker { display: none; }
+.insp-row summary i { font-style: normal; font-size: 1rem; flex: none; }
+.insp-row .t { display: grid; min-width: 0; flex: 1; line-height: 1.3; }
+.insp-row .t b { font-weight: 600; font-size: 0.96rem; }
+.insp-row .w { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.insp-row[open] .w { display: none; }
+.insp-row .v { flex: none; font-size: 0.85rem; }
+.insp-body { padding: 0 0 12px 26px; display: grid; gap: 6px; font-size: 0.92rem; }
+.insp-body p { margin: 0; }
+.insp-body .tech { font-family: var(--f-meta); font-size: 0.76rem; color: var(--muted); }
+.insp-body .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.insp-body .row button { height: 34px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 1rem; cursor: pointer; }
+.insp-body .row button[aria-pressed="true"] { border-color: var(--accent2); background: var(--accent2-soft); }
+.insp-body .row a { margin-left: auto; font-size: 0.9rem; }
 .insp-idea { padding: 12px 0; border-top: 1px solid var(--line); }
 .insp-idea h3 { font-size: 1.02rem; margin: 0 0 4px; }
 .insp-idea p { margin: 4px 0; }
@@ -807,6 +825,36 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <div class="insp-grid">${c.ideas.map((x) => `<span><i aria-hidden="true">${icon[x.cat] || "•"}</i>${esc(lbl(x))}</span>`).join("")}</div>
     </article>`;
   }
+  /* Tabje Inspiratie: één regel per idee, per dag onder een kleine datum. Tik = openklappen (T, 26-11-2026). */
+  function renderInspList() {
+    const days = [...(state.feed.inspiratie || [])].sort((a, b) => (b.date > a.date ? 1 : -1));
+    if (!days.length) return `<div class="empty"><h3>Nog geen inspiratie</h3></div>`;
+    const icon = { zelf: "🛠", product: "🏥" };
+    const row = (c, x, n) => {
+      const id = `${c.date}-${n}`, mine = insp.get(id);
+      return `<details class="insp-row" data-iid="${esc(id)}" data-naam="${esc(x.naam)}" data-day="${esc(c.date)}">
+        <summary><i aria-hidden="true">${icon[x.cat] || "•"}</i><span class="t"><b>${esc(x.naam)}</b><span class="w">${esc(x.wat)}</span></span>${mine ? `<span class="v" aria-hidden="true">${mine.v === 1 ? "👍" : "👎"}</span>` : ""}</summary>
+        <div class="insp-body">
+          <p>${esc(x.wat)}</p>
+          <p><b>Waarom:</b> ${esc(x.waarom)}</p>
+          ${x.tech ? `<p class="tech">${esc(x.tech)}</p>` : ""}
+          <div class="row"><button type="button" data-iv="1" aria-pressed="${mine?.v === 1}" aria-label="Interessant">👍</button><button type="button" data-iv="-1" aria-pressed="${mine?.v === -1}" aria-label="Niet voor mij">👎</button>${x.link ? `<a href="${esc(x.link)}" target="_blank" rel="noopener">Bekijk ↗</a>` : ""}</div>
+        </div>
+      </details>`;
+    };
+    return `<div class="insp-list">${days.map((c) => `<h4 class="insp-day">${esc(shortDate(c.written_at))}</h4>${c.ideas.map((x, i) => row(c, x, i + 1)).join("")}`).join("")}</div><div id="insp-send">${fbSendBar()}</div>`;
+  }
+  function inspListClick(e) {
+    const b = e.target.closest(".insp-row [data-iv]"); if (!b) return;
+    const box = b.closest("[data-iid]"), id = box.dataset.iid, v = Number(b.dataset.iv), cur = insp.get(id);
+    insp.set(id, cur?.v === v ? null : { v, naam: box.dataset.naam, sent: false });
+    const now = insp.get(id)?.v;
+    box.querySelectorAll("[data-iv]").forEach((x) => x.setAttribute("aria-pressed", String(now === Number(x.dataset.iv))));
+    const sum = box.querySelector("summary"); sum.querySelector(".v")?.remove();
+    if (now) sum.insertAdjacentHTML("beforeend", `<span class="v" aria-hidden="true">${now === 1 ? "👍" : "👎"}</span>`);
+    $("#insp-send").innerHTML = fbSendBar();
+    updateMenuDot();
+  }
   function renderInsp(c) {
     reads.mark("i-" + c.date);
     const idea = (x, n) => {
@@ -952,9 +1000,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.view === "notities") { $("#content").innerHTML = renderLaterTab(); loadChosen(); return; }   // eigen tabblad (T, 26-11-2026)
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
-      const insp = [...(f.inspiratie || [])].sort((a, b) => (b.date > a.date ? 1 : -1));
       $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
-        : state.ddTab === "insp" ? (insp.length ? `<div class="cards">${insp.map(inspCard).join("")}</div>` + fbSendBar() : `<div class="empty"><h3>Nog geen inspiratie</h3></div>`)   // eigen tabje i.p.v. tussen de artikelen (T, 26-11-2026)
+        : state.ddTab === "insp" ? renderInspList()   // eigen tabje i.p.v. tussen de artikelen (T, 26-11-2026)
         : dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
@@ -1980,6 +2027,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     markSent();
     setTimeout(renderList, 300);
   }, true);
+  $("#content").addEventListener("click", inspListClick);
+  $("#content").addEventListener("toggle", (e) => { const d = e.target; if (d.matches?.(".insp-row") && d.open) reads.mark("i-" + d.dataset.day); }, true);
   const openCard = (el) => { state.cameFromList = true; location.hash = el.dataset.insp ? "i-" + el.dataset.insp : el.dataset.dd ? "v-" + el.dataset.dd : "a-" + el.dataset.id; };
   $("#content").addEventListener("click", (e) => { if (pressFired) { pressFired = false; e.preventDefault(); e.stopImmediatePropagation(); } }, true);
   $("#content").addEventListener("click", (e) => { const el = e.target.closest("[data-id],[data-dd],[data-insp]"); if (el) openCard(el); });
