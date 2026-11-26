@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T06:23:19.818605Z",
+ "generated_at": "2026-11-26T06:34:02.991879Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -7941,7 +7941,7 @@
    "relevance_score": 74,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.51,
     "quality": 0.4,
     "feedback": 0.02,
@@ -15687,6 +15687,20 @@
  "runs": {
   "date": "2026-11-26",
   "tasks": {
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak; opnieuw geprobeerd, maar de 3 artikelen op de werklijst waren nog steeds niet te openen.",
+    "finished_at": "2026-11-26T06:33:39Z",
+    "problems": [
+     "Uitleggen niet ingehaald: WebFetch weigerde de drie artikeladressen (PROVENANCE_REQUIRED) en zoeken gaf geen bruikbare link naar dezelfde artikelen."
+    ],
+    "counts": {
+     "ontbrak": 1,
+     "ingehaald": 0,
+     "uitgelegd": 0,
+     "niet_bereikbaar": 3
+    }
+   },
    "overzicht": {
     "status": "ok",
     "summary": "Trends ongewijzigd (geen nieuwe artikelen sinds gisteren), Metadata, lineage en catalogi is nu kernonderwerp (jouw ja), geen begrippen aangevuld: er was geen stuk met een verhaal zonder begrippen.",
@@ -15714,12 +15728,13 @@
    },
    "uitleggen": {
     "status": "deels",
-    "summary": "Geen artikelen uitgelegd: alle 3 artikelen op de werklijst waren vannacht niet te openen en blijven op de lijst staan.",
-    "finished_at": "2026-11-26T03:19:30Z",
+    "summary": "Geen artikelen uitgelegd: ook bij het inhalen waren alle 3 artikelen op de werklijst niet te openen; ze blijven op de lijst staan.",
+    "finished_at": "2026-11-26T06:33:39Z",
     "problems": [
-     "WebFetch weigerde alle drie artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
-     "Zoeken op de exacte titel gaf voor geen van de drie een link naar hetzelfde artikel: OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog), Where scientists draw the line on AI agents (Hugging Face/Ai2). Ze blijven op de werklijst.",
-     "Vers ophalen gelukt: feed om 03:13 UTC bijgewerkt."
+     "WebFetch weigerde opnieuw alle drie artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
+     "Zoeken op de exacte titel gaf opnieuw voor geen van de drie een link naar hetzelfde artikel: Where scientists draw the line on AI agents (Hugging Face/Ai2), OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
+     "Eerste poging om 03:12 UTC liep op hetzelfde vast; feed was om 03:13 UTC vers opgehaald.",
+     "Dataflow-voortgang bijgewerkt (fase 5 bezig), geen wijziging."
     ],
     "counts": {
      "uitgelegd": 0,
@@ -16039,16 +16054,6 @@
     ]
    },
    {
-    "title": "Genie Migrate conversion to Lakeflow pipelines is generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-conversion-to-lakeflow-pipelines-is-generally-available",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.330",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
@@ -16063,6 +16068,16 @@
     "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Migrate conversion to Lakeflow pipelines is generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-conversion-to-lakeflow-pipelines-is-generally-available",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
