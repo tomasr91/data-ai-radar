@@ -957,7 +957,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     fr.addEventListener("load", () => {
       try {
         const d = fr.contentDocument;
-        const fit = () => { fr.style.height = Math.max(d.documentElement.scrollHeight, 400) + "px"; };
+        const fit = () => { fr.style.height = Math.max(Math.ceil(d.body.getBoundingClientRect().height), 200) + "px"; };   // inhoud meten, niet het venster: zo krimpt hij ook weer (T, 26-11-2026)
         new ResizeObserver(fit).observe(d.body); fit();
       } catch { fr.style.height = "85vh"; }
     });
