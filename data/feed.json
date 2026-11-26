@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T13:39:29.676137Z",
+ "generated_at": "2026-11-26T13:43:29.269660Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -15701,24 +15701,6 @@
      "niet_bereikbaar": 3
     }
    },
-   "uitleggen": {
-    "status": "deels",
-    "summary": "Geen artikelen uitgelegd: ook bij het inhalen waren alle 3 artikelen op de werklijst niet te openen; ze blijven op de lijst staan.",
-    "finished_at": "2026-11-26T06:33:39Z",
-    "problems": [
-     "WebFetch weigerde opnieuw alle drie artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
-     "Zoeken op de exacte titel gaf opnieuw voor geen van de drie een link naar hetzelfde artikel: Where scientists draw the line on AI agents (Hugging Face/Ai2), OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
-     "Eerste poging om 03:12 UTC liep op hetzelfde vast; feed was om 03:13 UTC vers opgehaald.",
-     "Dataflow-voortgang bijgewerkt (fase 5 bezig), geen wijziging."
-    ],
-    "counts": {
-     "uitgelegd": 0,
-     "overgeslagen": 0,
-     "met_voorbeeld": 0,
-     "via_websearch": 0,
-     "niet_bereikbaar": 3
-    }
-   },
    "overzicht": {
     "status": "ok",
     "summary": "Trends ongewijzigd (geen nieuwe artikelen sinds gisteren), Metadata, lineage en catalogi is nu kernonderwerp (jouw ja), geen begrippen aangevuld: er was geen stuk met een verhaal zonder begrippen.",
@@ -15742,6 +15724,24 @@
      "verdiepingen": 2,
      "keuzes": 5,
      "inspiratie": 1
+    }
+   },
+   "uitleggen": {
+    "status": "deels",
+    "summary": "Geen artikelen uitgelegd: ook bij het inhalen waren alle 3 artikelen op de werklijst niet te openen; ze blijven op de lijst staan.",
+    "finished_at": "2026-11-26T06:33:39Z",
+    "problems": [
+     "WebFetch weigerde opnieuw alle drie artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
+     "Zoeken op de exacte titel gaf opnieuw voor geen van de drie een link naar hetzelfde artikel: Where scientists draw the line on AI agents (Hugging Face/Ai2), OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
+     "Eerste poging om 03:12 UTC liep op hetzelfde vast; feed was om 03:13 UTC vers opgehaald.",
+     "Dataflow-voortgang bijgewerkt (fase 5 bezig), geen wijziging."
+    ],
+    "counts": {
+     "uitgelegd": 0,
+     "overgeslagen": 0,
+     "met_voorbeeld": 0,
+     "via_websearch": 0,
+     "niet_bereikbaar": 3
     }
    }
   }
