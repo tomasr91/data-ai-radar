@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T10:03:56.791132Z",
+ "generated_at": "2026-11-26T13:33:34.255789Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
  "last_successful_update": "2026-11-26T10:03:56.791132Z",
  "groups": [
@@ -466,7 +466,7 @@
   "905562b7af62",
   "9fa51654bab7",
   "44f76c8bfa0f",
-  "a53e25c34fef"
+  "d380e24c1978"
  ],
  "articles": [
   {
@@ -609,7 +609,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -873,7 +873,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.88,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -1033,107 +1033,6 @@
     "fase": 5,
     "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
     "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
-   }
-  },
-  {
-   "id": "a53e25c34fef",
-   "title": "Sharing catalog metadata across data platforms, engines, and agents",
-   "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-24T01:30:00Z",
-   "fetched_at": "2026-11-24T03:13:09.971931Z",
-   "summary": "Databricks voegt 'catalog labels' toe aan de Iceberg REST-API, zodat tags uit Unity Catalog ook in andere catalogi, engines en agents te lezen zijn. In Unity Catalog heet dat Tag Exchange (bèta).",
-   "personal_relevance": "Tags en certificering die je in Unity Catalog zet, worden zo bruikbare context voor agents en tools buiten Databricks.",
-   "experiment": "Zet in je Free Edition-catalogus twee tags op een tabel en een kolom en kijk of de Previews-portal Tag Exchange aanbiedt. Zo ja: lees de tabel daarna met PyIceberg (vanaf 0.13) en bekijk de labels.",
-   "limitations": [
-    "Tag Exchange is in bèta; of het in Azure Databricks of Free Edition beschikbaar is, zegt het artikel niet.",
-    "De codevoorbeelden in het artikel waren niet leesbaar; de precieze API-vorm staat in de documentatie.",
-    "Hoe ontvangende tools labels interpreteren, regelt de standaard niet."
-   ],
-   "availability_status": "preview",
-   "topics": [
-    "metadata_lineage_catalogs",
-    "ai_context_engineering",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "kwaliteit",
-    "ai_context"
-   ],
-   "relevance_score": 93,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.89,
-    "source": 0.85,
-    "quality": 0.63,
-    "feedback": -0.03,
-    "fit": 0.15,
-    "project": 0.03
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:27:44Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Sharing catalog metadata across data platforms, engines, and agents",
-     "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
-     "published_at": "2026-11-24T01:30:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Tags uit Unity Catalog reizen mee naar andere tools via Iceberg",
-   "story": [
-    "Databricks werkte met de Apache Iceberg-gemeenschap aan een kleine maar slimme uitbreiding: catalog labels. Daarmee kan een catalogus zijn tags meegeven aan andere tools, via de Iceberg REST Catalog-API. Unity Catalog doet dat onder de naam Tag Exchange, nu in bèta.",
-    "Een catalog label is een simpel paar van sleutel en waarde, zoals domain=customer_support. Het staat op een tabel of kolom. Als een andere tool een tabel opvraagt via de REST-API, krijgt hij die labels mee in het antwoord. De standaard legt alleen het formaat vast, niet welke woorden je gebruikt. Elke ontvangende tool bepaalt zelf wat hij ermee doet.",
-    "Het voorbeeld laat zien waarom dat handig is. Een databeheerder zet op de tabel support_cases het domein en de tag 'gecertificeerd', en op een kolom het label 'samenvatting van een supportzaak'. Een agent in een andere tool kiest dan de juiste tabel op domein en certificering, en vindt via het kolomlabel de samenvattingen. Een governance-tool kan een label voor gevoelige data koppelen aan een eigen maskeerregel.",
-    "Voor jouw werk is dit interessant omdat tags in Unity Catalog nu niet meer achterblijven als data een andere engine in gaat. Wie metadata als context voor AI gebruikt, krijgt die context zo ook buiten Databricks. Voor Dataflow is het hooguit handig om je fase 2 nog eens langs te lopen: tags die je daar zette, kunnen zo later meereizen."
-   ],
-   "key_facts": [
-    "Aangekondigd op 24 november 2026 door Databricks.",
-    "Catalog labels zijn sleutel-waardeparen op tabel- en kolomniveau in een optioneel veld 'labels' in het LoadTable-antwoord van de Iceberg REST Catalog-API.",
-    "Unity Catalog stelt zijn tabel- en kolomtags beschikbaar als catalog labels via Tag Exchange, nu in bèta; aanzetten via 'Tag Exchange via Iceberg REST Catalog' in de Previews-portal.",
-    "PyIceberg krijgt ondersteuning voor catalog labels in de volgende release, 0.13.",
-    "Genoemd als partijen achter het idee: onder meer Google Cloud, Salesforce, ClickHouse, Atlan, Collibra, DataHub en Immuta.",
-    "Of de wijziging al in een uitgebrachte versie van de Iceberg-specificatie zit, staat niet in het artikel."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "catalog labels",
-     "explanation": "Sleutel-waardeparen op een tabel of kolom die een catalogus via de Iceberg REST-API meegeeft aan andere tools, zodat tags niet achterblijven."
-    },
-    {
-     "term": "Iceberg REST Catalog-API",
-     "explanation": "Een open standaard waarmee engines een catalogus vragen welke tabellen er zijn en waar hun bestanden staan, los van de leverancier."
-    },
-    {
-     "term": "Tag Exchange",
-     "explanation": "De functie in Unity Catalog die tabel- en kolomtags als catalog labels doorgeeft via de Iceberg REST-API."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.65,
-    "why": "Unity Catalog-metadata als context voor agents, zoals je duimen bij Genie Ontology en synoniemen per veld."
-   },
-   "labels": [
-    "catalog-labels",
-    "iceberg-rest-catalog",
-    "agent-context-laag"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -3
-   },
-   "project_ref": {
-    "fase": 2,
-    "quote": "handig om je fase 2 nog eens langs te lopen",
-    "why": "Fase 2 gaat over tags en beschrijvingen in Unity Catalog; die kunnen via catalog labels meereizen."
    }
   },
   {
@@ -1400,6 +1299,107 @@
    ]
   },
   {
+   "id": "a53e25c34fef",
+   "title": "Sharing catalog metadata across data platforms, engines, and agents",
+   "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-24T01:30:00Z",
+   "fetched_at": "2026-11-24T03:13:09.971931Z",
+   "summary": "Databricks voegt 'catalog labels' toe aan de Iceberg REST-API, zodat tags uit Unity Catalog ook in andere catalogi, engines en agents te lezen zijn. In Unity Catalog heet dat Tag Exchange (bèta).",
+   "personal_relevance": "Tags en certificering die je in Unity Catalog zet, worden zo bruikbare context voor agents en tools buiten Databricks.",
+   "experiment": "Zet in je Free Edition-catalogus twee tags op een tabel en een kolom en kijk of de Previews-portal Tag Exchange aanbiedt. Zo ja: lees de tabel daarna met PyIceberg (vanaf 0.13) en bekijk de labels.",
+   "limitations": [
+    "Tag Exchange is in bèta; of het in Azure Databricks of Free Edition beschikbaar is, zegt het artikel niet.",
+    "De codevoorbeelden in het artikel waren niet leesbaar; de precieze API-vorm staat in de documentatie.",
+    "Hoe ontvangende tools labels interpreteren, regelt de standaard niet."
+   ],
+   "availability_status": "preview",
+   "topics": [
+    "metadata_lineage_catalogs",
+    "ai_context_engineering",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "kwaliteit",
+    "ai_context"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.88,
+    "source": 0.85,
+    "quality": 0.63,
+    "feedback": -0.03,
+    "fit": 0.15,
+    "project": 0.03
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:27:44Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Sharing catalog metadata across data platforms, engines, and agents",
+     "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
+     "published_at": "2026-11-24T01:30:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Tags uit Unity Catalog reizen mee naar andere tools via Iceberg",
+   "story": [
+    "Databricks werkte met de Apache Iceberg-gemeenschap aan een kleine maar slimme uitbreiding: catalog labels. Daarmee kan een catalogus zijn tags meegeven aan andere tools, via de Iceberg REST Catalog-API. Unity Catalog doet dat onder de naam Tag Exchange, nu in bèta.",
+    "Een catalog label is een simpel paar van sleutel en waarde, zoals domain=customer_support. Het staat op een tabel of kolom. Als een andere tool een tabel opvraagt via de REST-API, krijgt hij die labels mee in het antwoord. De standaard legt alleen het formaat vast, niet welke woorden je gebruikt. Elke ontvangende tool bepaalt zelf wat hij ermee doet.",
+    "Het voorbeeld laat zien waarom dat handig is. Een databeheerder zet op de tabel support_cases het domein en de tag 'gecertificeerd', en op een kolom het label 'samenvatting van een supportzaak'. Een agent in een andere tool kiest dan de juiste tabel op domein en certificering, en vindt via het kolomlabel de samenvattingen. Een governance-tool kan een label voor gevoelige data koppelen aan een eigen maskeerregel.",
+    "Voor jouw werk is dit interessant omdat tags in Unity Catalog nu niet meer achterblijven als data een andere engine in gaat. Wie metadata als context voor AI gebruikt, krijgt die context zo ook buiten Databricks. Voor Dataflow is het hooguit handig om je fase 2 nog eens langs te lopen: tags die je daar zette, kunnen zo later meereizen."
+   ],
+   "key_facts": [
+    "Aangekondigd op 24 november 2026 door Databricks.",
+    "Catalog labels zijn sleutel-waardeparen op tabel- en kolomniveau in een optioneel veld 'labels' in het LoadTable-antwoord van de Iceberg REST Catalog-API.",
+    "Unity Catalog stelt zijn tabel- en kolomtags beschikbaar als catalog labels via Tag Exchange, nu in bèta; aanzetten via 'Tag Exchange via Iceberg REST Catalog' in de Previews-portal.",
+    "PyIceberg krijgt ondersteuning voor catalog labels in de volgende release, 0.13.",
+    "Genoemd als partijen achter het idee: onder meer Google Cloud, Salesforce, ClickHouse, Atlan, Collibra, DataHub en Immuta.",
+    "Of de wijziging al in een uitgebrachte versie van de Iceberg-specificatie zit, staat niet in het artikel."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "catalog labels",
+     "explanation": "Sleutel-waardeparen op een tabel of kolom die een catalogus via de Iceberg REST-API meegeeft aan andere tools, zodat tags niet achterblijven."
+    },
+    {
+     "term": "Iceberg REST Catalog-API",
+     "explanation": "Een open standaard waarmee engines een catalogus vragen welke tabellen er zijn en waar hun bestanden staan, los van de leverancier."
+    },
+    {
+     "term": "Tag Exchange",
+     "explanation": "De functie in Unity Catalog die tabel- en kolomtags als catalog labels doorgeeft via de Iceberg REST-API."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.65,
+    "why": "Unity Catalog-metadata als context voor agents, zoals je duimen bij Genie Ontology en synoniemen per veld."
+   },
+   "labels": [
+    "catalog-labels",
+    "iceberg-rest-catalog",
+    "agent-context-laag"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 2,
+    "quote": "handig om je fase 2 nog eens langs te lopen",
+    "why": "Fase 2 gaat over tags en beschrijvingen in Unity Catalog; die kunnen via catalog labels meereizen."
+   }
+  },
+  {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
    "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
@@ -1519,7 +1519,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.02,
@@ -2443,7 +2443,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2571,7 +2571,7 @@
    "relevance_score": 88,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.93,
+    "recency": 0.92,
     "source": 0.68,
     "quality": 0.47,
     "feedback": 0.01,
@@ -3371,7 +3371,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.62,
+    "recency": 0.61,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -4209,7 +4209,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.72,
+    "recency": 0.71,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -5442,100 +5442,6 @@
    }
   },
   {
-   "id": "90ba3c46bbce",
-   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
-   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
-   "source_id": "databricks_blog",
-   "published_at": "2026-10-27T19:00:00Z",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Een open-source set werkinstructies leert AI-assistenten hoe het in de zorg hoort. Gericht op Amerikaanse regels.",
-   "personal_relevance": "Een concreet voorbeeld van AI in de zorg op jouw platform, met een duidelijke kanttekening over regels.",
-   "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
-   "limitations": [
-    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
-    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
-    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
-   ],
-   "availability_status": "experimenteel",
-   "topics": [
-    "ai_agents_rag",
-    "data_governance_privacy",
-    "ai_in_healthcare",
-    "ai_research_data"
-   ],
-   "groups": [
-    "agents",
-    "kwaliteit",
-    "zorg"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.23,
-    "source": 0.85,
-    "quality": 0.65,
-    "feedback": -0.04,
-    "fit": 0.35
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
-   "processed_at": "2026-10-28T21:00:00Z",
-   "reading_minutes": 2,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
-     "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
-     "published_at": "2026-10-27T19:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Databricks geeft AI-assistenten zorgkennis mee",
-   "story": [
-    "Een nieuwe collega krijgt werkinstructies, bijvoorbeeld voor het samenstellen van een patiëntgroep voor onderzoek. Databricks doet nu hetzelfde voor AI-assistenten. Engineers van Databricks maakten een open-source set 'skills' voor de zorg, Vital Skills.",
-    "Er zijn skills voor onder meer het samenstellen van patiëntgroepen (cohorten) en voor het onherkenbaar maken van patiëntgegevens. Een AI-assistent pakt de juiste instructie erbij als hij zo'n klus krijgt. Hij wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
-    "Dit is een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform. Let wel op: de skills volgen de Amerikaanse regels (HIPAA). In Nederland gelden de AVG en zorgspecifieke regels. Een Amerikaanse methode om data onherkenbaar te maken is hier dus niet automatisch genoeg.",
-    "De winst is volgens Databricks' eigen tests klein. Het meest waardevol is het idee zelf: domeinkennis vastleggen zodat een AI hem kan gebruiken."
-   ],
-   "key_facts": [
-    "Vital Skills is een open-source bibliotheek met Agent Skills voor zorg en life sciences, bedoeld voor Genie Code.",
-    "Klinische skills zijn onder meer cohort-builder, rwe-cohortstudy, semantic-builder en phi-deidentifier (HIPAA Safe Harbor).",
-    "Skills zijn te installeren in Genie Code, Genie One of Genie Code CLI en te delen via Unity Gateway.",
-    "In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100).",
-    "FHIR, OMOP en HL7 worden niet genoemd."
-   ],
-   "terms": [
-    {
-     "term": "skills",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    },
-    {
-     "term": "cohorten",
-     "explanation": "Groepen patiënten met een gemeenschappelijk kenmerk, bijvoorbeeld een diagnose in een bepaalde periode, die je samen onderzoekt."
-    },
-    {
-     "term": "HIPAA",
-     "explanation": "De Amerikaanse wet die regels geeft voor het beschermen van medische gegevens. In Nederland gelden de AVG en zorgspecifieke regels."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.85,
-    "why": "Je gaf dit stuk over zorgkennis voor AI-assistenten een duim omhoog."
-   },
-   "labels": [
-    "ai-in-de-zorg",
-    "agent-skills"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "059023edac5d",
    "title": "How Virgin Media O2 cut compute costs 30% by giving dbt a memory",
    "url": "https://www.getdbt.com/blog/virgin-media-o2-dbt-state-compute-costs",
@@ -5642,7 +5548,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.31,
+    "recency": 0.3,
     "source": 0.85,
     "quality": 0.58,
     "fit": 0.15
@@ -6127,6 +6033,100 @@
    }
   },
   {
+   "id": "90ba3c46bbce",
+   "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+   "source_id": "databricks_blog",
+   "published_at": "2026-10-27T19:00:00Z",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Een open-source set werkinstructies leert AI-assistenten hoe het in de zorg hoort. Gericht op Amerikaanse regels.",
+   "personal_relevance": "Een concreet voorbeeld van AI in de zorg op jouw platform, met een duidelijke kanttekening over regels.",
+   "experiment": "Lees de cohort-builder-skill op GitHub en schrijf een vergelijkbare skillbeschrijving voor één veelgestelde vraag over je eigen Gold-laag. Test die alleen met synthetische data.",
+   "limitations": [
+    "Resultaten komen uit de eigen evaluatie van Databricks, niet uit onafhankelijk onderzoek; de verbetering is klein.",
+    "Gericht op Amerikaanse regels (HIPAA); niet zonder toetsing bruikbaar onder de AVG.",
+    "Werken met echte patiëntdata vraagt toestemming en afspraken binnen je organisatie, ook binnen Databricks."
+   ],
+   "availability_status": "experimenteel",
+   "topics": [
+    "ai_agents_rag",
+    "data_governance_privacy",
+    "ai_in_healthcare",
+    "ai_research_data"
+   ],
+   "groups": [
+    "agents",
+    "kwaliteit",
+    "zorg"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.23,
+    "source": 0.85,
+    "quality": 0.65,
+    "feedback": -0.04,
+    "fit": 0.35
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (Opus 5.5) in de bouwsessie, nieuwe schrijfstijl, op basis van de volledige brontekst",
+   "processed_at": "2026-10-28T21:00:00Z",
+   "reading_minutes": 2,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+     "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills",
+     "published_at": "2026-10-27T19:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Databricks geeft AI-assistenten zorgkennis mee",
+   "story": [
+    "Een nieuwe collega krijgt werkinstructies, bijvoorbeeld voor het samenstellen van een patiëntgroep voor onderzoek. Databricks doet nu hetzelfde voor AI-assistenten. Engineers van Databricks maakten een open-source set 'skills' voor de zorg, Vital Skills.",
+    "Er zijn skills voor onder meer het samenstellen van patiëntgroepen (cohorten) en voor het onherkenbaar maken van patiëntgegevens. Een AI-assistent pakt de juiste instructie erbij als hij zo'n klus krijgt. Hij wordt er niet slimmer van, maar weet beter hoe het in dit vak hoort.",
+    "Dit is een van de weinige concrete ontwikkelingen rond AI in de zorg op jouw platform. Let wel op: de skills volgen de Amerikaanse regels (HIPAA). In Nederland gelden de AVG en zorgspecifieke regels. Een Amerikaanse methode om data onherkenbaar te maken is hier dus niet automatisch genoeg.",
+    "De winst is volgens Databricks' eigen tests klein. Het meest waardevol is het idee zelf: domeinkennis vastleggen zodat een AI hem kan gebruiken."
+   ],
+   "key_facts": [
+    "Vital Skills is een open-source bibliotheek met Agent Skills voor zorg en life sciences, bedoeld voor Genie Code.",
+    "Klinische skills zijn onder meer cohort-builder, rwe-cohortstudy, semantic-builder en phi-deidentifier (HIPAA Safe Harbor).",
+    "Skills zijn te installeren in Genie Code, Genie One of Genie Code CLI en te delen via Unity Gateway.",
+    "In eigen tests van Databricks steeg de gemiddelde score op 5 relevante taken van 71,9 naar 76,9 (op 100).",
+    "FHIR, OMOP en HL7 worden niet genoemd."
+   ],
+   "terms": [
+    {
+     "term": "skills",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "cohorten",
+     "explanation": "Groepen patiënten met een gemeenschappelijk kenmerk, bijvoorbeeld een diagnose in een bepaalde periode, die je samen onderzoekt."
+    },
+    {
+     "term": "HIPAA",
+     "explanation": "De Amerikaanse wet die regels geeft voor het beschermen van medische gegevens. In Nederland gelden de AVG en zorgspecifieke regels."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.85,
+    "why": "Je gaf dit stuk over zorgkennis voor AI-assistenten een duim omhoog."
+   },
+   "labels": [
+    "ai-in-de-zorg",
+    "agent-skills"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
+   }
+  },
+  {
    "id": "a9b6458ba033",
    "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
    "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
@@ -6450,7 +6450,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -6815,106 +6815,6 @@
    }
   },
   {
-   "id": "62afb1e0ab94",
-   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
-   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-09T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.802171Z",
-   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
-   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
-   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
-   "limitations": [
-    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
-    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
-   ],
-   "availability_status": "experimenteel",
-   "official_docs": [
-    {
-     "label": "Blog: Safely scaling multi-agent teams",
-     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
-    },
-    {
-     "label": "Formalisering uit september",
-     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.42,
-    "source": 0.51,
-    "quality": 0.68,
-    "feedback": -0.04,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:40:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
-   "story": [
-    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
-    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
-    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
-    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
-    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
-   ],
-   "key_facts": [
-    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
-    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
-    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
-    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
-    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
-    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Lean",
-     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
-    },
-    {
-     "term": "gateway",
-     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
-    },
-    {
-     "term": "classifier",
-     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
-    },
-    {
-     "term": "least privilege",
-     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.65,
-    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
-   },
-   "labels": [
-    "multi-agent",
-    "agent-harness",
-    "agent-sandbox"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -4
-   }
-  },
-  {
    "id": "ad991551648f",
    "title": "The new Genie: autonomous AI for complex enterprise work",
    "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
@@ -7106,6 +7006,106 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -1
+   }
+  },
+  {
+   "id": "62afb1e0ab94",
+   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
+   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
+   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
+   "limitations": [
+    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
+    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Blog: Safely scaling multi-agent teams",
+     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+    },
+    {
+     "label": "Formalisering uit september",
+     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.42,
+    "source": 0.51,
+    "quality": 0.68,
+    "feedback": -0.04,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
+   "story": [
+    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
+    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
+    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
+    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
+    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
+   ],
+   "key_facts": [
+    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
+    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
+    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
+    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
+    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
+    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Lean",
+     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
+    },
+    {
+     "term": "gateway",
+     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
+    },
+    {
+     "term": "classifier",
+     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
+    },
+    {
+     "term": "least privilege",
+     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
+   },
+   "labels": [
+    "multi-agent",
+    "agent-harness",
+    "agent-sandbox"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
    }
   },
   {
@@ -7404,7 +7404,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.12,
+    "recency": 0.11,
     "source": 0.51,
     "quality": 0.65,
     "feedback": -0.04,
@@ -7534,7 +7534,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.18,
+    "recency": 0.17,
     "source": 0.8,
     "quality": 0.57,
     "feedback": -0.01,
@@ -15833,15 +15833,15 @@
    "powerbi_blog": 0.27,
    "dbt_developer_blog": 0.63,
    "claude_code_releases": 0.25,
-   "azure_databricks_release_notes": 0.54,
+   "azure_databricks_release_notes": 0.53,
    "fabric_blog": -0.07,
-   "claude_blog": 0.47,
+   "claude_blog": 0.46,
    "chris_webb": 0.07,
    "simon_whiteley": 0.15
   },
   "kinds": {
    "praktijk": 0.59,
-   "praktisch": 0.61,
+   "praktisch": 0.6,
    "achtergrond": 0.63,
    "aankondiging": 0.96,
    "mening": 0.37,
@@ -15915,7 +15915,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 480,
+  "fetched_items": 821,
   "unique_after_dedupe": 761,
   "merged_duplicates": 53,
   "shown": 69,
@@ -15936,8 +15936,8 @@
    "ai_context": 29,
    "agents": 8,
    "claude": 15,
-   "kwaliteit": 1,
    "overig": 7,
+   "kwaliteit": 1,
    "dbt": 6,
    "architectuur": 3
   },
@@ -16047,20 +16047,9 @@
     "title": "The agentic code converter is generally available for SQL conversion",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/migration/agentic-code-converter",
-    "relevance_score": 83,
+    "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.330",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
-    "relevance_score": 83,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -16085,9 +16074,9 @@
     ]
    },
    {
-    "title": "v2.1.328",
+    "title": "v2.1.329",
     "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -16096,9 +16085,9 @@
     ]
    },
    {
-    "title": "v2.1.329",
+    "title": "v2.1.330",
     "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
     "relevance_score": 82,
     "decision": "excluded",
     "excluded_by": [
@@ -16138,6 +16127,17 @@
     ]
    },
    {
+    "title": "v2.1.328",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Workspace outbound access protection for Power BI semantic models and interactive reports (Generally Available)",
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Workspace-outbound-access-protection-for-Power-BI-semantic/ba-p/5435053",
@@ -16149,16 +16149,6 @@
     "title": "Genie Code CLI is in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/genie-code/genie-code-cli",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie Ontology is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
     "relevance_score": 80,
     "decision": "excluded",
     "excluded_by": [
@@ -16258,16 +16248,6 @@
     "excluded_by": []
    },
    {
-    "title": "Governed tag propagation is in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Agent memory pipelines are in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/agents/agent-memory/memory-pipelines",
@@ -16301,6 +16281,16 @@
     "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Ontology is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -16429,9 +16419,9 @@
     ]
    },
    {
-    "title": "Default OAuth apps for external AI agents are now generally available",
+    "title": "Governed tag propagation is in Beta",
     "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
@@ -16568,6 +16558,16 @@
     "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Default OAuth apps for external AI agents are now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/october#default-oauth-apps-for-external-ai-agents-are-now-generally-available",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
