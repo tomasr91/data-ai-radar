@@ -337,4 +337,43 @@
         sb("d8.2", "Expectations", "Expectations")] }
     ]
   });
+
+  /* Databricks Certified Associate Developer for Apache Spark. Examengids "August 2026" (examen en gids 8 oktober 2026).
+     Weging volgens de gids: 20/20/30/10/10/5/5. Vragen in Python (PySpark), zoals de voorbeeldvragen in de gids. */
+  Academy.defineCert({
+    id: "sparkda", status: "active", code: "Spark", name: "Databricks Certified Associate Developer for Apache Spark", short: "Spark",
+    audience: "Ontwikkelaars die basistaken met Spark DataFrames in Python kunnen uitvoeren en de architectuur van Spark begrijpen.",
+    exam: { items: 45, minutes: 90, format: "Meerkeuze (45 vragen die meetellen, plus maximaal 10 ongemarkeerde)",
+      report: "De examengids noemt geen slaaggrens." },
+    guideVersion: "Examengids Associate Developer for Apache Spark (examen en gids 8 oktober 2026)",
+    verifiedOn: "26 november 2026",
+    sources: [
+      { label: "Officiële examengids", url: "https://www.databricks.com/sites/default/files/2026-10/databricks-certified-associate-developer-apache-spark-exam-guide-august-2026.pdf" },
+      { label: "Apache Spark-documentatie", url: "https://spark.apache.org/docs/latest/" }
+    ],
+    domains: [
+      { id: "d1", n: 1, name: "Apache Spark Architecture and Components", nl: "Architectuur en onderdelen", weight: 20, subs: [
+        sb("d1.1", "Driver, executors and the cluster", "Driver, executors en cluster"),
+        sb("d1.2", "Lazy evaluation and the execution hierarchy", "Lazy evaluation, jobs en stages"),
+        sb("d1.3", "Partitions, caching and modules", "Partities, caching en modules")] },
+      { id: "d2", n: 2, name: "Using Spark SQL", nl: "Spark SQL", weight: 20, subs: [
+        sb("d2.1", "Reading and writing data", "Lezen en schrijven"),
+        sb("d2.2", "Tables and temporary views", "Tabellen en temp views")] },
+      { id: "d3", n: 3, name: "Developing Apache Spark DataFrame/DataSet API Applications", nl: "DataFrame-API", weight: 30, subs: [
+        sb("d3.1", "Columns and rows", "Kolommen en rijen"),
+        sb("d3.2", "Aggregations and dates", "Aggregaties en datums"),
+        sb("d3.3", "Joins and unions", "Joins en unions"),
+        sb("d3.4", "UDFs, broadcast variables and accumulators", "UDF's en broadcast")] },
+      { id: "d4", n: 4, name: "Troubleshooting and Tuning", nl: "Troubleshooting en tuning", weight: 10, subs: [
+        sb("d4.1", "Partitioning, skew and shuffles", "Partitioneren, skew en shuffles"),
+        sb("d4.2", "AQE and logs", "AQE en logs")] },
+      { id: "d5", n: 5, name: "Structured Streaming", nl: "Structured Streaming", weight: 10, subs: [
+        sb("d5.1", "Programming model and guarantees", "Model en garanties"),
+        sb("d5.2", "Output, windows and watermarks", "Output, windows en watermarks")] },
+      { id: "d6", n: 6, name: "Using Spark Connect to Deploy Applications", nl: "Spark Connect en deploy-modi", weight: 5, subs: [
+        sb("d6.1", "Spark Connect and deployment modes", "Spark Connect en deploy-modi")] },
+      { id: "d7", n: 7, name: "Using Pandas API on Spark", nl: "Pandas API on Spark", weight: 5, subs: [
+        sb("d7.1", "Pandas API on Spark and Pandas UDFs", "Pandas API en Pandas UDF's")] }
+    ]
+  });
 })();

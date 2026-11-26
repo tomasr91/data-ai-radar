@@ -31,7 +31,13 @@ Een nieuw inhoudsbestand moet ook als `<script>` in `index.html` staan, vóór `
 ## Get Started with Databricks for Data Engineering (`dbxgs`, sinds 26 november 2026)
 
 - Geen examen: een korte beginnerscursus van Databricks Academy (onboarding, ongeveer 2 uur). De onderwerpen volgen de cursuspagina (staat in `registry.js`); de weging is gelijk verdeeld.
-- Vragen: `content/dbxgs/questions-1.js`; uitleg: `content/dbxgs/modules-1.js`.
+- Vragen: `content/dbxgs/questions-1.js` t/m `questions-3.js`; uitleg: `content/dbxgs/modules-1.js`.
+
+## Associate Developer for Apache Spark (`sparkda`, sinds 26 november 2026)
+
+- Examen en gids van 8 oktober 2026 (gids heet "August 2026"): 45 vragen die meetellen, 90 minuten, geen slaaggrens in de gids. Wegingen uit de gids: 20/20/30/10/10/5/5.
+- Code in de vragen is Python (PySpark), net als de voorbeeldvragen in de gids. Bronnen: de examengids-PDF op databricks.com en spark.apache.org/docs.
+- Vragen: `content/sparkda/questions-1.js` (domein 1–2) en `questions-2.js` (domein 3–7); uitleg: `content/sparkda/modules-1.js`.
 
 ## Opslag en meldingen
 
@@ -43,7 +49,7 @@ Een nieuw inhoudsbestand moet ook als `<script>` in `index.html` staan, vóór `
 1. Lees de open issues met titel `Examenmelding:` van de eigenaar. Beoordeel elke melding; pas de vraag aan als de melding klopt.
 2. Controleer de officiële bronnen (examengidsen op anthropic-partners.skilljar.com) tegen `content/registry.js`: gidsversie, aantal vragen, tijd, slaaggrens, domeinen en wegingen.
 3. Controleer productfeiten in vragen en uitleg tegen support.claude.com, docs.claude.com / platform.claude.com, code.claude.com en de Anthropic-nieuwspagina. Zoek ook naar nieuwe functies die in de examenstof horen.
-3c. **Databricks**: zoek de actuele examengids van de Data Engineer Associate op databricks.com en vergelijk datum, aantal vragen, tijd, onderwerpen en wegingen met `dbxdea` in `registry.js`. Controleer feiten tegen docs.databricks.com.
+3c. **Databricks**: zoek de actuele examengids van de Data Engineer Associate op databricks.com en vergelijk datum, aantal vragen, tijd, onderwerpen en wegingen met `dbxdea` in `registry.js`. Controleer feiten tegen docs.databricks.com. Doe hetzelfde voor de examengids van de Associate Developer for Apache Spark (`sparkda`), met spark.apache.org/docs als bron.
 3b. **dbt**: vergelijk de examenpagina en studiegids van dbt Labs (versie, aantal vragen, tijd, slaaggrens, onderwerpen) met `registry.js` (`dbtae`). Komt er een nieuwe examenversie, pas de onderwerpen aan. Controleer feiten tegen docs.getdbt.com, ook wat er in dbt v2 verandert (domein 8 en de regels "In v2").
 4. Pas aan wat nodig is. Zet `verifiedOn` in `registry.js` op de datum van vandaag.
 5. Controleer: `node scripts/validate_leren.js` moet 0 fouten geven (unieke id's, antwoorden binnen bereik, één antwoord bij `t:"s"`, minstens twee bij `t:"m"`, `w` even lang als `o`, elk subonderwerp heeft vragen, juiste antwoord niet systematisch het langste).

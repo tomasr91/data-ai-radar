@@ -580,11 +580,11 @@ with sync_playwright() as p:
     fr = page.frame_locator("#leren-frame")
     fr.locator(".course").first.wait_for(timeout=15000)
     certs = [fr.locator(".course b").nth(i).inner_text() for i in range(fr.locator(".course").count())]
-    check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 5 and any("Get Started" in c for c in certs) and any("Databricks" in c for c in certs) and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
+    check("17. Leren opent met een overzicht van alle cursussen", len(certs) == 6 and any("Get Started" in c for c in certs) and any("Databricks" in c for c in certs) and any("dbt" in c for c in certs) and any("Associate" in c for c in certs), str(certs))
     fr.locator(".course .c-main").first.click()
     check("   tik op een cursus: direct een vraag, zonder tussenscherm", fr.locator('[data-act="check"]').count() == 1)
     fr.locator('[data-act="home"]').click()
-    check("   Stoppen gaat terug naar het overzicht", fr.locator(".course").count() == 5)
+    check("   Stoppen gaat terug naar het overzicht", fr.locator(".course").count() == 6)
     fr.locator(".course .c-topics").first.click()
     check("   'Kies onderwerp' geeft het startscherm met terugknop", fr.locator('[data-act="overview"]').count() == 1)
     fr.locator('[data-act="start"]').first.click()
