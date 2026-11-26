@@ -401,12 +401,12 @@ with sync_playwright() as p:
     page.fill("#later-t", "dbt project evaluator")
     page.fill("#later-n", "Past dit bij onze silver-laag?")
     page.click('#later [data-later="save"]')
-    check("19. Later bekijken zet het op je lijst", "staat op je lijst" in page.locator("#later").inner_text())
+    check("19. Later bekijken zet het bij je notities", "staat bij je notities" in page.locator("#later").inner_text())
     page.click('#later a[href="#lijst"]')
     page.wait_for_selector(".later-item")
     item = page.locator(".later-item").inner_text()
-    check("   lijst staat op het tabje Later, met notitie en knop naar het artikel", "dbt project evaluator" in item and "silver-laag" in item and page.locator(".later-item .later-src").count() == 1 and "Gezien in" not in item
-          and page.locator('#seg-dd button[aria-pressed="true"]').inner_text() == "Later" and page.locator(".card.opt").count() == 0)
+    check("   lijst staat op het tabblad Notities, met notitie en knop naar het artikel", "dbt project evaluator" in item and "silver-laag" in item and page.locator(".later-item .later-src").count() == 1 and "Gezien in" not in item
+          and page.locator('#seg-view button[aria-selected="true"]').inner_text() == "Notities" and page.locator(".card.opt").count() == 0)
     href = unquote(page.locator("[data-later-pick]").get_attribute("href") or "")
     check("   verdieping maken opent een issue 'Verdieping: eigen-...'", "title=Verdieping: eigen-dbt-project-evaluator" in href and "Onderwerp: dbt project evaluator" in href
           and "Notitie: Past dit bij onze silver-laag?" in href, href[:160])
@@ -508,11 +508,11 @@ with sync_playwright() as p:
     page.wait_for_selector(".card")
 
     # 11. Tabblad Verdieping
-    check("11. tabbladen Actueel, Verdieping en Leren", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren"])
+    check("11. tabbladen Actueel, Verdieping, Leren en Notities", page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren", "Notities"])
     page.click('#seg-view button[data-v="verdieping"]')
     page.wait_for_timeout(100)
     check("   Verdieping toont alleen verdiepingen", page.locator(".card[data-dd]").count() == len(dds) and page.locator(".card[data-id]").count() == 0)
-    check("12. subtabjes Verdiepingen en Morgen", page.locator("#seg-dd button").all_inner_texts() == ["Verdiepingen", "Morgen", "Later"] and page.locator("#seg-dd").is_visible())
+    check("12. subtabjes Verdiepingen en Morgen", page.locator("#seg-dd button").all_inner_texts() == ["Verdiepingen", "Morgen"] and page.locator("#seg-view button").all_inner_texts() == ["Actueel", "Verdieping", "Leren", "Notities"] and page.locator("#seg-dd").is_visible())
     ids = page.eval_on_selector_all(".card[data-dd]", "els => els.map(e => e.dataset.dd)")
     check("   verdiepingen op datum, nieuwste eerst", ids == [d["id"] for d in sorted(dds, key=lambda d: d["written_at"], reverse=True)])
     check("   geen keuzes op het tabje Verdiepingen", page.locator(".card.opt").count() == 0)

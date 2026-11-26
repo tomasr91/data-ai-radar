@@ -475,13 +475,13 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
 <div class="filters">
   <div class="wrap">
     <div class="views" role="tablist" aria-label="Weergave" id="seg-view">
-      <button type="button" role="tab" data-v="actueel">Actueel</button><button type="button" role="tab" data-v="verdieping">Verdieping</button><button type="button" role="tab" data-v="leren">Leren</button>
+      <button type="button" role="tab" data-v="actueel">Actueel</button><button type="button" role="tab" data-v="verdieping">Verdieping</button><button type="button" role="tab" data-v="leren">Leren</button><button type="button" role="tab" data-v="notities">Notities</button>
     </div>
     <div class="tabs" role="group" aria-label="Sortering" id="seg-sort">
       <button type="button" data-v="date">Nieuw</button><button type="button" data-v="trends">Trends</button>
     </div>
     <div class="tabs" role="group" aria-label="Verdiepingen" id="seg-dd" hidden>
-      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button><button type="button" data-v="later">Later</button>
+      <button type="button" data-v="alle">Verdiepingen</button><button type="button" data-v="morgen">Morgen</button>
     </div>
   </div>
 </div>
@@ -662,8 +662,8 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       // Bij openen altijd: Actueel > Nieuw, en Verdieping op Verdiepingen (T, 1-11-2026).
       // Binnen een sessie onthoudt de app wel waar je was.
       state.sort = store.session("sort") === "trends" ? "trends" : "date";
-      state.view = ["verdieping", "leren"].includes(store.session("view")) ? store.session("view") : "actueel";
-      state.ddTab = ["morgen", "later"].includes(store.session("ddTab")) ? store.session("ddTab") : "alle";
+      state.view = ["verdieping", "leren", "notities"].includes(store.session("view")) ? store.session("view") : "actueel";
+      state.ddTab = store.session("ddTab") === "morgen" ? "morgen" : "alle";
       renderStatus();
       renderSeg();
       updateMenuDot();
@@ -915,10 +915,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       const ids = (await res.json())
         .filter((i) => !i.pull_request && (i.user?.login || "").toLowerCase() === owner)
         .map((i) => (String(i.title).match(/^\s*Verdieping:\s*([a-z0-9-]+)\s*$/i) || [])[1]).filter(Boolean).map((x) => x.toLowerCase());
-      if (ids.join() !== (state.chosen || []).join()) { state.chosen = ids; if (state.view === "verdieping" && $("#reader").hidden) renderList(); }
+      if (ids.join() !== (state.chosen || []).join()) { state.chosen = ids; if (["verdieping", "notities"].includes(state.view) && $("#reader").hidden) renderList(); }
     } catch { /* offline of GitHub niet bereikbaar: keuzes blijven gewoon zichtbaar */ }
   }
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && state.feed && state.view === "verdieping") loadChosen(true); });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && state.feed && ["verdieping", "notities"].includes(state.view)) loadChosen(true); });
 
   /* ---- Trends: "Dit speelt nu" (data/trends.json, geschreven door de Claude-taak) ---- */
   function renderTrends() {
@@ -964,9 +964,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const f = state.feed;
     showLeren(state.view === "leren");
     if (state.view === "leren") return;
+    if (state.view === "notities") { $("#content").innerHTML = renderLaterTab(); loadChosen(); return; }   // eigen tabblad (T, 26-11-2026)
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
-      $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker() : state.ddTab === "later" ? renderLaterTab()
+      $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
         : dds.length ? reviewBar() + `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
@@ -1058,7 +1059,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function laterBlock(key, title) {
     const saved = later.fromDoc(key);
     return `<section class="later" id="later" data-key="${esc(key)}" data-title="${esc(title)}">
-      ${saved ? `<p class="later-done">✓ <b>${esc(saved.title)}</b> staat op je lijst · <a href="#lijst">Bekijk lijst ›</a></p>`
+      ${saved ? `<p class="later-done">✓ <b>${esc(saved.title)}</b> staat bij je notities · <a href="#lijst">Bekijk notities ›</a></p>`
         : `<button type="button" class="act-btn" data-later="open">＋ Later</button>`}</section>`;
   }
   function laterClick(e) {
@@ -1970,7 +1971,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (h.startsWith("a-") && state.byId.has(h.slice(2))) { renderArticle(state.byId.get(h.slice(2))); return; }
     if (h === "herhaling") { renderReview(); return; }
     if (h === "lijst") {
-      state.view = "verdieping"; state.ddTab = "later"; store.set("view", state.view); store.set("ddTab", state.ddTab);
+      state.view = "notities"; store.set("view", state.view);
       history.replaceState(null, "", location.pathname + location.search);   // #lijst niet laten staan: verversen = blijven waar je bent
       renderSeg(); closeReader(); renderList(); window.scrollTo(0, 0); return;
     }
