@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T03:14:06.450243Z",
+ "generated_at": "2026-11-26T03:19:46.280684Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -14847,63 +14847,23 @@
   }
  ],
  "runs": {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "tasks": {
    "uitleggen": {
     "status": "deels",
-    "summary": "3 artikelen vol uitgelegd (1 met voorbeeld, alle 3 via WebSearch geopend), 3 overgeslagen zonder openen; de 2 Fabric-artikelen bleven onbereikbaar en staan nog op de werklijst.",
-    "finished_at": "2026-11-25T03:23:07Z",
+    "summary": "Geen artikelen uitgelegd: alle 3 artikelen op de werklijst waren vannacht niet te openen en blijven op de lijst staan.",
+    "finished_at": "2026-11-26T03:19:30Z",
     "problems": [
-     "add_repo was in deze sessie niet beschikbaar als tool; de privé-repository stond al gekloond en is bijgewerkt, dus de Dataflow-stap is wel uitgevoerd.",
-     "WebFetch weigerde alle artikeladressen direct (PROVENANCE_REQUIRED); de gelezen artikelen zijn via WebSearch geopend.",
-     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): wel gevonden via WebSearch, maar de site gaf client_error; blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): wel gevonden via WebSearch, maar de site gaf client_error; blijft op de werklijst."
+     "WebFetch weigerde alle drie artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
+     "Zoeken op de exacte titel gaf voor geen van de drie een link naar hetzelfde artikel: OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog), Where scientists draw the line on AI agents (Hugging Face/Ai2). Ze blijven op de werklijst.",
+     "Vers ophalen gelukt: feed om 03:13 UTC bijgewerkt."
     ],
     "counts": {
-     "uitgelegd": 3,
-     "overgeslagen": 3,
-     "met_voorbeeld": 1,
-     "via_websearch": 3,
-     "zonder_openen_overgeslagen": 3,
-     "onbereikbaar": 2
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen verdieping (niets gekozen); 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt",
-    "finished_at": "2026-11-25T04:15:22Z",
-    "problems": [],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5,
-     "inspiratie": 1
-    }
-   },
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen ontbrak nog (deels gelukt); de 2 overgebleven Fabric-artikelen bleven ook nu onbereikbaar en staan nog op de werklijst, verder was alles klaar.",
-    "finished_at": "2026-11-25T06:28:37Z",
-    "problems": [
-     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): via WebSearch gevonden, maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): via WebSearch gevonden (ook nieuw blogadres), maar WebFetch gaf opnieuw client_error; blijft op de werklijst.",
-     "add_repo was in deze sessie niet beschikbaar als tool; de repository stond al gekloond en is bijgewerkt."
-    ],
-    "counts": {
-     "ingehaald": 0,
-     "onbereikbaar": 2
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "3 trends bijgewerkt (2 met een nieuw artikel), geen verzoeken voor interesses of leerregels, geen begrippen aangevuld: alle uitleg had ze al.",
-    "finished_at": "2026-11-25T05:13:43Z",
-    "problems": [],
-    "counts": {
-     "trends": 3,
-     "trends_bijgewerkt": 2,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
+     "uitgelegd": 0,
+     "overgeslagen": 0,
+     "met_voorbeeld": 0,
+     "via_websearch": 0,
+     "niet_bereikbaar": 3
     }
    }
   }
@@ -15385,16 +15345,6 @@
     ]
    },
    {
-    "title": "Allow ChatGPT and Claude as partner platforms in context-based ingress policies",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-chatgpt-and-claude-as-partner-platforms-in-context-based-ingress-policies",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Importing Power BI and Tableau files with Genie Code will soon be available by default for workspaces with the compliance security profile enabled",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#importing-power-bi-and-tableau-files-with-genie-code-will-soon-be-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
@@ -15480,6 +15430,16 @@
     "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Allow ChatGPT and Claude as partner platforms in context-based ingress policies",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#allow-chatgpt-and-claude-as-partner-platforms-in-context-based-ingress-policies",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
