@@ -549,7 +549,7 @@ with sync_playwright() as p:
             check("15. Test jezelf met controlevragen", page.locator(".quiz .q").count() == len(first["quiz"]))
             page.locator(".quiz .q").first.locator(f'[data-opt-i="{wrong}"]').click()
             exp = page.locator(".quiz .q").first.inner_text()
-            check("   fout antwoord: uitleg en 'komt over een week terug'", "Niet goed" in exp and "week terug" in exp)
+            check("   fout antwoord: uitleg, zonder herhaling", "Niet goed" in exp and "week terug" not in exp)
             # een week later: vraag staat klaar als herhaling
             page.evaluate("""() => { const d = JSON.parse(localStorage.getItem('radar:quiz')); for (const k in d) d[k].due = '2000-01-01T00:00:00Z'; localStorage.setItem('radar:quiz', JSON.stringify(d)); }""")
         if SHOTS:
@@ -559,14 +559,7 @@ with sync_playwright() as p:
         check("   terug naar de verdiepingen", page.locator(".card[data-dd]").count() == len(dds))
         if first.get("quiz"):
             page.click('#seg-view button[data-v="actueel"]'); page.click('#seg-view button[data-v="verdieping"]')
-            check("   herhaling klaar bij Verdiepingen", "1 vraag om te herhalen" in page.locator("#content").inner_text())
-            page.click('a[href="#herhaling"]')
-            page.wait_for_selector("#reader:not([hidden]) .quiz .q")
-            page.locator(".quiz .q").first.locator(f'[data-opt-i="{q0["answer"]}"]').click()
-            check("   goed in de herhaling: klaar", "Goed." in page.locator(".quiz .q").first.inner_text()
-                  and page.evaluate("JSON.parse(localStorage.getItem('radar:quiz'))[Object.keys(JSON.parse(localStorage.getItem('radar:quiz')))[0]].ok") is True)
-            page.click("#back")
-            page.wait_for_selector("#reader", state="hidden")
+            check("   geen herhaling meer bij Verdiepingen", "om te herhalen" not in page.locator("#content").inner_text())
     page.click('#seg-view button[data-v="actueel"]')
     page.wait_for_timeout(100)
     check("   terug naar Actueel", page.locator(".card[data-id]").count() == len(arts))

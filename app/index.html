@@ -972,7 +972,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     if (state.view === "verdieping") {
       const dds = [...(f.deepdives || [])].sort((a, b) => Date.parse(b.written_at) - Date.parse(a.written_at));
       $("#content").innerHTML = state.ddTab === "morgen" ? renderPicker()
-        : dds.length ? reviewBar() + `<div class="cards">${dds.map(ddCard).join("")}</div>`
+        : dds.length ? `<div class="cards">${dds.map(ddCard).join("")}</div>`
         : `<div class="empty"><h3>Nog geen verdiepingen</h3><p>Kies bij Morgen een onderwerp. Claude schrijft hem de volgende ochtend.</p></div>`;
       loadChosen();
       return;
@@ -1013,7 +1013,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
       <p class="q-text">${esc(q.question)}</p>
       <div class="q-opts">${q.options.map((o, i) => `<button type="button" data-opt-i="${i}" ${answered ? "disabled" : ""}
         class="${answered && i === q.answer ? "right" : ""}${answered && rec.pick === i && i !== q.answer ? " wrong" : ""}">${esc(o)}</button>`).join("")}</div>
-      ${answered ? `<p class="q-exp"><b>${rec.pick === q.answer ? "Goed." : "Niet goed."}</b> ${esc(q.explanation)}${rec.pick !== q.answer ? " Deze vraag komt over een week terug." : ""}</p>` : ""}
+      ${answered ? `<p class="q-exp"><b>${rec.pick === q.answer ? "Goed." : "Niet goed."}</b> ${esc(q.explanation)}</p>` : ""}
     </li>`;
   }
   function quizBlock(d) {
@@ -1528,7 +1528,6 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     const stats = [
       dds.length ? `<li>Verdiepingen: <b>${dds.filter((d) => read.has("v-" + d.id)).length} van ${dds.length}</b> gelezen${dds.filter((d) => !read.has("v-" + d.id)).map((d) => `<br><a href="#v-${esc(d.id)}">${esc(d.headline)}</a>`).join("")}</li>` : "",
       qs.length ? `<li>Controlevragen: <b>${qOk} van ${qs.length}</b> goed</li>` : `<li>Controlevragen: nog geen beantwoord deze week</li>`,
-      due ? `<li><a href="#herhaling">${plural(due, "vraag", "vragen")} om te herhalen ›</a></li>` : "",
       lr ? `<li>Claude-examen: <b>${lr.practised}</b> vragen geoefend, <b>${lr.mastered}</b> beheerst in totaal</li>` : "",
       `<li>Gelezen: <b>${plural(readN, "artikel", "artikelen")}</b>${votesN ? `, ${plural(votesN, "duimpje", "duimpjes")} gegeven` : ""}</li>`,
     ].join("");
