@@ -233,6 +233,11 @@ article.card.opt.chosen { cursor: default; border-color: var(--accent2); }
 .explain .btn { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-add { height: 38px; padding: 0 14px; font-size: 0.9rem; }
 .later-list { margin-top: 10px; display: grid; gap: 10px; }
+.later-arch { margin-top: 18px; }
+.later-arch > summary { cursor: pointer; color: var(--muted); font-size: 0.86rem; padding: 6px 0; }
+.later-arch .later-list { margin-top: 8px; }
+.later-arch-item { opacity: 0.75; cursor: default; }
+.later-arch-item .sum { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .later-list .card .sum { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .later-list .card .meta .src { font-weight: 400; color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .later-list .later-form.card { cursor: default; }
@@ -1043,6 +1048,11 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     remove(id) { this.save(this.all().filter((x) => x.id !== id)); },
     update(id, patch) { this.save(this.all().map((x) => (x.id === id ? { ...x, ...patch } : x))); },
     fromDoc(key) { return this.all().find((x) => x.from?.key === key); },
+    // Klaar = naar het archief (radar:later_arch), niet weg (T, 26-11-2026)
+    arch() { try { return JSON.parse(localStorage.getItem("radar:later_arch") || "[]"); } catch { return []; } },
+    saveArch(d) { try { localStorage.setItem("radar:later_arch", JSON.stringify(d.slice(0, 200))); } catch {} },
+    done(id) { const x = this.all().find((y) => y.id === id); if (!x) return; this.remove(id); this.saveArch([{ ...x, doneAt: new Date().toISOString() }, ...this.arch().filter((y) => y.id !== id)]); },
+    restore(id) { const x = this.arch().find((y) => y.id === id); if (!x) return; this.saveArch(this.arch().filter((y) => y.id !== id)); const { doneAt, ...rest } = x; this.add(rest); },
   };
   const slug = (t) => "eigen-" + (t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 50).replace(/-+$/, "") || "onderwerp");
   function laterBlock(key, title) {
@@ -1092,7 +1102,17 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
           ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
           <div class="later-acts">${act}<button type="button" class="btn ghost" data-later-done="${esc(x.id)}">Klaar</button>${src ? `<a class="later-src" href="#${esc(x.from.key)}" aria-label="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}" title="${x.from.kind === "v" ? "Naar verdieping" : "Naar artikel"}"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h6.5L16 7v9.5H6z"/><path d="M12.5 3.5V7H16M8.5 10.5h5M8.5 13.5h5"/></svg></a>` : ""}</div></article>`;
       }).join("")}</div>
-      `;
+      ${laterArchive()}`;
+  }
+  function laterArchive() {
+    const xs = later.arch();
+    if (!xs.length) return "";
+    return `<details class="later-arch"><summary>Archief (${xs.length})</summary><div class="later-list">${xs.map((x) => `
+      <article class="card later-arch-item">
+        <div class="meta"><span class="src">Klaar op ${esc(fmtDate(x.doneAt || x.at))}</span></div>
+        <h3>${esc(x.title)}</h3>
+        ${x.note ? `<p class="sum">${esc(x.note)}</p>` : ""}
+        <div class="later-acts"><button type="button" class="btn ghost" data-later-restore="${esc(x.id)}">Terugzetten</button></div></article>`).join("")}</div></details>`;
   }
 
   // Eigen notitie op Later, los van een artikel
@@ -1141,7 +1161,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
     return true;
   }
   function renderLaterTab() {
-    if (!later.all().length) return `${laterNewBtn()}<div class="empty" style="margin-top:14px"><h3>Nog niets bewaard</h3><p>Tik onder een artikel of verdieping op <b>＋ Later</b>, of maak hierboven een eigen notitie.</p></div>`;
+    if (!later.all().length) return `${laterNewBtn()}<div class="empty" style="margin-top:14px"><h3>Nog niets bewaard</h3><p>Tik onder een artikel of verdieping op <b>＋ Later</b>, of maak hierboven een eigen notitie.</p></div>${laterArchive()}`;
     return laterNewBtn() + renderLater(true);
   }
 
@@ -1978,7 +1998,9 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   $("#content").addEventListener("click", (e) => {
     if (laterNewClick(e) || laterEditClick(e)) return;
     const done = e.target.closest("[data-later-done]");
-    if (done) { later.remove(done.dataset.laterDone); renderList(); return; }
+    if (done) { later.done(done.dataset.laterDone); renderList(); return; }
+    const back = e.target.closest("[data-later-restore]");
+    if (back) { later.restore(back.dataset.laterRestore); renderList(); return; }
     const pick = e.target.closest("[data-later-pick]");
     if (pick) { state.chosen = [...(state.chosen || []), pick.dataset.laterPick]; setTimeout(renderList, 300); }
   });

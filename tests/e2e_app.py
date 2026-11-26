@@ -412,6 +412,11 @@ with sync_playwright() as p:
           and "Notitie: Past dit bij onze silver-laag?" in href, href[:160])
     page.click("[data-later-done]")
     check("   Klaar haalt het van de lijst", page.locator(".later-item").count() == 0 and "Nog niets bewaard" in page.locator("#content").inner_text())
+    check("   ... en zet het in het archief (dicht)", page.locator(".later-arch summary").inner_text() == "Archief (1)"
+          and not page.locator(".later-arch").evaluate("e => e.open"))
+    page.click(".later-arch summary"); page.click("[data-later-restore]")
+    check("   terugzetten uit het archief", page.locator(".later-item").count() == 1 and page.locator(".later-arch").count() == 0)
+    page.click("[data-later-done]")
     page.click('[data-later-new="open"]')
     page.fill("#later-new-t", "Eigen notitie-test")
     page.fill("#later-new-n", "Even uitzoeken.")
