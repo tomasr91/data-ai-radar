@@ -1,0 +1,201 @@
+{
+  "format_version": 1,
+  "id": "ai-functies-op-grote-batches",
+  "plan_id": "ai-functies-op-grote-batches",
+  "request_issue": 39,
+  "headline": "AI-functies op duizenden documenten: in je query of op de achtergrond?",
+  "summary": "Een AI-functie zoals ai_extract roep je meestal gewoon aan in een SQL-query. Voor een hele map documenten heeft Databricks nu ook een asynchrone variant (Beta): je levert een JSONL-bestand met verzoeken aan, en Databricks werkt die op de achtergrond af. Dit stuk legt uit wanneer je wat kiest, hoe je de uitkomst controleert, en waarom je runtimeversie in januari telt.",
+  "sections": [
+    {
+      "heading": "Twee manieren om een AI-functie te laten werken",
+      "paragraphs": [
+        "Databricks heeft een reeks AI-functies die je in SQL aanroept. Sommige zijn gemaakt voor één taak, zoals ai_parse_document (een document lezen), ai_extract (velden eruit halen) en ai_classify (een label kiezen). Met ai_query kies je zelf een model en schrijf je zelf de opdracht.",
+        "Tot nu toe draaide zo'n functie synchroon: de query start, roept voor elke rij het model aan, en is pas klaar als alle rijen een antwoord hebben. Dat werkt prima voor een tabel met tekstvelden. Bij een map met duizenden pdf's kan zo'n query lang openstaan.",
+        "Sinds 9 november is er daarom een asynchrone variant, de AI Functions Asynchronous API (Beta). Asynchroon betekent: je geeft de opdracht af en hoeft niet te wachten. Vergelijk het met een wasserette. Synchroon blijf je bij de machine staan tot de was klaar is. Asynchroon lever je een zak in, krijg je een bonnetje, en haal je de was later op."
+      ]
+    },
+    {
+      "heading": "Synchroon: de hele tabel in één query",
+      "paragraphs": [
+        "Voor de meeste gevallen blijft de gewone query de eenvoudigste keuze. Volgens de documentatie regelen AI-functies zelf het parallel werken, nieuwe pogingen bij fouten en het opschalen. Databricks raadt aan om je hele dataset in één query aan te bieden, in plaats van hem zelf in kleine stukjes te knippen.",
+        "Een tweede advies gaat over ai_query. Gebruik daar de modellen die Databricks zelf host, met namen die beginnen met databricks-. Die zijn volgens de documentatie volledig beheerd en het meest geschikt voor batches. Na afloop zie je in het query-profiel hoeveel aanroepen gelukt en mislukt zijn.",
+        "Voor documenten combineer je ai_parse_document met read_files op een volume. Daar gelden grenzen: een document mag hooguit 500 pagina's hebben en hooguit 100 MB groot zijn. Een document met meer pagina's mislukt meteen, tenzij je met de optie pageRange een deel kiest."
+      ]
+    },
+    {
+      "heading": "Asynchroon: een bestand met verzoeken",
+      "paragraphs": [
+        "De asynchrone variant werkt niet met een query, maar via een REST-API. Je maakt eerst een JSONL-bestand in een volume van Unity Catalog. Elke regel is één verzoek, met een eigen kenmerk (custom_id) en de invoer (body). Eén bestand mag tot 50.000 verzoeken bevatten en hooguit 200 MiB groot zijn.",
+        "Daarna stuur je één opdracht naar de API. Daarin staat welke functie moet draaien, waar het invoerbestand staat en waar de uitvoer moet komen. Instellingen die voor alle verzoeken gelden, zoals het schema van velden voor ai_extract, geef je één keer mee. Volgens de release notes werkt dit met ai_parse_document, ai_extract en ai_classify.",
+        "Je krijgt een batch terug met een status. Die begint als PENDING, loopt als IN_PROGRESS, staat op FINALIZING terwijl het uitvoerbestand wordt geschreven, en eindigt als COMPLETED. Tussendoor vraag je op hoe ver hij is: hoeveel verzoeken er in totaal zijn, hoeveel gelukt en hoeveel mislukt.",
+        "Een workspacebeheerder moet de preview eerst aanzetten op de pagina Previews. Zolang dat niet gebeurd is, kun je de API niet aanroepen."
+      ]
+    },
+    {
+      "heading": "Let op: gelukt betekent niet dat alles gelukt is",
+      "paragraphs": [
+        "De belangrijkste valkuil zit in de uitvoer. Een batch met status COMPLETED kan toch verzoeken bevatten die mislukt zijn. In het uitvoerbestand heeft elke regel dan geen antwoord (response) maar een fout (error), met een type en een bericht.",
+        "De documentatie zegt er uitdrukkelijk bij dat de dienst mislukte verzoeken niet opnieuw probeert. Dat moet je dus zelf regelen. Een logische aanpak: lees de uitvoer in, zoek de regels met een fout, en zet alleen die in een nieuw invoerbestand voor een volgende batch.",
+        "Hier helpt het eigen kenmerk per verzoek. Gebruik iets wat je later terugvindt, zoals de bestandsnaam of een sleutel uit je tabel. Dan koppel je elke uitkomst weer aan het juiste document. Een batch met status FAILED heeft helemaal geen uitvoerbestand."
+      ]
+    },
+    {
+      "heading": "Kosten en de grens van januari",
+      "paragraphs": [
+        "Bij AI-functies betaal je twee dingen. De compute waarop je query draait, betaal je altijd. Daarbovenop komen bij ai_parse_document, ai_extract en ai_classify de kosten van het model, dat op GPU's van Databricks draait. In de systeemtabel system.billing.usage staan die onder het product AI_FUNCTIONS. Een apart tarief voor de asynchrone variant staat niet in de documentatie die ik las.",
+        "Dan de runtime. De algemene pagina over AI-functies vraagt nu minimaal Databricks Runtime 15.4 LTS en raadt 18.2 aan. Maar volgens de release notes van week 45 werken AI-functies in SQL vanaf januari 2027 alleen nog op 17.3 LTS en hoger. Voor ai_parse_document geldt 17.3 nu al. Op klassieke SQL warehouses werken AI-functies niet.",
+        "Draai je AI-functies in een job of notebook op een oudere runtime, dan is dit het moment om over te stappen. De functie ai_similarity en de REST API van AI-functies vallen volgens de release notes buiten deze grens."
+      ]
+    },
+    {
+      "heading": "Een derde weg: de AI Function-taak in een job",
+      "paragraphs": [
+        "Naast de query en de API is er sinds 4 november nog een optie: een AI Function-taak in een Lakeflow Job (bèta). Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft.",
+        "Het handige is dat elke run alleen verwerkt wat nieuw of veranderd is. De uitkomst komt in een tabel in Unity Catalog, die een volgende taak weer kan lezen. Dat lijkt op een incrementeel dbt-model, maar dan voor documenten.",
+        "Grofweg kies je zo. Een tabel met tekst die je toch al in SQL bewerkt: de gewone query. Een map documenten die elke dag aanvult: de AI Function-taak. Eén grote, losse stapel documenten die je niet in een query wilt laten wachten: de asynchrone API. Dat laatste is een eigen afweging, geen advies uit de documentatie."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Je wilt data uit je medaillonarchitectuur als invoer voor AI gebruiken. Documenten zijn daarbij vaak de lastigste bron. Met deze drie routes kun je een map documenten omzetten naar een tabel in Silver, binnen Databricks en dus binnen je eigen toegangsrechten.",
+        "Voor zorgdata is één detail belangrijk. Sinds 13 mei 2026 is ai_parse_document standaard beschikbaar in werkruimtes met het compliance security profile, als daar de HIPAA-controles zijn gekozen. Volgens de documentatie bewaart Databricks de invoer van een AI-functie niet, wel gegevens over de run zoals de runtimeversie. Laat dit wel toetsen aan jullie eigen regels voordat je echte documenten gebruikt.",
+        "Controleer als eerste welke runtime je jobs en notebooks met AI-functies nu gebruiken. Dat moet vóór januari geregeld zijn, ongeacht welke route je kiest."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Na een asynchrone batch controleer je de uitvoer: elke regel heeft een response of een error. Deze query telt per uitkomst hoeveel documenten er zijn en welke opnieuw moeten.",
+    "language": "sql",
+    "code": "-- Uitvoer van de batch: één JSON-regel per verzoek\nSELECT\n  CASE WHEN error IS NULL THEN 'gelukt' ELSE 'mislukt' END AS uitkomst,\n  COUNT(*) AS aantal,\n  string_agg(custom_id, ', ' ORDER BY custom_id) AS bestanden\nFROM read_files(\n  '/Volumes/demo/documenten/batch/output/',\n  format => 'json'\n)\nGROUP BY uitkomst\nORDER BY uitkomst;",
+    "result": {
+      "columns": [
+        "uitkomst",
+        "aantal",
+        "bestanden"
+      ],
+      "rows": [
+        [
+          "gelukt",
+          3,
+          "folder-001.pdf, folder-002.pdf, folder-004.pdf"
+        ],
+        [
+          "mislukt",
+          2,
+          "folder-003.pdf, folder-005.pdf"
+        ]
+      ]
+    },
+    "note": "Het formaat van de uitvoerregels (custom_id met response of error) komt uit de API-documentatie van Databricks. De uitkomst is nagebouwd met read_json in DuckDB; in Databricks gebruik je read_files. De fouttypes in het voorbeeldbestand zijn verzonnen."
+  },
+  "experiment": "Zet tien openbare pdf's, bijvoorbeeld jaarverslagen van gemeenten, in een volume in een testcatalogus. Haal er met ai_extract in een gewone query drie velden uit en kijk in het query-profiel hoeveel aanroepen lukten. Is de asynchrone preview aangezet, maak dan een JSONL-bestand met dezelfde tien verzoeken, start een batch en vergelijk de uitvoer. Gebruik geen werk- of patiëntdocumenten.",
+  "limitations": [
+    "De asynchrone API is Beta: velden en gedrag kunnen nog veranderen, en een beheerder moet hem aanzetten.",
+    "Mislukte verzoeken worden niet opnieuw geprobeerd; dat moet je zelf inbouwen.",
+    "Het modelgebruik kost geld bovenop je compute; houd system.billing.usage in de gaten bij grote batches.",
+    "Documenten met zorgdata pas verwerken na toetsing van privacy, beveiliging en toegangsrechten."
+  ],
+  "further_reading": [
+    {
+      "label": "AI Functions on Azure Databricks (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/large-language-models/ai-functions",
+      "note": "Overzicht van alle AI-functies, de runtime-eisen, het advies voor grote batches en hoe de kosten worden geboekt."
+    },
+    {
+      "label": "Create a batch (Databricks REST API, AI Functions)",
+      "url": "https://docs.databricks.com/api/ai-functions/v1/create-batch.md",
+      "note": "Hoe je een asynchrone batch start: de velden, het JSONL-formaat en de grenzen."
+    },
+    {
+      "label": "The Batch object (Databricks REST API, AI Functions)",
+      "url": "https://docs.databricks.com/api/ai-functions/v1/batch/object.md",
+      "note": "De statussen van een batch, de tellers en wat er met mislukte verzoeken gebeurt."
+    },
+    {
+      "label": "ai_parse_document function (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
+      "note": "Syntax, bestandsformaten, de grens van 500 pagina's en de eis van Runtime 17.3."
+    },
+    {
+      "label": "Perform batch LLM inference using AI Functions (Microsoft Learn)",
+      "url": "https://learn.microsoft.com/azure/databricks/large-language-models/ai-query-batch-inference",
+      "note": "Voorbeelden van batches met ai_query en taakfuncties, ook in pipelines en met Structured Streaming."
+    }
+  ],
+  "terms": [
+    {
+      "term": "ai_extract",
+      "explanation": "Een AI-functie in Databricks die vaste velden, zoals een datum of bedrag, uit tekst of een document haalt en als gestructureerde uitkomst teruggeeft."
+    },
+    {
+      "term": "ai_query",
+      "explanation": "De algemene AI-functie in Databricks SQL: je kiest zelf een model en schrijft zelf de opdracht, en krijgt per rij een antwoord."
+    },
+    {
+      "term": "asynchroon",
+      "explanation": "Je geeft een opdracht af en wacht niet tot hij klaar is. Later vraag je de status op en haal je de uitkomst op."
+    },
+    {
+      "term": "JSONL",
+      "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
+    },
+    {
+      "term": "REST-API",
+      "explanation": "Een manier waarop programma's via internetverzoeken met een dienst praten, bijvoorbeeld om een opdracht te starten of een status op te vragen."
+    },
+    {
+      "term": "volume",
+      "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen."
+    },
+    {
+      "term": "compliance security profile",
+      "explanation": "Een instelling voor een Databricks-werkruimte met extra beveiliging en controles voor strenge regels, zoals HIPAA voor zorgdata."
+    },
+    {
+      "term": "LTS",
+      "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Je hebt een Silver-tabel met 200.000 korte tekstvelden die je met ai_classify wilt labelen. Wat raadt de documentatie aan?",
+      "options": [
+        "De tabel zelf in kleine stukjes knippen en die na elkaar aanbieden",
+        "De hele tabel in één query aanbieden; de AI-functie regelt het parallel werken en opschalen",
+        "Altijd de asynchrone API gebruiken zodra het om meer dan 1.000 rijen gaat"
+      ],
+      "answer": 1,
+      "explanation": "Volgens de documentatie regelen AI-functies zelf parallel werken, nieuwe pogingen en opschalen, en bied je de hele dataset het best in één query aan."
+    },
+    {
+      "question": "Een asynchrone batch eindigt met status COMPLETED. Wat moet je daarna nog doen?",
+      "options": [
+        "Niets, COMPLETED betekent dat elk verzoek een antwoord heeft",
+        "Wachten tot Databricks de mislukte verzoeken vanzelf opnieuw probeert",
+        "De uitvoer nalopen op regels met een error en die zelf opnieuw aanbieden",
+        "De batch opnieuw starten met hetzelfde invoerbestand"
+      ],
+      "answer": 2,
+      "explanation": "Een COMPLETED batch kan mislukte verzoeken bevatten, en de dienst probeert die niet opnieuw. Je zoekt dus de regels met een error op en biedt alleen die opnieuw aan."
+    },
+    {
+      "question": "Waarom is januari 2027 belangrijk als je AI-functies in een job gebruikt?",
+      "options": [
+        "Dan werken AI-functies in SQL alleen nog op Databricks Runtime 17.3 LTS en hoger",
+        "Dan stopt de asynchrone API en moet alles weer synchroon",
+        "Dan worden AI-functies alleen nog op klassieke SQL warehouses ondersteund"
+      ],
+      "answer": 0,
+      "explanation": "Volgens de release notes van week 45 werken AI-functies in SQL vanaf januari 2027 niet meer op runtimes onder 17.3 LTS. Op klassieke SQL warehouses werken ze nu al niet."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 26 november 2026. De algemene pagina over AI-functies is bijgewerkt op 27 oktober 2026 en die over ai_parse_document op 22 oktober 2026; de API-pagina's over batches hebben geen datum maar beschrijven de Beta van november. De datums van de asynchrone API (9 november), de AI Function-taak (4 november) en de runtimegrens van januari 2027 komen uit de Azure Databricks-release notes van week 45 en 46, zoals de radar die eerder uitlegde; de release-notespagina zelf kon ik deze keer niet openen. De algemene pagina noemt nog 15.4 LTS als minimum; ik noem daarom beide en zeg welke vanaf januari geldt. Een apart tarief voor de asynchrone API heb ik niet gevonden en dus niet genoemd.",
+  "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+  ],
+  "written_at": "2026-11-26T04:22:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
