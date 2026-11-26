@@ -1,0 +1,166 @@
+{
+  "format_version": 1,
+  "id": "eigen-wat-houdt-lakeflow-in",
+  "plan_id": "eigen-wat-houdt-lakeflow-in",
+  "request_issue": 38,
+  "headline": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam",
+  "summary": "Lakeflow is de naam die Databricks gebruikt voor alles rond data-engineering: data binnenhalen, bewerken en op tijd laten draaien. Het bestaat uit vier delen: Lakeflow Connect, Lakeflow pipelines, Lakeflow Jobs en Lakeflow Designer. Dit stuk legt uit wat elk deel doet, hoe ze samenhangen en hoe je ze naast dbt gebruikt in je dagelijkse werk.",
+  "sections": [
+    {
+      "heading": "Eén naam voor drie soorten werk",
+      "paragraphs": [
+        "In de materialized view-verdieping kwam je het woord al tegen: achter een materialized view maakt Databricks een Lakeflow-pipeline. Lakeflow is geen los product. Databricks noemt het een complete oplossing voor data-engineering, voor drie soorten werk: data binnenhalen (ingestion), data bewerken (transformation) en alles op tijd laten draaien (orchestration).",
+        "Een vergelijking met een restaurant helpt. Eerst komt de inkoop: groente en vlees moeten binnenkomen. Dan de keuken: daar wordt het bewerkt tot gerechten. En er is een rooster dat bepaalt wie wanneer wat doet. Lakeflow Connect is de inkoop, Lakeflow pipelines zijn de keuken, en Lakeflow Jobs is het rooster.",
+        "Er is nog een vierde deel, Lakeflow Designer. Dat is een visuele manier om de keuken te gebruiken, zonder zelf code te schrijven. Alle delen gebruiken Unity Catalog voor rechten en beheer, zodat je tabellen en toegang op één plek blijven."
+      ]
+    },
+    {
+      "heading": "Lakeflow Connect: de data binnenhalen",
+      "paragraphs": [
+        "Lakeflow Connect bevat koppelingen (connectors) naar bronnen buiten Databricks. Er zijn koppelingen voor databases zoals SQL Server, Oracle en PostgreSQL, die met CDC alleen de wijzigingen ophalen. Er zijn koppelingen voor apps zoals Salesforce en Workday, voor bestanden in SharePoint of Google Drive, en voor berichtensystemen zoals Kafka.",
+        "Je kunt kiezen tussen twee manieren. Een volledig beheerde koppeling (managed connector) regelt het inloggen bij de bron, de CDC, nieuwe pogingen bij fouten en het meegaan met nieuwe kolommen. Lukt dat niet voor jouw bron, dan schrijf je zelf een pipeline met SQL of Spark. Databricks raadt aan om bij de meest beheerde laag te beginnen en pas een laag omlaag te gaan als het moet.",
+        "Een beheerde koppeling maak je in de webinterface, maar ook met Declarative Automation Bundles, de API, de SDK's of de CLI. Daarnaast zijn er koppelingen van de community. Die zijn open source, maar Databricks staat er niet garant voor. Meer over de basis lees je in de verdieping over ingestion."
+      ]
+    },
+    {
+      "heading": "Lakeflow pipelines: beschrijven wat je wilt hebben",
+      "paragraphs": [
+        "Lakeflow pipelines zijn het deel waar je data bewerkt. Ze zijn declaratief: je beschrijft welke tabellen je wilt, in SQL of Python, en de pipeline bepaalt zelf de volgorde. Dat ken je van dbt, waar ref() de volgorde van je modellen bepaalt. Lakeflow pipelines bouwen op Apache Spark Declarative Pipelines, de open-source basis. In oudere teksten heet dit deel nog Delta Live Tables.",
+        "Een pipeline kent een paar bouwstenen. Een streaming table is een Delta-tabel die nieuwe data stap voor stap verwerkt. Een materialized view slaat de uitkomst van een query op en ververst die. Een flow is de stap die de data verwerkt en in zo'n tabel schrijft. Een sink is een doel buiten de pipeline, zoals Kafka of Azure Event Hubs.",
+        "Het verschil tussen de twee soorten tabellen zit in hoe de flow werkt. Naar een streaming table schrijft een flow alleen wat nieuw is, zoals een lopende band. Een materialized view rekent de query als geheel uit, als een batch, al probeert Databricks waar het kan alleen de wijzigingen te verwerken.",
+        "Je hoeft niet meteen een hele pipeline te bouwen. Sinds 11 november zijn losse streaming tables en materialized views algemeen beschikbaar vanuit een notebook op serverless compute. Ook een streaming table of materialized view die je in Databricks SQL maakt, draait achter de schermen als Lakeflow-pipeline."
+      ]
+    },
+    {
+      "heading": "Lakeflow Jobs: het rooster",
+      "paragraphs": [
+        "Lakeflow Jobs regelt wanneer wat draait, en bewaakt of het goed gaat. Een job bestaat uit één of meer taken (tasks). Een taak kan een notebook zijn, een pipeline, een beheerde koppeling, een SQL-query, of het trainen en uitrollen van een model. dbt kan er ook als taak in draaien.",
+        "Taken kunnen na elkaar of naast elkaar lopen. Met control flow kun je ook keuzes maken: als-dan-anders (if/else), of dezelfde taak herhalen voor elk item in een lijst (for each). Zo kan één job eerst de data ophalen, dan dbt draaien en alleen bij succes een rapport verversen.",
+        "In november kwamen er twee nuttige bèta-functies bij. Een job kan nu starten zodra één of meer andere jobs klaar zijn, ook in andere werkruimtes met dezelfde metastore. En je kunt rekenen met datums in parameters, zodat een job bijvoorbeeld de datum van gisteren doorgeeft aan een ophaalscript."
+      ]
+    },
+    {
+      "heading": "Lakeflow Designer: klikken in plaats van code",
+      "paragraphs": [
+        "Lakeflow Designer is een visueel hulpmiddel om data voor te bereiden. Je sleept blokken op een canvas, zoals filteren, samenvoegen, groeperen en omvormen. Je kunt ook in gewone taal zeggen wat je wilt; dat gebeurt met Genie Code.",
+        "Volgens de documentatie staat achter elke Designer-stroom code die klaar is voor productie en die onder Unity Catalog valt. Het is dus geen los speeltje. Het is vooral bedoeld voor collega's die geen SQL of Python schrijven. Voor jou, met dbt als vaste werkwijze, is het minder nodig."
+      ]
+    },
+    {
+      "heading": "Hoe ziet dat er op een gewone werkdag uit?",
+      "paragraphs": [
+        "Stel je een dag voor met de hele keten. 's Nachts haalt een koppeling of een streaming table de nieuwe data uit de bron naar je bronze-laag. Daarna start een job je dbt-project, dat Silver en Gold bouwt zoals je gewend bent. Een materialized view in Gold voor een veelgebruikt dashboard ververst zichzelf als de data eronder verandert.",
+        "Overdag kijk je vooral naar de bewaking. In de job zie je welke taak faalde en waarom. Een kapotte bron hoeft dan niet je hele nacht te verpesten. Je kunt bijvoorbeeld laten wachten met dbt tot de ophaaljob echt klaar is, in plaats van op een vaste tijd te starten en te hopen dat het goed ging.",
+        "Lakeflow en dbt zitten elkaar daarbij niet in de weg. Een vuistregel die uit de vorige verdiepingen volgt: Lakeflow Connect en streaming tables voor het binnenhalen, dbt voor de modellen met je eigen logica en tests, en Lakeflow Jobs als rooster eromheen. Materialized views zijn de plek waar ze elkaar raken, want dbt kan ze ook aanmaken."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor jou?",
+      "paragraphs": [
+        "Je bronsystemen zijn onder andere HiX en AFAS. De eerste vraag is hoe die data nu binnenkomt. Komt het als bestanden, dan is een streaming table met read_files de kleinste stap. Is het een SQL Server-database, dan is een beheerde koppeling van Lakeflow Connect het bekijken waard.",
+        "Een tweede stap is je dbt-run als taak in een job zetten, direct na het ophalen. Dan heb je de hele keten op één plek, met één overzicht van fouten. Wil je die job meenemen naar test en productie, dan beschrijf je hem in een bundel; dat staat in de verdieping over bundels.",
+        "Begin klein. Kies één bron en één job, en laat die een week naast de huidige manier meedraaien. Kijk dan of de bewaking je iets oplevert wat je nu mist."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Een kleine keten in SQL: een streaming table haalt elk uur nieuwe bestanden binnen, en een materialized view maakt er een dagoverzicht van. Achter beide maakt Databricks zelf een Lakeflow-pipeline.",
+    "language": "sql",
+    "code": "-- Binnenhalen: elk uur alleen nieuwe bestanden uit een volume\nCREATE OR REFRESH STREAMING TABLE bronze.demo.bestellingen_raw\n  SCHEDULE EVERY 1 hour\n  AS SELECT *\n  FROM STREAM read_files(\n    '/Volumes/bronze/demo/landing/bestellingen/',\n    format => 'json'\n  );\n\n-- Bewerken: een dagoverzicht dat Databricks zelf ververst\nCREATE OR REPLACE MATERIALIZED VIEW gold.demo.bestellingen_per_dag\n  SCHEDULE EVERY 1 DAY\nAS SELECT datum, count(*) AS aantal\nFROM bronze.demo.bestellingen_raw\nGROUP BY datum;",
+    "note": "De notatie komt uit de Azure Databricks-documentatie over losse streaming tables en materialized views. Dit draait alleen in Databricks, daarom staat er geen resultaat bij. In de praktijk bouw je het dagoverzicht meestal met dbt op Silver."
+  },
+  "experiment": "Maak in een testcatalogus een volume en zet er drie kleine JSON-bestanden met verzonnen bestellingen in. Maak de streaming table en de materialized view uit het voorbeeld. Voeg een vierde bestand toe, ververs met REFRESH STREAMING TABLE en kijk of alleen dat bestand erbij komt. Open daarna de pipeline die Databricks erbij maakte, en zet tot slot een job op die de refresh en een SQL-query na elkaar draait.",
+  "limitations": [
+    "Een deel van de nieuwe functies, zoals jobs die op andere jobs wachten en datums in parameters, is nog bèta.",
+    "Beheerde koppelingen en serverless pipelines kosten rekentijd los van je SQL warehouse; houd de systeemtabellen in de gaten.",
+    "Koppelingen van de community vallen niet onder de garanties van Databricks.",
+    "Bij zorgdata uit HiX gelden dezelfde regels voor toegang en privacy als nu; een koppeling verandert daar niets aan."
+  ],
+  "further_reading": [
+    {
+      "label": "Data engineering with Databricks (Microsoft Learn, oktober 2026)",
+      "url": "https://learn.microsoft.com/en-us/azure/databricks/data-engineering",
+      "note": "Het officiële overzicht van Lakeflow: de vier delen en de bouwstenen van een pipeline in één pagina."
+    },
+    {
+      "label": "What is Lakeflow Connect? (Databricks, november 2026)",
+      "url": "https://docs.databricks.com/aws/en/ingestion/overview",
+      "note": "Alle soorten koppelingen, de lagen van meest beheerd tot zelf bouwen, en het advies waar je begint."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Lakeflow Connect",
+      "explanation": "Het deel van Databricks met kant-en-klare koppelingen naar databases, apps en bestandsbronnen, die data incrementeel in Unity Catalog laden."
+    },
+    {
+      "term": "Lakeflow Jobs",
+      "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+      "term": "Lakeflow Designer",
+      "explanation": "Een visueel hulpmiddel in Databricks om data voor te bereiden met blokken op een canvas of met opdrachten in gewone taal."
+    },
+    {
+      "term": "declaratief",
+      "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
+    },
+    {
+      "term": "streaming table",
+      "explanation": "Een tabel in Databricks die nieuwe data steeds incrementeel verwerkt zodra die binnenkomt."
+    },
+    {
+      "term": "flow",
+      "explanation": "In een Lakeflow-pipeline de stap die data leest, bewerkt en wegschrijft naar een streaming table, materialized view of sink."
+    },
+    {
+      "term": "control flow",
+      "explanation": "Regels in een job die bepalen welke taak wanneer draait, zoals als-dan-anders of een taak herhalen voor elk item in een lijst."
+    },
+    {
+      "term": "Declarative Automation Bundles",
+      "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Welk deel van Lakeflow zorgt ervoor dat je dbt-run pas start als het ophalen van de data klaar is?",
+      "options": [
+        "Lakeflow Connect",
+        "Lakeflow Jobs",
+        "Lakeflow Designer",
+        "Een materialized view"
+      ],
+      "answer": 1,
+      "explanation": "Lakeflow Jobs is het rooster: het bepaalt welke taken na elkaar draaien en bewaakt of ze slagen. Connect haalt data op, Designer is een visuele manier van bewerken."
+    },
+    {
+      "question": "Je wilt data uit een SQL Server-bron binnenhalen. Waar raadt Databricks aan te beginnen?",
+      "options": [
+        "Zelf een Spark-script schrijven, dan heb je de meeste controle",
+        "Bij de meest beheerde laag, zoals een beheerde koppeling, en pas een laag omlaag als die niet past",
+        "Met Lakeflow Designer, omdat dat zonder code kan"
+      ],
+      "answer": 1,
+      "explanation": "Databricks adviseert te beginnen bij de meest beheerde laag. Die regelt inloggen, CDC, nieuwe pogingen en schema-wijzigingen. Pas als je bron niet wordt ondersteund, ga je een laag omlaag."
+    },
+    {
+      "question": "Wat is het verschil tussen een streaming table en een materialized view in een Lakeflow-pipeline?",
+      "options": [
+        "Een streaming table verwerkt alleen wat nieuw is; een materialized view rekent de uitkomst van een query als geheel uit",
+        "Een streaming table is alleen voor Kafka; een materialized view alleen voor bestanden",
+        "Er is geen verschil, het zijn twee namen voor hetzelfde"
+      ],
+      "answer": 0,
+      "explanation": "Een flow naar een streaming table werkt met streaming: alleen nieuwe data. Een materialized view heeft batch-gedrag en slaat de uitkomst van een query op, al ververst Databricks waar het kan alleen de wijzigingen."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 26 november 2026 in het Lakeflow-overzicht van Azure Databricks (bijgewerkt 15 oktober 2026) en de Lakeflow Connect-pagina (bijgewerkt 5 november 2026). De nieuwe functies van november (losse streaming tables en materialized views op serverless, jobs die op andere jobs wachten, datums in parameters) komen uit de release notes van week 45 en 46 zoals de radar die eerder uitlegde. De notatie in het voorbeeld komt uit eerdere verdiepingen die de documentatie over losse streaming tables en materialized views volgden. Ik gebruik de huidige namen Lakeflow pipelines en Declarative Automation Bundles; Delta Live Tables noem ik alleen als oude naam. De status van Lakeflow Designer en de precieze triggers van jobs staan niet op de pagina's die ik kon lezen en heb ik weggelaten.",
+  "topics": [
+    "databricks_data_engineering",
+    "data_ingestion"
+  ],
+  "written_at": "2026-11-26T04:23:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
