@@ -28,6 +28,11 @@ Een nieuw inhoudsbestand moet ook als `<script>` in `index.html` staan, vóór `
 - Bron: de examengids-PDF op databricks.com (staat in `registry.js`) en docs.databricks.com.
 - Vragen: `content/dbxdea/questions-1.js`; uitleg: `content/dbxdea/modules-1.js`.
 
+## Get Started with Databricks for Data Engineering (`dbxgs`, sinds 26 november 2026)
+
+- Geen examen: een korte beginnerscursus van Databricks Academy (onboarding, ongeveer 2 uur). De onderwerpen volgen de cursuspagina (staat in `registry.js`); de weging is gelijk verdeeld.
+- Vragen: `content/dbxgs/questions-1.js`; uitleg: `content/dbxgs/modules-1.js`.
+
 ## Opslag en meldingen
 
 - **Voortgang**: in de browser (`localStorage`, sleutel `cca-academy-v2`). Export/import via "Voortgang en back-up".

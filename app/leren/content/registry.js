@@ -296,4 +296,45 @@
         sb("d7.4", "ABAC policies with governed tags", "ABAC-policies")] }
     ]
   });
+
+  /* ---------- Get Started with Databricks for Data Engineering (Databricks Academy) ----------
+     Geen examen: een korte beginnerscursus (onboarding, ongeveer 2 uur). Onderwerpen volgen de cursuspagina;
+     de cursus noemt geen weging, de weging hieronder is gelijk verdeeld (de bonus iets lager). */
+  Academy.defineCert({
+    id: "dbxgs", status: "active", code: "Academy", name: "Get Started with Databricks for Data Engineering", short: "Databricks start",
+    audience: "Beginners: een basis-workflow voor data engineering op Databricks, van tabel tot geplande job.",
+    exam: { format: "Geen examen: cursus van Databricks Academy (onboarding, ongeveer 2 uur)" },
+    guideVersion: "Cursuspagina Databricks Academy (gecontroleerd 26 november 2026)",
+    verifiedOn: "26 november 2026",
+    sources: [
+      { label: "Cursuspagina", url: "https://www.databricks.com/training/catalog/get-started-with-databricks-for-data-engineering-2469" },
+      { label: "Databricks-documentatie", url: "https://docs.databricks.com" }
+    ],
+    domains: [
+      { id: "d1", n: 1, name: "The Databricks platform", nl: "Het platform en de workspace", weight: 12, subs: [
+        sb("d1.1", "Workspace, notebooks and compute", "Workspace, notebooks en compute"),
+        sb("d1.2", "Unity Catalog: catalogs, schemas, tables and volumes", "Unity Catalog")] },
+      { id: "d2", n: 2, name: "Creating Delta Lake tables", nl: "Delta-tabellen maken", weight: 12, subs: [
+        sb("d2.1", "Creating tables", "Tabellen maken"),
+        sb("d2.2", "Inspecting tables", "Tabellen bekijken")] },
+      { id: "d3", n: 3, name: "Modifying data", nl: "Data wijzigen", weight: 12, subs: [
+        sb("d3.1", "INSERT, UPDATE and DELETE", "INSERT, UPDATE en DELETE"),
+        sb("d3.2", "MERGE", "MERGE")] },
+      { id: "d4", n: 4, name: "Version history and time travel", nl: "Versies en time travel", weight: 12, subs: [
+        sb("d4.1", "Table history and time travel", "Geschiedenis en time travel"),
+        sb("d4.2", "Restoring and cleaning up", "Terugzetten en opruimen")] },
+      { id: "d5", n: 5, name: "Data ingestion", nl: "Data binnenhalen", weight: 14, subs: [
+        sb("d5.1", "CTAS and the upload UI", "CTAS en uploaden"),
+        sb("d5.2", "COPY INTO", "COPY INTO")] },
+      { id: "d6", n: 6, name: "Medallion architecture pipeline", nl: "Medaillon: bronze, silver, gold", weight: 14, subs: [
+        sb("d6.1", "Bronze, silver and gold", "De drie lagen"),
+        sb("d6.2", "Transforming between layers", "Van laag naar laag")] },
+      { id: "d7", n: 7, name: "Automating with Lakeflow Jobs", nl: "Automatiseren met Lakeflow Jobs", weight: 14, subs: [
+        sb("d7.1", "Tasks and dependencies", "Taken en afhankelijkheden"),
+        sb("d7.2", "Schedules and monitoring", "Plannen en bewaken")] },
+      { id: "d8", n: 8, name: "Bonus: Spark Declarative Pipelines", nl: "Bonus: declarative pipelines", weight: 10, subs: [
+        sb("d8.1", "Streaming tables and materialized views", "Streaming tables en materialized views"),
+        sb("d8.2", "Expectations", "Expectations")] }
+    ]
+  });
 })();
