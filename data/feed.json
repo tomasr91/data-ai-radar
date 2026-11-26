@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T04:24:56.910205Z",
+ "generated_at": "2026-11-26T04:25:48.839809Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -11455,6 +11455,48 @@
  },
  "inspiratie": [
   {
+   "date": "2026-11-26",
+   "written_at": "2026-11-26T04:32:00Z",
+   "ideas": [
+    {
+     "cat": "zelf",
+     "kort": "AI schrijft unittests",
+     "naam": "dbt-unittests op schaal laten voorstellen door AI",
+     "wat": "DocuSign beschreef op het dbt-blog een raamwerk om dbt-unittests met hulp van AI op te schalen. Het idee voor jou: AI schrijft testgevallen, jij beoordeelt ze.",
+     "waarom": "Unittests schrijven is precies het repetitieve werk dat vaak blijft liggen. Je kunt klein beginnen met één lastig model en verzonnen invoerrijen.",
+     "tech": "dbt unit tests, Claude Code of een andere coding agent",
+     "link": "https://www.getdbt.com/blog/ai-assisted-analytics-engineering-docusign-s-framework-for-scaling-dbt-unit-testing"
+    },
+    {
+     "cat": "zelf",
+     "kort": "Storingsagent medaillon",
+     "naam": "Een agent die uitzoekt waarom je bronze-, silver- of gold-run faalde",
+     "wat": "AWS beschreef hoe een DevOps-agent en een Spark-troubleshootingagent storingen in een medaillonarchitectuur zelf onderzoeken.",
+     "waarom": "Minder nachtelijk speurwerk: je begint 's ochtends met een vermoedelijke oorzaak in plaats van een rode job. Op Databricks is Genie ZeroOps (bèta) het vergelijkbare startpunt.",
+     "tech": "Lakeflow Jobs, Spark-logs, Genie ZeroOps of een eigen agent",
+     "link": "https://aws.amazon.com/blogs/big-data/autonomous-troubleshooting-for-medallion-architecture-with-aws-devops-agent-and-apache-spark-troubleshooting-agent/"
+    },
+    {
+     "cat": "product",
+     "kort": "Thema's in klachten",
+     "naam": "Klachten en complimenten automatisch op thema's sorteren, zoals BBVA",
+     "wat": "De bank BBVA gebruikt generatieve AI om gesprekken met klanten te analyseren. In een ziekenhuis kan dat idee werken voor klachten en complimenten: AI groepeert ze per thema en laat zien wat toeneemt.",
+     "waarom": "Management ziet sneller waar het schuurt, zonder alles te lezen. Verwerking hoort binnen Databricks te blijven, met de gewone toegangsregels.",
+     "tech": "ai_classify en ai_summarize in Databricks SQL, Power BI",
+     "link": "https://fstech.co.uk/fst/BBVA_Uses_Generative_AI_To_Analyse_Customer_Interactions.php"
+    },
+    {
+     "cat": "product",
+     "kort": "Slimmere OK-planning",
+     "naam": "AI die de planning van operatiekamers helpt vullen",
+     "wat": "Houston Methodist gebruikt AI bij de planning van operatiekamers en meet 7 procent meer operaties.",
+     "waarom": "OK-tijd is duur en schaars. Een datateam kan eerst met historische planningsgegevens laten zien hoeveel tijd er nu ongebruikt blijft.",
+     "tech": "Planningsdata, voorspelmodellen, Power BI",
+     "link": "https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai"
+    }
+   ]
+  },
+  {
    "date": "2026-11-25",
    "written_at": "2026-11-25T04:15:14Z",
    "ideas": [
@@ -15346,6 +15388,19 @@
  "runs": {
   "date": "2026-11-26",
   "tasks": {
+   "verdiepen": {
+    "status": "ok",
+    "summary": "2 verdiepingen geschreven (AI-functies op grote batches, en T's eigen voorstel over Lakeflow), 5 nieuwe keuzes klaargezet en een inspiratiekaart met 4 ideeën gemaakt.",
+    "finished_at": "2026-11-26T04:26:00Z",
+    "problems": [
+     "Enkele documentatiepagina's (release notes week 46, Lakeflow pipelines en Jobs) waren niet te openen; feiten daarover komen uit eerder uitgelegde release notes en eerdere verdiepingen."
+    ],
+    "counts": {
+     "verdiepingen": 2,
+     "keuzes": 5,
+     "inspiratie": 1
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "Geen artikelen uitgelegd: alle 3 artikelen op de werklijst waren vannacht niet te openen en blijven op de lijst staan.",
