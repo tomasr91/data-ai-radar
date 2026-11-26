@@ -45,7 +45,9 @@
      Eén kaart per cursus met voortgang; begonnen cursussen eerst. */
   function vOverview() {
     const ids = courseIds(), seen = id => C.stats(id, { kind: "all" }).seen;
-    const sorted = ids.filter(id => seen(id)).concat(ids.filter(id => !seen(id)));
+    // Op percentage, hoogste eerst (afgerond); bij gelijk: begonnen vóór niet begonnen (T, 26-11-2026).
+    const rp = id => Math.round(C.progress(id).pct * 100);
+    const sorted = [...ids].sort((a, b) => rp(b) - rp(a) || (seen(b) > 0) - (seen(a) > 0));
     return `<div class="courses">${sorted.map(id => {
       const c = A.certs[id], pr = C.progress(id), started = seen(id) > 0;
       return `<div class="course"><button class="c-main" data-act="go" data-id="${id}" aria-label="${esc(c.name)}: oefenen">
