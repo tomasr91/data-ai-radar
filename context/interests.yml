@@ -3,7 +3,7 @@
 # Prioriteit = hoe zwaar een onderwerp meetelt bij de selectie, niet hoe belangrijk het in het algemeen is.
 
 schema_version: 1
-updated: "2026-11-18"
+updated: "2026-11-26"
 
 priority_levels:
   5:
@@ -268,7 +268,7 @@ topics:
     description: Data vindbaar en begrijpelijk maken voor mensen en AI.
     feed_group: kwaliteit
     enabled: true
-    priority: 4
+    priority: 5
     keywords: [data catalog, data lineage, column lineage, metadata, Unity Catalog, data discovery, tagging]
     related_topics: [data_governance_privacy, ai_context_engineering, data_quality_observability]
 
