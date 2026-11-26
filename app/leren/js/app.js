@@ -116,7 +116,7 @@
     if (ui.retry) return `<span class="where">Herkansing ${Math.min(ui.retry.i + 1, ui.retry.queue.length)} van ${ui.retry.queue.length}</span>`;
     const items = ui.round, curIdx = ui.cur && !ui.cur.checked ? items.length : -1;
     return `<span class="dots" role="img" aria-label="Vraag ${Math.min(items.length + (curIdx >= 0 ? 1 : 0), ROUND)} van ${ROUND} in deze ronde">${Array.from({ length: ROUND }, (_, i) => {
-      const it = items[i]; return `<i class="${it ? (it.ok && !it.guess ? "ok" : "no") : i === curIdx ? "cur" : ""}"></i>`; }).join("")}</span>`;
+      const it = items[i]; return `<i class="${it ? (!it.ok ? "no" : it.guess ? "gs" : "ok") : i === curIdx ? "cur" : ""}"></i>`; }).join("")}</span>`;
   }
   function vPractice() {
     const c = cert(), cur = ui.cur;
