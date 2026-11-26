@@ -16,6 +16,6 @@ Eén kaart met vier AI-ideeën voor T. Houd het zuinig: dit hoort weinig tijd en
   {"cat": "product", "kort": "…", "naam": "…", "wat": "…", "waarom": "…", "tech": "…"}]}
 ```
 
-   Precies 2 `zelf` en 2 `product`, in die volgorde. `kort` is het label op de kaart: 2 tot 4 woorden, hooguit 24 tekens (bijv. "Bedden 72 uur vooruit"). Kort: `wat` en `waarom` elk één of twee zinnen. Eenvoudig Nederlands.
+   Precies 2 `zelf` (AI voor developers zoals T) en 2 `product` (producten op silver- en gold-modellen), in die volgorde; zie de briefing. Geen specifieke ziekenhuistoepassingen. `kort` is het label op de kaart: 2 tot 4 woorden, hooguit 24 tekens (bijv. "Vragen aan je gold-laag"). Kort: `wat` en `waarom` elk één of twee zinnen. Eenvoudig Nederlands.
 5. `python scripts/validate_enrichment.py` moet `0 fout` geven. Commit alleen dat bestand ("Inspiratie <datum>"), `git pull --rebase`, `git push`.
 6. Zet in je taakverslag in `counts` ook `"inspiratie": 1` (of 0) en noem het kort in `summary`.

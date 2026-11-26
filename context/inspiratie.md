@@ -1,6 +1,6 @@
 # Dagelijkse AI-inspiratie (briefing van T)
 
-Elke werkdag één kaart met vier ideeën over praktische en vernieuwende toepassingen van AI in T's vakgebied en branche. Doel: dagelijks even scannen en inspiratie opdoen. Geen cursus en geen onderzoeksrapport.
+Elke werkdag vier ideeën over praktische en vernieuwende toepassingen van AI in T's vakgebied. Doel: dagelijks even scannen en inspiratie opdoen. Geen cursus en geen onderzoeksrapport.
 
 ## Achtergrond
 
@@ -8,13 +8,15 @@ T werkt op het snijvlak van BI, analytics engineering en data engineering in een
 
 ## Vier ideeën, twee soorten
 
-1. **Zelf engineeren met AI** (2 ideeën, `cat: zelf`): AI gebruiken om zelf slimmer, sneller of anders software, dataoplossingen, automatiseringen en tools te bouwen. Bijvoorbeeld AI-assisted development, coding agents, dbt-automatisering, datakwaliteit, metadata, context engineering, agents en nieuwe ontwikkelmethoden.
-2. **AI-toepassingen en producten** (2 ideeën, `cat: product`): concrete AI-producten of -toepassingen die T zou kunnen bouwen of aanbieden in een ziekenhuis of zorgorganisatie. Voor zorgprofessionals, onderzoekers, management, bedrijfsvoering, administratie, data-ontsluiting en procesoptimalisatie.
+1. **AI voor developers zoals T** (2 ideeën, `cat: zelf`): AI die een data- of analytics engineer helpt bij het eigen werk: sneller, slimmer of anders bouwen. Bijvoorbeeld AI-assisted development, coding agents, dbt-automatisering, tests, datakwaliteit, metadata, documentatie, code review, context engineering en nieuwe ontwikkelmethoden.
+2. **Producten op silver- en gold-modellen** (2 ideeën, `cat: product`): AI-producten die een datateam kan aanbieden bovenop schone silver- of gold-modellen in een medaillonarchitectuur. Bijvoorbeeld vragen stellen aan data in gewone taal, agents op een semantische laag, automatische uitleg bij dashboards, signalering en voorspellingen, slimme rapportages of datadiensten voor andere teams. Noem kort op welk soort model het draait (silver of gold) en voor wie het is.
+
+Specifieke ziekenhuistoepassingen zijn niet het doel (wens van T, 26-11-2026). Een zin over hoe het in een ziekenhuis zou werken mag, maar hoeft niet.
 
 ## Breedte
 
-- Vooral data engineering, analytics, AI en zorg.
-- Haal ook inspiratie uit andere branches: banken, verzekeraars, techbedrijven, retail. Minstens één idee per kaart komt (of leert) van buiten de zorg.
+- Vooral data engineering, analytics engineering en AI.
+- Haal inspiratie uit alle branches: banken, verzekeraars, techbedrijven, retail, zorg.
 - Nieuwe ontwikkelingen, GitHub-projecten, open-source tools, commerciële producten en praktijkvoorbeelden.
 - Wissel bewezen toepassingen af met vernieuwende en verrassende ideeën. Verder denken dan een standaard chatbot of RAG.
 - Minstens één idee per kaart kan T relatief eenvoudig zelf bouwen.
@@ -34,4 +36,4 @@ Geen analyses, stappenplannen, architecturen of achtergrondverhalen.
 ## Belangrijk
 
 - Elke dag andere ideeën; niet steeds dezelfde bekende voorbeelden. Voorrang voor ideeën waar T van leert, mee kan experimenteren of nieuwe kansen in ziet.
-- Nooit patiëntdata als voorbeeld of experiment. Een idee voor het ziekenhuis beschrijft wat het doet, niet met echte gegevens.
+- Nooit patiëntdata als voorbeeld of experiment.

@@ -1,4 +1,4 @@
-"""Inspiratie: één kaart per werkdag met 4 AI-ideeën (2 zelf engineeren, 2 producten voor de zorg).
+"""Inspiratie: één kaart per werkdag met 4 AI-ideeën (2 voor developers, 2 producten op silver/gold).
 
 - Briefing van T: context/inspiratie.md. Nachttaak: taken/INSPIRATIE.md (na Verdiepen).
 - Bestanden: data/inspiratie/<JJJJ-MM-DD>.json. De feed toont de laatste 14 dagen.

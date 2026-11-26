@@ -814,10 +814,10 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   }
 
   /* ---- Inspiratie: één kaart per werkdag met 4 ideeën (data/inspiratie/, taken/INSPIRATIE.md) ---- */
-  const INSP_CAT = { zelf: "Zelf engineeren met AI", product: "AI-toepassingen voor de zorg" };
+  const INSP_CAT = { zelf: "AI voor developers", product: "Producten op silver en gold" };
   function inspCard(c) {
     const read = isRead("i-" + c.date);
-    const icon = { zelf: "🛠", product: "🏥" };
+    const icon = { zelf: "🛠", product: "📦" };
     const lbl = (x) => x.kort || (x.naam.length > 24 ? x.naam.slice(0, 23) + "…" : x.naam);
     return `<article class="card insp-card${read ? " read" : ""}" data-insp="${esc(c.date)}" tabindex="0" role="link" aria-label="Inspiratie ${esc(c.date)}: ${esc(c.ideas.map((x) => x.naam).join(", "))}">
       <div class="meta"><span class="src">${read ? `<span class="read-tick" title="Gelezen">✓</span>` : ""}<span class="card-date">${esc(shortDate(c.written_at))}</span></span><span class="pill insp">inspiratie</span></div>
@@ -829,7 +829,7 @@ article.full h1 { font-size: clamp(1.5rem, 5.6vw, 2.05rem); line-height: 1.15; l
   function renderInspList() {
     const days = [...(state.feed.inspiratie || [])].sort((a, b) => (b.date > a.date ? 1 : -1));
     if (!days.length) return `<div class="empty"><h3>Nog geen inspiratie</h3></div>`;
-    const icon = { zelf: "🛠", product: "🏥" };
+    const icon = { zelf: "🛠", product: "📦" };
     const row = (c, x, n) => {
       const id = `${c.date}-${n}`, mine = insp.get(id);
       return `<details class="insp-row" data-iid="${esc(id)}" data-naam="${esc(x.naam)}" data-day="${esc(c.date)}">
