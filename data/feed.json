@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T05:15:17.042676Z",
+ "generated_at": "2026-11-26T06:14:02.032184Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -873,7 +873,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.9,
+    "recency": 0.89,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -1588,107 +1588,6 @@
    }
   },
   {
-   "id": "e7332a78bea8",
-   "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
-   "source_id": "claude_code_releases",
-   "published_at": "2026-11-22T23:59:59Z",
-   "date_note": "Releasedata volgens GitHub; bij 2.1.328 noemt een andere bron 18 november in plaats van 19 november.",
-   "fetched_at": "2026-11-21T03:13:27.194317Z",
-   "summary": "In week 47 kreeg Claude Code een strengere /code-review, auto mode bij cloudaanbieders, hooks die bij een fout blokkeren en een veiligere manier om MCP-servers toe te voegen.",
-   "personal_relevance": "Als je Claude Code inzet voor dbt-pull requests, geeft /code-review nu minder ruis en kun je MCP-tokens buiten je shellgeschiedenis houden.",
-   "experiment": "Laat /code-review los op een branch van je Dataflow-repository met een bewust foutje in een dbt-model, en kijk of de bevinding het label Important krijgt en of stijlpunten wegblijven.",
-   "limitations": [
-    "De release notes van 2.1.326 en 2.1.330 en het einde van de lijsten van 2.1.328 en 2.1.329 waren niet volledig te lezen; dit overzicht kan wijzigingen missen.",
-    "De strengere /code-review geldt volgens de notes 'op de meeste modellen', niet op alle."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Code releases op GitHub",
-     "url": "https://github.com/anthropics/claude-code/releases"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "veilige_agents"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.85,
-    "source": 0.8,
-    "quality": 0.6,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:25:07Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Claude Code laat /code-review alleen nog echte bugs melden",
-   "story": [
-    "Claude Code bracht in week 47 vijf versies uit, van 2.1.326 tot en met 2.1.330. De opvallendste wijziging zit in /code-review. Op de meeste modellen meldt die nu alleen nog bugs en overtredingen van je CLAUDE.md, en elke bevinding krijgt een label: Important, Pre-existing of Nit. Zonder doel bekijkt hij de hele branch tegenover de standaardbranch.",
-    "Ook het toevoegen van MCP-servers werd veiliger. Met claude mcp add-json en een streepje aan het eind leest Claude Code de instellingen van de server uit de invoer (stdin). Een token hoeft dan niet meer in je commandoregel te staan, waar het in je geschiedenis blijft hangen.",
-    "Daarnaast kregen hooks een strengere stand. Een hook is een stukje code dat op een vast moment draait, bijvoorbeeld vlak voor een tool. Voor hooks die een MCP-tool aanroepen kun je nu \"onFailure\": \"block\" zetten: mislukt de hook, dan gaat de actie niet door. Een nieuw venster bij het vertrouwen van een map laat zien waar de hooks van die map staan.",
-    "Verder werkt auto mode nu ook voor Opus 4.6 en Sonnet 4.6 via Amazon Bedrock, Google Cloud en Microsoft Foundry. Auto mode is de stand waarin een classificatiemodel per stap beslist of Claude die zonder vragen mag zetten. En /status toont nu een lijst van kapotte skills, agents en instellingen die niets doen. Bij dbt-werk is dat handig: een kapotte skill of een hook die nooit afgaat, zie je zo meteen."
-   ],
-   "key_facts": [
-    "v2.1.327 (17 november): claude mcp add-json <name> - leest de JSON van de server uit stdin, zodat tokens buiten de commandoregel blijven.",
-    "v2.1.327: /status toont kapotte agent-, skill-, command- en output-style-bestanden, genegeerde permissie-instellingen en hook-matchers die nooit raken.",
-    "v2.1.328 (18/19 november): auto mode voor Claude Opus 4.6 en Sonnet 4.6 op Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry en de Claude apps gateway.",
-    "v2.1.328: \"onFailure\": \"block\" voor mcp_tool-hooks, zoals al bestond voor command- en HTTP-hooks.",
-    "v2.1.328: /code-review meldt op de meeste modellen alleen bugs en CLAUDE.md-overtredingen en markeert elke bevinding als Important, Pre-existing of Nit.",
-    "v2.1.329 (19 november): trust-venster toont waar de hooks van een map zijn vastgelegd; /code-review zonder doel bekijkt de hele branch tegenover de standaardbranch."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Zo voeg je een MCP-server toe zonder dat het token in je commandoregel of shellgeschiedenis belandt: de instellingen komen uit een bestand via stdin.",
-    "language": "bash",
-    "code": "# instellingen van de server (met token) staan in een lokaal bestand dat niet in git staat\ncat mijn-mcp-server.json | claude mcp add-json mijn-server -",
-    "note": "De notatie 'claude mcp add-json <name> -' komt uit de release notes van v2.1.327; de vorm van de JSON staat in de MCP-documentatie van Claude Code. Dit werkt niet binnen een lopende Claude Code-sessie."
-   },
-   "terms": [
-    {
-     "term": "hooks",
-     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
-    },
-    {
-     "term": "auto mode",
-     "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
-    },
-    {
-     "term": "MCP-servers",
-     "explanation": "Programma's die via het Model Context Protocol tools en databronnen aanbieden aan een AI-assistent, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "stdin",
-     "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.6,
-    "why": "Release-overzicht van Claude Code met veiligheidswijzigingen, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
-   },
-   "labels": [
-    "claude-code-permissies",
-    "claude-code-pr-werkwijze",
-    "claude-code-mcp-taken"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "claude_ai_development",
-    "pts": 1
-   }
-  },
-  {
    "id": "89fabf4c9972",
    "title": "The enterprise guide to securing coding agents",
    "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents",
@@ -1851,7 +1750,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -2290,6 +2189,107 @@
     "fase": 8,
     "quote": "Voor Dataflow past dit bij fase 8, waar je monitoring en foutdiagnose van je jobs regelt",
     "why": "Fase 8 gaat over monitoring en foutdiagnose met een agent."
+   }
+  },
+  {
+   "id": "e7332a78bea8",
+   "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-22T23:59:59Z",
+   "date_note": "Releasedata volgens GitHub; bij 2.1.328 noemt een andere bron 18 november in plaats van 19 november.",
+   "fetched_at": "2026-11-21T03:13:27.194317Z",
+   "summary": "In week 47 kreeg Claude Code een strengere /code-review, auto mode bij cloudaanbieders, hooks die bij een fout blokkeren en een veiligere manier om MCP-servers toe te voegen.",
+   "personal_relevance": "Als je Claude Code inzet voor dbt-pull requests, geeft /code-review nu minder ruis en kun je MCP-tokens buiten je shellgeschiedenis houden.",
+   "experiment": "Laat /code-review los op een branch van je Dataflow-repository met een bewust foutje in een dbt-model, en kijk of de bevinding het label Important krijgt en of stijlpunten wegblijven.",
+   "limitations": [
+    "De release notes van 2.1.326 en 2.1.330 en het einde van de lijsten van 2.1.328 en 2.1.329 waren niet volledig te lezen; dit overzicht kan wijzigingen missen.",
+    "De strengere /code-review geldt volgens de notes 'op de meeste modellen', niet op alle."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Code releases op GitHub",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "veilige_agents"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.85,
+    "source": 0.8,
+    "quality": 0.6,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:25:07Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Claude Code laat /code-review alleen nog echte bugs melden",
+   "story": [
+    "Claude Code bracht in week 47 vijf versies uit, van 2.1.326 tot en met 2.1.330. De opvallendste wijziging zit in /code-review. Op de meeste modellen meldt die nu alleen nog bugs en overtredingen van je CLAUDE.md, en elke bevinding krijgt een label: Important, Pre-existing of Nit. Zonder doel bekijkt hij de hele branch tegenover de standaardbranch.",
+    "Ook het toevoegen van MCP-servers werd veiliger. Met claude mcp add-json en een streepje aan het eind leest Claude Code de instellingen van de server uit de invoer (stdin). Een token hoeft dan niet meer in je commandoregel te staan, waar het in je geschiedenis blijft hangen.",
+    "Daarnaast kregen hooks een strengere stand. Een hook is een stukje code dat op een vast moment draait, bijvoorbeeld vlak voor een tool. Voor hooks die een MCP-tool aanroepen kun je nu \"onFailure\": \"block\" zetten: mislukt de hook, dan gaat de actie niet door. Een nieuw venster bij het vertrouwen van een map laat zien waar de hooks van die map staan.",
+    "Verder werkt auto mode nu ook voor Opus 4.6 en Sonnet 4.6 via Amazon Bedrock, Google Cloud en Microsoft Foundry. Auto mode is de stand waarin een classificatiemodel per stap beslist of Claude die zonder vragen mag zetten. En /status toont nu een lijst van kapotte skills, agents en instellingen die niets doen. Bij dbt-werk is dat handig: een kapotte skill of een hook die nooit afgaat, zie je zo meteen."
+   ],
+   "key_facts": [
+    "v2.1.327 (17 november): claude mcp add-json <name> - leest de JSON van de server uit stdin, zodat tokens buiten de commandoregel blijven.",
+    "v2.1.327: /status toont kapotte agent-, skill-, command- en output-style-bestanden, genegeerde permissie-instellingen en hook-matchers die nooit raken.",
+    "v2.1.328 (18/19 november): auto mode voor Claude Opus 4.6 en Sonnet 4.6 op Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry en de Claude apps gateway.",
+    "v2.1.328: \"onFailure\": \"block\" voor mcp_tool-hooks, zoals al bestond voor command- en HTTP-hooks.",
+    "v2.1.328: /code-review meldt op de meeste modellen alleen bugs en CLAUDE.md-overtredingen en markeert elke bevinding als Important, Pre-existing of Nit.",
+    "v2.1.329 (19 november): trust-venster toont waar de hooks van een map zijn vastgelegd; /code-review zonder doel bekijkt de hele branch tegenover de standaardbranch."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo voeg je een MCP-server toe zonder dat het token in je commandoregel of shellgeschiedenis belandt: de instellingen komen uit een bestand via stdin.",
+    "language": "bash",
+    "code": "# instellingen van de server (met token) staan in een lokaal bestand dat niet in git staat\ncat mijn-mcp-server.json | claude mcp add-json mijn-server -",
+    "note": "De notatie 'claude mcp add-json <name> -' komt uit de release notes van v2.1.327; de vorm van de JSON staat in de MCP-documentatie van Claude Code. Dit werkt niet binnen een lopende Claude Code-sessie."
+   },
+   "terms": [
+    {
+     "term": "hooks",
+     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+     "term": "auto mode",
+     "explanation": "Een stand in Claude Code waarin een classificatiemodel per stap beslist of Claude die zonder te vragen mag uitvoeren, in plaats van dat jij elke stap goedkeurt."
+    },
+    {
+     "term": "MCP-servers",
+     "explanation": "Programma's die via het Model Context Protocol tools en databronnen aanbieden aan een AI-assistent, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "stdin",
+     "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Release-overzicht van Claude Code met veiligheidswijzigingen, zoals je duim omhoog bij het schrijfverbod buiten de projectmap."
+   },
+   "labels": [
+    "claude-code-permissies",
+    "claude-code-pr-werkwijze",
+    "claude-code-mcp-taken"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
    }
   },
   {
@@ -5156,7 +5156,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.03,
@@ -5855,7 +5855,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -15806,7 +15806,7 @@
    "powerbi_semantic_models": 0.62,
    "data_governance_privacy": 0.37,
    "data_architecture_modeling": 0.6,
-   "ai_context_engineering": 0.97,
+   "ai_context_engineering": 0.96,
    "claude_ai_development": 0.68,
    "ai_agents_rag": 0.86,
    "data_ingestion": 0.21,
@@ -16161,26 +16161,6 @@
     ]
    },
    {
-    "title": "Provision Claude desktop with MDM using Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#provision-claude-desktop-with-mdm-using-unity-gateway",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Provision Claude desktop with MDM using Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#provision-claude-desktop-with-mdm-using-unity-gateway",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Connect ChatGPT to Genie One with the Databricks Genie plugin",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-chatgpt-to-genie-one-with-the-databricks-genie-plugin",
@@ -16313,9 +16293,29 @@
     ]
    },
    {
+    "title": "Provision Claude desktop with MDM using Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#provision-claude-desktop-with-mdm-using-unity-gateway",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Provision Claude desktop with MDM using Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#provision-claude-desktop-with-mdm-using-unity-gateway",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -16362,14 +16362,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
    },
    {
     "title": "How Sigma runs a 2,883-model semantic layer on dbt and Dagster",
@@ -16497,6 +16489,14 @@
     "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
     "relevance_score": 78,
     "decision": "included",
     "excluded_by": []
