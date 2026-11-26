@@ -6505,8 +6505,64 @@
    "published_raw": "Wed, 25 Nov 2026 10:22:09 GMT",
    "fetched_at": "2026-11-25T10:31:54.696672Z",
    "excerpt": ""
+  },
+  "azure_databricks_release_notes:a05903d56ee5": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Directory-based access for OpenSharing SecureConnect (Public Preview)",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#directory-based-access-for-opensharing-secureconnect-public-preview",
+   "published_raw": "Tue, 24 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-26T03:13:13.301203Z",
+   "excerpt": "<p>OpenSharing SecureConnect can now deliver eligible tables and views to Azure Databricks recipients using serverless compute with directory-based access instead of per-file pre-signed URLs, for better performance. This feature is in <a href=\"/azure/databricks/release-notes/release-types\">Public Preview</a>. Account admins can manage the <strong>OpenSharing SecureConnect Directory Based Access</strong> preview from the account console <strong>Previews</strong> page. See <a href=\"/azure/databricks/opensharing/secureconnect-provider#directory-based-access\">Directory-based access for SecureConnect</a>.</p>"
+  },
+  "azure_databricks_release_notes:80c45ae0e5bc": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Latest automatic expiration date for legacy OpenSharing open recipient tokens moved to February 25, 2027",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#latest-automatic-expiration-date-for-legacy-opensharing-open-recipient-tokens-moved-to-february-25-2027",
+   "published_raw": "Tue, 24 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-26T03:13:13.301203Z",
+   "excerpt": "<p>OpenSharing open recipient tokens issued before February 25, 2026, with expiration dates after February 25, 2027, or with no expiration date, now automatically expire on February 25, 2027, instead of December 8, 2026. Data providers should <a href=\"/azure/databricks/opensharing/create-recipient-token#rotate-token\">rotate these tokens</a> before February 25, 2027, to avoid breaking changes. Rotated tokens use the new recipient-specific URL format. See <a href=\"/azure/databricks/release-notes/whats-coming#changes-to-open-delta-sharing-recipient-tokens\">Changes to OpenSharing (formerly Delta Sharing) open recipient tokens</a>.</p>"
+  },
+  "azure_databricks_release_notes:70bbb50cd7af": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Recipient-specific URLs for OpenSharing open recipients",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#recipient-specific-urls-for-opensharing-open-recipients",
+   "published_raw": "Tue, 24 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-26T03:13:13.301203Z",
+   "excerpt": "<p>In most regions, OpenSharing open recipients now use a recipient-specific URL that includes the recipient ID in the host name. Bearer tokens created or rotated since September 2026 use the new URL, and the OpenSharing UI shows the new URL for OpenID Connect (OIDC) federation recipients. Recipients can allow egress to their recipient-specific host name instead of the shared regional host name. Existing URLs and tokens continue to work until they expire. See <a href=\"/azure/databricks/release-notes/whats-coming#changes-to-open-delta-sharing-recipient-tokens\">Changes to OpenSharing (formerly Delta Sharing) open recipient tokens</a>.</p>"
+  },
+  "azure_databricks_release_notes:f06cf8271c81": {
+   "source_id": "azure_databricks_release_notes",
+   "title": "Artifact Registry is now generally available",
+   "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#artifact-registry-is-now-generally-available",
+   "published_raw": "Mon, 23 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-26T03:13:13.301203Z",
+   "excerpt": "<p>Artifact Registry is now generally available. Store container images as governed assets in Unity Catalog, browse images and versions in Catalog Explorer, list and manage images with the <code>databricks software-artifacts</code> Databricks CLI commands, and delete images through the Software Artifacts API. See <a href=\"/azure/databricks/artifact-registry\">Artifact Registry</a>.</p>"
+  },
+  "anthropic_engineering:07e4d185180e": {
+   "source_id": "anthropic_engineering",
+   "title": "Migrating our Messages API to Rust",
+   "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+   "published_raw": "Wed, 25 Nov 2026 00:00:00 +0000",
+   "fetched_at": "2026-11-26T03:13:14.362422Z",
+   "excerpt": "How we migrated our Messages API from Python to Rust."
+  },
+  "huggingface_blog:37b5c9ba9326": {
+   "source_id": "huggingface_blog",
+   "title": "Where scientists draw the line on AI agents",
+   "url": "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+   "published_raw": "Wed, 25 Nov 2026 18:52:55 GMT",
+   "fetched_at": "2026-11-26T03:13:16.919040Z",
+   "excerpt": ""
+  },
+  "huggingface_blog:d8d6777ecf09": {
+   "source_id": "huggingface_blog",
+   "title": "Hill-climbing Inkling 2 Mini inference on one RTX PRO 6000",
+   "url": "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb",
+   "published_raw": "Wed, 25 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-26T03:13:16.919040Z",
+   "excerpt": ""
   }
  },
- "updated_at": "2026-11-25T10:31:51.244564Z",
+ "updated_at": "2026-11-26T03:13:13.258551Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }

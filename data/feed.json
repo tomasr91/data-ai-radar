@@ -1,10 +1,10 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-25T20:25:06.917301Z",
+ "generated_at": "2026-11-26T03:13:13.258551Z",
  "mode": "live",
- "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
+ "mode_note": "Alle feeds zijn opgehaald.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
- "last_successful_update": "2026-11-25T10:31:51.244564Z",
+ "last_successful_update": "2026-11-26T03:13:13.258551Z",
  "groups": [
   {
    "id": "dbt",
@@ -159,7 +159,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://learn.microsoft.com/en-us/azure/databricks/feed.xml",
-   "checked_at": "2026-11-25T10:31:51.309610Z"
+   "checked_at": "2026-11-26T03:13:13.301203Z"
   },
   {
    "id": "dbt_core_releases",
@@ -172,7 +172,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/dbt-labs/dbt-core/releases.atom",
-   "checked_at": "2026-11-25T10:31:51.655405Z"
+   "checked_at": "2026-11-26T03:13:13.728107Z"
   },
   {
    "id": "claude_code_releases",
@@ -185,7 +185,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://github.com/anthropics/claude-code/releases.atom",
-   "checked_at": "2026-11-25T10:31:52.277223Z"
+   "checked_at": "2026-11-26T03:13:14.123309Z"
   },
   {
    "id": "anthropic_engineering",
@@ -196,9 +196,9 @@
    "priority": 5,
    "fetch_method": "rss",
    "status": "ok",
-   "items": 29,
-   "message": "29 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-   "checked_at": "2026-11-25T10:31:52.696243Z"
+   "items": 30,
+   "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+   "checked_at": "2026-11-26T03:13:14.362422Z"
   },
   {
    "id": "claude_blog",
@@ -211,7 +211,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
-   "checked_at": "2026-11-25T10:31:52.708187Z"
+   "checked_at": "2026-11-26T03:13:14.392140Z"
   },
   {
    "id": "dbt_labs_blog",
@@ -224,7 +224,7 @@
    "status": "ok",
    "items": 25,
    "message": "25 items via https://www.getdbt.com/blog/feed.xml",
-   "checked_at": "2026-11-25T10:31:52.721863Z"
+   "checked_at": "2026-11-26T03:13:14.458537Z"
   },
   {
    "id": "databricks_blog",
@@ -237,7 +237,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.databricks.com/feed",
-   "checked_at": "2026-11-25T10:31:52.912436Z"
+   "checked_at": "2026-11-26T03:13:14.614261Z"
   },
   {
    "id": "databricks_engineering_blog",
@@ -250,7 +250,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.databricks.com/blog/category/engineering/feed.xml",
-   "checked_at": "2026-11-25T10:31:53.026341Z"
+   "checked_at": "2026-11-26T03:13:14.672386Z"
   },
   {
    "id": "azure_blog",
@@ -263,7 +263,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://azure.microsoft.com/en-us/blog/product/azure-databricks/feed/",
-   "checked_at": "2026-11-25T10:31:53.080575Z"
+   "checked_at": "2026-11-26T03:13:14.743568Z"
   },
   {
    "id": "powerbi_blog",
@@ -276,7 +276,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://powerbi.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-25T10:31:53.264325Z"
+   "checked_at": "2026-11-26T03:13:14.821450Z"
   },
   {
    "id": "fabric_blog",
@@ -289,7 +289,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://blog.fabric.microsoft.com/en-us/blog/feed",
-   "checked_at": "2026-11-25T10:31:53.938261Z"
+   "checked_at": "2026-11-26T03:13:15.816337Z"
   },
   {
    "id": "sqlbi",
@@ -302,7 +302,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://feeds.feedburner.com/sqlbi_blog",
-   "checked_at": "2026-11-25T10:31:54.508464Z"
+   "checked_at": "2026-11-26T03:13:16.681599Z"
   },
   {
    "id": "huggingface_blog",
@@ -315,7 +315,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://huggingface.co/blog/feed.xml",
-   "checked_at": "2026-11-25T10:31:54.696672Z"
+   "checked_at": "2026-11-26T03:13:16.919040Z"
   },
   {
    "id": "data_engineering_weekly",
@@ -328,7 +328,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://www.dataengineeringweekly.com/feed",
-   "checked_at": "2026-11-25T10:31:54.798834Z"
+   "checked_at": "2026-11-26T03:13:16.997012Z"
   },
   {
    "id": "simon_whiteley",
@@ -341,7 +341,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.advancinganalytics.co.uk/blog/rss.xml",
-   "checked_at": "2026-11-25T10:31:54.896887Z"
+   "checked_at": "2026-11-26T03:13:17.170667Z"
   },
   {
    "id": "simon_spati",
@@ -354,7 +354,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.ssp.sh/posts/index.xml",
-   "checked_at": "2026-11-25T10:31:55.039026Z"
+   "checked_at": "2026-11-26T03:13:17.247424Z"
   },
   {
    "id": "confessions_data_guy",
@@ -367,7 +367,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://www.confessionsofadataguy.com/feed/",
-   "checked_at": "2026-11-25T10:31:55.862960Z"
+   "checked_at": "2026-11-26T03:13:18.047377Z"
   },
   {
    "id": "delta_lake_blog",
@@ -380,7 +380,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://delta.io/rss.xml",
-   "checked_at": "2026-11-25T10:31:56.112007Z"
+   "checked_at": "2026-11-26T03:13:18.368971Z"
   },
   {
    "id": "hamel_husain",
@@ -393,7 +393,7 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://hamel.dev/index.xml",
-   "checked_at": "2026-11-25T10:31:56.241475Z"
+   "checked_at": "2026-11-26T03:13:18.410275Z"
   },
   {
    "id": "langchain_blog",
@@ -406,7 +406,7 @@
    "status": "ok",
    "items": 30,
    "message": "30 items via https://www.langchain.com/blog/rss.xml",
-   "checked_at": "2026-11-25T10:31:56.388493Z"
+   "checked_at": "2026-11-26T03:13:18.507982Z"
   },
   {
    "id": "chip_huyen",
@@ -419,7 +419,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://huyenchip.com/feed.xml",
-   "checked_at": "2026-11-25T10:31:56.486456Z"
+   "checked_at": "2026-11-26T03:13:18.583817Z"
   },
   {
    "id": "simon_willison",
@@ -432,7 +432,7 @@
    "status": "ok",
    "items": 15,
    "message": "15 items via https://simonwillison.net/atom/entries/",
-   "checked_at": "2026-11-25T10:31:56.750981Z"
+   "checked_at": "2026-11-26T03:13:19.231578Z"
   },
   {
    "id": "chris_webb",
@@ -445,7 +445,7 @@
    "status": "ok",
    "items": 10,
    "message": "10 items via https://blog.crossjoin.co.uk/feed/",
-   "checked_at": "2026-11-25T10:31:56.827004Z"
+   "checked_at": "2026-11-26T03:13:19.326361Z"
   },
   {
    "id": "dbt_developer_blog",
@@ -458,13 +458,13 @@
    "status": "ok",
    "items": 20,
    "message": "20 items via https://docs.getdbt.com/blog/rss.xml",
-   "checked_at": "2026-11-25T10:31:57.101110Z"
+   "checked_at": "2026-11-26T03:13:19.675095Z"
   }
  ],
  "daily_top": [
   "216eab677a97",
-  "9fa51654bab7",
   "905562b7af62",
+  "9fa51654bab7",
   "44f76c8bfa0f",
   "d380e24c1978"
  ],
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -573,139 +573,6 @@
     "fase": 5,
     "quote": "Voor Dataflow kun je in fase 5 zo in je bundel vastleggen hoe lang een query op een warehouse mag duren.",
     "why": "Statement timeouts zijn in te stellen in een bundel, het onderwerp van fase 5."
-   }
-  },
-  {
-   "id": "9fa51654bab7",
-   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
-   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
-   "source_id": "simon_spati",
-   "published_at": "2026-11-20T04:40:08Z",
-   "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
-   "fetched_at": "2026-11-23T03:13:10.530143Z",
-   "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
-   "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
-   "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
-   "limitations": [
-    "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
-    "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
-    "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Artikel op het MotherDuck-blog",
-     "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
-    },
-    {
-     "label": "MotherDuck MCP-server instellen",
-     "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
-    },
-    {
-     "label": "MotherDuck Dives",
-     "url": "https://motherduck.com/docs/key-tasks/dives/"
-    }
-   ],
-   "topics": [
-    "ai_agents_rag",
-    "ai_context_engineering",
-    "claude_ai_development",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "agents",
-    "ai_context",
-    "claude",
-    "kwaliteit"
-   ],
-   "relevance_score": 98,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.76,
-    "source": 0.68,
-    "quality": 0.63,
-    "feedback": 0.03,
-    "fit": 0.15,
-    "project": 0.06
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-23T03:23:10Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
-   "story": [
-    "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
-    "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
-    "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
-    "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
-    "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
-   ],
-   "key_facts": [
-    "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
-    "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
-    "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
-    "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
-    "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
-    "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
-   "showcase": {
-    "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
-    "language": "sql",
-    "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
-    "result": {
-     "columns": [
-      "rijen",
-      "goed_gelezen",
-      "kwijt"
-     ],
-     "rows": [
-      [
-       6,
-       4,
-       2
-      ]
-     ]
-    },
-    "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
-   },
-   "terms": [
-    {
-     "term": "MCP-server",
-     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
-    },
-    {
-     "term": "MotherDuck",
-     "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
-    },
-    {
-     "term": "INFORMATION_SCHEMA",
-     "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.65,
-    "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
-   },
-   "labels": [
-    "data-agent",
-    "human-in-the-loop",
-    "duckdb-mcp",
-    "agentic-analyse"
-   ],
-   "fb_why": {
-    "by": "label",
-    "name": "human-in-the-loop",
-    "pts": 3
-   },
-   "project_ref": {
-    "fase": 6,
-    "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
-    "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
    }
   },
   {
@@ -823,6 +690,139 @@
    }
   },
   {
+   "id": "9fa51654bab7",
+   "title": "Business Knowledge Is Still King: Agentic Data Analysis Without a Data Team",
+   "url": "https://www.ssp.sh/blog/business-knowledge-still-king/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-20T04:40:08Z",
+   "date_note": "Ook verschenen op het MotherDuck-blog op 13 november 2026.",
+   "fetched_at": "2026-11-23T03:13:10.530143Z",
+   "summary": "Simon Späti laat zien hoe iemand zonder datateam met Claude en MCP een hele analyse bouwt, van ophalen tot dashboard. Zijn punt: de agent verlaagt de drempel, maar alleen kennis van het vak vangt de fouten.",
+   "personal_relevance": "Het laat concreet zien waar een data-assistent voor collega's fout kan gaan en waarom controle en definities bij het datateam blijven.",
+   "experiment": "Laat Claude Code met de DuckDB-CLI een openbaar KNMI-bestand verkennen en vraag hem expliciet om controles: hoeveel rijen, hoeveel datums konden niet worden gelezen, welke waarden zijn vreemd. Vergelijk zijn bevindingen met wat je zelf ziet.",
+   "limitations": [
+    "Het stuk verscheen ook op het blog van MotherDuck en laat vooral producten van MotherDuck zien.",
+    "Het voorbeeld is één analyse op openbare data; rechten, persoonsgegevens en beheer op schaal noemt Späti zelf als onopgelost.",
+    "Agents geven per run andere uitkomsten, dus de fouten die hier gevonden werden, worden niet altijd gevonden."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Artikel op het MotherDuck-blog",
+     "url": "https://motherduck.com/blog/business-knowledge-agentic-data-analysis-without-data-team/"
+    },
+    {
+     "label": "MotherDuck MCP-server instellen",
+     "url": "https://motherduck.com/docs/key-tasks/ai-and-motherduck/mcp-setup/"
+    },
+    {
+     "label": "MotherDuck Dives",
+     "url": "https://motherduck.com/docs/key-tasks/dives/"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering",
+    "claude_ai_development",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "agents",
+    "ai_context",
+    "claude",
+    "kwaliteit"
+   ],
+   "relevance_score": 97,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.75,
+    "source": 0.68,
+    "quality": 0.63,
+    "feedback": 0.03,
+    "fit": 0.15,
+    "project": 0.06
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-23T03:23:10Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Späti: een agent doet de SQL, maar jouw vakkennis bepaalt of het klopt",
+   "story": [
+    "Simon Späti vindt dat agents de drempel voor data-analyse flink verlagen. Iemand met weinig SQL kan volgens hem nu zelf een hele analyse maken, van het ophalen van data tot een gedeeld dashboard. Maar hij zegt er meteen bij: of de cijfers kloppen, hangt nog steeds af van iemand die het vak kent. Dat bewijst hij met een uitgewerkt voorbeeld.",
+    "In dat voorbeeld koppelt hij Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij geeft Claude een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons. Claude verkent eerst de tabellen met INFORMATION_SCHEMA en een paar voorbeeldrijen, en vraagt de gebruiker wat kolommen betekenen. Daarna bouwt hij een Python-job die de data laadt, een uitleg van wat er is gebouwd en een interactief dashboard.",
+    "Het interessante zit in de controle. Späti verwachtte dat het verbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond rond 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde. Een eerste run las de datums verkeerd en raakte zo 61 procent van de rijen kwijt. De agent repareerde dat en schreef het op. Zonder iemand die vraagt 'klopt dit wel?' was die fout blijven zitten.",
+    "Späti verdeelt het werk van een analist in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf. Het laatste deel, met snelheid, schaal, rechten en beheer, blijft werk voor het datateam. Hij waarschuwt ook voor zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Agents zijn niet voorspelbaar: een nieuwe run kan andere fouten vinden. Daarom moet er volgens hem altijd een mens aan het stuur zitten.",
+    "Voor jou sluit dit aan bij wat de semantische laag-stukken ook zeggen: de agent is snel, maar de definities en de controle moeten ergens vandaan komen. Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata, zoals je KNMI-metingen."
+   ],
+   "key_facts": [
+    "Späti: agents verlagen de drempel zodat iemand uit het vak met weinig SQL een analyse van begin tot eind kan doen; zijn vakkennis bepaalt nog steeds of de cijfers kloppen.",
+    "Werkwijze in het voorbeeld: Claude via de MotherDuck MCP-server, met openbare data van MeteoSwiss (159 stations), Swissgrid (verbruik per 15 minuten) en een GeoJSON van 26 kantons; Claude bouwt een Flight (geplande Python-job), een Guide en een Dive (dashboard).",
+    "De agent verkent onbekende tabellen met INFORMATION_SCHEMA-queries en voorbeeldrijen en vraagt de gebruiker de betekenis te bevestigen.",
+    "Resultaat: verbruik stijgt in 2026 vanaf ongeveer 13,5 °C (95%-bereik 11,6 tot 15,2) bij station Bern, niet de aangenomen 12 °C; controle op januari–september 2025 gaf 14,2 °C.",
+    "Bij de controle bleek dat het 2025-bestand tijdstippen als tekst opsloeg; een eerste run las de datums verkeerd en verloor 61% van de rijen. De agent herstelde de parser en voegde controles toe.",
+    "Späti: stap 1 tot 4 (halen, inlezen, vragen, delen) kan iemand uit het vak zelf; stap 5 (automatiseren, prestaties, schaal) blijft bij het datateam. Runs zijn niet deterministisch; 'models are best used with a human in the driver's seat'."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van het vakblog ssp.sh",
+   "showcase": {
+    "caption": "Zo vang je de fout uit het artikel: tel hoeveel tijdstippen in een tekstkolom niet in het verwachte formaat te lezen zijn. Hier raken 2 van de 6 rijen stilletjes kwijt.",
+    "language": "sql",
+    "code": "CREATE TABLE verbruik AS SELECT * FROM (VALUES\n ('01.01.2025 00:15', 1520.4),\n ('01.01.2025 00:30', 1498.1),\n ('2025-01-01 00:45', 1475.9),\n ('13.01.2025 08:00', 1890.2),\n ('2025-01-13 08:15', 1902.7),\n ('13.01.2025 08:30', 1911.0)\n) t(tijdstip_tekst, kwh);\n\nSELECT\n  count(*) AS rijen,\n  count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS goed_gelezen,\n  count(*) - count(try_strptime(tijdstip_tekst, '%d.%m.%Y %H:%M')) AS kwijt\nFROM verbruik;",
+    "result": {
+     "columns": [
+      "rijen",
+      "goed_gelezen",
+      "kwijt"
+     ],
+     "rows": [
+      [
+       6,
+       4,
+       2
+      ]
+     ]
+    },
+    "note": "Nagebouwd idee in DuckDB-SQL; het artikel toont de code van de agent niet."
+   },
+   "terms": [
+    {
+     "term": "MCP-server",
+     "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+     "term": "MotherDuck",
+     "explanation": "Een clouddienst rond DuckDB: je bewaart en bevraagt daar data met DuckDB-SQL, zonder zelf een server te beheren."
+    },
+    {
+     "term": "INFORMATION_SCHEMA",
+     "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.65,
+    "why": "Onderbouwde mening over AI-analisten met een uitgewerkt voorbeeld, zoals je duim bij het Noonan-stuk over de semantische laag."
+   },
+   "labels": [
+    "data-agent",
+    "human-in-the-loop",
+    "duckdb-mcp",
+    "agentic-analyse"
+   ],
+   "fb_why": {
+    "by": "label",
+    "name": "human-in-the-loop",
+    "pts": 3
+   },
+   "project_ref": {
+    "fase": 6,
+    "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
+    "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+   }
+  },
+  {
    "id": "44f76c8bfa0f",
    "title": "MCP servers can now ship skills, run tasks, and more with Claude",
    "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
@@ -873,7 +873,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.91,
+    "recency": 0.9,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -936,134 +936,6 @@
    }
   },
   {
-   "id": "d380e24c1978",
-   "title": "Combining Fabric Semantic Views",
-   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
-   "source_id": "chris_webb",
-   "published_at": "2026-11-22T17:09:43Z",
-   "fetched_at": "2026-11-23T03:13:13.044105Z",
-   "summary": "Chris Webb laat zien hoe je in Fabric twee semantic views combineert tot één Power BI-model, met een nieuwe maatstaf die over beide heen rekent.",
-   "personal_relevance": "Herbruikbare maatstaven over modellen heen raken direct aan je Power BI-werk en aan de vraag waar je definities vastlegt: in Fabric of in Unity Catalog.",
-   "experiment": "Volg Webbs voorbeeld in een Fabric-proefomgeving met twee kleine verzonnen tabellen (verkoop en targets) en kijk of de gecombineerde maatstaf in een rapport hetzelfde getal geeft als een handmatige berekening.",
-   "limitations": [
-    "De functie is net aangekondigd; de status (preview of GA) staat niet in de post.",
-    "Webb werkt bij Microsoft; de post is wel een eigen proef met concrete stappen.",
-    "Of semantic views ook met data uit Databricks of Unity Catalog werken, zegt de post niet."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Fabric semantic views (overzicht)",
-     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-overview"
-    },
-    {
-     "label": "Een view hergebruiken in een ander lakehouse",
-     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-consume#reuse-a-view-in-another-lakehouse"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "data_architecture_modeling"
-   ],
-   "groups": [
-    "overig",
-    "architectuur"
-   ],
-   "relevance_score": 93,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.86,
-    "source": 0.68,
-    "quality": 0.7,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-24T03:26:39Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren",
-   "story": [
-    "Microsoft kondigde op Ignite de Fabric semantic views aan. Chris Webb, die bij Microsoft in het Fabric CAT-team werkt, liet een week later zien wat hij er het mooiste aan vindt: je kunt ze combineren. Zo hergebruik je tabellen, relaties en maatstaven uit een bestaand model, zonder data of definities te kopiëren.",
-    "Een semantic view beschrijf je in YAML: welke tabellen erin zitten, hoe ze samenhangen en welke maatstaven er zijn, in DAX. Fabric maakt daar een Direct Lake-model van. In Webbs voorbeeld beschrijft de ene view de verkoop, met de maatstaf SalesAmount. Een tweede view beschrijft de targets, met SalesTarget. Beide staan in een eigen lakehouse.",
-    "Dan komt de truc. In een derde lakehouse maakt hij snelkoppelingen (shortcuts) naar de tabellen en naar de twee views. De nieuwe view voegt alleen één relatie toe, van targets naar medewerker, en één maatstaf: SalesPctTarget, met DIVIDE([SalesAmount],[SalesTarget]). Het resultaat is één model met alles uit beide views erin. Een rapport erop rekent over beide lakehouses heen.",
-    "Webb vindt dit een oplossing voor een oud probleem. Samengestelde modellen (composite models) moesten maatstaven al herbruikbaar maken, maar dat lukte volgens hem nooit echt. Voor jou lijkt het op metric views in Unity Catalog: één keer definiëren, overal hergebruiken. Het verschil is dat dit binnen Fabric leeft. Webb noemt het zelf nog 'heel vroeg', en een lezer kreeg het combineren niet meteen werkend."
-   ],
-   "key_facts": [
-    "Fabric semantic views zijn aangekondigd op Microsoft Ignite in november 2026; de post is van 22 november 2026.",
-    "Een semantic view wordt in YAML beschreven met datasets, relationships en metrics; de metrics in het voorbeeld zijn in DAX.",
-    "Elke semantic view levert een Direct Lake semantisch model op.",
-    "Je combineert views door in een nieuw lakehouse shortcuts naar de tabellen en naar bestaande semantic views te maken; de nieuwe view voegt alleen extra relaties en metrics toe.",
-    "Voorbeeldmaatstaf: SalesPctTarget = DIVIDE([SalesAmount],[SalesTarget]), die maatstaven uit beide onderliggende views gebruikt.",
-    "Webb: 'It's still very early days for semantic views'; een lezer meldde problemen, waarop Webb zei dat hij soms het model moest verwijderen en opnieuw publiceren."
-   ],
-   "article_type": "opinie",
-   "author": "Chris Webb, Fabric CAT-team bij Microsoft, bekende Power BI-blogger",
-   "showcase": {
-    "caption": "Wat de gecombineerde view uitrekent: verkoop en targets komen uit twee verschillende tabellen, en via de medewerker reken je het percentage van het target uit.",
-    "language": "sql",
-    "code": "SELECT e.Name,\n  s.SalesAmount,\n  t.SalesTarget,\n  ROUND(s.SalesAmount / t.SalesTarget, 2) AS SalesPctTarget\nFROM employee e\nJOIN (SELECT EmployeeID, SUM(SalesAmount) AS SalesAmount\n      FROM sales GROUP BY EmployeeID) s USING (EmployeeID)\nJOIN (SELECT EmployeeID, SUM(SalesTarget) AS SalesTarget\n      FROM targets GROUP BY EmployeeID) t USING (EmployeeID)\nORDER BY e.Name;",
-    "result": {
-     "columns": [
-      "Name",
-      "SalesAmount",
-      "SalesTarget",
-      "SalesPctTarget"
-     ],
-     "rows": [
-      [
-       "Anna",
-       2000,
-       2500,
-       0.8
-      ],
-      [
-       "Bram",
-       1500,
-       1200,
-       1.25
-      ],
-      [
-       "Chris",
-       1100,
-       1000,
-       1.1
-      ]
-     ]
-    },
-    "note": "Zo werkt het idee in gewone SQL. In een semantic view schrijf je dit als YAML met DAX-maatstaven, zoals DIVIDE([SalesAmount],[SalesTarget]); die notatie staat in de Fabric-documentatie."
-   },
-   "terms": [
-    {
-     "term": "semantic views",
-     "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van."
-    },
-    {
-     "term": "Direct Lake",
-     "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron."
-    },
-    {
-     "term": "shortcuts",
-     "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren."
-    },
-    {
-     "term": "composite models",
-     "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.7,
-    "why": "Praktisch stuk over herbruikbare maatstaven richting Power BI, zoals je duim omhoog bij metric views als Power BI-model."
-   },
-   "labels": [
-    "fabric-semantic-views",
-    "vaste-metric-definities",
-    "semantische-laag"
-   ]
-  },
-  {
    "id": "a53e25c34fef",
    "title": "Sharing catalog metadata across data platforms, engines, and agents",
    "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
@@ -1091,7 +963,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.92,
+    "recency": 0.9,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1210,7 +1082,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1300,6 +1172,134 @@
    }
   },
   {
+   "id": "d380e24c1978",
+   "title": "Combining Fabric Semantic Views",
+   "url": "https://blog.crossjoin.co.uk/2026/11/22/combining-fabric-semantic-views/",
+   "source_id": "chris_webb",
+   "published_at": "2026-11-22T17:09:43Z",
+   "fetched_at": "2026-11-23T03:13:13.044105Z",
+   "summary": "Chris Webb laat zien hoe je in Fabric twee semantic views combineert tot één Power BI-model, met een nieuwe maatstaf die over beide heen rekent.",
+   "personal_relevance": "Herbruikbare maatstaven over modellen heen raken direct aan je Power BI-werk en aan de vraag waar je definities vastlegt: in Fabric of in Unity Catalog.",
+   "experiment": "Volg Webbs voorbeeld in een Fabric-proefomgeving met twee kleine verzonnen tabellen (verkoop en targets) en kijk of de gecombineerde maatstaf in een rapport hetzelfde getal geeft als een handmatige berekening.",
+   "limitations": [
+    "De functie is net aangekondigd; de status (preview of GA) staat niet in de post.",
+    "Webb werkt bij Microsoft; de post is wel een eigen proef met concrete stappen.",
+    "Of semantic views ook met data uit Databricks of Unity Catalog werken, zegt de post niet."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Fabric semantic views (overzicht)",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-overview"
+    },
+    {
+     "label": "Een view hergebruiken in een ander lakehouse",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/semantic-views-consume#reuse-a-view-in-another-lakehouse"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling"
+   ],
+   "groups": [
+    "overig",
+    "architectuur"
+   ],
+   "relevance_score": 92,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.84,
+    "source": 0.68,
+    "quality": 0.7,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-24T03:26:39Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Webb: Fabric semantic views stapel je op elkaar zonder iets te kopiëren",
+   "story": [
+    "Microsoft kondigde op Ignite de Fabric semantic views aan. Chris Webb, die bij Microsoft in het Fabric CAT-team werkt, liet een week later zien wat hij er het mooiste aan vindt: je kunt ze combineren. Zo hergebruik je tabellen, relaties en maatstaven uit een bestaand model, zonder data of definities te kopiëren.",
+    "Een semantic view beschrijf je in YAML: welke tabellen erin zitten, hoe ze samenhangen en welke maatstaven er zijn, in DAX. Fabric maakt daar een Direct Lake-model van. In Webbs voorbeeld beschrijft de ene view de verkoop, met de maatstaf SalesAmount. Een tweede view beschrijft de targets, met SalesTarget. Beide staan in een eigen lakehouse.",
+    "Dan komt de truc. In een derde lakehouse maakt hij snelkoppelingen (shortcuts) naar de tabellen en naar de twee views. De nieuwe view voegt alleen één relatie toe, van targets naar medewerker, en één maatstaf: SalesPctTarget, met DIVIDE([SalesAmount],[SalesTarget]). Het resultaat is één model met alles uit beide views erin. Een rapport erop rekent over beide lakehouses heen.",
+    "Webb vindt dit een oplossing voor een oud probleem. Samengestelde modellen (composite models) moesten maatstaven al herbruikbaar maken, maar dat lukte volgens hem nooit echt. Voor jou lijkt het op metric views in Unity Catalog: één keer definiëren, overal hergebruiken. Het verschil is dat dit binnen Fabric leeft. Webb noemt het zelf nog 'heel vroeg', en een lezer kreeg het combineren niet meteen werkend."
+   ],
+   "key_facts": [
+    "Fabric semantic views zijn aangekondigd op Microsoft Ignite in november 2026; de post is van 22 november 2026.",
+    "Een semantic view wordt in YAML beschreven met datasets, relationships en metrics; de metrics in het voorbeeld zijn in DAX.",
+    "Elke semantic view levert een Direct Lake semantisch model op.",
+    "Je combineert views door in een nieuw lakehouse shortcuts naar de tabellen en naar bestaande semantic views te maken; de nieuwe view voegt alleen extra relaties en metrics toe.",
+    "Voorbeeldmaatstaf: SalesPctTarget = DIVIDE([SalesAmount],[SalesTarget]), die maatstaven uit beide onderliggende views gebruikt.",
+    "Webb: 'It's still very early days for semantic views'; een lezer meldde problemen, waarop Webb zei dat hij soms het model moest verwijderen en opnieuw publiceren."
+   ],
+   "article_type": "opinie",
+   "author": "Chris Webb, Fabric CAT-team bij Microsoft, bekende Power BI-blogger",
+   "showcase": {
+    "caption": "Wat de gecombineerde view uitrekent: verkoop en targets komen uit twee verschillende tabellen, en via de medewerker reken je het percentage van het target uit.",
+    "language": "sql",
+    "code": "SELECT e.Name,\n  s.SalesAmount,\n  t.SalesTarget,\n  ROUND(s.SalesAmount / t.SalesTarget, 2) AS SalesPctTarget\nFROM employee e\nJOIN (SELECT EmployeeID, SUM(SalesAmount) AS SalesAmount\n      FROM sales GROUP BY EmployeeID) s USING (EmployeeID)\nJOIN (SELECT EmployeeID, SUM(SalesTarget) AS SalesTarget\n      FROM targets GROUP BY EmployeeID) t USING (EmployeeID)\nORDER BY e.Name;",
+    "result": {
+     "columns": [
+      "Name",
+      "SalesAmount",
+      "SalesTarget",
+      "SalesPctTarget"
+     ],
+     "rows": [
+      [
+       "Anna",
+       2000,
+       2500,
+       0.8
+      ],
+      [
+       "Bram",
+       1500,
+       1200,
+       1.25
+      ],
+      [
+       "Chris",
+       1100,
+       1000,
+       1.1
+      ]
+     ]
+    },
+    "note": "Zo werkt het idee in gewone SQL. In een semantic view schrijf je dit als YAML met DAX-maatstaven, zoals DIVIDE([SalesAmount],[SalesTarget]); die notatie staat in de Fabric-documentatie."
+   },
+   "terms": [
+    {
+     "term": "semantic views",
+     "explanation": "Een nieuw object in Microsoft Fabric waarin je in YAML tabellen, relaties en maatstaven vastlegt. Fabric maakt er een Power BI-model van."
+    },
+    {
+     "term": "Direct Lake",
+     "explanation": "Een verbindingsmodus in Power BI die de Delta-bestanden in OneLake direct leest, zonder de data eerst te importeren en zonder bij elke klik een query naar de bron."
+    },
+    {
+     "term": "shortcuts",
+     "explanation": "Snelkoppelingen in OneLake: een verwijzing naar data of een object op een andere plek, zodat je het kunt gebruiken zonder te kopiëren."
+    },
+    {
+     "term": "composite models",
+     "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.7,
+    "why": "Praktisch stuk over herbruikbare maatstaven richting Power BI, zoals je duim omhoog bij metric views als Power BI-model."
+   },
+   "labels": [
+    "fabric-semantic-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ]
+  },
+  {
    "id": "4dcd7af26dab",
    "title": "Why an AI agent's revenue query was $3.5 million wrong, and how AWS fixed it with dbt Semantic Layer",
    "url": "https://www.getdbt.com/blog/aws-dbt-semantic-layer-ai-agent-revenue-accuracy",
@@ -1331,7 +1331,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.8,
     "feedback": 0.01,
@@ -1490,147 +1490,6 @@
    }
   },
   {
-   "id": "5c7174c45ad1",
-   "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
-   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-10T18:45:00Z",
-   "fetched_at": "2026-11-10T20:23:14.925389Z",
-   "summary": "Databricks kan metric views nu publiceren als Power BI-semantisch model: dimensies worden kolommen en maatstaven worden DAX-measures. Het is nog een private preview.",
-   "personal_relevance": "Je maatstaven kunnen één keer in de catalogus staan en toch in je Power BI-rapporten verschijnen, zodat AI en rapporten hetzelfde getal geven.",
-   "experiment": "Bouw op een openbare of verzonnen dataset een metric view met een som en een verhouding, en vergelijk de DAX die Power BI ervan maakt met wat je zelf zou schrijven (als je toegang tot de preview krijgt).",
-   "limitations": [
-    "Private preview: alleen via het accountteam, en functies kunnen nog veranderen.",
-    "Eén richting: wijzigingen in Power BI gaan verloren bij de volgende publicatie.",
-    "Het artikel noemt geen eisen voor licenties, XMLA of Power BI Desktop-versies."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Publish to Power BI (preview)",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/publish-metric-views"
-    },
-    {
-     "label": "Unity Catalog metric views",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/"
-    },
-    {
-     "label": "Power BI-taken in Lakeflow Jobs",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/powerbi"
-    }
-   ],
-   "topics": [
-    "powerbi_semantic_models",
-    "data_architecture_modeling",
-    "ai_context_engineering",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "overig",
-    "architectuur",
-    "ai_context",
-    "databricks"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.47,
-    "source": 0.85,
-    "quality": 0.75,
-    "feedback": -0.04,
-    "fit": 0.3,
-    "project": 0.03
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:30:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
-   "story": [
-    "Databricks heeft een knop gemaakt die een metric view uit Unity Catalog omzet in een Power BI-semantisch model. Je definieert een maatstaf zoals omzet dan één keer in Databricks. Power BI, AI/BI-dashboards en Genie gebruiken daarna dezelfde definitie. De functie heet Publish to Power BI en is nog een private preview.",
-    "Het werkt als een vertaling. Elke metric view wordt één tabel in het Power BI-model. Dimensies worden kolommen en maatstaven worden DAX-measures, dus een SUM wordt een SUM in DAX en een verhouding wordt een DIVIDE. Joins die in de metric view staan, draait Databricks zelf. Je hoeft in Power BI dus geen relaties opnieuw te leggen.",
-    "Publiceren kan op twee manieren. Je kiest in Catalog Explorer voor Publish to Power BI en een werkruimte. Of je voegt een Power BI-taak toe aan een Lakeflow Job, zodat het model na elke verversing van de brontabellen wordt bijgewerkt. Standaard gebruikt het model DirectQuery: Power BI vraagt bij elke klik de metric view op, en de rechten uit Unity Catalog blijven gelden. In importmodus gelden de Power BI-rechten.",
-    "Voor jouw werk raakt dit een bekende spanning. Nu staan veel maatstaven als DAX in een Power BI-model, waar een AI-assistent of een ander rapport er niet bij kan. Met deze route wordt de catalogus de bron en Power BI de afnemer. Let wel op: het werkt maar één kant op. Pas je een measure in Power BI aan, dan komt dat niet terug in Databricks.",
-    "Voor Dataflow is dit iets voor fase 4: als je Gold-tabellen hebt, kun je één metric view bouwen en kijken hoe die als model in Power BI aankomt. Of de functie in Databricks Free Edition werkt, zegt het artikel niet."
-   ],
-   "key_facts": [
-    "Publish to Power BI publiceert Unity Catalog metric views als Power BI-semantische modellen; status private preview, toegang via het Databricks-accountteam (blog van 10 november 2026).",
-    "Elke metric view wordt één tabel; dimensies worden kolommen, maatstaven worden DAX-measures (bijv. roas = DIVIDE([total_revenue], [total_spend])).",
-    "Publiceren kan vanuit Catalog Explorer of met een Power BI-taak in een Lakeflow Job.",
-    "Standaard DirectQuery op Lakehouse//RT of Databricks SQL, met row filters, column masks en ABAC uit Unity Catalog; importmodus volgt de Power BI-rechten.",
-    "Ondersteund: SUM, COUNT, AVG, MIN, MAX, MEDIAN, STDDEV, VARIANCE, distinct counts, verhoudingen, gefilterde en samengestelde measures en window measures; beschrijvingen en weergaveformaten gaan mee.",
-    "Synchronisatie is eenrichtingsverkeer: wijzigingen in Power BI gaan niet terug naar de metric view; materialisatie voor Power BI komt later."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Waarom een verhouding als maatstaf vastligt: eerst optellen, dan delen. Het gemiddelde van losse verhoudingen geeft een ander, fout getal. Een metric view legt de juiste volgorde één keer vast; Power BI krijgt dan DIVIDE([total_revenue], [total_spend]).",
-    "language": "sql",
-    "code": "SELECT kanaal,\n  SUM(revenue) AS total_revenue,\n  SUM(spend) AS total_spend,\n  ROUND(SUM(revenue) / SUM(spend), 2) AS roas_juist,\n  ROUND(AVG(revenue / spend), 2) AS roas_fout\nFROM campagnes\nGROUP BY kanaal\nORDER BY kanaal;",
-    "result": {
-     "columns": [
-      "kanaal",
-      "total_revenue",
-      "total_spend",
-      "roas_juist",
-      "roas_fout"
-     ],
-     "rows": [
-      [
-       "email",
-       1000,
-       400,
-       2.5,
-       3.0
-      ],
-      [
-       "social",
-       550,
-       250,
-       2.2,
-       3.25
-      ]
-     ]
-    },
-    "note": "Verzonnen data, gedraaid in DuckDB. De namen total_spend, total_revenue en roas komen uit het voorbeeld in de blog; de notatie van de metric view zelf staat in de documentatie."
-   },
-   "terms": [
-    {
-     "term": "metric view",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    },
-    {
-     "term": "DirectQuery",
-     "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
-    },
-    {
-     "term": "Lakeflow Job",
-     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.8,
-    "why": "Power BI-koppeling met vaste definities, zoals je duimen voor de semantische-laag- en OAP-stukken."
-   },
-   "labels": [
-    "metric-views",
-    "vaste-metric-definities",
-    "semantische-laag"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   },
-   "project_ref": {
-    "fase": 4,
-    "quote": "Voor Dataflow is dit iets voor fase 4",
-    "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
-   }
-  },
-  {
    "id": "3e9bbba1efea",
    "title": "Claude Code: wat is er nieuw in week 46 (v2.1.321 t/m v2.1.325)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W46",
@@ -1767,7 +1626,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -1880,7 +1739,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.03,
@@ -1951,6 +1810,147 @@
     "fase": 6,
     "quote": "Voor Dataflow sluit dit aan op fase 6, waar je uitzoekt hoe je Claude Code veilig inzet",
     "why": "Fase 6 draait om de vraag hoe je Claude Code en MCP veilig gebruikt."
+   }
+  },
+  {
+   "id": "5c7174c45ad1",
+   "title": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
+   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-10T18:45:00Z",
+   "fetched_at": "2026-11-10T20:23:14.925389Z",
+   "summary": "Databricks kan metric views nu publiceren als Power BI-semantisch model: dimensies worden kolommen en maatstaven worden DAX-measures. Het is nog een private preview.",
+   "personal_relevance": "Je maatstaven kunnen één keer in de catalogus staan en toch in je Power BI-rapporten verschijnen, zodat AI en rapporten hetzelfde getal geven.",
+   "experiment": "Bouw op een openbare of verzonnen dataset een metric view met een som en een verhouding, en vergelijk de DAX die Power BI ervan maakt met wat je zelf zou schrijven (als je toegang tot de preview krijgt).",
+   "limitations": [
+    "Private preview: alleen via het accountteam, en functies kunnen nog veranderen.",
+    "Eén richting: wijzigingen in Power BI gaan verloren bij de volgende publicatie.",
+    "Het artikel noemt geen eisen voor licenties, XMLA of Power BI Desktop-versies."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Publish to Power BI (preview)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/publish-metric-views"
+    },
+    {
+     "label": "Unity Catalog metric views",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/uc-semantics/metric-views/"
+    },
+    {
+     "label": "Power BI-taken in Lakeflow Jobs",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/jobs/tasks/powerbi"
+    }
+   ],
+   "topics": [
+    "powerbi_semantic_models",
+    "data_architecture_modeling",
+    "ai_context_engineering",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "overig",
+    "architectuur",
+    "ai_context",
+    "databricks"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.47,
+    "source": 0.85,
+    "quality": 0.75,
+    "feedback": -0.04,
+    "fit": 0.3,
+    "project": 0.03
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:30:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Metric views uit Unity Catalog worden vanzelf een Power BI-model",
+   "story": [
+    "Databricks heeft een knop gemaakt die een metric view uit Unity Catalog omzet in een Power BI-semantisch model. Je definieert een maatstaf zoals omzet dan één keer in Databricks. Power BI, AI/BI-dashboards en Genie gebruiken daarna dezelfde definitie. De functie heet Publish to Power BI en is nog een private preview.",
+    "Het werkt als een vertaling. Elke metric view wordt één tabel in het Power BI-model. Dimensies worden kolommen en maatstaven worden DAX-measures, dus een SUM wordt een SUM in DAX en een verhouding wordt een DIVIDE. Joins die in de metric view staan, draait Databricks zelf. Je hoeft in Power BI dus geen relaties opnieuw te leggen.",
+    "Publiceren kan op twee manieren. Je kiest in Catalog Explorer voor Publish to Power BI en een werkruimte. Of je voegt een Power BI-taak toe aan een Lakeflow Job, zodat het model na elke verversing van de brontabellen wordt bijgewerkt. Standaard gebruikt het model DirectQuery: Power BI vraagt bij elke klik de metric view op, en de rechten uit Unity Catalog blijven gelden. In importmodus gelden de Power BI-rechten.",
+    "Voor jouw werk raakt dit een bekende spanning. Nu staan veel maatstaven als DAX in een Power BI-model, waar een AI-assistent of een ander rapport er niet bij kan. Met deze route wordt de catalogus de bron en Power BI de afnemer. Let wel op: het werkt maar één kant op. Pas je een measure in Power BI aan, dan komt dat niet terug in Databricks.",
+    "Voor Dataflow is dit iets voor fase 4: als je Gold-tabellen hebt, kun je één metric view bouwen en kijken hoe die als model in Power BI aankomt. Of de functie in Databricks Free Edition werkt, zegt het artikel niet."
+   ],
+   "key_facts": [
+    "Publish to Power BI publiceert Unity Catalog metric views als Power BI-semantische modellen; status private preview, toegang via het Databricks-accountteam (blog van 10 november 2026).",
+    "Elke metric view wordt één tabel; dimensies worden kolommen, maatstaven worden DAX-measures (bijv. roas = DIVIDE([total_revenue], [total_spend])).",
+    "Publiceren kan vanuit Catalog Explorer of met een Power BI-taak in een Lakeflow Job.",
+    "Standaard DirectQuery op Lakehouse//RT of Databricks SQL, met row filters, column masks en ABAC uit Unity Catalog; importmodus volgt de Power BI-rechten.",
+    "Ondersteund: SUM, COUNT, AVG, MIN, MAX, MEDIAN, STDDEV, VARIANCE, distinct counts, verhoudingen, gefilterde en samengestelde measures en window measures; beschrijvingen en weergaveformaten gaan mee.",
+    "Synchronisatie is eenrichtingsverkeer: wijzigingen in Power BI gaan niet terug naar de metric view; materialisatie voor Power BI komt later."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Waarom een verhouding als maatstaf vastligt: eerst optellen, dan delen. Het gemiddelde van losse verhoudingen geeft een ander, fout getal. Een metric view legt de juiste volgorde één keer vast; Power BI krijgt dan DIVIDE([total_revenue], [total_spend]).",
+    "language": "sql",
+    "code": "SELECT kanaal,\n  SUM(revenue) AS total_revenue,\n  SUM(spend) AS total_spend,\n  ROUND(SUM(revenue) / SUM(spend), 2) AS roas_juist,\n  ROUND(AVG(revenue / spend), 2) AS roas_fout\nFROM campagnes\nGROUP BY kanaal\nORDER BY kanaal;",
+    "result": {
+     "columns": [
+      "kanaal",
+      "total_revenue",
+      "total_spend",
+      "roas_juist",
+      "roas_fout"
+     ],
+     "rows": [
+      [
+       "email",
+       1000,
+       400,
+       2.5,
+       3.0
+      ],
+      [
+       "social",
+       550,
+       250,
+       2.2,
+       3.25
+      ]
+     ]
+    },
+    "note": "Verzonnen data, gedraaid in DuckDB. De namen total_spend, total_revenue en roas komen uit het voorbeeld in de blog; de notatie van de metric view zelf staat in de documentatie."
+   },
+   "terms": [
+    {
+     "term": "metric view",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "DirectQuery",
+     "explanation": "Een verbindingsmodus in Power BI waarbij het rapport bij elke klik de bron opvraagt, in plaats van de data eerst in te laden."
+    },
+    {
+     "term": "Lakeflow Job",
+     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.8,
+    "why": "Power BI-koppeling met vaste definities, zoals je duimen voor de semantische-laag- en OAP-stukken."
+   },
+   "labels": [
+    "metric-views",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
+   },
+   "project_ref": {
+    "fase": 4,
+    "quote": "Voor Dataflow is dit iets voor fase 4",
+    "why": "Gold-tabellen met een metric view zijn een natuurlijke volgende stap na dbt Silver en Gold."
    }
   },
   {
@@ -2369,7 +2369,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -2469,7 +2469,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.05,
@@ -2542,6 +2542,97 @@
    }
   },
   {
+   "id": "6ff348e652c9",
+   "title": "Three LLM inflection points in twelve months",
+   "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+   "source_id": "simon_willison",
+   "published_at": "2026-11-24T23:02:07Z",
+   "fetched_at": "2026-11-25T03:13:36.837278Z",
+   "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
+   "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
+   "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
+   "limitations": [
+    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
+    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Video van de keynote",
+     "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
+    },
+    {
+     "label": "Claude Fable is relentlessly proactive",
+     "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.94,
+    "source": 0.68,
+    "quality": 0.47,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:22:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
+   "story": [
+    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
+    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
+    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
+    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
+    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
+   ],
+   "key_facts": [
+    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
+    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
+    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
+    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
+    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
+    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
+   "terms": [
+    {
+     "term": "coding agents",
+     "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
+    },
+    {
+     "term": "Codex",
+     "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
+   },
+   "labels": [
+    "claude-modellen",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
+   }
+  },
+  {
    "id": "81204e04abb9",
    "title": "How LangChain grew self-serve analytics questions 40x by giving its AI agent layered context",
    "url": "https://www.getdbt.com/blog/langchain-self-serve-analytics-ai-agent-context",
@@ -2574,10 +2665,10 @@
     "agents",
     "kwaliteit"
    ],
-   "relevance_score": 88,
+   "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -2652,97 +2743,6 @@
     "fase": 7,
     "quote": "Voor Dataflow is dit een voorbeeld voor fase 7: dbt-beschrijvingen en de DAG als context voor je eigen agent",
     "why": "Fase 7 gebruikt dbt-artifacts als context voor een eigen data-agent."
-   }
-  },
-  {
-   "id": "6ff348e652c9",
-   "title": "Three LLM inflection points in twelve months",
-   "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
-   "source_id": "simon_willison",
-   "published_at": "2026-11-24T23:02:07Z",
-   "fetched_at": "2026-11-25T03:13:36.837278Z",
-   "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
-   "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
-   "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
-   "limitations": [
-    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
-    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Video van de keynote",
-     "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
-    },
-    {
-     "label": "Claude Fable is relentlessly proactive",
-     "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 88,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.96,
-    "source": 0.68,
-    "quality": 0.47,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:22:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
-   "story": [
-    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
-    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
-    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
-    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
-    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
-   ],
-   "key_facts": [
-    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
-    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
-    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
-    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
-    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
-    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
-   "terms": [
-    {
-     "term": "coding agents",
-     "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
-    },
-    {
-     "term": "Codex",
-     "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.6,
-    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
-   },
-   "labels": [
-    "claude-modellen",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "claude_ai_development",
-    "pts": 1
    }
   },
   {
@@ -2907,7 +2907,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.05
@@ -3014,7 +3014,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.95,
+    "recency": 0.94,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.05,
@@ -3133,115 +3133,6 @@
    }
   },
   {
-   "id": "a704112d6f8a",
-   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
-   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
-   "source_id": "databricks_engineering_blog",
-   "published_at": "2026-10-06T16:00:00Z",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
-   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
-   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
-   "limitations": [
-    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
-    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
-    "databricks-dbt-factory is een open-source project, geen product van Databricks."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "databricks-dbt-factory (GitHub)",
-     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
-    }
-   ],
-   "topics": [
-    "dbt_analytics_engineering",
-    "databricks_data_engineering",
-    "data_quality_observability",
-    "cicd_data_deployment"
-   ],
-   "groups": [
-    "dbt",
-    "databricks",
-    "kwaliteit",
-    "overig"
-   ],
-   "relevance_score": 86,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.08,
-    "source": 0.68,
-    "quality": 0.78,
-    "feedback": -0.06,
-    "fit": 0.25,
-    "project": 0.08
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-31T09:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
-   "story": [
-    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
-    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
-    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
-    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
-   ],
-   "key_facts": [
-    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
-    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
-    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
-    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
-    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
-    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "ingestion time",
-     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
-    },
-    {
-     "term": "queryplan",
-     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
-    },
-    {
-     "term": "upstream",
-     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
-    },
-    {
-     "term": "dbt-manifest",
-     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
-    },
-    {
-     "term": "RFID",
-     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.75,
-    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
-   },
-   "labels": [
-    "incrementele-modellen",
-    "dbt-op-databricks-jobs",
-    "compute-kosten"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -6
-   },
-   "project_ref": {
-    "fase": 5,
-    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
-    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
-   }
-  },
-  {
    "id": "67b79f31be0e",
    "title": "Why a semantic layer is the difference between a 96% and an 80% accurate AI analyst",
    "url": "https://www.getdbt.com/blog/semantic-layer-ai-analyst-accuracy",
@@ -3270,7 +3161,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.5,
     "feedback": 0.02,
@@ -3368,7 +3259,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.57,
     "feedback": 0.01,
@@ -3573,7 +3464,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3642,116 +3533,112 @@
    }
   },
   {
-   "id": "655888c78c57",
-   "title": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
-   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-18T16:00:00Z",
-   "fetched_at": "2026-11-19T03:13:32.204856Z",
-   "summary": "Collega's kunnen in Microsoft Teams vragen stellen aan je Databricks-data via de Genie-app, nu GA. Genie werkt ook in Copilot Cowork, Excel en Copilot Studio, steeds met de rechten van de vrager.",
-   "personal_relevance": "Dit is de kortste weg van jouw Gold-laag naar collega's die in Teams of Excel werken, zonder dat zij rechten krijgen die ze niet al hadden.",
-   "experiment": "Maak in een testwerkruimte een Genie Agent op een openbare dataset (bijv. CBS-cijfers) met een metric view, en kijk in de Excel Add-in of een draaitabel op die metric view dezelfde getallen geeft als Genie in gewone taal.",
+   "id": "a704112d6f8a",
+   "title": "Scaling and Operating a Large dbt Project on Databricks: IFCO's Data Team on Performance, Visibility, and Debugging",
+   "url": "https://www.databricks.com/blog/scaling-and-operating-large-dbt-project-databricks-ifcos-data-team-performance-visibility-and-debugging",
+   "source_id": "databricks_engineering_blog",
+   "published_at": "2026-10-06T16:00:00Z",
+   "fetched_at": "2026-10-28T20:21:54.094217Z",
+   "summary": "Het datateam van IFCO bracht de dagelijkse dbt-run terug van zo'n zeven uur naar ruim twee uur. Niet met grotere clusters, maar door minder rijen te raken en alleen opnieuw te rekenen wat echt veranderde.",
+   "personal_relevance": "Late data en dure nachtelijke herbouw spelen ook bij brondata uit systemen als HiX; dit laat zien hoe je incrementeel blijft zonder late rijen te missen.",
+   "experiment": "Neem een incrementeel oefenmodel op verzonnen data en voeg een paar 'late' rijen toe met een oude gebeurtenistijd. Kijk of je filter op event time ze mist, en zet het daarna om naar een filter op binnenkomsttijd.",
    "limitations": [
-    "Alleen de Teams-app en Genie Ontology hebben volgens het artikel een GA-status.",
-    "Hoe tokens en rechten bij Cowork en Excel technisch lopen, staat er niet in.",
-    "Terugschrijven vanuit Excel naar tabellen vraagt om goede afspraken over wie wat mag wijzigen."
+    "Het artikel noemt geen aantal modellen of codevoorbeelden; de aanpak moet je zelf vertalen.",
+    "Het tijdvak moet de vertraging tussen binnenkomst en verwerking dekken, anders vallen late rijen stil weg.",
+    "databricks-dbt-factory is een open-source project, geen product van Databricks."
    ],
-   "availability_status": "beschikbaar",
+   "availability_status": "onbekend",
    "official_docs": [
     {
-     "label": "Genie-app voor Microsoft Teams",
-     "url": "https://docs.databricks.com/aws/en/integrations/msft-teams"
-    },
-    {
-     "label": "Azure Databricks Excel Add-in",
-     "url": "https://docs.databricks.com/aws/en/integrations/excel/"
-    },
-    {
-     "label": "Azure Databricks-connector voor Power Platform",
-     "url": "https://docs.databricks.com/aws/en/integrations/msft-power-platform/"
+     "label": "databricks-dbt-factory (GitHub)",
+     "url": "https://github.com/mwojtyczka/databricks-dbt-factory"
     }
    ],
    "topics": [
-    "ai_on_data_platform",
-    "powerbi_semantic_models",
-    "data_governance_privacy"
+    "dbt_analytics_engineering",
+    "databricks_data_engineering",
+    "data_quality_observability",
+    "cicd_data_deployment"
    ],
    "groups": [
-    "ai_context",
-    "overig",
-    "kwaliteit"
+    "dbt",
+    "databricks",
+    "kwaliteit",
+    "overig"
    ],
-   "relevance_score": 86,
+   "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
-    "source": 0.85,
-    "quality": 0.58,
-    "feedback": -0.04,
-    "fit": 0.2
+    "recency": 0.08,
+    "source": 0.68,
+    "quality": 0.78,
+    "feedback": -0.06,
+    "fit": 0.25,
+    "project": 0.08
    },
    "decision": "included",
    "processing_status": "enriched",
    "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T03:55:00Z",
+   "processed_at": "2026-10-31T09:55:00Z",
    "reading_minutes": 3,
    "format_version": 2,
-   "headline": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel",
+   "headline": "IFCO maakt een groot dbt-project op Databricks twee derde sneller",
    "story": [
-    "Databricks zet een rij koppelingen met Microsoft-tools op een rij. De belangrijkste: de Genie-app voor Microsoft Teams is algemeen beschikbaar (GA). Collega's sturen Genie een bericht of noemen hem in een kanaal, en krijgen in dezelfde draad een antwoord, met grafiek als dat past. Ze kunnen ook een vaste analyse inplannen of een bestand meesturen.",
-    "Zo werkt het. Elke vraag in Teams draait als de persoon die hem stelt. Genie gebruikt dus alleen data waar die persoon in Unity Catalog bij mag. De vraag wordt in de Databricks-werkruimte verwerkt; de dienst tussen Teams en Databricks bewaart geen vragen of antwoorden. Genie haalt zijn kennis uit Genie Ontology (vaste definities, metric views en geleerde context), en via Unity Gateway regel je welke MCP-tools Genie mag gebruiken en welke acties eerst goedkeuring vragen.",
-    "Daarnaast: in Copilot Cowork en Copilot Chat stuurt Copilot datavragen door naar Genie One in plaats van zelf te zoeken. In Excel stel je via de Azure Databricks Excel Add-in een vraag in gewone taal, laad je resultaten in je werkblad, maak je live draaitabellen op metric views en schrijf je ingevulde waarden terug naar een Databricks-tabel. In Copilot Studio voeg je een Genie Agent toe als tool via de connector voor Power Platform. Voor deze drie noemt het artikel geen status.",
-    "Dit is precies het patroon 'AI op je eigen data bij de gebruiker brengen': je Gold-tabellen en metric views zijn de bron, Genie Ontology geeft de betekenis, en de gebruiker vraagt het in Teams of Excel, met zijn eigen rechten. Voor een zorgorganisatie is dat laatste belangrijk: wie geen toegang heeft tot een tabel, krijgt die data ook niet via Genie te zien.",
-    "Instellen in Teams doet een Databricks-beheerder: app toevoegen en standaard-zichtbaarheid van antwoorden kiezen. Met Private Link is ook een ingress-regel op accountniveau nodig. Gebruikers loggen de eerste keer in en kiezen een werkruimte."
+    "IFCO volgt honderden miljoenen kratten en pallets met scans, RFID en trackers. Het team bouwt daar met dbt op Databricks KPI's van. Late data was het grote probleem: soms komt een scan weken later binnen. Daardoor was elke nacht een volledige herbouw nodig. Die is nu afgeschaft, en de dagelijkse run ging van ongeveer 7 uur naar 2 uur en 20 minuten.",
+    "De winst kwam uit minder werk, niet uit meer rekenkracht. Het team schrijft upstream alleen een tijdvak bij, gesleuteld op het moment van binnenkomst (ingestion time) en niet op het moment van de gebeurtenis. Downstream rekent een model alleen de kratten opnieuw door die nieuwe of late data kregen. Vergelijk het met een boekhouder die alleen de rekeningen met een nieuwe bon opnieuw controleert. Per run is dat nu zo'n 3 tot 5 procent van alle kratten.",
+    "Het zwaarste model had drie oorzaken. Een tijdstempel werd elke run opnieuw gemaakt, waardoor bijna alles 'gewijzigd' leek. Windowfuncties keken door de hele historie terug. En er werden kolommen berekend die niemand gebruikte. Het team vond dit door het uitgevoerde queryplan in de query history te lezen, niet de gecompileerde SQL van dbt compile. Die volgorde zit nu in een skill voor een AI-agent die een rapport met bewijs maakt, maar zelf niets aanpast.",
+    "Ook de uitvoering is anders. Elk model, elke test en elke seed is een eigen taak in een Databricks-job. Het open-source pakket databricks-dbt-factory maakt die job uit het dbt-manifest. Zo zie je per model wat het kost en draai je alleen opnieuw wat faalde. Voor jouw nachtelijke dbt-runs zijn vooral de les over binnenkomsttijd en het lezen van het echte queryplan direct bruikbaar. Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien."
    ],
    "key_facts": [
-    "De Databricks Genie-app voor Microsoft Teams is algemeen beschikbaar (GA); hij werkt ook in Microsoft 365 Copilot.",
-    "Elke vraag draait onder de identiteit van de vrager, met diens Unity Catalog-rechten; de routeringsdienst tussen Teams en Databricks slaat geen vragen of antwoorden op.",
-    "Genie Ontology is algemeen beschikbaar (GA).",
-    "Excel Add-in: vragen in gewone taal, live draaitabellen op metric views en tabellen, geplande verversing en terugschrijven naar Databricks-tabellen; status niet genoemd.",
-    "Copilot Cowork en Chat sturen datavragen door naar Genie One via de Azure Databricks Genie-plugin; status niet genoemd.",
-    "Copilot Studio: Genie Agents als tool via de Azure Databricks-connector voor Power Platform; status niet genoemd.",
-    "Koppeling met Work IQ via MCP komt 'binnenkort'.",
-    "Artikel van 18 november 2026."
+    "Databricks Engineering Blog, 6 oktober 2026, door Fernando Muñoz, Ludwig Brummer en Maxim Hammer (IFCO) met Databricks Forward Deployed Engineering.",
+    "Dagelijkse looptijd van de kernjob: ongeveer 7 uur naar 2 uur 20 minuten (ongeveer 66% korter); dagelijkse computekosten 58% lager.",
+    "Het consolidatiemodel scande ongeveer 25 miljard rijen; dat is 75% minder geworden. Per run worden nog ongeveer 3 tot 5% van de assets herberekend.",
+    "Technieken: liquid clustering op de querykorrel, merge op een echte sleutel met een row-hash-voorwaarde, tijdvakken op ingestion time en herberekening per watermark.",
+    "Diagnose via het uitgevoerde queryplan in de query history; verpakt als agent-skill die een rapport met bewijs maakt en geen wijzigingen doorvoert.",
+    "Eén Databricks-jobtaak per model, test, seed en snapshot, gegenereerd met het open-source databricks-dbt-factory (MIT-licentie)."
    ],
    "article_type": "nieuws",
    "terms": [
     {
-     "term": "Genie Ontology",
-     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+     "term": "ingestion time",
+     "explanation": "Het moment waarop een record in het platform binnenkwam, in plaats van het moment waarop de gebeurtenis zelf plaatsvond."
     },
     {
-     "term": "Genie One",
-     "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+     "term": "queryplan",
+     "explanation": "Het stappenplan dat de database maakt om een query uit te voeren: welke tabellen hij leest, hoe hij joint en in welke volgorde."
     },
     {
-     "term": "Genie Agent",
-     "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team."
+     "term": "upstream",
+     "explanation": "Upstream zijn de bronnen en modellen waar een model van afhangt; downstream zijn de modellen die erop verder bouwen."
     },
     {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+     "term": "dbt-manifest",
+     "explanation": "Een JSON-bestand dat dbt maakt, met alle modellen, tests en hun onderlinge afhankelijkheden in een project."
     },
     {
-     "term": "Private Link",
-     "explanation": "Een privéverbinding in Azure waardoor verkeer naar een dienst niet over het openbare internet gaat."
+     "term": "RFID",
+     "explanation": "Radiofrequentie-identificatie: een chip die je met radiogolven op afstand uitleest, bijvoorbeeld om kratten te volgen."
     }
    ],
-   "soort": "aankondiging",
+   "soort": "praktijk",
    "fit": {
-    "score": 0.7,
-    "why": "Genie op je eigen data bij gebruikers, zoals je duimen bij Genie Agents en metric views naar Power BI."
+    "score": 0.75,
+    "why": "Sneller dbt-project door minder opnieuw te rekenen, zoals je duim bij 'dbt hoeft niet elke nacht alles opnieuw te bouwen'."
    },
    "labels": [
-    "genie-one",
-    "genie-agents",
-    "metric-views",
-    "genie-ontology"
+    "incrementele-modellen",
+    "dbt-op-databricks-jobs",
+    "compute-kosten"
    ],
    "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -6
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is dit in fase 5 een manier om je dbt-modellen als losse taken in een Databricks-job te draaien",
+    "why": "Fase 5 draait dbt als Databricks-job met afhankelijkheden."
    }
   },
   {
@@ -3784,7 +3671,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.72,
     "feedback": -0.04,
@@ -3879,7 +3766,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.04,
@@ -3963,7 +3850,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.31,
+    "recency": 0.3,
     "source": 0.8,
     "quality": 0.63,
     "feedback": 0.02,
@@ -4243,6 +4130,119 @@
    }
   },
   {
+   "id": "655888c78c57",
+   "title": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
+   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-18T16:00:00Z",
+   "fetched_at": "2026-11-19T03:13:32.204856Z",
+   "summary": "Collega's kunnen in Microsoft Teams vragen stellen aan je Databricks-data via de Genie-app, nu GA. Genie werkt ook in Copilot Cowork, Excel en Copilot Studio, steeds met de rechten van de vrager.",
+   "personal_relevance": "Dit is de kortste weg van jouw Gold-laag naar collega's die in Teams of Excel werken, zonder dat zij rechten krijgen die ze niet al hadden.",
+   "experiment": "Maak in een testwerkruimte een Genie Agent op een openbare dataset (bijv. CBS-cijfers) met een metric view, en kijk in de Excel Add-in of een draaitabel op die metric view dezelfde getallen geeft als Genie in gewone taal.",
+   "limitations": [
+    "Alleen de Teams-app en Genie Ontology hebben volgens het artikel een GA-status.",
+    "Hoe tokens en rechten bij Cowork en Excel technisch lopen, staat er niet in.",
+    "Terugschrijven vanuit Excel naar tabellen vraagt om goede afspraken over wie wat mag wijzigen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Genie-app voor Microsoft Teams",
+     "url": "https://docs.databricks.com/aws/en/integrations/msft-teams"
+    },
+    {
+     "label": "Azure Databricks Excel Add-in",
+     "url": "https://docs.databricks.com/aws/en/integrations/excel/"
+    },
+    {
+     "label": "Azure Databricks-connector voor Power Platform",
+     "url": "https://docs.databricks.com/aws/en/integrations/msft-power-platform/"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "powerbi_semantic_models",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 85,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.69,
+    "source": 0.85,
+    "quality": 0.58,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T03:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel",
+   "story": [
+    "Databricks zet een rij koppelingen met Microsoft-tools op een rij. De belangrijkste: de Genie-app voor Microsoft Teams is algemeen beschikbaar (GA). Collega's sturen Genie een bericht of noemen hem in een kanaal, en krijgen in dezelfde draad een antwoord, met grafiek als dat past. Ze kunnen ook een vaste analyse inplannen of een bestand meesturen.",
+    "Zo werkt het. Elke vraag in Teams draait als de persoon die hem stelt. Genie gebruikt dus alleen data waar die persoon in Unity Catalog bij mag. De vraag wordt in de Databricks-werkruimte verwerkt; de dienst tussen Teams en Databricks bewaart geen vragen of antwoorden. Genie haalt zijn kennis uit Genie Ontology (vaste definities, metric views en geleerde context), en via Unity Gateway regel je welke MCP-tools Genie mag gebruiken en welke acties eerst goedkeuring vragen.",
+    "Daarnaast: in Copilot Cowork en Copilot Chat stuurt Copilot datavragen door naar Genie One in plaats van zelf te zoeken. In Excel stel je via de Azure Databricks Excel Add-in een vraag in gewone taal, laad je resultaten in je werkblad, maak je live draaitabellen op metric views en schrijf je ingevulde waarden terug naar een Databricks-tabel. In Copilot Studio voeg je een Genie Agent toe als tool via de connector voor Power Platform. Voor deze drie noemt het artikel geen status.",
+    "Dit is precies het patroon 'AI op je eigen data bij de gebruiker brengen': je Gold-tabellen en metric views zijn de bron, Genie Ontology geeft de betekenis, en de gebruiker vraagt het in Teams of Excel, met zijn eigen rechten. Voor een zorgorganisatie is dat laatste belangrijk: wie geen toegang heeft tot een tabel, krijgt die data ook niet via Genie te zien.",
+    "Instellen in Teams doet een Databricks-beheerder: app toevoegen en standaard-zichtbaarheid van antwoorden kiezen. Met Private Link is ook een ingress-regel op accountniveau nodig. Gebruikers loggen de eerste keer in en kiezen een werkruimte."
+   ],
+   "key_facts": [
+    "De Databricks Genie-app voor Microsoft Teams is algemeen beschikbaar (GA); hij werkt ook in Microsoft 365 Copilot.",
+    "Elke vraag draait onder de identiteit van de vrager, met diens Unity Catalog-rechten; de routeringsdienst tussen Teams en Databricks slaat geen vragen of antwoorden op.",
+    "Genie Ontology is algemeen beschikbaar (GA).",
+    "Excel Add-in: vragen in gewone taal, live draaitabellen op metric views en tabellen, geplande verversing en terugschrijven naar Databricks-tabellen; status niet genoemd.",
+    "Copilot Cowork en Chat sturen datavragen door naar Genie One via de Azure Databricks Genie-plugin; status niet genoemd.",
+    "Copilot Studio: Genie Agents als tool via de Azure Databricks-connector voor Power Platform; status niet genoemd.",
+    "Koppeling met Work IQ via MCP komt 'binnenkort'.",
+    "Artikel van 18 november 2026."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "Genie One",
+     "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+    },
+    {
+     "term": "Genie Agent",
+     "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "Private Link",
+     "explanation": "Een privéverbinding in Azure waardoor verkeer naar een dienst niet over het openbare internet gaat."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "Genie op je eigen data bij gebruikers, zoals je duimen bij Genie Agents en metric views naar Power BI."
+   },
+   "labels": [
+    "genie-one",
+    "genie-agents",
+    "metric-views",
+    "genie-ontology"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
+   }
+  },
+  {
    "id": "233bf8a439eb",
    "title": "Introducing Unity Gateway Insights",
    "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights",
@@ -4284,7 +4284,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.71,
+    "recency": 0.7,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -4429,7 +4429,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.74,
+    "recency": 0.73,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -4550,7 +4550,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.81,
+    "recency": 0.8,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -4646,7 +4646,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.87,
+    "recency": 0.86,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -4942,7 +4942,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.78,
     "feedback": -0.05,
@@ -5392,7 +5392,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.03,
@@ -5477,7 +5477,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.04,
@@ -5569,7 +5569,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.85,
     "quality": 0.65,
     "feedback": -0.05,
@@ -5745,7 +5745,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.34,
+    "recency": 0.33,
     "source": 0.85,
     "quality": 0.73,
     "feedback": -0.06,
@@ -6318,7 +6318,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.34,
+    "recency": 0.33,
     "source": 0.85,
     "quality": 0.68,
     "feedback": -0.04,
@@ -6456,7 +6456,7 @@
    "relevance_score": 82,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.47,
+    "recency": 0.46,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.05,
@@ -6560,10 +6560,10 @@
     "kwaliteit",
     "zorg"
    ],
-   "relevance_score": 82,
+   "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.64,
+    "recency": 0.63,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.04,
@@ -6649,10 +6649,10 @@
     "overig",
     "ai_context"
    ],
-   "relevance_score": 81,
+   "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.3,
+    "recency": 0.29,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -6751,7 +6751,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.33,
+    "recency": 0.32,
     "source": 0.68,
     "quality": 0.53,
     "feedback": 0.01,
@@ -6848,7 +6848,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.5,
+    "recency": 0.49,
     "source": 0.85,
     "quality": 0.52,
     "feedback": -0.02,
@@ -7059,7 +7059,7 @@
    "relevance_score": 78,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.31,
+    "recency": 0.3,
     "source": 1.0,
     "quality": 0.67,
     "fit": 0.2,
@@ -11052,9 +11052,9 @@
    "generated_at": "2026-11-25T05:20:00Z",
    "since": "2026-11-08",
    "last": "2026-11-23",
-   "week": 3,
-   "prev_week": 1,
-   "status": "groeit"
+   "week": 2,
+   "prev_week": 2,
+   "status": "speelt"
   }
  ],
  "weekly": {
@@ -15077,16 +15077,16 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 813,
-  "unique_after_dedupe": 753,
+  "fetched_items": 480,
+  "unique_after_dedupe": 760,
   "merged_duplicates": 53,
   "shown": 67,
   "decisions": {
-   "excluded": 273,
+   "excluded": 277,
    "area_cap": 14,
    "included": 120,
-   "no_topic": 166,
-   "below_threshold": 124,
+   "no_topic": 168,
+   "below_threshold": 125,
    "kort_vervallen": 33,
    "source_cap": 23
   },
@@ -15106,16 +15106,16 @@
    "azure_databricks_release_notes": 4,
    "simon_spati": 3,
    "claude_blog": 8,
-   "chris_webb": 2,
    "databricks_blog": 18,
+   "chris_webb": 2,
    "dbt_labs_blog": 10,
    "claude_code_releases": 4,
    "simon_whiteley": 2,
    "simon_willison": 1,
    "anthropic_engineering": 1,
    "huggingface_blog": 1,
-   "databricks_engineering_blog": 3,
    "dbt_developer_blog": 2,
+   "databricks_engineering_blog": 3,
    "langchain_blog": 2,
    "dbt_core_releases": 1,
    "hamel_husain": 1,
@@ -15171,9 +15171,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 176
+   "skipped_no_key": 177
   },
-  "queue_size": 2,
+  "queue_size": 3,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_inspiratie": [],
@@ -15236,16 +15236,6 @@
     ]
    },
    {
-    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
-    "relevance_score": 82,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "v2.1.328",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
@@ -15274,6 +15264,16 @@
     "relevance_score": 82,
     "decision": "included",
     "excluded_by": []
+   },
+   {
+    "title": "Screen MCP tool calls and results for jailbreaks (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/service-policies/create-service-policy#use-a-built-in-policy",
+    "relevance_score": 81,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    },
    {
     "title": "Metric view window measures are generally available",
@@ -15539,14 +15539,6 @@
     ]
    },
    {
-    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
-    "relevance_score": 79,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
@@ -15579,14 +15571,6 @@
     "excluded_by": []
    },
    {
-    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
-    "source_id": "databricks_blog",
-    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
-    "relevance_score": 79,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "Claude Code in the cloud: a field guide to cloud sessions",
     "source_id": "claude_blog",
     "url": "https://claude.dev/blog/claude-code-in-the-cloud/",
@@ -15600,14 +15584,6 @@
     "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
     "relevance_score": 79,
     "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Paginated reports in Power BI support outbound access protection (Preview)",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Paginated-reports-in-Power-BI-support-outbound-access-protection/ba-p/5435045",
-    "relevance_score": 79,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -15662,6 +15638,14 @@
     ]
    },
    {
+    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
@@ -15673,6 +15657,14 @@
     "title": "With great context comes great autonomy",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
+    "relevance_score": 78,
+    "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
+    "source_id": "databricks_blog",
+    "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
     "relevance_score": 78,
     "decision": "source_cap",
     "excluded_by": []
@@ -15697,6 +15689,14 @@
     "title": "Power BI at Ignite: Building on the momentum",
     "source_id": "powerbi_blog",
     "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-at-Ignite-Building-on-the-momentum/ba-p/5422974",
+    "relevance_score": 78,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "Paginated reports in Power BI support outbound access protection (Preview)",
+    "source_id": "powerbi_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Paginated-reports-in-Power-BI-support-outbound-access-protection/ba-p/5435045",
     "relevance_score": 78,
     "decision": "included",
     "excluded_by": []
