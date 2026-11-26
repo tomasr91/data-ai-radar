@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T04:25:48.839809Z",
+ "generated_at": "2026-11-26T05:14:32.719865Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -96,7 +96,7 @@
   },
   "metadata_lineage_catalogs": {
    "name": "Metadata, lineage en catalogi",
-   "priority": 4,
+   "priority": 5,
    "group": "kwaliteit"
   },
   "cicd_data_deployment": {
@@ -466,7 +466,7 @@
   "905562b7af62",
   "9fa51654bab7",
   "44f76c8bfa0f",
-  "d380e24c1978"
+  "a53e25c34fef"
  ],
  "articles": [
   {
@@ -936,6 +936,106 @@
    }
   },
   {
+   "id": "941b0ba5dad7",
+   "title": "Azure Databricks: wat is er nieuw in week 45",
+   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
+   "source_id": "azure_databricks_release_notes",
+   "published_at": "2026-11-08T23:59:59Z",
+   "fetched_at": "2026-11-10T20:23:13.940839Z",
+   "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
+   "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
+   "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
+   "limitations": [
+    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
+    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
+   ],
+   "availability_status": "preview",
+   "official_docs": [
+    {
+     "label": "Azure Databricks release notes november 2026",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "metadata_lineage_catalogs",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 94,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 1.0,
+    "quality": 0.62,
+    "fit": 0.1,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:32:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
+   "story": [
+    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
+    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
+    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
+    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
+    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
+   ],
+   "key_facts": [
+    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
+    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
+    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
+    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
+    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
+    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "LTS",
+     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    },
+    {
+     "term": "Lakeflow Job",
+     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "metastore",
+     "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."
+    },
+    {
+     "term": "ai_parse_document",
+     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.6,
+    "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."
+   },
+   "labels": [
+    "databricks-weekoverzicht",
+    "ai-functies-in-sql",
+    "lakeflow-jobs",
+    "genie-externe-kennis"
+   ],
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
+    "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
+   }
+  },
+  {
    "id": "a53e25c34fef",
    "title": "Sharing catalog metadata across data platforms, engines, and agents",
    "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
@@ -952,13 +1052,13 @@
    ],
    "availability_status": "preview",
    "topics": [
-    "ai_context_engineering",
     "metadata_lineage_catalogs",
+    "ai_context_engineering",
     "data_governance_privacy"
    ],
    "groups": [
-    "ai_context",
-    "kwaliteit"
+    "kwaliteit",
+    "ai_context"
    ],
    "relevance_score": 93,
    "score_parts": {
@@ -1381,112 +1481,6 @@
     "by": "topic",
     "name": "ai_context_engineering",
     "pts": 1
-   }
-  },
-  {
-   "id": "941b0ba5dad7",
-   "title": "Azure Databricks: wat is er nieuw in week 45",
-   "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes?week=2026-W45",
-   "source_id": "azure_databricks_release_notes",
-   "published_at": "2026-11-08T23:59:59Z",
-   "fetched_at": "2026-11-10T20:23:13.940839Z",
-   "summary": "Belangrijkste Databricks-wijzigingen van week 45: AI Functions in SQL werken vanaf januari 2027 alleen nog op Runtime 17.3 LTS en hoger. Verder AI Function-taken in jobs, jobs die starten na andere jobs, en Power BI-definities voor Genie (allemaal bèta).",
-   "personal_relevance": "Draait er bij jou AI-functies in SQL op een oudere runtime, dan moet die vóór januari over naar 17.3 LTS of hoger.",
-   "experiment": "Maak twee kleine jobs op openbare data: één die een CSV inleest en één die erop rekent, en laat de tweede starten zodra de eerste klaar is.",
-   "limitations": [
-    "De meeste nieuwe functies zijn bèta en kunnen nog veranderen.",
-    "De release notes zeggen niet wat in Databricks Free Edition beschikbaar is."
-   ],
-   "availability_status": "preview",
-   "official_docs": [
-    {
-     "label": "Azure Databricks release notes november 2026",
-     "url": "https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/november"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "databricks_data_engineering",
-    "cicd_data_deployment",
-    "metadata_lineage_catalogs"
-   ],
-   "groups": [
-    "ai_context",
-    "databricks",
-    "overig",
-    "kwaliteit"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.43,
-    "source": 1.0,
-    "quality": 0.62,
-    "feedback": -0.03,
-    "fit": 0.1,
-    "project": 0.08
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:32:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS",
-   "story": [
-    "Eerst iets waar je zelf iets mee moet. Vanaf januari 2027 werken AI Functions in SQL-query's niet meer op Databricks Runtime-versies onder 17.3 LTS. Gebruik je ai_query of een andere AI-functie op een oudere runtime, zet die dan over. De functie ai_similarity en de REST API van AI Functions vallen hier niet onder.",
-    "Daarnaast kun je in een job nu een AI Function-taak (bèta) toevoegen. Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft. Elke run verwerkt alleen wat nieuw of veranderd is, en schrijft de uitkomst naar een tabel in Unity Catalog. Een volgende taak kan die tabel weer lezen.",
-    "Ook nieuw in bèta: een Lakeflow Job kan starten zodra één of meer andere jobs klaar zijn, ook over werkruimtes heen die aan dezelfde metastore hangen. Zie het als een estafette: de volgende loper start pas als de vorige het stokje geeft, in plaats van op een vaste tijd.",
-    "Voor Genie komen externe kennisbronnen (bèta). Je haalt de metadata van een Power BI-semantisch model naar Databricks, en Genie gebruikt dan jouw Power BI-measures als het vragen beantwoordt. Een accountbeheerder zet dit aan op de pagina Previews. Unity Catalog krijgt bovendien wiki's (bèta), waarin een team per tabel de betekenis, het gebruik en de bronnen vastlegt.",
-    "Kleinere dingen: Claude Code en Codex werken nu in SSH-tunnelsessies (Databricks CLI 1.23.0 of hoger), en een verwijderd volume haal je binnen 7 dagen terug met UNDROP VOLUME. Voor Dataflow is de estafette tussen jobs iets voor fase 5: je kunt de dbt-job laten starten zodra de ingestion-job klaar is."
-   ],
-   "key_facts": [
-    "Vanaf januari 2027 geen AI Functions in SQL meer op Databricks Runtime onder 17.3 LTS; ai_similarity en de AI Functions REST API vallen erbuiten (melding 5 november 2026).",
-    "AI Function-taken voor jobs (bèta, 4 november): ai_parse_document, ai_extract of ai_classify op een volume of tabel, alleen nieuwe of gewijzigde invoer, uitkomst naar een Unity Catalog-tabel.",
-    "Lakeflow Jobs starten als upstream-jobs klaar zijn (bèta, 3 november), ook over werkruimtes met dezelfde Unity Catalog-metastore.",
-    "Externe kennisbronnen (bèta, 5 november): metadata uit Power BI-semantische modellen, zodat Genie Power BI-measures gebruikt; aanzetten via Previews in de accountconsole.",
-    "Unity Catalog-wiki's (bèta, 6 november) om de betekenis, het gebruik en de bronnen van een tabel vast te leggen.",
-    "Claude Code en Codex in SSH-tunnelsessies (5 november, Databricks CLI 1.23.0 of hoger); UNDROP VOLUME herstelt een volume binnen 7 dagen (7 november)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "LTS",
-     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
-    },
-    {
-     "term": "Lakeflow Job",
-     "explanation": "Een taak in Databricks die notebooks, SQL of pipelines op een schema of na elkaar laat draaien."
-    },
-    {
-     "term": "metastore",
-     "explanation": "Het hoogste niveau in Unity Catalog: de plek waar alle catalogi, rechten en metadata van een regio samenkomen. Werkruimtes hangen eraan."
-    },
-    {
-     "term": "ai_parse_document",
-     "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.6,
-    "why": "Weekoverzicht van je eigen platform; je duimen gaan vooral naar stukken met uitleg en een concrete toepassing."
-   },
-   "labels": [
-    "databricks-weekoverzicht",
-    "ai-functies-in-sql",
-    "lakeflow-jobs",
-    "genie-externe-kennis"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "databricks_data_engineering",
-    "pts": -3
-   },
-   "project_ref": {
-    "fase": 5,
-    "quote": "Voor Dataflow is de estafette tussen jobs iets voor fase 5",
-    "why": "Jobs met afhankelijkheden zijn de kern van fase 5."
    }
   },
   {
@@ -2122,7 +2116,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.85,
     "quality": 0.72,
     "fit": 0.2
@@ -2656,14 +2650,14 @@
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
-    "ai_agents_rag",
-    "metadata_lineage_catalogs"
+    "metadata_lineage_catalogs",
+    "ai_agents_rag"
    ],
    "groups": [
     "ai_context",
     "dbt",
-    "agents",
-    "kwaliteit"
+    "kwaliteit",
+    "agents"
    ],
    "relevance_score": 87,
    "score_parts": {
@@ -3464,7 +3458,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.63,
+    "recency": 0.62,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -3754,14 +3748,14 @@
    "topics": [
     "ai_context_engineering",
     "dbt_analytics_engineering",
-    "ai_agents_rag",
-    "metadata_lineage_catalogs"
+    "metadata_lineage_catalogs",
+    "ai_agents_rag"
    ],
    "groups": [
     "ai_context",
     "dbt",
-    "agents",
-    "kwaliteit"
+    "kwaliteit",
+    "agents"
    ],
    "relevance_score": 85,
    "score_parts": {
@@ -5150,14 +5144,14 @@
    ],
    "topics": [
     "ai_context_engineering",
+    "metadata_lineage_catalogs",
     "ai_on_data_platform",
-    "ai_agents_rag",
-    "metadata_lineage_catalogs"
+    "ai_agents_rag"
    ],
    "groups": [
     "ai_context",
-    "agents",
-    "kwaliteit"
+    "kwaliteit",
+    "agents"
    ],
    "relevance_score": 84,
    "score_parts": {
@@ -5165,7 +5159,7 @@
     "recency": 0.49,
     "source": 0.85,
     "quality": 0.58,
-    "feedback": -0.04,
+    "feedback": -0.03,
     "fit": 0.25
    },
    "decision": "included",
@@ -5245,7 +5239,7 @@
    "fb_why": {
     "by": "source",
     "name": "databricks_blog",
-    "pts": -4
+    "pts": -3
    }
   },
   {
@@ -5284,7 +5278,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.18,
+    "recency": 0.17,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.03,
@@ -6306,14 +6300,14 @@
    "topics": [
     "ai_on_data_platform",
     "claude_ai_development",
-    "ai_evaluation_observability",
-    "metadata_lineage_catalogs"
+    "metadata_lineage_catalogs",
+    "ai_evaluation_observability"
    ],
    "groups": [
     "ai_context",
     "claude",
-    "agents",
-    "kwaliteit"
+    "kwaliteit",
+    "agents"
    ],
    "relevance_score": 82,
    "score_parts": {
@@ -6821,6 +6815,106 @@
    }
   },
   {
+   "id": "62afb1e0ab94",
+   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+   "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-09T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.802171Z",
+   "summary": "Anthropic liet 1.000 agents met een vroege Claude Fable 5.2 een wiskundig bewijs nabouwen. Ze stemden alles af via Git en vijf SQL-tabellen, elk in een eigen afgeschermde machine met een bewaker die elke actie vooraf controleerde.",
+   "personal_relevance": "Het laat zien hoe je agents veilig laat samenwerken met gewone middelen die je al kent: Git, SQL en beperkte rechten.",
+   "experiment": "Laat in Claude Code twee subagents één klus verdelen via een DuckDB-bestand met een takentabel (wie claimt wat, wat is af), op een verzonnen opdracht zonder werkdata.",
+   "limitations": [
+    "Het is een interne proef van Anthropic met een vroege modelversie; de veiligheidsmonitoring is geen los product.",
+    "Een wiskundig bewijs is goed te controleren; bij data-werk is 'klopt het' vaak lastiger te meten."
+   ],
+   "availability_status": "experimenteel",
+   "official_docs": [
+    {
+     "label": "Blog: Safely scaling multi-agent teams",
+     "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+    },
+    {
+     "label": "Formalisering uit september",
+     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 0.51,
+    "quality": 0.68,
+    "feedback": -0.04,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:40:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "1.000 agents werkten samen via alleen Git en een Postgres-database",
+   "story": [
+    "Anthropic zette 1.000 agents op één klus: het formele bewijs van de laatste stelling van Fermat opnieuw opbouwen in Lean, een taal waarin een computer elk bewijs controleert. Ze kregen geen speciaal platform en geen sturing van een onderzoeker. Na 28,7 uur was het bewijs rond, met ongeveer een derde van de tokens van een eerdere poging.",
+    "Het interessante zit in de opzet. Er was één leider en 999 helpers. Ze konden alleen samenwerken via Git en een gedeelde Postgres-database. De leider maakte in de eerste tien minuten vijf tabellen aan: opdrachten, toewijzingen, notities, een takenlijst en een logboek van afgerond werk. Wie een taak als eerste claimde, was eigenaar. Zo werkte de database als een prikbord waar iedereen op kijkt.",
+    "De veiligheid had drie lagen. Elke agent draaide in een eigen virtuele machine zonder internet. Alle verkeer liep via een poort (gateway) die van buitenaf vastlegde welke agent iets vroeg. Code ging alleen via een eigen branch en een apart merge-proces naar main. Een classifier keek elk shell-commando en elke bestandswijziging na vóórdat het draaide, en blokkeerde bij twijfel. Achteraf liep er nog een tweede controle over alle logs.",
+    "Ook de cijfers over grenzen zijn leerzaam. Op één gedeelde machine liep het bij ongeveer 100 agents vast op geheugen of schijf. De database had een limiet van 5 seconden per SQL-statement. Van de ruim een miljoen tool-aanroepen hoefde er geen één te worden geblokkeerd.",
+    "Voor jou is dit vooral een les in agentontwerp. Een gewone SQL-tabel als gedeeld werkgeheugen, minste rechten (least privilege) en één poort voor alle wijzigingen zijn patronen die ook bij een kleine data-agent passen. Het blijft wel een proef van Anthropic zelf; de monitoring is intern en geen product."
+   ],
+   "key_facts": [
+    "1.000 agents (1 leider, 999 helpers) met een vroege versie van Claude Fable 5.2 bouwden in 28,7 uur een formeel Lean-bewijs van de laatste stelling van Fermat na (blog van 9 november 2026).",
+    "Ze gebruikten ongeveer een derde van de output-tokens en een bewijs van een zevende van de lengte van de formalisering uit september (11 dagen, circa 6 miljard tokens).",
+    "Samenwerking alleen via Git en een gedeelde Postgres-database met vijf tabellen: Announce, Assign, Notes, Subtasks en Landed.",
+    "Elke agent had een eigen VM zonder netwerk; één gedeelde machine liep vast rond 100 agents.",
+    "Database-limieten: één gedeelde rol zonder extra rechten, 5 seconden per SQL-statement, schrijven geweigerd boven 256 MiB.",
+    "Een LLM-classifier controleerde elk commando en elke bestandswijziging vooraf (fail-closed); van ruim een miljoen tool-aanroepen werd er geen geblokkeerd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Lean",
+     "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert."
+    },
+    {
+     "term": "gateway",
+     "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij."
+    },
+    {
+     "term": "classifier",
+     "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel."
+    },
+    {
+     "term": "least privilege",
+     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Achtergrond over de omgeving rond agents, zoals je duimen voor de dbt Wizard- en harness-stukken; het domein is wel wiskunde."
+   },
+   "labels": [
+    "multi-agent",
+    "agent-harness",
+    "agent-sandbox"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
+   }
+  },
+  {
    "id": "ad991551648f",
    "title": "The new Genie: autonomous AI for complex enterprise work",
    "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
@@ -7265,6 +7359,145 @@
     "by": "kind",
     "name": "aankondiging",
     "pts": -1
+   }
+  },
+  {
+   "id": "4cc09a1d9883",
+   "title": "Improving Deep Agents with harness engineering",
+   "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+   "source_id": "langchain_blog",
+   "published_at": "2026-10-13T19:56:07Z",
+   "date_note": "Het artikel zelf is gedateerd 17 februari 2026; de feed toont 13 oktober 2026, vermoedelijk een herpublicatie.",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "summary": "LangChain verbeterde zijn codeeragent op Terminal Bench 2.0 van 52,8 naar 66,5 procent zonder het model te wisselen. Alleen de systeemprompt, de tools en haken rond de agent veranderden.",
+   "personal_relevance": "De lessen (zelfcontrole afdwingen, omgeving meegeven, traces lezen) passen direct op hoe je Claude Code bij dbt-werk inzet.",
+   "experiment": "Zet in een testproject een Stop-hook in Claude Code die dbt build op DuckDB draait met verzonnen data, en vergelijk een paar taken met en zonder die hook.",
+   "limitations": [
+    "Het artikel is van februari 2026; nieuwere modellen hebben sommige hulpmiddelen volgens de auteurs straks niet meer nodig.",
+    "Het gaat om één benchmark en één model; de auteurs waarschuwen zelf voor overfitting op de taken.",
+    "LangChain verkoopt LangSmith, het hulpmiddel dat in het verhaal centraal staat."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "deepagents-cli (GitHub)",
+     "url": "https://github.com/langchain-ai/deepagents/tree/main/libs/code"
+    },
+    {
+     "label": "Terminal Bench 2.0 leaderboard",
+     "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+    },
+    {
+     "label": "LangChain middleware",
+     "url": "https://docs.langchain.com/oss/python/langchain/middleware/overview#the-agent-loop"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.12,
+    "source": 0.51,
+    "quality": 0.65,
+    "feedback": -0.04,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-31T16:20:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5",
+   "story": [
+    "LangChain liet zijn codeeragent deepagents-cli dezelfde 89 taken van Terminal Bench 2.0 doen, steeds met hetzelfde model. Alleen de omgeving rond het model veranderde: de testomgeving (harness). De score ging van 52,8 naar 66,5 procent. Op de ranglijst klom de agent van net buiten de top 30 naar de top 5.",
+    "De belangrijkste fout was herkenbaar: de agent schreef een oplossing, las hem nog eens, vond hem goed en stopte. De oplossing was een vaste werkwijze in vier stappen: plannen, bouwen met tests, controleren tegen de opdracht, en herstellen. Een extra haak (middleware) houdt de agent vlak voor het stoppen tegen en vraagt om een controle. Dat lijkt op een Stop-hook in Claude Code.",
+    "Andere ingrepen: bij de start brengt een haak de mappen en beschikbare tools in kaart. De agent krijgt te horen dat programmatische tests zijn werk beoordelen. Een teller per bestand grijpt in als de agent hetzelfde bestand steeds opnieuw bewerkt, een 'rondje' van soms meer dan tien bijna gelijke wijzigingen. En de agent denkt het diepst bij plannen en controleren, minder bij het bouwen.",
+    "Hoe vonden ze die fouten? Elke stap van elke run staat in LangSmith als trace. Een eigen skill haalt die traces op, laat parallelle agents de fouten analyseren en vat de voorstellen samen. Dat is dezelfde foutanalyse als bij evals, maar dan op het gedrag van een agent.",
+    "Voor jou geldt de les ook buiten LangChain. Geef een agent een controle die hij zelf kan draaien, zoals dbt build of een test. Vertel hem hoe het werk beoordeeld wordt, en kijk in de logs waar hij vastloopt voordat je aan de prompt gaat sleutelen."
+   ],
+   "key_facts": [
+    "Auteur: Vivek Trivedy (LangChain); het artikel is gedateerd 17 februari 2026.",
+    "Benchmark: Terminal Bench 2.0 (89 taken); agent: deepagents-cli; model: gpt-5.2-codex, steeds hetzelfde.",
+    "Score van 52,8% naar 66,5% (+13,7 punten); van net buiten de top 30 naar de top 5.",
+    "Ingrepen: werkwijze met zelfcontrole, PreCompletionChecklistMiddleware, LocalContextMiddleware, tijdswaarschuwingen, LoopDetectionMiddleware en meer redeneertijd bij plannen en controleren.",
+    "Alleen op het hoogste redeneerniveau (xhigh) scoorde de agent 53,9%, vooral door time-outs; op high 63,6%.",
+    "Een testrun met Claude Opus 4.6 op een eerdere versie van de harness haalde 59,6%."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo vind je een 'rondje' in de stappen van een agent: tel per bestand hoe vaak de agent het bewerkte. Vaak hetzelfde bestand aanpassen is een teken dat hij vastzit.",
+    "language": "sql",
+    "code": "SELECT\n  doel AS bestand,\n  COUNT(*) AS bewerkingen,\n  COUNT(*) >= 4 AS mogelijk_rondje\nFROM stappen\nWHERE tool = 'Edit'\nGROUP BY doel\nORDER BY bewerkingen DESC;",
+    "result": {
+     "columns": [
+      "bestand",
+      "bewerkingen",
+      "mogelijk_rondje"
+     ],
+     "rows": [
+      [
+       "src/parser.py",
+       5,
+       true
+      ],
+      [
+       "tests/test_parser.py",
+       1,
+       false
+      ],
+      [
+       "README.md",
+       1,
+       false
+      ]
+     ]
+    },
+    "note": "Verzonnen trace van 12 stappen, echt uitgevoerd in DuckDB. Zo werkt het idee van LoopDetectionMiddleware in gewone SQL; LangChain doet het tijdens de run met een haak rond de toolaanroepen."
+   },
+   "terms": [
+    {
+     "term": "harness",
+     "explanation": "Alles wat om een taalmodel heen gebouwd is: welke tools het mag gebruiken, welke context het krijgt en wanneer het zijn werk controleert."
+    },
+    {
+     "term": "middleware",
+     "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat."
+    },
+    {
+     "term": "Stop-hook",
+     "explanation": "Een hook in Claude Code die draait op het moment dat Claude wil stoppen, bijvoorbeeld om eerst een controle af te dwingen."
+    },
+    {
+     "term": "trace",
+     "explanation": "Het vastgelegde spoor van wat een agent deed: welke tools hij aanriep en wat die teruggaven."
+    },
+    {
+     "term": "evals",
+     "explanation": "Vaste tests voor een AI-toepassing: vragen met een bekend goed antwoord, waarmee je meet of een wijziging beter of slechter werkt."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Het harnas maakt het verschil, net als bij dbt Wizard dat je een duim met 'meer hiervan' gaf."
+   },
+   "labels": [
+    "agent-harness",
+    "agent-evals"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -4
    }
   },
   {
@@ -11363,7 +11596,7 @@
     "6ded4aa1cdcf",
     "5c7174c45ad1"
    ],
-   "generated_at": "2026-11-25T05:20:00Z",
+   "generated_at": "2026-11-26T05:20:00Z",
    "since": "2026-11-10",
    "last": "2026-11-24",
    "week": 6,
@@ -11388,7 +11621,7 @@
     "ea585dd9c0fa",
     "d5f14a6242b0"
    ],
-   "generated_at": "2026-11-25T05:20:00Z",
+   "generated_at": "2026-11-26T05:20:00Z",
    "since": "2026-11-09",
    "last": "2026-11-24",
    "week": 3,
@@ -11412,7 +11645,7 @@
     "ad991551648f",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-25T05:20:00Z",
+   "generated_at": "2026-11-26T05:20:00Z",
    "since": "2026-11-08",
    "last": "2026-11-23",
    "week": 2,
@@ -12015,6 +12248,17 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
+    }
+   ]
+  },
+  {
+   "term": "classifier",
+   "explanation": "Een model dat iets in een categorie indeelt, bijvoorbeeld 'veilig' of 'gevoelig'. Hier controleert het acties en berichten los van het hoofdmodel.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
     }
    ]
   },
@@ -12690,8 +12934,8 @@
     },
     {
      "kind": "a",
-     "id": "77544766b84c",
-     "title": "Husain: Claudes nieuwe eval-hulp vindt veel, maar begint te snel met toetsen"
+     "id": "4cc09a1d9883",
+     "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     }
    ]
   },
@@ -12903,6 +13147,17 @@
    ]
   },
   {
+   "term": "gateway",
+   "explanation": "Een poort waar al het verkeer van een agent langs moet. Hij legt vast wie iets vraagt en houdt limieten bij.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    }
+   ]
+  },
+  {
    "term": "Genie Agent",
    "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team.",
    "refs": [
@@ -13061,6 +13316,11 @@
      "kind": "a",
      "id": "0b6411ed8e60",
      "title": "Stripe bouwde in een week een agent voor iedereen, met 1.000 skills"
+    },
+    {
+     "kind": "a",
+     "id": "4cc09a1d9883",
+     "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     },
     {
      "kind": "a",
@@ -13358,6 +13618,28 @@
      "kind": "a",
      "id": "0b4ae9670355",
      "title": "Een dbt-project overzetten naar Databricks in zeven stappen"
+    }
+   ]
+  },
+  {
+   "term": "Lean",
+   "explanation": "Een programmeertaal waarin je wiskundige bewijzen opschrijft, zodat de computer elke stap controleert.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
+    }
+   ]
+  },
+  {
+   "term": "least privilege",
+   "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "62afb1e0ab94",
+     "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
     }
    ]
   },
@@ -13667,6 +13949,17 @@
      "kind": "v",
      "id": "eigen-dbt-semantic-layer-en-metric-views",
      "title": "dbt semantic layer of metric views: waar leg je je maatstaven vast?"
+    }
+   ]
+  },
+  {
+   "term": "middleware",
+   "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "4cc09a1d9883",
+     "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     }
    ]
   },
@@ -14587,6 +14880,11 @@
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
      "title": "Claude kent dbt al: leer hem jullie afspraken en laat hem zichzelf controleren"
+    },
+    {
+     "kind": "a",
+     "id": "4cc09a1d9883",
+     "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     }
    ]
   },
@@ -14852,6 +15150,11 @@
      "kind": "a",
      "id": "6fd4c32fe34a",
      "title": "Hugging Face: zo bouw en onderhoud je een eerlijke test voor agents"
+    },
+    {
+     "kind": "a",
+     "id": "4cc09a1d9883",
+     "title": "Zelfde model, betere omgeving: codeeragent stijgt van plek 30 naar 5"
     },
     {
      "kind": "v",
@@ -15210,7 +15513,7 @@
     "id": "metadata_lineage_catalogs",
     "name": "Metadata, lineage en catalogi",
     "description": "Data vindbaar en begrijpelijk maken voor mensen en AI.",
-    "priority": 4,
+    "priority": 5,
     "area": "data_engineering"
    },
    {
@@ -15305,7 +15608,7 @@
     "name": "Kleine updates en verzameloverzichten"
    }
   ],
-  "updated": "2026-11-18"
+  "updated": "2026-11-26"
  },
  "rode_draad": {
   "name": "Dataflow",
@@ -15354,16 +15657,12 @@
   "stap": "5.1 eerste DAB-job knmi_ingestion",
   "stap_op": "2026-11-23"
  },
- "interest_suggestions": [
-  {
-   "id": "metadata-lineage-belangrijker",
-   "kind": "belangrijker",
-   "topic": "metadata_lineage_catalogs",
-   "why": "De laatste 4 weken gaf je 3 artikelen over metadata en catalogi een 👍 en geen 👎, en je las er nog 3; 'metadata en lineage als context voor AI' staat ook bij je leerdoelen.",
-   "generated_at": "2026-11-22T05:15:03Z"
-  }
- ],
+ "interest_suggestions": [],
  "interest_log": [
+  {
+   "at": "2026-11-26T05:20:00Z",
+   "text": "Metadata, lineage en catalogi: van 'zeer relevant' naar 'kernonderwerp' (jouw ja op het voorstel)."
+  },
   {
    "at": "2026-11-18T05:30:00Z",
    "text": "Nieuw onderwerp 'Veilige agents: sandbox, rechten en gateways' toegevoegd als 'interessant', bij Context engineering en AI-agents (jouw ja op het voorstel)."
@@ -15592,24 +15891,25 @@
   "fetched_items": 820,
   "unique_after_dedupe": 760,
   "merged_duplicates": 53,
-  "shown": 67,
+  "shown": 69,
   "decisions": {
    "excluded": 277,
-   "area_cap": 14,
-   "included": 120,
+   "area_cap": 12,
+   "included": 122,
    "no_topic": 168,
    "below_threshold": 125,
    "kort_vervallen": 33,
    "source_cap": 23
   },
   "processing": {
-   "enriched": 67
+   "enriched": 69
   },
   "without_date": 0,
   "per_group": {
-   "ai_context": 30,
-   "agents": 6,
+   "ai_context": 29,
+   "agents": 8,
    "claude": 15,
+   "kwaliteit": 1,
    "overig": 7,
    "dbt": 6,
    "architectuur": 3
@@ -15617,7 +15917,7 @@
   "per_source": {
    "azure_databricks_release_notes": 4,
    "simon_spati": 3,
-   "claude_blog": 8,
+   "claude_blog": 9,
    "databricks_blog": 18,
    "chris_webb": 2,
    "dbt_labs_blog": 10,
@@ -15628,7 +15928,7 @@
    "huggingface_blog": 1,
    "dbt_developer_blog": 2,
    "databricks_engineering_blog": 3,
-   "langchain_blog": 2,
+   "langchain_blog": 3,
    "dbt_core_releases": 1,
    "hamel_husain": 1,
    "sqlbi": 2,
@@ -15748,6 +16048,16 @@
     ]
    },
    {
+    "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
+    "relevance_score": 82,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "v2.1.328",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328",
@@ -15807,14 +16117,6 @@
      "minor_builds",
      "weekoverzicht"
     ]
-   },
-   {
-    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
-    "source_id": "claude_blog",
-    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
-    "relevance_score": 81,
-    "decision": "area_cap",
-    "excluded_by": []
    },
    {
     "title": "Genie Code CLI is in Beta",
@@ -15907,6 +16209,16 @@
     ]
    },
    {
+    "title": "dbt v1.12.7",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.12.7",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
     "title": "Introducing full-text search for DAX",
     "source_id": "sqlbi",
     "url": "https://www.sqlbi.com/articles/introducing-full-text-search-for-dax/",
@@ -15931,12 +16243,22 @@
     "excluded_by": []
    },
    {
-    "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
     "source_id": "claude_blog",
-    "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
     "relevance_score": 80,
     "decision": "area_cap",
     "excluded_by": []
+   },
+   {
+    "title": "Governed tag propagation is in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
    },
    {
     "title": "Agent memory pipelines are in Beta",
@@ -16015,27 +16337,6 @@
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Share Unity Catalog agent skills with OpenSharing and Azure Databricks Marketplace (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#share-unity-catalog-agent-skills-with-opensharing-and-azure-databricks-marketplace-beta",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.323",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -16129,6 +16430,16 @@
     ]
    },
    {
+    "title": "Unity Catalog wikis are in Beta",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#unity-catalog-wikis-are-in-beta",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "dbt v1.11.17",
     "source_id": "dbt_core_releases",
     "url": "https://github.com/dbt-labs/dbt/releases/tag/v1.11.17",
@@ -16142,6 +16453,27 @@
     "title": "v2.1.321",
     "source_id": "claude_code_releases",
     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.0.0-dev.44-test-pypi",
+    "source_id": "dbt_core_releases",
+    "url": "https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.44-test-pypi",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.323",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
@@ -16214,53 +16546,22 @@
     "excluded_by": []
    },
    {
+    "title": "Data Classification adds 50 new classes and support for 16 more countries and regions",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-classification-tags",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
     "title": "Transactions support both managed Delta Lake and Apache Iceberg tables",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/transactions/",
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Databricks-provided MCP connectors in Genie One and Genie Code will soon be enabled by default for workspaces with the compliance security profile enabled",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/whats-coming#databricks-provided-mcp-connectors-in-genie-one-and-genie-code-will-soon-be-enabled-by-default-for-workspaces-with-the-compliance-security-profile-enabled",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "External knowledge sources are in Beta",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#external-knowledge-sources-are-in-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Genie Migrate can convert T-SQL to Lakeflow pipelines (Beta)",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-migrate-can-convert-t-sql-to-lakeflow-pipelines-beta",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.319",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319",
-    "relevance_score": 77,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    }
