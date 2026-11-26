@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-26T03:19:46.280684Z",
+ "generated_at": "2026-11-26T04:24:56.910205Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -507,7 +507,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -609,7 +609,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -735,7 +735,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.75,
+    "recency": 0.74,
     "source": 0.68,
     "quality": 0.63,
     "feedback": 0.03,
@@ -1525,7 +1525,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.61,
+    "recency": 0.6,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.02,
@@ -1626,7 +1626,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -1739,7 +1739,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.03,
@@ -1989,7 +1989,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.49,
+    "recency": 0.48,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -2190,145 +2190,6 @@
     "ai-functies-in-sql",
     "agent-evals"
    ]
-  },
-  {
-   "id": "069078b2b4e3",
-   "title": "How the Claude Code team thinks about verification",
-   "url": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
-   "source_id": "claude_blog",
-   "published_at": "2026-11-16T00:00:00Z",
-   "fetched_at": "2026-11-19T03:13:31.924707Z",
-   "summary": "Addy Osmani beschrijft hoe het team dat Claude Code bouwt agentwerk controleert: drie soorten tests, een verify-skill, een checklist die afgaat op de diff en regels die een wijziging zelf niet kan aanpassen.",
-   "personal_relevance": "Je laat Claude steeds meer dbt- en Python-werk doen; dit is de manier om dat werk te vertrouwen zonder alles zelf na te lopen.",
-   "experiment": "Schrijf een verify-skill voor een klein dbt-project op openbare data: laat Claude daarmee dbt build op een dev-schema draaien en een oude en nieuwe versie van één model vergelijken (differential test).",
-   "limitations": [
-    "Geen code in het artikel; de werkwijze is beschreven, niet als kant-en-klaar voorbeeld.",
-    "Het 90%-cijfer en de 10 punten zijn interne cijfers van Anthropic.",
-    "Het team bouwt software, geen datapijplijnen; de vertaling naar dbt moet je zelf maken."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Code Review aanpassen met REVIEW.md",
-     "url": "https://code.claude.com/docs/en/code-review-customize"
-    },
-    {
-     "label": "Hooks in Claude Code",
-     "url": "https://code.claude.com/docs/en/hooks"
-    },
-    {
-     "label": "Hypothesis (property tests in Python)",
-     "url": "https://hypothesis.readthedocs.io/en/latest/"
-    },
-    {
-     "label": "Building verification loops in Claude Code with skills",
-     "url": "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_evaluation_observability",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "claude",
-    "agents",
-    "kwaliteit"
-   ],
-   "relevance_score": 90,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.61,
-    "source": 0.51,
-    "quality": 0.72,
-    "feedback": 0.01,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T03:45:00Z",
-   "reading_minutes": 4,
-   "format_version": 2,
-   "headline": "Zo laat het Claude Code-team Claude zijn eigen werk bewijzen",
-   "story": [
-    "Bij het team van Claude Code schrijft en reviewt Claude ongeveer 90% van de code. Addy Osmani legt uit waarom dat kan: controles (verificatie) die Claude zelf draait. Zonder zulke controles kun je maar één of twee agents tegelijk laten werken, omdat jij alles moet nakijken. Met controles worden het er tientallen.",
-    "Het team noemt drie soorten tests. Bovenaan staan end-to-end tests: ze doorlopen een echte gebruikersstap en melden precies welke stap faalde, niet alleen een time-out. Property tests stellen een regel die nooit mag breken, zoals 'heen en terug vertalen geeft hetzelfde terug' of 'twee keer draaien doet hetzelfde als één keer' (idempotent), en laten een bibliotheek als Hypothesis duizenden invoerwaarden proberen. Differential tests draaien het oude en het nieuwe systeem op dezelfde invoer en melden elk verschil, handig bij een migratie.",
-    "Daarnaast een paar vaste afspraken. Hoe je de app start en test, staat in een skill met de naam verify in .claude/skills/, en Claude gebruikt die voor elke commit. Faalt een controle na drie rondes nog steeds, dan stopt Claude en haalt een mens erbij. Een checklist met 39 punten heeft per punt een trigger die je in de diff ziet; Claude controleert alleen de punten die passen, meestal 3 tot 10. De reviewer leest REVIEW.md van de hoofdbranch, zodat een wijziging haar eigen regels niet kan aanpassen. Elke commit krijgt een stempel hoe hij gecontroleerd is, ook 'none'.",
-    "Ook de controles zelf worden gecontroleerd. Het team houdt bij hoeveel samengevoegde wijzigingen werden teruggedraaid, meet per stap hoeveel bugs de reviewer vindt, en stopt met bijstellen als dat alleen nog de test zou 'leren'. Een flaky test mag Claude niet overslaan of opnieuw laten draaien tot hij slaagt; lukt de oorzaak niet, dan gaat de test eruit met de reden erbij.",
-    "Voor dbt-werk zijn dezelfde ideeën direct bruikbaar. Een differential test is wat je doet als je een model herschrijft en de oude en nieuwe tabel vergelijkt. Een property test past bij een macro of Python-generator die metadata-YAML maakt. Een eigen verify-skill kan Claude laten weten hoe het dbt build en de tests op een dev-schema draait."
-   ],
-   "key_facts": [
-    "Ongeveer 90% van de code van het Claude Code-team wordt door Claude geschreven en gereviewd.",
-    "Een aparte beoordelaar met een rubric verbeterde in interne tests het taaksucces met tot 10 punten.",
-    "Drie soorten tests: end-to-end (hoogste prioriteit), property tests (bijv. met fast-check, Hypothesis of proptest) en differential tests.",
-    "Een skill met de naam verify in .claude/skills/ legt vast hoe de app gestart en getest wordt; Claude gebruikt hem voor het committen.",
-    "Na drie mislukte rondes stopt Claude en haalt een mens erbij.",
-    "Checklist met 39 punten, elk met een trigger in de diff; per wijziging worden meestal 3 tot 10 punten gecontroleerd.",
-    "REVIEW.md wordt gelezen van de basis- of hoofdbranch, nooit uit de wijziging zelf.",
-    "Een commit-poort kent drie standen: off, observe en enforce.",
-    "Artikel van Addy Osmani op claude.dev, 16 november 2026."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Een property test met Hypothesis: de regel is 'een rij wegschrijven en teruglezen geeft dezelfde velden'. Hypothesis zoekt zelf een invoer die de regel breekt.",
-    "language": "python",
-    "code": "from hypothesis import given, strategies as st\n\ndef naar_regel(velden):        # schrijf een rij weg\n    return \";\".join(velden)\n\ndef uit_regel(regel):          # lees de rij terug\n    return regel.split(\";\")\n\n@given(st.lists(st.text(), min_size=1))\ndef test_heen_en_terug(velden):\n    assert uit_regel(naar_regel(velden)) == velden\n\ntest_heen_en_terug()",
-    "result": {
-     "columns": [
-      "uitkomst van Hypothesis"
-     ],
-     "rows": [
-      [
-       "AssertionError"
-      ],
-      [
-       "Failing test case: test_heen_en_terug(velden=[';'])"
-      ]
-     ]
-    },
-    "note": "Het artikel bevat geen code; dit voorbeeld laat het idee van een round-trip-property zien. Hypothesis vond zelf een veld met een puntkomma, iets wat een handgeschreven test makkelijk mist."
-   },
-   "terms": [
-    {
-     "term": "end-to-end tests",
-     "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren."
-    },
-    {
-     "term": "Property tests",
-     "explanation": "Tests waarin je een regel opschrijft die altijd moet gelden. Een bibliotheek probeert daarna duizenden invoerwaarden om de regel te breken."
-    },
-    {
-     "term": "Differential tests",
-     "explanation": "Tests die het oude en het nieuwe systeem op dezelfde invoer draaien en elk verschil in uitkomst melden."
-    },
-    {
-     "term": "idempotent",
-     "explanation": "Twee keer uitvoeren geeft hetzelfde resultaat als één keer. Belangrijk bij opnieuw laden of opnieuw proberen."
-    },
-    {
-     "term": "flaky test",
-     "explanation": "Een test die soms slaagt en soms faalt zonder dat de code veranderde, bijvoorbeeld door timing."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.75,
-    "why": "Praktische Claude Code-werkwijze, zoals je duim bij dbt Labs' proef dat het proces het verschil maakt."
-   },
-   "labels": [
-    "agent-evals",
-    "claude-code-skills",
-    "claude-code-pr-werkwijze"
-   ],
-   "fb_why": {
-    "by": "similar",
-    "title": "Zo houdt Anthropic een agent die zelf handelt in toom",
-    "id": "3fd19a8cb4a2",
-    "v": 0,
-    "s": 75,
-    "pts": 1
-   }
   },
   {
    "id": "408df9c189db",
@@ -2539,6 +2400,145 @@
     "fase": 7,
     "quote": "Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten",
     "why": "Fase 7 vraagt om een agent met read-only SQL via een MCP-server."
+   }
+  },
+  {
+   "id": "069078b2b4e3",
+   "title": "How the Claude Code team thinks about verification",
+   "url": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-16T00:00:00Z",
+   "fetched_at": "2026-11-19T03:13:31.924707Z",
+   "summary": "Addy Osmani beschrijft hoe het team dat Claude Code bouwt agentwerk controleert: drie soorten tests, een verify-skill, een checklist die afgaat op de diff en regels die een wijziging zelf niet kan aanpassen.",
+   "personal_relevance": "Je laat Claude steeds meer dbt- en Python-werk doen; dit is de manier om dat werk te vertrouwen zonder alles zelf na te lopen.",
+   "experiment": "Schrijf een verify-skill voor een klein dbt-project op openbare data: laat Claude daarmee dbt build op een dev-schema draaien en een oude en nieuwe versie van één model vergelijken (differential test).",
+   "limitations": [
+    "Geen code in het artikel; de werkwijze is beschreven, niet als kant-en-klaar voorbeeld.",
+    "Het 90%-cijfer en de 10 punten zijn interne cijfers van Anthropic.",
+    "Het team bouwt software, geen datapijplijnen; de vertaling naar dbt moet je zelf maken."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Code Review aanpassen met REVIEW.md",
+     "url": "https://code.claude.com/docs/en/code-review-customize"
+    },
+    {
+     "label": "Hooks in Claude Code",
+     "url": "https://code.claude.com/docs/en/hooks"
+    },
+    {
+     "label": "Hypothesis (property tests in Python)",
+     "url": "https://hypothesis.readthedocs.io/en/latest/"
+    },
+    {
+     "label": "Building verification loops in Claude Code with skills",
+     "url": "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_evaluation_observability",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents",
+    "kwaliteit"
+   ],
+   "relevance_score": 89,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.6,
+    "source": 0.51,
+    "quality": 0.72,
+    "feedback": 0.01,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T03:45:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Zo laat het Claude Code-team Claude zijn eigen werk bewijzen",
+   "story": [
+    "Bij het team van Claude Code schrijft en reviewt Claude ongeveer 90% van de code. Addy Osmani legt uit waarom dat kan: controles (verificatie) die Claude zelf draait. Zonder zulke controles kun je maar één of twee agents tegelijk laten werken, omdat jij alles moet nakijken. Met controles worden het er tientallen.",
+    "Het team noemt drie soorten tests. Bovenaan staan end-to-end tests: ze doorlopen een echte gebruikersstap en melden precies welke stap faalde, niet alleen een time-out. Property tests stellen een regel die nooit mag breken, zoals 'heen en terug vertalen geeft hetzelfde terug' of 'twee keer draaien doet hetzelfde als één keer' (idempotent), en laten een bibliotheek als Hypothesis duizenden invoerwaarden proberen. Differential tests draaien het oude en het nieuwe systeem op dezelfde invoer en melden elk verschil, handig bij een migratie.",
+    "Daarnaast een paar vaste afspraken. Hoe je de app start en test, staat in een skill met de naam verify in .claude/skills/, en Claude gebruikt die voor elke commit. Faalt een controle na drie rondes nog steeds, dan stopt Claude en haalt een mens erbij. Een checklist met 39 punten heeft per punt een trigger die je in de diff ziet; Claude controleert alleen de punten die passen, meestal 3 tot 10. De reviewer leest REVIEW.md van de hoofdbranch, zodat een wijziging haar eigen regels niet kan aanpassen. Elke commit krijgt een stempel hoe hij gecontroleerd is, ook 'none'.",
+    "Ook de controles zelf worden gecontroleerd. Het team houdt bij hoeveel samengevoegde wijzigingen werden teruggedraaid, meet per stap hoeveel bugs de reviewer vindt, en stopt met bijstellen als dat alleen nog de test zou 'leren'. Een flaky test mag Claude niet overslaan of opnieuw laten draaien tot hij slaagt; lukt de oorzaak niet, dan gaat de test eruit met de reden erbij.",
+    "Voor dbt-werk zijn dezelfde ideeën direct bruikbaar. Een differential test is wat je doet als je een model herschrijft en de oude en nieuwe tabel vergelijkt. Een property test past bij een macro of Python-generator die metadata-YAML maakt. Een eigen verify-skill kan Claude laten weten hoe het dbt build en de tests op een dev-schema draait."
+   ],
+   "key_facts": [
+    "Ongeveer 90% van de code van het Claude Code-team wordt door Claude geschreven en gereviewd.",
+    "Een aparte beoordelaar met een rubric verbeterde in interne tests het taaksucces met tot 10 punten.",
+    "Drie soorten tests: end-to-end (hoogste prioriteit), property tests (bijv. met fast-check, Hypothesis of proptest) en differential tests.",
+    "Een skill met de naam verify in .claude/skills/ legt vast hoe de app gestart en getest wordt; Claude gebruikt hem voor het committen.",
+    "Na drie mislukte rondes stopt Claude en haalt een mens erbij.",
+    "Checklist met 39 punten, elk met een trigger in de diff; per wijziging worden meestal 3 tot 10 punten gecontroleerd.",
+    "REVIEW.md wordt gelezen van de basis- of hoofdbranch, nooit uit de wijziging zelf.",
+    "Een commit-poort kent drie standen: off, observe en enforce.",
+    "Artikel van Addy Osmani op claude.dev, 16 november 2026."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Een property test met Hypothesis: de regel is 'een rij wegschrijven en teruglezen geeft dezelfde velden'. Hypothesis zoekt zelf een invoer die de regel breekt.",
+    "language": "python",
+    "code": "from hypothesis import given, strategies as st\n\ndef naar_regel(velden):        # schrijf een rij weg\n    return \";\".join(velden)\n\ndef uit_regel(regel):          # lees de rij terug\n    return regel.split(\";\")\n\n@given(st.lists(st.text(), min_size=1))\ndef test_heen_en_terug(velden):\n    assert uit_regel(naar_regel(velden)) == velden\n\ntest_heen_en_terug()",
+    "result": {
+     "columns": [
+      "uitkomst van Hypothesis"
+     ],
+     "rows": [
+      [
+       "AssertionError"
+      ],
+      [
+       "Failing test case: test_heen_en_terug(velden=[';'])"
+      ]
+     ]
+    },
+    "note": "Het artikel bevat geen code; dit voorbeeld laat het idee van een round-trip-property zien. Hypothesis vond zelf een veld met een puntkomma, iets wat een handgeschreven test makkelijk mist."
+   },
+   "terms": [
+    {
+     "term": "end-to-end tests",
+     "explanation": "Tests die het hele systeem van bron tot uitkomst draaien op vaste testdata en het eindresultaat controleren."
+    },
+    {
+     "term": "Property tests",
+     "explanation": "Tests waarin je een regel opschrijft die altijd moet gelden. Een bibliotheek probeert daarna duizenden invoerwaarden om de regel te breken."
+    },
+    {
+     "term": "Differential tests",
+     "explanation": "Tests die het oude en het nieuwe systeem op dezelfde invoer draaien en elk verschil in uitkomst melden."
+    },
+    {
+     "term": "idempotent",
+     "explanation": "Twee keer uitvoeren geeft hetzelfde resultaat als één keer. Belangrijk bij opnieuw laden of opnieuw proberen."
+    },
+    {
+     "term": "flaky test",
+     "explanation": "Een test die soms slaagt en soms faalt zonder dat de code veranderde, bijvoorbeeld door timing."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.75,
+    "why": "Praktische Claude Code-werkwijze, zoals je duim bij dbt Labs' proef dat het proces het verschil maakt."
+   },
+   "labels": [
+    "agent-evals",
+    "claude-code-skills",
+    "claude-code-pr-werkwijze"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "Zo houdt Anthropic een agent die zelf handelt in toom",
+    "id": "3fd19a8cb4a2",
+    "v": 0,
+    "s": 75,
+    "pts": 1
    }
   },
   {
@@ -2907,7 +2907,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.05
@@ -3014,7 +3014,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.94,
+    "recency": 0.93,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.05,
@@ -4429,7 +4429,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.73,
+    "recency": 0.72,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -4646,7 +4646,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -5028,7 +5028,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -6453,7 +6453,7 @@
     "agents",
     "ai_context"
    ],
-   "relevance_score": 82,
+   "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
     "recency": 0.46,
@@ -7407,7 +7407,7 @@
    "relevance_score": 76,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.37,
+    "recency": 0.36,
     "source": 0.6,
     "quality": 0.57,
     "feedback": -0.04,
@@ -7742,6 +7742,369 @@
   }
  ],
  "deepdives": [
+  {
+   "id": "eigen-wat-houdt-lakeflow-in",
+   "plan_id": "eigen-wat-houdt-lakeflow-in",
+   "headline": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam",
+   "summary": "Lakeflow is de naam die Databricks gebruikt voor alles rond data-engineering: data binnenhalen, bewerken en op tijd laten draaien. Het bestaat uit vier delen: Lakeflow Connect, Lakeflow pipelines, Lakeflow Jobs en Lakeflow Designer. Dit stuk legt uit wat elk deel doet, hoe ze samenhangen en hoe je ze naast dbt gebruikt in je dagelijkse werk.",
+   "sections": [
+    {
+     "heading": "Eén naam voor drie soorten werk",
+     "paragraphs": [
+      "In de materialized view-verdieping kwam je het woord al tegen: achter een materialized view maakt Databricks een Lakeflow-pipeline. Lakeflow is geen los product. Databricks noemt het een complete oplossing voor data-engineering, voor drie soorten werk: data binnenhalen (ingestion), data bewerken (transformation) en alles op tijd laten draaien (orchestration).",
+      "Een vergelijking met een restaurant helpt. Eerst komt de inkoop: groente en vlees moeten binnenkomen. Dan de keuken: daar wordt het bewerkt tot gerechten. En er is een rooster dat bepaalt wie wanneer wat doet. Lakeflow Connect is de inkoop, Lakeflow pipelines zijn de keuken, en Lakeflow Jobs is het rooster.",
+      "Er is nog een vierde deel, Lakeflow Designer. Dat is een visuele manier om de keuken te gebruiken, zonder zelf code te schrijven. Alle delen gebruiken Unity Catalog voor rechten en beheer, zodat je tabellen en toegang op één plek blijven."
+     ]
+    },
+    {
+     "heading": "Lakeflow Connect: de data binnenhalen",
+     "paragraphs": [
+      "Lakeflow Connect bevat koppelingen (connectors) naar bronnen buiten Databricks. Er zijn koppelingen voor databases zoals SQL Server, Oracle en PostgreSQL, die met CDC alleen de wijzigingen ophalen. Er zijn koppelingen voor apps zoals Salesforce en Workday, voor bestanden in SharePoint of Google Drive, en voor berichtensystemen zoals Kafka.",
+      "Je kunt kiezen tussen twee manieren. Een volledig beheerde koppeling (managed connector) regelt het inloggen bij de bron, de CDC, nieuwe pogingen bij fouten en het meegaan met nieuwe kolommen. Lukt dat niet voor jouw bron, dan schrijf je zelf een pipeline met SQL of Spark. Databricks raadt aan om bij de meest beheerde laag te beginnen en pas een laag omlaag te gaan als het moet.",
+      "Een beheerde koppeling maak je in de webinterface, maar ook met Declarative Automation Bundles, de API, de SDK's of de CLI. Daarnaast zijn er koppelingen van de community. Die zijn open source, maar Databricks staat er niet garant voor. Meer over de basis lees je in de verdieping over ingestion."
+     ]
+    },
+    {
+     "heading": "Lakeflow pipelines: beschrijven wat je wilt hebben",
+     "paragraphs": [
+      "Lakeflow pipelines zijn het deel waar je data bewerkt. Ze zijn declaratief: je beschrijft welke tabellen je wilt, in SQL of Python, en de pipeline bepaalt zelf de volgorde. Dat ken je van dbt, waar ref() de volgorde van je modellen bepaalt. Lakeflow pipelines bouwen op Apache Spark Declarative Pipelines, de open-source basis. In oudere teksten heet dit deel nog Delta Live Tables.",
+      "Een pipeline kent een paar bouwstenen. Een streaming table is een Delta-tabel die nieuwe data stap voor stap verwerkt. Een materialized view slaat de uitkomst van een query op en ververst die. Een flow is de stap die de data verwerkt en in zo'n tabel schrijft. Een sink is een doel buiten de pipeline, zoals Kafka of Azure Event Hubs.",
+      "Het verschil tussen de twee soorten tabellen zit in hoe de flow werkt. Naar een streaming table schrijft een flow alleen wat nieuw is, zoals een lopende band. Een materialized view rekent de query als geheel uit, als een batch, al probeert Databricks waar het kan alleen de wijzigingen te verwerken.",
+      "Je hoeft niet meteen een hele pipeline te bouwen. Sinds 11 november zijn losse streaming tables en materialized views algemeen beschikbaar vanuit een notebook op serverless compute. Ook een streaming table of materialized view die je in Databricks SQL maakt, draait achter de schermen als Lakeflow-pipeline."
+     ]
+    },
+    {
+     "heading": "Lakeflow Jobs: het rooster",
+     "paragraphs": [
+      "Lakeflow Jobs regelt wanneer wat draait, en bewaakt of het goed gaat. Een job bestaat uit één of meer taken (tasks). Een taak kan een notebook zijn, een pipeline, een beheerde koppeling, een SQL-query, of het trainen en uitrollen van een model. dbt kan er ook als taak in draaien.",
+      "Taken kunnen na elkaar of naast elkaar lopen. Met control flow kun je ook keuzes maken: als-dan-anders (if/else), of dezelfde taak herhalen voor elk item in een lijst (for each). Zo kan één job eerst de data ophalen, dan dbt draaien en alleen bij succes een rapport verversen.",
+      "In november kwamen er twee nuttige bèta-functies bij. Een job kan nu starten zodra één of meer andere jobs klaar zijn, ook in andere werkruimtes met dezelfde metastore. En je kunt rekenen met datums in parameters, zodat een job bijvoorbeeld de datum van gisteren doorgeeft aan een ophaalscript."
+     ]
+    },
+    {
+     "heading": "Lakeflow Designer: klikken in plaats van code",
+     "paragraphs": [
+      "Lakeflow Designer is een visueel hulpmiddel om data voor te bereiden. Je sleept blokken op een canvas, zoals filteren, samenvoegen, groeperen en omvormen. Je kunt ook in gewone taal zeggen wat je wilt; dat gebeurt met Genie Code.",
+      "Volgens de documentatie staat achter elke Designer-stroom code die klaar is voor productie en die onder Unity Catalog valt. Het is dus geen los speeltje. Het is vooral bedoeld voor collega's die geen SQL of Python schrijven. Voor jou, met dbt als vaste werkwijze, is het minder nodig."
+     ]
+    },
+    {
+     "heading": "Hoe ziet dat er op een gewone werkdag uit?",
+     "paragraphs": [
+      "Stel je een dag voor met de hele keten. 's Nachts haalt een koppeling of een streaming table de nieuwe data uit de bron naar je bronze-laag. Daarna start een job je dbt-project, dat Silver en Gold bouwt zoals je gewend bent. Een materialized view in Gold voor een veelgebruikt dashboard ververst zichzelf als de data eronder verandert.",
+      "Overdag kijk je vooral naar de bewaking. In de job zie je welke taak faalde en waarom. Een kapotte bron hoeft dan niet je hele nacht te verpesten. Je kunt bijvoorbeeld laten wachten met dbt tot de ophaaljob echt klaar is, in plaats van op een vaste tijd te starten en te hopen dat het goed ging.",
+      "Lakeflow en dbt zitten elkaar daarbij niet in de weg. Een vuistregel die uit de vorige verdiepingen volgt: Lakeflow Connect en streaming tables voor het binnenhalen, dbt voor de modellen met je eigen logica en tests, en Lakeflow Jobs als rooster eromheen. Materialized views zijn de plek waar ze elkaar raken, want dbt kan ze ook aanmaken."
+     ]
+    },
+    {
+     "heading": "Wat betekent dit voor jou?",
+     "paragraphs": [
+      "Je bronsystemen zijn onder andere HiX en AFAS. De eerste vraag is hoe die data nu binnenkomt. Komt het als bestanden, dan is een streaming table met read_files de kleinste stap. Is het een SQL Server-database, dan is een beheerde koppeling van Lakeflow Connect het bekijken waard.",
+      "Een tweede stap is je dbt-run als taak in een job zetten, direct na het ophalen. Dan heb je de hele keten op één plek, met één overzicht van fouten. Wil je die job meenemen naar test en productie, dan beschrijf je hem in een bundel; dat staat in de verdieping over bundels.",
+      "Begin klein. Kies één bron en één job, en laat die een week naast de huidige manier meedraaien. Kijk dan of de bewaking je iets oplevert wat je nu mist."
+     ]
+    }
+   ],
+   "experiment": "Maak in een testcatalogus een volume en zet er drie kleine JSON-bestanden met verzonnen bestellingen in. Maak de streaming table en de materialized view uit het voorbeeld. Voeg een vierde bestand toe, ververs met REFRESH STREAMING TABLE en kijk of alleen dat bestand erbij komt. Open daarna de pipeline die Databricks erbij maakte, en zet tot slot een job op die de refresh en een SQL-query na elkaar draait.",
+   "limitations": [
+    "Een deel van de nieuwe functies, zoals jobs die op andere jobs wachten en datums in parameters, is nog bèta.",
+    "Beheerde koppelingen en serverless pipelines kosten rekentijd los van je SQL warehouse; houd de systeemtabellen in de gaten.",
+    "Koppelingen van de community vallen niet onder de garanties van Databricks.",
+    "Bij zorgdata uit HiX gelden dezelfde regels voor toegang en privacy als nu; een koppeling verandert daar niets aan."
+   ],
+   "further_reading": [
+    {
+     "label": "Data engineering with Databricks (Microsoft Learn, oktober 2026)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/data-engineering",
+     "note": "Het officiële overzicht van Lakeflow: de vier delen en de bouwstenen van een pipeline in één pagina."
+    },
+    {
+     "label": "What is Lakeflow Connect? (Databricks, november 2026)",
+     "url": "https://docs.databricks.com/aws/en/ingestion/overview",
+     "note": "Alle soorten koppelingen, de lagen van meest beheerd tot zelf bouwen, en het advies waar je begint."
+    }
+   ],
+   "currency_check": "Gecontroleerd op 26 november 2026 in het Lakeflow-overzicht van Azure Databricks (bijgewerkt 15 oktober 2026) en de Lakeflow Connect-pagina (bijgewerkt 5 november 2026). De nieuwe functies van november (losse streaming tables en materialized views op serverless, jobs die op andere jobs wachten, datums in parameters) komen uit de release notes van week 45 en 46 zoals de radar die eerder uitlegde. De notatie in het voorbeeld komt uit eerdere verdiepingen die de documentatie over losse streaming tables en materialized views volgden. Ik gebruik de huidige namen Lakeflow pipelines en Declarative Automation Bundles; Delta Live Tables noem ik alleen als oude naam. De status van Lakeflow Designer en de precieze triggers van jobs staan niet op de pagina's die ik kon lezen en heb ik weggelaten.",
+   "topics": [
+    "databricks_data_engineering",
+    "data_ingestion"
+   ],
+   "written_at": "2026-11-26T04:23:00Z",
+   "processed_by": "Claude (geplande taak)",
+   "quiz": [
+    {
+     "question": "Welk deel van Lakeflow zorgt ervoor dat je dbt-run pas start als het ophalen van de data klaar is?",
+     "options": [
+      "Lakeflow Connect",
+      "Lakeflow Jobs",
+      "Lakeflow Designer",
+      "Een materialized view"
+     ],
+     "answer": 1,
+     "explanation": "Lakeflow Jobs is het rooster: het bepaalt welke taken na elkaar draaien en bewaakt of ze slagen. Connect haalt data op, Designer is een visuele manier van bewerken."
+    },
+    {
+     "question": "Je wilt data uit een SQL Server-bron binnenhalen. Waar raadt Databricks aan te beginnen?",
+     "options": [
+      "Zelf een Spark-script schrijven, dan heb je de meeste controle",
+      "Bij de meest beheerde laag, zoals een beheerde koppeling, en pas een laag omlaag als die niet past",
+      "Met Lakeflow Designer, omdat dat zonder code kan"
+     ],
+     "answer": 1,
+     "explanation": "Databricks adviseert te beginnen bij de meest beheerde laag. Die regelt inloggen, CDC, nieuwe pogingen en schema-wijzigingen. Pas als je bron niet wordt ondersteund, ga je een laag omlaag."
+    },
+    {
+     "question": "Wat is het verschil tussen een streaming table en een materialized view in een Lakeflow-pipeline?",
+     "options": [
+      "Een streaming table verwerkt alleen wat nieuw is; een materialized view rekent de uitkomst van een query als geheel uit",
+      "Een streaming table is alleen voor Kafka; een materialized view alleen voor bestanden",
+      "Er is geen verschil, het zijn twee namen voor hetzelfde"
+     ],
+     "answer": 0,
+     "explanation": "Een flow naar een streaming table werkt met streaming: alleen nieuwe data. Een materialized view heeft batch-gedrag en slaat de uitkomst van een query op, al ververst Databricks waar het kan alleen de wijzigingen."
+    }
+   ],
+   "showcase": {
+    "caption": "Een kleine keten in SQL: een streaming table haalt elk uur nieuwe bestanden binnen, en een materialized view maakt er een dagoverzicht van. Achter beide maakt Databricks zelf een Lakeflow-pipeline.",
+    "language": "sql",
+    "code": "-- Binnenhalen: elk uur alleen nieuwe bestanden uit een volume\nCREATE OR REFRESH STREAMING TABLE bronze.demo.bestellingen_raw\n  SCHEDULE EVERY 1 hour\n  AS SELECT *\n  FROM STREAM read_files(\n    '/Volumes/bronze/demo/landing/bestellingen/',\n    format => 'json'\n  );\n\n-- Bewerken: een dagoverzicht dat Databricks zelf ververst\nCREATE OR REPLACE MATERIALIZED VIEW gold.demo.bestellingen_per_dag\n  SCHEDULE EVERY 1 DAY\nAS SELECT datum, count(*) AS aantal\nFROM bronze.demo.bestellingen_raw\nGROUP BY datum;",
+    "note": "De notatie komt uit de Azure Databricks-documentatie over losse streaming tables en materialized views. Dit draait alleen in Databricks, daarom staat er geen resultaat bij. In de praktijk bouw je het dagoverzicht meestal met dbt op Silver."
+   },
+   "terms": [
+    {
+     "term": "Lakeflow Connect",
+     "explanation": "Het deel van Databricks met kant-en-klare koppelingen naar databases, apps en bestandsbronnen, die data incrementeel in Unity Catalog laden."
+    },
+    {
+     "term": "Lakeflow Jobs",
+     "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien."
+    },
+    {
+     "term": "Lakeflow Designer",
+     "explanation": "Een visueel hulpmiddel in Databricks om data voor te bereiden met blokken op een canvas of met opdrachten in gewone taal."
+    },
+    {
+     "term": "declaratief",
+     "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo."
+    },
+    {
+     "term": "streaming table",
+     "explanation": "Een tabel in Databricks die nieuwe data steeds incrementeel verwerkt zodra die binnenkomt."
+    },
+    {
+     "term": "flow",
+     "explanation": "In een Lakeflow-pipeline de stap die data leest, bewerkt en wegschrijft naar een streaming table, materialized view of sink."
+    },
+    {
+     "term": "control flow",
+     "explanation": "Regels in een job die bepalen welke taak wanneer draait, zoals als-dan-anders of een taak herhalen voor elk item in een lijst."
+    },
+    {
+     "term": "Declarative Automation Bundles",
+     "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen."
+    }
+   ],
+   "reading_minutes": 6
+  },
+  {
+   "id": "ai-functies-op-grote-batches",
+   "plan_id": "ai-functies-op-grote-batches",
+   "headline": "AI-functies op duizenden documenten: in je query of op de achtergrond?",
+   "summary": "Een AI-functie zoals ai_extract roep je meestal gewoon aan in een SQL-query. Voor een hele map documenten heeft Databricks nu ook een asynchrone variant (Beta): je levert een JSONL-bestand met verzoeken aan, en Databricks werkt die op de achtergrond af. Dit stuk legt uit wanneer je wat kiest, hoe je de uitkomst controleert, en waarom je runtimeversie in januari telt.",
+   "sections": [
+    {
+     "heading": "Twee manieren om een AI-functie te laten werken",
+     "paragraphs": [
+      "Databricks heeft een reeks AI-functies die je in SQL aanroept. Sommige zijn gemaakt voor één taak, zoals ai_parse_document (een document lezen), ai_extract (velden eruit halen) en ai_classify (een label kiezen). Met ai_query kies je zelf een model en schrijf je zelf de opdracht.",
+      "Tot nu toe draaide zo'n functie synchroon: de query start, roept voor elke rij het model aan, en is pas klaar als alle rijen een antwoord hebben. Dat werkt prima voor een tabel met tekstvelden. Bij een map met duizenden pdf's kan zo'n query lang openstaan.",
+      "Sinds 9 november is er daarom een asynchrone variant, de AI Functions Asynchronous API (Beta). Asynchroon betekent: je geeft de opdracht af en hoeft niet te wachten. Vergelijk het met een wasserette. Synchroon blijf je bij de machine staan tot de was klaar is. Asynchroon lever je een zak in, krijg je een bonnetje, en haal je de was later op."
+     ]
+    },
+    {
+     "heading": "Synchroon: de hele tabel in één query",
+     "paragraphs": [
+      "Voor de meeste gevallen blijft de gewone query de eenvoudigste keuze. Volgens de documentatie regelen AI-functies zelf het parallel werken, nieuwe pogingen bij fouten en het opschalen. Databricks raadt aan om je hele dataset in één query aan te bieden, in plaats van hem zelf in kleine stukjes te knippen.",
+      "Een tweede advies gaat over ai_query. Gebruik daar de modellen die Databricks zelf host, met namen die beginnen met databricks-. Die zijn volgens de documentatie volledig beheerd en het meest geschikt voor batches. Na afloop zie je in het query-profiel hoeveel aanroepen gelukt en mislukt zijn.",
+      "Voor documenten combineer je ai_parse_document met read_files op een volume. Daar gelden grenzen: een document mag hooguit 500 pagina's hebben en hooguit 100 MB groot zijn. Een document met meer pagina's mislukt meteen, tenzij je met de optie pageRange een deel kiest."
+     ]
+    },
+    {
+     "heading": "Asynchroon: een bestand met verzoeken",
+     "paragraphs": [
+      "De asynchrone variant werkt niet met een query, maar via een REST-API. Je maakt eerst een JSONL-bestand in een volume van Unity Catalog. Elke regel is één verzoek, met een eigen kenmerk (custom_id) en de invoer (body). Eén bestand mag tot 50.000 verzoeken bevatten en hooguit 200 MiB groot zijn.",
+      "Daarna stuur je één opdracht naar de API. Daarin staat welke functie moet draaien, waar het invoerbestand staat en waar de uitvoer moet komen. Instellingen die voor alle verzoeken gelden, zoals het schema van velden voor ai_extract, geef je één keer mee. Volgens de release notes werkt dit met ai_parse_document, ai_extract en ai_classify.",
+      "Je krijgt een batch terug met een status. Die begint als PENDING, loopt als IN_PROGRESS, staat op FINALIZING terwijl het uitvoerbestand wordt geschreven, en eindigt als COMPLETED. Tussendoor vraag je op hoe ver hij is: hoeveel verzoeken er in totaal zijn, hoeveel gelukt en hoeveel mislukt.",
+      "Een workspacebeheerder moet de preview eerst aanzetten op de pagina Previews. Zolang dat niet gebeurd is, kun je de API niet aanroepen."
+     ]
+    },
+    {
+     "heading": "Let op: gelukt betekent niet dat alles gelukt is",
+     "paragraphs": [
+      "De belangrijkste valkuil zit in de uitvoer. Een batch met status COMPLETED kan toch verzoeken bevatten die mislukt zijn. In het uitvoerbestand heeft elke regel dan geen antwoord (response) maar een fout (error), met een type en een bericht.",
+      "De documentatie zegt er uitdrukkelijk bij dat de dienst mislukte verzoeken niet opnieuw probeert. Dat moet je dus zelf regelen. Een logische aanpak: lees de uitvoer in, zoek de regels met een fout, en zet alleen die in een nieuw invoerbestand voor een volgende batch.",
+      "Hier helpt het eigen kenmerk per verzoek. Gebruik iets wat je later terugvindt, zoals de bestandsnaam of een sleutel uit je tabel. Dan koppel je elke uitkomst weer aan het juiste document. Een batch met status FAILED heeft helemaal geen uitvoerbestand."
+     ]
+    },
+    {
+     "heading": "Kosten en de grens van januari",
+     "paragraphs": [
+      "Bij AI-functies betaal je twee dingen. De compute waarop je query draait, betaal je altijd. Daarbovenop komen bij ai_parse_document, ai_extract en ai_classify de kosten van het model, dat op GPU's van Databricks draait. In de systeemtabel system.billing.usage staan die onder het product AI_FUNCTIONS. Een apart tarief voor de asynchrone variant staat niet in de documentatie die ik las.",
+      "Dan de runtime. De algemene pagina over AI-functies vraagt nu minimaal Databricks Runtime 15.4 LTS en raadt 18.2 aan. Maar volgens de release notes van week 45 werken AI-functies in SQL vanaf januari 2027 alleen nog op 17.3 LTS en hoger. Voor ai_parse_document geldt 17.3 nu al. Op klassieke SQL warehouses werken AI-functies niet.",
+      "Draai je AI-functies in een job of notebook op een oudere runtime, dan is dit het moment om over te stappen. De functie ai_similarity en de REST API van AI-functies vallen volgens de release notes buiten deze grens."
+     ]
+    },
+    {
+     "heading": "Een derde weg: de AI Function-taak in een job",
+     "paragraphs": [
+      "Naast de query en de API is er sinds 4 november nog een optie: een AI Function-taak in een Lakeflow Job (bèta). Die draait ai_parse_document, ai_extract of ai_classify op bestanden in een volume of op rijen in een tabel, zonder dat je SQL schrijft.",
+      "Het handige is dat elke run alleen verwerkt wat nieuw of veranderd is. De uitkomst komt in een tabel in Unity Catalog, die een volgende taak weer kan lezen. Dat lijkt op een incrementeel dbt-model, maar dan voor documenten.",
+      "Grofweg kies je zo. Een tabel met tekst die je toch al in SQL bewerkt: de gewone query. Een map documenten die elke dag aanvult: de AI Function-taak. Eén grote, losse stapel documenten die je niet in een query wilt laten wachten: de asynchrone API. Dat laatste is een eigen afweging, geen advies uit de documentatie."
+     ]
+    },
+    {
+     "heading": "Wat betekent dit voor jou?",
+     "paragraphs": [
+      "Je wilt data uit je medaillonarchitectuur als invoer voor AI gebruiken. Documenten zijn daarbij vaak de lastigste bron. Met deze drie routes kun je een map documenten omzetten naar een tabel in Silver, binnen Databricks en dus binnen je eigen toegangsrechten.",
+      "Voor zorgdata is één detail belangrijk. Sinds 13 mei 2026 is ai_parse_document standaard beschikbaar in werkruimtes met het compliance security profile, als daar de HIPAA-controles zijn gekozen. Volgens de documentatie bewaart Databricks de invoer van een AI-functie niet, wel gegevens over de run zoals de runtimeversie. Laat dit wel toetsen aan jullie eigen regels voordat je echte documenten gebruikt.",
+      "Controleer als eerste welke runtime je jobs en notebooks met AI-functies nu gebruiken. Dat moet vóór januari geregeld zijn, ongeacht welke route je kiest."
+     ]
+    }
+   ],
+   "experiment": "Zet tien openbare pdf's, bijvoorbeeld jaarverslagen van gemeenten, in een volume in een testcatalogus. Haal er met ai_extract in een gewone query drie velden uit en kijk in het query-profiel hoeveel aanroepen lukten. Is de asynchrone preview aangezet, maak dan een JSONL-bestand met dezelfde tien verzoeken, start een batch en vergelijk de uitvoer. Gebruik geen werk- of patiëntdocumenten.",
+   "limitations": [
+    "De asynchrone API is Beta: velden en gedrag kunnen nog veranderen, en een beheerder moet hem aanzetten.",
+    "Mislukte verzoeken worden niet opnieuw geprobeerd; dat moet je zelf inbouwen.",
+    "Het modelgebruik kost geld bovenop je compute; houd system.billing.usage in de gaten bij grote batches.",
+    "Documenten met zorgdata pas verwerken na toetsing van privacy, beveiliging en toegangsrechten."
+   ],
+   "further_reading": [
+    {
+     "label": "AI Functions on Azure Databricks (Microsoft Learn, oktober 2026)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/large-language-models/ai-functions",
+     "note": "Overzicht van alle AI-functies, de runtime-eisen, het advies voor grote batches en hoe de kosten worden geboekt."
+    },
+    {
+     "label": "Create a batch (Databricks REST API, AI Functions)",
+     "url": "https://docs.databricks.com/api/ai-functions/v1/create-batch.md",
+     "note": "Hoe je een asynchrone batch start: de velden, het JSONL-formaat en de grenzen."
+    },
+    {
+     "label": "The Batch object (Databricks REST API, AI Functions)",
+     "url": "https://docs.databricks.com/api/ai-functions/v1/batch/object.md",
+     "note": "De statussen van een batch, de tellers en wat er met mislukte verzoeken gebeurt."
+    },
+    {
+     "label": "ai_parse_document function (Microsoft Learn, oktober 2026)",
+     "url": "https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document",
+     "note": "Syntax, bestandsformaten, de grens van 500 pagina's en de eis van Runtime 17.3."
+    },
+    {
+     "label": "Perform batch LLM inference using AI Functions (Microsoft Learn)",
+     "url": "https://learn.microsoft.com/azure/databricks/large-language-models/ai-query-batch-inference",
+     "note": "Voorbeelden van batches met ai_query en taakfuncties, ook in pipelines en met Structured Streaming."
+    }
+   ],
+   "currency_check": "Gecontroleerd op 26 november 2026. De algemene pagina over AI-functies is bijgewerkt op 27 oktober 2026 en die over ai_parse_document op 22 oktober 2026; de API-pagina's over batches hebben geen datum maar beschrijven de Beta van november. De datums van de asynchrone API (9 november), de AI Function-taak (4 november) en de runtimegrens van januari 2027 komen uit de Azure Databricks-release notes van week 45 en 46, zoals de radar die eerder uitlegde; de release-notespagina zelf kon ik deze keer niet openen. De algemene pagina noemt nog 15.4 LTS als minimum; ik noem daarom beide en zeg welke vanaf januari geldt. Een apart tarief voor de asynchrone API heb ik niet gevonden en dus niet genoemd.",
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering"
+   ],
+   "written_at": "2026-11-26T04:22:00Z",
+   "processed_by": "Claude (geplande taak)",
+   "quiz": [
+    {
+     "question": "Je hebt een Silver-tabel met 200.000 korte tekstvelden die je met ai_classify wilt labelen. Wat raadt de documentatie aan?",
+     "options": [
+      "De tabel zelf in kleine stukjes knippen en die na elkaar aanbieden",
+      "De hele tabel in één query aanbieden; de AI-functie regelt het parallel werken en opschalen",
+      "Altijd de asynchrone API gebruiken zodra het om meer dan 1.000 rijen gaat"
+     ],
+     "answer": 1,
+     "explanation": "Volgens de documentatie regelen AI-functies zelf parallel werken, nieuwe pogingen en opschalen, en bied je de hele dataset het best in één query aan."
+    },
+    {
+     "question": "Een asynchrone batch eindigt met status COMPLETED. Wat moet je daarna nog doen?",
+     "options": [
+      "Niets, COMPLETED betekent dat elk verzoek een antwoord heeft",
+      "Wachten tot Databricks de mislukte verzoeken vanzelf opnieuw probeert",
+      "De uitvoer nalopen op regels met een error en die zelf opnieuw aanbieden",
+      "De batch opnieuw starten met hetzelfde invoerbestand"
+     ],
+     "answer": 2,
+     "explanation": "Een COMPLETED batch kan mislukte verzoeken bevatten, en de dienst probeert die niet opnieuw. Je zoekt dus de regels met een error op en biedt alleen die opnieuw aan."
+    },
+    {
+     "question": "Waarom is januari 2027 belangrijk als je AI-functies in een job gebruikt?",
+     "options": [
+      "Dan werken AI-functies in SQL alleen nog op Databricks Runtime 17.3 LTS en hoger",
+      "Dan stopt de asynchrone API en moet alles weer synchroon",
+      "Dan worden AI-functies alleen nog op klassieke SQL warehouses ondersteund"
+     ],
+     "answer": 0,
+     "explanation": "Volgens de release notes van week 45 werken AI-functies in SQL vanaf januari 2027 niet meer op runtimes onder 17.3 LTS. Op klassieke SQL warehouses werken ze nu al niet."
+    }
+   ],
+   "showcase": {
+    "caption": "Na een asynchrone batch controleer je de uitvoer: elke regel heeft een response of een error. Deze query telt per uitkomst hoeveel documenten er zijn en welke opnieuw moeten.",
+    "language": "sql",
+    "code": "-- Uitvoer van de batch: één JSON-regel per verzoek\nSELECT\n  CASE WHEN error IS NULL THEN 'gelukt' ELSE 'mislukt' END AS uitkomst,\n  COUNT(*) AS aantal,\n  string_agg(custom_id, ', ' ORDER BY custom_id) AS bestanden\nFROM read_files(\n  '/Volumes/demo/documenten/batch/output/',\n  format => 'json'\n)\nGROUP BY uitkomst\nORDER BY uitkomst;",
+    "result": {
+     "columns": [
+      "uitkomst",
+      "aantal",
+      "bestanden"
+     ],
+     "rows": [
+      [
+       "gelukt",
+       3,
+       "folder-001.pdf, folder-002.pdf, folder-004.pdf"
+      ],
+      [
+       "mislukt",
+       2,
+       "folder-003.pdf, folder-005.pdf"
+      ]
+     ]
+    },
+    "note": "Het formaat van de uitvoerregels (custom_id met response of error) komt uit de API-documentatie van Databricks. De uitkomst is nagebouwd met read_json in DuckDB; in Databricks gebruik je read_files. De fouttypes in het voorbeeldbestand zijn verzonnen."
+   },
+   "terms": [
+    {
+     "term": "ai_extract",
+     "explanation": "Een AI-functie in Databricks die vaste velden, zoals een datum of bedrag, uit tekst of een document haalt en als gestructureerde uitkomst teruggeeft."
+    },
+    {
+     "term": "ai_query",
+     "explanation": "De algemene AI-functie in Databricks SQL: je kiest zelf een model en schrijft zelf de opdracht, en krijgt per rij een antwoord."
+    },
+    {
+     "term": "asynchroon",
+     "explanation": "Je geeft een opdracht af en wacht niet tot hij klaar is. Later vraag je de status op en haal je de uitkomst op."
+    },
+    {
+     "term": "JSONL",
+     "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt."
+    },
+    {
+     "term": "REST-API",
+     "explanation": "Een manier waarop programma's via internetverzoeken met een dienst praten, bijvoorbeeld om een opdracht te starten of een status op te vragen."
+    },
+    {
+     "term": "volume",
+     "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen."
+    },
+    {
+     "term": "compliance security profile",
+     "explanation": "Een instelling voor een Databricks-werkruimte met extra beveiliging en controles voor strenge regels, zoals HIPAA voor zorgdata."
+    },
+    {
+     "term": "LTS",
+     "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie."
+    }
+   ],
+   "reading_minutes": 6
+  },
   {
    "id": "begrippen-door-eigenaren",
    "plan_id": "begrippen-door-eigenaren",
@@ -10915,16 +11278,39 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-25T04:14:03Z",
+  "generated_at": "2026-11-26T04:27:00Z",
   "options": [
    {
-    "id": "kennisfabriek-voor-agents",
-    "title": "Een kennisfabriek: wie houdt de context van je data-agent bij?",
-    "question": "Hoe zorg je dat de definities, werkinstructies en toegangsregels die een data-agent gebruikt actueel blijven, en wat doet een curator-agent die die kennis bijhoudt?",
-    "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf'; Harrison Chase beschreef op 21 november een kennisfabriek waarin agents ontbrekende kennis melden en een curator-agent die 's nachts bijwerkt.",
+    "id": "identiteit-koppelen-voor-agents",
+    "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
+    "question": "Waarom koppel je identiteiten uit verschillende bronnen één keer na Silver, hoe bouw je Gold op één vaste id, en wat heeft een agent die per persoon beslist daaraan?",
+    "why": "Databricks beschreef op 24 november hoe je klantdata zo modelleert dat een agent per persoon kan beslissen; hetzelfde vraagstuk speelt bij gegevens uit meerdere bronsystemen.",
+    "topics": [
+     "ai_on_data_platform",
+     "data_architecture_modeling"
+    ],
+    "area": "ai_op_data"
+   },
+   {
+    "id": "coding-agent-vastzetten",
+    "title": "Claude Code vastzetten met regels, hooks en een sandbox",
+    "question": "Hoe zet je een coding agent als Claude Code vast met toestemmingsregels, hooks, een sandbox en centrale instellingen, en welke vragen stel je voordat een team hem gebruikt?",
+    "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway'; Anthropic publiceerde op 23 november een gids voor beveiligers over precies deze grenzen.",
+    "topics": [
+     "veilige_agents",
+     "claude_ai_development"
+    ],
+    "area": "context_agents"
+   },
+   {
+    "id": "semantische-laag-als-ai-context",
+    "title": "De semantische laag als geheugen voor AI: dbt, metric views of Power BI?",
+    "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en wanneer leg je ze vast in de dbt semantic layer, in metric views in Unity Catalog of in een Power BI-model?",
+    "why": "Metric views kunnen sinds kort als Power BI-model worden gepubliceerd (private preview), en Genie One rekent volgens Databricks pas goed met vaste definities.",
     "topics": [
      "ai_context_engineering",
-     "ai_agents_rag"
+     "dbt_analytics_engineering",
+     "powerbi_semantic_models"
     ],
     "area": "context_agents"
    },
@@ -10939,29 +11325,6 @@
      "data_architecture_modeling"
     ],
     "area": "data_engineering"
-   },
-   {
-    "id": "pipelines-laten-repareren-door-agent",
-    "title": "Een agent die je pipelines bewaakt en repareert: hoe werkt Genie ZeroOps?",
-    "question": "Hoe vindt een agent als Genie ZeroOps de oorzaak van een kapotte job of een stille fout, hoe test hij een reparatie, en welke eigen kennis en grenzen moet je hem meegeven?",
-    "why": "Genie ZeroOps is sinds 19 november publieke bèta; volgens Databricks vroeg meer dan de helft van 80.000 klantproblemen kennis die alleen het eigen bedrijf heeft.",
-    "topics": [
-     "ai_on_data_platform",
-     "data_quality_observability",
-     "databricks_data_engineering"
-    ],
-    "area": "ai_op_data"
-   },
-   {
-    "id": "ai-functies-op-grote-batches",
-    "title": "AI-functies in SQL op grote batches documenten: wat verandert er met asynchroon?",
-    "question": "Wanneer draai je AI-functies in Databricks SQL synchroon en wanneer asynchroon, hoe verwerk je zo een grote batch documenten, en waar let je op bij kosten en runtimeversies?",
-    "why": "De release notes van week 46 noemen asynchrone AI-functies voor grote batches documenten (bèta), en AI-functies stoppen in januari op runtimes onder 17.3 LTS.",
-    "topics": [
-     "ai_on_data_platform",
-     "databricks_data_engineering"
-    ],
-    "area": "ai_op_data"
    },
    {
     "id": "mcp-servers-met-skills",
@@ -11288,6 +11651,17 @@
    ]
   },
   {
+   "term": "ai_extract",
+   "explanation": "Een AI-functie in Databricks die vaste velden, zoals een datum of bedrag, uit tekst of een document haalt en als gestructureerde uitkomst teruggeeft.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    }
+   ]
+  },
+  {
    "term": "ai_parse_document",
    "explanation": "Een AI-functie in Databricks die een document zoals een pdf leest en de inhoud als gestructureerde tekst teruggeeft.",
    "refs": [
@@ -11305,6 +11679,17 @@
      "kind": "a",
      "id": "941b0ba5dad7",
      "title": "AI-functies in SQL stoppen in januari op runtimes onder 17.3 LTS"
+    }
+   ]
+  },
+  {
+   "term": "ai_query",
+   "explanation": "De algemene AI-functie in Databricks SQL: je kiest zelf een model en schrijft zelf de opdracht, en krijgt per rij een antwoord.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
     }
    ]
   },
@@ -11370,6 +11755,17 @@
      "kind": "v",
      "id": "release-pipeline-basis",
      "title": "Van je laptop naar productie: zo werkt een release pipeline"
+    }
+   ]
+  },
+  {
+   "term": "asynchroon",
+   "explanation": "Je geeft een opdracht af en wacht niet tot hij klaar is. Later vraag je de status op en haal je de uitkomst op.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
     }
    ]
   },
@@ -11663,6 +12059,17 @@
    ]
   },
   {
+   "term": "compliance security profile",
+   "explanation": "Een instelling voor een Databricks-werkruimte met extra beveiliging en controles voor strenge regels, zoals HIPAA voor zorgdata.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    }
+   ]
+  },
+  {
    "term": "composite models",
    "explanation": "Power BI-modellen die meerdere bronnen of bestaande modellen samenvoegen. Bedoeld om hergebruik mogelijk te maken.",
    "refs": [
@@ -11696,6 +12103,17 @@
      "kind": "v",
      "id": "claude-code-skills-hooks-subagents",
      "title": "Skills, hooks en subagents: welke uitbreiding van Claude Code kies je?"
+    }
+   ]
+  },
+  {
+   "term": "control flow",
+   "explanation": "Regels in een job die bepalen welke taak wanneer draait, zoals als-dan-anders of een taak herhalen voor elk item in een lijst.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
     }
    ]
   },
@@ -11906,6 +12324,11 @@
    "explanation": "Een manier van programmeren waarbij je beschrijft welk resultaat je wilt, en het systeem zelf de stappen en volgorde kiest. SQL en dbt werken zo.",
    "refs": [
     {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
+    },
+    {
      "kind": "a",
      "id": "450468c3f304",
      "title": "Laat AI liever beschrijven wat je wilt dan hoe het moet"
@@ -11916,6 +12339,11 @@
    "term": "Declarative Automation Bundles",
    "explanation": "De nieuwe naam van Databricks Asset Bundles: een Databricks-project, zoals jobs en pipelines, als code beschrijven en naar meerdere omgevingen uitrollen.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
+    },
     {
      "kind": "v",
      "id": "asset-bundles-basis",
@@ -12315,6 +12743,17 @@
      "kind": "a",
      "id": "069078b2b4e3",
      "title": "Zo laat het Claude Code-team Claude zijn eigen werk bewijzen"
+    }
+   ]
+  },
+  {
+   "term": "flow",
+   "explanation": "In een Lakeflow-pipeline de stap die data leest, bewerkt en wegschrijft naar een streaming table, materialized view of sink.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
     }
    ]
   },
@@ -12788,6 +13227,11 @@
    "explanation": "Een tekstbestand met op elke regel één los JSON-object. Handig voor grote lijsten verzoeken die je regel voor regel verwerkt.",
    "refs": [
     {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    },
+    {
      "kind": "a",
      "id": "905562b7af62",
      "title": "Nieuwe jobs draaien standaard in Auto-modus, en Genie wordt breder"
@@ -12822,8 +13266,24 @@
    "refs": [
     {
      "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
+    },
+    {
+     "kind": "v",
      "id": "ingestion-basis",
      "title": "Hoe komt data in Databricks? De basis van ingestion"
+    }
+   ]
+  },
+  {
+   "term": "Lakeflow Designer",
+   "explanation": "Een visueel hulpmiddel in Databricks om data voor te bereiden met blokken op een canvas of met opdrachten in gewone taal.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
     }
    ]
   },
@@ -12847,6 +13307,11 @@
    "term": "Lakeflow Jobs",
    "explanation": "De dienst in Databricks waarmee je taken zoals notebooks, SQL en pipelines op een schema of na elkaar laat draaien.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
+    },
     {
      "kind": "a",
      "id": "0b4ae9670355",
@@ -12917,6 +13382,11 @@
    "term": "LTS",
    "explanation": "Long Term Support: een versie die langer onderhoud en patches krijgt, en daardoor geschikt is voor productie.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    },
     {
      "kind": "a",
      "id": "941b0ba5dad7",
@@ -13657,6 +14127,17 @@
    ]
   },
   {
+   "term": "REST-API",
+   "explanation": "Een manier waarop programma's via internetverzoeken met een dienst praten, bijvoorbeeld om een opdracht te starten of een status op te vragen.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    }
+   ]
+  },
+  {
    "term": "review queue",
    "explanation": "Een rij met geselecteerde agentruns die een vakexpert nakijkt, zodat je weet welk antwoord goed was.",
    "refs": [
@@ -14079,6 +14560,17 @@
    ]
   },
   {
+   "term": "streaming table",
+   "explanation": "Een tabel in Databricks die nieuwe data steeds incrementeel verwerkt zodra die binnenkomt.",
+   "refs": [
+    {
+     "kind": "v",
+     "id": "eigen-wat-houdt-lakeflow-in",
+     "title": "Lakeflow uitgelegd: ophalen, bewerken en plannen onder één naam"
+    }
+   ]
+  },
+  {
    "term": "streaming tables",
    "explanation": "Tabellen in Databricks die nieuwe data steeds incrementeel verwerken zodra die binnenkomt.",
    "refs": [
@@ -14451,6 +14943,11 @@
    "term": "volume",
    "explanation": "Een plek in Unity Catalog voor gewone bestanden (zoals CSV, pdf of exportbestanden), met dezelfde rechten als je tabellen.",
    "refs": [
+    {
+     "kind": "v",
+     "id": "ai-functies-op-grote-batches",
+     "title": "AI-functies op duizenden documenten: in je query of op de achtergrond?"
+    },
     {
      "kind": "a",
      "id": "f4a1778578b7",
