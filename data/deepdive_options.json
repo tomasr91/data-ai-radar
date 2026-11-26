@@ -1,15 +1,38 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-25T04:14:03Z",
+  "generated_at": "2026-11-26T04:27:00Z",
   "options": [
     {
-      "id": "kennisfabriek-voor-agents",
-      "title": "Een kennisfabriek: wie houdt de context van je data-agent bij?",
-      "question": "Hoe zorg je dat de definities, werkinstructies en toegangsregels die een data-agent gebruikt actueel blijven, en wat doet een curator-agent die die kennis bijhoudt?",
-      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf'; Harrison Chase beschreef op 21 november een kennisfabriek waarin agents ontbrekende kennis melden en een curator-agent die 's nachts bijwerkt.",
+      "id": "identiteit-koppelen-voor-agents",
+      "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
+      "question": "Waarom koppel je identiteiten uit verschillende bronnen één keer na Silver, hoe bouw je Gold op één vaste id, en wat heeft een agent die per persoon beslist daaraan?",
+      "why": "Databricks beschreef op 24 november hoe je klantdata zo modelleert dat een agent per persoon kan beslissen; hetzelfde vraagstuk speelt bij gegevens uit meerdere bronsystemen.",
+      "topics": [
+        "ai_on_data_platform",
+        "data_architecture_modeling"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "coding-agent-vastzetten",
+      "title": "Claude Code vastzetten met regels, hooks en een sandbox",
+      "question": "Hoe zet je een coding agent als Claude Code vast met toestemmingsregels, hooks, een sandbox en centrale instellingen, en welke vragen stel je voordat een team hem gebruikt?",
+      "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway'; Anthropic publiceerde op 23 november een gids voor beveiligers over precies deze grenzen.",
+      "topics": [
+        "veilige_agents",
+        "claude_ai_development"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "semantische-laag-als-ai-context",
+      "title": "De semantische laag als geheugen voor AI: dbt, metric views of Power BI?",
+      "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en wanneer leg je ze vast in de dbt semantic layer, in metric views in Unity Catalog of in een Power BI-model?",
+      "why": "Metric views kunnen sinds kort als Power BI-model worden gepubliceerd (private preview), en Genie One rekent volgens Databricks pas goed met vaste definities.",
       "topics": [
         "ai_context_engineering",
-        "ai_agents_rag"
+        "dbt_analytics_engineering",
+        "powerbi_semantic_models"
       ],
       "area": "context_agents"
     },
@@ -26,29 +49,6 @@
       "area": "data_engineering"
     },
     {
-      "id": "pipelines-laten-repareren-door-agent",
-      "title": "Een agent die je pipelines bewaakt en repareert: hoe werkt Genie ZeroOps?",
-      "question": "Hoe vindt een agent als Genie ZeroOps de oorzaak van een kapotte job of een stille fout, hoe test hij een reparatie, en welke eigen kennis en grenzen moet je hem meegeven?",
-      "why": "Genie ZeroOps is sinds 19 november publieke bèta; volgens Databricks vroeg meer dan de helft van 80.000 klantproblemen kennis die alleen het eigen bedrijf heeft.",
-      "topics": [
-        "ai_on_data_platform",
-        "data_quality_observability",
-        "databricks_data_engineering"
-      ],
-      "area": "ai_op_data"
-    },
-    {
-      "id": "ai-functies-op-grote-batches",
-      "title": "AI-functies in SQL op grote batches documenten: wat verandert er met asynchroon?",
-      "question": "Wanneer draai je AI-functies in Databricks SQL synchroon en wanneer asynchroon, hoe verwerk je zo een grote batch documenten, en waar let je op bij kosten en runtimeversies?",
-      "why": "De release notes van week 46 noemen asynchrone AI-functies voor grote batches documenten (bèta), en AI-functies stoppen in januari op runtimes onder 17.3 LTS.",
-      "topics": [
-        "ai_on_data_platform",
-        "databricks_data_engineering"
-      ],
-      "area": "ai_op_data"
-    },
-    {
       "id": "mcp-servers-met-skills",
       "title": "MCP-servers die zelf skills meeleveren: wat verandert er voor Claude?",
       "question": "Wat betekent het dat een MCP-server naast tools ook skills, achtergrondtaken en toestemmingsvragen aan Claude kan geven, en hoe zou een server voor een dbt- of Databricks-project dat gebruiken?",
@@ -61,62 +61,6 @@
     }
   ],
   "history": [
-    {
-      "id": "toegang-op-attributen",
-      "title": "Toegang regelen met tags en attributen (ABAC) in Unity Catalog",
-      "question": "Hoe regel je toegang tot gevoelige kolommen op basis van tags en classificatie in plaats van per tabel, en hoe werkt dat in Unity Catalog?",
-      "why": "Databricks liet op 24 november zien dat tags uit Unity Catalog via Iceberg (Tag Exchange, bèta) meereizen naar andere tools; daarmee wordt een goed tagbeleid nog belangrijker.",
-      "topics": [
-        "data_governance_privacy",
-        "metadata_lineage_catalogs"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "datakwaliteit-monitoren",
-      "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
-      "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks daar zelf voor naast dbt-tests?",
-      "why": "Genie ZeroOps, dat zelf de oorzaak van kapotte pipelines zoekt, is sinds 19 november publieke bèta; goed om eerst te snappen hoe monitoring en afwijkingsdetectie werken.",
-      "topics": [
-        "data_quality_observability",
-        "databricks_data_engineering",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "agents-eerlijk-testen",
-      "title": "Agents eerlijk testen: smalle claims, valsspelen en pass@k tegenover pass^k",
-      "question": "Hoe zet je een eerlijke test op voor een agent die meerdere stappen zet, hoe voorkom je dat hij de test 'wint' zonder de taak te doen, en wat zeggen pass@k en pass^k?",
-      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Hugging Face publiceerde op 23 november een stappenplan voor zo'n agent-eval.",
-      "topics": [
-        "ai_evaluation_observability",
-        "ai_agents_rag"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "pull-requests-met-claude-ship",
-      "title": "Claude Ship: pull requests laten reviewen en goedkeuren volgens teamregels",
-      "question": "Wat doen Code Review, PR Steward en Claude Approvals in Claude Ship, hoe leg je vast wat een agent zelf mag goedkeuren, en wat betekent dat voor een dbt-repo met een release pipeline?",
-      "why": "Anthropic kondigde Claude Ship op 23 november aan, met twee nieuwe agents in bèta die een pull request groen houden en goedkeuren wat het teambeleid toestaat.",
-      "topics": [
-        "claude_ai_development",
-        "cicd_data_deployment"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "ai-functies-op-grote-batches",
-      "title": "AI-functies in SQL op grote batches documenten: wat verandert er met asynchroon?",
-      "question": "Wanneer draai je AI-functies in Databricks SQL synchroon en wanneer asynchroon, hoe verwerk je zo een grote batch documenten, en waar let je op bij kosten en runtimeversies?",
-      "why": "De release notes van week 46 noemen asynchrone AI-functies voor grote batches documenten (bèta), en AI-functies stoppen in januari op runtimes onder 17.3 LTS.",
-      "topics": [
-        "ai_on_data_platform",
-        "databricks_data_engineering"
-      ],
-      "area": "ai_op_data"
-    },
     {
       "id": "claude-code-skills-hooks-subagents",
       "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
@@ -757,6 +701,63 @@
         "claude_ai_development",
         "ai_evaluation_observability",
         "veilige_agents"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "kennisfabriek-voor-agents",
+      "title": "Een kennisfabriek: wie houdt de context van je data-agent bij?",
+      "question": "Hoe zorg je dat de definities, werkinstructies en toegangsregels die een data-agent gebruikt actueel blijven, en wat doet een curator-agent die die kennis bijhoudt?",
+      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf'; Harrison Chase beschreef op 21 november een kennisfabriek waarin agents ontbrekende kennis melden en een curator-agent die 's nachts bijwerkt.",
+      "topics": [
+        "ai_context_engineering",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "tags-delen-via-iceberg",
+      "title": "Tags en metadata delen tussen platforms via de Iceberg REST-catalogus",
+      "question": "Wat is een Iceberg REST-catalogus, hoe reizen tags uit Unity Catalog via catalog labels mee naar andere tools, en wat betekent dat voor je tagbeleid?",
+      "why": "Databricks introduceerde op 24 november catalog labels in de Iceberg REST-API; in Unity Catalog heet dat Tag Exchange (bèta).",
+      "topics": [
+        "metadata_lineage_catalogs",
+        "data_governance_privacy",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "pipelines-laten-repareren-door-agent",
+      "title": "Een agent die je pipelines bewaakt en repareert: hoe werkt Genie ZeroOps?",
+      "question": "Hoe vindt een agent als Genie ZeroOps de oorzaak van een kapotte job of een stille fout, hoe test hij een reparatie, en welke eigen kennis en grenzen moet je hem meegeven?",
+      "why": "Genie ZeroOps is sinds 19 november publieke bèta; volgens Databricks vroeg meer dan de helft van 80.000 klantproblemen kennis die alleen het eigen bedrijf heeft.",
+      "topics": [
+        "ai_on_data_platform",
+        "data_quality_observability",
+        "databricks_data_engineering"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "ai-functies-op-grote-batches",
+      "title": "AI-functies in SQL op grote batches documenten: wat verandert er met asynchroon?",
+      "question": "Wanneer draai je AI-functies in Databricks SQL synchroon en wanneer asynchroon, hoe verwerk je zo een grote batch documenten, en waar let je op bij kosten en runtimeversies?",
+      "why": "De release notes van week 46 noemen asynchrone AI-functies voor grote batches documenten (bèta), en AI-functies stoppen in januari op runtimes onder 17.3 LTS.",
+      "topics": [
+        "ai_on_data_platform",
+        "databricks_data_engineering"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "mcp-servers-met-skills",
+      "title": "MCP-servers die zelf skills meeleveren: wat verandert er voor Claude?",
+      "question": "Wat betekent het dat een MCP-server naast tools ook skills, achtergrondtaken en toestemmingsvragen aan Claude kan geven, en hoe zou een server voor een dbt- of Databricks-project dat gebruiken?",
+      "why": "Anthropic maakte op 24 november bekend dat MCP-servers skills kunnen meeleveren (publieke bèta) en lange taken en toestemmingsvragen ondersteunen.",
+      "topics": [
+        "claude_ai_development",
+        "ai_agents_rag"
       ],
       "area": "claude"
     }
