@@ -1,0 +1,136 @@
+{
+ "format_version": 2,
+ "article_id": "cdd3a17ed9ed",
+ "url": "https://docs.getdbt.com/blog/checklist-get-the-most-from-dbt-state",
+ "headline": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen",
+ "summary": "Joel Labes van dbt Labs geeft een stappenplan om dbt State in een groot dbt-project in te voeren: van een nulmeting tot minder jobs.",
+ "story": [
+  "dbt State bouwt alleen modellen opnieuw waarvan de code of de brondata veranderd is; de rest slaat het over of kloont het. Joel Labes van dbt Labs schreef een checklist voor teams met een groot, bestaand dbt-project die dit willen invoeren. Het advies geldt grotendeels ook als je dbt zelf orkestreert in plaats van op het dbt-platform.",
+  "Hoe werkt het? Bij elke run kijkt dbt State of een model dezelfde logica heeft en of de bronnen nieuwe data hebben. Zo niet, dan wordt het model hergebruikt: overgeslagen, of als zero-copy clone overgenomen uit een andere omgeving, zoals productie. Met lag_tolerance bepaal je hoe oud data mag zijn voordat een model toch opnieuw wordt gebouwd. De standaard is 45 minuten; een ruimere waarde is volgens Labes de beste manier om minder te bouwen.",
+  "De checklist begint met meten. Leg minstens een week, liever 2 tot 4 weken, vast wat je runs nu kosten, en kijk daarna naar bespaarde euro's en seconden, niet alleen naar het percentage hergebruik. In run_results.json zie je per model of het is uitgevoerd of hergebruikt. Zorg ook voor een noodknop: met DBT_ENGINE_MANAGE_STATE=0 zet je dbt State in één keer uit.",
+  "Daarna rol je stap voor stap uit: eerst een paar ontwikkelaars, dan dev en CI, dan productie. Hergebruik valt vaak lager uit door views met select *, Jinja die bij elke run anders is (zoals invocation_id) of bronnen zonder bekende versheid, zoals bestanden in S3. Python-modellen kan dbt State niet hergebruiken. De laatste stap: veel losse jobs samenvoegen tot één job die zo vaak draait als nodig is voor je afspraken over versheid.",
+  "Voor Dataflow past dit bij fase 5, waar je nu je eerste DAB-job bouwt: draai je dbt vanuit een Databricks-job in plaats van op het dbt-platform, dan geldt het meeste advies ook. Na een proef van 30 dagen kom je volgens het artikel op een gratis plan met 1000 DATTs per maand; daarboven draait dbt weer gewoon alles."
+ ],
+ "key_facts": [
+  "Geschreven door Joel Labes (dbt Labs), gepubliceerd op 15 november 2026.",
+  "Nulmeting: minstens een week controledata, liever 2 tot 4 weken.",
+  "In run_results.json (dbt v2.0 en later): uitgevoerd = status success; hergebruikt = status reused met 'No new changes on any upstreams' (overgeslagen) of 'Cloned from other environment' (gekloond).",
+  "Noodknop: omgevingsvariabele DBT_ENGINE_MANAGE_STATE=0; een CLI-vlag zoals --manage-state gaat daar wel boven.",
+  "dbt State installeren kan bij dbt v1.7 tot 1.12, aanzetten bij v1.13 en v2.0+.",
+  "Standaard lag_tolerance is 45 minuten; ophogen is de effectiefste manier om minder te bouwen.",
+  "require_fresh_data_from staat standaard op any; op all wacht dbt tot alle bronnen nieuwe data hebben.",
+  "Python-modellen kunnen niet worden hergebruikt; custom materializations wel overgeslagen, maar niet gekloond.",
+  "Proef van 30 dagen onbeperkt gebruik, daarna een gratis plan met 1000 DATTs per maand; daarboven voert dbt alle geselecteerde modellen gewoon uit.",
+  "dbt State is geen product per gebruiker (seat) en vraagt geen abonnement op de rest van het dbt-platform."
+ ],
+ "personal_relevance": "Je gebruikt dbt Core en het dbt-platform; dit stappenplan laat zien hoe je dbt State veilig uitprobeert en meet of het op Databricks echt rekenkosten scheelt.",
+ "experiment": "Zet dbt State aan in een eigen dev-omgeving met een klein dbt-project op openbare data (bijv. KNMI). Draai een model twee keer, voeg dan een commentaar toe en daarna een echte wijziging, en kijk in run_results.json en met explain wanneer het model wordt hergebruikt.",
+ "limitations": [
+  "Python-modellen worden altijd opnieuw gebouwd.",
+  "Bij bijna-realtime runs van een paar minuten kan het ophalen van metadata de winst tenietdoen.",
+  "Vraagt een account op het dbt-platform, ook als je zelf orkestreert.",
+  "Hoeveel je bespaart, noemt het artikel niet: dat moet je zelf meten."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "dbt State instellen",
+   "url": "https://docs.getdbt.com/docs/deploy/dbt-state-setup"
+  },
+  {
+   "label": "explain-commando",
+   "url": "https://docs.getdbt.com/reference/commands/state-explain"
+  },
+  {
+   "label": "lag_tolerance per omgeving",
+   "url": "https://docs.getdbt.com/reference/resource-configs/lag-tolerance#use-different-tolerances-per-environment"
+  },
+  {
+   "label": "dbt State in CI/CD",
+   "url": "https://docs.getdbt.com/docs/deploy/dbt-state-cicd"
+  },
+  {
+   "label": "Waarom views opnieuw worden gebouwd",
+   "url": "https://docs.getdbt.com/faqs/State/views-rebuilt"
+  }
+ ],
+ "topics": [
+  "dbt_analytics_engineering",
+  "cicd_data_deployment"
+ ],
+ "quality": {
+  "depth": 0.8,
+  "practicality": 0.85,
+  "novelty": 0.55
+ },
+ "development_key": "dbt-state-invoeren-nov-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.85,
+  "why": "Praktisch dbt State-stuk, zoals het artikel over slimme rebuilds waar je een duim omhoog met 'past bij mijn stack' aan gaf."
+ },
+ "labels": [
+  "dbt-state",
+  "slimme-rebuilds",
+  "compute-kosten"
+ ],
+ "project_ref": {
+  "fase": 5,
+  "quote": "Voor Dataflow past dit bij fase 5, waar je nu je eerste DAB-job bouwt",
+  "why": "Het artikel gaat over hoe je dbt-runs orkestreert en jobs samenvoegt, en dat is waar je in fase 5 mee bezig bent."
+ },
+ "showcase": {
+  "caption": "Zo tel je na een run hoeveel modellen dbt State echt uitvoerde en hoeveel het hergebruikte, met de status- en berichtwaarden uit run_results.json.",
+  "language": "sql",
+  "code": "WITH run_results(model, status, message) AS (VALUES\n ('stg_knmi_metingen','reused','No new changes on any upstreams'),\n ('stg_cbs_gemeenten','reused','No new changes on any upstreams'),\n ('int_metingen_per_dag','success','Succeeded'),\n ('dim_station','reused','Cloned from other environment'),\n ('fct_neerslag_per_dag','success','Succeeded'),\n ('fct_temperatuur_per_maand','reused','No new changes on any upstreams'))\nSELECT CASE WHEN status = 'success' THEN 'uitgevoerd'\n            WHEN message LIKE 'Cloned%' THEN 'hergebruikt (gekloond)'\n            ELSE 'hergebruikt (overgeslagen)' END AS uitkomst,\n       count(*) AS modellen\nFROM run_results\nGROUP BY 1\nORDER BY modellen DESC",
+  "result": {
+   "columns": [
+    "uitkomst",
+    "modellen"
+   ],
+   "rows": [
+    [
+     "hergebruikt (overgeslagen)",
+     3
+    ],
+    [
+     "uitgevoerd",
+     2
+    ],
+    [
+     "hergebruikt (gekloond)",
+     1
+    ]
+   ]
+  },
+  "note": "run_results.json is een JSON-bestand; hier staan de velden al als tabel. De waarden van status en message komen uit het artikel. Voor de geschiedenis over meerdere runs noemt het artikel de view dbt_rt.run_results."
+ },
+ "terms": [
+  {
+   "term": "dbt State",
+   "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+  },
+  {
+   "term": "zero-copy clone",
+   "explanation": "Een kopie van een tabel die meteen klaar is omdat de data niet echt wordt gekopieerd: de kopie verwijst naar dezelfde bestanden."
+  },
+  {
+   "term": "lag_tolerance",
+   "explanation": "Instelling van dbt State: hoe oud de data in een model mag zijn voordat het toch opnieuw wordt gebouwd. Standaard 45 minuten."
+  },
+  {
+   "term": "run_results.json",
+   "explanation": "Bestand dat dbt na elke run schrijft, met per model of het gelukt is, hoe lang het duurde en welk bericht erbij hoort."
+  },
+  {
+   "term": "CI",
+   "explanation": "Continuous integration: bij elke wijziging draaien automatisch tests en controles, zodat fouten snel opvallen."
+  }
+ ],
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-27T06:50:00Z",
+ "prompt_version": "taak-v2"
+}
