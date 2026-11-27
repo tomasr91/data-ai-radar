@@ -1,0 +1,21 @@
+{
+ "task": "uitleggen",
+ "started_at": "2026-11-27T03:13:27Z",
+ "finished_at": "2026-11-27T03:29:42Z",
+ "status": "deels",
+ "summary": "Geen artikelen uitgelegd: 2 algemene AI-stukken overgeslagen, en de 3 relevante artikelen (dbt State-checklist, OneLake en Fabric IQ) waren niet te openen; die blijven op de werklijst.",
+ "counts": {
+  "uitgelegd": 0,
+  "overgeslagen": 2,
+  "overgeslagen_zonder_openen": 2,
+  "met_voorbeeld": 0,
+  "via_websearch": 0,
+  "niet_bereikbaar": 3
+ },
+ "problems": [
+  "WebFetch weigerde de artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
+  "Zoeken op de exacte titel gaf voor geen van de drie een link naar hetzelfde artikel: A checklist for getting the most out of dbt State (dbt-blog), OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
+  "Vers ophalen aangevraagd om 03:14 UTC; de feed was binnen enkele minuten bijgewerkt.",
+  "Dataflow-voortgang bijgewerkt: fase 5 bezig (stap 5.1)."
+ ]
+}
