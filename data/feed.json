@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-27T04:15:05.163382Z",
+ "generated_at": "2026-11-27T04:15:53.098362Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -11682,6 +11682,48 @@
  },
  "inspiratie": [
   {
+   "date": "2026-11-27",
+   "written_at": "2026-11-27T04:35:00Z",
+   "ideas": [
+    {
+     "cat": "zelf",
+     "kort": "AI vult dbt-docs",
+     "naam": "Beschrijvingen van dbt-modellen en kolommen laten voorstellen",
+     "wat": "Op PyPI staan open-source tools zoals dbt-autodoc en dbt-scribe die met een taalmodel documentatie voor je dbt-project voorstellen. Jij leest na en keurt goed.",
+     "waarom": "Lege description-velden zijn de grootste gaten in metadata, en juist die beschrijvingen gebruiken AI-agents later als context. Je kunt het makkelijk zelf proberen op een klein voorbeeldproject.",
+     "tech": "dbt, Python, een taalmodel naar keuze",
+     "link": "https://pypi.org/project/dbt-autodoc/1.0.20/"
+    },
+    {
+     "cat": "zelf",
+     "kort": "AI-review van data-PR",
+     "naam": "Een AI-reviewer die pull requests van datacode nakijkt",
+     "wat": "Datafold beschrijft in zijn documentatie AI-code-reviews als onderdeel van het testen vóór een deployment. Het idee: een reviewer die SQL- en dbt-wijzigingen leest en vragen stelt vóór de merge.",
+     "waarom": "Een collega-review vangt niet alles, en een AI-review is direct beschikbaar. Combineer het met een vergelijking van de data vóór en na de wijziging.",
+     "tech": "dbt, CI in Azure DevOps of GitHub, Datafold of een eigen agent",
+     "link": "https://docs.datafold.com/deployment-testing/ai-code-reviews"
+    },
+    {
+     "cat": "product",
+     "kort": "Uitleg bij KPI-sprong",
+     "naam": "Automatisch uitleggen waarom een cijfer veranderde",
+     "wat": "BI-tools zoals Sisense hebben een functie Explanations die zoekt welke onderdelen een verandering in een cijfer verklaren. Een datateam kan zoiets aanbieden op gold-modellen, voor managers die een dashboard lezen.",
+     "waarom": "Bij een opvallende stijging of daling is de eerste vraag altijd 'waardoor?'. Een automatische eerste uitleg scheelt een rondje vragen aan het datateam.",
+     "tech": "Gold-feiten met dimensies, metric views, Power BI of een kleine agent",
+     "link": "https://docs.sisense.com/main/SisenseLinux/explanations-identify-reasons-for-changes-in-your-data.md"
+    },
+    {
+     "cat": "product",
+     "kort": "Rapportage als gesprek",
+     "naam": "Rapporten opvragen in een gesprek, zoals bij banken en verzekeraars",
+     "wat": "Sigmoid beschrijft hoe financiële dienstverleners generatieve AI inzetten voor rapportage in gesprekvorm op hun dataplatform. Gebruikers vragen een overzicht in gewone taal in plaats van een vast rapport te zoeken.",
+     "waarom": "Minder losse rapportverzoeken bij het datateam. Het werkt alleen goed op gold-modellen met vaste definities, zodat iedereen hetzelfde antwoord krijgt.",
+     "tech": "Gold-laag, semantische laag, Genie of een eigen agent",
+     "link": "https://www.sigmoid.com/blogs/operationalizing-genai-in-financial-services-for-conversational-reporting-with-snowflake-cortex-ai/"
+    }
+   ]
+  },
+  {
    "date": "2026-11-26",
    "written_at": "2026-11-26T04:32:00Z",
    "ideas": [
@@ -15698,6 +15740,19 @@
      "met_voorbeeld": 0,
      "via_websearch": 0,
      "niet_bereikbaar": 3
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen nieuwe verdieping: het eigen voorstel over Lakeflow was al geschreven (issue #41 gesloten); 5 nieuwe keuzes en een inspiratiekaart met 4 ideeën klaargezet.",
+    "finished_at": "2026-11-27T04:15:40Z",
+    "problems": [
+     "De geschiedenis in deepdive_options.json mag maar 60 keuzes houden, maar de controle wil dat gekozen verdiepingen erin blijven; daarom zijn oudere, niet-gekozen keuzes eruit gehaald in plaats van de oudste."
+    ],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5,
+     "inspiratie": 1
     }
    }
   }
