@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-27T03:30:32.080121Z",
+ "generated_at": "2026-11-27T04:15:05.163382Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-25T03:22:00Z",
@@ -609,7 +609,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.58,
+    "recency": 0.57,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -873,7 +873,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -1384,7 +1384,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.58,
+    "recency": 0.57,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.02,
@@ -2055,110 +2055,6 @@
    }
   },
   {
-   "id": "ceb4b784fbab",
-   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
-   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
-   "source_id": "dbt_labs_blog",
-   "published_at": "2026-10-27T18:44:00Z",
-   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
-   "fetched_at": "2026-10-28T19:40:00Z",
-   "summary": "Fintech KOHO bouwde KoDa: medewerkers stellen een vraag in Claude Code en krijgen antwoord uit gecertificeerde dbt-marts in Redshift, via een skill en een MCP-server.",
-   "personal_relevance": "Precies het idee van een data-assistent op je Gold-laag, inclusief hoe je controleert of de antwoorden kloppen.",
-   "experiment": "Schrijf 20 testvragen met verwachte antwoorden voor de openbare jaffle_shop-marts en laat Claude ze beantwoorden via een SQL-tool. Tel hoeveel er kloppen.",
-   "limitations": [
-    "Geen cijfers over nauwkeurigheid, gebruik of kosten.",
-    "Bestuursrapportages worden nog steeds met de hand gecontroleerd.",
-    "Met werkdata alleen binnen Databricks na te bouwen, niet met externe AI."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "ai_on_data_platform",
-    "dbt_analytics_engineering",
-    "claude_ai_development",
-    "ai_evaluation_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "dbt",
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 89,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.22,
-    "source": 0.85,
-    "quality": 0.68,
-    "feedback": -0.05,
-    "fit": 0.4,
-    "project": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-10-30T06:45:00Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
-   "story": [
-    "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
-    "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
-    "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
-    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata. Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten."
-   ],
-   "key_facts": [
-    "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
-    "Tools: Claude via Bedrock, Claude Code met de KoDa-skill, een Redshift-MCP-server, en dbt-marts in Redshift.",
-    "Ongeveer 1.400 dbt-modellen met tests en documentatie, zonder persoonsgegevens; de pipeline werd in 2022 opnieuw in dbt gebouwd.",
-    "Alleen leesrechten, alleen gecertificeerde mart-modellen, alleen analytische vragen.",
-    "Eval council van ongeveer 375 analistenvragen; ongeveer 11 commits van drie mensen in drie maanden voor contextbibliotheken en evaluatie.",
-    "Verslag van een sessie op dbt Summit 2026; geen cijfers over nauwkeurigheid of gebruik."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "skill",
-     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    },
-    {
-     "term": "hooks",
-     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
-    },
-    {
-     "term": "Bedrock",
-     "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
-    },
-    {
-     "term": "eval council",
-     "explanation": "Bij KOHO een vaste verzameling echte vragen van analisten waarmee elke wijziging aan de assistent wordt getest."
-    }
-   ],
-   "soort": "praktijk",
-   "fit": {
-    "score": 0.9,
-    "why": "Je gaf dit stuk over Claude op dbt-modellen een duim omhoog."
-   },
-   "labels": [
-    "claude-code-self-service",
-    "dbt-mcp",
-    "claude-code-skills"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "praktijk",
-    "pts": -5
-   },
-   "project_ref": {
-    "fase": 7,
-    "quote": "Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten",
-    "why": "Fase 7 vraagt om een agent met read-only SQL via een MCP-server."
-   }
-  },
-  {
    "id": "6ded4aa1cdcf",
    "title": "Making the economic case for warehouse-first AI context",
    "url": "https://www.getdbt.com/blog/economic-case-warehouse-first-ai-context",
@@ -2443,7 +2339,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.58,
+    "recency": 0.57,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2533,6 +2429,110 @@
     "v": 0,
     "s": 75,
     "pts": 1
+   }
+  },
+  {
+   "id": "ceb4b784fbab",
+   "title": "How KOHO built a Claude-powered self-serve analytics tool on years of dbt governance",
+   "url": "https://www.getdbt.com/blog/claude-self-serve-analytics-dbt-governance",
+   "source_id": "dbt_labs_blog",
+   "published_at": "2026-10-27T18:44:00Z",
+   "date_note": "De pagina toont alleen 'laatst bewerkt op 27 oktober 2026'; verslag van dbt Summit 2026.",
+   "fetched_at": "2026-10-28T19:40:00Z",
+   "summary": "Fintech KOHO bouwde KoDa: medewerkers stellen een vraag in Claude Code en krijgen antwoord uit gecertificeerde dbt-marts in Redshift, via een skill en een MCP-server.",
+   "personal_relevance": "Precies het idee van een data-assistent op je Gold-laag, inclusief hoe je controleert of de antwoorden kloppen.",
+   "experiment": "Schrijf 20 testvragen met verwachte antwoorden voor de openbare jaffle_shop-marts en laat Claude ze beantwoorden via een SQL-tool. Tel hoeveel er kloppen.",
+   "limitations": [
+    "Geen cijfers over nauwkeurigheid, gebruik of kosten.",
+    "Bestuursrapportages worden nog steeds met de hand gecontroleerd.",
+    "Met werkdata alleen binnen Databricks na te bouwen, niet met externe AI."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "ai_on_data_platform",
+    "dbt_analytics_engineering",
+    "claude_ai_development",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "dbt",
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 88,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.22,
+    "source": 0.85,
+    "quality": 0.68,
+    "feedback": -0.05,
+    "fit": 0.4,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Self-service met Claude werkt alleen op goedgekeurde dbt-modellen",
+   "story": [
+    "Bij KOHO kan iedere medewerker een zakelijke vraag stellen in Claude Code. Het antwoord komt uit een gecertificeerde dbt-mart in Redshift. Het hulpmiddel heet KoDa. Het is gebouwd uit dingen die er al waren: schone dbt-modellen, een warehouse en Claude via Bedrock.",
+    "Het werkt zo. Een skill met Markdown-instructies stuurt het gesprek, met MCP-aanroepen voor en na elke stap (hooks). Een Redshift-MCP-server mag alleen gecertificeerde mart-modellen lezen: geen ruwe data, geen persoonsgegevens, en alleen leesrechten. Zo komt elk antwoord terug op dezelfde definities die het hele bedrijf gebruikt.",
+    "Het opvallendste is de evaluatie. KOHO maakte een 'eval council' van ongeveer 375 echte vragen van analisten. Offline testen ze elke wijziging, bijvoorbeeld aan de stijlgids. Online wordt elke vraag gelogd en kijkt elke week een analist naar nieuwe of belangrijke vragen. Volgens het team verdient evaluatie meer aandacht dan het model of de skill zelf.",
+    "Voor jou is dit een bruikbaar ontwerp: een assistent die alleen Gold-modellen mag lezen, met een vaste testset. In een zorgomgeving zou je dit wel met AI binnen Databricks bouwen, niet met een externe AI op werkdata. Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten."
+   ],
+   "key_facts": [
+    "KOHO is een Canadese fintech met ongeveer 250 medewerkers, van wie meer dan 10% in data werkt.",
+    "Tools: Claude via Bedrock, Claude Code met de KoDa-skill, een Redshift-MCP-server, en dbt-marts in Redshift.",
+    "Ongeveer 1.400 dbt-modellen met tests en documentatie, zonder persoonsgegevens; de pipeline werd in 2022 opnieuw in dbt gebouwd.",
+    "Alleen leesrechten, alleen gecertificeerde mart-modellen, alleen analytische vragen.",
+    "Eval council van ongeveer 375 analistenvragen; ongeveer 11 commits van drie mensen in drie maanden voor contextbibliotheken en evaluatie.",
+    "Verslag van een sessie op dbt Summit 2026; geen cijfers over nauwkeurigheid of gebruik."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "skill",
+     "explanation": "Een map met instructies (en soms scripts) die een AI-assistent pas inleest als een taak erom vraagt, zoals een werkinstructie voor één klus."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    },
+    {
+     "term": "hooks",
+     "explanation": "Stukjes code die automatisch draaien op een vast moment, bijvoorbeeld voor of na een stap van een AI-assistent."
+    },
+    {
+     "term": "Bedrock",
+     "explanation": "De dienst van Amazon (AWS) waarmee je taalmodellen zoals Claude in je eigen cloudomgeving gebruikt."
+    },
+    {
+     "term": "eval council",
+     "explanation": "Bij KOHO een vaste verzameling echte vragen van analisten waarmee elke wijziging aan de assistent wordt getest."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.9,
+    "why": "Je gaf dit stuk over Claude op dbt-modellen een duim omhoog."
+   },
+   "labels": [
+    "claude-code-self-service",
+    "dbt-mcp",
+    "claude-code-skills"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -5
+   },
+   "project_ref": {
+    "fase": 7,
+    "quote": "Voor Dataflow past dit bij fase 7: een MCP-server die alleen gecertificeerde modellen mag lezen, met alleen leesrechten",
+    "why": "Fase 7 vraagt om een agent met read-only SQL via een MCP-server."
    }
   },
   {
@@ -4564,130 +4564,6 @@
    }
   },
   {
-   "id": "f49f6dcce187",
-   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
-   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
-   "source_id": "simon_spati",
-   "published_at": "2026-11-10T06:00:08Z",
-   "fetched_at": "2026-11-15T21:23:09.589085Z",
-   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
-   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
-   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
-   "limitations": [
-    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
-    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Omnigraph op GitHub",
-     "url": "https://github.com/ModernRelay/omnigraph"
-    },
-    {
-     "label": "Omnigraph-documentatie",
-     "url": "https://omnigraph.dev/docs"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "data_architecture_modeling",
-    "data_quality_observability"
-   ],
-   "groups": [
-    "ai_context",
-    "architectuur",
-    "kwaliteit"
-   ],
-   "relevance_score": 84,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.43,
-    "source": 0.68,
-    "quality": 0.62,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
-   "story": [
-    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
-    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
-    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
-    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
-    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
-   ],
-   "key_facts": [
-    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
-    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
-    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
-    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
-    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
-    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
-   "showcase": {
-    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
-    "language": "sql",
-    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
-    "result": {
-     "columns": [
-      "id",
-      "resultaat"
-     ],
-     "rows": [
-      [
-       1,
-       "{'sterren': 4}"
-      ],
-      [
-       2,
-       "{'sterren': NULL}"
-      ]
-     ]
-    },
-    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
-   },
-   "terms": [
-    {
-     "term": "getypeerde graaf",
-     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
-    },
-    {
-     "term": "knopen",
-     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
-    },
-    {
-     "term": "branch",
-     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
-    },
-    {
-     "term": "RDF",
-     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.6,
-    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
-   },
-   "labels": [
-    "context-als-code",
-    "kennisgraaf",
-    "agent-context-laag"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 1
-   }
-  },
-  {
    "id": "656e0d953ae9",
    "title": "Announcing GA of Genie Ontology",
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology",
@@ -5504,6 +5380,130 @@
     "vaste-metric-definities",
     "semantische-laag"
    ]
+  },
+  {
+   "id": "f49f6dcce187",
+   "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
+   "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
+   "source_id": "simon_spati",
+   "published_at": "2026-11-10T06:00:08Z",
+   "fetched_at": "2026-11-15T21:23:09.589085Z",
+   "summary": "Simon Späti stelt voor om kennis voor agents vast te leggen als een graaf met types, gecontroleerde query's en regels, alles als bestanden in Git. Agents schrijven op een branch, mensen beslissen wat klopt.",
+   "personal_relevance": "Raakt aan context als code en kennisgrafen, twee onderwerpen waarin je je wilt verdiepen.",
+   "experiment": "Neem de dbt-manifest van een klein openbaar dbt-project en zet modellen en hun afhankelijkheden als knopen en lijnen in twee tabellen. Leg met constraints vast welke verbanden mogen, en kijk welke fouten je dan vangt.",
+   "limitations": [
+    "Späti leunt op één jonge tool (Omnigraph, versie 0.14) en noemt geen ervaringen uit productie.",
+    "Grafen zijn sterk in verbanden zoeken; voor optellen en aggregeren blijft SQL beter, zegt hij zelf."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Omnigraph op GitHub",
+     "url": "https://github.com/ModernRelay/omnigraph"
+    },
+    {
+     "label": "Omnigraph-documentatie",
+     "url": "https://omnigraph.dev/docs"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "data_architecture_modeling",
+    "data_quality_observability"
+   ],
+   "groups": [
+    "ai_context",
+    "architectuur",
+    "kwaliteit"
+   ],
+   "relevance_score": 83,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.43,
+    "source": 0.68,
+    "quality": 0.62,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Späti: een getypeerde graaf als code houdt agentdata geldig",
+   "story": [
+    "Agents schrijven sneller data dan mensen kunnen nakijken. Simon Späti, data-engineer en schrijver van een bekende vakblog, zoekt daarom een manier om agentdata in elk geval geldig te houden. Zijn antwoord: een graaf met types, beschreven als code.",
+    "Een graaf slaat verbanden op als losse gegevens: knopen (nodes) en lijnen (edges). Een agent loopt dan van een startpunt langs de lijnen, in plaats van steeds joins te bouwen. Het probleem is dat gewone grafen geen schema hebben. Ze kunnen dus niet zeggen dat een gebruiker een voorstelling maar één keer mag beoordelen. Een getypeerde graaf geeft elke knoop en lijn een vast type, met regels zoals uniek, een bereik en hoeveel verbindingen er mogen zijn.",
+    "Späti gaat nog een stap verder: ook de vragen worden vooraf gecontroleerd. Met de open-sourcetool Omnigraph controleer je een query offline tegen het schema, nog voordat er data is. Foutmeldingen hebben vaste codes, zodat een agent ze zelf kan oplossen. Een goedgekeurde query bewaar je in Git en hergebruiken latere agents. Dat noemt hij 'context als code'.",
+    "Zijn belangrijkste onderscheid is geldig tegenover waar. Types maken data geldig: de juiste vorm en verbanden. Of de omzet echt 4,2 miljoen was, kan alleen een mens zeggen. Daarom werkt elke agent op een eigen branch, en een mens bekijkt de wijziging en voegt hem samen. Dat lijkt op een dbt-pull request met tests, maar dan voor kennis.",
+    "Späti zegt zelf dat getypeerde grafen niet nieuw zijn; standaarden als RDF en GQL bestaan al lang. Nieuw is volgens hem de werkwijze: schema, query's en regels als bestanden in Git, met controles die een agent begrijpt. Let wel: hij leunt sterk op één jonge tool, Omnigraph."
+   ],
+   "key_facts": [
+    "Blog van Simon Späti, 10 november 2026 (bijgewerkt 13 november).",
+    "Kernpunt: types, gecontroleerde query's en regels maken data geldig; alleen mensen beslissen of data waar is. Agents werken op branches, mensen voegen samen.",
+    "Omnigraph (ModernRelay) beschrijft het schema in schema.pg, query's in .gq, en controleert offline met omnigraph lint --query q.gq --schema schema.pg.",
+    "Foutcodes zijn vast: Q voor de parser, T voor de typecontrole, P voor de planner; de diagnose is machineleesbaar.",
+    "Voorbeeld uit het artikel: zoeken met alleen vectoren over de hele graaf gaf The Lion King; eerst langs de graaf filteren op 37 Shakespeare-stukken en dan rangschikken gaf Hamlet.",
+    "DuckDB-voorbeeld: json_transform geeft bij een fout stil NULL, json_transform_strict geeft een foutmelding."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Späti, data-engineer en auteur van de vakblog ssp.sh en het online boek Data Engineering Design Patterns",
+   "showcase": {
+    "caption": "Zo werkt het verschil tussen stil falen en hard falen dat Späti noemt. json_transform zet een fout stil om in NULL; json_transform_strict geeft bij dezelfde rij een foutmelding: Failed to cast value to numerical: \"vier\".",
+    "language": "sql",
+    "code": "CREATE TABLE ruw AS\nSELECT * FROM (VALUES\n  (1, '{\"sterren\": 4}'),\n  (2, '{\"sterren\": \"vier\"}')\n) t(id, json_tekst);\n\nSELECT id,\n  json_transform(json_tekst, '{\"sterren\": \"INTEGER\"}') AS resultaat\nFROM ruw\nORDER BY id;\n\n-- json_transform_strict(...) stopt hier met een foutmelding",
+    "result": {
+     "columns": [
+      "id",
+      "resultaat"
+     ],
+     "rows": [
+      [
+       1,
+       "{'sterren': 4}"
+      ],
+      [
+       2,
+       "{'sterren': NULL}"
+      ]
+     ]
+    },
+    "note": "Dit is DuckDB, niet Omnigraph; het laat alleen het idee van een harde typecontrole zien."
+   },
+   "terms": [
+    {
+     "term": "getypeerde graaf",
+     "explanation": "Een graaf waarin elke knoop en lijn een vast type heeft, met regels zoals welke knopen verbonden mogen zijn en hoe vaak. Vergelijk het met kolomtypes en constraints in een tabel."
+    },
+    {
+     "term": "knopen",
+     "explanation": "De punten in een graaf, zoals een gebruiker of een voorstelling. Lijnen (edges) leggen de verbanden ertussen."
+    },
+    {
+     "term": "branch",
+     "explanation": "Een aparte tak in Git of een database waarop je wijzigt zonder de hoofdversie te raken. Pas na controle voeg je hem samen."
+    },
+    {
+     "term": "RDF",
+     "explanation": "Een oude, open standaard van het W3C om kennis vast te leggen als een graaf van onderwerp, relatie en object."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Context als code voor agents, zoals je duim bij 'dbt Wizard'; wel abstracter en verder van je stack."
+   },
+   "labels": [
+    "context-als-code",
+    "kennisgraaf",
+    "agent-context-laag"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 1
+   }
   },
   {
    "id": "b8bd8dd7742b",
@@ -7264,7 +7264,7 @@
    "relevance_score": 77,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.08,
+    "recency": 0.07,
     "source": 0.68,
     "quality": 0.73,
     "feedback": -0.01,
@@ -11505,8 +11505,54 @@
   }
  ],
  "deepdive_options": {
-  "generated_at": "2026-11-26T04:27:00Z",
+  "generated_at": "2026-11-27T04:25:00Z",
   "options": [
+   {
+    "id": "unique-constraints-en-rely",
+    "title": "Sleutels in Databricks: wat UNIQUE en RELY wel en niet afdwingen",
+    "question": "Wat betekenen primaire sleutels en UNIQUE-constraints in Unity Catalog als Databricks ze niet controleert bij het schrijven, wanneer zet je RELY aan, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
+    "why": "Databricks voegde UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer volgens Databricks joins en DISTINCT over, maar een foute belofte geeft dan foute uitkomsten.",
+    "topics": [
+     "databricks_data_engineering",
+     "data_architecture_modeling",
+     "dbt_analytics_engineering"
+    ],
+    "area": "data_engineering"
+   },
+   {
+    "id": "agent-eval-onderhouden",
+    "title": "Een agent-test die eerlijk blijft: verifiers, valsspelen en pass^k",
+    "question": "Hoe bouw je een test voor een agent die de eindtoestand controleert in plaats van wat de agent zegt, hoe vang je valsspelen af, en wanneer kijk je naar pass@k en wanneer naar pass^k?",
+    "why": "Past bij de trend 'Agents worden beter door controles en metingen, niet door meer uitleg'; Hugging Face publiceerde op 23 november een stappenplan voor het bouwen en onderhouden van agent-evals.",
+    "topics": [
+     "ai_evaluation_observability",
+     "ai_agents_rag"
+    ],
+    "area": "context_agents"
+   },
+   {
+    "id": "claude-ship-voor-dbt-pull-requests",
+    "title": "Claude Ship: pull requests van een dbt-project laten reviewen en repareren",
+    "question": "Wat doen Code Review, PR Steward en Claude Approvals precies, hoe leg je in teambeleid vast wat een agent zelf mag goedkeuren, en hoe past dat naast een CI-pipeline in Azure DevOps voor dbt en Databricks?",
+    "why": "Anthropic introduceerde op 23 november Claude Ship, met PR Steward en Claude Approvals in bèta voor GitHub; AI-code-review van data-code staat op T's lijst om te volgen.",
+    "topics": [
+     "claude_ai_development",
+     "cicd_data_deployment"
+    ],
+    "area": "claude"
+   },
+   {
+    "id": "vakkennis-bij-analyse-door-agent",
+    "title": "Analyse door een agent: waar vakkennis de fouten vangt",
+    "question": "Wat kan een agent met SQL-toegang via MCP zelf in een analyse, op welke punten gaat het mis zonder vakkennis, en hoe leg je die kennis vast in je gold-laag zodat collega's veilig zelf vragen kunnen stellen?",
+    "why": "Simon Späti liet op 20 november met Claude, MCP en openbare data zien dat een agent de drempel voor analyse verlaagt, maar dat alleen kennis van het vak de fouten vangt.",
+    "topics": [
+     "ai_on_data_platform",
+     "ai_context_engineering",
+     "data_quality_observability"
+    ],
+    "area": "ai_op_data"
+   },
    {
     "id": "identiteit-koppelen-voor-agents",
     "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
@@ -11517,52 +11563,6 @@
      "data_architecture_modeling"
     ],
     "area": "ai_op_data"
-   },
-   {
-    "id": "coding-agent-vastzetten",
-    "title": "Claude Code vastzetten met regels, hooks en een sandbox",
-    "question": "Hoe zet je een coding agent als Claude Code vast met toestemmingsregels, hooks, een sandbox en centrale instellingen, en welke vragen stel je voordat een team hem gebruikt?",
-    "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway'; Anthropic publiceerde op 23 november een gids voor beveiligers over precies deze grenzen.",
-    "topics": [
-     "veilige_agents",
-     "claude_ai_development"
-    ],
-    "area": "context_agents"
-   },
-   {
-    "id": "semantische-laag-als-ai-context",
-    "title": "De semantische laag als geheugen voor AI: dbt, metric views of Power BI?",
-    "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en wanneer leg je ze vast in de dbt semantic layer, in metric views in Unity Catalog of in een Power BI-model?",
-    "why": "Metric views kunnen sinds kort als Power BI-model worden gepubliceerd (private preview), en Genie One rekent volgens Databricks pas goed met vaste definities.",
-    "topics": [
-     "ai_context_engineering",
-     "dbt_analytics_engineering",
-     "powerbi_semantic_models"
-    ],
-    "area": "context_agents"
-   },
-   {
-    "id": "tags-delen-via-iceberg",
-    "title": "Tags en metadata delen tussen platforms via de Iceberg REST-catalogus",
-    "question": "Wat is een Iceberg REST-catalogus, hoe reizen tags uit Unity Catalog via catalog labels mee naar andere tools, en wat betekent dat voor je tagbeleid?",
-    "why": "Databricks introduceerde op 24 november catalog labels in de Iceberg REST-API; in Unity Catalog heet dat Tag Exchange (bèta).",
-    "topics": [
-     "metadata_lineage_catalogs",
-     "data_governance_privacy",
-     "data_architecture_modeling"
-    ],
-    "area": "data_engineering"
-   },
-   {
-    "id": "mcp-servers-met-skills",
-    "title": "MCP-servers die zelf skills meeleveren: wat verandert er voor Claude?",
-    "question": "Wat betekent het dat een MCP-server naast tools ook skills, achtergrondtaken en toestemmingsvragen aan Claude kan geven, en hoe zou een server voor een dbt- of Databricks-project dat gebruiken?",
-    "why": "Anthropic maakte op 24 november bekend dat MCP-servers skills kunnen meeleveren (publieke bèta) en lange taken en toestemmingsvragen ondersteunen.",
-    "topics": [
-     "claude_ai_development",
-     "ai_agents_rag"
-    ],
-    "area": "claude"
    }
   ]
  },
