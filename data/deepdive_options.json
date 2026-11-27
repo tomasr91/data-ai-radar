@@ -62,6 +62,64 @@
   ],
   "history": [
     {
+      "id": "claude-code-skills-hooks-subagents",
+      "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
+      "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
+      "why": "Agent Skills worden ondergebracht bij de Agentic AI Foundation, zo schreef Simon Willison deze week.",
+      "topics": [
+        "claude_ai_development",
+        "ai_agents_rag"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "agents-uitrollen-als-code",
+      "title": "Een AI-agent uitrollen zoals een dbt-model: versiebeheer, CI en lineage",
+      "question": "Hoe breng je AI-agents en hun semantische definities onder dezelfde pull requests, tests en omgevingen als je dbt-modellen, en hoe kan dat op Databricks?",
+      "why": "Under Armour beheert zijn Snowflake-agents nu als dbt-modellen; een kolomwijziging breekt dan de CI in plaats van het antwoord aan een gebruiker.",
+      "topics": [
+        "cicd_data_deployment",
+        "ai_agents_rag",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "teamafspraken-voor-claude-bij-dbt",
+      "title": "Wat Claude écht helpt bij dbt-werk: teamafspraken in CLAUDE.md en skills",
+      "question": "Welke instructies, skills en controles maken Claude Code betrouwbaar in een dbt-project, nu de modellen dbt zelf al kennen?",
+      "why": "Een proef van dbt Labs liet deze week zien dat skills over dbt weinig toevoegen, maar dat werkwijze en teamafspraken het verschil maken.",
+      "topics": [
+        "claude_ai_development",
+        "dbt_analytics_engineering"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "asset-bundles-basis",
+      "title": "Bundles: je Databricks-project als code uitrollen, vanaf de basis",
+      "question": "Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?",
+      "why": "Deze week kregen bundles een gedeelde Python-omgeving via pyproject.toml, en de documentatie noemt ze nu Declarative Automation Bundles; tijd voor de basis.",
+      "topics": [
+        "cicd_data_deployment",
+        "databricks_data_engineering"
+      ],
+      "area": "data_engineering",
+      "level": "beginner"
+    },
+    {
+      "id": "release-pipeline-basis",
+      "title": "Van ontwikkeling naar productie: een release pipeline uitgelegd",
+      "question": "Wat is een release pipeline, welke stappen zitten erin, en hoe ziet dat eruit voor een dbt- en Databricks-project in Azure DevOps?",
+      "why": "Het artikel over Lakebase liet een pipeline zien die per pull request een eigen testomgeving maakt; eerst de basis van stages, omgevingen en goedkeuringen.",
+      "topics": [
+        "cicd_data_deployment",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering",
+      "level": "beginner"
+    },
+    {
       "id": "cdc-en-incrementeel-laden",
       "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
       "question": "Hoe laad je alleen wat er in de bron veranderd is, welke manieren zijn er (tijdstempel, change data feed, CDC, MERGE), en hoe ga je om met updates en verwijderingen?",
@@ -84,65 +142,6 @@
       ],
       "area": "data_engineering",
       "level": "beginner"
-    },
-    {
-      "id": "datakwaliteit-monitoren",
-      "title": "Datakwaliteit bewaken zonder alles met de hand te testen",
-      "question": "Hoe vind je kwaliteitsproblemen die je niet met een vaste dbt-test had voorzien, en wat biedt Databricks zelf voor monitoring en afwijkingsdetectie naast je dbt-tests?",
-      "why": "Je project AI voor data-engineering en datakwaliteit vraagt hoe kwaliteit nu wordt gemeten; dit stuk zet vaste tests en automatische bewaking naast elkaar.",
-      "topics": [
-        "data_quality_observability",
-        "databricks_data_engineering",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "contextlagen-voor-data-agent",
-      "title": "Wat leg je vast voor een data-agent? Context in lagen, vanuit dbt",
-      "question": "Welke soorten context heeft een AI-agent op je data nodig (beschrijvingen per veld, gidsen in markdown, vaste maatstaven, goedgekeurde modellen), waar leg je elke laag vast, en hoe houd je ze bij met pull requests?",
-      "why": "Past bij de trend 'Context voor AI-agents komt in het dataplatform zelf': Okta en LangChain legden hun agent-context in lagen vast naast dbt, en je gaf het artikel over synoniemen per veld een 'meer hiervan'.",
-      "topics": [
-        "ai_context_engineering",
-        "metadata_lineage_catalogs",
-        "dbt_analytics_engineering"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "prompt-verbeteren-tegen-eval",
-      "title": "Je prompt verbeteren tegen een eval, zonder te overfitten",
-      "question": "Hoe werkt hill-climbing met build-eval en hillclimb in Claude Code, waarom splits je testgevallen in een train- en testset, en waar waarschuwt Hamel Husain voor?",
-      "why": "Past bij de trend 'Agents worden beter door controles en metingen'; Anthropic zette eval-ontwerp en hill-climbing in de claude-api-skill en Husain testte het kritisch.",
-      "topics": [
-        "claude_ai_development",
-        "ai_evaluation_observability"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "declaratieve-pipelines-naast-dbt",
-      "title": "Declaratieve pipelines in Databricks naast dbt: wie doet wat?",
-      "question": "Wat zijn Spark Declarative Pipelines, hoe verschillen ze van een stap-voor-stap-pipeline en van dbt, en wanneer kies je welke voor inlezen en transformeren?",
-      "why": "Databricks liet deze maand AI-agents pipelines in beide stijlen bouwen; de declaratieve versies waren korter en zuiniger, en jij gaf dat artikel een duim omhoog.",
-      "topics": [
-        "databricks_data_engineering",
-        "data_ingestion",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "ontologie-voor-data-agents",
-      "title": "Genie Ontology: hoe een agent de begrippen van je organisatie leert",
-      "question": "Hoe combineert een ontologie geleerde kennis uit dashboards en query's met definities die je zelf vastlegt, en wat moet je in dbt en Unity Catalog regelen zodat een agent de juiste kiest?",
-      "why": "Sluit aan op de trend 'Context voor AI-agents komt in het dataplatform zelf': Genie Ontology is sinds 11 november algemeen beschikbaar en gebruikt metric views als gemodelleerde kennis.",
-      "topics": [
-        "ai_context_engineering",
-        "metadata_lineage_catalogs",
-        "ai_on_data_platform"
-      ],
-      "area": "context_agents"
     },
     {
       "id": "vectorjoin-voor-ontdubbelen",
