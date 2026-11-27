@@ -6,7 +6,7 @@ Academy.addQuestions("dbtae", [
 /* ---------- d1.1 Bronnen ---------- */
 { id: "b1-41", s: "d1.1", t: "s",
   q: "De tabel in het datawarehouse heet <code>TBL_OPN_2019</code>, maar je wilt in dbt <code>{{ source('hix', 'opnames') }}</code> schrijven. Hoe?",
-  o: ["In de sources-YAML: <code>name: opnames</code> met <code>identifier: TBL_OPN_2019</code>", "Een view <code>opnames</code> maken in het datawarehouse", "<code>alias: TBL_OPN_2019</code> op de source", "Dat kan niet; de naam in source() moet gelijk zijn aan de tabelnaam"],
+  o: ["In de sources-YAML: <code>name: opnames</code> met <code>identifier: TBL_OPN_2019</code>", "Een view <code>opnames</code> maken in het datawarehouse", "<code>alias: TBL_OPN_2019</code> op de source", "Dat kan niet; de naam moet de tabelnaam zijn"],
   a: [0],
   w: ["Juist. name is hoe je ernaar verwijst, identifier is de echte tabelnaam.",
       "Niet nodig; dbt kan het zelf koppelen.",
@@ -119,7 +119,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b1-52", s: "d1.4", t: "s",
   q: "Wat doet <code>dbt clean</code>?",
-  o: ["Verwijdert de mappen uit <code>clean-targets</code>, zoals target/ en dbt_packages/.", "Verwijdert alle tabellen in je dev-schema.", "Verwijdert modellen die niet meer gebruikt worden.", "Leegt alle incremental tabellen."],
+  o: ["Verwijdert de mappen uit <code>clean-targets</code>, zoals target/ en dbt_packages/.", "Verwijdert alle tabellen in je dev-schema.", "Verwijdert modellen en tabellen die in het project niet meer gebruikt worden, ook uit het platform.", "Leegt alle incremental tabellen."],
   a: [0],
   w: ["Juist. Handig als er oude artefacten in de weg zitten.",
       "Het raakt het datawarehouse niet.",
@@ -169,7 +169,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b1-57", s: "d1.5", t: "s",
   q: "Je voegt per ongeluk een ref toe waardoor A naar B verwijst en B naar A. Wat gebeurt er?",
-  o: ["dbt meldt een kring (cycle) in de DAG en bouwt niets.", "dbt bouwt eerst A, dan B, dan A opnieuw.", "dbt kiest zelf welke eerst gaat, op alfabetische volgorde.", "Alleen de tests falen."],
+  o: ["dbt meldt een kring (cycle) in de DAG en bouwt niets.", "dbt bouwt eerst A, dan B, dan A opnieuw.", "dbt kiest zelf de volgorde, op alfabet.", "Alleen de tests falen."],
   a: [0],
   w: ["Juist. Een DAG mag geen kringen bevatten.",
       "dbt bouwt een model één keer per run.",
@@ -211,7 +211,7 @@ Academy.addQuestions("dbtae", [
 /* ---------- d1.7 Packages ---------- */
 { id: "b1-61", s: "d1.7", t: "s",
   q: "Je wilt een intern package uit een eigen Git-repository gebruiken, vastgezet op een tag. Hoe staat dat in packages.yml?",
-  o: ["<code>- git: \"https://...\"</code> met <code>revision: v1.2.0</code>", "<code>- package: intern/x</code> met <code>version: git</code>", "<code>- local: https://...</code> met de URL van de repository", "Dat kan niet; alleen dbt Hub-packages"],
+  o: ["<code>- git: \"https://...\"</code> met <code>revision: v1.2.0</code>", "<code>- package: intern/x</code> met <code>version: git</code>", "<code>- local: https://...</code> met de URL", "Dat kan niet; alleen dbt Hub-packages"],
   a: [0],
   w: ["Juist. revision kan een tag, branch of commit zijn.",
       "Zo werkt package: niet.",
@@ -221,7 +221,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b1-62", s: "d1.7", t: "s",
   q: "Wat is een verschil tussen <code>dependencies.yml</code> en <code>packages.yml</code>?",
-  o: ["In dependencies.yml mag geen Jinja; je kunt er ook andere projecten in noemen.", "dependencies.yml wordt niet door dbt deps gelezen.", "packages.yml mag alleen Hub-packages bevatten.", "Er is geen verschil; het zijn synoniemen."],
+  o: ["In dependencies.yml mag geen Jinja; je kunt er ook andere projecten in noemen.", "dependencies.yml wordt niet door dbt deps gelezen, alleen door dbt Cloud bij het starten van een job.", "packages.yml mag alleen Hub-packages bevatten.", "Er is geen verschil; het zijn synoniemen."],
   a: [0],
   w: ["Juist. Heb je Jinja nodig (bijv. env_var voor een token), gebruik dan packages.yml.",
       "dbt deps leest het wel.",
@@ -242,7 +242,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b1-64", s: "d1.8", t: "s",
   q: "Hoe filter je in een incremental Python-model alleen nieuwe rijen?",
-  o: ["Met <code>if dbt.is_incremental:</code> en een filter op <code>dbt.this</code>", "Met <code>{% if is_incremental() %}</code>", "Met <code>dbt.config(filter='new')</code>", "Dat kan niet in Python-modellen"],
+  o: ["Met <code>if dbt.is_incremental:</code> en een filter op <code>dbt.this</code>", "Met <code>{% if is_incremental() %}</code>", "Met <code>dbt.config(filter='new')</code>", "Dat kan niet in Python-modellen; die bouwen altijd de hele tabel opnieuw"],
   a: [0],
   w: ["Juist.",
       "Jinja werkt niet in een Python-model.",
@@ -356,7 +356,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b1-75", s: "d1.14", t: "s",
   q: "Waarom schrijf je in een microbatch-model géén <code>is_incremental()</code>-filter?",
-  o: ["dbt zet per batch zelf het tijdfilter op basis van <code>event_time</code>.", "Omdat microbatch altijd de hele tabel herbouwt.", "Omdat is_incremental() alleen in Python werkt.", "Omdat microbatch geen tijdkolom gebruikt."],
+  o: ["dbt zet per batch zelf het tijdfilter op basis van <code>event_time</code>.", "Omdat microbatch altijd de hele tabel herbouwt en een filter dan alle oude rijen zou weggooien.", "Omdat is_incremental() alleen in Python werkt.", "Omdat microbatch geen tijdkolom gebruikt."],
   a: [0],
   w: ["Juist. Ook op upstream modellen die een event_time hebben.",
       "Het verwerkt juist alleen batches.",
@@ -427,7 +427,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b2-26", s: "d2.3", t: "s",
   q: "Waar zet je constraints die over meerdere kolommen gaan (bijv. een primary key op twee kolommen)?",
-  o: ["Op modelniveau, onder <code>constraints:</code> met <code>columns: [...]</code>", "Bij elke kolom apart een primary_key", "In een post-hook", "In een seed"],
+  o: ["Op modelniveau, onder <code>constraints:</code> met <code>columns: [...]</code>", "Bij elke kolom apart een primary_key-constraint zetten; dbt voegt ze zelf samen tot één sleutel", "In een post-hook", "In een seed"],
   a: [0],
   w: ["Juist.",
       "Dan worden het twee losse sleutels.",
@@ -437,7 +437,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b2-27", s: "d2.3", t: "s",
   q: "Een not_null-constraint wordt op Databricks afgedwongen. Wat is het verschil met een not_null-test?",
-  o: ["De constraint houdt NULL tegen bij het schrijven; de test meldt het pas achteraf.", "Er is geen verschil.", "De test is strenger dan de constraint.", "De constraint werkt alleen op views."],
+  o: ["De constraint houdt NULL tegen bij het schrijven; de test meldt het pas achteraf.", "Er is geen verschil.", "De test is strenger dan de constraint, omdat de test ook lege tekst en nullen als fout ziet.", "De constraint werkt alleen op views."],
   a: [0],
   w: ["Juist.",
       "Het moment verschilt.",
@@ -468,7 +468,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b3-23", s: "d3.2", t: "s",
   q: "Je wilt een stukje SQL met Jinja testen zonder er een model van te maken. Wat doe je?",
-  o: ["<code>dbt compile --inline \"select ...\"</code> of <code>dbt show --inline</code>", "Het in een seed zetten", "<code>dbt parse --inline</code>", "<code>dbt run --inline</code>"],
+  o: ["<code>dbt compile --inline \"select ...\"</code> of <code>dbt show --inline</code>", "Het in een seed zetten en dan <code>dbt seed</code> draaien, zodat dbt de Jinja uitvoert", "<code>dbt parse --inline</code>", "<code>dbt run --inline</code>"],
   a: [0],
   w: ["Juist. compile laat de SQL zien, show ook de uitkomst.",
       "Seeds zijn CSV-data.",
@@ -488,7 +488,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b3-25", s: "d3.2", t: "s",
   q: "Een macro moet je los kunnen draaien, bijv. om een schema op te ruimen. Welk commando?",
-  o: ["<code>dbt run-operation naam_macro --args '{...}'</code>", "<code>dbt run -s macro:naam</code>", "<code>dbt build --macro naam</code>", "<code>dbt show --macro naam</code>"],
+  o: ["<code>dbt run-operation naam_macro --args '{...}'</code>", "<code>dbt run -s macro:naam</code>", "<code>dbt build --macro naam_macro --args '{...}'</code>", "<code>dbt show --macro naam</code>"],
   a: [0],
   w: ["Juist.",
       "run bouwt modellen.",
@@ -498,7 +498,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b3-26", s: "d3.3", t: "s",
   q: "dbt meldt een YAML-fout in <code>schema.yml</code> regel 14. Wat is de meest voorkomende oorzaak?",
-  o: ["Verkeerde inspringing, of een lijst waar een object hoort", "Een fout in de SQL van het model", "Een ontbrekende verbinding", "Een test die faalt"],
+  o: ["Verkeerde inspringing, of een lijst waar een object hoort", "Een fout in de SQL van het model, die dbt bij het inlezen van de YAML meldt", "Een ontbrekende verbinding", "Een test die faalt"],
   a: [0],
   w: ["Juist. YAML is gevoelig voor inspringen.",
       "SQL-fouten komen bij compileren of draaien.",
@@ -508,7 +508,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b3-27", s: "d3.3", t: "s",
   q: "In YAML staat een beschrijving die je op meerdere plekken wilt hergebruiken. Hoe?",
-  o: ["Een <code>{% docs naam %}</code>-blok in een .md-bestand en <code>'{{ doc(\"naam\") }}'</code> in de YAML", "Dezelfde tekst kopiëren", "Een seed met beschrijvingen", "Een var() met de tekst"],
+  o: ["Een <code>{% docs naam %}</code>-blok in een .md-bestand en <code>'{{ doc(\"naam\") }}'</code> in de YAML", "Dezelfde tekst kopiëren", "Een seed met alle beschrijvingen, die je in de YAML ophaalt met <code>ref()</code>", "Een var() met de tekst"],
   a: [0],
   w: ["Juist.",
       "Dat is herhaling.",
@@ -518,7 +518,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b3-28", s: "d3.4", t: "s",
   q: "Je hebt een fix in <code>int_opnames</code>. Hoe test je lokaal die wijziging plus alles erna, maar zonder alles erboven opnieuw te bouwen?",
-  o: ["<code>dbt build -s int_opnames+ --defer --state prod-artifacts</code>", "<code>dbt build</code>", "<code>dbt build -s +int_opnames</code>", "<code>dbt test -s int_opnames</code>"],
+  o: ["<code>dbt build -s int_opnames+ --defer --state prod-artifacts</code>", "<code>dbt build</code>", "<code>dbt build -s +int_opnames --state prod-artifacts</code>", "<code>dbt test -s int_opnames</code>"],
   a: [0],
   w: ["Juist. Upstream modellen leest dbt uit productie.",
       "Dat bouwt het hele project.",
@@ -569,7 +569,7 @@ Academy.addQuestions("dbtae", [
 /* ---------- d4 Pipelines ---------- */
 { id: "b4-21", s: "d4.1", t: "s",
   q: "Een test met <code>severity: warn</code> faalt in <code>dbt build</code>. Wat gebeurt er met de modellen erna?",
-  o: ["Die worden gewoon gebouwd; je krijgt een waarschuwing.", "Die krijgen SKIP.", "De hele run stopt.", "Die worden als view gebouwd."],
+  o: ["Die worden gewoon gebouwd; je krijgt een waarschuwing.", "Die krijgen SKIP.", "De hele run stopt.", "Die worden als view gebouwd in plaats van als tabel, zodat er geen foute data blijft staan."],
   a: [0],
   w: ["Juist. Alleen errors blokkeren.",
       "Dat gebeurt bij severity error.",
@@ -579,7 +579,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b4-22", s: "d4.1", t: "s",
   q: "Waar zie je na een nachtelijke run welke modellen SKIP kregen en waarom?",
-  o: ["In de uitvoer van de run en in <code>target/run_results.json</code>", "In <code>package-lock.yml</code>", "In <code>dbt_project.yml</code>", "In <code>target/catalog.json</code>"],
+  o: ["In de uitvoer van de run en in <code>target/run_results.json</code>", "In <code>package-lock.yml</code>", "In <code>dbt_project.yml</code>", "In <code>target/catalog.json</code>, bij de modellen die die nacht zijn overgeslagen"],
   a: [0],
   w: ["Juist.",
       "Daar staan packages.",
@@ -599,7 +599,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b4-24", s: "d4.2", t: "s",
   q: "Wanneer is <code>dbt clone</code> in CI handiger dan alleen <code>--defer</code>?",
-  o: ["Als je een incremental model wilt testen tegen de echte bestaande tabel.", "Als je alleen views wijzigt.", "Als je geen productie-artefacten hebt.", "Als je seeds wilt laden."],
+  o: ["Als je een incremental model wilt testen tegen de echte bestaande tabel.", "Als je alleen views wijzigt.", "Als je geen productie-artefacten hebt en dus niet kunt verwijzen naar de tabellen in productie.", "Als je seeds wilt laden."],
   a: [0],
   w: ["Juist. Met clone heb je een echte startstand in je CI-schema.",
       "Dan volstaat defer.",
@@ -609,7 +609,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b4-25", s: "d4.2", t: "s",
   q: "Wat heeft <code>dbt clone</code> nodig?",
-  o: ["Via <code>--state</code> de artefacten van de omgeving die je wilt kopiëren", "Een Git-branch met de naam clone", "Een seed met tabelnamen", "Niets; het kopieert altijd productie"],
+  o: ["Via <code>--state</code> de artefacten van de omgeving die je wilt kopiëren", "Een Git-branch met de naam clone", "Een seed met tabelnamen", "Niets; het kopieert altijd alle tabellen uit het productieschema naar jouw schema"],
   a: [0],
   w: ["Juist. Daar staat welke objecten waar staan.",
       "Git speelt geen rol.",
@@ -630,7 +630,7 @@ Academy.addQuestions("dbtae", [
 /* ---------- d5 Tests ---------- */
 { id: "b5-21", s: "d5.1", t: "s",
   q: "Hoe controleer je dat elke <code>afdeling_id</code> in fct_opnames bestaat in dim_afdeling?",
-  o: ["Een <code>relationships</code>-test met <code>to: ref('dim_afdeling')</code> en <code>field: afdeling_id</code>", "Een <code>unique</code>-test op afdeling_id", "Een <code>accepted_values</code>-test met alle id's", "Een contract op fct_opnames"],
+  o: ["Een <code>relationships</code>-test met <code>to: ref('dim_afdeling')</code> en <code>field: afdeling_id</code>", "Een <code>unique</code>-test op afdeling_id", "Een <code>accepted_values</code>-test op afdeling_id met alle id's uit dim_afdeling als lijst erin", "Een contract op fct_opnames"],
   a: [0],
   w: ["Juist. (Sinds 1.10 onder arguments:.)",
       "Dat test of waarden uniek zijn.",
@@ -640,7 +640,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b5-22", s: "d5.1", t: "s",
   q: "In een unit test gebruikt het model een macro die de huidige datum geeft. Hoe maak je de test stabiel?",
-  o: ["Met <code>overrides: macros:</code> een vaste waarde voor die macro geven", "De test alleen op maandag draaien", "De datum in een seed zetten", "Dat kan niet in unit tests"],
+  o: ["Met <code>overrides: macros:</code> een vaste waarde voor die macro geven", "De test alleen op een vaste dag draaien, zodat de datum in de verwachting klopt", "De datum in een seed zetten", "Dat kan niet in unit tests"],
   a: [0],
   w: ["Juist. Je kunt ook vars en is_incremental zo vastzetten.",
       "Dan blijft het afhankelijk van de dag.",
@@ -650,7 +650,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b5-23", s: "d5.1", t: "s",
   q: "Hoe test je in een unit test de incrementele tak van een model?",
-  o: ["Met <code>overrides: macros: {is_incremental: true}</code> en de bestaande tabel als <code>this</code> in <code>given</code>", "Dat kan alleen met --full-refresh", "Met een singular test", "Met <code>--empty</code>"],
+  o: ["Met <code>overrides: macros: {is_incremental: true}</code> en de bestaande tabel als <code>this</code> in <code>given</code>", "Dat kan niet in een unit test; dat test je alleen met --full-refresh op echte data in productie", "Met een singular test", "Met <code>--empty</code>"],
   a: [0],
   w: ["Juist.",
       "Juist niet.",
@@ -700,7 +700,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b5-28", s: "d5.3", t: "s",
   q: "Waarom draai je source-tests vóór de rest van de nachtelijke build?",
-  o: ["Zodat je fouten in de brondata ziet voordat ze in alle modellen terechtkomen.", "Omdat modellen anders niet compileren.", "Omdat source-tests sneller zijn dan modellen.", "Omdat dbt dat verplicht."],
+  o: ["Zodat je fouten in de brondata ziet voordat ze in alle modellen terechtkomen.", "Omdat modellen anders niet compileren.", "Omdat source-tests sneller zijn dan modellen en de nacht anders langer duurt dan nodig is.", "Omdat dbt dat verplicht."],
   a: [0],
   w: ["Juist. (In dbt build gebeurt dat vanzelf in DAG-volgorde.)",
       "Modellen compileren ook zonder.",
@@ -721,7 +721,7 @@ Academy.addQuestions("dbtae", [
 /* ---------- d6 ---------- */
 { id: "b6-21", s: "d6.1", t: "s",
   q: "Wat geeft <code>maturity</code> aan bij een exposure?",
-  o: ["Hoe volwassen of belangrijk de afnemer is (low, medium, high)", "Hoe oud de data mag zijn", "Hoeveel gebruikers het dashboard heeft", "Welke versie van het model het gebruikt"],
+  o: ["Hoe volwassen of belangrijk de afnemer is (low, medium, high)", "Hoe oud de data mag zijn", "Hoeveel gebruikers het dashboard heeft", "Welke versie van het model de exposure gebruikt en wanneer die is bijgewerkt"],
   a: [0],
   w: ["Juist. Het helpt prioriteren als er iets breekt.",
       "Dat is freshness.",
@@ -731,7 +731,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b6-22", s: "d6.1", t: "s",
   q: "Waarom leg je exposures vast?",
-  o: ["Zodat je in de DAG ziet welke dashboards of apps geraakt worden door een wijziging.", "Zodat dbt het dashboard ververst.", "Zodat het dashboard sneller laadt.", "Omdat dbt anders niet bouwt."],
+  o: ["Zodat je in de DAG ziet welke dashboards of apps geraakt worden door een wijziging.", "Zodat dbt het dashboard ververst.", "Zodat het dashboard sneller laadt, omdat dbt de tabellen voor die afnemer alvast klaarzet.", "Omdat dbt anders niet bouwt."],
   a: [0],
   w: ["Juist.",
       "dbt praat niet met het dashboard.",
@@ -741,7 +741,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b6-23", s: "d6.2", t: "s",
   q: "De freshness-query op een enorme brontabel is traag. Hoe beperk je het aantal rijen dat hij bekijkt?",
-  o: ["Met een <code>filter</code> in de freshness-config, bijv. alleen de laatste dagen", "Met <code>--sample</code>", "Met <code>limit: 10</code> op de source", "Met <code>--empty</code>"],
+  o: ["Met een <code>filter</code> in de freshness-config, bijv. alleen de laatste dagen", "Met <code>--sample</code>", "Met <code>limit: 10</code> op de source, zodat dbt maar tien rijen bekijkt om de laatste tijd te vinden", "Met <code>--empty</code>"],
   a: [0],
   w: ["Juist.",
       "sample is voor run en build.",
@@ -751,7 +751,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b6-24", s: "d6.2", t: "s",
   q: "Wat gebeurt er als een source <code>error_after</code> overschrijdt bij <code>dbt source freshness</code>?",
-  o: ["Die source krijgt status error en het commando eindigt met een fout.", "dbt laadt de source opnieuw.", "dbt verwijdert oude rijen.", "Niets; freshness is alleen informatie."],
+  o: ["Die source krijgt status error en het commando eindigt met een fout.", "dbt laadt de source opnieuw.", "dbt verwijdert oude rijen.", "Niets; freshness is alleen informatie en het commando eindigt altijd zonder fout."],
   a: [0],
   w: ["Juist. Zo kan een job erop stoppen.",
       "dbt laadt geen data.",
@@ -782,7 +782,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b7-23", s: "d7.1", t: "s",
   q: "Wat doet <code>--favor-state</code> samen met <code>--defer</code>?",
-  o: ["Ook als een upstream model in je eigen schema bestaat, leest dbt de versie uit de state.", "Het bouwt alle modellen in de state opnieuw.", "Het zet defer uit.", "Het kopieert de state naar je schema."],
+  o: ["Ook als een upstream model in je eigen schema bestaat, leest dbt de versie uit de state.", "Het bouwt alle modellen uit de state opnieuw in jouw schema, ook als ze niet zijn gewijzigd.", "Het zet defer uit.", "Het kopieert de state naar je schema."],
   a: [0],
   w: ["Juist. Handig als je dev-schema oude versies bevat.",
       "Het bouwt niets extra.",
@@ -792,7 +792,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b7-24", s: "d7.2", t: "s",
   q: "Kun je bij <code>dbt retry</code> een andere selectie opgeven?",
-  o: ["Nee: retry herhaalt de vorige opdracht met dezelfde selectie en flags.", "Ja, met -s.", "Ja, maar alleen met --exclude.", "Alleen in dbt v2."],
+  o: ["Nee: retry herhaalt de vorige opdracht met dezelfde selectie en flags.", "Ja, met -s.", "Ja, maar alleen met --exclude, om modellen over te slaan die je niet opnieuw wilt draaien.", "Alleen in dbt v2."],
   a: [0],
   w: ["Juist.",
       "Retry neemt de vorige selectie over.",
@@ -802,7 +802,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b7-25", s: "d7.2", t: "s",
   q: "Je draaide <code>dbt build</code> (mislukt) en daarna <code>dbt docs generate</code>. Wat doet <code>dbt retry</code> nu?",
-  o: ["Het kijkt naar docs generate, niet meer naar de mislukte build.", "Het herhaalt de mislukte build.", "Het draait beide opnieuw.", "Het geeft altijd een fout."],
+  o: ["Het kijkt naar docs generate, niet meer naar de mislukte build.", "Het herhaalt de mislukte build, want docs generate kan niet mislukken en telt niet mee.", "Het draait beide opnieuw.", "Het geeft altijd een fout."],
   a: [0],
   w: ["Juist. run_results.json is overschreven.",
       "Die informatie is overschreven.",
@@ -833,7 +833,7 @@ Academy.addQuestions("dbtae", [
 
 { id: "b8-23", s: "d8.2", t: "s",
   q: "Wat doet <code>dbt check</code> in v2?",
-  o: ["SQL-regels uit de map <code>checks/</code> draaien, ook als onderdeel van build", "De verbinding controleren", "Packages bijwerken", "Unit tests overslaan"],
+  o: ["SQL-regels uit de map <code>checks/</code> draaien, ook als onderdeel van build", "De verbinding met het platform controleren, net als dbt debug in v1", "Packages bijwerken", "Unit tests overslaan"],
   a: [0],
   w: ["Juist.",
       "Dat is dbt debug.",

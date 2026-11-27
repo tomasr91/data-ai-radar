@@ -5,7 +5,7 @@ Academy.addQuestions("sparkda", [
 /* d1.1 Driver, executors en cluster */
 { id: "sp1-1", s: "d1.1", t: "s",
   q: "Wat doet de <b>driver</b> in een Spark-applicatie?",
-  o: ["Maakt het plan en verdeelt taken over de executors", "Slaat alle data van de DataFrames op in zijn eigen geheugen", "Leest de bestanden en voert alle filters zelf uit", "Regelt alleen de logging van de executors"],
+  o: ["Maakt het plan en verdeelt taken over de executors", "Bewaart alle data van de DataFrames in zijn geheugen", "Leest de bestanden en voert alle filters zelf uit", "Regelt alleen de logging van de executors"],
   a: [0],
   w: ["Juist.", "De data zit verdeeld over de executors.", "Dat doen de executors.", "Dat is maar een klein deel."],
   ex: "Driver = regie; executors = uitvoering." },
@@ -167,7 +167,7 @@ Academy.addQuestions("sparkda", [
   ex: "partitionBy = mappenstructuur op schijf." },
 { id: "sp2-7", s: "d2.1", t: "s",
   q: "Hoe lees je een tabel uit een database via JDBC?",
-  o: ["<code>format(\"jdbc\")</code> met opties <code>url</code> en <code>dbtable</code>", "<code>spark.read.sql(\"jdbc://...\")</code> met de query erin", "<code>spark.read.database(url)</code>", "Dat kan Spark niet"],
+  o: ["<code>format(\"jdbc\")</code> met opties <code>url</code> en <code>dbtable</code>", "<code>spark.read.sql(\"jdbc://...\")</code>", "<code>spark.read.database(url)</code>", "Dat kan Spark niet"],
   a: [0],
   w: ["Juist.", "Bestaat niet zo.", "Bestaat niet.", "Kan wel."],
   ex: "JDBC: format jdbc + url + dbtable (of query)." },
@@ -193,7 +193,7 @@ Academy.addQuestions("sparkda", [
 /* d2.2 Tabellen en temp views */
 { id: "sp2-11", s: "d2.2", t: "s",
   q: "Hoe maak je een DataFrame bevraagbaar met SQL?",
-  o: ["<code>df.createOrReplaceTempView(\"opnames\")</code>", "<code>df.toSQL(\"opnames\")</code> en dan via spark.sql", "<code>spark.register(df)</code>", "<code>df.write.sql(\"opnames\")</code>"],
+  o: ["<code>df.createOrReplaceTempView(\"opnames\")</code>", "<code>df.toSQL(\"opnames\")</code>", "<code>spark.register(df)</code>", "<code>df.write.sql(\"opnames\")</code>"],
   a: [0],
   w: ["Juist.", "Bestaat niet.", "Bestaat niet.", "Bestaat niet."],
   ex: "Temp view + spark.sql." },
@@ -247,7 +247,7 @@ Academy.addQuestions("sparkda", [
   ex: "External: DROP laat de bestanden staan." },
 { id: "sp2-20", s: "d2.2", t: "s",
   q: "Hoe zie je vanuit Python welke tabellen er zijn?",
-  o: ["<code>spark.catalog.listTables()</code>", "<code>spark.tables()</code> zonder argumenten", "<code>spark.show()</code>", "<code>spark.read.tables()</code>"],
+  o: ["<code>spark.catalog.listTables()</code>", "<code>spark.tables()</code>", "<code>spark.show()</code>", "<code>spark.read.tables()</code>"],
   a: [0],
   w: ["Juist (of SHOW TABLES).", "Bestaat niet.", "Bestaat niet.", "Bestaat niet."],
   ex: "spark.catalog.listTables()." }

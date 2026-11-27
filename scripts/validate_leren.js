@@ -7,7 +7,8 @@
 // - elk antwoord-index (a) bestaat in de opties (o)
 // - de uitleg per optie (w) is even lang als de opties
 // - elke vraag hoort bij een bestaand subonderwerp; elk subonderwerp heeft vragen
-// - het juiste antwoord is niet systematisch het langste (waarschuwing boven 45%)
+// - lengte verraadt het antwoord niet: juiste antwoord het langste bij 15–32% van de vragen,
+//   en hooguit 15% 'duidelijk het langste' (meer dan 20% langer dan elke foute optie). Lengte zonder HTML-tags.
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
@@ -31,7 +32,7 @@ for (const id of A.order) {
   const subs = new Set();
   (c.domains || []).forEach((d) => (d.subs || []).forEach((s) => subs.add(s.id)));
   const seen = new Set(), perSub = {};
-  let longest = 0, single = 0;
+  let longest = 0, clear = 0, single = 0;
   for (const q of c.questions) {
     const where = `${id}/${q.id}`;
     if (seen.has(q.id)) errors.push(`${where}: id komt dubbel voor`);
@@ -46,13 +47,16 @@ for (const id of A.order) {
     if (!Array.isArray(q.w) || q.w.length !== q.o.length) errors.push(`${where}: w moet even lang zijn als o`);
     if (q.t === "s") {
       single++;
-      const lens = q.o.map((x) => String(x).length);
-      if (lens[q.a[0]] === Math.max(...lens)) longest++;
+      const lens = q.o.map((x) => String(x).replace(/<[^>]+>/g, "").replace(/&[a-z]+;/g, "x").length);
+      const k = lens[q.a[0]], rest = Math.max(...lens.filter((_, i) => i !== q.a[0]));
+      if (k >= rest) longest++;
+      if (k > rest * 1.2) clear++;
     }
   }
   for (const s of subs) if (!perSub[s]) errors.push(`${id}: subonderwerp ${s} heeft geen vragen`);
   const share = single ? longest / single : 0;
-  if (share > 0.45) warnings.push(`${id}: bij ${Math.round(share * 100)}% van de vragen is het juiste antwoord het langste`);
+  if (share > 0.32 || share < 0.15) warnings.push(`${id}: bij ${Math.round(share * 100)}% van de vragen is het juiste antwoord het langste (hoort 15–32%)`);
+  if (single && clear / single > 0.15) warnings.push(`${id}: bij ${Math.round(clear / single * 100)}% is het juiste antwoord duidelijk het langste (hooguit 15%)`);
   total += c.questions.length;
   console.log(`${id}: ${c.questions.length} vragen, ${subs.size} subonderwerpen, juiste antwoord langste bij ${Math.round(share * 100)}%`);
 }

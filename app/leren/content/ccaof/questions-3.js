@@ -56,7 +56,7 @@ Academy.addQuestions("ccaof", [
 
 { id: "d6-05", s: "d6.2", t: "s",
   q: "Een analist wil klantdata met namen, adressen en klantnummers laten analyseren op aankooppatronen. Het beleid beperkt het delen van persoonsgegevens. Wat doet hij?",
-  o: ["De data uploaden met de instructie 'gebruik dit alleen voor deze analyse en onthoud het niet'.",
+  o: ["De data uploaden met de instructie 'gebruik dit alleen voor deze analyse'.",
       "Namen en adressen verwijderen, klantnummers pseudonimiseren en alleen nodige kolommen houden.",
       "De analyse niet uitvoeren, omdat klantdata nooit met AI verwerkt mag worden.",
       "De data uploaden omdat de analyse intern blijft."],
@@ -134,7 +134,7 @@ Academy.addQuestions("ccaof", [
 
 { id: "d6-11", s: "d6.3", t: "s",
   q: "Een rapport met een fout bereikt een klant. De auteur zegt: 'Claude heeft het geschreven, dus het ligt niet aan mij.' Welk principe wordt hier geschonden?",
-  o: ["Dataminimalisatie: alleen de gegevens delen die voor de taak nodig zijn.", "Accountability: de mens blijft verantwoordelijk voor gebruikte output.", "Transparantie: open zijn over het gebruik van AI richting lezers.", "Least privilege: alleen de toegang geven die voor een taak nodig is."],
+  o: ["Dataminimalisatie: alleen de gegevens delen die nodig zijn.", "Accountability: de mens blijft verantwoordelijk voor gebruikte output.", "Transparantie: open zijn over het gebruik van AI richting lezers.", "Least privilege: alleen de toegang geven die voor een taak nodig is."],
   a: [1],
   w: ["Gaat over het delen van data, niet over verantwoordelijkheid.",
       "Juist. Wie AI-output gebruikt, blijft eigenaar van het resultaat.",

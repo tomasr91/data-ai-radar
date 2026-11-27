@@ -231,7 +231,7 @@ Academy.addQuestions("dbxgs", [
   ex: "NULL vervangen: coalesce." },
 { id: "g6-31", s: "d6.2", t: "s",
   q: "Je wilt per patiënt alleen de laatst geladen rij houden. Wat gebruik je?",
-  o: ["<code>row_number() OVER (PARTITION BY patient_id ORDER BY geladen_op DESC)</code> = 1", "<code>SELECT DISTINCT *</code> over de hele tabel", "<code>max(*)</code>", "<code>LIMIT 1</code>"],
+  o: ["<code>row_number() OVER (PARTITION BY patient_id ORDER BY geladen_op DESC)</code> = 1", "<code>SELECT DISTINCT *</code> over de hele tabel, gesorteerd op <code>geladen_op</code>", "<code>max(*)</code>", "<code>LIMIT 1</code>"],
   a: [0],
   w: ["Juist.", "Rijen met andere waarden blijven dan allebei staan.", "Bestaat niet zo.", "Dat geeft één rij voor de hele tabel."],
   ex: "Laatste per sleutel: row_number met PARTITION BY." },

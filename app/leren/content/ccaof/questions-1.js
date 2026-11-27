@@ -58,7 +58,7 @@ Academy.addQuestions("ccaof", [
 
 { id: "d1-05", s: "d1.2", t: "s",
   q: "Een projectmanager moet uit 30 lessons-learned-documenten een verbeterplan maken. Welke aanpak past het best bij task decomposition?",
-  o: ["Alle documenten uploaden en in één uitgebreide prompt om het definitieve verbeterplan met volledige onderbouwing vragen.",
+  o: ["Alle documenten uploaden en in één uitgebreide prompt om het definitieve verbeterplan vragen.",
       "Eerst per document de lessen laten extraheren, die als thema's bundelen en controleren, dan het plan laten opstellen.",
       "Claude eerst een verbeterplan laten schrijven en daarna de documenten laten zoeken die het plan ondersteunen.",
       "Alleen de vijf meest recente documenten gebruiken, zodat de taak kleiner wordt en de lessen actueel zijn."],
@@ -175,7 +175,7 @@ Academy.addQuestions("ccaof", [
 
 { id: "d1-14", s: "d1.4", t: "s",
   q: "Je hebt een onderzoeksvraag over recente ontwikkelingen in Europese AI-regelgeving. Welke combinatie is het meest passend?",
-  o: ["Een gewone vraag zonder zoekfunctie stellen, omdat Claude veel juridische teksten kent en dan sneller en beknopter antwoordt.",
+  o: ["Een gewone vraag zonder zoekfunctie stellen, omdat Claude veel juridische teksten kent en sneller antwoordt.",
       "Een afgebakende onderzoeksvraag met Research of web search, bronvermelding vragen en de belangrijkste bronnen zelf openen.",
       "Claude laten brainstormen over mogelijke regels.",
       "Claude de rol van juridisch adviseur geven en om een samenvatting van de laatste ontwikkelingen vragen."],
@@ -215,7 +215,7 @@ Academy.addQuestions("ccaof", [
 
 { id: "d2-03", s: "d2.1", t: "s",
   q: "Een financieel overzicht van Claude bevat per afdeling een bedrag en onderaan een totaal. Wat is een snelle, effectieve juistheidscontrole?",
-  o: ["Controleren of alle bedragen consistent zijn opgemaakt, met dezelfde valuta en hetzelfde aantal decimalen.",
+  o: ["Controleren of alle bedragen consistent zijn opgemaakt, met dezelfde valuta en decimalen.",
       "De afdelingsbedragen optellen en vergelijken met het totaal, en een paar bedragen terugzoeken in de bron.",
       "Claude vragen de berekening stap voor stap opnieuw te controleren en te bevestigen.",
       "Het overzicht laten herformuleren."],
