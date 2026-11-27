@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-27T06:35:24.441324Z",
+ "generated_at": "2026-11-27T06:36:07.346360Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-27T06:50:00Z",
@@ -16070,21 +16070,21 @@
   "tasks": {
    "uitleggen": {
     "status": "deels",
-    "summary": "Geen artikelen uitgelegd: 2 algemene AI-stukken overgeslagen, en de 3 relevante artikelen (dbt State-checklist, OneLake en Fabric IQ) waren niet te openen; die blijven op de werklijst.",
-    "finished_at": "2026-11-27T03:29:42Z",
+    "summary": "Bij het inhalen alsnog 1 artikel uitgelegd (checklist voor dbt State, met voorbeeld); de 2 Fabric-artikelen (OneLake en Fabric IQ) waren nog steeds niet te openen en blijven op de werklijst.",
+    "finished_at": "2026-11-27T06:36:00Z",
     "problems": [
-     "WebFetch weigerde de artikeladressen (PROVENANCE_REQUIRED: toestemmingsverzoek niet op tijd beantwoord).",
-     "Zoeken op de exacte titel gaf voor geen van de drie een link naar hetzelfde artikel: A checklist for getting the most out of dbt State (dbt-blog), OneLake: The unified foundation for data, context, governance, and AI (Fabric-blog), Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
-     "Vers ophalen aangevraagd om 03:14 UTC; de feed was binnen enkele minuten bijgewerkt.",
-     "Dataflow-voortgang bijgewerkt: fase 5 bezig (stap 5.1)."
+     "Eerste run (03:13 UTC): WebFetch weigerde alle artikeladressen; 2 algemene AI-stukken overgeslagen, 0 uitgelegd.",
+     "Inhalen (06:27 UTC): de dbt State-checklist was via een zoekresultaat wel te openen en is uitgelegd.",
+     "Niet te openen (client_error van de site, ook via het zoekresultaat): OneLake: The unified foundation for data, context, governance, and AI, en Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
+     "Dataflow-voortgang was vannacht al bijgewerkt (fase 5, stap 5.1); niet opnieuw gedaan."
     ],
     "counts": {
-     "uitgelegd": 0,
+     "uitgelegd": 1,
      "overgeslagen": 2,
      "overgeslagen_zonder_openen": 2,
-     "met_voorbeeld": 0,
-     "via_websearch": 0,
-     "niet_bereikbaar": 3
+     "met_voorbeeld": 1,
+     "via_websearch": 1,
+     "niet_bereikbaar": 2
     }
    },
    "overzicht": {
@@ -16099,6 +16099,19 @@
      "interesses_aangepast": 0,
      "leerregels": 0,
      "begrippen_aangevuld": 0
+    }
+   },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen ontbrak: alsnog 1 artikel uitgelegd (dbt State-checklist); 2 Fabric-artikelen bleven onbereikbaar.",
+    "finished_at": "2026-11-27T06:36:30Z",
+    "problems": [
+     "De Fabric-blog gaf een client_error voor OneLake en Fabric IQ; die artikelen staan nog op de werklijst."
+    ],
+    "counts": {
+     "taken_ingehaald": 1,
+     "uitgelegd": 1,
+     "niet_bereikbaar": 2
     }
    },
    "verdiepen": {
