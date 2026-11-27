@@ -187,7 +187,7 @@
   /* ---------------- volgende vraag ----------------
      1. Vraag in de leerfase die weer aan de beurt is (in aantal vragen) → altijd eerst.
      Daarna, met wat toeval: 2. eerder fout en weer aan de beurt  3. nog nooit gezien
-     4. aan de beurt voor herhaling (laagste bak eerst)  5. de vraag die het eerst terugkomt.
+     4. aan de beurt voor herhaling (laagste bak eerst)  5. nog niet beheerst (niet oranje)  6. de vraag die het eerst terugkomt.
      Recent gestelde vragen worden overgeslagen. */
   function learnDue(qs, st, recent) {
     const seq = st.seq || 0, last2 = new Set(recent.slice(-2));
@@ -207,6 +207,11 @@
     if (dueWrong.length && Math.random() < 0.6) return rnd(dueWrong);
     if (unseen.length && (!due.length || Math.random() < 0.6)) return rnd(unseen);
     if (due.length) { due.sort((a, b) => info(a).b - info(b).b || info(a).due - info(b).due); return rnd(due.slice(0, 4)); }
+    // Niets aan de beurt en niets nieuw: eerst de vragen die nog niet beheerst zijn (niet oranje), ook als ze
+    // kort geleden kwamen (alleen de laatste 2 overslaan). Anders wacht je lang op die ene vraag (T, 27-11-2026).
+    const last2 = new Set(recent.slice(-2));
+    const open = qs.filter(q => info(q) && info(q).b < MASTERED && !last2.has(q.id));
+    if (open.length) { open.sort((a, b) => info(a).due - info(b).due); return open[0]; }
     cands.sort((a, b) => info(a).due - info(b).due);
     return rnd(cands.slice(0, 4));
   }
