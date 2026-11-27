@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-27T05:15:26.819627Z",
+ "generated_at": "2026-11-27T06:35:24.441324Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-25T03:22:00Z",
+ "last_article_added_at": "2026-11-27T06:50:00Z",
  "last_successful_update": "2026-11-27T03:13:53.661998Z",
  "groups": [
   {
@@ -462,13 +462,170 @@
   }
  ],
  "daily_top": [
+  "cdd3a17ed9ed",
   "216eab677a97",
   "905562b7af62",
   "9fa51654bab7",
-  "44f76c8bfa0f",
-  "d380e24c1978"
+  "44f76c8bfa0f"
  ],
  "articles": [
+  {
+   "id": "cdd3a17ed9ed",
+   "title": "A checklist for getting the most out of dbt State",
+   "url": "https://docs.getdbt.com/blog/checklist-get-the-most-from-dbt-state",
+   "source_id": "dbt_developer_blog",
+   "published_at": "2026-11-15T00:00:00Z",
+   "fetched_at": "2026-11-27T03:13:58.939240Z",
+   "summary": "Joel Labes van dbt Labs geeft een stappenplan om dbt State in een groot dbt-project in te voeren: van een nulmeting tot minder jobs.",
+   "personal_relevance": "Je gebruikt dbt Core en het dbt-platform; dit stappenplan laat zien hoe je dbt State veilig uitprobeert en meet of het op Databricks echt rekenkosten scheelt.",
+   "experiment": "Zet dbt State aan in een eigen dev-omgeving met een klein dbt-project op openbare data (bijv. KNMI). Draai een model twee keer, voeg dan een commentaar toe en daarna een echte wijziging, en kijk in run_results.json en met explain wanneer het model wordt hergebruikt.",
+   "limitations": [
+    "Python-modellen worden altijd opnieuw gebouwd.",
+    "Bij bijna-realtime runs van een paar minuten kan het ophalen van metadata de winst tenietdoen.",
+    "Vraagt een account op het dbt-platform, ook als je zelf orkestreert.",
+    "Hoeveel je bespaart, noemt het artikel niet: dat moet je zelf meten."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "dbt State instellen",
+     "url": "https://docs.getdbt.com/docs/deploy/dbt-state-setup"
+    },
+    {
+     "label": "explain-commando",
+     "url": "https://docs.getdbt.com/reference/commands/state-explain"
+    },
+    {
+     "label": "lag_tolerance per omgeving",
+     "url": "https://docs.getdbt.com/reference/resource-configs/lag-tolerance#use-different-tolerances-per-environment"
+    },
+    {
+     "label": "dbt State in CI/CD",
+     "url": "https://docs.getdbt.com/docs/deploy/dbt-state-cicd"
+    },
+    {
+     "label": "Waarom views opnieuw worden gebouwd",
+     "url": "https://docs.getdbt.com/faqs/State/views-rebuilt"
+    }
+   ],
+   "topics": [
+    "dbt_analytics_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "dbt",
+    "overig"
+   ],
+   "relevance_score": 100,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.54,
+    "source": 0.68,
+    "quality": 0.73,
+    "feedback": 0.03,
+    "fit": 0.35,
+    "project": 0.08
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-27T06:50:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen",
+   "story": [
+    "dbt State bouwt alleen modellen opnieuw waarvan de code of de brondata veranderd is; de rest slaat het over of kloont het. Joel Labes van dbt Labs schreef een checklist voor teams met een groot, bestaand dbt-project die dit willen invoeren. Het advies geldt grotendeels ook als je dbt zelf orkestreert in plaats van op het dbt-platform.",
+    "Hoe werkt het? Bij elke run kijkt dbt State of een model dezelfde logica heeft en of de bronnen nieuwe data hebben. Zo niet, dan wordt het model hergebruikt: overgeslagen, of als zero-copy clone overgenomen uit een andere omgeving, zoals productie. Met lag_tolerance bepaal je hoe oud data mag zijn voordat een model toch opnieuw wordt gebouwd. De standaard is 45 minuten; een ruimere waarde is volgens Labes de beste manier om minder te bouwen.",
+    "De checklist begint met meten. Leg minstens een week, liever 2 tot 4 weken, vast wat je runs nu kosten, en kijk daarna naar bespaarde euro's en seconden, niet alleen naar het percentage hergebruik. In run_results.json zie je per model of het is uitgevoerd of hergebruikt. Zorg ook voor een noodknop: met DBT_ENGINE_MANAGE_STATE=0 zet je dbt State in één keer uit.",
+    "Daarna rol je stap voor stap uit: eerst een paar ontwikkelaars, dan dev en CI, dan productie. Hergebruik valt vaak lager uit door views met select *, Jinja die bij elke run anders is (zoals invocation_id) of bronnen zonder bekende versheid, zoals bestanden in S3. Python-modellen kan dbt State niet hergebruiken. De laatste stap: veel losse jobs samenvoegen tot één job die zo vaak draait als nodig is voor je afspraken over versheid.",
+    "Voor Dataflow past dit bij fase 5, waar je nu je eerste DAB-job bouwt: draai je dbt vanuit een Databricks-job in plaats van op het dbt-platform, dan geldt het meeste advies ook. Na een proef van 30 dagen kom je volgens het artikel op een gratis plan met 1000 DATTs per maand; daarboven draait dbt weer gewoon alles."
+   ],
+   "key_facts": [
+    "Geschreven door Joel Labes (dbt Labs), gepubliceerd op 15 november 2026.",
+    "Nulmeting: minstens een week controledata, liever 2 tot 4 weken.",
+    "In run_results.json (dbt v2.0 en later): uitgevoerd = status success; hergebruikt = status reused met 'No new changes on any upstreams' (overgeslagen) of 'Cloned from other environment' (gekloond).",
+    "Noodknop: omgevingsvariabele DBT_ENGINE_MANAGE_STATE=0; een CLI-vlag zoals --manage-state gaat daar wel boven.",
+    "dbt State installeren kan bij dbt v1.7 tot 1.12, aanzetten bij v1.13 en v2.0+.",
+    "Standaard lag_tolerance is 45 minuten; ophogen is de effectiefste manier om minder te bouwen.",
+    "require_fresh_data_from staat standaard op any; op all wacht dbt tot alle bronnen nieuwe data hebben.",
+    "Python-modellen kunnen niet worden hergebruikt; custom materializations wel overgeslagen, maar niet gekloond.",
+    "Proef van 30 dagen onbeperkt gebruik, daarna een gratis plan met 1000 DATTs per maand; daarboven voert dbt alle geselecteerde modellen gewoon uit.",
+    "dbt State is geen product per gebruiker (seat) en vraagt geen abonnement op de rest van het dbt-platform."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Zo tel je na een run hoeveel modellen dbt State echt uitvoerde en hoeveel het hergebruikte, met de status- en berichtwaarden uit run_results.json.",
+    "language": "sql",
+    "code": "WITH run_results(model, status, message) AS (VALUES\n ('stg_knmi_metingen','reused','No new changes on any upstreams'),\n ('stg_cbs_gemeenten','reused','No new changes on any upstreams'),\n ('int_metingen_per_dag','success','Succeeded'),\n ('dim_station','reused','Cloned from other environment'),\n ('fct_neerslag_per_dag','success','Succeeded'),\n ('fct_temperatuur_per_maand','reused','No new changes on any upstreams'))\nSELECT CASE WHEN status = 'success' THEN 'uitgevoerd'\n            WHEN message LIKE 'Cloned%' THEN 'hergebruikt (gekloond)'\n            ELSE 'hergebruikt (overgeslagen)' END AS uitkomst,\n       count(*) AS modellen\nFROM run_results\nGROUP BY 1\nORDER BY modellen DESC",
+    "result": {
+     "columns": [
+      "uitkomst",
+      "modellen"
+     ],
+     "rows": [
+      [
+       "hergebruikt (overgeslagen)",
+       3
+      ],
+      [
+       "uitgevoerd",
+       2
+      ],
+      [
+       "hergebruikt (gekloond)",
+       1
+      ]
+     ]
+    },
+    "note": "run_results.json is een JSON-bestand; hier staan de velden al als tabel. De waarden van status en message komen uit het artikel. Voor de geschiedenis over meerdere runs noemt het artikel de view dbt_rt.run_results."
+   },
+   "terms": [
+    {
+     "term": "dbt State",
+     "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd."
+    },
+    {
+     "term": "zero-copy clone",
+     "explanation": "Een kopie van een tabel die meteen klaar is omdat de data niet echt wordt gekopieerd: de kopie verwijst naar dezelfde bestanden."
+    },
+    {
+     "term": "lag_tolerance",
+     "explanation": "Instelling van dbt State: hoe oud de data in een model mag zijn voordat het toch opnieuw wordt gebouwd. Standaard 45 minuten."
+    },
+    {
+     "term": "run_results.json",
+     "explanation": "Bestand dat dbt na elke run schrijft, met per model of het gelukt is, hoe lang het duurde en welk bericht erbij hoort."
+    },
+    {
+     "term": "CI",
+     "explanation": "Continuous integration: bij elke wijziging draaien automatisch tests en controles, zodat fouten snel opvallen."
+    }
+   ],
+   "learning": "Release pipelines, bundles en uitrol",
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.85,
+    "why": "Praktisch dbt State-stuk, zoals het artikel over slimme rebuilds waar je een duim omhoog met 'past bij mijn stack' aan gaf."
+   },
+   "labels": [
+    "dbt-state",
+    "slimme-rebuilds",
+    "compute-kosten"
+   ],
+   "fb_why": {
+    "by": "similar",
+    "title": "dbt v2 is klaar: een nieuwe engine die je SQL begrijpt",
+    "id": "681080ea70e4",
+    "v": 1,
+    "s": 70,
+    "pts": 3
+   },
+   "project_ref": {
+    "fase": 5,
+    "quote": "Voor Dataflow past dit bij fase 5, waar je nu je eerste DAB-job bouwt",
+    "why": "Het artikel gaat over hoe je dbt-runs orkestreert en jobs samenvoegt, en dat is waar je in fase 5 mee bezig bent."
+   }
+  },
   {
    "id": "216eab677a97",
    "title": "Azure Databricks: wat is er nieuw in week 47",
@@ -735,7 +892,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.71,
+    "recency": 0.7,
     "source": 0.68,
     "quality": 0.63,
     "feedback": 0.03,
@@ -971,7 +1128,7 @@
    "relevance_score": 93,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.1,
@@ -1191,7 +1348,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.86,
+    "recency": 0.85,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1767,7 +1924,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -4395,7 +4552,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.8,
     "quality": 0.53,
     "feedback": 0.02,
@@ -4488,7 +4645,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.51,
     "quality": 0.67,
     "feedback": 0.01,
@@ -6551,7 +6708,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.04,
@@ -6900,6 +7057,113 @@
    }
   },
   {
+   "id": "760c502508bd",
+   "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
+   "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
+   "source_id": "claude_blog",
+   "published_at": "2026-11-17T00:00:00Z",
+   "fetched_at": "2026-11-19T03:13:31.924707Z",
+   "summary": "Een Anthropic-engineer liet een Claude Code-sessie met subagents twee weken een testomgeving overbelasten, de telemetrie lezen en zelf fixes bouwen. Resultaat: 60 serverfouten op ongeveer 2 miljard verzoeken.",
+   "personal_relevance": "Het laat zien hoe je Claude een lang, zelfstandig verbeterproces laat doen met duidelijke grenzen: meten, vaste regels en een mens bij onomkeerbare stappen.",
+   "experiment": "Laat Claude Code op een klein dbt-project met openbare data trage modellen zoeken via de run_results.json, één verbetering voorstellen en die alleen doorvoeren als een vergelijking van oude en nieuwe tabel geen verschil geeft.",
+   "limitations": [
+    "Een verslag van Anthropic over een eigen product; niet onafhankelijk gecontroleerd.",
+    "Geen code of configuratie in het artikel.",
+    "De kostenschatting voor kleinere diensten is volgens de auteur zelf niet getest."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "A harness for every task: dynamic workflows in Claude Code (over goal drift)",
+     "url": "https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/"
+    },
+    {
+     "label": "Claude Code-documentatie",
+     "url": "https://code.claude.com/docs"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag",
+    "ai_evaluation_observability"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.6,
+    "source": 0.51,
+    "quality": 0.63,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T04:05:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering",
+   "story": [
+    "Twee weken voor de lancering van Claude Docs draaide de dienst nog op één server voor een paar duizend interne gebruikers. Vivek Nair liet daarom een Claude Code-sessie een kopie van productie (staging) belasten met meer dan een miljoen nep-documenten per dag. Claude maakte onderdelen expres kapot en repareerde wat omviel: een 'chaos loop'. De sessie stuurde gemiddeld 11 subagents aan, op het drukste moment 30.",
+    "Elke ronde ging hetzelfde. Een testscript zette één functie onder maximale druk. Claude las de telemetrie via de Datadog MCP, kwam met een paar opties en een advies, en bouwde de fix. Makkelijk terug te draaien wijzigingen voerde Claude zelf door; wijzigingen aan het schema of de opslag van documenten moest de engineer eerst goedkeuren. Een aparte sessie reviewde de wijziging, daarna ging die naar staging en begon de test opnieuw. Claude moest twee vaste regels (invarianten) bewaken: documenten openen bijna meteen, en een bevestigde wijziging gaat nooit verloren.",
+    "Het werkte omdat de dienst meetbaar was. Elke databasequery meldde zijn naam en hoeveel rijen hij las tegenover hoeveel hij teruggaf; zo vond Claude slechte query's. Een voorbeeld: één groot document gebruikte 3 GB geheugen. Claude's eerste fix bleek de verkeerde cache te raken en werd teruggedraaid. Fijnere metingen lieten zien dat elke toetsaanslag het document meerdere keren kopieerde; met copy-on-write zakte het naar ongeveer 180 MB. Het team koos bewust Rust en weinig bibliotheken, zodat al het geheugen te herleiden was.",
+    "De uitkomst: meer dan 4,6 miljoen documenten in de eerste week, ongeveer 2 miljard verzoeken met 60 serverfouten en geen enkele terugdraaiing. De geschatte geheugenbehoefte ging van meer dan 500 naar ongeveer 50 pods. De rekenkosten waren ongeveer 125.000 dollar aan modelgebruik, volgens de auteur de helft te veel achteraf. Voor een kleinere dienst schat hij 3.000 tot 10.000 dollar, maar dat heeft hij niet getest.",
+    "De lessen gaan ook op voor datawerk: geef Claude direct toegang tot je meetgegevens, schrijf vooraf de regels op die nooit mogen breken, en laat een mens beslissen over alles wat moeilijk terug te draaien is. Bij een pijplijn zou dat betekenen: Claude mag een query herschrijven en opnieuw testen, maar een schemawijziging in Silver vraagt jouw akkoord."
+   ],
+   "key_facts": [
+    "Claude Docs werd gelanceerd op 16 september 2026; de chaos loop begon op 4 september.",
+    "De Claude Code-sessie stuurde gemiddeld 11 en op het hoogtepunt 30 subagents aan en las telemetrie via de Datadog MCP.",
+    "Geteste scenario's: 10 miljoen nieuwe documenten per dag, 22.000 verbindingen die tegelijk opnieuw verbinden, een server die stopt tijdens het laden.",
+    "Wijzigingen aan schema of opslag vroegen goedkeuring van een mens; makkelijk terug te draaien wijzigingen niet.",
+    "Meer dan 4,6 miljoen documenten tot 22 september; ongeveer 2 miljard verzoeken met 60 serverfouten; 629 keer naar productie uitgerold in september zonder terugdraaiing.",
+    "Geheugen van één groot document ging van ongeveer 3 GB naar ongeveer 180 MB; de geschatte behoefte van meer dan 500 naar ongeveer 50 pods.",
+    "Kosten: ongeveer 125.000 dollar aan modelgebruik tegen catalogusprijs (Claude Fable 5.2).",
+    "7 van de 10 geoefende scenario's gebeurden echt in productie; de fixes stonden klaar achter schakelaars (runtime flags)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "staging",
+     "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert."
+    },
+    {
+     "term": "subagents",
+     "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context."
+    },
+    {
+     "term": "telemetrie",
+     "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte."
+    },
+    {
+     "term": "invarianten",
+     "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren."
+    },
+    {
+     "term": "copy-on-write",
+     "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar."
+    }
+   ],
+   "soort": "praktijk",
+   "fit": {
+    "score": 0.6,
+    "why": "Concreet verhaal over Claude die lang zelfstandig werkt, maar over webinfrastructuur in plaats van data."
+   },
+   "labels": [
+    "multi-agent",
+    "human-in-the-loop",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "praktijk",
+    "pts": -4
+   }
+  },
+  {
    "id": "ffe8a09e969f",
    "title": "Claude Fable 5.2 and Mythos 5.2",
    "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
@@ -6944,7 +7208,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -7039,7 +7303,7 @@
    "relevance_score": 79,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.41,
+    "recency": 0.4,
     "source": 0.51,
     "quality": 0.68,
     "feedback": -0.04,
@@ -11667,7 +11931,8 @@
     "why": "Het Claude Code-team laat Claude elke commit bewijzen met end-to-end-, property- en differential tests en een verify-skill, en Simon Späti zegt dat controleren het echte werk wordt als agents de SQL schrijven. Hoe meer dbt-werk je aan Claude geeft, hoe meer je tests en vaste regels het nakijken moeten overnemen.",
     "article_ids": [
      "069078b2b4e3",
-     "873de8dc3ad7"
+     "873de8dc3ad7",
+     "760c502508bd"
     ]
    },
    {
@@ -12281,6 +12546,11 @@
    "explanation": "Continuous integration: bij elke wijziging draaien automatisch tests en controles, zodat fouten snel opvallen.",
    "refs": [
     {
+     "kind": "a",
+     "id": "cdd3a17ed9ed",
+     "title": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen"
+    },
+    {
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
@@ -12451,6 +12721,17 @@
    ]
   },
   {
+   "term": "copy-on-write",
+   "explanation": "Een kopie die pas echt data kopieert als je iets wijzigt. Daarom is een nieuwe kopie in seconden klaar.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    }
+   ]
+  },
+  {
    "term": "curator",
    "explanation": "De rol in Unity Catalog die domeinen opbouwt, Pages beheert en als enige een Page mag certificeren.",
    "refs": [
@@ -12564,6 +12845,11 @@
    "term": "dbt State",
    "explanation": "Een functie van dbt die bijhoudt wat er veranderd is, in code of brondata, zodat alleen die modellen opnieuw worden gebouwd.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "cdd3a17ed9ed",
+     "title": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen"
+    },
     {
      "kind": "a",
      "id": "e355f3b1aafd",
@@ -13540,8 +13826,13 @@
   },
   {
    "term": "invarianten",
-   "explanation": "Regels over de data die altijd moeten gelden, zoals 'omzet is nooit negatief', in plaats van vaste waarden van vandaag.",
+   "explanation": "Regels die altijd waar moeten blijven, wat er ook verandert. Bijvoorbeeld: een bevestigde wijziging gaat nooit verloren.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    },
     {
      "kind": "v",
      "id": "teamafspraken-voor-claude-bij-dbt",
@@ -13595,6 +13886,17 @@
      "kind": "v",
      "id": "eigen-performance-meten-vanuit-dbt-in-databricks",
      "title": "Waarom duurt dit dbt-model zo lang? Zo zoek je het uit"
+    }
+   ]
+  },
+  {
+   "term": "lag_tolerance",
+   "explanation": "Instelling van dbt State: hoe oud de data in een model mag zijn voordat het toch opnieuw wordt gebouwd. Standaard 45 minuten.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "cdd3a17ed9ed",
+     "title": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen"
     }
    ]
   },
@@ -14565,8 +14867,13 @@
   },
   {
    "term": "run_results.json",
-   "explanation": "Een bestand dat dbt na elke run in de map target schrijft, met per model de status en hoe lang compileren en uitvoeren duurden.",
+   "explanation": "Bestand dat dbt na elke run schrijft, met per model of het gelukt is, hoe lang het duurde en welk bericht erbij hoort.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "cdd3a17ed9ed",
+     "title": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen"
+    },
     {
      "kind": "v",
      "id": "eigen-performance-meten-vanuit-dbt-in-databricks",
@@ -14898,6 +15205,17 @@
    ]
   },
   {
+   "term": "staging",
+   "explanation": "Een testomgeving die zo veel mogelijk op productie lijkt, waar je wijzigingen eerst uitprobeert.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    }
+   ]
+  },
+  {
    "term": "stdin",
    "explanation": "De standaardinvoer van een programma: tekst die je via een pijp of bestand naar een commando stuurt, in plaats van als argument op de commandoregel.",
    "refs": [
@@ -14996,8 +15314,13 @@
   },
   {
    "term": "subagents",
-   "explanation": "Hulpagents die één deel van een taak uitvoeren, zoals zoeken of testen, met een eigen, leeg contextvenster. De hoofdagent krijgt alleen hun samenvatting.",
+   "explanation": "Hulpagents die een hoofdagent voor deeltaken start, elk met een eigen schone context.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
+    },
     {
      "kind": "a",
      "id": "6d403bbe9379",
@@ -15094,6 +15417,17 @@
      "kind": "v",
      "id": "agents-uitrollen-als-code",
      "title": "Een AI-agent uitrollen zoals een dbt-model"
+    }
+   ]
+  },
+  {
+   "term": "telemetrie",
+   "explanation": "Meetgegevens die software zelf verstuurt, zoals hoe lang een query duurde of hoeveel geheugen iets gebruikte.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "760c502508bd",
+     "title": "Claude liet Claude Docs twee weken expres stukgaan voor de lancering"
     }
    ]
   },
@@ -15410,6 +15744,17 @@
      "kind": "v",
      "id": "claude-agents-in-eigen-netwerk",
      "title": "Agent in eigen huis: wat blijft binnen en wat gaat toch naar buiten"
+    }
+   ]
+  },
+  {
+   "term": "zero-copy clone",
+   "explanation": "Een kopie van een tabel die meteen klaar is omdat de data niet echt wordt gekopieerd: de kopie verwijst naar dezelfde bestanden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "cdd3a17ed9ed",
+     "title": "dbt State invoeren in acht stappen: eerst meten, dan pas besparen"
     }
    ]
   },
@@ -15742,19 +16087,6 @@
      "niet_bereikbaar": 3
     }
    },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen nieuwe verdieping: het eigen voorstel over Lakeflow was al geschreven (issue #41 gesloten); 5 nieuwe keuzes en een inspiratiekaart met 4 ideeën klaargezet.",
-    "finished_at": "2026-11-27T04:15:40Z",
-    "problems": [
-     "De geschiedenis in deepdive_options.json mag maar 60 keuzes houden, maar de controle wil dat gekozen verdiepingen erin blijven; daarom zijn oudere, niet-gekozen keuzes eruit gehaald in plaats van de oudste."
-    ],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5,
-     "inspiratie": 1
-    }
-   },
    "overzicht": {
     "status": "ok",
     "summary": "Geen nieuwe artikelen sinds gisteren: de 3 trends blijven staan, geen verzoeken voor je interesses of toelichtingen bij duimen, en geen begrippen aan te vullen.",
@@ -15767,6 +16099,19 @@
      "interesses_aangepast": 0,
      "leerregels": 0,
      "begrippen_aangevuld": 0
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "Geen nieuwe verdieping: het eigen voorstel over Lakeflow was al geschreven (issue #41 gesloten); 5 nieuwe keuzes en een inspiratiekaart met 4 ideeën klaargezet.",
+    "finished_at": "2026-11-27T04:15:40Z",
+    "problems": [
+     "De geschiedenis in deepdive_options.json mag maar 60 keuzes houden, maar de controle wil dat gekozen verdiepingen erin blijven; daarom zijn oudere, niet-gekozen keuzes eruit gehaald in plaats van de oudste."
+    ],
+    "counts": {
+     "verdiepingen": 0,
+     "keuzes": 5,
+     "inspiratie": 1
     }
    }
   }
@@ -15943,33 +16288,34 @@
   "fetched_items": 822,
   "unique_after_dedupe": 761,
   "merged_duplicates": 54,
-  "shown": 69,
+  "shown": 71,
   "decisions": {
    "excluded": 277,
-   "area_cap": 12,
-   "included": 121,
+   "area_cap": 11,
+   "included": 123,
    "no_topic": 170,
-   "below_threshold": 125,
+   "below_threshold": 124,
    "kort_vervallen": 33,
    "source_cap": 23
   },
   "processing": {
-   "enriched": 69
+   "enriched": 71
   },
   "without_date": 0,
   "per_group": {
+   "dbt": 7,
    "ai_context": 29,
    "agents": 8,
-   "claude": 15,
+   "claude": 16,
    "overig": 7,
    "kwaliteit": 1,
-   "dbt": 6,
    "architectuur": 3
   },
   "per_source": {
+   "dbt_developer_blog": 3,
    "azure_databricks_release_notes": 4,
    "simon_spati": 3,
-   "claude_blog": 9,
+   "claude_blog": 10,
    "chris_webb": 2,
    "databricks_blog": 18,
    "dbt_labs_blog": 10,
@@ -15978,7 +16324,6 @@
    "anthropic_engineering": 1,
    "huggingface_blog": 1,
    "simon_willison": 1,
-   "dbt_developer_blog": 2,
    "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
    "langchain_blog": 3,
@@ -16035,9 +16380,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 176
+   "skipped_no_key": 175
   },
-  "queue_size": 3,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_inspiratie": [],
@@ -16252,14 +16597,6 @@
     "url": "https://www.getdbt.com/blog/snowflake-cowork-ai-agents-dbt-materializations",
     "relevance_score": 80,
     "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
-    "source_id": "claude_blog",
-    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
-    "relevance_score": 80,
-    "decision": "area_cap",
     "excluded_by": []
    },
    {
@@ -16619,6 +16956,17 @@
     "relevance_score": 77,
     "decision": "excluded",
     "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "v2.1.321",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+    "relevance_score": 77,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
      "weekoverzicht"
     ]
    }
