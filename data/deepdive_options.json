@@ -1,7 +1,53 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-26T04:27:00Z",
+  "generated_at": "2026-11-27T04:25:00Z",
   "options": [
+    {
+      "id": "unique-constraints-en-rely",
+      "title": "Sleutels in Databricks: wat UNIQUE en RELY wel en niet afdwingen",
+      "question": "Wat betekenen primaire sleutels en UNIQUE-constraints in Unity Catalog als Databricks ze niet controleert bij het schrijven, wanneer zet je RELY aan, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
+      "why": "Databricks voegde UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer volgens Databricks joins en DISTINCT over, maar een foute belofte geeft dan foute uitkomsten.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_architecture_modeling",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "agent-eval-onderhouden",
+      "title": "Een agent-test die eerlijk blijft: verifiers, valsspelen en pass^k",
+      "question": "Hoe bouw je een test voor een agent die de eindtoestand controleert in plaats van wat de agent zegt, hoe vang je valsspelen af, en wanneer kijk je naar pass@k en wanneer naar pass^k?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen, niet door meer uitleg'; Hugging Face publiceerde op 23 november een stappenplan voor het bouwen en onderhouden van agent-evals.",
+      "topics": [
+        "ai_evaluation_observability",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-ship-voor-dbt-pull-requests",
+      "title": "Claude Ship: pull requests van een dbt-project laten reviewen en repareren",
+      "question": "Wat doen Code Review, PR Steward en Claude Approvals precies, hoe leg je in teambeleid vast wat een agent zelf mag goedkeuren, en hoe past dat naast een CI-pipeline in Azure DevOps voor dbt en Databricks?",
+      "why": "Anthropic introduceerde op 23 november Claude Ship, met PR Steward en Claude Approvals in bèta voor GitHub; AI-code-review van data-code staat op T's lijst om te volgen.",
+      "topics": [
+        "claude_ai_development",
+        "cicd_data_deployment"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "vakkennis-bij-analyse-door-agent",
+      "title": "Analyse door een agent: waar vakkennis de fouten vangt",
+      "question": "Wat kan een agent met SQL-toegang via MCP zelf in een analyse, op welke punten gaat het mis zonder vakkennis, en hoe leg je die kennis vast in je gold-laag zodat collega's veilig zelf vragen kunnen stellen?",
+      "why": "Simon Späti liet op 20 november met Claude, MCP en openbare data zien dat een agent de drempel voor analyse verlaagt, maar dat alleen kennis van het vak de fouten vangt.",
+      "topics": [
+        "ai_on_data_platform",
+        "ai_context_engineering",
+        "data_quality_observability"
+      ],
+      "area": "ai_op_data"
+    },
     {
       "id": "identiteit-koppelen-voor-agents",
       "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
@@ -12,113 +58,9 @@
         "data_architecture_modeling"
       ],
       "area": "ai_op_data"
-    },
-    {
-      "id": "coding-agent-vastzetten",
-      "title": "Claude Code vastzetten met regels, hooks en een sandbox",
-      "question": "Hoe zet je een coding agent als Claude Code vast met toestemmingsregels, hooks, een sandbox en centrale instellingen, en welke vragen stel je voordat een team hem gebruikt?",
-      "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway'; Anthropic publiceerde op 23 november een gids voor beveiligers over precies deze grenzen.",
-      "topics": [
-        "veilige_agents",
-        "claude_ai_development"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "semantische-laag-als-ai-context",
-      "title": "De semantische laag als geheugen voor AI: dbt, metric views of Power BI?",
-      "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en wanneer leg je ze vast in de dbt semantic layer, in metric views in Unity Catalog of in een Power BI-model?",
-      "why": "Metric views kunnen sinds kort als Power BI-model worden gepubliceerd (private preview), en Genie One rekent volgens Databricks pas goed met vaste definities.",
-      "topics": [
-        "ai_context_engineering",
-        "dbt_analytics_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "tags-delen-via-iceberg",
-      "title": "Tags en metadata delen tussen platforms via de Iceberg REST-catalogus",
-      "question": "Wat is een Iceberg REST-catalogus, hoe reizen tags uit Unity Catalog via catalog labels mee naar andere tools, en wat betekent dat voor je tagbeleid?",
-      "why": "Databricks introduceerde op 24 november catalog labels in de Iceberg REST-API; in Unity Catalog heet dat Tag Exchange (bèta).",
-      "topics": [
-        "metadata_lineage_catalogs",
-        "data_governance_privacy",
-        "data_architecture_modeling"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "mcp-servers-met-skills",
-      "title": "MCP-servers die zelf skills meeleveren: wat verandert er voor Claude?",
-      "question": "Wat betekent het dat een MCP-server naast tools ook skills, achtergrondtaken en toestemmingsvragen aan Claude kan geven, en hoe zou een server voor een dbt- of Databricks-project dat gebruiken?",
-      "why": "Anthropic maakte op 24 november bekend dat MCP-servers skills kunnen meeleveren (publieke bèta) en lange taken en toestemmingsvragen ondersteunen.",
-      "topics": [
-        "claude_ai_development",
-        "ai_agents_rag"
-      ],
-      "area": "claude"
     }
   ],
   "history": [
-    {
-      "id": "claude-code-skills-hooks-subagents",
-      "title": "Skills, hooks en subagents in Claude Code: wanneer gebruik je wat?",
-      "question": "Hoe breid je Claude Code uit met skills, hooks en subagents, en welke past bij welk soort werk in een dbt-project?",
-      "why": "Agent Skills worden ondergebracht bij de Agentic AI Foundation, zo schreef Simon Willison deze week.",
-      "topics": [
-        "claude_ai_development",
-        "ai_agents_rag"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "agents-uitrollen-als-code",
-      "title": "Een AI-agent uitrollen zoals een dbt-model: versiebeheer, CI en lineage",
-      "question": "Hoe breng je AI-agents en hun semantische definities onder dezelfde pull requests, tests en omgevingen als je dbt-modellen, en hoe kan dat op Databricks?",
-      "why": "Under Armour beheert zijn Snowflake-agents nu als dbt-modellen; een kolomwijziging breekt dan de CI in plaats van het antwoord aan een gebruiker.",
-      "topics": [
-        "cicd_data_deployment",
-        "ai_agents_rag",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "teamafspraken-voor-claude-bij-dbt",
-      "title": "Wat Claude écht helpt bij dbt-werk: teamafspraken in CLAUDE.md en skills",
-      "question": "Welke instructies, skills en controles maken Claude Code betrouwbaar in een dbt-project, nu de modellen dbt zelf al kennen?",
-      "why": "Een proef van dbt Labs liet deze week zien dat skills over dbt weinig toevoegen, maar dat werkwijze en teamafspraken het verschil maken.",
-      "topics": [
-        "claude_ai_development",
-        "dbt_analytics_engineering"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "asset-bundles-basis",
-      "title": "Bundles: je Databricks-project als code uitrollen, vanaf de basis",
-      "question": "Wat is een bundle, wat staat er in databricks.yml, en hoe rol je hetzelfde project uit naar dev, test en prod?",
-      "why": "Deze week kregen bundles een gedeelde Python-omgeving via pyproject.toml, en de documentatie noemt ze nu Declarative Automation Bundles; tijd voor de basis.",
-      "topics": [
-        "cicd_data_deployment",
-        "databricks_data_engineering"
-      ],
-      "area": "data_engineering",
-      "level": "beginner"
-    },
-    {
-      "id": "release-pipeline-basis",
-      "title": "Van ontwikkeling naar productie: een release pipeline uitgelegd",
-      "question": "Wat is een release pipeline, welke stappen zitten erin, en hoe ziet dat eruit voor een dbt- en Databricks-project in Azure DevOps?",
-      "why": "Het artikel over Lakebase liet een pipeline zien die per pull request een eigen testomgeving maakt; eerst de basis van stages, omgevingen en goedkeuringen.",
-      "topics": [
-        "cicd_data_deployment",
-        "dbt_analytics_engineering"
-      ],
-      "area": "data_engineering",
-      "level": "beginner"
-    },
     {
       "id": "cdc-en-incrementeel-laden",
       "title": "Alleen de wijzigingen ophalen: incrementeel laden en CDC",
@@ -749,6 +691,63 @@
         "databricks_data_engineering"
       ],
       "area": "ai_op_data"
+    },
+    {
+      "id": "mcp-servers-met-skills",
+      "title": "MCP-servers die zelf skills meeleveren: wat verandert er voor Claude?",
+      "question": "Wat betekent het dat een MCP-server naast tools ook skills, achtergrondtaken en toestemmingsvragen aan Claude kan geven, en hoe zou een server voor een dbt- of Databricks-project dat gebruiken?",
+      "why": "Anthropic maakte op 24 november bekend dat MCP-servers skills kunnen meeleveren (publieke bèta) en lange taken en toestemmingsvragen ondersteunen.",
+      "topics": [
+        "claude_ai_development",
+        "ai_agents_rag"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "identiteit-koppelen-voor-agents",
+      "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
+      "question": "Waarom koppel je identiteiten uit verschillende bronnen één keer na Silver, hoe bouw je Gold op één vaste id, en wat heeft een agent die per persoon beslist daaraan?",
+      "why": "Databricks beschreef op 24 november hoe je klantdata zo modelleert dat een agent per persoon kan beslissen; hetzelfde vraagstuk speelt bij gegevens uit meerdere bronsystemen.",
+      "topics": [
+        "ai_on_data_platform",
+        "data_architecture_modeling"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "coding-agent-vastzetten",
+      "title": "Claude Code vastzetten met regels, hooks en een sandbox",
+      "question": "Hoe zet je een coding agent als Claude Code vast met toestemmingsregels, hooks, een sandbox en centrale instellingen, en welke vragen stel je voordat een team hem gebruikt?",
+      "why": "Past bij de trend 'Agents veilig laten werken: eigen sandbox, strakke rechten en één gateway'; Anthropic publiceerde op 23 november een gids voor beveiligers over precies deze grenzen.",
+      "topics": [
+        "veilige_agents",
+        "claude_ai_development"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "semantische-laag-als-ai-context",
+      "title": "De semantische laag als geheugen voor AI: dbt, metric views of Power BI?",
+      "question": "Waarom geven vaste definities van maatstaven betere AI-antwoorden dan losse tabellen, en wanneer leg je ze vast in de dbt semantic layer, in metric views in Unity Catalog of in een Power BI-model?",
+      "why": "Metric views kunnen sinds kort als Power BI-model worden gepubliceerd (private preview), en Genie One rekent volgens Databricks pas goed met vaste definities.",
+      "topics": [
+        "ai_context_engineering",
+        "dbt_analytics_engineering",
+        "powerbi_semantic_models"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "tags-delen-via-iceberg",
+      "title": "Tags en metadata delen tussen platforms via de Iceberg REST-catalogus",
+      "question": "Wat is een Iceberg REST-catalogus, hoe reizen tags uit Unity Catalog via catalog labels mee naar andere tools, en wat betekent dat voor je tagbeleid?",
+      "why": "Databricks introduceerde op 24 november catalog labels in de Iceberg REST-API; in Unity Catalog heet dat Tag Exchange (bèta).",
+      "topics": [
+        "metadata_lineage_catalogs",
+        "data_governance_privacy",
+        "data_architecture_modeling"
+      ],
+      "area": "data_engineering"
     },
     {
       "id": "mcp-servers-met-skills",
