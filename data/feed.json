@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-27T10:09:45.656574Z",
+ "generated_at": "2026-11-27T15:48:02.027850Z",
  "mode": "live",
- "mode_note": "Alle feeds zijn opgehaald.",
+ "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-27T06:50:00Z",
  "last_successful_update": "2026-11-27T10:09:45.656574Z",
  "groups": [
@@ -519,7 +519,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.54,
+    "recency": 0.53,
     "source": 0.68,
     "quality": 0.73,
     "feedback": 0.03,
@@ -664,7 +664,7 @@
    "relevance_score": 100,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 1.0,
     "quality": 0.62,
     "fit": 0.25,
@@ -766,7 +766,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -892,7 +892,7 @@
    "relevance_score": 97,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.7,
+    "recency": 0.69,
     "source": 0.68,
     "quality": 0.63,
     "feedback": 0.03,
@@ -1030,7 +1030,7 @@
    "relevance_score": 95,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.84,
+    "recency": 0.83,
     "source": 0.51,
     "quality": 0.63,
     "fit": 0.25,
@@ -1229,7 +1229,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.79,
+    "recency": 0.78,
     "source": 0.68,
     "quality": 0.7,
     "fit": 0.2
@@ -1348,7 +1348,7 @@
    "relevance_score": 92,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -1506,110 +1506,6 @@
    }
   },
   {
-   "id": "3e9bbba1efea",
-   "title": "Claude Code: wat is er nieuw in week 46 (v2.1.321 t/m v2.1.325)",
-   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W46",
-   "source_id": "claude_code_releases",
-   "published_at": "2026-11-15T23:59:59Z",
-   "fetched_at": "2026-11-14T03:13:13.961822Z",
-   "summary": "Claude Code kan in een experimentele Code Mode zijn tools via JavaScript aanroepen. Bash-commando's in de sandbox volgen weer de gewone toestemmingsvragen, en Fable 5.2 is het nieuwe standaard-Fable-model.",
-   "personal_relevance": "De nieuwe toestemmingsregels veranderen hoe Claude Code in je projecten en geplande taken werkt.",
-   "experiment": "Werk Claude Code bij en laat het in een testproject een dbt-commando in de sandbox draaien. Kijk of het nu om toestemming vraagt, en probeer daarna de instelling autoAllowBashIfSandboxed.",
-   "limitations": [
-    "Code Mode is experimenteel; hoe het precies werkt staat in de documentatie die we hier niet konden openen.",
-    "De release notes van v2.1.321 en v2.1.322 waren alleen in het weekoverzicht te lezen, niet volledig."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Claude Code releases",
-     "url": "https://github.com/anthropics/claude-code/releases"
-    },
-    {
-     "label": "Code Mode",
-     "url": "https://code.claude.com/docs/en/code-mode"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_context_engineering"
-   ],
-   "groups": [
-    "claude",
-    "ai_context"
-   ],
-   "relevance_score": 91,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.57,
-    "source": 0.8,
-    "quality": 0.62,
-    "feedback": 0.02,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 2,
-   "format_version": 2,
-   "headline": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming",
-   "story": [
-    "De opvallendste nieuwe functie van deze week is Code Mode (v2.1.323). Claude roept zijn tools dan niet één voor één aan, maar schrijft een stukje JavaScript dat die tools aanroept. Het is experimenteel en staat uit tot je het zelf aanzet. Een organisatie kan het ook centraal uitzetten.",
-    "Belangrijker voor je dagelijkse werk is een wijziging in v2.1.325. Bash-commando's in de sandbox draaien niet meer vanzelf zonder vragen. Ze volgen weer de gewone toestemmingsregels. Wil je het oude gedrag, dan zet je sandbox.autoAllowBashIfSandboxed op true. Ook alleen-lezen git-commando's in een onbekende repository vragen nu eerst toestemming.",
-    "Diezelfde versie maakt geplande taken en /loop voorzichtiger. Ze vragen nu eerst toestemming voordat ze een skill draaien die eigen toegestane tools (allowed-tools) of hooks meebrengt. Een skill kan zo niet ongemerkt meer rechten krijgen dan je dacht.",
-    "Verder werd Claude Fable 5.2 in v2.1.321 het standaard-Fable-model, met een contextvenster van 1 miljoen tokens. Plugins kunnen sinds v2.1.323 aangeven met welke versies van Claude Code ze werken. Gebruik je Claude Code met dbt-skills en hooks, controleer dan na het bijwerken of je sandbox-commando's ineens om toestemming vragen."
-   ],
-   "key_facts": [
-    "v2.1.321: Claude Fable 5.2 (claude-fable-5-2) is het standaard-Fable-model, met 1M context en $8/$40 per miljoen tokens ($0,20 voor cache reads).",
-    "v2.1.322: fast mode op Vertex in de regio's global, us en eu.",
-    "v2.1.323: Code Mode, een experimentele opt-in waarin Claude JavaScript schrijft om zijn tools aan te roepen; plugins kunnen een ondersteund versiebereik van Claude Code opgeven.",
-    "v2.1.323: voor een onbekend model-ID gaat Claude Code nu uit van 1M context in plaats van 200K.",
-    "v2.1.325: gesandboxte Bash-commando's volgen standaard de gewone toestemmingsflow; sandbox.autoAllowBashIfSandboxed: true behoudt het oude gedrag.",
-    "v2.1.325: alleen-lezen git-commando's in onvertrouwde repositories vragen eerst; geplande taken en /loop vragen eerst bij skills met allowed-tools of hooks."
-   ],
-   "article_type": "nieuws",
-   "showcase": {
-    "caption": "Met deze instelling in je settings.json draaien Bash-commando's in de sandbox weer zonder toestemmingsvraag, zoals vóór v2.1.325.",
-    "language": "json",
-    "code": "{\n  \"sandbox\": {\n    \"autoAllowBashIfSandboxed\": true\n  }\n}",
-    "note": "De release notes noemen de instelling als sandbox.autoAllowBashIfSandboxed: true; dit is dezelfde instelling in JSON-vorm."
-   },
-   "terms": [
-    {
-     "term": "Code Mode",
-     "explanation": "Een experimentele modus in Claude Code waarin Claude een stukje JavaScript schrijft dat zijn tools aanroept, in plaats van elke tool apart aan te roepen."
-    },
-    {
-     "term": "sandbox",
-     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
-    },
-    {
-     "term": "/loop",
-     "explanation": "Een commando in Claude Code dat een opdracht steeds opnieuw laat uitvoeren, bijvoorbeeld om iets in de gaten te houden."
-    },
-    {
-     "term": "contextvenster",
-     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
-    }
-   ],
-   "soort": "release",
-   "fit": {
-    "score": 0.75,
-    "why": "Wijziging in sandbox en toestemming, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
-   },
-   "labels": [
-    "claude-code-sandbox",
-    "claude-code-permissies",
-    "claude-modellen"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "ai_context_engineering",
-    "pts": 2
-   }
-  },
-  {
    "id": "9204ea2d5973",
    "title": "Genie One Accuracy: Why Curated Agents Need Governed Context",
    "url": "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context",
@@ -1655,7 +1551,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.85,
     "quality": 0.8,
     "feedback": -0.06,
@@ -1789,7 +1685,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.44,
+    "recency": 0.43,
     "source": 0.85,
     "quality": 0.75,
     "feedback": -0.04,
@@ -1886,6 +1782,110 @@
    }
   },
   {
+   "id": "3e9bbba1efea",
+   "title": "Claude Code: wat is er nieuw in week 46 (v2.1.321 t/m v2.1.325)",
+   "url": "https://github.com/anthropics/claude-code/releases?week=2026-W46",
+   "source_id": "claude_code_releases",
+   "published_at": "2026-11-15T23:59:59Z",
+   "fetched_at": "2026-11-14T03:13:13.961822Z",
+   "summary": "Claude Code kan in een experimentele Code Mode zijn tools via JavaScript aanroepen. Bash-commando's in de sandbox volgen weer de gewone toestemmingsvragen, en Fable 5.2 is het nieuwe standaard-Fable-model.",
+   "personal_relevance": "De nieuwe toestemmingsregels veranderen hoe Claude Code in je projecten en geplande taken werkt.",
+   "experiment": "Werk Claude Code bij en laat het in een testproject een dbt-commando in de sandbox draaien. Kijk of het nu om toestemming vraagt, en probeer daarna de instelling autoAllowBashIfSandboxed.",
+   "limitations": [
+    "Code Mode is experimenteel; hoe het precies werkt staat in de documentatie die we hier niet konden openen.",
+    "De release notes van v2.1.321 en v2.1.322 waren alleen in het weekoverzicht te lezen, niet volledig."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Claude Code releases",
+     "url": "https://github.com/anthropics/claude-code/releases"
+    },
+    {
+     "label": "Code Mode",
+     "url": "https://code.claude.com/docs/en/code-mode"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "claude",
+    "ai_context"
+   ],
+   "relevance_score": 90,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.56,
+    "source": 0.8,
+    "quality": 0.62,
+    "feedback": 0.02,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Claude Code: Code Mode als proef, en sandbox vraagt weer toestemming",
+   "story": [
+    "De opvallendste nieuwe functie van deze week is Code Mode (v2.1.323). Claude roept zijn tools dan niet één voor één aan, maar schrijft een stukje JavaScript dat die tools aanroept. Het is experimenteel en staat uit tot je het zelf aanzet. Een organisatie kan het ook centraal uitzetten.",
+    "Belangrijker voor je dagelijkse werk is een wijziging in v2.1.325. Bash-commando's in de sandbox draaien niet meer vanzelf zonder vragen. Ze volgen weer de gewone toestemmingsregels. Wil je het oude gedrag, dan zet je sandbox.autoAllowBashIfSandboxed op true. Ook alleen-lezen git-commando's in een onbekende repository vragen nu eerst toestemming.",
+    "Diezelfde versie maakt geplande taken en /loop voorzichtiger. Ze vragen nu eerst toestemming voordat ze een skill draaien die eigen toegestane tools (allowed-tools) of hooks meebrengt. Een skill kan zo niet ongemerkt meer rechten krijgen dan je dacht.",
+    "Verder werd Claude Fable 5.2 in v2.1.321 het standaard-Fable-model, met een contextvenster van 1 miljoen tokens. Plugins kunnen sinds v2.1.323 aangeven met welke versies van Claude Code ze werken. Gebruik je Claude Code met dbt-skills en hooks, controleer dan na het bijwerken of je sandbox-commando's ineens om toestemming vragen."
+   ],
+   "key_facts": [
+    "v2.1.321: Claude Fable 5.2 (claude-fable-5-2) is het standaard-Fable-model, met 1M context en $8/$40 per miljoen tokens ($0,20 voor cache reads).",
+    "v2.1.322: fast mode op Vertex in de regio's global, us en eu.",
+    "v2.1.323: Code Mode, een experimentele opt-in waarin Claude JavaScript schrijft om zijn tools aan te roepen; plugins kunnen een ondersteund versiebereik van Claude Code opgeven.",
+    "v2.1.323: voor een onbekend model-ID gaat Claude Code nu uit van 1M context in plaats van 200K.",
+    "v2.1.325: gesandboxte Bash-commando's volgen standaard de gewone toestemmingsflow; sandbox.autoAllowBashIfSandboxed: true behoudt het oude gedrag.",
+    "v2.1.325: alleen-lezen git-commando's in onvertrouwde repositories vragen eerst; geplande taken en /loop vragen eerst bij skills met allowed-tools of hooks."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Met deze instelling in je settings.json draaien Bash-commando's in de sandbox weer zonder toestemmingsvraag, zoals vóór v2.1.325.",
+    "language": "json",
+    "code": "{\n  \"sandbox\": {\n    \"autoAllowBashIfSandboxed\": true\n  }\n}",
+    "note": "De release notes noemen de instelling als sandbox.autoAllowBashIfSandboxed: true; dit is dezelfde instelling in JSON-vorm."
+   },
+   "terms": [
+    {
+     "term": "Code Mode",
+     "explanation": "Een experimentele modus in Claude Code waarin Claude een stukje JavaScript schrijft dat zijn tools aanroept, in plaats van elke tool apart aan te roepen."
+    },
+    {
+     "term": "sandbox",
+     "explanation": "Een afgeschermde omgeving waarin een agent code of commando's mag draaien zonder bij de rest van je systeem te kunnen."
+    },
+    {
+     "term": "/loop",
+     "explanation": "Een commando in Claude Code dat een opdracht steeds opnieuw laat uitvoeren, bijvoorbeeld om iets in de gaten te houden."
+    },
+    {
+     "term": "contextvenster",
+     "explanation": "De hoeveelheid tekst die een taalmodel in één keer kan meenemen: instructies, gesprek en toolresultaten samen."
+    }
+   ],
+   "soort": "release",
+   "fit": {
+    "score": 0.75,
+    "why": "Wijziging in sandbox en toestemming, zoals je duim bij 'Claude Code kan nergens meer schrijven buiten je projectmap'."
+   },
+   "labels": [
+    "claude-code-sandbox",
+    "claude-code-permissies",
+    "claude-modellen"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "ai_context_engineering",
+    "pts": 2
+   }
+  },
+  {
    "id": "e7332a78bea8",
    "title": "Claude Code: wat is er nieuw in week 47 (v2.1.326 t/m v2.1.330)",
    "url": "https://github.com/anthropics/claude-code/releases?week=2026-W47",
@@ -1918,7 +1918,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.8,
     "quality": 0.6,
     "feedback": 0.01,
@@ -2031,7 +2031,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.67,
     "feedback": -0.03,
@@ -2244,7 +2244,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -2493,7 +2493,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2624,7 +2624,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.69,
+    "recency": 0.68,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.04,
@@ -2852,7 +2852,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.35,
+    "recency": 0.34,
     "source": 1.0,
     "quality": 0.75,
     "feedback": -0.04,
@@ -2963,7 +2963,7 @@
    "relevance_score": 87,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.89,
+    "recency": 0.87,
     "source": 0.68,
     "quality": 0.47,
     "feedback": 0.01,
@@ -3262,7 +3262,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.67,
     "fit": 0.05
@@ -3369,7 +3369,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.88,
+    "recency": 0.87,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.05,
@@ -3896,7 +3896,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -4007,7 +4007,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.65,
+    "recency": 0.64,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.04,
@@ -4125,7 +4125,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.68,
+    "recency": 0.67,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -4761,7 +4761,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.85,
     "quality": 0.58,
     "feedback": -0.03,
@@ -4889,7 +4889,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.04,
@@ -5027,7 +5027,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.75,
+    "recency": 0.74,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -5123,7 +5123,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.8,
+    "recency": 0.79,
     "source": 0.51,
     "quality": 0.6,
     "feedback": -0.01,
@@ -5464,87 +5464,6 @@
    }
   },
   {
-   "id": "966a182dbe00",
-   "title": "Who Gets to Plant in the Gold Layer?",
-   "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
-   "source_id": "simon_whiteley",
-   "published_at": "2026-11-02T11:41:21Z",
-   "fetched_at": "2026-11-02T14:36:05.422340Z",
-   "summary": "Martin McMillan van Advancing Analytics stelt een presentatielaag op Gold voor waarin analisten zelf bouwen. Wat breed bruikbaar blijkt, zetten engineers na review in Gold.",
-   "personal_relevance": "Een concreet model voor wie wat mag in Gold, nu ook AI-assistenten op die laag leunen.",
-   "experiment": "Teken voor je eigen platform (zonder werkdata, alleen de structuur) waar analistenlogica nu zit en welke stap nodig is om één veelgebruikte definitie naar Gold te halen.",
-   "limitations": [
-    "Advancing Analytics is een adviesbureau met een investering van Databricks Ventures; het stuk leunt op Databricks-functies.",
-    "Het is een werkwijze, geen gemeten resultaat."
-   ],
-   "availability_status": "onbekend",
-   "topics": [
-    "data_architecture_modeling",
-    "ai_on_data_platform",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "architectuur",
-    "ai_context",
-    "kwaliteit"
-   ],
-   "relevance_score": 83,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.29,
-    "source": 0.85,
-    "quality": 0.58,
-    "fit": 0.15
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:47:31Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
-   "story": [
-    "Als het datateam het te druk heeft, bouwen analisten hun eigen logica in Power BI of een los semantisch model. Martin McMillan, consultant bij Advancing Analytics, noemt dat schaduwlogica: het draait wel, maar niemand van het platform ziet het. Hij wil die logica zichtbaar maken in plaats van verbieden.",
-    "Zijn voorstel is een presentatielaag (ook wel platinum) bovenop Gold. Analisten krijgen daar in Databricks een eigen ontwikkelplek met de juiste rechten. Ze beginnen dun, met een view die één op één over Gold-tabellen ligt, en kopiëren geen data. Ze werken in notebooks, met de bedrijfsregels in Markdown naast de code.",
-    "Engineers kijken die producten na op prestaties, veiligheid en onderhoudbaarheid. Blijkt een definitie breed bruikbaar, dan bouwen ze die na in Gold en gebruikt de presentatielaag hem vandaar. De richting blijft zo altijd dezelfde: de presentatielaag leunt op Gold, nooit andersom. Unity Catalog en de releaseprocedure zorgen dat niemand direct in productie wijzigt.",
-    "Volgens McMillan is dit ook belangrijk voor AI. Genie en metric views gebruiken deze laag, en een agent moet weten of een maatstaf voor één team geldt of voor het hele bedrijf. Beschrijvingen, tags en certificering in Unity Catalog geven dat aan. Het lijkt op hoe je in dbt een sandbox-schema naast je productiemodellen houdt, maar dan met een vaste route naar Gold."
-   ],
-   "key_facts": [
-    "Blog van Martin McMillan (Senior Consultant Data Intelligence, Advancing Analytics), 2 november 2026.",
-    "Kernpunt: 'Gold eerst', met ruimte om te onderzoeken en een ondersteunde route om Gold te verbeteren.",
-    "De presentatielaag gebruikt Gold; Gold hangt nooit af van de presentatielaag.",
-    "Analisten bouwen in een ontwikkelplek met rechten; engineers reviewen; brede definities gaan na review naar Gold. Directe wijzigingen in productie blokkeer je met Unity Catalog en werkruimterechten.",
-    "Gezag van een tabel komt uit afspraken, eigenaarschap en validatie, zichtbaar via beschrijvingen, tags en certificering in Unity Catalog.",
-    "Hij noemt Lakeflow Jobs, metric views, Genie Agents, Genie Ontology en Delta Sharing, en waarschuwt dat Data Vault-structuren in Silver vaak omgezet moeten worden voor BI."
-   ],
-   "article_type": "opinie",
-   "author": "Martin McMillan, Senior Consultant Data Intelligence bij Advancing Analytics, met ervaring in semantische modellen, Power BI en Databricks",
-   "terms": [
-    {
-     "term": "schaduwlogica",
-     "explanation": "Berekeningen en koppelingen die buiten het dataplatform worden gebouwd, bijvoorbeeld in een Power BI-model, zodat het datateam ze niet ziet of beheert."
-    },
-    {
-     "term": "presentatielaag",
-     "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen."
-    },
-    {
-     "term": "certificering",
-     "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.65,
-    "why": "Over de medaillonlaag en vaste definities, zoals je duim bij 'metric views worden vanzelf een Power BI-model'."
-   },
-   "labels": [
-    "presentatielaag",
-    "vaste-metric-definities",
-    "semantische-laag"
-   ]
-  },
-  {
    "id": "f49f6dcce187",
    "title": "Typed Graphs, Checked Types: Graph as Code for Agentic Engineering and Data Quality",
    "url": "https://www.ssp.sh/blog/context-as-code-typed-graphs-checked/",
@@ -5582,7 +5501,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.43,
+    "recency": 0.42,
     "source": 0.68,
     "quality": 0.62,
     "feedback": 0.01,
@@ -5695,7 +5614,7 @@
    "relevance_score": 83,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.46,
+    "recency": 0.45,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.04,
@@ -6284,6 +6203,87 @@
    }
   },
   {
+   "id": "966a182dbe00",
+   "title": "Who Gets to Plant in the Gold Layer?",
+   "url": "https://www.advancinganalytics.co.uk/blog/who-gets-to-plant-in-the-gold-layer",
+   "source_id": "simon_whiteley",
+   "published_at": "2026-11-02T11:41:21Z",
+   "fetched_at": "2026-11-02T14:36:05.422340Z",
+   "summary": "Martin McMillan van Advancing Analytics stelt een presentatielaag op Gold voor waarin analisten zelf bouwen. Wat breed bruikbaar blijkt, zetten engineers na review in Gold.",
+   "personal_relevance": "Een concreet model voor wie wat mag in Gold, nu ook AI-assistenten op die laag leunen.",
+   "experiment": "Teken voor je eigen platform (zonder werkdata, alleen de structuur) waar analistenlogica nu zit en welke stap nodig is om één veelgebruikte definitie naar Gold te halen.",
+   "limitations": [
+    "Advancing Analytics is een adviesbureau met een investering van Databricks Ventures; het stuk leunt op Databricks-functies.",
+    "Het is een werkwijze, geen gemeten resultaat."
+   ],
+   "availability_status": "onbekend",
+   "topics": [
+    "data_architecture_modeling",
+    "ai_on_data_platform",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "architectuur",
+    "ai_context",
+    "kwaliteit"
+   ],
+   "relevance_score": 82,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.29,
+    "source": 0.85,
+    "quality": 0.58,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "McMillan: geef analisten een eigen tuin naast Gold, met een weg terug",
+   "story": [
+    "Als het datateam het te druk heeft, bouwen analisten hun eigen logica in Power BI of een los semantisch model. Martin McMillan, consultant bij Advancing Analytics, noemt dat schaduwlogica: het draait wel, maar niemand van het platform ziet het. Hij wil die logica zichtbaar maken in plaats van verbieden.",
+    "Zijn voorstel is een presentatielaag (ook wel platinum) bovenop Gold. Analisten krijgen daar in Databricks een eigen ontwikkelplek met de juiste rechten. Ze beginnen dun, met een view die één op één over Gold-tabellen ligt, en kopiëren geen data. Ze werken in notebooks, met de bedrijfsregels in Markdown naast de code.",
+    "Engineers kijken die producten na op prestaties, veiligheid en onderhoudbaarheid. Blijkt een definitie breed bruikbaar, dan bouwen ze die na in Gold en gebruikt de presentatielaag hem vandaar. De richting blijft zo altijd dezelfde: de presentatielaag leunt op Gold, nooit andersom. Unity Catalog en de releaseprocedure zorgen dat niemand direct in productie wijzigt.",
+    "Volgens McMillan is dit ook belangrijk voor AI. Genie en metric views gebruiken deze laag, en een agent moet weten of een maatstaf voor één team geldt of voor het hele bedrijf. Beschrijvingen, tags en certificering in Unity Catalog geven dat aan. Het lijkt op hoe je in dbt een sandbox-schema naast je productiemodellen houdt, maar dan met een vaste route naar Gold."
+   ],
+   "key_facts": [
+    "Blog van Martin McMillan (Senior Consultant Data Intelligence, Advancing Analytics), 2 november 2026.",
+    "Kernpunt: 'Gold eerst', met ruimte om te onderzoeken en een ondersteunde route om Gold te verbeteren.",
+    "De presentatielaag gebruikt Gold; Gold hangt nooit af van de presentatielaag.",
+    "Analisten bouwen in een ontwikkelplek met rechten; engineers reviewen; brede definities gaan na review naar Gold. Directe wijzigingen in productie blokkeer je met Unity Catalog en werkruimterechten.",
+    "Gezag van een tabel komt uit afspraken, eigenaarschap en validatie, zichtbaar via beschrijvingen, tags en certificering in Unity Catalog.",
+    "Hij noemt Lakeflow Jobs, metric views, Genie Agents, Genie Ontology en Delta Sharing, en waarschuwt dat Data Vault-structuren in Silver vaak omgezet moeten worden voor BI."
+   ],
+   "article_type": "opinie",
+   "author": "Martin McMillan, Senior Consultant Data Intelligence bij Advancing Analytics, met ervaring in semantische modellen, Power BI en Databricks",
+   "terms": [
+    {
+     "term": "schaduwlogica",
+     "explanation": "Berekeningen en koppelingen die buiten het dataplatform worden gebouwd, bijvoorbeeld in een Power BI-model, zodat het datateam ze niet ziet of beheert."
+    },
+    {
+     "term": "presentatielaag",
+     "explanation": "Een laag bovenop Gold waarin data voor één doel of team wordt klaargezet, zonder de gedeelde Gold-tabellen te veranderen."
+    },
+    {
+     "term": "certificering",
+     "explanation": "Een keurmerk op een tabel of definitie dat zegt: dit is de afgesproken, betrouwbare bron."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.65,
+    "why": "Over de medaillonlaag en vaste definities, zoals je duim bij 'metric views worden vanzelf een Power BI-model'."
+   },
+   "labels": [
+    "presentatielaag",
+    "vaste-metric-definities",
+    "semantische-laag"
+   ]
+  },
+  {
    "id": "a9b6458ba033",
    "title": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
    "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow",
@@ -6714,7 +6714,7 @@
    "relevance_score": 81,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.59,
+    "recency": 0.58,
     "source": 0.85,
     "quality": 0.53,
     "feedback": -0.04,
@@ -6803,7 +6803,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.28,
+    "recency": 0.27,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -6972,97 +6972,6 @@
    }
   },
   {
-   "id": "ad991551648f",
-   "title": "The new Genie: autonomous AI for complex enterprise work",
-   "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-11T16:00:00Z",
-   "fetched_at": "2026-11-12T03:13:30.271950Z",
-   "summary": "Databricks presenteert de nieuwe Genie: een agent die taken op een schema of na een signaal uitvoert, voortgang bijhoudt en om goedkeuring vraagt. Erbij komen Genie Search en uitbreidingen van Genie Agents.",
-   "personal_relevance": "Een agent die op je eigen Gold-data en definities handelt, met goedkeuring en rechten via Unity Catalog.",
-   "experiment": "Bedenk één terugkerende controle op openbare data (bijvoorbeeld 'meld als het aantal KNMI-metingen per dag zakt') en schrijf uit welke data, welke goedkeuring en welke controle een agent daarvoor nodig heeft.",
-   "limitations": [
-    "Lanceringsstuk zonder status, prijs of technische details over de werking.",
-    "De benchmarkclaim is door Databricks zelf gemeten en niet onderbouwd."
-   ],
-   "availability_status": "aangekondigd",
-   "topics": [
-    "ai_on_data_platform",
-    "ai_agents_rag",
-    "databricks_data_engineering"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "databricks"
-   ],
-   "relevance_score": 80,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.46,
-    "source": 0.85,
-    "quality": 0.52,
-    "feedback": -0.02,
-    "fit": 0.05
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:47:31Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "databricks_engineering_blog",
-     "title": "The new Genie: autonomous AI for complex enterprise work",
-     "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
-     "published_at": "2026-11-11T16:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring",
-   "story": [
-    "Tot nu toe beantwoordde Genie vooral vragen over data. Databricks introduceert nu een Genie die zelf langere taken uitvoert. Je geeft hem een opdracht en toegang tot tools. Hij houdt de voortgang bij, vraagt om ontbrekende informatie en handelt als er iets nieuws binnenkomt.",
-    "Zo'n taak kan op een schema draaien of starten op een signaal, bijvoorbeeld als een maatstaf zakt. Een voorbeeld uit het artikel: claims bewaken op fraudepatronen, een dossier samenstellen en het naar de juiste afdeling sturen als een segment buiten de grenzen valt. Voor de context leunt Genie op Genie Ontology (definities en verbanden) en een persoonlijk geheugen.",
-    "De data komt uit tabellen in het lakehouse, dashboards, notebooks, bestanden in Unity Catalog-volumes en externe apps via MCP. Genie werkt met de identiteit van de gebruiker, dus met diens rechten in Unity Catalog. Beheerders bepalen welke tools en koppelingen mogen en welke acties eerst goedgekeurd moeten worden. Elke actie wordt vastgelegd, en er zijn budgetten per gebruiker.",
-    "Het is vooral een lanceringsstuk. Databricks claimt dat Genie 91 procent van de taken goed deed, 1,6 keer zo vaak als een niet-genoemde andere agent, maar geeft geen methode. Een status (GA of preview) en prijs staan er niet bij. Voor jou telt vooral de richting: de agent werkt op je eigen tabellen en definities, dus hoe goed je Gold en metric views zijn, bepaalt hoe goed hij werkt."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 11 november 2026.",
-    "Nieuw: een autonome Genie die lange taken op een schema of na een trigger uitvoert, voortgang bijhoudt en om goedkeuring vraagt; plus Genie Search.",
-    "Context komt uit Genie Ontology (met OntoRank) en een persoonlijk geheugen; data uit lakehouse-tabellen, dashboards, notebooks, Unity Catalog-volumes, geïndexeerde apps en MCP-bronnen.",
-    "Genie werkt met de identiteit en rechten van de gebruiker; skills staan in Unity Catalog en draaien met de rechten van wie ze aanroept.",
-    "Beheer via Unity Gateway: toegang, tools, goedkeuringen, budgetten en tracing.",
-    "Claim van Databricks: 91% van de taakruns goed, 1,6 keer een frontier-agent, met minder dan de helft van de tokens; zonder methodebeschrijving. Geen status of prijs genoemd."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Genie Ontology",
-     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
-    },
-    {
-     "term": "MCP",
-     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.55,
-    "why": "Agents op eigen data spreken je aan, maar dit is een aankondiging zonder details; je gaf 'te vaag' bij vergelijkbare stukken."
-   },
-   "labels": [
-    "genie-one",
-    "data-agent",
-    "human-in-the-loop"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -2
-   }
-  },
-  {
    "id": "760c502508bd",
    "title": "Using a \"chaos loop\" to harden the Claude Docs launch: 60 server errors across billions of requests",
    "url": "https://claude.dev/blog/chaos-loop-claude-docs-launch/",
@@ -7100,7 +7009,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.6,
+    "recency": 0.59,
     "source": 0.51,
     "quality": 0.63,
     "feedback": -0.04,
@@ -7370,6 +7279,97 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -4
+   }
+  },
+  {
+   "id": "ad991551648f",
+   "title": "The new Genie: autonomous AI for complex enterprise work",
+   "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-11T16:00:00Z",
+   "fetched_at": "2026-11-12T03:13:30.271950Z",
+   "summary": "Databricks presenteert de nieuwe Genie: een agent die taken op een schema of na een signaal uitvoert, voortgang bijhoudt en om goedkeuring vraagt. Erbij komen Genie Search en uitbreidingen van Genie Agents.",
+   "personal_relevance": "Een agent die op je eigen Gold-data en definities handelt, met goedkeuring en rechten via Unity Catalog.",
+   "experiment": "Bedenk één terugkerende controle op openbare data (bijvoorbeeld 'meld als het aantal KNMI-metingen per dag zakt') en schrijf uit welke data, welke goedkeuring en welke controle een agent daarvoor nodig heeft.",
+   "limitations": [
+    "Lanceringsstuk zonder status, prijs of technische details over de werking.",
+    "De benchmarkclaim is door Databricks zelf gemeten en niet onderbouwd."
+   ],
+   "availability_status": "aangekondigd",
+   "topics": [
+    "ai_on_data_platform",
+    "ai_agents_rag",
+    "databricks_data_engineering"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "databricks"
+   ],
+   "relevance_score": 79,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.45,
+    "source": 0.85,
+    "quality": 0.52,
+    "feedback": -0.02,
+    "fit": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:47:31Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "databricks_engineering_blog",
+     "title": "The new Genie: autonomous AI for complex enterprise work",
+     "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work",
+     "published_at": "2026-11-11T16:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Genie wordt een agent die zelf lange taken uitvoert, met jouw goedkeuring",
+   "story": [
+    "Tot nu toe beantwoordde Genie vooral vragen over data. Databricks introduceert nu een Genie die zelf langere taken uitvoert. Je geeft hem een opdracht en toegang tot tools. Hij houdt de voortgang bij, vraagt om ontbrekende informatie en handelt als er iets nieuws binnenkomt.",
+    "Zo'n taak kan op een schema draaien of starten op een signaal, bijvoorbeeld als een maatstaf zakt. Een voorbeeld uit het artikel: claims bewaken op fraudepatronen, een dossier samenstellen en het naar de juiste afdeling sturen als een segment buiten de grenzen valt. Voor de context leunt Genie op Genie Ontology (definities en verbanden) en een persoonlijk geheugen.",
+    "De data komt uit tabellen in het lakehouse, dashboards, notebooks, bestanden in Unity Catalog-volumes en externe apps via MCP. Genie werkt met de identiteit van de gebruiker, dus met diens rechten in Unity Catalog. Beheerders bepalen welke tools en koppelingen mogen en welke acties eerst goedgekeurd moeten worden. Elke actie wordt vastgelegd, en er zijn budgetten per gebruiker.",
+    "Het is vooral een lanceringsstuk. Databricks claimt dat Genie 91 procent van de taken goed deed, 1,6 keer zo vaak als een niet-genoemde andere agent, maar geeft geen methode. Een status (GA of preview) en prijs staan er niet bij. Voor jou telt vooral de richting: de agent werkt op je eigen tabellen en definities, dus hoe goed je Gold en metric views zijn, bepaalt hoe goed hij werkt."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 11 november 2026.",
+    "Nieuw: een autonome Genie die lange taken op een schema of na een trigger uitvoert, voortgang bijhoudt en om goedkeuring vraagt; plus Genie Search.",
+    "Context komt uit Genie Ontology (met OntoRank) en een persoonlijk geheugen; data uit lakehouse-tabellen, dashboards, notebooks, Unity Catalog-volumes, geïndexeerde apps en MCP-bronnen.",
+    "Genie werkt met de identiteit en rechten van de gebruiker; skills staan in Unity Catalog en draaien met de rechten van wie ze aanroept.",
+    "Beheer via Unity Gateway: toegang, tools, goedkeuringen, budgetten en tracing.",
+    "Claim van Databricks: 91% van de taakruns goed, 1,6 keer een frontier-agent, met minder dan de helft van de tokens; zonder methodebeschrijving. Geen status of prijs genoemd."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "MCP",
+     "explanation": "Model Context Protocol: een open standaard waarmee een AI-assistent tools en databronnen kan aanroepen, zoals een stekker die op veel apparaten past."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.55,
+    "why": "Agents op eigen data spreken je aan, maar dit is een aankondiging zonder details; je gaf 'te vaag' bij vergelijkbare stukken."
+   },
+   "labels": [
+    "genie-one",
+    "data-agent",
+    "human-in-the-loop"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -2
    }
   },
   {
@@ -8123,7 +8123,7 @@
    "relevance_score": 75,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.22,
+    "recency": 0.21,
     "source": 0.8,
     "quality": 0.58,
     "feedback": -0.04,
@@ -11889,7 +11889,7 @@
    "since": "2026-11-09",
    "last": "2026-11-24",
    "week": 2,
-   "prev_week": 3,
+   "prev_week": 2,
    "status": "speelt"
   },
   {
@@ -16206,10 +16206,10 @@
    "dbt_analytics_engineering": 0.96,
    "cicd_data_deployment": 0.36,
    "ai_on_data_platform": 0.97,
-   "databricks_data_engineering": 0.63,
-   "powerbi_semantic_models": 0.62,
+   "databricks_data_engineering": 0.62,
+   "powerbi_semantic_models": 0.61,
    "data_governance_privacy": 0.37,
-   "data_architecture_modeling": 0.6,
+   "data_architecture_modeling": 0.59,
    "ai_context_engineering": 0.96,
    "claude_ai_development": 0.67,
    "ai_agents_rag": 0.86,
@@ -16221,7 +16221,7 @@
    "databricks_blog": 0.95,
    "powerbi_blog": 0.27,
    "dbt_developer_blog": 0.63,
-   "claude_code_releases": 0.25,
+   "claude_code_releases": 0.24,
    "azure_databricks_release_notes": 0.53,
    "fabric_blog": -0.07,
    "claude_blog": 0.46,
@@ -16304,7 +16304,7 @@
  },
  "repo": "tomasr91/data-ai-radar",
  "quality_report": {
-  "fetched_items": 480,
+  "fetched_items": 821,
   "unique_after_dedupe": 760,
   "merged_duplicates": 54,
   "shown": 71,
@@ -16426,7 +16426,7 @@
     "title": "MCP tools in Genie Agents are generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/ai-bi/release-notes/2026#mcp-tools-in-genie-agents-are-generally-available",
-    "relevance_score": 84,
+    "relevance_score": 83,
     "decision": "excluded",
     "excluded_by": [
      "weekoverzicht"
@@ -16490,17 +16490,6 @@
     "relevance_score": 81,
     "decision": "excluded",
     "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "v2.1.327",
-    "source_id": "claude_code_releases",
-    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
-    "relevance_score": 81,
-    "decision": "excluded",
-    "excluded_by": [
-     "minor_builds",
      "weekoverzicht"
     ]
    },
@@ -16592,6 +16581,17 @@
     "decision": "excluded",
     "excluded_by": [
      "minor_builds"
+    ]
+   },
+   {
+    "title": "v2.1.327",
+    "source_id": "claude_code_releases",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.327",
+    "relevance_score": 80,
+    "decision": "excluded",
+    "excluded_by": [
+     "minor_builds",
+     "weekoverzicht"
     ]
    },
    {
@@ -16825,14 +16825,6 @@
     ]
    },
    {
-    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
-    "source_id": "fabric_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
-    "relevance_score": 78,
-    "decision": "included",
-    "excluded_by": []
-   },
-   {
     "title": "Scalar User-defined functions (UDFs) in Microsoft Fabric Data Warehouse (Generally Available)",
     "source_id": "fabric_blog",
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
@@ -16878,14 +16870,6 @@
     "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
     "relevance_score": 78,
     "decision": "area_cap",
-    "excluded_by": []
-   },
-   {
-    "title": "Paginated reports in Power BI support outbound access protection (Preview)",
-    "source_id": "powerbi_blog",
-    "url": "https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Paginated-reports-in-Power-BI-support-outbound-access-protection/ba-p/5435045",
-    "relevance_score": 78,
-    "decision": "included",
     "excluded_by": []
    },
    {
@@ -16980,11 +16964,27 @@
     ]
    },
    {
+    "title": "Tune the performance of your medallion pipeline in Fabric Data Warehouse",
+    "source_id": "fabric_blog",
+    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Tune-the-performance-of-your-medallion-pipeline-in-Fabric-Data/ba-p/5377545",
+    "relevance_score": 77,
+    "decision": "included",
+    "excluded_by": []
+   },
+   {
     "title": "Branch, sync, serve: What our Lakebase Hackathon taught us about building on Lakebase",
     "source_id": "databricks_blog",
     "url": "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase",
     "relevance_score": 77,
     "decision": "source_cap",
+    "excluded_by": []
+   },
+   {
+    "title": "Hide your slop PR descriptions behind <details><summary>",
+    "source_id": "simon_willison",
+    "url": "https://simonwillison.net/2026/Nov/9/details-summary/",
+    "relevance_score": 77,
+    "decision": "kort_vervallen",
     "excluded_by": []
    }
   ],
