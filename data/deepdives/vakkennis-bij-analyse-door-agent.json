@@ -1,0 +1,194 @@
+{
+  "format_version": 1,
+  "id": "vakkennis-bij-analyse-door-agent",
+  "plan_id": "vakkennis-bij-analyse-door-agent",
+  "request_issue": 42,
+  "headline": "Een agent schrijft de SQL, vakkennis in je gold-laag vangt de fouten",
+  "summary": "Een agent met SQL-toegang via een MCP-server kan zelf data verkennen, analyseren en een dashboard bouwen. Maar hij weet niet wat normaal is in jouw vak, en dan gaan fouten stilletjes door. Dit stuk laat zien waar het misgaat, en hoe je vakkennis vastlegt in beschrijvingen, metric views en controles, zodat collega's veiliger zelf vragen kunnen stellen.",
+  "sections": [
+    {
+      "heading": "Wat een agent zelf al kan",
+      "paragraphs": [
+        "Simon Späti liet in november zien hoe ver een agent komt zonder datateam. Hij koppelde Claude via een MCP-server aan MotherDuck, een clouddienst rond DuckDB. Hij gaf een vraag en drie openbare bronnen: Zwitserse weerdata, stroomverbruik per kwartier en de grenzen van de kantons.",
+        "De agent begon zoals een nieuwe collega zou doen. Hij keek met INFORMATION_SCHEMA welke tabellen en kolommen er zijn, bekeek een paar voorbeeldrijen en vroeg wat kolommen betekenen. Daarna bouwde hij een Python-job die de data laadt, een uitleg van wat hij gemaakt had, en een interactief dashboard.",
+        "Späti deelt analysewerk op in vijf stappen: data halen, inlezen, vragen stellen, laten zien en automatisch verversen. De eerste vier kan iemand uit het vak volgens hem nu zelf, met een agent. De vijfde stap, met snelheid, schaal, rechten en beheer, blijft volgens hem werk voor het datateam."
+      ]
+    },
+    {
+      "heading": "Waar het misgaat zonder vakkennis",
+      "paragraphs": [
+        "Het leerzame deel zit in de controle. Späti verwachtte dat het stroomverbruik vanaf ongeveer 12 graden gaat stijgen. De agent vond zo'n 13,5 graden en controleerde dat op het jaar ervoor. Bij die controle bleek dat het bestand van 2025 de tijdstippen als tekst bewaarde.",
+        "Een eerste run las die datums verkeerd en raakte zo 61 procent van de rijen kwijt. Er kwam geen foutmelding. De uitkomst zag er gewoon uit als een getal. Pas omdat iemand vroeg of het wel klopte, kwam de fout boven. De agent repareerde de inleesstap en voegde controles toe.",
+        "Dat is het patroon. Een agent schrijft prima SQL, maar weet niet wat een redelijke uitkomst is. Hij weet niet dat een temperatuur van 61 graden onzin is, of dat een afdeling nooit twee keer per dag een telling doet. Vergelijk het met een stagiair die snel rekent maar het bedrijf nog niet kent: het rekenwerk klopt, de aannames niet.",
+        "Daar komt bij dat agents niet voorspelbaar zijn (niet-deterministisch). Späti wijst erop dat een nieuwe run andere fouten kan vinden of missen. Volgens hem werkt het model het best met een mens aan het stuur."
+      ]
+    },
+    {
+      "heading": "Drie plekken om vakkennis vast te leggen",
+      "paragraphs": [
+        "Wil je dat collega's zelf vragen stellen, dan moet de kennis die Späti in zijn hoofd had ergens in het platform staan. Dat kan op drie plekken, en ze vullen elkaar aan: betekenis, berekening en controle.",
+        "Betekenis gaat over wat een tabel of kolom is. Denk aan beschrijvingen in je dbt-YAML die als commentaar in Unity Catalog belanden. Een agent die INFORMATION_SCHEMA leest, ziet die beschrijvingen. Hoe beter ze zeggen wat een rij is, welke eenheid een kolom heeft en wat je níet moet optellen, hoe minder hij hoeft te raden.",
+        "Berekening gaat over hoe je een cijfer maakt. Dat leg je vast in een semantische laag, in Databricks als metric view. Volgens de documentatie kan een metric view extra gegevens voor agents bevatten, zoals synoniemen, weergavenamen en opmaakregels, om agents nauwkeuriger te maken. De agent kiest dan een vaste maatstaf in plaats van zelf een som te bedenken.",
+        "Controle gaat over wat normaal is. Dat zijn je tests en controles op de gold-laag: geen dubbele rijen, waarden binnen een redelijk bereik, niets negatief wat niet negatief kan zijn. Dit soort regels (plausibiliteitscontroles) is precies de vakkennis die de 61 procent-fout had gevangen. Leg ze vast als dbt-test, dan draaien ze bij elke run, en niet alleen als iemand eraan denkt."
+      ]
+    },
+    {
+      "heading": "Hoe een agent bij je data komt",
+      "paragraphs": [
+        "Databricks biedt zelf MCP-servers aan, zodat je er geen hoeft te bouwen of te hosten. Volgens de documentatie van november 2026 lopen de nieuwe via Unity Gateway, het onderdeel waar aanroepen langs gaan en waar je met rechten en regels bepaalt wie wat mag. De Genie One MCP is algemeen beschikbaar en beantwoordt vragen in gewone taal, gebaseerd op Genie Ontology.",
+        "Daarnaast is er een SQL-server (system.ai.dbsql, in bèta). Die voert SQL uit op een SQL warehouse met de rechten van degene die hem aanroept. Er zijn ook oudere eindpunten in publieke preview, zoals voor één Genie Agent en voor Unity Catalog-functies. Die lopen volgens de documentatie buiten Unity Gateway om. Ze verschijnen dus niet in de tracering en je kunt er geen regels per MCP op zetten.",
+        "Ook dbt Labs heeft een MCP-server. Daarin zitten tools voor de semantische laag, zoals list_metrics en query_metrics, tools om modellen en lineage op te zoeken, en een execute_sql. Volgens de documentatie voert die alleen één SELECT uit die niets kan wijzigen, en weigert hij al het andere. Let op de dbt CLI-tools in dezelfde server: volgens dbt kunnen die modellen en objecten in je warehouse wél wijzigen.",
+        "Het verschil in route is belangrijk. Vrije SQL geeft de agent alle ruimte om zelf te rekenen, met alle fouten van hierboven. Een route via vaste maatstaven of een afgebakende Genie Agent geeft minder vrijheid, maar de definities komen dan van jou. Hoe meer collega's zonder data-achtergrond vragen stellen, hoe meer die tweede route telt."
+      ]
+    },
+    {
+      "heading": "Waar je op let met rechten",
+      "paragraphs": [
+        "Späti waarschuwt zelf voor drie dingen: zware queries op productie, te ruime rechten en toegang tot persoonsgegevens. Een agent die mag lezen wat de gebruiker mag lezen, leest dat ook echt als de vraag erom vraagt.",
+        "Geef daarom elke gebruiker en agent alleen de rechten die nodig zijn (least privilege). De dbt-documentatie raadt dat letterlijk aan voor de inloggegevens waarmee execute_sql draait. In Databricks geldt hetzelfde voor de warehouse- en Unity Catalog-rechten van de aanroeper.",
+        "In de zorg komt daar nog iets bij. Een externe AI zoals Claude mag geen werkdata zien. Een analyse door een agent op echte gold-data hoort dus binnen Databricks te blijven, bijvoorbeeld via Genie of een eigen agent op het platform. Claude via MCP is prima om op openbare data te oefenen, zoals Späti deed."
+      ]
+    },
+    {
+      "heading": "Wat betekent dit voor je AI-contextlaag?",
+      "paragraphs": [
+        "Voor het project met de AI-contextlaag is dit een bruikbare toets. De vraag is niet alleen of de metadata compleet is. De vraag is ook: staat er genoeg in om de fouten te vangen die een agent maakt? Een beschrijving zegt wat een kolom is, een metric view zegt hoe je hem optelt, een test zegt wanneer het niet klopt.",
+        "Een redelijke eerste stap is één gold-tabel nemen waar collega's vaak vragen over hebben. Schrijf per kolom op wat erin staat en wat een vreemde waarde zou zijn. Zet die vreemde waarden om in tests, en de kerncijfers in een metric view met synoniemen. Laat daarna een agent er vragen over beantwoorden en kijk welke fouten nog doorkomen.",
+        "Zo blijft het werk van het datateam veranderen, niet verdwijnen. Het datateam schrijft minder losse queries, en meer van de regels en definities waar de agent op leunt."
+      ]
+    }
+  ],
+  "showcase": {
+    "caption": "Vakkennis als controlequery: elke regel is iets wat een vakmens weet en een agent niet. Op zes verzonnen meetrijen vangt het een onmogelijke temperatuur, ontbrekende waarden, negatief verbruik en een dubbele rij.",
+    "language": "sql",
+    "code": "-- vakregels als één controlequery op een gold-tabel\nSELECT 'temperatuur tussen -30 en 45 graden' AS vakregel,\n       count(*) FILTER (WHERE temp_c NOT BETWEEN -30 AND 45) AS fout\nFROM metingen\nUNION ALL\nSELECT 'temperatuur ingevuld',\n       count(*) FILTER (WHERE temp_c IS NULL) FROM metingen\nUNION ALL\nSELECT 'verbruik niet negatief',\n       count(*) FILTER (WHERE verbruik_kwh < 0) FROM metingen\nUNION ALL\nSELECT 'één meting per station per dag',\n       count(*) - count(DISTINCT (datum, station)) FROM metingen;",
+    "result": {
+      "columns": [
+        "vakregel",
+        "fout"
+      ],
+      "rows": [
+        [
+          "temperatuur tussen -30 en 45 graden",
+          1
+        ],
+        [
+          "temperatuur ingevuld",
+          2
+        ],
+        [
+          "verbruik niet negatief",
+          1
+        ],
+        [
+          "één meting per station per dag",
+          1
+        ]
+      ]
+    },
+    "note": "Zo werkt het idee in gewone SQL. In dbt zet je dezelfde regels als tests in de YAML van het model, zodat ze bij elke run draaien."
+  },
+  "experiment": "Maak in DuckDB een klein bestand met verzonnen of openbare weerdata (bijvoorbeeld KNMI-daggegevens), en stop er bewust drie fouten in: een datum als tekst in een ander formaat, een onmogelijke temperatuur en een dubbele dag. Laat Claude Code met de DuckDB-CLI een vraag beantwoorden, zoals de gemiddelde temperatuur per maand, zonder iets te zeggen over de fouten. Kijk welke hij zelf opmerkt. Geef hem daarna een korte lijst met vakregels en vraag het opnieuw.",
+  "limitations": [
+    "Späti's voorbeeld is één analyse op openbare data, gepubliceerd op een blog dat ook producten van MotherDuck laat zien.",
+    "Controles vangen alleen fouten die je hebt voorzien; een agent kan op een nieuwe manier fout zitten.",
+    "Een deel van de MCP-servers van Databricks is nog bèta of preview, en de tools van de dbt MCP-server kunnen volgens dbt zonder aankondiging veranderen.",
+    "Met zorgdata hoort de analyse binnen Databricks te blijven, onder de rechten van de gebruiker; externe AI alleen zonder werkdata."
+  ],
+  "further_reading": [
+    {
+      "label": "Databricks-provided MCPs (Microsoft Learn, november 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/agents/mcp-tools/managed-mcp",
+      "note": "Welke MCP-servers Databricks zelf levert, hun status, en welke via Unity Gateway lopen."
+    },
+    {
+      "label": "Unity Catalog metric views (Microsoft Learn, november 2026)",
+      "url": "https://learn.microsoft.com/azure/databricks/metric-views",
+      "note": "Het overzicht van metric views, met de extra gegevens voor agents zoals synoniemen en weergavenamen."
+    },
+    {
+      "label": "Available tools – dbt MCP server (dbt Labs, november 2026)",
+      "url": "https://docs.getdbt.com/docs/dbt-ai/mcp-available-tools",
+      "note": "Alle tools van de dbt MCP-server op een rij, met wat lokaal en wat op afstand werkt en welke iets kunnen wijzigen."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Waarom kwam de fout waarbij 61 procent van de rijen verdween niet vanzelf boven?",
+      "options": [
+        "De agent gaf een foutmelding die werd genegeerd",
+        "De uitkomst zag er normaal uit; pas een controlevraag van iemand met vakkennis bracht het aan het licht",
+        "De SQL van de agent was syntactisch fout",
+        "MotherDuck verwijderde de rijen zonder te melden"
+      ],
+      "answer": 1,
+      "explanation": "Er kwam geen foutmelding: het getal zag er redelijk uit. Alleen de vraag 'klopt dit wel?' bracht de verkeerd gelezen datums aan het licht."
+    },
+    {
+      "question": "Wat leg je vast in een metric view, en wat in een test?",
+      "options": [
+        "In een metric view hoe je een cijfer berekent, in een test wat een normale waarde is",
+        "In een metric view wat een kolom betekent, in een test hoe je hem optelt",
+        "Beide doen hetzelfde, het is alleen een andere notatie",
+        "In een metric view de rechten, in een test de lineage"
+      ],
+      "answer": 0,
+      "explanation": "De metric view legt de berekening vast zodat de agent niet zelf een som bedenkt. Een test controleert of de data binnen wat normaal is valt."
+    },
+    {
+      "question": "Je wilt dat collega's zonder data-achtergrond vragen stellen over een gold-tabel met werkdata. Welke route past het best bij het stuk?",
+      "options": [
+        "Claude via een MCP-server met vrije SQL-toegang op de productietabellen",
+        "Een agent binnen Databricks die werkt met vaste maatstaven of een afgebakende Genie Agent, met alleen de rechten die nodig zijn",
+        "Een export van de tabel naar een externe AI, zodat die zelf kan rekenen",
+        "Geen controles toevoegen, omdat de agent de fouten zelf vindt"
+      ],
+      "answer": 1,
+      "explanation": "Werkdata blijft binnen Databricks, en vaste definities geven minder ruimte voor fouten dan vrije SQL. Least privilege beperkt wat de agent kan lezen."
+    }
+  ],
+  "terms": [
+    {
+      "term": "MCP-server",
+      "explanation": "Een programmaatje dat tools aanbiedt via het Model Context Protocol, zodat een AI-assistent daarmee een databron of programma kan gebruiken."
+    },
+    {
+      "term": "INFORMATION_SCHEMA",
+      "explanation": "Een standaardset systeemtabellen in een database die beschrijft welke tabellen en kolommen er zijn. Handig om een onbekende database te verkennen."
+    },
+    {
+      "term": "niet-deterministisch",
+      "explanation": "Bij dezelfde vraag niet steeds dezelfde uitkomst. Een agent kan in een nieuwe run andere stappen zetten en dus andere fouten maken of vinden."
+    },
+    {
+      "term": "metric view",
+      "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+      "term": "plausibiliteitscontroles",
+      "explanation": "Controles of een waarde wel kan kloppen, zoals een temperatuur binnen een redelijk bereik of geen negatief verbruik. Ze leggen vast wat een vakmens als normaal ziet."
+    },
+    {
+      "term": "Unity Gateway",
+      "explanation": "Het onderdeel van Databricks waar aanroepen van agents en MCP-servers langs gaan. Daar regel je met rechten en regels wie wat mag, en worden aanroepen vastgelegd."
+    },
+    {
+      "term": "Genie One",
+      "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+    },
+    {
+      "term": "least privilege",
+      "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    }
+  ],
+  "currency_check": "Gecontroleerd op 28 november 2026 in de documentatie van Azure Databricks (Databricks-provided MCPs, bijgewerkt 17 november 2026; metric views, bijgewerkt 25 november 2026) en dbt Labs (dbt MCP tools, bijgewerkt 20 november 2026). Het artikel van Späti (20 november 2026) kon deze run niet opnieuw worden geopend; wat erover staat komt uit de uitleg die de radar op 23 november van dat artikel maakte. De oude Databricks SQL-endpoint (/api/2.0/mcp/sql) is als 'legacy' aangeduid en daarom niet als aanrader genoemd. Of system.ai.dbsql ook wijzigende SQL toestaat, staat niet op de gelezen pagina en is weggelaten.",
+  "topics": [
+    "ai_on_data_platform",
+    "ai_context_engineering",
+    "data_quality_observability",
+    "ai_agents_rag"
+  ],
+  "written_at": "2026-11-28T04:45:00Z",
+  "processed_by": "Claude (geplande taak)",
+  "prompt_version": "verdieping-v2"
+}
