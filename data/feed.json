@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-28T04:23:15.760838Z",
+ "generated_at": "2026-11-28T05:13:39.071285Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-28T03:40:00Z",
@@ -1695,7 +1695,7 @@
    "relevance_score": 91,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.82,
+    "recency": 0.81,
     "source": 0.85,
     "quality": 0.63,
     "feedback": -0.03,
@@ -2934,219 +2934,6 @@
    }
   },
   {
-   "id": "d8887a09bc5e",
-   "title": "The components of agent memory",
-   "url": "https://www.anthropic.com/research/components-of-agent-memory",
-   "source_id": "anthropic_engineering",
-   "published_at": "2026-11-06T00:00:00Z",
-   "fetched_at": "2026-11-10T20:23:14.778789Z",
-   "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
-   "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
-   "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
-   "limitations": [
-    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
-    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
-    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Dreaming in Claude Managed Agents",
-     "url": "https://platform.claude.com/docs/en/managed-agents/dreams"
-    },
-    {
-     "label": "Geheugenmap in Managed Agents",
-     "url": "https://platform.claude.com/docs/en/managed-agents/memory"
-    },
-    {
-     "label": "Geheugen in Claude Code",
-     "url": "https://code.claude.com/docs/en/memory"
-    },
-    {
-     "label": "Knowledge wiki quickstart",
-     "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"
-    }
-   ],
-   "topics": [
-    "ai_context_engineering",
-    "ai_agents_rag",
-    "claude_ai_development"
-   ],
-   "groups": [
-    "ai_context",
-    "agents",
-    "claude"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.33,
-    "source": 1.0,
-    "quality": 0.75,
-    "feedback": -0.03,
-    "fit": 0.25
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-11T03:48:00Z",
-   "reading_minutes": 3,
-   "also_reported_by": [
-    {
-     "source_id": "langchain_blog",
-     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
-     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
-     "published_at": "2026-10-28T17:28:42Z",
-     "reason": "zelfde ontwikkeling"
-    },
-    {
-     "source_id": "claude_blog",
-     "title": "The components of agent memory",
-     "url": "https://www.anthropic.com/research/components-of-agent-memory",
-     "published_at": "2026-11-06T00:00:00Z",
-     "reason": "zelfde URL"
-    }
-   ],
-   "format_version": 2,
-   "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
-   "story": [
-    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
-    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
-    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
-    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
-    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
-   ],
-   "key_facts": [
-    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
-    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
-    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
-    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
-    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
-    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "dreaming",
-     "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."
-    },
-    {
-     "term": "transcripten",
-     "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."
-    },
-    {
-     "term": "MEMORY.md",
-     "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."
-    }
-   ],
-   "soort": "achtergrond",
-   "fit": {
-    "score": 0.75,
-    "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."
-   },
-   "labels": [
-    "agent-geheugen",
-    "llm-wiki",
-    "context-als-code"
-   ],
-   "fb_why": {
-    "by": "kind",
-    "name": "achtergrond",
-    "pts": -3
-   }
-  },
-  {
-   "id": "6ff348e652c9",
-   "title": "Three LLM inflection points in twelve months",
-   "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
-   "source_id": "simon_willison",
-   "published_at": "2026-11-24T23:02:07Z",
-   "fetched_at": "2026-11-25T03:13:36.837278Z",
-   "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
-   "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
-   "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
-   "limitations": [
-    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
-    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "Video van de keynote",
-     "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
-    },
-    {
-     "label": "Claude Fable is relentlessly proactive",
-     "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
-    }
-   ],
-   "topics": [
-    "claude_ai_development",
-    "ai_agents_rag"
-   ],
-   "groups": [
-    "claude",
-    "agents"
-   ],
-   "relevance_score": 87,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.85,
-    "source": 0.68,
-    "quality": 0.47,
-    "feedback": 0.01,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-25T03:22:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
-   "story": [
-    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
-    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
-    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
-    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
-    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
-   ],
-   "key_facts": [
-    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
-    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
-    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
-    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
-    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
-    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
-   ],
-   "article_type": "opinie",
-   "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
-   "terms": [
-    {
-     "term": "coding agents",
-     "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
-    },
-    {
-     "term": "Codex",
-     "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
-    }
-   ],
-   "soort": "mening",
-   "fit": {
-    "score": 0.6,
-    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
-   },
-   "labels": [
-    "claude-modellen",
-    "agent-harness"
-   ],
-   "fb_why": {
-    "by": "topic",
-    "name": "claude_ai_development",
-    "pts": 1
-   }
-  },
-  {
    "id": "c63f36899b14",
    "title": "Have dbt skills been bitter lesson’d?",
    "url": "https://docs.getdbt.com/blog/do-coding-agents-still-need-dbt-skills",
@@ -3247,6 +3034,128 @@
    "labels": [
     "claude-dbt-skills",
     "agent-evals"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -3
+   }
+  },
+  {
+   "id": "d8887a09bc5e",
+   "title": "The components of agent memory",
+   "url": "https://www.anthropic.com/research/components-of-agent-memory",
+   "source_id": "anthropic_engineering",
+   "published_at": "2026-11-06T00:00:00Z",
+   "fetched_at": "2026-11-10T20:23:14.778789Z",
+   "summary": "Anthropic beschrijft vier lagen van agentgeheugen en een aparte stap, dreaming, die achteraf de logs doorleest, notities verbetert en wiki's bijhoudt. Advies: vertel Claude waarvoor het geheugen dient, niet hoe hij het moet gebruiken.",
+   "personal_relevance": "Het geeft concrete regels voor hoe je CLAUDE.md en geheugen in Claude Code klein en juist houdt.",
+   "experiment": "Laat Claude Code na een paar sessies in een testproject zijn eigen notities naast de sessielogs leggen en vraag hem fouten te verbeteren en een index te maken; vergelijk de antwoorden op vijf vaste vragen vóór en na.",
+   "limitations": [
+    "Het artikel zegt niet welke status dreaming in Claude Managed Agents heeft (preview of algemeen beschikbaar).",
+    "Dreaming kost extra rekenkracht, en volledig controleren van alle notities is niet altijd haalbaar.",
+    "Bij taken waar het antwoord in één document te vinden is, voegde een wiki weinig toe."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Dreaming in Claude Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/dreams"
+    },
+    {
+     "label": "Geheugenmap in Managed Agents",
+     "url": "https://platform.claude.com/docs/en/managed-agents/memory"
+    },
+    {
+     "label": "Geheugen in Claude Code",
+     "url": "https://code.claude.com/docs/en/memory"
+    },
+    {
+     "label": "Knowledge wiki quickstart",
+     "url": "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki"
+    }
+   ],
+   "topics": [
+    "ai_context_engineering",
+    "ai_agents_rag",
+    "claude_ai_development"
+   ],
+   "groups": [
+    "ai_context",
+    "agents",
+    "claude"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.33,
+    "source": 1.0,
+    "quality": 0.75,
+    "feedback": -0.03,
+    "fit": 0.25
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-11T03:48:00Z",
+   "reading_minutes": 3,
+   "also_reported_by": [
+    {
+     "source_id": "langchain_blog",
+     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+     "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+     "published_at": "2026-10-28T17:28:42Z",
+     "reason": "zelfde ontwikkeling"
+    },
+    {
+     "source_id": "claude_blog",
+     "title": "The components of agent memory",
+     "url": "https://www.anthropic.com/research/components-of-agent-memory",
+     "published_at": "2026-11-06T00:00:00Z",
+     "reason": "zelfde URL"
+    }
+   ],
+   "format_version": 2,
+   "headline": "Anthropic laat agents 's nachts hun geheugen opruimen: 'dreaming'",
+   "story": [
+    "Een agent moet kiezen wat hij onthoudt, voordat hij weet wat later belangrijk wordt. Anthropic vergelijkt het met mensen: overdag leg je ervaringen snel vast, in je slaap orden je ze. Die tweede stap noemt Anthropic dreaming. Een aparte run leest na afloop wat de agent deed en ruimt zijn geheugen op.",
+    "Het geheugen heeft vier lagen. Onderaan staan de transcripten: het volledige logboek van elke sessie. Daarboven notities die Claude tijdens het werk schrijft, zoals regels en correcties. Dan gestructureerde vormen zoals een wiki met gelinkte pagina's. Bovenaan een kleine laag die bij elke sessie automatisch wordt ingeladen, zoals MEMORY.md in Claude Code.",
+    "Dreaming werkt van onder naar boven. Het leest de transcripten als bron van waarheid, toetst bestaande notities daaraan en herschrijft wat fout is. Daarna maakt het nieuwe notities en wikipagina's, voegt dubbele samen en gooit verouderde weg. Alleen stabiele, waardevolle kennis gaat naar de bovenste laag. Een tweede ronde repareert kapotte links en maakt een index.",
+    "De proeven laten zien dat het werkt, maar niet altijd. Op een databasetaak steeg Opus 5.5 met geheugen van 0,655 naar 0,838. Een wiki over een grote verzameling bestanden ging van 13 naar 48 procent goede antwoorden na 128 sessies, en wiki plus zoeken haalde 61 procent. Strikte regels als 'noteer alleen fouten' maakten het geheugen juist minder nuttig.",
+    "Voor jouw werk met Claude Code is het advies direct bruikbaar. Houd de laag die altijd inlaadt klein, want een foute notitie gaat elke sessie mee. Geef doel in plaats van procedure. En laat bij parallelle agents per pagina maar één agent schrijven, anders gaan wijzigingen verloren."
+   ],
+   "key_facts": [
+    "Artikel van Anthropic Engineering, 6 november 2026, geschreven door Lance Martin.",
+    "Vier lagen: transcripten, geheugennotities, representaties zoals wiki's, en een kleine ingeladen laag; dreaming verplaatst kennis omhoog en verbetert hogere lagen.",
+    "Databasetaak (CL-Bench 1.0), score zonder naar met geheugen: Opus 5.5 0,655 naar 0,838; Sonnet 5.5 0,644 naar 0,833; Sonnet 4.6 0,330 naar 0,364 (0,641 met betere prompt).",
+    "Wiki over ongeveer 350.000 bestanden: 13% na 2 sessies naar 48% na 128 sessies; wiki plus zoeken 61%, alleen zoeken 53%.",
+    "De regel 'noteer alleen fouten' verlaagde de winst van geheugen, bijvoorbeeld met 0,234 bij Opus 5.",
+    "Claude Code auto memory laadt alleen de eerste 200 regels of 25 KB van MEMORY.md; dreaming en een geheugenmap zitten in Claude Managed Agents."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "dreaming",
+     "explanation": "Een aparte stap waarin een agent na afloop zijn sessielogs doorleest en zijn geheugen verbetert, ordent en opschoont."
+    },
+    {
+     "term": "transcripten",
+     "explanation": "Het volledige logboek van een sessie: alle berichten, toolaanroepen en resultaten, doorzoekbaar achteraf."
+    },
+    {
+     "term": "MEMORY.md",
+     "explanation": "Het indexbestand van het automatische geheugen in Claude Code; alleen het begin ervan wordt bij elke sessie ingeladen."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.75,
+    "why": "Context engineering met proeven en cijfers, zoals je duimen voor de proef van dbt Labs met Claude en de agent-harness-stukken."
+   },
+   "labels": [
+    "agent-geheugen",
+    "llm-wiki",
+    "context-als-code"
    ],
    "fb_why": {
     "by": "kind",
@@ -3517,6 +3426,97 @@
     "by": "kind",
     "name": "achtergrond",
     "pts": -5
+   }
+  },
+  {
+   "id": "6ff348e652c9",
+   "title": "Three LLM inflection points in twelve months",
+   "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+   "source_id": "simon_willison",
+   "published_at": "2026-11-24T23:02:07Z",
+   "fetched_at": "2026-11-25T03:13:36.837278Z",
+   "summary": "Simon Willison ziet drie omslagpunten in een jaar: agents die meestal goed code schrijven, modellen die een doel met tools zelf oplossen, en modellen die 3D en spellen snappen.",
+   "personal_relevance": "Bevestigt dat je meer bereikt met Claude Code door een helder doel en controle-tools te geven dan door stap voor stap te sturen.",
+   "experiment": "Geef Claude Code in een testproject met openbare data één helder doel (bijv. 'alle dbt-tests slagen en elk model heeft een beschrijving') plus het commando om dat te controleren, en laat hem zonder tussenkomst werken. Vergelijk het resultaat met stap-voor-stap sturen.",
+   "limitations": [
+    "Het bewijs is persoonlijk: eigen projecten en eigen smaak, geen metingen.",
+    "Het stuk gaat over softwareontwikkeling in het algemeen, niet over data- of analyticswerk."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "Video van de keynote",
+     "url": "https://www.youtube.com/watch?v=9RKrSF9d2SE"
+    },
+    {
+     "label": "Claude Fable is relentlessly proactive",
+     "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/"
+    }
+   ],
+   "topics": [
+    "claude_ai_development",
+    "ai_agents_rag"
+   ],
+   "groups": [
+    "claude",
+    "agents"
+   ],
+   "relevance_score": 86,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.85,
+    "source": 0.68,
+    "quality": 0.47,
+    "feedback": 0.01,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-25T03:22:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Willison: drie keer in één jaar werden coding agents écht beter",
+   "story": [
+    "Simon Willison vindt dat softwareontwikkeling in een jaar onherkenbaar is veranderd. Hij ziet drie omslagpunten (inflection points) in wat taalmodellen en coding agents kunnen. Hij schrijft dat hij de meeste code nooit meer met de hand zal typen.",
+    "Het eerste omslagpunt was november 2025, met Claude Opus 4.5. Daarvoor gebruikte hij Claude Code niet dagelijks, omdat hij het te vaak moest verbeteren. Met Opus 4.5 was het standaardresultaat volgens hem meestal goed, en sneller dan zelf doen. OpenAI's GPT-5.1-modellen deden volgens hem hetzelfde voor Codex.",
+    "Het tweede omslagpunt noemt hij 'Fable-klasse' modellen, vanaf juni 2026. Geef zo'n model een doel en de juiste tools, en het lost het probleem desnoods met brute kracht op. Zijn voorbeeld: Fable bouwde zelf een manier om schermafdrukken te maken om een weergavefout in Safari op te lossen. Hij rekent ook Opus 5.5 tot deze klasse en noemt het 'goedkope Fable'. Het derde omslagpunt is 3D en spellen: met Opus 5.5 maakte een agent een saai spel na 12 uur testen en bijstellen echt leuk.",
+    "Wat neem je hieruit mee voor je eigen werk met Claude Code? Willisons les zit vooral in zijn voorbeelden: beschrijf het doel helder, geef de agent tools waarmee hij zijn eigen werk kan controleren, en laat hem lang doorwerken. Dat sluit aan bij werken met dbt, waar tests en een build die slaagt zo'n controle kunnen zijn. Of Fable 5.2 een vierde omslagpunt is, weet hij nog niet.",
+    "Houd wel in je achterhoofd dat zijn bewijs vooral persoonlijk is. Het gaat om zijn eigen projecten, zijn eigen smaak en zijn eigen releasetempo, niet om metingen. Over data- of analyticswerk zegt het stuk niets."
+   ],
+   "key_facts": [
+    "Willison: omslagpunt 1 was november 2025, met Claude Opus 4.5; 'het standaardresultaat was meestal goed' in Claude Code.",
+    "Willison: omslagpunt 2 zijn 'Fable-klasse' modellen (vanaf Claude Fable 5, juni 2026): geef een doel en tools, en het model lost het op.",
+    "Willison rekent Claude Fable 5, 5.1, 5.2 en Opus 5.5 tot die klasse; Opus 5.5 noemt hij 'goedkope Fable'.",
+    "Willison: omslagpunt 3 is 3D-modelleren en spellen maken (september/oktober 2026); Opus 5.5 testte een spel 12 uur en maakte het leuk.",
+    "Willison twijfelt nog of Fable 5.2 een nieuw omslagpunt is.",
+    "Het stuk werkt zijn keynote op de AI Engineer Code Summit van november 2026 verder uit."
+   ],
+   "article_type": "opinie",
+   "author": "Simon Willison, maker van Datasette en medebedenker van Django, schrijft al jaren over werken met taalmodellen",
+   "terms": [
+    {
+     "term": "coding agents",
+     "explanation": "AI-assistenten die zelf code schrijven, uitvoeren en testen in een project, zoals Claude Code of Codex."
+    },
+    {
+     "term": "Codex",
+     "explanation": "De coding agent van OpenAI, vergelijkbaar met Claude Code."
+    }
+   ],
+   "soort": "mening",
+   "fit": {
+    "score": 0.6,
+    "why": "Onderbouwde mening over Claude-modellen, zoals je duimen voor Claude Fable 5.2 en Noonan; minder praktisch dan je dbt-duimen."
+   },
+   "labels": [
+    "claude-modellen",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "claude_ai_development",
+    "pts": 1
    }
   },
   {
@@ -4948,7 +4948,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.66,
+    "recency": 0.65,
     "source": 0.85,
     "quality": 0.62,
     "feedback": -0.03,
@@ -5069,7 +5069,7 @@
    "relevance_score": 84,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.73,
+    "recency": 0.72,
     "source": 0.51,
     "quality": 0.53,
     "feedback": 0.01,
@@ -12276,7 +12276,7 @@
     "6ded4aa1cdcf",
     "5c7174c45ad1"
    ],
-   "generated_at": "2026-11-27T05:20:00Z",
+   "generated_at": "2026-11-28T05:13:12Z",
    "since": "2026-11-10",
    "last": "2026-11-24",
    "week": 4,
@@ -12301,7 +12301,7 @@
     "ea585dd9c0fa",
     "d5f14a6242b0"
    ],
-   "generated_at": "2026-11-27T05:20:00Z",
+   "generated_at": "2026-11-28T05:13:12Z",
    "since": "2026-11-09",
    "last": "2026-11-24",
    "week": 2,
@@ -12325,7 +12325,7 @@
     "ad991551648f",
     "53acc8538264"
    ],
-   "generated_at": "2026-11-27T05:20:00Z",
+   "generated_at": "2026-11-28T05:13:12Z",
    "since": "2026-11-08",
    "last": "2026-11-23",
    "week": 2,
@@ -16634,19 +16634,6 @@
  "runs": {
   "date": "2026-11-28",
   "tasks": {
-   "verdiepen": {
-    "status": "ok",
-    "summary": "1 verdieping geschreven (vakkennis bij analyse door een agent) en 5 nieuwe keuzes klaargezet; geen inspiratiekaart omdat het weekend is.",
-    "finished_at": "2026-11-28T04:22:17Z",
-    "problems": [
-     "Het artikel van Späti en enkele detailpagina's van de documentatie konden deze run niet worden geopend; de verdieping steunt voor Späti op de eerdere uitleg van de radar."
-    ],
-    "counts": {
-     "verdiepingen": 1,
-     "keuzes": 5,
-     "inspiratie": 0
-    }
-   },
    "uitleggen": {
     "status": "deels",
     "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
@@ -16662,6 +16649,19 @@
      "met_voorbeeld": 1,
      "via_websearch": 1,
      "niet_bereikbaar": 2
+    }
+   },
+   "verdiepen": {
+    "status": "ok",
+    "summary": "1 verdieping geschreven (vakkennis bij analyse door een agent) en 5 nieuwe keuzes klaargezet; geen inspiratiekaart omdat het weekend is.",
+    "finished_at": "2026-11-28T04:22:17Z",
+    "problems": [
+     "Het artikel van Späti en enkele detailpagina's van de documentatie konden deze run niet worden geopend; de verdieping steunt voor Späti op de eerdere uitleg van de radar."
+    ],
+    "counts": {
+     "verdiepingen": 1,
+     "keuzes": 5,
+     "inspiratie": 0
     }
    }
   }
@@ -16872,8 +16872,8 @@
    "chris_webb": 2,
    "claude_code_releases": 4,
    "anthropic_engineering": 1,
-   "simon_willison": 1,
    "huggingface_blog": 1,
+   "simon_willison": 1,
    "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
    "langchain_blog": 4,
@@ -17057,16 +17057,6 @@
     ]
    },
    {
-    "title": "Genie Search is now generally available",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-search-is-now-generally-available",
-    "relevance_score": 80,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Connect ChatGPT to Genie One with the Databricks Genie plugin",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#connect-chatgpt-to-genie-one-with-the-databricks-genie-plugin",
@@ -17185,6 +17175,16 @@
     "title": "Genie Ontology is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
+    "relevance_score": 79,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Genie Search is now generally available",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-search-is-now-generally-available",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -17364,14 +17364,6 @@
     "excluded_by": []
    },
    {
-    "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
-    "source_id": "dbt_labs_blog",
-    "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
-    "relevance_score": 78,
-    "decision": "source_cap",
-    "excluded_by": []
-   },
-   {
     "title": "With great context comes great autonomy",
     "source_id": "dbt_labs_blog",
     "url": "https://www.getdbt.com/blog/context-engineering-ai-agents-governed-autonomy",
@@ -17500,6 +17492,14 @@
     "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Scalar-User-defined-functions-UDFs-in-Microsoft-Fabric-Data/ba-p/5399753",
     "relevance_score": 77,
     "decision": "included",
+    "excluded_by": []
+   },
+   {
+    "title": "What a year of building ADBC drivers taught Columnar about zero-copy's non-zero problems",
+    "source_id": "dbt_labs_blog",
+    "url": "https://www.getdbt.com/blog/columnar-adbc-drivers-zero-copy-lessons",
+    "relevance_score": 77,
+    "decision": "source_cap",
     "excluded_by": []
    },
    {
