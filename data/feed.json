@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-28T05:13:39.071285Z",
+ "generated_at": "2026-11-28T05:14:24.992652Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-28T03:40:00Z",
@@ -16634,6 +16634,19 @@
  "runs": {
   "date": "2026-11-28",
   "tasks": {
+   "verdiepen": {
+    "status": "ok",
+    "summary": "1 verdieping geschreven (vakkennis bij analyse door een agent) en 5 nieuwe keuzes klaargezet; geen inspiratiekaart omdat het weekend is.",
+    "finished_at": "2026-11-28T04:22:17Z",
+    "problems": [
+     "Het artikel van Späti en enkele detailpagina's van de documentatie konden deze run niet worden geopend; de verdieping steunt voor Späti op de eerdere uitleg van de radar."
+    ],
+    "counts": {
+     "verdiepingen": 1,
+     "keuzes": 5,
+     "inspiratie": 0
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
@@ -16651,17 +16664,18 @@
      "niet_bereikbaar": 2
     }
    },
-   "verdiepen": {
+   "overzicht": {
     "status": "ok",
-    "summary": "1 verdieping geschreven (vakkennis bij analyse door een agent) en 5 nieuwe keuzes klaargezet; geen inspiratiekaart omdat het weekend is.",
-    "finished_at": "2026-11-28T04:22:17Z",
+    "summary": "3 trends nagekeken en behouden (geen nieuwe ontwikkeling met genoeg artikelen), geen verzoeken voor interesses of leerregels, 0 stukken met begrippen aangevuld.",
+    "finished_at": "2026-11-28T05:13:44Z",
     "problems": [
-     "Het artikel van Späti en enkele detailpagina's van de documentatie konden deze run niet worden geopend; de verdieping steunt voor Späti op de eerdere uitleg van de radar."
+     "Eén artikel zonder begrippen (5673f63258aa) is een korte uitleg zonder verhaal; daar kunnen geen begrippen bij."
     ],
     "counts": {
-     "verdiepingen": 1,
-     "keuzes": 5,
-     "inspiratie": 0
+     "trends": 3,
+     "interesses_aangepast": 0,
+     "leerregels": 0,
+     "begrippen_aangevuld": 0
     }
    }
   }
