@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-28T03:23:53.908328Z",
+ "generated_at": "2026-11-28T03:31:16.180315Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
- "last_article_added_at": "2026-11-27T06:50:00Z",
+ "last_article_added_at": "2026-11-28T03:40:00Z",
  "last_successful_update": "2026-11-28T03:13:51.531054Z",
  "groups": [
   {
@@ -977,6 +977,134 @@
     "fase": 6,
     "quote": "Voor Dataflow is dit een goed voorbeeld voor fase 6: Claude via MCP laten werken op openbare weerdata",
     "why": "Fase 6 onderzoekt wat Claude met MCP op je eigen openbare data kan; dit stuk doet precies dat."
+   }
+  },
+  {
+   "id": "6e9811dd23f2",
+   "title": "Cut Your Databricks App Costs by up to 91% with On-Demand Start/Stop and Idle Auto-Stop",
+   "url": "https://www.advancinganalytics.co.uk/blog/cut-your-databricks-app-costs-by-up-to-91-with-on-demand-start/stop-and-idle-auto-stop",
+   "source_id": "simon_whiteley",
+   "published_at": "2026-11-27T09:51:18Z",
+   "fetched_at": "2026-11-27T10:09:48.962937Z",
+   "summary": "Max Fifield laat gebruikers een Databricks App zelf starten met een job, en laat de app zichzelf stoppen als niemand hem gebruikt. Bij zijn klant daalden de kosten van ongeveer 350 naar 30 dollar per maand.",
+   "personal_relevance": "Een Databricks App is een voor de hand liggende manier om een AI-toepassing op eigen data bij collega's te krijgen, en dit houdt de kosten van een proef laag.",
+   "experiment": "Zet de voorbeeldcode uit de repository in een eenvoudige FastAPI-app op een openbare dataset, zet AUTO_STOP_IDLE_MINUTES op 5 en kijk in de app-logs of hij zichzelf netjes stopt.",
+   "limitations": [
+    "De besparing van 91% geldt voor een app die maar een paar uur per week gebruikt wordt; bij dagelijks gebruik is de winst kleiner.",
+    "Een gebruiker moet eerst een job starten en wachten tot de app opstart; hoe lang dat duurt, zegt het artikel niet.",
+    "Dit is een eigen oplossing van een consultant, geen functie van Databricks."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Voorbeeldcode (GitHub)",
+     "url": "https://github.com/Drop-Database-Cascade/DBX-App-Cost-Saving"
+    },
+    {
+     "label": "Genie App Builder (scale to zero in bèta)",
+     "url": "https://docs.databricks.com/aws/en/dev-tools/databricks-apps/genie-app-builder"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "databricks_data_engineering",
+    "cicd_data_deployment"
+   ],
+   "groups": [
+    "ai_context",
+    "databricks",
+    "overig"
+   ],
+   "relevance_score": 96,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.96,
+    "source": 0.85,
+    "quality": 0.7,
+    "feedback": -0.03,
+    "fit": 0.1,
+    "project": 0.05
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-28T03:40:00Z",
+   "reading_minutes": 4,
+   "format_version": 2,
+   "headline": "Je Databricks App hoeft niet dag en nacht aan te staan",
+   "story": [
+    "Een gewone Databricks App draait 24 uur per dag, ook als niemand hem gebruikt. De kleinste maat kost volgens Max Fifield van Advancing Analytics ongeveer 350 dollar per maand per app. Zijn klant gebruikte een app maar een paar uur per week. Met twee jobs en een timer in de app zakte de rekening naar ongeveer 30 dollar per maand.",
+    "Het eerste deel zijn twee jobs: Start App en Stop App. Een gebruiker drukt op 'run' en de job zet de app aan of uit. De job kijkt eerst wat de app doet: draait hij al, dan doet de job niets. Anders start hij de app en wacht tot die klaarstaat, met een link in de uitvoer. Zo heeft de gebruiker alleen het recht 'Can Manage Run' op de job nodig. Het zware recht 'Can Manage' op de app zelf, waarmee je hem ook kunt verwijderen, blijft bij twee technische accounts. Dat is least privilege in de praktijk.",
+    "Het tweede deel is een idle-timer in de app, voor als de laatste gebruiker vergeet te stoppen. Vergelijk het met de lamp op een gang met een bewegingssensor. Een stukje middleware in de FastAPI-backend noteert de tijd van elk verzoek en elk WebSocket-bericht. Eén keer per minuut kijkt een taak hoe lang het stil is. Na 30 minuten stilte, of na 6 uur aan één stuk, stopt de app zichzelf via de Databricks Apps API, met zijn eigen service principal.",
+    "Er zitten twee valkuilen in. Een health check of een open tabblad dat steeds iets ophaalt telt ook als gebruik; sluit die paden uit, anders gaat de app nooit uit. En draai één worker: de timer leeft in het geheugen van één proces. Bij meer workers kan een stille worker de hele app stoppen terwijl een andere nog gebruikers helpt.",
+    "Wil je een AI-toepassing op je Gold-tabellen aan collega's geven via een Databricks App, dan is dit een goedkope manier om dat te proberen. De rechten op de jobs en de app kun je vastleggen in databricks.yml. Voor Dataflow past dit bij fase 8, waar een Databricks App als mogelijke uitbreiding staat; de jobs en rechten bouw je met wat je in fase 5 leert over bundels."
+   ],
+   "key_facts": [
+    "Een gewone Databricks App draait 24/7; de kleinste maat (medium) kost volgens het artikel ongeveer 350 dollar per maand per app.",
+    "Bij de klant, die de app een paar uur per week gebruikte, daalden de kosten naar ongeveer 30 dollar per maand: volgens de auteur 91% minder.",
+    "De Start-job heeft de parameter app_name en optioneel warmup_seconds; de Stop-job alleen app_name. Beide draaien als een identiteit met 'Can Manage' op de app.",
+    "Eindgebruikers hebben alleen 'Can Manage Run' op de twee jobs nodig.",
+    "De idle-timer is ASGI-middleware in een FastAPI-backend: stoppen na 30 minuten zonder activiteit of na 6 uur aaneen, in te stellen met AUTO_STOP_IDLE_MINUTES en AUTO_STOP_MAX_HOURS (0 zet het uit).",
+    "Scale to zero bestaat in bèta alleen voor Genie App Builder-apps; voor gewone Databricks Apps is volgens het artikel niets aangekondigd."
+   ],
+   "article_type": "nieuws",
+   "showcase": {
+    "caption": "Het idee van de idle-timer: onthoud wanneer er voor het laatst iets gebeurde, en stop de app na 30 minuten stilte of 6 uur aaneen.",
+    "language": "python",
+    "code": "import time\n\nclass IdleTracker:\n    def __init__(self):\n        self.last = time.monotonic()\n    def touch(self):            # bij elk verzoek of WebSocket-bericht\n        self.last = time.monotonic()\n    def idle_seconds(self):\n        return time.monotonic() - self.last\n\nt = IdleTracker()\nt.last -= 31 * 60               # doe alsof er 31 minuten niemand was\nIDLE_MIN, MAX_H = 30, 6         # AUTO_STOP_IDLE_MINUTES / AUTO_STOP_MAX_HOURS\nstarted = time.monotonic() - 2 * 3600\nif t.idle_seconds() >= IDLE_MIN * 60 or time.monotonic() - started >= MAX_H * 3600:\n    print(\"stop app\")           # in de app: WorkspaceClient().apps.stop(...)",
+    "result": {
+     "columns": [
+      "uitvoer"
+     ],
+     "rows": [
+      [
+       "stop app"
+      ]
+     ]
+    },
+    "note": "Vereenvoudigd nagebouwd; de echte middleware, de achtergrondtaak en de jobs staan in de repository van de auteur."
+   },
+   "terms": [
+    {
+     "term": "Databricks App",
+     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+    },
+    {
+     "term": "least privilege",
+     "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+    },
+    {
+     "term": "middleware",
+     "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat."
+    },
+    {
+     "term": "service principal",
+     "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+    },
+    {
+     "term": "health check",
+     "explanation": "Een automatisch verzoek dat regelmatig controleert of een app nog werkt. Het lijkt op gebruik, maar er zit geen mens achter."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Praktisch stuk met code en een concrete aanpak, maar over kosten en beheer in plaats van AI op data zoals je Genie-duimen."
+   },
+   "labels": [
+    "databricks-apps",
+    "compute-kosten",
+    "least-privilege"
+   ],
+   "fb_why": {
+    "by": "topic",
+    "name": "databricks_data_engineering",
+    "pts": -3
+   },
+   "project_ref": {
+    "fase": 8,
+    "quote": "Voor Dataflow past dit bij fase 8, waar een Databricks App als mogelijke uitbreiding staat",
+    "why": "Fase 8 noemt een Databricks App; dit laat zien hoe je die goedkoop laat draaien."
    }
   },
   {
@@ -7857,6 +7985,108 @@
    }
   },
   {
+   "id": "471f6b1cbb07",
+   "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+   "url": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+   "source_id": "langchain_blog",
+   "published_at": "2026-10-26T15:32:16Z",
+   "date_note": "De pagina noemt 23 oktober 2026; de feed gaf 26 oktober.",
+   "fetched_at": "2026-10-29T11:08:44.075994Z",
+   "summary": "LangChain beschrijft hoe Deep Agents informatie ophaalt zonder zijn context te vullen: eerst grep en glob, betekenisgericht zoeken als het moet, en lezen uitbesteden aan subagents.",
+   "personal_relevance": "Een concreet ontwerp voor een data-assistent die in dbt-documentatie zoekt zonder zijn context te verspillen.",
+   "experiment": "Zet de gegenereerde dbt-docs van jaffle_shop in een map en laat een Deep Agent een vraag beantwoorden. Tel hoeveel tokens hij gebruikt met en zonder de stap 'eerst grep'.",
+   "limitations": [
+    "Geschreven door de maker van het framework; geen metingen van de winst.",
+    "Prompt-injectie via opgehaalde tekst blijft een risico."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Deep Agents retrieval",
+     "url": "https://docs.langchain.com/oss/python/deepagents/retrieval"
+    },
+    {
+     "label": "Deep Agents tools",
+     "url": "https://docs.langchain.com/oss/python/deepagents/tools"
+    }
+   ],
+   "topics": [
+    "ai_agents_rag",
+    "ai_context_engineering"
+   ],
+   "groups": [
+    "agents",
+    "ai_context"
+   ],
+   "relevance_score": 76,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.2,
+    "source": 0.51,
+    "quality": 0.65,
+    "feedback": -0.03,
+    "fit": 0.15
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-10-30T06:45:00Z",
+   "reading_minutes": 2,
+   "format_version": 2,
+   "headline": "Laat een agent eerst zoeken, dan pas lezen",
+   "story": [
+    "Een agent kan niet alles tegelijk in zijn geheugen houden. Hij moet dus goed zoeken. LangChain noemt drie manieren waarop dat misgaat: onhandig zoeken, te grote resultaten, en verouderde of verkeerde informatie die er net zo betrouwbaar uitziet.",
+    "Deep Agents begint met de goedkoopste middelen. Met glob vindt hij bestanden op naam en met grep zoekt hij in de inhoud zonder hele bestanden te laden. read_file leest standaard 100 regels tegelijk. Pas als trefwoorden niet werken, zoekt hij op betekenis in een vectorstore. Vergelijk het met de index van een boek gebruiken voordat je het hele boek leest.",
+    "Het sterkste patroon heet 'retrieve, offload, delegate'. Een zoektool slaat elk resultaat op als bestand en geeft alleen de paden terug. Een subagent leest één bestand per keer en geeft de kernfeiten met de bron-URL terug. De hoofdagent ziet zo alleen conclusies en zoekt opnieuw als er iets ontbreekt.",
+    "Dit is anders dan klassieke RAG, die één keer zoekt en dan antwoordt. Hier beslist de agent zelf wanneer hij meer nodig heeft. Voor een assistent op dbt-documentatie is dit een bruikbaar recept: zoek eerst exact op modelnaam, en pas daarna op betekenis. Het stuk waarschuwt ook: opgehaalde tekst kan prompt-injectie bevatten, en geen prompt houdt dat helemaal tegen."
+   ],
+   "key_facts": [
+    "Ingebouwde tools: glob, grep (alleen letterlijke tekst), read_file (standaard 100 regels, met offset en limit), ls, write_file en edit_file.",
+    "Toolresultaten boven ongeveer 20.000 tokens gaan naar /large_tool_results/; de agent krijgt het pad en een kort voorproefje.",
+    "Voorbeeldpatroon: een zoektool search_news (k=4) slaat resultaten op als bestanden; subagent chunk-analyst leest één bestand per aanroep.",
+    "Retrieval-tools kunnen op een vectorstore, SQL-database, zoek-API of MCP-server draaien.",
+    "Advies: controleer of antwoorden de verwachte bronnen noemen en of de beweringen daarmee kloppen.",
+    "Geschreven door Jess Weng, gepubliceerd 23 oktober 2026."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "glob",
+     "explanation": "Een zoekpatroon voor bestandsnamen, zoals *.sql voor alle SQL-bestanden in een map."
+    },
+    {
+     "term": "grep",
+     "explanation": "Een commando dat in de inhoud van bestanden zoekt naar een woord of patroon, zonder ze helemaal te openen."
+    },
+    {
+     "term": "vectorstore",
+     "explanation": "Een database die embeddings bewaart, zodat je teksten kunt terugvinden op betekenis in plaats van op exacte woorden."
+    },
+    {
+     "term": "RAG",
+     "explanation": "Retrieval-augmented generation: een AI zoekt eerst relevante tekst op en baseert daar zijn antwoord op."
+    },
+    {
+     "term": "prompt-injectie",
+     "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf."
+    }
+   ],
+   "soort": "achtergrond",
+   "fit": {
+    "score": 0.65,
+    "why": "Context engineering voor agents, maar zonder dbt-koppeling zoals in je duimen."
+   },
+   "labels": [
+    "agentic-search",
+    "agent-harness"
+   ],
+   "fb_why": {
+    "by": "kind",
+    "name": "achtergrond",
+    "pts": -3
+   }
+  },
+  {
    "id": "3b1aa647a1b3",
    "title": "Use OneLake as native storage for Azure Databricks (Generally Available)",
    "url": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Use-OneLake-as-native-storage-for-Azure-Databricks-Generally/ba-p/5377939",
@@ -12781,6 +13011,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "6e9811dd23f2",
+     "title": "Je Databricks App hoeft niet dag en nacht aan te staan"
+    },
+    {
+     "kind": "a",
      "id": "b943cf926a94",
      "title": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One"
     }
@@ -13577,6 +13812,17 @@
    ]
   },
   {
+   "term": "glob",
+   "explanation": "Een zoekpatroon voor bestandsnamen, zoals *.sql voor alle SQL-bestanden in een map.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "471f6b1cbb07",
+     "title": "Laat een agent eerst zoeken, dan pas lezen"
+    }
+   ]
+  },
+  {
    "term": "governed tag",
    "explanation": "Een tag in Unity Catalog met vaste regels over welke waarden mogen en wie hem mag zetten. Domeinen en certificering draaien erop.",
    "refs": [
@@ -13595,6 +13841,17 @@
      "kind": "a",
      "id": "216eab677a97",
      "title": "MCP-tools in Genie Agents zijn GA, en skills kun je nu delen"
+    }
+   ]
+  },
+  {
+   "term": "grep",
+   "explanation": "Een commando dat in de inhoud van bestanden zoekt naar een woord of patroon, zonder ze helemaal te openen.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "471f6b1cbb07",
+     "title": "Laat een agent eerst zoeken, dan pas lezen"
     }
    ]
   },
@@ -13648,6 +13905,17 @@
      "kind": "a",
      "id": "c63f36899b14",
      "title": "Proef van dbt Labs: Claude 5.5 kent dbt al, het proces maakt het verschil"
+    }
+   ]
+  },
+  {
+   "term": "health check",
+   "explanation": "Een automatisch verzoek dat regelmatig controleert of een app nog werkt. Het lijkt op gebruik, maar er zit geen mens achter.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "6e9811dd23f2",
+     "title": "Je Databricks App hoeft niet dag en nacht aan te staan"
     }
    ]
   },
@@ -13976,6 +14244,11 @@
    "refs": [
     {
      "kind": "a",
+     "id": "6e9811dd23f2",
+     "title": "Je Databricks App hoeft niet dag en nacht aan te staan"
+    },
+    {
+     "kind": "a",
      "id": "62afb1e0ab94",
      "title": "1.000 agents werkten samen via alleen Git en een Postgres-database"
     }
@@ -14294,6 +14567,11 @@
    "term": "middleware",
    "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "6e9811dd23f2",
+     "title": "Je Databricks App hoeft niet dag en nacht aan te staan"
+    },
     {
      "kind": "a",
      "id": "4cc09a1d9883",
@@ -14701,6 +14979,17 @@
    ]
   },
   {
+   "term": "prompt-injectie",
+   "explanation": "Een aanval waarbij verborgen tekst, bijvoorbeeld op een webpagina, een AI-model probeert nieuwe opdrachten te geven die de gebruiker nooit gaf.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "471f6b1cbb07",
+     "title": "Laat een agent eerst zoeken, dan pas lezen"
+    }
+   ]
+  },
+  {
    "term": "Property tests",
    "explanation": "Tests waarin je een regel opschrijft die altijd moet gelden. Een bibliotheek probeert daarna duizenden invoerwaarden om de regel te breken.",
    "refs": [
@@ -14752,6 +15041,17 @@
      "kind": "a",
      "id": "a704112d6f8a",
      "title": "IFCO maakt een groot dbt-project op Databricks twee derde sneller"
+    }
+   ]
+  },
+  {
+   "term": "RAG",
+   "explanation": "Retrieval-augmented generation: een AI zoekt eerst relevante tekst op en baseert daar zijn antwoord op.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "471f6b1cbb07",
+     "title": "Laat een agent eerst zoeken, dan pas lezen"
     }
    ]
   },
@@ -15046,6 +15346,11 @@
    "term": "service principal",
    "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline.",
    "refs": [
+    {
+     "kind": "a",
+     "id": "6e9811dd23f2",
+     "title": "Je Databricks App hoeft niet dag en nacht aan te staan"
+    },
     {
      "kind": "a",
      "id": "905562b7af62",
@@ -15622,6 +15927,17 @@
    ]
   },
   {
+   "term": "vectorstore",
+   "explanation": "Een database die embeddings bewaart, zodat je teksten kunt terugvinden op betekenis in plaats van op exacte woorden.",
+   "refs": [
+    {
+     "kind": "a",
+     "id": "471f6b1cbb07",
+     "title": "Laat een agent eerst zoeken, dan pas lezen"
+    }
+   ]
+  },
+  {
    "term": "verankering",
    "explanation": "Een AI-antwoord laten steunen op vastgelegde kennis van jouw organisatie, zoals definities en bronnen, in plaats van op wat het model zelf denkt.",
    "refs": [
@@ -16066,65 +16382,23 @@
   }
  ],
  "runs": {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "tasks": {
    "uitleggen": {
     "status": "deels",
-    "summary": "Bij het inhalen alsnog 1 artikel uitgelegd (checklist voor dbt State, met voorbeeld); de 2 Fabric-artikelen (OneLake en Fabric IQ) waren nog steeds niet te openen en blijven op de werklijst.",
-    "finished_at": "2026-11-27T06:36:00Z",
+    "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
+    "finished_at": "2026-11-28T03:30:53Z",
     "problems": [
-     "Eerste run (03:13 UTC): WebFetch weigerde alle artikeladressen; 2 algemene AI-stukken overgeslagen, 0 uitgelegd.",
-     "Inhalen (06:27 UTC): de dbt State-checklist was via een zoekresultaat wel te openen en is uitgelegd.",
-     "Niet te openen (client_error van de site, ook via het zoekresultaat): OneLake: The unified foundation for data, context, governance, and AI, en Bringing trusted Fabric IQ context to wherever people and agents work (Fabric-blog).",
-     "Dataflow-voortgang was vannacht al bijgewerkt (fase 5, stap 5.1); niet opnieuw gedaan."
+     "add_repo was in deze sessie niet beschikbaar; de al aanwezige clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst."
     ],
     "counts": {
      "uitgelegd": 1,
-     "overgeslagen": 2,
-     "overgeslagen_zonder_openen": 2,
+     "overgeslagen": 0,
      "met_voorbeeld": 1,
      "via_websearch": 1,
      "niet_bereikbaar": 2
-    }
-   },
-   "overzicht": {
-    "status": "ok",
-    "summary": "Geen nieuwe artikelen sinds gisteren: de 3 trends blijven staan, geen verzoeken voor je interesses of toelichtingen bij duimen, en geen begrippen aan te vullen.",
-    "finished_at": "2026-11-27T05:14:20Z",
-    "problems": [
-     "Eén kort artikel (5673f63258aa, Power BI OAP) heeft geen verhaaltekst, dus begrippen kunnen daar niet worden aangewezen; overgeslagen."
-    ],
-    "counts": {
-     "trends": 3,
-     "interesses_aangepast": 0,
-     "leerregels": 0,
-     "begrippen_aangevuld": 0
-    }
-   },
-   "inhalen": {
-    "status": "deels",
-    "summary": "Uitleggen ontbrak: alsnog 1 artikel uitgelegd (dbt State-checklist); 2 Fabric-artikelen bleven onbereikbaar.",
-    "finished_at": "2026-11-27T06:36:30Z",
-    "problems": [
-     "De Fabric-blog gaf een client_error voor OneLake en Fabric IQ; die artikelen staan nog op de werklijst."
-    ],
-    "counts": {
-     "taken_ingehaald": 1,
-     "uitgelegd": 1,
-     "niet_bereikbaar": 2
-    }
-   },
-   "verdiepen": {
-    "status": "ok",
-    "summary": "Geen nieuwe verdieping: het eigen voorstel over Lakeflow was al geschreven (issue #41 gesloten); 5 nieuwe keuzes en een inspiratiekaart met 4 ideeën klaargezet.",
-    "finished_at": "2026-11-27T04:15:40Z",
-    "problems": [
-     "De geschiedenis in deepdive_options.json mag maar 60 keuzes houden, maar de controle wil dat gekozen verdiepingen erin blijven; daarom zijn oudere, niet-gekozen keuzes eruit gehaald in plaats van de oudste."
-    ],
-    "counts": {
-     "verdiepingen": 0,
-     "keuzes": 5,
-     "inspiratie": 1
     }
    }
   }
@@ -16301,24 +16575,24 @@
   "fetched_items": 821,
   "unique_after_dedupe": 760,
   "merged_duplicates": 54,
-  "shown": 71,
+  "shown": 73,
   "decisions": {
    "excluded": 277,
-   "area_cap": 11,
-   "included": 121,
+   "area_cap": 10,
+   "included": 123,
    "no_topic": 171,
-   "below_threshold": 124,
+   "below_threshold": 123,
    "kort_vervallen": 33,
    "source_cap": 23
   },
   "processing": {
-   "enriched": 71
+   "enriched": 73
   },
   "without_date": 0,
   "per_group": {
    "dbt": 7,
-   "ai_context": 29,
-   "agents": 8,
+   "ai_context": 30,
+   "agents": 9,
    "claude": 16,
    "kwaliteit": 1,
    "overig": 7,
@@ -16328,18 +16602,18 @@
    "dbt_developer_blog": 3,
    "azure_databricks_release_notes": 4,
    "simon_spati": 3,
+   "simon_whiteley": 3,
    "claude_blog": 10,
    "databricks_blog": 18,
    "dbt_labs_blog": 10,
    "chris_webb": 2,
    "claude_code_releases": 4,
-   "simon_whiteley": 2,
    "anthropic_engineering": 1,
    "simon_willison": 1,
    "huggingface_blog": 1,
    "databricks_engineering_blog": 3,
    "dbt_core_releases": 1,
-   "langchain_blog": 3,
+   "langchain_blog": 4,
    "hamel_husain": 1,
    "sqlbi": 2,
    "fabric_blog": 1,
@@ -16393,9 +16667,9 @@
    "api_key_present": false,
    "processed": 0,
    "failed": [],
-   "skipped_no_key": 173
+   "skipped_no_key": 172
   },
-  "queue_size": 3,
+  "queue_size": 2,
   "invalid_enrichment": [],
   "invalid_deepdives": [],
   "invalid_inspiratie": [],
