@@ -1,6 +1,20 @@
-{"task": "uitleggen", "started_at": "2026-11-28T03:13:14Z", "finished_at": "2026-11-28T03:30:53Z",
- "status": "deels", "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
- "counts": {"uitgelegd": 1, "overgeslagen": 0, "met_voorbeeld": 1, "via_websearch": 1, "niet_bereikbaar": 2},
- "problems": ["add_repo was in deze sessie niet beschikbaar; de al aanwezige clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
+{
+ "task": "uitleggen",
+ "started_at": "2026-11-28T03:13:14Z",
+ "finished_at": "2026-11-28T03:30:53Z",
+ "status": "deels",
+ "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
+ "counts": {
+  "uitgelegd": 1,
+  "overgeslagen": 0,
+  "met_voorbeeld": 1,
+  "via_websearch": 1,
+  "niet_bereikbaar": 2
+ },
+ "problems": [
+  "add_repo was in deze sessie niet beschikbaar; de al aanwezige clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
   "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst.",
-  "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst."]}
+  "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst.",
+  "Inhalen (07:27) probeerde beide Fabric-artikelen opnieuw: WebFetch weigerde de url weer (PROVENANCE_REQUIRED) en WebSearch gaf geen link naar hetzelfde artikel; ze blijven op de werklijst."
+ ]
+}
