@@ -1,7 +1,19 @@
 {
   "format_version": 1,
-  "generated_at": "2026-11-27T04:25:00Z",
+  "generated_at": "2026-11-28T04:55:00Z",
   "options": [
+    {
+      "id": "mcp-tools-in-genie-agent",
+      "title": "Een Genie Agent met eigen tools: wanneer koppel je een MCP-server?",
+      "question": "Wat verandert er als een Genie Agent naast je tabellen en metric views ook externe MCP-tools uit Unity Gateway mag aanroepen, wanneer is dat zinvol, en hoe houd je rechten en controle in de hand?",
+      "why": "MCP-tools in Genie Agents zijn sinds week 47 algemeen beschikbaar; het sluit aan op de verdieping over vakkennis bij analyse door een agent.",
+      "topics": [
+        "ai_on_data_platform",
+        "ai_agents_rag",
+        "veilige_agents"
+      ],
+      "area": "ai_op_data"
+    },
     {
       "id": "unique-constraints-en-rely",
       "title": "Sleutels in Databricks: wat UNIQUE en RELY wel en niet afdwingen",
@@ -26,38 +38,26 @@
       "area": "context_agents"
     },
     {
-      "id": "claude-ship-voor-dbt-pull-requests",
-      "title": "Claude Ship: pull requests van een dbt-project laten reviewen en repareren",
-      "question": "Wat doen Code Review, PR Steward en Claude Approvals precies, hoe leg je in teambeleid vast wat een agent zelf mag goedkeuren, en hoe past dat naast een CI-pipeline in Azure DevOps voor dbt en Databricks?",
-      "why": "Anthropic introduceerde op 23 november Claude Ship, met PR Steward en Claude Approvals in bèta voor GitHub; AI-code-review van data-code staat op T's lijst om te volgen.",
+      "id": "code-mode-voor-tools",
+      "title": "Code Mode: waarom een agent tools via een stukje code aanroept",
+      "question": "Wat is het verschil tussen een agent die tools één voor één aanroept en een agent die code schrijft die de tools aanroept, wat levert dat op en waar zitten de risico's?",
+      "why": "Claude Code kreeg half november een experimentele Code Mode waarin Claude zijn tools via JavaScript aanroept.",
       "topics": [
         "claude_ai_development",
-        "cicd_data_deployment"
+        "ai_agents_rag"
       ],
       "area": "claude"
     },
     {
-      "id": "vakkennis-bij-analyse-door-agent",
-      "title": "Analyse door een agent: waar vakkennis de fouten vangt",
-      "question": "Wat kan een agent met SQL-toegang via MCP zelf in een analyse, op welke punten gaat het mis zonder vakkennis, en hoe leg je die kennis vast in je gold-laag zodat collega's veilig zelf vragen kunnen stellen?",
-      "why": "Simon Späti liet op 20 november met Claude, MCP en openbare data zien dat een agent de drempel voor analyse verlaagt, maar dat alleen kennis van het vak de fouten vangt.",
+      "id": "fabric-semantic-views-stapelen",
+      "title": "Fabric semantic views: modellen stapelen zonder iets te kopiëren",
+      "question": "Wat zijn Fabric semantic views, hoe combineer je er twee tot één Power BI-model met een nieuwe maatstaf, en hoe verhoudt dat zich tot metric views in Unity Catalog?",
+      "why": "Chris Webb liet op 22 november zien hoe je semantic views in YAML op elkaar stapelt; een nieuwe manier om maatstaven één keer vast te leggen.",
       "topics": [
-        "ai_on_data_platform",
-        "ai_context_engineering",
-        "data_quality_observability"
-      ],
-      "area": "ai_op_data"
-    },
-    {
-      "id": "identiteit-koppelen-voor-agents",
-      "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
-      "question": "Waarom koppel je identiteiten uit verschillende bronnen één keer na Silver, hoe bouw je Gold op één vaste id, en wat heeft een agent die per persoon beslist daaraan?",
-      "why": "Databricks beschreef op 24 november hoe je klantdata zo modelleert dat een agent per persoon kan beslissen; hetzelfde vraagstuk speelt bij gegevens uit meerdere bronsystemen.",
-      "topics": [
-        "ai_on_data_platform",
+        "powerbi_semantic_models",
         "data_architecture_modeling"
       ],
-      "area": "ai_op_data"
+      "area": "powerbi"
     }
   ],
   "history": [
@@ -142,65 +142,6 @@
       ],
       "area": "data_engineering",
       "level": "beginner"
-    },
-    {
-      "id": "vectorjoin-voor-ontdubbelen",
-      "title": "Bijna-dubbele records vinden met een vectorjoin in SQL (NEAREST BY)",
-      "question": "Hoe werken embeddings en een NEAREST BY-join, en hoe gebruik je die in de Silver-laag om records te koppelen die net anders gespeld zijn?",
-      "why": "Databricks heeft vectorzoeken nu als gewone SQL-join, gebouwd voor veel rijen tegelijk, zoals ontdubbelen en entity resolution.",
-      "topics": [
-        "ai_on_data_platform",
-        "sql_spark_sql",
-        "data_quality_observability"
-      ],
-      "area": "context_agents"
-    },
-    {
-      "id": "stop-hook-controle-claude-code",
-      "title": "Claude laten controleren voordat hij stopt: een Stop-hook met dbt build",
-      "question": "Hoe bouw je in Claude Code een vaste controle in (een hook die dbt build of tests draait) zodat de agent zijn werk eerst nakijkt voordat hij klaar zegt te zijn?",
-      "why": "Sluit aan op de trend 'Agents worden beter door controles en metingen': LangChain kwam met hetzelfde model van 52,8 naar 66,5 procent door zo'n controle vlak voor het stoppen.",
-      "topics": [
-        "claude_ai_development",
-        "ai_evaluation_observability",
-        "dbt_analytics_engineering"
-      ],
-      "area": "claude"
-    },
-    {
-      "id": "synthetische-data-voor-experimenten",
-      "title": "Synthetische data: veilig experimenteren zonder patiëntgegevens",
-      "question": "Hoe maak je realistische nepdata om AI- en dataideeën te testen, welke technieken zijn er, hoe voorkom je dat echte gegevens erin doorlekken, en wanneer is het goed genoeg voor een proef?",
-      "why": "Elk experiment in de radar moet zonder werkdata, en Databricks bracht onlangs zorgskills uit met een skill voor het onherkenbaar maken van patiëntgegevens; synthetische data is de bouwsteen die daarbij hoort.",
-      "topics": [
-        "data_governance_privacy",
-        "ai_in_healthcare",
-        "ai_research_data"
-      ],
-      "area": "new_tech"
-    },
-    {
-      "id": "onelake-als-opslag-voor-databricks",
-      "title": "Databricks-tabellen in OneLake: wat verandert er voor Unity Catalog en Power BI?",
-      "question": "Wat betekent het als Azure Databricks zijn tabellen direct in OneLake opslaat, wie beheert dan rechten en opslag, en wanneer kies je hiervoor in plaats van je eigen opslagaccount?",
-      "why": "Microsoft meldt sinds 5 november dat Azure Databricks tabellen via een externe locatie in Unity Catalog direct in OneLake kan opslaan; dat raakt jouw combinatie van Databricks en Power BI (Fabric).",
-      "topics": [
-        "data_architecture_modeling",
-        "databricks_data_engineering",
-        "powerbi_semantic_models"
-      ],
-      "area": "data_engineering"
-    },
-    {
-      "id": "eigen-spark-bron-met-python",
-      "title": "Je eigen databron voor Spark schrijven met de Python Data Source API",
-      "question": "Hoe maak je van een bron zonder standaardkoppeling (een eigen bestandsformaat of een REST API) een gewone Spark-bron, en wanneer is dat beter dan een los Python-script dat eerst bestanden omzet?",
-      "why": "Eclipse Aerospace leest sinds kort zijn eigen binaire vluchtbestanden direct in Spark met deze API (12 november), en het past bij fase 3 van Dataflow: openbare data uit API's in Bronze krijgen.",
-      "topics": [
-        "data_ingestion",
-        "databricks_data_engineering"
-      ],
-      "area": "data_engineering"
     },
     {
       "id": "claude-agents-in-eigen-netwerk",
@@ -758,6 +699,63 @@
         "ai_agents_rag"
       ],
       "area": "claude"
+    },
+    {
+      "id": "unique-constraints-en-rely",
+      "title": "Sleutels in Databricks: wat UNIQUE en RELY wel en niet afdwingen",
+      "question": "Wat betekenen primaire sleutels en UNIQUE-constraints in Unity Catalog als Databricks ze niet controleert bij het schrijven, wanneer zet je RELY aan, en hoe zorg je met dbt-tests dat die belofte ook echt klopt?",
+      "why": "Databricks voegde UNIQUE-constraints toe (Public Preview); met RELY slaat de optimizer volgens Databricks joins en DISTINCT over, maar een foute belofte geeft dan foute uitkomsten.",
+      "topics": [
+        "databricks_data_engineering",
+        "data_architecture_modeling",
+        "dbt_analytics_engineering"
+      ],
+      "area": "data_engineering"
+    },
+    {
+      "id": "agent-eval-onderhouden",
+      "title": "Een agent-test die eerlijk blijft: verifiers, valsspelen en pass^k",
+      "question": "Hoe bouw je een test voor een agent die de eindtoestand controleert in plaats van wat de agent zegt, hoe vang je valsspelen af, en wanneer kijk je naar pass@k en wanneer naar pass^k?",
+      "why": "Past bij de trend 'Agents worden beter door controles en metingen, niet door meer uitleg'; Hugging Face publiceerde op 23 november een stappenplan voor het bouwen en onderhouden van agent-evals.",
+      "topics": [
+        "ai_evaluation_observability",
+        "ai_agents_rag"
+      ],
+      "area": "context_agents"
+    },
+    {
+      "id": "claude-ship-voor-dbt-pull-requests",
+      "title": "Claude Ship: pull requests van een dbt-project laten reviewen en repareren",
+      "question": "Wat doen Code Review, PR Steward en Claude Approvals precies, hoe leg je in teambeleid vast wat een agent zelf mag goedkeuren, en hoe past dat naast een CI-pipeline in Azure DevOps voor dbt en Databricks?",
+      "why": "Anthropic introduceerde op 23 november Claude Ship, met PR Steward en Claude Approvals in bèta voor GitHub; AI-code-review van data-code staat op T's lijst om te volgen.",
+      "topics": [
+        "claude_ai_development",
+        "cicd_data_deployment"
+      ],
+      "area": "claude"
+    },
+    {
+      "id": "vakkennis-bij-analyse-door-agent",
+      "title": "Analyse door een agent: waar vakkennis de fouten vangt",
+      "question": "Wat kan een agent met SQL-toegang via MCP zelf in een analyse, op welke punten gaat het mis zonder vakkennis, en hoe leg je die kennis vast in je gold-laag zodat collega's veilig zelf vragen kunnen stellen?",
+      "why": "Simon Späti liet op 20 november met Claude, MCP en openbare data zien dat een agent de drempel voor analyse verlaagt, maar dat alleen kennis van het vak de fouten vangt.",
+      "topics": [
+        "ai_on_data_platform",
+        "ai_context_engineering",
+        "data_quality_observability"
+      ],
+      "area": "ai_op_data"
+    },
+    {
+      "id": "identiteit-koppelen-voor-agents",
+      "title": "Eén persoon, één id: identiteit koppelen na Silver als basis voor agents",
+      "question": "Waarom koppel je identiteiten uit verschillende bronnen één keer na Silver, hoe bouw je Gold op één vaste id, en wat heeft een agent die per persoon beslist daaraan?",
+      "why": "Databricks beschreef op 24 november hoe je klantdata zo modelleert dat een agent per persoon kan beslissen; hetzelfde vraagstuk speelt bij gegevens uit meerdere bronsystemen.",
+      "topics": [
+        "ai_on_data_platform",
+        "data_architecture_modeling"
+      ],
+      "area": "ai_op_data"
     }
   ]
 }
