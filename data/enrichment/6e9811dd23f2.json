@@ -1,0 +1,110 @@
+{
+ "format_version": 2,
+ "article_id": "6e9811dd23f2",
+ "url": "https://www.advancinganalytics.co.uk/blog/cut-your-databricks-app-costs-by-up-to-91-with-on-demand-start/stop-and-idle-auto-stop",
+ "headline": "Je Databricks App hoeft niet dag en nacht aan te staan",
+ "summary": "Max Fifield laat gebruikers een Databricks App zelf starten met een job, en laat de app zichzelf stoppen als niemand hem gebruikt. Bij zijn klant daalden de kosten van ongeveer 350 naar 30 dollar per maand.",
+ "story": [
+  "Een gewone Databricks App draait 24 uur per dag, ook als niemand hem gebruikt. De kleinste maat kost volgens Max Fifield van Advancing Analytics ongeveer 350 dollar per maand per app. Zijn klant gebruikte een app maar een paar uur per week. Met twee jobs en een timer in de app zakte de rekening naar ongeveer 30 dollar per maand.",
+  "Het eerste deel zijn twee jobs: Start App en Stop App. Een gebruiker drukt op 'run' en de job zet de app aan of uit. De job kijkt eerst wat de app doet: draait hij al, dan doet de job niets. Anders start hij de app en wacht tot die klaarstaat, met een link in de uitvoer. Zo heeft de gebruiker alleen het recht 'Can Manage Run' op de job nodig. Het zware recht 'Can Manage' op de app zelf, waarmee je hem ook kunt verwijderen, blijft bij twee technische accounts. Dat is least privilege in de praktijk.",
+  "Het tweede deel is een idle-timer in de app, voor als de laatste gebruiker vergeet te stoppen. Vergelijk het met de lamp op een gang met een bewegingssensor. Een stukje middleware in de FastAPI-backend noteert de tijd van elk verzoek en elk WebSocket-bericht. Eén keer per minuut kijkt een taak hoe lang het stil is. Na 30 minuten stilte, of na 6 uur aan één stuk, stopt de app zichzelf via de Databricks Apps API, met zijn eigen service principal.",
+  "Er zitten twee valkuilen in. Een health check of een open tabblad dat steeds iets ophaalt telt ook als gebruik; sluit die paden uit, anders gaat de app nooit uit. En draai één worker: de timer leeft in het geheugen van één proces. Bij meer workers kan een stille worker de hele app stoppen terwijl een andere nog gebruikers helpt.",
+  "Wil je een AI-toepassing op je Gold-tabellen aan collega's geven via een Databricks App, dan is dit een goedkope manier om dat te proberen. De rechten op de jobs en de app kun je vastleggen in databricks.yml. Voor Dataflow past dit bij fase 8, waar een Databricks App als mogelijke uitbreiding staat; de jobs en rechten bouw je met wat je in fase 5 leert over bundels."
+ ],
+ "key_facts": [
+  "Een gewone Databricks App draait 24/7; de kleinste maat (medium) kost volgens het artikel ongeveer 350 dollar per maand per app.",
+  "Bij de klant, die de app een paar uur per week gebruikte, daalden de kosten naar ongeveer 30 dollar per maand: volgens de auteur 91% minder.",
+  "De Start-job heeft de parameter app_name en optioneel warmup_seconds; de Stop-job alleen app_name. Beide draaien als een identiteit met 'Can Manage' op de app.",
+  "Eindgebruikers hebben alleen 'Can Manage Run' op de twee jobs nodig.",
+  "De idle-timer is ASGI-middleware in een FastAPI-backend: stoppen na 30 minuten zonder activiteit of na 6 uur aaneen, in te stellen met AUTO_STOP_IDLE_MINUTES en AUTO_STOP_MAX_HOURS (0 zet het uit).",
+  "Scale to zero bestaat in bèta alleen voor Genie App Builder-apps; voor gewone Databricks Apps is volgens het artikel niets aangekondigd."
+ ],
+ "personal_relevance": "Een Databricks App is een voor de hand liggende manier om een AI-toepassing op eigen data bij collega's te krijgen, en dit houdt de kosten van een proef laag.",
+ "experiment": "Zet de voorbeeldcode uit de repository in een eenvoudige FastAPI-app op een openbare dataset, zet AUTO_STOP_IDLE_MINUTES op 5 en kijk in de app-logs of hij zichzelf netjes stopt.",
+ "limitations": [
+  "De besparing van 91% geldt voor een app die maar een paar uur per week gebruikt wordt; bij dagelijks gebruik is de winst kleiner.",
+  "Een gebruiker moet eerst een job starten en wachten tot de app opstart; hoe lang dat duurt, zegt het artikel niet.",
+  "Dit is een eigen oplossing van een consultant, geen functie van Databricks."
+ ],
+ "availability_status": "beschikbaar",
+ "official_docs": [
+  {
+   "label": "Voorbeeldcode (GitHub)",
+   "url": "https://github.com/Drop-Database-Cascade/DBX-App-Cost-Saving"
+  },
+  {
+   "label": "Genie App Builder (scale to zero in bèta)",
+   "url": "https://docs.databricks.com/aws/en/dev-tools/databricks-apps/genie-app-builder"
+  }
+ ],
+ "topics": [
+  "ai_on_data_platform",
+  "databricks_data_engineering",
+  "cicd_data_deployment"
+ ],
+ "quality": {
+  "depth": 0.75,
+  "practicality": 0.75,
+  "novelty": 0.6
+ },
+ "development_key": "databricks-apps-kosten-start-stop-2026",
+ "date_note": "",
+ "exceptional": false,
+ "article_type": "nieuws",
+ "soort": "praktisch",
+ "fit": {
+  "score": 0.6,
+  "why": "Praktisch stuk met code en een concrete aanpak, maar over kosten en beheer in plaats van AI op data zoals je Genie-duimen."
+ },
+ "labels": [
+  "databricks-apps",
+  "compute-kosten",
+  "least-privilege"
+ ],
+ "project_ref": {
+  "fase": 8,
+  "quote": "Voor Dataflow past dit bij fase 8, waar een Databricks App als mogelijke uitbreiding staat",
+  "why": "Fase 8 noemt een Databricks App; dit laat zien hoe je die goedkoop laat draaien."
+ },
+ "terms": [
+  {
+   "term": "Databricks App",
+   "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+  },
+  {
+   "term": "least privilege",
+   "explanation": "Het principe dat een gebruiker of agent alleen de rechten krijgt die hij voor zijn taak echt nodig heeft."
+  },
+  {
+   "term": "middleware",
+   "explanation": "Een tussenlaag die elke stap van een programma kan bekijken of tegenhouden voordat die doorgaat."
+  },
+  {
+   "term": "service principal",
+   "explanation": "Een technisch account voor een pipeline of app in plaats van een persoon, met eigen rechten. Zo hoeft er geen persoonlijk wachtwoord in een pipeline."
+  },
+  {
+   "term": "health check",
+   "explanation": "Een automatisch verzoek dat regelmatig controleert of een app nog werkt. Het lijkt op gebruik, maar er zit geen mens achter."
+  }
+ ],
+ "showcase": {
+  "caption": "Het idee van de idle-timer: onthoud wanneer er voor het laatst iets gebeurde, en stop de app na 30 minuten stilte of 6 uur aaneen.",
+  "language": "python",
+  "code": "import time\n\nclass IdleTracker:\n    def __init__(self):\n        self.last = time.monotonic()\n    def touch(self):            # bij elk verzoek of WebSocket-bericht\n        self.last = time.monotonic()\n    def idle_seconds(self):\n        return time.monotonic() - self.last\n\nt = IdleTracker()\nt.last -= 31 * 60               # doe alsof er 31 minuten niemand was\nIDLE_MIN, MAX_H = 30, 6         # AUTO_STOP_IDLE_MINUTES / AUTO_STOP_MAX_HOURS\nstarted = time.monotonic() - 2 * 3600\nif t.idle_seconds() >= IDLE_MIN * 60 or time.monotonic() - started >= MAX_H * 3600:\n    print(\"stop app\")           # in de app: WorkspaceClient().apps.stop(...)",
+  "result": {
+   "columns": [
+    "uitvoer"
+   ],
+   "rows": [
+    [
+     "stop app"
+    ]
+   ]
+  },
+  "note": "Vereenvoudigd nagebouwd; de echte middleware, de achtergrondtaak en de jobs staan in de repository van de auteur."
+ },
+ "processed_by": "Claude (geplande taak)",
+ "processed_at": "2026-11-28T03:40:00Z",
+ "prompt_version": "taak-v2"
+}
