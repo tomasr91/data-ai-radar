@@ -1026,22 +1026,6 @@
    "fetched_at": "2026-10-28T20:21:54.094217Z",
    "excerpt": "&nbsp;&nbsp;In managed OLTP, restores have always been painfully slow and they get slower at..."
   },
-  "databricks_engineering_blog:c04fd5b2c44c": {
-   "source_id": "databricks_engineering_blog",
-   "title": "How Databricks rolls out frontier models to 12,000 employees on Day 1",
-   "url": "https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1",
-   "published_raw": "Mon, 28 Sep 2026 20:11:23 GMT",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "excerpt": "Providing our employees access to frontier AI capabilities is a top priority at Databricks, and consequently..."
-  },
-  "databricks_engineering_blog:499b7b482586": {
-   "source_id": "databricks_engineering_blog",
-   "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
-   "url": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
-   "published_raw": "Mon, 28 Sep 2026 20:04:33 GMT",
-   "fetched_at": "2026-10-28T20:21:54.094217Z",
-   "excerpt": "Traditional OLTP systems weren't built for the search demands of AI agents. They..."
-  },
   "data_engineering_weekly:e06abf0dd7f8": {
    "source_id": "data_engineering_weekly",
    "title": "Do We Still Need Data Models?",
@@ -6569,8 +6553,24 @@
    "published_raw": "Fri, 27 Nov 2026 09:51:18 GMT",
    "fetched_at": "2026-11-27T10:09:48.962937Z",
    "excerpt": "<div class=\"hs-featured-image-wrapper\"> \n <a href=\"https://www.advancinganalytics.co.uk/blog/cut-your-databricks-app-costs-by-up-to-91-with-on-demand-start/stop-and-idle-auto-stop\" title=\"\" class=\"hs-featured-image-link\"> <img src=\"https://cdn-images-1.medium.com/max/1200/1*BjUQqad4wzDoCqDb7YDE_Q.png\" alt=\"Cut Your Databricks App Costs by up to 91% with On-Demand Start/Stop and Idle Auto-Stop\" class=\"hs-featured-image\" style=\"width:auto !important; max-width:50%; float:left; margin:0 15px 15px 0;\"> </a> \n</div> \n<h2>The Problem</h2> \n<p>If you’re using a standard Databricks App, it will run 24/7, incurring costs even when no-one is using it. Using the minimum compute specification (a medium app), this comes to about $350 USD per month per app (<a href=\"https://www.databricks.com/product/pricing/product-pricing/instance-types\">Pricing Calculator Page | Databricks</a>). For Apps that have intermittent or unpredictable usage, ideally there should be a way for the App to be available when the user needs it to be, without having to pay when the user does not. It is theoretically possible to have users turn on and off their own Databricks as needed. This approach however, either requires elevated access or a request to IT to facilitate, and risks human error in the process.</p>"
+  },
+  "huggingface_blog:2d7f8b4f8454": {
+   "source_id": "huggingface_blog",
+   "title": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+   "url": "https://huggingface.co/blog/video-trainium3",
+   "published_raw": "Fri, 27 Nov 2026 00:00:00 GMT",
+   "fetched_at": "2026-11-28T03:13:56.208216Z",
+   "excerpt": ""
+  },
+  "confessions_data_guy:7c5ee7559299": {
+   "source_id": "confessions_data_guy",
+   "title": "Polars new Streaming Engine and Spill-To-Disk",
+   "url": "https://www.confessionsofadataguy.com/polars-new-streaming-engine-and-spill-to-disk/",
+   "published_raw": "Fri, 27 Nov 2026 15:12:05 +0000",
+   "fetched_at": "2026-11-28T03:13:56.901688Z",
+   "excerpt": "<p>Probably one of the biggest updates in the history of Polars happened recently, one that was long overdue. Polars has been slowly but surely creeping into the data landscape more and more, although not as quickly or as loudly as one would have hoped. I still see plenty of lost souls on Substack and LinkedIn [&#8230;]</p>\n<p>The post <a href=\"https://www.confessionsofadataguy.com/polars-new-streaming-engine-and-spill-to-disk/\">Polars new Streaming Engine and Spill-To-Disk</a> appeared first on <a href=\"https://www.confessionsofadataguy.com\">Confessions of a Data Guy</a>.</p>"
   }
  },
- "updated_at": "2026-11-27T10:09:45.656574Z",
+ "updated_at": "2026-11-28T03:13:51.531054Z",
  "note": "Gestart met de momentopname van 28-10-2026."
 }
