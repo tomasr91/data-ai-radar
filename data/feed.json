@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-28T05:14:24.992652Z",
+ "generated_at": "2026-11-28T06:34:21.305817Z",
  "mode": "live",
  "mode_note": "Opnieuw samengesteld uit de laatste keer ophalen.",
  "last_article_added_at": "2026-11-28T03:40:00Z",
@@ -766,7 +766,7 @@
    "relevance_score": 96,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 1.0,
     "quality": 0.65,
     "feedback": -0.03,
@@ -1945,7 +1945,7 @@
    "relevance_score": 90,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 0.8,
     "quality": 0.62,
     "feedback": 0.02,
@@ -2416,7 +2416,7 @@
    "relevance_score": 89,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.55,
+    "recency": 0.54,
     "source": 0.51,
     "quality": 0.72,
     "feedback": 0.01,
@@ -2974,7 +2974,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.24,
+    "recency": 0.23,
     "source": 0.68,
     "quality": 0.8,
     "feedback": -0.03,
@@ -3091,7 +3091,7 @@
     "recency": 0.33,
     "source": 1.0,
     "quality": 0.75,
-    "feedback": -0.03,
+    "feedback": -0.04,
     "fit": 0.25
    },
    "decision": "included",
@@ -3160,7 +3160,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -3
+    "pts": -4
    }
   },
   {
@@ -3310,7 +3310,7 @@
    "relevance_score": 86,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.85,
+    "recency": 0.84,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.05,
@@ -4018,7 +4018,7 @@
    "relevance_score": 85,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.57,
+    "recency": 0.56,
     "source": 0.85,
     "quality": 0.6,
     "feedback": -0.03,
@@ -4084,119 +4084,6 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -3
-   }
-  },
-  {
-   "id": "655888c78c57",
-   "title": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
-   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-18T16:00:00Z",
-   "fetched_at": "2026-11-19T03:13:32.204856Z",
-   "summary": "Collega's kunnen in Microsoft Teams vragen stellen aan je Databricks-data via de Genie-app, nu GA. Genie werkt ook in Copilot Cowork, Excel en Copilot Studio, steeds met de rechten van de vrager.",
-   "personal_relevance": "Dit is de kortste weg van jouw Gold-laag naar collega's die in Teams of Excel werken, zonder dat zij rechten krijgen die ze niet al hadden.",
-   "experiment": "Maak in een testwerkruimte een Genie Agent op een openbare dataset (bijv. CBS-cijfers) met een metric view, en kijk in de Excel Add-in of een draaitabel op die metric view dezelfde getallen geeft als Genie in gewone taal.",
-   "limitations": [
-    "Alleen de Teams-app en Genie Ontology hebben volgens het artikel een GA-status.",
-    "Hoe tokens en rechten bij Cowork en Excel technisch lopen, staat er niet in.",
-    "Terugschrijven vanuit Excel naar tabellen vraagt om goede afspraken over wie wat mag wijzigen."
-   ],
-   "availability_status": "beschikbaar",
-   "official_docs": [
-    {
-     "label": "Genie-app voor Microsoft Teams",
-     "url": "https://docs.databricks.com/aws/en/integrations/msft-teams"
-    },
-    {
-     "label": "Azure Databricks Excel Add-in",
-     "url": "https://docs.databricks.com/aws/en/integrations/excel/"
-    },
-    {
-     "label": "Azure Databricks-connector voor Power Platform",
-     "url": "https://docs.databricks.com/aws/en/integrations/msft-power-platform/"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "powerbi_semantic_models",
-    "data_governance_privacy"
-   ],
-   "groups": [
-    "ai_context",
-    "overig",
-    "kwaliteit"
-   ],
-   "relevance_score": 85,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.62,
-    "source": 0.85,
-    "quality": 0.58,
-    "feedback": -0.04,
-    "fit": 0.2
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-19T03:55:00Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel",
-   "story": [
-    "Databricks zet een rij koppelingen met Microsoft-tools op een rij. De belangrijkste: de Genie-app voor Microsoft Teams is algemeen beschikbaar (GA). Collega's sturen Genie een bericht of noemen hem in een kanaal, en krijgen in dezelfde draad een antwoord, met grafiek als dat past. Ze kunnen ook een vaste analyse inplannen of een bestand meesturen.",
-    "Zo werkt het. Elke vraag in Teams draait als de persoon die hem stelt. Genie gebruikt dus alleen data waar die persoon in Unity Catalog bij mag. De vraag wordt in de Databricks-werkruimte verwerkt; de dienst tussen Teams en Databricks bewaart geen vragen of antwoorden. Genie haalt zijn kennis uit Genie Ontology (vaste definities, metric views en geleerde context), en via Unity Gateway regel je welke MCP-tools Genie mag gebruiken en welke acties eerst goedkeuring vragen.",
-    "Daarnaast: in Copilot Cowork en Copilot Chat stuurt Copilot datavragen door naar Genie One in plaats van zelf te zoeken. In Excel stel je via de Azure Databricks Excel Add-in een vraag in gewone taal, laad je resultaten in je werkblad, maak je live draaitabellen op metric views en schrijf je ingevulde waarden terug naar een Databricks-tabel. In Copilot Studio voeg je een Genie Agent toe als tool via de connector voor Power Platform. Voor deze drie noemt het artikel geen status.",
-    "Dit is precies het patroon 'AI op je eigen data bij de gebruiker brengen': je Gold-tabellen en metric views zijn de bron, Genie Ontology geeft de betekenis, en de gebruiker vraagt het in Teams of Excel, met zijn eigen rechten. Voor een zorgorganisatie is dat laatste belangrijk: wie geen toegang heeft tot een tabel, krijgt die data ook niet via Genie te zien.",
-    "Instellen in Teams doet een Databricks-beheerder: app toevoegen en standaard-zichtbaarheid van antwoorden kiezen. Met Private Link is ook een ingress-regel op accountniveau nodig. Gebruikers loggen de eerste keer in en kiezen een werkruimte."
-   ],
-   "key_facts": [
-    "De Databricks Genie-app voor Microsoft Teams is algemeen beschikbaar (GA); hij werkt ook in Microsoft 365 Copilot.",
-    "Elke vraag draait onder de identiteit van de vrager, met diens Unity Catalog-rechten; de routeringsdienst tussen Teams en Databricks slaat geen vragen of antwoorden op.",
-    "Genie Ontology is algemeen beschikbaar (GA).",
-    "Excel Add-in: vragen in gewone taal, live draaitabellen op metric views en tabellen, geplande verversing en terugschrijven naar Databricks-tabellen; status niet genoemd.",
-    "Copilot Cowork en Chat sturen datavragen door naar Genie One via de Azure Databricks Genie-plugin; status niet genoemd.",
-    "Copilot Studio: Genie Agents als tool via de Azure Databricks-connector voor Power Platform; status niet genoemd.",
-    "Koppeling met Work IQ via MCP komt 'binnenkort'.",
-    "Artikel van 18 november 2026."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "Genie Ontology",
-     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
-    },
-    {
-     "term": "Genie One",
-     "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
-    },
-    {
-     "term": "Genie Agent",
-     "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team."
-    },
-    {
-     "term": "metric views",
-     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
-    },
-    {
-     "term": "Private Link",
-     "explanation": "Een privéverbinding in Azure waardoor verkeer naar een dienst niet over het openbare internet gaat."
-    }
-   ],
-   "soort": "aankondiging",
-   "fit": {
-    "score": 0.7,
-    "why": "Genie op je eigen data bij gebruikers, zoals je duimen bij Genie Agents en metric views naar Power BI."
-   },
-   "labels": [
-    "genie-one",
-    "genie-agents",
-    "metric-views",
-    "genie-ontology"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
    }
   },
   {
@@ -4759,6 +4646,119 @@
     "by": "source",
     "name": "databricks_blog",
     "pts": -3
+   }
+  },
+  {
+   "id": "655888c78c57",
+   "title": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
+   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-18T16:00:00Z",
+   "fetched_at": "2026-11-19T03:13:32.204856Z",
+   "summary": "Collega's kunnen in Microsoft Teams vragen stellen aan je Databricks-data via de Genie-app, nu GA. Genie werkt ook in Copilot Cowork, Excel en Copilot Studio, steeds met de rechten van de vrager.",
+   "personal_relevance": "Dit is de kortste weg van jouw Gold-laag naar collega's die in Teams of Excel werken, zonder dat zij rechten krijgen die ze niet al hadden.",
+   "experiment": "Maak in een testwerkruimte een Genie Agent op een openbare dataset (bijv. CBS-cijfers) met een metric view, en kijk in de Excel Add-in of een draaitabel op die metric view dezelfde getallen geeft als Genie in gewone taal.",
+   "limitations": [
+    "Alleen de Teams-app en Genie Ontology hebben volgens het artikel een GA-status.",
+    "Hoe tokens en rechten bij Cowork en Excel technisch lopen, staat er niet in.",
+    "Terugschrijven vanuit Excel naar tabellen vraagt om goede afspraken over wie wat mag wijzigen."
+   ],
+   "availability_status": "beschikbaar",
+   "official_docs": [
+    {
+     "label": "Genie-app voor Microsoft Teams",
+     "url": "https://docs.databricks.com/aws/en/integrations/msft-teams"
+    },
+    {
+     "label": "Azure Databricks Excel Add-in",
+     "url": "https://docs.databricks.com/aws/en/integrations/excel/"
+    },
+    {
+     "label": "Azure Databricks-connector voor Power Platform",
+     "url": "https://docs.databricks.com/aws/en/integrations/msft-power-platform/"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "powerbi_semantic_models",
+    "data_governance_privacy"
+   ],
+   "groups": [
+    "ai_context",
+    "overig",
+    "kwaliteit"
+   ],
+   "relevance_score": 84,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.62,
+    "source": 0.85,
+    "quality": 0.58,
+    "feedback": -0.04,
+    "fit": 0.2
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-19T03:55:00Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Genie in Teams is algemeen beschikbaar, en komt ook naar Excel",
+   "story": [
+    "Databricks zet een rij koppelingen met Microsoft-tools op een rij. De belangrijkste: de Genie-app voor Microsoft Teams is algemeen beschikbaar (GA). Collega's sturen Genie een bericht of noemen hem in een kanaal, en krijgen in dezelfde draad een antwoord, met grafiek als dat past. Ze kunnen ook een vaste analyse inplannen of een bestand meesturen.",
+    "Zo werkt het. Elke vraag in Teams draait als de persoon die hem stelt. Genie gebruikt dus alleen data waar die persoon in Unity Catalog bij mag. De vraag wordt in de Databricks-werkruimte verwerkt; de dienst tussen Teams en Databricks bewaart geen vragen of antwoorden. Genie haalt zijn kennis uit Genie Ontology (vaste definities, metric views en geleerde context), en via Unity Gateway regel je welke MCP-tools Genie mag gebruiken en welke acties eerst goedkeuring vragen.",
+    "Daarnaast: in Copilot Cowork en Copilot Chat stuurt Copilot datavragen door naar Genie One in plaats van zelf te zoeken. In Excel stel je via de Azure Databricks Excel Add-in een vraag in gewone taal, laad je resultaten in je werkblad, maak je live draaitabellen op metric views en schrijf je ingevulde waarden terug naar een Databricks-tabel. In Copilot Studio voeg je een Genie Agent toe als tool via de connector voor Power Platform. Voor deze drie noemt het artikel geen status.",
+    "Dit is precies het patroon 'AI op je eigen data bij de gebruiker brengen': je Gold-tabellen en metric views zijn de bron, Genie Ontology geeft de betekenis, en de gebruiker vraagt het in Teams of Excel, met zijn eigen rechten. Voor een zorgorganisatie is dat laatste belangrijk: wie geen toegang heeft tot een tabel, krijgt die data ook niet via Genie te zien.",
+    "Instellen in Teams doet een Databricks-beheerder: app toevoegen en standaard-zichtbaarheid van antwoorden kiezen. Met Private Link is ook een ingress-regel op accountniveau nodig. Gebruikers loggen de eerste keer in en kiezen een werkruimte."
+   ],
+   "key_facts": [
+    "De Databricks Genie-app voor Microsoft Teams is algemeen beschikbaar (GA); hij werkt ook in Microsoft 365 Copilot.",
+    "Elke vraag draait onder de identiteit van de vrager, met diens Unity Catalog-rechten; de routeringsdienst tussen Teams en Databricks slaat geen vragen of antwoorden op.",
+    "Genie Ontology is algemeen beschikbaar (GA).",
+    "Excel Add-in: vragen in gewone taal, live draaitabellen op metric views en tabellen, geplande verversing en terugschrijven naar Databricks-tabellen; status niet genoemd.",
+    "Copilot Cowork en Chat sturen datavragen door naar Genie One via de Azure Databricks Genie-plugin; status niet genoemd.",
+    "Copilot Studio: Genie Agents als tool via de Azure Databricks-connector voor Power Platform; status niet genoemd.",
+    "Koppeling met Work IQ via MCP komt 'binnenkort'.",
+    "Artikel van 18 november 2026."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "Genie Ontology",
+     "explanation": "De contextlaag van Databricks die bedrijfsbegrippen koppelt aan tabellen, maatstaven en dashboards, zodat Genie en andere agents snappen wat termen betekenen."
+    },
+    {
+     "term": "Genie One",
+     "explanation": "De algemene Genie-assistent van Databricks die over al je data heen werkt, in plaats van over één afgebakende verzameling tabellen."
+    },
+    {
+     "term": "Genie Agent",
+     "explanation": "Een Genie-assistent die je afbakent tot een vaste set tabellen, metric views en instructies, voor één onderwerp of team."
+    },
+    {
+     "term": "metric views",
+     "explanation": "Een object in Unity Catalog waarin je maatstaven en dimensies één keer definieert, zodat elk rapport en elke AI hetzelfde getal krijgt."
+    },
+    {
+     "term": "Private Link",
+     "explanation": "Een privéverbinding in Azure waardoor verkeer naar een dienst niet over het openbare internet gaat."
+    }
+   ],
+   "soort": "aankondiging",
+   "fit": {
+    "score": 0.7,
+    "why": "Genie op je eigen data bij gebruikers, zoals je duimen bij Genie Agents en metric views naar Power BI."
+   },
+   "labels": [
+    "genie-one",
+    "genie-agents",
+    "metric-views",
+    "genie-ontology"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
    }
   },
   {
@@ -6803,102 +6803,6 @@
    }
   },
   {
-   "id": "b943cf926a94",
-   "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
-   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
-   "source_id": "databricks_blog",
-   "published_at": "2026-11-16T18:30:00Z",
-   "fetched_at": "2026-11-17T03:14:09.981133Z",
-   "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
-   "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
-   "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
-   "limitations": [
-    "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
-    "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
-   ],
-   "availability_status": "onbekend",
-   "official_docs": [
-    {
-     "label": "healthlake-opensharing op GitHub",
-     "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
-    }
-   ],
-   "topics": [
-    "ai_on_data_platform",
-    "data_governance_privacy",
-    "ai_in_healthcare"
-   ],
-   "groups": [
-    "ai_context",
-    "kwaliteit",
-    "zorg"
-   ],
-   "relevance_score": 81,
-   "score_parts": {
-    "topic": 1.0,
-    "recency": 0.57,
-    "source": 0.85,
-    "quality": 0.53,
-    "feedback": -0.04,
-    "fit": 0.1
-   },
-   "decision": "included",
-   "processing_status": "enriched",
-   "processed_by": "Claude (geplande taak)",
-   "processed_at": "2026-11-17T03:45:41Z",
-   "reading_minutes": 3,
-   "format_version": 2,
-   "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
-   "story": [
-    "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
-    "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
-    "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
-    "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
-   ],
-   "key_facts": [
-    "Blog van Databricks, 16 november 2026.",
-    "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
-    "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
-    "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
-    "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
-    "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
-   ],
-   "article_type": "nieuws",
-   "terms": [
-    {
-     "term": "FHIR",
-     "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
-    },
-    {
-     "term": "Iceberg-tabellen",
-     "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
-    },
-    {
-     "term": "OpenSharing-server",
-     "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
-    },
-    {
-     "term": "Databricks App",
-     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
-    }
-   ],
-   "soort": "praktisch",
-   "fit": {
-    "score": 0.6,
-    "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
-   },
-   "labels": [
-    "ai-in-de-zorg",
-    "opensharing",
-    "genie-agents"
-   ],
-   "fb_why": {
-    "by": "source",
-    "name": "databricks_blog",
-    "pts": -4
-   }
-  },
-  {
    "id": "215f0a50b9ea",
    "title": "Microsoft 365 Copilot And Power BI: The Easiest Way To Chat With Your Data",
    "url": "https://blog.crossjoin.co.uk/2026/11/01/microsoft-365-copilot-and-power-bi-the-easiest-way-to-chat-with-your-data/",
@@ -6925,7 +6829,7 @@
    "relevance_score": 80,
    "score_parts": {
     "topic": 1.0,
-    "recency": 0.27,
+    "recency": 0.26,
     "source": 0.68,
     "quality": 0.55,
     "feedback": 0.02,
@@ -7091,6 +6995,102 @@
     "by": "topic",
     "name": "dbt_analytics_engineering",
     "pts": 1
+   }
+  },
+  {
+   "id": "b943cf926a94",
+   "title": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
+   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one",
+   "source_id": "databricks_blog",
+   "published_at": "2026-11-16T18:30:00Z",
+   "fetched_at": "2026-11-17T03:14:09.981133Z",
+   "summary": "Databricks bouwde een brug van AWS HealthLake naar Unity Catalog: een eigen OpenSharing-server als Databricks App. Daarna kun je de klinische tabellen in gewone taal bevragen met Genie One.",
+   "personal_relevance": "Een concreet patroon voor AI op klinische data met toegang via Unity Catalog, dicht bij je werk in de zorg.",
+   "experiment": "Bekijk de repository healthlake-opensharing en schets voor jezelf hoe hetzelfde patroon (data blijft staan, Unity Catalog regelt toegang, Genie erboven) eruit zou zien met openbare of synthetische FHIR-data.",
+   "limitations": [
+    "Alleen voor AWS HealthLake; geen kant-en-klare functie maar een referentie-implementatie die je zelf onderhoudt.",
+    "Geen cijfers over juistheid, prestaties of kosten; of de voorbeelddata synthetisch is, staat er niet bij."
+   ],
+   "availability_status": "onbekend",
+   "official_docs": [
+    {
+     "label": "healthlake-opensharing op GitHub",
+     "url": "https://github.com/databricks-industry-solutions/healthlake-opensharing"
+    }
+   ],
+   "topics": [
+    "ai_on_data_platform",
+    "data_governance_privacy",
+    "ai_in_healthcare"
+   ],
+   "groups": [
+    "ai_context",
+    "kwaliteit",
+    "zorg"
+   ],
+   "relevance_score": 80,
+   "score_parts": {
+    "topic": 1.0,
+    "recency": 0.57,
+    "source": 0.85,
+    "quality": 0.53,
+    "feedback": -0.04,
+    "fit": 0.1
+   },
+   "decision": "included",
+   "processing_status": "enriched",
+   "processed_by": "Claude (geplande taak)",
+   "processed_at": "2026-11-17T03:45:41Z",
+   "reading_minutes": 3,
+   "format_version": 2,
+   "headline": "Klinische FHIR-data uit AWS HealthLake bevragen met Genie One",
+   "story": [
+    "Zorgorganisaties op AWS bewaren klinische data vaak in AWS HealthLake, volgens de standaard FHIR. HealthLake zet die data ook als Iceberg-tabellen klaar, maar in een opslagbak die alleen de dienst zelf beheert. Unity Catalog kan daar niet zomaar bij.",
+    "Databricks bouwde daarom een tussenstuk: een eigen OpenSharing-server die als Databricks App draait. Bij elke tabelvraag haalt die tijdelijke sleutels op via Lake Formation, zoekt de actuele versie van de Iceberg-tabel en geeft vooraf ondertekende links naar de bestanden terug. De compute van Databricks leest de bestanden dan direct uit S3. De server is dus een loket dat toegang regelt, geen doorgeefluik voor de data zelf.",
+    "In Databricks verschijnt de share als een gedeelde catalogus in Unity Catalog. Rechten en audit werken daar zoals bij andere tabellen. Daarboven maak je een Genie Agent met de belangrijkste klinische tabellen, beschrijvingen en uitleg van begrippen zoals HbA1c. Een vraag als 'hoe ontwikkelt het gemiddelde A1C zich per maand?' levert dan SQL, een tabel en een grafiek op.",
+    "Voor jou is vooral het patroon interessant: zorgdata blijft waar hij staat, Unity Catalog regelt toegang en een AI-laag maakt hem bevraagbaar. Het is wel een AWS-oplossing die je zelf uitrolt en onderhoudt. Het artikel zegt niets over beperkingen, prestaties of hoe goed de antwoorden zijn."
+   ],
+   "key_facts": [
+    "Blog van Databricks, 16 november 2026.",
+    "AWS HealthLake bewaart analysetabellen als Apache Iceberg in een S3-bucket van de dienst zelf; directe toegang kan alleen met tijdelijke Lake Formation-credentials.",
+    "Een eigen OpenSharing-server draait als Databricks App, regelt credentials, de actuele Iceberg-snapshot en vooraf ondertekende links; de data gaat direct van S3 naar Databricks-compute.",
+    "AWS vertrouwt de identiteit van de app via OIDC-federatie.",
+    "De share wordt een gedeelde catalogus in Unity Catalog; daarop werken grants, ABAC en audit.",
+    "Uitrollen gaat als Declarative Automation Bundle uit github.com/databricks-industry-solutions/healthlake-opensharing; het artikel noemt geen status (GA of preview)."
+   ],
+   "article_type": "nieuws",
+   "terms": [
+    {
+     "term": "FHIR",
+     "explanation": "Een internationale standaard om zorggegevens uit te wisselen, met vaste bouwstenen zoals patiënt, observatie en contact."
+    },
+    {
+     "term": "Iceberg-tabellen",
+     "explanation": "Tabellen in het open formaat Apache Iceberg, een tegenhanger van Delta: bestanden in cloudopslag plus metadata over versies en schema."
+    },
+    {
+     "term": "OpenSharing-server",
+     "explanation": "Een server die tabellen volgens het open deelprotocol van Databricks beschikbaar maakt, zodat een ander platform ze kan lezen zonder kopie."
+    },
+    {
+     "term": "Databricks App",
+     "explanation": "Een eigen webtoepassing of dienst die binnen Databricks draait, met de identiteit en rechten van Databricks."
+    }
+   ],
+   "soort": "praktisch",
+   "fit": {
+    "score": 0.6,
+    "why": "Zorg en AI op eigen data, zoals je duim bij 'Databricks geeft AI-assistenten zorgkennis mee'; wel AWS en geen eigen stack."
+   },
+   "labels": [
+    "ai-in-de-zorg",
+    "opensharing",
+    "genie-agents"
+   ],
+   "fb_why": {
+    "by": "source",
+    "name": "databricks_blog",
+    "pts": -4
    }
   },
   {
@@ -8024,7 +8024,7 @@
     "recency": 0.2,
     "source": 0.51,
     "quality": 0.65,
-    "feedback": -0.03,
+    "feedback": -0.04,
     "fit": 0.15
    },
    "decision": "included",
@@ -8083,7 +8083,7 @@
    "fb_why": {
     "by": "kind",
     "name": "achtergrond",
-    "pts": -3
+    "pts": -4
    }
   },
   {
@@ -16647,6 +16647,19 @@
      "inspiratie": 0
     }
    },
+   "inhalen": {
+    "status": "deels",
+    "summary": "Uitleggen opnieuw geprobeerd voor 2 Fabric-artikelen, maar die waren nog steeds niet bereikbaar; verdiepen en overzicht waren al klaar.",
+    "finished_at": "2026-11-28T06:34:04Z",
+    "problems": [
+     "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): niet te openen (PROVENANCE_REQUIRED), blijft op de werklijst.",
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): niet te openen (PROVENANCE_REQUIRED), blijft op de werklijst."
+    ],
+    "counts": {
+     "ingehaald": 0,
+     "niet_bereikbaar": 2
+    }
+   },
    "uitleggen": {
     "status": "deels",
     "summary": "1 artikel uitgelegd (met voorbeeld, via WebSearch geopend), 2 Fabric-artikelen nog niet bereikbaar en blijven op de werklijst",
@@ -16654,7 +16667,8 @@
     "problems": [
      "add_repo was in deze sessie niet beschikbaar; de al aanwezige clone van personal-data-platform is gebruikt voor de Dataflow-voortgang.",
      "OneLake: The unified foundation for data, context, governance, and AI (9f74702ac72e): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst.",
-     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst."
+     "Bringing trusted Fabric IQ context to wherever people and agents work (3c6506d1a8d8): WebFetch weigerde de url (PROVENANCE_REQUIRED) en de link uit WebSearch gaf een fout bij de site; blijft op de werklijst.",
+     "Inhalen (07:27) probeerde beide Fabric-artikelen opnieuw: WebFetch weigerde de url weer (PROVENANCE_REQUIRED) en WebSearch gaf geen link naar hetzelfde artikel; ze blijven op de werklijst."
     ],
     "counts": {
      "uitgelegd": 1,
@@ -16776,7 +16790,7 @@
   "kinds": {
    "praktijk": 0.58,
    "praktisch": 0.6,
-   "achtergrond": 0.63,
+   "achtergrond": 0.62,
    "aankondiging": 0.95,
    "mening": 0.37,
    "release": 0.58
@@ -17176,16 +17190,6 @@
     ]
    },
    {
-    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
     "title": "Genie Ontology is now generally available",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#genie-ontology-is-now-generally-available",
@@ -17209,16 +17213,6 @@
     "title": "Provision Claude desktop with MDM using Unity Gateway",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#provision-claude-desktop-with-mdm-using-unity-gateway",
-    "relevance_score": 79,
-    "decision": "excluded",
-    "excluded_by": [
-     "weekoverzicht"
-    ]
-   },
-   {
-    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
-    "source_id": "azure_databricks_release_notes",
-    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
     "relevance_score": 79,
     "decision": "excluded",
     "excluded_by": [
@@ -17301,6 +17295,26 @@
     "title": "Governed tag propagation is in Beta",
     "source_id": "azure_databricks_release_notes",
     "url": "https://learn.microsoft.com/en-us/azure/databricks/admin/governed-tags/tag-propagation",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/product/2026/november#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
+    "relevance_score": 78,
+    "decision": "excluded",
+    "excluded_by": [
+     "weekoverzicht"
+    ]
+   },
+   {
+    "title": "Anthropic Claude Fable 5.2 is now available on Unity Gateway",
+    "source_id": "azure_databricks_release_notes",
+    "url": "https://learn.microsoft.com/azure/databricks/release-notes/unity-gateway#anthropic-claude-fable-52-is-now-available-on-unity-gateway",
     "relevance_score": 78,
     "decision": "excluded",
     "excluded_by": [
